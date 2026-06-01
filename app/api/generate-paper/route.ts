@@ -462,7 +462,7 @@ export async function POST(request: NextRequest) {
             status: "READY",
             isDemoMode,
             createdAt: new Date().toISOString(),
-            sessionOnly: true,
+            sessionOnly: Boolean(auth.user.isGuest),
             config: effectiveConfig,
             ...(isDemoMode ? demoMetadata() : {}),
           },

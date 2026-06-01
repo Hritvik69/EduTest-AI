@@ -10,6 +10,7 @@ import {
   Clock3,
   FileText,
   Flame,
+  LogIn,
   Play,
   Plus,
   Search,
@@ -59,6 +60,7 @@ interface Summary {
 
 interface PaperRow {
   id: number;
+  title?: string;
   subject: string;
   classNum: number;
   totalMarks: number;
@@ -80,6 +82,7 @@ export default function DashboardPage() {
   const [summary, setSummary] = React.useState<Summary | null>(null);
   const [papers, setPapers] = React.useState<PaperRow[]>([]);
   const [profile, setProfile] = React.useState<UserProfile | null>(null);
+  const [profileError, setProfileError] = React.useState<string | null>(null);
   const [subjectFilter, setSubjectFilter] = React.useState("All");
   const mounted = useIsClient();
 
@@ -103,8 +106,14 @@ export default function DashboardPage() {
       .catch(() => setPapers([]));
 
     fetchApiData<{ user: UserProfile }>("/api/me", undefined, "Could not load profile.")
-      .then((payload) => setProfile(payload.user))
-      .catch(() => setProfile(null));
+      .then((payload) => {
+        setProfile(payload.user);
+        setProfileError(null);
+      })
+      .catch((error) => {
+        setProfile(null);
+        setProfileError(error instanceof Error ? error.message : "Could not load profile.");
+      });
   }, []);
 
   const subjects = React.useMemo(
@@ -117,25 +126,66 @@ export default function DashboardPage() {
       name: `T${index + 1}`,
       score: attempt.percentage,
     }));
+  const requiresSignIn = /authentication is required/i.test(profileError ?? "");
+  const createTestHref = requiresSignIn ? "/api/auth/signin/google" : "/create-test";
 
   return (
     <main className="min-h-screen bg-background pb-12 text-slate-100">
       <header className="border-b border-white/10 bg-[#0a0e1a]/90 backdrop-blur">
         <div className="safe-container flex min-h-[72px] items-center justify-between gap-4">
           <BrandLogo />
-          <Button asChild>
-            <Link href="/create-test">
-              <Plus className="h-4 w-4" />
-              Create Test
-            </Link>
-          </Button>
+          <div className="flex items-center gap-2">
+            {requiresSignIn ? (
+              <Button asChild variant="outline">
+                <Link href="/api/auth/signin/google">
+                  <LogIn className="h-4 w-4" />
+                  Google Sign In
+                </Link>
+              </Button>
+            ) : null}
+            <Button asChild>
+              <Link href={createTestHref}>
+                {requiresSignIn ? (
+                  <LogIn className="h-4 w-4" />
+                ) : (
+                  <Plus className="h-4 w-4" />
+                )}
+                {requiresSignIn ? "Sign In" : "Create Test"}
+              </Link>
+            </Button>
+          </div>
         </div>
       </header>
 
       <div className="safe-container pt-8">
+        {requiresSignIn ? (
+          <section className="mb-5 rounded-lg border border-blue-300/25 bg-blue-500/10 p-5">
+            <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+              <div>
+                <h2 className="text-xl font-extrabold text-white">
+                  Sign in with Google to store your papers
+                </h2>
+                <p className="mt-2 text-sm text-blue-100">
+                  After login, every generated paper is saved to your dashboard.
+                </p>
+              </div>
+              <Button asChild>
+                <Link href="/api/auth/signin/google">
+                  <LogIn className="h-4 w-4" />
+                  Continue with Google
+                </Link>
+              </Button>
+            </div>
+          </section>
+        ) : null}
+
         <section className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div className="flex items-center gap-4">
-            {profile?.image ? (
+            {requiresSignIn ? (
+              <div className="flex h-14 w-14 items-center justify-center rounded-lg border border-white/10 bg-blue-500/10 text-blue-100">
+                <LogIn className="h-6 w-6" />
+              </div>
+            ) : profile?.image ? (
               <div
                 aria-hidden
                 className="h-14 w-14 rounded-lg border border-white/10 bg-cover bg-center"
@@ -148,7 +198,7 @@ export default function DashboardPage() {
             )}
             <div>
               <h1 className="text-3xl font-extrabold text-white">
-                Welcome back, {firstName(profile)}!
+                Welcome back, {requiresSignIn ? "Teacher" : firstName(profile)}!
               </h1>
               <p className="mt-2 flex items-center gap-2 text-sm text-slate-400">
                 <CalendarDays className="h-4 w-4" />
@@ -176,9 +226,18 @@ export default function DashboardPage() {
               </p>
             </div>
             <Button asChild>
-              <Link href="/create-test">
-                Start Creating
-                <ArrowRight className="h-4 w-4" />
+              <Link href={createTestHref}>
+                {requiresSignIn ? (
+                  <>
+                    Sign in to Create
+                    <LogIn className="h-4 w-4" />
+                  </>
+                ) : (
+                  <>
+                    Start Creating
+                    <ArrowRight className="h-4 w-4" />
+                  </>
+                )}
               </Link>
             </Button>
           </div>
@@ -187,15 +246,14 @@ export default function DashboardPage() {
         <section className="mt-5 grid gap-5 xl:grid-cols-[minmax(0,1.25fr)_minmax(360px,0.75fr)]">
           <Card className="overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 p-5">
-              <h2 className="text-lg font-extrabold text-white">Recent Papers</h2>
-              <Badge>{papers.length} total</Badge>
+              <h2 className="text-lg font-extrabold text-white">Stored Papers</h2>
+              <Badge>{papers.length} stored</Badge>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[720px] text-left text-sm">
                 <thead className="border-b border-white/10 text-xs uppercase text-slate-400">
                   <tr>
-                    <th className="px-5 py-3">Subject</th>
-                    <th className="px-5 py-3">Class</th>
+                    <th className="px-5 py-3">Paper</th>
                     <th className="px-5 py-3">Marks</th>
                     <th className="px-5 py-3">Status</th>
                     <th className="px-5 py-3">Date</th>
@@ -203,10 +261,16 @@ export default function DashboardPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {papers.slice(0, 8).map((paper) => (
+                  {papers.map((paper) => (
                     <tr key={paper.id} className="border-b border-white/10 last:border-0">
-                      <td className="px-5 py-4 font-semibold text-white">{paper.subject}</td>
-                      <td className="px-5 py-4">Class {paper.classNum}</td>
+                      <td className="px-5 py-4">
+                        <p className="font-semibold text-white">
+                          {paper.title ?? `${paper.subject} Paper`}
+                        </p>
+                        <p className="mt-1 text-xs text-slate-400">
+                          Class {paper.classNum} | {paper.subject}
+                        </p>
+                      </td>
                       <td className="px-5 py-4">{paper.totalMarks}</td>
                       <td className="px-5 py-4">
                         <StatusBadge paper={paper} />
@@ -237,6 +301,13 @@ export default function DashboardPage() {
                       </td>
                     </tr>
                   ))}
+                  {!papers.length ? (
+                    <tr>
+                      <td className="px-5 py-10 text-center text-slate-400" colSpan={5}>
+                        No stored papers yet. Create a paper and it will appear here.
+                      </td>
+                    </tr>
+                  ) : null}
                 </tbody>
               </table>
             </div>

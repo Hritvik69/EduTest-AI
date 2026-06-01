@@ -172,10 +172,21 @@ const heroEvaluation = [
 export default async function LandingPage() {
   const authEnabled = process.env.EDUTEST_AUTH_MODE === "nextauth";
   const session = authEnabled ? await getServerSession(authOptions) : null;
+  const shouldSignInFirst = authEnabled && !session?.user?.email;
+  const createTestHref = shouldSignInFirst
+    ? "/api/auth/signin/google?callbackUrl=%2Fcreate-test"
+    : "/create-test";
+  const pdfTestHref = shouldSignInFirst
+    ? "/api/auth/signin/google?callbackUrl=%2Fcreate-test%3Fmode%3Dpdf"
+    : "/create-test?mode=pdf";
 
   return (
     <main className="min-h-screen overflow-hidden bg-background text-slate-100">
-      <Navbar authEnabled={authEnabled} session={session} />
+      <Navbar
+        authEnabled={authEnabled}
+        createTestHref={createTestHref}
+        session={session}
+      />
 
       <section className="relative min-h-[calc(100vh-72px)] overflow-hidden pb-16 pt-28 md:pt-32">
         <div className="absolute inset-0 dot-grid opacity-55" />
@@ -194,7 +205,7 @@ export default async function LandingPage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="group">
-                <Link href="/create-test">
+                <Link href={createTestHref}>
                   <Sparkles className="h-5 w-5" />
                   Create Free Paper
                 </Link>
@@ -210,7 +221,7 @@ export default async function LandingPage() {
                 size="lg"
                 className="border-blue-200/50 bg-primary text-white shadow-[0_0_34px_rgb(59_130_246/0.58)] ring-1 ring-blue-200/20 hover:bg-blue-400 hover:shadow-[0_0_46px_rgb(59_130_246/0.72)]"
               >
-                <Link href="/create-test?mode=pdf">
+                <Link href={pdfTestHref}>
                   <UploadCloud className="h-5 w-5" />
                   PDF-EDU-TEST
                 </Link>
@@ -308,7 +319,7 @@ export default async function LandingPage() {
               </p>
             </div>
             <Button asChild variant="gold" size="lg">
-              <Link href="/create-test">
+              <Link href={createTestHref}>
                 Create Your First Paper Free
                 <ArrowRight className="h-5 w-5" />
               </Link>
@@ -533,9 +544,11 @@ function AnimatedMeter({
 
 function Navbar({
   authEnabled,
+  createTestHref,
   session,
 }: {
   authEnabled: boolean;
+  createTestHref: string;
   session: Session | null;
 }) {
   return (
@@ -547,7 +560,7 @@ function Navbar({
             Dashboard
           </Link>
           <Button asChild variant="outline">
-            <Link href="/create-test">Get Started Free</Link>
+            <Link href={createTestHref}>Get Started Free</Link>
           </Button>
           <AuthControl authEnabled={authEnabled} session={session} />
         </div>
@@ -564,7 +577,7 @@ function Navbar({
               Dashboard
             </Link>
             <Button asChild>
-              <Link href="/create-test">Get Started Free</Link>
+              <Link href={createTestHref}>Get Started Free</Link>
             </Button>
             <AuthControl authEnabled={authEnabled} session={session} mobile />
           </div>

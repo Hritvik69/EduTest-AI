@@ -280,7 +280,7 @@ export function GenerationOverlay({
                         : `Class ${paperConfig.classNum} ${paperConfig.subject} ${paperConfig.examType}`,
                     config: paperConfig,
                     status: "READY",
-                    sessionOnly: true,
+                    sessionOnly: Boolean(data.sessionOnly),
                   }),
                 )
               ) {
