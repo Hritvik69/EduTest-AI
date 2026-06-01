@@ -15,6 +15,7 @@ import {
   Timer,
   UploadCloud,
 } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -641,12 +642,7 @@ function AuthControl({
 }
 
 function Logo() {
-  return (
-    <Link href="/" className="inline-flex items-center gap-2 font-extrabold text-white">
-      <span className="h-2.5 w-2.5 rounded-full bg-primary shadow-glow animate-pulseDot" />
-      EduTest.AI
-    </Link>
-  );
+  return <BrandLogo />;
 }
 
 function SampleQuestionCard({ sample }: { sample: SampleQuestion }) {

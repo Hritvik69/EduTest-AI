@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, Rocket } from "lucide-react";
 import { toast } from "sonner";
+import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { fetchApiData } from "@/lib/api-client";
@@ -113,10 +114,7 @@ function WizardInner() {
     <main className="min-h-screen bg-background pb-16 text-slate-100">
       <header className="border-b border-white/10 bg-[#0a0e1a]/90 backdrop-blur">
         <div className="safe-container flex min-h-[72px] items-center justify-between gap-4">
-          <Link href="/" className="inline-flex items-center gap-2 font-extrabold text-white">
-            <span className="h-2.5 w-2.5 rounded-full bg-primary shadow-glow animate-pulseDot" />
-            EduTest.AI
-          </Link>
+          <BrandLogo />
           <Button asChild variant="ghost">
             <Link href="/">Back to Home</Link>
           </Button>
