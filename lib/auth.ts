@@ -5,7 +5,9 @@ import sql from "@/lib/db";
 const authSecret =
   process.env.NEXTAUTH_SECRET ??
   process.env.AUTH_SECRET ??
-  process.env.EDUTEST_GUEST_SECRET;
+  process.env.EDUTEST_GUEST_SECRET ??
+  process.env.GOOGLE_CLIENT_SECRET ??
+  process.env.DATABASE_URL;
 
 export const authOptions: NextAuthOptions = {
   secret: authSecret,
