@@ -48,6 +48,11 @@ interface GenerateSectionOptions {
   }) => void;
 }
 
+interface DemoQuestionOptions {
+  availableTopics?: string[];
+  startIndex?: number;
+}
+
 export async function generatePaperQuestions(config: PaperConfig, conceptContext = "") {
   const blueprint = buildBlueprint(config);
   const questions: GeneratedQuestion[] = [];
@@ -104,7 +109,10 @@ export async function generateQuestionsForSection(
     );
   } catch (error) {
     if (options.allowDemoFallback) {
-      return generateDemoQuestionsForSection(section, config);
+      return generateDemoQuestionsForSection(section, config, {
+        availableTopics,
+        startIndex: options.existingQuestions?.length ?? 0,
+      });
     }
 
     throw error;
@@ -244,19 +252,38 @@ async function generateQuestionBatches(
   return questions.slice(0, section.count);
 }
 
-export function generateDemoQuestions(config: PaperConfig, blueprint?: Blueprint) {
+export function generateDemoQuestions(
+  config: PaperConfig,
+  blueprint?: Blueprint,
+  options: DemoQuestionOptions = {},
+) {
   const activeBlueprint = blueprint ?? buildBlueprint(config);
-  return activeBlueprint.sections.flatMap((section) =>
-    generateDemoQuestionsForSection(section, config),
-  );
+  let questionOffset = options.startIndex ?? 0;
+  return activeBlueprint.sections.flatMap((section) => {
+    const questions = generateDemoQuestionsForSection(section, config, {
+      ...options,
+      startIndex: questionOffset,
+    });
+    questionOffset += section.count;
+    return questions;
+  });
 }
 
 export function generateDemoQuestionsForSection(
   section: BlueprintSection,
   config: PaperConfig,
+  options: DemoQuestionOptions = {},
 ): GeneratedQuestion[] {
+  const startIndex = options.startIndex ?? 0;
   return Array.from({ length: section.count }, (_, index) =>
-    createDemoQuestion(section.questionType, config, section, index),
+    createDemoQuestion(
+      section.questionType,
+      config,
+      section,
+      index,
+      startIndex + index,
+      options,
+    ),
   );
 }
 
@@ -879,13 +906,22 @@ function createDemoQuestion(
   config: PaperConfig,
   section: BlueprintSection,
   index: number,
+  globalIndex: number,
+  options: DemoQuestionOptions = {},
 ): GeneratedQuestion {
   const meta = questionTypeMeta.find((item) => item.type === type);
-  const topic = `${config.subject} concept ${index + 1}`;
+  const topics = options.availableTopics?.map((item) => item.trim()).filter(Boolean) ?? [];
+  const topic =
+    topics[globalIndex % Math.max(1, topics.length)] ??
+    `${config.subject} concept ${globalIndex + 1}`;
+  const questionNumber = globalIndex + 1;
+  const subject = uniqueSubjectNames(config.subjects ?? [config.subject]).join(" + ");
+  const chapterIds = config.chapterIds ?? [];
+  const topicIds = config.topicIds ?? [];
   const base = {
-    text: `Demo ${meta?.label ?? type} question ${index + 1} for Class ${
+    text: `${meta?.label ?? type} question ${questionNumber} for Class ${
       config.classNum
-    } ${config.subject}.`,
+    } ${subject} on ${topic}.`,
     type,
     difficulty: config.difficulty,
     marks: section.marksPerQuestion,
@@ -895,10 +931,10 @@ function createDemoQuestion(
     bloomLevel: index % 3 === 0 ? "APPLY" : index % 3 === 1 ? "ANALYZE" : "UNDERSTAND",
     competencyLevel: Math.min(5, 2 + (index % 4)),
     topic,
-    chapterId: config.chapterIds[index % Math.max(1, config.chapterIds.length)],
-    topicId: config.topicIds?.[index % Math.max(1, config.topicIds.length)],
+    chapterId: chapterIds[globalIndex % Math.max(1, chapterIds.length)],
+    topicId: topicIds[globalIndex % Math.max(1, topicIds.length)],
     section: section.name,
-    subject: config.subject,
+    subject,
     classNum: config.classNum,
   } satisfies GeneratedQuestion;
 
@@ -906,50 +942,50 @@ function createDemoQuestion(
     case "MCQ":
       return {
         ...base,
-        text: `A student observes ${topic} in a daily-life situation. Which explanation is most accurate?`,
+        text: `A student observes ${topic} in situation ${questionNumber}. Which explanation is most accurate?`,
         options: defaultOptions(),
         correctAnswer: "B",
       };
     case "ASSERTION_REASON":
       return {
         ...base,
-        text: "Assertion (A): The concept works only when the correct condition is present. Reason (R): The condition changes how particles or values interact.",
-        assertion: "The concept works only when the correct condition is present.",
-        reason: "The condition changes how particles or values interact.",
+        text: `Assertion (A): ${topic} works only when the correct condition is present. Reason (R): That condition changes the observed result in case ${questionNumber}.`,
+        assertion: `${topic} works only when the correct condition is present.`,
+        reason: `That condition changes the observed result in case ${questionNumber}.`,
         options: assertionOptions(),
         correctAnswer: "A",
       };
     case "TRUE_FALSE":
       return {
         ...base,
-        text: `${topic} can be explained using evidence from observation.`,
+        text: `${topic} can be explained using evidence from observation ${questionNumber}.`,
         correctAnswer: "True",
       };
     case "ONE_WORD":
       return {
         ...base,
-        text: `Which term best names the main idea in ${topic}?`,
+        text: `Which term best names the main idea in ${topic} for example ${questionNumber}?`,
         correctAnswer: "Principle",
       };
     case "FILL_BLANK":
       return {
         ...base,
-        text: `The main factor responsible for ${topic} is ________.`,
+        text: `In ${topic}, the main factor responsible for observation ${questionNumber} is ________.`,
         correctAnswer: "condition",
       };
     case "VERY_SHORT":
       return {
         ...base,
-        text: `State one reason why ${topic} is important.`,
+        text: `State one reason why ${topic} is important in case ${questionNumber}.`,
         correctAnswer: "It helps explain the observation using the correct NCERT concept.",
       };
     case "MATCH_FOLLOWING":
       return {
         ...base,
-        text: "Match Column A with Column B.",
+        text: `Match Column A with Column B for ${topic}.`,
         matchPairs: [
-          { left: "Concept", right: "Principle" },
-          { left: "Observation", right: "Evidence" },
+          { left: `${topic} concept`, right: "Principle" },
+          { left: `Observation ${questionNumber}`, right: "Evidence" },
           { left: "Application", right: "Daily use" },
           { left: "Conclusion", right: "Inference" },
         ],
@@ -958,15 +994,19 @@ function createDemoQuestion(
     case "NUMERICAL":
       return {
         ...base,
-        text: "A value changes from 20 units to 30 units. Calculate the increase and state the unit.",
+        text: `In a ${topic} example, a value changes from ${20 + questionNumber} units to ${30 + questionNumber} units. Calculate the increase and state the unit.`,
         correctAnswer: "10 units",
-        keyPoints: ["Step1: final - initial", "Step2: 30 - 20", "Step3: 10 units"],
+        keyPoints: [
+          "Step1: final - initial",
+          `Step2: ${30 + questionNumber} - ${20 + questionNumber}`,
+          "Step3: 10 units",
+        ],
       };
     case "SOURCE_BASED":
       return {
         ...base,
         scenario:
-          "A school laboratory observation shows a clear change after a condition is altered. Students note the before and after evidence and discuss the principle behind it.",
+          `A school observation about ${topic} shows a clear change after condition ${questionNumber} is altered. Students note the before and after evidence and discuss the principle behind it.`,
         text: "Read the source and answer the questions.",
         subQuestions: Array.from({ length: 4 }, (_, subIndex) => ({
           text: `Source sub-question ${subIndex + 1}`,
@@ -979,7 +1019,7 @@ function createDemoQuestion(
       return {
         ...base,
         scenario:
-          "Riya observes a familiar classroom situation where changing one condition changes the result. She records the observation and explains it to her group.",
+          `Riya observes ${topic} in a familiar classroom situation ${questionNumber}, where changing one condition changes the result. She records the observation and explains it to her group.`,
         text: "Read the case and answer the questions.",
         subQuestions: [
           {

@@ -2,7 +2,6 @@ import { NextRequest } from "next/server";
 import {
   jsonError,
   parseJsonWithSchema,
-  rateLimit,
   requireAuthenticatedUser,
 } from "@/lib/api-security";
 import {
@@ -65,11 +64,6 @@ type LocalFallbackContext = {
 export async function POST(request: NextRequest) {
   const auth = await requireAuthenticatedUser(request);
   if (auth.response) return auth.response;
-
-  const limited = rateLimit(request, `generate:${auth.user.id}`, 5, 60_000, {
-    action: "paper generation requests",
-  });
-  if (limited) return limited;
 
   const parsed = await parseJsonWithSchema(request, generationRequestSchema);
   if (parsed.response) return parsed.response;
@@ -238,17 +232,17 @@ export async function POST(request: NextRequest) {
           progress: 25,
           msg: "Phase 3 - Question Planning: building blueprint, S/C/T split, and question intelligence.",
         });
+        localFallbackContext = {
+          effectiveConfig,
+          blueprint,
+          scopedConcepts,
+        };
         const created = await createPaperInDB(effectiveConfig, blueprint, isDemoMode, {
           userId: auth.user.id,
           generationJobId,
           idempotencyKey,
         });
         paperId = created.paperId;
-        localFallbackContext = {
-          effectiveConfig,
-          blueprint,
-          scopedConcepts,
-        };
 
         if (created.reused) {
           if (created.status === "READY") {
@@ -513,12 +507,25 @@ export async function POST(request: NextRequest) {
         });
 
         if (
-          paperId &&
           localFallbackContext &&
           !request.signal.aborted &&
           shouldUseLocalGenerationFallback(Boolean(auth.user.isGuest), error)
         ) {
           try {
+            if (!paperId) {
+              const fallbackPaper = await createPaperInDB(
+                localFallbackContext.effectiveConfig,
+                localFallbackContext.blueprint,
+                true,
+                {
+                  userId: auth.user.id,
+                  generationJobId,
+                  idempotencyKey,
+                },
+              );
+              paperId = fallbackPaper.paperId;
+            }
+
             await completeWithLocalGenerationFallback({
               paperId,
               context: localFallbackContext,
@@ -620,6 +627,9 @@ async function completeWithLocalGenerationFallback({
   const generated = generateDemoQuestions(
     context.effectiveConfig,
     context.blueprint,
+    {
+      availableTopics: conceptTopics(context.scopedConcepts),
+    },
   );
   const validation = validatePaperKeepingValidQuestions(
     generated,

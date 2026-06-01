@@ -464,7 +464,7 @@ describe("generateQuestionsForSection batching", () => {
     );
 
     expect(questions).toHaveLength(section.count);
-    expect(questions[0].text).toContain("Science concept");
+    expect(questions[0].text).toContain("Acids");
     expect(mocks.generateJSON).toHaveBeenCalledTimes(1);
   });
 
