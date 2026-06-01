@@ -17,7 +17,7 @@ import { Progress } from "@/components/ui/progress";
 import { fetchApiData } from "@/lib/api-client";
 import { generationPhaseLabels } from "@/lib/question-planning";
 import { cn } from "@/lib/utils";
-import type { AIProvider, PaperConfig } from "@/types";
+import type { AIProvider, PaperConfig, StoredPaper } from "@/types";
 
 const progressSteps = generationPhaseLabels;
 
@@ -313,6 +313,15 @@ export function GenerationOverlay({
         }
 
         if (!completed) {
+          if (savedPaperId) {
+            const recovered = await recoverSavedPaper(savedPaperId, requestConfig);
+            if (recovered) {
+              safeSessionRemove(inFlightKey);
+              router.push(`/papers/${savedPaperId}/preview`);
+              return;
+            }
+          }
+
           throw generationError(
             savedPaperId
               ? `Generation stopped after paper #${savedPaperId} was saved. Open Dashboard to see it or delete it.`
@@ -592,6 +601,43 @@ function paperConfigFromStream(value: unknown, fallback: PaperConfig): PaperConf
     ...fallback,
     ...value,
   } as PaperConfig;
+}
+
+async function recoverSavedPaper(paperId: number, fallbackConfig: PaperConfig) {
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    if (attempt > 0) await wait(900);
+
+    try {
+      const paper = await fetchApiData<StoredPaper>(
+        `/api/papers/${paperId}`,
+        undefined,
+        "Could not verify saved paper.",
+      );
+      if (paper.status === "FAILED") return false;
+      if (paper.questions?.length) {
+        safeSessionSet(
+          `edutest:paper:${paperId}`,
+          JSON.stringify({
+            ...paper,
+            id: paperId,
+            paperId,
+            config: paper.config ?? fallbackConfig,
+            status: paper.status ?? "READY",
+            sessionOnly: true,
+          }),
+        );
+        return true;
+      }
+    } catch {
+      // A just-finished serverless write can take a moment to become visible.
+    }
+  }
+
+  return false;
+}
+
+function wait(ms: number) {
+  return new Promise((resolve) => window.setTimeout(resolve, ms));
 }
 
 function getErrorCode(error: unknown) {
