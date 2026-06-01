@@ -26,6 +26,7 @@ import {
 } from "@/lib/generator";
 import {
   createPaperInDB,
+  deletePaperForUser,
   markPaperDemoMode,
   markPaperReady,
   saveQuestionsAndLink,
@@ -523,7 +524,7 @@ export async function POST(request: NextRequest) {
         if (
           localFallbackContext &&
           !request.signal.aborted &&
-          shouldUseLocalGenerationFallback(Boolean(auth.user.isGuest), error)
+          shouldUseLocalGenerationFallback(Boolean(demoMode), error)
         ) {
           try {
             if (!paperId) {
@@ -572,6 +573,10 @@ export async function POST(request: NextRequest) {
               cancelled: request.signal.aborted,
             });
             paperStatusSaved = true;
+            if (auth.user.isGuest) {
+              await deletePaperForUser(paperId, auth.user.id);
+              paperId = null;
+            }
           } catch (statusError) {
             console.error("[generate-paper] failed to mark paper FAILED", {
               paperId,
@@ -590,7 +595,6 @@ export async function POST(request: NextRequest) {
               error: true,
               code,
               msg: generationErrorMessage(error),
-              paperId,
               generationJobId,
               status: paperStatusSaved ? "FAILED" : undefined,
             },
@@ -914,7 +918,7 @@ function generationErrorMessage(error: unknown) {
     error instanceof Error ? error.message : "Generation failed. Please try again.";
 
   if (/SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(message)) {
-    return "Generation reached the deployment time limit before AI could finish. The app will use guest fallback when possible; lower the question count if this repeats.";
+    return "Real AI generation reached the deployment time limit before finishing. No template paper was saved. Try a lower question count, fewer question types, or a faster configured provider.";
   }
 
   if (
@@ -956,11 +960,11 @@ function generationErrorMessage(error: unknown) {
   return compactAiProviderFailureMessage(message);
 }
 
-function shouldUseLocalGenerationFallback(isGuest: boolean, error: unknown) {
+function shouldUseLocalGenerationFallback(isExplicitDemoMode: boolean, error: unknown) {
   const configured = process.env.EDUTEST_LOCAL_GENERATION_FALLBACK;
   if (configured === "false") return false;
   if (configured === "true") return true;
-  if (!isGuest) return false;
+  if (!isExplicitDemoMode) return false;
 
   const code = generationErrorCode(error);
   if (
@@ -1021,7 +1025,7 @@ function generationServerBudgetMs() {
     return configured;
   }
 
-  return 45_000;
+  return 52_000;
 }
 
 function generationDeadlineError() {

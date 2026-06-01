@@ -255,7 +255,7 @@ export function GenerationOverlay({
               throw generationError(
                 stringValue(data.msg) ?? "Paper generation failed.",
                 stringValue(data.code) ?? numberValue(data.code),
-                streamedPaperId ?? savedPaperId ?? undefined,
+                streamedPaperId ?? undefined,
               );
             }
 
@@ -324,10 +324,9 @@ export function GenerationOverlay({
 
           throw generationError(
             savedPaperId
-              ? `Generation stopped after paper #${savedPaperId} was saved. Open Dashboard to see it or delete it.`
+              ? "Generation stopped before a complete paper was saved. The incomplete paper shell was ignored."
               : "Generation stopped before the paper was saved.",
             "GENERATION_STREAM_ENDED",
-            savedPaperId ?? undefined,
           );
         }
       } catch (error) {

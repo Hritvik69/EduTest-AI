@@ -926,11 +926,11 @@ function aiRequestTimeoutMs(provider?: DirectAIProvider | "GEMINI") {
   const configured = Number(process.env.AI_REQUEST_TIMEOUT_MS);
   if (Number.isFinite(configured) && configured >= 5_000) return configured;
 
-  if (provider === "MISTRAL" || provider === "CEREBRAS") return 30_000;
-  if (provider === "OPENROUTER" || provider === "OPENAI") return 20_000;
-  if (provider === "DEEPSEEK") return 15_000;
+  if (provider === "MISTRAL" || provider === "CEREBRAS") return 14_000;
+  if (provider === "OPENROUTER" || provider === "OPENAI") return 12_000;
+  if (provider === "DEEPSEEK") return 10_000;
 
-  return 12_000;
+  return 10_000;
 }
 
 function isCallerAbort(error: unknown, signal?: AbortSignal) {

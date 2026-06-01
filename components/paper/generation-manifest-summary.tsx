@@ -116,5 +116,15 @@ function sourceDescription(manifest: GenerationManifest) {
     return `PDF upload${method}`;
   }
 
-  return `${manifest.source.conceptSource} curriculum`;
+  if (manifest.source.conceptSource === "curriculum") {
+    return "Curriculum concepts";
+  }
+  if (manifest.source.conceptSource === "demo") {
+    return "Demo fallback content";
+  }
+  if (manifest.source.conceptSource === "pdf") {
+    return "PDF extracted concepts";
+  }
+
+  return "Unknown source";
 }
