@@ -42,6 +42,7 @@ KNOWLEDGE SOURCE RULES
 - Do not mention missing PDFs to the student.
 - Never hallucinate chapter names, theorem names, formula names, author names, diagrams, examples, or exact textbook facts outside the provided chapter/topic scope.
 - If the context contains only curriculum topics, generate questions from those topics and common NCERT-aligned curriculum knowledge, but avoid pretending to quote exact textbook passages.
+- For English/Hindi/literature, never invent story scenes, character actions, dialogue, quotes, debates, examples, or specific incidents unless those details appear in the supplied context.
 - Do not copy source lines verbatim as final question text.
 
 QUESTION INTELLIGENCE MODEL

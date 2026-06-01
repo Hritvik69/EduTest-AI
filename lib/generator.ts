@@ -441,6 +441,7 @@ Rules:
 - Fresh run nonce: ${generationNonce ?? "not-provided"}. Treat this as a new paper; do not reuse previous output, demo/template examples, or repeated numeric placeholders such as "20 units to 30 units".
 - For source/case/paragraph/diagram/practical/HOTS/competency/long, synthesize a fresh scenario from concepts.
 - If source is curriculum, use only chapter/topic scope; do not invent exact textbook facts.
+- For English/Hindi/literature, do not invent story scenes, character actions, dialogue, quotes, debates, examples, or specific incidents unless those details are present in the provided concept context.
 - Self-check count, marks, structure, topic balance, duplicates, answer clarity, and format.
 ${antiRepeatRules}
 ${coverageFocusRules}

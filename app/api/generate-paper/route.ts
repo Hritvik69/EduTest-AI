@@ -41,6 +41,7 @@ import {
 } from "@/lib/question-planning";
 import { retrieveConcepts } from "@/lib/retriever";
 import { generationRequestSchema } from "@/lib/schemas";
+import { assertSourceGroundingForGeneration } from "@/lib/source-grounding";
 import { validatePaperKeepingValidQuestions } from "@/lib/validator";
 import type {
   Blueprint,
@@ -206,6 +207,7 @@ export async function POST(request: NextRequest) {
           selectionAwareConcepts,
           effectiveConfig,
         );
+        assertSourceGroundingForGeneration(effectiveConfig, scopedConcepts);
         const paperQuestionSource = scopedConcepts.some(
           (concept) => concept.source === "pdf",
         )
@@ -917,6 +919,10 @@ function generationErrorMessage(error: unknown) {
   const message =
     error instanceof Error ? error.message : "Generation failed. Please try again.";
 
+  if (/SOURCE_NOT_TEXT_BACKED/i.test(message)) {
+    return stripSourceGroundingPrefix(message);
+  }
+
   if (/SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(message)) {
     return "Real AI generation reached the deployment time limit before finishing. No template paper was saved. Try a lower question count, fewer question types, or a faster configured provider.";
   }
@@ -988,6 +994,10 @@ function generationErrorCode(error: unknown) {
   const message =
     error instanceof Error ? error.message : "Generation failed. Please try again.";
 
+  if (/SOURCE_NOT_TEXT_BACKED/i.test(message)) {
+    return "SOURCE_NOT_TEXT_BACKED";
+  }
+
   if (/SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(message)) {
     return "PROVIDER_NETWORK_ERROR";
   }
@@ -1017,6 +1027,10 @@ function generationErrorCode(error: unknown) {
   }
 
   return undefined;
+}
+
+function stripSourceGroundingPrefix(message: string) {
+  return message.replace(/^SOURCE_NOT_TEXT_BACKED:\s*/i, "");
 }
 
 function generationServerBudgetMs() {
