@@ -1,0 +1,438 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
+const originalEnv = { ...process.env };
+
+describe("multi-provider JSON generation", () => {
+  beforeEach(() => {
+    vi.resetModules();
+    vi.unstubAllGlobals();
+    process.env = { ...originalEnv };
+    delete process.env.GEMINI_API_KEY;
+    delete process.env.GROQ_API_KEY;
+    delete process.env.XAI_API_KEY;
+    delete process.env.MISTRAL_API_KEY;
+    delete process.env.MISTRAL_MODEL;
+    delete process.env.CEREBRAS_API_KEY;
+    delete process.env.CEREBRAS_MODEL;
+    delete process.env.DEEPSEEK_API_KEY;
+    delete process.env.DEEPSEEK_MODEL;
+    delete process.env.OPENROUTER_API_KEY;
+    delete process.env.OPENAI_API_KEY;
+    delete process.env.AI_PROVIDER;
+    delete (globalThis as typeof globalThis & {
+      __edutestProviderCooldowns?: unknown;
+    }).__edutestProviderCooldowns;
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.restoreAllMocks();
+    process.env = { ...originalEnv };
+  });
+
+  it("sends Grok requests through the xAI chat-completions endpoint", async () => {
+    process.env.XAI_API_KEY = "xai-test-key";
+    process.env.XAI_MODEL = "grok-4.3";
+    const fetchMock = mockJSONFetch({ ok: true });
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ ok: boolean }>("Return { ok: true }", {
+      provider: "GROK",
+      systemInstruction: "System rules",
+      maxOutputTokens: 1234,
+    });
+
+    expect(result.ok).toBe(true);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("https://api.x.ai/v1/chat/completions");
+    expect((init?.headers as Record<string, string>).Authorization).toBe(
+      "Bearer xai-test-key",
+    );
+    const body = JSON.parse(String(init?.body));
+    expect(body.model).toBe("grok-4.3");
+    expect(body.max_tokens).toBe(1234);
+    expect(body.messages[0].content).toContain("System rules");
+    expect(body.messages[1].content).toBe("Return { ok: true }");
+  });
+
+  it("sends OpenRouter requests through the OpenRouter chat-completions endpoint", async () => {
+    process.env.OPENROUTER_API_KEY = "sk-or-test-key";
+    process.env.OPENROUTER_MODEL = "openrouter/auto";
+    process.env.NEXTAUTH_URL = "http://localhost:3000";
+    const fetchMock = mockJSONFetch({ routed: true });
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ routed: boolean }>("Return JSON", {
+      provider: "OPENROUTER",
+    });
+
+    expect(result.routed).toBe(true);
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("https://openrouter.ai/api/v1/chat/completions");
+    expect((init?.headers as Record<string, string>).Authorization).toBe(
+      "Bearer sk-or-test-key",
+    );
+    expect((init?.headers as Record<string, string>)["HTTP-Referer"]).toBe(
+      "http://localhost:3000",
+    );
+    expect(JSON.parse(String(init?.body)).model).toBe("openrouter/auto");
+  });
+
+  it("sends Mistral requests through the Mistral chat-completions endpoint", async () => {
+    process.env.MISTRAL_API_KEY = "mistral-test-key";
+    process.env.MISTRAL_MODEL = "mistral-small-latest";
+    const fetchMock = mockJSONFetch({ ok: true });
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ ok: boolean }>("Return JSON", {
+      provider: "MISTRAL",
+      systemInstruction: "System rules",
+      maxOutputTokens: 1400,
+    });
+
+    expect(result.ok).toBe(true);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("https://api.mistral.ai/v1/chat/completions");
+    expect((init?.headers as Record<string, string>).Authorization).toBe(
+      "Bearer mistral-test-key",
+    );
+    const body = JSON.parse(String(init?.body));
+    expect(body.model).toBe("mistral-small-latest");
+    expect(body.max_tokens).toBe(1400);
+    expect(body.messages[0].content).toContain("System rules");
+    expect(body.messages[1].content).toBe("Return JSON");
+  });
+
+  it("sends Cerebras requests through the Cerebras chat-completions endpoint", async () => {
+    process.env.CEREBRAS_API_KEY = "csk-test-key";
+    process.env.CEREBRAS_MODEL = "gpt-oss-120b";
+    const fetchMock = mockJSONFetch({ ok: true });
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ ok: boolean }>("Return JSON", {
+      provider: "CEREBRAS",
+      systemInstruction: "System rules",
+      maxOutputTokens: 1500,
+    });
+
+    expect(result.ok).toBe(true);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("https://api.cerebras.ai/v1/chat/completions");
+    expect((init?.headers as Record<string, string>).Authorization).toBe(
+      "Bearer csk-test-key",
+    );
+    const body = JSON.parse(String(init?.body));
+    expect(body.model).toBe("gpt-oss-120b");
+    expect(body.max_tokens).toBe(1500);
+    expect(body.messages[0].content).toContain("System rules");
+    expect(body.messages[1].content).toBe("Return JSON");
+  });
+
+  it("sends DeepSeek requests through the DeepSeek chat-completions endpoint", async () => {
+    process.env.DEEPSEEK_API_KEY = "deepseek-test-key";
+    process.env.DEEPSEEK_MODEL = "deepseek-v4-flash";
+    const fetchMock = mockJSONFetch({ ok: true });
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ ok: boolean }>("Return JSON", {
+      provider: "DEEPSEEK",
+      systemInstruction: "System rules",
+      maxOutputTokens: 1500,
+    });
+
+    expect(result.ok).toBe(true);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("https://api.deepseek.com/chat/completions");
+    expect((init?.headers as Record<string, string>).Authorization).toBe(
+      "Bearer deepseek-test-key",
+    );
+    const body = JSON.parse(String(init?.body));
+    expect(body.model).toBe("deepseek-v4-flash");
+    expect(body.max_tokens).toBe(1500);
+    expect(body.messages[0].content).toContain("System rules");
+    expect(body.messages[1].content).toBe("Return JSON");
+  });
+
+  it("caps OpenRouter max_tokens to a low-cost default", async () => {
+    process.env.OPENROUTER_API_KEY = "sk-or-test-key";
+    const fetchMock = mockJSONFetch({ routed: true });
+    const { generateJSON } = await import("@/lib/gemini");
+
+    await generateJSON<{ routed: boolean }>("Return JSON", {
+      provider: "OPENROUTER",
+      maxOutputTokens: 5800,
+    });
+
+    const body = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
+    expect(body.max_tokens).toBe(1100);
+  });
+
+  it("uses Auto fallback order after skipping unconfigured providers", async () => {
+    process.env.MISTRAL_API_KEY = "mistral-test-key";
+    process.env.CEREBRAS_API_KEY = "csk-test-key";
+    process.env.XAI_API_KEY = "xai-test-key";
+    process.env.DEEPSEEK_API_KEY = "deepseek-test-key";
+    process.env.OPENROUTER_API_KEY = "sk-or-test-key";
+    process.env.OPENAI_API_KEY = "sk-test-key";
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response("busy", {
+          status: 503,
+        }),
+      )
+      .mockResolvedValueOnce(chatResponse({ fallback: "cerebras" }))
+      .mockResolvedValueOnce(chatResponse({ fallback: "openrouter" }));
+    vi.stubGlobal("fetch", fetchMock);
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ fallback: string }>("Return JSON", {
+      provider: "AUTO",
+    });
+
+    expect(result.fallback).toBe("cerebras");
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock.mock.calls[0][0]).toBe("https://api.mistral.ai/v1/chat/completions");
+    expect(fetchMock.mock.calls[1][0]).toBe(
+      "https://api.cerebras.ai/v1/chat/completions",
+    );
+    expect(JSON.parse(String(fetchMock.mock.calls[0][1]?.body)).messages[1].content).toBe(
+      "Return JSON",
+    );
+    expect(JSON.parse(String(fetchMock.mock.calls[1][1]?.body)).messages[1].content).toBe(
+      "Return JSON",
+    );
+  });
+
+  it("uses task-specific Auto fallback order for question generation", async () => {
+    process.env.MISTRAL_API_KEY = "mistral-test-key";
+    process.env.CEREBRAS_API_KEY = "csk-test-key";
+    process.env.DEEPSEEK_API_KEY = "deepseek-test-key";
+    process.env.OPENROUTER_API_KEY = "sk-or-test-key";
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response("busy", {
+          status: 503,
+        }),
+      )
+      .mockResolvedValueOnce(chatResponse({ fallback: "cerebras" }));
+    vi.stubGlobal("fetch", fetchMock);
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ fallback: string }>("Return JSON", {
+      provider: "AUTO",
+      task: "QUESTION_GENERATION",
+    });
+
+    expect(result.fallback).toBe("cerebras");
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock.mock.calls[0][0]).toBe("https://api.mistral.ai/v1/chat/completions");
+    expect(fetchMock.mock.calls[1][0]).toBe(
+      "https://api.cerebras.ai/v1/chat/completions",
+    );
+  });
+
+  it("keeps provider cooldowns scoped to the failing task", async () => {
+    process.env.MISTRAL_API_KEY = "mistral-test-key";
+    process.env.CEREBRAS_API_KEY = "csk-test-key";
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response("rate limit exceeded", {
+          status: 429,
+        }),
+      )
+      .mockResolvedValueOnce(chatResponse({ fallback: "cerebras" }))
+      .mockResolvedValueOnce(chatResponse({ extraction: "mistral" }));
+    vi.stubGlobal("fetch", fetchMock);
+    const { generateJSON } = await import("@/lib/gemini");
+
+    await expect(
+      generateJSON<{ fallback: string }>("Return JSON", {
+        provider: "AUTO",
+        task: "QUESTION_GENERATION",
+      }),
+    ).resolves.toEqual({ fallback: "cerebras" });
+
+    await expect(
+      generateJSON<{ extraction: string }>("Return JSON", {
+        provider: "AUTO",
+        task: "PDF_EXTRACTION",
+      }),
+    ).resolves.toEqual({ extraction: "mistral" });
+
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(fetchMock.mock.calls[2][0]).toBe("https://api.mistral.ai/v1/chat/completions");
+  });
+
+  it("keeps provider cooldowns scoped to the requesting user context", async () => {
+    process.env.MISTRAL_API_KEY = "mistral-test-key";
+    process.env.CEREBRAS_API_KEY = "csk-test-key";
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response("rate limit exceeded", {
+          status: 429,
+        }),
+      )
+      .mockResolvedValueOnce(chatResponse({ fallback: "cerebras" }))
+      .mockResolvedValueOnce(chatResponse({ fallback: "mistral-user-b" }));
+    vi.stubGlobal("fetch", fetchMock);
+    const { generateJSON } = await import("@/lib/gemini");
+
+    await expect(
+      generateJSON<{ fallback: string }>("Return JSON", {
+        provider: "AUTO",
+        task: "QUESTION_GENERATION",
+        cooldownScope: "user-a",
+      }),
+    ).resolves.toEqual({ fallback: "cerebras" });
+
+    await expect(
+      generateJSON<{ fallback: string }>("Return JSON", {
+        provider: "AUTO",
+        task: "QUESTION_GENERATION",
+        cooldownScope: "user-b",
+      }),
+    ).resolves.toEqual({ fallback: "mistral-user-b" });
+
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(fetchMock.mock.calls[2][0]).toBe("https://api.mistral.ai/v1/chat/completions");
+  });
+
+  it("temporarily skips providers after auth or quota failures in Auto fallback", async () => {
+    process.env.MISTRAL_API_KEY = "mistral-test-key";
+    process.env.CEREBRAS_API_KEY = "csk-test-key";
+    process.env.OPENROUTER_API_KEY = "sk-or-test-key";
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response("not enough credits", {
+          status: 402,
+        }),
+      )
+      .mockResolvedValueOnce(chatResponse({ fallback: "cerebras" }))
+      .mockResolvedValueOnce(chatResponse({ fallback: "cerebras-second" }));
+    vi.stubGlobal("fetch", fetchMock);
+    const { generateJSON } = await import("@/lib/gemini");
+
+    await expect(generateJSON<{ fallback: string }>("Return JSON", { provider: "AUTO" }))
+      .resolves.toEqual({ fallback: "cerebras" });
+    await expect(generateJSON<{ fallback: string }>("Return JSON", { provider: "AUTO" }))
+      .resolves.toEqual({ fallback: "cerebras-second" });
+
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(fetchMock.mock.calls[0][0]).toBe("https://api.mistral.ai/v1/chat/completions");
+    expect(fetchMock.mock.calls[1][0]).toBe("https://api.cerebras.ai/v1/chat/completions");
+    expect(fetchMock.mock.calls[2][0]).toBe("https://api.cerebras.ai/v1/chat/completions");
+  });
+
+  it("parses valid JSON embedded in provider wrapper text", async () => {
+    process.env.OPENAI_API_KEY = "sk-test-key";
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValue(chatResponseText("Here is the JSON:\n[{\"ok\":true}]"));
+    vi.stubGlobal("fetch", fetchMock);
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<Array<{ ok: boolean }>>("Return JSON", {
+      provider: "OPENAI",
+    });
+
+    expect(result).toEqual([{ ok: true }]);
+  });
+
+  it("reports plain text provider output as invalid JSON", async () => {
+    process.env.OPENAI_API_KEY = "sk-test-key";
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(chatResponseText("I cannot return JSON.")),
+    );
+    const { generateJSON } = await import("@/lib/gemini");
+
+    await expect(
+      generateJSON("Return JSON", { provider: "OPENAI" }),
+    ).rejects.toThrow(/text instead of valid JSON/);
+  });
+
+  it("cancels chat-completion requests with the provided signal", async () => {
+    process.env.OPENROUTER_API_KEY = "sk-or-test-key";
+    const controller = new AbortController();
+    controller.abort();
+    const abortError = new Error("aborted");
+    abortError.name = "AbortError";
+    const fetchMock = vi.fn().mockRejectedValue(abortError);
+    vi.stubGlobal("fetch", fetchMock);
+    const { generateJSON } = await import("@/lib/gemini");
+
+    await expect(
+      generateJSON("Return JSON", {
+        provider: "OPENROUTER",
+        signal: controller.signal,
+      }),
+    ).rejects.toThrow(/cancelled/);
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect((fetchMock.mock.calls[0][1]?.signal as AbortSignal).aborted).toBe(true);
+  });
+
+  it("reports provider status without exposing API keys", async () => {
+    process.env.XAI_API_KEY = "xai-test-key";
+    process.env.MISTRAL_API_KEY = "mistral-test-key";
+    process.env.CEREBRAS_API_KEY = "csk-test-key";
+    process.env.DEEPSEEK_API_KEY = "deepseek-test-key";
+    process.env.OPENROUTER_API_KEY = "sk-or-test-key";
+    process.env.AI_PROVIDER = "openrouter";
+    const { GET } = await import("@/app/api/ai/providers/route");
+
+    const response = await GET();
+    const payload = await response.json();
+
+    expect(payload.data.grok).toBe(true);
+    expect(payload.data.groq).toBeUndefined();
+    expect(payload.data.mistral).toBe(true);
+    expect(payload.data.cerebras).toBe(true);
+    expect(payload.data.deepseek).toBe(true);
+    expect(payload.data.openrouter).toBe(true);
+    expect(payload.data.defaultProvider).toBe("OPENROUTER");
+    expect(JSON.stringify(payload)).not.toContain("gsk-test-key");
+    expect(JSON.stringify(payload)).not.toContain("mistral-test-key");
+    expect(JSON.stringify(payload)).not.toContain("csk-test-key");
+    expect(JSON.stringify(payload)).not.toContain("deepseek-test-key");
+    expect(JSON.stringify(payload)).not.toContain("xai-test-key");
+    expect(JSON.stringify(payload)).not.toContain("sk-or-test-key");
+  }, 10_000);
+});
+
+function mockJSONFetch(content: unknown) {
+  const fetchMock = vi.fn().mockResolvedValue(chatResponse(content));
+  vi.stubGlobal("fetch", fetchMock);
+  return fetchMock;
+}
+
+function chatResponse(content: unknown) {
+  return chatResponseText(JSON.stringify(content));
+}
+
+function chatResponseText(content: string) {
+  return new Response(
+    JSON.stringify({
+      choices: [
+        {
+          message: {
+            content,
+          },
+        },
+      ],
+    }),
+    {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    },
+  );
+}

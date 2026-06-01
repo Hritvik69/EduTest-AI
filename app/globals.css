@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Segoe UI", "Inter", "Arial", sans-serif;
+  --font-mono: "Cascadia Code", "Consolas", monospace;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0e1a 0%, #101827 48%, #0a0e1a 100%);
+  color: #e2e8f0;
+  caret-color: transparent;
+  font-family: var(--font-display);
+  letter-spacing: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+input,
+textarea,
+[contenteditable="true"] {
+  caret-color: auto;
+}
+
+::selection {
+  background: rgb(59 130 246 / 0.35);
+}
+
+.dot-grid {
+  background-image: radial-gradient(circle, rgb(148 163 184 / 0.16) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.glass-panel {
+  background: rgb(15 22 41 / 0.72);
+  border: 1px solid rgb(226 232 240 / 0.13);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 0.28);
+  backdrop-filter: blur(18px);
+}
+
+.safe-container {
+  width: min(1120px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+}
+
+.hero-stage {
+  isolation: isolate;
+}
+
+.hero-sweep {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(59 130 246 / 0.12) 46%,
+    rgb(16 185 129 / 0.1) 54%,
+    transparent 100%
+  );
+  filter: blur(20px);
+  transform: translateX(-120%);
+  animation: heroSweep 7s ease-in-out infinite;
+}
+
+.hero-float {
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+.hero-float-delay {
+  animation-delay: -2.4s;
+}
+
+.hero-question-card {
+  animation: heroQuestionPulse 5.8s ease-in-out infinite;
+}
+
+.hero-question-delay {
+  animation-delay: -1.8s;
+}
+
+.hero-question-slow {
+  animation-delay: -3.4s;
+}
+
+.hero-scan-line {
+  position: absolute;
+  inset-inline: 18px;
+  top: 86px;
+  z-index: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(147 197 253 / 0.95),
+    rgb(52 211 153 / 0.75),
+    transparent
+  );
+  box-shadow: 0 0 22px rgb(59 130 246 / 0.52);
+  animation: heroScan 4.2s ease-in-out infinite;
+}
+
+.hero-blink {
+  animation: heroBlink 1.35s ease-in-out infinite;
+}
+
+.hero-meter {
+  animation: heroMeter 1.2s ease-out both;
+  transform-origin: left center;
+}
+
+.hero-ticker {
+  animation: heroTicker 18s linear infinite;
+}
+
+@keyframes heroSweep {
+  0%,
+  18% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  78%,
+  100% {
+    transform: translateX(230%);
+    opacity: 0;
+  }
+}
+
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes heroQuestionPulse {
+  0%,
+  100% {
+    border-color: rgb(255 255 255 / 0.1);
+    transform: translateX(0);
+  }
+  50% {
+    border-color: rgb(96 165 250 / 0.38);
+    transform: translateX(8px);
+  }
+}
+
+@keyframes heroScan {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20%,
+  70% {
+    opacity: 1;
+  }
+  72% {
+    transform: translateY(240px);
+    opacity: 0;
+  }
+}
+
+@keyframes heroBlink {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.4);
+  }
+}
+
+@keyframes heroMeter {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes heroTicker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-sweep,
+  .hero-float,
+  .hero-question-card,
+  .hero-scan-line,
+  .hero-blink,
+  .hero-meter,
+  .hero-ticker {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .safe-container {
+    width: min(100% - 24px, 1120px);
+  }
+}

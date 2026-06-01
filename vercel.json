@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "app/api/generate-paper/route.ts": { "maxDuration": 60 },
+    "app/api/evaluate-answers/route.ts": { "maxDuration": 30 },
+    "app/api/extract-content/route.ts": { "maxDuration": 60 }
+  }
+}
