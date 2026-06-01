@@ -2,7 +2,13 @@ import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import sql from "@/lib/db";
 
+const authSecret =
+  process.env.NEXTAUTH_SECRET ??
+  process.env.AUTH_SECRET ??
+  process.env.EDUTEST_GUEST_SECRET;
+
 export const authOptions: NextAuthOptions = {
+  secret: authSecret,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
