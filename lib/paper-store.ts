@@ -72,86 +72,93 @@ export async function createPaperInDB(
   const guestMode = isGuestUserId(options.userId);
 
   if (sql && options.userId) {
-    if (!options.userId) throw new Error("Authenticated user is required.");
-    await ensureGuestDatabaseUser(options.userId);
+    try {
+      if (!options.userId) throw new Error("Authenticated user is required.");
+      await ensureGuestDatabaseUser(options.userId);
 
-    const [, rows] = await sql.transaction((tx) => [
-      tx`SELECT pg_advisory_xact_lock(${options.userId})`,
-      tx`
-        WITH recovered AS (
-          UPDATE papers
-          SET
-            title = ${title},
-            class_num = ${paperConfig.classNum},
-            subject = ${displaySubject(paperConfig)},
-            subject_selections = ${json(paperConfig.subjectSelections ?? null)},
-            chapter_ids = ${paperConfig.chapterIds},
-            total_marks = ${paperConfig.totalMarks},
-            duration = ${paperConfig.duration},
-            difficulty = ${paperConfig.difficulty},
-            question_types = ${paperConfig.questionTypes},
-            type_distribution = ${json(paperConfig.typeDistribution)},
-            bloom_distribution = ${json(paperConfig.bloomDistribution)},
-            blueprint = ${json(blueprint)},
-            status = 'GENERATING',
-            error_metadata = NULL,
-            is_demo_mode = ${isDemoMode},
-            generation_job_id = ${options.generationJobId ?? null},
-            updated_at = NOW()
-          WHERE user_id = ${options.userId}
-          AND idempotency_key = ${options.idempotencyKey ?? null}
-          AND (
-            status = 'FAILED'
-            OR (status = 'GENERATING' AND updated_at < NOW() - INTERVAL '10 minutes')
+      const [, rows] = await sql.transaction((tx) => [
+        tx`SELECT pg_advisory_xact_lock(${options.userId})`,
+        tx`
+          WITH recovered AS (
+            UPDATE papers
+            SET
+              title = ${title},
+              class_num = ${paperConfig.classNum},
+              subject = ${displaySubject(paperConfig)},
+              subject_selections = ${json(paperConfig.subjectSelections ?? null)},
+              chapter_ids = ${paperConfig.chapterIds},
+              total_marks = ${paperConfig.totalMarks},
+              duration = ${paperConfig.duration},
+              difficulty = ${paperConfig.difficulty},
+              question_types = ${paperConfig.questionTypes},
+              type_distribution = ${json(paperConfig.typeDistribution)},
+              bloom_distribution = ${json(paperConfig.bloomDistribution)},
+              blueprint = ${json(blueprint)},
+              status = 'GENERATING',
+              error_metadata = NULL,
+              is_demo_mode = ${isDemoMode},
+              generation_job_id = ${options.generationJobId ?? null},
+              updated_at = NOW()
+            WHERE user_id = ${options.userId}
+            AND idempotency_key = ${options.idempotencyKey ?? null}
+            AND (
+              status = 'FAILED'
+              OR (status = 'GENERATING' AND updated_at < NOW() - INTERVAL '10 minutes')
+            )
+            RETURNING id, status, false AS reused
+          ),
+          existing AS (
+            SELECT id, status, true AS reused
+            FROM papers
+            WHERE user_id = ${options.userId}
+            AND idempotency_key = ${options.idempotencyKey ?? null}
+            AND NOT EXISTS (SELECT 1 FROM recovered)
+            LIMIT 1
+          ),
+          inserted AS (
+            INSERT INTO papers (
+              user_id, title, class_num, subject, subject_selections, chapter_ids,
+              total_marks, duration, difficulty, question_types, type_distribution,
+              bloom_distribution, blueprint, status, error_metadata, is_demo_mode,
+              generation_job_id, idempotency_key
+            )
+            SELECT
+              ${options.userId}, ${title}, ${paperConfig.classNum}, ${displaySubject(paperConfig)},
+              ${json(paperConfig.subjectSelections ?? null)}, ${paperConfig.chapterIds},
+              ${paperConfig.totalMarks}, ${paperConfig.duration}, ${paperConfig.difficulty},
+              ${paperConfig.questionTypes}, ${json(paperConfig.typeDistribution)},
+              ${json(paperConfig.bloomDistribution)}, ${json(blueprint)}, 'GENERATING',
+              NULL, ${isDemoMode}, ${options.generationJobId ?? null},
+              ${options.idempotencyKey ?? null}
+            WHERE NOT EXISTS (SELECT 1 FROM recovered)
+            AND NOT EXISTS (SELECT 1 FROM existing)
+            ON CONFLICT (user_id, idempotency_key)
+            WHERE idempotency_key IS NOT NULL
+            DO NOTHING
+            RETURNING id, status, false AS reused
           )
-          RETURNING id, status, false AS reused
-        ),
-        existing AS (
-          SELECT id, status, true AS reused
-          FROM papers
-          WHERE user_id = ${options.userId}
-          AND idempotency_key = ${options.idempotencyKey ?? null}
-          AND NOT EXISTS (SELECT 1 FROM recovered)
+          SELECT id, status, reused FROM recovered
+          UNION ALL
+          SELECT id, status, reused FROM inserted
+          UNION ALL
+          SELECT id, status, reused FROM existing
           LIMIT 1
-        ),
-        inserted AS (
-          INSERT INTO papers (
-            user_id, title, class_num, subject, subject_selections, chapter_ids,
-            total_marks, duration, difficulty, question_types, type_distribution,
-            bloom_distribution, blueprint, status, error_metadata, is_demo_mode,
-            generation_job_id, idempotency_key
-          )
-          SELECT
-            ${options.userId}, ${title}, ${paperConfig.classNum}, ${displaySubject(paperConfig)},
-            ${json(paperConfig.subjectSelections ?? null)}, ${paperConfig.chapterIds},
-            ${paperConfig.totalMarks}, ${paperConfig.duration}, ${paperConfig.difficulty},
-            ${paperConfig.questionTypes}, ${json(paperConfig.typeDistribution)},
-            ${json(paperConfig.bloomDistribution)}, ${json(blueprint)}, 'GENERATING',
-            NULL, ${isDemoMode}, ${options.generationJobId ?? null},
-            ${options.idempotencyKey ?? null}
-          WHERE NOT EXISTS (SELECT 1 FROM recovered)
-          AND NOT EXISTS (SELECT 1 FROM existing)
-          ON CONFLICT (user_id, idempotency_key)
-          WHERE idempotency_key IS NOT NULL
-          DO NOTHING
-          RETURNING id, status, false AS reused
-        )
-        SELECT id, status, reused FROM recovered
-        UNION ALL
-        SELECT id, status, reused FROM inserted
-        UNION ALL
-        SELECT id, status, reused FROM existing
-        LIMIT 1
-      `,
-    ]);
+        `,
+      ]);
 
-    if (!rows[0]?.id) throw new Error("PAPER_CREATION_FAILED");
+      if (!rows[0]?.id) throw new Error("PAPER_CREATION_FAILED");
 
-    return {
-      paperId: Number(rows[0].id),
-      status: rows[0].status,
-      reused: Boolean(rows[0].reused),
-    };
+      return {
+        paperId: Number(rows[0].id),
+        status: rows[0].status,
+        reused: Boolean(rows[0].reused),
+      };
+    } catch (error) {
+      if (!guestMode) throw error;
+      console.warn("[paper-store] guest database create failed; using memory store", {
+        message: error instanceof Error ? error.message : String(error),
+      });
+    }
   }
 
   if (!isDemoMode && !guestMode) {
