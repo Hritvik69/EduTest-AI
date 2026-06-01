@@ -14,6 +14,7 @@ import {
   Play,
   Plus,
   Search,
+  Trash2,
 } from "lucide-react";
 import {
   Line,
@@ -84,6 +85,7 @@ export default function DashboardPage() {
   const [profile, setProfile] = React.useState<UserProfile | null>(null);
   const [profileError, setProfileError] = React.useState<string | null>(null);
   const [subjectFilter, setSubjectFilter] = React.useState("All");
+  const [deletingPaperId, setDeletingPaperId] = React.useState<number | null>(null);
   const mounted = useIsClient();
 
   React.useEffect(() => {
@@ -128,6 +130,40 @@ export default function DashboardPage() {
     }));
   const requiresSignIn = /authentication is required/i.test(profileError ?? "");
   const createTestHref = requiresSignIn ? "/api/auth/signin/google" : "/create-test";
+
+  async function deletePaper(paper: PaperRow) {
+    if (
+      !window.confirm(
+        `Delete "${paper.title ?? `${paper.subject} Paper`}" from your dashboard?`,
+      )
+    ) {
+      return;
+    }
+
+    setDeletingPaperId(paper.id);
+    try {
+      await fetchApiData<{ deleted: boolean }>(
+        `/api/papers/${paper.id}`,
+        { method: "DELETE" },
+        "Could not delete paper.",
+      );
+      setPapers((current) => current.filter((item) => item.id !== paper.id));
+      setSummary((current) =>
+        current
+          ? {
+              ...current,
+              papersCreated: Math.max(0, current.papersCreated - 1),
+            }
+          : current,
+      );
+    } catch (error) {
+      window.alert(
+        error instanceof Error ? error.message : "Could not delete paper.",
+      );
+    } finally {
+      setDeletingPaperId(null);
+    }
+  }
 
   return (
     <main className="min-h-screen bg-background pb-12 text-slate-100">
@@ -296,6 +332,15 @@ export default function DashboardPage() {
                               <Search className="h-3.5 w-3.5" />
                               Preview
                             </Link>
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="danger"
+                            disabled={deletingPaperId === paper.id}
+                            onClick={() => void deletePaper(paper)}
+                          >
+                            <Trash2 className="h-3.5 w-3.5" />
+                            {deletingPaperId === paper.id ? "Deleting" : "Delete"}
                           </Button>
                         </div>
                       </td>

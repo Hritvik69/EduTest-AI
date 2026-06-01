@@ -44,7 +44,6 @@ const memoryAttemptOwners =
 globalForPapers.__edutestAttemptOwners = memoryAttemptOwners;
 
 const maxDatabaseIntegerId = 2_147_483_647;
-const guestDataTtlMs = positiveEnvNumber("EDUTEST_GUEST_DATA_TTL_MS", 6 * 60 * 60 * 1000);
 const maxGuestPapersPerSession = positiveEnvNumber("EDUTEST_MAX_GUEST_PAPERS", 25);
 const maxGuestAttemptsPerSession = positiveEnvNumber("EDUTEST_MAX_GUEST_ATTEMPTS", 50);
 
@@ -72,8 +71,9 @@ export async function createPaperInDB(
   const ownerId = options.userId ?? 0;
   const guestMode = isGuestUserId(options.userId);
 
-  if (sql && !guestMode) {
+  if (sql && options.userId) {
     if (!options.userId) throw new Error("Authenticated user is required.");
+    await ensureGuestDatabaseUser(options.userId);
 
     const [, rows] = await sql.transaction((tx) => [
       tx`SELECT pg_advisory_xact_lock(${options.userId})`,
@@ -532,7 +532,7 @@ export async function getPaperOwnerId(paperId: number) {
 
 export async function listPapersForUser(userId: number) {
   pruneGuestMemory();
-  if (isGuestUserId(userId)) {
+  if (isGuestUserId(userId) && !sql) {
     return Array.from(memoryPapers.values())
       .filter((paper) => memoryPaperOwners.get(paper.id) === userId)
       .sort((left, right) => Date.parse(right.createdAt) - Date.parse(left.createdAt))
@@ -594,6 +594,44 @@ export async function listPapersForUser(userId: number) {
   }));
 }
 
+export async function deletePaperForUser(paperId: number, userId: number) {
+  pruneGuestMemory();
+  const memoryPaper = memoryPapers.get(paperId);
+  if (memoryPaper) {
+    if (memoryPaperOwners.get(paperId) !== userId) return false;
+    deleteGuestPaper(paperId);
+    return true;
+  }
+
+  if (!canQueryDatabaseId(paperId) || !sql) return false;
+
+  const ownerRows = await sql`
+    SELECT id
+    FROM papers
+    WHERE id = ${paperId}
+    AND user_id = ${userId}
+    LIMIT 1
+  `;
+  if (!ownerRows[0]?.id) return false;
+
+  await sql.transaction((tx) => [
+    tx`DELETE FROM analytics WHERE paper_id = ${paperId}`,
+    tx`DELETE FROM attempts WHERE paper_id = ${paperId}`,
+    tx`
+      WITH removed AS (
+        DELETE FROM paper_questions
+        WHERE paper_id = ${paperId}
+        RETURNING question_id
+      )
+      DELETE FROM questions
+      WHERE id IN (SELECT question_id FROM removed)
+    `,
+    tx`DELETE FROM papers WHERE id = ${paperId} AND user_id = ${userId}`,
+  ]);
+
+  return true;
+}
+
 export async function getReusableQuestionsForSection(
   _section: BlueprintSection,
   _config: PaperConfig,
@@ -609,7 +647,7 @@ export async function saveAttemptForUser(
   answers: Record<string, unknown>,
 ) {
   pruneGuestMemory();
-  if (isGuestUserId(userId)) {
+  if (isGuestUserId(userId) && !sql) {
     enforceGuestAttemptLimit(userId);
     const attemptId = nextMemoryId();
     const saved = {
@@ -670,7 +708,7 @@ export async function saveProgressForUser(
   clientSavedAt?: string,
 ) {
   const progressAt = normalizedClientSavedAt(clientSavedAt);
-  if (isGuestUserId(userId)) {
+  if (isGuestUserId(userId) && !sql) {
     return {
       attemptId: paperId,
       savedAt: progressAt.toISOString(),
@@ -748,7 +786,7 @@ export async function getAttemptForUser(attemptId: number, userId: number) {
 
 export async function analyticsSummaryForUser(userId: number) {
   pruneGuestMemory();
-  if (isGuestUserId(userId)) {
+  if (isGuestUserId(userId) && !sql) {
     const attempts = Array.from(memoryAttempts.values()).filter(
       (attempt) => memoryAttemptOwners.get(attempt.attemptId) === userId,
     );
@@ -1002,21 +1040,21 @@ function memoryIdempotencyKey(userId: number, idempotencyKey: string) {
   return `${userId}:${idempotencyKey}`;
 }
 
-function pruneGuestMemory(now = Date.now()) {
-  for (const [paperId, paper] of Array.from(memoryPapers.entries())) {
-    const ownerId = memoryPaperOwners.get(paperId);
-    if (!isGuestUserId(ownerId)) continue;
-    if (now - Date.parse(paper.createdAt) <= guestDataTtlMs) continue;
-    deleteGuestPaper(paperId);
-  }
+function pruneGuestMemory() {}
 
-  for (const [attemptId, attempt] of Array.from(memoryAttempts.entries())) {
-    const ownerId = memoryAttemptOwners.get(attemptId);
-    if (!isGuestUserId(ownerId)) continue;
-    if (now - Date.parse(attempt.createdAt) <= guestDataTtlMs) continue;
-    memoryAttempts.delete(attemptId);
-    memoryAttemptOwners.delete(attemptId);
-  }
+async function ensureGuestDatabaseUser(userId: number) {
+  if (!sql || !isGuestUserId(userId)) return;
+
+  await sql`
+    INSERT INTO users (id, email, name)
+    VALUES (${userId}, ${guestEmail(userId)}, 'Guest')
+    ON CONFLICT (id) DO UPDATE
+    SET name = COALESCE(users.name, EXCLUDED.name)
+  `;
+}
+
+function guestEmail(userId: number) {
+  return `guest-${Math.abs(userId)}@edutest.local`;
 }
 
 function enforceGuestPaperLimit(ownerId: number) {
