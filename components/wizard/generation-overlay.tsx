@@ -70,6 +70,7 @@ export function GenerationOverlay({
     message: string;
     code?: string | number;
     auth?: boolean;
+    paperId?: number;
   } | null>(null);
   const [retryNonce, setRetryNonce] = React.useState(0);
   const started = React.useRef(false);
@@ -189,6 +190,7 @@ export function GenerationOverlay({
 
     async function run() {
       let completed = false;
+      let savedPaperId: number | null = null;
 
       try {
         const response = await fetch("/api/generate-paper", {
@@ -236,6 +238,8 @@ export function GenerationOverlay({
 
             const event = eventLine.replace("event:", "").trim();
             const data = parseStreamData(dataLine.replace("data:", "").trim());
+            const streamedPaperId = numberValue(data.paperId);
+            if (streamedPaperId) savedPaperId = streamedPaperId;
 
             if (event === "progress") {
               const step = numberValue(data.step) ?? 1;
@@ -251,6 +255,7 @@ export function GenerationOverlay({
               throw generationError(
                 stringValue(data.msg) ?? "Paper generation failed.",
                 stringValue(data.code) ?? numberValue(data.code),
+                streamedPaperId ?? savedPaperId ?? undefined,
               );
             }
 
@@ -265,6 +270,7 @@ export function GenerationOverlay({
                   "GENERATION_BAD_DONE_PAYLOAD",
                 );
               }
+              savedPaperId = paperId;
               const paperConfig = paperConfigFromStream(data.config, requestConfig);
               const skippedQuestions = numberValue(data.skippedQuestions) ?? 0;
               const replacedQuestions = numberValue(data.replacedQuestions) ?? 0;
@@ -307,7 +313,13 @@ export function GenerationOverlay({
         }
 
         if (!completed) {
-          throw new Error("Generation stopped before the paper was saved.");
+          throw generationError(
+            savedPaperId
+              ? `Generation stopped after paper #${savedPaperId} was saved. Open Dashboard to see it or delete it.`
+              : "Generation stopped before the paper was saved.",
+            "GENERATION_STREAM_ENDED",
+            savedPaperId ?? undefined,
+          );
         }
       } catch (error) {
         started.current = false;
@@ -321,6 +333,7 @@ export function GenerationOverlay({
         setError({
           message,
           code,
+          paperId: getErrorPaperId(error),
         });
         toast.error(message);
       } finally {
@@ -397,11 +410,16 @@ export function GenerationOverlay({
         <h2 className="mt-3 text-center text-xl font-extrabold text-white sm:text-2xl">
           {error ? "Generation Needs Attention" : "Generating Your Paper"}
         </h2>
-        <p className="mt-1 text-center text-sm text-slate-400">
-          {error
-            ? error.message
-            : "Progress and ETA are based on live generation events."}
-        </p>
+          <p className="mt-1 text-center text-sm text-slate-400">
+            {error
+              ? error.message
+              : "Progress and ETA are based on live generation events."}
+          </p>
+          {error?.paperId ? (
+            <p className="mt-2 text-center text-xs text-blue-100">
+              Paper #{error.paperId} is in your dashboard.
+            </p>
+          ) : null}
 
         <div className="mt-4 rounded-lg border border-white/10 bg-white/[0.035] p-3 text-sm">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
@@ -466,6 +484,16 @@ export function GenerationOverlay({
 
         {error ? (
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {error.paperId ? (
+              <Button
+                type="button"
+                variant="outline"
+                className="flex-1 sm:col-span-2"
+                onClick={() => router.push("/dashboard")}
+              >
+                Open Dashboard
+              </Button>
+            ) : null}
             {provider !== "AUTO" ? (
               <Button
                 type="button"
@@ -519,9 +547,14 @@ function isStaleGeneration(value: string) {
   return Date.now() - startedAt > 10 * 60 * 1000;
 }
 
-function generationError(message: string, code?: string | number) {
+function generationError(
+  message: string,
+  code?: string | number,
+  paperId?: number,
+) {
   const error = new Error(message);
   (error as Error & { code?: string | number }).code = code;
+  (error as Error & { paperId?: number }).paperId = paperId;
   return error;
 }
 
@@ -564,6 +597,14 @@ function paperConfigFromStream(value: unknown, fallback: PaperConfig): PaperConf
 function getErrorCode(error: unknown) {
   return error && typeof error === "object" && "code" in error
     ? (error as { code?: string | number }).code
+    : undefined;
+}
+
+function getErrorPaperId(error: unknown) {
+  if (!error || typeof error !== "object" || !("paperId" in error)) return undefined;
+  const paperId = (error as { paperId?: unknown }).paperId;
+  return typeof paperId === "number" && Number.isFinite(paperId)
+    ? paperId
     : undefined;
 }
 

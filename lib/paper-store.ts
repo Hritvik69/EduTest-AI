@@ -354,6 +354,25 @@ export async function markPaperReady(paperId: number) {
   }
 }
 
+export async function markPaperDemoMode(paperId: number) {
+  const existing = memoryPapers.get(paperId);
+  if (existing) {
+    memoryPapers.set(paperId, {
+      ...existing,
+      isDemoMode: true,
+    });
+    return;
+  }
+
+  if (sql) {
+    await sql`
+      UPDATE papers
+      SET is_demo_mode = true, updated_at = NOW()
+      WHERE id = ${paperId}
+    `;
+  }
+}
+
 export async function setPaperGenerationManifest(
   paperId: number,
   manifest: GenerationManifest,

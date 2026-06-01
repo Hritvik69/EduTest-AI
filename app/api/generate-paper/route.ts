@@ -21,9 +21,13 @@ import { compactAiProviderFailureMessage } from "@/lib/error-classification";
 import { getChapterContent } from "@/lib/extractor";
 import { buildGenerationManifest } from "@/lib/generation-manifest";
 import { getConfiguredProviders } from "@/lib/gemini";
-import { generateQuestionsForSection } from "@/lib/generator";
+import {
+  generateDemoQuestions,
+  generateQuestionsForSection,
+} from "@/lib/generator";
 import {
   createPaperInDB,
+  markPaperDemoMode,
   markPaperReady,
   saveQuestionsAndLink,
   setPaperGenerationManifest,
@@ -48,6 +52,12 @@ import type {
   QuestionCompositionItem,
   QuestionType,
 } from "@/types";
+
+type LocalFallbackContext = {
+  effectiveConfig: PaperConfig;
+  blueprint: Blueprint;
+  scopedConcepts: ConceptData[];
+};
 
 export async function POST(request: NextRequest) {
   const auth = await requireAuthenticatedUser(request);
@@ -121,6 +131,7 @@ export async function POST(request: NextRequest) {
           throw new Error("Generation cancelled by client.");
         }
       };
+      let localFallbackContext: LocalFallbackContext | null = null;
 
       try {
         assertActive();
@@ -230,6 +241,11 @@ export async function POST(request: NextRequest) {
           idempotencyKey,
         });
         paperId = created.paperId;
+        localFallbackContext = {
+          effectiveConfig,
+          blueprint,
+          scopedConcepts,
+        };
 
         if (created.reused) {
           if (created.status === "READY") {
@@ -260,6 +276,17 @@ export async function POST(request: NextRequest) {
           close();
           return;
         }
+
+        send({
+          step: 3,
+          pct: 30,
+          progress: 30,
+          msg: "Phase 3 - Question Planning: paper shell saved; starting AI question generation.",
+          paperId,
+          status: "GENERATING",
+          idempotencyKey,
+          generationJobId,
+        });
 
         const allQuestions: GeneratedQuestion[] = [];
         let pct = 40;
@@ -470,30 +497,78 @@ export async function POST(request: NextRequest) {
         );
         close();
       } catch (error) {
+        const message = request.signal.aborted
+          ? "Generation cancelled by client."
+          : error instanceof Error
+            ? error.message
+            : "Generation failed.";
+        const code = generationErrorCode(error);
         console.error("[generate-paper] failed", {
           paperId,
           generationJobId,
-          message: error instanceof Error ? error.message : String(error),
+          message,
         });
 
+        if (
+          paperId &&
+          localFallbackContext &&
+          !request.signal.aborted &&
+          shouldUseLocalGenerationFallback(Boolean(auth.user.isGuest), error)
+        ) {
+          try {
+            await completeWithLocalGenerationFallback({
+              paperId,
+              context: localFallbackContext,
+              generationJobId,
+              idempotencyKey,
+              originalError: error,
+              sessionOnly: Boolean(auth.user.isGuest),
+              send,
+            });
+            close();
+            return;
+          } catch (fallbackError) {
+            console.error("[generate-paper] local fallback failed", {
+              paperId,
+              generationJobId,
+              message:
+                fallbackError instanceof Error
+                  ? fallbackError.message
+                  : String(fallbackError),
+            });
+          }
+        }
+
+        let paperStatusSaved = false;
         if (paperId) {
-          await updatePaperStatus(paperId, "FAILED", {
-            message: request.signal.aborted
-              ? "Generation cancelled by client."
-              : error instanceof Error
-                ? error.message
-                : "Generation failed.",
-            generationJobId,
-            cancelled: request.signal.aborted,
-          });
+          try {
+            await updatePaperStatus(paperId, "FAILED", {
+              message,
+              generationJobId,
+              cancelled: request.signal.aborted,
+            });
+            paperStatusSaved = true;
+          } catch (statusError) {
+            console.error("[generate-paper] failed to mark paper FAILED", {
+              paperId,
+              generationJobId,
+              message:
+                statusError instanceof Error
+                  ? statusError.message
+                  : String(statusError),
+            });
+          }
         }
 
         if (!request.signal.aborted && !streamClosed) {
           send(
             {
               error: true,
-              code: generationErrorCode(error),
+              code,
               msg: generationErrorMessage(error),
+              paperId,
+              generationJobId,
+              status: paperStatusSaved ? "FAILED" : undefined,
             },
             "error",
           );
@@ -510,6 +585,112 @@ export async function POST(request: NextRequest) {
       Connection: "keep-alive",
     },
   });
+}
+
+async function completeWithLocalGenerationFallback({
+  paperId,
+  context,
+  generationJobId,
+  idempotencyKey,
+  originalError,
+  sessionOnly,
+  send,
+}: {
+  paperId: number;
+  context: LocalFallbackContext;
+  generationJobId: string;
+  idempotencyKey: string;
+  originalError: unknown;
+  sessionOnly: boolean;
+  send: (data: object, event?: string) => void;
+}) {
+  send({
+    step: 6,
+    pct: 88,
+    progress: 88,
+    msg: "AI providers could not finish; using local guest fallback so the paper is still saved.",
+    paperId,
+    status: "GENERATING",
+    generationJobId,
+  });
+
+  const generated = generateDemoQuestions(
+    context.effectiveConfig,
+    context.blueprint,
+  );
+  const validation = validatePaperKeepingValidQuestions(
+    generated,
+    context.blueprint,
+    context.effectiveConfig,
+  );
+
+  send({
+    step: 7,
+    pct: 95,
+    progress: 95,
+    msg: "Phase 7 - Final Paper Composition: saving fallback paper.",
+    paperId,
+    status: "GENERATING",
+    generationJobId,
+  });
+
+  await updatePaperDefinition(paperId, validation.config, validation.blueprint);
+  await markPaperDemoMode(paperId);
+  const storedQuestions = await saveQuestionsAndLink(
+    validation.questions,
+    paperId,
+    "demo",
+  );
+  await markPaperReady(paperId);
+  const manifest = buildGenerationManifest({
+    config: validation.config,
+    blueprint: validation.blueprint,
+    concepts: context.scopedConcepts,
+    finalQuestions: storedQuestions,
+    skippedQuestions: 0,
+    replacedQuestions: 0,
+    validationWarnings: [
+      {
+        type: "local-fallback",
+        reason: generationErrorMessage(originalError),
+      },
+    ],
+    generationJobId,
+    idempotencyKey,
+    taskProviderOrder: configuredTaskProviderOrder(),
+  });
+  await setPaperGenerationManifest(paperId, manifest, validation.config);
+
+  send(
+    {
+      step: 7,
+      pct: 100,
+      progress: 100,
+      msg: "Phase 7 - Final Paper Composition: fallback paper ready.",
+      paperId,
+      done: true,
+      idempotencyKey,
+      generationJobId,
+      blueprint: validation.blueprint,
+      questions: storedQuestions,
+      skippedQuestions: 0,
+      replacedQuestions: 0,
+      validationWarnings: [
+        {
+          type: "local-fallback",
+          reason: generationErrorMessage(originalError),
+        },
+      ],
+      manifest,
+      status: "READY",
+      localFallback: true,
+      createdAt: new Date().toISOString(),
+      sessionOnly,
+      config: validation.config,
+      ...demoMetadata(),
+    },
+    "done",
+  );
 }
 
 async function loadUploadedPdfSource(pdfSourceId: number | undefined, userId: number) {
@@ -739,6 +920,30 @@ function generationErrorMessage(error: unknown) {
   }
 
   return compactAiProviderFailureMessage(message);
+}
+
+function shouldUseLocalGenerationFallback(isGuest: boolean, error: unknown) {
+  const configured = process.env.EDUTEST_LOCAL_GENERATION_FALLBACK;
+  if (configured === "false") return false;
+  if (configured === "true") return true;
+  if (!isGuest) return false;
+
+  const code = generationErrorCode(error);
+  if (
+    code === "PROVIDER_AUTO_FAILED" ||
+    code === "PROVIDER_AUTH_ERROR" ||
+    code === "PROVIDER_QUOTA_ERROR" ||
+    code === "PROVIDER_NETWORK_ERROR" ||
+    code === "GENERATION_CAN_SKIP_INVALID"
+  ) {
+    return true;
+  }
+
+  const message =
+    error instanceof Error ? error.message : "Generation failed. Please try again.";
+  return /AI provider|Auto Fallback|Gemini|Mistral|Cerebras|OpenRouter|Grok|DeepSeek|OpenAI|question generation|No valid generated questions|Could not replace/i.test(
+    message,
+  );
 }
 
 function generationErrorCode(error: unknown) {
