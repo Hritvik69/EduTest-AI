@@ -35,7 +35,7 @@ type RateLimitOptions = {
 };
 
 export function authMode() {
-  return process.env.EDUTEST_AUTH_MODE === "nextauth" ? "nextauth" : "guest";
+  return "guest" as const;
 }
 
 const globalForRateLimit = globalThis as typeof globalThis & {

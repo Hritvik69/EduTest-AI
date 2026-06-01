@@ -75,76 +75,14 @@ describe("API authentication helper", () => {
     expect(headerResult.response?.status).toBe(401);
   }, 10_000);
 
-  it("returns 403 in NextAuth mode when the database user cannot be resolved", async () => {
+  it("keeps guest mode even if an old NextAuth env value is still set", async () => {
     process.env.EDUTEST_AUTH_MODE = "nextauth";
-    mocks.sessionValue = {
-      user: {
-        email: "Teacher@Example.com",
-        name: "Teacher",
-        image: null,
-      },
-    };
-    mocks.sqlMock.mockResolvedValue([]);
 
     const { requireAuthenticatedUser } = await import("@/lib/api-security");
     const result = await requireAuthenticatedUser();
 
-    expect(result.response?.status).toBe(403);
-  }, 10_000);
-
-  it("returns 401 in NextAuth mode without a signed-in user", async () => {
-    process.env.EDUTEST_AUTH_MODE = "nextauth";
-    mocks.sessionValue = null;
-
-    const { requireAuthenticatedUser } = await import("@/lib/api-security");
-    const result = await requireAuthenticatedUser();
-
-    expect(result.response?.status).toBe(401);
+    expect(result.user?.isGuest).toBe(true);
     expect(mocks.sqlMock).not.toHaveBeenCalled();
-  }, 10_000);
-
-  it("returns 503 in NextAuth mode when the database is unavailable", async () => {
-    process.env.EDUTEST_AUTH_MODE = "nextauth";
-    mocks.sessionValue = {
-      user: {
-        email: "Teacher@Example.com",
-        name: "Teacher",
-        image: null,
-      },
-    };
-    vi.resetModules();
-    vi.doMock("@/lib/db", () => ({
-      default: null,
-    }));
-
-    const { requireAuthenticatedUser } = await import("@/lib/api-security");
-    const result = await requireAuthenticatedUser();
-
-    expect(result.response?.status).toBe(503);
-    vi.resetModules();
-    vi.doMock("@/lib/db", () => ({
-      default: mocks.sqlMock,
-    }));
-  }, 10_000);
-
-  it("resolves the database user by session email", async () => {
-    process.env.EDUTEST_AUTH_MODE = "nextauth";
-    mocks.sessionValue = {
-      user: {
-        email: "Teacher@Example.com",
-        name: "Teacher",
-        image: null,
-      },
-    };
-    mocks.sqlMock.mockResolvedValue([
-      { id: 12, email: "teacher@example.com", name: "Teacher", image: null },
-    ]);
-
-    const { requireAuthenticatedUser } = await import("@/lib/api-security");
-    const result = await requireAuthenticatedUser();
-
-    expect(result.user?.id).toBe(12);
-    expect(result.user?.email).toBe("teacher@example.com");
   }, 10_000);
 
   it("returns actionable schema validation messages", async () => {

@@ -9,7 +9,6 @@ import {
 
 export async function proxy(request: NextRequest) {
   const response = NextResponse.next();
-  if (process.env.EDUTEST_AUTH_MODE === "nextauth") return response;
 
   const existing = request.cookies.get(guestSessionCookieName)?.value;
   if (await readSignedGuestSessionCookieValue(existing)) return response;

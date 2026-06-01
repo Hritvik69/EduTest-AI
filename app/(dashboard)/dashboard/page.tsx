@@ -10,7 +10,6 @@ import {
   Clock3,
   FileText,
   Flame,
-  LogIn,
   Play,
   Plus,
   Search,
@@ -83,7 +82,6 @@ export default function DashboardPage() {
   const [summary, setSummary] = React.useState<Summary | null>(null);
   const [papers, setPapers] = React.useState<PaperRow[]>([]);
   const [profile, setProfile] = React.useState<UserProfile | null>(null);
-  const [profileError, setProfileError] = React.useState<string | null>(null);
   const [subjectFilter, setSubjectFilter] = React.useState("All");
   const [deletingPaperId, setDeletingPaperId] = React.useState<number | null>(null);
   const mounted = useIsClient();
@@ -110,11 +108,9 @@ export default function DashboardPage() {
     fetchApiData<{ user: UserProfile }>("/api/me", undefined, "Could not load profile.")
       .then((payload) => {
         setProfile(payload.user);
-        setProfileError(null);
       })
-      .catch((error) => {
+      .catch(() => {
         setProfile(null);
-        setProfileError(error instanceof Error ? error.message : "Could not load profile.");
       });
   }, []);
 
@@ -128,8 +124,7 @@ export default function DashboardPage() {
       name: `T${index + 1}`,
       score: attempt.percentage,
     }));
-  const requiresSignIn = /authentication is required/i.test(profileError ?? "");
-  const createTestHref = requiresSignIn ? "/api/auth/signin/google" : "/create-test";
+  const createTestHref = "/create-test";
 
   async function deletePaper(paper: PaperRow) {
     if (
@@ -171,22 +166,10 @@ export default function DashboardPage() {
         <div className="safe-container flex min-h-[72px] items-center justify-between gap-4">
           <BrandLogo />
           <div className="flex items-center gap-2">
-            {requiresSignIn ? (
-              <Button asChild variant="outline">
-                <Link href="/api/auth/signin/google">
-                  <LogIn className="h-4 w-4" />
-                  Google Sign In
-                </Link>
-              </Button>
-            ) : null}
             <Button asChild>
               <Link href={createTestHref}>
-                {requiresSignIn ? (
-                  <LogIn className="h-4 w-4" />
-                ) : (
-                  <Plus className="h-4 w-4" />
-                )}
-                {requiresSignIn ? "Sign In" : "Create Test"}
+                <Plus className="h-4 w-4" />
+                Create Test
               </Link>
             </Button>
           </div>
@@ -194,34 +177,9 @@ export default function DashboardPage() {
       </header>
 
       <div className="safe-container pt-8">
-        {requiresSignIn ? (
-          <section className="mb-5 rounded-lg border border-blue-300/25 bg-blue-500/10 p-5">
-            <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
-              <div>
-                <h2 className="text-xl font-extrabold text-white">
-                  Sign in with Google to store your papers
-                </h2>
-                <p className="mt-2 text-sm text-blue-100">
-                  After login, every generated paper is saved to your dashboard.
-                </p>
-              </div>
-              <Button asChild>
-                <Link href="/api/auth/signin/google">
-                  <LogIn className="h-4 w-4" />
-                  Continue with Google
-                </Link>
-              </Button>
-            </div>
-          </section>
-        ) : null}
-
         <section className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div className="flex items-center gap-4">
-            {requiresSignIn ? (
-              <div className="flex h-14 w-14 items-center justify-center rounded-lg border border-white/10 bg-blue-500/10 text-blue-100">
-                <LogIn className="h-6 w-6" />
-              </div>
-            ) : profile?.image ? (
+            {profile?.image ? (
               <div
                 aria-hidden
                 className="h-14 w-14 rounded-lg border border-white/10 bg-cover bg-center"
@@ -234,7 +192,7 @@ export default function DashboardPage() {
             )}
             <div>
               <h1 className="text-3xl font-extrabold text-white">
-                Welcome back, {requiresSignIn ? "Teacher" : firstName(profile)}!
+                Welcome back, {firstName(profile)}!
               </h1>
               <p className="mt-2 flex items-center gap-2 text-sm text-slate-400">
                 <CalendarDays className="h-4 w-4" />
@@ -263,17 +221,8 @@ export default function DashboardPage() {
             </div>
             <Button asChild>
               <Link href={createTestHref}>
-                {requiresSignIn ? (
-                  <>
-                    Sign in to Create
-                    <LogIn className="h-4 w-4" />
-                  </>
-                ) : (
-                  <>
-                    Start Creating
-                    <ArrowRight className="h-4 w-4" />
-                  </>
-                )}
+                Start Creating
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
           </div>

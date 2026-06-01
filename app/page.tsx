@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { getServerSession } from "next-auth";
-import type { Session } from "next-auth";
 import {
   ArrowDown,
   ArrowRight,
@@ -19,7 +17,6 @@ import { BrandLogo } from "@/components/brand-logo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { authOptions } from "@/lib/auth";
 import { questionTypeMeta, sectionDotColors, subjects } from "@/lib/edutest-data";
 import { cn } from "@/lib/utils";
 
@@ -170,23 +167,12 @@ const heroEvaluation = [
 ];
 
 export default async function LandingPage() {
-  const authEnabled = process.env.EDUTEST_AUTH_MODE === "nextauth";
-  const session = authEnabled ? await getServerSession(authOptions) : null;
-  const shouldSignInFirst = authEnabled && !session?.user?.email;
-  const createTestHref = shouldSignInFirst
-    ? "/api/auth/signin/google?callbackUrl=%2Fcreate-test"
-    : "/create-test";
-  const pdfTestHref = shouldSignInFirst
-    ? "/api/auth/signin/google?callbackUrl=%2Fcreate-test%3Fmode%3Dpdf"
-    : "/create-test?mode=pdf";
+  const createTestHref = "/create-test";
+  const pdfTestHref = "/create-test?mode=pdf";
 
   return (
     <main className="min-h-screen overflow-hidden bg-background text-slate-100">
-      <Navbar
-        authEnabled={authEnabled}
-        createTestHref={createTestHref}
-        session={session}
-      />
+      <Navbar createTestHref={createTestHref} />
 
       <section className="relative min-h-[calc(100vh-72px)] overflow-hidden pb-16 pt-28 md:pt-32">
         <div className="absolute inset-0 dot-grid opacity-55" />
@@ -543,13 +529,9 @@ function AnimatedMeter({
 }
 
 function Navbar({
-  authEnabled,
   createTestHref,
-  session,
 }: {
-  authEnabled: boolean;
   createTestHref: string;
-  session: Session | null;
 }) {
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-[#0a0e1a]/[0.86] backdrop-blur-xl">
@@ -562,7 +544,7 @@ function Navbar({
           <Button asChild variant="outline">
             <Link href={createTestHref}>Get Started Free</Link>
           </Button>
-          <AuthControl authEnabled={authEnabled} session={session} />
+          <AuthControl />
         </div>
         <details className="group relative md:hidden">
           <summary className="flex cursor-pointer list-none items-center rounded-lg border border-white/10 p-2 text-slate-200 marker:hidden">
@@ -579,7 +561,7 @@ function Navbar({
             <Button asChild>
               <Link href={createTestHref}>Get Started Free</Link>
             </Button>
-            <AuthControl authEnabled={authEnabled} session={session} mobile />
+            <AuthControl mobile />
           </div>
         </details>
       </nav>
@@ -588,69 +570,22 @@ function Navbar({
 }
 
 function AuthControl({
-  authEnabled,
-  session,
   mobile = false,
 }: {
-  authEnabled: boolean;
-  session: Session | null;
   mobile?: boolean;
 }) {
-  if (!authEnabled) {
-    return (
-      <span
-        className={cn(
-          "inline-flex items-center gap-2 rounded-lg border border-emerald-300/20 bg-emerald-500/10 px-3 py-2 text-sm font-bold text-emerald-100",
-          mobile && "justify-center",
-        )}
-      >
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400/20 text-xs">
-          G
-        </span>
-        Guest
-      </span>
-    );
-  }
-
-  if (!session?.user?.email) {
-    return (
-      <Button asChild variant="outline" className={mobile ? "w-full" : undefined}>
-        <Link href="/api/auth/signin/google">Sign in</Link>
-      </Button>
-    );
-  }
-
-  const name = session.user.name || session.user.email;
-  const initial = name.slice(0, 1).toUpperCase();
-
   return (
-    <div
+    <span
       className={cn(
-        "flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2",
-        mobile && "justify-between",
+        "inline-flex items-center gap-2 rounded-lg border border-emerald-300/20 bg-emerald-500/10 px-3 py-2 text-sm font-bold text-emerald-100",
+        mobile && "justify-center",
       )}
     >
-      {session.user.image ? (
-        <span
-          aria-hidden
-          className="h-8 w-8 rounded-full border border-white/10 bg-cover bg-center"
-          style={{ backgroundImage: `url(${session.user.image})` }}
-        />
-      ) : (
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-sm font-extrabold text-blue-100">
-          {initial}
-        </span>
-      )}
-      <span className="max-w-28 truncate text-sm font-bold text-slate-100">
-        {name}
+      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400/20 text-xs">
+        G
       </span>
-      <Link
-        href="/api/auth/signout"
-        className="text-xs font-bold text-slate-400 hover:text-white"
-      >
-        Sign out
-      </Link>
-    </div>
+      Guest
+    </span>
   );
 }
 

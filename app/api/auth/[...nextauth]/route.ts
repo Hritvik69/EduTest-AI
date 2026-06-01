@@ -1,6 +1,8 @@
-import NextAuth from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { NextRequest, NextResponse } from "next/server";
 
-const handler = NextAuth(authOptions);
+function redirectToGuestDashboard(request: NextRequest) {
+  return NextResponse.redirect(new URL("/dashboard", request.url));
+}
 
-export { handler as GET, handler as POST };
+export const GET = redirectToGuestDashboard;
+export const POST = redirectToGuestDashboard;
