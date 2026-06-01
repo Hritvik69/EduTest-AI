@@ -1029,104 +1029,118 @@ function clearConceptCacheForChapter(_chapterId: number) {
 async function getConceptsFromDB(chapterId: number) {
   if (!sql) return [];
 
-  const countRows = await sql`
-    SELECT COUNT(*)::int AS count FROM concepts WHERE chapter_id = ${chapterId}
-  `;
-  if (!Number(countRows[0].count)) return [];
+  try {
+    const countRows = await sql`
+      SELECT COUNT(*)::int AS count FROM concepts WHERE chapter_id = ${chapterId}
+    `;
+    if (!Number(countRows[0].count)) return [];
 
-  const rows = await sql`
-    SELECT
-      c.text,
-      c.type,
-      c.bloom_level,
-      c.hots_potential,
-      c.source,
-      t.id AS topic_id,
-      t.name AS topic_name,
-      ch.name AS chapter_name,
-      s.name AS subject_name,
-      s.class_num
-    FROM concepts c
-    LEFT JOIN topics t ON t.id = c.topic_id
-    LEFT JOIN chapters ch ON ch.id = c.chapter_id
-    LEFT JOIN subjects s ON s.id = ch.subject_id
-    WHERE c.chapter_id = ${chapterId}
-    ORDER BY c.id ASC
-  `;
+    const rows = await sql`
+      SELECT
+        c.text,
+        c.type,
+        c.bloom_level,
+        c.hots_potential,
+        c.source,
+        t.id AS topic_id,
+        t.name AS topic_name,
+        ch.name AS chapter_name,
+        s.name AS subject_name,
+        s.class_num
+      FROM concepts c
+      LEFT JOIN topics t ON t.id = c.topic_id
+      LEFT JOIN chapters ch ON ch.id = c.chapter_id
+      LEFT JOIN subjects s ON s.id = ch.subject_id
+      WHERE c.chapter_id = ${chapterId}
+      ORDER BY c.id ASC
+    `;
 
-  return rows.map((row) => ({
-    text: row.text,
-    type: row.type,
-    bloomLevel: row.bloom_level,
-    hotsPotential: Boolean(row.hots_potential),
-    hotsPoential: Boolean(row.hots_potential),
-    topicName: row.topic_name ?? "General",
-    topicId: row.topic_id ? Number(row.topic_id) : undefined,
-    chapterId,
-    chapterName: row.chapter_name ?? undefined,
-    subject: row.subject_name ?? undefined,
-    classNum: row.class_num ? Number(row.class_num) : undefined,
-    source: normalizeStoredSource(row.source),
-  })) satisfies ConceptData[];
+    return rows.map((row) => ({
+      text: row.text,
+      type: row.type,
+      bloomLevel: row.bloom_level,
+      hotsPotential: Boolean(row.hots_potential),
+      hotsPoential: Boolean(row.hots_potential),
+      topicName: row.topic_name ?? "General",
+      topicId: row.topic_id ? Number(row.topic_id) : undefined,
+      chapterId,
+      chapterName: row.chapter_name ?? undefined,
+      subject: row.subject_name ?? undefined,
+      classNum: row.class_num ? Number(row.class_num) : undefined,
+      source: normalizeStoredSource(row.source),
+    })) satisfies ConceptData[];
+  } catch (error) {
+    console.warn(
+      `Skipping stored concept lookup for chapter ${chapterId}: ${safeErrorMessage(error)}`,
+    );
+    return [];
+  }
 }
 
 async function getCurriculumConceptsFromDB(chapterId: number) {
   if (!sql) return [];
 
-  const rows = await sql`
-    SELECT
-      c.name AS chapter_name,
-      s.name AS subject_name,
-      s.class_num,
-      t.id AS topic_id,
-      t.name AS topic_name,
-      t.importance
-    FROM chapters c
-    JOIN subjects s ON s.id = c.subject_id
-    LEFT JOIN topics t ON t.chapter_id = c.id
-    WHERE c.id = ${chapterId}
-    ORDER BY t.id ASC
-  `;
+  try {
+    const rows = await sql`
+      SELECT
+        c.name AS chapter_name,
+        s.name AS subject_name,
+        s.class_num,
+        t.id AS topic_id,
+        t.name AS topic_name,
+        t.importance
+      FROM chapters c
+      JOIN subjects s ON s.id = c.subject_id
+      LEFT JOIN topics t ON t.chapter_id = c.id
+      WHERE c.id = ${chapterId}
+      ORDER BY t.id ASC
+    `;
 
-  if (!rows.length) return [];
-  const chapterName = rows[0].chapter_name ?? `Chapter ${chapterId}`;
-  const subjectName = rows[0].subject_name ?? "CBSE";
-  const classNum = rows[0].class_num ?? "";
-  const topicRows = rows.filter((row) => row.topic_name);
+    if (!rows.length) return [];
+    const chapterName = rows[0].chapter_name ?? `Chapter ${chapterId}`;
+    const subjectName = rows[0].subject_name ?? "CBSE";
+    const classNum = rows[0].class_num ?? "";
+    const topicRows = rows.filter((row) => row.topic_name);
 
-  if (!topicRows.length) {
-      return [
-        {
-          text: `Class ${classNum} ${subjectName} chapter "${chapterName}" is available in the curriculum. Generate questions only from this chapter title and do not invent unsupported textbook details.`,
-          type: "CURRICULUM_CHAPTER",
-          bloomLevel: "UNDERSTAND",
-          hotsPotential: false,
-          hotsPoential: false,
-          subject: subjectName,
-          classNum: Number(classNum) || undefined,
-          chapterName,
-          topicName: chapterName,
-          topicId: undefined,
-          chapterId,
-        source: "curriculum",
-      },
-    ] satisfies ConceptData[];
+    if (!topicRows.length) {
+        return [
+          {
+            text: `Class ${classNum} ${subjectName} chapter "${chapterName}" is available in the curriculum. Generate questions only from this chapter title and do not invent unsupported textbook details.`,
+            type: "CURRICULUM_CHAPTER",
+            bloomLevel: "UNDERSTAND",
+            hotsPotential: false,
+            hotsPoential: false,
+            subject: subjectName,
+            classNum: Number(classNum) || undefined,
+            chapterName,
+            topicName: chapterName,
+            topicId: undefined,
+            chapterId,
+          source: "curriculum",
+        },
+      ] satisfies ConceptData[];
+    }
+
+    return topicRows.map((row) => ({
+      text: `Class ${classNum} ${subjectName} chapter "${chapterName}" includes the curriculum topic "${row.topic_name}". Generate fresh CBSE-style questions only within this chapter and topic.`,
+      type: row.importance === "HIGH" ? "CURRICULUM_CORE_TOPIC" : "CURRICULUM_TOPIC",
+      bloomLevel: row.importance === "HIGH" ? "APPLY" : "UNDERSTAND",
+      hotsPotential: row.importance === "HIGH",
+      hotsPoential: row.importance === "HIGH",
+      subject: subjectName,
+      classNum: Number(classNum) || undefined,
+      chapterName,
+      topicName: row.topic_name,
+      topicId: row.topic_id ? Number(row.topic_id) : undefined,
+      chapterId,
+      source: "curriculum",
+    })) satisfies ConceptData[];
+  } catch (error) {
+    console.warn(
+      `Skipping curriculum DB lookup for chapter ${chapterId}: ${safeErrorMessage(error)}`,
+    );
+    return [];
   }
-
-  return topicRows.map((row) => ({
-    text: `Class ${classNum} ${subjectName} chapter "${chapterName}" includes the curriculum topic "${row.topic_name}". Generate fresh CBSE-style questions only within this chapter and topic.`,
-    type: row.importance === "HIGH" ? "CURRICULUM_CORE_TOPIC" : "CURRICULUM_TOPIC",
-    bloomLevel: row.importance === "HIGH" ? "APPLY" : "UNDERSTAND",
-    hotsPotential: row.importance === "HIGH",
-    hotsPoential: row.importance === "HIGH",
-    subject: subjectName,
-    classNum: Number(classNum) || undefined,
-    chapterName,
-    topicName: row.topic_name,
-    topicId: row.topic_id ? Number(row.topic_id) : undefined,
-    chapterId,
-    source: "curriculum",
-  })) satisfies ConceptData[];
 }
 
 async function getChapterName(
@@ -1261,6 +1275,10 @@ function normalizeStoredSource(value: unknown): ContentSource {
   return value === "pdf" || value === "curriculum" || value === "demo"
     ? value
     : "unknown";
+}
+
+function safeErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error ?? "unknown error");
 }
 
 function normalizeImportance(value: unknown): "LOW" | "MEDIUM" | "HIGH" {
