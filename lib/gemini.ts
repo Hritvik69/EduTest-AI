@@ -157,6 +157,10 @@ export async function generateJSON<T = unknown>(
       clearProviderCooldown(provider, options.task, options.cooldownScope);
       return result;
     } catch (error) {
+      if (isCallerAbort(error, options.signal)) {
+        throw error instanceof Error ? error : new Error(String(error));
+      }
+
       failures[provider] =
         error instanceof Error ? error : new Error(String(error));
       rememberProviderFailure(
@@ -447,7 +451,7 @@ return an object in this shape instead: { "questions": [...] }.`,
   } catch (error) {
     if (error instanceof Error && error.name === "AbortError") {
       if (options.signal?.aborted) {
-        throw new Error("Generation cancelled by client.");
+        throw abortSignalError(options.signal);
       }
 
       throw new Error(
@@ -568,7 +572,7 @@ function attemptsForModel(_modelName: string) {
 function sleep(ms: number, signal?: AbortSignal) {
   return new Promise<void>((resolve, reject) => {
     if (signal?.aborted) {
-      reject(new Error("Generation cancelled by client."));
+      reject(abortSignalError(signal));
       return;
     }
 
@@ -578,7 +582,7 @@ function sleep(ms: number, signal?: AbortSignal) {
     }, ms);
     const abort = () => {
       clearTimeout(timeout);
-      reject(new Error("Generation cancelled by client."));
+      reject(abortSignalError(signal));
     };
 
     signal?.addEventListener("abort", abort, { once: true });
@@ -929,9 +933,32 @@ function aiRequestTimeoutMs(provider?: DirectAIProvider | "GEMINI") {
   return 12_000;
 }
 
+function isCallerAbort(error: unknown, signal?: AbortSignal) {
+  if (!signal?.aborted) return false;
+  if (error instanceof Error && error.name === "AbortError") return true;
+  const message = error instanceof Error ? error.message : String(error);
+  return /Generation cancelled by client|SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget/i.test(
+    message,
+  );
+}
+
+function abortSignalError(signal?: AbortSignal) {
+  const reason = signal?.reason as unknown;
+  if (reason instanceof Error) {
+    if (reason.name === "AbortError" || /operation was aborted/i.test(reason.message)) {
+      return new Error("Generation cancelled by client.");
+    }
+    return reason;
+  }
+  if (typeof reason === "string" && reason.trim()) {
+    return new Error(reason);
+  }
+  return new Error("Generation cancelled by client.");
+}
+
 function throwIfAborted(signal?: AbortSignal) {
   if (signal?.aborted) {
-    throw new Error("Generation cancelled by client.");
+    throw abortSignalError(signal);
   }
 }
 
@@ -954,7 +981,7 @@ function withTimeoutAndSignal<T>(
     }, timeoutMs);
     const abort = () => {
       cleanup();
-      reject(new Error("Generation cancelled by client."));
+      reject(abortSignalError(signal));
     };
     const cleanup = () => {
       clearTimeout(timeout);

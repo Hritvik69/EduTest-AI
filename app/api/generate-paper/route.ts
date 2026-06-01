@@ -101,6 +101,17 @@ export async function POST(request: NextRequest) {
   const stream = new ReadableStream({
     async start(controller) {
       let streamClosed = false;
+      const generationSignalController = new AbortController();
+      const generationDeadlineTimer = setTimeout(() => {
+        generationSignalController.abort(generationDeadlineError());
+      }, generationServerBudgetMs());
+      const abortGenerationFromClient = () => {
+        generationSignalController.abort(new Error("Generation cancelled by client."));
+      };
+      request.signal.addEventListener("abort", abortGenerationFromClient, {
+        once: true,
+      });
+      const generationSignal = generationSignalController.signal;
       const send = (data: object, event = "progress") => {
         if (streamClosed || request.signal.aborted) return false;
 
@@ -126,6 +137,9 @@ export async function POST(request: NextRequest) {
       const assertActive = () => {
         if (streamClosed || request.signal.aborted) {
           throw new Error("Generation cancelled by client.");
+        }
+        if (generationSignal.aborted) {
+          throw abortSignalError(generationSignal);
         }
       };
       let localFallbackContext: LocalFallbackContext | null = null;
@@ -372,7 +386,7 @@ export async function POST(request: NextRequest) {
                 difficultyTargets,
                 generationNonce: `${generationJobId}:${generationUnitIndex}`,
                 cooldownScope: providerCooldownScope,
-                signal: request.signal,
+                signal: generationSignal,
                 onBatchComplete: (details) => {
                   send({
                     step: 5,
@@ -417,7 +431,7 @@ export async function POST(request: NextRequest) {
           allowDemoFallback: allowExplicitDemoFallback,
           generationNonce: generationJobId,
           cooldownScope: providerCooldownScope,
-          signal: request.signal,
+          signal: generationSignal,
           send,
         });
         const validated = validation.questions;
@@ -584,6 +598,9 @@ export async function POST(request: NextRequest) {
           );
         }
         close();
+      } finally {
+        clearTimeout(generationDeadlineTimer);
+        request.signal.removeEventListener("abort", abortGenerationFromClient);
       }
     },
   });
@@ -896,6 +913,10 @@ function generationErrorMessage(error: unknown) {
   const message =
     error instanceof Error ? error.message : "Generation failed. Please try again.";
 
+  if (/SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(message)) {
+    return "Generation reached the deployment time limit before AI could finish. The app will use guest fallback when possible; lower the question count if this repeats.";
+  }
+
   if (
     /GoogleGenerativeAI|generativelanguage\.googleapis\.com|503|Service Unavailable|high demand/i.test(
       message,
@@ -963,6 +984,10 @@ function generationErrorCode(error: unknown) {
   const message =
     error instanceof Error ? error.message : "Generation failed. Please try again.";
 
+  if (/SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(message)) {
+    return "PROVIDER_NETWORK_ERROR";
+  }
+
   if (/All configured AI providers failed/i.test(message)) {
     return "PROVIDER_AUTO_FAILED";
   }
@@ -988,6 +1013,35 @@ function generationErrorCode(error: unknown) {
   }
 
   return undefined;
+}
+
+function generationServerBudgetMs() {
+  const configured = Number(process.env.EDUTEST_SERVER_GENERATION_BUDGET_MS);
+  if (Number.isFinite(configured) && configured >= 15_000 && configured <= 55_000) {
+    return configured;
+  }
+
+  return 45_000;
+}
+
+function generationDeadlineError() {
+  return new Error(
+    "SERVER_GENERATION_TIME_BUDGET_EXCEEDED: Vercel function time budget is almost over.",
+  );
+}
+
+function abortSignalError(signal: AbortSignal) {
+  const reason = signal.reason as unknown;
+  if (reason instanceof Error) {
+    if (reason.name === "AbortError" || /operation was aborted/i.test(reason.message)) {
+      return new Error("Generation cancelled by client.");
+    }
+    return reason;
+  }
+  if (typeof reason === "string" && reason.trim()) {
+    return new Error(reason);
+  }
+  return new Error("Generation cancelled by client.");
 }
 
 async function validateGeneratedPaperSkippingInvalid({

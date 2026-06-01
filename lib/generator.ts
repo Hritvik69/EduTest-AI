@@ -897,6 +897,14 @@ function numericId(value: unknown) {
 
 function throwIfAborted(signal?: AbortSignal) {
   if (signal?.aborted) {
+    const reason = signal.reason as unknown;
+    if (reason instanceof Error) {
+      if (reason.name === "AbortError" || /operation was aborted/i.test(reason.message)) {
+        throw new Error("Generation cancelled by client.");
+      }
+      throw reason;
+    }
+    if (typeof reason === "string" && reason.trim()) throw new Error(reason);
     throw new Error("Generation cancelled by client.");
   }
 }
