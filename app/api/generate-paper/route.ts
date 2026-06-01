@@ -53,6 +53,9 @@ import type {
   QuestionType,
 } from "@/types";
 
+export const runtime = "nodejs";
+export const maxDuration = 60;
+
 type LocalFallbackContext = {
   effectiveConfig: PaperConfig;
   blueprint: Blueprint;
@@ -912,7 +915,7 @@ function generationErrorMessage(error: unknown) {
   }
 
   if (/timeout|timed out|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(message)) {
-    return "The AI provider could not be reached or timed out. Check your internet connection, try Auto Fallback, or retry in a minute.";
+    return "The deployed server could not reach the AI provider or the provider timed out. Check Vercel API keys/credits, try Auto Fallback, lower the question count, or retry in a minute.";
   }
 
   if (/empty response|text instead of valid JSON|malformed JSON/i.test(message)) {
