@@ -9,6 +9,7 @@ import type { ChapterTopic, ConceptData } from "@/types";
 
 const pdfTextCache = new Map<string, Promise<string>>();
 const chapterConceptCache = new Map<string, Promise<ConceptData[]>>();
+const remoteTextCache = new Map<string, Promise<string>>();
 
 interface ResolvedNcertChapter {
   selectedChapterId: number;
@@ -170,8 +171,9 @@ async function loadFromExtractedText(
   const bundledEntry = candidateBundledTextEntries(classNum, subject, chapterName)[0];
   if (bundledEntry) {
     try {
-      const textPath = bundledNcertTextPath(bundledEntry.path);
-      const chapterText = trimChapterText(cleanPdfText(await readFile(textPath, "utf8")));
+      const chapterText = trimChapterText(
+        cleanPdfText(await readBundledNcertText(bundledEntry.path)),
+      );
       if (chapterText.length >= 900) {
         return conceptsFromChapterText({
           text: chapterText,
@@ -184,7 +186,7 @@ async function loadFromExtractedText(
       }
     } catch (error) {
       console.warn(
-        `Could not load bundled NCERT extracted text ${bundledEntry.path}: ${
+        `Could not load selected NCERT extracted text ${bundledEntry.path}: ${
           error instanceof Error ? error.message : String(error)
         }`,
       );
@@ -217,12 +219,65 @@ async function loadFromExtractedText(
   return [];
 }
 
-function bundledNcertTextPath(relativePath: string) {
+async function readBundledNcertText(relativePath: string) {
+  const localPaths = candidateBundledNcertTextPaths(relativePath);
+  for (const textPath of localPaths) {
+    try {
+      if (!existsSync(textPath)) continue;
+      return await readFile(textPath, "utf8");
+    } catch {
+      // Try the next runtime path shape before falling back to the remote source.
+    }
+  }
+
+  return readRemoteNcertText(relativePath);
+}
+
+function candidateBundledNcertTextPaths(relativePath: string) {
   const safeParts = relativePath
     .replace(/^NCERT_Books\//, "")
     .split("/")
     .filter((part) => part && part !== "." && part !== "..");
-  return path.join(process.cwd(), "NCERT_Books", ...safeParts);
+  const cwd = process.cwd();
+  return unique([
+    path.join(cwd, "NCERT_Books", ...safeParts),
+    path.join(cwd, ".next", "server", "NCERT_Books", ...safeParts),
+    path.join(cwd, "..", "NCERT_Books", ...safeParts),
+    path.join(cwd, "..", "..", "NCERT_Books", ...safeParts),
+  ]);
+}
+
+async function readRemoteNcertText(relativePath: string) {
+  if (process.env.EDUTEST_DISABLE_REMOTE_NCERT_TEXT === "1") {
+    throw new Error("Remote NCERT text fallback is disabled.");
+  }
+
+  const cached = remoteTextCache.get(relativePath);
+  if (cached) return cached;
+
+  const promise = (async () => {
+    const url = remoteNcertTextUrl(relativePath);
+    const response = await fetch(url, {
+      signal: AbortSignal.timeout(8_000),
+    });
+    if (!response.ok) {
+      throw new Error(`Remote NCERT text fetch failed with HTTP ${response.status}.`);
+    }
+    return response.text();
+  })();
+  remoteTextCache.set(relativePath, promise);
+  return promise;
+}
+
+function remoteNcertTextUrl(relativePath: string) {
+  const base =
+    process.env.EDUTEST_NCERT_TEXT_BASE_URL ??
+    "https://raw.githubusercontent.com/Hritvik69/EduTest-AI/main";
+  const encodedPath = relativePath
+    .split("/")
+    .map((part) => encodeURIComponent(part))
+    .join("/");
+  return `${base.replace(/\/$/, "")}/${encodedPath}`;
 }
 
 function candidateBundledTextEntries(
