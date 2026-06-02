@@ -47,7 +47,10 @@ import {
   assertSourceGroundingForGeneration,
   SourceGroundingError,
 } from "@/lib/source-grounding";
-import { generateSourceBackedFallbackQuestions } from "@/lib/source-backed-fallback";
+import {
+  generateSourceBackedFallbackQuestions,
+  hasSourceBackedFallbackConcepts,
+} from "@/lib/source-backed-fallback";
 import { validatePaperKeepingValidQuestions } from "@/lib/validator";
 import type { LocalNcertSourceDiagnostics } from "@/lib/local-ncert-source";
 import type {
@@ -227,11 +230,7 @@ export async function POST(request: NextRequest) {
           selectionAwareConcepts,
           localNcertDiagnostics,
         );
-        const paperQuestionSource = scopedConcepts.some(
-          (concept) => concept.source === "pdf",
-        )
-          ? "pdf"
-          : "curriculum";
+        const paperQuestionSource = paperQuestionSourceForConcepts(scopedConcepts);
         const composition = normalizeServerQuestionComposition(
           effectiveConfig,
           scopedConcepts,
@@ -580,6 +579,53 @@ export async function POST(request: NextRequest) {
         if (
           localFallbackContext &&
           !request.signal.aborted &&
+          shouldUseSourceBackedGenerationFallback(
+            error,
+            localFallbackContext.scopedConcepts,
+          )
+        ) {
+          try {
+            if (!paperId) {
+              const fallbackPaper = await createPaperInDB(
+                localFallbackContext.effectiveConfig,
+                localFallbackContext.blueprint,
+                false,
+                {
+                  userId: auth.user.id,
+                  generationJobId,
+                  idempotencyKey,
+                },
+              );
+              paperId = fallbackPaper.paperId;
+            }
+
+            await completeWithSourceBackedGenerationFallback({
+              paperId,
+              context: localFallbackContext,
+              generationJobId,
+              idempotencyKey,
+              ownerId: auth.user.id,
+              originalError: error,
+              sessionOnly: Boolean(auth.user.isGuest),
+              send,
+            });
+            close();
+            return;
+          } catch (sourceFallbackError) {
+            console.error("[generate-paper] source-backed fallback failed", {
+              paperId,
+              generationJobId,
+              message:
+                sourceFallbackError instanceof Error
+                  ? sourceFallbackError.message
+                  : String(sourceFallbackError),
+            });
+          }
+        }
+
+        if (
+          localFallbackContext &&
+          !request.signal.aborted &&
           shouldUseLocalGenerationFallback(Boolean(demoMode), error)
         ) {
           try {
@@ -673,6 +719,129 @@ export async function POST(request: NextRequest) {
       Connection: "keep-alive",
     },
   });
+}
+
+async function completeWithSourceBackedGenerationFallback({
+  paperId,
+  context,
+  generationJobId,
+  idempotencyKey,
+  ownerId,
+  originalError,
+  sessionOnly,
+  send,
+}: {
+  paperId: number;
+  context: LocalFallbackContext;
+  generationJobId: string;
+  idempotencyKey: string;
+  ownerId: number;
+  originalError: unknown;
+  sessionOnly: boolean;
+  send: (data: object, event?: string) => void;
+}) {
+  send({
+    step: 6,
+    pct: 88,
+    progress: 88,
+    msg: "AI generation could not finish in time; completing from the selected source text.",
+    paperId,
+    status: "GENERATING",
+    generationJobId,
+  });
+
+  const generated = generateSourceBackedFallbackQuestions(
+    context.blueprint.sections,
+    context.scopedConcepts,
+    context.effectiveConfig,
+  );
+  const validation = validatePaperKeepingValidQuestions(
+    generated,
+    context.blueprint,
+    context.effectiveConfig,
+  );
+
+  send({
+    step: 7,
+    pct: 95,
+    progress: 95,
+    msg: "Phase 7 - Final Paper Composition: saving source-backed paper.",
+    paperId,
+    status: "GENERATING",
+    generationJobId,
+  });
+
+  await updatePaperDefinition(paperId, validation.config, validation.blueprint);
+  const storedQuestions = await saveQuestionsAndLink(
+    validation.questions,
+    paperId,
+    paperQuestionSourceForConcepts(context.scopedConcepts),
+  );
+  await markPaperReady(paperId);
+  const manifest = buildGenerationManifest({
+    config: validation.config,
+    blueprint: validation.blueprint,
+    concepts: context.scopedConcepts,
+    finalQuestions: storedQuestions,
+    skippedQuestions: 0,
+    replacedQuestions: validation.questions.length,
+    validationWarnings: [
+      {
+        type: "source-backed-local-fallback",
+        reason: `Completed locally from selected source text after provider/deployment failure: ${generationErrorMessage(originalError)}`,
+      },
+    ],
+    generationJobId,
+    idempotencyKey,
+    taskProviderOrder: configuredTaskProviderOrder(),
+    usageSummary: summarizeAIUsage(generationJobId),
+  });
+  await setPaperGenerationManifest(paperId, manifest, validation.config);
+  const readyPaper = buildReadyPaperPayload({
+    paperId,
+    config: validation.config,
+    blueprint: validation.blueprint,
+    questions: storedQuestions,
+    isDemoMode: false,
+    manifest,
+    generationJobId,
+    idempotencyKey,
+  });
+  const guestPaperToken = sessionOnly
+    ? await signGuestPaperSnapshot(readyPaper, ownerId)
+    : undefined;
+
+  send(
+    {
+      step: 7,
+      pct: 100,
+      progress: 100,
+      msg: "Phase 7 - Final Paper Composition: source-backed paper ready.",
+      paperId,
+      done: true,
+      idempotencyKey,
+      generationJobId,
+      title: readyPaper.title,
+      blueprint: validation.blueprint,
+      questions: storedQuestions,
+      skippedQuestions: 0,
+      replacedQuestions: validation.questions.length,
+      validationWarnings: [
+        {
+          type: "source-backed-local-fallback",
+          reason: generationErrorMessage(originalError),
+        },
+      ],
+      manifest,
+      status: "READY",
+      sourceBackedFallback: true,
+      createdAt: readyPaper.createdAt,
+      sessionOnly,
+      config: validation.config,
+      guestPaperToken,
+    },
+    "done",
+  );
 }
 
 async function completeWithLocalGenerationFallback({
@@ -1165,6 +1334,31 @@ function generationErrorMessage(error: unknown) {
   return compactAiProviderFailureMessage(message);
 }
 
+function shouldUseSourceBackedGenerationFallback(
+  error: unknown,
+  scopedConcepts: ConceptData[],
+) {
+  if (!hasSourceBackedFallbackConcepts(scopedConcepts)) return false;
+  if (error instanceof SourceGroundingError) return false;
+
+  const code = generationErrorCode(error);
+  if (
+    code === "PROVIDER_AUTO_FAILED" ||
+    code === "PROVIDER_AUTH_ERROR" ||
+    code === "PROVIDER_QUOTA_ERROR" ||
+    code === "PROVIDER_NETWORK_ERROR" ||
+    code === "GENERATION_CAN_SKIP_INVALID"
+  ) {
+    return true;
+  }
+
+  const message =
+    error instanceof Error ? error.message : "Generation failed. Please try again.";
+  return /question generation|Could not replace|No valid generated questions|Invalid .* question|empty response|malformed JSON/i.test(
+    message,
+  );
+}
+
 function shouldUseLocalGenerationFallback(isExplicitDemoMode: boolean, error: unknown) {
   const configured = process.env.EDUTEST_LOCAL_GENERATION_FALLBACK;
   if (configured === "false") return false;
@@ -1189,6 +1383,10 @@ function shouldUseLocalGenerationFallback(isExplicitDemoMode: boolean, error: un
   return /AI provider|Auto Fallback|Gemini|Mistral|Cerebras|OpenRouter|Grok|DeepSeek|OpenAI|question generation|No valid generated questions|Could not replace/i.test(
     message,
   );
+}
+
+function paperQuestionSourceForConcepts(concepts: ConceptData[]) {
+  return concepts.some((concept) => concept.source === "pdf") ? "pdf" : "curriculum";
 }
 
 function generationErrorCode(error: unknown) {
@@ -1420,12 +1618,6 @@ async function validateGeneratedPaperSkippingInvalid({
       const reason =
         partialFinalizationReason ??
         "Generation reached the deployment time limit during replacement.";
-      if (!allowDemoFallback) {
-        throw new Error(
-          `${reason} Generated ${readyCount}/${targetQuestionCount} valid real AI question${readyCount === 1 ? "" : "s"}. No local template paper was saved. Try Retry Auto, choose a faster configured provider, lower the question count, or use fewer question types.`,
-        );
-      }
-
       const localFill = generateSourceBackedFallbackQuestions(
         missingSectionsForBlueprint(validation.questions, blueprint),
         scopedConcepts,
@@ -1460,6 +1652,12 @@ async function validateGeneratedPaperSkippingInvalid({
           replacedQuestions: finalReplacedQuestions,
           remainingMissingQuestions: 0,
         };
+      }
+
+      if (!allowDemoFallback) {
+        throw new Error(
+          `${reason} Generated ${readyCount}/${targetQuestionCount} valid real AI question${readyCount === 1 ? "" : "s"}. Source-backed local fill could not complete the remaining question${finalMissingQuestions === 1 ? "" : "s"}. Try Retry Auto, choose a faster configured provider, lower the question count, or use fewer question types.`,
+        );
       }
 
       return {

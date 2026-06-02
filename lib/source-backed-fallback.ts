@@ -24,6 +24,8 @@ export function generateSourceBackedFallbackQuestions(
 ) {
   const existing = [...(options.existingQuestions ?? [])];
   const conceptPool = normalizeConceptPool(concepts, config);
+  if (!conceptPool.length) return [];
+
   let globalIndex = options.startIndex ?? existing.length;
   const generated: GeneratedQuestion[] = [];
 
@@ -59,6 +61,10 @@ export function generateSourceBackedFallbackQuestions(
   }
 
   return generated;
+}
+
+export function hasSourceBackedFallbackConcepts(concepts: ConceptData[]) {
+  return sourceBackedConcepts(concepts).length > 0;
 }
 
 function createSourceBackedQuestion(
@@ -307,7 +313,7 @@ function normalizeConceptPool(
   concepts: ConceptData[],
   config: PaperConfig,
 ): NormalizedConcept[] {
-  const pool = concepts
+  const pool = sourceBackedConcepts(concepts)
     .map((concept): NormalizedConcept | null => {
       const summary = trimToSentence(concept.text, 220);
       if (!summary) return null;
@@ -328,20 +334,17 @@ function normalizeConceptPool(
     })
     .filter((concept): concept is NormalizedConcept => Boolean(concept));
 
-  if (pool.length) return pool;
+  return pool;
+}
 
-  return [
-    {
-      summary: `${config.subject} selected chapter concept`,
-      excerpt: `${config.subject} selected chapter concept`,
-      topic: config.subject,
-      chapter: "Selected chapter",
-      chapterId: config.chapterIds[0] ?? 0,
-      subject: config.subject,
-      classNum: config.classNum,
-      source: "curriculum",
-    },
-  ];
+function sourceBackedConcepts(concepts: ConceptData[]) {
+  return concepts.filter((concept) => {
+    const text = concept.text.replace(/\s+/g, " ").trim();
+    return (
+      String(concept.type).toUpperCase() === "PDF_SOURCE_TEXT" &&
+      text.length >= 80
+    );
+  });
 }
 
 function trimToSentence(value: string, maxLength: number) {

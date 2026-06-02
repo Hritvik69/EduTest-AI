@@ -52,18 +52,23 @@ describe("fresh question generation invariant", () => {
     });
   });
 
-  it("does not save local template questions when real generation times out", () => {
+  it("uses selected source text instead of generic templates when generation times out", () => {
     const route = readFileSync(
       join(root, "app", "api", "generate-paper", "route.ts"),
+      "utf8",
+    );
+    const fallback = readFileSync(
+      join(root, "lib", "source-backed-fallback.ts"),
       "utf8",
     );
 
     expect(route).toMatch(/shouldStopForFinalization/);
     expect(route).toMatch(/partialFinalizationReason/);
-    expect(route).toMatch(/server-time-budget/);
-    expect(route).toMatch(/valid real AI question/);
-    expect(route).toMatch(/No local template paper was saved/);
-    expect(route).toMatch(/if \(!allowDemoFallback\)/);
+    expect(route).toMatch(/source-backed-fill/);
+    expect(route).toMatch(/completeWithSourceBackedGenerationFallback/);
+    expect(route).toMatch(/source-backed-local-fallback/);
+    expect(fallback).toMatch(/PDF_SOURCE_TEXT/);
+    expect(fallback).not.toMatch(/\$\{config\.subject\} selected chapter concept/);
   });
 
   it("validates admin chapter PDF mutations against class and subject scope", () => {

@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { defaultBloomDistribution } from "@/lib/edutest-data";
-import { generateSourceBackedFallbackQuestions } from "@/lib/source-backed-fallback";
+import {
+  generateSourceBackedFallbackQuestions,
+  hasSourceBackedFallbackConcepts,
+} from "@/lib/source-backed-fallback";
 import { validatePaperKeepingValidQuestions } from "@/lib/validator";
 import type { Blueprint, ConceptData, PaperConfig } from "@/types";
 
@@ -24,7 +27,7 @@ const config: PaperConfig = {
 const concepts: ConceptData[] = [
   {
     text: "The selected chapter shows how wit can solve a difficult social situation through careful language and quick reasoning.",
-    type: "FACT",
+    type: "PDF_SOURCE_TEXT",
     bloomLevel: "UNDERSTAND",
     hotsPotential: true,
     subject: "English",
@@ -37,7 +40,7 @@ const concepts: ConceptData[] = [
   },
   {
     text: "Vocabulary and grammar in context help students infer tone, intention, and meaning from the selected chapter passage.",
-    type: "FACT",
+    type: "PDF_SOURCE_TEXT",
     bloomLevel: "APPLY",
     hotsPotential: false,
     subject: "English",
@@ -103,5 +106,43 @@ describe("generateSourceBackedFallbackQuestions", () => {
     expect(validation.blueprint.totalMarks).toBe(9);
     expect(validation.skipped).toEqual([]);
     expect(validation.questions.every((question) => question.chapterId === 1)).toBe(true);
+  });
+
+  it("does not generate fallback questions from outline-only concepts", () => {
+    const outlineOnly: ConceptData[] = [
+      {
+        text: "Reading comprehension and inference",
+        type: "CURRICULUM_TOPIC",
+        bloomLevel: "UNDERSTAND",
+        hotsPotential: false,
+        subject: "English",
+        classNum: 8,
+        chapterName: "Outline Chapter",
+        topicName: "Reading comprehension and inference",
+        chapterId: 1,
+        topicId: 10,
+        source: "curriculum",
+      },
+    ];
+
+    expect(hasSourceBackedFallbackConcepts(outlineOnly)).toBe(false);
+    expect(
+      generateSourceBackedFallbackQuestions(
+        [
+          {
+            name: "Section A",
+            questionType: "MCQ",
+            count: 1,
+            marksPerQuestion: 1,
+            totalMarks: 1,
+            difficulty: "MEDIUM",
+            difficultyBreakdown: { MEDIUM: 100 },
+            bloomBreakdown: defaultBloomDistribution,
+          },
+        ],
+        outlineOnly,
+        config,
+      ),
+    ).toEqual([]);
   });
 });
