@@ -52,6 +52,19 @@ describe("fresh question generation invariant", () => {
     });
   });
 
+  it("finalizes valid real questions instead of failing all-or-nothing near deployment timeout", () => {
+    const route = readFileSync(
+      join(root, "app", "api", "generate-paper", "route.ts"),
+      "utf8",
+    );
+
+    expect(route).toMatch(/shouldStopForFinalization/);
+    expect(route).toMatch(/partialFinalizationReason/);
+    expect(route).toMatch(/server-time-budget/);
+    expect(route).toMatch(/valid real AI question/);
+    expect(route).not.toMatch(/No template paper was saved/);
+  });
+
   it("validates admin chapter PDF mutations against class and subject scope", () => {
     const uploadRoute = readFileSync(
       join(root, "app", "api", "upload-pdf", "route.ts"),

@@ -104,9 +104,11 @@ export async function POST(request: NextRequest) {
     async start(controller) {
       let streamClosed = false;
       const generationSignalController = new AbortController();
+      const serverBudgetMs = generationServerBudgetMs();
+      const generationDeadlineAt = Date.now() + serverBudgetMs;
       const generationDeadlineTimer = setTimeout(() => {
         generationSignalController.abort(generationDeadlineError());
-      }, generationServerBudgetMs());
+      }, serverBudgetMs);
       const abortGenerationFromClient = () => {
         generationSignalController.abort(new Error("Generation cancelled by client."));
       };
@@ -304,6 +306,7 @@ export async function POST(request: NextRequest) {
 
         const allQuestions: GeneratedQuestion[] = [];
         let pct = 40;
+        let stoppedForServerBudget = false;
 
         const compositionPlan = buildQuestionCompositionPlan(blueprint, composition);
         const generationUnits = compositionPlan.flatMap((plan) => {
@@ -332,7 +335,13 @@ export async function POST(request: NextRequest) {
           msg: "Phase 4 - Cognitive Distribution: applying Bloom levels from difficulty.",
         });
 
+        generationLoop:
         for (const plan of compositionPlan) {
+          if (shouldStopForFinalization(generationDeadlineAt, allQuestions.length)) {
+            stoppedForServerBudget = true;
+            break;
+          }
+
           const { section } = plan;
           assertActive();
           send({
@@ -348,6 +357,11 @@ export async function POST(request: NextRequest) {
 
           for (const allocation of allocations) {
             if (!allocation.count) continue;
+            if (shouldStopForFinalization(generationDeadlineAt, allQuestions.length)) {
+              stoppedForServerBudget = true;
+              break generationLoop;
+            }
+
             const difficultyTargets = difficultyAllocations[generationUnitIndex++];
             const allocationSection = {
               ...section,
@@ -422,7 +436,9 @@ export async function POST(request: NextRequest) {
           step: 6,
           pct: 88,
           progress: 88,
-          msg: "Phase 6 - Validation Engine: checking duplicates, marks, structure, and answers.",
+          msg: stoppedForServerBudget
+            ? "Phase 6 - Validation Engine: deployment time is low, saving valid real AI questions already generated."
+            : "Phase 6 - Validation Engine: checking duplicates, marks, structure, and answers.",
         });
         const validation = await validateGeneratedPaperSkippingInvalid({
           questions: allQuestions,
@@ -434,6 +450,10 @@ export async function POST(request: NextRequest) {
           allowDemoFallback: allowExplicitDemoFallback,
           generationNonce: generationJobId,
           cooldownScope: providerCooldownScope,
+          deadlineAt: generationDeadlineAt,
+          partialFinalizationReason: stoppedForServerBudget
+            ? "Generation reached the deployment time limit before every requested question could be generated."
+            : undefined,
           signal: generationSignal,
           send,
         });
@@ -924,7 +944,7 @@ function generationErrorMessage(error: unknown) {
   }
 
   if (/SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(message)) {
-    return "Real AI generation reached the deployment time limit before finishing. No template paper was saved. Try a lower question count, fewer question types, or a faster configured provider.";
+    return "Real AI generation reached the deployment time limit before enough valid questions were ready. Try a lower question count, fewer question types, or a faster configured provider.";
   }
 
   if (
@@ -1039,7 +1059,21 @@ function generationServerBudgetMs() {
     return configured;
   }
 
-  return 52_000;
+  return 45_000;
+}
+
+function generationFinalizationReserveMs() {
+  const configured = Number(process.env.EDUTEST_GENERATION_FINALIZATION_RESERVE_MS);
+  if (Number.isFinite(configured) && configured >= 5_000 && configured <= 20_000) {
+    return configured;
+  }
+
+  return 12_000;
+}
+
+function shouldStopForFinalization(deadlineAt: number, readyQuestionCount: number) {
+  if (readyQuestionCount <= 0) return false;
+  return deadlineAt - Date.now() <= generationFinalizationReserveMs();
 }
 
 function generationDeadlineError() {
@@ -1062,6 +1096,13 @@ function abortSignalError(signal: AbortSignal) {
   return new Error("Generation cancelled by client.");
 }
 
+function isServerTimeBudgetError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  return /SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(
+    message,
+  );
+}
+
 async function validateGeneratedPaperSkippingInvalid({
   questions,
   blueprint,
@@ -1072,6 +1113,8 @@ async function validateGeneratedPaperSkippingInvalid({
   allowDemoFallback,
   generationNonce,
   cooldownScope,
+  deadlineAt,
+  partialFinalizationReason,
   signal,
   send,
 }: {
@@ -1084,6 +1127,8 @@ async function validateGeneratedPaperSkippingInvalid({
   allowDemoFallback: boolean;
   generationNonce: string;
   cooldownScope: string;
+  deadlineAt: number;
+  partialFinalizationReason?: string;
   signal: AbortSignal;
   send: (data: object, event?: string) => void;
 }) {
@@ -1100,6 +1145,7 @@ async function validateGeneratedPaperSkippingInvalid({
     blueprint,
   );
   const maxReplacementPasses = 2;
+  let stoppedForServerBudget = Boolean(partialFinalizationReason);
 
   for (let pass = 1; pass <= maxReplacementPasses; pass += 1) {
     const missingSections = missingSectionsForBlueprint(
@@ -1112,6 +1158,10 @@ async function validateGeneratedPaperSkippingInvalid({
     );
 
     if (missingCount === 0) break;
+    if (shouldStopForFinalization(deadlineAt, validation.questions.length)) {
+      stoppedForServerBudget = true;
+      break;
+    }
 
     send({
       step: 6,
@@ -1122,30 +1172,45 @@ async function validateGeneratedPaperSkippingInvalid({
 
     const replacements: GeneratedQuestion[] = [];
     for (const section of missingSections) {
-      const sectionReplacements = await generateQuestionsForSection(
-        section,
-        conceptContext,
-        config,
-        {
-          allowDemoFallback,
-          availableTopics,
-          allowPartial: true,
-          partialMaxExtraAttempts: 4,
-          existingQuestions: [...candidates, ...replacements],
-          generationPlan,
-          generationNonce: `${generationNonce}:replacement:${pass}`,
-          cooldownScope,
-          signal,
-          onBatchComplete: (details) => {
-            send({
-              step: 6,
-              pct: 90,
-              progress: 90,
-              msg: `Phase 6 - Validation Engine: replacement ${details.generated}/${details.total} ${section.questionType} ready...`,
-            });
+      if (shouldStopForFinalization(deadlineAt, validation.questions.length)) {
+        stoppedForServerBudget = true;
+        break;
+      }
+
+      let sectionReplacements: GeneratedQuestion[];
+      try {
+        sectionReplacements = await generateQuestionsForSection(
+          section,
+          conceptContext,
+          config,
+          {
+            allowDemoFallback,
+            availableTopics,
+            allowPartial: true,
+            partialMaxExtraAttempts: 4,
+            existingQuestions: [...candidates, ...replacements],
+            generationPlan,
+            generationNonce: `${generationNonce}:replacement:${pass}`,
+            cooldownScope,
+            signal,
+            onBatchComplete: (details) => {
+              send({
+                step: 6,
+                pct: 90,
+                progress: 90,
+                msg: `Phase 6 - Validation Engine: replacement ${details.generated}/${details.total} ${section.questionType} ready...`,
+              });
+            },
           },
-        },
-      );
+        );
+      } catch (error) {
+        if (isServerTimeBudgetError(error) && validation.questions.length) {
+          stoppedForServerBudget = true;
+          break;
+        }
+
+        throw error;
+      }
 
       replacements.push(...sectionReplacements);
     }
@@ -1164,18 +1229,33 @@ async function validateGeneratedPaperSkippingInvalid({
     validation.questions,
     blueprint,
   ).reduce((sum, section) => sum + section.count, 0);
+  const readyCount = countQuestionsForBlueprint(validation.questions, blueprint);
+  const replacedQuestions = Math.max(0, readyCount - initialValidCount);
 
   if (remainingMissingQuestions > 0) {
-    const readyCount = countQuestionsForBlueprint(validation.questions, blueprint);
+    if (stoppedForServerBudget && readyCount > 0) {
+      const reason =
+        partialFinalizationReason ??
+        "Generation reached the deployment time limit during replacement.";
+
+      return {
+        ...validation,
+        skipped: [
+          ...validation.skipped,
+          {
+            type: "server-time-budget",
+            reason: `${reason} Saved ${readyCount}/${targetQuestionCount} valid real AI question${readyCount === 1 ? "" : "s"}; ${remainingMissingQuestions} requested question${remainingMissingQuestions === 1 ? "" : "s"} could not be generated in time.`,
+          },
+        ],
+        replacedQuestions,
+        remainingMissingQuestions,
+      };
+    }
+
     throw new Error(
       `Could not replace ${remainingMissingQuestions} invalid or duplicate question${remainingMissingQuestions === 1 ? "" : "s"}. Generated ${readyCount}/${targetQuestionCount} valid questions. Use Retry Auto, choose another provider, or lower the question count.`,
     );
   }
-
-  const replacedQuestions = Math.max(
-    0,
-    countQuestionsForBlueprint(validation.questions, blueprint) - initialValidCount,
-  );
 
   return {
     ...validation,
