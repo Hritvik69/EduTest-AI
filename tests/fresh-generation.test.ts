@@ -52,23 +52,21 @@ describe("fresh question generation invariant", () => {
     });
   });
 
-  it("uses selected source text instead of generic templates when generation times out", () => {
+  it("does not save local template questions when source-text AI generation times out", () => {
     const route = readFileSync(
       join(root, "app", "api", "generate-paper", "route.ts"),
       "utf8",
     );
-    const fallback = readFileSync(
-      join(root, "lib", "source-backed-fallback.ts"),
-      "utf8",
-    );
+    const generator = readFileSync(join(root, "lib", "generator.ts"), "utf8");
 
     expect(route).toMatch(/shouldStopForFinalization/);
     expect(route).toMatch(/partialFinalizationReason/);
-    expect(route).toMatch(/source-backed-fill/);
-    expect(route).toMatch(/completeWithSourceBackedGenerationFallback/);
-    expect(route).toMatch(/source-backed-local-fallback/);
-    expect(fallback).toMatch(/PDF_SOURCE_TEXT/);
-    expect(fallback).not.toMatch(/\$\{config\.subject\} selected chapter concept/);
+    expect(route).toMatch(/No local template paper was saved/);
+    expect(route).toMatch(/generateBlueprintQuestions/);
+    expect(route).not.toMatch(/completeWithSourceBackedGenerationFallback/);
+    expect(route).not.toMatch(/sourceBackedFallback/);
+    expect(generator).toMatch(/NCERT_BOOKS_TXT/);
+    expect(generator).toMatch(/Do not copy source lines verbatim/);
   });
 
   it("validates admin chapter PDF mutations against class and subject scope", () => {

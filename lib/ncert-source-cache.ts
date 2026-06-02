@@ -1,4 +1,5 @@
 import type { ConceptData } from "@/types";
+import { NCERT_TXT_SOURCE_TYPE } from "@/lib/source-types";
 
 type SourceCacheEntry = {
   classNum: number;
@@ -51,7 +52,7 @@ export function getCachedNcertSourceConcepts({
 
   return entry.concepts.map((text, index) => ({
     text,
-    type: index === 9 ? "VOCABULARY" : "PDF_SOURCE_CONCEPT",
+    type: index === 9 ? "VOCABULARY" : NCERT_TXT_SOURCE_TYPE,
     bloomLevel: index < 3 ? "UNDERSTAND" : "APPLY",
     hotsPotential: index >= 4,
     hotsPoential: index >= 4,
@@ -61,7 +62,7 @@ export function getCachedNcertSourceConcepts({
     topicName: sourceTopicName(index),
     topicId: undefined,
     chapterId,
-    source: "pdf",
+    source: "ncert_txt",
   }));
 }
 

@@ -8,11 +8,9 @@ import {
   generateBlueprint,
 } from "@/lib/blueprint";
 import {
-  buildQuestionCompositionPlan,
   normalizeQuestionComposition,
 } from "@/lib/composition";
 import {
-  allocateDifficultyTargetsForSections,
   normalizeBloomDistributionForDifficulty,
 } from "@/lib/difficulty-protocol";
 import { assertDemoModeAllowed, demoMetadata } from "@/lib/demo-mode";
@@ -23,8 +21,8 @@ import { buildGenerationManifest } from "@/lib/generation-manifest";
 import { getConfiguredProviders } from "@/lib/gemini";
 import { signGuestPaperSnapshot } from "@/lib/guest-paper-snapshot";
 import {
+  generateBlueprintQuestions,
   generateDemoQuestions,
-  generateQuestionsForSection,
 } from "@/lib/generator";
 import {
   createPaperInDB,
@@ -47,10 +45,6 @@ import {
   assertSourceGroundingForGeneration,
   SourceGroundingError,
 } from "@/lib/source-grounding";
-import {
-  generateSourceBackedFallbackQuestions,
-  hasSourceBackedFallbackConcepts,
-} from "@/lib/source-backed-fallback";
 import { validatePaperKeepingValidQuestions } from "@/lib/validator";
 import type { LocalNcertSourceDiagnostics } from "@/lib/local-ncert-source";
 import type {
@@ -320,29 +314,6 @@ export async function POST(request: NextRequest) {
           generationJobId,
         });
 
-        const allQuestions: GeneratedQuestion[] = [];
-        let pct = 40;
-        let stoppedForServerBudget = false;
-
-        const compositionPlan = buildQuestionCompositionPlan(blueprint, composition);
-        const generationUnits = compositionPlan.flatMap((plan) => {
-          const allocations = plan.allocations.length
-            ? plan.allocations
-            : [{ item: null, count: plan.section.count }];
-
-          return allocations
-            .filter((allocation) => allocation.count > 0)
-            .map((allocation) => ({
-              questionType: plan.section.questionType,
-              count: allocation.count,
-            }));
-        });
-        const difficultyAllocations = allocateDifficultyTargetsForSections(
-          effectiveConfig.difficulty,
-          generationUnits,
-        );
-        let generationUnitIndex = 0;
-
         assertActive();
         send({
           step: 4,
@@ -351,99 +322,46 @@ export async function POST(request: NextRequest) {
           msg: "Phase 4 - Cognitive Distribution: applying Bloom levels from difficulty.",
         });
 
-        generationLoop:
-        for (const plan of compositionPlan) {
-          if (shouldStopForFinalization(generationDeadlineAt, allQuestions.length)) {
-            stoppedForServerBudget = true;
-            break;
-          }
-
-          const { section } = plan;
-          assertActive();
-          send({
-            step: 5,
-            pct,
-            progress: pct,
-            msg: `Phase 5 - Question Generation: generating ${section.questionType} questions...`,
-          });
-          const sectionQuestions: GeneratedQuestion[] = [];
-          const allocations = plan.allocations.length
-            ? plan.allocations
-            : [{ item: null, count: section.count }];
-
-          for (const allocation of allocations) {
-            if (!allocation.count) continue;
-            if (shouldStopForFinalization(generationDeadlineAt, allQuestions.length)) {
-              stoppedForServerBudget = true;
-              break generationLoop;
-            }
-
-            const difficultyTargets = difficultyAllocations[generationUnitIndex++];
-            const allocationSection = {
-              ...section,
-              count: allocation.count,
-              totalMarks: allocation.count * section.marksPerQuestion,
-            };
-            const allocationConcepts = allocation.item
-              ? conceptsForCompositionItem(scopedConcepts, allocation.item)
-              : scopedConcepts;
-            const allocationContext = await retrieveConcepts(
-              allocationConcepts,
-              effectiveConfig.difficulty,
-              effectiveConfig.bloomDistribution,
-            );
-            const allocationTopics = conceptTopics(allocationConcepts);
-
-            if (allocation.item) {
+        assertActive();
+        send({
+          step: 5,
+          pct: 40,
+          progress: 40,
+          msg: `Phase 5 - Question Generation: generating ${blueprint.totalQuestions} questions from selected NCERT_Books TXT source...`,
+        });
+        const allQuestions = await generateBlueprintQuestions(
+          blueprint,
+          conceptContext,
+          effectiveConfig,
+          {
+            allowPartial: salvageMode,
+            availableTopics,
+            existingQuestions: [],
+            generationPlan,
+            generationNonce: generationJobId,
+            cooldownScope: providerCooldownScope,
+            signal: generationSignal,
+            onBatchComplete: (details) => {
               send({
                 step: 5,
-                pct,
-                progress: pct,
-                msg: `Phase 5 - Question Generation: ${allocation.count} ${section.questionType} from ${compositionLabel(allocation.item)}...`,
+                pct: 82,
+                progress: 82,
+                msg: `Phase 5 - Question Generation: ${details.generated}/${details.total} TXT-grounded AI questions ready...`,
               });
-            }
+            },
+          },
+        );
 
-            const questions = await generateQuestionsForSection(
-              allocationSection,
-              allocationContext || conceptContext,
-              effectiveConfig,
-              {
-                allowDemoFallback: allowExplicitDemoFallback,
-                availableTopics: allocationTopics.length
-                  ? allocationTopics
-                  : availableTopics,
-                allowPartial: salvageMode,
-                coverageFocus: allocation.item ?? undefined,
-                existingQuestions: allQuestions,
-                generationPlan,
-                difficultyTargets,
-                generationNonce: `${generationJobId}:${generationUnitIndex}`,
-                cooldownScope: providerCooldownScope,
-                signal: generationSignal,
-                onBatchComplete: (details) => {
-                  send({
-                    step: 5,
-                    pct,
-                    progress: pct,
-                    msg: `Phase 5 - Question Generation: ${details.generated}/${details.total} ${section.questionType} ready...`,
-                  });
-                },
-              },
-            );
-
-            const taggedQuestions = allocation.item
-              ? tagQuestionsWithComposition(questions, allocation.item)
-              : questions;
-            sectionQuestions.push(...taggedQuestions);
-            allQuestions.push(...taggedQuestions);
-          }
-
-          pct += Math.floor(60 / Math.max(1, blueprint.sections.length));
+        const stoppedForServerBudget = shouldStopForFinalization(
+          generationDeadlineAt,
+          allQuestions.length,
+        );
+        if (!stoppedForServerBudget) {
           send({
             step: 5,
-            pct,
-            progress: pct,
-            msg: `Phase 5 - Question Generation: ${section.questionType} done (${sectionQuestions.length} questions)`,
+            pct: 85,
+            progress: 85,
+            msg: `Phase 5 - Question Generation: source-text AI batch done (${allQuestions.length} questions).`,
           });
         }
 
@@ -579,53 +497,6 @@ export async function POST(request: NextRequest) {
         if (
           localFallbackContext &&
           !request.signal.aborted &&
-          shouldUseSourceBackedGenerationFallback(
-            error,
-            localFallbackContext.scopedConcepts,
-          )
-        ) {
-          try {
-            if (!paperId) {
-              const fallbackPaper = await createPaperInDB(
-                localFallbackContext.effectiveConfig,
-                localFallbackContext.blueprint,
-                false,
-                {
-                  userId: auth.user.id,
-                  generationJobId,
-                  idempotencyKey,
-                },
-              );
-              paperId = fallbackPaper.paperId;
-            }
-
-            await completeWithSourceBackedGenerationFallback({
-              paperId,
-              context: localFallbackContext,
-              generationJobId,
-              idempotencyKey,
-              ownerId: auth.user.id,
-              originalError: error,
-              sessionOnly: Boolean(auth.user.isGuest),
-              send,
-            });
-            close();
-            return;
-          } catch (sourceFallbackError) {
-            console.error("[generate-paper] source-backed fallback failed", {
-              paperId,
-              generationJobId,
-              message:
-                sourceFallbackError instanceof Error
-                  ? sourceFallbackError.message
-                  : String(sourceFallbackError),
-            });
-          }
-        }
-
-        if (
-          localFallbackContext &&
-          !request.signal.aborted &&
           shouldUseLocalGenerationFallback(Boolean(demoMode), error)
         ) {
           try {
@@ -719,129 +590,6 @@ export async function POST(request: NextRequest) {
       Connection: "keep-alive",
     },
   });
-}
-
-async function completeWithSourceBackedGenerationFallback({
-  paperId,
-  context,
-  generationJobId,
-  idempotencyKey,
-  ownerId,
-  originalError,
-  sessionOnly,
-  send,
-}: {
-  paperId: number;
-  context: LocalFallbackContext;
-  generationJobId: string;
-  idempotencyKey: string;
-  ownerId: number;
-  originalError: unknown;
-  sessionOnly: boolean;
-  send: (data: object, event?: string) => void;
-}) {
-  send({
-    step: 6,
-    pct: 88,
-    progress: 88,
-    msg: "AI generation could not finish in time; completing from the selected source text.",
-    paperId,
-    status: "GENERATING",
-    generationJobId,
-  });
-
-  const generated = generateSourceBackedFallbackQuestions(
-    context.blueprint.sections,
-    context.scopedConcepts,
-    context.effectiveConfig,
-  );
-  const validation = validatePaperKeepingValidQuestions(
-    generated,
-    context.blueprint,
-    context.effectiveConfig,
-  );
-
-  send({
-    step: 7,
-    pct: 95,
-    progress: 95,
-    msg: "Phase 7 - Final Paper Composition: saving source-backed paper.",
-    paperId,
-    status: "GENERATING",
-    generationJobId,
-  });
-
-  await updatePaperDefinition(paperId, validation.config, validation.blueprint);
-  const storedQuestions = await saveQuestionsAndLink(
-    validation.questions,
-    paperId,
-    paperQuestionSourceForConcepts(context.scopedConcepts),
-  );
-  await markPaperReady(paperId);
-  const manifest = buildGenerationManifest({
-    config: validation.config,
-    blueprint: validation.blueprint,
-    concepts: context.scopedConcepts,
-    finalQuestions: storedQuestions,
-    skippedQuestions: 0,
-    replacedQuestions: validation.questions.length,
-    validationWarnings: [
-      {
-        type: "source-backed-local-fallback",
-        reason: `Completed locally from selected source text after provider/deployment failure: ${generationErrorMessage(originalError)}`,
-      },
-    ],
-    generationJobId,
-    idempotencyKey,
-    taskProviderOrder: configuredTaskProviderOrder(),
-    usageSummary: summarizeAIUsage(generationJobId),
-  });
-  await setPaperGenerationManifest(paperId, manifest, validation.config);
-  const readyPaper = buildReadyPaperPayload({
-    paperId,
-    config: validation.config,
-    blueprint: validation.blueprint,
-    questions: storedQuestions,
-    isDemoMode: false,
-    manifest,
-    generationJobId,
-    idempotencyKey,
-  });
-  const guestPaperToken = sessionOnly
-    ? await signGuestPaperSnapshot(readyPaper, ownerId)
-    : undefined;
-
-  send(
-    {
-      step: 7,
-      pct: 100,
-      progress: 100,
-      msg: "Phase 7 - Final Paper Composition: source-backed paper ready.",
-      paperId,
-      done: true,
-      idempotencyKey,
-      generationJobId,
-      title: readyPaper.title,
-      blueprint: validation.blueprint,
-      questions: storedQuestions,
-      skippedQuestions: 0,
-      replacedQuestions: validation.questions.length,
-      validationWarnings: [
-        {
-          type: "source-backed-local-fallback",
-          reason: generationErrorMessage(originalError),
-        },
-      ],
-      manifest,
-      status: "READY",
-      sourceBackedFallback: true,
-      createdAt: readyPaper.createdAt,
-      sessionOnly,
-      config: validation.config,
-      guestPaperToken,
-    },
-    "done",
-  );
 }
 
 async function completeWithLocalGenerationFallback({
@@ -1334,31 +1082,6 @@ function generationErrorMessage(error: unknown) {
   return compactAiProviderFailureMessage(message);
 }
 
-function shouldUseSourceBackedGenerationFallback(
-  error: unknown,
-  scopedConcepts: ConceptData[],
-) {
-  if (!hasSourceBackedFallbackConcepts(scopedConcepts)) return false;
-  if (error instanceof SourceGroundingError) return false;
-
-  const code = generationErrorCode(error);
-  if (
-    code === "PROVIDER_AUTO_FAILED" ||
-    code === "PROVIDER_AUTH_ERROR" ||
-    code === "PROVIDER_QUOTA_ERROR" ||
-    code === "PROVIDER_NETWORK_ERROR" ||
-    code === "GENERATION_CAN_SKIP_INVALID"
-  ) {
-    return true;
-  }
-
-  const message =
-    error instanceof Error ? error.message : "Generation failed. Please try again.";
-  return /question generation|Could not replace|No valid generated questions|Invalid .* question|empty response|malformed JSON/i.test(
-    message,
-  );
-}
-
 function shouldUseLocalGenerationFallback(isExplicitDemoMode: boolean, error: unknown) {
   const configured = process.env.EDUTEST_LOCAL_GENERATION_FALLBACK;
   if (configured === "false") return false;
@@ -1386,6 +1109,7 @@ function shouldUseLocalGenerationFallback(isExplicitDemoMode: boolean, error: un
 }
 
 function paperQuestionSourceForConcepts(concepts: ConceptData[]) {
+  if (concepts.some((concept) => concept.source === "ncert_txt")) return "ncert_txt";
   return concepts.some((concept) => concept.source === "pdf") ? "pdf" : "curriculum";
 }
 
@@ -1525,53 +1249,38 @@ async function validateGeneratedPaperSkippingInvalid({
     initialValidation.questions,
     blueprint,
   );
-  const maxReplacementPasses = 2;
   let stoppedForServerBudget = Boolean(partialFinalizationReason);
 
-  for (let pass = 1; pass <= maxReplacementPasses; pass += 1) {
-    const missingSections = missingSectionsForBlueprint(
-      validation.questions,
-      blueprint,
-    );
-    const missingCount = missingSections.reduce(
-      (sum, section) => sum + section.count,
-      0,
-    );
+  const missingSections = missingSectionsForBlueprint(validation.questions, blueprint);
+  const missingCount = missingSections.reduce(
+    (sum, section) => sum + section.count,
+    0,
+  );
 
-    if (missingCount === 0) break;
+  if (missingCount > 0) {
     if (shouldStopForFinalization(deadlineAt, validation.questions.length)) {
       stoppedForServerBudget = true;
-      break;
-    }
+    } else {
+      const repairBlueprint = blueprintForSections(blueprint, missingSections);
+      send({
+        step: 6,
+        pct: 89,
+        progress: 89,
+        msg: `Phase 6 - Validation Engine: repairing ${missingCount} missing/invalid question${missingCount === 1 ? "" : "s"} in one TXT-grounded AI pass.`,
+      });
 
-    send({
-      step: 6,
-      pct: 89,
-      progress: 89,
-      msg: `Phase 6 - Validation Engine: replacing ${missingCount} invalid or duplicate question${missingCount === 1 ? "" : "s"} (pass ${pass}/${maxReplacementPasses}).`,
-    });
-
-    const replacements: GeneratedQuestion[] = [];
-    for (const section of missingSections) {
-      if (shouldStopForFinalization(deadlineAt, validation.questions.length)) {
-        stoppedForServerBudget = true;
-        break;
-      }
-
-      let sectionReplacements: GeneratedQuestion[];
+      let replacements: GeneratedQuestion[] = [];
       try {
-        sectionReplacements = await generateQuestionsForSection(
-          section,
+        replacements = await generateBlueprintQuestions(
+          repairBlueprint,
           conceptContext,
           config,
           {
-            allowDemoFallback,
             availableTopics,
             allowPartial: true,
-            partialMaxExtraAttempts: 4,
-            existingQuestions: [...candidates, ...replacements],
+            existingQuestions: candidates,
             generationPlan,
-            generationNonce: `${generationNonce}:replacement:${pass}`,
+            generationNonce: `${generationNonce}:repair`,
             cooldownScope,
             signal,
             onBatchComplete: (details) => {
@@ -1579,7 +1288,7 @@ async function validateGeneratedPaperSkippingInvalid({
                 step: 6,
                 pct: 90,
                 progress: 90,
-                msg: `Phase 6 - Validation Engine: replacement ${details.generated}/${details.total} ${section.questionType} ready...`,
+                msg: `Phase 6 - Validation Engine: repair ${details.generated}/${details.total} TXT-grounded AI questions ready...`,
               });
             },
           },
@@ -1587,22 +1296,15 @@ async function validateGeneratedPaperSkippingInvalid({
       } catch (error) {
         if (isServerTimeBudgetError(error) && validation.questions.length) {
           stoppedForServerBudget = true;
-          break;
+        } else {
+          throw error;
         }
-
-        throw error;
       }
 
-      replacements.push(...sectionReplacements);
-    }
-
-    if (!replacements.length) break;
-
-    candidates.push(...replacements);
-    validation = validatePaperKeepingValidOrEmpty(candidates, blueprint, config);
-
-    if (countQuestionsForBlueprint(validation.questions, blueprint) >= targetQuestionCount) {
-      break;
+      if (replacements.length) {
+        candidates.push(...replacements);
+        validation = validatePaperKeepingValidOrEmpty(candidates, blueprint, config);
+      }
     }
   }
 
@@ -1618,45 +1320,9 @@ async function validateGeneratedPaperSkippingInvalid({
       const reason =
         partialFinalizationReason ??
         "Generation reached the deployment time limit during replacement.";
-      const localFill = generateSourceBackedFallbackQuestions(
-        missingSectionsForBlueprint(validation.questions, blueprint),
-        scopedConcepts,
-        config,
-        {
-          existingQuestions: candidates,
-          startIndex: candidates.length,
-        },
-      );
-      if (localFill.length) {
-        candidates.push(...localFill);
-        validation = validatePaperKeepingValidOrEmpty(candidates, blueprint, config);
-      }
-
-      const finalMissingQuestions = missingSectionsForBlueprint(
-        validation.questions,
-        blueprint,
-      ).reduce((sum, section) => sum + section.count, 0);
-      const finalReadyCount = countQuestionsForBlueprint(validation.questions, blueprint);
-      const finalReplacedQuestions = Math.max(0, finalReadyCount - initialValidCount);
-
-      if (finalMissingQuestions === 0) {
-        return {
-          ...validation,
-          skipped: [
-            ...validation.skipped,
-            {
-              type: "source-backed-fill",
-              reason: `${reason} Filled ${localFill.length} remaining question${localFill.length === 1 ? "" : "s"} locally from the selected chapter source instead of skipping them.`,
-            },
-          ],
-          replacedQuestions: finalReplacedQuestions,
-          remainingMissingQuestions: 0,
-        };
-      }
-
       if (!allowDemoFallback) {
         throw new Error(
-          `${reason} Generated ${readyCount}/${targetQuestionCount} valid real AI question${readyCount === 1 ? "" : "s"}. Source-backed local fill could not complete the remaining question${finalMissingQuestions === 1 ? "" : "s"}. Try Retry Auto, choose a faster configured provider, lower the question count, or use fewer question types.`,
+          `${reason} Generated ${readyCount}/${targetQuestionCount} valid AI question${readyCount === 1 ? "" : "s"} from the selected source text. No local template paper was saved. Try Retry Auto, choose a faster configured provider, lower the question count, or use fewer question types.`,
         );
       }
 
@@ -1666,11 +1332,11 @@ async function validateGeneratedPaperSkippingInvalid({
           ...validation.skipped,
           {
             type: "server-time-budget",
-            reason: `${reason} Saved ${finalReadyCount}/${targetQuestionCount} valid question${finalReadyCount === 1 ? "" : "s"}; ${finalMissingQuestions} requested question${finalMissingQuestions === 1 ? "" : "s"} could not be generated in time.`,
+            reason: `${reason} Saved ${readyCount}/${targetQuestionCount} valid question${readyCount === 1 ? "" : "s"}; ${remainingMissingQuestions} requested question${remainingMissingQuestions === 1 ? "" : "s"} could not be generated in time.`,
           },
         ],
-        replacedQuestions: finalReplacedQuestions,
-        remainingMissingQuestions: finalMissingQuestions,
+        replacedQuestions,
+        remainingMissingQuestions,
       };
     }
 
@@ -1734,6 +1400,15 @@ function validatePaperKeepingValidOrEmpty(
 
     throw error;
   }
+}
+
+function blueprintForSections(blueprint: Blueprint, sections: BlueprintSection[]): Blueprint {
+  return {
+    ...blueprint,
+    sections,
+    totalQuestions: sections.reduce((sum, section) => sum + section.count, 0),
+    totalMarks: sections.reduce((sum, section) => sum + section.totalMarks, 0),
+  };
 }
 
 function missingSectionsForBlueprint(

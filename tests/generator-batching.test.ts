@@ -537,6 +537,52 @@ describe("generateQuestionsForSection batching", () => {
       total_marks: 2,
     });
   });
+
+  it("uses one NCERT_Books TXT blueprint prompt scoped to selected chapter topics", async () => {
+    mocks.generateJSON.mockResolvedValue({
+      questions: [mcq(1), mcq(2)],
+    });
+    const { generateBlueprintQuestions } = await import("@/lib/generator");
+
+    const questions = await generateBlueprintQuestions(
+      {
+        totalQuestions: 2,
+        totalMarks: 2,
+        estimatedTime: 4,
+        competencyPercentage: 60,
+        sections: [{ ...section, count: 2, totalMarks: 2 }],
+      },
+      "[Source: ncert_txt] [Chapter: 1] [Topic: Acids] Litmus changes colour in acidic solutions after reacting with hydrogen ions.",
+      {
+        ...config,
+        chapterIds: [1],
+        totalQuestions: 2,
+        typeDistribution: { MCQ: 2 },
+      },
+      {
+        availableTopics: ["Acids"],
+        existingQuestions: [mcq(99)],
+        generationNonce: "unit-test-job",
+      },
+    );
+
+    const prompt = String(mocks.generateJSON.mock.calls[0][0]);
+    const promptConfig = extractPromptConfig(prompt);
+
+    expect(questions).toHaveLength(2);
+    expect(mocks.generateJSON).toHaveBeenCalledTimes(1);
+    expect(promptConfig).toMatchObject({
+      class: 10,
+      source_kind: "NCERT_BOOKS_TXT",
+      chapters: { Science: [1] },
+      topics: ["Acids"],
+      total_questions: 2,
+    });
+    expect(prompt).toContain("Selected source text chunks:");
+    expect(prompt).toContain("Litmus changes colour in acidic solutions");
+    expect(prompt).toContain("Do not copy source lines verbatim");
+    expect(prompt).toContain("Question 99 asks about acid indicator property");
+  });
 });
 
 function mcq(index: number): GeneratedQuestion {
@@ -708,5 +754,10 @@ function extractPromptConfig(prompt: string) {
   return JSON.parse(match[1]) as {
     question_type_counts: Record<string, number>;
     current_section: Record<string, unknown>;
+    source_kind?: string;
+    chapters?: unknown;
+    topics?: unknown;
+    total_questions?: unknown;
+    [key: string]: unknown;
   };
 }

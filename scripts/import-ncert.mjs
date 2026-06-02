@@ -810,7 +810,7 @@ async function replaceChapterConcepts(sql, chapterId, topics) {
         )
         VALUES (
           ${topicId}, ${chapterId}, ${concept.text}, ${concept.type},
-          ${concept.bloom_level}, ${concept.hots_potential}, 'pdf'
+          ${concept.bloom_level}, ${concept.hots_potential}, 'ncert_txt'
         )
       `;
       conceptCount += 1;
@@ -875,7 +875,7 @@ function extractConceptsFromTextOnly(cleanedText, chapterName, subject) {
               : [
                   {
                     text: cleanedText.slice(0, 8000),
-                    type: "PDF_SOURCE_TEXT",
+                    type: "NCERT_TXT_SOURCE",
                     bloom_level: "UNDERSTAND",
                     hots_potential: false,
                   },
@@ -947,7 +947,7 @@ function chapterSourceTextChunks(cleanedText) {
 function sourceTextConcept(text, index) {
   return {
     text: text.slice(0, 8000),
-    type: "PDF_SOURCE_TEXT",
+    type: "NCERT_TXT_SOURCE",
     bloom_level: index < 2 ? "UNDERSTAND" : "ANALYZE",
     hots_potential: index >= 2,
   };
@@ -1219,6 +1219,10 @@ function normalizeImportance(value) {
 }
 
 function normalizeConceptType(value) {
+  if (String(value).toUpperCase() === "PDF_SOURCE_TEXT") {
+    return "NCERT_TXT_SOURCE";
+  }
+
   const allowed = [
     "DEFINITION",
     "FORMULA",
@@ -1227,7 +1231,7 @@ function normalizeConceptType(value) {
     "APPLICATION",
     "ACTIVITY",
     "FACT",
-    "PDF_SOURCE_TEXT",
+    "NCERT_TXT_SOURCE",
   ];
   return allowed.includes(String(value)) ? String(value) : "FACT";
 }

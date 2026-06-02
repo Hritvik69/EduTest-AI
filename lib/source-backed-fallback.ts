@@ -1,4 +1,5 @@
 import { isDuplicateQuestionText } from "@/lib/question-duplicates";
+import { isSourceTextConcept } from "@/lib/source-types";
 import type {
   BloomLevel,
   BlueprintSection,
@@ -326,7 +327,10 @@ function normalizeConceptPool(
         chapterId: concept.chapterId,
         subject: concept.subject ?? config.subject,
         classNum: concept.classNum ?? config.classNum,
-        source: concept.source === "pdf" ? "pdf" : "curriculum",
+        source:
+          concept.source === "pdf" || concept.source === "ncert_txt"
+            ? concept.source
+            : "curriculum",
       };
 
       if (concept.topicId !== undefined) normalized.topicId = concept.topicId;
@@ -340,10 +344,7 @@ function normalizeConceptPool(
 function sourceBackedConcepts(concepts: ConceptData[]) {
   return concepts.filter((concept) => {
     const text = concept.text.replace(/\s+/g, " ").trim();
-    return (
-      String(concept.type).toUpperCase() === "PDF_SOURCE_TEXT" &&
-      text.length >= 80
-    );
+    return isSourceTextConcept(concept) && text.length >= 80;
   });
 }
 

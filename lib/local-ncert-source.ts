@@ -4,6 +4,10 @@ import path from "node:path";
 import sql from "@/lib/db";
 import { getCurriculumChapter, getCurriculumChapters } from "@/lib/curriculum-data";
 import { getCachedNcertSourceConcepts } from "@/lib/ncert-source-cache";
+import {
+  isSourceTextConcept,
+  NCERT_TXT_SOURCE_TYPE,
+} from "@/lib/source-types";
 import bundledNcertTextManifest from "@/data/ncert-extracted-text-manifest.json";
 import type { ChapterTopic, ConceptData } from "@/types";
 
@@ -252,18 +256,6 @@ async function loadLocalOrCachedConcepts(
     return sourceResult(fromExtractedText, diagnostics);
   }
 
-  const fromLocalPdf = await loadFromLocalPdf(
-    classNum,
-    subject,
-    chapterId,
-    chapterName,
-    chapterTopics,
-    diagnostics,
-  );
-  if (fromLocalPdf.length) {
-    return sourceResult(fromLocalPdf, diagnostics);
-  }
-
   const cachedConcepts = withTopicIds(
     getCachedNcertSourceConcepts({
       classNum,
@@ -277,7 +269,7 @@ async function loadLocalOrCachedConcepts(
     diagnostics.selectedSource = "static_cache";
     diagnostics.reason = "static_source_cache_used";
   } else if (!diagnostics.reason) {
-    diagnostics.reason = "no_matching_ncert_text_or_pdf";
+    diagnostics.reason = "no_matching_ncert_text";
   }
   return sourceResult(cachedConcepts, diagnostics);
 }
@@ -385,9 +377,7 @@ function sourceResult(
   diagnostics: LocalNcertSourceDiagnostics,
 ): LocalNcertChapterSourceResult {
   diagnostics.conceptCount = concepts.length;
-  diagnostics.sourceTextChunks = concepts.filter(
-    (concept) => String(concept.type).toUpperCase() === "PDF_SOURCE_TEXT",
-  ).length;
+  diagnostics.sourceTextChunks = concepts.filter(isSourceTextConcept).length;
   return { concepts, diagnostics };
 }
 
@@ -842,7 +832,7 @@ function conceptsFromChapterText({
     const topicId = topicIdForName(topicName, chapterTopics);
     concepts.push({
       text: chunk,
-      type: "PDF_SOURCE_TEXT",
+      type: NCERT_TXT_SOURCE_TYPE,
       bloomLevel: concepts.length < 3 ? "UNDERSTAND" : "APPLY",
       hotsPotential: concepts.length >= 3,
       hotsPoential: concepts.length >= 3,
@@ -852,7 +842,7 @@ function conceptsFromChapterText({
       topicName,
       topicId,
       chapterId,
-      source: "pdf",
+      source: "ncert_txt",
     });
   }
 

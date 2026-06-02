@@ -92,6 +92,7 @@ export function generationManifestFromMetadata(
 
 function dominantConceptSource(config: PaperConfig, concepts: ConceptData[]) {
   if (concepts.some((concept) => concept.source === "demo")) return "demo";
+  if (concepts.some((concept) => concept.source === "ncert_txt")) return "ncert_txt";
   if (concepts.some((concept) => concept.source === "pdf")) return "pdf";
   if (concepts.some((concept) => concept.source === "curriculum")) {
     return "curriculum";
@@ -108,6 +109,9 @@ function sourceWarningTexts(
 
   if (conceptSource === "demo" || conceptSource === "unknown") {
     warnings.push("Paper used fallback content because no strong source was available.");
+  }
+  if (config.sourceMode !== "pdf_upload" && conceptSource !== "ncert_txt") {
+    warnings.push("Normal NCERT mode did not use extracted NCERT_Books TXT source.");
   }
   if (config.sourceMode === "pdf_upload" && conceptSource !== "pdf") {
     warnings.push("PDF mode was selected, but no extracted PDF concepts were used.");

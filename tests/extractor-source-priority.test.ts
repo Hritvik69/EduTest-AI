@@ -42,7 +42,8 @@ describe("NCERT source priority", () => {
 
     expect(dbMock).toHaveBeenCalled();
     expect(concepts.length).toBeGreaterThanOrEqual(6);
-    expect(concepts.every((concept) => concept.source === "pdf")).toBe(true);
+    expect(concepts.every((concept) => concept.source === "ncert_txt")).toBe(true);
+    expect(concepts.every((concept) => concept.type === "NCERT_TXT_SOURCE")).toBe(true);
     expect(concepts.some((concept) => /Tenali Rama|Krishnadeva Raya/i.test(concept.text))).toBe(
       true,
     );
@@ -103,7 +104,8 @@ describe("NCERT source priority", () => {
     });
 
     expect(concepts.length).toBeGreaterThanOrEqual(6);
-    expect(concepts.every((concept) => concept.source === "pdf")).toBe(true);
+    expect(concepts.every((concept) => concept.source === "ncert_txt")).toBe(true);
+    expect(concepts.every((concept) => concept.type === "NCERT_TXT_SOURCE")).toBe(true);
     expect(concepts.some((concept) => /concrete|example/i.test(concept.text))).toBe(true);
     expect(diagnostics).toHaveLength(1);
     expect(diagnostics[0]).toMatchObject({

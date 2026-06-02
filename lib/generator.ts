@@ -48,6 +48,22 @@ interface GenerateSectionOptions {
   }) => void;
 }
 
+interface GenerateBlueprintOptions {
+  allowPartial?: boolean;
+  availableTopics?: string[];
+  existingQuestions?: GeneratedQuestion[];
+  generationPlan?: GenerationArchitecturePlan;
+  generationNonce?: string;
+  cooldownScope?: string;
+  signal?: AbortSignal;
+  onBatchComplete?: (details: {
+    generated: number;
+    total: number;
+    batch: number;
+    batches: number;
+  }) => void;
+}
+
 interface DemoQuestionOptions {
   availableTopics?: string[];
   startIndex?: number;
@@ -84,7 +100,7 @@ export async function generateQuestionsForSection(
 ) {
   if (!conceptContext.trim() && !options.allowDemoFallback) {
     throw new Error(
-      "No NCERT PDF-backed concept context is available for question generation.",
+      "No selected source text context is available for question generation.",
     );
   }
 
@@ -117,6 +133,130 @@ export async function generateQuestionsForSection(
 
     throw error;
   }
+}
+
+export async function generateBlueprintQuestions(
+  blueprint: Blueprint,
+  conceptContext: string,
+  config: PaperConfig,
+  options: GenerateBlueprintOptions = {},
+) {
+  if (!conceptContext.trim() && !options.allowPartial) {
+    throw new Error(
+      "No NCERT_Books TXT source context is available for question generation.",
+    );
+  }
+
+  const availableTopics = options.availableTopics ?? extractAvailableTopics(conceptContext);
+  const sectionDifficultyAllocation = allocateDifficultyTargetsForSections(
+    config.difficulty,
+    blueprint.sections,
+  );
+  const sectionDifficultyTargets = blueprint.sections.map(
+    (_section, index) => sectionDifficultyAllocation[index],
+  );
+  const prompt = buildBlueprintPrompt(
+    blueprint,
+    conceptContext,
+    config,
+    availableTopics,
+    options.existingQuestions ?? [],
+    options.generationPlan,
+    sectionDifficultyTargets,
+    options.generationNonce,
+  );
+
+  const result = await generateJSON<
+    GeneratedQuestion[] | { questions: GeneratedQuestion[] }
+  >(prompt, {
+    systemInstruction: questionGenerationSystemInstruction,
+    temperature: generationTemperature(config.difficulty),
+    topP: 0.85,
+    maxOutputTokens: maxOutputTokensForBlueprint(blueprint, config.aiProvider ?? "AUTO"),
+    provider: config.aiProvider ?? "AUTO",
+    task: options.generationNonce?.includes(":repair")
+      ? "QUESTION_REPLACEMENT"
+      : "QUESTION_GENERATION",
+    cooldownScope: options.cooldownScope,
+    generationJobId: generationJobIdFromNonce(options.generationNonce),
+    signal: options.signal,
+  });
+
+  throwIfAborted(options.signal);
+  const raw = Array.isArray(result) ? result : result.questions;
+  if (!Array.isArray(raw) || !raw.length) {
+    throw new Error("AI provider returned no usable source-text questions.");
+  }
+
+  const acceptedQuestions: GeneratedQuestion[] = [];
+  let lastError: unknown;
+
+  blueprint.sections.forEach((section, sectionIndex) => {
+    const rawForSection =
+      blueprint.sections.length === 1
+        ? raw
+        : raw.filter(
+            (question) =>
+              String(question?.type ?? "").toUpperCase() === section.questionType,
+          );
+
+    if (!rawForSection.length) {
+      lastError = new Error(`AI returned no ${section.questionType} questions.`);
+      return;
+    }
+
+    try {
+      const normalized = normalizeGeneratedQuestions(
+        rawForSection,
+        section,
+        config,
+        availableTopics,
+      );
+      const { unique, duplicates } = partitionUniqueQuestionsByText(normalized, [
+        ...(options.existingQuestions ?? []),
+        ...acceptedQuestions,
+      ]);
+      const governed = applyDifficultyGovernance(
+        unique,
+        section,
+        config,
+        sectionDifficultyTargets[sectionIndex],
+        acceptedQuestions.filter((question) => question.type === section.questionType),
+      );
+
+      if (duplicates.length) {
+        lastError = new Error(
+          `Discarded ${duplicates.length} duplicate ${section.questionType} question(s).`,
+        );
+      }
+      if (governed.rejected.length) {
+        lastError = new Error(
+          `Rejected ${governed.rejected.length} ${section.questionType} question(s) for difficulty governance.`,
+        );
+      }
+
+      acceptedQuestions.push(...governed.accepted.slice(0, section.count));
+    } catch (error) {
+      lastError = error;
+    }
+  });
+
+  options.onBatchComplete?.({
+    generated: Math.min(acceptedQuestions.length, blueprint.totalQuestions),
+    total: blueprint.totalQuestions,
+    batch: 1,
+    batches: 1,
+  });
+
+  if (acceptedQuestions.length < blueprint.totalQuestions && !options.allowPartial) {
+    const reason =
+      lastError instanceof Error ? ` Last error: ${lastError.message}` : "";
+    throw new Error(
+      `AI provider generated ${acceptedQuestions.length}/${blueprint.totalQuestions} valid source-text questions.${reason}`,
+    );
+  }
+
+  return acceptedQuestions;
 }
 
 async function generateQuestionBatches(
@@ -568,6 +708,91 @@ Return JSON: [{ "text","correctAnswer","marks":1|2|3,"topic" }]`,
 Return ONLY valid JSON with no markdown.`;
 }
 
+function buildBlueprintPrompt(
+  blueprint: Blueprint,
+  conceptContext: string,
+  config: PaperConfig,
+  availableTopics: string[],
+  existingQuestions: GeneratedQuestion[] = [],
+  generationPlan?: GenerationArchitecturePlan,
+  sectionDifficultyTargets: DifficultyTargets[] = [],
+  generationNonce?: string,
+) {
+  const subjectWorkflow = buildSubjectWorkflowPrompt(config);
+  const topicList = availableTopics.length
+    ? availableTopics.map((topic) => `- ${topic}`).join("\n")
+    : "- Use only the selected NCERT_Books TXT chunks below";
+  const sections = blueprint.sections.map((section, index) => ({
+    name: section.name,
+    type: section.questionType,
+    count: section.count,
+    marks_per_question: section.marksPerQuestion,
+    total_marks: section.totalMarks,
+    difficulty_targets: normalizeDifficultyTargets(
+      sectionDifficultyTargets[index] ?? { [config.difficulty]: section.count },
+    ),
+  }));
+  const antiRepeatRules = existingQuestions.length
+    ? `
+Forbidden existing/invalid question stems from this paper:
+${existingQuestions
+  .slice(-36)
+  .map((question, index) => `${index + 1}. [${question.type}] ${question.text}`)
+  .join("\n")}
+Do not repeat, paraphrase, lightly reword, or reuse these stems, examples, option patterns, answer facts, source/case scenarios, or diagrams.
+`
+    : "";
+
+  return `Generate a complete source-grounded EduTest paper in one JSON response.
+
+CONFIG_JSON:${JSON.stringify({
+    class: config.classNum,
+    subjects: config.subjects ?? [config.subject],
+    source_mode: config.sourceMode ?? "curriculum",
+    source_kind:
+      config.sourceMode === "pdf_upload" ? "UPLOADED_PDF" : "NCERT_BOOKS_TXT",
+    chapters: config.subjectSelections?.reduce<Record<string, number[]>>(
+      (acc, selection) => {
+        acc[selection.subject] = selection.chapterIds;
+        return acc;
+      },
+      {},
+    ) ?? { [config.subject]: config.chapterIds },
+    topics: availableTopics,
+    total_questions: blueprint.totalQuestions,
+    total_marks: blueprint.totalMarks,
+    duration_min: config.duration,
+    exam_type: config.examType,
+    difficulty: config.difficulty,
+    sections,
+    architecture: generationPlan,
+    generation_nonce: generationNonce ?? null,
+  })}
+
+Subject: ${config.subject}, Class: ${config.classNum}
+${subjectWorkflow}
+Allowed chapter topics:
+${topicList}
+
+Selected source text chunks:
+${conceptContext}
+
+${antiRepeatRules}
+Rules:
+- Generate exactly ${blueprint.totalQuestions} new questions across all sections in CONFIG_JSON.sections.
+- Use ONLY the selected NCERT_Books TXT chunks above in normal NCERT mode.
+- Do not use the whole PDF/book, neighboring chapters, previous/next chapters, contents pages, transcripts, or outside/web knowledge.
+- Do not copy source lines verbatim as question text; read the source and create fresh exam questions from its meaning.
+- Every returned question must include type, text, correctAnswer, explanation, topic, difficulty, bloomLevel, marks, reasoningSteps, difficultyConfidence, cognitiveComplexity{conceptIntegration,abstractionLevel,inferenceLevel,ambiguityLevel,cognitiveLoad}.
+- The type/count/marks must exactly match CONFIG_JSON.sections.
+- Topic must exactly match one allowed topic.
+- Include proper structure for MCQ options, assertion/reason, match pairs, case/source/paragraph scenarios, subQuestions, diagrams, and keyPoints where the type requires them.
+- Avoid duplicates and avoid repeated concept angles.
+
+Return ONLY valid JSON:
+{ "questions": [ ...all questions... ] }`;
+}
+
 function buildPromptConfig(
   config: PaperConfig,
   section: BlueprintSection,
@@ -743,6 +968,24 @@ function maxOutputTokensForSection(section: BlueprintSection, mode: TokenBudgetM
   }
 
   return Math.min(8192, requested);
+}
+
+function maxOutputTokensForBlueprint(
+  blueprint: Blueprint,
+  provider: PaperConfig["aiProvider"] = "AUTO",
+) {
+  const mode = tokenBudgetMode(provider);
+  if (mode === "LOW") {
+    return Math.min(openRouterMaxOutputTokens(), 4096);
+  }
+
+  const requested =
+    3600 +
+    blueprint.sections.reduce(
+      (sum, section) => sum + section.count * Math.max(320, section.marksPerQuestion * 180),
+      0,
+    );
+  return Math.min(12000, requested);
 }
 
 function openRouterMaxOutputTokens() {

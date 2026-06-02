@@ -33,7 +33,8 @@ describe("local NCERT source bridge", () => {
     const concepts = await getLocalNcertChapterConcepts(8, ["English"], chapter!.id);
 
     expect(concepts.length).toBeGreaterThanOrEqual(6);
-    expect(concepts.every((concept) => concept.source === "pdf")).toBe(true);
+    expect(concepts.every((concept) => concept.source === "ncert_txt")).toBe(true);
+    expect(concepts.every((concept) => concept.type === "NCERT_TXT_SOURCE")).toBe(true);
     expect(concepts.some((concept) => /Krishnadeva Raya|Tenali Rama/i.test(concept.text))).toBe(
       true,
     );
@@ -78,7 +79,7 @@ describe("local NCERT source bridge", () => {
 
     expect(result.concepts).toEqual([]);
     expect(result.diagnostics.resolved?.chapterName).toBe(chapter!.name);
-    expect(result.diagnostics.reason).toBe("no_matching_ncert_text_or_pdf");
+    expect(result.diagnostics.reason).toBe("no_matching_ncert_text");
     expect(result.diagnostics.conceptCount).toBe(0);
     expect(result.diagnostics.attemptedPdfPaths).toEqual([]);
 

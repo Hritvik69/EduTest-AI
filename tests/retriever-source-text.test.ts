@@ -18,8 +18,8 @@ describe("retriever source-text priority", () => {
     const sourceText = concept({
       text:
         "King Krishnadeva Raya asked Tenali Ramakrishna to solve a difficult court problem. Tenali listened carefully, answered with wit, and helped the court understand the truth without insulting anyone.",
-      type: "PDF_SOURCE_TEXT",
-      source: "pdf",
+      type: "NCERT_TXT_SOURCE",
+      source: "ncert_txt",
       topicName: "The Wit that Won Hearts",
       hotsPotential: false,
     });

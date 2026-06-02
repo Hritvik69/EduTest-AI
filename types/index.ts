@@ -38,7 +38,7 @@ export type BloomLevel =
   | "EVALUATE"
   | "CREATE";
 
-export type ContentSource = "pdf" | "curriculum" | "demo" | "unknown";
+export type ContentSource = "pdf" | "ncert_txt" | "curriculum" | "demo" | "unknown";
 export type PaperSourceMode = "curriculum" | "pdf_upload";
 export type AITask =
   | "PDF_EXTRACTION"

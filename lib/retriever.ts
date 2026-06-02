@@ -1,4 +1,9 @@
 import sql from "@/lib/db";
+import {
+  isNcertTxtSourceConcept,
+  isSourceTextConcept,
+  normalizeNcertTxtConceptType,
+} from "@/lib/source-types";
 import type { BloomLevel, ConceptData, Difficulty } from "@/types";
 
 type BloomTarget = Partial<Record<BloomLevel, number>>;
@@ -100,20 +105,28 @@ async function fetchConceptsByChapterIds(chapterIds: number[]): Promise<ConceptD
       ORDER BY c.id ASC
     `;
 
-    return rows.map((row) => ({
-      text: row.text,
-      type: row.type,
-      bloomLevel: row.bloom_level,
-      hotsPotential: Boolean(row.hots_potential),
-      hotsPoential: Boolean(row.hots_potential),
-      topicName: row.topic_name ?? "General",
-      topicId: row.topic_id ? Number(row.topic_id) : undefined,
-      chapterId: row.chapter_id,
-      source:
-        row.source === "pdf" || row.source === "curriculum" || row.source === "demo"
-          ? row.source
-          : "unknown",
-    })) satisfies ConceptData[];
+    return rows.map((row) => {
+      const type = normalizeNcertTxtConceptType(row.type);
+      return {
+        text: row.text,
+        type,
+        bloomLevel: row.bloom_level,
+        hotsPotential: Boolean(row.hots_potential),
+        hotsPoential: Boolean(row.hots_potential),
+        topicName: row.topic_name ?? "General",
+        topicId: row.topic_id ? Number(row.topic_id) : undefined,
+        chapterId: row.chapter_id,
+        source:
+          isSourceTextConcept({ type, text: row.text } as ConceptData) ||
+          row.source === "ncert_txt"
+            ? "ncert_txt"
+            : row.source === "pdf" ||
+                row.source === "curriculum" ||
+                row.source === "demo"
+              ? row.source
+              : "unknown",
+      };
+    }) satisfies ConceptData[];
   } catch {
     return [];
   }
@@ -124,14 +137,13 @@ function bloomScore(level: string, target: BloomTarget) {
 }
 
 function sourceTextScore(concept: ConceptData) {
-  if (String(concept.type).toUpperCase() === "PDF_SOURCE_TEXT") return 3;
+  if (isNcertTxtSourceConcept(concept)) return 4;
+  if (isSourceTextConcept(concept)) return 3;
+  if (concept.source === "ncert_txt" && concept.text.length >= 900) return 3;
+  if (concept.source === "ncert_txt") return 2;
   if (concept.source === "pdf" && concept.text.length >= 900) return 2;
   if (concept.source === "pdf") return 1;
   return 0;
-}
-
-function isSourceTextConcept(concept: ConceptData) {
-  return String(concept.type).toUpperCase() === "PDF_SOURCE_TEXT";
 }
 
 function normalizeText(value: string) {

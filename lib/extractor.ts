@@ -13,6 +13,10 @@ import {
 } from "@/lib/local-ncert-source";
 import { limitExtractedText } from "@/lib/pdf-security";
 import { analyzeConceptSourceQuality } from "@/lib/retriever";
+import {
+  isSourceTextConcept,
+  normalizeNcertTxtConceptType,
+} from "@/lib/source-types";
 import type {
   BloomLevel,
   ConceptData,
@@ -1054,7 +1058,7 @@ function clearConceptCacheForChapter(_chapterId: number) {
 function hasRealSourceTextConcepts(concepts: ConceptData[]) {
   return concepts.some(
     (concept) =>
-      String(concept.type).toUpperCase() === "PDF_SOURCE_TEXT" &&
+      isSourceTextConcept(concept) &&
       concept.text.replace(/\s+/g, " ").trim().length >= 450,
   );
 }
@@ -1066,7 +1070,9 @@ function hasKnownBackedConcepts(concepts: ConceptData[]) {
   const sourceQuality = analyzeConceptSourceQuality(concepts);
   if (sourceQuality.quality !== "strong") return false;
 
-  return concepts.some((concept) => concept.source === "pdf");
+  return concepts.some(
+    (concept) => concept.source === "pdf" || concept.source === "ncert_txt",
+  );
 }
 
 async function getConceptsFromDB(chapterId: number) {
@@ -1103,20 +1109,25 @@ async function getConceptsFromDB(chapterId: number) {
       ORDER BY c.id ASC
     `;
 
-    return rows.map((row) => ({
-      text: row.text,
-      type: row.type,
-      bloomLevel: row.bloom_level,
-      hotsPotential: Boolean(row.hots_potential),
-      hotsPoential: Boolean(row.hots_potential),
-      topicName: row.topic_name ?? "General",
-      topicId: row.topic_id ? Number(row.topic_id) : undefined,
-      chapterId,
-      chapterName: row.chapter_name ?? undefined,
-      subject: row.subject_name ?? undefined,
-      classNum: row.class_num ? Number(row.class_num) : undefined,
-      source: normalizeStoredSource(row.source),
-    })) satisfies ConceptData[];
+    return rows.map((row) => {
+      const type = normalizeNcertTxtConceptType(row.type);
+      return {
+        text: row.text,
+        type,
+        bloomLevel: row.bloom_level,
+        hotsPotential: Boolean(row.hots_potential),
+        hotsPoential: Boolean(row.hots_potential),
+        topicName: row.topic_name ?? "General",
+        topicId: row.topic_id ? Number(row.topic_id) : undefined,
+        chapterId,
+        chapterName: row.chapter_name ?? undefined,
+        subject: row.subject_name ?? undefined,
+        classNum: row.class_num ? Number(row.class_num) : undefined,
+        source: isSourceTextConcept({ type, text: row.text } as ConceptData)
+          ? "ncert_txt"
+          : normalizeStoredSource(row.source),
+      };
+    }) satisfies ConceptData[];
   } catch (error) {
     console.warn(
       `Skipping stored concept lookup for chapter ${chapterId}: ${safeErrorMessage(error)}`,
@@ -1313,11 +1324,11 @@ async function buildStrictSourceErrorMessage(
   classNum: number,
 ) {
   const chapterName = await getChapterName(chapterId, selectedSubjects, classNum);
-  return `Chapter "${chapterName}" does not have usable NCERT PDF extraction or curriculum topic data yet. Add it to the curriculum data or upload the chapter PDF before generating a paper.`;
+  return `Chapter "${chapterName}" does not have usable NCERT_Books TXT extraction or curriculum topic data yet. Add extracted TXT for the chapter or upload the chapter PDF before generating a paper.`;
 }
 
 function normalizeStoredSource(value: unknown): ContentSource {
-  return value === "pdf" || value === "curriculum" || value === "demo"
+  return value === "pdf" || value === "ncert_txt" || value === "curriculum" || value === "demo"
     ? value
     : "unknown";
 }

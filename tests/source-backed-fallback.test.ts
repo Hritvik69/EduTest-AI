@@ -27,7 +27,7 @@ const config: PaperConfig = {
 const concepts: ConceptData[] = [
   {
     text: "The selected chapter shows how wit can solve a difficult social situation through careful language and quick reasoning.",
-    type: "PDF_SOURCE_TEXT",
+    type: "NCERT_TXT_SOURCE",
     bloomLevel: "UNDERSTAND",
     hotsPotential: true,
     subject: "English",
@@ -36,11 +36,11 @@ const concepts: ConceptData[] = [
     topicName: "Reading comprehension and inference",
     chapterId: 1,
     topicId: 10,
-    source: "pdf",
+    source: "ncert_txt",
   },
   {
     text: "Vocabulary and grammar in context help students infer tone, intention, and meaning from the selected chapter passage.",
-    type: "PDF_SOURCE_TEXT",
+    type: "NCERT_TXT_SOURCE",
     bloomLevel: "APPLY",
     hotsPotential: false,
     subject: "English",
@@ -49,7 +49,7 @@ const concepts: ConceptData[] = [
     topicName: "Vocabulary and grammar in context",
     chapterId: 1,
     topicId: 11,
-    source: "pdf",
+    source: "ncert_txt",
   },
 ];
 
