@@ -583,6 +583,122 @@ describe("generateQuestionsForSection batching", () => {
     expect(prompt).toContain("Do not copy source lines verbatim");
     expect(prompt).toContain("Question 99 asks about acid indicator property");
   });
+
+  it("uses reserve candidates to still return 16 valid questions after duplicate candidates", async () => {
+    const uniqueCandidates = Array.from({ length: 16 }, (_, index) =>
+      leveledMcq(index + 1, "EASY"),
+    );
+    mocks.generateJSON.mockResolvedValue({
+      questions: [
+        uniqueCandidates[0],
+        { ...uniqueCandidates[0] },
+        uniqueCandidates[1],
+        { ...uniqueCandidates[1] },
+        uniqueCandidates[2],
+        { ...uniqueCandidates[2] },
+        ...uniqueCandidates.slice(3),
+      ],
+    });
+    const { generateBlueprintQuestions } = await import("@/lib/generator");
+
+    const questions = await generateBlueprintQuestions(
+      {
+        totalQuestions: 16,
+        totalMarks: 16,
+        estimatedTime: 32,
+        competencyPercentage: 60,
+        sections: [
+          {
+            ...section,
+            difficulty: "EASY",
+            count: 16,
+            totalMarks: 16,
+          },
+        ],
+      },
+      "[Source: ncert_txt] [Chapter: 1] [Topic: Acids] Litmus and indicators identify acidic solutions from the chapter activity.",
+      {
+        ...config,
+        difficulty: "EASY",
+        totalQuestions: 16,
+        totalMarks: 16,
+        typeDistribution: { MCQ: 16 },
+      },
+      { availableTopics: ["Acids"] },
+    );
+
+    const promptConfig = extractPromptConfig(String(mocks.generateJSON.mock.calls[0][0]));
+
+    expect(questions).toHaveLength(16);
+    expect(new Set(questions.map((question) => question.text))).toHaveProperty(
+      "size",
+      16,
+    );
+    expect(promptConfig.total_questions).toBe(16);
+    expect(promptConfig.total_candidate_questions).toBeGreaterThan(16);
+    expect(promptConfig.sections?.[0]).toMatchObject({
+      required_count: 16,
+      candidate_count: 22,
+    });
+  });
+
+  it("includes repair feedback and TXT scope in replacement blueprint prompts", async () => {
+    mocks.generateJSON.mockResolvedValue({
+      questions: [mcq(21)],
+    });
+    const { generateBlueprintQuestions } = await import("@/lib/generator");
+
+    await generateBlueprintQuestions(
+      {
+        totalQuestions: 1,
+        totalMarks: 1,
+        estimatedTime: 2,
+        competencyPercentage: 60,
+        sections: [{ ...section, count: 1, totalMarks: 1 }],
+      },
+      "[Source: ncert_txt] [Chapter: 1] [Topic: Acids] The TXT excerpt explains indicator colour changes.",
+      {
+        ...config,
+        chapterIds: [1],
+        totalQuestions: 1,
+        typeDistribution: { MCQ: 1 },
+      },
+      {
+        availableTopics: ["Acids"],
+        candidateReserveCount: 3,
+        existingQuestions: [mcq(1)],
+        generationNonce: "unit-test-job:repair:2",
+        repairFeedback: {
+          attempt: 2,
+          rejectedQuestions: [
+            { type: "MCQ", reason: "DUPLICATE", question: mcq(1) },
+          ],
+          duplicateGroups: [[mcq(1).text, mcq(2).text]],
+        },
+      },
+    );
+
+    const prompt = String(mocks.generateJSON.mock.calls[0][0]);
+    const promptConfig = extractPromptConfig(prompt);
+
+    expect(promptConfig).toMatchObject({
+      class: 10,
+      source_kind: "NCERT_BOOKS_TXT",
+      chapters: { Science: [1] },
+      topics: ["Acids"],
+      total_questions: 1,
+      total_candidate_questions: 4,
+    });
+    expect(promptConfig.sections?.[0]).toMatchObject({
+      required_count: 1,
+      candidate_count: 4,
+    });
+    expect(prompt).toContain("Validator repair feedback (attempt 2)");
+    expect(prompt).toContain("DUPLICATE");
+    expect(prompt).toContain("Duplicate pairs rejected by validation");
+    expect(prompt).toContain("TXT excerpt explains indicator colour changes");
+    expect(prompt).toContain("different concept angle, scenario/example, answer path");
+  });
 });
 
 function mcq(index: number): GeneratedQuestion {
@@ -602,6 +718,35 @@ function mcq(index: number): GeneratedQuestion {
     bloomLevel: "APPLY",
     competencyLevel: 2,
     topic: "Acids",
+  };
+}
+
+function leveledMcq(
+  index: number,
+  difficulty: "EASY" | "MEDIUM",
+): GeneratedQuestion {
+  return {
+    ...mcq(index),
+    difficulty,
+    bloomLevel: difficulty === "EASY" ? "REMEMBER" : "APPLY",
+    reasoningSteps: difficulty === "EASY" ? 1 : 2,
+    difficultyConfidence: 0.9,
+    cognitiveComplexity:
+      difficulty === "EASY"
+        ? {
+            conceptIntegration: 1,
+            abstractionLevel: 1,
+            inferenceLevel: 1,
+            ambiguityLevel: 1,
+            cognitiveLoad: 1,
+          }
+        : {
+            conceptIntegration: 2,
+            abstractionLevel: 2,
+            inferenceLevel: 2,
+            ambiguityLevel: 2,
+            cognitiveLoad: 2,
+          },
   };
 }
 
@@ -660,16 +805,40 @@ function mcqWithMultipleCorrectAnswers(index: number): GeneratedQuestion {
 }
 
 function caseBasedQuestion(index = 1): GeneratedQuestion {
+  const variants = [
+    {
+      scenario:
+        "A student observes an indicator colour change and evaluates four possible explanations.",
+      mcq: "Which option best explains the observed indicator change?",
+      short: "Explain the reason for the indicator observation.",
+      answer: "The acid changes the indicator colour because it reacts with it.",
+    },
+    {
+      scenario:
+        "A learner compares two labelled solutions and uses a chapter property to classify one sample.",
+      mcq: "Which observation best supports the classification of the sample?",
+      short: "Explain how the property helps identify the sample.",
+      answer: "The sample is identified by applying the selected property from the chapter.",
+    },
+    {
+      scenario:
+        "A classroom activity records a before-and-after result and asks students to infer the cause.",
+      mcq: "Which inference follows from the recorded classroom result?",
+      short: "Explain the cause of the recorded change.",
+      answer: "The recorded change follows from the concept tested in the activity.",
+    },
+  ];
+  const variant = variants[(index - 1) % variants.length];
+
   return {
     text: `Read case ${index} and answer the assessment questions below.`,
     type: "CASE_BASED",
     difficulty: "MEDIUM",
     marks: 4,
-    scenario:
-      "A student observes an indicator change and evaluates four possible explanations.",
+    scenario: variant.scenario,
     subQuestions: [
       {
-        text: "Which option best explains the observed change?",
+        text: variant.mcq,
         type: "MCQ",
         options: {
           A: "Option A",
@@ -681,14 +850,14 @@ function caseBasedQuestion(index = 1): GeneratedQuestion {
         marks: 2,
       },
       {
-        text: "Explain the reason for the observation.",
+        text: variant.short,
         type: "SHORT",
-        correctAnswer: "The observation follows from applying the concept correctly.",
+        correctAnswer: variant.answer,
         marks: 2,
       },
     ],
     correctAnswer:
-      "(1) B; (2) The observation follows from applying the concept correctly.",
+      `(1) B; (2) ${variant.answer}`,
     explanation: "Each sub-question is marked independently.",
     bloomLevel: "APPLY",
     competencyLevel: 2,
@@ -758,6 +927,8 @@ function extractPromptConfig(prompt: string) {
     chapters?: unknown;
     topics?: unknown;
     total_questions?: unknown;
+    total_candidate_questions?: number;
+    sections?: Array<Record<string, unknown>>;
     [key: string]: unknown;
   };
 }

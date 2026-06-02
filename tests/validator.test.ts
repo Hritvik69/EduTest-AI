@@ -245,6 +245,41 @@ describe("validatePaper", () => {
     });
   });
 
+  it("rejects near-duplicate scenarios even when question stems differ", () => {
+    const sharedScenario =
+      "A student tests a solution with litmus and observes a clear colour change during the chapter activity.";
+    const result = validatePaperKeepingValidQuestions(
+      [
+        {
+          ...mcq(11),
+          text: "Which inference should the student make from the litmus activity?",
+          scenario: sharedScenario,
+          topic: "Acids",
+        },
+        {
+          ...mcq(12),
+          text: "What conclusion follows from the colour change in the activity?",
+          scenario: sharedScenario,
+          topic: "Acids",
+        },
+      ],
+      {
+        ...blueprintFor("MCQ", 1),
+        sections: [{ ...blueprintFor("MCQ", 1).sections[0], count: 2, totalMarks: 2 }],
+        totalQuestions: 2,
+        totalMarks: 2,
+      },
+      config,
+    );
+
+    expect(result.questions).toHaveLength(1);
+    expect(result.skipped).toEqual([
+      { type: "MCQ", position: 2, reason: "duplicate" },
+    ]);
+    expect(result.duplicateGroups).toHaveLength(1);
+    expect(result.rejectionReasons).toMatchObject({ DUPLICATE: 1 });
+  });
+
   it("skips malformed NCERT Books/PDF questions instead of failing the paper", () => {
     const blueprint = {
       ...blueprintFor("NCERT_FORMAT", 2),

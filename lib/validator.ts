@@ -9,7 +9,7 @@ import {
   normalizeQuestionDifficulty,
   validateFinalDifficultyDistribution,
 } from "@/lib/difficulty-protocol";
-import { isDuplicateQuestionText } from "@/lib/question-duplicates";
+import { isDuplicateQuestion } from "@/lib/question-duplicates";
 import {
   normalizeQuestionStructure,
   summarizeSubQuestionAnswers,
@@ -187,7 +187,7 @@ export function validatePaperKeepingValidQuestions(
       }
 
       const duplicateOf = cleaned.find((existing) =>
-        isDuplicateQuestionText(existing.text, difficultyChecked.question.text),
+        isDuplicateQuestion(existing, difficultyChecked.question),
       );
       if (duplicateOf) {
         skipped.push({
@@ -269,7 +269,7 @@ function removeDuplicates(questions: GeneratedQuestion[]) {
   return questions.map((question, index) => {
     const duplicate = questions
       .slice(0, index)
-      .some((existing) => isDuplicateQuestionText(existing.text, question.text));
+      .some((existing) => isDuplicateQuestion(existing, question));
 
     if (!duplicate) return question;
 

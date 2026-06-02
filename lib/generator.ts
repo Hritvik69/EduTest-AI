@@ -17,7 +17,12 @@ import {
   type GenerationArchitecturePlan,
 } from "@/lib/question-planning";
 import { normalizeQuestionStructure } from "@/lib/question-structure";
-import { partitionUniqueQuestionsByText } from "@/lib/question-duplicates";
+import {
+  partitionUniqueQuestionsByNovelty,
+  partitionUniqueQuestionsByText,
+  questionNoveltyFingerprint,
+  type DuplicateQuestionMatch,
+} from "@/lib/question-duplicates";
 import { isUsableGeneratedQuestion } from "@/lib/question-validation";
 import type {
   Blueprint,
@@ -51,9 +56,11 @@ interface GenerateSectionOptions {
 interface GenerateBlueprintOptions {
   allowPartial?: boolean;
   availableTopics?: string[];
+  candidateReserveCount?: number;
   existingQuestions?: GeneratedQuestion[];
   generationPlan?: GenerationArchitecturePlan;
   generationNonce?: string;
+  repairFeedback?: GenerationRepairFeedback;
   cooldownScope?: string;
   signal?: AbortSignal;
   onBatchComplete?: (details: {
@@ -62,6 +69,17 @@ interface GenerateBlueprintOptions {
     batch: number;
     batches: number;
   }) => void;
+}
+
+interface GenerationRepairFeedback {
+  attempt?: number;
+  rejectedQuestions?: Array<{
+    type?: string;
+    reason?: string;
+    question?: GeneratedQuestion;
+    text?: string;
+  }>;
+  duplicateGroups?: string[][];
 }
 
 interface DemoQuestionOptions {
@@ -155,6 +173,10 @@ export async function generateBlueprintQuestions(
   const sectionDifficultyTargets = blueprint.sections.map(
     (_section, index) => sectionDifficultyAllocation[index],
   );
+  const candidateSections = blueprint.sections.map((section) =>
+    sectionWithCandidateReserve(section, options.candidateReserveCount),
+  );
+  const candidateBlueprint = blueprintForCandidateSections(blueprint, candidateSections);
   const prompt = buildBlueprintPrompt(
     blueprint,
     conceptContext,
@@ -164,6 +186,8 @@ export async function generateBlueprintQuestions(
     options.generationPlan,
     sectionDifficultyTargets,
     options.generationNonce,
+    candidateSections,
+    options.repairFeedback,
   );
 
   const result = await generateJSON<
@@ -172,7 +196,10 @@ export async function generateBlueprintQuestions(
     systemInstruction: questionGenerationSystemInstruction,
     temperature: generationTemperature(config.difficulty),
     topP: 0.85,
-    maxOutputTokens: maxOutputTokensForBlueprint(blueprint, config.aiProvider ?? "AUTO"),
+    maxOutputTokens: maxOutputTokensForBlueprint(
+      candidateBlueprint,
+      config.aiProvider ?? "AUTO",
+    ),
     provider: config.aiProvider ?? "AUTO",
     task: options.generationNonce?.includes(":repair")
       ? "QUESTION_REPLACEMENT"
@@ -212,7 +239,7 @@ export async function generateBlueprintQuestions(
         config,
         availableTopics,
       );
-      const { unique, duplicates } = partitionUniqueQuestionsByText(normalized, [
+      const { unique, duplicates } = partitionUniqueQuestionsByNovelty(normalized, [
         ...(options.existingQuestions ?? []),
         ...acceptedQuestions,
       ]);
@@ -226,7 +253,7 @@ export async function generateBlueprintQuestions(
 
       if (duplicates.length) {
         lastError = new Error(
-          `Discarded ${duplicates.length} duplicate ${section.questionType} question(s).`,
+          `Discarded ${duplicates.length} duplicate ${section.questionType} question(s): ${duplicateReasons(duplicates)}.`,
         );
       }
       if (governed.rejected.length) {
@@ -257,6 +284,59 @@ export async function generateBlueprintQuestions(
   }
 
   return acceptedQuestions;
+}
+
+function sectionWithCandidateReserve(
+  section: BlueprintSection,
+  reserveOverride?: number,
+): BlueprintSection {
+  const reserve =
+    reserveOverride === undefined
+      ? defaultCandidateReserve(section)
+      : Math.max(0, Math.min(10, Math.floor(reserveOverride)));
+
+  return {
+    ...section,
+    count: section.count + reserve,
+    totalMarks: (section.count + reserve) * section.marksPerQuestion,
+  };
+}
+
+function defaultCandidateReserve(section: BlueprintSection) {
+  if (section.count <= 0) return 0;
+
+  const heavyQuestionTypes = new Set<QuestionType>([
+    "CASE_BASED",
+    "SOURCE_BASED",
+    "PARAGRAPH",
+    "LONG",
+    "DIAGRAM",
+  ]);
+  const maximumReserve = heavyQuestionTypes.has(section.questionType) ? 2 : 6;
+  const minimumReserve = section.count === 1 ? 1 : 2;
+
+  return Math.min(
+    maximumReserve,
+    Math.max(minimumReserve, Math.ceil(section.count * 0.35)),
+  );
+}
+
+function blueprintForCandidateSections(
+  blueprint: Blueprint,
+  sections: BlueprintSection[],
+): Blueprint {
+  return {
+    ...blueprint,
+    sections,
+    totalQuestions: sections.reduce((sum, section) => sum + section.count, 0),
+    totalMarks: sections.reduce((sum, section) => sum + section.totalMarks, 0),
+  };
+}
+
+function duplicateReasons(duplicates: Array<DuplicateQuestionMatch<GeneratedQuestion>>) {
+  return Array.from(new Set(duplicates.map((item) => item.reason)))
+    .slice(0, 3)
+    .join(", ");
 }
 
 async function generateQuestionBatches(
@@ -717,15 +797,23 @@ function buildBlueprintPrompt(
   generationPlan?: GenerationArchitecturePlan,
   sectionDifficultyTargets: DifficultyTargets[] = [],
   generationNonce?: string,
+  candidateSections: BlueprintSection[] = blueprint.sections,
+  repairFeedback?: GenerationRepairFeedback,
 ) {
   const subjectWorkflow = buildSubjectWorkflowPrompt(config);
   const topicList = availableTopics.length
     ? availableTopics.map((topic) => `- ${topic}`).join("\n")
     : "- Use only the selected NCERT_Books TXT chunks below";
+  const candidateTotal = candidateSections.reduce(
+    (sum, section) => sum + section.count,
+    0,
+  );
   const sections = blueprint.sections.map((section, index) => ({
     name: section.name,
     type: section.questionType,
     count: section.count,
+    required_count: section.count,
+    candidate_count: candidateSections[index]?.count ?? section.count,
     marks_per_question: section.marksPerQuestion,
     total_marks: section.totalMarks,
     difficulty_targets: normalizeDifficultyTargets(
@@ -742,6 +830,7 @@ ${existingQuestions
 Do not repeat, paraphrase, lightly reword, or reuse these stems, examples, option patterns, answer facts, source/case scenarios, or diagrams.
 `
     : "";
+  const repairFeedbackBlock = buildRepairFeedbackBlock(repairFeedback);
 
   return `Generate a complete source-grounded EduTest paper in one JSON response.
 
@@ -760,6 +849,7 @@ CONFIG_JSON:${JSON.stringify({
     ) ?? { [config.subject]: config.chapterIds },
     topics: availableTopics,
     total_questions: blueprint.totalQuestions,
+    total_candidate_questions: candidateTotal,
     total_marks: blueprint.totalMarks,
     duration_min: config.duration,
     exam_type: config.examType,
@@ -778,19 +868,65 @@ Selected source text chunks:
 ${conceptContext}
 
 ${antiRepeatRules}
+${repairFeedbackBlock}
 Rules:
-- Generate exactly ${blueprint.totalQuestions} new questions across all sections in CONFIG_JSON.sections.
+- Generate ${candidateTotal} candidate questions across all sections in CONFIG_JSON.sections.
+- For each section, return candidate_count candidates; only required_count unique valid questions from that section will be saved.
 - Use ONLY the selected NCERT_Books TXT chunks above in normal NCERT mode.
 - Do not use the whole PDF/book, neighboring chapters, previous/next chapters, contents pages, transcripts, or outside/web knowledge.
 - Do not copy source lines verbatim as question text; read the source and create fresh exam questions from its meaning.
 - Every returned question must include type, text, correctAnswer, explanation, topic, difficulty, bloomLevel, marks, reasoningSteps, difficultyConfidence, cognitiveComplexity{conceptIntegration,abstractionLevel,inferenceLevel,ambiguityLevel,cognitiveLoad}.
-- The type/count/marks must exactly match CONFIG_JSON.sections.
+- The type/marks must exactly match CONFIG_JSON.sections, and section candidate_count must be satisfied whenever possible.
 - Topic must exactly match one allowed topic.
 - Include proper structure for MCQ options, assertion/reason, match pairs, case/source/paragraph scenarios, subQuestions, diagrams, and keyPoints where the type requires them.
-- Avoid duplicates and avoid repeated concept angles.
+- Avoid duplicates and avoid repeated concept angles, answer paths, examples, option patterns, case/source scenarios, and sub-question structures.
 
 Return ONLY valid JSON:
 { "questions": [ ...all questions... ] }`;
+}
+
+function buildRepairFeedbackBlock(repairFeedback?: GenerationRepairFeedback) {
+  if (
+    !repairFeedback ||
+    (!repairFeedback.rejectedQuestions?.length &&
+      !repairFeedback.duplicateGroups?.length)
+  ) {
+    return "";
+  }
+
+  const rejected = repairFeedback.rejectedQuestions?.length
+    ? `
+Rejected questions from validation:
+${repairFeedback.rejectedQuestions
+  .slice(-12)
+  .map(
+    (item, index) => {
+      const fingerprint = item.question
+        ? questionNoveltyFingerprint(item.question)
+        : item.text ?? "";
+      return `${index + 1}. [${item.type ?? "UNKNOWN"}] ${item.reason ?? "REJECTED"} - ${fingerprint}`;
+    },
+  )
+  .join("\n")}`
+    : "";
+  const duplicateGroups = repairFeedback.duplicateGroups?.length
+    ? `
+Duplicate pairs rejected by validation:
+${repairFeedback.duplicateGroups
+  .slice(-8)
+  .map((group, index) => `${index + 1}. ${group.join(" || ")}`)
+  .join("\n")}`
+    : "";
+
+  return `
+Validator repair feedback${repairFeedback.attempt ? ` (attempt ${repairFeedback.attempt})` : ""}:
+${rejected}
+${duplicateGroups}
+Repair requirements:
+- Replace the rejected/duplicate items with genuinely new source-grounded questions.
+- Use a different concept angle, scenario/example, answer path, and option pattern from every rejected item.
+- Do not copy a failed question and change only wording.
+`;
 }
 
 function buildPromptConfig(
@@ -998,7 +1134,7 @@ function openRouterMaxOutputTokens() {
 }
 
 function generationJobIdFromNonce(nonce?: string) {
-  return nonce?.split(":replacement:")[0] || undefined;
+  return nonce?.split(":replacement:")[0]?.split(":repair:")[0] || undefined;
 }
 
 function isProviderQuotaOrAuthError(error: unknown) {

@@ -1251,60 +1251,66 @@ async function validateGeneratedPaperSkippingInvalid({
   );
   let stoppedForServerBudget = Boolean(partialFinalizationReason);
 
-  const missingSections = missingSectionsForBlueprint(validation.questions, blueprint);
-  const missingCount = missingSections.reduce(
-    (sum, section) => sum + section.count,
-    0,
-  );
+  for (let repairAttempt = 1; repairAttempt <= 2; repairAttempt += 1) {
+    const missingSections = missingSectionsForBlueprint(validation.questions, blueprint);
+    const missingCount = missingSections.reduce(
+      (sum, section) => sum + section.count,
+      0,
+    );
 
-  if (missingCount > 0) {
+    if (missingCount <= 0) break;
+
     if (shouldStopForFinalization(deadlineAt, validation.questions.length)) {
       stoppedForServerBudget = true;
-    } else {
-      const repairBlueprint = blueprintForSections(blueprint, missingSections);
-      send({
-        step: 6,
-        pct: 89,
-        progress: 89,
-        msg: `Phase 6 - Validation Engine: repairing ${missingCount} missing/invalid question${missingCount === 1 ? "" : "s"} in one TXT-grounded AI pass.`,
-      });
+      break;
+    }
 
-      let replacements: GeneratedQuestion[] = [];
-      try {
-        replacements = await generateBlueprintQuestions(
-          repairBlueprint,
-          conceptContext,
-          config,
-          {
-            availableTopics,
-            allowPartial: true,
-            existingQuestions: candidates,
-            generationPlan,
-            generationNonce: `${generationNonce}:repair`,
-            cooldownScope,
-            signal,
-            onBatchComplete: (details) => {
-              send({
-                step: 6,
-                pct: 90,
-                progress: 90,
-                msg: `Phase 6 - Validation Engine: repair ${details.generated}/${details.total} TXT-grounded AI questions ready...`,
-              });
-            },
+    const repairBlueprint = blueprintForSections(blueprint, missingSections);
+    send({
+      step: 6,
+      pct: 88 + repairAttempt,
+      progress: 88 + repairAttempt,
+      msg: `Phase 6 - Validation Engine: repair attempt ${repairAttempt}/2 for ${missingCount} missing/invalid TXT-grounded question${missingCount === 1 ? "" : "s"}.`,
+    });
+
+    let replacements: GeneratedQuestion[] = [];
+    try {
+      replacements = await generateBlueprintQuestions(
+        repairBlueprint,
+        conceptContext,
+        config,
+        {
+          availableTopics,
+          allowPartial: true,
+          candidateReserveCount: repairCandidateReserveCount(missingCount),
+          existingQuestions: candidates,
+          generationPlan,
+          generationNonce: `${generationNonce}:repair:${repairAttempt}`,
+          repairFeedback: repairFeedbackForValidation(validation, repairAttempt),
+          cooldownScope,
+          signal,
+          onBatchComplete: (details) => {
+            send({
+              step: 6,
+              pct: 90 + repairAttempt,
+              progress: 90 + repairAttempt,
+              msg: `Phase 6 - Validation Engine: repair attempt ${repairAttempt}/2 produced ${details.generated}/${details.total} valid TXT-grounded AI question${details.generated === 1 ? "" : "s"}...`,
+            });
           },
-        );
-      } catch (error) {
-        if (isServerTimeBudgetError(error) && validation.questions.length) {
-          stoppedForServerBudget = true;
-        } else {
-          throw error;
-        }
+        },
+      );
+    } catch (error) {
+      if (isServerTimeBudgetError(error) && validation.questions.length) {
+        stoppedForServerBudget = true;
+        break;
       }
 
-      if (replacements.length) {
-        candidates.push(...replacements);
-        validation = validatePaperKeepingValidOrEmpty(candidates, blueprint, config);
-      }
+      throw error;
+    }
+
+    if (replacements.length) {
+      candidates.push(...replacements);
+      validation = validatePaperKeepingValidOrEmpty(candidates, blueprint, config);
     }
   }
 
@@ -1400,6 +1406,26 @@ function validatePaperKeepingValidOrEmpty(
 
     throw error;
   }
+}
+
+function repairCandidateReserveCount(missingCount: number) {
+  return Math.min(8, Math.max(3, Math.ceil(missingCount * 1.25)));
+}
+
+function repairFeedbackForValidation(
+  validation: ReturnType<typeof validatePaperKeepingValidOrEmpty>,
+  attempt: number,
+) {
+  return {
+    attempt,
+    rejectedQuestions: validation.rejectedQuestions.slice(-12).map((item) => ({
+      type: item.type,
+      reason: item.reason,
+      question: item.question,
+      text: item.question?.text,
+    })),
+    duplicateGroups: validation.duplicateGroups.slice(-8),
+  };
 }
 
 function blueprintForSections(blueprint: Blueprint, sections: BlueprintSection[]): Blueprint {

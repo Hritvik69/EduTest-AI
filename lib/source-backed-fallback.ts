@@ -1,4 +1,4 @@
-import { isDuplicateQuestionText } from "@/lib/question-duplicates";
+import { isDuplicateQuestion } from "@/lib/question-duplicates";
 import { isSourceTextConcept } from "@/lib/source-types";
 import type {
   BloomLevel,
@@ -51,7 +51,7 @@ export function generateSourceBackedFallbackQuestions(
 
       if (
         [...existing, ...generated].some((item) =>
-          isDuplicateQuestionText(item.text, question.text),
+          isDuplicateQuestion(item, question),
         )
       ) {
         question.text = `${question.text} Use the ${variantFor(globalIndex)} perspective from ${concept.chapter}: ${trimToSentence(concept.summary, 90)}`;

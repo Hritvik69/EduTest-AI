@@ -63,10 +63,15 @@ describe("fresh question generation invariant", () => {
     expect(route).toMatch(/partialFinalizationReason/);
     expect(route).toMatch(/No local template paper was saved/);
     expect(route).toMatch(/generateBlueprintQuestions/);
+    expect(route).toMatch(/repairAttempt <= 2/);
+    expect(route).toMatch(/repairFeedbackForValidation/);
+    expect(route).toMatch(/candidateReserveCount/);
     expect(route).not.toMatch(/completeWithSourceBackedGenerationFallback/);
     expect(route).not.toMatch(/sourceBackedFallback/);
     expect(generator).toMatch(/NCERT_BOOKS_TXT/);
     expect(generator).toMatch(/Do not copy source lines verbatim/);
+    expect(generator).toMatch(/candidate_count/);
+    expect(generator).toMatch(/Validator repair feedback/);
   });
 
   it("validates admin chapter PDF mutations against class and subject scope", () => {
