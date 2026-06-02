@@ -27,6 +27,10 @@ export function assertSourceGroundingForGeneration(
   config: PaperConfig,
   concepts: ConceptData[],
 ) {
+  if (process.env.EDUTEST_BYPASS_GROUNDING === "true") {
+    return;
+  }
+
   if (!concepts.length) {
     throw new SourceGroundingError(
       "No usable source concepts were found. Select a chapter with content or upload a readable PDF.",

@@ -37,6 +37,25 @@ describe("source grounding preflight", () => {
     ).toThrow(/only outline topics/i);
   });
 
+  it("allows English literature generation if EDUTEST_BYPASS_GROUNDING is true", () => {
+    process.env.EDUTEST_BYPASS_GROUNDING = "true";
+    try {
+      expect(() =>
+        assertSourceGroundingForGeneration(baseConfig, [
+          concept(
+            "Poorvi: The Wit that Won Hearts",
+            'Class 8 English chapter "The Wit that Won Hearts" includes the NCERT/CBSE topic "Poorvi: The Wit that Won Hearts". Generate questions only from this selected chapter-topic pair.',
+            "curriculum",
+          ),
+          concept("Reading comprehension and inference", "Reading comprehension and inference", "curriculum"),
+          concept("Theme, character, tone, and literary devices", "Theme, character, tone, and literary devices", "curriculum"),
+        ]),
+      ).not.toThrow();
+    } finally {
+      delete process.env.EDUTEST_BYPASS_GROUNDING;
+    }
+  });
+
   it("blocks non-textual curriculum generation from outline-only topic labels", () => {
     const config: PaperConfig = {
       ...baseConfig,
