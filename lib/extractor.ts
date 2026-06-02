@@ -952,6 +952,16 @@ export async function getChapterContent(
   const concepts: ConceptData[] = [];
 
   for (const chapterId of chapterIds) {
+    const fromLocalNcertPdf = await getLocalNcertChapterConcepts(
+      classNum,
+      subjects,
+      chapterId,
+    );
+    if (fromLocalNcertPdf.length) {
+      concepts.push(...fromLocalNcertPdf);
+      continue;
+    }
+
     const fromDb = await getConceptsFromDB(chapterId);
     if (fromDb.length) {
       if (options.requireKnownSource) {
@@ -961,16 +971,6 @@ export async function getChapterContent(
         );
       }
       concepts.push(...fromDb);
-      continue;
-    }
-
-    const fromLocalNcertPdf = await getLocalNcertChapterConcepts(
-      classNum,
-      subjects,
-      chapterId,
-    );
-    if (fromLocalNcertPdf.length) {
-      concepts.push(...fromLocalNcertPdf);
       continue;
     }
 
