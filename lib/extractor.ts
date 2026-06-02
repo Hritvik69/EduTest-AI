@@ -1042,7 +1042,11 @@ async function getConceptsFromDB(chapterId: number) {
 
   try {
     const countRows = await sql`
-      SELECT COUNT(*)::int AS count FROM concepts WHERE chapter_id = ${chapterId}
+      SELECT COUNT(*)::int AS count
+      FROM concepts c
+      JOIN chapters ch ON ch.id = c.chapter_id
+      WHERE c.chapter_id = ${chapterId}
+      AND ch.name NOT ILIKE '%Full Book Source%'
     `;
     if (!Number(countRows[0].count)) return [];
 
@@ -1063,6 +1067,7 @@ async function getConceptsFromDB(chapterId: number) {
       LEFT JOIN chapters ch ON ch.id = c.chapter_id
       LEFT JOIN subjects s ON s.id = ch.subject_id
       WHERE c.chapter_id = ${chapterId}
+      AND ch.name NOT ILIKE '%Full Book Source%'
       ORDER BY c.id ASC
     `;
 
@@ -1104,6 +1109,7 @@ async function getCurriculumConceptsFromDB(chapterId: number) {
       JOIN subjects s ON s.id = c.subject_id
       LEFT JOIN topics t ON t.chapter_id = c.id
       WHERE c.id = ${chapterId}
+      AND c.name NOT ILIKE '%Full Book Source%'
       ORDER BY t.id ASC
     `;
 

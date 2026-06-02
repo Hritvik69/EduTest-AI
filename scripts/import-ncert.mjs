@@ -19,6 +19,7 @@ const dryRun = Boolean(args["dry-run"]);
 const textOnlyImport = Boolean(args["text-only"]);
 const writeTextFiles = Boolean(args["write-text"]);
 const deactivateExisting = Boolean(args["deactivate-existing"]);
+const allowFullBookFallback = Boolean(args["allow-full-book-fallback"]);
 const maxPdfs = positiveInt(args["max-pdfs"]);
 const maxChapters = positiveInt(args["max-chapters"]);
 const textLimit = positiveInt(args["text-limit"]) ?? 18000;
@@ -117,7 +118,7 @@ async function main() {
     }
 
     if (!parsed.chapters.length) {
-      if (!dryRun && parsed.pages?.length) {
+      if (!dryRun && allowFullBookFallback && parsed.pages?.length) {
         const reason =
           "No confident TOC chapter ranges detected; importing the whole book as one source-backed fallback chapter.";
         parsed.chapters = [

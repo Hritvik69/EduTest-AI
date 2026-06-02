@@ -21,6 +21,7 @@ export async function getImportedSubjectOptions(): Promise<SubjectOption[]> {
         WHERE c.subject_id = s.id
         AND c.active = TRUE
         AND c.import_source = 'ncert_books'
+        AND c.name NOT ILIKE '%Full Book Source%'
       )
       GROUP BY s.name, s.icon
       ORDER BY MIN(s.class_num), s.name
@@ -45,6 +46,7 @@ export async function hasImportedCurriculum() {
       FROM chapters
       WHERE active = TRUE
       AND import_source = 'ncert_books'
+      AND name NOT ILIKE '%Full Book Source%'
     `;
     return Number(rows[0]?.count ?? 0) > 0;
   } catch {
@@ -68,6 +70,7 @@ export async function getImportedChapters(
       AND s.active = TRUE
       AND c.active = TRUE
       AND c.import_source = 'ncert_books'
+      AND c.name NOT ILIKE '%Full Book Source%'
       ORDER BY COALESCE(c.source_pdf_path, ''), COALESCE(c.page_start, 0), c.id
     `;
 
