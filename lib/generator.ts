@@ -428,6 +428,8 @@ Rules:
       ? "Uploaded PDF concepts are the only source."
       : "Selected chapters/topics are the allowed scope."
   }
+- In normal NCERT_Books mode, the context has already been sliced to the selected class, subject, chapter, and topic. Never use the whole book/PDF, neighboring chapters, previous chapters, next chapters, contents pages, transcripts, or unrelated unit material.
+- If the user selected one chapter, every question must come only from that chapter. If the user selected a topic inside that chapter, every question must come only from that topic's scoped context.
 - No outside/web/generic filler; do not copy source lines verbatim.
 - Required fields on every item: text, correctAnswer, explanation, topic, difficulty, bloomLevel, reasoningSteps, difficultyConfidence, cognitiveComplexity{conceptIntegration,abstractionLevel,inferenceLevel,ambiguityLevel,cognitiveLoad}.
 - Topic must exactly match one allowed topic.
@@ -554,6 +556,7 @@ ${strictRules}
 Generate bookish NCERT exercise-style questions only from the selected chapter/topic/PDF context above.
 If uploaded PDF or extracted NCERT text is present, use that local context instead of inventing from the whole book.
 If no full textbook/PDF text is present, generate NCERT-style questions from the selected chapter and allowed topics only.
+Never use unselected chapters from the same NCERT book or PDF.
 Use familiar NCERT exercise patterns such as define, give reasons, differentiate, explain, examples, in-text concept checks, and back-exercise style.
 Maintain NCERT phrasing style and textbook conceptual flow without copying exact source text.
 Return JSON: [{ "text","correctAnswer","marks":1|2|3,"topic" }]`,

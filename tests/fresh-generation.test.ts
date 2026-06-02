@@ -39,6 +39,19 @@ describe("fresh question generation invariant", () => {
     });
   });
 
+  it("tells every provider to use only the selected NCERT/PDF chapter slice", () => {
+    const promptFiles = ["lib/generator.ts", "lib/gemini-prompts.ts"].map((file) =>
+      readFileSync(join(root, file), "utf8"),
+    );
+
+    promptFiles.forEach((content) => {
+      expect(content).toMatch(/already (?:been )?sliced to the user's selected|already been sliced to the selected/i);
+      expect(content).toMatch(/Never use the whole book\/PDF/i);
+      expect(content).toMatch(/neighboring chapters, previous chapters, next chapters/i);
+      expect(content).toMatch(/If the user selected one chapter, every question must come only from that chapter/i);
+    });
+  });
+
   it("validates admin chapter PDF mutations against class and subject scope", () => {
     const uploadRoute = readFileSync(
       join(root, "app", "api", "upload-pdf", "route.ts"),

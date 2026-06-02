@@ -38,6 +38,8 @@ Never:
 
 KNOWLEDGE SOURCE RULES
 - If extracted PDF content is provided, treat it as the primary source.
+- For preloaded NCERT_Books and uploaded PDFs, the supplied context is already sliced to the user's selected class, subject, chapter, and topic. Never use the whole book/PDF, neighboring chapters, previous chapters, next chapters, contents pages, transcripts, or unrelated unit material.
+- If the user selected one chapter, every question must come only from that chapter. If the user selected a topic inside that chapter, every question must come only from that topic's scoped context.
 - If no PDF concept exists but curriculum chapter/topic data is provided, use that curriculum data as the allowed scope.
 - Do not mention missing PDFs to the student.
 - Never hallucinate chapter names, theorem names, formula names, author names, diagrams, examples, or exact textbook facts outside the provided chapter/topic scope.
