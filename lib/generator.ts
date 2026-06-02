@@ -187,6 +187,7 @@ async function generateQuestionBatches(
           ? "QUESTION_REPLACEMENT"
           : "QUESTION_GENERATION",
         cooldownScope,
+        generationJobId: generationJobIdFromNonce(generationNonce),
         signal,
       });
       const raw = Array.isArray(result) ? result : result.questions;
@@ -751,6 +752,10 @@ function openRouterMaxOutputTokens() {
   }
 
   return 1100;
+}
+
+function generationJobIdFromNonce(nonce?: string) {
+  return nonce?.split(":replacement:")[0] || undefined;
 }
 
 function isProviderQuotaOrAuthError(error: unknown) {

@@ -552,13 +552,17 @@ function numericAnswersEquivalent(studentAnswer: string, expectedAnswer: string)
 }
 
 function replaceNumberWords(value: string) {
-  return value.replace(/\b(zero|one|two|three|four|five|six|seven|eight|nine|ten)\b/gi, (word) =>
-    String(numberWordMap[word.toLowerCase() as keyof typeof numberWordMap]),
+  return value.replace(
+    /\b(zero|nil|none|one|two|three|four|five|six|seven|eight|nine|ten)\b/gi,
+    (word) =>
+      String(numberWordMap[word.toLowerCase() as keyof typeof numberWordMap]),
   );
 }
 
 const numberWordMap = {
   zero: 0,
+  nil: 0,
+  none: 0,
   one: 1,
   two: 2,
   three: 3,

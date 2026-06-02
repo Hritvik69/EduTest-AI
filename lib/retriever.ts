@@ -2,6 +2,14 @@ import sql from "@/lib/db";
 import type { BloomLevel, ConceptData, Difficulty } from "@/types";
 
 type BloomTarget = Partial<Record<BloomLevel, number>>;
+export type SourceQuality = "strong" | "weak" | "outline_only" | "missing";
+
+export interface SourceQualitySummary {
+  quality: SourceQuality;
+  sourceTextChunks: number;
+  meaningfulChars: number;
+  outlineRatio: number;
+}
 
 export async function retrieveConcepts(
   conceptsOrChapterIds: ConceptData[] | number[],
@@ -11,8 +19,10 @@ export async function retrieveConcepts(
   const concepts: ConceptData[] = isConceptArray(conceptsOrChapterIds)
     ? conceptsOrChapterIds
     : await fetchConceptsByChapterIds(conceptsOrChapterIds);
+  const sourceTextConcepts = concepts.filter(isSourceTextConcept);
+  const contextConcepts = sourceTextConcepts.length ? sourceTextConcepts : concepts;
 
-  const weighted = [...concepts].sort((a, b) => {
+  const weighted = [...contextConcepts].sort((a, b) => {
     const sourceTextWeight = sourceTextScore(b) - sourceTextScore(a);
     if (sourceTextWeight) return sourceTextWeight;
 
@@ -35,6 +45,41 @@ export async function retrieveConcepts(
   });
 
   return limitContext(lines);
+}
+
+export function analyzeConceptSourceQuality(
+  concepts: ConceptData[],
+): SourceQualitySummary {
+  if (!concepts.length) {
+    return {
+      quality: "missing",
+      sourceTextChunks: 0,
+      meaningfulChars: 0,
+      outlineRatio: 1,
+    };
+  }
+
+  const sourceTextChunks = concepts.filter(isSourceTextConcept).length;
+  const uniqueTexts = Array.from(
+    new Set(concepts.map((concept) => normalizeText(concept.text)).filter(Boolean)),
+  );
+  const outlineCount = uniqueTexts.filter(isOutlineText).length;
+  const meaningfulChars = uniqueTexts.filter((text) => !isOutlineText(text)).join(" ").length;
+  const outlineRatio = uniqueTexts.length ? outlineCount / uniqueTexts.length : 1;
+
+  let quality: SourceQuality = "strong";
+  if (!sourceTextChunks && outlineRatio >= 0.7) {
+    quality = "outline_only";
+  } else if (meaningfulChars < 650 && sourceTextChunks < 2) {
+    quality = "weak";
+  }
+
+  return {
+    quality,
+    sourceTextChunks,
+    meaningfulChars,
+    outlineRatio,
+  };
 }
 
 function isConceptArray(input: ConceptData[] | number[]): input is ConceptData[] {
@@ -83,6 +128,24 @@ function sourceTextScore(concept: ConceptData) {
   if (concept.source === "pdf" && concept.text.length >= 900) return 2;
   if (concept.source === "pdf") return 1;
   return 0;
+}
+
+function isSourceTextConcept(concept: ConceptData) {
+  return String(concept.type).toUpperCase() === "PDF_SOURCE_TEXT";
+}
+
+function normalizeText(value: string) {
+  return value.replace(/\s+/g, " ").trim();
+}
+
+function isOutlineText(text: string) {
+  const wordCount = text.split(/\s+/).filter(Boolean).length;
+  return (
+    wordCount < 8 ||
+    /includes the NCERT\/CBSE topic|reading comprehension and inference|vocabulary and grammar in context|theme, character, tone, and literary devices|core concepts and definitions|textbook examples and exercises|problem solving and application|is an important concept from the uploaded PDF/i.test(
+      text,
+    )
+  );
 }
 
 function limitContext(lines: string[]) {

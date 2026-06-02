@@ -52,7 +52,7 @@ describe("fresh question generation invariant", () => {
     });
   });
 
-  it("finalizes valid real questions instead of failing all-or-nothing near deployment timeout", () => {
+  it("does not save local template questions when real generation times out", () => {
     const route = readFileSync(
       join(root, "app", "api", "generate-paper", "route.ts"),
       "utf8",
@@ -62,7 +62,8 @@ describe("fresh question generation invariant", () => {
     expect(route).toMatch(/partialFinalizationReason/);
     expect(route).toMatch(/server-time-budget/);
     expect(route).toMatch(/valid real AI question/);
-    expect(route).not.toMatch(/No template paper was saved/);
+    expect(route).toMatch(/No local template paper was saved/);
+    expect(route).toMatch(/if \(!allowDemoFallback\)/);
   });
 
   it("validates admin chapter PDF mutations against class and subject scope", () => {

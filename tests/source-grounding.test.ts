@@ -37,7 +37,7 @@ describe("source grounding preflight", () => {
     ).toThrow(/only outline topics/i);
   });
 
-  it("allows non-textual curriculum concepts to keep normal chapter generation working", () => {
+  it("blocks non-textual curriculum generation from outline-only topic labels", () => {
     const config: PaperConfig = {
       ...baseConfig,
       classNum: 9,
@@ -53,7 +53,7 @@ describe("source grounding preflight", () => {
           "curriculum",
         ),
       ]),
-    ).not.toThrow();
+    ).toThrow(/only outline topics|not enough real NCERT chapter text/i);
   });
 
   it("blocks PDF mode when no PDF concepts were actually loaded", () => {

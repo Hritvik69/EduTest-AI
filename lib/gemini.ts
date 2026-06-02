@@ -1,4 +1,8 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import {
+  classifyAIUsageError,
+  recordAIUsage,
+} from "@/lib/ai-usage-log";
 import type { AIProvider, AITask } from "@/types";
 
 type DirectAIProvider = Exclude<AIProvider, "AUTO">;
@@ -29,11 +33,11 @@ const taskFallbackOrders: Record<AITask, DirectAIProvider[]> = {
   ],
   QUESTION_GENERATION: [
     "GEMINI",
+    "GROK",
+    "DEEPSEEK",
     "MISTRAL",
     "CEREBRAS",
-    "DEEPSEEK",
     "OPENROUTER",
-    "GROK",
     "OPENAI",
   ],
   QUESTION_REPLACEMENT: [
@@ -41,18 +45,18 @@ const taskFallbackOrders: Record<AITask, DirectAIProvider[]> = {
     "MISTRAL",
     "GEMINI",
     "DEEPSEEK",
-    "OPENROUTER",
     "GROK",
+    "OPENROUTER",
     "OPENAI",
   ],
   ANSWER_EVALUATION: [
     "GEMINI",
     "MISTRAL",
-    "DEEPSEEK",
-    "OPENROUTER",
-    "GROK",
-    "OPENAI",
     "CEREBRAS",
+    "DEEPSEEK",
+    "GROK",
+    "OPENROUTER",
+    "OPENAI",
   ],
 };
 
@@ -84,6 +88,9 @@ interface GenerateJSONOptions {
   provider?: AIProvider;
   task?: AITask;
   cooldownScope?: string;
+  generationJobId?: string;
+  paperId?: number;
+  cacheHit?: boolean;
   signal?: AbortSignal;
 }
 
@@ -152,11 +159,41 @@ export async function generateJSON<T = unknown>(
   };
 
   for (const provider of providersToTry) {
+    const startedAt = Date.now();
     try {
       const result = await generateProviderJSON<T>(provider, prompt, options);
+      await recordAIUsage({
+        generationJobId: options.generationJobId,
+        paperId: options.paperId,
+        task: options.task,
+        provider,
+        model: modelNameForProvider(provider),
+        status: "success",
+        durationMs: Date.now() - startedAt,
+        promptChars: prompt.length,
+        responseChars: responseCharLength(result),
+        maxOutputTokens: options.maxOutputTokens,
+        cacheHit: options.cacheHit,
+      });
       clearProviderCooldown(provider, options.task, options.cooldownScope);
       return result;
     } catch (error) {
+      const failureMessage = error instanceof Error ? error.message : String(error);
+      await recordAIUsage({
+        generationJobId: options.generationJobId,
+        paperId: options.paperId,
+        task: options.task,
+        provider,
+        model: modelNameForProvider(provider),
+        status: "failure",
+        errorClass: classifyAIUsageError(failureMessage),
+        durationMs: Date.now() - startedAt,
+        promptChars: prompt.length,
+        responseChars: 0,
+        maxOutputTokens: options.maxOutputTokens,
+        cacheHit: options.cacheHit,
+      });
+
       if (isCallerAbort(error, options.signal)) {
         throw error instanceof Error ? error : new Error(String(error));
       }
@@ -1034,6 +1071,14 @@ function formatProviderFailures(
     );
 
   return `All configured AI providers failed. ${parts.join(" ")}`;
+}
+
+function responseCharLength(value: unknown) {
+  try {
+    return JSON.stringify(value)?.length ?? 0;
+  } catch {
+    return 0;
+  }
 }
 
 function providerHealthByTask() {

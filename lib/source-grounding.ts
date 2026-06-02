@@ -1,4 +1,5 @@
 import type { ConceptData, PaperConfig } from "@/types";
+import { analyzeConceptSourceQuality } from "@/lib/retriever";
 
 export class SourceGroundingError extends Error {
   code = "SOURCE_NOT_TEXT_BACKED";
@@ -37,9 +38,17 @@ export function assertSourceGroundingForGeneration(
     return;
   }
 
-  if (isTextualSubject(config, concepts) && isOutlineOnlySource(concepts)) {
+  const sourceQuality = analyzeConceptSourceQuality(concepts);
+  const textualSubject = isTextualSubject(config, concepts);
+  if (
+    sourceQuality.quality === "outline_only" ||
+    (textualSubject &&
+      (sourceQuality.quality === "weak" || isOutlineOnlySource(concepts)))
+  ) {
     throw new SourceGroundingError(
-      "This English literature chapter has only outline topics, not the real chapter/story text. Upload the chapter PDF in PDF-EDU-TEST mode or import real extracted NCERT text before generating; the app will not invent story incidents from topic labels.",
+      textualSubject
+        ? "This English literature chapter has only outline topics, not the real chapter/story text. Upload the chapter PDF in PDF-EDU-TEST mode or import real extracted NCERT text before generating; the app will not invent story incidents from topic labels."
+        : "The selected chapter has only outline topics, not enough real NCERT chapter text. Import extracted NCERT text or upload the chapter PDF before generating; the app will not invent questions from weak topic labels.",
     );
   }
 }

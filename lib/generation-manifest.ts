@@ -7,6 +7,7 @@ import type {
   GenerationManifest,
   PaperConfig,
 } from "@/types";
+import { analyzeConceptSourceQuality } from "@/lib/retriever";
 
 export function buildGenerationManifest({
   config,
@@ -19,6 +20,7 @@ export function buildGenerationManifest({
   generationJobId,
   idempotencyKey,
   taskProviderOrder,
+  usageSummary,
 }: {
   config: PaperConfig;
   blueprint: Blueprint;
@@ -30,8 +32,10 @@ export function buildGenerationManifest({
   generationJobId?: string;
   idempotencyKey?: string;
   taskProviderOrder: Partial<Record<AITask, AIProvider[]>>;
+  usageSummary?: GenerationManifest["ai"]["usageSummary"];
 }): GenerationManifest {
   const conceptSource = dominantConceptSource(config, concepts);
+  const sourceQuality = analyzeConceptSourceQuality(concepts);
   const warningTexts = normalizedValidationWarnings(validationWarnings);
   const sourceWarnings = sourceWarningTexts(config, conceptSource);
 
@@ -57,11 +61,14 @@ export function buildGenerationManifest({
       topicNames: unique(
         concepts.map((concept) => concept.topicName).filter(Boolean),
       ).slice(0, 16),
+      sourceQuality: sourceQuality.quality,
+      sourceTextChunks: sourceQuality.sourceTextChunks,
       extractionMethod: config.pdfSource?.extractionMethod,
     },
     ai: {
       selectedProvider: config.aiProvider ?? "AUTO",
       taskProviderOrder,
+      usageSummary,
     },
     validation: {
       targetQuestions: blueprint.totalQuestions,

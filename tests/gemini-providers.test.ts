@@ -22,6 +22,9 @@ describe("multi-provider JSON generation", () => {
     delete (globalThis as typeof globalThis & {
       __edutestProviderCooldowns?: unknown;
     }).__edutestProviderCooldowns;
+    delete (globalThis as typeof globalThis & {
+      __edutestAIUsageLogs?: unknown;
+    }).__edutestAIUsageLogs;
   });
 
   afterEach(() => {
@@ -231,10 +234,33 @@ describe("multi-provider JSON generation", () => {
 
     expect(result.fallback).toBe("cerebras");
     expect(fetchMock).toHaveBeenCalledTimes(2);
-    expect(fetchMock.mock.calls[0][0]).toBe("https://api.mistral.ai/v1/chat/completions");
-    expect(fetchMock.mock.calls[1][0]).toBe(
-      "https://api.cerebras.ai/v1/chat/completions",
-    );
+    expect(fetchMock.mock.calls[0][0]).toBe("https://api.deepseek.com/chat/completions");
+    expect(fetchMock.mock.calls[1][0]).toBe("https://api.mistral.ai/v1/chat/completions");
+  });
+
+  it("records safe AI usage metadata without storing prompts", async () => {
+    process.env.MISTRAL_API_KEY = "mistral-test-key";
+    const fetchMock = mockJSONFetch({ ok: true });
+    vi.stubGlobal("fetch", fetchMock);
+    const { generateJSON } = await import("@/lib/gemini");
+    const { summarizeAIUsage } = await import("@/lib/ai-usage-log");
+
+    await generateJSON<{ ok: boolean }>("Return private prompt text", {
+      provider: "MISTRAL",
+      task: "QUESTION_GENERATION",
+      generationJobId: "job-usage-test",
+      maxOutputTokens: 500,
+    });
+
+    const summary = summarizeAIUsage("job-usage-test");
+    expect(summary).toMatchObject({
+      totalCalls: 1,
+      successCalls: 1,
+      failureCalls: 0,
+      providersUsed: ["MISTRAL"],
+      tasksUsed: ["QUESTION_GENERATION"],
+    });
+    expect(JSON.stringify(summary)).not.toContain("private prompt text");
   });
 
   it("keeps provider cooldowns scoped to the failing task", async () => {

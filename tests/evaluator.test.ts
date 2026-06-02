@@ -181,7 +181,7 @@ describe("evaluateAnswers", () => {
     const results = await evaluateAnswers(questions, {
       "12": "True Solutions",
       "13": "150m",
-      "14": "0",
+      "14": "nil",
     });
 
     expect(results.map((result) => result.marksAwarded)).toEqual([1, 1, 1]);

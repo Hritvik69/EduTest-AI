@@ -229,6 +229,20 @@ describe("validatePaper", () => {
     expect(result.blueprint.totalMarks).toBe(2);
     expect(result.config.totalQuestions).toBe(2);
     expect(result.config.totalMarks).toBe(2);
+    expect(result.validQuestions).toHaveLength(2);
+    expect(result.rejectedQuestions.map((item) => item.reason)).toEqual([
+      "WRONG_FORMAT",
+      "DUPLICATE",
+    ]);
+    expect(result.rejectionReasons).toMatchObject({
+      WRONG_FORMAT: 1,
+      DUPLICATE: 1,
+    });
+    expect(result.duplicateGroups).toHaveLength(1);
+    expect(result.missingSections[0]).toMatchObject({
+      questionType: "MCQ",
+      count: 2,
+    });
   });
 
   it("skips malformed NCERT Books/PDF questions instead of failing the paper", () => {

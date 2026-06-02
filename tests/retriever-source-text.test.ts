@@ -7,7 +7,7 @@ vi.mock("@/lib/db", () => ({
 }));
 
 describe("retriever source-text priority", () => {
-  it("places real PDF source text before outline topics in generation context", async () => {
+  it("uses real source text instead of outline topics in generation context", async () => {
     const outlineConcept = concept({
       text: "Reading comprehension and inference",
       type: "CURRICULUM_TOPIC",
@@ -31,9 +31,7 @@ describe("retriever source-text priority", () => {
     );
 
     expect(context.indexOf("King Krishnadeva Raya")).toBeGreaterThanOrEqual(0);
-    expect(context.indexOf("King Krishnadeva Raya")).toBeLessThan(
-      context.indexOf("Reading comprehension and inference"),
-    );
+    expect(context).not.toContain("Reading comprehension and inference");
   });
 });
 

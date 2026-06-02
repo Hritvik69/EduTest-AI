@@ -17,6 +17,7 @@ import {
 } from "@/lib/difficulty-protocol";
 import { assertDemoModeAllowed, demoMetadata } from "@/lib/demo-mode";
 import { compactAiProviderFailureMessage } from "@/lib/error-classification";
+import { summarizeAIUsage } from "@/lib/ai-usage-log";
 import { getChapterContent } from "@/lib/extractor";
 import { buildGenerationManifest } from "@/lib/generation-manifest";
 import { getConfiguredProviders } from "@/lib/gemini";
@@ -505,6 +506,7 @@ export async function POST(request: NextRequest) {
           generationJobId,
           idempotencyKey,
           taskProviderOrder: configuredTaskProviderOrder(),
+          usageSummary: summarizeAIUsage(generationJobId),
         });
         await setPaperGenerationManifest(paperId, manifest, effectiveConfig);
         const readyPaper = buildReadyPaperPayload({
@@ -736,6 +738,7 @@ async function completeWithLocalGenerationFallback({
     generationJobId,
     idempotencyKey,
     taskProviderOrder: configuredTaskProviderOrder(),
+    usageSummary: summarizeAIUsage(generationJobId),
   });
   await setPaperGenerationManifest(paperId, manifest, validation.config);
   const readyPaper = buildReadyPaperPayload({
@@ -1063,7 +1066,9 @@ function generationErrorMessage(error: unknown) {
 function shouldUseLocalGenerationFallback(isExplicitDemoMode: boolean, error: unknown) {
   const configured = process.env.EDUTEST_LOCAL_GENERATION_FALLBACK;
   if (configured === "false") return false;
-  if (configured === "true") return true;
+  if (configured === "true") {
+    return isExplicitDemoMode || process.env.NODE_ENV !== "production";
+  }
   if (!isExplicitDemoMode) return false;
 
   const code = generationErrorCode(error);
@@ -1313,6 +1318,12 @@ async function validateGeneratedPaperSkippingInvalid({
       const reason =
         partialFinalizationReason ??
         "Generation reached the deployment time limit during replacement.";
+      if (!allowDemoFallback) {
+        throw new Error(
+          `${reason} Generated ${readyCount}/${targetQuestionCount} valid real AI question${readyCount === 1 ? "" : "s"}. No local template paper was saved. Try Retry Auto, choose a faster configured provider, lower the question count, or use fewer question types.`,
+        );
+      }
+
       const localFill = generateSourceBackedFallbackQuestions(
         missingSectionsForBlueprint(validation.questions, blueprint),
         scopedConcepts,
@@ -1389,6 +1400,7 @@ function validatePaperKeepingValidOrEmpty(
     ) {
       return {
         questions: [],
+        validQuestions: [],
         blueprint: {
           ...blueprint,
           sections: [],
@@ -1407,6 +1419,16 @@ function validatePaperKeepingValidOrEmpty(
           position: index + 1,
           reason: "invalid-structure",
         })),
+        rejectedQuestions: questions.map((question, index) => ({
+          question,
+          type: question.type,
+          position: index + 1,
+          reason: "WRONG_FORMAT" as const,
+        })),
+        missingSections: blueprint.sections,
+        rejectionReasons: { WRONG_FORMAT: questions.length },
+        duplicateGroups: [],
+        sourceMismatchWarnings: [],
       };
     }
 

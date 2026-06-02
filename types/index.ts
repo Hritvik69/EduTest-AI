@@ -66,11 +66,25 @@ export interface GenerationManifest {
     conceptSource: ContentSource;
     conceptCount: number;
     topicNames: string[];
+    sourceQuality?: "strong" | "weak" | "outline_only" | "missing";
+    sourceTextChunks?: number;
     extractionMethod?: "AI" | "LOCAL_FALLBACK" | "CACHED_AI" | "CACHED_LOCAL_FALLBACK";
   };
   ai: {
     selectedProvider: AIProvider;
     taskProviderOrder: Partial<Record<AITask, AIProvider[]>>;
+    usageSummary?: {
+      totalCalls: number;
+      successCalls: number;
+      failureCalls: number;
+      providersUsed: AIProvider[];
+      tasksUsed: AITask[];
+      totalDurationMs: number;
+      estimatedInputTokens: number;
+      estimatedOutputTokens: number;
+      cacheHits: number;
+      errorClasses: string[];
+    };
   };
   validation: {
     targetQuestions: number;

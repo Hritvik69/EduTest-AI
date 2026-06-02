@@ -16,6 +16,32 @@ import {
 } from "@/lib/question-structure";
 import { isUsableGeneratedQuestion } from "@/lib/question-validation";
 
+export type QuestionValidationRejectionReason =
+  | "BAD_JSON"
+  | "WRONG_FORMAT"
+  | "WRONG_MARKS"
+  | "DUPLICATE"
+  | "TOPIC_MISMATCH"
+  | "SOURCE_UNGROUNDED"
+  | "DIFFICULTY_INCOMPATIBLE"
+  | "AMBIGUOUS_ANSWER";
+
+export interface QuestionValidationRejection {
+  question: GeneratedQuestion;
+  type: QuestionType;
+  position: number;
+  reason: QuestionValidationRejectionReason;
+}
+
+export interface QuestionValidationOutcome {
+  validQuestions: GeneratedQuestion[];
+  rejectedQuestions: QuestionValidationRejection[];
+  missingSections: BlueprintSection[];
+  rejectionReasons: Partial<Record<QuestionValidationRejectionReason, number>>;
+  duplicateGroups: string[][];
+  sourceMismatchWarnings: string[];
+}
+
 export async function validatePaper(
   questions: GeneratedQuestion[],
   blueprint: Blueprint,
@@ -75,6 +101,8 @@ export function validatePaperKeepingValidQuestions(
 ) {
   const cleaned: GeneratedQuestion[] = [];
   const skipped: Array<{ type: QuestionType; position: number; reason: string }> = [];
+  const rejectedQuestions: QuestionValidationRejection[] = [];
+  const duplicateGroups: string[][] = [];
 
   for (const section of blueprint.sections) {
     const sectionQuestions = questions.filter(
@@ -91,6 +119,21 @@ export function validatePaperKeepingValidQuestions(
       let normalizedQuestion: GeneratedQuestion;
       let difficultyChecked: ReturnType<typeof normalizeQuestionDifficulty>;
 
+      if (hasWrongMarks(question, section)) {
+        skipped.push({
+          type: section.questionType,
+          position: index + 1,
+          reason: "wrong-marks",
+        });
+        rejectedQuestions.push({
+          question,
+          type: section.questionType,
+          position: index + 1,
+          reason: "WRONG_MARKS",
+        });
+        continue;
+      }
+
       try {
         normalizedQuestion = normalizeQuestion(question, section);
         difficultyChecked = normalizeQuestionDifficulty(
@@ -104,6 +147,12 @@ export function validatePaperKeepingValidQuestions(
           position: index + 1,
           reason: "invalid-structure",
         });
+        rejectedQuestions.push({
+          question,
+          type: section.questionType,
+          position: index + 1,
+          reason: "WRONG_FORMAT",
+        });
         continue;
       }
 
@@ -112,6 +161,12 @@ export function validatePaperKeepingValidQuestions(
           type: section.questionType,
           position: index + 1,
           reason: "invalid-structure",
+        });
+        rejectedQuestions.push({
+          question,
+          type: section.questionType,
+          position: index + 1,
+          reason: "WRONG_FORMAT",
         });
         continue;
       }
@@ -122,18 +177,30 @@ export function validatePaperKeepingValidQuestions(
           position: index + 1,
           reason: "difficulty-governance",
         });
+        rejectedQuestions.push({
+          question,
+          type: section.questionType,
+          position: index + 1,
+          reason: "DIFFICULTY_INCOMPATIBLE",
+        });
         continue;
       }
 
-      if (
-        cleaned.some((existing) =>
-          isDuplicateQuestionText(existing.text, difficultyChecked.question.text),
-        )
-      ) {
+      const duplicateOf = cleaned.find((existing) =>
+        isDuplicateQuestionText(existing.text, difficultyChecked.question.text),
+      );
+      if (duplicateOf) {
         skipped.push({
           type: section.questionType,
           position: index + 1,
           reason: "duplicate",
+        });
+        duplicateGroups.push([duplicateOf.text, difficultyChecked.question.text]);
+        rejectedQuestions.push({
+          question,
+          type: section.questionType,
+          position: index + 1,
+          reason: "DUPLICATE",
         });
         continue;
       }
@@ -153,12 +220,20 @@ export function validatePaperKeepingValidQuestions(
     orderNum: index + 1,
   }));
   const finalBlueprint = blueprintForValidatedQuestions(blueprint, finalQuestions);
+  const missingSections = missingSectionsForValidation(finalQuestions, blueprint);
+  const rejectionReasons = rejectionReasonCounts(rejectedQuestions);
 
   return {
     questions: finalQuestions,
+    validQuestions: finalQuestions,
     blueprint: finalBlueprint,
     config: configForValidatedQuestions(config, finalBlueprint),
     skipped,
+    rejectedQuestions,
+    missingSections,
+    rejectionReasons,
+    duplicateGroups,
+    sourceMismatchWarnings: [],
   };
 }
 
@@ -183,6 +258,11 @@ function normalizeQuestion(question: GeneratedQuestion, section: BlueprintSectio
       defaultExplanation(normalizedQuestion, correctAnswer) ||
       "The answer follows the selected NCERT concept.",
   };
+}
+
+function hasWrongMarks(question: GeneratedQuestion, section: BlueprintSection) {
+  if (!Number.isFinite(Number(question.marks))) return false;
+  return Number(question.marks) !== section.marksPerQuestion;
 }
 
 function removeDuplicates(questions: GeneratedQuestion[]) {
@@ -260,4 +340,34 @@ function configForValidatedQuestions(
     totalQuestions: blueprint.totalQuestions,
     totalMarks: blueprint.totalMarks,
   };
+}
+
+function missingSectionsForValidation(
+  questions: GeneratedQuestion[],
+  blueprint: Blueprint,
+) {
+  return blueprint.sections
+    .map((section) => {
+      const count = questions.filter(
+        (question) => question.type === section.questionType,
+      ).length;
+      const missing = Math.max(0, section.count - count);
+      if (!missing) return null;
+      return {
+        ...section,
+        count: missing,
+        totalMarks: missing * section.marksPerQuestion,
+      };
+    })
+    .filter((section): section is BlueprintSection => section !== null);
+}
+
+function rejectionReasonCounts(rejections: QuestionValidationRejection[]) {
+  return rejections.reduce<Partial<Record<QuestionValidationRejectionReason, number>>>(
+    (counts, rejection) => {
+      counts[rejection.reason] = (counts[rejection.reason] ?? 0) + 1;
+      return counts;
+    },
+    {},
+  );
 }
