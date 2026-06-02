@@ -4,7 +4,6 @@ const nextConfig = {
     root: process.cwd(),
   },
   outputFileTracingIncludes: {
-    "/*": ["./NCERT_Books/**/_extracted_text/**/*.txt"],
     "/api/generate-paper": ["./NCERT_Books/**/_extracted_text/**/*.txt"],
   },
   serverExternalPackages: ["pdf-parse", "pdfjs-dist"],
