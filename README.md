@@ -70,6 +70,24 @@ database/20260531_ncert_books_import.sql
 database/seed.sql
 ```
 
+For real NCERT_Books-backed normal mode, import the local `NCERT_Books`
+folder into Neon after migrations. Text-only import uses the PDF text itself
+and does not spend AI tokens:
+
+```bash
+npm run import:ncert -- --text-only --class=8 --subject=English --chapter="The Wit that Won Hearts"
+```
+
+For a full import, omit the class/subject/chapter filters:
+
+```bash
+npm run import:ncert -- --text-only
+```
+
+Vercel cannot read your local ignored `NCERT_Books` folder at runtime, so
+production uses the imported Neon concepts. Local development uses Neon first,
+then the local `NCERT_Books` folder, then static fallback data.
+
 ## Supabase Setup
 
 Create a storage bucket:

@@ -16,9 +16,13 @@ const reportPath = args["report-path"]
   ? path.resolve(projectRoot, String(args["report-path"]))
   : path.join(artifactsDir, "ncert-import-report.json");
 const dryRun = Boolean(args["dry-run"]);
+const textOnlyImport = Boolean(args["text-only"]);
 const maxPdfs = positiveInt(args["max-pdfs"]);
 const maxChapters = positiveInt(args["max-chapters"]);
 const textLimit = positiveInt(args["text-limit"]) ?? 18000;
+const classFilter = positiveInt(args.class);
+const subjectFilter = typeof args.subject === "string" ? normalizeSubjectName(args.subject) : "";
+const chapterFilter = typeof args.chapter === "string" ? args.chapter.toLowerCase().trim() : "";
 
 loadEnvFile(path.join(projectRoot, ".env.local"));
 
@@ -57,12 +61,15 @@ async function main() {
 
   const scanned = scanPdfs();
   const pdfs = maxPdfs ? scanned.pdfs.slice(0, maxPdfs) : scanned.pdfs;
+  const filteredPdfs = pdfs.filter((pdf) => matchesImportFilters(pdf));
   const subjectBookCounts = countBooksBySubject(scanned.pdfs);
   const report = {
     mode: dryRun ? "dry-run" : "import",
     generatedAt: new Date().toISOString(),
     root: ncertRoot,
     scannedPdfCount: scanned.pdfs.length,
+    filteredPdfCount: filteredPdfs.length,
+    extractionMode: textOnlyImport ? "text-only" : "ai-concepts",
     importedPdfCount: 0,
     chapterCount: 0,
     conceptCount: 0,
@@ -80,7 +87,7 @@ async function main() {
 
   let importedChapters = 0;
 
-  for (const pdf of pdfs) {
+  for (const pdf of filteredPdfs) {
     if (maxChapters && importedChapters >= maxChapters) break;
 
     const book = {
@@ -111,9 +118,14 @@ async function main() {
     }
 
     const useBookPrefix = (subjectBookCounts.get(subjectKey(pdf)) ?? 0) > 1;
-    const selectedChapters = maxChapters
-      ? parsed.chapters.slice(0, Math.max(0, maxChapters - importedChapters))
+    const chapterFiltered = chapterFilter
+      ? parsed.chapters.filter((chapter) =>
+          chapter.title.toLowerCase().includes(chapterFilter),
+        )
       : parsed.chapters;
+    const selectedChapters = maxChapters
+      ? chapterFiltered.slice(0, Math.max(0, maxChapters - importedChapters))
+      : chapterFiltered;
 
     let subjectId;
     if (sql) {
@@ -149,12 +161,14 @@ async function main() {
         continue;
       }
 
-      const topics = await extractConceptsWithAI(
-        chapterText,
-        chapterName,
-        pdf.subjectDisplay,
-        pdf.classNum,
-      );
+      const topics = textOnlyImport
+        ? extractConceptsFromTextOnly(chapterText, chapterName, pdf.subjectDisplay)
+        : await extractConceptsWithAI(
+            chapterText,
+            chapterName,
+            pdf.subjectDisplay,
+            pdf.classNum,
+          );
       const chapterId = await upsertChapter(sql, {
         subjectId,
         chapterName,
@@ -176,9 +190,10 @@ async function main() {
 
   console.log(`Mode: ${report.mode}`);
   console.log(`PDFs scanned: ${report.scannedPdfCount}`);
-  console.log(`PDFs processed: ${pdfs.length}`);
+  console.log(`PDFs processed: ${filteredPdfs.length}`);
   console.log(`Chapters detected: ${report.chapterCount}`);
   console.log(`Concepts imported: ${report.conceptCount}`);
+  console.log(`Extraction mode: ${report.extractionMode}`);
   console.log(`Report: ${reportPath}`);
 
   if (report.missingCoverage.length) {
@@ -273,6 +288,17 @@ function countBooksBySubject(pdfs) {
 
 function subjectKey(pdf) {
   return `${pdf.classNum}:${pdf.subjectDisplay}`;
+}
+
+function matchesImportFilters(pdf) {
+  if (classFilter && pdf.classNum !== classFilter) return false;
+  if (
+    subjectFilter &&
+    pdf.subjectDisplay.toLowerCase() !== subjectFilter.toLowerCase()
+  ) {
+    return false;
+  }
+  return true;
 }
 
 function normalizeSubjectName(folderName) {
@@ -754,6 +780,84 @@ bloom_level must be REMEMBER | UNDERSTAND | APPLY | ANALYZE | EVALUATE | CREATE`
   return normalizeTopics(result, chapterName);
 }
 
+function extractConceptsFromTextOnly(cleanedText, chapterName, subject) {
+  const sentences = uniqueText(
+    cleanedText
+      .split(/(?<=[.!?।])\s+/)
+      .map(cleanText)
+      .filter((sentence) => sentence.length >= 55),
+  ).slice(0, 36);
+
+  if (!sentences.length) {
+    return normalizeTopics(
+      {
+        topics: [
+          {
+            name: chapterName,
+            importance: "HIGH",
+            concepts: [
+              {
+                text: cleanedText.slice(0, 5000),
+                type: "FACT",
+                bloom_level: "UNDERSTAND",
+                hots_potential: false,
+              },
+            ],
+          },
+        ],
+      },
+      chapterName,
+    );
+  }
+
+  const topicCount = Math.min(8, Math.max(3, Math.ceil(sentences.length / 4)));
+  const chunkSize = Math.max(2, Math.ceil(sentences.length / topicCount));
+  const topics = [];
+
+  for (let index = 0; index < topicCount; index += 1) {
+    const chunk = sentences.slice(index * chunkSize, index * chunkSize + chunkSize);
+    if (!chunk.length) continue;
+    const topicName = textOnlyTopicName(chapterName, subject, index);
+    topics.push({
+      name: topicName,
+      importance: index < 2 ? "HIGH" : "MEDIUM",
+      concepts: chunk.map((sentence, sentenceIndex) => ({
+        text: sentence.slice(0, 4000),
+        type: textOnlyConceptType(subject, sentence),
+        bloom_level: sentenceIndex === 0 ? "UNDERSTAND" : "APPLY",
+        hots_potential: index >= 2,
+      })),
+    });
+  }
+
+  return normalizeTopics({ topics }, chapterName);
+}
+
+function textOnlyTopicName(chapterName, subject, index) {
+  if (/English|Hindi/i.test(subject)) {
+    if (index === 0) return chapterName;
+    if (index === 1) return "Reading comprehension and inference";
+    if (index === 2) return "Theme, character, tone, and literary devices";
+    return "Vocabulary and grammar in context";
+  }
+
+  if (index === 0) return chapterName;
+  if (index === 1) return "Core concepts and definitions";
+  if (index === 2) return "Textbook examples and exercises";
+  return "Problem solving and application";
+}
+
+function textOnlyConceptType(subject, sentence) {
+  if (/formula|equation|calculate|solve|=|π|theta|sin|cos|tan/i.test(sentence)) {
+    return "FORMULA";
+  }
+  if (/experiment|activity|observe|practical|apparatus/i.test(sentence)) {
+    return "EXPERIMENT";
+  }
+  if (/English|Hindi/i.test(subject)) return "EXAMPLE";
+  return "FACT";
+}
+
 async function generateJSON(prompt) {
   const providers = providerOrder();
   if (!providers.length) {
@@ -928,6 +1032,19 @@ function normalizeTopics(result, chapterName) {
 
 function cleanText(value) {
   return typeof value === "string" ? value.replace(/\s+/g, " ").trim() : "";
+}
+
+function uniqueText(values) {
+  const seen = new Set();
+  const uniqueValues = [];
+  for (const value of values) {
+    const normalized = cleanText(value);
+    const key = normalized.toLowerCase();
+    if (!normalized || seen.has(key)) continue;
+    seen.add(key);
+    uniqueValues.push(normalized);
+  }
+  return uniqueValues;
 }
 
 function normalizeImportance(value) {

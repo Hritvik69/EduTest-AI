@@ -123,7 +123,7 @@ function sourceDescription(manifest: GenerationManifest) {
     return "Demo fallback content";
   }
   if (manifest.source.conceptSource === "pdf") {
-    return "PDF extracted concepts";
+    return "NCERT_Books PDF concepts";
   }
 
   return "Unknown source";

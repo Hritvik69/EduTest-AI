@@ -7,6 +7,7 @@ import sql from "@/lib/db";
 import { getCurriculumConceptsForChapters } from "@/lib/curriculum-data";
 import { getDemoChapters } from "@/lib/edutest-data";
 import { generateGeminiImageJSON, generateJSON } from "@/lib/gemini";
+import { getLocalNcertChapterConcepts } from "@/lib/local-ncert-source";
 import { limitExtractedText } from "@/lib/pdf-security";
 import type {
   BloomLevel,
@@ -960,6 +961,16 @@ export async function getChapterContent(
         );
       }
       concepts.push(...fromDb);
+      continue;
+    }
+
+    const fromLocalNcertPdf = await getLocalNcertChapterConcepts(
+      classNum,
+      subjects,
+      chapterId,
+    );
+    if (fromLocalNcertPdf.length) {
+      concepts.push(...fromLocalNcertPdf);
       continue;
     }
 
