@@ -49,6 +49,71 @@ describe("NCERT source priority", () => {
     expect(() => assertSourceGroundingForGeneration(config(chapter!.id), concepts)).not.toThrow();
   });
 
+  it("does not accept outline-only DB concepts when matching local TXT exists", async () => {
+    process.env.EDUTEST_DISABLE_LOCAL_NCERT_PDF = "1";
+    const chapter = getCurriculumChapters(8, "English").find((item) =>
+      item.name.includes("A Concrete Example"),
+    );
+    expect(chapter).toBeDefined();
+    const diagnostics: unknown[] = [];
+
+    dbMock.mockImplementation(async (strings: TemplateStringsArray) => {
+      const query = strings.join(" ");
+
+      if (query.includes("COUNT(*)::int AS count")) {
+        return [{ count: 2 }];
+      }
+
+      if (query.includes("SELECT") && query.includes("c.text")) {
+        return [
+          {
+            text: `Class 8 English chapter "The Wit that Won Hearts" includes the NCERT/CBSE topic "Poorvi: The Wit that Won Hearts". Generate questions only from this selected chapter-topic pair.`,
+            type: "CURRICULUM_CORE_TOPIC",
+            bloom_level: "UNDERSTAND",
+            hots_potential: false,
+            source: "curriculum",
+            topic_id: chapter!.topics[0].id,
+            topic_name: chapter!.topics[0].name,
+            chapter_name: chapter!.name,
+            subject_name: "English",
+            class_num: 8,
+          },
+          {
+            text: "Reading comprehension and inference",
+            type: "CURRICULUM_TOPIC",
+            bloom_level: "UNDERSTAND",
+            hots_potential: false,
+            source: "curriculum",
+            topic_id: chapter!.topics[1].id,
+            topic_name: chapter!.topics[1].name,
+            chapter_name: chapter!.name,
+            subject_name: "English",
+            class_num: 8,
+          },
+        ];
+      }
+
+      return [];
+    });
+
+    const concepts = await getChapterContent([chapter!.id], "English", 8, {
+      allowCurriculumFallback: true,
+      requireKnownSource: true,
+      onLocalNcertDiagnostics: (item) => diagnostics.push(item),
+    });
+
+    expect(concepts.length).toBeGreaterThanOrEqual(6);
+    expect(concepts.every((concept) => concept.source === "pdf")).toBe(true);
+    expect(concepts.some((concept) => /concrete|example/i.test(concept.text))).toBe(true);
+    expect(diagnostics).toHaveLength(1);
+    expect(diagnostics[0]).toMatchObject({
+      selectedSource: "bundled_text",
+      conceptCount: expect.any(Number),
+      sourceTextChunks: expect.any(Number),
+    });
+    expect(() => assertSourceGroundingForGeneration(config(chapter!.id), concepts)).not.toThrow();
+  });
+
   it("maps imported database chapter IDs back to NCERT source text by chapter name", async () => {
     process.env.EDUTEST_DISABLE_LOCAL_NCERT_PDF = "1";
     const importedChapterId = 178001;

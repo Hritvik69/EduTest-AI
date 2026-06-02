@@ -41,7 +41,7 @@ import {
   buildGenerationArchitecturePlan,
   type GenerationArchitecturePlan,
 } from "@/lib/question-planning";
-import { retrieveConcepts } from "@/lib/retriever";
+import { analyzeConceptSourceQuality, retrieveConcepts } from "@/lib/retriever";
 import { generationRequestSchema } from "@/lib/schemas";
 import {
   assertSourceGroundingForGeneration,
@@ -49,6 +49,7 @@ import {
 } from "@/lib/source-grounding";
 import { generateSourceBackedFallbackQuestions } from "@/lib/source-backed-fallback";
 import { validatePaperKeepingValidQuestions } from "@/lib/validator";
+import type { LocalNcertSourceDiagnostics } from "@/lib/local-ncert-source";
 import type {
   Blueprint,
   BlueprintSection,
@@ -154,6 +155,7 @@ export async function POST(request: NextRequest) {
         }
       };
       let localFallbackContext: LocalFallbackContext | null = null;
+      const localNcertDiagnostics: LocalNcertSourceDiagnostics[] = [];
 
       try {
         assertActive();
@@ -190,6 +192,9 @@ export async function POST(request: NextRequest) {
                   allowDemoFallback: allowExplicitDemoFallback,
                   allowCurriculumFallback: true,
                   requireKnownSource: !allowExplicitDemoFallback,
+                  onLocalNcertDiagnostics: (diagnostics) => {
+                    localNcertDiagnostics.push(diagnostics);
+                  },
                 },
               );
 
@@ -220,6 +225,7 @@ export async function POST(request: NextRequest) {
           effectiveConfig,
           scopedConcepts,
           selectionAwareConcepts,
+          localNcertDiagnostics,
         );
         const paperQuestionSource = scopedConcepts.some(
           (concept) => concept.source === "pdf",
@@ -865,18 +871,89 @@ function textBackedConceptScope(
   config: PaperConfig,
   scopedConcepts: ConceptData[],
   chapterConcepts: ConceptData[],
+  localNcertDiagnostics: LocalNcertSourceDiagnostics[] = [],
 ) {
   try {
     assertSourceGroundingForGeneration(config, scopedConcepts);
     return scopedConcepts;
   } catch (error) {
     if (!(error instanceof SourceGroundingError) || scopedConcepts === chapterConcepts) {
+      logSourceGroundingBlock(config, scopedConcepts, localNcertDiagnostics, "scoped");
       throw error;
     }
 
-    assertSourceGroundingForGeneration(config, chapterConcepts);
-    return chapterConcepts;
+    try {
+      assertSourceGroundingForGeneration(config, chapterConcepts);
+      return chapterConcepts;
+    } catch (chapterError) {
+      logSourceGroundingBlock(
+        config,
+        chapterConcepts,
+        localNcertDiagnostics,
+        "chapter",
+      );
+      throw chapterError;
+    }
   }
+}
+
+function logSourceGroundingBlock(
+  config: PaperConfig,
+  concepts: ConceptData[],
+  localNcertDiagnostics: LocalNcertSourceDiagnostics[],
+  scope: "scoped" | "chapter",
+) {
+  const sourceQuality = analyzeConceptSourceQuality(concepts);
+  console.warn("[generate-paper] source grounding blocked", {
+    scope,
+    sourceMode: config.sourceMode ?? "curriculum",
+    classNum: config.classNum,
+    subject: config.subject,
+    subjects: config.subjects ?? [],
+    chapterIds: config.chapterIds,
+    topicIdsCount: config.topicIds?.length ?? 0,
+    conceptCount: concepts.length,
+    conceptSources: conceptSourceCounts(concepts),
+    sourceQuality,
+    localNcert: localNcertDiagnostics.map(summarizeLocalNcertDiagnostics),
+  });
+}
+
+function conceptSourceCounts(concepts: ConceptData[]) {
+  return concepts.reduce<Record<string, number>>((counts, concept) => {
+    const source = concept.source ?? "unknown";
+    counts[source] = (counts[source] ?? 0) + 1;
+    return counts;
+  }, {});
+}
+
+function summarizeLocalNcertDiagnostics(diagnostics: LocalNcertSourceDiagnostics) {
+  return {
+    selectedChapterId: diagnostics.selectedChapterId,
+    resolved: diagnostics.resolved,
+    selectedSource: diagnostics.selectedSource,
+    reason: diagnostics.reason,
+    conceptCount: diagnostics.conceptCount,
+    sourceTextChunks: diagnostics.sourceTextChunks,
+    cacheHit: Boolean(diagnostics.cacheHit),
+    manifestMatch: diagnostics.manifestMatch,
+    manifestCandidateCount: diagnostics.manifestCandidates.length,
+    attemptedLocalPathCount: diagnostics.attemptedLocalPaths.length,
+    attemptedExtractedTextPathCount: diagnostics.attemptedExtractedTextPaths.length,
+    attemptedPdfPathCount: diagnostics.attemptedPdfPaths.length,
+    remoteFallbacks: diagnostics.remoteFallbacks.map((attempt) => ({
+      path: attempt.path,
+      status: attempt.status,
+      statusCode: attempt.statusCode,
+      length: attempt.length,
+      error: attempt.error?.slice(0, 180),
+    })),
+    tooShortText: diagnostics.tooShortText.slice(0, 5),
+    readErrors: diagnostics.readErrors.slice(0, 5).map((item) => ({
+      ...item,
+      error: item.error.slice(0, 180),
+    })),
+  };
 }
 
 function enrichConceptsWithSelectionMetadata(

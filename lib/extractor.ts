@@ -7,8 +7,12 @@ import sql from "@/lib/db";
 import { getCurriculumConceptsForChapters } from "@/lib/curriculum-data";
 import { getDemoChapters } from "@/lib/edutest-data";
 import { generateGeminiImageJSON, generateJSON } from "@/lib/gemini";
-import { getLocalNcertChapterConcepts } from "@/lib/local-ncert-source";
+import {
+  getLocalNcertChapterSource,
+  type LocalNcertSourceDiagnostics,
+} from "@/lib/local-ncert-source";
 import { limitExtractedText } from "@/lib/pdf-security";
+import { analyzeConceptSourceQuality } from "@/lib/retriever";
 import type {
   BloomLevel,
   ConceptData,
@@ -60,8 +64,13 @@ type UploadedPdfExtractionMethod =
 
 const conceptCacheTtlMs = 60 * 60 * 1000;
 const uploadedPdfExtractionCacheTtlMs = 6 * 60 * 60 * 1000;
+type ConceptCacheValue = {
+  expiresAt: number;
+  concepts: ConceptData[];
+  localNcertDiagnostics?: LocalNcertSourceDiagnostics[];
+};
 const globalForConceptCache = globalThis as typeof globalThis & {
-  __edutestConceptCache?: Map<string, { expiresAt: number; concepts: ConceptData[] }>;
+  __edutestConceptCache?: Map<string, ConceptCacheValue>;
   __edutestUploadedPdfExtractionCache?: Map<
     string,
     { expiresAt: number; result: UploadedPdfConceptAnalysis }
@@ -69,7 +78,7 @@ const globalForConceptCache = globalThis as typeof globalThis & {
 };
 const conceptCache =
   globalForConceptCache.__edutestConceptCache ??
-  new Map<string, { expiresAt: number; concepts: ConceptData[] }>();
+  new Map<string, ConceptCacheValue>();
 globalForConceptCache.__edutestConceptCache = conceptCache;
 const uploadedPdfExtractionCache =
   globalForConceptCache.__edutestUploadedPdfExtractionCache ??
@@ -929,27 +938,34 @@ export async function storeExtractedTopics(
   return concepts;
 }
 
+interface GetChapterContentOptions {
+  allowDemoFallback?: boolean;
+  allowCurriculumFallback?: boolean;
+  requireKnownSource?: boolean;
+  onLocalNcertDiagnostics?: (diagnostics: LocalNcertSourceDiagnostics) => void;
+}
+
 export async function getChapterContent(
   chapterIds: number[],
   subject: string,
   classNum: number,
-  options: {
-    allowDemoFallback?: boolean;
-    allowCurriculumFallback?: boolean;
-    requireKnownSource?: boolean;
-  } = {},
+  options: GetChapterContentOptions = {},
 ) {
   const subjects = subject.split(" + ").map((item) => item.trim()).filter(Boolean);
   const cacheKey = conceptCacheKey(chapterIds, subjects, classNum, options);
   const cached = conceptCache.get(cacheKey);
   if (cached && cached.expiresAt > Date.now()) {
-    if (options.requireKnownSource) {
-      assertKnownBackedConcepts(cached.concepts);
-    }
+    cached.localNcertDiagnostics?.forEach((diagnostics) =>
+      options.onLocalNcertDiagnostics?.({
+        ...diagnostics,
+        cacheHit: true,
+      }),
+    );
     return cached.concepts;
   }
 
   const concepts: ConceptData[] = [];
+  const localNcertDiagnostics: LocalNcertSourceDiagnostics[] = [];
 
   for (const chapterId of chapterIds) {
     const fromDb = await getConceptsFromDB(chapterId);
@@ -958,23 +974,19 @@ export async function getChapterContent(
       continue;
     }
 
-    const fromLocalNcertPdf = await getLocalNcertChapterConcepts(
+    const fromLocalNcert = await getLocalNcertChapterSource(
       classNum,
       subjects,
       chapterId,
     );
-    if (fromLocalNcertPdf.length) {
-      concepts.push(...fromLocalNcertPdf);
+    options.onLocalNcertDiagnostics?.(fromLocalNcert.diagnostics);
+    localNcertDiagnostics.push(fromLocalNcert.diagnostics);
+    if (fromLocalNcert.concepts.length) {
+      concepts.push(...fromLocalNcert.concepts);
       continue;
     }
 
-    if (fromDb.length) {
-      if (options.requireKnownSource) {
-        assertKnownBackedConcepts(
-          fromDb,
-          await buildStrictSourceErrorMessage(chapterId, subjects, classNum),
-        );
-      }
+    if (fromDb.length && (!options.requireKnownSource || hasKnownBackedConcepts(fromDb))) {
       concepts.push(...fromDb);
       continue;
     }
@@ -1012,6 +1024,7 @@ export async function getChapterContent(
 
   conceptCache.set(cacheKey, {
     concepts,
+    localNcertDiagnostics,
     expiresAt: Date.now() + conceptCacheTtlMs,
   });
 
@@ -1022,11 +1035,7 @@ function conceptCacheKey(
   chapterIds: number[],
   subjects: string[],
   classNum: number,
-  options: {
-    allowDemoFallback?: boolean;
-    allowCurriculumFallback?: boolean;
-    requireKnownSource?: boolean;
-  },
+  options: GetChapterContentOptions,
 ) {
   return JSON.stringify({
     classNum,
@@ -1048,6 +1057,16 @@ function hasRealSourceTextConcepts(concepts: ConceptData[]) {
       String(concept.type).toUpperCase() === "PDF_SOURCE_TEXT" &&
       concept.text.replace(/\s+/g, " ").trim().length >= 450,
   );
+}
+
+function hasKnownBackedConcepts(concepts: ConceptData[]) {
+  if (!concepts.length) return false;
+  if (hasRealSourceTextConcepts(concepts)) return true;
+
+  const sourceQuality = analyzeConceptSourceQuality(concepts);
+  if (sourceQuality.quality !== "strong") return false;
+
+  return concepts.some((concept) => concept.source === "pdf");
 }
 
 async function getConceptsFromDB(chapterId: number) {
@@ -1280,11 +1299,7 @@ function toConceptData(
 }
 
 function assertKnownBackedConcepts(concepts: ConceptData[], errorMessage?: string) {
-  const allowedSources = new Set<ContentSource>(["pdf", "curriculum"]);
-  if (
-    !concepts.length ||
-    concepts.some((concept) => !allowedSources.has(concept.source ?? "unknown"))
-  ) {
+  if (!hasKnownBackedConcepts(concepts)) {
     throw new Error(
       errorMessage ??
         "This chapter does not have PDF or curriculum-backed content yet.",

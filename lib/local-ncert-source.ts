@@ -8,8 +8,9 @@ import bundledNcertTextManifest from "@/data/ncert-extracted-text-manifest.json"
 import type { ChapterTopic, ConceptData } from "@/types";
 
 const pdfTextCache = new Map<string, Promise<string>>();
-const chapterConceptCache = new Map<string, Promise<ConceptData[]>>();
+const chapterConceptCache = new Map<string, Promise<LocalNcertChapterSourceResult>>();
 const remoteTextCache = new Map<string, Promise<string>>();
+const minimumChapterTextLength = 900;
 
 interface ResolvedNcertChapter {
   selectedChapterId: number;
@@ -27,6 +28,61 @@ interface BundledNcertTextEntry {
   path: string;
 }
 
+export interface LocalNcertSourceDiagnostics {
+  classNum: number;
+  subjects: string[];
+  selectedChapterId: number;
+  resolved?: {
+    selectedChapterId: number;
+    sourceChapterId: number;
+    subject: string;
+    chapterName: string;
+    topicCount: number;
+  };
+  cacheHit?: boolean;
+  selectedSource?: "bundled_text" | "local_extracted_text" | "local_pdf" | "static_cache";
+  reason?: string;
+  conceptCount: number;
+  sourceTextChunks: number;
+  manifestCandidates: Array<{
+    title: string;
+    book: string;
+    path: string;
+  }>;
+  manifestMatch?: {
+    title: string;
+    book: string;
+    path: string;
+  };
+  attemptedLocalPaths: string[];
+  attemptedExtractedTextPaths: string[];
+  attemptedPdfPaths: string[];
+  remoteFallbacks: Array<{
+    path: string;
+    url: string;
+    status: "disabled" | "cached" | "success" | "failed";
+    statusCode?: number;
+    length?: number;
+    error?: string;
+  }>;
+  tooShortText: Array<{
+    source: "bundled_text" | "local_extracted_text" | "local_pdf";
+    path: string;
+    length: number;
+    minimum: number;
+  }>;
+  readErrors: Array<{
+    source: "bundled_text" | "local_extracted_text" | "local_pdf";
+    path: string;
+    error: string;
+  }>;
+}
+
+export interface LocalNcertChapterSourceResult {
+  concepts: ConceptData[];
+  diagnostics: LocalNcertSourceDiagnostics;
+}
+
 const bundledTextManifest = bundledNcertTextManifest as BundledNcertTextEntry[];
 
 export async function getLocalNcertChapterConcepts(
@@ -34,12 +90,41 @@ export async function getLocalNcertChapterConcepts(
   subjects: string[],
   chapterId: number,
 ): Promise<ConceptData[]> {
+  return (await getLocalNcertChapterSource(classNum, subjects, chapterId)).concepts;
+}
+
+export async function getLocalNcertChapterSource(
+  classNum: number,
+  subjects: string[],
+  chapterId: number,
+): Promise<LocalNcertChapterSourceResult> {
+  const diagnostics = createDiagnostics(classNum, subjects, chapterId);
   const resolved = await resolveNcertChapter(classNum, subjects, chapterId);
-  if (!resolved) return [];
+  if (!resolved) {
+    diagnostics.reason = "chapter_not_resolved";
+    return { concepts: [], diagnostics };
+  }
+
+  diagnostics.resolved = {
+    selectedChapterId: resolved.selectedChapterId,
+    sourceChapterId: resolved.sourceChapterId,
+    subject: resolved.subject,
+    chapterName: resolved.chapterName,
+    topicCount: resolved.chapterTopics.length,
+  };
 
   const cacheKey = `${classNum}:${resolved.subject}:${resolved.selectedChapterId}:${resolved.sourceChapterId}:${resolved.chapterName}`;
   const cached = chapterConceptCache.get(cacheKey);
-  if (cached) return cached;
+  if (cached) {
+    const result = await cached;
+    return {
+      concepts: result.concepts,
+      diagnostics: {
+        ...result.diagnostics,
+        cacheHit: true,
+      },
+    };
+  }
 
   const promise = loadLocalOrCachedConcepts(
     classNum,
@@ -47,9 +132,31 @@ export async function getLocalNcertChapterConcepts(
     resolved.selectedChapterId,
     resolved.chapterName,
     resolved.chapterTopics,
+    diagnostics,
   );
   chapterConceptCache.set(cacheKey, promise);
   return promise;
+}
+
+function createDiagnostics(
+  classNum: number,
+  subjects: string[],
+  selectedChapterId: number,
+): LocalNcertSourceDiagnostics {
+  return {
+    classNum,
+    subjects,
+    selectedChapterId,
+    conceptCount: 0,
+    sourceTextChunks: 0,
+    manifestCandidates: [],
+    attemptedLocalPaths: [],
+    attemptedExtractedTextPaths: [],
+    attemptedPdfPaths: [],
+    remoteFallbacks: [],
+    tooShortText: [],
+    readErrors: [],
+  };
 }
 
 async function resolveNcertChapter(
@@ -131,6 +238,7 @@ async function loadLocalOrCachedConcepts(
   chapterId: number,
   chapterName: string,
   chapterTopics: { id: number; name: string }[],
+  diagnostics: LocalNcertSourceDiagnostics,
 ) {
   const fromExtractedText = await loadFromExtractedText(
     classNum,
@@ -138,8 +246,11 @@ async function loadLocalOrCachedConcepts(
     chapterId,
     chapterName,
     chapterTopics,
+    diagnostics,
   );
-  if (fromExtractedText.length) return fromExtractedText;
+  if (fromExtractedText.length) {
+    return sourceResult(fromExtractedText, diagnostics);
+  }
 
   const fromLocalPdf = await loadFromLocalPdf(
     classNum,
@@ -147,10 +258,13 @@ async function loadLocalOrCachedConcepts(
     chapterId,
     chapterName,
     chapterTopics,
+    diagnostics,
   );
-  if (fromLocalPdf.length) return fromLocalPdf;
+  if (fromLocalPdf.length) {
+    return sourceResult(fromLocalPdf, diagnostics);
+  }
 
-  return withTopicIds(
+  const cachedConcepts = withTopicIds(
     getCachedNcertSourceConcepts({
       classNum,
       subject,
@@ -159,6 +273,13 @@ async function loadLocalOrCachedConcepts(
     }),
     chapterTopics,
   );
+  if (cachedConcepts.length) {
+    diagnostics.selectedSource = "static_cache";
+    diagnostics.reason = "static_source_cache_used";
+  } else if (!diagnostics.reason) {
+    diagnostics.reason = "no_matching_ncert_text_or_pdf";
+  }
+  return sourceResult(cachedConcepts, diagnostics);
 }
 
 async function loadFromExtractedText(
@@ -167,14 +288,28 @@ async function loadFromExtractedText(
   chapterId: number,
   chapterName: string,
   chapterTopics: { id: number; name: string }[],
+  diagnostics: LocalNcertSourceDiagnostics,
 ) {
-  const bundledEntry = candidateBundledTextEntries(classNum, subject, chapterName)[0];
-  if (bundledEntry) {
+  const bundledEntries = candidateBundledTextEntries(classNum, subject, chapterName);
+  diagnostics.manifestCandidates = bundledEntries.slice(0, 5).map((entry) => ({
+    title: entry.title,
+    book: entry.book,
+    path: entry.path,
+  }));
+
+  for (const bundledEntry of bundledEntries) {
+    diagnostics.manifestMatch ??= {
+      title: bundledEntry.title,
+      book: bundledEntry.book,
+      path: bundledEntry.path,
+    };
+
     try {
       const chapterText = trimChapterText(
-        cleanPdfText(await readBundledNcertText(bundledEntry.path)),
+        cleanPdfText(await readBundledNcertText(bundledEntry.path, diagnostics)),
       );
-      if (chapterText.length >= 900) {
+      if (chapterText.length >= minimumChapterTextLength) {
+        diagnostics.selectedSource = "bundled_text";
         return conceptsFromChapterText({
           text: chapterText,
           classNum,
@@ -184,7 +319,18 @@ async function loadFromExtractedText(
           chapterTopics,
         });
       }
+      diagnostics.tooShortText.push({
+        source: "bundled_text",
+        path: bundledEntry.path,
+        length: chapterText.length,
+        minimum: minimumChapterTextLength,
+      });
     } catch (error) {
+      diagnostics.readErrors.push({
+        source: "bundled_text",
+        path: bundledEntry.path,
+        error: safeErrorMessage(error),
+      });
       console.warn(
         `Could not load selected NCERT extracted text ${bundledEntry.path}: ${
           error instanceof Error ? error.message : String(error)
@@ -195,10 +341,20 @@ async function loadFromExtractedText(
 
   const textPaths = await candidateExtractedTextPaths(classNum, subject, chapterName);
   for (const textPath of textPaths) {
+    diagnostics.attemptedExtractedTextPaths.push(textPath);
     try {
       const chapterText = trimChapterText(cleanPdfText(await readFile(textPath, "utf8")));
-      if (chapterText.length < 900) continue;
+      if (chapterText.length < minimumChapterTextLength) {
+        diagnostics.tooShortText.push({
+          source: "local_extracted_text",
+          path: textPath,
+          length: chapterText.length,
+          minimum: minimumChapterTextLength,
+        });
+        continue;
+      }
 
+      diagnostics.selectedSource = "local_extracted_text";
       return conceptsFromChapterText({
         text: chapterText,
         classNum,
@@ -208,6 +364,11 @@ async function loadFromExtractedText(
         chapterTopics,
       });
     } catch (error) {
+      diagnostics.readErrors.push({
+        source: "local_extracted_text",
+        path: textPath,
+        error: safeErrorMessage(error),
+      });
       console.warn(
         `Could not load NCERT extracted text ${textPath}: ${
           error instanceof Error ? error.message : String(error)
@@ -219,18 +380,38 @@ async function loadFromExtractedText(
   return [];
 }
 
-async function readBundledNcertText(relativePath: string) {
+function sourceResult(
+  concepts: ConceptData[],
+  diagnostics: LocalNcertSourceDiagnostics,
+): LocalNcertChapterSourceResult {
+  diagnostics.conceptCount = concepts.length;
+  diagnostics.sourceTextChunks = concepts.filter(
+    (concept) => String(concept.type).toUpperCase() === "PDF_SOURCE_TEXT",
+  ).length;
+  return { concepts, diagnostics };
+}
+
+async function readBundledNcertText(
+  relativePath: string,
+  diagnostics: LocalNcertSourceDiagnostics,
+) {
   const localPaths = candidateBundledNcertTextPaths(relativePath);
   for (const textPath of localPaths) {
+    diagnostics.attemptedLocalPaths.push(textPath);
     try {
       if (!existsSync(textPath)) continue;
       return await readFile(textPath, "utf8");
-    } catch {
+    } catch (error) {
+      diagnostics.readErrors.push({
+        source: "bundled_text",
+        path: textPath,
+        error: safeErrorMessage(error),
+      });
       // Try the next runtime path shape before falling back to the remote source.
     }
   }
 
-  return readRemoteNcertText(relativePath);
+  return readRemoteNcertText(relativePath, diagnostics);
 }
 
 function candidateBundledNcertTextPaths(relativePath: string) {
@@ -239,7 +420,23 @@ function candidateBundledNcertTextPaths(relativePath: string) {
     .split("/")
     .filter((part) => part && part !== "." && part !== "..");
   const cwd = process.cwd();
+  const configuredRoot = process.env.EDUTEST_NCERT_TEXT_ROOT?.trim();
+  const lambdaTaskRoot = process.env.LAMBDA_TASK_ROOT?.trim();
+  const configuredPaths = configuredRoot
+    ? [
+        path.join(configuredRoot, ...safeParts),
+        path.join(configuredRoot, "NCERT_Books", ...safeParts),
+      ]
+    : [];
+  const lambdaPaths = lambdaTaskRoot
+    ? [
+        path.join(lambdaTaskRoot, "NCERT_Books", ...safeParts),
+        path.join(lambdaTaskRoot, ".next", "server", "NCERT_Books", ...safeParts),
+      ]
+    : [];
   return unique([
+    ...configuredPaths,
+    ...lambdaPaths,
     path.join(cwd, "NCERT_Books", ...safeParts),
     path.join(cwd, ".next", "server", "NCERT_Books", ...safeParts),
     path.join(cwd, "..", "NCERT_Books", ...safeParts),
@@ -247,16 +444,41 @@ function candidateBundledNcertTextPaths(relativePath: string) {
   ]);
 }
 
-async function readRemoteNcertText(relativePath: string) {
+async function readRemoteNcertText(
+  relativePath: string,
+  diagnostics: LocalNcertSourceDiagnostics,
+) {
+  const url = remoteNcertTextUrl(relativePath);
   if (process.env.EDUTEST_DISABLE_REMOTE_NCERT_TEXT === "1") {
+    diagnostics.remoteFallbacks.push({
+      path: relativePath,
+      url,
+      status: "disabled",
+      error: "Remote NCERT text fallback is disabled.",
+    });
     throw new Error("Remote NCERT text fallback is disabled.");
   }
 
   const cached = remoteTextCache.get(relativePath);
-  if (cached) return cached;
+  if (cached) {
+    const attempt: LocalNcertSourceDiagnostics["remoteFallbacks"][number] = {
+      path: relativePath,
+      url,
+      status: "cached",
+    };
+    diagnostics.remoteFallbacks.push(attempt);
+    try {
+      const text = await cached;
+      attempt.length = text.length;
+      return text;
+    } catch (error) {
+      attempt.status = "failed";
+      attempt.error = safeErrorMessage(error);
+      throw error;
+    }
+  }
 
   const promise = (async () => {
-    const url = remoteNcertTextUrl(relativePath);
     const response = await fetch(url, {
       signal: AbortSignal.timeout(8_000),
     });
@@ -266,7 +488,23 @@ async function readRemoteNcertText(relativePath: string) {
     return response.text();
   })();
   remoteTextCache.set(relativePath, promise);
-  return promise;
+  const attempt: LocalNcertSourceDiagnostics["remoteFallbacks"][number] = {
+    path: relativePath,
+    url,
+    status: "success",
+  };
+  diagnostics.remoteFallbacks.push(attempt);
+  try {
+    const text = await promise;
+    attempt.length = text.length;
+    return text;
+  } catch (error) {
+    attempt.status = "failed";
+    attempt.error = safeErrorMessage(error);
+    const status = attempt.error.match(/HTTP\s+(\d+)/i)?.[1];
+    if (status) attempt.statusCode = Number(status);
+    throw error;
+  }
 }
 
 function remoteNcertTextUrl(relativePath: string) {
@@ -310,6 +548,7 @@ async function loadFromLocalPdf(
   chapterId: number,
   chapterName: string,
   chapterTopics: { id: number; name: string }[],
+  diagnostics: LocalNcertSourceDiagnostics,
 ) {
   const pdfPaths = await candidatePdfPaths(classNum, subject);
   if (!pdfPaths.length) return [];
@@ -317,11 +556,21 @@ async function loadFromLocalPdf(
   const chapterNames = getCurriculumChapters(classNum, subject).map((chapter) => chapter.name);
 
   for (const pdfPath of pdfPaths) {
+    diagnostics.attemptedPdfPaths.push(pdfPath);
     try {
       const text = await readPdfText(pdfPath);
       const chapterText = extractChapterSlice(text, chapterName, chapterNames);
-      if (chapterText.length < 900) continue;
+      if (chapterText.length < minimumChapterTextLength) {
+        diagnostics.tooShortText.push({
+          source: "local_pdf",
+          path: pdfPath,
+          length: chapterText.length,
+          minimum: minimumChapterTextLength,
+        });
+        continue;
+      }
 
+      diagnostics.selectedSource = "local_pdf";
       return conceptsFromChapterText({
         text: chapterText,
         classNum,
@@ -331,6 +580,11 @@ async function loadFromLocalPdf(
         chapterTopics,
       });
     } catch (error) {
+      diagnostics.readErrors.push({
+        source: "local_pdf",
+        path: pdfPath,
+        error: safeErrorMessage(error),
+      });
       console.warn(
         `Could not load NCERT source PDF ${pdfPath}: ${
           error instanceof Error ? error.message : String(error)
@@ -347,19 +601,22 @@ async function candidateExtractedTextPaths(
   subject: string,
   chapterName: string,
 ) {
-  const root = path.join(process.cwd(), "NCERT_Books");
-  const classDir = path.join(root, `${classNum}th`);
-  if (!existsSync(classDir)) return [];
+  const files: string[] = [];
+  for (const root of ncertRootCandidates()) {
+    const classDir = path.join(root, `${classNum}th`);
+    if (!existsSync(classDir)) continue;
 
-  const extractedRoot = path.join(
-    classDir,
-    subjectFolderName(subject, classNum),
-    "_extracted_text",
-  );
-  if (!existsSync(extractedRoot)) return [];
+    const extractedRoot = path.join(
+      classDir,
+      subjectFolderName(subject, classNum),
+      "_extracted_text",
+    );
+    if (!existsSync(extractedRoot)) continue;
 
-  const files = await listTextFiles(extractedRoot);
-  return files
+    files.push(...(await listTextFiles(extractedRoot)));
+  }
+
+  return unique(files)
     .map((filePath) => ({
       filePath,
       score: scoreExtractedTextPath(filePath, chapterName),
@@ -386,18 +643,41 @@ async function listTextFiles(root: string): Promise<string[]> {
 async function candidatePdfPaths(classNum: number, subject: string) {
   if (process.env.EDUTEST_DISABLE_LOCAL_NCERT_PDF === "1") return [];
 
-  const root = path.join(process.cwd(), "NCERT_Books");
-  const classDir = path.join(root, `${classNum}th`);
-  if (!existsSync(classDir)) return [];
+  const pdfPaths: string[] = [];
+  for (const root of ncertRootCandidates()) {
+    const classDir = path.join(root, `${classNum}th`);
+    if (!existsSync(classDir)) continue;
 
-  const subjectDir = path.join(classDir, subjectFolderName(subject, classNum));
-  if (!existsSync(subjectDir)) return [];
+    const subjectDir = path.join(classDir, subjectFolderName(subject, classNum));
+    if (!existsSync(subjectDir)) continue;
 
-  const entries = await readdir(subjectDir, { withFileTypes: true });
-  return entries
-    .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".pdf"))
-    .map((entry) => path.join(subjectDir, entry.name))
+    const entries = await readdir(subjectDir, { withFileTypes: true });
+    pdfPaths.push(
+      ...entries
+        .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".pdf"))
+        .map((entry) => path.join(subjectDir, entry.name)),
+    );
+  }
+
+  return unique(pdfPaths)
     .sort((left, right) => scorePdfName(right, subject) - scorePdfName(left, subject));
+}
+
+function ncertRootCandidates() {
+  const cwd = process.cwd();
+  const configuredRoot = process.env.EDUTEST_NCERT_TEXT_ROOT?.trim();
+  const lambdaTaskRoot = process.env.LAMBDA_TASK_ROOT?.trim();
+  const candidates = [
+    configuredRoot,
+    configuredRoot ? path.join(configuredRoot, "NCERT_Books") : "",
+    lambdaTaskRoot ? path.join(lambdaTaskRoot, "NCERT_Books") : "",
+    lambdaTaskRoot ? path.join(lambdaTaskRoot, ".next", "server", "NCERT_Books") : "",
+    path.join(cwd, "NCERT_Books"),
+    path.join(cwd, ".next", "server", "NCERT_Books"),
+    path.join(cwd, "..", "NCERT_Books"),
+    path.join(cwd, "..", "..", "NCERT_Books"),
+  ];
+  return unique(candidates.filter((candidate): candidate is string => Boolean(candidate)));
 }
 
 function subjectFolderName(subject: string, classNum: number) {
@@ -647,4 +927,8 @@ function unique(values: string[]) {
 
 function cleanPdfText(text: string) {
   return text.replace(/\u0008/g, "").replace(/\t/g, " ").replace(/\r/g, "\n");
+}
+
+function safeErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error ?? "unknown error");
 }

@@ -7,4 +7,10 @@ describe("Next.js server package config", () => {
       expect.arrayContaining(["pdf-parse", "pdfjs-dist"]),
     );
   });
+
+  it("traces extracted NCERT text into the generate-paper server function", () => {
+    expect(nextConfig.outputFileTracingIncludes?.["/api/generate-paper"]).toEqual(
+      expect.arrayContaining(["./NCERT_Books/**/_extracted_text/**/*.txt"]),
+    );
+  });
 });

@@ -1,6 +1,12 @@
 import { afterEach, describe, expect, it } from "vitest";
-import { getCurriculumChapters } from "@/lib/curriculum-data";
-import { getLocalNcertChapterConcepts } from "@/lib/local-ncert-source";
+import {
+  getCurriculumChapters,
+  getCurriculumConceptsForChapters,
+} from "@/lib/curriculum-data";
+import {
+  getLocalNcertChapterConcepts,
+  getLocalNcertChapterSource,
+} from "@/lib/local-ncert-source";
 import { analyzeConceptSourceQuality } from "@/lib/retriever";
 import { assertSourceGroundingForGeneration } from "@/lib/source-grounding";
 import { defaultBloomDistribution } from "@/lib/edutest-data";
@@ -58,5 +64,50 @@ describe("local NCERT source bridge", () => {
         concepts,
       ),
     ).not.toThrow();
+  });
+
+  it("reports diagnostics when no matching local NCERT text is available", async () => {
+    process.env.EDUTEST_DISABLE_LOCAL_NCERT_PDF = "1";
+    const chapter = getCurriculumChapters(10, "English").find((item) =>
+      item.name.includes("The Hack Driver"),
+    );
+
+    expect(chapter).toBeDefined();
+
+    const result = await getLocalNcertChapterSource(10, ["English"], chapter!.id);
+
+    expect(result.concepts).toEqual([]);
+    expect(result.diagnostics.resolved?.chapterName).toBe(chapter!.name);
+    expect(result.diagnostics.reason).toBe("no_matching_ncert_text_or_pdf");
+    expect(result.diagnostics.conceptCount).toBe(0);
+    expect(result.diagnostics.attemptedPdfPaths).toEqual([]);
+
+    const outlineConcepts = getCurriculumConceptsForChapters(10, ["English"], [
+      chapter!.id,
+    ]);
+    expect(outlineConcepts.length).toBeGreaterThan(0);
+    expect(() =>
+      assertSourceGroundingForGeneration(
+        {
+          sourceMode: "curriculum",
+          classNum: 10,
+          subject: "English",
+          subjects: ["English"],
+          subjectSelections: [],
+          chapterIds: [chapter!.id],
+          topicIds: [],
+          totalMarks: 5,
+          duration: 30,
+          examType: "School Test",
+          difficulty: "MEDIUM",
+          aiProvider: "AUTO",
+          questionTypes: ["MCQ"],
+          typeDistribution: { MCQ: 5 },
+          bloomDistribution: defaultBloomDistribution,
+          totalQuestions: 5,
+        },
+        outlineConcepts,
+      ),
+    ).toThrow(/only outline topics/i);
   });
 });
