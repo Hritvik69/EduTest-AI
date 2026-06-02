@@ -13,6 +13,9 @@ export async function retrieveConcepts(
     : await fetchConceptsByChapterIds(conceptsOrChapterIds);
 
   const weighted = [...concepts].sort((a, b) => {
+    const sourceTextWeight = sourceTextScore(b) - sourceTextScore(a);
+    if (sourceTextWeight) return sourceTextWeight;
+
     const hotsWeight =
       difficulty === "HARD" || difficulty === "ABSURD"
         ? Number(b.hotsPotential) - Number(a.hotsPotential)
@@ -75,12 +78,19 @@ function bloomScore(level: string, target: BloomTarget) {
   return target[level as BloomLevel] ?? 0;
 }
 
+function sourceTextScore(concept: ConceptData) {
+  if (String(concept.type).toUpperCase() === "PDF_SOURCE_TEXT") return 3;
+  if (concept.source === "pdf" && concept.text.length >= 900) return 2;
+  if (concept.source === "pdf") return 1;
+  return 0;
+}
+
 function limitContext(lines: string[]) {
   const configured = Number(process.env.AI_CONTEXT_CHAR_LIMIT);
   const limit =
-    Number.isInteger(configured) && configured >= 2500 && configured <= 12000
+    Number.isInteger(configured) && configured >= 2500 && configured <= 16000
       ? configured
-      : 5000;
+      : 9000;
   let total = 0;
   const selected: string[] = [];
 

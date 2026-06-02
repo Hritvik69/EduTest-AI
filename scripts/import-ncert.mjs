@@ -17,6 +17,8 @@ const reportPath = args["report-path"]
   : path.join(artifactsDir, "ncert-import-report.json");
 const dryRun = Boolean(args["dry-run"]);
 const textOnlyImport = Boolean(args["text-only"]);
+const writeTextFiles = Boolean(args["write-text"]);
+const deactivateExisting = Boolean(args["deactivate-existing"]);
 const maxPdfs = positiveInt(args["max-pdfs"]);
 const maxChapters = positiveInt(args["max-chapters"]);
 const textLimit = positiveInt(args["text-limit"]) ?? 18000;
@@ -82,7 +84,9 @@ async function main() {
   const sql = dryRun ? null : await connectDatabase();
   if (sql) {
     await ensureImportSchema(sql);
-    await deactivateExistingCurriculum(sql);
+    if (deactivateExisting) {
+      await deactivateExistingCurriculum(sql);
+    }
   }
 
   let importedChapters = 0;
@@ -102,7 +106,9 @@ async function main() {
 
     let parsed;
     try {
-      parsed = await detectChapters(pdf.absolutePath);
+      parsed = dryRun
+        ? await detectChapters(pdf.absolutePath)
+        : await parsePdfWithChapters(pdf.absolutePath);
     } catch (error) {
       const reason = errorMessage(error);
       report.skipped.push({ path: pdf.relativePath, reason });
@@ -111,10 +117,24 @@ async function main() {
     }
 
     if (!parsed.chapters.length) {
-      const reason = "No confident TOC chapter ranges detected.";
-      report.skipped.push({ path: pdf.relativePath, reason });
-      book.skipped.push({ reason });
-      continue;
+      if (!dryRun && parsed.pages?.length) {
+        const reason =
+          "No confident TOC chapter ranges detected; importing the whole book as one source-backed fallback chapter.";
+        parsed.chapters = [
+          {
+            title: "Full Book Source",
+            startPage: 1,
+            endPage: parsed.total,
+            printedPage: 1,
+          },
+        ];
+        book.fallback = reason;
+      } else {
+        const reason = "No confident TOC chapter ranges detected.";
+        report.skipped.push({ path: pdf.relativePath, reason });
+        book.skipped.push({ reason });
+        continue;
+      }
     }
 
     const useBookPrefix = (subjectBookCounts.get(subjectKey(pdf)) ?? 0) > 1;
@@ -148,8 +168,8 @@ async function main() {
 
       if (dryRun) continue;
 
-      const chapterText = await extractPageRangeText(
-        pdf.absolutePath,
+      const chapterText = extractPageRangeTextFromPages(
+        parsed.pages,
         chapter.startPage,
         chapter.endPage,
         textLimit,
@@ -159,6 +179,14 @@ async function main() {
         report.skipped.push({ path: pdf.relativePath, chapter: chapterName, reason });
         book.skipped.push({ chapter: chapterName, reason });
         continue;
+      }
+      if (writeTextFiles) {
+        chapterRecord.textPath = await writeChapterTextFile({
+          pdf,
+          chapter,
+          chapterName,
+          chapterText,
+        });
       }
 
       const topics = textOnlyImport
@@ -315,12 +343,24 @@ function bookTitleFromFile(filePath) {
 
 async function detectChapters(pdfPath) {
   const { pages, total } = await extractPages(pdfPath, { first: 1, last: 35 });
+  return detectChaptersFromPages(pages, total);
+}
+
+async function parsePdfWithChapters(pdfPath) {
+  const { pages, total } = await extractPages(pdfPath, {});
+  return {
+    ...detectChaptersFromPages(pages.slice(0, 35), total),
+    pages,
+  };
+}
+
+function detectChaptersFromPages(pages, total) {
   const tocPages = pages.filter((page) => looksLikeTocPage(page.text));
   const tocText = tocPages.map((page) => page.text).join("\n");
   const tocEntries = parseTocEntries(tocText);
 
   if (tocEntries.length < 1) {
-    return { total, chapters: [] };
+    return { total, pages, chapters: [] };
   }
 
   const offset =
@@ -342,7 +382,7 @@ async function detectChapters(pdfPath) {
     })
     .filter((chapter) => chapter.endPage >= chapter.startPage);
 
-  return { total, chapters: dedupeChapters(chapters) };
+  return { total, pages, chapters: dedupeChapters(chapters) };
 }
 
 async function extractPages(pdfPath, params) {
@@ -560,7 +600,38 @@ function dedupeChapters(chapters) {
 
 async function extractPageRangeText(pdfPath, first, last, limit) {
   const { pages } = await extractPages(pdfPath, { first, last });
-  return cleanExtractedText(pages.map((page) => page.text).join("\n")).slice(0, limit);
+  return extractPageRangeTextFromPages(pages, first, last, limit);
+}
+
+function extractPageRangeTextFromPages(pages, first, last, limit) {
+  return cleanExtractedText(
+    pages
+      .filter((page) => page.num >= first && page.num <= last)
+      .map((page) => page.text)
+      .join("\n"),
+  ).slice(0, limit);
+}
+
+async function writeChapterTextFile({ pdf, chapter, chapterName, chapterText }) {
+  const outputPath = path.join(
+    path.dirname(pdf.absolutePath),
+    "_extracted_text",
+    safePathSegment(pdf.bookTitle, 80),
+    `${String(chapter.startPage).padStart(4, "0")}_${safePathSegment(chapterName, 120)}.txt`,
+  );
+  await mkdir(path.dirname(outputPath), { recursive: true });
+  await writeFile(outputPath, `${chapterText.trim()}\n`, "utf8");
+  return path.relative(projectRoot, outputPath).replace(/\\/g, "/");
+}
+
+function safePathSegment(value, maxLength) {
+  return (
+    cleanText(value)
+      .replace(/[<>:"/\\|?*\u0000-\u001f]+/g, " ")
+      .replace(/\s+/g, "_")
+      .replace(/^_+|_+$/g, "")
+      .slice(0, maxLength) || "chapter"
+  );
 }
 
 function cleanExtractedText(rawText) {
@@ -683,7 +754,7 @@ async function deactivateExistingCurriculum(sql) {
 async function upsertSubject(sql, name, classNum) {
   const rows = await sql`
     INSERT INTO subjects (name, board, class_num, active)
-    VALUES (${name}, 'CBSE', ${classNum}, TRUE)
+    VALUES (${limitDbText(name, 100)}, 'CBSE', ${classNum}, TRUE)
     ON CONFLICT (name, board, class_num)
     DO UPDATE SET active = TRUE
     RETURNING id
@@ -692,14 +763,16 @@ async function upsertSubject(sql, name, classNum) {
 }
 
 async function upsertChapter(sql, input) {
+  const chapterName = limitDbText(input.chapterName, 500);
+  const bookTitle = limitDbText(input.bookTitle, 300);
   const rows = await sql`
     INSERT INTO chapters (
       subject_id, name, status, active, book_title, source_pdf_path,
       page_start, page_end, import_source, error_metadata
     )
     VALUES (
-      ${input.subjectId}, ${input.chapterName}, 'READY', TRUE,
-      ${input.bookTitle}, ${input.sourcePdfPath}, ${input.pageStart},
+      ${input.subjectId}, ${chapterName}, 'READY', TRUE,
+      ${bookTitle}, ${input.sourcePdfPath}, ${input.pageStart},
       ${input.pageEnd}, 'ncert_books', NULL
     )
     ON CONFLICT (subject_id, name)
@@ -725,7 +798,7 @@ async function replaceChapterConcepts(sql, chapterId, topics) {
   for (const topic of topics) {
     const topicRows = await sql`
       INSERT INTO topics (chapter_id, name, importance)
-      VALUES (${chapterId}, ${topic.name}, ${topic.importance})
+      VALUES (${chapterId}, ${limitDbText(topic.name, 500)}, ${topic.importance})
       RETURNING id
     `;
     const topicId = Number(topicRows[0].id);
@@ -781,6 +854,7 @@ bloom_level must be REMEMBER | UNDERSTAND | APPLY | ANALYZE | EVALUATE | CREATE`
 }
 
 function extractConceptsFromTextOnly(cleanedText, chapterName, subject) {
+  const sourceTextChunks = chapterSourceTextChunks(cleanedText);
   const sentences = uniqueText(
     cleanedText
       .split(/(?<=[.!?।])\s+/)
@@ -795,14 +869,16 @@ function extractConceptsFromTextOnly(cleanedText, chapterName, subject) {
           {
             name: chapterName,
             importance: "HIGH",
-            concepts: [
-              {
-                text: cleanedText.slice(0, 5000),
-                type: "FACT",
-                bloom_level: "UNDERSTAND",
-                hots_potential: false,
-              },
-            ],
+            concepts: sourceTextChunks.length
+              ? sourceTextChunks.map((text, index) => sourceTextConcept(text, index))
+              : [
+                  {
+                    text: cleanedText.slice(0, 8000),
+                    type: "PDF_SOURCE_TEXT",
+                    bloom_level: "UNDERSTAND",
+                    hots_potential: false,
+                  },
+                ],
           },
         ],
       },
@@ -812,7 +888,17 @@ function extractConceptsFromTextOnly(cleanedText, chapterName, subject) {
 
   const topicCount = Math.min(8, Math.max(3, Math.ceil(sentences.length / 4)));
   const chunkSize = Math.max(2, Math.ceil(sentences.length / topicCount));
-  const topics = [];
+  const topics = sourceTextChunks.length
+    ? [
+        {
+          name: chapterName,
+          importance: "HIGH",
+          concepts: sourceTextChunks.map((text, index) =>
+            sourceTextConcept(text, index),
+          ),
+        },
+      ]
+    : [];
 
   for (let index = 0; index < topicCount; index += 1) {
     const chunk = sentences.slice(index * chunkSize, index * chunkSize + chunkSize);
@@ -831,6 +917,39 @@ function extractConceptsFromTextOnly(cleanedText, chapterName, subject) {
   }
 
   return normalizeTopics({ topics }, chapterName);
+}
+
+function chapterSourceTextChunks(cleanedText) {
+  const paragraphs = cleanedText
+    .split(/\n{2,}|(?=Let us read\b)|(?=Let us discuss\b)|(?=Let us think\b)|(?=Exercises?\b)/i)
+    .map(cleanText)
+    .filter((paragraph) => paragraph.length >= 120);
+  const chunks = [];
+  let current = "";
+
+  for (const paragraph of paragraphs.length ? paragraphs : [cleanedText]) {
+    const next = current ? `${current}\n${paragraph}` : paragraph;
+    if (next.length <= 1800) {
+      current = next;
+      continue;
+    }
+
+    if (current) chunks.push(current);
+    current = paragraph.length > 1800 ? paragraph.slice(0, 1800) : paragraph;
+    if (chunks.length >= 10) break;
+  }
+
+  if (current && chunks.length < 10) chunks.push(current);
+  return chunks.filter((chunk) => chunk.length >= 120).slice(0, 10);
+}
+
+function sourceTextConcept(text, index) {
+  return {
+    text: text.slice(0, 8000),
+    type: "PDF_SOURCE_TEXT",
+    bloom_level: index < 2 ? "UNDERSTAND" : "ANALYZE",
+    hots_potential: index >= 2,
+  };
 }
 
 function textOnlyTopicName(chapterName, subject, index) {
@@ -1012,7 +1131,8 @@ function normalizeTopics(result, chapterName) {
     }))
     .filter((topic) => topic.concepts.length);
 
-  if (normalized.length) return normalized;
+  const merged = mergeDuplicateTopics(normalized);
+  if (merged.length) return merged;
 
   return [
     {
@@ -1030,8 +1150,54 @@ function normalizeTopics(result, chapterName) {
   ];
 }
 
+function mergeDuplicateTopics(topics) {
+  const byName = new Map();
+
+  for (const topic of topics) {
+    const key = cleanText(topic.name).toLowerCase();
+    if (!key) continue;
+
+    const existing = byName.get(key);
+    if (!existing) {
+      byName.set(key, {
+        ...topic,
+        concepts: uniqueConcepts(topic.concepts),
+      });
+      continue;
+    }
+
+    existing.importance = higherImportance(existing.importance, topic.importance);
+    existing.concepts = uniqueConcepts([...existing.concepts, ...topic.concepts]);
+  }
+
+  return Array.from(byName.values());
+}
+
+function uniqueConcepts(concepts) {
+  const seen = new Set();
+  const uniqueConcepts = [];
+
+  for (const concept of concepts) {
+    const key = cleanText(concept.text).toLowerCase();
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    uniqueConcepts.push(concept);
+  }
+
+  return uniqueConcepts;
+}
+
+function higherImportance(left, right) {
+  const rank = { LOW: 1, MEDIUM: 2, HIGH: 3 };
+  return (rank[right] ?? 0) > (rank[left] ?? 0) ? right : left;
+}
+
 function cleanText(value) {
   return typeof value === "string" ? value.replace(/\s+/g, " ").trim() : "";
+}
+
+function limitDbText(value, maxLength) {
+  return cleanText(value).slice(0, maxLength);
 }
 
 function uniqueText(values) {
@@ -1052,7 +1218,16 @@ function normalizeImportance(value) {
 }
 
 function normalizeConceptType(value) {
-  const allowed = ["DEFINITION", "FORMULA", "EXPERIMENT", "EXAMPLE", "APPLICATION", "ACTIVITY", "FACT"];
+  const allowed = [
+    "DEFINITION",
+    "FORMULA",
+    "EXPERIMENT",
+    "EXAMPLE",
+    "APPLICATION",
+    "ACTIVITY",
+    "FACT",
+    "PDF_SOURCE_TEXT",
+  ];
   return allowed.includes(String(value)) ? String(value) : "FACT";
 }
 
