@@ -4,6 +4,7 @@ import path from "node:path";
 import sql from "@/lib/db";
 import { getCurriculumChapter, getCurriculumChapters } from "@/lib/curriculum-data";
 import { getCachedNcertSourceConcepts } from "@/lib/ncert-source-cache";
+import bundledNcertTextIndex from "@/data/ncert-extracted-text-index.json";
 import type { ChapterTopic, ConceptData } from "@/types";
 
 const pdfTextCache = new Map<string, Promise<string>>();
@@ -16,6 +17,17 @@ interface ResolvedNcertChapter {
   chapterName: string;
   chapterTopics: Pick<ChapterTopic, "id" | "name">[];
 }
+
+interface BundledNcertTextEntry {
+  classNum: number;
+  subjectFolder: string;
+  book: string;
+  title: string;
+  path: string;
+  text: string;
+}
+
+const bundledTextIndex = bundledNcertTextIndex as BundledNcertTextEntry[];
 
 export async function getLocalNcertChapterConcepts(
   classNum: number,
@@ -45,6 +57,23 @@ async function resolveNcertChapter(
   subjects: string[],
   selectedChapterId: number,
 ): Promise<ResolvedNcertChapter | null> {
+  const imported = await getImportedChapterMetadata(selectedChapterId);
+  if (imported?.classNum === classNum) {
+    const subject =
+      subjects.find((item) => sameSubject(item, imported.subject)) ?? imported.subject;
+    const staticChapter = getCurriculumChapters(classNum, subject).find((chapter) =>
+      sameChapterName(chapter.name, imported.chapterName),
+    );
+
+    return {
+      selectedChapterId,
+      sourceChapterId: staticChapter?.id ?? selectedChapterId,
+      subject,
+      chapterName: staticChapter?.name ?? imported.chapterName,
+      chapterTopics: imported.topics.length ? imported.topics : staticChapter?.topics ?? [],
+    };
+  }
+
   for (const subject of subjects) {
     const chapter = getCurriculumChapter(classNum, subject, selectedChapterId);
     if (chapter) {
@@ -58,22 +87,7 @@ async function resolveNcertChapter(
     }
   }
 
-  const imported = await getImportedChapterMetadata(selectedChapterId);
-  if (!imported || imported.classNum !== classNum) return null;
-
-  const subject =
-    subjects.find((item) => sameSubject(item, imported.subject)) ?? imported.subject;
-  const staticChapter = getCurriculumChapters(classNum, subject).find((chapter) =>
-    sameChapterName(chapter.name, imported.chapterName),
-  );
-
-  return {
-    selectedChapterId,
-    sourceChapterId: staticChapter?.id ?? selectedChapterId,
-    subject,
-    chapterName: staticChapter?.name ?? imported.chapterName,
-    chapterTopics: imported.topics.length ? imported.topics : staticChapter?.topics ?? [],
-  };
+  return null;
 }
 
 async function getImportedChapterMetadata(chapterId: number) {
@@ -154,6 +168,21 @@ async function loadFromExtractedText(
   chapterName: string,
   chapterTopics: { id: number; name: string }[],
 ) {
+  const bundledEntry = candidateBundledTextEntries(classNum, subject, chapterName)[0];
+  if (bundledEntry) {
+    const chapterText = trimChapterText(cleanPdfText(bundledEntry.text));
+    if (chapterText.length >= 900) {
+      return conceptsFromChapterText({
+        text: chapterText,
+        classNum,
+        subject,
+        chapterName,
+        chapterId,
+        chapterTopics,
+      });
+    }
+  }
+
   const textPaths = await candidateExtractedTextPaths(classNum, subject, chapterName);
   for (const textPath of textPaths) {
     try {
@@ -178,6 +207,30 @@ async function loadFromExtractedText(
   }
 
   return [];
+}
+
+function candidateBundledTextEntries(
+  classNum: number,
+  subject: string,
+  chapterName: string,
+) {
+  const folder = subjectFolderName(subject, classNum);
+  return bundledTextIndex
+    .filter(
+      (entry) =>
+        entry.classNum === classNum &&
+        normalizeTopicName(entry.subjectFolder) === normalizeTopicName(folder),
+    )
+    .map((entry) => ({
+      entry,
+      score: Math.max(
+        scoreExtractedTextTitle(entry.title, chapterName),
+        scoreExtractedTextTitle(`${entry.book} ${entry.title}`, chapterName),
+      ),
+    }))
+    .filter((item) => item.score > 0)
+    .sort((left, right) => right.score - left.score)
+    .map((item) => item.entry);
 }
 
 async function loadFromLocalPdf(
@@ -299,11 +352,16 @@ function scorePdfName(pdfPath: string, subject: string) {
 }
 
 function scoreExtractedTextPath(filePath: string, chapterName: string) {
-  const normalizedChapter = normalizeChapterName(chapterName);
   const fileTitle = path
     .basename(filePath, ".txt")
     .replace(/^\d+_/, "")
     .replace(/_/g, " ");
+  return scoreExtractedTextTitle(fileTitle, chapterName);
+}
+
+function scoreExtractedTextTitle(title: string, chapterName: string) {
+  const normalizedChapter = normalizeChapterName(chapterName);
+  const fileTitle = title.replace(/^\d+_/, "").replace(/_/g, " ");
   const normalizedFile = normalizeChapterName(fileTitle);
 
   if (normalizedFile === normalizedChapter) return 100;
