@@ -4,7 +4,7 @@ import path from "node:path";
 import sql from "@/lib/db";
 import { getCurriculumChapter, getCurriculumChapters } from "@/lib/curriculum-data";
 import { getCachedNcertSourceConcepts } from "@/lib/ncert-source-cache";
-import bundledNcertTextIndex from "@/data/ncert-extracted-text-index.json";
+import bundledNcertTextManifest from "@/data/ncert-extracted-text-manifest.json";
 import type { ChapterTopic, ConceptData } from "@/types";
 
 const pdfTextCache = new Map<string, Promise<string>>();
@@ -24,10 +24,9 @@ interface BundledNcertTextEntry {
   book: string;
   title: string;
   path: string;
-  text: string;
 }
 
-const bundledTextIndex = bundledNcertTextIndex as BundledNcertTextEntry[];
+const bundledTextManifest = bundledNcertTextManifest as BundledNcertTextEntry[];
 
 export async function getLocalNcertChapterConcepts(
   classNum: number,
@@ -170,16 +169,25 @@ async function loadFromExtractedText(
 ) {
   const bundledEntry = candidateBundledTextEntries(classNum, subject, chapterName)[0];
   if (bundledEntry) {
-    const chapterText = trimChapterText(cleanPdfText(bundledEntry.text));
-    if (chapterText.length >= 900) {
-      return conceptsFromChapterText({
-        text: chapterText,
-        classNum,
-        subject,
-        chapterName,
-        chapterId,
-        chapterTopics,
-      });
+    try {
+      const textPath = bundledNcertTextPath(bundledEntry.path);
+      const chapterText = trimChapterText(cleanPdfText(await readFile(textPath, "utf8")));
+      if (chapterText.length >= 900) {
+        return conceptsFromChapterText({
+          text: chapterText,
+          classNum,
+          subject,
+          chapterName,
+          chapterId,
+          chapterTopics,
+        });
+      }
+    } catch (error) {
+      console.warn(
+        `Could not load bundled NCERT extracted text ${bundledEntry.path}: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
     }
   }
 
@@ -209,13 +217,21 @@ async function loadFromExtractedText(
   return [];
 }
 
+function bundledNcertTextPath(relativePath: string) {
+  const safeParts = relativePath
+    .replace(/^NCERT_Books\//, "")
+    .split("/")
+    .filter((part) => part && part !== "." && part !== "..");
+  return path.join(process.cwd(), "NCERT_Books", ...safeParts);
+}
+
 function candidateBundledTextEntries(
   classNum: number,
   subject: string,
   chapterName: string,
 ) {
   const folder = subjectFolderName(subject, classNum);
-  return bundledTextIndex
+  return bundledTextManifest
     .filter(
       (entry) =>
         entry.classNum === classNum &&
