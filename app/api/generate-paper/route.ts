@@ -43,7 +43,10 @@ import {
 } from "@/lib/question-planning";
 import { retrieveConcepts } from "@/lib/retriever";
 import { generationRequestSchema } from "@/lib/schemas";
-import { assertSourceGroundingForGeneration } from "@/lib/source-grounding";
+import {
+  assertSourceGroundingForGeneration,
+  SourceGroundingError,
+} from "@/lib/source-grounding";
 import { generateSourceBackedFallbackQuestions } from "@/lib/source-backed-fallback";
 import { validatePaperKeepingValidQuestions } from "@/lib/validator";
 import type {
@@ -209,11 +212,15 @@ export async function POST(request: NextRequest) {
           concepts,
           effectiveConfig,
         );
-        const scopedConcepts = applySelectedTopicScope(
+        let scopedConcepts = applySelectedTopicScope(
           selectionAwareConcepts,
           effectiveConfig,
         );
-        assertSourceGroundingForGeneration(effectiveConfig, scopedConcepts);
+        scopedConcepts = textBackedConceptScope(
+          effectiveConfig,
+          scopedConcepts,
+          selectionAwareConcepts,
+        );
         const paperQuestionSource = scopedConcepts.some(
           (concept) => concept.source === "pdf",
         )
@@ -852,6 +859,24 @@ function applySelectedTopicScope(concepts: ConceptData[], config: PaperConfig) {
   );
 
   return scoped.length ? scoped : concepts;
+}
+
+function textBackedConceptScope(
+  config: PaperConfig,
+  scopedConcepts: ConceptData[],
+  chapterConcepts: ConceptData[],
+) {
+  try {
+    assertSourceGroundingForGeneration(config, scopedConcepts);
+    return scopedConcepts;
+  } catch (error) {
+    if (!(error instanceof SourceGroundingError) || scopedConcepts === chapterConcepts) {
+      throw error;
+    }
+
+    assertSourceGroundingForGeneration(config, chapterConcepts);
+    return chapterConcepts;
+  }
 }
 
 function enrichConceptsWithSelectionMetadata(
