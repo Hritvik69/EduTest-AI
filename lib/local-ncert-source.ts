@@ -1,39 +1,114 @@
 import { existsSync } from "node:fs";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import sql from "@/lib/db";
 import { getCurriculumChapter, getCurriculumChapters } from "@/lib/curriculum-data";
 import { getCachedNcertSourceConcepts } from "@/lib/ncert-source-cache";
-import type { ConceptData } from "@/types";
+import type { ChapterTopic, ConceptData } from "@/types";
 
 const pdfTextCache = new Map<string, Promise<string>>();
 const chapterConceptCache = new Map<string, Promise<ConceptData[]>>();
+
+interface ResolvedNcertChapter {
+  selectedChapterId: number;
+  sourceChapterId: number;
+  subject: string;
+  chapterName: string;
+  chapterTopics: Pick<ChapterTopic, "id" | "name">[];
+}
 
 export async function getLocalNcertChapterConcepts(
   classNum: number,
   subjects: string[],
   chapterId: number,
 ): Promise<ConceptData[]> {
-  const subject = subjects.find((item) =>
-    getCurriculumChapter(classNum, item, chapterId),
-  );
-  if (!subject) return [];
+  const resolved = await resolveNcertChapter(classNum, subjects, chapterId);
+  if (!resolved) return [];
 
-  const chapter = getCurriculumChapter(classNum, subject, chapterId);
-  if (!chapter) return [];
-
-  const cacheKey = `${classNum}:${subject}:${chapterId}`;
+  const cacheKey = `${classNum}:${resolved.subject}:${resolved.selectedChapterId}:${resolved.sourceChapterId}:${resolved.chapterName}`;
   const cached = chapterConceptCache.get(cacheKey);
   if (cached) return cached;
 
   const promise = loadLocalOrCachedConcepts(
     classNum,
-    subject,
-    chapterId,
-    chapter.name,
-    chapter.topics,
+    resolved.subject,
+    resolved.selectedChapterId,
+    resolved.chapterName,
+    resolved.chapterTopics,
   );
   chapterConceptCache.set(cacheKey, promise);
   return promise;
+}
+
+async function resolveNcertChapter(
+  classNum: number,
+  subjects: string[],
+  selectedChapterId: number,
+): Promise<ResolvedNcertChapter | null> {
+  for (const subject of subjects) {
+    const chapter = getCurriculumChapter(classNum, subject, selectedChapterId);
+    if (chapter) {
+      return {
+        selectedChapterId,
+        sourceChapterId: selectedChapterId,
+        subject,
+        chapterName: chapter.name,
+        chapterTopics: chapter.topics,
+      };
+    }
+  }
+
+  const imported = await getImportedChapterMetadata(selectedChapterId);
+  if (!imported || imported.classNum !== classNum) return null;
+
+  const subject =
+    subjects.find((item) => sameSubject(item, imported.subject)) ?? imported.subject;
+  const staticChapter = getCurriculumChapters(classNum, subject).find((chapter) =>
+    sameChapterName(chapter.name, imported.chapterName),
+  );
+
+  return {
+    selectedChapterId,
+    sourceChapterId: staticChapter?.id ?? selectedChapterId,
+    subject,
+    chapterName: staticChapter?.name ?? imported.chapterName,
+    chapterTopics: imported.topics.length ? imported.topics : staticChapter?.topics ?? [],
+  };
+}
+
+async function getImportedChapterMetadata(chapterId: number) {
+  if (!sql) return null;
+
+  try {
+    const chapterRows = await sql`
+      SELECT c.name AS chapter_name, s.name AS subject_name, s.class_num
+      FROM chapters c
+      JOIN subjects s ON s.id = c.subject_id
+      WHERE c.id = ${chapterId}
+      LIMIT 1
+    `;
+    const chapter = chapterRows[0];
+    if (!chapter) return null;
+
+    const topicRows = await sql`
+      SELECT id, name
+      FROM topics
+      WHERE chapter_id = ${chapterId}
+      ORDER BY id ASC
+    `;
+
+    return {
+      chapterName: String(chapter.chapter_name),
+      subject: String(chapter.subject_name),
+      classNum: Number(chapter.class_num),
+      topics: topicRows.map((row) => ({
+        id: Number(row.id),
+        name: String(row.name),
+      })),
+    };
+  } catch {
+    return null;
+  }
 }
 
 async function loadLocalOrCachedConcepts(
@@ -305,6 +380,27 @@ function normalizeTopicName(value: string) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, " ")
     .replace(/\s+/g, " ")
+    .trim();
+}
+
+function sameSubject(left: string, right: string) {
+  return normalizeTopicName(left) === normalizeTopicName(right);
+}
+
+function sameChapterName(left: string, right: string) {
+  const normalizedLeft = normalizeChapterName(left);
+  const normalizedRight = normalizeChapterName(right);
+  return (
+    normalizedLeft === normalizedRight ||
+    normalizedLeft.includes(normalizedRight) ||
+    normalizedRight.includes(normalizedLeft)
+  );
+}
+
+function normalizeChapterName(value: string) {
+  return normalizeTopicName(value)
+    .replace(/^chapter \d+ /, "")
+    .replace(/^(poorvi|kaveri|ganita prakash|honeydew|honeysuckle|first flight) /, "")
     .trim();
 }
 

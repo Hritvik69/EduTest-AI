@@ -952,6 +952,12 @@ export async function getChapterContent(
   const concepts: ConceptData[] = [];
 
   for (const chapterId of chapterIds) {
+    const fromDb = await getConceptsFromDB(chapterId);
+    if (hasRealSourceTextConcepts(fromDb)) {
+      concepts.push(...fromDb);
+      continue;
+    }
+
     const fromLocalNcertPdf = await getLocalNcertChapterConcepts(
       classNum,
       subjects,
@@ -962,7 +968,6 @@ export async function getChapterContent(
       continue;
     }
 
-    const fromDb = await getConceptsFromDB(chapterId);
     if (fromDb.length) {
       if (options.requireKnownSource) {
         assertKnownBackedConcepts(
@@ -1035,6 +1040,14 @@ function conceptCacheKey(
 
 function clearConceptCacheForChapter(_chapterId: number) {
   conceptCache.clear();
+}
+
+function hasRealSourceTextConcepts(concepts: ConceptData[]) {
+  return concepts.some(
+    (concept) =>
+      String(concept.type).toUpperCase() === "PDF_SOURCE_TEXT" &&
+      concept.text.replace(/\s+/g, " ").trim().length >= 450,
+  );
 }
 
 async function getConceptsFromDB(chapterId: number) {

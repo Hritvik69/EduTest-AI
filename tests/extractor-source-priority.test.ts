@@ -27,7 +27,7 @@ describe("NCERT source priority", () => {
   it("uses local source-backed NCERT content before outline DB concepts", async () => {
     process.env.EDUTEST_DISABLE_LOCAL_NCERT_PDF = "1";
     dbMock.mockImplementation(async () => {
-      throw new Error("DB outline concepts should not be queried first");
+      throw new Error("DB outline concepts are unavailable");
     });
 
     const chapter = getCurriculumChapters(8, "English").find((item) =>
@@ -40,13 +40,56 @@ describe("NCERT source priority", () => {
       requireKnownSource: true,
     });
 
-    expect(dbMock).not.toHaveBeenCalled();
+    expect(dbMock).toHaveBeenCalled();
     expect(concepts.length).toBeGreaterThanOrEqual(6);
     expect(concepts.every((concept) => concept.source === "pdf")).toBe(true);
     expect(concepts.some((concept) => /Tenali Rama|Krishnadeva Raya/i.test(concept.text))).toBe(
       true,
     );
     expect(() => assertSourceGroundingForGeneration(config(chapter!.id), concepts)).not.toThrow();
+  });
+
+  it("maps imported database chapter IDs back to NCERT source text by chapter name", async () => {
+    process.env.EDUTEST_DISABLE_LOCAL_NCERT_PDF = "1";
+    const importedChapterId = 178001;
+    dbMock.mockImplementation(async (strings: TemplateStringsArray) => {
+      const query = strings.join(" ");
+
+      if (query.includes("COUNT(*)::int AS count")) {
+        return [{ count: 0 }];
+      }
+
+      if (query.includes("SELECT c.name AS chapter_name")) {
+        return [
+          {
+            chapter_name: "The Wit that Won Hearts",
+            subject_name: "English",
+            class_num: 8,
+          },
+        ];
+      }
+
+      if (query.includes("SELECT id, name") && query.includes("FROM topics")) {
+        return [
+          { id: 801, name: "Poorvi: The Wit that Won Hearts" },
+          { id: 802, name: "Theme, character, tone, and literary devices" },
+        ];
+      }
+
+      return [];
+    });
+
+    const concepts = await getChapterContent([importedChapterId], "English", 8, {
+      allowCurriculumFallback: true,
+      requireKnownSource: true,
+    });
+
+    expect(concepts.length).toBeGreaterThanOrEqual(6);
+    expect(concepts.every((concept) => concept.chapterId === importedChapterId)).toBe(true);
+    expect(concepts.some((concept) => /Tenali Rama|Krishnadeva Raya/i.test(concept.text))).toBe(
+      true,
+    );
+    expect(() => assertSourceGroundingForGeneration(config(importedChapterId), concepts)).not.toThrow();
   });
 });
 
