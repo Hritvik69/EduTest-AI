@@ -20,6 +20,7 @@ import { compactAiProviderFailureMessage } from "@/lib/error-classification";
 import { getChapterContent } from "@/lib/extractor";
 import { buildGenerationManifest } from "@/lib/generation-manifest";
 import { getConfiguredProviders } from "@/lib/gemini";
+import { signGuestPaperSnapshot } from "@/lib/guest-paper-snapshot";
 import {
   generateDemoQuestions,
   generateQuestionsForSection,
@@ -42,6 +43,7 @@ import {
 import { retrieveConcepts } from "@/lib/retriever";
 import { generationRequestSchema } from "@/lib/schemas";
 import { assertSourceGroundingForGeneration } from "@/lib/source-grounding";
+import { generateSourceBackedFallbackQuestions } from "@/lib/source-backed-fallback";
 import { validatePaperKeepingValidQuestions } from "@/lib/validator";
 import type {
   Blueprint,
@@ -52,6 +54,7 @@ import type {
   PaperConfig,
   QuestionCompositionItem,
   QuestionType,
+  StoredPaper,
 } from "@/types";
 
 export const runtime = "nodejs";
@@ -445,6 +448,7 @@ export async function POST(request: NextRequest) {
           blueprint,
           config: effectiveConfig,
           conceptContext,
+          scopedConcepts,
           availableTopics,
           generationPlan,
           allowDemoFallback: allowExplicitDemoFallback,
@@ -503,6 +507,19 @@ export async function POST(request: NextRequest) {
           taskProviderOrder: configuredTaskProviderOrder(),
         });
         await setPaperGenerationManifest(paperId, manifest, effectiveConfig);
+        const readyPaper = buildReadyPaperPayload({
+          paperId,
+          config: effectiveConfig,
+          blueprint: validation.blueprint,
+          questions: storedQuestions,
+          isDemoMode,
+          manifest,
+          generationJobId,
+          idempotencyKey,
+        });
+        const guestPaperToken = auth.user.isGuest
+          ? await signGuestPaperSnapshot(readyPaper, auth.user.id)
+          : undefined;
 
         send(
           {
@@ -514,6 +531,7 @@ export async function POST(request: NextRequest) {
             done: true,
             idempotencyKey,
             generationJobId,
+            title: readyPaper.title,
             blueprint: validation.blueprint,
             questions: storedQuestions,
             skippedQuestions: validation.remainingMissingQuestions,
@@ -522,9 +540,10 @@ export async function POST(request: NextRequest) {
             manifest,
             status: "READY",
             isDemoMode,
-            createdAt: new Date().toISOString(),
+            createdAt: readyPaper.createdAt,
             sessionOnly: Boolean(auth.user.isGuest),
             config: effectiveConfig,
+            guestPaperToken,
             ...(isDemoMode ? demoMetadata() : {}),
           },
           "done",
@@ -568,6 +587,7 @@ export async function POST(request: NextRequest) {
               context: localFallbackContext,
               generationJobId,
               idempotencyKey,
+              ownerId: auth.user.id,
               originalError: error,
               sessionOnly: Boolean(auth.user.isGuest),
               send,
@@ -645,6 +665,7 @@ async function completeWithLocalGenerationFallback({
   context,
   generationJobId,
   idempotencyKey,
+  ownerId,
   originalError,
   sessionOnly,
   send,
@@ -653,6 +674,7 @@ async function completeWithLocalGenerationFallback({
   context: LocalFallbackContext;
   generationJobId: string;
   idempotencyKey: string;
+  ownerId: number;
   originalError: unknown;
   sessionOnly: boolean;
   send: (data: object, event?: string) => void;
@@ -716,6 +738,19 @@ async function completeWithLocalGenerationFallback({
     taskProviderOrder: configuredTaskProviderOrder(),
   });
   await setPaperGenerationManifest(paperId, manifest, validation.config);
+  const readyPaper = buildReadyPaperPayload({
+    paperId,
+    config: validation.config,
+    blueprint: validation.blueprint,
+    questions: storedQuestions,
+    isDemoMode: true,
+    manifest,
+    generationJobId,
+    idempotencyKey,
+  });
+  const guestPaperToken = sessionOnly
+    ? await signGuestPaperSnapshot(readyPaper, ownerId)
+    : undefined;
 
   send(
     {
@@ -727,6 +762,7 @@ async function completeWithLocalGenerationFallback({
       done: true,
       idempotencyKey,
       generationJobId,
+      title: readyPaper.title,
       blueprint: validation.blueprint,
       questions: storedQuestions,
       skippedQuestions: 0,
@@ -740,13 +776,51 @@ async function completeWithLocalGenerationFallback({
       manifest,
       status: "READY",
       localFallback: true,
-      createdAt: new Date().toISOString(),
+      createdAt: readyPaper.createdAt,
       sessionOnly,
       config: validation.config,
+      guestPaperToken,
       ...demoMetadata(),
     },
     "done",
   );
+}
+
+function buildReadyPaperPayload({
+  paperId,
+  config,
+  blueprint,
+  questions,
+  isDemoMode,
+  manifest,
+  generationJobId,
+  idempotencyKey,
+}: {
+  paperId: number;
+  config: PaperConfig;
+  blueprint: Blueprint;
+  questions: GeneratedQuestion[];
+  isDemoMode: boolean;
+  manifest: StoredPaper["manifest"];
+  generationJobId: string;
+  idempotencyKey: string;
+}): StoredPaper {
+  return {
+    id: paperId,
+    title:
+      config.sourceMode === "pdf_upload"
+        ? `${config.pdfSource?.title ?? "PDF-EDU-TEST"} Paper`
+        : `Class ${config.classNum} ${config.subject} ${config.examType}`,
+    config,
+    blueprint,
+    questions,
+    isDemoMode,
+    status: "READY",
+    createdAt: new Date().toISOString(),
+    manifest,
+    generationJobId,
+    idempotencyKey,
+  };
 }
 
 async function loadUploadedPdfSource(pdfSourceId: number | undefined, userId: number) {
@@ -1108,6 +1182,7 @@ async function validateGeneratedPaperSkippingInvalid({
   blueprint,
   config,
   conceptContext,
+  scopedConcepts,
   availableTopics,
   generationPlan,
   allowDemoFallback,
@@ -1122,6 +1197,7 @@ async function validateGeneratedPaperSkippingInvalid({
   blueprint: Blueprint;
   config: PaperConfig;
   conceptContext: string;
+  scopedConcepts: ConceptData[];
   availableTopics: string[];
   generationPlan: GenerationArchitecturePlan;
   allowDemoFallback: boolean;
@@ -1237,6 +1313,41 @@ async function validateGeneratedPaperSkippingInvalid({
       const reason =
         partialFinalizationReason ??
         "Generation reached the deployment time limit during replacement.";
+      const localFill = generateSourceBackedFallbackQuestions(
+        missingSectionsForBlueprint(validation.questions, blueprint),
+        scopedConcepts,
+        config,
+        {
+          existingQuestions: candidates,
+          startIndex: candidates.length,
+        },
+      );
+      if (localFill.length) {
+        candidates.push(...localFill);
+        validation = validatePaperKeepingValidOrEmpty(candidates, blueprint, config);
+      }
+
+      const finalMissingQuestions = missingSectionsForBlueprint(
+        validation.questions,
+        blueprint,
+      ).reduce((sum, section) => sum + section.count, 0);
+      const finalReadyCount = countQuestionsForBlueprint(validation.questions, blueprint);
+      const finalReplacedQuestions = Math.max(0, finalReadyCount - initialValidCount);
+
+      if (finalMissingQuestions === 0) {
+        return {
+          ...validation,
+          skipped: [
+            ...validation.skipped,
+            {
+              type: "source-backed-fill",
+              reason: `${reason} Filled ${localFill.length} remaining question${localFill.length === 1 ? "" : "s"} locally from the selected chapter source instead of skipping them.`,
+            },
+          ],
+          replacedQuestions: finalReplacedQuestions,
+          remainingMissingQuestions: 0,
+        };
+      }
 
       return {
         ...validation,
@@ -1244,11 +1355,11 @@ async function validateGeneratedPaperSkippingInvalid({
           ...validation.skipped,
           {
             type: "server-time-budget",
-            reason: `${reason} Saved ${readyCount}/${targetQuestionCount} valid real AI question${readyCount === 1 ? "" : "s"}; ${remainingMissingQuestions} requested question${remainingMissingQuestions === 1 ? "" : "s"} could not be generated in time.`,
+            reason: `${reason} Saved ${finalReadyCount}/${targetQuestionCount} valid question${finalReadyCount === 1 ? "" : "s"}; ${finalMissingQuestions} requested question${finalMissingQuestions === 1 ? "" : "s"} could not be generated in time.`,
           },
         ],
-        replacedQuestions,
-        remainingMissingQuestions,
+        replacedQuestions: finalReplacedQuestions,
+        remainingMissingQuestions: finalMissingQuestions,
       };
     }
 

@@ -4,6 +4,7 @@ import {
   parseIdParam,
   requireAuthenticatedUser,
 } from "@/lib/api-security";
+import { signGuestPaperSnapshot } from "@/lib/guest-paper-snapshot";
 import { deletePaperForUser, getPaper, getPaperOwnerId } from "@/lib/paper-store";
 import { NextRequest } from "next/server";
 
@@ -40,7 +41,11 @@ export async function GET(
     );
   }
 
-  return jsonSuccess(paper);
+  const guestPaperToken = auth.user.isGuest
+    ? await signGuestPaperSnapshot(paper, auth.user.id)
+    : undefined;
+
+  return jsonSuccess({ ...paper, guestPaperToken });
 }
 
 export async function DELETE(

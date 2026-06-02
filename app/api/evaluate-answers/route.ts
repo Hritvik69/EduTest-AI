@@ -7,13 +7,14 @@ import {
   requireAuthenticatedUser,
 } from "@/lib/api-security";
 import { evaluateAnswers } from "@/lib/evaluator";
+import { verifyGuestPaperSnapshot } from "@/lib/guest-paper-snapshot";
 import {
   getPaper,
   getPaperOwnerId,
   saveAttemptForUser,
 } from "@/lib/paper-store";
 import { evaluationRequestSchema } from "@/lib/schemas";
-import type { BloomLevel, GeneratedQuestion, StoredAttempt } from "@/types";
+import type { BloomLevel, GeneratedQuestion, StoredAttempt, StoredPaper } from "@/types";
 
 export async function POST(request: NextRequest) {
   const auth = await requireAuthenticatedUser(request);
@@ -29,23 +30,33 @@ export async function POST(request: NextRequest) {
 
   const body = parsed.data;
   const ownerId = await getPaperOwnerId(body.paperId);
-  if (!ownerId) {
-    return jsonError(
-      "Paper not found. It may have been removed or created in another browser session.",
-      404,
-    );
-  }
-  if (ownerId !== auth.user.id) {
+  if (ownerId && ownerId !== auth.user.id) {
     return jsonError(
       "Paper access denied. This paper belongs to another user or guest session.",
       403,
     );
   }
 
-  const paper = await getPaper(body.paperId, auth.user.id);
+  let paper: StoredPaper | null = ownerId ? await getPaper(body.paperId, auth.user.id) : null;
+  let snapshotOnly = false;
+
+  if (!paper && auth.user.isGuest) {
+    const snapshot = await verifyGuestPaperSnapshot(
+      body.paperSnapshot,
+      body.guestPaperToken,
+      auth.user.id,
+      body.paperId,
+    );
+
+    if (snapshot) {
+      paper = snapshot;
+      snapshotOnly = true;
+    }
+  }
+
   if (!paper) {
     return jsonError(
-      "Paper not found. It may have been removed or created in another browser session.",
+      "Paper not found. It may have been removed, created in another browser session, or loaded without a valid guest paper token.",
       404,
     );
   }
@@ -140,12 +151,18 @@ export async function POST(request: NextRequest) {
     generationManifest: paper.manifest,
   };
 
-  const saved = await saveAttemptForUser(
-    auth.user.id,
-    body.paperId,
-    payload,
-    body.answers,
-  );
+  const saved = snapshotOnly
+    ? {
+        ...payload,
+        attemptId: Date.now(),
+        createdAt: new Date().toISOString(),
+      }
+    : await saveAttemptForUser(
+        auth.user.id,
+        body.paperId,
+        payload,
+        body.answers,
+      );
   return jsonSuccess(saved);
 }
 

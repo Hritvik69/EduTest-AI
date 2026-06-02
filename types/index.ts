@@ -324,6 +324,7 @@ export interface StoredPaper {
   manifest?: GenerationManifest;
   generationJobId?: string | null;
   idempotencyKey?: string | null;
+  guestPaperToken?: string;
 }
 
 export interface StoredAttempt {

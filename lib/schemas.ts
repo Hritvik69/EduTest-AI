@@ -321,6 +321,8 @@ export const evaluationRequestSchema = z.object({
     .record(z.string().max(64), answerValueSchema)
     .refine((value) => Object.keys(value).length <= 150, "Too many answers."),
   timeTaken: z.coerce.number().int().min(0).max(24 * 60 * 60).optional(),
+  paperSnapshot: z.unknown().optional(),
+  guestPaperToken: z.string().min(32).max(256).optional(),
 });
 
 export const saveProgressSchema = z.object({

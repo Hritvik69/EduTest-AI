@@ -281,12 +281,14 @@ export function GenerationOverlay({
                     ...data,
                     id: paperId,
                     title:
-                      paperConfig.sourceMode === "pdf_upload"
+                      stringValue(data.title) ??
+                      (paperConfig.sourceMode === "pdf_upload"
                         ? `${paperConfig.pdfSource?.title ?? "PDF-EDU-TEST"} Paper`
-                        : `Class ${paperConfig.classNum} ${paperConfig.subject} ${paperConfig.examType}`,
+                        : `Class ${paperConfig.classNum} ${paperConfig.subject} ${paperConfig.examType}`),
                     config: paperConfig,
                     status: "READY",
                     sessionOnly: Boolean(data.sessionOnly),
+                    guestPaperToken: stringValue(data.guestPaperToken),
                   }),
                 )
               ) {

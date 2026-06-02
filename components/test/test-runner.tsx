@@ -309,6 +309,8 @@ export function TestRunner({ paperId }: { paperId: string }) {
           paperId: Number(paperId),
           answers: latestAnswers,
           timeTaken,
+          paperSnapshot: serializablePaperSnapshot(paper),
+          guestPaperToken: paper.guestPaperToken,
         }),
       });
       const result = await response.json();
@@ -499,6 +501,22 @@ function readSessionPaper(paperId: string): StoredPaper | null {
     }
     return null;
   }
+}
+
+function serializablePaperSnapshot(paper: StoredPaper) {
+  return {
+    id: paper.id,
+    title: paper.title,
+    config: paper.config,
+    blueprint: paper.blueprint,
+    questions: paper.questions,
+    isDemoMode: paper.isDemoMode,
+    status: paper.status,
+    createdAt: paper.createdAt,
+    manifest: paper.manifest,
+    generationJobId: paper.generationJobId,
+    idempotencyKey: paper.idempotencyKey,
+  };
 }
 
 function QuestionPalette({
