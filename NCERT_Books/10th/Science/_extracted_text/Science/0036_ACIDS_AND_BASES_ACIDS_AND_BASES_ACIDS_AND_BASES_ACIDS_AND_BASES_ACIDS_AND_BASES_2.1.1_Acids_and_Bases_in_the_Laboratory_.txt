@@ -1,0 +1,185 @@
+Science 24
+KOH(s) K (aq) + OH (aq)
+ →  –
+Mg(OH)2(s) H O 2
+ →  Mg2+(aq)+2OH–(aq)
+Bases generate hydroxide (OH–) ions in water. Bases which are soluble in water are called alkalis.
+All bases do not dissolve in water. An alkali is a base that dissolves in water. They are soapy to touch, bitter and corrosive. Never taste or touch them as they may cause harm. Which of the bases in the Table 2.1 are alkalis?
+Now as we have identified that all acids generate H+(aq) and all bases generate OH– (aq), we can view the neutralisation reaction as follows –
+Acid + Base → Salt + Water
+H X + M OH → MX + HOH
+H+(aq) + OH– (aq) → H2O(l)
+Let us see what is involved when water is mixed with an acid or a base.
+Activity 2.10 Activity 2.10 Activity 2.10 Activity 2.10 Activity 2.10 n Take 10 mL water in a beaker.
+n Add a few drops of concentrated H2SO4 to it and swirl the beaker slowly.
+n Touch the base of the beaker.
+n Is there a change in temperature?
+n Is this an exothermic or endothermic process?
+n Repeat the above Activity with sodium hydroxide pellets and record your observations. Figure 2.5 Figure 2.5 Figure 2.5 Figure 2.5 Figure 2.5
+Warning sign displayed on containers containing concentrated acids and bases The process of dissolving an acid or a base in water is a highly exothermic one. Care must be taken while mixing concentrated nitric acid or sulphuric acid with water. The acid must always be added slowly to water with constant stirring. If water is added to a concentrated acid, the heat generated may cause the mixture to splash out and cause burns.
+The glass container may also break due to excessive local heating. Look out for the warning sign (shown in Fig. 2.5) on the can of concentrated sulphuric acid and on the bottle of sodium hydroxide pellets.
+Mixing an acid or base with water results in decrease in the concentration of ions (H3O+/OH–) per unit volume. Such a process is called dilution and the acid or the base is said to be diluted.
+Reprint 2026-27
+Acids, Bases and Salts 25
+2.3 HOW STRONG ARE ACID OR BASE SOLUTIONS? 2.3 HOW STRONG ARE ACID OR BASE SOLUTIONS? 2.3 HOW STRONG ARE ACID OR BASE SOLUTIONS? 2.3 HOW STRONG ARE ACID OR BASE SOLUTIONS? 2.3 HOW STRONG ARE ACID OR BASE SOLUTIONS?
+We know how acid-base indicators can be used to distinguish between an acid and a base. We have also learnt in the previous section about dilution and decrease in concentration of H+ or OH– ions in solutions.
+Can we quantitatively find the amount of these ions present in a solution?
+Can we judge how strong a given acid or base is?
+We can do this by making use of a universal indicator, which is a mixture of several indicators. The universal indicator shows different colours at different concentrations of hydrogen ions in a solution.
+A scale for measuring hydrogen ion concentration in a solution, called pH scale has been developed. The p in pH stands for ‘potenz’ in German, meaning power. On the pH scale we can measure pH generally from
+0 (very acidic) to 14 (very alkaline). pH should be thought of simply as a number which indicates the acidic or basic nature of a solution. Higher the hydronium ion concentration, lower is the pH value.
+The pH of a neutral solution is 7. Values less than 7 on the pH scale represent an acidic solution. As the pH value increases from 7 to 14, it represents an increase in OH– ion concentration in the solution, that is, increase in the strength of alkali (Fig. 2.6). Generally paper impregnated with the universal indicator is used for measuring pH.
+Q U E S T I O N S
+1. Why do HCl, HNO3, etc., show acidic characters in aqueous solutions while solutions of compounds like alcohol and glucose do not show acidic character?
+2. Why does an aqueous solution of an acid conduct electricity?
+3. Why does dry HCl gas not change the colour of the dry litmus paper?
+4. While diluting an acid, why is it recommended that the acid should be added to water and not water to the acid?
+5. How is the concentration of hydronium ions (H3O+) affected when a solution of an acid is diluted?
+6. How is the concentration of hydroxide ions (OH–) affected when excess base is dissolved in a solution of sodium hydroxide?
+Figure 2.6 Figure 2.6 Figure 2.6 Figure 2.6 Figure 2.6 Variation of pH with the change in concentration of H+(aq) and OH–(aq) ions
+Reprint 2026-27
+Science 26
+Activity 2.11 Activity 2.11 Activity 2.11 Activity 2.11 Activity 2.11 n Test the pH values of solutions given in
+Table 2.2.
+n Record your observations.
+n What is the nature of each substance on the basis of your observations?
+Figure 2.7 Figure 2.7 Figure 2.7 Figure 2.7 Figure 2.7 pH of some common substances shown on a pH paper (colours are only a rough guide)
+The strength of acids and bases depends on the number of H+ ions and OH– ions produced, respectively. If we take hydrochloric acid and acetic acid of the same concentration, say one molar, then these produce different amounts of hydrogen ions. Acids that give rise to more H+ ions are said to be strong acids, and acids that give less H+ ions are said to be weak acids. Can you now say what weak and strong bases are?
+2.3.1 Impor 2.3.1 Impor 2.3.1 Impor 2.3.1 Impor 2.3.1 Importance of pH in Ever tance of pH in Ever tance of pH in Ever tance of pH in Ever tance of pH in Everyday Life yday Life yday Life yday Life yday Life
+Are plants and animals pH sensitive?
+Our body works within the pH range of 7.0 to 7.8. Living organisms can survive only in a narrow range of pH change. When pH of rain water is less than 5.6, it is called acid rain. When acid rain flows into the rivers, it lowers the pH of the river water. The survival of aquatic life in such rivers becomes difficult.
+Table 2.2
+S. Solution Colour of Approx- Nature of
+No. pH paper -imate substance pH value
+1 Saliva (before meal)
+2 Saliva (after meal)
+3 Lemon juice
+4 Colourless aerated
+5 Carrot juice
+6 Coffee
+7 Tomato juice
+8 Tap water
+9 1M NaOH
+10 1M HCl
+Reprint 2026-27
+Acids, Bases and Salts 27
+What is the pH of the soil in your backyard?
+Plants require a specific pH range for their healthy growth. To find out the pH required for the healthy growth of a plant, you can collect the soil from various places and check the pH in the manner described below in
+Activity 2.12. Also, you can note down which plants are growing in the region from which you have collected the soil.
+Acids in other planets
+The atmosphere of venus is made up of thick white and yellowish clouds of sulphuric acid. Do you think life can exist on this planet?
+Activity 2.12 Activity 2.12 Activity 2.12 Activity 2.12 Activity 2.12 n Put about 2 g soil in a test tube and add 5 mL water to it.
+n Shake the contents of the test tube.
+n Filter the contents and collect the filtrate in a test tube.
+n Check the pH of this filtrate with the help of universal indicator paper.
+n What can you conclude about the ideal soil pH for the growth of plants in your region?
+pH in our digestive system
+It is very interesting to note that our stomach produces hydrochloric acid. It helps in the digestion of food without harming the stomach.
+During indigestion the stomach produces too much acid and this causes pain and irritation. To get rid of this pain, people use bases called antacids. One such remedy must have been suggested by you at the beginning of this Chapter. These antacids neutralise the excess acid.
+Magnesium hydroxide (Milk of magnesia), a mild base, is often used for this purpose.
+pH change as the cause of tooth decay
+Tooth decay starts when the pH of the mouth is lower than 5.5. Tooth enamel, made up of calcium hydroxyapatite (a crystalline form of calcium phosphate) is the hardest substance in the body. It does not dissolve in water, but is corroded when the pH in the mouth is below 5.5. Bacteria present in the mouth produce acids by degradation of sugar and food particles remaining in the mouth after eating. The best way to prevent this is to clean the mouth after eating food. Using toothpastes, which are generally basic, for cleaning the teeth can neutralise the excess acid and prevent tooth decay.
+Self defence by animals and plants through chemical warfare
+Have you ever been stung by a honey-bee? Bee-sting leaves an acid which causes pain and irritation. Use of a mild base like baking soda on the stung area gives relief. Stinging hair of nettle leaves inject methanoic acid causing burning pain.
+Reprint 2026-27
+Science 28
+2.4 MORE ABOUT SAL 2.4 MORE ABOUT SAL 2.4 MORE ABOUT SAL 2.4 MORE ABOUT SAL 2.4 MORE ABOUT SALTS TS TS TS TS
+In the previous sections we have seen the formation of salts during various reactions. Let us understand more about their preparation, properties and uses.
+2.4.1 Family of Salts
+Activity 2.13 Activity 2.13 Activity 2.13 Activity 2.13 Activity 2.13 n Write the chemical formulae of the salts given below.
+Potassium sulphate, sodium sulphate, calcium sulphate, magnesium sulphate, copper sulphate, sodium chloride, sodium nitrate, sodium carbonate and ammonium chloride.
+Nature provides neutralisation options
+Nettle is a herbaceous plant which grows in the wild. Its leaves have stinging hair, which cause painful stings when touched accidentally. This is due to the methanoic acid secreted by them. A traditional remedy is rubbing the area with the leaf of the dock plant, which often grows beside the nettle in the wild. Can you guess the nature of the dock plant? So next time you know what to look out for if you accidentally touch a nettle plant while trekking. Are you aware of any other effective traditional remedies for such stings?
+Table 2.3 Some naturally occurring acids
+Natural source Acid Natural source Acid
+Vinegar Acetic acid Sour milk (Curd) Lactic acid
+Orange Citric acid Lemon Citric acid
+Tamarind Tartaric acid Ant sting Methanoic acid
+Tomato Oxalic acid Nettle sting Methanoic acid
+Q U E S T I O N S
+1. You have two solutions, A and B. The pH of solution A is 6 and pH of solution B is 8. Which solution has more hydrogen ion concentration?
+Which of this is acidic and which one is basic?
+2. What effect does the concentration of H+(aq) ions have on the nature of the solution?
+3. Do basic solutions also have H+(aq) ions? If yes, then why are these basic?
+4. Under what soil condition do you think a farmer would treat the soil of his fields with quick lime (calcium oxide) or slaked lime (calcium hydroxide) or chalk (calcium carbonate)?
+Do You Know?
+Reprint 2026-27
+Acids, Bases and Salts 29 n Identify the acids and bases from which the above salts may be obtained.
+n Salts having the same positive or negative radicals are said to belong to a family. For example, NaCl and Na2SO4 belong to the family of sodium salts. Similarly, NaCl and KCl belong to the family of chloride salts. How many families can you identify among the salts given in this Activity?
+2.4.2 pH of Salts
+Activity 2.14 Activity 2.14 Activity 2.14 Activity 2.14 Activity 2.14 n Collect the following salt samples – sodium chloride, potassium nitrate, aluminium chloride, zinc sulphate, copper sulphate, sodium acetate, sodium carbonate and sodium hydrogencarbonate (some other salts available can also be taken).
+n Check their solubility in water (use distilled water only).
+n Check the action of these solutions on litmus and find the pH using a pH paper.
+n Which of the salts are acidic, basic or neutral?
+n Identify the acid or base used to form the salt.
+n Report your observations in Table 2.4.
+Salts of a strong acid and a strong base are neutral with pH value of 7. On the other hand, salts of a strong acid and weak base are acidic with pH value less than 7 and those of a strong base and weak acid are basic in nature, with pH value more than 7.
+2.4.3 Chemicals from Common Salt
+By now you have learnt that the salt formed by the combination of hydrochloric acid and sodium hydroxide solution is called sodium chloride. This is the salt that you use in food.
+You must have observed in the above Activity that it is a neutral salt.
+Seawater contains many salts dissolved in it. Sodium chloride is separated from these salts. Deposits of solid salt are also found in several parts of the world. These large crystals are often brown due to impurities. This is called rock salt. Beds of rock salt were formed when seas of bygone ages dried up. Rock salt is mined like coal.
+You must have heard about Mahatma Gandhi’s Dandi March. Did you know that sodium chloride was such an important symbol in our struggle for freedom?
+Table 2.4
+Salt pH Acid used Base used
+Reprint 2026-27
+Science 30
+Common salt — A raw material for chemicals
+The common salt thus obtained is an important raw material for various materials of daily use, such as sodium hydroxide, baking soda, washing soda, bleaching powder and many more. Let us see how one substance is used for making all these different substances.
+Sodium hydroxide
+When electricity is passed through an aqueous solution of sodium chloride (called brine), it decomposes to form sodium hydroxide. The process is called the chlor-alkali process because of the products formed– chlor for chlorine and alkali for sodium hydroxide.
+2NaCl(aq) + 2H2O(l) Æ 2NaOH(aq) + Cl2(g) + H2(g)
+Chlorine gas is given off at the anode, and hydrogen gas at the cathode.
+Sodium hydroxide solution is formed near the cathode. The three products produced in this process are all useful. Figure 2.8 shows the different uses of these products.
+Bleaching powder
+You have already come to know that chlorine is produced during the electrolysis of aqueous sodium chloride (brine). This chlorine gas is used for the manufacture of bleaching powder. Bleaching powder is produced by the action of chlorine on dry slaked lime [Ca(OH)2]. Bleaching powder is represented as Ca(ClO)2, though the actual composition is quite complex.
+2Ca(OH)2 + 2Cl2 Æ Ca(ClO)2 + CaCl2 + 2H2O
+Figure 2.8 Important products from the chlor-alkali process
+Reprint 2026-27
+Acids, Bases and Salts 31
+Bleaching powder is used – (i) for bleaching cotton and linen in the textile industry, for bleaching wood pulp in paper factories and for bleaching washed clothes in laundry;
+(ii) as an oxidising agent in many chemical industries; and (iii) to make drinking water free from germs.
+Baking soda
+The baking soda is commonly used in the kitchen for making tasty crispy pakoras, etc. Sometimes it is added for faster cooking. The chemical name of the compound is sodium hydrogencarbonate (NaHCO3). It is produced using sodium chloride as one of the raw materials.
+NaCl + H O + CO + NH NH Cl + NaHCO 2 2 3 4 3 → (Ammonium (Sodium chloride) hydrogencarbonate)
+Did you check the pH of sodium hydrogencarbonate in Activity 2.14?
+Can you correlate why it can be used to neutralise an acid? It is a mild non-corrosive basic salt. The following reaction takes place when it is heated during cooking –
+2NaHCO Na CO + H O + CO 3 2 3 2 2 (Sodium (Sodium hydrogencarbonate) carbonate)
+Sodium hydrogencarbonate has got various uses in the household.
+Uses of Baking soda (i) Baking powder is a mixture of baking soda (sodium hydrogen carbonate) and tartaric acid which is a weak edible acid. When baking powder is heated or mixed in water, the following reaction takes place –
+NaHCO3 + H+ Æ CO2 + H2O + Sodium salt of acid (From any acid)
+Carbon dioxide produced during the reaction can cause bread or cake to rise making them soft and spongy.
+(ii) Sodium hydrogencarbonate is also an ingredient in antacids.
+Being alkaline, it neutralises excess acid in the stomach and provides relief.
+(iii) It is also used in soda-acid fire extinguishers.
+Washing soda
+Another chemical that can be obtained from sodium chloride is
+Na2CO3.10H2O (washing soda). You have seen above that sodium carbonate can be obtained by heating baking soda; recrystallisation of sodium carbonate gives washing soda. It is also a basic salt.
+Na CO H O Na CO H O carbonate
+2 3 2 2 3 2 10 10 + → .
+Reprint 2026-27
+Science 32
+What does 10H2O signify? Does it make Na2CO3 wet? We will address this question in the next section.
+Sodium carbonate and sodium hydrogencarbonate are useful chemicals for many industrial processes as well.
+Uses of washing soda (i) Sodium carbonate (washing soda) is used in glass, soap and paper industries.
+(ii) It is used in the manufacture of sodium compounds such as borax.
+(iii) Sodium carbonate can be used as a cleaning agent for domestic purposes.
+(iv) It is used for removing permanent hardness of water.
+2.4.4 Are the Crystals of Salts really Dry?
+Activity 2.15 Activity 2.15 Activity 2.15 Activity 2.15 Activity 2.15 n Heat a few crystals of copper sulphate in a dry boiling tube.
+n What is the colour of the copper sulphate after heating?
+n Do you notice water droplets in the boiling tube? Where have these come n Add 2-3 drops of water on the sample of copper sulphate obtained after heating.
+n What do you observe? Is the blue colour of copper sulphate restored?
+Figure 2.9 Figure 2.9 Figure 2.9 Figure 2.9 Figure 2.9
+Removing water of crystallisation
+Copper sulphate crystals which seem to be dry contain water of crystallisation. When we heat the crystals, this water is removed and the salt turns white.
+If you moisten the crystals again with water, you will find that blue colour of the crystals reappears.
+Water of crystallisation is the fixed number of water molecules present in one formula unit of a salt. Five water molecules are present in one formula unit of copper sulphate. Chemical formula for hydrated copper sulphate is Cu SO4. 5H2O. Now you would be able to answer the question whether the molecule of Na2CO3.10H2O is wet.
+One other salt, which possesses water of crystallisation is gypsum.
+It has two water molecules as water of cyrstallisation. It has the chemical formula CaSO4.2H2O. Let us look into the use of this salt.
+Plaster of Paris
+On heating gypsum at 373 K, it loses water molecules and becomes calcium sulphate hemihydrate ( 4 2
+CaSO . H O
+2 ). This is called Plaster of
+Reprint 2026-27
+Acids, Bases and Salts 33
+Paris, the substance which doctors use as plaster for supporting fractured bones in the righ

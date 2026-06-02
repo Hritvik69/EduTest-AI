@@ -1,0 +1,266 @@
+414 MATHEMATICS
+7. Two coins are tossed once, where (i) E : tail appears on one coin, F : one coin shows head (ii) E : no tail appears, F : no head appears
+8. A die is thrown three times,
+E : 4 appears on the third toss, F : 6 and 5 appears respectively on first two tosses
+9. Mother, father and son line up at random for a family picture
+E : son on one end, F : father in middle
+10. A black and a red dice are rolled.
+(a) Find the conditional probability of obtaining a sum greater than 9, given that the black die resulted in a 5.
+(b) Find the conditional probability of obtaining the sum 8, given that the red die resulted in a number less than 4.
+11. A fair die is rolled. Consider events E = {1,3,5}, F = {2,3} and G = {2,3,4,5} (i) P (E|F) and P (F|E) (ii) P (E|G) and P (G|E)
+(iii) P ((E ∪ F)|G) and P ((E ∩ F)|G)
+12. Assume that each born child is equally likely to be a boy or a girl. If a family has two children, what is the conditional probability that both are girls given that (i) the youngest is a girl, (ii) at least one is a girl?
+13. An instructor has a question bank consisting of 300 easy True / False questions,
+200 difficult True / False questions, 500 easy multiple choice questions and 400 difficult multiple choice questions. If a question is selected at random from the question bank, what is the probability that it will be an easy question given that it is a multiple choice question?
+14. Given that the two numbers appearing on throwing two dice are different. Find the probability of the event ‘the sum of numbers on the dice is 4’.
+15. Consider the experiment of throwing a die, if a multiple of 3 comes up, throw the die again and if any other number comes, toss a coin. Find the conditional probability of the event ‘the coin shows a tail’, given that ‘at least one die shows a 3’.
+In each of the Exercises 16 and 17 choose the correct answer:
+16. If P (A) = 1
+2 , P (B) = 0, then P (A|B) is (A) 0 (B) 1 (C) not defined (D) 1
+Reprint 2026-27
+PROBABILITY 415
+17. If A and B are events such that P(A|B) = P(B|A), then (A) A ⊂ B but A ≠ B (B) A = B (C) A ∩ B = φ (D) P(A) = P(B)
+13.3 Multiplication Theorem on Probability
+Let E and F be two events associated with a sample space S. Clearly, the set E ∩ F denotes the event that both E and F have occurred. In other words, E ∩ F denotes the simultaneous occurrence of the events E and F. The event E ∩ F is also written as EF.
+Very often we need to find the probability of the event EF. For example, in the experiment of drawing two cards one after the other, we may be interested in finding the probability of the event ‘a king and a queen’. The probability of event EF is obtained by using the conditional probability as obtained below :
+We know that the conditional probability of event E given that F has occurred is denoted by P(E|F) and is given by
+P(E|F) = P (E F) , P (F) 0
+From this result, we can write
+P (E ∩ F) = P (F) . P (E|F) ... (1)
+Also, we know that
+P (F|E) = P (F E) ,P (E) 0 or P (F|E) = P (E F)
+∩ (since E ∩ F = F ∩ E)
+Thus, P(E ∩ F) = P(E). P(F|E) .... (2)
+Combining (1) and (2), we find that
+P (E ∩ F) = P(E) P(F|E)
+= P(F) P(E|F) provided P(E) ≠ 0 and P(F) ≠ 0.
+The above result is known as the multiplication rule of probability.
+Let us now take up an example.
+Example 8 An urn contains 10 black and 5 white balls. Two balls are drawn from the urn one after the other without replacement. What is the probability that both drawn balls are black?
+Solution Let E and F denote respectively the events that first and second ball drawn are black. We have to find P (E ∩ F) or P (EF).
+Reprint 2026-27
+416 MATHEMATICS
+Now P (E) = P (black ball in first draw) = 10
+Also given that the first ball drawn is black, i.e., event E has occurred, now there are 9 black balls and five white balls left in the urn. Therefore, the probability that the second ball drawn is black, given that the ball in the first draw is black, is nothing but the conditional probability of F given that E has occurred.
+i.e. P(F|E) = 9
+By multiplication rule of probability, we have
+P (E ∩ F) = P (E) P (F|E)
+= 10 9 3
+Multiplication rule of probability for more than two events If E, F and G are three events of sample space, we have
+P (E ∩ F ∩ G) = P (E) P (F|E) P (G|(E ∩ F)) = P (E) P (F|E) P (G|EF)
+Similarly, the multiplication rule of probability can be extended for four or more events.
+The following example illustrates the extension of multiplication rule of probability for three events.
+Example 9 Three cards are drawn successively, without replacement from a pack of
+52 well shuffled cards. What is the probability that first two cards are kings and the third card drawn is an ace?
+Solution Let K denote the event that the card drawn is king and A be the event that the card drawn is an ace. Clearly, we have to find P (KKA)
+Now P(K) = 4
+Also, P (K|K) is the probability of second king with the condition that one king has already been drawn. Now there are three kings in (52 − 1) = 51 cards.
+Therefore P(K|K) = 3
+Lastly, P(A|KK) is the probability of third drawn card to be an ace, with the condition that two kings have already been drawn. Now there are four aces in left 50 cards.
+Reprint 2026-27
+PROBABILITY 417
+Therefore P (A|KK) = 4
+By multiplication law of probability, we have
+P (KKA) = P(K) P(K|K) P(A|KK)
+= 4 3 4 2
+52 51 50 5525
+13.4 Independent Events
+Consider the experiment of drawing a card from a deck of 52 playing cards, in which the elementary events are assumed to be equally likely. If E and F denote the events
+'the card drawn is a spade' and 'the card drawn is an ace' respectively, then
+P(E) = 13 1 4 1 and P(F)
+52 4 52 13
+Also E and F is the event ' the card drawn is the ace of spades' so that
+P(E ∩ F) = 1
+Hence P(E|F) =
+P (E F) 1 52
+1 P (F) 4
+Since P(E) = 1
+4 = P (E|F), we can say that the occurrence of event F has not affected the probability of occurrence of the event E.
+We also have
+P(F|E) =
+P (E F) 1 52 P(F)
+1 P(E) 13
+Again, P (F) = 1
+13 = P (F|E) shows that occurrence of event E has not affected the probability of occurrence of the event F.
+Thus, E and F are two events such that the probability of occurrence of one of them is not affected by occurrence of the other.
+Such events are called independent events.
+Reprint 2026-27
+418 MATHEMATICS
+Definition 2 Two events E and F are said to be independent, if
+P (F|E) = P (F) provided P (E) ≠ 0 and P (E|F) = P (E) provided P (F) ≠ 0
+Thus, in this definition we need to have P (E) ≠ 0 and P(F) ≠ 0
+Now, by the multiplication rule of probability, we have
+P (E ∩ F) = P(E) . P (F|E) ... (1)
+If E and F are independent, then (1) becomes
+P (E ∩ F) = P(E) . P(F) ... (2)
+Thus, using (2), the independence of two events is also defined as follows:
+Definition 3 Let E and F be two events associated with the same random experiment, then E and F are said to be independent if
+P (E ∩ F) = P(E) . P (F)
+(i) Two events E and F are said to be dependent if they are not independent, i.e. if
+P(E ∩ F ) ≠ P (E) . P (F)
+(ii) Sometimes there is a confusion between independent events and mutually exclusive events. Term ‘independent’ is defined in terms of ‘probability of events’ whereas mutually exclusive is defined in term of events (subset of sample space).
+Moreover, mutually exclusive events never have an outcome common, but independent events, may have common outcome. Clearly, ‘independent’ and
+‘mutually exclusive’ do not have the same meaning.
+In other words, two independent events having nonzero probabilities of occurrence can not be mutually exclusive, and conversely, i.e. two mutually exclusive events having nonzero probabilities of occurrence can not be independent.
+(iii) Two experiments are said to be independent if for every pair of events E and F, where E is associated with the first experiment and F with the second experiment, the probability of the simultaneous occurrence of the events E and F when the two experiments are performed is the product of P(E) and P(F) calculated separately on the basis of two experiments, i.e., P (E ∩ F) = P (E) . P(F)
+(iv) Three events A, B and C are said to be mutually independent, if
+P (A ∩ B) = P (A) P (B)
+P (A ∩ C) = P (A) P (C)
+P (B ∩ C) = P (B) P(C)
+and P (A ∩ B ∩ C) = P (A) P (B) P (C)
+Reprint 2026-27
+PROBABILITY 419
+If at least one of the above is not true for three given events, we say that the events are not independent.
+Example 10 A die is thrown. If E is the event ‘the number appearing is a multiple of
+3’ and F be the event ‘the number appearing is even’ then find whether E and F are independent ?
+Solution We know that the sample space is S = {1, 2, 3, 4, 5, 6}
+Now E = { 3, 6}, F = { 2, 4, 6} and E ∩ F = {6}
+Then P (E) = 2 1 3 1 1
+, P(F) and P (E F)
+6 3 6 2 6
+= = = ∩ =
+Clearly P (E ∩ F) = P(E). P (F)
+Hence E and F are independent events.
+Example 11 An unbiased die is thrown twice. Let the event A be ‘odd number on the first throw’ and B the event ‘odd number on the second throw’. Check the independence of the events A and B.
+Solution If all the 36 elementary events of the experiment are considered to be equally likely, we have
+P(A) = 18 1
+= and 18 1
+P (B) 36 2
+Also P (A ∩ B) = P (odd number on both throws)
+Now P (A) P(B) = 1 1 1
+Clearly P (A ∩ B) = P (A) × P (B)
+Thus, A and B are independent events
+Example 12 Three coins are tossed simultaneously. Consider the event E ‘three heads or three tails’, F ‘at least two heads’ and G ‘at most two heads’. Of the pairs (E,F), (E,G) and (F,G), which are independent? which are dependent?
+Solution The sample space of the experiment is given by
+S = {HHH, HHT, HTH, THH, HTT, THT, TTH, TTT}
+Clearly E = {HHH, TTT}, F= {HHH, HHT, HTH, THH}
+Reprint 2026-27
+420 MATHEMATICS and G = {HHT, HTH, THH, HTT, THT, TTH, TTT}
+Also E ∩ F = {HHH}, E ∩ G = {TTT}, F ∩ G = {HHT, HTH, THH}
+Therefore P (E) = 2 1 4 1 7
+, P (F) , P(G)
+8 4 8 2 8 and P (E ∩F) = 1 1 3
+, P (E G) , P(F G)
+Also P(E) . P (F) = 1 1 1 1 7 7
+, P(E) P(G)
+4 2 8 4 8 32
+× = ⋅ = × = and P(F) . P(G) = 1 7 7
+Thus P (E ∩ F) = P(E) . P(F)
+P (E ∩ G) ≠ P(E) . P(G)
+and P (F ∩ G) ≠ P (F) . P(G)
+Hence, the events (E and F) are independent, and the events (E and G) and (F and G) are dependent.
+Example 13 Prove that if E and F are independent events, then so are the events
+E and F′.
+Solution Since E and F are independent, we have
+P (E ∩ F) = P(E) . P(F) ....(1)
+From the venn diagram in Fig 13.3, it is clear that E ∩ F and E ∩ F ′ are mutually exclusive events and also E =(E ∩ F) ∪ (E ∩ F′).
+Therefore P (E) = P(E ∩ F) + P(E ∩ F′)
+or P (E ∩ F′) = P(E) − P(E ∩ F)
+= P(E) − P(E) . P(F)
+(by (1))
+= P(E) (1−P(F))
+= P(E). P(F′)
+Hence, E and F′ are independent (E F )’ ∩ (E F) ’∩ (E F ) ’ ’ ∩
+Fig 13.3
+Reprint 2026-27
+PROBABILITY 421
+ANote In a similar manner, it can be shown that if the events E and F are independent, then (a) E′ and F are independent, (b) E′ and F′ are independent
+Example 14 If A and B are two independent events, then the probability of occurrence of at least one of A and B is given by 1– P(A′) P(B′)
+Solution We have
+P (at least one of A and B) = P(A ∪ B)
+= P(A) + P(B) − P(A ∩ B)
+= P(A) + P(B) − P(A) P(B)
+= P(A) + P(B) [1−P(A)]
+= P(A) + P(B). P(A′)
+= 1− P(A′) + P(B) P(A′)
+= 1− P(A′) [1− P(B)]
+= 1− P(A′) P (B′)
+EXERCISE 13.2
+1. If P(A) 3
+= and P (B) 1
+= , find P (A ∩ B) if A and B are independent events.
+2. Two cards are drawn at random and without replacement from a pack of 52 playing cards. Find the probability that both the cards are black.
+3. A box of oranges is inspected by examining three randomly selected oranges drawn without replacement. If all the three oranges are good, the box is approved for sale, otherwise, it is rejected. Find the probability that a box containing 15 oranges out of which 12 are good and 3 are bad ones will be approved for sale.
+4. A fair coin and an unbiased die are tossed. Let A be the event ‘head appears on the coin’ and B be the event ‘3 on the die’. Check whether A and B are independent events or not.
+5. A die marked 1, 2, 3 in red and 4, 5, 6 in green is tossed. Let A be the event,
+‘the number is even,’ and B be the event, ‘the number is red’. Are A and B independent?
+6. Let E and F be events with P (E) 3
+= , P (F) 3
+= and P (E ∩ F) = 1
+E and F independent?
+Reprint 2026-27
+422 MATHEMATICS
+7. Given that the events A and B are such that P(A) = 1
+2 , P(A ∪ B) = 3
+P(B) = p. Find p if they are (i) mutually exclusive (ii) independent.
+8. Let A and B be independent events with P (A) = 0.3 and P(B) = 0.4. Find (i) P (A ∩ B) (ii) P (A ∪ B)
+(iii) P (A|B) (iv) P (B|A)
+9. If A and B are two events such that P(A) = 1
+4 , P (B) = 1
+2 and P (A ∩ B) = 1 find P (not A and not B).
+10. Events A and B are such that P (A) = 1
+2 , P(B) = 7
+12 and P(not A or not B) = 1
+State whether A and B are independent ?
+11. Given two independent events A and B such that P(A) = 0.3, P(B) = 0.6.
+(i) P(A and B) (ii) P(A and not B)
+(iii) P(A or B) (iv) P(neither A nor B)
+12. A die is tossed thrice. Find the probability of getting an odd number at least once.
+13. Two balls are drawn at random with replacement from a box containing 10 black and 8 red balls. Find the probability that (i) both balls are red.
+(ii) first ball is black and second is red.
+(iii) one of them is black and other is red.
+14. Probability of solving specific problem independently by A and B are 1 respectively. If both try to solve the problem independently, find the probability (i) the problem is solved (ii) exactly one of them solves the problem.
+15. One card is drawn at random from a well shuffled deck of 52 cards. In which of the following cases are the events E and F independent ?
+(i) E : ‘the card drawn is a spade’
+F : ‘the card drawn is an ace’ (ii) E : ‘the card drawn is black’
+F : ‘the card drawn is a king’ (iii) E : ‘the card drawn is a king or queen’
+F : ‘the card drawn is a queen or jack’.
+Reprint 2026-27
+PROBABILITY 423
+16. In a hostel, 60% of the students read Hindi newspaper, 40% read English newspaper and 20% read both Hindi and English newspapers. A student is selected at random.
+(a) Find the probability that she reads neither Hindi nor English newspapers.
+(b) If she reads Hindi newspaper, find the probability that she reads English newspaper.
+(c) If she reads English newspaper, find the probability that she reads Hindi newspaper.
+Choose the correct answer in Exercises 17 and 18.
+17. The probability of obtaining an even prime number on each die, when a pair of dice is rolled is (A) 0 (B) 1
+12 (D) 1
+18. Two events A and B will be independent, if (A) A and B are mutually exclusive (B) P(A′B′) = [1 – P(A)] [1 – P(B)] (C) P(A) = P(B)
+(D) P(A) + P(B) = 1
+13.5 Bayes' Theorem
+Consider that there are two bags I and II. Bag I contains 2 white and 3 red balls and
+Bag II contains 4 white and 5 red balls. One ball is drawn at random from one of the bags. We can find the probability of selecting any of the bags (i.e. 1
+2 ) or probability of drawing a ball of a particular colour (say white) from a particular bag (say Bag I). In other words, we can find the probability that the ball drawn is of a particular colour, if we are given the bag from which the ball is drawn. But, can we find the probability that the ball drawn is from a particular bag (say Bag II), if the colour of the ball drawn is given? Here, we have to find the reverse probability of Bag II to be selected when an event occurred after it is known. Famous mathematician, John Bayes' solved the problem of finding reverse probability by using conditional probability. The formula developed by him is known as ‘Bayes theorem’ which was published posthumously in 1763.
+Before stating and proving the Bayes' theorem, let us first take up a definition and some preliminary results.
+13.5.1 Partition of a sample space
+A set of events E1, E2, ..., En is said to represent a partition of the sample space S if (a) Ei ∩ Ej = φ, i ≠ j, i, j = 1, 2, 3, ..., n
+Reprint 2026-27
+424 MATHEMATICS
+Fig 13.4 (b) E1 ∪ Ε2 ∪ ... ∪ En= S and (c) P(Ei) > 0 for all i = 1, 2, ..., n.
+In other words, the events E1, E2, ..., En represent a partition of the sample space
+S if they are pairwise disjoint, exhaustive and have nonzero probabilities.
+As an example, we see that any nonempty event E and its complement E′ form a partition of the sample space S since they satisfy E ∩ E′ = φ and E ∪ E′ = S.
+From the Venn diagram in Fig 13.3, one can easily observe that if E and F are any two events associated with a sample space S, then the set {E ∩ F′, E ∩ F, E′ ∩ F, E′ ∩ F′} is a partition of the sample space S. It may be mentioned that the partition of a sample space is not unique. There can be several partitions of the same sample space.
+We shall now prove a theorem known as Theorem of total probability.
+13.5.2 Theorem of total probability
+Let {E1, E2,...,En} be a partition of the sample space S, and suppose that each of the events E1, E2,..., En has nonzero probability of occurrence. Let A be any event associated with S, then
+P(A) = P(E1) P(A|E1) + P(E2) P(A|E2) + ... + P(En) P(A|En)
+P(E ) P (A|E )
+Proof Given that E1, E2,..., En is a partition of the sample space S (Fig 13.4). Therefore,
+S = E1 ∪ E2 ∪ ... ∪ En ... (1)
+and Ei ∩ Ej = φ, i ≠ j, i, j = 1, 2, ..., n
+Now, we know that for any event A,
+A = A ∩ S
+= A ∩ (E1 ∪ E2 ∪ ... ∪ En)
+= (A ∩ E1) ∪ (A ∩ E2) ∪ ...∪ (A ∩ En)
+Also A ∩ Ei and A ∩ Ej are respectively the subsets of Ei and Ej . We know that
+Ei and Ej are disjoint, for i j ≠ , therefore, A ∩ Ei and A ∩ Ej are also disjoint for all i ≠ j, i, j = 1, 2, ..., n.
+Thus, P(A) = P [(A ∩ E1) ∪ (A ∩ E2)∪ .....∪ (A ∩ En)]
+= P (A ∩ E1) + P (A ∩ E2) + ... + P (A ∩ En)
+Now, by multiplication rule of probability, we have
+P(A ∩ Ei) = P(Ei) P(A|Ei) as P (Ei) ≠ 0∀i = 1,2,..., n
+Reprint 2026-27
+PROBABILITY 425
+Therefore, P (A) = P (E1) P (A|E1) + P (E2) P (A|E2) + ... + P (En)P(A|En)
+or P(A) = 1
+P(E ) P (A|E )
+Example 15 A person has undertaken a construction job. The probabilities are 0.65 that there will be strike, 0.80 that the construction job will be completed on time if there is no strike, and 0.32 that the construction job will

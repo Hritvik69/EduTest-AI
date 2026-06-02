@@ -1,0 +1,82 @@
+249 Aldehydes, Ketones and Carboxylic Acids
+Aliphatic carboxylic acids upto nine carbon atoms are colourless liquids at room temperature with unpleasant odours. The higher acids are wax like solids and are practically odourless due to their low volatility. Carboxylic acids are higher boiling liquids than aldehydes, ketones and even alcohols of comparable molecular masses. This is due to more extensive association of carboxylic acid molecules through intermolecular hydrogen bonding. The hydrogen bonds are not broken completely even in the vapour phase. In fact, most carboxylic acids exist as dimer in the vapour phase or in the aprotic solvents.
+Simple aliphatic carboxylic acids having upto four carbon atoms are miscible in water due to the formation of hydrogen bonds with water. The solubility decreases with increasing number of carbon atoms. Higher carboxylic acids are practically insoluble in water due to the increased hydrophobic interaction of hydrocarbon part. Benzoic acid, the simplest aromatic carboxylic acid is nearly insoluble in cold water. Carboxylic acids are also soluble in less polar organic solvents like benzene, ether, alcohol, chloroform, etc.
+The reaction of carboxylic acids are classified as follows:
+Reactions with metals and alkalies
+The carboxylic acids like alcohols evolve hydrogen with electropositive metals and form salts with alkalies similar to phenols. However, unlike phenols they react with weaker bases such as carbonates and hydrogencarbonates to evolve carbon dioxide. This reaction is used to detect the presence of carboxyl group in an organic compound.
+Carboxylic acids dissociate in water to give resonance stabilised carboxylate anions and hydronium ion.
+8.9.1 Reactions
+Involving
+Cleavage of
+O–H Bond
+8.8 8.8 8.8 8.8 8.8 Physical Physical Physical Physical Physical
+Properties Properties Properties Properties Properties
+8.9 8.9 8.9 8.9 8.9 Chemical Reactions Chemical Reactions Chemical Reactions Chemical Reactions Chemical Reactions
+In vapour state or in aprotic solvent
+Hydrogen bonding of
+RCOOH with H2O
+Reprint 2026-27
+250 Chemistry where Keq, is equilibrium constant and Ka is the acid dissociation constant.
+For convenience, the strength of an acid is generally indicated by its pKa value rather than its Ka value.
+pKa = – log Ka
+The pKa of hydrochloric acid is –7.0, where as pKa of trifluoroacetic acid (the strongest carboxylic acid), benzoic acid and acetic acid are
+0.23, 4.19 and 4.76, respectively.
+Smaller the pKa, the stronger the acid ( the better it is as a proton donor). Strong acids have pKa values < 1, the acids with pKa values between 1 and 5 are considered to be moderately strong acids, weak acids have pKa values between 5 and 15, and extremely weak acids have pKa values >15.
+Carboxylic acids are weaker than mineral acids, but they are stronger acids than alcohols and many simple phenols (pKa is ~16 for ethanol and 10 for phenol). In fact, carboxylic acids are amongst the most acidic organic compounds you have studied so far. You already know why phenols are more acidic than alcohols. The higher acidity of carboxylic acids as compared to phenols can be understood similarly. The conjugate base of carboxylic acid, a carboxylate ion, is stabilised by two equivalent resonance structures in which the negative charge is at the more electronegative oxygen atom. The conjugate base of phenol, a phenoxide ion, has non-equivalent resonance structures in which the negative charge is at the less electronegative carbon atom. Therefore, resonance in phenoxide ion is not as important as it is in carboxylate ion. Further, the negative charge is delocalised over two electronegative oxygen atoms in carboxylate ion whereas it is less effectively delocalised over one oxygen atom and less electronegative carbon atoms in phenoxide ion (Unit 7,
+Class XII). Thus, the carboxylate ion is more stabilised than phenoxide ion, so carboxylic acids are more acidic than phenols.
+Effect of substituents on the acidity of carboxylic acids:
+Substituents may affect the stability of the conjugate base and thus, also affect the acidity of the carboxylic acids. Electron withdrawing groups increase the acidity of carboxylic acids by stabilising the conjugate base through delocalisation of the negative charge by inductive and/or resonance effects. Conversely, electron donating groups decrease the acidity by destabilising the conjugate base.
+Electron withdrawing group (EWG)
+stabilises the carboxylate anion and strengthens the acid
+Electron donating group (EDG)
+destabilises the carboxylate anion and weakens the acid
+For the above reaction:
+Reprint 2026-27
+251 Aldehydes, Ketones and Carboxylic Acids
+The effect of the following groups in increasing acidity order is
+Ph < I < Br < Cl < F < CN < NO2 < CF3
+Thus, the following acids are arranged in order of increasing acidity (based on pKa values):
+CF3COOH > CCl3COOH > CHCl2COOH > NO2CH2COOH > NC-CH2COOH >
+FCH2COOH > ClCH2COOH > BrCH2COOH > HCOOH > ClCH2CH2COOH > (continue)
+C6H5COOH > C6H5CH2COOH > CH3COOH > CH3CH2COOH (continue )
+Direct attachment of groups such as phenyl or vinyl to the carboxylic acid, increases the acidity of corresponding carboxylic acid, contrary to the decrease expected due to resonance effect shown below:
+This is because of greater electronegativity of sp2 hybridised carbon to which carboxyl carbon is attached. The presence of electron withdrawing group on the phenyl of aromatic carboxylic acid increases their acidity while electron donating groups decrease their acidity.
+COOH COOH
+4-Methoxy benzoic acid (p = 4.46) Ka
+Benzoic acid (p = 4.19) Ka
+4-Nitrobenzoic (p = 3.41) Ka
+1. Formation of anhydride
+Carboxylic acids on heating with mineral acids such as H2SO4 or with
+P2O5 give corresponding anhydride.
+2. Esterification
+Carboxylic acids are esterified with alcohols or phenols in the presence of a mineral acid such as concentrated H2SO4 or HCl gas as a catalyst.
+8.9.2 Reactions
+Involving
+Cleavage of
+C–OH Bond
+Reprint 2026-27
+252 Chemistry
+Mechanism of esterification of carboxylic acids: The esterification of carboxylic acids with alcohols is a kind of nucleophilic acyl substitution. Protonation of the carbonyl oxygen activates the carbonyl group towards nucleophilic addition of the alcohol. Proton transfer in the tetrahedral intermediate converts the hydroxyl group into –+OH2 group, which, being a better leaving group, is eliminated as neutral water molecule. The protonated ester so formed finally loses a proton to give the ester.
+3. Reactions with PCl5, PCl3 and SOCl2
+The hydroxyl group of carboxylic acids, behaves like that of alcohols and is easily replaced by chlorine atom on treating with PCl5, PCl3 or
+SOCl2. Thionyl chloride (SOCl2) is preferred because the other two products are gaseous and escape the reaction mixture making the purification of the products easier.
+4. Reaction with ammonia
+Carboxylic acids react with ammonia to give ammonium salt which on further heating at high temperature give amides. For example:
+Reprint 2026-27
+253 Aldehydes, Ketones and Carboxylic Acids
+8.9.3 Reactions
+Involving
+1. Reduction
+Carboxylic acids are reduced to primary alcohols by lithium aluminium hydride or better with diborane. Diborane does not easily reduce functional groups such as ester, nitro, halo, etc. Sodium borohydride does not reduce the carboxyl group.
+2. Decarboxylation
+Carboxylic acids lose carbon dioxide to form hydrocarbons when their sodium salts are heated with sodalime (NaOH and CaO in the ratio of
+3 : 1). The reaction is known as decarboxylation.
+Alkali metal salts of carboxylic acids also undergo decarboxylation on electrolysis of their aqueous solutions and form hydrocarbons having twice the number of carbon atoms present in the alkyl group of the acid.
+The reaction is known as Kolbe electrolysis (Unit 9, Class XI).
+1. Halogenation
+Carboxylic acids having an α-hydrogen are halogenated at the
+α-position on treatment with chlorine or bromine in the presence of small amount of red phosphorus to give α-halocarboxylic acids. The reaction is known as Hell-Volhard-Zelinsky reaction.
+8.9.4 Substitution
+Reactions in the
+Hydrocarbon Part
+Reprint 2026-27

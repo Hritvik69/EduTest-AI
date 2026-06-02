@@ -1,0 +1,192 @@
+MATRICES 53
+Remark If AB is defined, then BA need not be defined. In the above example, AB is defined but BA is not defined because B has 3 column while A has only 2 (and not 3)
+rows. If A, B are, respectively m × n, k × l matrices, then both AB and BA are defined if and only if n = k and l = m. In particular, if both A and B are square matrices of the same order, then both AB and BA are defined.
+Non-commutativity of multiplication of matrices
+Now, we shall see by an example that even if AB and BA are both defined, it is not necessary that AB = BA.
+Example 13 If
+A and B 4 5
+4 2 5 2 1
+−    = =     −      
+, then find AB, BA. Show that
+AB ≠ BA.
+Solution Since A is a 2 × 3 matrix and B is 3 × 2 matrix. Hence AB and BA are both defined and are matrices of order 2 × 2 and 3 × 3, respectively. Note that
+4 2 5 2 1
+−    =     −      
+= 2 8 6 3 10 3 0 4
+8 8 10 12 10 5 10 3
+− + − + −    
+=    − + + − + +    
+2 3 2 12 4 6 6 15
+BA 4 5 4 20 8 10 12 25
+2 1 2 4 4 2 6 5
+− − + +    
+−      = = − − + +       −      − − + +    
+ = − 
+  − −  
+Clearly AB ≠ BA
+In the above example both AB and BA are of different order and so AB ≠ BA. But one may think that perhaps AB and BA could be the same if they were of the same order. But it is not so, here we give an example to show that even if AB and BA are of same order they may not be same.
+Example 14 If 1 0
+=  −  
+, then 0 1
+=  −  
+  . Clearly AB ≠ BA.
+Thus matrix multiplication is not commutative.
+Reprint 2026-27
+54 MATHEMATICS
+ANote This does not mean that AB ≠ BA for every pair of matrices A, B for which AB and BA, are defined. For instance,
+If 1 0 3 0
+= =    
+    , then AB = BA = 3 0
+Observe that multiplication of diagonal matrices of same order will be commutative.
+Zero matrix as the product of two non zero matrices
+We know that, for real numbers a, b if ab = 0, then either a = 0 or b = 0. This need not be true for matrices, we will observe this through an example.
+Example 15 Find AB, if 0 1
+Solution We have 0 1 3 5 0 0
+AB 0 2 0 0 0 0
+−      
+= =      
+      .
+Thus, if the product of two matrices is a zero matrix, it is not necessary that one of the matrices is a zero matrix.
+3.4.6 Properties of multiplication of matrices
+The multiplication of matrices possesses the following properties, which we state without
+1. The associative law For any three matrices A, B and C. We have (AB) C = A (BC), whenever both sides of the equality are defined.
+2. The distributive law For three matrices A, B and C.
+(i) A (B+C) = AB + AC (ii) (A+B) C = AC + BC, whenever both sides of equality are defined.
+3. The existence of multiplicative identity For every square matrix A, there exist an identity matrix of same order such that IA = AI = A.
+Now, we shall verify these properties by examples.
+Example 16 If
+1 1 1 1 3 1 2 3 4
+A 2 0 3 , B 0 2 and C 2 0 2 1
+3 1 2 1 4
+−     −      = = =       −      − −    
+A(BC), (AB)C and show that (AB)C = A(BC).
+Reprint 2026-27
+MATRICES 55
+Solution We have
+1 1 1 1 3 1 0 1 3 2 4 2 1
+AB 2 0 3 0 2 2 0 3 6 0 12 1 18
+3 1 2 1 4 3 0 2 9 2 8 1 15
+− + + + −        
+       = = + − + + = −       
+        − − + − − +         (AB) (C)
+2 2 4 0 6 2 8 1 2 1 1 2 3 4
+1 18 1 36 2 0 3 36 4 18
+1 15 1 30 2 0 3 30 4 15
++ + − − +     −      = − = − + − + − − +       −       + + − − +    
+35 2 39 22
+31 2 27 11
+ − − 
+  −  
+Now BC =
+1 6 2 0 3 6 4 3 1 3 1 2 3 4
+0 2 0 4 0 0 0 4 0 2
+1 4 1 8 2 0 3 8 4 4
++ + − − +     −       = + + − +       −       − − + − + − − +    
+7 2 11 8
+  − −  
+Therefore A(BC) =
+7 2 3 1 1 1 1
+2 0 3 4 0 4 2
+3 1 2 7 2 11 8
+− − −         −        − − −    
+7 4 7 2 0 2 3 4 11 1 2 8
+14 0 21 4 0 6 6 0 33 2 0 24
+21 4 14 6 0 4 9 4 22 3 2 16
++ − + + − − + − + −  
+ + + + − − + − − + + 
+  − + + − − + − − − +  
+35 2 39 22
+31 2 27 11
+ − − 
+  −  
+. Clearly, (AB) C = A (BC)
+Reprint 2026-27
+56 MATHEMATICS
+Example 17 If
+0 6 7 0 1 1 2
+A 6 0 8 , B 1 0 2 , C 2
+7 8 0 1 2 0 3
+     
+     = − = = −     
+      −      
+Calculate AC, BC and (A + B)C. Also, verify that (A + B)C = AC + BC
+Solution Now,
+A + B 5 0 10
+ = − 
+  −  
+So (A + B) C =
+0 7 8 2 0 14 24 10
+5 0 10 2 10 0 30 20
+8 6 0 3 16 12 0 28
+− +        
+       − − = − + + =       
+        − + +        
+Further AC =
+0 6 7 2 0 12 21 9
+6 0 8 2 12 0 24 12
+7 8 0 3 14 16 0 30
+− +        
+       − − = − + + =       
+        − + +         and BC =
+0 1 1 2 0 2 3 1
+1 0 2 2 2 0 6 8
+1 2 0 3 2 4 0 2
+− +        
+       − = + + =       
+        − + −        
+So AC + BC =
+     
+     + =     
+      −      
+Clearly, (A + B) C = AC + BC
+Example 18 If
+ = − 
+, then show that A3 – 23A – 40 I = O
+Solution We have 2
+1 2 3 1 2 3 19 4 8
+A A.A 3 2 1 3 2 1 1 12 8
+4 2 1 4 2 1 14 6 15
+     
+     = = − − =     
+           
+Reprint 2026-27
+MATRICES 57
+So A3 = A A2 =
+1 2 3 19 4 8 63 46 69
+3 2 1 1 12 8 69 6 23
+4 2 1 14 6 15 92 46 63
+     
+     − = −     
+           
+A3 – 23A – 40I =
+63 46 69 1 2 3 1 0 0
+69 6 23 – 23 3 2 1 – 40 0 1 0
+92 46 63 4 2 1 0 0 1
+     
+     − −     
+           
+63 46 69 23 46 69 40 0 0
+69 6 23 69 46 23 0 40 0
+92 46 63 92 46 23 0 0 40
+− − − −      
+     − + − − + −     
+      − − − −      
+63 23 40 46 46 0 69 69 0
+69 69 0 6 46 40 23 23 0
+92 92 0 46 46 0 63 23 40
+− − − + − +  
+ − + − + − − + 
+  − + − + − −  
+  = 
+Example 19 In a legislative assembly election, a political group hired a public relations firm to promote its candidate in three ways: telephone, house calls, and letters. The cost per contact (in paise) is given in matrix A as
+40 Telephone
+100 Housecall
+50 Letter
+Cost per contact
+The number of contacts of each type made in two cities X and Y is given by
+Telephone Housecall Letter
+1000 500 5000 X
+B Y 3000 1000 10,000
+=   →  
+. Find the total amount spent by the group in the two cities X and Y.
+Reprint 2026-27

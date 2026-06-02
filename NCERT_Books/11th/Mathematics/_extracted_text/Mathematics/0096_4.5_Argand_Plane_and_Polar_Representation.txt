@@ -1,0 +1,90 @@
+84 MATHEMATICS
+Obviously, in the Argand plane, the modulus of the complex number x + iy = 2 2 x y + is the distance between the point P(x, y) and the origin O (0, 0)
+(Fig 4.2). The points on the x-axis corresponds to the complex numbers of the form a + i 0 and the points on the y-axis corresponds to the complex numbers of the form
+0 + i b. The x-axis and y-axis in the Argand plane are called, respectively, the real axis and the imaginary axis.
+The representation of a complex number z = x + iy and its conjugate z = x – iy in the Argand plane are, respectively, the points P (x, y) and Q (x, – y).
+Geometrically, the point (x, – y) is the mirror image of the point (x, y) on the real axis (Fig 4.3).
+Reprint 2026-27
+COMPLEX NUMBERS AND QUADRATIC EQUATIONS 85
+Miscellaneous Examples
+Example 7 Find the conjugate of (3 2 )(2 3 )
+(1 2 )(2 )
+Solution We have , (3 2 )(2 3 )
+(1 2 )(2 )
+= 6 9 4 6
+− + + = 12 5 4 3
+= 48 36 20 15 63 16 i i i − + + −
++ = 63 16
+25 25 i −
+Therefore, conjugate of (3 2 )(2 3 ) 63 16 (1 2 )(2 ) 25 25
+Example 8 If x + iy = a ib
+− , prove that x2 + y2 = 1.
+Solution We have, x + iy = ( )( )
+a ib a ib
+2 a b abi
+2 a b ab i
+So that, x – iy =
+2 a b ab i
+Therefore, x2 + y2 = (x + iy) (x – iy) =
+2 2 2 2 2
+2 2 2 2 2 2
+Miscellaneous Exercise on Chapter 4
+1. Evaluate:
++    
+      .
+2. For any two complex numbers z1 and z2, prove that
+Re (z1 z2) = Re z1 Re z2 – Imz1 Imz2
+Reprint 2026-27
+86 MATHEMATICS
+3. Reduce 1 2 3 4
+−    
+−    
+− + +     to the standard form .
+4. If a ib x iy c id
+− = − prove that ( ) 2 2 2 2 2
+5. If z1 = 2 – i, z2 = 1 + i, find 1 2
+6. If a + ib =
++ , prove that a2 + b2 = ( )
+7. Let z1 = 2 – i, z2 = –2 + i. Find
+  , (ii) 1 1
+8. Find the real numbers x and y if (x – iy) (3 + 5i) is the conjugate of –6 – 24i.
+9. Find the modulus of 1 1
+10. If (x + iy)3 = u + iv, then show that 2 2
+11. If α and β are different complex numbers with β 1 = , then find
+12. Find the number of non-zero integral solutions of the equation 1 2
+13. If (a + ib) (c + id) (e + if) (g + ih) = A + iB, then show that (a2 + b2) (c2 + d2) (e2 + f 2) (g2 + h2) = A2 + B2
+14. If 1 1
+  + =  
+  , then find the least positive integral value of m.
+Reprint 2026-27
+COMPLEX NUMBERS AND QUADRATIC EQUATIONS 87
+ÆA number of the form a + ib, where a and b are real numbers, is called a complex number, a is called the real part and b is called the imaginary part of the complex number.
+ÆLet z1 = a + ib and z2 = c + id. Then (i) z1 + z2 = (a + c) + i (b + d)
+(ii) z1 z2 = (ac – bd) + i (ad + bc)
+ÆFor any non-zero complex number z = a + ib (a ≠ 0, b ≠ 0), there exists the complex number 2 2 2 2
++ + , denoted by 1 z or z–1, called the multiplicative inverse of z such that (a + ib) 2 2 2 2 a b a b = 1 + i0
+ÆFor any integer k, i4k = 1, i4k + 1 = i, i4k + 2 = – 1, i4k + 3 = – i
+ÆThe conjugate of the complex number z = a + ib, denoted by z , is given by z = a – ib.
+Historical Note
+The fact that square root of a negative number does not exist in the real number system was recognised by the Greeks. But the credit goes to the Indian mathematician Mahavira (850) who first stated this difficulty clearly. “He mentions in his work ‘Ganitasara Sangraha’ as in the nature of things a negative (quantity) is not a square (quantity)’, it has, therefore, no square root”.
+Bhaskara, another Indian mathematician, also writes in his work Bijaganita, written in 1150. “There is no square root of a negative quantity, for it is not a square.” Cardan (1545) considered the problem of solving x + y = 10, xy = 40.
+Reprint 2026-27
+88 MATHEMATICS
+— v v v v v —
+He obtained x = 5 + 15 − and y = 5 – 15 − as the solution of it, which was discarded by him by saying that these numbers are ‘useless’. Albert
+Girard (about 1625) accepted square root of negative numbers and said that this will enable us to get as many roots as the degree of the polynomial equation.
+Euler was the first to introduce the symbol i for 1 − and W.R. Hamilton (about 1830) regarded the complex number a + ib as an ordered pair of real numbers (a, b) thus giving it a purely mathematical definition and avoiding use of the so called ‘imaginary numbers’.
+Reprint 2026-27
+5 Chapter vMathematics is the art of saying many things in many different ways. – MAXWELLv
+5.1 Introduction
+In earlier classes, we have studied equations in one variable and two variables and also solved some statement problems by translating them in the form of equations. Now a natural question arises: ‘Is it always possible to translate a statement problem in the form of an equation? For example, the height of all the students in your class is less than 160 cm. Your classroom can occupy atmost 60 tables or chairs or both. Here we get certain statements involving a sign ‘<’ (less than), ‘>’ (greater than), ‘≤’ (less than or equal) and ≥ (greater than or equal) which are known as inequalities.
+In this Chapter, we will study linear inequalities in one and two variables. The study of inequalities is very useful in solving problems in the field of science, mathematics, statistics, economics, psychology, etc.
+5.2 Inequalities
+Let us consider the following situations:
+(i) Ravi goes to market with ` 200 to buy rice, which is available in packets of 1kg. The price of one packet of rice is ` 30. If x denotes the number of packets of rice, which he buys, then the total amount spent by him is ` 30x. Since, he has to buy rice in packets only, he may not be able to spend the entire amount of ` 200. (Why?) Hence
+30x < 200 ... (1)
+Clearly the statement (i) is not an equation as it does not involve the sign of equality.
+(ii) Reshma has ` 120 and wants to buy some registers and pens. The cost of one register is ` 40 and that of a pen is ` 20. In this case, if x denotes the number of registers and y, the number of pens which Reshma buys, then the total amount spent by her is ` (40x + 20y) and we have
+40x + 20y ≤ 120 ... (2)
+LINEAR INEQUALITIES
+Reprint 2026-27

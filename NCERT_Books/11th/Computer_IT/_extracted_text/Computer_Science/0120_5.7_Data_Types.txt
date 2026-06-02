@@ -1,0 +1,75 @@
+Computer SCienCe – ClaSS xi 108 outputs a complete line and then moves to the next line for subsequent output. The syntax for print() is:
+print(value [, ..., sep = ' ', end = '\n'])
+• sep: The optional parameter sep is a separator between the output values. We can use a character, integer or a string as a separator. The default separator is space.
+• end: This is also optional and it allows us to specify any string to be appended after the last value. The default is a new line.
+Example 5.16
+Statement Output print("Hello") Hello print(10*2.5) 25.0 print("I" + "love" + "my" +
+"country")
+Ilovemycountry print("I'm", 16, "years old") I'm 16 years old
+The third print function in the above example is concatenating strings, and we use + (plus) between two strings to concatenate them. The fourth print function also appears to be concatenating strings but uses commas (,) between strings. Actually, here we are passing multiple arguments, separated by commas to the print function. As arguments can be of different types, hence the print function accepts integer (16)
+along with strings here. But in case the print statement has values of different types and ‘+’ is used instead of comma, it will generate an error as discussed in the next section under explicit conversion.
+5.12 tyPe conVersIon
+Consider the following program num1 = input("Enter a number and I'll double num1 = num1 * 2 print(num1)
+The program was expected to display double the value of the number received and store in variable num1. So if a user enters 2 and expects the program to display 4 as the output, the program displays the following result:
+Enter a number and I'll double it: 2
+Observe that a plus sign does not add any space between the two strings while a comma inserts a space between two strings in a print statement.
+Reprint 2026-27
+GettinG Started with Python 109
+This is because the value returned by the input function is a string ("2") by default. As a result, in statement num1 = num1 * 2, num1 has string value and
+* acts as repetition operator which results in output as
+"22". To get 4 as output, we need to convert the data type of the value entered by the user to integer. Thus, we modify the program as follows:
+num1 = input("Enter a number and I'll double num1 = int(num1) #convert string input to
+#integer num1 = num1 * 2 print(num1)
+Now, the program will display the expected output as follows:
+Enter a number and I'll double it: 2
+Let us now understand what is type conversion and how it works. As and when required, we can change the data type of a variable in Python from one type to another. Such data type conversion can happen in two ways: either explicitly (forced) when the programmer specifies for the interpreter to convert a data type to another type; or implicitly, when the interpreter understands such a need by itself and does the type conversion automatically.
+5.12.1 Explicit Conversion
+Explicit conversion, also called type casting happens when data type conversion takes place because the programmer forced it in the program. The general form of an explicit data type conversion is:
+(new_data_type) (expression)
+With explicit type conversion, there is a risk of loss of information since we are forcing an expression to be of a specific type. For example, converting a floating value of x = 20.67 into an integer type, i.e., int(x)
+will discard the fractional part .67. Following are some of the functions in Python that are used for explicitly converting an expression or a variable to a different type.
+Table 5.10 Explicit type conversion functions in Python
+Function Description int(x) Converts x to an integer float(x) Converts x to a floating-point number
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 110
+Program 5-5 Program of explicit type conversion from int to float.
+#Program 5-5
+#Explicit type conversion from int to float num1 = 10 num2 = 20 num3 = num1 + num2 print(num3)
+print(type(num3))
+num4 = float(num1 + num2)
+print(num4)
+print(type(num4))
+<class 'int'>
+<class 'float'>
+Program 5-6 Program of explicit type conversion from float to int.
+#Program 5-6
+#Explicit type conversion from float to int num1 = 10.2 num2 = 20.6 num3 = (num1 + num2)
+print(num3)
+print(type(num3))
+num4 = int(num1 + num2)
+print(num4)
+print(type(num4))
+<class 'float'>
+<class 'int'>
+Program 5-7 Example of type conversion between numbers and strings.
+#Program 5-7
+#Type Conversion between Numbers and Strings priceIcecream = 25 priceBrownie = 45 totalPrice = priceIcecream + priceBrownie print("The total is Rs." + totalPrice )
+str(x) Converts x to a string representation chr(x) Converts ASCII value of x to character ord(x) returns the character associated with the
+ASCII code x
+Reprint 2026-27
+GettinG Started with Python 111
+On execution, program 5-7 gives an error as shown in Figure 5.11, informing that the interpreter cannot convert an integer value to string implicitly. It may appear quite intuitive that the program should convert the integer value to a string depending upon the usage.
+However, the interpreter may not decide on its own when to convert as there is a risk of loss of information.
+Python provides the mechanism of the explicit type conversion so that one can clearly state the desired outcome. Program 5-8 works perfectly using explicit type casting:
+Program 5-8 Program to show explicit type casting.
+#Program 5-8
+#Explicit type casting priceIcecream = 25 priceBrownie = 45 totalPrice = priceIcecream + priceBrownie print("The total in Rs." + str(totalPrice))
+The total in Rs.70
+Similarly, type casting is needed to convert float to string. In Python, one can convert string to integer or float values whenever required.
+Program 5-9 Program to show explicit type conversion.
+#Program 5-9
+#Explicit type conversion icecream = '25' brownie = '45'
+#String concatenation price = icecream + brownie print("Total Price Rs." + price)
+#Explicit type conversion - string to integer
+Figure 5.11: Output of program 5-7
+Reprint 2026-27

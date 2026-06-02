@@ -1,0 +1,60 @@
+Computer SCienCe - ClaSS Xii 90
+6.3.1 Applications of Binary Search
+• Binary search has numerous applications including
+– searching a dictionary or a telephone directory, finding the element with minimum value or maximum value in a sorted list, etc.
+• Modified binary search techniques have far reaching applications such as indexing in databases, implementing routing tables in routers, data compression code, etc.
+6.4 Search By haShIng
+Hashing is a technique which can be used to know the presence of a key in a list in just one step. The idea is if we already know the value at every index position in a list, it would require only a single comparison to check the presence or absence of a key in that list. Hashing makes searching operations very efficient. A formula called hash function is used to calculate the value at an index in the list.
+Thus, a hash function takes elements of a list one by one and generates an index value for every element.
+This will generate a new list called the hash table. Each index of the hash table can hold only one item and the positions are indexed by integer values starting from 0.
+Note that the size of the hash table can be larger than the size of the list.
+A simple hash function that works with numeric values is known as the remainder method. It takes an element from a list and divides it by the size of the hash table. The remainder so generated is called the hash value.
+h(element) = element % size(hash table)
+We can easily implement a hash table using a
+Python’s List. Let us consider an empty hash table having 10 positions as shown in Table 6.8:
+Suppose a list has more than one element whose modulo division results in same remainder value. In such situations, what kind of hashing may be useful?
+Table 6.8 An Empty hash table with 10 positions position
+0 1 2 3 4 5 6 7 8 9
+Value None None None None None None None None None None
+Let us consider a list of numbers (34, 16, 2, 93,
+80, 77, 51). We can use the hash function remainder
+Reprint 2026-27
+S earChing 91
+Now, to search for a key, we can calculate its index using the hashing function and compare the element at that index with the key to declare whether the element is present in the list or not. This search operation involves just one comparison and hence the same amount of time is always required to search a key irrespective of the size of the list.
+method explained earlier to create a hash table as shown in Table 6.9.
+Table 6.9 hash function element % 10 applied on the elements of list
+Element 34 16 2 93 80 77 51
+Hash Value 34%10=4 16%10=6 2%10=2 93%10=3 80%10=0 77%10=7 51%10=1
+Table 6.10 hash table generated for elements given in Table 6.10 index 0 1 2 3 4 5 6 7 8 9
+Value 80 51 2 93 34 None 16 77 None None
+Program 6-3 Use of hashing to find a key in the given list L
+#Function to check if a key is present or not def hashFind(key,hashTable):
+if (hashTable[key % 10] == key): #key is present return ((key % 10)+1) #return the position return None #key is not present
+#end of function
+#create hashTable with 10 empty positions hashTable=[None, None, None, None, None, None, None, None, None, print("We have created a hashTable of 10 positions:")
+print(hashTable)
+L = [34, 16, 2, 93, 80, 77, 51] print("The given list is", L[::] )
+# Apply hash function for i in range(0,len(L)):
+hashTable[L[i]%10] = L[i]
+After computing the hash values, each element is inserted at its designated position in the hash table shown in Table 6.10
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 92 print("The hash table contents are: " )
+for i in range(0,len(hashTable)):
+print("hashindex=", i," , value =", hashTable[i])
+key = int(input("Enter the number to be searched:"))
+position = hashFind(key,hashTable)
+if position is None:
+print("Number",key,"is not present in the hash table")
+print("Number ",key," present at ",position, " position")
+We have created a hashTable of 10 positions:
+[None, None, None, None, None, None, None, None, None, None]
+The given list is [34, 16, 2, 93, 80, 77, 51]
+The hash table contents are:
+hashindex= 0 , value = 80 hashindex= 1 , value = 51 hashindex= 2 , value = 2 hashindex= 3 , value = 93 hashindex= 4 , value = 34 hashindex= 5 , value = None hashindex= 6 , value = 16 hashindex= 7 , value = 77 hashindex= 8 , value = None hashindex= 9 , value = None
+Enter the number to be searched:16
+Number 16 present at 7 position
+6.4.1 COLLISION
+The hashing technique works fine if each element of the list maps to a unique location in the hash table. Consider a list [34, 16, 2, 26, 80]. While applying the hash function say, list [i]%10, two elements (16 and
+26) would have a hash value 6. This is a problematic situation, because according to our definition, two or more elements cannot be in the same position in the list. This situation is called collision in hashing.
+We must have a mechanism for placing the other items with the same hash value in the hash table. This process is called collision resolution. Collision can be resolved in many ways, but it is beyond the scope of this book to discuss collision resolution methods.
+Reprint 2026-27

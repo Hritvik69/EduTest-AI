@@ -1,0 +1,254 @@
+Arithmetic Expressions
+Does adding the terms of an expression in any order give the same value? Take some more expressions and check. Consider expressions with more than 3 terms also.
+Can you explain why this is happening using the Token Model of integers that we saw in the Class 6 textbook of mathematics?
+Thus, the addition of terms in any order gives the same value.
+Therefore, in an expression having only additions, it does not matter in what order the terms are added: they all give the same value.
+Now let us consider expressions having multiplication and division also, without the order of operations specified by the brackets. The values of such expressions are found by first evaluating the terms.
+Once all the terms are evaluated, they are added.
+For example, the expression 30 + 5 × 4 is evaluated as follows:
+30 30 5 × 4 20 + + 30 + 5 × 4 = 50 = =
+The expression 5 × (3 + 2) + 7 × 8 + 3 is evaluated as follows:
+5 × (3 + 2) 3 + 5 × (3 + 2) + 7 × 8 + 3 = + 7 × 8
+Where (3+2) is first evaluated and this sum is multiplied by 5 (= 25).
+The expression 7 × 8 is evaluated (= 56). This simplifies to 25 + 56 + 3 =
+Manasa is adding a long list of numbers. It took her five minutes to add them all and she got the answer 11749. Then she realised that she had forgotten to include the fourth number 9055. Does she have to start all over again?
+In mathematics we use the phrase commutative property of addition instead of saying “swapping terms does not change the sum”. Similarly, “grouping does not change the sum” is called the associative property of addition.
+Swapping the Order of Things in Everyday Life
+Manasa is going outside to play. Her mother says, “Wear your hat and shoes!” Which one should she wear first? She can wear her hat first and then her shoes. Or she can wear her shoes first and then her hat.
+Manasa will look exactly the same in both cases.
+Imagine a different situation: Manasa’s mother says “Wear your socks and shoes!” Now the
+Reprint 2026-27
+Ganita Prakash | Grade 7 order matters. She should wear socks and then shoes. If she wears shoes and then socks, Manasa will feel very uncomfortable and look very different.
+More Expressions and Their Terms
+Example 7: Amu, Charan, Madhu, and John went to a hotel and ordered four dosas. Each dosa cost ₹23, and they wish to thank the waiter by tipping ₹5. Write an expression describing the total cost.
+Cost of 4 dosas = 4 × 23
+Can the total amount with tip be written as 4 × 23 + 5? Evaluating it,
+4 × 23 92 5 5 + + 4 × 23 + 5 = 97 = =
+Thus, 4 × 23 + 5 is a correct way of writing the expression.
+If the total number of friends goes up to 7 and the tip remains the same, how much will they have to pay? Write an expression for this situation and identify its terms.
+Example 8: Children in a class are playing “Fire in the mountain, run, run, run!”. Whenever the teacher calls out a number, students are supposed to arrange themselves in groups of that number. Whoever is not part of the announced group size, is out.
+Ruby wanted to rest and sat on one side. The other
+33 students were playing the game in the class.
+The teacher called out ‘5’. Once children settled,
+Ruby wrote
+6 × 5 + 3 (understood as 3 more than 6 × 5)
+Think and discuss why she wrote this.
+The expression written as a sum of terms is—
+6 × 5 3 . +
+Reprint 2026-27
+Arithmetic Expressions
+For each of the cases below, write the expression and identify its terms:
+If the teacher had called out ‘4’, Ruby would write ____________
+If the teacher had called out ‘7’, Ruby would write ____________
+Write expressions like the above for your class size.
+Example 9: Raghu bought 100 kg of rice from the wholesale market and packed them into 2 kg packets. He already had four 2 kg packets.
+Write an expression for the number of 2 kg packets of rice he has now and identify the terms.
+He had 4 packets. The number of new 2 kg packets of rice is 100 ÷ 2, which we also write as 100
+The number of 2 kg packets he has now is 4 + 100
+2 . The terms are—
+Example 10: Kannan has to pay ₹432 to a shopkeeper using coins of ₹1 and ₹5, and notes of ₹10, ₹20, ₹50 and ₹100. How can he do it?
+There is more than one possibility. For example,
+432 = 4 × 100 + 1 × 20 + 1 × 10 + 2 × 1
+Meaning: 4 notes of ₹100, 1 note of ₹20, 1 note of ₹10 and 2 notes of ₹1
+432 = 8 × 50 + 1 × 10 + 4 × 5 + 2 × 1
+Meaning: 8 notes of ₹50, 1 note of ₹10, 4 notes of ₹5 and 2 notes of ₹1
+Identify the terms in the two expressions above.
+Can you think of some more ways of giving ₹432 to someone?
+Example 11: Here are two pictures. Which of these two arrangements matches with the expression 5 × 2 + 3?
+Reprint 2026-27
+Ganita Prakash | Grade 7
+Let us write this expression as a sum of terms.
+5 × 2 10 3 3 + + 13 = =
+This expression 5 × 2 + 3 can be understood as 3 more than 5 × 2, which describes the arrangement on the left.
+What is the expression for the arrangement in the right making use of the number of yellow and blue squares?
+Do you recall the use of brackets? We need to use brackets for this.
+2 × (5 + 3)
+Notice that this arrangement can also be described using—
+5 + 3 + 5 + 3
+5 × 2 + 3 × 2
+Figure it Out
+1. Find the values of the following expressions by writing the terms in each case.
+(a) 28 – 7 + 8 (b) 39 – 2 × 6 + 11 (c) 40 – 10 + 10 + 10 (d) 48 – 10 × 2 + 16 ÷ 2 (e) 6 × 3 – 4 × 8 × 5
+2. Write a story/situation for each of the following expressions and find their values.
+(a) 89 + 21 – 10 (b) 5 × 12 – 6 (c) 4 × 9 + 2 × 6
+3. For each of the following situations, write the expression describing the situation, identify its terms and find the value of the expression.
+(a) Queen Alia gave 100 gold coins to Princess Elsa and 100 gold coins to Princess Anna last year. Princess Elsa used the coins to start a business and doubled her coins. Princess Anna bought jewellery and has only half of the coins left. Write an expression describing how many gold coins Princess Elsa and Princess Anna together have.
+(b) A metro train ticket between two stations is ₹40 for an adult and ₹20 for a child. What is the total cost of tickets:
+(i) for four adults and three children?
+(ii) for two groups having three adults each?
+Reprint 2026-27
+Arithmetic Expressions (c) Find the total height of the window by writing an expression describing the relationship among the measurements shown in the picture.
+Removing Brackets — I
+Let us find the value of this expression,
+200 – (40 + 3).
+We first evaluate the expression inside the bracket to 43 and then subtract it from 200.
+But it is simpler to first subtract 40 from 200:
+200 – 40 = 160.
+And then subtract 3 from 160:
+160 – 3 = 157.
+What we did here was 200 – 40 – 3. Notice, that we did not do
+200 – 40 + 3.
+200 – (40 + 3) = 200 – 40 – 3.
+Example 12: We also saw this earlier in the case of Irfan purchasing a biscuit packet (₹15) and a toor dal packet (₹56). When he paid ₹100, the change he gets in rupees is:
+100 – (15 + 56) = 29.
+The change could also have been calculated as follows:
+(a) First subtract the cost of the biscuit packet (15) from 100:
+100 – 15 = 85.
+This is the amount the shopkeeper owes Irfan if he had purchased only the biscuits. As he has purchased toor dal also, its cost is taken from this remaining amount of 85.
+(b) So, to find the change, we need to subtract the cost of toor dal from 85.
+85 – 56 = 29.
+What we have done here is 100 – 15 – 56. So,
+100 – (15 + 56) = 100 – 15 – 56.
+Notice how upon removing the brackets preceded by a negative sign, the signs of the terms inside the brackets change. Observe
+Reprint 2026-27
+Ganita Prakash | Grade 7 the signs of 40 and 3 in the first example, and that of 15 and 56 in the second.
+Example 13: Consider the expression 500 – (250 – 100). Is it possible to write this expression without the brackets?
+To evaluate this expression, we need to subtract 250 – 100 = 150 from 500:
+500 – (250 – 100) = 500 – 150 = 350.
+If we were to directly subtract 250 from 500, then we would have subtracted 100 more than what we needed to. So, we should add back that 100 to 500 – 250 to make the expression take the same value as 500
+– (250 – 100). This sequence of operations is 500 – 250+100. Thus,
+500 – (250 – 100) = 500 – 250 + 100.
+Check that 500 – (250 – 100) is not equal to 500 – 250 – 100.
+Notice again that when the brackets preceded by a negative sign are removed, the signs of the terms inside the brackets change. In this case, the signs of 250 and – 100 change to – 250 and 100.
+Example 14: Hira has a rare coin collection. She has 28 coins in one bag and 35 coins in another. She gifts her friend 10 coins from the second bag. Write an expression for the number of coins left with Hira.
+This can be expressed by 28 + (35 – 10).
+We know that this is the same as 28 + (35 + (–10)). Since the terms can be added in any order, this expression can simply be written as
+28 + 35 + (–10), or 28 + 35 – 10. Thus,
+28 + (35 – 10) = 28 + 35 – 10 = 53.
+When the brackets are NOT preceded by a negative sign, the terms within them do not change their signs upon removing the brackets.
+Notice the sign of the terms 35 and – 10 in the above expression.
+Rather than simply remembering rules for when to change the sign and when not to, you can figure it out for yourself by thinking about the meanings of the expressions.
+Tinker the Terms I
+What happens to the value of an expression if we increase or decrease the value of one of its terms?
+Some expressions are given in following three columns. In each column, one or more terms are changed from the first expression. Go through the example (in the first column) and fill the blanks, doing as little computation as possible.
+Reprint 2026-27
+Arithmetic Expressions
+53 – 16 + 37 = 53 – 16 + 37 = – 87 – 16 + =
+54 – 16 + 38 =
+54 is one more than
+53, so the value will be 1 more than 37.
+53 – 15 + =
+Is –15 one more or one less than –16?
+52 – 16 + =
+52 is one less than
+53, so the value will be 1 less than 37.
+53 – 17 + =
+Is –17 one more or one less than –16?
+– 88 – 15 + =
+– 86 – 18 + =
+– 97 – 26 + =
+Figure it Out
+1. Fill in the blanks with numbers, and boxes with operation signs such that the expressions on both sides are equal.
+(a) 24 + (6 – 4) = 24 + 6 _____ (b) 38 + (_____ _____) = 38 + 9 – 4 (c) 24 – (6 +4) = 24 6 – 4 (d) 24 – 6 – 4 = 24 – 6 _____ (e) 27 – (8 + 3) = 27 8 3 (f) 27– (_____ _____) = 27 – 8 + 3
+2. Remove the brackets and write the expression having the same (a) 14 + (12 + 10) (b) 14 – (12 + 10)
+(c) 14 + (12 – 10) (d) 14 – (12 – 10)
+(e) –14 + (12 – 10) (f) 14 – (–12 – 10)
+3. Find the values of the following expressions. For each pair, first try to guess whether they have the same value. When are the two expressions equal?
+(a) (6 + 10) – 2 and 6 + (10 – 2)
+(b) 16 – (8 – 3) and (16 – 8) – 3 (c) 27 – (18 + 4) and 27 + (–18 – 4)
+4. In each of the sets of expressions below, identify those that have the same value. Do not evaluate them, but rather use your understanding of terms.
+Reprint 2026-27
+Ganita Prakash | Grade 7 (a) 319 + 537, 319 – 537, – 537 + 319, 537 – 319 (b) 87 + 46 – 109, 87 + 46 – 109, 87 + 46 – 109, 87 – 46 + 109, 87
+– (46 + 109), (87 – 46) + 109
+5. Add brackets at appropriate places in the expressions such that they lead to the values indicated.
+(a) 34 – 9 + 12 = 13 (b) 56 – 14 – 8 = 34 (c) –22 – 12 + 10 + 22 = – 22
+6. Using only reasoning of how terms change their values, fill the blanks to make the expressions on either side of the equality (=)
+(a) 423 + ______= 419 + ______ (b) 207 – 68 = 210 – ______
+7. Using the numbers 2, 3 and 5, and the operators ‘+’ and ‘–’, and brackets, as necessary, generate expressions to give as many different values as possible. For example, 2 – 3 + 5 = 4 and 3 – (5 – 2)
+8. Whenever Jasoda has to subtract 9 from a number, she subtracts 10 and adds 1 to it. For example, 36 – 9 = 26 + 1.
+(a) Do you think she always gets the correct answer? Why?
+(b) Can you think of other similar strategies? Give some examples.
+9. Consider the two expressions: a) 73 – 14 + 1, b) 73 – 14 – 1. For each of these expressions, identify the expressions from the following collection that are equal to it.
+(a) 73 – (14 + 1) b) 73 – (14 – 1)
+(c) 73 + (– 14 + 1) d) 73 + (– 14 – 1)
+Removing Brackets — II
+Example 15: Lhamo and Norbu went to a hotel. Each of them ordered a vegetable cutlet and a rasgulla. A vegetable cutlet costs ₹43 and a rasgulla costs ₹24. Write an expression for the amount they will have
+As each of them had one vegetable cutlet and one rasagulla, each of their shares can be represented by 43 + 24.
+What about the total amount they have to pay? Can it be described by the expression: 2 × 43 + 24?
+Reprint 2026-27
+Arithmetic Expressions
+Writing it as sum of terms gives:
+2 × 43 24 +
+This expression means 24 more than
+2 × 43. But, we want an expression which means twice or double of 43 + 24.
+We can make use of brackets to write such an expression:
+2 × (43 + 24).
+So, we can say that together they have to pay 2 × (43 + 24). This is also the same as paying for two vegetable cutlets and two rasgullas:
+2 × 43 + 2 × 24.
+Therefore,
+2 × (43 + 24) = 2 × 43 + 2 × 24.
+If another friend, Sangmu, joins them and orders the same items, what will be the expression for the total amount to be paid?
+Example 16: In the Republic Day parade, there are boy scouts and girl guides marching together. The scouts march in 4 rows with 5 scouts in each row. The guides march in 3 rows with 5 guides in each row (see the figure below). How many scouts and guides are marching in this
+The number of boy scouts marching is 4 × 5. The number of girl guides marching is 3 × 5.
+The total number of scouts and guides will be
+4 × 5 + 3 × 5.
+This can also be found by first finding the total number of rows, i.e., 4 +
+3, and then multiplying their sum by the number of children in each row.
+Thus, the number of boys and girls can be found by (4 + 3) × 5.
+Therefore, 4 × 5 + 3 × 5
+= (4 + 3) × 5.
+Computing these expressions, we get
+4 × 5 20 3 × 5 15 + + 4 × 5 + 3 × 5 = 35 = =
+2 × 43 + 2 × 24
+2 × (43 + 24)
+(4+3) × 5
+Reprint 2026-27
+Ganita Prakash | Grade 7 (4 + 3) × 5 = 7 × 5 = 35
+5 × 4 + 3 ≠ 5 × (4 + 3). Can you explain why?
+Is 5 × (4 + 3) = 5 × (3 + 4) = (3 + 4) × 5?
+The observations that we have made in the previous two examples can be seen in a general way as follows.
+Consider 10 × 98 + 3 × 98. This means taking the sum of 10 times 98 and 3 times 98.
+98 + 98 + 98 + 98 + 98 + 98 + 98 + 98 + 98 + 98 + 98 + 98 + 98
+10 times 3 times
+Clearly, this is the same as 10 + 3 = 13 times 98. Thus,
+10 × 98 +3 × 98 = (10 + 3) × 98.
+Writing this equality the other way, we get (10 + 3) 98 = 10 × 98 + 3 × 98.
+Swapping the numbers in the products above, this property can be seen in the following form:
+98 × 10 + 9 × 83 = 98 (10 + 3), and
+98 (10 + 3) = 98 × 10 + 98 × 3.
+Similarly, let us consider the expression 14 × 10 – 6 × 10. This means subtracting 6 times 10 from 14 times 10.
+10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10
+14 times
+Clearly, this is 14 – 6 = 8 times 10. Thus,
+14 × 10 – 6 × 10 = (14 – 6) × 10, (14 – 6) × 10 = 14 × 10 – 6 × 10
+This property can be nicely summed up as follows:
+The multiple of a sum (difference) is the same as the sum (difference)
+of the multiples.
+Tinker the Terms II
+Let us understand what happens when we change the numbers occurring in a product.
+Reprint 2026-27
+Arithmetic Expressions
+Example 17: Given 53 × 18 = 954. Find out 63 × 18.
+As 63 × 18 means 63 times 18,
+63 × 18 = (53 + 10) × 18
+= 53 ×18 + 10×18
+= 954 + 180
+Example 18: Find an effective way of evaluating 97 × 25.
+97 × 25 means 97 times 25.
+We can write it as (100 – 3) × 25
+We know that this is the same as the difference of 100 times 25 and
+3 times 25:
+97 × 25 = 100 × 25 – 3 × 25
+Find this value.
+Use this method to find the following products:
+(a) 95 × 8 (b) 104 × 15 (c) 49 × 50
+Is this quicker than the multiplication procedure you use generally?
+Which other products might be quicker to find like the ones above?
+Figure it Out
+1. Fill in the blanks with numbers, and boxes by signs, so that the expressions on both sides are equal.
+(a) 3 × (6 + 7) = 3 × 6 + 3 × 7 (b) (8 + 3) × 4 = 8 × 4 + 3 × 4 (c) 3 × (5 + 8) = 3 × 5 3 × ____ (d) (9 + 2) × 4 = 9 × 4 2 ×____ (e) 3 × (____ + 4) = 3 ____+____ (f) (____+ 6) × 4 = 13 × 4 + ____ (g) 3 × (____+____) = 3 × 5 + 3 × 2 (h) (____+____)×____= 2 × 4 + 3 × 4 (i) 5 × (9 – 2) = 5 × 9 – 5 × ____ (j) (5 – 2) × 7 = 5 × 7 – 2 × ____ (k) 5 × (8 – 3) = 5 × 8 5 × ____ (l) (8 – 3) × 7 = 8 × 7 3 × 7
+Reprint 2026-27
+Ganita Prakash | Grade 7 (m) 5 × (12 –____) =____ 5 ×____ (n) (15 –____) × 7 =____ 6 × 7 (o) 5 × (____–____) = 5 × 9 – 5 × 4 (p) (____–____) × ____= 17 × 7 – 9 × 7
+2. In the boxes below, fill ‘<’, ‘>’ or ‘=’ after analysing the expressions on the LHS and RHS. Use reasoning and understanding of terms and brackets to figure this out and not by evaluating the expressions.
+(a) (8 – 3) × 29 (3 – 8) × 29 (b) 15 + 9 × 18 (15 + 9) × 18 (c) 23 × (17 – 9) 23 × 17 + 23 × 9 (d) (34 – 28) × 42 34 × 42 – 28 × 42
+3. Here is one way to make 14: _2_ × ( _1_ + _6_ ) = 14. Are there other ways of getting 14? Fill them out below:
+(a) _____× (_____+_____) = 14 (b) _____× (_____+_____) = 14 (c) _____× (_____+_____) = 14 (d) _____× (_____+_____) = 14
+4. Find out the sum of the numbers given in each picture below in at least two different ways. Describe how you solved it through expressions.
+Figure it Out
+1. Read the situations given below. Write appropriate expressions for each of them and find their values.
+(a) The district market in Begur operates on all seven days of a week. Rahim supplies 9 kg of mangoes each day from his orchard and Shyam supplies 11 kg of mangoes each day from his orchard to this market. Find the amount of mangoes supplied by them in a week to the local district market.
+Reprint 2026-27
+Arithmetic Expressions (b) Binu earns ₹20,000 per month. She spends ₹5,000 on rent,
+₹5,000 on food, and ₹2,000 on other expenses every month.
+What is the amount Binu will save by the end of a year?
+(c) During the daytime a snail climbs 3 cm up a post, and during the night while asle

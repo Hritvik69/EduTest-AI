@@ -1,0 +1,23 @@
+59 59 59 59 59
+Determination of Income and Employment
+Aggregate Demand: Graphical Representation
+The Aggregate Demand function shows the total demand (made up of consumption + investment) at each level of income. Graphically it means the aggregate demand function can be obtained by vertically adding the consumption and investment function.
+Here, OM = C
+OL = C I +
+The aggregate demand function is parallel to the consumption function i.e., they have the same slope c.
+It may be noted that this function shows ex ante demand.
+Supply Side of Macroeconomic Equilibrium
+In microeconomic theory, we show the supply curve on a diagram with price on the vertical axis and quantity supplied on horizontal axis.
+I n t h e f i r s t s t a g e o f macroeconomic theory, we are taking the price level as fixed.
+Here, aggregate supply or the
+GDP is assumed to smoothly move up or down since they are unused resources of all types available. Whatever is the level of GDP, that much will be supplied and price level has no role to play. This kind of supply situation is shown by a 45° line. Now, the 45° line has the feature that every point on it has the same horizontal and vertical coordinates.
+Suppose, GDP is Rs.1,000 at point A. How much will be supplied? The answer is Rs.1000 worth of goods. How can that point be shown? The answer is that supply corresponding to point A is at point B which is obtained at the intersection of the 45° line and the vertical line at A.
+Equilibrium
+Equilibrium is shown graphically by putting ex ante aggregate demand and supply together in a diagram (Fig. 4.6). The point where ex ante aggregate demand is equal to ex ante aggregate supply will be equilibrium.
+Aggregate supply curve with 45° line.
+Fig. 4.5
+Aggregate Supply
+Aggregate demand is obtained by vertically adding the consumption and investment functions.
+Fig. 4.4
+Aggregate Demand=C+I+cY
+Reprint 2026-27

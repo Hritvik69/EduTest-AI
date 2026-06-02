@@ -1,0 +1,21 @@
+Queue 61
+To perform above operations efficiently on a deque, we will need all supporting operations used in normal queue viz Is Empty, Peek, Size.
+Let’s understand how these operations work for checking whether a string is palindrome or not, using a deque through the following algorithm.
+Algorithm 4.1
+Step1: Start traversing string (madam) from left side, a character at a time.
+Step 2: Insert the character in deque as normal queue using
+INSERTREAR.
+Step 3: Repeat Step 1 and Step 2 for all characters of string (madam)
+Figure 4.5:
+Front Rear insertrear
+Status of Deque after 4th iteration
+Step 4: Remove one character from the front and one character from the rear end of deque using
+DELETIONFRONT and DELETIONREAR we can
+Front Rear insertrear removefront
+Figure 4.6: Status of Deque after removing one character from both the ends.
+Step 5: Match these two removed characters.
+Step 6: If they are same then repeat Step 4 and 5 till deque is empty or left with only one character, eventually string is Palindrome else stop as string is not palindrome
+4.5 ImplementatIon of deQue usIng python
+Like queue, deque is also an ordered linear list, hence we use list data type to create deque in our program.
+The program should have the following functions/ statement(s) defined in it:
+Reprint 2026-27

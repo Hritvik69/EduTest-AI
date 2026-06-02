@@ -1,0 +1,451 @@
+58 MATHEMATICS
+3. cos (x + y) = cos x cos y – sin x sin y
+Consider the unit circle with centre at the origin. Let x be the angle P4OP1and y be the angle P1OP2. Then (x + y) is the angle P4OP2. Also let (– y) be the angle P4OP3.
+Therefore, P1, P2, P3 and P4 will have the coordinates P1(cos x, sin x),
+P2 [cos (x + y), sin (x + y)], P3 [cos (– y), sin (– y)] and P4 (1, 0) (Fig 3.14).
+Consider the triangles P1OP3 and P2OP4. They are congruent (Why?). Therefore,
+P1P3 and P2P4 are equal. By using distance formula, we get
+2 = [cos x – cos (– y)]2 + [sin x – sin(–y]2
+= (cos x – cos y)2 + (sin x + sin y)2
+= cos2 x + cos2 y – 2 cos x cos y + sin2 x + sin2 y + 2sin x sin y
+= 2 – 2 (cos x cos y – sin x sin y) (Why?)
+Also, P2P4
+2 = [1 – cos (x + y)] 2 + [0 – sin (x + y)]2
+= 1 – 2cos (x + y) + cos2 (x + y) + sin2 (x + y)
+= 2 – 2 cos (x + y)
+Fig 3.14
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 59
+Since P1P3 = P2P4, we have P1P3
+2 = P2P4
+Therefore, 2 –2 (cos x cos y – sin x sin y) = 2 – 2 cos (x + y).
+Hence cos (x + y) = cos x cos y – sin x sin y
+4 . cos (x – y) = cos x cos y + sin x sin y
+Replacing y by – y in identity 3, we get cos (x + (– y)) = cos x cos (– y) – sin x sin (– y)
+or cos (x – y) = cos x cos y + sin x sin y
+5. cos ( x
+2 ) = sin x
+If we replace x by π
+2 and y by x in Identity (4), we get
+2 x − ) = cos π
+2 cos x + sin π
+2 sin x = sin x.
+6. sin ( x
+2 ) = cos x
+Using the Identity 5, we have
+2 x − ) = cos π π
+− −    
+    = cos x.
+7. sin (x + y) = sin x cos y + cos x sin y
+We know that sin (x + y) = cos π ( )
+  = cos π
+= cos ( π
+2 x − ) cos y + sin π
+2 x − sin y
+= sin x cos y + cos x sin y
+8. sin (x – y) = sin x cos y – cos x sin y
+If we replace y by –y, in the Identity 7, we get the result.
+9. By taking suitable values of x and y in the identities 3, 4, 7 and 8, we get the following results:
+2 = – sin x sin x
+2 = cos x cos (πππππ – x) = – cos x sin (πππππ – x) = sin x
+Reprint 2026-27
+60 MATHEMATICS cos (πππππ + x) = – cos x sin (πππππ + x) = – sin x cos (2πππππ – x) = cos x sin (2πππππ – x) = – sin x
+Similar results for tan x, cot x, sec x and cosec x can be obtained from the results of sin x and cos x.
+10. If none of the angles x, y and (x + y) is an odd multiple of π
+2 , then tan (x + y) = x y tan + tan
+1 – tan tan
+Since none of the x, y and (x + y) is an odd multiple of π
+2 , it follows that cos x, cos y and cos (x + y) are non-zero. Now tan (x + y) = sin( )
++ = sin cos cos sin cos cos sin sin
+Dividing numerator and denominator by cos x cos y, we have tan (x + y) =
+= tan tan
+1 – tan tan
+11. tan ( x – y) = x y tan – tan
+1 + tan tan
+If we replace y by – y in Identity 10, we get tan (x – y) = tan [x + (– y)]
+= tan tan ( )
+1 tan tan ( )
+− − = tan tan
+1 tan tan
+12. If none of the angles x, y and (x + y) is a multiple of πππππ, then cot ( x + y) = x y cot cot – 1 cot + cot
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 61
+Since, none of the x, y and (x + y) is multiple of π, we find that sin x sin y and sin (x + y) are non-zero. Now, cot ( x + y) = cos ( ) cos cos – sin sin sin ( ) sin cos cos sin x y x y x y x y x y x y
+Dividing numerator and denominator by sin x sin y, we have cot (x + y) = cot cot – 1
+13. cot (x – y) = x y cot cot + 1 cot – cot if none of angles x, y and x–y is a multiple of π
+If we replace y by –y in identity 12, we get the result
+14. cos 2x = cos2x – sin2 x = 2 cos2 x – 1 = 1 – 2 sin2 x = x
+We know that cos (x + y) = cos x cos y – sin x sin y
+Replacing y by x, we get cos 2x = cos2x – sin2 x
+= cos2 x – (1 – cos2 x) = 2 cos2x – 1
+Again, cos 2x = cos2 x – sin2 x
+= 1 – sin2 x – sin2 x = 1 – 2 sin2 x.
+We have cos 2x = cos2 x – sin 2 x =
+Dividing numerator and denominator by cos2 x, we get cos 2x =
+≠ + x n , where n is an integer
+15. sin 2x = 2 sinx cos x = x
+≠ + x n , where n is an integer sin (x + y) = sin x cos y + cos x sin y
+Replacing y by x, we get sin 2x = 2 sin x cos x.
+Again sin 2x = 2 2
+2sin cos
+Reprint 2026-27
+62 MATHEMATICS
+Dividing each term by cos2 x, we get sin 2x = 2
+16. tan 2x = x
+1 – tan if π
+≠ + x n , where n is an integer
+We know that tan (x + y) = tan tan
+1 tan tan
+Replacing y by x , we get 2 tan 2 1 tan
+17. sin 3x = 3 sin x – 4 sin3 x
+We have, sin 3x = sin (2x + x)
+= sin 2x cos x + cos 2x sin x
+= 2 sin x cos x cos x + (1 – 2sin2 x) sin x
+= 2 sin x (1 – sin2 x) + sin x – 2 sin3 x
+= 2 sin x – 2 sin3 x + sin x – 2 sin3 x
+= 3 sin x – 4 sin3 x
+18. cos 3x = 4 cos3 x – 3 cos x
+We have, cos 3x = cos (2x +x)
+= cos 2x cos x – sin 2x sin x
+= (2cos2 x – 1) cos x – 2sin x cos x sin x
+= (2cos2 x – 1) cos x – 2cos x (1 – cos2 x)
+= 2cos3 x – cos x – 2cos x + 2 cos3 x
+= 4cos3 x – 3cos x.
+19. = x x
+3 tan – tan tan 3 1 – 3tan if π
+≠ + x n , where n is an integer
+We have tan 3x =tan (2x + x)
+= tan 2 tan
+1 tan 2 tan
+2tan tan
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 63
+2tan tan tan 3 tan tan
+1 tan 2tan 1 3tan x x – x x – x
+– x – x – x
+20. (i) cos x + cos y = x y x y + –
+2cos cos (ii) cos x – cos y = – x y x y + –
+2sin sin (iii) sin x + sin y = x y x y + –
+2sin cos (iv) sin x – sin y = x y x y + –
+2cos sin
+We know that cos (x + y) = cos x cos y – sin x sin y ... (1)
+and cos (x – y) = cos x cos y + sin x sin y ... (2)
+Adding and subtracting (1) and (2), we get cos (x + y) + cos(x – y) = 2 cos x cos y ... (3)
+and cos (x + y) – cos (x – y) = – 2 sin x sin y ... (4)
+Further sin (x + y) = sin x cos y + cos x sin y ... (5)
+and sin (x – y) = sin x cos y – cos x sin y ... (6)
+Adding and subtracting (5) and (6), we get sin (x + y) + sin (x – y) = 2 sin x cos y ... (7)
+sin (x + y) – sin (x – y) = 2cos x sin y ... (8)
+Let x + y = θ and x – y = φ. Therefore
++ φ − φ    
+= =    
+Substituting the values of x and y in (3), (4), (7) and (8), we get cos θ + cos φ = 2 cos θ θ
++ φ −φ     cos θ – cos φ = – 2 sin θ θ
+– + φ φ    
+2     sin θ + sin φ = 2 sin θ θ
++ φ − φ    
+Reprint 2026-27
+64 MATHEMATICS sin θ – sin φ = 2 cos θ θ
++ φ − φ    
+Since θ and φ can take any real values, we can replace θ by x and φ by y.
+Thus, we get cos x + cos y = 2 cos cos x y x y + − ; cos x – cos y = – 2 sin sin x y x y + − , sin x + sin y = 2 sin cos x y x y + − ; sin x – sin y = 2 cos sin x y x y + − .
+Remark As a part of identities given in 20, we can prove the following results:
+21. (i) 2 cos x cos y = cos (x + y) + cos (x – y)
+(ii) –2 sin x sin y = cos (x + y) – cos (x – y)
+(iii) 2 sin x cos y = sin (x + y) + sin (x – y)
+(iv) 2 cos x sin y = sin (x + y) – sin (x – y).
+Example 10 Prove that
+3sin sec 4sin cot 1
+Solution We have
+L.H.S. = 5
+3sin sec 4sin cot
+2 × 2 – 4 sin 6
+  × 1 = 3 – 4 sin 6
+= 3 – 4 × 1
+2 = 1 = R.H.S.
+Example 11 Find the value of sin 15°.
+Solution We have sin 15° = sin (45° – 30°)
+= sin 45° cos 30° – cos 45° sin 30°
+= 1 3 1 1 3 1
+2 2 2 2 2 2
+× − × = .
+Example 12 Find the value of tan 13
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 65
+Solution We have
+π = tan 12
+  = tan tan
+π π π  
+1 tan tan
+1 3 1 3 2 3
+1 3 1 1 3
+Example 13 Prove that sin ( ) tan tan sin ( ) tan tan
+Solution We have
+L.H.S. sin ( ) sin cos cos sin sin ( ) sin cos cos sin x y x y x y x y x y x y
+Dividing the numerator and denominator by cos x cos y, we get sin ( ) tan tan sin ( ) tan tan
+Example 14 Show that tan 3 x tan 2 x tan x = tan 3x – tan 2 x – tan x
+Solution We know that 3x = 2x + x
+Therefore, tan 3x = tan (2x + x)
+or tan 2 tan tan 3 1– tan 2 tan or tan 3x – tan 3x tan 2x tan x = tan 2x + tan x or tan 3x – tan 2x – tan x = tan 3x tan 2x tan x or tan 3x tan 2x tan x = tan 3x – tan 2x – tan x.
+Example 15 Prove that cos cos 2 cos
+π π    
++ + − =    
+Solution Using the Identity 20(i), we have
+Reprint 2026-27
+66 MATHEMATICS
+L.H.S. cos cos
+π π    
+= + + −    
+4 4 4 4 2cos cos x x x – x
+π π π π    
++ + − + −    
+=    
+       
+= 2 cos 4
+π cos x = 2 × 1
+2 cos x = 2 cos x = R.H.S.
+Example 16 Prove that cos 7 cos 5 cot sin 7 – sin 5
+Solution Using the Identities 20 (i) and 20 (iv), we get
+L.H.S. =
+2cos cos
+2cos sin
++ − = cos x x = = R.H.S.
+Example 17 Prove that sin 5 2sin 3 sin tan cos5 cos
+Solution We have
+L.H.S. sin 5 2sin 3 sin cos5 cos sin 5 sin 2sin 3 cos5 cos
+2sin 3 cos 2 2sin 3
+– 2sin 3 sin 2
+= sin 3 (cos 2 1)
+sin 3 sin 2
+1 cos 2 2sin sin 2 2sin cos
+= = = tan x = R.H.S.
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 67
+EXERCISE 3.3
+Prove that:
+1. sin2 π
+6 + cos2
+π – tan2 1
+π = 2. 2sin2
+π + cosec2 2 7 3
+3. 2 2 5 cot cosec 3tan 6
++ + = 4. 2 2 2 3
+2sin 2cos 2sec 10
+5. Find the value of:
+(i) sin 75° (ii) tan 15°
+Prove the following:
+6. cos cos sin sin sin ( )
+x y x y x y
+π π π π        
+− − − − − = +        
+        tan 1 tan 4
++     +   =  
+−     −  
+8. 2 cos ( ) cos ( ) cot sin ( ) cos 2
+π − +  
+9. 3π 3π cos cos (2π ) cot cot (2π ) 1
+     
++ + − + + =      
+     
+10. sin (n + 1)x sin (n + 2)x + cos (n + 1)x cos (n + 2)x = cos x cos cos 2 sin
+π π    
++ − − = −    
+12. sin2 6x – sin2 4x = sin 2x sin 10x 13. cos2 2x – cos2 6x = sin 4x sin 8x
+14. sin2 x + 2 sin 4x + sin 6x = 4 cos2 x sin 4x
+15. cot 4x (sin 5x + sin 3x) = cot x (sin 5x – sin 3x)
+16. cos cos
+− = − 17. sin sin cos cos tan
+18. sin sin cos cos tan
+2 19. sin sin cos cos tan
+20. sin sin sin cos sin
+3 2 2 2 21. cos cos cos sin sin sin cot
+Reprint 2026-27
+68 MATHEMATICS
+22. cot x cot 2x – cot 2x cot 3x – cot 3x cot x = 1
+4tan (1 tan )
+tan 4 1 6 tan tan
+= − + 24. cos 4x = 1 – 8sin2 x cos2 x
+25. cos 6x = 32 cos6 x – 48cos4 x + 18 cos2 x – 1
+Miscellaneous Examples
+Example 18 If sin x = 3
+5 , cos y = − 12
+13 , where x and y both lie in second quadrant, find the value of sin (x + y).
+Solution We know that sin (x + y) = sin x cos y + cos x sin y ... (1)
+Now cos2 x = 1 – sin2 x = 1 – 9
+Therefore cos x = ± 4
+Since x lies in second quadrant, cos x is negative.
+Hence cos x = − 4
+Now sin2y = 1 – cos2y = 1 – 144 i.e. sin y = ± 5
+Since y lies in second quadrant, hence sin y is positive. Therefore, sin y = 5
+13. Substituting the values of sin x, sin y, cos x and cos y in (1), we get sin( ) x y + = × −
+13 = 36 20 56
+65 65 65
+− − = − .
+Example 19 Prove that cos 2 cos cos 3 cos sin 5 sin x x x − = .
+Solution We have
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 69
+L.H.S. = 1 9
+2cos 2 cos 2cos cos 3
+−    cos 2 cos 2 cos 3 cos 3
+2 2 2 2 2
+         
++ + − − + − −          
+          cos cos cos cos
+5 15 5 15
+1 2 2 2 2 2sin sin x x x x      
++ −      
+−      
+     
+       
+ = sin sin sin sin 5 5 x x x x = R.H.S.
+Example 20 Find the value of tan π
+Solution Let π x = . Then π
+Now tan tan
+π 8 tan π 4 1 tan 8
+Let y = tan π
+8 . Then 1 = 2 or y2 + 2y – 1 = 0
+Therefore y = − ± = − ±
+Reprint 2026-27
+70 MATHEMATICS
+8 lies in the first quadrant, y = tan π
+8 is positve. Hence
+Example 21 If 3 3π tan = , π < < x x , find the value of sin x
+2 , cos x
+2 and tan x
+Solution Since 3π x < < , cos x is negative.
+Also π 3π
+Therefore, sin x
+2 is positive and cos x
+2 is negative.
+Now sec2 x = 1 + tan2 x = 1 9
+Therefore cos2 x = 16
+25 or cos x = 4
+– (Why?)
+sin x = 1 – cos x = 1 4
+Therefore sin2 x or sin x
+10 (Why?)
+Again 2cos2 x
+2 = 1+ cos x = 1 4
+Therefore cos2 x or cos x
+10 (Why?)
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 71
+Hence tan x
+ = – 3.
+Example 22 Prove that cos2 x + cos2 2 π π 3
++ + − =    
+Solution We have
+L.H.S. =
+1 cos 2 1 cos 2
+1 cos 2 3 3
++ + + −    +    + + .
+= 1 2π 2π
+3 cos 2 cos 2 cos 2
+     
++ + + + −      
+     
+3 cos 2 2cos 2 cos
++ +   
+3 cos 2 2cos 2 cos π
++ + −    
+3 cos 2 2cos 2 cos
++ −   
+3 cos 2 cos 2 x x + − = = R.H.S.
+Miscellaneous Exercise on Chapter 3
+Prove that:
+cos 2 = + +
+2. (sin 3x + sin x) sin x + (cos 3x – cos x) cos x = 0
+3. (cos x + cos y)2 + (sin x – sin y)2 = 4 cos2
+Reprint 2026-27
+72 MATHEMATICS
+4. (cos x – cos y)2 + (sin x – sin y)2 = 4 sin2
+5. sin x + sin 3x + sin 5x + sin 7x = 4 cos x cos 2x sin 4x
+6 . 6 . 6 . 6 . 6 . (sin 7 sin 5 ) (sin 9 sin 3 ) tan 6 (cos 7 cos 5 ) (cos 9 cos 3 )
+x x x x x
+7. sin 3x + sin 2x – sin x = 4sin x cos x
+Find sin x
+2 , cos x
+2 and tan x
+2 in each of the following :
+8. tan x = − 4
+3 , x in quadrant II 9. cos x = − 1
+3, x in quadrant III
+10. sin x = 4
+1 , x in quadrant II
+ÆIf in a circle of radius r, an arc of length l subtends an angle of θ radians, then
+ÆRadian measure = π
+180 × Degree measure
+ÆDegree measure = 180
+π × Radian measure
+Æcos2 x + sin2 x = 1
+Æ1 + tan2 x = sec2 x
+Æ1 + cot2 x = cosec2 x
+Æcos (2nπ + x) = cos x
+Æsin (2nπ + x) = sin x
+Æsin (– x) = – sin x
+Æcos (– x) = cos x
+Æcos (x + y) = cos x cos y – sin x sin y
+Æcos (x – y) = cos x cos y + sin x sin y
+Æcos ( π
+2 x − ) = sin x
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 73
+Æsin ( π
+2 x − ) = cos x
+Æsin (x + y) = sin x cos y + cos x sin y
+Æsin (x – y) = sin x cos y – cos x sin y
+Æcos π +
+  = – sin x sin π +
+  = cos x cos (π – x) = – cos x sin (π – x) = sin x cos (π + x) = – cos x sin (π + x) = – sin x cos (2π – x) = cos x sin (2π – x) = – sin x
+ÆIf none of the angles x, y and (x ± y) is an odd multiple of π
+2 , then tan (x + y) = tan tan
+Ætan (x – y) = tan tan
+ÆIf none of the angles x, y and (x ± y) is a multiple of π, then cot (x + y) = cot cot 1
+Æcot (x – y) = cot cot 1
+Æcos 2x = cos2 x – sin2 x = 2cos2 x – 1 = 1 – 2 sin2 x
+Æsin 2x = 2 sin x cos x 2
+Ætan 2x = 2
+Æsin 3x = 3sin x – 4sin3 x
+Æcos 3x = 4cos3 x – 3cos x
+Reprint 2026-27
+74 MATHEMATICS
+Ætan 3x =
+3tan tan
+Æ (i) cos x + cos y = 2cos cos x y x y + − (ii) cos x – cos y = – 2sin sin x y x y + − (iii) sin x + sin y = 2 sin cos x y x y + − (iv) sin x – sin y = 2cos sin x y x y + −
+Æ (i) 2cos x cos y = cos ( x + y) + cos ( x – y)
+(ii) – 2sin x sin y = cos (x + y) – cos (x – y)
+(iii) 2sin x cos y = sin (x + y) + sin (x – y)
+(iv) 2 cos x sin y = sin (x + y) – sin (x – y).
+Historical Note
+The study of trigonometry was first started in India. The ancient Indian
+Mathematicians, Aryabhatta (476), Brahmagupta (598), Bhaskara I (600) and
+Bhaskara II (1114) got important results. All this knowledge first went from
+India to middle-east and from there to Europe. The Greeks had also started the study of trigonometry but their approach was so clumsy that when the Indian approach became known, it was immediately adopted throughout the world.
+In India, the predecessor of the modern trigonometric functions, known as the sine of an angle, and the introduction of the sine function represents the main contribution of the siddhantas (Sanskrit astronomical works) to the history of mathematics.
+Bhaskara I (about 600) gave formulae to find the values of sine functions for angles more than 90°. A sixteenth century Malayalam work Yuktibhasa (period) contains a proof for the expansion of sin (A + B). Exact expression for sines or cosines of 18°, 36°, 54°, 72°, etc., are given by
+Bhaskara II.
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 75
+— v v v v v —
+The symbols sin–1 x, cos–1 x, etc., for arc sin x, arc cos x, etc., were suggested by the astronomer Sir John F.W. Hersehel (1813) The names of Thales (about 600 B.C.) is invariably associated with height and distance problems. He is credited with the determination of the height of a great pyramid in Egypt by measuring shadows of the pyramid and an auxiliary staff (or gnomon) of known height, and comparing the ratios:
+= = tan (sun’s altitude)
+Thales is also said to have calculated the distance of a ship at sea through the proportionality of sides of similar triangles. Problems on height and distance using the similarity property are also found in ancient Indian works.
+Reprint 2026-27
+76 MATHEMATICS
+COMPLEX NUMBERS AND
+QUADRATIC EQUATIONS
+W. R. Hamilton (1805-1865)
+vMathematics is the Queen of Sciences and Arithmetic is the Queen of
+Mathematics. – GAUSS v
+4.1 Introduction
+In earlier classes, we have studied linear equations in one and two variables and quadratic equations in one variable.
+We have seen that the equation x2 + 1 = 0 has no real solution as x2 + 1 = 0 gives x2 = – 1 and square of every real number is non-negative. So, we need to extend the real number system to a larger system so that we can find the solution of the equation x2 = – 1. In fact, the main objective is to solve the equation ax2 + bx + c = 0, where
+D = b2 – 4ac < 0, which is not possible in the system of real numbers.
+4.2 Complex Numbers
+Let us denote 1 − by the symbol i. Then, we have 2 1 i = − . This means that i is a solution of the equation x2 + 1 = 0.
+A number of the form a + ib, where a and b are real numbers, is defined to be a complex number. For example, 2 + i3, (– 1) + 3 i , 1
+  are complex numbers.
+For the complex number z = a + ib, a is called the real part, denoted by Re z and b is called the imaginary part denoted by Im z of the complex number z. For example, if z = 2 + i5, then Re z = 2 and Im z = 5.
+Two complex numbers z1 = a + ib and z2 = c + id are equal if a = c and b = d.
+Reprint 2026-27

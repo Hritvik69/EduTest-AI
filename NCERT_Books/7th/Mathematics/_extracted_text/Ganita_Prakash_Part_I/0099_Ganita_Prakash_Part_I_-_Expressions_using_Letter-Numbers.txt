@@ -1,0 +1,413 @@
+Ganita Prakash | Grade 7
+As seen here, when exact measures are required we can make use of smaller units of measurement.
+3.2 A Tenth Part
+The length of the pencil shown in the figure below is 3 4
+10 units, which can also be read as 3 units and four one-tenths, i.e., (3 × 1) + (4 × 1
+10) units.
+= 10 times 1
+10 = 10 × 1
+10 = 1 unit
+This length is the same as 34 one-tenths units because 10 one-tenths units make one unit.
+Reprint 2026-27
+A Peek Beyond the Point
+10 (34 one-tenths)
+= 1 + 1 + 1 + 4
+10 (3 and 4 one-tenths)
+A few numbers with fractional units are shown below along with how to read them.
+10 ‘four and one-tenth’
+10 ‘four one-tenths’ or ‘four-tenths’
+10 ‘forty-one one-tenths’ or ‘forty-one tenths’
+10 ‘forty-one and one-tenth’
+For the objects shown below, write their lengths in two ways and read them aloud. An example is given for the USB cable. (Note that the unit length used in each diagram is not the same).
+The length of the USB cable is 4 and 8
+10 units or 48
+10 units.
+Arrange these lengths in increasing order:
+10 (b) 1 7
+10 (c) 130
+10 (d) 13 1 (e) 10 5
+10 (f) 7 6
+10 (g) 6 7
+10 (h) 4
+Reprint 2026-27
+Ganita Prakash | Grade 7
+Arrange the following lengths in increasing order: 4 1
+10, 41 1
+Sonu is measuring some of his body parts. The length of Sonu’s lower arm is 2 7
+10 units, and that of his upper arm is 3 6
+10 units. What is the total length of his arm?
+To get the total length, let us see the lower and upper arm length as
+2 units and 7 one-tenths, and 3 units and 6 one-tenths, respectively.
+So, there are (2 + 3) units and (7 + 6) one-tenths. Together, they make
+5 units and 13 one-tenths. But 13 one-tenths is 1 unit and 3 one-tenths.
+So, the total length is 6 units and 3 one-tenths.
+(a) (2 + 3) + ( 7
+= (2 + 3) + (13
+= 5 + 13
+= 5 + 10
+10 = 5 + 1 + 3
+Or, both the lengths can be converted to tenths and then added:
+(c) 27 one-tenths and 36 one-tenths is 63 one-tenths
+10 is the same as 60 one-tenths (60
+10) and 3 one-tenths ( 3
+10), which is
+Reprint 2026-27
+A Peek Beyond the Point equal to 6 units and 3 one-tenths, i.e., 6 3
+The lengths of the body parts of a honeybee are given. Find its total length.
+Head: 2 3
+10 units
+Thorax: 5 4
+10 units
+Abdomen: 7 5
+10 units
+The length of Shylaja’s hand is 12 4
+10 units, and her palm is 6 7
+10 units, as shown in the picture. What is the length of the longest (middle) finger?
+The length of the finger can be found by evaluating (12 + 4
+10) – (6 + 7
+10). This can be done in different ways. For example, (a) 12 + 4
+10 – 6 – 7
+= (12 – 6) + ( 4
+= 5 + 1 – 3
+= 5 + 10
+10 = 5 7
+As in the case of counting numbers, it is convenient to start subtraction from the tenths. We cannot remove 7 one-tenths from 4
+Head Thorax abdomen
+10 units 6 7
+10 units
+Discuss what is being done here and why.
+(b) 12 4
+10 11 14
+10 – 6 7
+Reprint 2026-27
+Ganita Prakash | Grade 7 one-tenths. So we split a unit from 12 and convert it to 10 one-tenths.
+Now, the number has 11 units and 14 one-tenths. We subtract 7 one- tenths from 14 one-tenths and then subtract 6 units from 11 units.
+Try computing the difference by converting both lengths to tenths.
+A Celestial Pearl Danio’s length is 2 4
+10 cm, and the length of a Philippine
+Goby is 9
+10 cm. What is the difference in their lengths?
+How big are these fish compared to your finger?
+Observe the given sequences of numbers. Identify the change after each term and extend the pattern:
+(a) 4, 4 3
+10 , 4 6
+10 , _________, _________, _________, _________
+10 , 8 7
+10 , 9 2
+10 , _________, _________, _________, _________
+10 , 8 7
+10 , _________, _________, _________, _________
+10 , 5 3
+10 , _________, _________, _________, _________ (e) 13 5
+10 , 13, 12 5
+10 , _________, _________, _________, _________ (f) 11 5
+10 , 10 4
+10 , 9 3
+10 , _________, _________, _________, _________
+3.3 A Hundredth Part
+The length of a sheet of paper was 8
+10 units, which can also be said as
+8 units and 9 one-tenths. It is folded in half along its length. What is its length now?
+Celestial Pearl Danio Philippine Goby
+Reprint 2026-27
+A Peek Beyond the Point
+We can say that its length is between 4 4 units and 4 5
+10 units. But we cannot state its exact measurement, since there are no markings. Earlier, we split a unit into 10 one-tenths to measure smaller lengths. We can do something similar and split each one-tenth into
+10 parts.
+What is the length of this smaller part? How many such smaller parts make a unit length?
+As shown in the figure below, each one-tenth has
+10 smaller parts, and there are 10 one-tenths in a unit; therefore, there will be 100 smaller parts in a unit. Therefore, one part’s length will
+100 of a unit.
+Returning to our question, what is the length of the folded paper?
+We can see that it ends at 4 4
+100, read as 4 units and 4 one-tenths and 5 one-hundredths.
+How many one-hundredths make one-tenth? Can we also say that the length is 4 units and 45 one-hundredths?
+Reprint 2026-27
+Ganita Prakash | Grade 7
+Observe the figure below. Notice the markings and the corresponding lengths written in the boxes when measured from 0. Fill the lengths in the empty boxes.
+The length of the wire in the first picture is given in three different ways. Can you see how they denote the same length?
+100 One and one-tenth and four-hundredths
+100 One and fourteen-hundredths
+100 One Hundred and Fourteen-hundredths
+For the lengths shown below write the measurements and read out the measures in words.
+Reprint 2026-27
+A Peek Beyond the Point
+In each group, identify the longest and the shortest lengths. Mark each length on the scale.
+100 , 33
+10 , 1 3
+100 , 54
+10 , 3 6
+100 , 3 6
+Reprint 2026-27
+Ganita Prakash | Grade 7
+100 , 1 8
+100 , 7 5
+10 , 7 41
+100 , 5 87
+100 , 5 7
+What will be the sum of 15 3
+100 and 2 6
+This can be solved in different ways. Some are shown below.
+(a) Method 1 (15 + 2) + ( 3
+10) + ( 4
+= 17 + 9
+= 17 + 10 (b) Method 2
+10 hundredths is the same as 1 tenth.
+Reprint 2026-27
+A Peek Beyond the Point
+Are both these methods different?
+Observe the addition done below for 483 + 268. Do you see any similarities between the methods shown above?
+(400 + 80 + 3) + (200 + 60 + 8)
+= (400 + 200) + (80 + 60) + (3 + 8)
+= 600 + 140 + 11
+= 600 + 150 + 1
+= 700 + 50 + 1
+One can also find the sum 15 3
+100 + 2 6
+100 by converting to hundredths, as follows.
+(c) (15 + 2) + ( 34
+100 + 68
+= 17 + 102
+= 17 + 1 + 2 (d) (1534
+100 ) + (268
+What is the difference: 25 9
+10 – 6 4
+One way to solve this is as follows:
+100 hundredths is same as 1 unit.
+15 is the same as
+1500 hundredths and 2 is the same as
+200 hundredths.
+Reprint 2026-27
+Ganita Prakash | Grade 7
+Solve this by converting to hundredths.
+What is the difference 15 3
+100 –2 6
+One way to solve this is as follows:
+100 15 2
+100 14 12
+100 – 2 6
+Observe the subtraction done below for 653 – 268. Do you see any similarities with the methods shown above?
+(600 + 50 + 3) – (200 + 60 + 8)
+= (600 – 200) + (50 – 60) + (3 – 8)
+= (600 – 200) + (40 – 60) + (13 – 8)
+= (600 – 200) + (40 – 60) + 5
+= (500 – 200) + (140 – 60) + 5
+= 300 + 80 + 5
+Figure it Out
+Find the sums and differences:
+10 + 3 4
+100 (b) 9 5
+100 + 2 1 (c) 15 6
+100 + 14 3
+100 (d) 7 7
+100 – 4 4
+100 – 5 3
+100 (f) 12 6
+3.4 Decimal Place Value
+You may have noticed that whenever we need to measure something more accurately, we split a part into 10 (smaller) equal parts ― we split a unit into 10 one-tenths and then split each one-tenth into 10, one- hundredths and then we use these smaller parts to measure.
+Reprint 2026-27
+A Peek Beyond the Point
+Can we not split a unit into 4 equal parts, 5 equal parts, 8 equal parts, or any other number of equal parts instead?
+Yes, we can. The example below compares how the same length is represented when the unit is split into 10 equal parts and when the unit is split into 4 equal parts.
+If an even more precise measure is needed, each quarter can further be split into four equal parts. Each part then measures 1
+16 of a unit, i.e.,
+16 such parts make 1 unit.
+Then why split a unit into 10 parts every time?
+The reason is the special role that 10 plays in the Indian place value system. For a whole number written in the Indian place value system — for example, 281 — the place value of 2 is hundreds (100), that of 8 is tens (10), and that of 1 is one (1). Each place value is 10 times bigger than the one immediately to its right. Equivalently, each place value is
+10 times smaller than the one immediately to its left:
+10 ones make 1 ten,
+10 tens make 1 hundred,
+10 hundreds make 1 thousand, and so on.
+10,000 1000 100 10 1
+In order to extend this system of writing numbers to quantities smaller than one, we divide one into 10 equal parts. What does this give? It gives one-tenth. Further dividing it into 10 parts gives one-hundredth, and so on.
+Reprint 2026-27
+Ganita Prakash | Grade 7
+Can we extend this further?
+What will the fraction be when 1
+100 is split into 10 equal parts?
+It will be 1
+1000 , i.e., a thousand such parts make up a unit.
+Just as when we extend to the left of 10,000, we get bigger place values at each step, we can also extend to the right of 1
+1000 , getting smaller place values at each step.
+10,000 1000 100 10 1 1
+Reprint 2026-27
+A Peek Beyond the Point
+This way of writing numbers is called the “decimal system” since it is based on the number 10; “decem” means ten in Latin, which in turn is cognate to the Sanskrit daśha meaning 10, with similar words for
+10 occurring across many Indian languages including Odia, Konkani,
+Marathi, Gujarati, Hindi, Kashmiri, Bodo, and Assamese. We shall learn about other ways of writing numbers in later grades.
+How Big?
+We already know that a hundred 10s make 1000, and a hundred 100s make 10000.
+We can ask similar questions about fractional parts:
+(a) How many thousandths make one unit?
+(b) How many thousandths make one tenth?
+(c) How many thousandths make one hundredth?
+(d) How many tenths make one ten?
+(e) How many hundredths make one ten?
+Make a few more questions of this kind and answer them.
+Notation, Writing and Reading of Numbers
+We have been writing numbers in a particular way, say 456, instead of writing them as 4 × 100 (4 hundreds) + 5 × 10 (5 tens) + 6 × 1 (6 ones).
+Similarly, can we skip writing tenths and hundredths?
+Can the quantity 4 2
+10 be written as 42 (skipping the 1
+10 in 2 × 1
+If yes, how would we know if 42 means 4 tens and 2 units or it means 4 units and 2 tenths?
+Similarly, 705 could mean:
+(a) 7 hundreds, and 0 tens and 5 ones (700 + 0 + 5)
+(b) 7 tens and 0 units and 5 tenths (70 + 0 + 5 (c) 7 units and 0 tenths and 5 hundredths (7 + 0
+1,00,000 10,000 1000 100 10 1 1
+× 10 × 10 × 10 × 10 × 10 × 10 × 10 × 10 × 10
+÷ 10 ÷ 10 ÷ 10 ÷ 10 ÷ 10 ÷ 10 ÷ 10 ÷ 10 ÷ 10
+Reprint 2026-27
+Ganita Prakash | Grade 7
+Since these are different quantities, we need to have distinct ways of writing them.
+To identify the place value where integers end and the fractional parts start, we use a point or period (‘.’) as a separator, called a decimal point.
+The above quantities in decimal notation are then:
+Quantity Decimal Notation
+7 hundreds and 5 ones (700 + 0 + 5) 705
+7 tens and 5 tenths (70 + 0 + 5
+10) 70.5
+7 units and 5 hundredths (7 + 0 + 5
+100) 7.05
+These numbers, when shown through place value, are as follows:
+number Hundreds Tens Units Tenths Hundredths
+705 7 × 100 0 × 10 5 × 1
+70.5 7 × 10 0 × 1 5 × 1
+7.05 7 × 1 0 × 1
+10 5 × 1
+× 10 × 1 × 1 number of number of number of one-tenths number of one-hundredths
+Reprint 2026-27
+A Peek Beyond the Point
+Thus decimal notation is a natural extension of the Indian place value system to numbers also having fractional parts. Just as 705 means
+7 × 100 + 5 × 1, the number 70.5 means 7 × 10 + 5 × 1
+10 , and 7.05 means
+7 × 1 +5 × 1
+We have seen how to write numbers using the decimal point (‘.’). But how do we read/say these numbers?
+We know that 705 is read as seven hundred and five.
+70.5 is read as seventy point five, short for seventy and five-tenths.
+7.05 is read as seven point zero five, short for seven and five hundredths.
+0.274 is read as zero point two seven four. We don’t read it as zero point two hundred and seventy four as 0.274 means 2 one-tenths and 7 one-hundredths and 4 one-thousandths.
+Make a place value table similar to the one above. Write each quantity in decimal form and in terms of place value, and read the number:
+(a) 2 ones, 3 tenths and 5 hundredths (b) 1 ten and 5 tenths (c) 4 ones and 6 hundredths (d) 1 hundred, 1 one and 1 hundredth
+100 and 9
+100 , 4 1
+10 and 7 7
+In the chapter on large numbers, we learned how to write 23 hundreds.
+23 hundreds = 23 × 100 = 2000 + 300 = 2300.
+Thousands Hundreds Tens Units
+Similarly, 23 tens would be:
+23 tens = 23 × 10 = 200 + 30 = 230.
+Reprint 2026-27
+Ganita Prakash | Grade 7
+Thousands Hundreds Tens Units
+How can we write 234 tenths in decimal form?
+234 tenths = 234
+= 20 + 3 + 4
+Hundreds Tens Units Tenths Hundredths
+Write these quantities in decimal form: (a) 234 hundredths, (b) 105 tenths.
+3.5 Units of Measurement
+Length Conversion
+We have been using a scale to measure length for a few years. We already know that 1 cm = 10 mm (millimeters).
+How many cm is 1 mm?
+1 mm = 1
+10 cm = 0.1 cm (i.e., one-tenth of a cm).
+How many cm is (a) 5 mm? (b) 12 mm?
+5 mm = 5
+10 cm = 0.5 cm
+12 mm = 10 mm + 2 mm
+= 1 cm + 2
+= 1.2 cm.
+Reprint 2026-27
+A Peek Beyond the Point
+How many mm is 5.6 cm? Since each cm has 10 mm, 5.6 cm (5 cm +
+0.6 cm) is 56 mm.
+Fill in the blanks below (mm <–> cm)
+12 mm = 1.2 cm 56 mm = 5.6 cm 70 mm = _______
+________ = 0.9 cm 134 mm =__________ ________ = 203.6 cm
+The illustration below shows how small some things are! Try taking an approximate measurement of each.
+• The three blue stripes represent the typical relative sizes of pen strokes: fine stroke, medium stroke, and bold stroke.
+• A human hair is about 0.1 mm in thickness.
+• The thickness of a newspaper can range from 0.05 to 0.08 mm.
+• Mustard seeds have a thickness of 1 – 2 mm.
+• The smallest ant species discovered so far, Carabera Bruni, has a total length of 0.8 – 1 mm. They are found in Sri Lanka and China.
+• The smallest land snail species discovered so far, Acmella Nana, has a shell diameter of 0.7 mm. They are found in Malaysia.
+We also know that 1 m = 100 cm. Based on this, we can say that
+1 cm = 1
+100 m = 0.01 m.
+Reprint 2026-27
+Ganita Prakash | Grade 7
+How many m is (a) 10 cm? (b) 15 cm?
+10 cm = 1
+10 m = 0.1 m
+Since each cm is one-hundredth of a meter, 15 cm can be written as
+15 cm = 15
+100 m + 5
+10 m + 5
+= 0.15 m.
+Fill in the blanks below (cm <–> m):
+36 cm = _______ 50 cm = _______ _______ = 0.89 m
+4 cm = _______ 325 cm = _______ ________ = 2.07 m
+How many mm does 1 meter have?
+Can we write 1 mm = 1
+Here, we have some more interesting facts about small things in
+Reprint 2026-27
+A Peek Beyond the Point
+• The egg of a hummingbird typically is 1.3 cm long and 0.9 cm wide.
+• The Philippine Goby is about 0.9 cm long. It can be found in the
+Philippines and other Southeast Asian countries.
+• The smallest known jellyfish, Irukandji, has a belly size of 0.5 – 2.5 cm. Its tentacles can be as long as 1 m. They are found in Australia.
+Its venom can be fatal to humans.
+• The Wolfi octopus, also known as the Star-sucker Pygmy Octopus, is the smallest known octopus in the world. Their typical size is around 1 – 2.5 cm and they weigh less than 1 gm. They are found in the Pacific Ocean.
+Weight Conversion
+Let us look at kilograms (kg). We know that 1 kg = 1000 gram (g). We can say that
+1000 kg = 0.001 kg.
+How many kilograms is 5 g?
+1000 kg = 0.005 kg.
+How many kilograms is 10 g?
+10 g = 10
+1000 kg = 1
+100 kg = 0.010 kg.
+As each gram is one-thousandth of a kg, 254 g can be written as
+254 g = 254
+1000 + 50
+1000 + 4
+1000) kg
+= 0.254 kg.
+Fill in the blanks below (g <–> kg)
+Reprint 2026-27
+Ganita Prakash | Grade 7
+465 g = _______ 68 g = _________ 1560 g = ________
+704 g = _______ ________ = 0.56 kg _______ = 2.5 kg
+Look at the picture below showing different quantities of rice.
+Starting from the 1g heap, subsequent heaps can be found that are 10 times heavier than the previous heap/packets. The combined weight of rice in this picture is 11.111 kg.
+1 gram = 1000 milligrams (mg). So, 1 mg = 1
+1000 g = 0.001 g.
+Rupee ─ Paise conversion
+You may have heard of ‘paisa’. 100 paise is equal to 1 rupee. As we have coins and notes for rupees, coins for paise were also used commonly until recently. There were coins for 1 paisa, 2 paise, 3 paise, 5 paise, 10 paise, 20 paise, 25 paise, and 50 paise. All denominations of 25 paise and less were removed from use in the year 2011. But we still see paise in bills, account statements, etc.
+1 rupee = 100 paise
+1 paisa = 1
+100 rupee = 0.01 rupee
+As each paisa is one-hundredth of a rupee,
+75 paise = 75
+100 rupee
+Reprint 2026-27
+A Peek Beyond the Point
+100) rupee
+= 0.75 rupee.
+Fill in the blanks below (rupee <–> paise)
+10 p = ___________ _______p = ₹ 0.05 ________p = ₹ 0.36
+_________ = ₹ 0.50 99 p = _________ 250 p = _________
+During the 1970s, a masala dosa cost just 50 paise, one could buy a banana for 20-25 paise, a handful of peppermints were available for 2 paise or 3 paise, and a kg of rice cost ₹2.45.
+Discuss with adults at home/school the prices of different products and services during their childhood. Try to find old coins and stamps.
+3.6 Locating and Comparing Decimals
+Let us consider the decimal number 1.4. It is equal to 1 unit and 4 tenths. This means that the unit between 1 and 2 is divided into 10
+Reprint 2026-27
+Ganita Prakash | Grade 7 equal parts, and 4 such parts are taken. Hence, 1.4 lies between 1 and
+2. Draw the number line and divide the unit between 1 and 2 into 10 equal parts. Take the fourth part, and we have 1.4 on the number line.
+1 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2
+Name all the divisions between 1 and 1.1 on the number line.
+1.1 1.2 1.3
+Identify and write the decimal numbers against the letters.
+5 5.1 5.3 5.4
+There is Zero Dilemma!
+Sonu says that 0.2 can also be written as 0.20, 0.200; Zara thinks that putting zeros on the right side may alter the value of the decimal number. What do you think?
+W

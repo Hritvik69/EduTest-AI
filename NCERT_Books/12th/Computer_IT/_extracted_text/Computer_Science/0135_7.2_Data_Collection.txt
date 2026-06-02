@@ -1,0 +1,18 @@
+DatabaSe ConCeptS 123 v) CARDINALITY: The number of tuples in a relation is called the Cardinality of the relation. For example, the cardinality of relation GUARDIAN is 5 as there are 5 tuples in the table.
+8.4.1 Three Important Properties of a Relation
+In relational data model, following three properties are observed with respect to a relation which makes a relation different from a data file or a simple table.
+Property 1: imposes following rules on an attribute of the relation.
+• Each attribute in a relation has a unique name.
+• Sequence of attributes in a relation is immaterial.
+Property 2: governs following rules on a tuple of a relation.
+• Each tuple in a relation is distinct. For example, data values in no two tuples of relation ATTENDANCE can be identical for all the attributes. Thus, each tuple of a relation must be uniquely identified by its contents.
+• Sequence of tuples in a relation is immaterial.
+The tuples are not considered to be ordered, even though they appear to be in tabular form.
+Property 3: imposes following rules on the state of a relation.
+• All data values in an attribute must be from the same domain (same data type).
+• Each data value associated with an attribute must be atomic (cannot be further divisible into meaningful subparts). For example, GPhone of relation GUARDIAN has ten digit numbers which is indivisible.
+• No attribute can have many data values in one tuple. For example, Guardian cannot specify multiple contact numbers under GPhone attribute.
+• A special value “NULL” is used to represent values that are unknown or non-applicable to certain attributes. For example, if a guardian does not share his or her contact number with the school authorities, then GPhone is set to NULL (data unknown).
+8.5 KeyS In a relatIonal databaSe
+The tuples within a relation must be distinct. It means no two tuples in a table should have same value for all attributes. That is, there should be at least one attribute
+Reprint 2026-27

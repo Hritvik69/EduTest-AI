@@ -1,0 +1,30 @@
+FIGURE 2.10 Equipotential surfaces for a uniform electric field.
+2.6 EQUIPOTENTIAL SURFACES
+An equipotential surface is a surface with a constant value of potential at all points on the surface. For a single charge q, the potential is given by Eq. (2.8):
+This shows that V is a constant if r is constant. Thus, equipotential surfaces of a single point charge are concentric spherical surfaces centred at the charge.
+Now the electric field lines for a single charge q are radial lines starting from or ending at the charge, depending on whether q is positive or negative.
+Clearly, the electric field at every point is normal to the equipotential surface passing through that point. This is true in general: for any charge configuration, equipotential surface through a point is normal to the electric field at that point. The proof of this statement is simple.
+If the field were not normal to the equipotential surface, it would have non-zero component along the surface. To move a unit test charge against the direction of the component of the field, work would have to be done. But this is in contradiction to the definition of an equipotential surface: there is no potential difference between any two points on the surface and no work is required to move a test charge on the surface.
+The electric field must, therefore, be normal to the equipotential surface at every point. Equipotential surfaces offer an alternative visual picture in addition to the picture of electric field lines around a charge configuration.
+FIGURE 2.9 For a single charge q (a) equipotential surfaces are spherical surfaces centred at the charge, and (b) electric field lines are radial, starting from the charge if q > 0.
+For a uniform electric field E, say, along the x-axis, the equipotential surfaces are planes normal to the x-axis, i.e., planes parallel to the y-z plane (Fig. 2.10). Equipotential surfaces for (a) a dipole and (b) two identical positive charges are shown in Fig. 2.11.
+FIGURE 2.11 Some equipotential surfaces for (a) a dipole, (b) two identical positive charges.
+Reprint 2026-27
+Electrostatic Potential and Capacitance
+2.6.1 Relation between field and potential
+Consider two closely spaced equipotential surfaces A and B (Fig. 2.12)
+with potential values V and V + d V, where d V is the change in V in the direction of the electric field E. Let P be a point on the surface B.
+d l is the perpendicular distance of the surface A from P. Imagine that a unit positive charge is moved along this perpendicular from the surface B to surface A against the electric field. The work done in this process is |E|
+This work equals the potential difference d l = V – (V + i.e., |E|= − l (2.20)
+dV is negative, dV = – | dV|. we can rewrite
+Eq (2.20) as
+E = − = + l (2.21)
+We thus arrive at two important conclusions concerning the relation between electric field and potential:
+(i) Electric field is in the direction in which the potential decreases steepest.
+(ii) Its magnitude is given by the change in the magnitude of potential per unit displacement normal to the equipotential surface at the point.
+2.7 POTENTIAL ENERGY OF A SYSTEM OF CHARGES
+Consider first the simple case of two charges q1and q2 with position vector r1 and r2 relative to some origin. Let us calculate the work done (externally) in building up this configuration. This means that we consider the charges q1 and q2 initially at infinity and determine the work done by an external agency to bring the charges to the given locations. Suppose, first the charge q1 is brought from infinity to the point r1. There is no external field against which work needs to be done, so work done in bringing q1 from infinity to r1 is zero. This charge produces a potential in space given by where r1P is the distance of a point P in space from the location of q1.
+From the definition of potential, work done in bringing charge q2 from infinity to the point r2 is q2 times the potential at r2 due to q1:
+work done on q2 = 1
+FIGURE 2.12 From the potential to the field.
+Reprint 2026-27

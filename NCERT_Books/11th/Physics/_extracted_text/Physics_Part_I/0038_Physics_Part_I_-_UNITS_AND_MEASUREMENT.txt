@@ -1,0 +1,61 @@
+PHYSICS 22
+3. Average acceleration is the change in velocity divided by the time interval during which the change occurs :
+4. Instantaneous acceleration is defined as the limit of the average acceleration as the time interval ∆t goes to zero :
+d t 0 t 0 a lim a lim t t ∆ → ∆ →
+The acceleration of an object at a particular time is the slope of the velocity-time graph at that instant of time. For uniform motion, acceleration is zero and the x-t graph is a straight line inclined to the time axis and the v-t graph is a straight line parallel to the time axis. For motion with uniform acceleration, x-t graph is a parabola while the v-t graph is a straight line inclined to the time axis.
+5. The area under the velocity-time curve between times t1 and t2 is equal to the displacement of the object during that interval of time.
+6. For objects in uniformly accelerated rectilinear motion, the five quantities, displacement x, time taken t, initial velocity v0, final velocity v and acceleration a are related by a set of simple equations called kinematic equations of motion :
+v = v0 + at if the position of the object at time t = 0 is 0. If the particle starts at x = x0 , x in above equations is replaced by (x – x0).
+Reprint 2026-27
+MOTION IN A STRAIGHT LINE 23
+POINTS TO PONDER
+1. The origin and the positive direction of an axis are a matter of choice. You should first specify this choice before you assign signs to quantities like displacement, velocity and acceleration.
+2. If a particle is speeding up, acceleration is in the direction of velocity; if its speed is decreasing, acceleration is in the direction opposite to that of the velocity. This statement is independent of the choice of the origin and the axis.
+3. The sign of acceleration does not tell us whether the particle’s speed is increasing or decreasing. The sign of acceleration (as mentioned in point 3) depends on the choice of the positive direction of the axis. For example, if the vertically upward direction is chosen to be the positive direction of the axis, the acceleration due to gravity is negative. If a particle is falling under gravity, this acceleration, though negative, results in increase in speed. For a particle thrown upward, the same negative acceleration (of gravity) results in decrease in speed.
+4. The zero velocity of a particle at any instant does not necessarily imply zero acceleration at that instant. A particle may be momentarily at rest and yet have non-zero acceleration.
+For example, a particle thrown up has zero velocity at its uppermost point but the acceleration at that instant continues to be the acceleration due to gravity.
+5. In the kinematic equations of motion [Eq. (2.9)], the various quantities are algebraic, i.e. they may be positive or negative. The equations are applicable in all situations (for one dimensional motion with constant acceleration) provided the values of different quantities are substituted in the equations with proper signs.
+6. The definitions of instantaneous velocity and acceleration (Eqs. (2.1) and (2.3)) are exact and are always correct while the kinematic equations (Eq. (2.9)) are true only for motion in which the magnitude and the direction of acceleration are constant during the course of motion.
+Reprint 2026-27
+PHYSICS 24
+EXERCISES
+2.1 In which of the following examples of motion, can the body be considered approximately a point object:
+(a) a railway carriage moving without jerks between two stations.
+(b) a monkey sitting on top of a man cycling smoothly on a circular track.
+(c) a spinning cricket ball that turns sharply on hitting the ground.
+(d) a tumbling beaker that has slipped off the edge of a table.
+2.2 The position-time (x-t) graphs for two children A and B returning from their school
+O to their homes P and Q respectively are shown in Fig. 2.9. Choose the correct entries in the brackets below ;
+(a) (A/B) lives closer to the school than (B/A)
+(b) (A/B) starts from the school earlier than (B/A)
+(c) (A/B) walks faster than (B/A)
+(d) A and B reach home at the (same/different) time (e) (A/B) overtakes (B/A) on the road (once/twice).
+2.3 A woman starts from her home at 9.00 am, walks with a speed of 5 km h–1 on a straight road up to her office 2.5 km away, stays at the office up to 5.00 pm, and returns home by an auto with a speed of 25 km h–1. Choose suitable scales and plot the x-t graph of her motion.
+2.4 A drunkard walking in a narrow lane takes 5 steps forward and 3 steps backward, followed again by 5 steps forward and 3 steps backward, and so on. Each step is 1 m long and requires 1 s. Plot the x-t graph of his motion. Determine graphically and otherwise how long the drunkard takes to fall in a pit 13 m away from the start.
+2.5 A car moving along a straight highway with speed of 126 km h–1 is brought to a stop within a distance of 200 m. What is the retardation of the car (assumed uniform), and how long does it take for the car to stop ?
+2.6 A player throws a ball upwards with an initial speed of 29.4 m s–1.
+(a) What is the direction of acceleration during the upward motion of the ball ?
+(b) What are the velocity and acceleration of the ball at the highest point of its motion ?
+(c) Choose the x = 0 m and t = 0 s to be the location and time of the ball at its highest point, vertically downward direction to be the positive direction of x-axis, and give the signs of position, velocity and acceleration of the ball during its upward, and downward motion.
+(d) To what height does the ball rise and after how long does the ball return to the player’s hands ? (Take g = 9.8 m s–2 and neglect air resistance).
+2.7 Read each statement below carefully and state with reasons and examples, if it is true or false ;
+A particle in one-dimensional motion (a) with zero speed at an instant may have non-zero acceleration at that instant (b) with zero speed may have non-zero velocity, (c) with constant speed must have zero acceleration, (d) with positive value of acceleration must be speeding up.
+Fig. 2.9
+Reprint 2026-27
+MOTION IN A STRAIGHT LINE 25
+2.8 A ball is dropped from a height of 90 m on a floor. At each collision with the floor, the ball loses one tenth of its speed. Plot the speed-time graph of its motion between t = 0 to 12 s.
+2.9 Explain clearly, with examples, the distinction between :
+(a) magnitude of displacement (sometimes called distance) over an interval of time, and the total length of path covered by a particle over the same interval;
+(b) magnitude of average velocity over an interval of time, and the average speed over the same interval. [Average speed of a particle over an interval of time is defined as the total path length divided by the time interval]. Show in both (a)
+and (b) that the second quantity is either greater than or equal to the first. When is the equality sign true ? [For simplicity, consider one-dimensional motion only].
+2.10 A man walks on a straight road from his home to a market 2.5 km away with a speed of 5 km h–1. Finding the market closed, he instantly turns and walks back home with a speed of 7.5 km h–1. What is the (a) magnitude of average velocity, and (b) average speed of the man over the interval of time (i) 0 to 30 min, (ii)
+0 to 50 min, (iii) 0 to 40 min ?
+[Note: You will appreciate from this exercise why it is better to define average speed as total path length divided by time, and not as magnitude of average velocity. You would not like to tell the tired man on his return home that his average speed was zero !]
+2.11 In Exercises 2.9 and 2.10, we have carefully distinguished between average speed and magnitude of average velocity. No such distinction is necessary when we consider instantaneous speed and magnitude of velocity. The instantaneous speed is always equal to the magnitude of instantaneous velocity. Why?
+2.12 Look at the graphs (a) to (d) (Fig. 2.10) carefully and state, with reasons, which of these cannot possibly represent one-dimensional motion of a particle.
+2.13 Figure 2.11shows the x-t plot of one- dimensional motion of a particle. Is it correct to say from the graph that the particle moves in a straight line for t < 0 and on a parabolic path for t >0 ? If not, suggest a suitable physical context for this graph.
+2.14 A police van moving on a highway with a speed of
+30 km h–1 fires a bullet at a thief’s car speeding away in the same direction with a speed of 192 km h–1. If the muzzle speed of the bullet is 150 m s–1, with what speed does the bullet hit the thief’s car ? (Note: Obtain that speed which is relevant for damaging the thief’s car).
+Fig. 2.10
+Fig. 2.11
+Reprint 2026-27

@@ -1,0 +1,216 @@
+Database ManageMent systeM Using LibreOffice Writer 165 changed as per the requirement and are used to control and validate the data that is to be entered.
+Let us help Ruhi to create a table named Events using in the option Create
+Table in Design view in the Sports Day database. Follow the follow the following steps to do so.
+Step 1. Type the first field name (EventId)
+in the Field Name column. Press
+Tab key. The cursor moves to the second column i.e. Field Type.
+Step 2. The Field Type column contains a list box. As you click on the down arrow, it appears and we can select the desired data type from the list box. Select the datatype (Varchar).
+Step 3. Observe that certain properties appear in the Field Properties
+Pane as the data type is selected.
+Some of the properties are Entry required, Length, Default value,
+Format example. Set the desired properties for the entered field.
+Step 4. Press Tab key to move to the next column. Add any description if you want in the third column.
+Step 5. Once the properties for the field are set, press Tab key to move to next row.
+Fig. 9.14: Selecting data type for field
+Fig. 9.15: Fields entered using Creating Table in Design View
+Step 6. Enter the next field by repeating steps 1,2 and
+3. Repeat the process for adding all fields in the table. Fig. 9.15 shows the Design View with all the fields.
+Setting the Primary Key
+As you have learned that every table must have a primary key that uniquely identifies a record in the table. To make a particular field as the primary key, place the mouse pointer before the field name, say Event Id in our above example and right click. A pop up menu appears.
+Domestic Data entry operator – class X 166
+Select the Primary Key option from pop up menu as shown in Fig. 9.16. A key icon appears before the field name indicating that it is a primary key.
+Saving a Table
+After creating the table you need to save it on the disk. To save the table click on the save button or follow menu option File >
+Save As. A Save As dialog box is displayed as shown in Fig. 9.17. Enter the name of table and click on OK button.
+Fig. 9.17: Saving a table
+Tip: Press Ctrl + S to save the table or click Save icon from the toolbar. If the table is being saved after making some changes, simply select File-> Save option.
+Once the table design is complete, click on Close button on the toolbar to return to the Database screen.
+The name of the table will appear in the Tables Object
+Area as shown in the Fig. 9.18.
+Fig. 9.18: Event table added to the database
+Entering Data in a Table
+To enter data in the table, double click on the created table Events icon in the Tables Object Area on the database screen. Alternatively, we can open the table by right clicking on the desired table and then selecting
+More to know
+To set a composite key, i.e. a primary key consisting of two fields, keep the Ctrl key pressed and then click on multiple fields to select them.
+Thereafter right click on selected fields and choose Primary Key option from the pop up menu.
+Fig. 9.16: Assigning primary key
+Database ManageMent systeM Using LibreOffice Writer 167 the Open option from the drop down menu. The datasheet view of the table will appear as shown in Fig. 9.19. It displays the field names in the top row. These fields are displayed in the same order as they were added while creating the table.
+If the number of fields are more and cannot fit in the single row, you can use the horizontal scroll bar to view all the fields. The cursor will be blinking in the second row. Start typing the data value for each field.
+Use Tab to move to next field. Once all the data values are entered for a single record, the cursor moves to the next record. This process is called as data entry. Enter 4-5 records in the Events table as shown in Fig. 9.20.
+Navigating through the Table
+The black pointing arrow ( )just before the field name is the record pointer. To navigate through various records of the table, we use the navigation box present at the bottom of the datasheet window as shown in
+Fig. 9.21. It indicates a current record of the table at any given time.
+Fig. 9.21: Navigation box
+The various components of Navigation Box are as follows:
+• Record Selector Box – T his is the text box where the currently active record number is displayed.
+We may enter the record number that we want to see in this text box.
+• Navigation Buttons – These are used to scroll vertically in the table.
+Fig. 9.19: Datasheet view of Events table
+Fig. 9.20: Data entry in Event table
+Domestic Data entry operator – class X 168
+Press to move to the first record
+Press ► and ◄ to move to the next and previous records respectively.
+Press to move to the last record
+Fig. 9.20 shows the datasheet view after entering four records in the table. Note that the record pointer is on fourth record, the Navigation Bar shows the “Record
+4 of 4”.
+Editing Data
+To edit or modify the previously entered data simply place the cursor on the field value that has to be edited to edit and enter the new value.
+The Edit icon ( ) appears before the record that is being edited. This icon is displayed till the table is saved after making the required changes. Press Esc key to cancel the corrections made and restore the original contents.
+Deleting Records from Table
+To delete any record from the table, open the table and select the record to be deleted. The record can be deleted by pressing the Del key from the keyboard or selecting the Delete Record option from the Edit menu. Alternatively a record can also be deleted by right clicking on the record and clicking on the Delete Rows option from the pop up menu.
+Attempting to delete the record will display the
+Confirmation box as shown in Fig. 9.22. Clicking on
+Yes button will finally delete the record, while clicking on the No button will not delete the record.
+Sorting Data in the Table
+Data in a table can be arranged in ascending or descending order. This process of arranging the records in particular order on any filed is called as sorting.
+Follow the following steps to sort the table.
+Step 1. Open the Event table in datasheet view and select the field on which you want to sort.
+Fig. 9.23 shows that the field “Points” is selected to sort the records in ascending order.
+Fig. 9.22: Delete record alert
+Fig. 9.23: Sorting the Event table on Points field
+Database ManageMent systeM Using LibreOffice Writer 169
+Step 2. From the tool bar click Sort Ascending icon if the table has to be sorted in ascending order of selected field. Alternatively select Sort
+Descending icon if the table has to be sorted in descending order of selected field.
+Step 3. The table will be sorted in the ascending order of points as shown in Fig. 9.24.
+Sometimes we may need to sort the table based on more than one fields. In such case, click Sort icon on the toolbar. The Sort Order dialog will be displayed as shown in the Fig. 9.25.
+Select the appropriate field name and field value according to which the records are to be sorted. Choose the order of sorting ascending or descending as required from the Order drop down box. Multiple fields may be selected in this dialog box. Click OK button once done.
+Closing LibreOffice Base
+To close the application window of LibreOffice Base, click on the File > Close or click on the cross (x) button of the LibreOffice Base window.
+Let’s Practice
+There are 5 houses in Ruhi’s school – Ganga, Yamuna, Satluj,
+Beas and Narmada. Once student can participate from each house in a particular event. Create a table Participants with following fields.
+1. Event_Id
+2. Event Name
+3. Ganga
+4. Yamuna
+5. Satluj
+7. Narmada
+Also add minimum five records in the table.
+• Base is a free and open source database component of LibreOffice suit.
+• It can be downloaded from www.libreoffice.org
+• A data type refers to the type of data that will be stored in that particular field.
+Fig. 9.24: Event table after sorting on Points field
+Fig. 9.25: Sort Order dialog box
+Domestic Data entry operator – class X 170
+• Various in Base can be categorized into Text ,
+Numeric, Currency and Date.
+• LibreOffice Base is the collection of related data objects known as Tables, Forms, Queries, Reports and application modules.
+• Depending on the object that is selected, the respective Task Pane and Object Area displaying the created object appears on the User Interface
+• A table in LibreOffice Base can be created using a wizard or using the Design view.
+Check Your Progress
+A. Multiple choice questions
+1. Which of the following is NOT a type of text data type?
+(a) Memo (b) Varchar (c) Float (d) Char
+2. A currency data type can only store monetary data that is in dollars.
+(a) True (b) False (c) Neither a nor b (d) Both a and b
+3. Which of the following data can a date data type store?
+(a) Date (b) Time (c) Both date and time (d) Neither date nor time
+4. Which of the following is true about LibreOffice Base?
+(a) It is a spreadsheet software (b) It is free and open source software (c) It can store only character data (d) It is a licensed software.
+Practical Exercise
+Ananthu wants to create a directory containing data – Serial
+No, Name, Mobile Number, Email id, Date of birth of his friends.
+Create a table using LibreOffice Base. Make Serial No as primary key. Enter minimum 5 records in the table. Sort the table in alphabetical order of name.
+Database ManageMent systeM Using LibreOffice Writer 171
+5. Which of the following methods can be used to create a table in Base?
+(a) Using a table wizard (b) Design View (c) Both a and b (d) Neither a nor b
+6. The related objects of a database can be seen in ____________ pane of the Base Database window.
+(a) Database (b) Task (c) Title Bar (d) Menu Bar
+7. Which is the shortcut key to open an existing database?
+(a) Ctrl+ D (b) Ctrl+O (c) Ctrl+E (d) Ctrl+F
+8. The Design view of Table Creation window in LibreOffice
+Base is divided into ______ sections or panes.
+9. While entering records in a table, we can move to the next field by pressing the _________ key.
+(b) Ctrl (c) Enter (d) Shift
+10. Which of the following is true about primary key of a table?
+(a) Every table must have a primary key (b) The data values in primary key field cannot be duplicated.
+(c) A primary key field cannot be left blank (d) All of the above
+B. State whether the following statements are True or False
+1. The text data can contain special characters.
+2. Memo data type can be used to store descriptive data.
+3. A Boolean data type can have two or more than two values.
+4. We cannot store audio data in LibreOffice Base.
+5. The properties of a field change according to the data type selected.
+6. Field description may or may not be entered while designing a table.
+7. is pressed to move to the last record.
+8. appears when the record is being edited.
+Domestic Data entry operator – class X 172
+9. A table once created in a database cannot be edited.
+10. Sort dialog box can only help to sort data in ascending order.
+C. Fill in the blanks
+1. A data type refers to the type of data that will be stored in that particular field.
+2. The _____________ data is a combination of letters, numbers or special characters.
+3. ________ data type can be used to store Aadhar number.
+4. The __________ data type used to store digitized images.
+5. The shortcut key to save a table is _______________.
+6. ______________ on the Base Interface Window displays information about the type of view of the object in the database.
+7. A __________ icon appears before the field name indicating that it is a primary key.
+8. The data can be entered in a table only in __________ view.
+9. The black pointing arrow just before the field name in a table is called ____________.
+10. The process of arranging the records in particular order on any filed is called _______________.
+D. Answer the given questions
+1. Differentiate between:
+(a) Memo and Varchar data type (b) Number and Decimal data type (c) Design View and Datasheet view of a table
+2. Name the menu items present on the Base User Interface,
+3. Label the components – Title Bar, Database Pane, Tasks
+Pane, Status Bar of the LibreOffice Base User Interface.
+4. How can we define a primary key in a table?
+5. Write steps to sort the table in descending order of primary key.
+6. What is the use of navigation box with respect to tables in a database?
+IntroductIon
+We have learned to create tables in a database. Once the tables are added in a database, you may require to edit or delete the table. Also relations are set up between the tables to control data redundancy and inconsistency.
+This helps in proper maintenance of a database by checking that neither the records are duplicated nor there is variable data value for a particular field in two or more tables. If you set up relations between tables, then adding or updating a record in one table reflect the changes in all the related tables.
+Editing and Deleting Tables
+In the previous chapter, we have created a Customer table using a wizard in Sports Day database. It is possible to copy, rename, edit and delete the table of database by right clicking on the table name and using the appropriate option from the pop up menu.
+Editing a table involves the task such as adding a new field or removing any field in a table or to alter any of the field properties. To edit a table, open the Database User Interface window.
+Selecting the Table object in Database
+Pane, the list of tables will be displayed in the Table Area. Right click on the table name and select Edit option from the pop menu. In our example we have selected the Customer table as shown in Fig. 10.1.
+The design view window of the table will be displayed as shown in Fig. 10.2. Do the required modifications
+10Working with Multiple Tables
+Fig. 10.1: Selecting Edit option from pop up menu
+Domestic Data entry operator – class X 174 and save the table. Also note that the changes so made will not affect the previous records entered in the table.
+Similarly to delete a table, right click on the table to be deleted, say Customer table and select the
+Delete option from the pop up menu as shown in
+Fig. 10.3.
+A confirmation box to confirm for deletion of the table will be displayed as shown in Fig. 10.4. Click on Yes button to finally delete the table.
+To rename a table, right click on the table name in the Table Area and select Rename.. option from the pop up menu. A cursor will appear. Type the new name and press the Enter key.
+Relationships between Tables
+While working with multiple tables, you need to check the redundancy and inconsistency of data.
+The record for a particular entity should neither be repeated nor different data values should appear for a single entity in the database.
+This is done by setting relationship between the tables of a database. The most important prerequisite for setting a relationship is that there must be a common field(s) between the two tables to create a relationship.
+Fig. 10.2: Table in design view window
+Fig. 10.3: Selecting Delete option from pop up menu
+Fig. 10.4: Confirm Deletion Alert
+Let us consider an example of a database containing following two tables–Student_Details and Student_Result
+Table 10.1: Student_Details
+Admission No Name Father’s Name Class DOB
+1001 Mampi D K Bose 10 12/3/2004
+1005 Harnoor Tej Singh 9 2/5/2005
+1110 Sanjeeva B Reddy 10 13/11/2004
+1002 Neeru Rajesh Jain 7 14/11/2006
+1134 Urjit Mahesh Patel 10 7/7/2003
+Table 10.2: Student_Result
+Roll No Admission No Class Aggregate_Marks
+1 1001 10 78
+2 1110 10 93
+3 1134 10 46
+Database ManageMent systeM Using LibreOffice Writer 175
+In Table 10.1 (Student_Details), Admission No is the primary key. In table 2 (Student_ Result), Roll No is the primary key and Admission No is the foreign key. So each record in Table 10.2 has a value of Admission No that corresponds to a record in Table 10.1 with same value of Admission No. It is important to note that the data types of the common field in both the tables must be same. If they are not same then LibreOffice Base will display an error message and will not allow to set the relationship between the two tables.
+Once the relationship between the two tables has been set, the integrity of data will be managed by the
+DBMS. That means once a student’s record has been entered in the Student_Details table, only then that particular Admission No can be entered in the Student_
+Result table. The record pertaining to Admission No in
+Student_Details table is considered as the master record while the corresponding record in the related table (Student_Result) is the transaction record. Therefore
+Student_Details is called the master table and Student_
+Result is called the transaction table.
+Types of Relationships
+The type of relationship between any two tables in a database is based on the number of records that are present in the transaction table corresponding to the master table. Primarily three types of relationships can be set up between two tables in a relational database
+These are:
+(i) One-to-One (ii) One-to-many (iii) Many-to-Many
+One-to-One relationship
+In this type of relationship, one specific record of a master table has one and only one corresponding record in the transaction table. For example, the record for Admission_No in the master table (Student_Detail)
+will have only one corresponding record of same value of Admission No in the transaction table of Student_
+Result. This is because no two students will be given same admission number. Similarly one person can have
+Domestic Data entry operator – class X 176 only one ticket to get entry into a stadium to view the match. So relationship between Student and Admission number and a person and his ticket number will be one-to-one relationship (Fig. 10.5).
+Fig. 10.5: One–to-one relationship
+One-to-Many relationship
+This is one of the most common types of relationship between the tables in a database. As the name says, in this type of relationship, one specific record of the master table has more than one corresponding records in the related transaction table. Fo

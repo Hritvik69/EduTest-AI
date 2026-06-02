@@ -1,0 +1,29 @@
+This applies equally well if instead of a junction of several lines, we consider a point in a line.
+The proof of this rule follows from the fact that when currents are steady, there is no accumulation of charges at any junction or at any point in a line.
+Thus, the total current flowing in, (which is the rate at which charge flows into the junction), must equal the total current flowing out.
+(b) Loop rule: The algebraic sum of changes in potential around any closed loop involving resistors and cells in the loop is zero (Fig. 3.15).
+This rule is also obvious, since electric potential is dependent on the location of the point. Thus starting with any point if we come back to the same point, the total change must be zero. In a closed loop, we do come back to the starting point and hence the rule.
+FIGURE 3.15 At junction a the current leaving is I1 + I2 and current entering is I3.
+The junction rule says I3 = I1 + I2. At point h current entering is I1. There is only one current leaving h and by junction rule that will also be I1. For the loops ‘ahdcba’ and ‘ahdefga’, the loop rules give –30I1 –
+41 I3 + 45 = 0 and –30I1 + 21 I2 – 80 = 0.
+Example 3.5 A battery of 10 V and negligible internal resistance is connected across the diagonally opposite corners of a cubical network consisting of 12 resistors each of resistance 1 W (Fig. 3.16). Determine the equivalent resistance of the network and the current along each edge of the cube.
+FIGURE 3.16
+Reprint 2026-27
+Electricity
+Similation for application of Kirchhoff ’s rules:
+http://www.phys.hawaii.edu/~teb/optics/java/kirch3/
+Solution The network is not reducible to a simple series and parallel combinations of resistors. There is, however, a clear symmetry in the problem which we can exploit to obtain the equivalent resistance of the network.
+The paths AA¢, AD and AB are obviously symmetrically placed in the network. Thus, the current in each must be the same, say, I. Further, at the corners A¢, B and D, the incoming current I must split equally into the two outgoing branches. In this manner, the current in all the 12 edges of the cube are easily written down in terms of I, using
+Kirchhoff’s first rule and the symmetry in the problem.
+Next take a closed loop, say, ABCC¢EA, and apply Kirchhoff’s second
+–IR – (1/2)IR – IR + where R is the resistance of each edge and e the emf of battery. Thus,
+The equivalent resistance Req of the network is
+For R = 1 W, Req = (5/6) W and for e = 10 V, the total current (= 3I ) in the network is
+3I = 10 V/(5/6) W = 12 A, i.e., I = 4 A
+The current flowing in each edge can now be read off from the
+Fig. 3.16.
+It should be noted that because of the symmetry of the network, the great power of Kirchhoff’s rules has not been very apparent in Example 3.5.
+In a general network, there will be no such simplification due to symmetry, and only by application of Kirchhoff’s rules to junctions and closed loops (as many as necessary to solve the unknowns in the network) can we handle the problem. This will be illustrated in Example 3.6.
+Example 3.6 Determine the current in each branch of the network shown in Fig. 3.17.
+FIGURE 3.17
+Reprint 2026-27

@@ -1,0 +1,30 @@
+Computer SCienCe – ClaSS xi 20 source code may not be available. Such software are called freeware. Examples of freeware are Skype, Adobe
+Reader, etc. When the software to be used has to be purchased from the vendor who has the copyright of the software, then it is a proprietary software. Examples of proprietary software include Microsoft Windows, Tally,
+Quickheal, etc. A software can be freeware or open source or proprietary software depending upon the terms and conditions of the person or group who has developed and released that software.
+1.8 operatIng SyStem
+An operating system (OS) can be considered to be a resource manager which manages all the resources of a computer, i.e., its hardware including CPU, RAM, Disk,
+Network and other input-output devices. It also controls various application software and device drivers, manages system security and handles access by different users.
+It is the most important system software. Examples of popular OS are Windows, Linux, Android, Macintosh and so on.
+The primary objectives of an operating system are two-fold. The first is to provide services for building and running application programs. When an application program needs to be run, it is the operating system which loads that program into memory and allocates it to the CPU for execution. When multiple application programs need to be run, the operating system decides the order of the execution.
+The second objective of an operating system is to provide an interface to the user through which the user can interact with the computer. A user interface is a software component which is a part of the operating system and whose job is to take commands or inputs from a user for the operating system to process.
+1.8.1 OS User Interface
+There are different types of user interfaces each of which provides a different functionality. Some commonly used interfaces are shown in Figure 1.15.
+(A) Command-based Interface
+Command-based interface requires a user to enter the commands to perform different tasks like creating,
+Figure 1.15: Types of user interface of OS
+When a computer is turned on, who brings the OS into RAM from the secondary storage?
+Think and Reflect
+Command-based
+Interface
+Graphical User
+Interface
+Types of User
+Interface of
+Operating System
+Touch-based
+Interface
+Voice-based
+Interface
+Gesture-based
+Interface
+Reprint 2026-27

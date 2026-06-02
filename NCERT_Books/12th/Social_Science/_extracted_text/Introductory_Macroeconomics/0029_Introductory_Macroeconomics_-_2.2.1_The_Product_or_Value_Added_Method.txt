@@ -1,0 +1,68 @@
+19 19 19 19 19 National
+Accounting worth of goods and managed to sell Rs 800 worth of goods. Therefore, the
+Rs 200 is the difference between production and sales. This Rs 200 worth of goods is the change in inventories. This will add to the Rs 100 worth of inventories the firm started with. Hence the inventories at the end of the year is, Rs 100 + Rs 200 = Rs 300. Notice that change in inventories takes place over a period of time. Therefore it is a flow variable.
+Inventories are treated as capital. Addition to the stock of capital of a firm is known as investment. Therefore, change in the inventory of a firm is treated as investment. There can be three major categories of investment. First is the rise in the value of inventories of a firm over a year which is treated as investment expenditure undertaken by the firm. The second category of investment is the fixed business investment, which is defined as the addition to the machinery, factory buildings and equipment employed by the firms.
+The last category of investment is the residential investment, which refers to the addition of housing facilities.
+Change in inventories may be planned or unplanned. In case of an unexpected fall in sales, the firm will have unsold stock of goods which it had not anticipated.
+Hence there will be unplanned accumulation of inventories. In the opposite case where there is unexpected rise in the sales there will be unplanned decumulation of inventories.
+This can be illustrated with the help of the following example. Suppose a firm produces shirts. It starts the year with an inventory of 100 shirts. During the coming year it expects to sell 1,000 shirts. Hence, it produces 1,000 shirts, expecting to keep an inventory of 100 at the end of the year. However, during the year, the sales of shirts turn out to be unexpectedly low. The firm is able to sell only 600 shirts. This means that the firm is left with 400 unsold shirts. The firm ends the year with 400 + 100 = 500 shirts. The unexpected rise of inventories by 400 will be an example of unplanned accumulation of inventories. If, on the other hand, the sales had been more than 1,000 we would have unplanned decumulation of inventories. For example, if the sales had been 1,050, then not only the production of 1,000 shirts will be sold, the firm will have to sell 50 shirts out of the inventory. This 50 unexpected reduction in inventories is an example of unexpected decumulation of inventories.
+What can be the examples of planned accumulation or decumulation of inventories? Suppose the firm wants to raise the inventories from 100 shirts to 200 shirts during the year. Expecting sales of 1,000 shirts during the year (as before), the firm produces 1000 + 100 = 1,100 shirts. If the sales are actually
+1,000 shirts, then the firm indeed ends up with a rise of inventories. The new stock of inventories is 200 shirts, which was indeed planned by the firm. This rise is an example of planned accumulation of inventories. On the other hand if the firm had wanted to reduce the inventories from 100 to 25 (say), then it would produce 1000 – 75 = 925 shirts. This is because it plans to sell 75 shirts out of the inventory of 100 shirts it started with (so that the inventory at the end of the year becomes 100 – 75 = 25 shirts, which the firm wants). If the sales indeed turn out to be 1000 as expected by the firm, the firm will be left with the planned, reduced inventory of 25 shirts.
+We shall have more to say on the distinction between unplanned and planned change in inventories in the chapters which follow.
+Reprint 2026-27
+20 20 20 20 20
+Introductory Macroeconomics
+The symbol is a notation – it is used to denote summation. Suppose, there are 3 students, having pocket money of Rs. 200, 250 and 350 respectively.
+We can say, if th i student has pocket money i X , then,
+200, 250, 300 X X X = = = . The total pocket money will be given by
+1 2 3 X X X + + . The summation notation given above is useful in writing it in a shorter form: 1 2 3 X X X + + can be written as , which means that there are three values of X corresponding to the three individuals 1 to 3, and we are referring to the sum of the values of X for individuals 1 to 3.
+This notation is particularly useful in macroeconomics since we deal with aggregates. For instance, suppose there are 1000 consumers in the economy, having consumption 1 2 1000 , ,...., c c c . If we want to compute the aggregate consumption for this economy, we have to add up all these values, which means aggregate consumption for this economy will be given by
+1 2 1000 ... C c c c = + + + . The summation notation, however, allows us to write it in a much shorter form. Since we are summing up the values of consumption for individual 1 to individual 1000, where the value of
+Taking cognizance of change of inventories we may write
+Gross value added of firm, i (GV Ai) ≡ Gross value of the output produced by the firm i (Qi) – Value of intermediate goods used by the firm (Zi)
+GV Ai ≡ Value of sales by the firm (Vi ) + Value of change in inventories (Ai ) –
+Value of intermediate goods used by the firm (Zi) (2.1)
+Equation (2.1) has been derived by using: Change in inventories of a firm during a year ≡ Production of the firm during the year – Sale of the firm during the year.
+It is worth noting that the sales by the firm includes sales not only to domestic buyers but also to buyers abroad (the latter is termed as exports). It is also to be noted that all the above mentioned variables are flow variables.
+Generally these are measured on an annual basis. Hence they measure value of the flows per year.
+Net value added of the firm i ≡ GVAi – Depreciation of the firm i (Di)
+If we sum the gross value added of all the firms of the economy in a year, we get a measure of the value of aggregate amount of goods and services produced by the economy in a year (just as we had done in the wheat-bread example).
+Such an estimate is called Gross Domestic Product (GDP). Thus GDP ≡ Sum total of gross value added of all the firms in the economy.
+If there are N firms in the economy, each assigned with a serial number from 1 to N, then GDP ≡ Sum total of the gross value added of all the firms in the economy
+≡ GVA1 + GVA2 + ..... + GVAN
+Therefore
+GDP ≡ = ∑ 1 i i GVA (2.2)
+Reprint 2026-27
+21 21 21 21 21 National Income Accounting
+2.2.2 Expenditure Method
+An alternative way to calculate the GDP is by looking at the demand side of the products. This method is referred to as the expenditure method. In the farmer- baker example that we have described before, the aggregate value of the output in the economy by expenditure method will be calculated in the following way.
+In this method we add the final expenditures that each firm makes. Final expenditure is that part of expenditure which is undertaken not for intermediate purposes. The Rs 50 worth of wheat which the bakers buy from the farmers counts as intermediate goods, hence it does not fall under the category of final expenditure. Therefore the aggregate value of output of the economy is Rs 200 (final expenditure received by the baker) + Rs 50 (final expenditure received by the farmer) = Rs 250 per year.
+Firm i can make the final expenditure on the following accounts (a) the final consumption expenditure on the goods and services produced by the firm. We shall denote this by Ci. We may note that mostly it is the households which undertake consumption expenditure. There may be exceptions when the firms buy consumables to treat their guests or for their employees (b) the final investment expenditure, Ii , incurred by other firms on the capital goods produced by firm i. Observe that unlike the expenditure on intermediate goods which is not included in the calculation of GDP, expenditure on investments is included.
+The reason is that investment goods remain with the firm, whereas intermediate goods are consumed in the process of production (c) the expenditure that the government makes on the final goods and services produced by firm i. We shall denote this by Gi . We may point out that the final expenditure incurred by the government includes both the consumption and investment expenditure (d) the export revenues that firm i earns by selling its goods and services abroad. This will be denoted by Xi .
+Thus the sum total of the revenues that the firm i earns is given by
+RVi ≡ Sum total of final consumption, investment, government and exports expenditures received by the firm i
+≡ Ci + Ii + Gi + Xi
+If there are N firms then summing over N firms we get i i RV ≡ Sum total of final consumption, investment, government and exports expenditures received by all the firms in the economy i i C + = ∑ 1 i i I + = ∑ 1 i i G + = ∑ 1 i i X (2.3)
+Let C be the aggregate final consumption expenditure of the entire economy. Notice that a part of C is spent on imports of consumption goods C consumption for the individual i is ci, aggregate consumption will be
+In general, if we are taking sum of a quantity ix over individuals 1 to n , it will be denoted by .
+Reprint 2026-27
+22 22 22 22 22
+Introductory Macroeconomics i i C + Cm. Let Cm denote expenditure on the imports of consumption goods.
+Therefore C – Cm denotes that part of aggregate final consumption expenditure that is spent on the domestic firms. Similarly, let I – Im stand for that part of aggregate final investment expenditure that is spent on domestic firms, where
+I is the value of the aggregate final investment expenditure of the economy and out of this Im is spent on foreign investment goods. Similarly
+G – Gm stands for that part of aggregate final government expenditure that is spent on the domestic firms, where G is the aggregate expenditure of the government of the economy and Gm is the part of G which is spent on imports.
+Therefore, = ∑ 1 i i C ≡ Sum total of final consumption expenditures received by all the firms in the economy ≡ C – Cm; = ∑ 1 i i I ≡ Sum total of final investment expenditures received by all the firms in the economy ≡ I – Im;
+i i G ≡ Sum total of final government expenditures received by all the firms in the economy ≡ G – Gm. Substituting these in equation (2.3) we get i i RV ≡ C – Cm + I – Im + G – Gm + = ∑ 1
+≡ C + I + G + = ∑ 1 i i X – (Cm + Im + Gm)
+≡ C + I + G + X – M
+Here X ≡ = ∑ 1 i i X denotes aggregate expenditure by the foreigners on the exports of the economy. M ≡ Cm + Im + Gm is the aggregate imports expenditure incurred by the economy.
+We know, GDP ≡ Sum total of all the final expenditure received by the firms in the economy.
+In other words
+GDP ≡ = ∑ 1 i i RV ≡ C +
+Ι + G + X – M (2.4)
+Equation (2.4) expresses GDP according to the expenditure method. It may be noted that out of the five variables on the right hand side, investment expenditure, I, is the most unstable.
+2.2.3 Income Method
+As we mentioned in the beginning, the sum of final expenditures in the economy must be equal to the incomes received by all the factors of production taken together (final expenditure is the spending on final goods, it does not include spending on intermediate goods). This follows from the simple idea that the revenues earned by all the firms put together must be distributed among the factors of production as salaries, wages, profits, interest earnings and rents. Let there be M number of households in the economy. Let Wi be the wages and salaries received by the i-th household in a particular year. Similarly, Pi, Ini, Ri be the gross profits, interest payments and rents received by the i-th household in a particular year. Therefore, GDP is given by
+GDP ≡ = ∑ 1 i i W + = ∑ 1 i i P + 1 i i In = ∑ + = ∑ 1 i i R ≡ W + P + In + R (2.5)
+Here, = ∑ 1 i i W ≡ W, = ∑ 1 i i P ≡ P, 1 i i In = ∑ ≡ In, = ∑ 1 i i R ≡ R.
+Reprint 2026-27

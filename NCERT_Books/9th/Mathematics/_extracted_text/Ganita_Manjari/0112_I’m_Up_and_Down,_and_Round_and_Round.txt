@@ -1,0 +1,192 @@
+I’m Up and Down, and
+Round and Round
+Humanity has always been fascinated by the shapes of the things around them. In some early cave paintings, the sun is depicted as a circle. In the cave paintings of Gudahandi in Odisha, one sees numerous geometric patterns including triangles, squares, circles, and ovals.
+These shapes were likely inspired by what humans saw in nature.
+Can you recognise the origin of the shapes in Fig. 5.1?
+Fig. 5.1
+Circles form when raindrops fall on water. The cross-section of a plant stem and the inflorescence of a sunflower are also circular in shape. The full moon and sun also look circular.
+Moon Sun (during a total solar eclipse)
+I’m Up and Down, and Round and Round 93
+What properties are common to all circles, big and small? You have studied one such property in Grade 7. Humans must have noticed it after observing many circular patterns in nature. Every circle has a centre. All points on the circle are at equal distance from the centre. We turn this observation around and make it the definition of a circle.
+Activity: List some objects from nature that resemble a circle.
+Think and Reflect
+Jamuna has a circular piece of paper. She is trying to locate its centre.
+Amina gives her a suggestion. She follows the instructions and is thrilled to find that it works. Can you guess what Amina told her?
+5.1 Definitions
+When we talk of mathematical shapes such as circles, triangles and squares, we always assume that the figures are drawn on a piece of paper — a two-dimensional plane.
+Fig. 5.3: Circle, Centre A, Chord BC
+A circle is the set of all points on the plane that are equidistant from a given point on that plane.
+The set of points that satisfy a given condition is also called the locus of points that satisfy the condition. Using this term, a circle can also be described as the locus of points that are equidistant from a given point. The given point is the centre of the circle.
+The distance from the centre to any point on the circle is the radius of the circle.
+In Fig 5.3, A is the centre of the circle. All points on the plane at a distance equal to the length of AB from A form a circle with centre A and radius equal to the length of AB.
+Let B and C be two points on the circle. The line segment BC is called a chord of the circle. The angle subtended by the chord BC at the centre is angle BAC. A chord passing through the centre of a circle is called a diameter.
+Ganita Manjari |Grade 9| Part I 94
+5.2 Symmetries of a Circle
+What makes circles so appealing is that they are perfectly symmetrical.
+Say you are looking at a wheel of a vehicle. You see a point of the wheel touching the ground. When you look at the wheel again after some time, you again see a point of the wheel touching the ground. Can you tell if the two points are the same point? There is no way you can tell; a rotating wheel looks the same at all times! We say the circle has complete rotational symmetry: rotate it by any angle and it looks exactly the same.
+Draw a circle on the paper and cut along the circle. Fold the circular paper so that the boundaries overlap, then open it. You see a crease; it is a line of reflection symmetry of the circle. Does this line pass through the centre of the circle? It does. It is a diameter of the circle. All diameters are lines of reflection symmetry.
+Think and Reflect
+1. What are the rotational symmetries of a square? How many lines of reflection symmetry does it have? What about a regular pentagon?
+A regular hexagon?
+2. What is the length of the longest chord in a circle of radius 5 units?
+Is there a smallest chord?
+3. The locus of points at a given distance from a given point is a circle.
+What can we say about the locus of points equidistant from two given (Hint: We know that any point that is equidistant from two given points
+A and B lies on the perpendicular bisector of AB. Does this make the perpendicular bisector the locus? For this, we have to show that all the points on the perpendicular bisector are equidistant from A and B.)
+5.3 How Many Circles?
+Now that we have defined a circle and listed some of its properties, let us ask this question: Given two points A and B on a plane, how many circles pass through A and B?
+If a circle passes through A and B, it has a centre, say O. The lengths
+OA and OB are equal. Is there another point with this property? Yes, the midpoint of segment AB. With the midpoint as centre, a circle passing through A and B can be drawn. Its radius is half the length of
+AB, and AB is a diameter.
+I’m Up and Down, and Round and Round 95
+Are there more circles passing through both A and B? Clearly, any point equidistant from A and B can be the centre of a circle passing through A and B. Do you know of such points? We have seen that the perpendicular bisector of the line segment AB is the locus of points equidistant from A and B. Every point on the perpendicular bisector is equidistant from A and B, and every point that is equidistant from
+A and B is on the perpendicular bisector! So, the centres of all circles through A and B lie on the perpendicular bisector of AB.
+Fig. 5.4: Circles through two points
+In Fig. 5.4, we see circles through points
+A and B, and through
+C and D, and the perpendicular bisector of
+CD. Every point on the perpendicular bisector is the centre of a circle passing through C and
+D. So we have circles with centres K, J and L containing points C and D.
+Think and Reflect
+1. How many circles pass through two points on a plane?
+2. Are there circles of all possible radii passing through A and B? What is the radius of the smallest circle passing through A and B? What is the radius of the largest circle passing through A and B?
+3. As you move away from segment AB along its perpendicular bisector, do the radii of the circles containing A and B increase or decrease?
+4. As you go along the perpendicular bisector, will the circle drawn from that point through A and B appear more curved or less curved?
+5. You are given two points A and B on a plane. How many squares can you draw on the same plane with A and B on the boundary?
+How many squares can you draw on the plane with A and B as the corners of the square?
+Ganita Manjari |Grade 9| Part I 96
+It is natural to ask: How many circles can you draw through three distinct points A, B and C on a plane? Is there always at least one such circle? Not necessarily! What if A, B and C lie on a straight line, i.e., are collinear? Can you explain why, in this case, there is no circle through
+A, B and C?
+Let us assume that A, B and C are not collinear. Is there always a circle passing through A, B and C? Can there be more than one circle through A, B and C?
+Theorem 1: There is a unique circle passing through three non-collinear points.
+Why is this true? If there is a circle that passes through non-collinear
+A, B and C, the circle must have a centre. Let’s call that centre O (we will discover O soon).
+Since OA = OB, we know that O lies on the perpendicular bisector of AB.
+Since OA = OC, we know that O lies on the perpendicular bisector of
+AC as well.
+But A, B and C are not collinear. So, the perpendicular bisectors of
+AB and AC will intersect at a unique point, since two intersecting lines meet at exactly one point on the plane. That point must be O.
+Using O as the centre we can draw a circle with radius equal to the length of OA. That will pass through A, B and C. This explains why the statement is true.
+Now three non-collinear points also determine a triangle. What we have described above is the construction of a circle that passes through the vertices of the triangle.
+Perpendicular bisector of BC
+Perpendicular bisector of AC Perpendicular bisector of AB
+Fig. 5.5: The circumcircle of triangle ABC
+I’m Up and Down, and Round and Round 97
+The centre O of the circle that passes through the vertices A, B and
+C of ΔABC is called the circumcentre of ΔABC (Fig. 5.5). The circle is called the circumcircle and is said to circumscribe the triangle.
+Conversely, the triangle is said to be inscribed in the circle. Since, the intersection of the perpendicular bisectors of AB and BC is a single point, there is just one such circle for a given triangle. Further, for an acute-angled triangle, the circumcentre lies inside the triangle (see
+Fig. 5.5). For an obtuse-angled triangle, the circumcentre lies outside the triangle (Fig. 5.6). And for a right-angled triangle, the circumcentre lies at the midpoint of the hypotenuse (Fig. 5.7).
+Perpendicular bisector of BC
+Perpendicular bisector of AC
+Perpendicular bisector of AB
+Fig. 5.6: Obtuse-angled triangle: Circumcentre O is outside the triangle
+Perpendicular bisector of BC
+Perpendicular bisector of AC
+Perpendicular bisector of AB
+Fig. 5.7: Right-angled triangle: Circumcentre O is at the midpoint of the hypotenuse
+Ganita Manjari |Grade 9| Part I 98
+ExErcisE sEt 5.1
+1. Draw ΔABC with AB = 5 cm, ∠A = 70° and ∠B = 60°. Draw the circumcircle of ΔABC. Is the centre inside or outside the triangle?
+2. Draw ΔABC with AB = 5 cm, ∠A = 100°, AC = 4 cm. Draw the circumcircle of ΔABC. Is the centre inside or outside the triangle?
+3. Draw ΔABC, with AB = 6 cm, BC = 7 cm and CA = 7 cm. Draw the circumcircle of ΔABC. Let the circumcentre be O. Measure OA,
+4. What is the least possible radius of a circle through two points A
+Think, Draw and Infer
+1. A, B and C are three collinear points. Can you find a point P such that PA = PB = PC ? What can you say about the perpendicular bisectors of AB and BC? Draw and check. Can you show that for three collinear points A, B and C, the perpendicular bisector of
+AB and BC are parallel? Is it possible for a circle to pass through collinear points? Can you draw a line that cuts a given circle in three distinct points?
+2. The circumcircle of a given ΔABC is drawn. Can there be other triangles congruent to ΔABC that share the same circumcircle?
+5.4 Chords and the Angles They Subtend
+You may want to know when 4 points lie on the same circle. That will have to wait till the end of this chapter. We need to do some more work to get there.
+Fig. 5.8: Chords and radii
+Tie a thread at two points on a wheel; pull it tight (Fig. 5.8).
+The thread can be thought of as a chord of the wheel (a circle).
+Imagine joining the end points of the thread to the centre. The thread subtends an angle at the centre. Now, rotate the wheel. The thread rotates around the centre along with the
+I’m Up and Down, and Round and Round 99
+In the new position, the thread is another chord on the circle.
+What is common to the first and second chords? They have the same length, equal to the length of the thread. What about the angle subtended by the second chord at the centre? It must surely be the same as the angle subtended by the first chord at the centre. We now explain why this is true.
+Theorem 2: Equal chords of a circle subtend equal angles at the centre of the circle.
+What does the theorem say? It talks of two chords of the circle with equal length. In geometry, it always helps to draw a figure! (See Fig. 5.9).
+AB and DE are chords of the same length. We need to explain why ∠ACB is equal to ∠DCE. What are we given? AB = DE.
+To explain why two angles in two different triangles are equal, we use congruence of triangles. If the angles which we want to show equal are corresponding angles, then our task would be done!
+Fig. 5.9
+Given: AB = DE.
+To show: ∠ACB = ∠DCE.
+Why is this true? First, we see that
+CA = CB = r, the radius of the circle.
+Also, CD = CE = r. So, CA = CD and CB = CE.
+But AB = DE is given! By the SSS congruence,
+∆CAB is congruent to ∆CDE. So, ∠ACB is equal to ∠DCE, i.e., the angles subtended at the centre are equal.
+Now suppose we have two chords that subtend equal angles at the centre. Are the chords equal? What does our intuition tell us? Let the chords be AB and DE. Let us use our imagination. Assume that B, A, E, and D are located clockwise on the circle as shown in Fig 5.10.
+Fig. 5.10
+Imagine you are standing at the centre C of a circle. Stretch your arms so that they are at a certain angle. Let your arms intersect the circle at A, B. The distance between your arm ends must be the length of chord AB. Now let the floor rotate magically. You start rotating (say clockwise) about C. Don’t change the angle your arms make! At some point your left arm meets point E.
+Ganita Manjari |Grade 9| Part I 100
+Where will your right hand be? It should be at D, should it not?
+That is because we assumed that angles ACB and DCF are equal, and you have not moved your hands. The distance between the ends of your arms must be the length of DE as well. Let us now explain why this is true.
+Theorem 3: Chords of a circle that subtend equal angles at the centre are equal.
+Let us draw the figure, as in Fig. 5.11.
+Fig. 5.11
+Given: ∠ACB = ∠DCE.
+To show: AB = ED.
+Why is this true? We see that
+AC = BC = the radius of the circle.
+Likewise, EC = DC = the radius.
+So, AC = DC and BC = EC.
+Since, ∠ACB = ∠DCE, by the SAS congruence, ∆ACB ≅ ∆DCE. Hence,
+AB = ED.
+ExErcisE sEt 5.2
+1. Show that the triangle formed by a chord and the centre of the circle is isosceles.
+2. Show that if two such isosceles triangles (occurring in the previous question) have equal base length, they are congruent to each other.
+5.5 Midpoints and Perpendicular Bisectors of Chords
+We will explore more properties of chords. Do we get something special when we draw a line segment from the centre of a circle to the midpoint of a chord? What if we draw the perpendicular bisector of a chord? Does it pass through a special point?
+I’m Up and Down, and Round and Round 101
+Theorem 4: The line joining the centre of a circle and the midpoint of a chord of the circle is perpendicular to the chord.
+Fig. 5.12
+Let us see why this is true. Draw a circle with centre C (Fig. 5.12). Draw any chord AB. Let M be the midpoint of AB. We must show that CM is perpendicular to AB.
+Explanation: CAB is an isosceles triangle. AB is the base and CA = CB.
+So, ∠A = ∠B.
+M is the midpoint of AB. So,
+AM = BM.
+By the SAS congruence, ∆ CMA is congruent to ∆ CMB. So, ∠CMB = ∠CMA.
+But ∠CMB + ∠CMA = 180° (angles on a line).
+So, both angles are 90°. That is, CM is perpendicular to AB.
+ExErcisE sEt 5.3
+1. Can you explain why the converse to Theorem 4 is true, i.e., why does the perpendicular from the centre of a circle to a chord of the circle bisect the chord?
+(Hint: Use Fig. 5.12. You are told that ∠CMA = ∠CMB = 90°. You need to show that AM = BM.)
+2. An isosceles triangle ABC is inscribed in a circle, with AB = AC.
+Show that the altitude from A to BC passes through the centre of the circle.
+3. Two parallel chords of lengths 6 cm and 8 cm are on opposite sides of the centre of a circle. If the radius of the circle is 5 cm, find the distance between the midpoints of the chords.
+Ganita Manjari |Grade 9| Part I 102
+From Question 1 above, we have the following result.
+Theorem 5: The perpendicular from the centre of a circle to a chord of the circle bisects the chord.
+5.6 Distance of Chords from the Centre
+Activity: Take a paper circle. Fold the circle from the boundary, inwards. Open the fold. The crease is now a chord (see Fig. 5.13 B). Now fold the paper again, so that the end points of the chord meet. Open the fold (see Fig. 5.13 C).
+Fig. 5.13 A Fig. 5.13 B Fig. 5.13 C
+Measure the lengths of the parts into which the chord is divided.
+The chord gets bisected where the folds intersect. Measure the angle between the creases. The crease of the second fold is along the perpendicular from the centre to the chord. Measure the distance from the centre to the midpoint of the chord. It is the distance from the centre to the chord.
+Now draw another chord of the same length. How will you do this?
+We will let you figure this out yourself. Join the centre to the midpoint of the new chord and measure its length. Is it the same as distance from the centre to the first chord?
+Now take a tracing paper and draw a circle on it with the same radius. Place the circle on the tracing paper on top of the circle paper so that the circles overlap. Trace the chord on the circle paper, and the perpendicular to it from its centre, onto the tracing paper circle. Now rotate the tracing paper. You will see the chord through the tracing paper — it looks like a different chord of the same length on the circle
+The circle is a symmetric figure. So, rotating the circle around its centre does not change the circle. As we rotate the circle, our chosen chord will also rotate, to give a new chord of the same length. Along with it, the perpendicular from the centre to the chord also moves!
+Equal chords appear to be equidistant from the centre.
+I’m Up and Down, and Round and Round 103
+Is this a totally convincing explanation? No, we have only given examples where our guess holds true. A statement may be true on a large number of examples, but it does not mean the statement is true in general. So let us explain why the statement is true.
+Theorem 6: Chords of a circle having the same length are all at the same distance from the centre of the circle.
+Draw the figure (Fig. 5.14).
+Fig. 5.14
+Given: Circle with centre C;
+AB = FG; E, H are midpoints of AB,
+FG respectively.
+To show: CE = CH.
+Why is this true? From Theorem 5,
+CE and CH are the perpendiculars from C to the chords AB and FG respectively.
+So, CE and CH are the distances from the centre C to the chords AB and FG respectively.
+We shall explain this result in two different ways.
+(1) Triangles CAB and CFG are congruent.
+CA = CF (both are equal to the radius of the circle). Likewise, CB = CG.
+We are given that AB = FG. So, by the SSS congruence, ∆CAB ≅ ∆CFG.
+Hence the altitudes of the congruent triangles are congruent.
+CE = CH. Therefore, the chords AB and FG are equidistant from the centre C.
+(2) Consider triangles CEA and CHF.
+From Theorem 5, the perpendicular from the centre bisects the
+Hence, E and H are the midpoints of the chords AB and FG respectively.
+Ganita Manjari |Grade 9| Part I 104
+AE = FH (since AB = FG, and E and H are midpoints of

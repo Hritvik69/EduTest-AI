@@ -1,0 +1,149 @@
+DETERMINANTS 95
+If (adj A) B = O, then system may be either consistent or inconsistent according as the system have either infinitely many solutions or no solution.
+Example 16 Solve the system of equations
+2x + 5y = 1
+3x + 2y = 7
+Solution The system of equations can be written in the form AX = B, where
+A = 2 5 1
+, X and B
+     
+= =      
+     
+Now, A = –11 ≠ 0, Hence, A is nonsingular matrix and so has a unique solution.
+Note that A–1 = − −
+Therefore X = A–1B = – 1
+  = − − 
+Hence x = 3, y = – 1
+Example 17 Solve the following system of equations by matrix method.
+3x – 2y + 3z = 8
+2x + y – z = 1
+4x – 3y + 2z = 4
+Solution The system of equations can be written in the form AX = B, where
+A 2 1 1 , X and B 1
+−      
+     = − = =     
+      −      
+We see that
+A = 3 (2 – 3) + 2(4 + 4) + 3 (– 6 – 4) = – 17 ≠ 0
+Hence, A is nonsingular and so its inverse exists. Now
+A11 = –1, A12 = – 8, A13 = –10
+A21 = –5, A22 = – 6, A23 = 1
+A31 = –1, A32 = 9, A33 = 7
+Reprint 2026-27
+96 MATHEMATICS
+Therefore A–1 =
+17 10 1 7
+− − −  
+ − − − 
+  −  
+So X = –1
+A B = 8 6 9 1
+17 10 1 7 4
+− − −    
+   − − −   
+    −    
+−    
+   − − =   
+    −    
+Hence x = 1, y = 2 and z = 3.
+Example 18 The sum of three numbers is 6. If we multiply third number by 3 and add second number to it, we get 11. By adding first and third numbers, we get double of the second number. Represent it algebraically and find the numbers using matrix method.
+Solution Let first, second and third numbers be denoted by x, y and z, respectively.
+Then, according to given conditions, we have x + y + z = 6 y + 3z = 11 x + z = 2y or x – 2y + z = 0
+This system can be written as A X = B, where
+Here ( ) ( ) A 1 1 6 – (0 – 3) 0 – 1 9 0 = + + = ≠ . Now we find adj A
+A11 = 1 (1 + 6) = 7, A12 = – (0 – 3) = 3, A13 = – 1
+A21 = – (1 + 2) = – 3, A22 = 0, A23 = – (– 2 – 1) = 3
+A31 = (3 – 1) = 2, A32 = – (3 – 0) = – 3, A33 = (1 – 0) = 1
+Hence adj A =
+Reprint 2026-27
+DETERMINANTS 97
+Thus A –1 = 1
+A adj (A) =
+Since X = A–1 B
+1 3 0 3 11
+9 1 3 1 0
+       
+ + + 
+  − + +  
+Thus x = 1, y = 2, z = 3
+EXERCISE 4.5
+Examine the consistency of the system of equations in Exercises 1 to 6.
+1. x + 2y = 2 2. 2x – y = 5 3. x + 3y = 5
+2x + 3y = 3 x + y = 4 2x + 6y = 8
+4. x + y + z = 1 5. 3x–y – 2z = 2 6. 5x – y + 4z = 5
+2x + 3y + 2z = 2 2y – z = –1 2x + 3y + 5z = 2 ax + ay + 2az = 4 3x – 5y = 3 5x – 2y + 6z = –1
+Solve system of linear equations, using matrix method, in Exercises 7 to 14.
+7. 5x + 2y = 4 8. 2x – y = –2 9. 4x – 3y = 3
+7x + 3y = 5 3x + 4y = 3 3x – 5y = 7
+10. 5x + 2y = 3 11. 2x + y + z = 1 12. x – y + z = 4
+3x + 2y = 5 x – 2y – z = 3
+2 2x + y – 3z = 0
+3y – 5z = 9 x + y + z = 2
+13. 2x + 3y +3 z = 5 14. x – y + 2z = 7 x – 2y + z = – 4 3x + 4y – 5z = – 5
+3x – y – 2z = 3 2x – y + 3z = 12
+Reprint 2026-27
+98 MATHEMATICS
+15. If A =
+, find A–1. Using A–1 solve the system of equations
+2x – 3y + 5z = 11
+3x + 2y – 4z = – 5 x + y – 2z = – 3
+16. The cost of 4 kg onion, 3 kg wheat and 2 kg rice is ` 60. The cost of 2 kg onion,
+4 kg wheat and 6 kg rice is ` 90. The cost of 6 kg onion 2 kg wheat and 3 kg rice is ` 70. Find cost of each item per kg by matrix method.
+Miscellaneous Examples
+Example 19 Use product to solve the system of equations x – y + 2z = 1
+2y – 3z = 1
+3x – 2y + 4z = 2
+Solution Consider the product
+1 1 2 2 0 1
+0 2 3 9 2 3
+3 2 4 6 1 2
+       
+2 9 12 0 2 2 1 3 4
+0 18 18 0 4 3 0 6 6
+6 18 24 0 4 4 3 6 8
+− − + − + + −  
+ + − + − − + 
+  − − + − + + −  
+Now, given system of equations can be written, in matrix form, as follows
+       
+Reprint 2026-27
+DETERMINANTS 99
+−    
+   −   
+    −    
+− + +    
+   + − =   
+    + −    
+Hence x = 0, y = 5 and z = 3
+Miscellaneous Exercises on Chapter 4
+1. Prove that the determinant
+– sin – 1 is independent of θ.
+2. Evaluate cos cos cos sin – sin
+– sin cos 0 sin cos sin sin cos
+α β α β α
+3. If A–1 = ( ) 1
+3 1 1 1 2 2
+15 6 5 and B 1 3 0 , find AB
+5 2 2 0 2 1
+   =   
+       
+4. Let A =
+. Verify that (i) [adj A]–1 = adj (A–1) (ii) (A–1)–1 = A
+5. Evaluate
+6. Evaluate
+Reprint 2026-27
+100 MATHEMATICS
+Using properties of determinants in Exercises 11 to 15, prove that:
+7. Solve the system of equations
+2 3 10 4 + + =
+4 6 5 1 + = –
+6 9 20 2 + = –
+Choose the correct answer in Exercise 17 to 19.
+8. If x, y, z are nonzero real numbers, then the inverse of matrix
+ =  
+9. Let A = sin 1 sin
+ − θ θ 
+  − − θ  
+, where 0 ≤ θ ≤ 2π. Then (A) Det (A) = 0 (B) Det (A) ∈ (2, ∞)
+(C) Det (A) ∈ (2, 4) (D) Det (A) ∈ [2, 4]
+Reprint 2026-27

@@ -1,0 +1,192 @@
+A Story of Numbers in the grouping. The presence of a counter above a line contributed a value of 5.
+For example let us take the number 3426. It can be grouped as
+3426 = 1000 + 1000 + 1000 + 100 + 100 + 100 + 100 + 10 + 10+ 1 + 1 +
+1 + 1 + 1 + 1
+This number was represented as shown in Fig. 3.1. Notice how the
+6 ones are represented.
+To get an idea of how the abacus was used for calculations, let us consider a simple addition problem: 2907 + 43. The two numbers were taken on either side of the vertical partition.
+How would you use this to find the sum?
+The counters along each line were brought together. What is to be done if the total in a line exceeded 10?
+Hint: In this problem, the 7 ones and the 3 ones together make 10 ones which contributes a counter to the line representing 10s.
+III. Shortcomings of the Egyptian System
+Despite being a number system that enabled relatively efficient number representations for numbers till a crore (107), and relatively easy computations, the Egyptian system had a drawback.
+If larger and larger numbers needed to be represented, then there was a need for inventing an unending sequence of symbols for higher and higher powers of 10. Here we see the original challenge of number representation resurfacing in a different form!
+The next and the final idea in the history of the evolution of number systems not only solves this problem but also remarkably simplifies number representation and computations!
+Figure it Out
+1. Can there be a number whose representation in Egyptian numerals has one of the symbols occurring 10 or more times?
+Why not?
+Reprint 2026-27
+Ganita Prakash | Grade 8
+2. Create your own number system of base 4, and represent numbers from 1 to 16.
+3. Give a simple rule to multiply a given number by 5 in the base-5 system that we created.
+3.4. Place Value Representation
+I. The Mesopotamian Number System
+In the beginning, the number system used in ancient Mesopotamia had different symbols for different landmark numbers. In later times, it became a base-60 system, also called the sexagesimal system, with a very efficient number representation.
+It has puzzled many why they chose base 60. Different theories exist to explain this, ranging from the connection between 60 and the periods of some important events (like the length of their lunar month which had
+30 days, or the time taken for the Sun to complete one revolution around the Earth when Earth is taken to be stationary), the ease of representing fractions (we will not go into this here), their earlier sequence of landmark numbers — 1, 10, 60, 600, 3600, 36000,… — getting reduced to only the powers of 60, and so on.
+The influence of the Mesopotamian sexagesimal system, also known as the Babylonian number system, can be seen even now in our units of time measurements — 1 hour = 60 minutes and 1 minute = 60 seconds.
+This system used the symbol for 1 and for 10.
+Let us now briefly pause on the study of their number system, and ideate on how one can build an efficient number system using the
+Mesopotamian features seen so far.
+Reprint 2026-27
+A Story of Numbers
+Let us give our own symbols to their landmark numbers —
+Note that we have actually used Indian numerals in creating these symbols. We could have invented our own symbols but for the sake of easy recall and use, we have chosen to take help of the familiar numerals
+1, 2, 3, ...
+Using and , numbers from 1 to 59 can be represented —
+Example: Let us represent the number 640 in this system.
+Grouping it into landmark numbers, we see that
+640 = (10) × 60 + 40.
+If we use the Egyptian idea, this number would be represented using
+10 1 s, and 40 would be represented using 4 s.
+1 60 602 = 3600 603 = 216000 ...
+1 ... 2 3
+1 2 3 4 5 6 7 8 9
+10 11 12 20 30 40 50 59
+Reproduction of a Mesopotamian Tablet
+Reprint 2026-27
+Ganita Prakash | Grade 8
+Can we represent this more compactly?
+We can simply represent this number as which can be read as ten 60s and one 40, just as we have written in the equation.
+Example: Let us try another number — 7530.
+7530 = (2) ×3600 + (5) × 60 + 30
+So, its representation would be
+Note that when a number is grouped into powers of 60 for its representation, no power of 60 can occur 60 or more times. If this happens, then 60 of them can be grouped to form the next power of 60.
+For example, consider the expression — (1) × 3600 + (70) × 60 + 2 = (1) × 602 + (60 + 10) × 60 + 2
+= (1) × 602 + 602 + (10) × 60 + 2
+= (2) × 602 + (10) × 60 + 2
+Therefore, any number can be represented using the numerals from
+1 – 59, along with the numerals for landmark numbers.
+Now, what if we make the representation even more compact by dropping the symbols for the different powers of 60 altogether?
+Reprint 2026-27
+A Story of Numbers
+This is exactly what the Mesopotamians did! In their numeral, the rightmost set of symbols showed the number of 1s, the set of symbols to its left showed the number of 60s, the next showed the number of 3600s and so on. Whenever there was no occurrence of a power of 60, a blank space was given in that position.
+It does not seem that the Mesopotamians arrived at this idea in the same way we did. Some scholars suggest that the similarity of symbols given to the landmark numbers 1 and 60 in their earlier number system, and an accidental usage of them, might have made them stumble upon this idea.
+Figure it Out
+1. Represent the following numbers in the Mesopotamian system — (i) 63 (ii) 132 (iii) 200 (iv) 60 (v) 3605
+Thus, we can see how the Mesopotamian system removes the need for generating an unending sequence of symbols for the landmark numbers by making use of the positions where the symbols are written. Such a number system (having a base) that makes use of the position of each symbol in determining the landmark number that it is associated with is called a positional number system or a place value system.
+This idea of place value marks the highest point in the history of evolution of number systems, and gives a very elegant solution to the problem of representing the unending sequence of numbers using only a finite number of different symbols!
+The Mesopotamian system however cannot be considered a fully developed place value system. It has certain defects that lead to confusion while reading a number.
+Look at the representation of 60. What will be the representation for
+While writing the numerals, the spacing between symbols was not given the way we are giving it here. It was also difficult to maintain a consistent spacing for blanks across different manuscripts written by different people. These created ambiguities. For example, consider the representations of the following numbers —
+Reprint 2026-27
+Ganita Prakash | Grade 8
+Because of the ambiguity in finding which symbols correspond to which powers of 60, the same numeral can be read in different ways.
+Even in our representation which uses uniform spacing between symbols for different powers of 60, it is difficult to know the number of blanks between two sets of symbols, as in the representation of 36002.
+To address the issue arising out of blank spaces, the later
+Mesopotamians used a brilliant idea of assigning a ‘placeholder’ symbol to denote a blank space. This is like the 0 (zero) we use in our system.
+Thus, zero — the symbol that shows nothingness — is indispensable as a placeholder in a place value system in which numbers are written in an unambiguous manner.
+Even with the problem arising out of blank spaces solved, other ambiguities still remained in the system. For example, the placeholder symbol was primarily used in the middle of numbers and not at the end; so they would not use it to represent a number like (what we would write as) 3600.
+II. The Mayan Number System
+In Central America, there flourished a civilisation known as the Mayan civilisation that made great intellectual and cultural progress between the 3rd and 10th centuries CE. Among their intellectual achievements stands their place value system designed independently of those in Asia.
+They also made use of a placeholder symbol, for the modern-day ‘0’, that looked like a seashell.
+Reprint 2026-27
+Ganita Prakash | Grade 8
+Here we find a puzzling phenomenon. Why was their third landmark number 360 rather than 400? Some scholars feel that this might have something to do with their calendars.
+They used a dot for 1, and a bar for 5. These were used to denote numbers from 1 to 19.
+The symbols associated with different landmark numbers were written one below the other with the lowermost set of symbols corresponding to the number of 1s, the set above corresponding to the number of 20s, the set above to the number of 360s and so on.
+Represent the following numbers using the Mayan system:
+(i) 77 (ii) 100 (iii) 361 (iv) 721
+Because the Mayan system is not an actual base-20 system, it lacks the advantages that a system with a base has for computations. Nevertheless, their place value notation and their use of a placeholder symbol for zero is considered an important advance in the history of number systems.
+A curious fact is that we can still find the use of base-20 in the number names of some European languages.
+III. The Chinese Number System
+The Chinese used two number systems — a written system for recording quantities, and a system making use of rods for performing computations.
+The numerals in the rod-based number system are called rod numerals.
+Here we discuss the rod numerals, which are more efficient in writing and computing with numbers than the written system of the Chinese.
+The rod numerals developed in China by at least by 3rd century AD and were used till the 17th century. It was a decimal system (base-10).
+The symbols for 1 to 9 were as follows:
+Reprint 2026-27
+A Story of Numbers
+CHINESE NUMBER SYSTEM
+Base-10 or Decimal
+Note: The zongs represent units, hundreds, tens of thousands, etc., and the hengs tens, thousands, hundreds of thousands, etc.
+How is this to be read?
+2 (Heng) 6 (Zong) 3 (Heng) 4 (Zong)
+Landmark number positions 103 102 10 1
+= (2) × 103 + (6) × 10² + (3) × 10 + (4) × 1
+A numeral
+Like the Mesopotamians, the rod numerals used a blank space to indicate the skipping of a place value. However, because of the slightly more uniform sizes of the symbols for one through nine, the blank spaces were easier to locate than in the Mesopotamian system.
+Reprint 2026-27
+Ganita Prakash | Grade 8
+Notice how similar the rod numerals are to the Hindu system.
+The Chinese system, with a symbol for zero, would be a fully developed place value system.
+IV. The Hindu Number System
+Where does the Hindu/Indian number system figure in the evolution of ideas of number representation? What are its landmark numbers? And does it use a place value system?
+Hindu Number System
+Base-10 or Decimal
+Ten symbols 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+A numeral 375
+How is this to be read? 3 7 5
+Landmark number positions
+= (3) × 10² + (7) × 10 + (5) × 1
+102 10 1
+As can be seen, the Hindu number system is a place value system.
+The Hindu number system has had a symbol for 0 at least as early as
+200 BCE. Because of the use of 0 as a digit, and the use of a single digit in each position, this system does not lead to any kind of ambiguity when
+Reprint 2026-27
+A Story of Numbers reading or writing numerals. It is for this reason that the Hindu number system is now used throughout the world.
+The use of 0 as a digit, and indeed as a number, was a breakthrough that truly changed the world of mathematics and science. In Indian mathematics, indeed, zero was not just used as a placeholder in the place value system, but was also given the status of a number in its own right, on par with other numbers. The arithmetic properties of the number 0 (e.g., that 0 plus any number is the same number, and that 0 times any number is zero) were explicitly used by Aryabhata in his Āryabhaṭīya in
+499 CE to compute with and do elaborate scientific computations using
+Hindu numerals. The use of 0 as a number like any other number, on which one can perform the basic arithmetic operations, was codified by Brahmagupta in his work Brāhmasphuṭasiddhānta in 628 CE, as we learned in an earlier grade.
+By introducing 0 as a number, along with the negative numbers,
+Brahmagupta created what in modern terms is called a ring, i.e., a set of numbers that is closed under addition, subtraction, and multiplication (i.e., any two numbers in the set can be added, subtracted, or multiplied to get another number in that set). These new ideas laid the foundations for modern mathematics, and particularly for the areas of algebra and analysis.
+Hopefully, this gives you a sense of all the ideas that went into writing and computing with numbers in the way that we do today. The discovery of 0 and the resulting Indian number system is truly one of the greatest, most creative, and most influential inventions of all time — appearing constantly in our daily lives and forming the basis of much of modern science, technology, computing, accounting, surveying, and more. The next time you are writing numbers, think about the incredible history behind them and all the deep ideas that went into their discovery!
+Evolution of Ideas in Number
+Representation
+1. Count in groups of a single number.
+ukasar-ukasar-urapon
+2. Group using landmark numbers.
+I V X L C M
+3. Choosing powers of a number as landmark numbers — the idea of a base.
+1 101 102 103 104 …
+4. Using positions to denote the landmark numbers — the idea of place value system.
+5. The idea of 0 as a positional digit and as a number.
+Reprint 2026-27
+Ganita Prakash | Grade 8
+Figure it Out
+1. Why do you think the Chinese alternated between the Zong and
+Heng symbols? If only the Zong symbols were to be used, how would 41 be represented? Could this numeral be interpreted in any other way if there is no significant space between two successive positions?
+2. Form a base-2 place value system using ‘ukasar’ and ‘urapon’ as the digits. Compare this system with that of the Gumulgal’s.
+3. Where in your daily lives, and in which professions, do the Hindu numerals, and 0, play an important role? How might our lives have been different if our number system and 0 hadn’t been invented or conceived of?
+4. The ancient Indians likely used base 10 for the Hindu number system because humans have 10 fingers, and so we can use our fingers to count. But what if we had only 8 fingers? How would we be writing numbers then? What would the Hindu numerals look like if we were using base 8 instead? Base 5? Try writing the base-10 Hindu numeral 25 as base-8 and base-5 Hindu numerals, respectively. Can you write it in base-2?
+Map not to scale
+The map shows the locations of the different civilisations. They existed in different time periods.
+Reprint 2026-27
+A Story of Numbers
+ To represent numbers, we need a standard sequence of objects, names, or written symbols that have a fixed order. This standard sequence is called a number system.
+ The symbols representing numbers in a written number system are called numerals.
+ In a number system, landmark numbers are numbers that are easily recognisable and used as reference points for understanding and working with other numbers. They serve as anchors within the number system, helping people to orient themselves and make sense of quantities, particularly larger
+ A number system whose landmark numbers are the powers of a number n is referred to as a base-n number system.
+ Number systems having a base that make use of the position of a symbol in determining the landmark number that it is associated with are called positional number systems or place value systems.
+ Place value representations were used in the Mesopotamian (Babylonian), Mayan, Chinese and Indian civilisations.
+ The system of numerals that we use throughout the world today is the Hindu number system (also sometimes called the Indian number system, or the Hindu-Arabic number system). It is a place value system with (usually) 10 digits, including the digit
+0 which is treated on par with other digits. Due to its use of 0 as a number, the system enables the writing of all numbers unambiguously using just finitely many symbols, and also enables efficient computation. The system originated in India around 2000 years ago, and then spread across the world, and is considered one of human history’s greatest inventions.
+Reprint 2026-27
+Page No. 54
+Figure it Out
+1. Suppose you are using the number system that uses sticks to represent numbers, as in Method 1. Without using either the number names or the numerals of the Hindu number system, give a method for adding, subtracting, multiplying and dividing two numbers or two collections of sticks.
+Ans. Suppose we have two groups of sticks.
+Count the sticks in each of the groups.
+To add, put all sticks at one place and count altogether.
+To subtract, take out sticks from the given collection of sticks and count the remaining sticks.
+To multiply two numbers, groups of equal numbers of sticks may be counted.
+For division, from the given number of sticks, the sticks in required number may be grouped. See the number of such groups formed and the number of ungrouped sticks.
+2. One way of extending the number system in Method 2 is by using strings with more than one letter — for example, we could use ‘aa’ for 27. How can you extend this system to represent all the numbers?
+There are many ways of doing it!
+Ans. Total alphabets = 26
+One of the ways is – a, b, c, d, …, z and aa, bb, cc, …, zz and extend further.
+Page No. 59
+Figure it Out
+1. Represent the following numbers in the Roman system.
+(i) 1222 (ii) 2999 (iii) 302 (iv) 715 (i) 1222 ─ MCCXXII
+A STORY OF (ii) 2999 ─ MMCMXCIX (iii) 302 ─ CCCII (iv) 715 ─ DCCXV
+Page No. 60
+How will you multiply two numbers given in Roman numerals, without converting them to Hindu numerals? Try to find the product of the following pairs of landmark numbers: V × L, L × D, V × D,
+VII × IX.
+Ans. V × L = CCL
+L × D = MMM…M (25 times)
+V × D = MMD
+VII × IX = LXIII
+Page No. 60-61
+Figure it Out
+2. Consid

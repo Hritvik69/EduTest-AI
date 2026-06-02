@@ -1,0 +1,475 @@
+ANSWERS 307
+BIBLIOGRAPHY
+TEXTBOOKS
+For additional reading on the topics covered in this book, you may like to consult one or more of the following books. Some of these books however are more advanced and contain many more topics than this book.
+1. Ordinary Level Physics, A.F. Abbott, Arnold-Heinemann (1984).
+2. Advanced Level Physics, M. Nelkon and P. Parker, 6th Edition Arnold-
+Heinemann (1987).
+3. Advanced Physics, Tom Duncan, John Murray (2000).
+4. Fundamentals of Physics, David Halliday, Robert Resnick and Jearl
+Walker, 7th Edition John Wily (2004).
+5. University Physics, H.D. Young, M.W. Zemansky and F.W. Sears, Narosa
+Pub. House (1982).
+6. Problems in Elementary Physics, B. Bukhovtsa, V. Krivchenkov,
+G. Myakishev and V. Shalnov, MIR Publishers, (1971).
+7. Lectures on Physics (3 volumes), R.P. Feynman, Addision – Wesley (1965).
+8. Berkeley Physics Course (5 volumes) McGraw Hill (1965).
+a. Vol. 1 – Mechanics: (Kittel, Knight and Ruderman)
+b. Vol. 2 – Electricity and Magnetism (E.M. Purcell)
+c. Vol. 3 – Waves and Oscillations (Frank S. Craw-ford)
+d. Vol. 4 – Quantum Physics (Wichmann)
+e. Vol. 5 – Statistical Physics (F. Reif)
+9. Fundamental University Physics, M. Alonso and E. J. Finn, Addison –
+Wesley (1967).
+10. College Physics, R.L. Weber, K.V. Manning, M.W. White and G.A. Weygand,
+Tata McGraw Hill (1977).
+11. Physics: Foundations and Frontiers, G. Gamow and J.M. Cleveland, Tata
+McGraw Hill (1978).
+12. Physics for the Inquiring Mind, E.M. Rogers, Princeton University
+Press (1960)
+13. PSSC Physics Course, DC Heath and Co. (1965) Indian Edition, NCERT
+14. Physics Advanced Level, Jim Breithampt, Stanley Thornes Publishers
+15. Physics, Patrick Fullick, Heinemann (2000).
+Reprint 2026-27
+16. Conceptual Physics, Paul G. Hewitt, Addision-Wesley (1998).
+17. College Physics, Raymond A. Serway and Jerry S. Faughn, Harcourt Brace and Co. (1999).
+18. University Physics, Harris Benson, John Wiley (1996).
+19. University Physics, William P. Crummet and Arthur B. Western, Wm.C.
+Brown (1994).
+20. General Physics, Morton M. Sternheim and Joseph W. Kane, John Wiley
+21. Physics, Hans C. Ohanian, W.W. Norton (1989).
+22. Advanced Physics, Keith Gibbs, Cambridge University Press(1996).
+23. Understanding Basic Mechanics, F. Reif, John Wiley (1995).
+24. College Physics, Jerry D. Wilson and Anthony J. Buffa, Prentice-Hall (1997).
+25. Senior Physics, Part – I, I.K. Kikoin and A.K. Kikoin, Mir Publishers (1987).
+26. Senior Physics, Part – II, B. Bekhovtsev, Mir Publishers (1988).
+27. Understanding Physics, K. Cummings, Patrick J. Cooney, Priscilla W.
+Laws and Edward F. Redish, John Wiley (2005)
+28. Essentials of Physics, John D. Cutnell and Kenneth W. Johnson, John
+Wiley (2005)
+GENERAL BOOKS
+For instructive and entertaining general reading on science, you may like to read some of the following books. Remember however, that many of these books are written at a level far beyond the level of the present book.
+1. Mr. Tompkins in paperback, G. Gamow, Cambridge University Press (1967).
+2. The Universe and Dr. Einstein, C. Barnett, Time Inc. New York (1962).
+3. Thirty years that Shook Physics, G. Gamow, Double Day, New York (1966).
+4. Surely You’re Joking, Mr. Feynman, R.P. Feynman, Bantam books (1986).
+5. One, Two, Three… Infinity, G. Gamow, Viking Inc. (1961).
+6. The Meaning of Relativity, A. Einstein, (Indian Edition) Oxford and IBH
+Pub. Co (1965).
+7. Atomic Theory and the Description of Nature, Niels Bohr, Cambridge
+8. The Physical Principles of Quantum Theory, W. Heisenberg, University of Chicago Press (1930).
+9. The Physics- Astronomy Frontier, F. Hoyle and J.V. Narlikar, W.H.
+Freeman (1980).
+10. The Flying Circus of Physics with Answer, J. Walker, John Wiley and
+Sons (1977).
+11. Physics for Everyone (series), L.D. Landau and A.I. Kitaigorodski, MIR
+Publisher (1978).
+Book 1: Physical Bodies
+Book 2: Molecules
+Book 3: Electrons
+Book 4: Photons and Nuclei.
+12. Physics can be Fun, Y. Perelman, MIR Publishers (1986).
+13. Power of Ten, Philip Morrison and Eames, W.H. Freeman (1985).
+14. Physics in your Kitchen Lab., I.K. Kikoin, MIR Publishers (1985).
+15. How Things Work : The Physics of Everyday Life, Louis A. Bloomfield,
+John Wiley (2005)
+16. Physics Matters : An Introduction to Conceptual Physics, James Trefil and Robert M. Hazen, John Wiley (2004).
+PHYSICS 308
+Reprint 2026-27
+Absolute scale temperature 280
+Absolute zero 280
+Acceleration (linear) 45
+Acceleration due to gravity 49,189
+Accuracy 22
+Action-reaction 97
+Addition of vectors 67
+Adiabatic process 311, 312
+Aerofoil 262
+Air resistance 79
+Amplitude 344, 372
+Angle of contact 267, 268
+Angstrom 21
+Angular Acceleration 154
+Angular displacement 342
+Angular frequency 344, 373
+Angular momentum 155
+Angular velocity 152
+Angular wave number 372
+Antinodes 381,382
+Archimedes Principle 255
+Area expansion 281
+Atmospheric pressure 253
+Average acceleration 45, 74
+Average speed 42
+Average velocity 42
+Avogardo's law 325
+Banked road 104
+Barometer 254
+Beat frequency 383
+Beats 382, 383
+Bending of beam 244
+Bernoulli's Principle 258
+Blood pressure 276
+Boiling point 287
+Boyle's law 326
+Buckling 244
+Bulk modulus 242
+Buoyant force 255
+Calorimeter 285
+Capillary rise 268
+Capillary waves 370
+Carnot engine 316
+Central forces 186
+Centre of Gravity 161
+Centre of mass 144
+Centripetal acceleration 81
+Centripetal force 104
+Change of state 287
+Charle's law 326
+Chemical Energy 126
+Circular motion 104
+Clausius statement 315
+Coefficient of area expansion 283
+Coefficient of linear expansion 281
+Coefficient of performance 314
+Coefficient of static friction 101
+Coefficient of viscosity 262
+Coefficient of volume expansion 281
+Cold reservoir 313
+Collision 129
+Collision in two dimensions 131
+Compressibility 242, 243
+Compressions 368, 369, 374
+Compressive stress 236, 243
+Conduction 290
+Conservation laws 12
+Conservation of angular momentum 157, 173
+Conservation of Mechanical Energy 121
+Conservation of momentum 98
+Conservative force 121
+Constant acceleration 46,75
+Contact force 100
+Convection 293
+Couple 159
+Crest 371
+Cyclic process 312
+Reprint 2026-27
+Dalton's law of partial pressure 325
+Damped oscillations 355
+Damped simple Harmonic motion 355
+Damping constant 355
+Damping force 355
+Derived units 16
+Detergent action 269
+Diastolic pressure 277
+Differential calculus 61
+Dimensional analysis 32
+Dimensions 31
+Displacement vector 66
+Displacement 40
+Doppler effect 385, 386
+Doppler shift 387
+Driving frequency 358
+Dynamics of rotational motion 169
+Efficiency of heat engine 313
+Elastic Collision 129
+Elastic deformation 236, 238
+Elastic limit 238
+Elastic moduli 239
+Elasticity 235
+Elastomers 239
+Electromagnetic force 8
+Energy 117
+Equality of vectors 66
+Equation of continuity 257
+Equilibrium of a particle 99
+Equilibrium of Rigid body 158
+Equilibrium position 341, 342, 353
+Errors in measurement 22
+Escape speed 193
+First law of Thermodynamics 307
+Fluid pressure 251
+Force 94
+Forced frequency 357
+Forced oscillations 357, 358
+Fracture point 238
+Free Fall 49
+Free-body diagram 100
+Frequency of periodic motion 342, 372
+Friction 101
+Fundamental Forces 6
+Fundamental mode 381
+Fusion 287
+Gauge pressure 253
+Geocentric model 183
+Geostationary satellite 196
+Gravitational constant 189
+Gravitational Force 8, 192
+Gravitational potential energy 191
+Gravity waves 370
+Harmonic frequency 380, 381
+Harmonics 380, 381
+Heat capacity 284
+Heat engines 313
+Heat pumps 313
+Heat 279
+Heliocentric model 183
+Hertz 343
+Hooke's law 238
+Horizontal range 78
+Hot reservoir 313
+Hydraulic brakes 255, 256
+Hydraulic lift 255, 256
+Hydraulic machines 255
+Hydraulic pressure 238
+Hydraulic stress 238, 243
+Hydrostatic paradox 253
+Ideal gas equation 280
+Ideal gas 280, 325
+Impulse 96
+Inelastic collision 129
+Initial phase angle 372
+Instantaneous acceleration 74
+Instantaneous speed 45
+Instantaneous velocity 43
+Interference 377
+Internal energy 306, 330
+Irreversible engine 315, 317
+Irreversible processes 315
+Isobaric process 311, 312
+Isochoric process 311, 312
+Isotherm 310
+Isothermal process 311
+Kelvin-Planck statement 315
+Kepler's laws of planetary motion 184
+Kinematics of Rotational Motion 167
+Kinematics 39
+Kinetic energy of rolling motion 174
+Kinetic Energy 117
+Kinetic interpretation of temperature 329
+Kinetic theory of gases 328
+Laminar flow 258, 264
+Laplace correction 376
+310 PHYSICS
+Reprint 2026-27
+Latent heat of fusion 290
+Latent heat of vaporisation 290
+Latent heat 289
+Law of cosine 72
+Law of equipartition of energy 332
+Law of Inertia 90
+Law of sine 72
+Linear expansion 281
+Linear harmonic oscillator 349, 351
+Linear momentum 155
+Longitudinal strain 236
+Longitudinal strain 236, 239
+Longitudinal stress 236
+Longitudinal Wave 369, 376
+Magnus effect 261
+Manometer 254
+Mass Energy Equivalence 126
+Maximum height of projectile 78
+Maxwell Distribution 331
+Mean free path 324, 335
+Measurement of length 18
+Measurement of mass 21
+Measurement of temperature 279
+Measurement of time 22
+Melting point 286
+Modes 380
+Modulus of elasticity 238
+Modulus of rigidity 242
+Molar specific heat capacity 284, 308 at constant pressure
+Molar specific heat capacity 284, 308 at constant volume
+Molar specific heat capacity 284
+Molecular nature of matter 323
+Moment of Inertia 163
+Momentum 93
+Motion in a plane 72
+Multiplication of vectors 67
+Musical instruments 384
+Natural frequency 358
+Newton's first law of motion 91
+Newton's Law of cooling 295
+Newton's law of gravitation 185
+Newton's second law of motion 93
+Newton's third law of motion 96
+Newtons' formula for speed of sound 377
+Nodes 381
+Normal Modes 381, 382, 384
+Note 384, 385
+Nuclear Energy 126
+Null vector 68
+Odd harmonics 382
+Orbital velocity/speed 194
+Order of magnitude 28
+Oscillations 342
+Oscillatory motion 342
+Parallax method 18
+Parallelogram law of addition of vectors 66
+Pascal's law 252
+Path length 40
+Path of projectile 78
+Periodic force 358
+Periodic motion 342
+Periodic time 342
+Permanent set 238
+Phase angle 344
+Phase constant 344
+Pipe open at both ends 382
+Pipe open at one end 381
+Pitch 384
+Plastic deformation 238
+Plasticity 235
+Polar satellite 196
+Position vector and displacement 73
+Potential energy of a spring 123
+Potential energy 120
+Power 128
+Precession 143
+Pressure gauge 253
+Pressure of an ideal gas 328
+Pressure 250
+Principle of Conservation of Energy 128
+Principle of moments 160
+Progressive wave 373
+Projectile motion 77
+Projectile 77
+Propagation constant 371
+Pulse 369
+Quasi-static process 310, 311
+Radiation 294
+Radius of Gyration 164
+Raman effect 11
+Rarefactions 369
+Ratio of specific heat capacities 334
+Reaction time 51
+Real gases 326
+Rectilinear motion 39
+Reductionism 2
+Reflected wave 379
+Reflection of waves 378
+INDEX 311
+Reprint 2026-27
+Refracted wave 379
+Refrigerator 313
+Regelation 287
+Relative velocity in two dimensions 76
+Relative velocity 51
+Resolution of vectors 69
+Resonance 358
+Restoring force 236, 350, 369
+Reversible engine 316, 317
+Reversible processes 315
+Reynolds number 264
+Rigid body 141
+Rolling motion 173
+Root mean square speed 329
+Rotation 142
+S.H.M. (Simple Harmonic Motion) 343
+Scalar-product 114
+Scalars 65
+Scientific Method 1
+Second law of Thermodynamics 314
+Shear modulus 242
+Shearing strain 237
+Shearing stress 237, 243
+SI units 16
+Significant figures 27
+Simple pendulum 343, 353
+Soap bubbles 268
+Sonography 387
+Sound 375
+Specific heat capacity of Solids 308, 335
+Specific heat capacity of Gases 333, 334
+Specific heat capacity of Water 335
+Specific heat capacity 285, 308
+Speed of efflux 259
+Speed of Sound 375, 376
+Speed of Transverse wave 375, 376 on a stretched string
+Sphygmomanometer 277
+Spring constant 352, 355
+Standing waves 380
+Stationary waves 382
+Steady flow 257
+Stethoscope 281
+Stokes' law 263
+Stopping distance 50
+Strain 236
+Streamline flow 257, 258
+Streamline 257, 258
+Stress 236
+Stress-strain curve 238
+Stretched string 374
+Sublimation 294
+Subtraction of vectors 67
+Superposition principle 378
+Surface energy 265
+Surface tension 265
+Symmetry 146
+System of units 16
+Systolic pressure 277
+Temperature 279
+Tensile strength 238
+Tensile stress 236
+Terminal velocity 264
+Theorem of parallel axes 167
+Theorem of perpendicular axes 165
+Thermal conductivity 291
+Thermal equilibrium 304
+Thermal expansion 281
+Thermal stress 284
+Thermodynamic processes 310
+Thermodynamic state variables 309
+Thermodynamics 3, 303
+Time of flight 78
+Torque 154
+Torricelli's Law 259, 260
+Trade wind 294
+Transmitted wave 379
+Travelling wave 380
+Triangle law of addition of vectors 66
+Triple point 288
+Trough 371
+Tune 384
+Turbulent flow 258, 259
+Ultimate strength 238
+Ultrasonic waves 387
+Unification of Forces 10
+Unified Atomic Mass Unit 21
+Uniform circular motion 79
+Uniform Motion 41
+Uniformly accelerated motion 47
+Unit vectors 70
+Vane 356
+Vaporisation 288
+Vector-product 151
+Vectors 66
+Velocity amplitude 349
+Venturi meter 260
+Vibration 341
+Viscosity 262
+Volume expansion 281
+Volume Strain 238
+Wave equation 374
+Wavelength 372
+Wave speed 374
+312 PHYSICS
+Reprint 2026-27
+Waves 368
+Waxing and waning of sound 385
+Weak nuclear force 9
+Weightlessness 197
+Work done by variable force 118
+Work 116
+Work-Energy Theorem 116
+Working substance 313
+Yield Point 238
+Yield strength 238
+Young's modulus 239
+Zeroth law of Thermodynamics 305
+313 INDEX
+Reprint 2026-27
+314 PHYSICS
+Reprint 2026-27

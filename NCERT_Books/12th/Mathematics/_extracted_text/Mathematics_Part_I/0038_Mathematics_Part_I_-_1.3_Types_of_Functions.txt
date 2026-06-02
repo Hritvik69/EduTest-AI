@@ -1,0 +1,115 @@
+26 MATHEMATICS
+1. sin–1x should not be confused with (sin x)–1. In fact (sin x)–1 = 1 sin x and similarly for other trigonometric functions.
+2. Whenever no branch of an inverse trigonometric functions is mentioned, we mean the principal value branch of that function.
+3. The value of an inverse trigonometric functions which lies in the range of principal branch is called the principal value of that inverse trigonometric functions.
+We now consider some examples:
+Example 1 Find the principal value of sin–1 1
+Solution Let sin–1 1
+  = y. Then, sin y = 1
+We know that the range of the principal value branch of sin–1 is − 
+2 . Therefore, principal value of sin–1 1
+  is 4
+Example 2 Find the principal value of cot–1 1
+Solution Let cot–1 1
+  = y. Then, cot cot 3 3 y − π  
+= = −  
+  = cot 3
+We know that the range of principal value branch of cot–1 is (0, π) and
+− . Hence, principal value of cot–1 1
+  is 2
+EXERCISE 2.1
+Find the principal values of the following:
+1. sin–1 1
+  2. cos–1
+  3. cosec–1 (2)
+4. tan–1 ( 3) − 5. cos–1 1
+  6. tan–1 (–1)
+Reprint 2026-27
+INVERSE TRIGONOMETRIC FUNCTIONS 27
+7. sec–1 2
+  8. cot–1 ( 3) 9. cos–1 1
+10. cosec–1 ( 2 − )
+Find the values of the following:
+11. tan–1(1) + cos–1 1
+− + sin–1 1
+− 12. cos–1 1
+2 + 2 sin–1 1
+13. If sin–1 x = y, then (A) 0 ≤ y ≤ π (B) 2 2 (C) 0 < y < π (D) 2 2
+14. tan–1 ( )1
+3 sec 2−
+− − is equal to (A) π (B) 3
+2.3 Properties of Inverse Trigonometric Functions
+In this section, we shall prove some important properties of inverse trigonometric functions. It may be mentioned here that these results are valid within the principal value branches of the corresponding inverse trigonometric functions and wherever they are defined. Some results may not be valid for all values of the domains of inverse trigonometric functions. In fact, they will be valid only for some values of x for which inverse trigonometric functions are defined. We will not go into the details of these values of x in the domain as this discussion goes beyond the scope of this textbook.
+Let us recall that if y = sin–1x, then x = sin y and if x = sin y, then y = sin–1x. This is equivalent to sin (sin–1 x) = x, x ∈ [– 1, 1] and sin–1 (sin x) = x, x ∈ ,
+−π π  
+For suitable values of domain similar results follow for remaining trigonometric functions.
+Reprint 2026-27
+28 MATHEMATICS
+We now consider some examples.
+Example 3 Show that (i) sin–1 ( ) 2
+2 1 x x − = 2 sin–1 x, 1 1 (ii) sin–1 ( ) 2
+2 1 x x − = 2 cos–1 x, 1 1
+Solution (i) Let x = sin θ. Then sin–1 x = θ. We have sin–1 ( ) 2
+2 1 x x − = sin–1 ( ) 2
+2sin 1 sin θ − θ
+= sin–1 (2sinθ cosθ) = sin–1 (sin2θ) = 2θ
+= 2 sin–1 x (ii) Take x = cos θ, then proceeding as above, we get, sin–1 ( ) 2
+2 1 x x − = 2 cos–1 x
+Example 4 Express 1 cos tan 1 sin
+π π − < < x in the simplest form.
+Solution We write cos 2 2 tan tan
+1 sin cos sin 2sin cos x x x x x
+−     =    
+−     + − cos sin cos sin
+    
++ −     
+    
+   −        
+1 tan 2 tan tan tan 4 2 4 2 x x   π π  
++ = +    
+Reprint 2026-27
+INVERSE TRIGONOMETRIC FUNCTIONS 29
+Example 5 Write –1
+, x > 1 in the simplest form.
+Solution Let x = sec θ, then 2 1 x − = 2 sec 1 tan θ − = θ
+Therefore, –1
+1 x − = cot–1 (cot θ) = θ = sec–1 x, which is the simplest form.
+EXERCISE 2.2
+Prove the following:
+1. 3sin–1 x = sin–1 (3x – 4x3), 1 1
+∈    
+2. 3cos–1 x = cos–1 (4x3 – 3x), 1 , 1
+∈    
+Write the following functions in the simplest form:
+− + − , x ≠ 0 4. 1 1 cos tan 1 cos
+    +   , 0 < x < π
+5. 1 cos sin tan cos sin
++   , 4
+−π < x < 3
+− , | x | < a
+−   , a > 0; 3 3
+Find the values of each of the following:
+8. –1 –1 1 tan 2 cos 2sin 2
+       tan sin cos
++ +   , | x | < 1, y > 0 and xy < 1
+Reprint 2026-27
+30 MATHEMATICS
+Find the values of each of the expressions in Exercises 16 to 18.
+10. –1 2 sin sin 3
+  11. –1 3 tan tan 4
+12. –1 –1 3 3 tan sin cot cos cos is equal to sin sin ( )
+  is equal to tan 3 cot ( 3)− −
+− − is equal to (A) π (B) 2
+− (C) 0 (D) 2 3
+Miscellaneous Examples
+Example 6 Find the value of 1 3 sin (sin )
+Solution We know that 1 sin (sin ) x x− = . Therefore, 1 3 3 sin (sin )
+π π π  
+∉ −     , which is the principal branch of sin–1 x
+However 3 3 2 sin ( ) sin( ) sin
+= π − = and 2 ,
+π π π  
+∈ −    
+Therefore 1 1 3 2 2 sin (sin ) sin (sin )
+− − π π π
+Reprint 2026-27

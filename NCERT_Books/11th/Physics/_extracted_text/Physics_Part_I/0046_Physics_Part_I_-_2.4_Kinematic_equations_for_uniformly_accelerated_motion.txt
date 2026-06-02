@@ -1,0 +1,261 @@
+PHYSICS 30 arranged head to tail, this graphical method is called the head-to-tail method. The two vectors and their resultant form three sides of a triangle, so this method is also known as triangle method of vector addition. If we find the resultant of
+B + A as in Fig. 3.4(c), the same vector R is obtained. Thus, vector addition is commutative:
+A + B = B + A (3.1)
+The addition of vectors also obeys the associative law as illustrated in Fig. 3.4(d). The result of adding vectors A and B first and then adding vector C is the same as the result of adding B and C first and then adding vector A :
+(A + B) + C = A + (B + C) (3.2)
+What is the result of adding two equal and opposite vectors ? Consider two vectors A and
+–A shown in Fig. 3.3(b). Their sum is A + (–A).
+Since the magnitudes of the two vectors are the same, but the directions are opposite, the resultant vector has zero magnitude and is represented by 0 called a null vector or a zero vector :
+A – A = 0 |0|= 0 (3.3)
+Since the magnitude of a null vector is zero, its direction cannot be specified.
+The null vector also results when we multiply a vector A by the number zero. The main properties of 0 are :
+A + 0 = A
+0 A = 0 (3.4)
+Fig. 3.5 (a) Two vectors A and B, – B is also shown. (b) Subtracting vector B from vector A – the result is R2. For comparison, addition of vectors A and B, i.e. R1 is also shown.
+What is the physical meaning of a zero vector?
+Consider the position and displacement vectors in a plane as shown in Fig. 3.1(a). Now suppose that an object which is at P at time t, moves to
+P′ and then comes back to P. Then, what is its displacement? Since the initial and final positions coincide, the displacement is a “null vector”.
+Subtraction of vectors can be defined in terms of addition of vectors. We define the difference of two vectors A and B as the sum of two vectors
+A and –B :
+A – B = A + (–B) (3.5)
+It is shown in Fig 3.5. The vector –B is added to vector A to get R2 = (A – B). The vector R1 = A + B is also shown in the same figure for comparison.
+We can also use the parallelogram method to find the sum of two vectors. Suppose we have two vectors A and B. To add these vectors, we bring their tails to a common origin O as shown in Fig. 3.6(a). Then we draw a line from the head of A parallel to B and another line from the head of B parallel to A to complete a parallelogram OQSP. Now we join the point of the intersection of these two lines to the origin
+O. The resultant vector R is directed from the common origin O along the diagonal (OS) of the parallelogram [Fig. 3.6(b)]. In Fig.3.6(c), the triangle law is used to obtain the resultant of A and B and we see that the two methods yield the same result. Thus, the two methods are equivalent.
+Reprint 2026-27
+MOTION IN A PLANE 31
+Example 3.1 Rain is falling vertically with a speed of 35 m s–1. Winds starts blowing after sometime with a speed of 12 m s–1 in east to west direction. In which direction should a boy waiting at a bus stop hold his umbrella ?
+Fig. 3.7
+Answer The velocity of the rain and the wind are represented by the vectors vr and vw in Fig.
+3.7 and are in the direction specified by the problem. Using the rule of vector addition, we see that the resultant of vr and vw is R as shown in the figure. The magnitude of R is
+    
+35 12 m s 37 m s
+The direction q that R makes with the vertical is given by tan 0.343
+    tan- .
+1 0 343 19
+Therefore, the boy should hold his umbrella in the vertical plane at an angle of about 19o with the vertical towards the east. ⊳
+Fig. 3.6 (a) Two vectors A and B with their tails brought to a common origin. (b) The sum A + B obtained using the parallelogram method. (c) The parallelogram method of vector addition is equivalent to the triangle
+3.5 RESOLUTION OF VECTORS
+Let a and b be any two non-zero vectors in a plane with different directions and let A be another vector in the same plane (Fig. 3.8). A can be expressed as a sum of two vectors — one obtained by multiplying a by a real number and the other obtained by multiplying b by another real number. To see this, let O and P be the tail and head of the vector A. Then, through O, draw a straight line parallel to a, and through P, a straight line parallel to b. Let them intersect at
+Q. Then, we have
+A = OP = OQ + QP (3.6)
+But since OQ is parallel to a, and QP is parallel to b, we can write :
+l a, and QP = μ b (3.7)
+l and μ are real numbers.
+Therefore, A = l a + μ b (3.8)
+Fig. 3.8 (a) Two non-colinear vectors a and b.
+(b) Resolving a vector A in terms of vectors a and b.
+We say that A has been resolved into two component vectors m b along a and b
+Reprint 2026-27
+PHYSICS 32
+Fig. 3.9 (a) Unit vectors ɵi , ɵj and ɵk lie along the x-, y-, and z-axes. (b) A vector A is resolved into its components Ax and Ay along x-, and y- axes. (c) A1 and A2 expressed in terms of ɵi and ɵj .
+respectively. Using this method one can resolve a given vector into two component vectors along a set of two vectors – all the three lie in the same plane. It is convenient to resolve a general vector along the axes of a rectangular coordinate system using vectors of unit magnitude. These are called unit vectors that we discuss now. A unit vector is a vector of unit magnitude and points in a particular direction. It has no dimension and unit. It is used to specify a direction only. Unit vectors along the x-, y- and z-axes of a rectangular coordinate system are denoted by ɵi , ɵj and ˆk , respectively, as shown in Fig. 3.9(a).
+Since these are unit vectors, we have
+ ˆi  =  ˆj  =  ˆk =1 (3.9)
+These unit vectors are perpendicular to each other. In this text, they are printed in bold face with a cap (^) to distinguish them from other vectors. Since we are dealing with motion in two dimensions in this chapter, we require use of only two unit vectors. If we multiply a unit vector, say ˆn by a scalar, the result is a vector
+λλλλλ = λ ˆn. In general, a vector A can be written as
+A = |A| ˆn (3.10)
+where ˆn is a unit vector along A.
+We can now resolve a vector A in terms of component vectors that lie along unit vectors iˆ and ɵj. Consider a vector A that lies in x-y plane as shown in Fig. 3.9(b). We draw lines from the head of A perpendicular to the coordinate axes as in Fig. 3.9(b), and get vectors A1 and A2 such that A1 + A2 = A. Since A1 is parallel to ɵi and A2 is parallel to ɵj , we have :
+ɵi , A2 = Ay
+ɵj (3.11)
+where Ax and Ay are real numbers.
+Thus, A = Ax ɵi + Ay ɵj (3.12)
+This is represented in Fig. 3.9(c). The quantities
+Ax and Ay are called x-, and y- components of the vector A. Note that Ax is itself not a vector, but
+ɵi is a vector, and so is Ay
+ɵj. Using simple trigonometry, we can express Ax and Ay in terms of the magnitude of A and the angle
+θ it makes with the x-axis :
+Ax = A cos
+Ay = A sin
+θ (3.13)
+As is clear from Eq. (3.13), a component of a vector can be positive, negative or zero depending on the value of
+Now, we have two ways to specify a vector A in a plane. It can be specified by :
+(i) its magnitude A and the direction θ it makes with the x-axis; or (ii) its components Ax and Ay
+If A and θ are given, Ax and Ay can be obtained using Eq. (3.13). If Ax and Ay are given, A and can be obtained as follows :
+A A A A x
+2 2 2 2 2
++ = + cos sin
+Or, A A A x
+= + (3.14)
+And tan , tan θ θ = = −
+Reprint 2026-27
+MOTION IN A PLANE 33
+B i j = + B B x y
+Let R be their sum. We have
+R = A + B ( ) ( ) = + + + A A B B x y x y
+ɵ ɵ ɵ ɵ i j i j (3.19a)
+Since vectors obey the commutative and associative laws, we can arrange and regroup the vectors in Eq. (3.19a) as convenient to us :
+( ) ( ) R i j = + + + A B A B x x y y
+ɵ ɵ (3.19b)
+SinceR i j = + R R x y
+ɵ ɵ (3.20)
+we have, x x x y y y R A B , R A B = + = + (3.21)
+Thus, each component of the resultant vector R is the sum of the corresponding components of A and B.
+In three dimensions, we have
+A i j k = + + A A A x y z
+B i j k = + + B B B x y z
+R A B i j k = + = + + R R R x y z with R A B x x x = +
+R A B y y y = +
+R A B z z z = + (3.22)
+This method can be extended to addition and subtraction of any number of vectors. For example, if vectors a, b and c are given as a i j k = + + a a a x y z b i j k = + + b b b x y z c i j k = + + c c c x y z
+ɵ ɵ ɵ (3.23a)
+then, a vector T = a + b – c has components :
+T a b c x x x x = + −
+T a b c y y y y = + − (3.23b)
+T a b c z z z z = + − .
+Example 3.2 Find the magnitude and direction of the resultant of two vectors A and B in terms of their magnitudes and
+θ between them.
+Fig. 3.9 (d) A vector A resolved into components along x-, y-, and z-axes
+* Note that angles
+γ are angles in space. They are between pairs of lines, which are not coplanar.
+So far we have considered a vector lying in an x-y plane. The same procedure can be used to resolve a general vector A into three components along x-, y-, and z-axes in three dimensions. If
+γ are the angles* between A and the x-, y-, and z-axes, respectively
+[Fig. 3.9(d)], we have x y z A A cos , A A cos , A A cos
+γ = = = (3.16a)
+In general, we have x y z A A A = + + A i j k (3.16b)
+The magnitude of vector A is x y z A A A A = + + (3.16c)
+A position vector r can be expressed as r i j k = + + x y z ɵ ɵ ɵ (3.17)
+where x, y, and z are the components of r along x-, y-, z-axes, respectively.
+3.6 VECTOR ADDITION – ANALYTICAL
+Although the graphical method of adding vectors helps us in visualising the vectors and the resultant vector, it is sometimes tedious and has limited accuracy. It is much easier to add vectors by combining their respective components.
+Consider two vectors A and B in x-y plane with components Ax, Ay and Bx, By :
+A i j = + A A x y
+ɵ ɵ (3.18)
+Reprint 2026-27
+PHYSICS 34
+Fig. 3.10
+Answer Let OP and OQ represent the two vectors
+A and B making an angle q (Fig. 3.10). Then, using the parallelogram method of vector addition, OS represents the resultant vector R :
+R = A + B
+SN is normal to OP and PM is normal to OS.
+From the geometry of the figure,
+OS2 = ON2 + SN2 but ON = OP + PN = A + B cos
+SN = B sin
+OS2 = (A + B cos q)2 + (B sin or, R2 = A2 + B2 + 2AB cos
+R A B 2 AB
+    (3.24a)
+In D OSN, SN = OS sin a = R sin in D PSN, SN = PS sin q = B sin
+Therefore, R sin a = B sin or, sin sin
+ (3.24b)
+Similarly,
+PM = A sin a = B sin or, sin sin
+ (3.24c)
+Combining Eqs. (3.24b) and (3.24c), we get sin sin sin
+Using Eq. (3.24d), we get:
+R (3.24e)
+where R is given by Eq. (3.24a).
+OP PN A B
+  (3.24f)
+Equation (3.24a) gives the magnitude of the resultant and Eqs. (3.24e) and (3.24f) its direction.
+Equation (3.24a) is known as the Law of cosines and Eq. (3.24d) as the Law of sines. ⊳
+Example 3.3 A motorboat is racing towards north at 25 km/h and the water current in that region is 10 km/h in the direction of 60° east of south. Find the resultant velocity of the boat.
+Answer The vector vb representing the velocity of the motorboat and the vector vc representing the water current are shown in Fig. 3.11 in directions specified by the problem. Using the parallelogram method of addition, the resultant
+R is obtained in the direction shown in the
+Fig. 3.11
+We can obtain the magnitude of R using the Law of cosine :
+   2 2 b b b c 2 cos120 R v v v v
+= 25 10 2 25 10 -1/2 22 km/h 2 2
++ + × × ( ) ≅
+To obtain the direction, we apply the Law of sines
+ or, sin
+ 10 sin120
+  23.4 ⊳
+3.7 MOTION IN A PLANE
+In this section we shall see how to describe motion in two dimensions using vectors.
+Reprint 2026-27
+MOTION IN A PLANE 35
+3.7.1 Position Vector and Displacement
+The position vector r of a particle P located in a plane with reference to the origin of an x-y reference frame (Fig. 3.12) is given by r i j = + x y ɵ ɵ where x and y are components of r along x-, and y- axes or simply they are the coordinates of the object.
+Fig. 3.12 (a) Position vector r. (b) Displacement ∆r and average velocity v of a particle.
+Suppose a particle moves along the curve shown by the thick line and is at P at time t and P′ at time t′ [Fig. 3.12(b)]. Then, the displacement is :
+∆r = r′ – r (3.25)
+and is directed from P to P′.
+We can write Eq. (3.25) in a component form:
+∆r ( ) ( ) = + − + x' y' x ɵ ɵ ɵ ɵ i j i j y
+= + ɵ ɵ i j ∆ ∆ x y where ∆x = x ′ – x, ∆y = y′ – y (3.26)
+Velocity
+The average velocity ( ) v of an object is the ratio of the displacement and the corresponding time interval :
+v r i j i j = = + = +
+ɵ ɵ ɵ ɵ (3.27)
+x y v v = + v i j
+Since v r
+∆t , the direction of the average velocity is the same as that of ∆r (Fig. 3.12). The velocity (instantaneous velocity) is given by the limiting value of the average velocity as the time interval approaches zero :
+lim t t t∆ d (3.28)
+The meaning of the limiting process can be easily understood with the help of Fig 3.13(a) to (d). In these figures, the thick line represents the path of an object, which is at P at time t. P1, P2 and
+P3 represent the positions of the object after times ∆t1,∆t2, and ∆t3. ∆r1, ∆r2, and ∆r3 are the displacements of the object in times ∆t1, ∆t2, and
+Fig. 3.13 As the time interval ∆t approaches zero, the average velocity approaches the velocity v. The direction of v is parallel to the line tangent to the path.
+Reprint 2026-27
+PHYSICS 36
+∆t3, respectively. The direction of the average velocity v is shown in figures (a), (b) and (c) for three decreasing values of ∆t, i.e. ∆t1,∆t2, and ∆t3, (∆t1 > ∆t2 > ∆t3). As ∆t → → → → → 0, ∆r → → → → → 0 and is along the tangent to the path [Fig. 3.13(d)].
+Therefore, the direction of velocity at any point on the path of an object is tangential to the path at that point and is in the direction of
+We can express v in a component form :
+ɵ ɵ i j (3.29)
+ɵ ɵ i j lim x t t t ∆ ∆
+Or, v i j i j = + = + ɵ ɵ ɵ ɵ d t v v x y .
+where v x t x y = =
+, (3.30a)
+So, if the expressions for the coordinates x and y are known as functions of time, we can use these equations to find vx and vy.
+The magnitude of v is then
+= + (3.30b)
+and the direction of v is given by the angle tan tan 1
+, (3.30c)
+vx, vy and angle
+θ are shown in Fig. 3.14 for a velocity vector v at point p.
+Acceleration
+The average acceleration a of an object for a time interval ∆t moving in x-y plane is the change in velocity divided by the time interval :
+( )a v i j
+ɵ ɵ (3.31a)
+Or, a i j = + a a x y
+ɵ ɵ . (3.31b)
+The acceleration (instantaneous acceleration)
+is the limiting value of the average acceleration as the time interval approaches zero :
+(3. 32a)
+Since ∆ ∆ ∆ v = + v v , x y
+ɵ ɵ i j we have a i j = +
+ɵ ɵ lim v
+Or, a i j = + a a x y
+ɵ ɵ (3.32b)
+where, a v d (3.32c)*
+As in the case of velocity, we can understand graphically the limiting process used in defining acceleration on a graph showing the path of the object’s motion. This is shown in Figs. 3.15(a) to (d). P represents the position of the object at time t and P1, P2, P3 positions after time ∆t1, ∆t2,
+∆t3, respectively (∆t 1> ∆t2>∆t3). The velocity vectors at points P, P1, P2, P3 are also shown in Figs. 3.15 (a), (b) and (c). In each case of ∆t, ∆v is obtained using the triangle law of vector addition. By definition, the direction of average acceleration is the same as that of ∆v. We see that as ∆t decreases, the direction of ∆v changes and consequently, the direction of the acceleration changes. Finally, in the limit ∆t g0 [Fig. 3.15(d)], the average acceleration becomes the instantaneous acceleration and has the direction as shown.
+Fig. 3.14 The components vx and vy of velocity v and the angle
+θ it makes with x-axis. Note that vx = v cos
+θ, vy = v sin
+* In terms of x and y, ax and ay can be expressed as
+Reprint 2026-27
+MOTION IN A PLANE 37
+Note that in one dimension, the velocity and the acceleration of an object are always along the same straight line (either in the same direction or in the opposite direction).
+However, for motion in two or three dimensions, velocity and acceleration vectors may have any angle between 0° and 180° between them.
+Example 3.4 The position of a particle is given by r i j k = + + 3.0t ˆ . ˆ . ˆ 2 0 5 0 2 where t is in seconds and the coefficients have the proper units for r to be in metres. (a) Find v(t) and a(t) of the particle. (b) Find the magnitude and direction of v(t) at t = 1.0 s.
+( ) ( ) v r i j k t
+3.0 2.0 5.0 ɵ ɵ ɵ
+= + 3.0 .0 ɵ ɵ i j 4 t ( ) a v j t a = 4.0 m s–2 along y- direction
+At t = 1.0 s, ˆ ˆ 3.0 4.0 v = i + j
+It’s magnitude is 2 2 1 -= 3 4 5.0 m s v + = and direction is
+= tan tan 53
+θ −     ° = ≅    
+    with x-axis.
+3.8 MOTION IN A PLANE WITH CONSTANT
+ACCELERATION
+Suppose that an object is moving in x-y plane and its acceleration a is constant. Over an interval of time, the average acceleration will equal this constant value. Now, let the velocity of the object be v0 at time t = 0 and v at time t.
+Then, by definition a v v v v 0 0
+Or, v v a 0 = + t (3.33a)
+In terms of components :
+x ox x v v a t = + v v a t y oy y = + (3.33b)
+Let us now find how the position r changes with time. We follow the method used in the one- dimensional case. Let ro and r be the position vectors of the particle at time 0 and t and let the velocities at these instants be vo and v. Then, over this time interval t, the average velocity is (vo + v)/2. The displacement is the average velocity multiplied by the time interval :
+Fig. 3.15 The average acceleration for three time intervals (a) ∆t1, (b) ∆t2, and (c) ∆t3, (∆t1> ∆t2> ∆t3). (d) In the limit ∆t g0, the average acceleration becomes the acceleration.
+Reprint 2026-27
+PHYSICS 38 ( )2 2 ˆ ˆ 5.0 1.5 1.0 t t t = + + i j
+Therefore, ( ) 2
+5.0 1.5 x t t t = +
+1.0 y t t = +
+Given x (t) = 84 m, t = ?
+5.0 t + 1.5 t 2 = 84 ⇒ ⇒ ⇒ ⇒ ⇒ t = 6 s
+At t = 6 s, y = 1.0 (6)2 = 36.0 m
+Now, the velocity ( )
+d ˆ ˆ 5.0 3.0 2.0
+At t = 6 s, v i j = + 23. ɵ ɵ 0 12.0 speed 2 2 1
+23 12 26 m s−
+= = + ≅ v . ⊳
+3.9 PROJECTILE MOTION
+As an application of the ideas developed in the previous sections, we consider the motion of a projectile. An object that is in flight after being thrown or projected is called a projectile. Such a projectile might be a football, a cricket ball, a baseball or any other object. The motion of a projectile may be thought

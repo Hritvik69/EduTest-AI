@@ -1,0 +1,79 @@
+POLYNOMIALS 11 a cubic polynomial are 2 – x3
+, x3 , 3
+2 , x 3 – x2 + x3
+, 3x3 – 2x2 + x – 1. In fact, the most general form of a cubic polynomial is ax3 + bx2 + cx + d, where, a, b, c, d are real numbers and a  0.
+Now consider the polynomial p(x) = x2 – 3x – 4. Then, putting x = 2 in the polynomial, we get p(2) = 22 – 3 × 2 – 4 = – 6. The value ‘– 6’, obtained by replacing x by 2 in x2 – 3x – 4, is the value of x2 – 3x – 4 at x = 2. Similarly, p(0) is the value of p(x) at x = 0, which is – 4.
+If p(x) is a polynomial in x, and if k is any real number, then the value obtained by replacing x by k in p(x), is called the value of p(x) at x = k, and is denoted by p(k).
+What is the value of p(x) = x2 –3x – 4 at x = –1? We have :
+p(–1) = (–1) 2 –{3 × (–1)} – 4 = 0
+Also, note that p(4) = 4 2 – (3  4) – 4 = 0.
+As p(–1) = 0 and p(4) = 0, –1 and 4 are called the zeroes of the quadratic polynomial x2 – 3x – 4. More generally, a real number k is said to be a zero of a polynomial p(x), if p(k) = 0.
+You have already studied in Class IX, how to find the zeroes of a linear polynomial. For example, if k is a zero of p(x) = 2x + 3, then p(k) = 0 gives us
+2k + 3 = 0, i.e., k = 3
+In general, if k is a zero of p(x) = ax + b, then p(k) = ak + b = 0, i.e., b
+So, the zero of the linear polynomial ax + b is (Constant term)
+Coefficient of
+Thus, the zero of a linear polynomial is related to its coefficients. Does this happen in the case of other polynomials too? For example, are the zeroes of a quadratic polynomial also related to its coefficients?
+In this chapter, we will try to answer these questions. We will also study the division algorithm for polynomials.
+2.2 Geometrical Meaning of the Zeroes of a Polynomial
+You know that a real number k is a zero of the polynomial p(x) if p(k) = 0. But why are the zeroes of a polynomial so important? To answer this, first we will see the geometrical representations of linear and quadratic polynomials and the geometrical meaning of their zeroes.
+Reprint 2026-27
+12 MATHEMATICS
+Consider first a linear polynomial ax + b, a  0. You have studied in Class IX that the graph of y = ax + b is a straight line. For example, the graph of y = 2x + 3 is a straight line passing through the points (– 2, –1) and (2, 7).
+y = 2x + 3 –1 7
+From Fig. 2.1, you can see that the graph of y = 2x + 3 intersects the x - axis mid-way between x = –1 and x = – 2, that is, at the point 3 , 0
+You also know that the zero of
+2x + 3 is 3
+ . Thus, the zero of the polynomial 2x + 3 is the x-coordinate of the point where the graph of y = 2x + 3 intersects the
+In general, for a linear polynomial ax + b, a  0, the graph of y = ax + b is a straight line which intersects the x-axis at exactly one point, namely, , 0
+Therefore, the linear polynomial ax + b, a  0, has exactly one zero, namely, the x-coordinate of the point where the graph of y = ax + b intersects the x-axis.
+Now, let us look for the geometrical meaning of a zero of a quadratic polynomial.
+Consider the quadratic polynomial x2 – 3x – 4. Let us see what the graph* of y = x2 – 3x – 4 looks like. Let us list a few values of y = x2 – 3x – 4 corresponding to a few values for x as given in Table 2.1.
+* Plotting of graphs of quadratic or cubic polynomials is not meant to be done by the students, nor is to be evaluated.
+Fig. 2.1
+Reprint 2026-27
+POLYNOMIALS 13
+Table 2.1 x – 2 –1 0 1 2 3 4 5 y = x2 – 3x – 4 6 0 – 4 – 6 – 6 – 4 0 6
+If we locate the points listed above on a graph paper and draw the graph, it will actually look like the one given in Fig. 2.2.
+In fact, for any quadratic polynomial ax2 + bx + c, a  0, the graph of the corresponding equation y = ax2 + bx + c has one of the two shapes either open upwards like or open downwards like depending on whether a > 0 or a < 0. (These curves are called parabolas.)
+You can see from Table 2.1 that –1 and 4 are zeroes of the quadratic polynomial. Also note from Fig. 2.2 that –1 and 4 are the x-coordinates of the points where the graph of y = x2 – 3x – 4 intersects the x- axis. Thus, the zeroes of the quadratic polynomial x2 – 3x – 4 are x-coordinates of the points where the graph of y = x2 – 3x – 4 intersects the
+This fact is true for any quadratic polynomial, i.e., the zeroes of a quadratic polynomial ax2 + bx + c, a  0, are precisely the x-coordinates of the points where the parabola representing y = ax2 + bx + c intersects the x-axis.
+From our observation earlier about the shape of the graph of y = ax2 + bx + c, the following three cases can happen:
+Fig. 2.2
+Reprint 2026-27
+14 MATHEMATICS
+Case (i) : Here, the graph cuts x-axis at two distinct points A and A.
+The x-coordinates of A and A are the two zeroes of the quadratic polynomial ax2 + bx + c in this case (see Fig. 2.3).
+Fig. 2.3
+Case (ii) : Here, the graph cuts the x-axis at exactly one point, i.e., at two coincident points. So, the two points A and A of Case (i) coincide here to become one point A (see Fig. 2.4).
+Fig. 2.4
+The x-coordinate of A is the only zero for the quadratic polynomial ax2 + bx + c in this case.
+Reprint 2026-27
+POLYNOMIALS 15
+Case (iii) : Here, the graph is either completely above the x-axis or completely below the x-axis. So, it does not cut the x-axis at any point (see Fig. 2.5).
+Fig. 2.5
+So, the quadratic polynomial ax2 + bx + c has no zero in this case.
+So, you can see geometrically that a quadratic polynomial can have either two distinct zeroes or two equal zeroes (i.e., one zero), or no zero. This also means that a polynomial of degree 2 has atmost two zeroes.
+Now, what do you expect the geometrical meaning of the zeroes of a cubic polynomial to be? Let us find out. Consider the cubic polynomial x3 – 4x. To see what the graph of y = x3 – 4x looks like, let us list a few values of y corresponding to a few values for x as shown in Table 2.2.
+Table 2.2 x –2 –1 0 1 2 y = x3 – 4x 0 3 0 –3 0
+Locating the points of the table on a graph paper and drawing the graph, we see that the graph of y = x3 – 4x actually looks like the one given in Fig. 2.6.
+Reprint 2026-27
+16 MATHEMATICS
+We see from the table above that – 2, 0 and 2 are zeroes of the cubic polynomial x3 – 4x. Observe that – 2, 0 and 2 are, in fact, the x-coordinates of the only points where the graph of y = x3 – 4x intersects the x-axis. Since the curve meets the x- axis in only these 3 points, their x- coordinates are the only zeroes of the polynomial.
+Let us take a few more examples. Consider the cubic polynomials x3 and x3 – x2 . We draw the graphs of y = x3 and y = x3 – x2 in Fig. 2.7 and Fig. 2.8 respectively.
+Fig. 2.7 Fig. 2.8
+Fig. 2.6
+Reprint 2026-27
+POLYNOMIALS 17
+Note that 0 is the only zero of the polynomial x3 . Also, from Fig. 2.7, you can see that 0 is the x-coordinate of the only point where the graph of y = x3 intersects the x-axis. Similarly, since x3 – x2 = x2 (x – 1), 0 and 1 are the only zeroes of the polynomial
+. Also, from Fig. 2.8, these values are the x- coordinates of the only points where the graph of y = x3 – x2 intersects the x-axis.
+From the examples above, we see that there are at most 3 zeroes for any cubic polynomial. In other words, any polynomial of degree 3 can have at most three zeroes.
+Remark : In general, given a polynomial p(x) of degree n, the graph of y = p(x)
+intersects the x-axis at atmost n points. Therefore, a polynomial p(x) of degree n has at most n zeroes.
+Example 1 : Look at the graphs in Fig. 2.9 given below. Each is the graph of y = p(x), where p(x) is a polynomial. For each of the graphs, find the number of zeroes of p(x).
+Fig. 2.9
+Solution :
+(i) The number of zeroes is 1 as the graph intersects the x-axis at one point only.
+(ii) The number of zeroes is 2 as the graph intersects the x-axis at two points.
+(iii) The number of zeroes is 3. (Why?)
+Reprint 2026-27

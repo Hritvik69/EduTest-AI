@@ -1,0 +1,38 @@
+9.1 IntroductIon to LIst
+The data type list is an ordered sequence which is mutable and made up of one or more elements. Unlike a string which consists of only characters, a list can have elements of different data types, such as integer, float, string, tuple or even another list. A list is very useful to group together elements of mixed data types.
+Elements of a list are enclosed in square brackets and are separated by comma. Like string indices, list indices also start from 0.
+Example 9.1
+#list1 is the list of six even numbers
+>>> list1 = [2,4,6,8,10,12]
+>>> print(list1)
+[2, 4, 6, 8, 10, 12]
+#list2 is the list of vowels
+>>> list2 = ['a','e','i','o','u']
+>>> print(list2)
+['a', 'e', 'i', 'o', 'u']
+#list3 is the list of mixed data types
+>>> list3 = [100,23.5,'Hello']
+>>> print(list3)
+[100, 23.5, 'Hello']
+#list4 is the list of lists called nested
+>>> list4 =[['Physics',101],['Chemistry',202],
+['Maths',303]]
+>>> print(list4)
+[['Physics', 101], ['Chemistry', 202],
+['Maths', 303]]
+9.1.1 Accessing Elements in a List
+The elements of a list are accessed in the same way as characters are accessed in a string.
+“Measuring programming progress by lines of code is like measuring aircraft building progress by weight.”
+–Bill Gates
+Chapter 9
+In this chapter
+» Introduction to List
+» List Operations
+» Traversing a List
+» List Methods and
+Built-in Functions
+» Nested Lists
+» Copying Lists
+» List as Arguments to Function
+» List Manipulation
+Reprint 2026-27

@@ -1,0 +1,18 @@
+likes chocolates will get much higher utility from a chocolate than some one who is not so fond of chocolates, Also, utility that one individual gets from the commodity can change with change in place and time. For example, utility from the use of a room heater will depend upon whether the individual is in Ladakh or Chennai (place) or whether it is summer or winter (time).
+2.1.1 Cardinal Utility Analysis
+Cardinal utility analysis assumes that level of utility can be expressed in numbers. For example, we can measure the utility derived from a shirt and say, this shirt gives me 50 units of utility. Before discussing further, it will be useful to have a look at two important measures of utility.
+Measures of Utility
+Total Utility: Total utility of a fixed quantity of a commodity (TU) is the total satisfaction derived from consuming the given amount of some commodity x.
+More of commodity x provides more satisfaction to the consumer. TU depends on the quantity of the commodity consumed. Therefore, TUn refers to total utility derived from consuming n units of a commodity x.
+Marginal Utility: Marginal utility (MU) is the change in total utility due to consumption of one additional unit of a commodity. For example, suppose 4 bananas give us 28 units of total utility and 5 bananas give us 30 units of total utility. Clearly, consumption of the 5th banana has caused total utility to increase by 2 units (30 units minus 28 units). Therefore, marginal utility of the 5th banana is 2 units.
+MU5 = TU5 – TU4 = 30 – 28 = 2
+In general, MUn = TUn – TUn-1, where subscript n refers to the nth unit of the commodity
+Total utility and marginal utility can also be related in the following way.
+TUn = MU1 + MU2 + … + MUn-1 + MUn
+This simply means that TU derived from consuming n units of bananas is the sum total of marginal utility of first banana (MU1), marginal utility of second banana (MU2), and so on, till the marginal utility of the nth unit.
+Table No. 2.1 and Figure 2.1 show an imaginary example of the values of marginal and total utility derived from consumption of various amounts of a commodity. Usually, it is seen that the marginal utility diminishes with increase in consumption of the commodity. This happens because having obtained some amount of the commodity, the desire of the consumer to have still more of it becomes weaker. The same is also shown in the table and graph.
+Table 2.1: Values of marginal and total utility derived from consumption of various amounts of a commodity
+9 Theory of Consumer
+Behaviour
+Units Total Utility Marginal Utility
+Reprint 2026-27

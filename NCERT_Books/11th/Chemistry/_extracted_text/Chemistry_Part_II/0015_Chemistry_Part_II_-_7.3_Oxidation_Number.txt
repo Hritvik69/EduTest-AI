@@ -1,0 +1,207 @@
+239 REDOX REACTIONS
+Fig. 7.2 Redox reaction between copper and aqueous solution of silver nitrate occurring in a beaker.
+At equilibrium, chemical tests reveal that both (aq) and Co 2+ (aq) are present at moderate concentrations. In this case, neither the reactants [Co(s) and Ni2+ (aq)] nor the products (aq) and Ni (s)] are greatly favoured.
+This competition for release of electrons incidently reminds us of the competition for release of protons among acids. The similarity suggests that we might develop a table in which metals and their ions are listed on the basis of their tendency to release electrons just as we do in the case of acids to indicate the strength of the acids. As a matter of fact we have already made certain comparisons.
+By comparison we have come to know that zinc releases electrons to copper and copper releases electrons to silver and, therefore, the electron releasing tendency of the metals is in the order: Zn>Cu>Ag. We would love to make our list more vast and design a metal activity series or electrochemical series.
+The competition for electrons between various metals helps us to design a class of cells, named as Galvanic cells in which the chemical reactions become the source of electrical energy. We would study more about these cells in Class XII.
+7.3 OXIDATION NUMBER
+A less obvious example of electron transfer is realised when hydrogen combines with oxygen to form water by the reaction:
+(g) + O2 (g) → 2H2
+O (l) (7.18)
+Though not simple in its approach, yet we can visualise the H atom as going from a neutral (zero) state in H2 to a positive state in
+H 2 O, the O atom goes from a zero state in O2 to a dinegative state in H 2
+O. It is assumed that there is an electron transfer from H to O and consequently H2 is oxidised and O2 is reduced.
+However, as we shall see later, the charge transfer is only partial and is perhaps better described as an electron shift rather than a complete loss of electron by H and gain by
+O. What has been said here with respect to equation (7.18) may be true for a good number of other reactions involving covalent compounds. Two such examples of this class of the reactions are:
+(s) + Cl2 (g) → 2HCl(g) (7.19)
+(g) + 4Cl2 (g) → CCl4 (l) + 4HCl(g) (7.20)
+In order to keep track of electron shifts in chemical reactions involving formation of covalent compounds, a more practical method of using oxidation number has been developed. In this method, it is always assumed that there is a complete transfer of electron from a less electronegative atom to a more electonegative atom. For example, we rewrite equations (7.18 to 7.20) to show charge on each of the atoms forming part of the reaction :
+0 0 +1 –2 (g) + O2 (g) → 2H 2
+O (l) (7.21)
+0 0 +1 –1
+H2 (s) + Cl2 (g) → 2HCl(g) (7.22)
+–+1 0 + –1 +1 –1 (g) + 4Cl2 (g) → CCl4 (l) +4HCl(g) (7.23)
+It may be emphasised that the assumption of electron transfer is made for book-keeping purpose only and it will become obvious at a later stage in this unit that it leads to the simple description of redox reactions.
+Oxidation number denotes the oxidation state of an element in a compound ascertained according to a set of rules formulated on the basis that electron pair
+Reprint 2026-27
+240 CHEMISTRY in a covalent bond belongs entirely to more electronegative element.
+It is not always possible to remember or make out easily in a compound/ion, which element is more electronegative than the other. Therefore, a set of rules has been formulated to determine the oxidation number of an element in a compound/ion.
+If two or more than two atoms of an element are present in the molecule/ion such as
+2–, the oxidation number of the atom of that element will then be the average of the oxidation number of all the atoms of that element. We may at this stage, state the rules for the calculation of oxidation number.
+These rules are:
+1. In elements, in the free or the uncombined state, each atom bears an oxidation number of zero. Evidently each atom in
+, Na, Mg, Al has the oxidation number zero.
+2. For ions composed of only one atom, the oxidation number is equal to the charge on the ion. Thus Na+ ion has an oxidation number of +1, Mg2+ ion, +2, Fe3+ ion, +3,
+Cl– ion, –1, O2– ion, –2 and so on ,n tKeir compounds all alkali metals have oxidation number of +1, and all alkaline earth metals have an oxidation number of +2. Aluminium is regarded to have an oxidation number of
++3 in all its compounds.
+3. The oxidation number of oxygen in most coPSoXnds is –2 HoZever, Ze coPe across two kinds of exceptions here.
+One arises in the case of peroxides and superoxides, the compounds of oxygen in which oxygen atoms are directly linked to each other. While in peroxides (e.g., H 2
+), each oxygen atom is assigned an oxidation nXPEer oI –1, in sXSeroxides (e.g., KO 2 , RbO 2 ) each oxygen atom is assigned an oxidation nXPEer oI –(ó)
+The second exception appears rarely, i.e.
+when oxygen is bonded to fluorine. In such compounds e.g., oxygen difluoride
+) and dioxygen difluoride (O2 oxygen is assigned an oxidation number of +2 and +1, respectively. The number assigned to oxygen will depend upon the bonding state of oxygen but this number would now be a positive figure only.
+4. The oxidation number of hydrogen is +1, except when it is bonded to metals in binary compounds (that is compounds containing two elements). For example, in LiH, NaH, and CaH2, its oxidation nXPEer is –1
+5. In all its compounds, fluorine has an oxidation nXPEer oI –1 OtKer Kalogens (Cl,
+Br, and I) also have an oxidation number oI –1, ZKen tKe\ occXr as Kalide ions in their compounds. Chlorine, bromine and iodine when combined with oxygen, for example in oxoacids and oxoanions, have positive oxidation numbers.
+6. The algebraic sum of the oxidation number of all the atoms in a compound must be zero. In polyatomic ion, the algebraic sum of all the oxidation numbers of atoms of the ion must equal the charge on the ion.
+Thus, the sum of oxidation number of three oxygen atoms and one carbon atom in the carbonate ion, (CO3
+)2– PXst eqXal –2
+By the application of above rules, we can find out the oxidation number of the desired element in a molecule or in an ion. It is clear that the metallic elements have positive oxidation number and nonmetallic elements have positive or negative oxidation number.
+The atoms of transition elements usually display several positive oxidation states. The highest oxidation number of a representative element is the group number for the first two groups and the group number minus 10 (following the long form of periodic table) for the other groups. Thus, it implies that the highest value of oxidation number exhibited by an atom of an element generally increases across the period in the periodic table. In the third period, the highest value of oxidation number changes from 1 to 7 as indicated below in the compounds of the elements.
+A term that is often used interchangeably with the oxidation number is the oxidation state. Thus in CO 2 , the oxidation state of carbon is +4, that is also its oxidation number and similarly the oxidation state as well as oxidation nXPEer oI ox\gen is – 2 7Kis implies that the oxidation number denotes the oxidation state of an element in a compound.
+Reprint 2026-27
+241 REDOX REACTIONS
+The oxidation number/state of a metal in a compound is sometimes presented according to the notation given by German chemist,
+Alfred Stock. It is popularly known as Stock notation. According to this, the oxidation number is expressed by putting a Roman numeral representing the oxidation number in parenthesis after the symbol of the metal in the molecular formula. Thus aurous chloride and auric chloride are written as Au(I)Cl and
+Au(III)Cl3 . Similarly, stannous chloride and stannic chloride are written as Sn(II)Cl2 and
+Sn(IV)Cl4
+. This change in oxidation number implies change in oxidation state, which in turn helps to identify whether the species is present in oxidised form or reduced form.
+Thus, Hg2 (I)Cl2 is the reduced form of Hg(II) Cl2
+Problem 7.3
+Using Stock notation, represent the following compounds :HAuCl4
+, CuI, CuO, MnO and MnO2
+Solution
+By applying various rules of calculating the oxidation number of the desired element in a compound, the oxidation number of each metallic element in its compound is as follows:
+HAuCl4 → Au has 3
+O → Tl has 1
+FeO → Fe has 2
+O3 → Fe has 3
+CuI → Cu has 1
+CuO → Cu has 2
+MnO → Mn has 2
+MnO2 → Mn has 4
+Therefore, these compounds may be represented as:
+HAu(III)Cl 4 , Tl 2 (I)O, Fe(II)O, Fe 2 (III)O 3 ,
+Cu(I)I, Cu(II)O, Mn(II)O, Mn(IV)O 2.
+The idea of oxidation number has been invariably applied to define oxidation, reduction, oxidising agent (oxidant), reducing agent (reductant) and the redox reaction. To summarise, we may say that:
+Oxidation: An increase in the oxidation number of the element in the given substance.
+Reduction : A decrease in the oxidation number of the element in the given substance.
+Oxidising agent: A reagent which can increase the oxidation number of an element in a given substance. These reagents are called as oxidants also.
+Reducing agent: A reagent which lowers the oxidation number of an element in a given substance. These reagents are also called as reductants.
+Redox reactions: Reactions which involve change in oxidation number of the interacting species.
+Problem 7.4
+Justify that the reaction:
+O(s) + Cu2
+S(s) → 6Cu(s) + SO2 is a redox reaction. Identify the species oxidised/reduced, which acts as an oxidant and which acts as a reductant.
+Solution
+Let us assign oxidation number to each of the species in the reaction under examination. This results into:
++1 –2 +1 –2 0 + –2
+O(s) + Cu2
+S(s) → 6Cu(s) + SO2
+We therefore, conclude that in this reaction copper is reduced from +1 state to zero oxidation state and sulphur is oxidised IroP –2 state to + state 7Ke above reaction is thus a redox reaction.
+Group 1 2 13 14 15 16 17
+Element Na Mg Al Si P S Cl
+Compound NaCl MgSO 4 AlF3 SiCl4 P4 O10 SF6 HClO
+Highest oxidation number state of the group element
++1 +2 +3 +4 +5 +6 +7
+Reprint 2026-27
+242 CHEMISTRY
+Further, Cu 2
+O helps sulphur in Cu 2 S to increase its oxidation number, therefore,
+Cu(I) is an oxidant; and sulphur of Cu 2 helps copper both in Cu 2 S itself and
+O to decrease its oxidation number;
+therefore, sulphur of Cu 2
+S is reductant.
+7.3.1 Types of Redox Reactions
+1. Combination reactions
+A combination reaction may be denoted in the manner:
+A + B → C
+Either A and B or both A and B must be in the elemental form for such a reaction to be a redox reaction. All combustion reactions, which make use of elemental dioxygen, as well as other reactions involving elements other than dioxygen, are redox reactions. Some important examples of this category are:
+0 0 + –2
+C(s) + O2 (g) CO2 (g) (7.24)
+0 0 +2 –3
+30g(s) + 12 (s) (7.25)
+–+1 0 + –2 +1 –2 (g) + 2O2 (g) CO2 (g) + 2H2
+2. Decomposition reactions
+Decomposition reactions are the opposite of combination reactions. Precisely, a decomposition reaction leads to the breakdown of a compound into two or more components at least one of which must be in the elemental state. Examples of this class of reactions are:
++1 –2 0 0
+O (l) 2H2 (g) + O2 (g) (7.26)
++1 –1 0 0
+21aH (s) 21a (s) + H2 (g) (7.27)
++1 +5 –2 +1 –1 0
+2KClO3 (s) 2.Cl (s) + 3O2 (g) (7.28)
+It may carefully be noted that there is no change in the oxidation number of hydrogen in methane under combination reactions and that of potassium in potassium chlorate in reaction (7.28). This may also be noted here that all decomposition reactions are not redox reactions. For example, decomposition of calcium carbonate is not a redox reaction.
++2 + –2 +2 –2 + –2
+CaCO3 (s) CaO(s) + CO2
+3. Displacement reactions
+In a displacement reaction, an ion (or an atom) in a compound is replaced by an ion (or an atom) of another element. It may be denoted as:
+X + YZ → XZ + Y
+D i s p l a c e m e n t r e a c t i o n s f i t i n t o t w o categories: metal displacement and non-metal displacement.
+(a) Metal displacement: A metal in a compound can be displaced by another metal in the uncombined state. We have already discussed about this class of the reactions
+Xnder section 721 0etal disSlacePent r e a c t i o n s f i n d m a n y a p p l i c a t i o n s i n metallurgical processes in which pure metals are obtained from their compounds in ores. A few such examples are:
++2 + –2 0 0 +2 + –2 (aq) + Zn (s) → Cu(s) + ZnSO4 (aq)
++5 –2 0 0 +2 –2
+O5 (s) + 5Ca (s) 2V (s) + 5CaO (s)
++ –1 0 0 +2 –1
+TiCl4 (l) + 20g (s) 7i (s) + 2 0gCl2 (s)
++3 –2 0 +3 –2 0
+O3 (s) + 2 Al (s) Al2
+O3 (s) + 2Cr(s)
+In each case, the reducing metal is a better reducing agent than the one that is being reduced which evidently shows more capability to lose electrons as compared to the one that is reduced.
+(b) Non-metal displacement: The non- metal displacement redox reactions include hydrogen displacement and a rarely occurring reaction involving oxygen displacement.
+Reprint 2026-27
+243 REDOX REACTIONS
+All alkali metals and some alkaline earth metals (Ca, Sr, and Ba) which are very good reductants, will displace hydrogen from cold
+0 +1 –2 +1 –2 +1 0
+2Na(s) + 2H2
+O(l) → 2NaOH(aq) + H 2
+0 +1 –2 +2 –2 +1 0
+Ca(s) + 2H2
+O(l) → Ca(OH) 2 (aq) + H2
+Less active metals such as magnesium and iron react with steam to produce dihydrogen gas:
+0 +1 –2 +2 –2 +1 0
+Mg(s) + 2H2
+O(l) Mg(OH)2 (s) + H2
+0 +1 –2 +3 –2 0
+2Fe(s) + 3H2
+O(l) Fe2 (s) + 3H2 (g) (7.36)
+Many metals, including those which do not react with cold water, are capable of displacing hydrogen from acids. Dihydrogen from acids may even be produced by such metals which do not react with steam. Cadmium and tin are the examples of such metals. A few examples for the displacement of hydrogen from acids
+0 +1 –1 +2 –1 0
+Zn(s) + 2HCl(aq) → ZnCl2 (aq) + H2 (g)
+0 +1 –1 +2 –1 0
+Mg (s) + 2HCl (aq) → MgCl2 (aq) + H2 (g)
+0 +1 –1 +2 –1 0
+Fe(s) + 2HCl(aq) → FeCl 2 (aq) + H2
+Reactions (7.37 to 7.39) are used to prepare dihydrogen gas in the laboratory.
+Here, the reactivity of metals is reflected in the rate of hydrogen gas evolution, which is the slowest for the least active metal Fe, and the fastest for the most reactive metal, Mg.
+Very less active metals, which may occur in the native state such as silver (Ag), and gold (Au) do not react even with hydrochloric acid.
+In section (7.2.1) we have already discussed tKat tKe Petals – zinc (=n), coSSer (CX) and silver (Ag) through tendency to lose electrons show their reducing activity in the order Zn>
+Cu>Ag. Like metals, activity series also exists for the halogens. The power of these elements as oxidising agents decreases as we move down from fluorine to iodine in group 17 of the periodic table. This implies that fluorine is so reactive that it can replace chloride, bromide and iodide ions in solution. In fact, fluorine is so reactive that it attacks water and displaces the oxygen of water :
++1 –2 0 +1 –1 0
+O (l) + 2F 2 (g) → 4HF(aq) + O 2 (g) (7.40)
+It is for this reason that the displacement reactions of chlorine, bromine and iodine using fluorine are not generally carried out in aqueous solution. On the other hand, chlorine can displace bromide and iodide ions in an aqueous solution as shown below:
+0 +1 –1 +1 –1 0
+Cl2 (g) + 2KBr (aq) → 2 KCl (aq) + Br2 (l)
+0 +1–1 +1 –1 0
+Cl2 (g) + 2KI (aq) → 2 KCl (aq) + I2 (s)
+As Br2 and I2 are coloured and dissolve in CCl4 can easily be identified from the colour of the solution. The above reactions can be written in ionic form as:
+0 –1 –1 0
+Cl2 (g) + 2Br– (aq) → 2Cl– (aq) + Br2 (l) (7.41a)
+0 –1 –1 0
+Cl2 (g) + 2I– (aq) → 2Cl– (aq) + I2 (s) (7.42b)
+Reactions (7.41) and (7.42) form the basis of identifying Br– and I– in the laboratory through the test popularly known as ‘Layer
+Test’. It may not be out of place to mention here that bromine likewise can displace iodide ion in solution:
+0 –1 –1 0
+Br2 (l) + 2I – (aq) → 2Br– (aq) + I2 (s) (7.43)
+The halogen displacement reactions have a direct industrial application. The recovery of halogens from their halides requires an oxidation process, which is represented by:
+2X– → X2 + 2e– (7.44)
+here X denotes a halogen element. Whereas chemical means are available to oxidise Cl–,
+Br– and I–, as fluorine is the strongest oxidising
+Reprint 2026-27
+244 CHEMISTRY agent; there is no way to convert F– ions to F2 by chemical means. The only way to achieve
+F 2 from F– is to oxidise electrolytically, the details of which you will study at a later stage.
+4. Disproportionation reactions
+Disproportionation reactions are a special type of redox reactions. In a disproportionation reaction an element in one oxidation state is simultaneously oxidised and reduced.
+One of the reacting substances in a disproportionation reaction always contains an element that can exist in at least three oxidation states. The element in the form of reacting substance is in the intermediate oxidation state; and both higher and lower oxidation states of that element are formed in the reaction. The decomposition of hydrogen peroxide is a familiar example of the reaction, where oxygen experiences disproportionation.
++1 –1 +1 –2 0
+O2 (aq) → 2H2
+O(l) + O2 (g) (7.45)
+Here the oxygen of peroxide, which is present in –1 state, is converted to zero oxidation state in O 2 and decreases to –2 oxidation state in
+Phosphorous, sulphur and chlorine undergo disproportionation in the alkaline medium as shown below :
+P4(s) + 3OH– (aq)+ 3H2
+O(l) → PH3 (g) + 3H2 (s) + 12 OH– (aq) → 4S2– (aq) + 2S2
+Cl2 (g) + 2 OH– (aq) → ClO– (aq) + Cl– (aq) +
+The r eaction (7.48) describes the formation of household bleaching agents.
+The hypochlorite ion (ClO–) formed in the reaction oxidises the colour-bearing stains of the substances to colourless compounds.
+It is of interest to mention here that whereas bromine and iodine follow the same trend as exhibited by chlorine in reaction (7.48), fluorine shows deviation from this behaviour when it reacts with alkali. The reaction that takes place in the case of fluorine is as follows:
+(g) + 2OH–(aq) → 2 F

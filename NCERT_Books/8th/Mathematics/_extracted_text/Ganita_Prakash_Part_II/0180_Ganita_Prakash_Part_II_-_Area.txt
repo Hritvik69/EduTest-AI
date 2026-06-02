@@ -1,0 +1,145 @@
+Ganita Prakash | Grade 8 | Part-II
+6. [Śulba-Sūtras] Give a method to obtain a rectangle of the same area as a given triangle.
+7. [Śulba-Sūtras] An isosceles triangle can be converted into a rectangle by dissection in a simpler way. Can you find out how to do it?
+[Hint: Show that triangles ∆ADB and ∆ADC can be made into halves of a rectangle. Figure out how they should be assembled to get a rectangle.
+Use cut-outs if necessary.]
+8. [Śulba-Sūtras] Give a method to convert a rectangle into an isosceles triangle by dissection.
+9. Which has greater area — an equilateral triangle or a square of the same sidelength as the triangle? Which has greater area — two identical equilateral triangles together or a square of the same sidelength as the triangle? Give reasons.
+Since a rhombus is a parallelogram, the area formula for a parallelogram holds for a rhombus as well. However, the additional properties of a rhombus give us another method to transform a rhombus into a rectangle of the same area by dissection. This method occurs in one of the Śulba-Sūtras.
+Try working this out!
+Since ABCD is a rhombus, all its sides have equal length, and the diagonals are perpendicular bisectors of each other. Therefore, ∆ABD and ∆CBD are isosceles triangles. Each of them can be transformed into a rectangle of equal area, and the two rectangles can then be joined to form a single rectangle. This rectangle, say WXYZ, has the same area as the rhombus
+What are the sidelengths of the rectangle WXYZ?
+From the dissection, we can see that
+XW = length of the diagonal AC, and
+WZ = half the length of the other diagonal BD.
+Thus, we have
+Area of rhombus ABCD = Area of rectangle WXYZ
+= XW × WZ
+= AC × BD
+2 × AC × BD
+Therefore,
+Area of a rhombus = 1
+2 × product of diagonals.
+Area of rhombus ABCD can also be determined by finding the areas of
+∆ADB and ∆CDB. What formula does this give us?
+Since the diagonals are perpendicular to each other,
+Area ( ∆ADB) = 1
+2 × AO × BD, and
+Area ( ∆CDB) = 1
+2 × CO × BD, and
+Area of rhombus ABCD = Area ( ∆ADB) + Area ( ∆CDB).
+Ganita Prakash | Grade 8 | Part-II
+Simplify the expression to show that we get the same formula for the area of a rhombus in terms of its diagonals.
+Trapezium
+Find the areas of the following trapeziums by breaking them into figures whose areas can be computed.
+One way of finding the area of a trapezium is by breaking it into a rectangle and triangles.
+Consider a trapezium WXYZ with WX ‖ ZY. Find its area.
+Construct WM ZY ^ , and XN ZY ^ (WM and XN perpendicular to ZY).
+Is WXNM a rectangle?
+∠MWX = ∠NXW = 90°, since WX‖ZY and the interior angles on the same side of a transversal (WM and XN) add up to 180°. Therefore,
+WXNM is a rectangle.
+Area WXYZ = Area (∆WMZ) + Area WXNM + Area (∆XNY)
+2 × MZ × WM + WX × WM + 1
+2 × NY × XN
+Let us assign letter numbers to the lengths that we need to find the area of the trapezium. Let MZ = x, WM = XN = h, WX = a, NY = y.
+So we get
+Area WXYZ = 1
+2 hx + ha + 1
+2 x + a + 1
+= h(x + y + 2a
+2 h(x + y + 2a).
+We have taken the length of one of the parallel sides as a. Let b be the length of the other parallel side.
+Can the area of the trapezium be expressed in terms of a, b and h?
+To replace x + y in the area expression with a and b, observe that b = x + y + a. Subtracting a from both sides, we get x + y = b – a.
+Using this, we get
+Area WXYZ = 1
+2 h(b – a + 2a)
+2 h(a + b).
+Therefore,
+Area of a trapezium = 1
+2 × height × sum of the parallel sides.
+Will this formula hold for a trapezium that looks like this?
+There are different ways of approaching this, which are sketched below. Complete the arguments.
+Approach 1: Rectangle and Triangles
+Area ABCD = Area ABED + Area ∆BEC
+Area ABED = Area ABEF – Area ∆AFD
+Approach 2: Parallelogram and Triangle
+Draw BG ‖ AD
+Will Approach 2 work for any type of trapezium? Math
+Ganita Prakash | Grade 8 | Part-II
+Finding the Area Using Two Copies of the Trapezium
+There is another interesting way of finding the area of a trapezium.
+Consider two copies of the given trapezium in which AB‖CD. Rotate the second copy as shown.
+What figure will we get when the two trapeziums are joined along BC?
+The possibilities are either a 6-sided figure or a 4-sided figure (quadrilateral).
+Possibilities
+6-sided figure
+Quadrilateral
+We can rule out the first possibility by looking at the sum of angles x and y.
+Since AB ‖ CD, we have x + y = 180, since they are internal angles along the same side of the transversal (BC). So ABD́ and A ́ CD are straight lines.
+Therefore, the resulting figure is a quadrilateral.
+What type of a quadrilateral is this?
+Let us look at the other two angles of the trapezium.
+We have u + v = 180. Therefore, AD‖D́ A ́ , since the sum of the internal angles along the same side of the transversal A ́ D is 180°. Since we already have AD́ ‖ A ́ D, the quadrilateral AD́ A ́ D is actually a parallelogram.
+Area of the trapezium = 1
+2 × Area of the parallelogram
+2 h(a + b).
+Figure it Out
+1. Find the area of a rhombus whose diagonals are 20 cm and 15 cm.
+2. Give a method to convert a rectangle into a rhombus of equal area using dissection.
+3. Find the areas of the following figures:
+4. [Śulba-Sūtras] Give a method to convert an isosceles trapezium to a rectangle using dissection.
+5. Here is one of the ways to convert trapezium ABCD into a rectangle
+EFGH of equal area —
+Given the trapezium ABCD, how do we find the vertices of the rectangle EFGH?
+[Hint: If ∆AHI ≅ ∆DGI and ∆BEJ ≅ ∆CFJ, then the trapezium and rectangle have equal areas.]
+Ganita Prakash | Grade 8 | Part-II
+6. Using the idea of converting a trapezium into a rectangle of equal area, and vice versa, construct a trapezium of area
+144 cm2.
+7. A regular hexagon is divided into a trapezium, an equilateral triangle, and a rhombus, as shown. Find the ratio of their areas.
+8. ZYXW is a trapezium with ZY‖WX. A is the midpoint of XY. Show that the area of the trapezium ZYXW is equal to the area of ∆ZWB.
+Areas in Real Life
+What do you think is the area of an A4 sheet?
+Its sidelengths are 21 cm and 29.7 cm. Now find its area.
+What do you think is the area of the tabletop that you use at school or at home? You could perhaps try to visualise how many A4 sheets can fit on your table.
+The dimensions of furniture like tables and chairs are sometimes measured in inches (in) and feet (ft).
+1 in = 2.54 cm
+1 ft = 12 in
+Express the following lengths in centimeters:
+(i) 5 in (ii) 7.4 in
+Express the following lengths in inches:
+(i) 5.08 cm (ii) 11.43 cm
+How many cm2 is 1 in2 ?
+1 in 2.54 cm
+So, 1 in2 = 2.542 cm2 = 6.4516 cm2.
+How many cm2 is 10 in2 ?
+10 in2 = 10 × 6.4516 cm2 = 64.516 cm2.
+Convert 161.29 cm2 to in2.
+Every 6.4516 cm2 gives an in2. Hence,
+161.29 cm2 = 161.29
+6.4516 in2.
+Evaluate the quotient.
+What do you think is the area of your classroom?
+Areas of classroom, house, etc., are generally measured in ft2 or m2.
+How many in2 is 1 ft2 ?
+What do you think is the area of your school? Make an estimate and compare it with the actual data.
+Larger areas of land are also measured in acres.
+1 acre = 43,560 ft2.
+Besides these units, different parts of India use different local units for measuring area, such as bigha, gaj, katha, dhur, cent, ankanam, etc.
+Find out the local unit of area measurement in your region.
+What do you think is the area of your village/town/city? Make an estimate and compare it with the actual data.
+Larger areas are measured in km2.
+How many m2 is a km2 ?
+How many times is your village/town/city bigger than your school?
+Find the city with the largest area in (i) India, and (ii) the world.
+Find the city with the smallest area in (i) India, and (ii) the world.
+y Area of a triangle = 1
+2 × base × height.
+y The area of any polygon can be evaluated by breaking it into triangles.
+y Area of a parallelogram = base × height.
+y Area of a rhombus = 1
+2 × product of its diagonals.
+y Area of a trapezium = 1
+2 × height × sum of parallel sides.
+LEARNING MATERIAL SHEETS
+Isometric Grid

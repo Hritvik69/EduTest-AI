@@ -1,0 +1,55 @@
+S orting 69
+Index 0 1 2 3 4 5
+8 7 13 1 -9 4
+Comparison in Pass 1
+7 13 1 -9 4
+7 8 13 1 -9 4
+No Change
+7 8 13 1 -9 4
+7 8 1 13 -9 4
+7 8 1 -9 13 4
+7 8 1 -9 4 13
+Comparison in Pass 2
+7 8 1 -9 4 13
+7 1 8 -9 4 13
+7 1 -9 8 4 13
+7 1 -9 4 8 13
+No Change
+Comparison in Pass 3
+7 1 -9 4 8 13
+1 -9 7 4 8 13
+1 -9 4 7 8 13
+Comparison in Pass 4
+1 -9 4 7 8 13
+-9 1 4 7 8 13
+No Change
+-9 1 4 7 8 13
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 70
+Algorithm 5.1 shows the steps followed for the bubble sort that takes numList as a list of n elements, and sorts the list in ascending order:
+Algorithm 5.1: Bubble Sort
+BUBBLESORT( numList, n)
+Step 1: SET i = 0
+Step 2: WHILE i< n REPEAT STEPS 3 to 8
+Step 3: SET j = 0
+Step 4: WHILE j< n-i-1,REPEAT STEPS 5 to 7
+Step 5: IF numList[j] > numList[j+1] THEN
+Step 6: swap(numList[j],numList[j+1])
+Step 7: SET j=j+1
+Step 8: SET i=i+1
+Comparison in Pass 5
+Indicates elements to be swapped
+Indicates elements already sorted
+-9 1 4 7 8 13
+Figure 5.1: Comparisons done in different passes of Bubble sort
+Program 5-1 Implementation of bubble sort using Python.
+def bubble_Sort(list1):
+n = len(list1)
+for i in range(n): # Number of passes for j in range(0, n-i-1):
+# size -i-1 because last i elements are already sorted
+#in previous passes if list1[j] > list1[j+1] :
+# Swap element at jth position with (j+1)th position list1[j], list1[j+1] = list1[j+1], list1[j] numList = [8, 7, 13, 1, -9, 4] bubble_Sort(numList)
+Activity 5.1
+Algorithm 5.1 sorts a list in ascending order.
+Write a bubble sort algorithm to sort a list in descending
+Reprint 2026-27

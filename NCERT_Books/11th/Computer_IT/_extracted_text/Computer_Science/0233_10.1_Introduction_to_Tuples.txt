@@ -1,0 +1,52 @@
+T uples and dicTionaries 221 (h) Delete the item from the dictionary corresponding to the key 9
+>>> del ODD[9]
+{1: 'One', 3: 'Three', 5: 'Five', 7: 'Seven'}
+Program 10-6 Write a program to enter names of employees and their salaries as input and store them in a dictionary.
+#Program 10-6
+#Program to create a dictionary which stores names of the employee
+#and their salary num = int(input("Enter the number of employees whose data to be stored: "))
+count = 1 employee = dict() #create an empty dictionary while count <= num:
+name = input("Enter the name of the Employee: ")
+salary = int(input("Enter the salary: "))
+employee[name] = salary count += 1 print("\n\nEMPLOYEE_NAME\tSALARY")
+for k in employee:
+print(k,'\t\t',employee[k])
+Enter the number of employees to be stored: 5
+Enter the name of the Employee: 'Tarun'
+Enter the salary: 12000
+Enter the name of the Employee: 'Amina'
+Enter the salary: 34000
+Enter the name of the Employee: 'Joseph'
+Enter the salary: 24000
+Enter the name of the Employee: 'Rahul'
+Enter the salary: 30000
+Enter the name of the Employee: 'Zoya'
+Enter the salary: 25000
+EMPLOYEE_NAME SALARY
+'Tarun' 12000
+'Amina' 34000
+'Joseph' 24000
+'Rahul' 30000
+'Zoya' 25000
+Program 10-7 Write a program to count the number of times a character appears in a given
+#Program 10-7
+#Count the number of times a character appears in a given string
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 222 st = input("Enter a string: ")
+dic = {} #creates an empty dictionary for ch in st:
+if ch in dic: #if next character is already in the dictionary dic[ch] += 1 dic[ch] = 1 #if ch appears for the first time for key in dic:
+print(key,':',dic[key])
+Enter a string: HelloWorld
+Program 10-8 Write a function to convert a number entered by the user into its corresponding number in words. For example, if the input is 876 then the output should be
+‘Eight Seven Six’.
+# Program 10-8
+# Write a function to convert number into corresponding number in def convert(num):
+#numberNames is a dictionary of digits and corresponding number numberNames = {0:'Zero',1:'One',2:'Two',3:'Three',4:'Four',\
+5:'Five',6:'Six',7:'Seven',8:'Eight',9:'Nine'} result = '' for ch in num:
+key = int(ch) #converts character to integer value = numberNames[key] result = result + ' ' + value return result num = input("Enter any number: ") #number is stored as string result = convert(num)
+print("The number is:",num)
+print("The numberName is:",result)
+Enter any number: 6512
+The number is: 6512
+The numberName is: Six Five One Two
+Reprint 2026-27

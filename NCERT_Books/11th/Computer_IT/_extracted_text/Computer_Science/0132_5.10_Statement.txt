@@ -1,0 +1,16 @@
+Computer SCienCe – ClaSS xi 120
+Following is a checklist of good documentation
+• Objective of the program is clearly stated in the beginning.
+• Objective of each function is clearly mentioned in the beginning of each function.
+• Comments are inserted at the proper place so as to enhance the understandability and readability of the program.
+(Note: Over commenting doesn’t help)
+• Variables and function names are meaningful and appropriate.
+• Single letter variable names are not used.
+• Program name is meaningful.
+(Note: It is not proper to use your name as program name, for example, ‘raman. py’ or ‘namya.py’ to denote your program code. It is more appropriate to use the program name as ‘bankingProject.py’ for a banking related program or ‘admProcess’ for an admission related program.)
+• Program code is properly indented.
+• Same naming conventions are used throughout the program.
+(Note: Some of the naming conventions are firstNum, first_num, to denote the variable having first number).
+Let’s do this exercise for our peer’s case studies as well and provide a feedback to them.
+A relevant peer feedback helps in improving the documentation of the projects. It also helps in identifying our mistakes and enriches us with better ideas used by others.
+Reprint 2026-27

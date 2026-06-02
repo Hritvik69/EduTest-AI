@@ -1,0 +1,93 @@
+78 MATHEMATICS
+4.3.3 Multiplication of two complex numbers Let z1 = a + ib and z2 = c + id be any two complex numbers. Then, the product z1 z2 is defined as follows:
+z1 z2 = (ac – bd) + i(ad + bc)
+For example, (3 + i5) (2 + i6) = (3 × 2 – 5 × 6) + i(3 × 6 + 5 × 2) = – 24 + i28
+The multiplication of complex numbers possesses the following properties, which we state without proofs.
+(i) The closure law The product of two complex numbers is a complex number, the product z1 z2 is a complex number for all complex numbers z1 and z2.
+(ii) The commutative law For any two complex numbers z1 and z2, z1 z2 = z2 z1 (iii) The associative law For any three complex numbers z1, z2, z3, (z1 z2) z3 = z1 (z2 z3).
+(iv) The existence of multiplicative identity There exists the complex number
+1 + i 0 (denoted as 1), called the multiplicative identity such that z.1 = z, for every complex number z.
+(v) The existence of multiplicative inverse For every non-zero complex number z = a + ib or a + bi(a ≠ 0, b ≠ 0), we have the complex number
++ + (denoted by 1 z or z–1 ), called the multiplicative inverse of z such that
+1 1 z. z = (the multiplicative identity).
+(vi) The distributive law For any three complex numbers z1, z2, z3, (a) z1 (z2 + z3) = z1 z2 + z1 z3 (b) (z1 + z2) z3 = z1 z3 + z2 z3
+4.3.4 Division of two complex numbers Given any two complex numbers z1 and z2, where 2 0 z ≠ , the quotient 1 z is defined by
+For example, let z1 = 6 + 3i and z2 = 2 – i (6 3 ) 2
+= + ×  
+−   = ( ) 6 3i + ( )
+( )2 2 2 2
+  + − + −  
+Reprint 2026-27
+COMPLEX NUMBERS AND QUADRATIC EQUATIONS 79
+  = ( ) ( )
+12 3 6 6 9 12 i i  − + +  = +  
+4.3.5 Power of i we know that ( )3 2 1 i i i i i = = − = − , ( ) ( )
+2 2 4 2 1 1 i i = = − =
+2 2 5 2 1 i i i i i = = − = , ( ) ( )
+3 3 6 2 1 1 i i = = − = − , etc.
+Also, we have 1 2
+= × = = − = = = −
+= = × = = = = =
+In general, for any integer k, i4k = 1, i4k + 1 = i, i4k + 2 = –1, i4k + 3 = – i
+4.3.6 The square roots of a negative real number
+Note that i2 = –1 and ( – i)2 = i2 = – 1
+Therefore, the square roots of – 1 are i, – i. However, by the symbol 1 − , we would mean i only.
+Now, we can see that i and –i both are the solutions of the equation x2 + 1 = 0 or x2 = –1.
+Similarly ( ) ( )
+3 3 i = i2 = 3 (– 1) = – 3
+3 i − = ( )2
+3 − i2 = – 3
+Therefore, the square roots of –3 are 3 i and 3 i − .
+Again, the symbol 3 − is meant to represent 3 i only, i.e., 3 − = 3 i .
+Generally, if a is a positive real number, a − = 1 a − = a i ,
+We already know that a b × = ab for all positive real number a and b. This result also holds true when either a > 0, b < 0 or a < 0, b > 0. What if a < 0, b < 0?
+Let us examine.
+Note that
+Reprint 2026-27
+80 MATHEMATICS ( ) ( )2 1 1 1 1 i = − − = − − (by assuming a b × = ab for all real numbers)
+= 1 = 1, which is a contradiction to the fact that = − 2 1 i .
+Therefore, a b ab × ≠ if both a and b are negative real numbers.
+Further, if any of a and b is zero, then, clearly, a b ab × = = 0.
+4.3.7 Identities We prove the following identity ( )2 2 2
+1 2 1 2 1 2 2 z z z z z z + = + + , for all complex numbers z1 and z2.
+Proof We have, (z1 + z2)2 = (z1 + z2) (z1 + z2),
+= (z1 + z2) z1 + (z1 + z2) z2 (Distributive law)
+1 2 1 1 2 2 z z z z z z + + + (Distributive law)
+1 1 2 1 2 2 z z z z z z + + + (Commutative law of multiplication)
+1 1 2 2 2 z z z z + +
+Similarly, we can prove the following identities:
+(i) ( )2 2 2
+1 2 1 1 2 2 2 z z z z z z − = − + (ii) ( )3 3 2 2 3
+1 2 1 1 2 1 2 2 3 3 z z z z z z z z + = + + + (iii) ( )3 3 2 2 3
+1 2 1 1 2 1 2 2 3 3 z z z z z z z z − = − + − (iv) ( ) ( )2 2
+1 2 1 2 1 2 z – z z z z – z = +
+In fact, many other identities which are true for all real numbers, can be proved to be true for all complex numbers.
+Example 2 Express the following in the form of a + bi:
+(i) ( ) 1
+  (ii) ( ) ( ) 2 i i −
+Solution (i) ( ) 1
+  = 2 5 (ii) ( ) ( ) 3
+  = 5 1
+2 8 8 8 i × ×
+× × = ( )2
+Reprint 2026-27
+COMPLEX NUMBERS AND QUADRATIC EQUATIONS 81
+Example 3 Express (5 – 3i)3 in the form a + ib.
+Solution We have, (5 – 3i)3 = 53 – 3 × 52 × (3i) + 3 × 5 (3i)2 – (3i)3
+= 125 – 225i – 135 + 27i = – 10 – 198i.
+Example 4 Express ( )( ) 3 2 2 3 i − + − − in the form of a + ib
+Solution We have, ( ) ( ) 3 2 2 3 i − + − − = ( ) ( ) 3 2 2 3 i i − + −
+6 3 2 6 2 i i i − + + − = ( ) ( ) 6 2 3 1 2 2 i − + + +
+4.4 The Modulus and the Conjugate of a Complex Number
+Let z = a + ib be a complex number. Then, the modulus of z, denoted by | z |, is defined to be the non-negative real number 2 2 a b + , i.e., | z | = 2 2 a b + and the conjugate of z, denoted as z , is the complex number a – ib, i.e., z = a – ib.
+For example, 2 2
+3 3 1 10 i + = + = , 2 2
+2 5 2 ( 5) 29 i − = + − = , and 3 3 i i + = − , 2 5 2 5 i i − = + , 3 5 i − − = 3i – 5
+Observe that the multiplicative inverse of the non-zero complex number z is given by a ib + = 2 2 2 2
++ + = 2 2
+Furthermore, the following results can easily be derived.
+For any two compex numbers z1 and z2 , we have (i) 1 2 1 2 z z z z = (ii) 1 1
+= provided 2 0 z ≠ (iii) 1 2 1 2 z z z z = (iv) 1 2 1 2 z z z z ± = ± (v) 1 1
+  =  
+  provided z2 ≠ 0.
+Reprint 2026-27

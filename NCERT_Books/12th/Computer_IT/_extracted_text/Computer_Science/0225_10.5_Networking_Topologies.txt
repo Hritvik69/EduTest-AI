@@ -1,0 +1,64 @@
+Data CommuniCation 213 of the properties of each wave are listed in Table 11.1.
+of these, three are useful for wireless communication. Electromagnetic Wave Spectrum
+Microwaves Infrared
+Figure 11.12: Electromagnetic waves spectrum
+Table 11.1 Classification of transmission waves and their properties
+Transmission
+Waves Properties
+Radio Waves 1. Waves of frequency range 3 KHz - 1 GHz
+2. Omni-directional, these waves can move in all directions
+3. Radio waves of frequency 300KHz-30MHz can travel long distance
+4. Susceptible to interference
+5. Radio waves of frequency 3-300KHz can penetrate walls
+6. These waves are used in AM and FM radio, television, cordless phones.
+Microwaves 1. Electromagnetic waves of frequency range 1GHz - 300GHz.
+2. Unidirectional, can move in only one direction.
+3. Cannot penetrate solid objects such as walls, hills or mountains.
+4. Needs line-of-sight propagation i.e. both communicating antenna must be in the direction of each other.
+5. Used in point-to-point communication or unicast communication such as radar and satellite.
+6. Provide very large information-carrying capacity.
+Infrared waves 1. Electromagnetic waves of frequency range 300GHz - 400THz.
+2. Very high frequency waves.
+3. Cannot penetrate solid objects such as walls.
+4. Used for short-distance point-to-point communication such as mobile- to-mobile, mobile-to-printer, remote-control-to-TV, and Bluetooth- enabled devices to other devices like mouse, keyboards etc.
+11.6.3 Wireless Technologies (A) Bluetooth
+Bluetooth is a short-range wireless technology that can be used to connect mobile-phones, mouse, headphones, keyboards, computers, etc. wirelessly over a short distance. One can print documents with bluetooth-
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 214 enabled printers without a physical connection. All these bluetooth-enabled devices have a low cost transceiver chip. This chip uses the unlicensed frequency band of
+2.4 GHz to transmit and receive data. These devices can send data within a range of 10 meters with a speed of
+1 - 2 Mbps.
+In Bluetooth technology, the communicating devices within a range of 10 meters build a personal area network called piconet. The devices in a piconet work in a master-slave configuration. A master device can communicate with up to 7 active slave devices at the same time.
+Bluetooth technology allows up to 255 devices to build a network. Out of them, 8 devices can communicate at the same time and remaining devices can be inactive, waiting for a response command from the master device.
+(B) Wireless LAN
+This is another way of wireless communication. Wireless
+LAN is a local area network (LAN), and it is a popular way to connect to the Internet. The international organisation
+IEEE assigns numbers to each different standards of
+LAN. The wireless LAN is number as 802.11, and it is popularly known as Wi-Fi.
+These networks consist of communicating devices such as laptops and mobile phones, as well as the network device called APs (access points) which is installed in buildings or floors (Figure 11.13). An access point is a device that is used to create a wireless local area network, by connecting to a wired router, switch, or hub. The APs are connected to a wired network, and all the devices communicate or access the Internet through an access
+To wired network Access Point
+Tablet Laptop
+Smartphone
+Figure 11.13: Access point creating a wireless LAN
+Wi-Fi gives users the flexibility to move around within the network area while being connected to the network. Following are some of the benefits of
+Reprint 2026-27
+Data CommuniCation 215
+• Wireless connections can be used to extend or replace an existing wired infrastructure
+• Resulted in increased access for mobile devices
+• Provides easy access to the Internet in public places
+11.7 mobile teleCommuniCation teChnologies
+Today the mobile phone network is the most used network in the world. The ability to be connected to the network on-the-go makes it very convenient to communicate with people via call or instant messages.
+It is also handy to access the Internet using the mobile phone network through wireless connection. Besides, the Internet of Things (IoT) is letting us control and communicate with other smart devices as well.
+The architecture of the mobile network has rapidly evolved over the last few decades. The different landmark achievements in mobile communication technologies are classified as different generations. They are identified as 1G, 2G, 3G, 4G, and 5G. Let us briefly discuss the mobile telecommunication generations.
+The first generation (1G) mobile network system came around 1982. It was used to transmit only voice calls.
+The analog signals were used to carry voices between the caller and receiver.
+The second generation (2G) mobile network system came around 1991. Instead of analog signals, voice calls were transmitted in digital form thus providing improved call quality. This increased capacity allowed more people to talk simultaneously, and led to improved security as the signals could be encrypted. It also enabled an additional service to send SMS and MMS (Multimedia messages).
+The third generation (3G) mobile network technology was developed during late 90s, but it was introduced commercially around 2001. It offered both digital voice and data services. 3G provided Internet access via the same radio towers that provide voice service to the mobile phone. It facilitated greater voice and data capacity.
+Therefore, more simultaneous calls could happen in the same frequency range and also a significantly faster data transfer speed.
+Demand for faster data is always increasing and thus 4G mobile networks were developed and now
+WiMax stands for Worldwide
+Interoperability for Microwave
+Access. Like Wi-Fi, it is also used for communication in wireless networks but there is a difference. Whereas
+Wi-Fi is used to form small wireless networks (WLANs),
+WiMax uses a larger spectrum to deliver connections to various devices on the network. It has a higher data transfer rate and can span over a larger area. That is why it is used in
+MAN applications.
+Reprint 2026-27

@@ -1,0 +1,48 @@
+82 MATHEMATICS
+Example 5 Find the multiplicative inverse of 2 – 3i.
+Solution Let z = 2 – 3i
+Then z = 2 + 3i and 2 2 2
+2 ( 3) 13 z = + − =
+Therefore, the multiplicative inverse of 2 3i − is given by
+13 13 13
+The above working can be reproduced in the following manner also, z–1 = 1 2 3
+2 3 (2 3 )(2 3 )
+2 3 2 3 2 3
+13 13 13 2 (3 )
+Example 6 Express the following in the form a + ib
+− (ii) i–35
+Solution (i) We have, 5 2 5 2 1 2
+1 2 1 2 1 2
+− − + ( )2
+5 5 2 2 2
+= 3 6 2 3(1 2 2 )
++ = 1 2 2i + .
+i i i i i i
+− = = = ×
+EXERCISE 4.1
+Express each of the complex number given in the Exercises 1 to 10 in the form a + ib.
+1. ( ) 3
+  2. i i
++ 3. i −39
+Reprint 2026-27
+COMPLEX NUMBERS AND QUADRATIC EQUATIONS 83
+4. 3(7 + i7) + i (7 + i7) 5. (1 – i) – ( –1 + i6)
+6. 1 2 5
++ − +    
+    7. 1 7 1 4
+       
++ + + − − +        
+       
+8. (1 – i)4 9.
+Find the multiplicative inverse of each of the complex numbers given in the
+Exercises 11 to 13.
+11. 4 – 3i 12. 5 3i + 13. – i
+14. Express the following expression in the form of a + ib :
+4.5 Argand Plane and Polar Representation
+We already know that corresponding to each ordered pair of real numbers (x, y), we get a unique point in the XY- plane and vice-versa with reference to a set of mutually perpendicular lines known as the x-axis and the y-axis. The complex number x + iy which corresponds to the ordered pair (x, y) can be represented geometrically as the unique point P(x, y)
+in the XY-plane and vice-versa.
+Some complex numbers such as
+2 + 4i, – 2 + 3i, 0 + 1i, 2 + 0i, – 5 –2i and
+1 – 2i which correspond to the ordered pairs (2, 4), ( – 2, 3), (0, 1), (2, 0), ( –5, –2), and (1, – 2), respectively, have been represented geometrically by the points A, B, C, D, E, and F, respectively in the Fig 4.1.
+The plane having a complex number assigned to each of its point is called the complex plane or the Argand plane.
+Reprint 2026-27

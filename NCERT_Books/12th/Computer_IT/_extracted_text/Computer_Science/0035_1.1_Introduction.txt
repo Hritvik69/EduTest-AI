@@ -1,0 +1,19 @@
+F ile Handling in pytHon 23
+In the above statement, the file myfile.txt is opened in append and read modes. The file object will be at the end of the file. That means we can write data at the end of the file and at the same time we can also read data from the file using the file object named myObject.
+2.3.2 Closing a file
+Once we are done with the read/write operations on a file, it is a good practice to close the file. Python provides a close() method to do so. While closing a file, the system frees the memory allocated to it. The syntax of close() is:
+file_object.close()
+Here, file_object is the object that was returned while opening the file.
+Python makes sure that any unwritten or unsaved data is flushed off (written) to the file before it is closed.
+Hence, it is always advised to close the file once our work is done. Also, if the file object is re-assigned to some other file, the previous file is automatically closed.
+2.3.3 Opening a file using with clause
+In Python, we can also open a file using with clause.
+The syntax of with clause is:
+with open (file_name, access_mode) as file_
+The advantage of using with clause is that any file that is opened using this clause is closed automatically, once the control comes outside the with clause. In case the user forgets to close the file explicitly or if an exception occurs, the file is closed automatically. Also, it provides a simpler syntax.
+with open(“myfile.txt”,”r+”) as myObject:
+content = myObject.read()
+Here, we don’t have to close the file explicitly using close() statement. Python will automatically close the file.
+2.4 WrItIng to a text FIle
+For writing to a file, we first need to open it in write or append mode. If we open an existing file in write mode, the previous data will be erased, and the file object will be positioned at the beginning of the file. On the other
+Reprint 2026-27

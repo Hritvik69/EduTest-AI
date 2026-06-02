@@ -1,0 +1,53 @@
+Computer SCienCe - ClaSS Xii 104
+Summarisation methods are applied on tabular data for its easy comprehension. Commonly used statistical techniques for data summarisation are given below:
+7.5.1 Measures of Central Tendency
+A measure of central tendency is a single value that gives us some idea about the data. Three most common measures of central tendency are the mean, median, and mode. Instead of looking at each individual data values, we can calculate the mean, median and mode of the data to get an idea about average, middle value and frequency of occurrence of a particular value, respectively. Selection of a measure of central tendency depends on certain characteristics of data.
+(A) Mean
+Mean is simply the average of numeric values of an attribute. Mean is also called average. Suppose there are data on weight of 40 students in a class. Instead of looking at each of the data values, we can calculate the average to get an idea about the average weight of students in that class.
+Definition: Given n values x1, x2, x3,...xn, mean is computed as x
+Example 7.1
+Assume that height (in cm) of students in a class are as follows [90,102,110,115,85,90,100,110,110]. Mean or average height of the class is
+Mean is not a suitable choice if there are outliers in the data. To calculate mean, the outliers or extreme values should be removed from the given data and then calculate mean of the remaining data.
+Note: An outlier is an exceptionally large or small value, in comparison to other values of the data. Usually, outliers are considered as error since they can influence/affect the average or other statistical calculation based on the data.
+(B) Median
+Median is also computed for a single attribute/variable at a time. When all the values are sorted in ascending or descending order, the middle value is called the Median.
+When there are odd number of values, then median is
+Reprint 2026-27 underStanding data 105 the value at the middle position. If the list has even number of values, then median is the average of the two middle values. Median represents the central value at which the given data is equally divided into two parts.
+Example 7.2
+Consider the previous data of height of students used in calculation of mean value. In order to compute the median, the first step is to sort data in ascending or descending order. We have sorted the height data in ascending order as [85,90,90,100,102,110,110,110,
+115]. As there are total 9 values (odd number), the median is the value at position 5, that is 102 cm, whether counted from left to right or from right to left.
+Median represents the actual central value at which the given data is equally divided into two parts.
+(C) Mode
+Value that appears most number of times in the given data of an attribute/variable is called Mode. It is computed on the basis of frequency of occurrence of distinct values in the given data. A data set has no mode if each value occurs only once. There may be multiple modes in the data if more than one values have same highest frequency. Mode can be found for numeric as well as non-numeric data.
+Example 7.3
+In the list of height of students, mode is 110 as its frequency of occurrence in the list is 3, which is larger than the frequency of rest of the values.
+7.5.2 Measures of Variability
+The measures of variability refer to the spread or variation of the values around the mean. They are also called measures of dispersion that indicate the degree of diversity in a data set. They also indicate difference within the group.
+Two different data sets can have the same mean, median or mode but completely different levels of dispersion, or vice versa. Common measures of dispersion or variability are Range and Standard Deviation.
+(A) Range
+It is the difference between maximum and minimum values of the data (the largest value minus the smallest value). Range can be calculated only for numerical data. It is a measure of dispersion and tells about coverage/spread of data values. For
+Out of Mean and
+Median, which one is more sensitive to outliers in data?
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 106 example difference in salaries of employees, marks of a student, price of toys, etc. As range is calculated based on the two extreme values, any outlier in the data badly influences the result.
+Let M be the largest or maximum value and S is the smallest or minimum value in the data, then Range is the difference between two extreme values i.e. M – S or
+Maximum – Minimum.
+Example 7.4
+In the above example, minimum hight value is 85 cm and maximum hight value is 115 cm. Hence, range is
+115-85 = 30 cm.
+(B) Standard deviation
+Standard deviation refers to differences within the group or set of data of a variable. Like Range, it also measures the spread of data. However, unlike Range which only uses two extreme values in the data, calculation of standard deviation considers all the given data. It is calculated as the positive square root of the average of squared difference of each value from the mean value of data. Smaller value of standard deviation means data are less spread while a larger value of standard deviation means data are more spread.
+Given n values x1, x2, x3,...xn, and their mean x, the standard deviation, represented as σ (greek letter sigma)
+is computed as
+Example 7.5
+Let us compute the standard deviation of the height of nine students that we used while calculating
+Mean. The Mean (x) was calculated to be 101.33 cm.
+Subtract each value from the mean and take square of that value. Dividing the sum of square values by total number of values and taking its square not gives the standard deviation in data. See Table 7.3 for details.
+Table 7.3 Standard deviation of attendance of 9 students
+Height (x) in cm x _ x
+_ (x _ x
+90 -11.33 128.37
+102 0.67 0.36
+110 8.67 75.17
+115 13.67 186.87
+Reprint 2026-27

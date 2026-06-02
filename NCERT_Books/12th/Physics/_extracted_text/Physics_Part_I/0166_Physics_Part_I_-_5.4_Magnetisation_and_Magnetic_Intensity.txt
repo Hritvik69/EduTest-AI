@@ -1,0 +1,45 @@
+magnetic poles repel and unlike ones attract; and cutting a bar magnet in two leads to two smaller magnets. Magnetic poles cannot be isolated.
+2. When a bar magnet of dipole moment m is placed in a uniform magnetic field B, (a) the force on it is zero, (b) the torque on it is m × B, (c) its potential energy is –m.B, where we choose the zero of energy at the orientation when m is perpendicular to B.
+3. Consider a bar magnet of size l and magnetic moment m, at a distance r from its mid-point, where r >>l, the magnetic field B due to this bar
+B (along axis)
+m (along equator)
+4. Gauss’s law for magnetism states that the net magnetic flux through any closed surface is zero
+    S all area elements
+5. Consider a material placed in an external magnetic field B0. The magnetic intensity is defined as,
+The magnetisation M of the material is its dipole moment per unit volume.
+The magnetic field B in the material is, m0 (H + M)
+6. For a linear material M = c H. So that B = c is called the magnetic susceptibility of the material. The three quantities, relative magnetic permeability mr, and the magnetic permeability related as follows:
+7. Magnetic materials are broadly classified as: diamagnetic, paramagnetic, and ferromagnetic. For diamagnetic materials c is negative and small and for paramagnetic materials it is positive and small. Ferromagnetic materials have large
+8. Substances, which at room temperature, retain their ferromagnetic property for a long period of time are called permanent magnets.
+Reprint 2026-27
+Magnetism and
+POINTS TO PONDER
+1. A satisfactory understanding of magnetic phenomenon in terms of moving charges/currents was arrived at after 1800 AD. But technological exploitation of the directional properties of magnets predates this scientific understanding by two thousand years. Thus, scientific understanding is not a necessary condition for engineering applications. Ideally, science and engineering go hand-in-hand, one leading and assisting the other in
+2. Magnetic monopoles do not exist. If you slice a magnet in half, you get two smaller magnets. On the other hand, isolated positive and negative charges exist. There exists a smallest unit of charge, for example, the electronic charge with value |e| = 1.6 ×10–19 C. All other charges are integral multiples of this smallest unit charge. In other words, charge is quantised. We do not know why magnetic monopoles do not exist or why electric charge is quantised.
+3. A consequence of the fact that magnetic monopoles do not exist is that the magnetic field lines are continuous and form closed loops. In contrast, the electrostatic lines of force begin on a positive charge and terminate on the negative charge (or fade out at infinity).
+4. A miniscule difference in the value of
+χ, the magnetic susceptibility, yields radically different behaviour: diamagnetic versus paramagnetic. For diamagnetic materials
+χ = –10–5 whereas
+χ = +10–5 for paramagnetic materials.
+Physical quantity Symbol Nature Dimensions Units Remarks
+Permeability of
+μ0 Scalar [MLT–2 A–2] T m A–1
+μ0/4π = 10–7 free space
+Magnetic field, B Vector [MT–2 A–1] T (tesla) 104 G (gauss) = 1 T
+Magnetic induction,
+Magnetic flux density
+Magnetic moment m Vector [L–2 A] A m2
+Magnetic flux
+φB Scalar [ML2T–2 A–1] W (weber) W = T m2
+Magnetisation M Vector [L–1 A] A m–1 Magnetic moment
+Magnetic intensity H Vector [L–1 A] A m–1 B =
+μ0 (H + M)
+Magnetic field strength
+Magnetic
+χ Scalar - - M = susceptibility
+Relative magnetic
+μr Scalar - - B = permeability
+Magnetic permeability
+μ Scalar [MLT–2 A–2] T m A–1
+N A–2 B =
+Reprint 2026-27

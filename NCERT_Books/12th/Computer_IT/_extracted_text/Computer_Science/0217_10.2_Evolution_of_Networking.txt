@@ -1,0 +1,29 @@
+Data CommuniCation 205
+Message: It is the data or information that needs to be exchanged between the sender and the receiver.
+Messages can be in the form of text, number, image, audio, video, multimedia, etc.
+Communication media: It is the path through which the message travels between source and destination.
+It is also called medium or link which is either wired or wireless. For example, a television cable, telephone cable, ethernet cable, satellite link, microwaves, etc.
+We will study about various communication media in section 11.5.
+Protocols: It is a set of rules that need to be followed by the communicating parties in order to have successful and reliable data communication. You have already come across protocols such as Ethernet and HTTP.
+11.3 measuring CapaCity of CommuniCation meDia
+In data communication, the transmission medium is also known as channel. The capacity of a channel is the maximum amount of signals or traffic that a channel can carry. It is measured in terms of bandwidth and data transfer rate as described below:
+11.3.1 Bandwidth
+Bandwidth of a channel is the range of frequencies available for transmission of data through that channel.
+Higher the bandwidth, higher the data transfer rate.
+Normally, bandwidth is the difference of maximum and minimum frequency contained in the composite signals.
+Bandwidth is measured in Hertz (Hz).
+1 KHz =1000 Hz
+1 MHz =1000 KHz = 1000000 Hz
+11.3.2 Data Transfer Rate
+Data travels in the form of signals over a channel. One signal carries one or more bits over the channel. Data transfer rate is the number of bits transmitted between source and destination in one second. It is also known as bit rate. It is measured in terms of bits per second (bps). The higher units for data transfer rates are:
+1 Kbps=210 bps=1024 bps
+1 Mbps=220 bps=1024 Kbps
+1 Gbps=230 bps=1024 Mbps
+1 Tbps=240 bps=1024 Gbps
+Activity 11.2
+Find out how many hertz is
+10 Megahertz.
+MBps stands for
+Megabyte per second whereas
+Mbps stands for Megabit per
+Reprint 2026-27

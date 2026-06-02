@@ -1,0 +1,23 @@
+S orting 75 starting from the backward direction till the appropriate position for insertion is found. The elements of sorted list will be shifted towards right making space for the element e where it could be inserted.
+This continues till all the elements in unsorted lists are inserted at appropriate positions in the sorted list.
+This results into a sorted list in which elements are arranged in ascending order.
+Figure 5.3 demonstrates the working of the insertion sort to arrange a list in ascending order.
+Index 0 1 2 3 4 5
+8 7 13 1 -9 4
+Comparison in Pass 1
+7 13 1 -9 4
+8 7 13 1 -9 4
+7 8 13 1 -9 4
+Comparison in Pass 2
+No Change
+1 7 -9 4 13 8
+1 7 13 4 -9 8
+1 7 13 4 8 -9
+-9 1 13 4 8 7
+7 8 13 1 -9 4
+7 8 -9 4
+Comparison in Pass 3 Comparison in Pass 4
+7 1 -9 4 13 8
+1 7 -9 4 13 8
+-9 1 13 4 8 7
+Reprint 2026-27

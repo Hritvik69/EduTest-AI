@@ -1,0 +1,121 @@
+212 MATHEMATICS
+Therefore AQ2 = AN2 + NQ2 ... (2)
+From (1) and (2), we have
+PQ2 = PA2 + AN2 + NQ2
+Now PA = y2 – y1, AN = x2 – x1 and NQ = z2 – z1
+Hence PQ2 = (x2 – x1)2 + (y2 – y1)2
++ (z2 – z1)2
+Therefore PQ = 2
+1 2 ) ( ) ( ) ( z z y y x x − + − + −
+This gives us the distance between two points (x1, y1, z1) and (x2, y2, z2).
+In particular, if x1 = y1 = z1 = 0, i.e., point P is origin O, then OQ = 2
+2 z y x + + , which gives the distance between the origin O and any point Q (x2, y2, z2).
+Example 3 Find the distance between the points P(1, –3, 4) and Q (– 4, 1, 2).
+Solution The distance PQ between the points P (1,–3, 4) and Q (– 4, 1, 2) is
+PQ = 2 2 2 ) 4 2 ( ) 3 1 ( ) 1 4 ( − + + + − −
+= 4 16 25 + +
+= 45 = 3 5 units
+Example 4 Show that the points P (–2, 3, 5), Q (1, 2, 3) and R (7, 0, –1) are collinear.
+Solution We know that points are said to be collinear if they lie on a line.
+Now, PQ = 14 4 1 9 ) 5 3 ( ) 3 2 ( ) 2 1 ( 2 2 2 = + + = − + − + +
+QR = 14 2 56 16 4 36 ) 3 1 ( ) 2 0 ( ) 1 7 ( 2 2 2 = = + + = − − + − + − and PR = 14 3 126 36 9 81 ) 5 1 ( ) 3 0 ( ) 2 7 ( 2 2 2 = = + + = − − + − + +
+Thus, PQ + QR = PR. Hence, P, Q and R are collinear.
+Example 5 Are the points A (3, 6, 9), B (10, 20, 30) and C (25, – 41, 5), the vertices of a right angled triangle?
+Solution By the distance formula, we have
+AB2 = (10 – 3)2 + (20 – 6)2 + (30 – 9)2
+= 49 + 196 + 441 = 686
+BC2 = (25 – 10)2 + (– 41 – 20)2 + (5 – 30)2
+= 225 + 3721 + 625 = 4571
+Reprint 2026-27
+INTRODUCTION TO THREE DIMENSIONAL GEOMETRY 213
+CA2 = (3 – 25)2 + (6 + 41)2 + (9 – 5)2
+= 484 + 2209 + 16 = 2709
+We find that CA2 + AB2 ≠ BC2.
+Hence, the triangle ABC is not a right angled triangle.
+Example 6 Find the equation of set of points P such that PA2 + PB2 = 2k2, where
+A and B are the points (3, 4, 5) and (–1, 3, –7), respectively.
+Solution Let the coordinates of point P be (x, y, z).
+Here PA2 = (x – 3)2 + (y – 4)2 + ( z – 5)2
+PB2 = (x + 1)2 + (y – 3)2 + (z + 7)2
+By the given condition PA2 + PB2 = 2k2, we have (x – 3)2 + (y – 4)2 + (z – 5)2 + (x + 1)2 + (y – 3)2 + (z + 7)2 = 2k2 i.e., 2x2 + 2y2 + 2z2 – 4x – 14y + 4z = 2k2 – 109.
+EXERCISE 11.2
+1. Find the distance between the following pairs of points:
+(i) (2, 3, 5) and (4, 3, 1) (ii) (–3, 7, 2) and (2, 4, –1)
+(iii) (–1, 3, – 4) and (1, –3, 4) (iv) (2, –1, 3) and (–2, 1, 3).
+2. Show that the points (–2, 3, 5), (1, 2, 3) and (7, 0, –1) are collinear.
+3. Verify the following:
+(i) (0, 7, –10), (1, 6, – 6) and (4, 9, – 6) are the vertices of an isosceles triangle.
+(ii) (0, 7, 10), (–1, 6, 6) and (– 4, 9, 6) are the vertices of a right angled triangle.
+(iii) (–1, 2, 1), (1, –2, 5), (4, –7, 8) and (2, –3, 4) are the vertices of a parallelogram.
+4. Find the equation of the set of points which are equidistant from the points (1, 2, 3) and (3, 2, –1).
+5. Find the equation of the set of points P, the sum of whose distances from
+A (4, 0, 0) and B (– 4, 0, 0) is equal to 10.
+Miscellaneous Examples
+Example 7 Show that the points A (1, 2, 3), B (–1, –2, –1), C (2, 3, 2) and
+D (4, 7, 6) are the vertices of a parallelogram ABCD, but it is not a rectangle.
+Solution To show ABCD is a parallelogram we need to show opposite side are equal
+Note that.
+Reprint 2026-27
+214 MATHEMATICS
+AB = 2 2 2 ) 3 1 ( ) 2 2 ( ) 1 1 ( − − + − − + − − = 4 16 16 + + = 6
+BC = 2 2 2 ) 1 2 ( ) 2 3 ( ) 1 2 ( + + + + + = 9 25 9 + + = 43
+CD = 2 2 2 ) 2 6 ( ) 3 7 ( ) 2 4 ( − + − + − = 6 16 16 4 = + +
+DA = 2 2 2 ) 6 3 ( ) 7 2 ( ) 4 1 ( − + − + − = 43 9 25 9 = + +
+Since AB = CD and BC = AD, ABCD is a parallelogram.
+Now, it is required to prove that ABCD is not a rectangle. For this, we show that diagonals AC and BD are unequal. We have
+AC = 3 1 1 1 ) 3 2 ( ) 2 3 ( ) 1 2 ( 2 2 2 = + + = − + − + −
+BD = 155 49 81 25 ) 1 6 ( ) 2 7 ( ) 1 4 ( 2 2 2 = + + = + + + + + .
+Since AC ≠ BD, ABCD is not a rectangle.
+ANote We can also show that ABCD is a parallelogram, using the property that diagonals AC and BD bisect each other.
+Example 8 Find the equation of the set of the points P such that its distances from the points A (3, 4, –5) and B (– 2, 1, 4) are equal.
+Solution If P (x, y, z) be any point such that PA = PB.
+Now 2 2 2 2 2 2 ) 4 ( ) 1 ( ) 2 ( ) 5 ( ) 4 ( ) 3 ( − + − + + = + + − + − z y x z y x or 2 2 2 2 2 2 ) 4 ( ) 1 ( ) 2 ( ) 5 ( ) 4 ( ) 3 ( − + − + + = + + − + − z y x z y x or 10 x + 6y – 18z – 29 = 0.
+Example 9 The centroid of a triangle ABC is at the point (1, 1, 1). If the coordinates of A and B are (3, –5, 7) and (–1, 7, – 6), respectively, find the coordinates of the point C.
+Solution Let the coordinates of C be (x, y, z) and the coordinates of the centroid G be (1, 1, 1). Then
+Reprint 2026-27
+INTRODUCTION TO THREE DIMENSIONAL GEOMETRY 215
+3 1, i.e., x = 1; y − + =
+3 1, i.e., y = 1; z + − =
+3 1, i.e., z = 2.
+Hence, coordinates of C are (1, 1, 2).
+Miscellaneous Exercise on Chapter 11
+1. Three vertices of a parallelogram ABCD are A(3, – 1, 2), B (1, 2, – 4) and
+C (– 1, 1, 2). Find the coordinates of the fourth vertex.
+2. Find the lengths of the medians of the triangle with vertices A (0, 0, 6), B (0,4, 0)
+and (6, 0, 0).
+3. If the origin is the centroid of the triangle PQR with vertices P (2a, 2, 6),
+Q (– 4, 3b, –10) and R(8, 14, 2c), then find the values of a, b and c.
+4. If A and B be the points (3, 4, 5) and (–1, 3, –7), respectively, find the equation of the set of points P such that PA2 + PB2 = k2, where k is a constant.
+ÆIn three dimensions, the coordinate axes of a rectangular Cartesian coordi- nate system are three mutually perpendicular lines. The axes are called the x, y and z-axes.
+ÆThe three planes determined by the pair of axes are the coordinate planes, called XY, YZ and ZX-planes.
+ÆThe three coordinate planes divide the space into eight parts known as octants.
+ÆThe coordinates of a point P in three dimensional geometry is always written in the form of triplet like (x, y, z). Here x, y and z are the distances from the
+YZ, ZX and XY-planes.
+Æ (i) Any point on x-axis is of the form (x, 0, 0)
+(ii) Any point on y-axis is of the form (0, y, 0)
+(iii) Any point on z-axis is of the form (0, 0, z).
+ÆDistance between two points P(x1, y1, z1) and Q (x2, y2, z2) is given by
+2 1 2 1 2 1 PQ ( x x ) ( y y ) ( z z ) = − + − + −
+Reprint 2026-27
+216 MATHEMATICS
+— v v v v v —
+Historical Note
+Rene’ Descartes (1596–1650), the father of analytical geometry, essentially dealt with plane geometry only in 1637. The same is true of his co-inventor Pierre
+Fermat (1601-1665) and La Hire (1640-1718). Although suggestions for the three dimensional coordinate geometry can be found in their works but no details.
+Descartes had the idea of coordinates in three dimensions but did not develop it.
+J.Bernoulli (1667-1748) in a letter of 1715 to Leibnitz introduced the three coor- dinate planes which we use today. It was Antoinne Parent (1666-1716), who gave a systematic development of analytical solid geometry for the first time in a paper presented to the French Academy in 1700.
+L.Euler (1707-1783) took up systematically the three dimensional coordinate ge- ometry, in Chapter 5 of the appendix to the second volume of his “Introduction to Geometry” in 1748.
+It was not until the middle of the nineteenth century that geometry was extended to more than three dimensions, the well-known application of which is in the
+Space-Time Continuum of Einstein’s Theory of Relativity.
+Reprint 2026-27 vWith the Calculus as a key, Mathematics can be successfully applied to the explanation of the course of Nature – WHITEHEAD v
+12.1 Introduction
+This chapter is an introduction to Calculus. Calculus is that branch of mathematics which mainly deals with the study of change in the value of a function as the points in the domain change. First, we give an intuitive idea of derivative (without actually defining it). Then we give a naive definition of limit and study some algebra of limits. Then we come back to a definition of derivative and study some algebra of derivatives. We also obtain derivatives of certain standard functions.
+12.2 Intuitive Idea of Derivatives
+Physical experiments have confirmed that the body dropped from a tall cliff covers a distance of 4.9t2 metres in t seconds, i.e., distance s in metres covered by the body as a function of time t in seconds is given by s = 4.9t2.
+The adjoining Table 13.1 gives the distance travelled in metres at various intervals of time in seconds of a body dropped from a tall cliff.
+The objective is to find the veloctiy of the body at time t = 2 seconds from this data. One way to approach this problem is to find the average velocity for various intervals of time ending at t = 2 seconds and hope that these throw some light on the velocity at t = 2 seconds.
+Average velocity between t = t1 and t = t2 equals distance travelled between t = t1 and t = t2 seconds divided by (t2 – t1). Hence the average velocity in the first two seconds
+12 Chapter
+LIMITS AND DERIVATIVES
+Sir Issac Newton (1642-1727)
+Reprint 2026-27

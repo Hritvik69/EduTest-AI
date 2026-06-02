@@ -1,0 +1,16 @@
+Electricity
+τ = (3.23)
+We thus see that a very simple picture of electrical conduction reproduces Ohm’s law. We have, of course, made assumptions that and n are constants, independent of E. We shall, in the next section, discuss the limitations of Ohm’s law.
+Example 3.1 (a) Estimate the average drift speed of conduction electrons in a copper wire of cross-sectional area 1.0 × 10–7 m2 carrying a current of 1.5 A. Assume that each copper atom contributes roughly one conduction electron. The density of copper is 9.0 × 103 kg/m3, and its atomic mass is 63.5 u. (b) Compare the drift speed obtained above with, (i) thermal speeds of copper atoms at ordinary temperatures, (ii) speed of propagation of electric field along the conductor which causes the drift motion.
+Solution (a) The direction of drift velocity of conduction electrons is opposite to the electric field direction, i.e., electrons drift in the direction of increasing potential. The drift speed vd is given by Eq. (3.18)
+vd = (I/neA)
+Now, e = 1.6 × 10–19 C, A = 1.0 × 10–7m2, I = 1.5 A. The density of conduction electrons, n is equal to the number of atoms per cubic metre (assuming one conduction electron per Cu atom as is reasonable from its valence electron count of one). A cubic metre of copper has a mass of 9.0 × 103 kg. Since 6.0 × 1023 copper atoms have a mass of 63.5 g,
+6 6.0 10 9.0 10
+= 8.5 × 1028 m–3 which gives,
+28 –19 –7
+8.5 10 1.6 10 1.0 10
+= × × × × ×
+= 1.1 × 10–3 m s–1 = 1.1 mm s–1 (b) (i) At a temperature T, the thermal speed* of a copper atom of mass M is obtained from [<(1/2) Mv2 > = (3/2) kBT ] and is thus typically of the order of / B k T M , where kB is the Boltzmann constant. For copper at 300 K, this is about 2 × 102 m/s. This figure indicates the random vibrational speeds of copper atoms in a conductor. Note that the drift speed of electrons is much smaller, about 10–5 times the typical thermal speed at ordinary temperatures.
+(ii) An electric field travelling along the conductor has a speed of an electromagnetic wave, namely equal to 3.0 × 108 m s–1 (You will learn about this in Chapter 8). The drift speed is, in comparison, extremely small; smaller by a factor of 10–11.
+* See Eq. (12.23) of Chapter 12 from Class XI book.
+Reprint 2026-27

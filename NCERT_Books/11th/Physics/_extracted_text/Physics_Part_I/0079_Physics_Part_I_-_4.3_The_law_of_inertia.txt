@@ -1,0 +1,34 @@
+LAWS OF MOTION 63
+4.10 CIRCULAR MOTION
+We have seen in Chapter 4 that acceleration of a body moving in a circle of radius R with uniform speed v is v2/R directed towards the centre.
+According to the second law, the force fc providing this acceleration is :
+f = R (4.16)
+where m is the mass of the body. This force directed forwards the centre is called the centripetal force. For a stone rotated in a circle by a string, the centripetal force is provided by the tension in the string. The centripetal force for motion of a planet around the sun is the is the static friction that provides the centripetal acceleration. Static friction opposes the impending motion of the car moving away from the circle. Using equation (4.14) & (4.16) we get the result
+μ μ ≤ = [∵N = mg] which is independent of the mass of the car.
+This shows that for a given value of
+μs and R, there is a maximum speed of circular motion of the car possible, namely max s v Rg
+μ = (4.18)
+Fig. 4.14 Circular motion of a car on (a) a level road, (b) a banked road.
+gravitational force on the planet due to the sun.
+For a car taking a circular turn on a horizontal road, the centripetal force is the force of friction.
+The circular motion of a car on a flat and banked road give interesting application of the laws of motion.
+Motion of a car on a level road
+Three forces act on the car (Fig. 4.14(a):
+(i) The weight of the car, mg (ii) Normal reaction, N (iii) Frictional force, f
+As there is no acceleration in the vertical direction
+N – mg = 0
+N = mg (4.17)
+The centripetal force required for circular motion is along the surface of the road, and is provided by the component of the contact force between road and the car tyres along the surface. This by definition is the frictional force. Note that it
+Motion of a car on a banked road
+We can reduce the contribution of friction to the circular motion of the car if the road is banked (Fig. 4.14(b)). Since there is no acceleration along the vertical direction, the net force along this direction must be zero. Hence,
+θ = mg + f sin
+θ (4.19a)
+The centripetal force is provided by the horizontal components of N and f.
+θ + f cos
+R (4.19b)
+But f s N
+Thus to obtain vmax we put
+Then Eqs. (4.19a) and (4.19b) become
+θ = mg + s N
+θ (4.20a)
+Reprint 2026-27

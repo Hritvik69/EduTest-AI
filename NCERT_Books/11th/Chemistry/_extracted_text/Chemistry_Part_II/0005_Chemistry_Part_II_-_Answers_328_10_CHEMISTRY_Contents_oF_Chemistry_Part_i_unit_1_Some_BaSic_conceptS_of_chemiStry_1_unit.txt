@@ -1,0 +1,98 @@
+5 ANSWER S
+R ationalisation of Content in the textbook
+In view of the COVID-19 pandemic, it is imperative to reduce content load on students. The National Education Policy 2020, also emphasises reducing the content load and providing opportunities for experiential learning with creative mindset.
+In this background, the NCERT has undertaken the exercise to rationalise the textbooks across all classes. Learning Outcomes already developed by the NCERT across classes have been taken into consideration in this exercise.
+Contents of the textbooks have been rationalised in view of the following:
+• Overlapping with similar content included in other subject areas in the same class
+• Similar content included in the lower or higher class in the same subject
+• Difficulty level
+• Content, which is easily accessible to students without much interventions from teachers and can be learned by children through self-learning or peer-learning
+• Content, which is irrelevant in the present context
+This present edition, is a reformatted version after carrying out the changes given above.
+Reprint 2026-27
+6 CHEMISTRY
+Reprint 2026-27
+7 ANSWERS textbook develoPment Committee
+ChairPerson, advisory GrouP For textbooks in sCienCe and mathematiCs
+J.V. Narlikar, Emeritus Professor, Chairman, Advisory Committee, Inter
+University Centre for Astronomy and Astrophysics (IUCCA), Ganeshbhind,
+Pune University, Pune
+ChieF advisor
+B.L. Khandelwal, Professor (Retd.), Emeritus Scientist, CSIR; Emeritus Fellow, AICTE and formerly Chairman, Department of Chemistry, Indian Institute of Technology,
+New Delhi
+A. S. Brar, Professor, Indian Institute of Technology, Delhi
+Anjni Koul, Lecturer, DESM, NCERT, New Delhi
+H.O. Gupta, Professor, DESM, NCERT, New Delhi
+I.P. Aggarwal, Professor, Regional Institute of Education, NCERT, Bhopal
+Jaishree Sharma, Professor, DESM, NCERT, New Delhi
+M. Chandra, Professor, DESM, NCERT, New Delhi
+Poonam Sawhney, PGT (Chemistry), Kendriya Vidyalaya, Vikas Puri, New Delhi
+R.K. Parashar, Lecturer, DESM NCERT, New Delhi
+S.K. Dogra, Professor, Dr. B.R. Ambedkar Centre for Biomedical Research Delhi
+University, Delhi
+S.K. Gupta, Reader, School of Studies in Chemistry, Jiwaji University, Gwalior
+Sadhna Bhargava, PGT (Chemistry), Sardar Patel Vidyalaya, Lodhi Estate, New Delhi
+Shubha Keshwan, Headmistress, Demonstration School, Regional Institute of
+Education, NCERT, Mysore
+Sukhvir Singh, Reader, DESM, NCERT, New Delhi
+Sunita Malhotra, Professor, School of Sciences, IGNOU, Maidan Garhi, New Delhi
+V.K. Verma, Professor (Retd.) Institute of Technology, Banaras Hindu University,
+Varanasi
+V.P. Gupta, Reader, Regional Institute of Education, NCERT, Bhopal member-Coordinator
+Alka Mehrotra, Reader, DESM, NCERT, New Delhi
+Reprint 2026-27
+8 CHEMISTRY
+Acknowledgements
+The National Council of Educational Research and Training acknowledges the valuable contributions of the individuals and organisations involved in the development of
+Chemistry textbook for Class XI. It also acknowledges that some useful material from the reprint editions (2005) of Chemistry textbooks has been utilised in the development of the present textbook. The following academics contributed effectively for editing, reviewing, refining and finalisation of the manuscript of this book: G.T.
+Bhandage, Professor, RIE, Mysuru; N. Ram, Professor, IIT, New Delhi; R. Sindhu,
+Reader, RIE (NCERT), Bhopal; Sanjeev Kumar, Reader, Desh Bandhu College, Kalkaji,
+New Delhi; Shampa Bhattacharya, Reader, Hans Raj College, Delhi; Vijay Sarda,
+Reader, Zakir Husain College, New Delhi. K.K. Arora, Reader, Zakir Husain College,
+New Delhi; Shashi Saxena, Reader, Hans Raj College, Delhi; Anuradha Sen, Apeejay
+School, Sheikh Sarai, New Delhi; C. Shrinivas, PGT, Kendriya Vidyalaya, Pushp Vihar,
+New Delhi; D.L. Bharti, PGT, Ramjas School, Sector IV, R.K. Puram, New Delhi;
+Ila Sharma, PGT, Delhi Public School, Dwarka, Sector-B, New Delhi; Raj Lakshmi
+Karthikeyan, Head (Science), Mother’s International School, Sri Aurobindo Marg,
+New Delhi; Sushma Kiran Setia, Principal, Sarvodaya Kanya Vidyalaya, Hari Nagar (CT), New Delhi; Nidhi Chaudray, PGT, CRPF Public School, Rohini, Delhi; and
+Veena Suri, PGT, Bluebells School, Kailash, New Delhi. We are thankful to them.
+We express gratitude to R.S. Sindhu, Professor (Retd.), DESM, NCERT, New
+Delhi, for editing, reviewing and refining the textbook right from the initial stage.
+We are also grateful to Ruchi Verma, Associate Professor, DESM, NCERT, New
+Delhi; Pramila Tanwar, Associate Professor, DESM, NCERT, New Delhi; R.B. Pareek,
+Associate Professor, RIE, Ajmer and A.K. Arya, Associate professor, RIE, Ajmer, for reviewing and refining the content of the textbook.
+Special thanks are due to M. Chandra, Professor and Head, DESM, NCERT for her support.
+The Council also gratefully acknowledges the contribution of Surendra Kumar and Hari Darshan Lodhi DTP Operator; Subhash Saluja, Ramendra Kumar Sharma and Abhimanyu Mohanty, Proof Readers; Bhavna Saxena, Copy Editor and Deepak
+Kapoor, Incharge, Computer Station, in shaping this book. The contributions of the Publication Department in bringing out this book are also duly acknowledged.
+Reprint 2026-27
+9 ANSWER S
+Contents
+Foreword iii rationalisation oF Content in the textbook v
+Unit 7 Redox Reactions 235
+7.1 Classical Idea of Redox Reactions-Oxidation and Reduction Reactions 235
+7.2 Redox Reactions in Terms of Electron Transfer Reactions 237
+7.3 Oxidation Number 239
+7.4 Redox Reactions and Electrode Processes 249
+Unit 8 Organic Chemistry – Some Basic Principles and Techniques 256
+8.1 General Introduction 256
+8.2 Tetravalence of Carbon: Shapes of Organic Compounds 257
+8.3 Structural Representations of Organic Compounds 258
+8.4 Classification of Organic Compounds 261
+8.5 Nomenclature of Organic Compounds 262
+8.6 Isomerism 270
+8.7 Fundamental Concepts in Organic Reaction Mechanism 271
+8.8 Methods of Purification of Organic Compounds 278
+8.9 Qualitative Analysis of Organic Compounds 284
+8.10 Quantitative Analysis 285
+Unit 9 Hydrocarbons 295
+9.1 Classification 295
+9.2 Alkanes 296
+9.3 Alkenes 306
+9.4 Alkynes 314
+9.5 Aromatic Hydrocarbon 318
+9.6 Carcinogenicity and Toxicity 325
+Answers 328
+Reprint 2026-27
+10 CHEMISTRY
+Contents oF Chemistry Part i unit 1 Some BaSic conceptS of chemiStry 1 unit 2 Structure of atom 29 unit 3 claSSification of elementS and periodicity in propertieS 74 unit 4 chemical Bonding and molecular Structure 100 unit 5 thermodynamicS 136 unit 6 equiliBrium 168 appendiceS 215 anSwer to Some Selected queStionS 229
+Reprint 2026-27

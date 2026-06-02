@@ -1,0 +1,71 @@
+S ocietal impact 245 aspects of violating IPR. A good digital citizen should avoid plagiarism, copyright infringement and trademark infringement.
+• Certain software are made available for free public access. Free and Open Source Software (FOSS)
+allow users to not only access but also to modify (or improve) them.
+• Cyber crimes include various criminal activities carried out to steal data or to break down important services. These include hacking, spreading viruses or malware, sending phishing or fraudulent emails, ransomware, etc.
+• Excessive usage of digital devices has a negative impact on our physical as well as psychological well-being. Ergonomic positioning of devices as well as our posture are important.
+exercIse
+1. After practicals, Atharv left the computer laboratory but forgot to sign off from his email account.
+Later, his classmate Revaan started using the same computer. He is now logged in as Atharv. He sends inflammatory email messages to few of his classmates using Atharv’s email account. Revaan’s activity is an example of which of the following cyber crime? Justify your answer.
+a) Hacking b) Identity theft c) Cyber bullying d) Plagiarism
+2. Rishika found a crumpled paper under her desk.
+She picked it up and opened it. It contained some text which was struck off thrice. But she could still figure out easily that the struck off text was the email ID and password of Garvit, her classmate.
+What is ethically correct for Rishika to do?
+a) Inform Garvit so that he may change his password.
+b) Give the password of Garvit’s email ID to all other classmates.
+c) Use Garvit’s password to access his account.
+3. Suhana is down with fever. So she decided not to go to school tomorrow. Next day, in the evening she called up her classmate, Shaurya and enquired
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 246 about the computer class. She also requested him to explain the concept. Shaurya said, “Mam taught us how to use tuples in python”. Further, he generously said, “Give me some time, I will email you the material which will help you to understand tuples in python”. Shaurya quickly downloaded a 2-minute clip from the Internet explaining the concept of tuples in python. Using video editor, he added the text “Prepared by Shaurya” in the downloaded video clip. Then, he emailed the modified video clip to Suhana. This act of Shaurya is an example of:
+a) Fair use b) Hacking c) Copyright infringement d) Cyber crime
+4. After a fight with your friend, you did the following activities. Which of these activities is not an example of cyber bullying?
+a) You sent an email to your friend with a message saying that “I am sorry”.
+b) You sent a threatening message to your friend saying “Do not try to call or talk to me”.
+c) You created an embarrassing picture of your friend and uploaded on your account on a social networking site.
+5. Sourabh has to prepare a project on “Digital India
+Initiatives”. He decides to get information from the
+Internet. He downloads three web pages (webpage
+1, webpage 2, webpage 3) containing information on Digital India Initiatives. Which of the following steps taken by Sourabh is an example of plagiarism or copyright infringement. Give justification in support of your answer.
+a) He read a paragraph on “ Digital India
+Initiatives” from webpage 1 and rephrased it in his own words. He finally pasted the rephrased paragraph in his project.
+b) He downloaded three images of “ Digital India
+Initiatives” from webpage 2. He made a collage for his project using these images.
+c) He downloaded “Digital India Initiative” icon from web page 3 and pasted it on the front page of his project report.
+Reprint 2026-27
+S ocietal impact 247
+6. Match the following:
+Column A Column B
+Plagiarism Fakers, by offering special rewards or money prize asked for personal information, such as bank account information
+Hacking Copy and paste information from the Internet into your report and then organise it
+Credit card fraud The trail that is created when a person uses the Internet.
+Digital Foot Print Breaking into computers to read private emails and other files
+7. You got the below shown SMS from your bank querying a recent transaction. Answer the following:
+a) Will you SMS your pin number to the given contact number?
+b) Will you call the bank helpline number to recheck the validity of the SMS received?
+8. Preeti celebrated her birthday with her family. She was excited to share the moments with her friend
+Himanshu. She uploaded selected images of her birthday party on a social networking site so that
+Himanshu can see them. After few days, Preeti had a fight with Himanshu. Next morning, she deleted her birthday photographs from that social networking site, so that Himanshu cannot access them. Later in the evening, to her surprise, she saw that one of the images which she had already deleted from the social networking site was available with their common friend Gayatri. She hurriedly enquired
+Gayatri “Where did you get this picture from?”.
+Gayatri replied “Himanshu forwarded this image few minutes back”.
+Help Preeti to get answers for the following questions.
+Give justification for your answers so that Preeti can understand it clearly.
+a) How could Himanshu access an image which I had already deleted?
+b) Can anybody else also access these deleted c) Had these images not been deleted from my digital footprint?
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 248
+9. The school offers wireless facility (wifi) to the
+Computer Science students of Class XI. For communication, the network security staff of the school have a registered URL schoolwifi.edu. On
+17 September 2017, the following email was mass distributed to all the Computer Science students of
+Class XI. The email claimed that the password of the students was about to expire. Instructions were given to go to URL to renew their password within
+24 hours.
+a) Do you find any discrepancy in this email?
+b) What will happen if the student will click on the given URL?
+c) Is the email an example of cyber crime? If yes, then specify which type of cyber crime is it.
+Justify your answer.
+10. You are planning to go for a vacation. You surfed the Internet to get answers for the following queries:
+a) Weather conditions b) Availability of air tickets and fares c) Places to visit d) Best hotel deals
+Which of your above mentioned actions might have created a digital footprint?
+11. How would you recognise if one of your friends is being cyber bullied?
+a) Cite the online activities which would help you detect that your friend is being cyber bullied?
+b) What provisions are in IT Act 2000, (amended in 2008) to combact such situations.
+12. Write the differences between the following- a) Copyrights and Patents
+Reprint 2026-27

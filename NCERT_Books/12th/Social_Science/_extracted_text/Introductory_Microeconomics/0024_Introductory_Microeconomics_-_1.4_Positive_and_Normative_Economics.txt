@@ -1,0 +1,19 @@
+Introductory
+Microeconomics
+Consider the different combination of bananas and mangoes, A, B and C depicted in table 2.4 and figure 2.7. Combinations A, B and C consist of same quantity of mangoes but different quantities of bananas. Since combination B has more bananas than A, B will provide the individual a higher level of satisfaction than A.
+Therefore, B will lie on a higher indifference curve than A, depicting higher satisfaction.
+Likewise, C has more bananas than B (quantity of mangoes is the same in both B and C). Therefore,
+C will provide higher level of satisfaction than B, and also lie on a higher indifference curve than B.
+A higher indifference curve consisting of combinations with more of mangoes, or more of
+Table 2.4: Representation of different level of utilities from different combination of goods
+Combination Quantity of bananas Quantity of Mangoes
+2.Higher indifference curve gives greater level of utility:
+As long as marginal utility of a commodity is positive, an individual will always prefer more of that commodity, as more of the commodity will increase the level of satisfaction.
+bananas, or more of both, will represent combinations that give higher level of satisfaction.
+3.Two indifference curves never intersect each other:
+Two indifference curves intersecting each other will lead to conflicting results. To explain this, let us allow two indifference curves to intersect each other as shown in the figure
+2.8. As points A and B lie on the same indifference curve IC1, utilities derived from combination A and combination B will give the same level of satisfaction. Similarly, as points A and C lie on the same indifference curve IC2, utility derived from combination A and from combination C will give the same level of satisfaction.
+Higher indifference curves give greater level of utility.
+Two indifference curves never intersect each other
+A (7,10)
+Reprint 2026-27

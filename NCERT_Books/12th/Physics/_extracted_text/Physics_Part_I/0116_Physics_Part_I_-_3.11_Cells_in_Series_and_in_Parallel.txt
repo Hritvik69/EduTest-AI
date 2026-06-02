@@ -1,0 +1,40 @@
+Solution Each branch of the network is assigned an unknown current to be determined by the application of Kirchhoff’s rules. To reduce the number of unknowns at the outset, the first rule of Kirchhoff is used at every junction to assign the unknown current in each branch.
+We then have three unknowns I1, I2 and I3 which can be found by applying the second rule of Kirchhoff to three different closed loops.
+Kirchhoff’s second rule for the closed loop ADCA gives,
+10 – 4(I1– I2) + 2(I2 + I3 – I1) – I1 = 0 [3.61(a)] that is, 7I1– 6I2 – 2I3 = 10
+For the closed loop ABCA, we get
+10 – 4I2– 2 (I2 + I3) – I1 = 0 that is, I1 + 6I2 + 2I3 =10 [3.61(b)]
+For the closed loop BCDEB, we get
+5 – 2 (I2 + I3 ) – 2 (I2 + I3 – I1) = 0 that is, 2I1 – 4I2 – 4I3 = –5 [3.61(c)]
+Equations (3.61 a, b, c) are three simultaneous equations in three unknowns. These can be solved by the usual method to give
+I1 = 2.5A, I2 = 5
+8 A, I3 = 7
+The currents in the various branches of the network are
+8 A, CA : 1
+2 2 A, DEB : 7
+1 8 A, CD : 0 A, BC : 1
+It is easily verified that Kirchhoff’s second rule applied to the remaining closed loops does not provide any additional independent equation, that is, the above values of currents satisfy the second rule for every closed loop of the network. For example, the total voltage drop over the closed loop BADEB
+8 4 V V V + × equal to zero, as required by Kirchhoff’s second rule.
+3.13 WHEATSTONE BRIDGE
+As an application of Kirchhoff’s rules consider the circuit shown in
+Fig. 3.18, which is called the Wheatstone bridge. The bridge has four resistors R1, R2, R3 and R4. Across one pair of diagonally opposite points (A and C in the figure) a source is connected. This (i.e., AC) is called the battery arm. Between the other two vertices, B and D, a galvanometer G (which is a device to detect currents) is connected. This line, shown as BD in the figure, is called the galvanometer arm.
+For simplicity, we assume that the cell has no internal resistance. In general there will be currents flowing across all the resistors as well as a current Ig through G. Of special interest, is the case of a balanced bridge where the resistors are such that Ig = 0. We can easily get the balance condition, such that there is no current through G. In this case, the
+Kirchhoff’s junction rule applied to junctions D and B (see the figure)
+Reprint 2026-27
+Electricity
+FIGURE 3.18 immediately gives us the relations I1 = I3 and I2 = I4. Next, we apply
+Kirchhoff’s loop rule to closed loops ADBA and CBDC. The first loop gives
+–I1 R1 + 0 + I2 R2 = 0 (Ig = 0) (3.62)
+and the second loop gives, upon using I3 = I1, I4 = I2
+I2 R4 + 0 – I1 R3 = 0 (3.63)
+From Eq. (3.62), we obtain, whereas from Eq. (3.63), we obtain,
+Hence, we obtain the condition
+= [3.64(a)]
+This last equation relating the four resistors is called the balance condition for the galvanometer to give zero or null deflection.
+The Wheatstone bridge and its balance condition provide a practical method for determination of an unknown resistance. Let us suppose we have an unknown resistance, which we insert in the fourth arm; R4 is thus not known. Keeping known resistances R1 and R2 in the first and second arm of the bridge, we go on varying R3 till the galvanometer shows a null deflection. The bridge then is balanced, and from the balance condition the value of the unknown resistance R4 is given by,
+= [3.64(b)]
+A practical device using this principle is called the meter bridge.
+Example 3.7 The four arms of a Wheatstone bridge (Fig. 3.19) have the following resistances:
+AB = 100W, BC = 10W, CD = 5W, and DA = 60W.
+FIGURE 3.19
+Reprint 2026-27

@@ -1,0 +1,125 @@
+37 STRUCTURE OF ATOM around the nucleus. If the electrons were stationary, electrostatic attraction between the dense nucleus and the electrons would pull the electrons toward the nucleus to form a miniature version of Thomson’s model of atom.
+A n o t h e r s e r i o u s d r a w b a c k o f t h e
+Rutherford model is that it says nothing about distribution of the electrons around the nucleus and the energies of these electrons.
+2.3 DeveloPments leaDing to tHe boHr’s moDel of atom
+Historically, results observed from the studies of interactions of radiations with matter have provided immense information regarding the structure of atoms and molecules. Neils
+Bohr utilised these results to improve upon the model proposed by Rutherford. Two developments played a major role in the formulation of Bohr’s model of atom. These (i) Dual character of the electromagnetic radiation which means that radiations possess both wave like and particle like properties, and (ii) Experimental results regarding atomic spectra.
+First, we will discuss about the duel nature of electromagnetic radiations. Experimental results regarding atomic spectra will be discussed in Section 2.4.
+2.3.1 Wave nature of electromagnetic radiation
+In the mid-nineteenth century, physicists actively studied absorption and emission of radiation by heated objects. These are called thermal radiations. They tried to find out of what the thermal radiation is made. It is now a well-known fact that thermal radiations consist of electromagnetic waves of various frequencies or wavelengths. It is based on a number of modern concepts, which were unknown in the mid-nineteenth century.
+First active study of thermal radiation laws occured in the 1850’s and the theory of electromagnetic waves and the emission of such waves by accelerating charged particles was developed in the early 1870’s by James
+Clerk Maxwell, which was experimentally confirmed later by Heinrich Hertz. Here, we will learn some facts about electromagnetic radiations.
+James Maxwell (1870) was the first to give a comprehensive explanation about the interaction between the charged bodies and the behaviour of electrical and magnetic fields on macroscopic level. He suggested that when electrically charged particle moves under accelaration, alternating electrical and magnetic fields are produced and transmitted.
+These fields are transmitted in the forms of waves called electromagnetic waves or electromagnetic radiation.
+Light is the form of radiation known from early days and speculation about its nature dates back to remote ancient times. In earlier days (Newton) light was supposed to be made of particles (corpuscules). It was only in the
+19th century when wave nature of light was established.
+Maxwell was again the first to reveal that light waves are associated with oscillating electric and magnetic character (Fig. 2.6).
+Although electromagnetic wave motion is complex in nature, we will consider here only a few simple properties.
+(i) The oscillating electric and magnetic fields produced by oscillating charged
+Fig.2.6 The electric and magnetic field components of an electromagnetic wave. These components have the same wavelength, frequency, speed and amplitude, but they vibrate in two mutually perpendicular planes.
+Reprint 2026-27
+38 CHEMISTRY particles are perpendicular to each other and both are perpendicular to the direction of propagation of the wave.
+Simplified picture of electromagnetic wave is shown in Fig. 2.6.
+(ii) Unlike sound waves or waves produced in water, electromagnetic waves do not require medium and can move in (iii) It is now well established that there are many types of electromagnetic radiations, which differ from one another in wavelength (or frequency).
+T h e s e c o n s t i t u t e w h a t i s c a l l e d electromagnetic spectrum (Fig. 2.7).
+Different regions of the spectrum are identified by different names. Some examples are: radio frequency region around 106 Hz, used for broadcasting;
+microwave region around 1010 Hz used for radar; infrared region around 1013
+Hz used for heating; ultraviolet region around 10 16 Hz a component of sun’s radiation. The small portion around 1015
+Hz, is what is ordinarily called visible light. It is only this part which our eyes can see (or detect). Special instruments are required to detect non-visible radiation.
+(iv) Different kinds of units are used to represent electromagnetic radiation.
+These radiations are characterised by the properties, namely, frequency (ν ) and wavelength (λ).
+The SI unit for frequency (ν) is hertz (Hz, s –1), after Heinrich Hertz. It is defined as the number of waves that pass a given point in one second.
+Wavelength should have the units of length and as you know that the SI units of length is meter (m). Since electromagnetic radiation consists of different kinds of waves of much smaller wavelengths, smaller units are used. Fig. 2.7 shows various types of electro-magnetic radiations which differ from one another in wavelengths and frequencies.
+In vaccum all types of electromagnetic radiations, regardless of wavelength, travel at the same speed, i.e., 3.0 × 108 m s–1 (2.997925
+× 10 8 ms–1 , to be precise). This is called speed of light and is given the symbol ‘c’. The frequency (ν ), wavelength (λ) and velocity of light (c) are related by the equation (2.5).
+c = ν λ (2.5)
+Fig. 2.7 (a) The spectrum of electromagnetic radiation. (b) Visible spectrum. The visible region is only a small part of the entire spectrum.
+Reprint 2026-27
+39 STRUCTURE OF ATOM
+The other commonly used quantity specially in spectroscopy, is the wavenumber ( ). It is defined as the number of wavelengths per unit length. Its units are reciprocal of wavelength unit, i.e., m–1
+. However commonly used unit is cm–1 (not SI unit).
+Problem 2.3
+The Vividh Bharati station of All India
+Radio, Delhi, broadcasts on a frequency of 1,368 kHz (kilo hertz). Calculate the wavelength of the electromagnetic radiation emitted by transmitter. Which part of the electromagnetic spectrum does it belong to?
+solution
+The wavelength, λ, is equal to c/ν, where c is the speed of electromagnetic radiation in vacuum and ν is the frequency.
+Substituting the given values, we have
+This is a characteristic radiowave wavelength.
+Problem 2.4
+The wavelength range of the visible spectrum extends from violet (400 nm) to red (750 nm). Express these wavelengths in frequencies (Hz). (1nm = 10–9 m)
+solution
+Using equation 2.5, frequency of violet
+= 7.50 × 10 14 Hz
+* Diffraction is the bending of wave around an obstacle.
+** Interference is the combination of two waves of the same or different frequencies to give a wave whose distribution at each point in space is the algebraic or vector sum of disturbances at that point resulting from each interfering wave.
+Frequency of red light
+ν = = 4.00 × 10 14 Hz
+The range of visible spectrum is from
+4.0 × 10 14 to 7.5 × 10 14 Hz in terms of frequency units.
+Problem 2.5
+Calculate (a) wavenumber and (b)
+frequency of yellow radiation having wavelength 5800 Å.
+solution (a) Calculation of wavenumber ( )
+λ=5800Å = 5800 × 10 –8 cm
+= 5800 × 10 –10 m (b) Calculation of the frequency (ν )
+2.3.2 Particle nature of electromagnetic radiation: Planck’s Quantum
+Some of the experimental phenomenon such as diffraction* and interference** can be explained by the wave nature of the electromagnetic radiation. However, following are some of the observations which could not be explained with the help of even the electromagentic theory of 19th century physics (known as classical physics):
+(i) the nature of emission of radiation from hot bodies (black-body radiation)
+(ii) ejection of electrons from metal surface when radiation strikes it (photoelectric (iii) variation of heat capacity of solids as a function of temperature
+Reprint 2026-27
+40 CHEMISTRY entering the hole will be reflected by the cavity walls and will be eventually absorbed by the walls. A black body is also a perfect radiator of radiant energy. Furthermore, a black body is in thermal equilibrium with its surroundings.
+It radiates same amount of energy per unit area as it absorbs from its surrounding in any given time. The amount of light emitted (intensity of radiation) from a black body and its spectral distribution depends only on its temperature. At a given temperature, intensity of radiation emitted increases with the increase of wavelength, reaches a maximum value at a given wavelength and then starts decreasing with further increase of wavelength, as shown in Fig. 2.8. Also, as the temperature increases, maxima of the curve shifts to short wavelength. Several attempts were made to predict the intensity of radiation as a function of wavelength.
+But the results of the above experiment could not be explained satisfactorily on the basis of the wave theory of light. Max
+Planck arrived at a satisfactory relationship
+Fig. 2.8(a) Black body
+Fig. 2.8 Wavelength-intensity relationship (iv) Line spectra of atoms with special reference to hydrogen.
+These phenomena indicate that the system can take energy only in discrete amounts.
+All possible energies cannot be taken up or radiated.
+It is noteworthy that the first concrete explanation for the phenomenon of the black body radiation mentioned above was given by Max Planck in 1900. Let us first try to understand this phenomenon, which is given
+Ho t o b j e c t s e m i t e l e c t r o m a g n e t i c radiations over a wide range of wavelengths.
+At high temperatures, an appreciable proportion of radiation is in the visible region of the spectrum. As the temperature is raised, a higher proportion of short wavelength (blue light) is generated. For example, when an iron rod is heated in a furnace, it first turns to dull red and then progressively becomes more and more red as the temperature increases. As this is heated further, the radiation emitted becomes white and then becomes blue as the temperature becomes very high. This means that red radiation is most intense at a particular temperature and the blue radiation is more intense at another temperature. This means intensities of radiations of different wavelengths emitted by hot body depend upon its temperature. By late 1850’s it was known that objects made of different material and kept at different temperatures emit different amount of radiation. Also, when the surface of an object is irradiated with light (electromagnetic radiation), a part of radiant energy is generally reflected as such, a part is absorbed and a part of it is transmitted.
+The reason for incomplete absorption is that ordinary objects are as a rule imperfect absorbers of radiation. An ideal body, which emits and absorbs radiations of all frequencies uniformly, is called a black body and the radiation emitted by such a body is called black body radiation. In practice, no such body exists. Carbon black approximates fairly closely to black body. A good physical approximation to a black body is a cavity with a tiny hole, which has no other opening. Any ray
+Reprint 2026-27
+41 STRUCTURE OF ATOM by making an assumption that absorption and emmission of radiation arises from oscillator i.e., atoms in the wall of black body. Their frequency of oscillation is changed by interaction with oscilators of electromagnetic radiation. Planck assumed that radiation could be sub-divided into discrete chunks of energy. He suggested that atoms and molecules could emit or absorb energy only in discrete quantities and not in a continuous manner. He gave the name quantum to the smallest quantity of energy that can be emitted or absorbed in the form of electromagnetic radiation. The energy (E)
+of a quantum of radiation is proportional to its frequency (ν) and is expressed by equation (2.6).
+E = hυ (2.6)
+The proportionality constant, ‘h’ is known as Planck’s constant and has the value
+6.626×10 –34 J s.
+With this theory, Planck was able to explain the distribution of intensity in the radiation from black body as a function of frequency or wavelength at different temperatures.
+Quantisation has been compared to standing on a staircase. A person can stand on any step of a staircase, but it is not possible for him/her to stand in between the two steps.
+The energy can take any one of the values from the following set, but cannot take on any values between them.
+E = 0, hυ, 2hυ , 3hυ....nhυ.....
+Photoelectric Effect
+In 1887, H. Hertz performed a very interesting experiment in which electrons (or electric current) were ejected when certain metals (for example potassium, rubidium, caesium etc.) were exposed to a beam of light as shown in Fig. 2.9. The phenomenon is called
+Photoelectric effect. The results observed in this experiment were:
+(i) The electrons are ejected from the metal surface as soon as the beam of light strikes the surface, i.e., there is no time lag between the striking of light beam and the ejection of electrons from the metal surface.
+(ii) The number of electrons ejected is proportional to the intensity or brightness of light.
+(iii) For each metal, there is a characteristic minimum frequency, ν0 (also known as threshold frequency) below which photoelectric effect is not observed. At a frequency ν >ν0
+, the ejected electrons come out with certain kinetic energy.
+The kinetic energies of these electrons increase with the increase of frequency of the light used.
+All the above results could not be explained on the basis of laws of classical physics.
+According to latter, the energy content of the beam of light depends upon the brightness of the light. In other words, number of electrons ejected and kinetic energy associated with them should depend on the brightness of light.
+It has been observed that though the number
+Fig.2.9 Equipment for studying the photoelectric effect. Light of a particular frequency strikes a clean metal surface inside a vacuum chamber. Electrons are ejected from the metal and are counted by a detector that measures their kinetic
+Max Planck (1858–1947)
+Max Planck, a German physicist, received his Ph.D in theoretical physics from the University of
+Munich in 1879. In 1888, he was appointed Director of the
+Institute of Theoretical Physics at the University of Berlin.
+Planck was awarded the Nobel Prize in Physics in 1918 for his quantum theory. Planck also made significant contributions in thermodynamics and other areas of physics.
+Reprint 2026-27
+42 CHEMISTRY of electrons ejected does depend upon the brightness of light, the kinetic energy of the ejected electrons does not. For example, red light [ν = (4.3 to 4.6) × 1014 Hz] of any brightness (intensity) may shine on a piece of potassium metal for hours but no photoelectrons are ejected. But, as soon as even a very weak yellow light (ν = 5.1–5.2 × 1014 Hz) shines on the potassium metal, the photoelectric effect is observed. The threshold frequency (ν0 potassium metal is 5.0×1014 Hz.
+Einstein (1905) was able to explain the photoelectric effect using Planck’s quantum theory of electromagnetic radiation as a starting point.
+the minimum energy required to eject the electron is hν0 (also called work function,
+W 0 ; Table 2.2), then the difference in energy (hν – hν0 ) is transferred as the kinetic energy of the photoelectron. Following the conservation of energy principle, the kinetic energy of the ejected electron is given by the equation 2.7.
+where me is the mass of the electron and v is the velocity associated with the ejected electron.
+Lastly, a more intense beam of light consists of larger number of photons, consequently the number of electrons ejected is also larger as compared to that in an experiment in which a beam of weaker intensity of light is employed.
+Dual Behaviour of Electromagnetic
+Radiation
+The particle nature of light posed a dilemma for scientists. On the one hand, it could explain the black body radiation and photoelectric effect satisfactorily but on the other hand, it was not consistent with the known wave behaviour of light which could account for the phenomena of interference and diffraction.
+The only way to resolve the dilemma was to accept the idea that light possesses both particle and wave-like properties, i.e., light has dual behaviour. Depending on the experiment, we find that light behaves either as a wave or as a stream of particles.
+Whenever radiation interacts with matter, it displays particle like properties in contrast to the wavelike properties (interference and diffraction), which it exhibits when it propagates. This concept was totally alien to the way the scientists thought about matter and radiation and it took them a long time to become convinced of its validity. It turns out, as you shall see later, that some microscopic particles like electrons also exhibit this wave- particle duality.
+Shining a beam of light on to a metal surface can, therefore, be viewed as shooting a beam of particles, the photons. When a photon of sufficient energy strikes an electron in the atom of the metal, it transfers its energy instantaneously to the electron during the collision and the electron is ejected without any time lag or delay. Greater the energy possessed by the photon, greater will be transfer of energy to the electron and greater the kinetic energy of the ejected electron. In other words, kinetic energy of the ejected electron is proportional to the frequency of the electromagnetic radiation. Since the striking photon has energy equal to hν and table 2.2 values of Work function (W0 ) for a few metals metal Li Na K Mg Cu Ag
+W0 /ev 2.42 2.3 2.25 3.7 4.8 4.3
+Albert Einstein, a German born
+American physicist, is regarded by many as one of the two great physicists the world has known (the other is Isaac Newton). His three research papers (on special relativity, Brownian motion and the photoelectric effect) which he published in 1905, while he was employed as a technical assistant in a Swiss patent office in Berne have profoundly influenced the development of physics.
+He received the Nobel Prize in Physics in 1921 for his explanation of the

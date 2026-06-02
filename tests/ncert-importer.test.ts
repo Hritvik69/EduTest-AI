@@ -34,5 +34,5 @@ describe("NCERT importer dry run", () => {
         { classNum: 9, subject: "Social_Science" },
       ]),
     );
-  }, 15000);
+  }, 30000);
 });

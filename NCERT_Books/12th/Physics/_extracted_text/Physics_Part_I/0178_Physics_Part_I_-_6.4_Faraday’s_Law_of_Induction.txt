@@ -1,0 +1,50 @@
+FIGURE 6.8 (d) Predict the polarity of the capacitor in the situation described by
+Fig. 6.9.
+FIGURE 6.9
+Solution (a) No. However strong the magnet may be, current can be induced only by changing the magnetic flux through the loop.
+(b) No current is induced in either case. Current can not be induced by changing the electric flux.
+(c) The induced emf is expected to be constant only in the case of the rectangular loop. In the case of circular loop, the rate of change of area of the loop during its passage out of the field region is not constant, hence induced emf will vary accordingly.
+(d) The polarity of plate ‘A’ will be positive with respect to plate ‘B’ in the capacitor.
+6.6 MOTIONAL ELECTROMOTIVE FORCE
+Let us consider a straight conductor moving in a uniform and time- independent magnetic field. Figure 6.10 shows a rectangular conductor
+PQRS in which the conductor PQ is free to move. The rod PQ is moved towards the left with a constant velocity v as shown in the figure. Assume that there is no loss of energy due to friction. PQRS forms a closed circuit enclosing an area that changes as PQ moves. It is placed in a uniform magnetic field B which is perpendicular to the plane of this system. If the length RQ = x and RS = l, the magnetic flux
+FB enclosed by the loop PQRS
+FB = Blx
+Since x is changing with time, the rate of change
+FB will induce an emf given by:
+t = (6.5)
+FIGURE 6.10 The arm PQ is moved to the left side, thus decreasing the area of the rectangular loop. This movement induces a current I as shown.
+Reprint 2026-27
+Electromagnetic
+Induction where we have used dx/dt = –v which is the speed of the conductor PQ.
+The induced emf Blv is called motional emf. Thus, we are able to produce induced emf by moving a conductor instead of varying the magnetic field, that is, by changing the magnetic flux enclosed by the circuit.
+It is also possible to explain the motional emf expression in Eq. (6.5)
+by invoking the Lorentz force acting on the free charge carriers of conductor
+PQ. Consider any arbitrary charge q in the conductor PQ. When the rod moves with speed v, the charge will also be moving with speed v in the magnetic field B. The Lorentz force on this charge is qvB in magnitude, and its direction is towards Q. All charges experience the same force, in magnitude and direction, irrespective of their position in the rod PQ.
+The work done in moving the charge from P to Q is,
+W = qvBl
+Since emf is the work done per unit charge,
+This equation gives emf induced across the rod PQ and is identical to Eq. (6.5). We stress that our presentation is not wholly rigorous. But it does help us to understand the basis of Faraday’s law when the conductor is moving in a uniform and time-independent magnetic field.
+On the other hand, it is not obvious how an emf is induced when a conductor is stationary and the magnetic field is changing – a fact which
+Faraday verified by numerous experiments. In the case of a stationary conductor, the force on its charges is given by
+F = q (E + v ´´´´´ B) = qE (6.6)
+since v = 0. Thus, any force on the charge must arise from the electric field term E alone. Therefore, to explain the existence of induced emf or induced current, we must assume that a time-varying magnetic field generates an electric field. However, we hasten to add that electric fields produced by static electric charges have properties different from those produced by time-varying magnetic fields. In Chapter 4, we learnt that charges in motion (current) can exert force/torque on a stationary magnet.
+Conversely, a bar magnet in motion (or more generally, a changing magnetic field) can exert a force on the stationary charge. This is the fundamental significance of the Faraday’s discovery. Electricity and magnetism are related.
+Example 6.6 A metallic rod of 1 m length is rotated with a frequency of 50 rev/s, with one end hinged at the centre and the other end at the circumference of a circular metallic ring of radius 1 m, about an axis passing through the centre and perpendicular to the plane of the ring (Fig. 6.11). A constant and uniform magnetic field of 1 T parallel to the axis is present everywhere. What is the emf between the centre and the metallic ring?
+Reprint 2026-27
+FIGURE 6.11
+Solution
+Method I
+As the rod is rotated, free electrons in the rod move towards the outer end due to Lorentz force and get distributed over the ring. Thus, the resulting separation of charges produces an emf across the ends of the rod. At a certain value of emf, there is no more flow of electrons and a steady state is reached. Using Eq. (6.5), the magnitude of the emf generated across a length dr of the rod as it moves at right angles to the magnetic field is given by d d Bv r
+ε = . Hence,
+ε ε = = ∫ ∫ d d Bv r
+= = ∫ B r r B R
+Note that we have used v = w r. This gives e 2 1 1.0 2 50 (1 )
+= × × π × ×
+Method II
+To calculate the emf, we can imagine a closed loop OPQ in which point O and P are connected with a resistor R and OQ is the rotating rod. The potential difference across the resistor is then equal to the induced emf and equals B × (rate of change of area of loop). If q is the angle between the rod and the radius of the circle at P at time t, the area of the sector OPQ is given by
+θ θ π × = where R is the radius of the circle. Hence, the induced emf is e = B t R × 
+[Note: d 2
+θ ω ν = = π ]
+This expression is identical to the expression obtained by Method I and we get the same value of
+Reprint 2026-27

@@ -1,0 +1,163 @@
+Cell: The Building Block of Life 13 y Since the molecules are arranged like tiles in a mosaic, it is called the
+‘mosaic’ model.
+All living cells communicate with their surroundings and their neighbouring cells through the cell membrane. However, cells of plant, fungi, and bacteria have an additional layer around the cell membrane, called the cell wall. What do you think is the necessity of the cell wall in these cells?
+Activity 2.3: Let us investigate
+1. Prepare temporary slides of a thin peel of an onion leaf or a Rhoeo (Cradle lily) leaf and mount it with safranin using cover slip to observe plant cells under a microscope.
+2. Similarly, prepare a temporary slide of cheek cells by gently scraping the inner side of your cheek with a cotton swab or the blunt end of a toothpick.
+3. Spread the cheek cells on a clean glass slide.
+4. Add a drop of water followed by a few drops of methylene blue stain and carefully place a coverslip.
+5. Observe both the slides under a microscope.
+What do you observe? Onion peel cells (Fig. 2.8a) or Rhoeo leaf peel cells are box-shaped and regularly arranged, whereas cheek cells are irregularly arranged (Fig. 2.8b). Why do you think this difference exists?
+Prepare two slides of a Rhoeo leaf peel and human cheek cells again, and put 20 per cent sugar solution on them. Observe them under a microscope after half an hour. What do you observe? You must have observed that the boundaries of the plant cells remain the same but their inner content shrinks, and the space between the inner and outer boundaries increases (Fig. 2.9a and b). You may observe that the cheek cells, on the other hand, have shrunk considerably.
+2.2.2 Cell wall — The outer covering of cells
+In general, plants cannot move from place to place, so they need a rigid structure to withstand environmental stresses like wind and rain.
+Therefore, plant cells have an additional covering outside the cell membrane called a cell wall. The cell wall also helps leaves and flowers remain firm, and maintain their shapes and help plants stay upright. Although rigid the cell wall is permeable, which means water and some dissolved minerals can pass through it. Along with the selective permeability of the cell membrane, the permeability of the cell wall helps plant roots absorb water and nutrients from the soil.
+When we place a Rhoeo leaf or an onion peel in a concentrated sugar solution the plant cells lose water due to osmosis. However, the cells do not shrink in size because their rigid cell wall maintains their shape. The inner content of a cell shrinks as the cell membrane pulls away from the cell wall.
+This shows that the cell wall helps plant cells remain firm in their original
+Animal cells, such as cheek cells do not have a cell wall. Therefore, when placed in a concentrated sugar solution, they lose water and shrink.
+Fig. 2.8: (a) The onion peel cells, and (b) human cheek cells
+Fig. 2.9: Cradle lily leaf peel cells (a) in water, and (b) in 20 per cent sugar solution
+14 Exploration|Grade 9
+Without a rigid cell wall, animal cells can change shape easily. This cellular flexibility supports the overall movement and functioning of animal tissues.
+The plant cell wall is primarily made of cellulose, a type of carbohydrate formed by many glucose units linked together. Cellulose in our diet acts as roughage, helping in digestion. Some microorganisms, like fungi and bacteria also have a cell wall to provide protection and structural support to their cells.
+1. What argument would you give for the necessity of a cell wall in plants usually fixed in one place versus in animals usually moving from one place to the other?
+2. What consequences would you predict for a plant cell if its cell wall were to become as flexible as a cell membrane?
+3. Why is it important to cut the two potato pieces in roughly equal size and measure their initial weight before placing them in different liquids?
+Pause and Ponder
+2.3 The Cell Interior — A Coordinated Working System
+You have learnt that most cells have three basic parts:
+y a selectively permeable membrane called the plasma membrane, y a semi-fluid, jelly-like substance called the cytoplasm, and y a prominent nucleus.
+In addition to the nucleus, the cytoplasm contains several sub-cellular components called organelles, along with other substances present in it, most of which are only visible with an electron microscope.
+Activity 2.4: Let us study
+Cell wall Mitochondria
+Golgi body
+Endoplasmic reticulum
+Ribosome
+Cytoplasm Cytoplasm
+Nucleolus
+Chloroplast
+Cell membrane
+Nucleoid
+Appendage for locomotion (a) (b) (c)
+Fig. 2.10: (a) A typical bacterial cell, (b) a typical plant cell, and (c) a typical animal cell
+Lysosome
+1. Study the given diagrams of a bacterial cell, a plant cell, and an animal cell (Fig. 2.10a, b and c).
+2. Observe the different structures present in each of them.
+3. Record your observations in Table 2.1.
+A bacterial cell lacks a well-defined nucleus and membrane-bound organelles (organelles surrounded by their own membranes). Such cells are called prokaryotic cells (pro means primitive and karyon means
+Curiosity
+Chapter 9 (Genetic material)
+Cell: The Building Block of Life 15 nucleus). In prokaryotic cells, most cellular activities take place directly in the cytoplasm. In contrast, plant and animal cells have a well-defined nucleus and several membrane-bound organelles. Such cells are called eukaryotic cells (eu means true, and karyon means nucleus). More details of the characterstics of prokaryotic and eukaryotic cells is given in Table 2.2.
+Table 2.1: Comparison of different kinds of cells based on their structure
+S. No. Cell structures Bacterial
+1. Cell membrane
+2. Cell wall
+3. Cytoplasm
+4. Well-defined nucleus (genetic material enclosed by a membrane)
+5. Primitive nucleus or nucleoid (genetic material without membrane around it)
+6. Membrane-bound organelles
+Table 2.2: Comparison between prokaryotic and eukaryotic cells
+Characteristics Prokaryotic cell Eukaryotic cell
+Primitive nucleus Present Absent
+Diameter of a typical cell 1 to 10 μm 10 to 100 μm
+Number of cells in an organism Usually unicellular Can be unicellular or multicellular
+Membrane-bound organelles Absent Present
+Membrane-bound nucleus Absent Present
+Which of the cells given in Fig. 2.10 fall under the categories of prokayotic and eukaryotic cells?
+In eukaryotic cells, a network of fine fibres forms the cytoskeleton, which provides structural support, maintains cell shape, and enables cell movement and internal transport. It is visible only under an electron microscope as a separate entity. The cytoplasm may also store starch (in plant cells), or crystals of calcium oxalate or silica (in some plant cells). These are known as cell inclusions.
+Ready to Go Beyond
+Ready to Go
+Viruses, viroids, and prions are acellular (no cells) infectious agents that are too small to be seen under a light microscope.
+Viruses are composed of some genetic material with a protein coat.
+Viroids lack protein coat around its genetic material, while prions are misfolded proteins which lack genetic material.
+16 Exploration|Grade 9
+2.3.1 Why do eukaryotic cells need these organelles?
+Eukaryotic cells carry out various life processes in different cell organelles independently at the same time.
+Cell organelles help in building new materials, removing waste, and providing energy to the cell. They work together to perform all functions of a cell. In other words, a cell is like a tiny living factory, with each of its part doing a specific job.
+Let us explore these specialised structures present inside a cell.
+Nucleus — House of coded instructions
+The nucleus has a double-layered covering called the nuclear membrane, which has pores that allow the transfer of material between the nucleus and the cytoplasm. The nucleolus is the dense round body in the nucleus, where synthesis of ribosomal subunits take place. These subunits then exit the nucleus to cytoplasm where one large and one small subunits assemble to form ribosome (Fig. 2.11).
+The nucleus contains chromosomes, which are visible as rod-shaped structures only when the cell is about to divide. Chromosomes contain information for inheritance of characters from parents to the next generation in the form of DNA (Deoxyribonucleic acid) molecules.
+Chromosomes are composed of DNA and specific proteins. DNA molecules contain the genetic information. The functional segments of DNA are called genes. In a non-dividing cell, this DNA is present as part of chromatin material. Chromatin material is visible as an entangled mass of thread-like structures. Whenever the cell is about to divide, the chromatin material gets organised into chromosomes (Fig. 2.12).
+Threads of Curiosity
+Some cells are specialised to perform specific functions. For example, mature Red
+Blood Cells (RBCs) in humans do not have a nucleus (enucleate). The absence of a nucleus provides more space for haemoglobin, allowing it to transport a larger amount of oxygen to all cells of the body. Since they lack a nucleus, they cannot repair or divide themselves. As a result, their lifespan is short and they survive approximately for 120 days. Do you know any other cells without nucleus?
+Prokaryotic cells do not have a well-defined nucleus. Their DNA is present as a single circular molecule associated with specific proteins. The region containing this genetic material is called the nucleoid.
+Fig. 2.12: From cell
+Chromatin
+Chromosome
+Fig. 2.11: Structure of a nucleus
+Nuclear pore
+Double-layered nuclear membrane
+Chromatin
+Nucleolus
+Cell: The Building Block of Life 17
+Ribosomes — The protein factories
+These are tiny structures may be present either freely in the cytoplasm or attached to the endoplasmic reticulum. Ribosomes are the sites of protein synthesis.
+Endoplasmic Reticulum (ER) — Manufacturing factory
+The Endoplasmic Reticulum (ER) is a large organelle that spreads like a network within the cytoplasm of the cell. The ER is continuous with the outer membrane of nuclear envelop. The ER plays a key role in the synthesis and transport of proteins, fats (lipids), and some hormones in some of the specialised cell. The structure of the ER in a cell varies depending on its function. There are two types of ER:
+y Rough Endoplasmic Reticulum (RER): It looks rough under an electron microscope because it has ribosomes attached to its surface, and is mainly involved in protein synthesis and protein secretion (for example, in gland cells, such as pancreatic cells).
+y Smooth Endoplasmic Reticulum (SER): It does not have ribosomes on its surface, and therefore, looks smooth. It is involved in the synthesis, and storage of fats and hormones (Fig. 2.13).
+Golgi apparatus — The packaging and shipping centres
+If you carefully look at the diagram of a cell (Fig. 2.10b and c), you will notice stacks of flattened, sac-like structures. Together, these stacks form the
+Golgi apparatus (Fig. 2.13). It is functionally linked to the ER, the cell membrane and the other cell organelles. The Golgi apparatus acts like the cell’s post office. It modifies, sorts, and packages proteins and/or lipids into vesicles for transport, secretion, or lysosome formation.
+Lysosomes — The clean-up system
+Cells produce waste materials and damaged, worn-out organelles during their activities.
+How does the cell prevent these wastes from accumulating inside it?
+Lysosomes are single membrane-bound sacs filled with enzymes, which can break down unwanted proteins, carbohydrates, fats, and even
+Meet a Scientist
+The Golgi apparatus was first observed in
+1898 by an Italian scientist, Camillo
+Golgi, in the nerve cells of a barn owl. Using special staining techniques, he observed a thread-like network. Early microscopes could not resolve it clearly, therefore, many doubted its existence. However, electron microscope observations confirmed it decades later.
+When the structure was clearly seen and confirmed, it was named the ‘Golgi apparatus’ in his honour.
+Fig. 2.13: Endoplasmic reticulum and
+Golgi apparatus — pathway for protein processing and secretion
+Ribosome endoplasmic reticulum endoplasmic reticulum apparatus
+Vesicles membrane
+18 Exploration|Grade 9 damaged parts of the cell, keeping it clean and healthy. The products formed by the breakdown are released into the cytoplasm, where they may be reused in other cellular processes.
+Threads of Curiosity
+Human sperm cells contain lysosomal enzymes. When a sperm meets an egg, these enzymes help break down the outer layer of the egg, allowing fertilisation to take place. You will learn about the human sperm cells later in Chapter 11.
+Mitochondria — The powerhouse of the
+Mitochondria are often called the ‘powerhouses of the cell’ because they supply the energy needed for most cellular activities. Each mitochondrion (Fig.
+2.14) is surrounded by two membranes :
+y The outer membrane is smooth and y The inner membrane is folded into finger-like projections called cristae, which increase the surface area for chemical reactions and facilitate energy production.
+In mitochondria, the glucose and other molecules are broken down to release energy during a process called cellular respiration. You have already studied about it. The energy released is stored in the form of a molecule called Adenosine
+Triphosphate (ATP), which acts as the energy currency and is used for most of the cellular activities.
+Plastids — Centre for food synthesis in the plant cells and beyond
+You have learnt that mitochondria provide energy to the cell that comes from food. Animals can obtain food from their surroundings, however, plants synthesise food in the presence of sunlight. But where do plants
+Curiosity
+Chapter 9 synthesise their food and obtain energy for cellular activities? Plants use special organelles called plastids for food synthesis and storage.
+As you have learnt, plants prepare their food by the process of photosynthesis in the presence of sunlight. A green pigment called chlorophyll, which is present in the chloroplast (a type of plastid) absorbs sunlight. Chloroplasts are double-membrane-bound organelles, like mitochondria. Inside the chloroplast (Fig. 2.15) there is a semi-fluid substance called the stroma. Within the stroma are disc-shaped membrane structures that contain chlorophyll. Light energy is absorbed
+Curiosity
+Chapter 9
+Fig. 2.14: Structure of a mitochondrion membrane membrane
+Intermembrane
+Ribosomes
+Fig. 2.15: Structure of a chloroplast
+Ribosomes membrane membrane
+Cell: The Building Block of Life 19 by them during photosynthesis. The sugars synthesised in this process are stored in stroma, along with the starch granules.
+Mitochondria and plastids have some features that are similar to certain bacteria. For example, they both have their own DNA and ribosomes, and thus, they can make some of their own proteins. These characteristics suggest that both mitochondria and plastids share an evolutionary history with these single-celled organisms.
+Are there any other plastids in plant cells that contain any pigments other than the green pigments?
+How do flowers, fruits, and vegetables acquire varied colours?
+In flower petals and fruits, plastids contain pigments other than chlorophyll.
+These plastids are called chromoplasts (in Greek, chroma means colour).
+Their pigments (may be yellow, orange or red) are the source of bright colours in such flowers and fruits. Such bright colours help in attracting pollinators for pollination and fruit-eating animals that help in seed dispersal.
+Some plastids lack pigments and are thus, colourless. These are called leucoplasts (in Greek, leukos means white). Leucoplasts store food material, such as starch, oils or proteins and are classified based on the type of food they store. For example, some leucoplasts in potato and taro (Colocasia)
+cells store starch.
+Vacuoles — The organelles for storage and support
+Plastids, such as chloroplasts help plants produce food and temporarily store it. Other plastids, such as leucoplasts help in storing food. But where are water, minerals, and waste materials stored in the cell? Why do plants look wilted when they do not get enough water?
+In a mature plant cell, there is usually one large central vacuole surrounded by a single selectively permeable membrane. The vacuole is filled with a watery fluid called cell sap. The vacuole stores water, minerals, sugars and waste material. By storing large amounts of water, the vacuole helps maintain pressure inside the cell, which keeps a plant cell firm. When a plant does not get enough water, the vacuole loses water, the cells become less firm, and the plant gets wilted.
+In animal cells, vacuoles are sometimes present. Although they are not as large as plant vacuoles, they help in the temporary storage of materials.
+4. Do white flowers contain any pigment? Give reasons.
+5. Draw a well-labelled schematic diagram of a plant or an animal cell using these clues — (i) Nucleus appears as a dark and round body inside the cell.
+(ii) ER spreads like a network of extended nuclear envelope.
+(iii) Mitochondria and chloroplasts are rod shaped.
+You may refer to Fig. 2.10.
+Pause and Ponder
+20 Exploration|Grade 9
+Threads of Curiosity
+In 2010, scientist J. Craig Venter and his team made an important discovery in the field of synthetic biology. They first studied the complete DNA sequence of a simple bacterium called Mycoplasma mycoides using a computer programming. Then, they chemically synthesised (in the laboratory) an exact copy of this DNA.
+Next, they took another closely related bacterium and removed its
+DNA, but kept the rest of the cell (such as the cytoplasm and the cell membrane) intact. They inserted the synthetic DNA into this cell. After this, the cell started to grow and divide, following the instructions from the newly inserted synthetic DNA. This experiment showed that
+DNA controls the structure and activities of a cell.
+However, scientists did not create a completely new cell from scratch. Only the DNA was synthetic. The

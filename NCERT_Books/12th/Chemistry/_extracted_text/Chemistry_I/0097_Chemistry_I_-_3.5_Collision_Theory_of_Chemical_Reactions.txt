@@ -1,0 +1,180 @@
+83 Chemical Kinetics assumed to be hard spheres and reaction is postulated to occur when molecules collide with each other. The number of collisions per second per unit volume of the reaction mixture is known as collision frequency (Z). Another factor which affects the rate of chemical reactions is activation energy (as we have already studied).
+For a bimolecular elementary reaction
+A + B ® Products rate of reaction can be expressed as
+AB Rate Z e E RT −
+= (3.23)
+where ZAB represents the collision frequency of reactants, A and B and e-Ea /RT represents the fraction of molecules with energies equal to or greater than Ea. Comparing (3.23) with Arrhenius equation, we can say that A is related to collision frequency.
+Equation (3.23) predicts the value of rate constants fairly accurately for the reactions that involve atomic species or simple molecules but for complex molecules significant deviations are observed. The reason could be that all collisions do not lead to the formation of products. The collisions in which molecules collide with sufficient kinetic energy (called threshold energy*) and proper orientation, so as to facilitate breaking of bonds between reacting species and formation of new bonds to form products are called as effective collisions.
+For example, formation of methanol from bromoethane depends upon the orientation of reactant molecules as shown in
+Fig. 3.12. The proper orientation of reactant molecules lead to bond formation whereas improper orientation makes them simply bounce back and no products are
+To account for effective collisions, another factor P, called the probability or steric factor is introduced. It takes into account the fact that in a collision, molecules must be properly oriented i.e.,
+AB Rate Z e E RT
+Thus, in collision theory activation energy and proper orientation of the molecules together determine the criteria for an effective collision and hence the rate of a chemical reaction.
+Collision theory also has certain drawbacks as it considers atoms/ molecules to be hard spheres and ignores their structural aspect. You will study details about this theory and more on other theories in your higher classes.
+* Threshold energy = Activation Energy + energy possessed by reacting species.
+Fig. 3.12: Diagram showing molecules having proper and improper orientation
+Reprint 2026-27
+84 Chemistry
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+3.7 What will be the effect of temperature on rate constant ?
+3.8 The rate of the chemical reaction doubles for an increase of 10K in absolute temperature from 298K. Calculate Ea.
+3.9 The activation energy for the reaction
+2 HI(g) ® H2 + I2 (g)
+is 209.5 kJ mol–1 at 581K.Calculate the fraction of molecules of reactants having energy equal to or greater than activation energy?
+Summary Summary Summary Summary Summary
+Chemical kinetics is the study of chemical reactions with respect to reaction rates, effect of various variables, rearrangement of atoms and formation of intermediates. The rate of a reaction is concerned with decrease in concentration of reactants or increase in the concentration of products per unit time. It can be expressed as instantaneous rate at a particular instant of time and average rate over a large interval of time. A number of factors such as temperature, concentration of reactants, catalyst, affect the rate of a reaction. Mathematical representation of rate of a reaction is given by rate law. It has to be determined experimentally and cannot be predicted. Order of a reaction with respect to a reactant is the power of its concentration which appears in the rate law equation. The order of a reaction is the sum of all such powers of concentration of terms for different reactants. Rate constant is the proportionality factor in the rate law. Rate constant and order of a reaction can be determined from rate law or its integrated rate equation. Molecularity is defined only for an elementary reaction. Its values are limited from 1 to 3 whereas order can be 0, 1, 2, 3 or even a fraction. Molecularity and order of an elementary reaction are same.
+Temperature dependence of rate constants is described by Arrhenius equation (k = Ae–Ea/RT). Ea corresponds to the activation energy and is given by the energy difference between activated complex and the reactant molecules, and A (Arrhenius factor or pre-exponential factor) corresponds to the collision frequency.
+The equation clearly shows that increase of temperature or lowering of Ea will lead to an increase in the rate of reaction and presence of a catalyst lowers the activation energy by providing an alternate path for the reaction. According to collision theory, another factor P called steric factor which refers to the orientation of molecules which collide, is important and contributes to effective collisions, thus, modifying the Arrhenius equation to a /
+AB Z e E RT
+Reprint 2026-27
+85 Chemical Kinetics
+3.1 From the rate expression for the following reactions, determine their order of reaction and the dimensions of the rate constants.
+(i) 3NO(g) ® N2O (g) Rate = k[NO]2 (ii) H2O2 (aq) + 3I– (aq) + 2H+ ® 2H2O (l) + 3 I Rate = k[H2O2][I-] (iii) CH3CHO (g) ® CH4 (g) + CO(g) Rate = k [CH3CHO]3/2 (iv) C2H5Cl (g) ® C2H4 (g) + HCl (g) Rate = k [C2H5Cl]
+3.2 For the reaction:
+2A + B ® A2B the rate = k[A][B]2 with k = 2.0 × 10–6 mol–2 L2 s–1. Calculate the initial rate of the reaction when [A] = 0.1 mol L–1, [B] = 0.2 mol L–1. Calculate the rate of reaction after [A] is reduced to 0.06 mol L–1.
+3.3 The decomposition of NH3 on platinum surface is zero order reaction. What are the rates of production of N2 and H2 if k = 2.5 × 10–4 mol–1 L s–1?
+3.4 The decomposition of dimethyl ether leads to the formation of CH4, H2 and CO and the reaction rate is given by
+Rate = k [CH3OCH3]3/2
+The rate of reaction is followed by increase in pressure in a closed vessel, so the rate can also be expressed in terms of the partial pressure of dimethyl ether, i.e.,
+CH OCH Rate p k =
+If the pressure is measured in bar and time in minutes, then what are the units of rate and rate constants?
+3.5 Mention the factors that affect the rate of a chemical reaction.
+3.6 A reaction is second order with respect to a reactant. How is the rate of reaction affected if the concentration of the reactant is (i) doubled (ii) reduced to half ?
+3.7 What is the effect of temperature on the rate constant of a reaction?
+How can this effect of temperature on rate constant be represented quantitatively?
+3.8 In a pseudo first order reaction in water, the following results were obtained:
+t/s 0 30 60 90
+[A]/ mol L–1 0.55 0.31 0.17 0.085
+Calculate the average rate of reaction between the time interval 30 to 60 seconds.
+3.9 A reaction is first order in A and second order in B.
+(i) Write the differential rate equation.
+(ii) How is the rate affected on increasing the concentration of B three (iii) How is the rate affected when the concentrations of both A and B are doubled?
+Exercises Exercises Exercises Exercises Exercises
+Reprint 2026-27
+86 Chemistry
+3.10 In a reaction between A and B, the initial rate of reaction (r0) was measured for different initial concentrations of A and B as given below:
+A/ mol L–1 0.20 0.20 0.40
+B/ mol L–1 0.30 0.10 0.05 r0/mol L–1s–1 5.07 × 10–5 5.07 × 10–5 1.43 × 10–4
+What is the order of the reaction with respect to A and B?
+3.11 The following results have been obtained during the kinetic studies of the reaction:
+2A + B ® C + D
+Experiment [A]/mol L–1 [B]/mol L–1 Initial rate of formation of D/mol L–1 min–1
+I 0.1 0.1 6.0 × 10–3
+II 0.3 0.2 7.2 × 10–2
+III 0.3 0.4 2.88 × 10–1
+IV 0.4 0.1 2.40 × 10–2
+Determine the rate law and the rate constant for the reaction.
+3.12 The reaction between A and B is first order with respect to A and zero order with respect to B. Fill in the blanks in the following table:
+Experiment [A]/ mol L–1 [B]/ mol L–1 Initial rate/ mol L–1 min–1
+I 0.1 0.1 2.0 × 10–2
+II – 0.2 4.0 × 10–2
+III 0.4 0.4 –
+IV – 0.2 2.0 × 10–2
+3.13 Calculate the half-life of a first order reaction from their rate constants given (i) 200 s–1 (ii) 2 min–1 (iii) 4 years–1
+3.14 The half-life for radioactive decay of 14C is 5730 years. An archaeological artifact containing wood had only 80% of the 14C found in a living tree. Estimate the age of the sample.
+3.15 The experimental data for decomposition of N2O5
+[2N2O5 ® 4NO2 + O2] in gas phase at 318K are given below:
+t/s 0 400 800 1200 1600 2000 2400 2800 3200
+102 × [N2O5]/ 1.63 1.36 1.14 0.93 0.78 0.64 0.53 0.43 0.35 (i) Plot [N2O5] against t.
+(ii) Find the half-life period for the reaction.
+(iii) Draw a graph between log[N2O5] and t.
+(iv) What is the rate law ?
+Reprint 2026-27
+87 Chemical Kinetics (v) Calculate the rate constant.
+(vi) Calculate the half-life period from k and compare it with (ii).
+3.16 The rate constant for a first order reaction is 60 s–1. How much time will it take to reduce the initial concentration of the reactant to its 1/16th
+3.17 During nuclear explosion, one of the products is 90Sr with half-life of
+28.1 years. If 1mg of 90Sr was absorbed in the bones of a newly born baby instead of calcium, how much of it will remain after 10 years and
+60 years if it is not lost metabolically.
+3.18 For a first order reaction, show that time required for 99% completion is twice the time required for the completion of 90% of reaction.
+3.19 A first order reaction takes 40 min for 30% decomposition. Calculate t1/2.
+3.20 For the decomposition of azoisopropane to hexane and nitrogen at 543
+K, the following data are obtained.
+t (sec) P(mm of Hg)
+360 54.0
+720 63.0
+Calculate the rate constant.
+3.21 The following data were obtained during the first order thermal decomposition of SO2Cl2 at a constant volume.
+      2 2 2 2 SO Cl g SO g Cl g  
+Experiment Time/s–1 Total pressure/atm
+2 100 0.6
+Calculate the rate of the reaction when total pressure is 0.65 atm.
+3.22 The rate constant for the decomposition of N2O5 at various temperatures is given below:
+T/°C 0 20 40 60 80
+105 × k/s-1 0.0787 1.70 25.7 178 2140
+Draw a graph between ln k and 1/T and calculate the values of A and
+Ea. Predict the rate constant at 30° and 50°C.
+3.23 The rate constant for the decomposition of hydrocarbons is 2.418 × 10–5s–1 at 546 K. If the energy of activation is 179.9 kJ/mol, what will be the value of pre-exponential factor.
+3.24 Consider a certain reaction A ® Products with k = 2.0 × 10 –2s–1. Calculate the concentration of A remaining after 100 s if the initial concentration of A is 1.0 mol L–1.
+3.25 Sucrose decomposes in acid solution into glucose and fructose according to the first order rate law, with t1/2 = 3.00 hours. What fraction of sample of sucrose remains after 8 hours ?
+3.26 The decomposition of hydrocarbon follows the equation k = (4.5 × 1011s–1) e-28000K/T
+Calculate Ea.
+Reprint 2026-27
+88 Chemistry
+3.27 The rate constant for the first order decomposition of H2O2 is given by the following equation:
+log k = 14.34 – 1.25 × 104K/T
+Calculate Ea for this reaction and at what temperature will its half-period be 256 minutes?
+3.28 The decomposition of A into product has value of k as 4.5 × 103 s–1 at 10°C and energy of activation 60 kJ mol–1. At what temperature would k be
+1.5 × 104s–1?
+3.29 The time required for 10% completion of a first order reaction at 298K is equal to that required for its 25% completion at 308K. If the value of A is
+4 × 1010s–1. Calculate k at 318K and Ea.
+3.30 The rate of a reaction quadruples when the temperature changes from
+293 K to 313 K. Calculate the energy of activation of the reaction assuming that it does not change with temperature.
+Answers to Some Intext Questions
+3.1 rav = 6.66 × 10–6 Ms–1
+3.2 Rate of reaction = rate of diappearance of A
+= 0.005 mol litre–1min–1
+3.3 Order of the reaction is 2.5
+3.4 X ® Y
+Rate = k[X]2
+The rate will increase 9 times
+3.5 t = 444 s
+3.6 1.925 × 10–4 s–1
+3.8 Ea = 52.897 kJ mol–1
+3.9 1.471 × 10–19
+Reprint 2026-27
+The d-block of the periodic table contains the elements of the groups 3-12 in which the d orbitals are progressively filled in each of the four long periods.
+The f-block consists of elements in which 4 f and 5 f orbitals are progressively filled. They are placed in a separate panel at the bottom of the periodic table. The names transition metals and inner transition metals are often used to refer to the elements of d-and f-blocks respectively.
+There are mainly four series of the transition metals,
+3d series (Sc to Zn), 4d series (Y to Cd), 5d series (La and Hf to Hg) and 6d series which has Ac and elements from Rf to Cn. The two series of the inner transition metals; 4f (Ce to Lu) and 5f (Th to Lr) are known as lanthanoids and actinoids respectively.
+Originally the name transition metals was derived from the fact that their chemical properties were transitional between those of s and p-block elements.
+Now according to IUPAC, transition metals are defined as metals which have incomplete d subshell either in neutral atom or in their ions. Zinc, cadmium and mercury of group 12 have full d10 configuration in their ground state as well as in their common oxidation states and hence, are not regarded as transition metals.
+However, being the end members of the 3d, 4d and 5d transition series, respectively, their chemistry is studied along with the chemistry of the transition metals.
+The presence of partly filled d or f orbitals in their atoms makes transition elements different from that of
+Block Elements
+Block ElementsAfter studying this Unit, you will be
+• learn the positions of the d– and f-block elements in the periodic
+• know the electronic configurations of the transition (d-block) and the inner transition (f-block) elements;
+• appreciate the relative stability of various oxidation states in terms of electrode potential values;
+• describe the preparation, properties, structures and uses of some important compounds such as K2Cr2O7 and KMnO4;
+• understand the general characteristics of the d– and f–block elements and the general horizontal and group trends in
+• describe the properties of the f-block elements and give a comparative account of the lanthanoids and actinoids with respect to their electronic configurations, oxidation states and chemical behaviour.
+Objectives
+Iron, copper, silver and gold are among the transition elements that have played important roles in the development of human civilisation.
+The inner transition elements such as Th, Pa and U are proving excellent sources of nuclear energy in modern times.
+Unit Unit Unit Unit Unit
+Reprint 2026-27
+90 Chemistry the non-transition elements. Hence, transition elements and their compounds are studied separately. However, the usual theory of valence as applicable to the non- transition elements can be applied successfully to the transition elements also.
+Various precious metals such as silver, gold and platinum and industrially important metals like iron, copper and titanium belong to the transition metals series.
+In this Unit, we shall first deal with the electronic configuration, occurrence and general characteristics of transition elements with special emphasis on the trends in the properties of the first row (3d) transition metals along with the preparation and properties of some important compounds. This will be followed by consideration of certain general aspects such as electronic configurations, oxidation states and chemical reactivity of the inner transition metals.
+THE TRANSITION ELEMENTS (d-BLOCK)
+The d–block occupies the large middle section of the periodic table flanked between s– and p– blocks in the periodic table. The d–orbitals of the penultimate energy level of atoms receive electrons giving rise to four rows of the transition metals, i.e., 3d, 4d, 5d and 6d. All these series of transition elements are shown in Table 4.1.
+In general the electronic configuration of outer orbitals of these elements is (n-1)d1– 10ns1–2except for Pd where its electronic configuration is 4d105s0.
+The (n–1) stands for the inner d orbitals which may have one to ten electrons and the outermost ns orbital may have one or two electrons.
+However, this generalisation has several exceptions because of very little energy difference between (n-1)d and ns orbitals. Furthermore, half and completely filled sets of orbitals are relatively more stable. A consequence of this factor is reflected in the electronic configurations of Cr and Cu in the 3d series. For example, consider the case of Cr, which has 3d5 4s1 configuration instead of 3d44s2; the energy gap between the two sets (3d and 4s) of orbitals is small enough to prevent electron entering the 3d orbitals. Similarly in case of Cu, the configuration is 3d104s1 and not 3d94s2. The ground state electronic configurations of the outer orbitals of transition elements are given in
+Table 4.1.
+4.1 4.1 4.1 4.1 4.1 Position in the Position in the Position in the Position in the Position in the
+Periodic Table Periodic Table Periodic Table Periodic Table Periodic Table
+4.2 4.2 4.2 4.2 4.2 Electronic Electronic Electronic Electronic Electronic
+Configurations Configurations Configurations Configurations Configurations of the d-Block of the d-Block of the d-Block of the d-Block of the d-Block
+Elements Elements Elements Elements Elements
+Sc T i V Cr Mn Fe Co Ni Cu Zn
+Z 21 22 23 24 25 26 27 28 29 30
+4s 2 2 2 1 2 2 2 2 1 2
+3d 1 2 3 5 5 6 7 8 10 10
+1st Series
+Table 4.1: Electronic Configurations of outer orbitals of the Transition Elements (ground state)
+Reprint 2026-27
+91 The d- and f- Block Elements
+The electronic configurations of outer orbitals of Zn, Cd, Hg and Cn are represented by the general formula (n-1)d10ns2. The orbitals in these elements are completely filled in the ground state as well as in their common oxidation states. Therefore, they are not regarded as transition elements.
+The d orbitals of the transition elements protrude to the periphery of an atom more than the other orbitals (i.e., s and p), hence, they are more influenced by the surroundings a

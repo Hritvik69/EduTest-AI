@@ -1,0 +1,129 @@
+188 MATHEMATICS
+10.5.1 Relationship between semi-major axis, semi-minor axis and the distance of the focus from the centre of the ellipse (Fig 10.23).
+Take a point P at one end of the major axis.
+Sum of the distances of the point P to the foci is F1 P + F2P = F1O + OP + F2P (Since, F1P = F1O + OP)
+= c + a + a – c = 2a
+Take a point Q at one end of the minor axis.
+Sum of the distances from the point Q to the foci is
+F1Q + F2Q = 2 2 2 2 c b c b + + + = 2 2
+Since both P and Q lies on the ellipse.
+By the definition of ellipse, we have
+2 2 2 c b + = 2a, i.e., a = 2 2 c b + or a2 = b2 + c2 , i.e., c = 2 2 b a − .
+10.5.2 Eccentricity
+Definition 5 The eccentricity of an ellipse is the ratio of the distances from the centre of the ellipse to one of the foci and to one of the vertices of the ellipse (eccentricity is denoted by e) i.e., c
+Then since the focus is at a distance of c from the centre, in terms of the eccentricity the focus is at a distance of ae from the centre.
+10.5.3 Standard equations of an ellipse The equation of an ellipse is simplest if the centre of the ellipse is at the origin and the foci are on the x-axis or y-axis. The two such possible orientations are shown in Fig 10.24.
+We will derive the equation for the ellipse shown above in Fig 10.24 (a) with foci on the x-axis.
+Fig 10.23
+Reprint 2026-27
+CONIC SECTIONS 189
+Fig 10.24
+Let F1 and F2 be the foci and O be the mid-point of the line segment F1F2. Let O be the origin and the line from O through F2 be the positive x-axis and that through F1as the negative x-axis.
+Let, the line through O perpendicular to the x-axis be the y-axis. Let the coordinates of F1 be (– c, 0) and F2 be (c, 0) (Fig 10.25).
+Let P(x, y) be any point on the ellipse such that the sum of the distances from P to the two foci be 2a so given
+PF1 + PF2 = 2a. ... (1)
+Using the distance formula, we have
+2 2 2 2 ) ( ) ( y c x y c x + − + + + = 2a i.e., 2 2
+) ( y c x + + = 2a – 2 2
+) ( y c x + −
+Squaring both sides, we get (x + c)2 + y2 = 4a2 – 4a 2 2 2 2 ) ( ) ( y c x y c x + − + + −
+Fig 10.25
+Reprint 2026-27
+190 MATHEMATICS which on simplification gives a y c x − = + − 2 2
+Squaring again and simplifying, we get x + = 1 (Since c2 = a2 – b2)
+Hence any point on the ellipse satisfies x + = 1. ... (2)
+Conversely, let P (x, y) satisfy the equation (2) with 0 < c < a. Then y2 = b2 
+Therefore, PF1 = 2 2 ( ) x c y + + ( ) ( ) a x x c a c a
++ + −  
+  (since b2 = a2 – c2)
++ = +  
+Similarly PF2 =
+Hence PF1 + PF2 = 2 a x a – x a
++ + = ... (3)
+Reprint 2026-27
+CONIC SECTIONS 191
+So, any point that satisfies 2 x + = 1, satisfies the geometric condition and so
+P(x, y) lies on the ellipse.
+Hence from (2) and (3), we proved that the equation of an ellipse with centre of the origin and major axis along the x-axis is
+Discussion From the equation of the ellipse obtained above, it follows that for every point P (x, y) on the ellipse, we have x − = ≤ 1, i.e., x2 ≤ a2, so – a ≤ x ≤ a.
+Therefore, the ellipse lies between the lines x = – a and x = a and touches these lines.
+Similarly, the ellipse lies between the lines y = – b and y = b and touches these
+Similarly, we can derive the equation of the ellipse in Fig 10.24 (b) as
+These two equations are known as standard equations of the ellipses.
+ANote The standard equations of ellipses have centre at the origin and the major and minor axis are coordinate axes. However, the study of the ellipses with centre at any other point, and any line through the centre as major and the minor axes passing through the centre and perpendicular to major axis are beyond the scope here.
+From the standard equations of the ellipses (Fig10.24), we have the following observations:
+1. Ellipse is symmetric with respect to both the coordinate axes since if (x, y) is a point on the ellipse, then (– x, y), (x, –y) and (– x, –y) are also points on the ellipse.
+2. The foci always lie on the major axis. The major axis can be determined by finding the intercepts on the axes of symmetry. That is, major axis is along the x-axis if the coefficient of x2 has the larger denominator and it is along the y-axis if the coefficient of y2 has the larger denominator.
+Reprint 2026-27
+192 MATHEMATICS
+10.5.4 Latus rectum
+Definition 6 Latus rectum of an ellipse is a line segment perpendicular to the major axis through any of the foci and whose end points lie on the ellipse (Fig 10.26).
+To find the length of the latus rectum of the ellipse 1
+Let the length of AF2 be l.
+Then the coordinates of A are (c, l ),i.e., (ae, l )
+Since A lies on the ellipse
++ = , we have
+⇒ l2 = b2 (1 – e2)
+c a – b b
+Therefore l2 = a , i.e.,
+Since the ellipse is symmetric with respect to y-axis (of course, it is symmetric w.r.t.
+both the coordinate axes), AF2 = F2B and so length of the latus rectum is
+Example 9 Find the coordinates of the foci, the vertices, the length of major axis, the minor axis, the eccentricity and the latus rectum of the ellipse
+Solution Since denominator of x is larger than the denominator of y , the major
+Fig 10. 26
+Reprint 2026-27
+CONIC SECTIONS 193 axis is along the x-axis. Comparing the given equation with
++ = , we get a = 5 and b = 3. Also
+2 2 25 9 4 c a – b – = = =
+Therefore, the coordinates of the foci are (– 4,0) and (4,0), vertices are (– 5, 0) and (5, 0). Length of the major axis is 10 units length of the minor axis 2b is 6 units and the eccentricity is 4
+5 and latus rectum is
+Example 10 Find the coordinates of the foci, the vertices, the lengths of major and minor axes and the eccentricity of the ellipse 9x2 + 4y2 = 36.
+Solution The given equation of the ellipse can be written in standard form as
+Since the denominator of y is larger than the denominator of x , the major axis is along the y-axis. Comparing the given equation with the standard equation
++ = , we have b = 2 and a = 3.
+Also c = 2 2 a – b = 9 4 5 – =
+Hence the foci are (0, 5 ) and (0, – 5 ), vertices are (0,3) and (0, –3), length of the major axis is 6 units, the length of the minor axis is 4 units and the eccentricity of the ellipse is 5
+Example 11 Find the equation of the ellipse whose vertices are (± 13, 0) and foci are (± 5, 0).
+Solution Since the vertices are on x-axis, the equation will be of the form
++ = , where a is the semi-major axis.
+Reprint 2026-27
+194 MATHEMATICS
+Given that a = 13, c = ± 5.
+Therefore, from the relation c2 = a2 – b2, we get
+25 = 169 – b2 , i.e., b = 12
+Hence the equation of the ellipse is
+Example 12 Find the equation of the ellipse, whose length of the major axis is 20 and foci are (0, ± 5).
+Solution Since the foci are on y-axis, the major axis is along the y-axis. So, equation of the ellipse is of the form
+Given that a = semi-major axis 20 10 and the relation c2 = a2 – b2 gives
+52 = 102 – b2 i.e., b2 = 75
+Therefore, the equation of the ellipse is
+Example 13 Find the equation of the ellipse, with major axis along the x-axis and passing through the points (4, 3) and (– 1,4).
+Solution The standard form of the ellipse is 2 x + = 1. Since the points (4, 3)
+and (–1, 4) lie on the ellipse, we have
+9 16 2 2 = + b a ... (1)
+b a + = 1 ….(2)
+Solving equations (1) and (2), we find that 2 247 a = and 2 247
+Hence the required equation is
+Reprint 2026-27
+CONIC SECTIONS 195
+, i.e., 7x2 + 15y2 = 247.
+EXERCISE 10.3
+In each of the Exercises 1 to 9, find the coordinates of the foci, the vertices, the length of major axis, the minor axis, the eccentricity and the length of the latus rectum of the ellipse.
++ = 6. 400 100
+2 2 y x + = 1
+7. 36x2 + 4y2 = 144 8. 16x2 + y2 = 16 9. 4x2 + 9y2 = 36
+In each of the following Exercises 10 to 20, find the equation for the ellipse that satisfies the given conditions:
+10. Vertices (± 5, 0), foci (± 4, 0)
+11. Vertices (0, ± 13), foci (0, ± 5)
+12. Vertices (± 6, 0), foci (± 4, 0)
+13. Ends of major axis (± 3, 0), ends of minor axis (0, ± 2)
+14. Ends of major axis (0, ± 5 ), ends of minor axis (± 1, 0)
+15. Length of major axis 26, foci (± 5, 0)
+16. Length of minor axis 16, foci (0, ± 6).
+17. Foci (± 3, 0), a = 4
+18. b = 3, c = 4, centre at the origin; foci on the x axis.
+19. Centre at (0,0), major axis on the y-axis and passes through the points (3, 2) and
+20. Major axis on the x-axis and passes through the points (4,3) and (6,2).
+10.6 Hyperbola
+Definition 7 A hyperbola is the set of all points in a plane, the difference of whose distances from two fixed points in the plane is a constant.
+Reprint 2026-27

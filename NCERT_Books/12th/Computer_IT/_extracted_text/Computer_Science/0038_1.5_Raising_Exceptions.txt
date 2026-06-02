@@ -1,0 +1,73 @@
+Computer SCienCe - ClaSS Xii 26
+2.5.2 The readline([n]) method
+This method reads one complete line from a file where each line terminates with a newline (\n) character. It can also be used to read a specified number (n) of bytes of data from a file but maximum up to the newline character (\n). In the following example, the second statement reads the first ten characters of the first line of the text file and displays them on the screen.
+>>> myobject=open("myfile.txt",'r')
+>>> myobject.readline(10)
+'Hello ever'
+>>> myobject.close()
+If no argument or a negative number is specified, it reads a complete line and returns string.
+>>>myobject=open("myfile.txt",'r')
+>>> print (myobject.readline())
+'Hello everyone\n'
+To read the entire file line by line using the readline(), we can use a loop. This process is known as looping/ iterating over a file object. It returns an empty string when EOF is reached.
+2.5.3 The readlines() method
+The method reads all the lines and returns the lines along with newline as a list of strings. The following example uses readlines() to read data from the text file myfile.txt.
+>>> myobject=open("myfile.txt", 'r')
+>>> print(myobject.readlines())
+['Hello everyone\n', 'Writing multiline strings\n', 'This is the third line']
+>>> myobject.close()
+As shown in the above output, when we read a file using readlines() function, lines in the file become members of a list, where each list element ends with a newline character (‘\n’).
+In case we want to display each word of a line separately as an element of a list, then we can use split()
+function. The following code demonstrates the use of split() function.
+>>> myobject=open("myfile.txt",'r')
+>>> d=myobject.readlines()
+Activity 2.4
+Create a file having multiline data and use readline() with an iterator to read the contents of the file line by line
+Reprint 2026-27
+F ile Handling in pytHon 27
+>>> for line in d:
+words=line.split()
+print(words)
+['Hello', 'everyone']
+['Writing', 'multiline', 'strings']
+['This', 'is', 'the', 'third', 'line']
+In the output, each string is returned as elements of a list. However, if splitlines() is used instead of split(), then each line is returned as element of a list, as shown in the output below:
+>>> for line in d:
+words=line.splitlines()
+print(words)
+['Hello everyone']
+['Writing multiline strings']
+['This is the third line']
+Let us now write a program that accepts a string from the user and writes it to a text file. Thereafter, the same program reads the text file and displays it on the screen.
+Program 2-1 Writing and reading to a text file fobject=open("testfile.txt","w") # creating a data file sentence=input("Enter the contents to be written in the file: ")
+fobject.write(sentence) # Writing data to the file fobject.close() # Closing a file print("Now reading the contents of the file: ")
+fobject=open("testfile.txt","r")
+#looping over the file object to read the file for str in fobject:
+print(str)
+fobject.close()
+In Program 2.1, the file named testfile.txt is opened in write mode and the file handle named fobject is returned. The string is accepted from the user and written in the file using write(). Then the file is closed and again opened in read mode. Data is read from the file and displayed till the end of file is reached.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 28
+Output of Program 2-1:
+RESTART: Path_to_file\Program2-1.py
+Enter the contents to be written in the file:
+roll_numbers = [1, 2, 3, 4, 5, 6]
+Now reading the contents of the file:
+roll_numbers = [1, 2, 3, 4, 5, 6]
+2.6 settIng oFFsets In a FIle
+The functions that we have learnt till now are used to access the data sequentially from a file. But if we want to access data in a random fashion, then Python gives us seek() and tell() functions to do so.
+2.6.1 The tell() method
+This function returns an integer that specifies the current position of the file object in the file. The position so specified is the byte position from the beginning of the file till the current position of the file object. The syntax of using tell() is:
+file_object.tell()
+2.6.2 The seek() method
+This method is used to position the file object at a particular position in a file. The syntax of seek() is:
+file_object.seek(offset [, reference_point])
+In the above syntax, offset is the number of bytes by which the file object is to be moved. reference_point indicates the starting position of the file object. That is, with reference to which position, the offset has to be counted. It can have any of the following values:
+0 - beginning of the file
+1 - current position of the file
+2 - end of file
+By default, the value of reference_point is 0, i.e.
+the offset is counted from the beginning of the file. For example, the statement fileObject.seek(5,0) will position the file object at 5th byte position from the beginning of the file. The code in Program 2-2 below demonstrates the usage of seek() and tell().
+Does the seek()
+function work in the same manner for text and binary
+Reprint 2026-27

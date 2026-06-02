@@ -1,0 +1,91 @@
+L ists 191
+>>> list1 + list2
+[1, 3, 5, 7, 9, 2, 4, 6, 8, 10]
+>>> list3 = ['Red','Green','Blue']
+>>> list4 = ['Cyan', 'Magenta', 'Yellow'
+,'Black']
+>>> list3 + list4
+['Red','Green','Blue','Cyan','Magenta',
+'Yellow','Black']
+Note that, there is no change in ongoing lists, i.e., list1, list2, list3, list4 remain the same after concatenation operation. If we want to merge two lists, then we should use an assignment statement to assign the merged list to another list. The concatenation operator '+’ requires that the operands should be of list type only. If we try to concatenate a list with elements of some other data type, TypeError occurs.
+>>> list1 = [1,2,3]
+>>> str1 = "abc"
+>>> list1 + str1
+TypeError: can only concatenate list (not
+"str") to list
+9.2.2 Repetition
+Python allows us to replicate a list using repetition operator depicted by symbol *.
+>>> list1 = ['Hello']
+#elements of list1 repeated 4 times
+>>> list1 * 4
+['Hello', 'Hello', 'Hello', 'Hello']
+9.2.3 Membership
+Like strings, the membership operators in checks if the element is present in the list and returns True, else returns False.
+>>> list1 = ['Red','Green','Blue']
+>>> 'Green' in list1
+>>> 'Cyan' in list1
+The not in operator returns True if the element is not present in the list, else it returns False.
+>>> list1 = ['Red','Green','Blue']
+>>> 'Cyan' not in list1
+>>> 'Green' not in list1
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 192
+9.2.4 Slicing
+Like strings, the slicing operation can also be applied to lists.
+>>> list1 =['Red','Green','Blue','Cyan',
+'Magenta','Yellow','Black']
+>>> list1[2:6]
+['Blue', 'Cyan', 'Magenta', 'Yellow']
+#list1 is truncated to the end of the list
+>>> list1[2:20] #second index is out of range
+['Blue', 'Cyan', 'Magenta', 'Yellow',
+'Black']
+>>> list1[7:2] #first index > second index
+[] #results in an empty list
+#return sublist from index 0 to 4
+>>> list1[:5] #first index missing
+['Red','Green','Blue','Cyan','Magenta']
+#slicing with a given step size
+>>> list1[0:6:2]
+['Red','Blue','Magenta']
+#negative indexes
+#elements at index -6,-5,-4,-3 are sliced
+>>> list1[-6:-2]
+['Green','Blue','Cyan','Magenta']
+#both first and last index missing
+>>> list1[::2] #step size 2 on entire list
+['Red','Blue','Magenta','Black']
+#negative step size
+#whole list in the reverse order
+>>> list1[::-1]
+['Black','Yellow','Magenta','Cyan','Blue',
+'Green','Red']
+9.3 traversIng a LIst
+We can access each element of the list or traverse a list using a for loop or a while loop.
+(A) List Traversal Using for Loop:
+>>> list1 = ['Red','Green','Blue','Yellow',
+'Black']
+Reprint 2026-27
+L ists 193
+>>> for item in list1:
+print(item)
+Another way of accessing the elements of the list is using range() and len() functions:
+>>> for i in range(len(list1)):
+print(list1[i])
+(B) List Traversal Using while Loop:
+>>> list1 = ['Red','Green','Blue','Yellow',
+'Black']
+>>> i = 0
+>>> while i < len(list1):
+print(list1[i])
+9.4 LIst Methods and B uILt-In F unctIons
+The data type list has several built-in methods that are useful in programming. Some of them are listed in
+Table 9.1.
+Table 9.1 Built-in functions for list manipulations
+Method Description Example len() Returns the length of the list passed as the argument
+>>> list1 = [10,20,30,40,50]
+>>> len(list1)
+list() Creates an empty list if no argument is
+>>> list1 = list()
+>>> list1 len(lis t1) returns the length or total number of elements of list1.
+Reprint 2026-27

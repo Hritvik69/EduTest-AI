@@ -1,0 +1,98 @@
+10 Chemistry the partial vapour pressure of each component of the solution is directly proportional to its mole fraction present in solution.
+Thus, for component 1 and p1 = 0 p x1 (1.12)
+p is the vapour pressure of pure component 1 at the same temperature.
+Similarly, for component 2
+0 x2 (1.13)
+where p2
+0 represents the vapour pressure of the pure component 2.
+According to Dalton’s law of partial pressures, the total pressure ( total p ) over the solution phase in the container will be the sum of the partial pressures of the components of the solution and is given as:
+ptotal = p1 + p2 (1.14)
+Substituting the values of p1 and p2, we get ptotal = x1 p1
+0 + x2 p2
+= (1 – x2) p1
+0 + x2 p2
+0 (1.15)
+0) x2 (1.16)
+Following conclusions can be drawn from equation (1.16).
+(i) Total vapour pressure over the solution can be related to the mole fraction of any one component.
+(ii) Total vapour pressure over the solution varies linearly with the mole fraction of component 2.
+(iii) Depending on the vapour pressures of the pure components 1 and 2, total vapour pressure over the solution decreases or increases with the increase of the mole fraction of component 1.
+A plot of p1 or p2 versus the mole fractions x1 and x2 for a solution gives a linear plot as shown in Fig. 1.3. These lines (I and II) pass through the points for which x1 and x2 are equal to unity.
+Similarly the plot (line III) of ptotal versus x2 is also linear (Fig. 1.3). The minimum value of ptotal is p1
+0 and the maximum value
+0, assuming that component 1 is less volatile than component 2, i.e., p1
+The composition of vapour phase in equilibrium with the solution is determined by the partial pressures of the components.
+If y1 and y2 are the mole fractions of the
+Fig. 1.3: The plot of vapour pressure and mole fraction of an ideal solution at constant temperature. The dashed lines I and II represent the partial pressure of the components. (It can be seen from the plot that p1 and p2 are directly proportional to x1 and x2, respectively). The total vapour pressure is given by line marked III in the
+Reprint 2026-27
+11 Solutions components 1 and 2 respectively in the vapour phase then, using Dalton’s law of partial pressures:
+p1 = y1 ptotal (1.17)
+p2 = y2 ptotal (1.18)
+In general pi = yi ptotal (1.19)
+Vapour pressure of chloroform (CHCl3) and dichloromethane (CH2Cl2)
+at 298 K are 200 mm Hg and 415 mm Hg respectively. (i) Calculate the vapour pressure of the solution prepared by mixing 25.5 g of
+CHCl3 and 40 g of CH2Cl2 at 298 K and, (ii) mole fractions of each component in vapour phase.
+(i) Molar mass of CH2Cl2 = 12 × 1 + 1 × 2 + 35.5 × 2 = 85 g mol–1
+Molar mass of CHCl3 = 12 × 1 + 1 × 1 + 35.5 × 3 = 119.5 g mol-1
+Moles of CH2Cl2 = 1
+85 g mol = 0.47 mol
+Moles of CHCl3 = 1
+119.5 g mol = 0.213 mol
+Total number of moles = 0.47 + 0.213 = 0.683 mol
+2 2 CH Cl x = 0.47 mol
+0.683 mol = 0.688
+3 CHCl x = 1.00 – 0.688 = 0.312
+Using equation (2.16), total p = p1
+0) x2 = 200 + (415 – 200) × 0.688
+= 200 + 147.9 = 347.9 mm Hg (ii) Using the relation (2.19), yi = pi/ptotal, we can calculate the mole fraction of the components in gas phase (yi).
+2 2 CH Cl p = 0.688 × 415 mm Hg = 285.5 mm Hg
+3 CHCl p = 0.312 × 200 mm Hg = 62.4 mm Hg
+2 2 CH Cl y = 285.5 mm Hg/347.9 mm Hg = 0.82
+3 CHCl y = 62.4 mm Hg/347.9 mm Hg = 0.18
+Note: Since, CH2Cl2 is a more volatile component than CHCl3, [ 2 2 CH Cl
+415 mm Hg and 3 CHCl p = 200 mm Hg] and the vapour phase is also richer in CH2Cl2 [ 2 2 CH Cl y = 0.82 and 3 CHCl y = 0.18], it may thus be concluded that at equilibrium, vapour phase will be always rich in the component which is more volatile.
+Example 1.5 Example 1.5 Example 1.5 Example 1.5 Example 1.5
+Solution Solution Solution Solution Solution
+Reprint 2026-27
+12 Chemistry
+According to Raoult’s law, the vapour pressure of a volatile component in a given solution is given by pi = xi pi
+0. In the solution of a gas in a liquid, one of the components is so volatile that it exists as a gas and we have already seen that its solubility is given by Henry’s law which states that p = KH x.
+If we compare the equations for Raoult’s law and Henry’s law, it can be seen that the partial pressure of the volatile component or gas is directly proportional to its mole fraction in solution. Only the proportionality constant KH differs from p1
+0. Thus, Raoult’s law becomes a special case of Henry’s law in which KH becomes equal to p1
+Another important class of solutions consists of solids dissolved in liquid, for example, sodium chloride, glucose, urea and cane sugar in water and iodine and sulphur dissolved in carbon disulphide. Some physical properties of these solutions are quite different from those of pure solvents. For example, vapour pressure. Liquids at a given temperature vapourise and under equilibrium conditions the pressure exerted by the vapours of the liquid over the liquid phase is called vapour pressure [Fig. 1.4 (a)].
+In a pure liquid the entire surface is occupied by the molecules of the liquid. If a non-volatile solute is added to a solvent to give a solution [Fig. 1.4.(b)], the vapour pressure of the solution is solely from the solvent alone. This vapour pressure of the solution at a given temperature is found to be lower than the vapour pressure of the pure solvent at the same temperature. In the solution, the surface has both solute and solvent molecules; thereby the fraction of the surface covered by the solvent molecules gets reduced. Consequently, the number of solvent molecules escaping from the surface is correspondingly reduced, thus, the vapour pressure is also reduced.
+The decrease in the vapour pressure of solvent depends on the quantity of non-volatile solute present in the solution, irrespective of its nature. For example, decrease in the vapour pressure of water by adding 1.0 mol of sucrose to one kg of water is nearly similar to that produced by adding 1.0 mol of urea to the same quantity of water at the same temperature.
+Raoult’s law in its general form can be stated as, for any solution the partial vapour pressure of each volatile component in the solution is directly proportional to its mole fraction.
+In a binary solution, let us denote the solvent by 1 and solute by
+2. When the solute is non-volatile, only the solvent molecules are present in vapour phase and contribute to vapour pressure. Let p1 be
+1.4.2 Raoult’s
+Law as a special case of Henry’s
+1.4.3 Vapour
+Pressure of
+Solutions of
+Solids in
+Fig. 1.4: Decrease in the vapour pressure of the solvent on account of the presence of solute in the solvent (a) evaporation of the molecules of the solvent from its surface is denoted by , (b) in a solution, solute particles have been denoted by and they also occupy part of the surface area.
+Reprint 2026-27
+13 Solutions the vapour pressure of the solvent, x1 be its mole fraction, pi
+0 be its vapour pressure in the pure state. Then according to
+Raoult’s law and p1 = x1 p (1.20)
+The proportionality constant is equal to the vapour pressure of pure solvent, 0
+A plot between the vapour pressure and the mole fraction of the solvent is linear (Fig. 1.5).
+Liquid-liquid solutions can be classified into ideal and non-ideal solutions on the basis of Raoult’s law.
+The solutions which obey Raoult’s law over the entire range of concentration are known as ideal solutions. The ideal solutions have two other important properties. The enthalpy of mixing of the pure components to form the solution is zero and the volume of mixing is also zero, i.e.,
+DmixH = 0, DmixV = 0 (1.21)
+It means that no heat is absorbed or evolved when the components are mixed. Also, the volume of solution would be equal to the sum of volumes of the two components. At molecular level, ideal behaviour of the solutions can be explained by considering two components A and
+B. In pure components, the intermolecular attractive interactions will be of types A-A and B-B, whereas in the binary solutions in addition to these two interactions, A-B type of interactions will also be present.
+If the intermolecular attractive forces between the A-A and B-B are nearly equal to those between A-B, this leads to the formation of ideal solution. A perfectly ideal solution is rare but some solutions are nearly ideal in behaviour. Solution of n-hexane and n-heptane, bromoethane and chloroethane, benzene and toluene, etc. fall into this category.
+When a solution does not obey Raoult’s law over the entire range of concentration, then it is called non-ideal solution. The vapour pressure of such a solution is either higher or lower than that predicted by
+Raoult’s law (equation 1.16). If it is higher, the solution exhibits positive deviation and if it is lower, it exhibits negative deviation from Raoult’s law. The plots of vapour pressure as a function of mole fractions for such solutions are shown in Fig. 1.6.
+The cause for these deviations lie in the nature of interactions at the molecular level. In case of positive deviation from Raoult’s law, A-B interactions are weaker than those between A-A or B-B, i.e., in this case the intermolecular attractive forces between the solute-solvent molecules are weaker than those between the solute-solute and solvent-solvent molecules. This means that in such solutions, molecules of A (or B) will find it easier to escape than in pure state. This will increase the vapour
+Fig. 1.5
+If a solution obeys
+Raoult's law for all concentrations, its vapour pressure would vary linearly from zero to the vapour pressure of the pure solvent.
+1 . 5 1 . 5 1 . 5 1 . 5 1 . 5 Ideal and Non- Ideal and Non- Ideal and Non- Ideal and Non- Ideal and Non- ideal Solutions ideal Solutions ideal Solutions ideal Solutions ideal Solutions
+1.5.1 Ideal
+Solutions
+1.5.2 Non-ideal
+Solutions
+Reprint 2026-27

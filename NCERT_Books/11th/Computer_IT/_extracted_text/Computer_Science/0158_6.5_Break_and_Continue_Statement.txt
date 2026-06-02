@@ -1,0 +1,88 @@
+Computer SCienCe – ClaSS xi 146 csa_cyl = cyl(h,r) #function call l = float(input("Enter slant height of the conical area in meters: "))
+csa_con = con(l,r) #function call
+#Calculate area of the canvas used for making the tent canvas_area = csa_cyl + csa_con print("Area of canvas = ",canvas_area," m^2")
+#Calculate cost of canvas unit_price = float(input("Enter cost of 1 m^2 canvas in rupees: "))
+total_cost = unit_price * canvas_area print("Total cost of canvas before tax = ",total_cost)
+print("Net amount payable (including tax) = ",post_tax_price(total_
+If we compare program 7-1 and 7-2, it is evident that program 7-2 looks more organised and easier to read.
+7.2.1 The Advantages of Function
+Suppose in further the company decides to design another type of tent whose base is rectangular, while the upper part remains the same. In such a scenario, some part of the existing code can be reused by calling the function con(l,r). If the company develops other products or provides services, and where 18% tax rate is to be applied, the programmer can use the function post_tax_price(cost)directly.
+Thus, following are the advantages of using functions in a program:
+• Increases readability, particularly for longer code as by using functions, the program is better organised and easy to understand.
+• Reduces code length as same code is not required to be written at multiple places in a program. This also makes debugging easier.
+• Increases reusability, as function can be called from another function or another program. Thus, we can reuse or build upon already defined functions and avoid repetitions of writing the same piece of code.
+• Work can be easily divided among team members and completed in parallel.
+7.3 user deFIned F unctIons
+Taking advantage of reusability feature of functions, there is a large number of functions already available
+Reprint 2026-27
+F unctions 147 in Python under standard library (section 7.5). We can directly call these functions in our program without defining them. However, in addition to the standard library functions, we can define our own functions while writing the program. Such functions are called user defined functions. Thus, a function defined to achieve some task as per the programmer's requirement is called a user defined function.
+7.3.1 Creating User Defined Function
+A function definition begins with def (short for define).
+The syntax for creating a user defined function is as follows:
+• The items enclosed in "[ ]" are called parameters and they are optional. Hence, a function may or may not have parameters. Also, a function may or may not return a value.
+• Function header always ends with a colon (:).
+• Function name should be unique. Rules for naming identifiers also applies for function naming.
+• The statements outside the function indentation are not considered as part of the function.
+Program 7-3 Write a user defined function to add 2 numbers and display their sum.
+#Program 7-3
+#Function to add two numbers
+#The requirements are listed below:
+#1. We need to accept 2 numbers from the user.
+#2. Calculate their sum
+#3. Display the sum.
+#function definition def addnum():
+fnum = int(input("Enter first number: "))
+snum = int(input("Enter second number: "))
+sum = fnum + snum print("The sum of ",fnum,"and ",snum,"is ",sum)
+#function call addnum()
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 148
+In order to execute the function addnum(), we need to call it. The function can be called in the program by writing function name followed by () as shown in the last line of program 7-3.
+Enter first number: 5
+Enter second number: 6
+The sum of 5 and 6 is 11
+7.3.2 Arguments and Parameters
+In the above example, the numbers were accepted from the user within the function itself, but it is also possible for a user defined function to receive values at the time of being called. An argument is a value passed to the function during the function call which is received in corresponding parameter defined in function header.
+Program 7-4 Write a program using a user defined function that displays sum of first n natural numbers, where n is passed as an argument.
+#Program 7-4
+#Program to find the sum of first n natural numbers
+#The requirements are:
+#1. n be passed as an argument
+#2. Calculate sum of first n natural numbers
+#3. Display the sum
+#function header def sumSquares(n): #n is the parameter for i in range(1,n+1):
+sum = sum + i print("The sum of first",n,"natural numbers is: ",sum)
+num = int(input("Enter the value for n: "))
+#num is an argument referring to the value input by the user sumSquares(num) #function call
+Let us assume that the user has input 5 during the execution of the program 7-4. So, num refers to the value
+5. It is then used as an argument in the function:
+sumSquares(num)
+Argument
+Parameter
+Figure 7.3: Both argument and parameter refers to the same value
+Reprint 2026-27
+F unctions 149
+Since the function is called, the control is transferred to execute the function def sumSquares(n):
+where parameter n also refers to the value 5 which num is referring to as shown in Figure 7.3.
+Since both num and n are referring to the same value, they are bound to have the same identity. We can use the id() function to find the identity of the object that the argument and parameter are referring to. Let us understand this with the help of the following example.
+Program 7-5 Write a program using user defined function that accepts an integer and increments the value by 5. Also display the id of argument (before function call), id of parameter before increment and after increment.
+#Program 7-5
+#Function to add 5 to a user input number
+#The requirements are listed below:
+#1. Display the id()of argument before function call.
+#2. The function should have one parameter to accept the argument
+#3. Display the value and id() of the parameter.
+#4. Add 5 to the parameter
+#5. Display the new value and id()of the parameter to check
+#whether the parameter is assigned a new memory location or def incrValue(num):
+#id of Num before increment print("Parameter num has value:",num,"\nid =",id(num))
+num = num + 5
+#id of Num after increment print("num incremented by 5 is",num,"\nNow id is ",id(num))
+number = int(input("Enter a number: "))
+print("id of argument number is:",id(number)) #id of Number incrValue(number)
+Enter a number: 8 id of argument number is: 1712903328
+Parameter num has value: 8 id = 1712903328 num incremented by 5 is 13
+Now id is 1712903408 number and num have the same id
+Let us understand the above output through illustration (see Figure 7.4):
+The id of Num has changed.
+Reprint 2026-27

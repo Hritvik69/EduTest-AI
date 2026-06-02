@@ -1,0 +1,135 @@
+THERMAL PROPERTIES OF MATTER 217 (iii) ( ) 1 2 – ( ) ( ) ( )
+91.6 W m K × 0.02 m × 373 K–273 K
+2× 0.1 m
+= 916.1 W ⊳
+10.9.2 Convection
+Convection is a mode of heat transfer by actual motion of matter. It is possible only in fluids.
+Convection can be natural or forced. In natural convection, gravity plays an important part.
+When a fluid is heated from below, the hot part expands and, therefore, becomes less dense.
+Because of buoyancy, it rises and the upper colder part replaces it. This again gets heated, rises up and is replaced by the relatively colder part of the fluid. The process goes on. This mode of heat transfer is evidently different from conduction. Convection involves bulk transport of different parts of the fluid.
+In forced convection, material is forced to move by a pump or by some other physical means. The common examples of forced convection systems are forced-air heating systems in home, the human circulatory system, and the cooling system of an automobile engine. In the human body, the heart acts as the pump that circulates blood through different parts of the body, transferring heat by forced convection and maintaining it at a uniform temperature.
+Natural convection is responsible for many familiar phenomena. During the day, the ground heats up more quickly than large bodies of water do. This occurs both because water has a greater specific heat capacity and because mixing currents disperse the absorbed heat throughout the great volume of water. The air in contact with the warm ground is heated by conduction. It expands, becoming less dense than the surrounding cooler air. As a result, the warm air rises (air currents) and the other air moves (winds) to fill the space-creating a sea breeze near a large body of water. Cooler air descends, and a thermal convection cycle is set up, which transfers heat away from the land.
+At night, the ground loses its heat more quickly, and the water surface is warmer than the land.
+As a result, the cycle is reveresed (Fig. 10.17).
+The other example of natural convection is the steady surface wind on the earth blowing in from north-east towards the equator, the so-called trade wind. A resonable explanation is as follows: the equatorial and polar regions of the earth receive unequal solar heat. Air at the earth’s surface near the equator is hot, while the air in the upper atmosphere of the poles is cool. In the absence of any other factor, a convection current would be set up, with the air at the equatorial surface rising and moving out towards the poles, descending and streaming in towards the equator. The rotation of the earth, however, modifies this convection current. Because of this, air close to the equator has an eastward speed of 1600 km/h, while it is zero close to the poles. As a result, the air descends not at the poles but at 30° N (North)
+latitude and returns to the equator. This is called trade wind.
+Fig. 10.17 Convection cycles.
+Reprint 2026-27
+218 PHYSICS
+10.9.3 Radiation
+Conduction and convection require some material as a transport medium. These modes of heat transfer cannot operate between bodies separated by a distance in vacuum. But the earth does receive heat from the Sun across a huge distance. Similarly, we quickly feel the warmth of the fire nearby even though air conducts poorly and before convection takes some time to set in. The third mechanism for heat transfer needs no medium; it is called radiation and the energy so transferred by electromagnetic waves is called radiant energy.
+In an electromagnetic wave, electric and magnetic fields oscillate in space and time. Like any wave, electromagnetic waves can have different wavelengths and can travel in vacuum with the same speed, namely the speed of light i.e., 3 × 108 m s–1 . You will learn these matters in more detail later, but you now know why heat transfer by radiation does not need any medium and why it is so fast. This is how heat is transferred to the earth from the Sun through empty space. All bodies emit radiant energy, whether they are solid, liquid or gas. The electromagnetic radiation emitted by a body by virtue of its temperature, like radiation by a red hot iron or light from a filament lamp is called thermal radiation.
+When this thermal radiation falls on other bodies, it is partly reflected and partly absorbed.
+The amount of heat that a body can absorb by radiation depends on the colour of the body.
+We find that black bodies absorb and emit radiant energy better than bodies of lighter colours. This fact finds many applications in our daily life. We wear white or light coloured clothes in summer, so that they absorb the least heat from the Sun. However, during winter, we use dark coloured clothes, which absorb heat from the sun and keep our body warm. The bottoms of utensils for cooking food are blackened so that they absorb maximum heat from fire and transfer it to the vegetables to be cooked.
+Similarly, a Dewar flask or thermos bottle is a device to minimise heat transfer between the contents of the bottle and outside. It consists of a double-walled glass vessel with the inner and outer walls coated with silver. Radiation from the inner wall is reflected back to the contents of the bottle. The outer wall similarly reflects back any incoming radiation. The space between the walls is evacuted to reduce conduction and convection losses and the flask is supported on an insulator, like cork. The device is, therefore, useful for preventing hot contents (like, milk) from getting cold, or alternatively, to store cold contents (like, ice).
+10.9.4 Blackbody Radiation
+We have so far not mentioned the wavelength content of thermal radiation. The important thing about thermal radiation at any temperature is that it is not of one (or a few)
+wavelength(s) but has a continuous spectrum from the small to the long wavelengths. The energy content of radiation, however, varies for different wavelengths. Figure 10.18 gives the experimental curves for radiation energy per unit area per unit wavelength emitted by a blackbody versus wavelength for different temperatures.
+Fig. 10.18: Energy emitted versus wavelength for a blackbody at different temperatures
+Notice that the wavelength λm for which energy is the maximum decreases with increasing temperature. The relation between λm and T is given by what is known as Wien’s Displacement
+λm T = constant (10.15)
+The value of the constant (Wien’s constant)
+is 2.9 × 10–3 m K. This law explains why the colour of a piece of iron heated in a hot flame first becomes dull red, then reddish yellow, and finally white hot. Wien’s law is useful for estimating the surface temperatures of celestial
+Reprint 2026-27
+THERMAL PROPERTIES OF MATTER 219 bodies like, the moon, Sun and other stars. Light from the moon is found to have a maximum intensity near the wavelength 14 μm. By Wien’s law, the surface of the moon is estimated to have a temperature of 200 K. Solar radiation has a maximum at λm = 4753 Å. This corresponds to
+T = 6060 K. Remember, this is the temperature of the surface of the sun, not its interior.
+The most significant feature of the blackbody radiation curves in Fig. 10.18 is that they are universal. They depend only on the temperature and not on the size, shape or material of the blackbody. Attempts to explain blackbody radiation theoretically, at the beginning of the twentieth century, spurred the quantum revolution in physics, as you will learn in later courses.
+Energy can be transferred by radiation over large distances, without a medium (i.e., in vacuum). The total electromagnetic energy radiated by a body at absolute temperature T is proportional to its size, its ability to radiate (called emissivity) and most importantly to its temperature. For a body, which is a perfect radiator, the energy emitted per unit time (H)
+is given by
+σT 4 (10.16)
+where A is the area and T is the absolute temperature of the body. This relation obtained experimentally by Stefan and later proved theoretically by Boltzmann is known as Stefan-
+Boltzmann law and the constant
+σ is called
+Stefan-Boltzmann constant. Its value in SI units is 5.67 × 10–8 W m–2 K–4. Most bodies emit only a fraction of the rate given by Eq. 10.16. A substance like lamp black comes close to the limit. One, therefore, defines a dimensionless fraction e called emissivity and writes,
+σT 4 (10.17)
+Here, e = 1 for a perfect radiator. For a tungsten lamp, for example, e is about 0.4. Thus, a tungsten lamp at a temperature of 3000 K and a surface area of 0.3 cm2 radiates at the rate H = 0.3 ×
+10–4 × 0.4 × 5.67 × 10–8 × (3000)4 = 60 W.
+A body at temperature T, with surroundings at temperatures Ts, emits, as well as, receives energy. For a perfect radiator, the net rate of loss of radiant energy is
+σA (T 4 – Ts
+For a body with emissivity e, the relation modifies to
+σ A (T4 – Ts
+4) (10.18)
+As an example, let us estimate the heat radiated by our bodies. Suppose the surface area of a person’s body is about 1.9 m2 and the room temperature is 22 °C. The internal body temperature, as we know, is about 37°°C. The skin temperature may be 28°°C (say). The emissivity of the skin is about 0.97 for the relevant region of electromagnetic radiation. The rate of heat loss is:
+H = 5.67 × 10–8 × 1.9 × 0.97 × {(301)4 – (295)4}
+= 66.4 W which is more than half the rate of energy production by the body at rest (120 W). To prevent this heat loss effectively (better than ordinary clothing), modern arctic clothing has an additional thin shiny metallic layer next to the skin, which reflects the body’s radiation.
+10.10 NEWTON’S LAW OF COOLING
+We all know that hot water or milk when left on a table begins to cool, gradually. Ultimately it attains the temperature of the surroundings. To study how slow or fast a given body can cool on exchanging heat with its surroundings, let us perform the following activity.
+T a k e s o m e w a t e r, s a y 3 0 0 m L , i n a calorimeter with a stirrer and cover it with a two-holed lid. Fix the stirrer through one hole and fix a thermometer through another hole in the lid and make sure that the bulb of thermometer is immersed in the water. Note the reading of the thermometer. This reading
+T1 is the temperature of the surroundings.
+Heat the water kept in the calorimeter till it attains a temperature, say 40 °C above room t e m p e r a t u r e ( i . e . , t e m p e r a t u r e o f t h e surroundings). Then, stop heating the water by removing the heat source. Start the stop-watch and note the reading of the thermometer after a fixed interval of time, say after every one minute of stirring gently with the stirrer. Continue to note the temperature (T2) of water till it attains a temperature about
+5 °C above that of the surroundings. Then, plot
+Reprint 2026-27
+220 PHYSICS a graph by taking each value of temperature
+∆T = T2 – T1 along y-axis and the coresponding value of t along x-axis (Fig. 10.19).
+Fig. 10.19 Curve showing cooling of hot water with time.
+From the graph you can infer how the cooling of hot water depends on the difference of its temperature from that of the surroundings. You will also notice that initially the rate of cooling is higher and decreases as the temperature of the body falls.
+The above activity shows that a hot body loses heat to its surroundings in the form of heat radiation. The rate of loss of heat depends on the difference in temperature between the body and its surroundings. Newton was the first to study, in a systematic manner, the relation between the heat lost by a body in a given enclosure and its temperature.
+According to Newton’s law of cooling, the rate of loss of heat, – dQ/dt of the body is directly proportional to the difference of temperature
+∆T = (T2–T1) of the body and the surroundings.
+The law holds good only for small difference of temperature. Also, the loss of heat by radiation depends upon the nature of the surface of the body and the area of the exposed surface. We can write
+– (10.19)
+where k is a positive constant depending upon the area and nature of the surface of the body.
+Suppose a body of mass m and specific heat capacity s is at temperature T2. Let T1 be the temperature of the surroundings. If the temperature falls by a small amount dT2 in time dt, then the amount of heat lost is dQ = ms dT2
+∴ Rate of loss of heat is given by dt ms dT
+= 2 (10.20)
+From Eqs. (10.15) and (10.16) we have
+– ( – ) m s dT dt k T T 2 ms dt K dt 2
+2 1 – – – = = (10.21)
+where K = k/m s
+On integrating, loge (T2 – T1) = – K t + c (10.22)
+or T2 = T1 + C
+′ e–Kt; where C
+′ = ec (10.23)
+Equation (10.23) enables you to calculate the time of cooling of a body through a particular range of temperature.
+For small temperature differences, the rate of cooling, due to conduction, convection, and radiation combined, is proportional to the difference in temperature. It is a valid approximation in the transfer of heat from a radiator to a room, the loss of heat through the wall of a room, or the cooling of a cup of tea on the table.
+Fig. 10.20 Verification of Newton’s Law of cooling.
+Newton’s law of cooling can be verified with the help of the experimental set-up shown in
+Fig. 10.20(a). The set-up consists of a double- walled vessel (V) containing water between the two walls. A copper calorimeter (C)
+containing hot water is placed inside the double-walled vessel. Two thermometers through the corks are used to note the temperatures T2 of water in calorimeter and
+T1 of hot water in between the double walls, respectively. Temperature of hot water in the calorimeter is noted after equal intervals of time. A graph is plotted between log e (T2–T1)
+[or ln(T2–T1)] and time (t ). The nature of the
+Reprint 2026-27
+THERMAL PROPERTIES OF MATTER 221 graph is observed to be a straight line having a negative slope as shown in Fig. 10.20(b). This is in support of Eq. 10.22.
+Example 10.8 A pan filled with hot food cools from 94 °C to 86 °C in 2 minutes when the room temperature is at 20 °C. How long will it take to cool from 71 °C to 69 °C?
+Answer The average temperature of 94 °C and
+86 °C is 90 °C, which is 70 °C above the room temperature. Under these conditions the pan cools 8 °C in 2 minutes.
+Using Eq. (10.21), we have
+Change in temperature
+Time K T = ∆
+1. Heat is a form of energy that flows between a body and its surrounding medium by virtue of temperature difference between them. The degree of hotness of the body is quantitatively represented by temperature.
+2. A temperature-measuring device (thermometer) makes use of some measurable property (called thermometric property) that changes with temperature. Different thermometers lead to different temperature scales. To construct a temperature scale, two fixed points are chosen and assigned some arbitrary values of temperature. The two numbers fix the origin of the scale and the size of its unit.
+3. The Celsius temperature (tC) and the Farenheit temperare (tF)are related by tF = (9/5) tC + 32
+4. The ideal gas equation connecting pressure (P), volume (V) and absolute temperature (T)
+μ is the number of moles and R is the universal gas constant.
+5. In the absolute temperature scale, the zero of the scale corresponds to the temperature where every substance in nature has the least possible molecular activity. The Kelvin absolute temperature scale (T ) has the same unit size as the Celsius scale (Tc ), but differs in the origin :
+TC = T – 273.15
+6. The coefficient of linear expansion (
+αl ) and volume expansion (
+αv ) are defined by the relations :
+8 C = 70 C
+The average of 69 °C and 71 °C is 70 °C, which is 50 °C above room temperature. K is the same for this situation as for the original.
+Time = K (50 °C)
+When we divide above two equations, we
+8 C/2 min (70 C)
+2 C/time (50 C)
+Time = 0.7 min
+= 42 s ⊳
+Reprint 2026-27
+222 PHYSICS where ∆l and ∆V denote the change in length l and volume V for a change of temperature
+∆T. The relation between them is :
+7. The specific heat capacity of a substance is defined by where m is the mass of the substance and ∆Q is the heat required to change its temperature by ∆T. The molar specific heat capacity of a substance is defined by
+μ is the number of moles of the substance.
+8. The latent heat of fusion (Lf) is the heat per unit mass required to change a substance from solid into liquid at the same temperature and pressure. The latent heat of vaporisation (Lv) is the heat per unit mass required to change a substance from liquid to the vapour state without change in the temperature and pressure.
+9. The three modes of heat transfer are conduction, convection and radiation.
+10. In conduction, heat is transferred between neighbouring parts of a body through molecular collisions, without any flow of matter. For a bar of length L and uniform cross section A with its ends maintained at temperatures TC and TD, the rate of flow of heat H is :
+H = K A L where K is the thermal conductivity of the material of the bar.
+11. Newton’s Law of Cooling says that the rate of cooling of a body is proportional to the excess temperature of the body over the surroundings :
+Q = – k T – T
+Where T1 is the temperature of the surrounding medium and T2 is the temperature of the body.
+Reprint 2026-27
+THERMAL PROPERTIES OF MATTER 223
+POINTS TO PONDER
+1. The relation connecting Kelvin temperature (T ) and the Celsius temperature tc
+T = tc + 273.15 and the assignment T = 273.16 K for the triple point of water are exact relations (by choice). With this choice, the Celsius temperature of the melting point of water and boiling point of water (both at 1 atm pressure) are very close to, but not exactly equal to 0 °C and 100 °C respectively. In the original Celsius scale, these latter fixed points were exactly at 0 °C and 100 °C (by choice), but now the triple point of water is the preferred choice for the fixed point, because it has a unique temperature.
+2. A liquid in equilibrium with vapour has the same pressure and temperature throughout the system; the two phases in equilibrium differ in their molar volume

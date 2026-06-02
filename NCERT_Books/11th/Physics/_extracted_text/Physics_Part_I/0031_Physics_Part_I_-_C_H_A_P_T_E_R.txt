@@ -1,0 +1,23 @@
+MOTION IN A STRAIGHT LINE 15 corresponding values of x, i.e. x (t1) = 0.08 t1 and x (t2) = 0.08 t2
+3 . The sixth column lists the difference ∆x = x (t2) – x (t1) and the last column gives the ratio of ∆x and ∆t, i.e. the average velocity corresponding to the value of ∆t listed in the first column.
+We see from Table 2.1 that as we decrease the value of ∆t from 2.0 s to 0.010 s, the value of the average velocity approaches the limiting value 3.84 m s–1 which is the value of velocity at t = 4.0 s, i.e. the value of dx dt at t = 4.0 s. In this manner, we can calculate velocity at each instant for motion of the car.
+The graphical method for the determination of the instantaneous velocity is always not a convenient method. For this, we must carefully plot the position–time graph and calculate the value of average velocity as ∆t becomes smaller and smaller. It is easier to calculate the value of velocity at different instants if we have data of positions at different instants or exact expression for the position as a function of time.
+Then, we calculate ∆x/∆t from the data for decreasing the value of ∆t and find the limiting value as we have done in Table 2.1 or use differential calculus for the given expression and calculate dx dt at different instants as done in the following example.
+Example 2.1 The position of an object moving along x-axis is given by x = a + bt2 where a = 8.5 m, b = 2.5 m s–2 and t is measured in seconds. What is its velocity at t = 0 s and t = 2.0 s. What is the average velocity between t = 2.0 s and t = 4.0 s ?
+Answer In notation of differential calculus, the velocity is ( )2 -1 dx d v a bt 2b t = 5.0 t m s
+At t = 0 s, v = 0 m s–1 and at t = 2.0 s, v = 10 m s-1 .
+( ) ( ) 4.0 2.0
+Average velocity −
+16 – – 4 6.0 a b a b b
+6.0 2.5 = 15 m s = × ⊳
+Note that for uniform motion, velocity is the same as the average velocity at all instants.
+Instantaneous speed or simply speed is the magnitude of velocity. For example, a velocity of
++ 24.0 m s–1 and a velocity of – 24.0 m s–1 — both have an associated speed of 24.0 m s-1. It should be noted that though average speed over a finite interval of time is greater or equal to the magnitude of the average velocity, instantaneous speed at an instant is equal to the magnitude of the instantaneous velocity at that instant. Why so ?
+2.3 ACCELERATION
+The velocity of an object, in general, changes during its course of motion. How to describe this change? Should it be described as the rate of change in velocity with distance or with time ? This was a problem even in Galileo’s time. It was first thought that this change could be described by the rate of change of velocity with distance. But, through his studies of motion of freely falling objects and motion of objects on an inclined plane, Galileo concluded that the rate of change of velocity with time is a constant of motion for all objects in free fall.
+On the other hand, the change in velocity with distance is not constant – it decreases with the increasing distance of fall. This led to the concept of acceleration as the rate of change of velocity with time.
+The average acceleration a over a time interval is defined as the change of velocity divided by the time interval :
+v v v a t t t where v2 and v1 are the instantaneous velocities or simply velocities at time t2 and t1 . It is the average change of velocity per unit time. The SI unit of acceleration is m s–2 .
+On a plot of velocity versus time, the average acceleration is the slope of the straight line connecting the points corresponding to (v2, t2)
+and (v1, t1).
+Reprint 2026-27

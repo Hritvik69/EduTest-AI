@@ -1,0 +1,22 @@
+T uples and dicTionaries 227 and/or skills of their pupils either on a general level or in a specific field of study. Identify and analyse popular quiz shows and write a Python program to create a quiz that should also contain the following functionalities besides the one identified by you as a result of your analysis.
+• Create an administrative user ID and password to categorically add, modify, delete a question
+• Register the student before allowing her or him to play a quiz
+• Allow selection of category based on subject area
+• Display questions as per the chosen category
+• Keep the score as the participant plays
+• Display the final score
+3. Our heritage monuments are our assets. They are a reflection of our rich and glorious past and an inspiration for our future. UNESCO has identified some of Indian heritage sites as World heritage sites. Collect the following information about these
+• What is the name of the site?
+• Where is it located?
+▪ District
+• When was it built?
+• Who built it?
+• Why was it built?
+• Website link (if any).
+Write a Python program to
+• create an administrative user ID and password to add, modify or delete an entered heritage site in the list of sites
+• display the list of world heritage sites in India
+• search and display information of a world heritage site entered by the user
+• display the name(s) of world heritage site(s) on the basis of the state input by the user.
+4. Every mode of transport utilises a reservation system to ensure its smooth and efficient functioning. If you analyse you would find many things in common. You are required to identify
+Reprint 2026-27

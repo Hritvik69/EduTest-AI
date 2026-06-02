@@ -1,0 +1,22 @@
+Digital Documentation (aDvanceD) using libreoffice Writer 43
+• In a digital document, a graphic or image is called digital image.
+• A digital image is represented in pixels.
+• Predefined image can be inserted using Drag-
+Drop method, Copy-Paste method or using Insert
+Image dialog box.
+• Inserting an image embeds a copy of the image in the document.
+• An image can be linked to a document using
+Insert Image dialog box.
+• Linking an image saves only the link of the image instead of embedding the image. This saves space in case multiple copies of the same image are required.
+• Image Toolbar can be used to modify an image.
+Tools for filtering, resizing, cropping, deleting and rotating an image are available in this toolbar.
+• Drawing Tools are used to create pictures (objects), such as Flowchart, Call out box, designs, etc.
+• Properties of Object can be customised by resizing, rotating, moving or editing.
+• Drawing object properties can be modified either at the time of creation (when you start drawing)
+or after its creation.
+• Properties when modified before creation, is known as setting Default values.
+• An object drawn using different shapes, can be grouped to behave as single object.
+• Writer provide various tools to arrange text and image or drawing on a page.
+Practical Exercises
+Q.1 In Practical Exercise of chapter 1 (Question 3), you created a school newsletter. Leaf-wise content of the newsletter were:
+(a) School Information (b) Result for Class X & XII in table (c) School Achievement (d) Students’ article(s)/poem(s)

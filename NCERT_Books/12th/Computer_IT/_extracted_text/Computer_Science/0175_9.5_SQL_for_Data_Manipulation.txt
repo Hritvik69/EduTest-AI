@@ -1,0 +1,132 @@
+S tructured Query Language (SQL) 163
++---------------+----------------------------------+
+| LENGTH(Email) | LEFT(Email, INSTR(Email, "@")-1) |
++---------------+----------------------------------+
+| 19 | amitsaha2 |
+| 19 | rehnuma |
+| 19 | charvi123 |
+| 19 | gur_singh |
++---------------+----------------------------------+
+4 rows in set (0.03 sec)
+The function INSTR will return the position of “@” in the email address. So, to print email id without “@” we have to use position -1.
+c) Let us assume that four-digit area code is reflected in the mobile number starting from position number 3.
+For example, 1851 is the area code of mobile number
+9818511338. Now, write the SQL query to display the area code of the customer living in Rohini.
+mysql> SELECT MID(Phone,3,4) FROM CUSTOMER WHERE
+CustAdd like ‘%Rohini%’;
++----------------+
+| MID(Phone,3,4) |
++----------------+
+| 1163 |
++----------------+
+1 row in set (0.00 sec)
+d) Display emails after removing the domain name extension “.com” from emails of the customers.
+mysql> SELECT TRIM(“.com” from Email) FROM
+CUSTOMER;
++-------------------------+
+| TRIM(".com" FROM Email) |
++-------------------------+
+| amitsaha2@gmail |
+| rehnuma@hotmail |
+| charvi123@yahoo |
+| gur_singh@yahoo |
++-------------------------+
+4 rows in set (0.00 sec)
+e) Display details of all the customers having yahoo emails only.
+mysql> SELECT * FROM CUSTOMER WHERE Email LIKE "%yahoo%";
++--------+--------------+-------------------------+------------+----------------------+
+| CustID | CustName | CustAdd | Phone | Email |
++--------+--------------+-------------------------+------------+----------------------+
+| C0003 | Charvi Nayyar| 10/9, FF, Rohini | 6811635425 | charvi123@yahoo.com |
+| C0004 | Gurpreet | A-10/2, SF, Mayur Vihar | 3511056125 | gur_singh@yahoo.com |
++--------+--------------+-------------------------+------------+----------------------+
+2 rows in set (0.00 sec)
+(C) Date and Time Functions
+There are various functions that are used to perform operations on date and time data. Some of the operations
+Activity 9.13
+Using the table
+EMPLOYEE of
+CARSHOWROOM database, list the day of birth for all employees whose salary is more than 25000.
+Can we use arithmetic operators (+, -. *, or /)
+on date functions?
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 164 include displaying the current date, extracting each element of a date (day, month and year), displaying day of the week and so on. Table 9.15 explains various date and time functions.
+Table 9.15 Date Functions
+Function Description Example with output
+NOW() It returns the current system date and time.
+mysql> SELECT NOW();
+2019-07-11 19:41:17
+DATE() It returns the date part from the given date/time expression.
+mysql> SELECT DATE(NOW());
+2019-07-11
+MONTH(date) It returns the month in numeric form from the date.
+mysql> SELECT MONTH(NOW());
+MONTHNAME(date) It returns the month name from the specified date.
+mysql> SELECT
+MONTHNAME(“2003-11-28”);
+November
+YEAR(date) It returns the year from the date. mysql> SELECT YEAR(“2003-10-
+DAY(date) It returns the day part from the mysql> SELECT DAY(“2003-03-
+DAYNAME(date) It returns the name of the day from the date.
+mysql> SELECT
+DAYNAME(“2019-07-11”);
+Thursday
+Example 9.21 Let us use the EMPLOYEE table of
+CARSHOWROOM database to illustrate the working of some of the date and time functions.
+a) Select the day, month number and year of joining of all employees.
+mysql> SELECT DAY(DOJ), MONTH(DOJ), YEAR(DOJ)
+FROM EMPLOYEE;
++----------+------------+-----------+
+| DAY(DOJ) | MONTH(DOJ) | YEAR(DOJ) |
++----------+------------+-----------+
+| 12 | 12 | 2017 |
+| 5 | 6 | 2016 |
+| 8 | 1 | 1999 |
+| 2 | 12 | 2010 |
+| 1 | 7 | 2012 |
+| 1 | 1 | 2017 |
+| 23 | 10 | 2013 |
++----------+------------+-----------+
+7 rows in set (0.03 sec)
+Activity 9.14 a) Find sum of Sale
+Price of the cars purchased by the customer having ID
+C0001 from table b) Find the maximum and commission from the
+SALE table.
+Reprint 2026-27
+S tructured Query Language (SQL) 165
+Table 9.16 Differences between Single and Multiple Row Functions
+Single Row Function Multiple row function
+1. It operates on a single row at a time.
+2. It returns one result per row.
+3. It can be used in Select, Where, and Order by
+4. Math, String and Date functions are examples of single row functions.
+1. It operates on groups of rows.
+2. It returns one result for a group of rows.
+3. It can be used in the select clause only.
+4. Max(), Min(), Avg(), Sum(), Count() and
+Count(*) are examples of multiple row functions.
+Table 9.17 Aggregate Functions in SQL
+Function Description Example with output
+MAX(column) Returns the largest value from the specified column.
+mysql> SELECT MAX(Price) FROM
+INVENTORY;
+673112.00
+MIN(column) Returns the smallest value from the specified column.
+mysql> SELECT MIN(Price) FROM
+INVENTORY;
+355205.00 b) If the date of joining is not a Sunday, then display it in the following format "Wednesday, 26,
+November, 1979." mysql> SELECT DAYNAME(DOJ), DAY(DOJ),
+MONTHNAME(DOJ), YEAR(DOJ) FROM EMPLOYEE WHERE
+DAYNAME(DOJ)!='Sunday';
++--------------+----------+----------------+-----------+
+| DAYNAME(DOJ) | DAY(DOJ) | MONTHNAME(DOJ) | YEAR(DOJ) |
++--------------+----------+----------------+-----------+
+| Tuesday | 12 | December | 2017 |
+| Friday | 8 | January | 1999 |
+| Thursday | 2 | December | 2010 |
+| Wednesday | 23 | October | 2013 |
++--------------+----------+----------------+-----------+
+4 rows in set (0.00 sec)
+9.8.2 Aggregate Functions
+Aggregate functions are also called Multiple Row functions. These functions work on a set of records as a whole and return a single value for each column of the records on which the function is applied. Table 9.16 shows the differences between single row functions and multiple row functions. Table 9.17 describes some of the aggregate functions along with their usage. Note that column must be of numeric type.
+Reprint 2026-27

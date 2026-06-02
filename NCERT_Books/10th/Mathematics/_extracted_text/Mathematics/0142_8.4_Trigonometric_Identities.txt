@@ -1,0 +1,93 @@
+128 MATHEMATICS
+8.4 Trigonometric Identities
+You may recall that an equation is called an identity when it is true for all values of the variables involved.
+Similarly, an equation involving trigonometric ratios of an angle is called a trigonometric identity, if it is true for all values of the angle(s) involved.
+In this section, we will prove one trigonometric identity, and use it further to prove other useful trigonometric identities.
+In  ABC, right-angled at B (see Fig. 8.21), we have:
+AB2 + BC2 = AC 2 (1)
+Dividing each term of (1) by AC2 , we get
+    
+    = i.e., (cos A)2 + (sin A) 2 = 1 i.e., cos 2 A + sin2 A = 1 (2)
+This is true for all A such that 0°  A  90°. So, this is a trigonometric identity.
+Let us now divide (1) by AB2
+. We get
+    
+    = i.e., 1 + tan2 A = sec 2 A (3)
+Is this equation true for A = 0°? Yes, it is. What about A = 90°? Well, tan A and sec A are not defined for A = 90°. So, (3) is true for all A such that 0°  A  90°.
+Let us see what we get on dividing (1) by BC2
+. We get
+Fig. 8.21
+Reprint 2026-27
+I NTRODUCTION TO TRIGONOMETRY 129
+    
+    = i.e., cot2 A + 1 = cosec 2 A (4)
+Note that cosec A and cot A are not defined for A = 0°. Therefore (4) is true for all A such that 0° < A  90°.
+Using these identities, we can express each trigonometric ratio in terms of other trigonometric ratios, i.e., if any one of the ratios is known, we can also determine the values of other trigonometric ratios.
+Let us see how we can do this using these identities. Suppose we know that tan A = 1
+3  Then, cot A = 3 .
+Since, sec2 A = 1 + tan2 A = 1 4 , 1 3 3
+  sec A = 2
+3 , and cos A = 3
+Again, sin A = 2 3 1
+1 cos A 1 4 2
+    . Therefore, cosec A = 2.
+Example 9 : Express the ratios cos A, tan A and sec A in terms of sin A.
+Solution : Since cos 2 A + sin 2 A = 1, therefore, cos 2 A = 1 – sin 2 A, i.e., cos A = 2
+1 sin A  
+This gives cos A = 2
+1 sin A  (Why?)
+Hence, tan A = sin A cos A = 2 2 sin A 1 1 and sec A = cos A 1 – sin A 1 sin A
+Example 10 : Prove that sec A (1 – sin A)(sec A + tan A) = 1.
+Solution :
+LHS = sec A (1 – sin A)(sec A + tan A) = 1 1 sin A (1 sin A)
+cos A cos A cos A
+     
+Reprint 2026-27
+130 MATHEMATICS (1 sin A) (1 + sin A) 1 sin A cos A cos A cos A  = RHS
+Example 11 : Prove that cot A – cos A cosec A – 1 cot A + cos A cosec A + 1
+Solution : LHS = cos A cos A cot A – cos A sin A cos A cot A + cos A cos A cos A 1 1 sin A sin A cosec A – 1 cosec A + 1 1 1 cos A 1 1 sin A sin A
+     
+    
+     
+Example 12 : Prove that sin cos 1 1 , sin cos 1 sec tan
+    
+       using the identity sec 2  = 1 + tan 2 .
+Solution : Since we will apply the identity involving sec  and tan , let us first convert the LHS (of the identity we need to prove) in terms of sec  and tan  by dividing numerator and denominator by cos 
+LHS = sin – cos + 1 tan 1 sec sin + cos – 1 tan 1 sec
+     
+     
+= (tan sec ) 1 {(tan sec ) 1} (tan sec )
+(tan sec ) 1 {(tan sec ) 1} (tan sec )
+          
+           (tan sec ) (tan sec )
+{tan sec 1} (tan sec )
+      
+      
+= – 1 tan sec (tan sec 1) (tan sec )
+      
+Reprint 2026-27
+I NTRODUCTION TO TRIGONOMETRY 131
+= –1 1 , tan sec sec tan
+      which is the RHS of the identity, we are required to prove.
+EXERCISE 8.3
+1. Express the trigonometric ratios sin A, sec A and tan A in terms of cot A.
+2. Write all the other trigonometric ratios of  A in terms of sec A.
+3. Choose the correct option. Justify your choice.
+(i) 9 sec 2 A – 9 tan 2 A = (A) 1 (B) 9 (C) 8 (D) 0 (ii) (1 + tan  + sec ) (1 + cot  – cosec ) = (A) 0 (B) 1 (C) 2 (D) –1 (iii) (sec A + tan A) (1 – sin A) = (A) sec A (B) sin A (C) cosec A (D) cos A
+1 + cot A (A) sec2 A (B) –1 (C) cot2 A (D) tan 2 A
+4. Prove the following identities, where the angles involved are acute angles for which the expressions are defined.
+(i) (cosec  – cot ) 2 = 1 cos
+  (ii) cos A 1 sin A 2 sec A
+1 + sin A cos A (iii) tan cot 1 sec cosec
+1 cot 1 tan
+    
+[Hint : Write the expression in terms of sin  and cos ]
+1 sec A sin A sec A 1 – cos A
+  [Hint : Simplify LHS and RHS separately] (v) cos A – sin A + 1 cosec A + cot A, cos A + sin A – 1  using the identity cosec2 A = 1 + cot2 A.
+(vi) 1 sin A sec A + tan A
+1 – sin A
+  (vii)
+sin 2 sin tan
+2 cos cos
+     (viii) (sin A + cosec A) 2 + (cos A + sec A) 2 = 7 + tan2 A + cot2 A
+Reprint 2026-27

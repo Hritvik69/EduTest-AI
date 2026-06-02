@@ -1,0 +1,203 @@
+Ganita Prakash | Grade 8 | Part-II
+Find the shortest path between the ant and the laddu in the following
+Ant (at the centre of the face)
+If we unfold the cuboid as before, we get
+4 cm 4 cm
+Notice the line segment between the ant and laddu going outside the net! Obviously, this does not correspond to any path on the cuboid.
+So what do we do now?
+If the net is unfolded in the following way, then we get a path on the
+The shortest path
+Thus, the way a cuboid is unfolded matters!
+Exploring Some Geometric Themes
+Now we will look at a trickier case.
+What is the length of the shortest path between the ant and the laddu?
+laddu (stuck to the back of the box)
+Here are some of the ways of unfolding the cuboid.
+In the second case, the distance d between the ant and the laddu can be calculated using the Baudhayana Theorem, since we have a right triangle here.
+d2 = 242 + 322 d = 1600 = 40 cm
+We see that in each of these unfoldings, the lengths of the line segments between the ant and the laddu are different! So we have to carefully list all the possible different unfoldings to find the answer!
+Representation of Solids on a Plane Surface
+Drawing is one of the oldest human activities. People have been doing it for thousands of years for both aesthetic as well as practical and engineering purposes. Regarding the latter, making a drawing of an object is a useful way to record or convey information about it.
+Visual representation also helps us in thinking about the objects being represented. Such needs often arise in engineering — while constructing buildings, designing machines, etc. Further, engineering drawings need
+Ganita Prakash | Grade 8 | Part-II to be detailed enough so that one can physically construct the objects they depict.
+We will now explore some ways of drawing solids on a plane.
+Projections
+The net of a solid (when it exists) is one way of representing a solid on the plane. But it can be difficult to visualise the solid from the net, without physically cutting out the net and folding it up.
+Another way to represent a solid is by looking at the projections of all its points on a plane. This idea is closely related to the profile of a solid from a specific viewpoint, which we discussed earlier. Let us see how this technique works.
+O is the projection of P
+Consider a point P in space, and a plane M. Imagine a line from P intersecting the plane M at a point O.
+We say that OP is perpendicular to the plane if for any line OX on the plane, ∠POX = 90°. In this case, we say that point O is the projection of point P on the plane. The projections of all the points of an object together form the projection of the object on the plane.
+Let us visualise the projection of a line.
+Fig. 4.2
+Projection Projection
+Exploring Some Geometric Themes
+What happens to the length of a line in its projection?
+Let us consider projections in Fig. 4.3.
+For example let l be the actual length of the line and p be the length of its projection.
+Draw AE ⊥ BC. AECD is a rectangle (why?).
+So, AE = DC = p. Also, ∠AEB = 90°.
+Can you now compare the lengths p and l?
+When is the length of the projected line equal to its actual length?
+What do you think are the different possible projections of a square that we get based on its orientation?
+What do you think is the projection of a parallelogram under different orientations?
+Can this ever be a quadrilateral that is not a parallelogram?
+As a starting point, you could think about the projection of a pair of parallel lines.
+What can you say about the projection of an n-sided regular polygon?
+[Hint: Projection of a polygon is composed of the projections of its
+Let us consider projections of solids now.
+How would the projections of a cube and a cone look?
+Fig. 4.4 Fig. 4.5
+Fig. 4.3
+Ganita Prakash | Grade 8 | Part-II
+If an object were to pass perpendicularly through a plane and form a hole, the shape of the hole would be the same as the shape of the projection of the object.
+See Figures 4.2 – 4.5. In each case, see if you can visualise another object that gives the same projection.
+Fig. 4.6
+Different lines and different cuboids giving the same projections
+We see that a given projection is not made by a unique object.
+Exploring Some Geometric Themes
+Find another object that makes the same projection as that of a given
+For this reason, we often take three mutually perpendicular projections of an object. As shown in the figure, we consider a plane in front of the object called the vertical plane, a plane below the object called the horizontal plane and a plane to the side of the object called the side plane.
+Vertical
+Horizontal
+We give names to the projections on these three planes based on the directions from which the object is viewed. The projection on the vertical plane is called the front view, on the horizontal plane the top view and on the side plane the side view. These projections formalise the notion of profiles that we explored in an earlier section.
+Let us see what these projections are for the objects shown in Fig. 4.6, when the planes shown are taken to be vertical planes.
+Projections of the different lines in Fig. 4.6 —
+Ganita Prakash | Grade 8 | Part-II
+Front View Top View Side View
+Projections of the different cuboids in Fig. 4.6 —
+Front View Top View Side View
+Figure it Out
+1. Observe the front view, top view and side view of the different lines in Fig. 4.6. Is there any relation between their lengths?
+2. Find the front view, top view and side view of each of the following solids, fixing its orientation with respect to the vertical, horizontal and side planes: cube, cuboid, parallelepiped, cylinder, cone, prism, and pyramid. If needed, see the next problem for clues.
+Exploring Some Geometric Themes
+3. Match each of the following objects with its projections.
+FRONT TOP SIDE
+Ganita Prakash | Grade 8 | Part-II
+Place an object in front of a plane, such as a wall of your room. Shine a torch light on the object in a direction perpendicular to the wall.
+What do you see?
+We will see that the shape of the shadow on a plane is quite similar to the shape of the projection on that plane! However the shadow may be scaled up, stretched, or even distorted slightly, depending on how the object is held.
+Observe what happens to the size of the shadow as you vary the distance between your torch and your object.
+Why does this happen?
+Now, imagine your torch is extremely powerful and will continue casting a shadow of the object on the wall, no matter how far back you move it.
+If this imaginary torch always points in a direction perpendicular to the wall, then, as the distance between the torch and the object increases, the shadow of the object will become indistinguishable from the projection of the object to the wall plane!
+Although this experiment may sound fanciful, you have encountered one such extremely powerful and distant torch before … namely, the
+Sun! Indeed, when sunlight is perpendicular to a plane, the shadows it casts on that plane are indistinguishable from projections!
+Earlier we asked what the projection of a parallelogram might look like. You can now physically answer this question by making a cutout of a parallelogram and viewing its shadows under sunlight. No matter how you orient the parallelogram, you will see that the shadow remains a parallelogram!
+More generally, the projection of a pair of parallel lines will always remain parallel.
+Exploring Some Geometric Themes
+This property is useful for drawing projections of objects.
+Figure it Out
+1. Draw the top view, front view and the side view of each of the following combinations of identical cubes.
+2. Imagine eight identical cubes, glued together along faces to form the letter ‘ ’.
+(i) This looks like a ‘ ’ from the front. What does it look like from the side? From the top?
+(ii) Glue additional cubes to make a shape that looks like ‘ ’ from the front and ‘ ’ from the top.
+(iii) Now, can you glue even more cubes to make it look like ‘ ’ from the front, ‘ ’ from the top, and ‘ ’ from the side?
+(iv) Can you think of other letter combinations to make with a single combination of cubes in this manner?
+Ganita Prakash | Grade 8 | Part-II
+3. Which solid corresponds to the given top view, front view, and side view?
+Front View Top View Side View (i) (ii) (iii) (iv)
+Front Front Front
+Side Side
+Top Top Top (v) (vi) (vii)
+4. Using identical cubes, make a solid that gives the following projections.
+Top View Front View Side View
+Exploring Some Geometric Themes
+5. Find the number of cubes in this stack of identical cubes.
+6. What are the different shapes the projection of a cube can make under different orientations?
+Isometric Projections
+In general we lose information when projecting a solid to a plane. But depending on the orientation of the solid, we can sometimes recover much of the information we’ve lost.
+Let us consider an orientation of a cube in which the lengths of the projections of all the edges of the cube are equal. Such a projection is called the isometric projection of the cube. ‘Isometric’ means ‘equal measure’ in Greek.
+Imagine balancing a cube perfectly on one of its corner vertices, and then projecting it down to the floor plane. This projection is isometric and appears as shown.
+Construct a model of a cube and use your hands to keep it balanced on one corner vertex. Can you try to understand why all the projected edges have equal length?
+The isometric representation of a cube is a regular hexagon. If the cube is made of glass, then all the edges would be visible.
+This structure is the basis for isometric drawing! Tile the plane with hexagons and we get an isometric grid.
+Ganita Prakash | Grade 8 | Part-II
+Isometric grids are widely used in engineering. They make it easy to draw projections of solids and to measure lengths along all the 3 primary directions — length, depth and height, as shown in Fig. 4.7.
+Vertical
+Side Plane
+Horizontal depth length
+Fig. 4.7
+Drawing on Isometric Grids
+Have you played Tetris? There are five basic shapes in Tetris, corresponding to the different ways of arranging four squares.
+(i) (ii)
+Fig. 4.8 (iii) (iv) (v)
+Exploring Some Geometric Themes
+Imagine these are cubes, not squares. Draw each of these on your isometric paper (you can find it at the end of the book).
+As seen in Fig. 4.7, there are three principal axes of the solid shape, which we will call the depth axis, length axis, and height axis.
+The edges of the grid appear in three different orientations:
+, and |. We will associate height to | , depth to , and length to .
+length depth
+While drawing on the grid, it may be useful to draw edge by edge, counting the number of units you want to go along a given axis.
+For example, you can draw a 1 × 1 × 1 cube as follows. How would you draw a 2 × 2 × 2 cube? Feel free to add shading, if it helps you visualise the solid.
+The first tetris shape is a row of four cubes joined face-to-face. In order to draw this solid, you will need to choose an orientation for the row of four cubes.
+Let’s draw it oriented along the depth axis. You could draw it cube-by-cube, but in that case you may need to erase the lines that get hidden by additional cubes. (If you don’t have an eraser, you can also draw faint lines initially, and then darken the visible ones later.)
+length depth
+Ganita Prakash | Grade 8 | Part-II
+You could also draw it all at once, by counting edges as you go:
+length depth
+Similarly, you could draw the shape oriented along the height axis or the length axis.
+In your drawing, moving in the vertical direction on the isometric paper corresponds to moving along the height axis of the solid. Similarly, moving along the or direction on the paper corresponds to moving along the length or depth axis respectively of the solid.
+Why is this correspondence between directions on isometric paper and axes of the solid so effective for communicating the shape of the solid?
+Earlier we observed that parallel lines project to parallel lines. This geometric fact ensures that the three families of parallel edges on the solid (corresponding to height, the length, and depth) project to three families of parallel edges on the isometric paper: |, , and . Moreover, the isometric nature of the projection ensures that the projections of unit distances along the three axes are equal.
+Can you try drawing the other tetris shapes on isometric paper?
+Figure it Out
+1. In addition to the 5 ways shown in Fig. 4.8, are there any additional ways of gluing four cubes together along faces? Can you visualise and draw these as well?
+length depth
+Exploring Some Geometric Themes
+2. Draw the following figures on the isometric grid.
+[Hint: It may be useful to determine whether the edge to be currently drawn — say, along the height — goes from down to up or up to down.
+Accordingly, draw the line segment on the grid either in the direction of the height axis or opposite to it.]
+3. Is there anything strange about the path of this ball? Recreate it on the isometric grid.
+[Hint: Consider a portion of this figure that is physically realisable and identify the 3 primary directions.]
+4. Observe this triangle.
+(i) Would it be possible to build a model out of actual cubes? What are the front, top, and side profiles of this impossible triangle?
+Ganita Prakash | Grade 8 | Part-II (ii) Recreate this on an isometric grid.
+(iii) Why does the illusion work?
+y Fractals are self-similar geometric objects found in nature and y The Sierpinski Carpet, Sierpinski Gasket, and Koch Snowflake are some examples of mathematical fractals. They can be obtained by repeatedly applying certain geometric operations that generate a sequence of shapes approaching the fractal.
+y Cuboids, tetrahedrons, cylinders, cones, prisms, pyramids, and octahedrons are some of the solids that can be obtained by folding suitable nets.
+y The shortest path between two points on the surface of a cuboid can be found by using a suitable net of the cuboid.
+y Any object can be represented on a plane surface by using its projections on plane surfaces. For this purpose, we generally use the front view (projection on the vertical plane), top view (projection on the horizontal plane), and side view (projection on the side plane) of the object.
+y A cube can be oriented such that the lengths of all its edges in the projection are equal. Such a projection is called the isometric projection. Isometric projections of different solids can be drawn using isometric grid paper.
+5.1 The Balancing Act
+Last year, we learnt about the mean and median. Recall that the mean of some data is the sum of all the values divided by the number of values in the data. The median is the middle value when the data is sorted.
+We shall try to understand the mean and median from a different perspective and see how the mean behaves with changing data.
+Consider any 2 numbers. Find their average/arithmetic mean. Repeat this by taking other pairs. What do you observe?
+For example, let the two numbers be 3 and 7. Their average is
+2 = 5. Taking another pair of numbers, say 8 and 9, their average is
+2 = 8.5. Visualising these as dot plots we get
+Notice that the mean is exactly halfway between the two numbers.
+We have learnt earlier that the arithmetic mean is a measure of central tendency and represents the ‘centre’ of the data. Let us see how the mean represents the ‘centre’ in the case of 3 numbers.
+Calculate and mark the mean of each collection of data below.
+TALES BY DOTS
+AND LINES
+Ganita Prakash | Grade 8 | Part-II
+Can you explain how the mean is the centre of each collection?
+Mark the mean for the collections below.
+Can you explain how the mean is the centre of each collection?
+Is the mean the midpoint of the two endpoints/extremes of the data? It is not always so. Instead, the total distances are equal on both the sides of the mean. This is illustrated through the following dot plots.
+Verify that this holds for all the collections of data shown earlier.
+Can there be more than one such ‘centre’? In other words, is there any other value such that the sum of the distances to the values lower than it and the values higher than it will still be equal?
+In the case of the collection 10, 10, 11, and 17 whose mean is 12, suppose there is a different centre larger than 12.
+Clearly, all the distances on the LHS will increase and the distances on the RHS will decrease. Thus, it is no longer the ‘centre’. Similarly, for any value smaller than 12, the distances on the LHS will decrease while those on the RHS will increase.
+Tales by Dots and Lines
+Both these cases are illustrated in the following diagram. Therefore, there is only one centre.
+Will including a new value in the data increase or decrease the mean?
+When a new value greater than the mean is included, the mean increases to maintain the balance between the sum of distances on the
+LHS and RHS, as illustrated below.
+Similarly, if a value smaller than the mean is included, then the new mean will be less than before.
+What happens to the mean when an existing value is removed?
+When will the mean increase, decrease, or stay the same?
+What happens to the mean if a value equal to the mean is included or removed?
+Try to explain this using the fair-share interpretation of mean that we studied last year.
+Unchanging Mean!
+We saw earlier how the mean varies when a value is included or removed.
+Ganita Prakash | Grade 8 | Part-II
+Explore if it is possible to include or remove 2 values such that the mean is unchanged.
+You may use the following data to experiment with.
+How about including or removing 3 values without changing the mean?
+Is it possible?
+Can we include 2 values less than the mean and 1 value greater than the mean, so that the mean remains the same?
+One of the possibilities is shown here.
+Try to include 2 values greater than the mean and 1 value less than the mean, so that the mean stays the same.
+Relatively Unchanged!
+We saw what happens to the mean when values are included or removed from the collection. What happens to the mean if every value in the colle

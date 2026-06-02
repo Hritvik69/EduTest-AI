@@ -1,0 +1,337 @@
+MATHEMATICS 310
+Substituting x = –2, y = 3 in equation (3), we get C = 5.
+Substituting the value of C in equation (3), we get the equation of the required curve as y x = + or
+2 3 (3 15) y x = +
+Example 9 In a bank, principal increases continuously at the rate of 5% per year. In how many years Rs 1000 double itself?
+Solution Let P be the principal at any time t. According to the given problem, dt = 5 P
+  ×  
+20 ... (1)
+separating the variables in equation (1), we get dt ... (2)
+Integrating both sides of equation (2), we get log P = 1 C or P = 1C 20 or P = 20 C e (where 1C C e = ) ... (3)
+Now P = 1000, when t = 0
+Substituting the values of P and t in (3), we get C = 1000. Therefore, equation (3),
+P = 1000 20
+Let t years be the time required to double the principal. Then
+2000 = 1000 20 e ⇒ t = 20 loge2
+EXERCISE 9.3
+For each of the differential equations in Exercises 1 to 10, find the general solution:
+1. 1 cos
+= + 2. 2
+4 ( 2 2)
+dx = − − < <
+Reprint 2026-27
+DIFFERENTIAL EQUATIONS 311
+3. 1 ( 1)
+dx + = ≠ 4. sec2 x tan y dx + sec2 y tan x dy = 0
+5. (ex + e–x) dy – (ex – e–x) dx = 0 6. 2 2 (1 ) (1 )
+dx = + +
+7. y log y dx – x dy = 0 8. 5 5 dy
+= 10. ex tan y dx + (1 – ex) sec2 y dy = 0
+For each of the differential equations in Exercises 11 to 14, find a particular solution satisfying the given condition:
+x x x dx
++ + + = 2x2 + x; y = 1 when x = 0
+− = ; y = 0 when x = 2
+13. cos dy a
+  =  
+  (a ∈ R); y = 1 when x = 0 dx = ; y = 1 when x = 0
+15. Find the equation of a curve passing through the point (0, 0) and whose differential equation is y′ = ex sin x.
+16. For the differential equation ( 2) ( 2)
+dx = + + , find the solution curve passing through the point (1, –1).
+17. Find the equation of a curve passing through the point (0, –2) given that at any point (x, y) on the curve, the product of the slope of its tangent and y coordinate of the point is equal to the x coordinate of the point.
+18. At any point (x, y) of a curve, the slope of the tangent is twice the slope of the line segment joining the point of contact to the point (– 4, –3). Find the equation of the curve given that it passes through (–2, 1).
+19. The volume of spherical balloon being inflated changes at a constant rate. If initially its radius is 3 units and after 3 seconds it is 6 units. Find the radius of balloon after t seconds.
+Reprint 2026-27
+MATHEMATICS 312
+20. In a bank, principal increases continuously at the rate of r% per year. Find the value of r if Rs 100 double itself in 10 years (loge2 = 0.6931).
+21. In a bank, principal increases continuously at the rate of 5% per year. An amount of Rs 1000 is deposited with this bank, how much will it worth after 10 years (e0.5 = 1.648).
+22. In a culture, the bacteria count is 1,00,000. The number is increased by 10% in 2 hours. In how many hours will the count reach 2,00,000, if the rate of growth of bacteria is proportional to the number present?
+23. The general solution of the differential equation x y dy e (A) ex + e–y = C (B) ex + ey = C (C) e–x + ey = C (D) e–x + e–y = C
+9.4.2 Homogeneous differential equations
+Consider the following functions in x and y
+F1 (x, y) = y2 + 2xy, F2 (x, y) = 2x – 3y,
+F3 (x, y) = cos y
+  , F4 (x, y) = sin x + cos y
+If we replace x and y by λx and λy respectively in the above functions, for any nonzero constant λ, we get
+F1 (λx, λy) = λ2 (y2 + 2xy) = λ2 F1 (x, y)
+F2 (λx, λy) = λ (2x – 3y) = λ F2 (x, y)
+F3 (λx, λy) = cos cos
+λ    
+=    
+λ     = λ0 F3 (x, y)
+F4 (λx, λy) = sin λx + cos λy ≠ λn F4 (x, y), for any n ∈ N
+Here, we observe that the functions F1, F2, F3 can be written in the form
+F(λx, λy) = λn F (x, y) but F4 can not be written in this form. This leads to the following definition:
+A function F(x, y) is said to be homogeneous function of degree n if
+F(λx, λy) = λn F(x, y) for any nonzero constant λ.
+We note that in the above examples, F1, F2, F3 are homogeneous functions of degree 2, 1, 0 respectively but F4 is not a homogeneous function.
+Reprint 2026-27
+DIFFERENTIAL EQUATIONS 313
+We also observe that
+F1(x, y) =
++ =     or F1(x, y) = 2 2
++ =    
+F2(x, y) = 1 1
+− =     or F2(x, y) = 1 1
+− =    
+F3(x, y) = 0 0
+5 cos y y
+=    
+F4(x, y) ≠ 6
+  , for any n ∈ N or F4 (x, y) ≠ 7
+  , for any n ∈ N
+Therefore, a function F (x, y) is a homogeneous function of degree n if
+F (x, y) = orn n y x
+      
+A differential equation of the form dy dx = F (x, y) is said to be homogenous if
+F(x, y) is a homogenous function of degree zero.
+To solve a homogeneous differential equation of the type dx = = y
+  ... (1)
+We make the substitution y = v . x ... (2)
+Differentiating equation (2) with respect to x, we get
++ ... (3)
+Substituting the value of dy dx from equation (3) in equation (1), we get
+Reprint 2026-27
+MATHEMATICS 314
++ = g (v)
+x dx = g (v) – v ... (4)
+Separating the variables in equation (4), we get g v v − = dx x ... (5)
+Integrating both sides of equation (5), we get g v v −∫ = 1 C dx x + ∫ ... (6)
+Equation (6) gives general solution (primitive) of the differential equation (1) when we replace v by y
+ANote If the homogeneous differential equation is in the form F( , )
+where, F (x, y) is homogenous function of degree zero, then we make substitution y = i.e., x = vy and we proceed further to find the general solution as discussed above by writing F( , ) .
+Example 10 Show that the differential equation (x – y) dy dx = x + 2y is homogeneous and solve it.
+Solution The given differential equation can be expressed as dx = 2 x y
+− ... (1)
+Let F (x, y) = 2 x y
+Now F (λx, λy) = 0 ( 2 ) ( , )
+x y f x y
+λ + = λ ⋅
+Reprint 2026-27
+DIFFERENTIAL EQUATIONS 315
+Therefore, F(x, y) is a homogenous function of degree zero. So, the given differential equation is a homogenous differential equation.
+Alternatively,
+  ... (2)
+R.H.S. of differential equation (2) is of the form g y
+ and so it is a homogeneous function of degree zero. Therefore, equation (1) is a homogeneous differential equation.
+To solve it we make the substitution y = vx ... (3)
+Differentiating equation (3) with respect to, x we get
++ ... (4)
+Substituting the value of y and dy dx in equation (1) we get x dx = 1 2
++ + = dx
+Integrating both sides of equation (5), we get or = – log | x| + C1
+Reprint 2026-27
+MATHEMATICS 316 or (Why?)
+Replacing v by y x , we get log 1 3 tan C
+−   +  
++ + = +     or 2 2 1 log ( ) 2 3 tan 2C y xy x x
++ + = +   or 2 2 1 2 log ( ) 2 3 tan C
++ + = +   x xy y x which is the general solution of the differential equation (1)
+Example 11 Show that the differential equation cos cos
+= +    
+    is homogeneous and solve it.
+Solution The given differential equation can be written as
+  +  
+Reprint 2026-27
+DIFFERENTIAL EQUATIONS 317
+It is a differential equation of the form F( , )
+Here F (x, y) =
+  +  
+Replacing x by λx and y by λy, we get
+F (λx, λy) = 0
+[F ( , )]
+Thus, F(x, y) is a homogeneous function of degree zero.
+Therefore, the given differential equation is a homogeneous differential equation.
+To solve it we make the substitution y = vx ... (2)
+Differentiating equation (2) with respect to x, we get
++ ... (3)
+Substituting the value of y and dy dx in equation (1), we get
++ = cos 1 x dx = cos 1 x dx = 1 or cos v dv = dx
+Therefore cos v dv ∫ = 1 dx
+Reprint 2026-27
+MATHEMATICS 318 or sin v = log | x | + log | C | or sin v = log | Cx|
+Replacing v by y x , we get
+  = log | Cx| which is the general solution of the differential equation (1).
+Example 12 Show that the differential equation 2 2 0 y e dx y x e dy
+  + − =   is homogeneous and find its particular solution, given that, x = 0 when y = 1.
+Solution The given differential equation can be written as
+− ... (1)
+Let F(x, y) = 2
+Then F (λx, λy) = 0
+[F( , )]
+  λ  
+Thus, F(x, y) is a homogeneous function of degree zero. Therefore, the given differential equation is a homogeneous differential equation.
+To solve it, we make the substitution x = vy ... (2)
+Differentiating equation (2) with respect to y, we get dy = + dv
+Reprint 2026-27
+DIFFERENTIAL EQUATIONS 319
+Substituting the value of and dx x dy in equation (1), we get y dy = 2 1 y dy = 1 or 2ev dv = dy e dv ⋅ ∫ = dy or 2 ev = – log |y| + C and replacing v by x y , we get e + log | y | = C ... (3)
+Substituting x = 0 and y = 1 in equation (3), we get
+2 e0 + log | 1| = C ⇒ C = 2
+Substituting the value of C in equation (3), we get e + log | y | = 2 which is the particular solution of the given differential equation.
+Example 13 Show that the family of curves for which the slope of the tangent at any point (x, y) on it is 2 2
++ , is given by x2 – y2 = cx.
+Solution We know that the slope of the tangent at any point on a curve is dy
+Therefore, dy
+Reprint 2026-27
+MATHEMATICS 320
+Clearly, (1) is a homogenous differential equation. To solve it we make substitution
+Differentiating y = vx with respect to x, we get v − = dx v − = dx
+Therefore 2 v −∫ = 1 dx or log | v2 – 1 | = – log | x | + log | C1 | or log | (v2 – 1) (x) | = log |C1| or (v2 – 1) x = ± C1
+Replacing v by y x , we get
+  = ± C1 or (y2 – x2) = ± C1 x or x2 – y2 = Cx
+Reprint 2026-27
+DIFFERENTIAL EQUATIONS 321
+EXERCISE 9.4
+In each of the Exercises 1 to 10, show that the given differential equation is homogeneous and solve each of them.
+1. (x2 + xy) dy = (x2 + y2) dx 2. x y
+3. (x – y) dy – (x + y) dx = 0 4. (x2 – y2) dx + 2xy dy = 0
+5. 2 2 2 x x y xy dx = − + 6. x dy – y dx = 2 2 x y dx +
+7. cos sin sin cos x y y dx y x x dy
+           
++ = −            
+           
+8. sin 0
+− + =  
+  9. log 2 0 y dx x dy x dy
++ − =  
+For each of the differential equations in Exercises from 11 to 15, find the particular solution satisfying the given condition:
+11. (x + y) dy + (x – y) dx = 0; y = 1 when x = 1
+12. x2 dy + (xy + y2) dx = 0; y = 1 when x = 1
+13. when x = 1
+14. cosec 0
+− + =  
+  ; y = 0 when x = 1 xy y x dx
++ − = ; y = 2 when x = 1
+16. A homogeneous differential equation of the from dx x
+  can be solved by making the substitution.
+(A) y = vx (B) v = yx (C) x = vy (D) x = v
+Reprint 2026-27
+MATHEMATICS 322
+17. Which of the following is a homogeneous differential equation?
+(A) (4x + 6y + 5) dy – (3y + 2x + 4) dx = 0 (B) (xy) dx – (x3 + y3) dy = 0 (C) (x3 + 2y2) dx + 2xy dy = 0 (D) y2 dx + (x2 – xy – y2) dy = 0
+9.4.3 Linear differential equations
+A differential equation of the from dx + = Q where, P and Q are constants or functions of x only, is known as a first order linear differential equation. Some examples of the first order linear differential equation are dx + = sin x
+  = ex
+Another form of first order linear differential equation is dy + = Q1 where, P1 and Q1 are constants or functions of y only. Some examples of this type of differential equation are dy + = cos y
++ = y2e – y
+To solve the first order linear differential equation of the type dx + = Q ... (1)
+Multiply both sides of the equation by a function of x say g (x) to get g (x) dy dx + P. (g (x)) y = Q . g (x) ... (2)
+Reprint 2026-27
+DIFFERENTIAL EQUATIONS 323
+Choose g (x) in such a way that R.H.S. becomes a derivative of y . g (x).
+i.e. g (x) dy dx + P. g (x) y = d dx [y . g (x)] or g (x) dy dx + P. g (x) y = g (x) dy dx + y g′ (x)
+⇒ P. g (x) = g′ (x)
+or P = ( )
+Integrating both sides with respect to x, we get
+Pdx ∫ = ( )
+or P dx ⋅ ∫ = log (g (x))
+or g (x) = P dx
+On multiplying the equation (1) by g(x) = P dx e∫ , the L.H.S. becomes the derivative of some function of x and y. This function g(x) = P dx e∫ is called Integrating Factor (I.F.) of the given differential equation.
+Substituting the value of g (x) in equation (2), we get dx ye dx P ∫ 
+Integrating both sides with respect to x, we get or y = e e dx dx dx − ∫ ∫  which is the general solution of the differential equation.
+Reprint 2026-27
+MATHEMATICS 324
+Steps involved to solve first order linear differential equation:
+(i) Write the given differential equation in the form P Q dx + = where P, Q are constants or functions of x only.
+(ii) Find the Integrating Factor (I.F) = .
+(iii) Write the solution of the given differential equation as y (I.F) =
+In case, the first order linear differential equation is in the form 1 1 P Q dy + = , where, P1 and Q1 are constants or functions of y only. Then I.F = 1P dy e and the solution of the differential equation is given by x . (I.F) = ( ) 1 Q × I.F C dy + ∫
+Example 14 Find the general solution of the differential equation cos dx − = .
+Solution Given differential equation is of the form dx + = , where P = –1 and Q = cos x
+Therefore I . F =
+Multiplying both sides of equation by I.F, we get
+= e–x cos x or ( )x dy y e
+− = e–x cos x
+On integrating both sides with respect to x, we get ye– x = cos Cx e x dx− + ∫ ... (1)
+Let I = cosx
+= cos ( sin ) ( )
+x x e dx
+− −   − − −  
+Reprint 2026-27
+DIFFERENTIAL EQUATIONS 325
+= cos sinx x x e x e dx− −
+= cos sin (– ) cos ( )x x x x e x e x e dx− − −   − − − −
+= cos sin cosx x x x e x e x e dx− − − or I = – e–x cos x + sin x e–x – I or 2I = (sin x – cos x) e–x or I = (sin cos )
+Substituting the value of I in equation (1), we get ye– x = sin cos C x x x e− −   +   or y = sin cos C
+−   +   which is the general solution of the given differential equation.
+Example 15 Find the general solution of the differential equation 2 dx + = ≠ .
+Solution The given differential equation is dx + = x2 ... (1)
+Dividing both sides of equation (1) by x, we get which is a linear differential equation of the type P Q dx + = , where 2
+= and Q = x.
+So I.F = 2 dx x e∫ = e2 log x = 2 e x = log ( )
+[ ( )]f x as e f x =
+Therefore, solution of the given equation is given by y . x2 = 2 ( ) ( ) C x x dx + ∫ = 3 C x dx + ∫ which is the general solution of the given differential equation.
+Reprint 2026-27
+MATHEMATICS 326
+Example 16 Find the general solution of the differential equation y dx – (x + 2y2) dy = 0.
+Solution The given differential equation can be written as
+This is a linear differential equation of the type 1 1 P Q dy + = , where 1
+Q1 = 2y. Therefore 1 log log ( ) 1
+I.F dy y y y
+Hence, the solution of the given differential equation is (2 ) C y dy
+  +   y = (2 ) C dy + ∫ y = 2y + C or x = 2y2 + Cy which is a general solution of the given differential equation.
+Example 17 Find the particular solution of the differential equation dx = 2x + x2 cot x (x ≠ 0)
+given that y = 0 when 2
+Solution The given equation is a linear differential equation of the type P Q dx + = , where P = cot x and Q = 2x + x2 cot x. Therefore
+I.F = e e x x dx x cot log sin sin ∫ = =
+Hence, the solution of the differential equation is given by y . sin x = ∫ (2x + x2 cot x) sin x dx + C
+Reprint 2026-27
+DIFFERENTIAL EQUATIONS 327 or y sin x = ∫ 2x sin x dx + ∫ x2 cos x dx + C or y sin x =
+2 2 2 2 2 sin cos cos C x x dx x x dx
+− + +    
+   ∫ ∫ or y sin x = 2 2 2 sin cos cos C x x x x dx x x dx − + + ∫ ∫ or y sin x = x2 sin x + C ... (1)
+Substituting y = 0 and 2
+= in equation (1), we get
+π π     +        
+Substituting the value of C in equation (1), we get y sin x =
+2 (sin 0)
+which is the particular solution of the given differential equation.
+Example 18 Find the equation of a curve passing through the point (0, 1). If the slope of the tangent to the curve at any point (x, y) is equal to the sum of the x coordinate (abscissa) and the product of the x coordinate and y coordinate (ordinate) of that point.
+Solution We know that the slope of the tangent to the curve is dy
+Therefore, dy dx = x + xy or dy xy dx − = x ... (1)
+This is a linear differential equation of the type P Q dx + = , where P = – x and Q = x.
+Therefore, I . F =
+Reprint 2026-27
+MATHEMATICS 328
+Hence, the solution of equation is given by
++ ∫ ... (2)
+− = , then – x dx = dt or x dx = – dt.
+Therefore, I = e dt e e
+− = − = ∫
+Substituting the value of I in equation (2), we get e − + ... (3)
+Now (3) represents the equation of family of curves. But we are interested in finding a particular member of the family passing through (0, 1). Substituting x = 0 and y = 1 in equation (3) we get
+1 = – 1 + C . e0 or C = 2
+Substituting the value of C in equation (3), we get which is the equation of the required curve.
+EXERCISE 9.5
+For each of the differential equations given in Exercises 1 to 12, find the general solution:
+1. 2 sin dx + = 2. 2
+3 x dy y e
++ = 3. 2 dy y x
+4. (sec ) tan 0 2 dy x y x x
++ = ≤ <  
+  5. 2 dx + = 0 2 dx + = 7. 2
+8. (1 + x2) dy + 2xy dx = cot x dx (x ≠ 0)
+Reprint 2026-27
+DIFFERENTIAL EQUATIONS 329
+9. cot 0 ( 0)
+x y x xy x x dx + − + = ≠ 10. ( ) 1
+11. y dx + (x – y2) dy = 0 12. 2 ( 3 ) ( 0)
+For each of the differential equations given in Exercises 13 to 15, find a particular solution satisfying the given condition:
+13. 2 tan sin ; 0 when 3 dy y x x y x (1 ) 2 ; 0 when 1 x xy y x
++ + = = =
+15. 3 cot sin 2 ; 2 when 2 dy y x x y x
+16. Find the equation of a curve passing through the origin given that the slope of the tangent to the curve at any point (x, y) is equal to the sum of the coordinates of the point.
+17. Find the equation of a curve passing through the point (0, 2) given that the sum of the coordinates of any point on the curve exceeds the magnitude of the slope of the tangent to the curve at that point by 5.
+18. The Integrating Factor of the differential equation 2 dx − = is (A) e–x (B) e–y (C) 1
+19. The Integrating Factor of the differential equation
+− + = ( 1 1) − < < ay y is
+1 y − (B) 2
+1 y − (C) 2
+1 y − (D) 2
+Miscellaneous Examples
+Example 19 Verify that the function y = c1 eax cos bx + c2 eax sin bx, where c1, c2 are arbitrary constants is a solution of the differential equation dx dx − + + =
+Reprint 2026-27
+MATHEMATICS 330
+Solution The given function is y = eax [c1 cosbx + c2 sinbx] ... (1)
+Differentiating both sides of equation (1) with respect to x, we get dx = [ ] [ ] 1 2 1 2 – sin cos cos sinax ax e bc bx b c bx c bx c bx e a + + + ⋅ dx = 2 1 2 1 [( ) cos ( ) sin ]ax e b c a c bx a c b c bx + + − ... (2)
+Differentiating both sides of equation (2) with respect to x, we get dx = 2 1 2 1 [( ) ( sin ) ( ) ( cos )]ax e b c a c b bx a c b c b b

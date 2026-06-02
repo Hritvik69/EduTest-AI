@@ -1,0 +1,330 @@
+FINDING THE
+7.1 Find the Unknowns
+Unknown Weights
+We have a weighing scale that behaves as follows. The numbers represent same units of weight:
+Find the unknown weights in the following cases:
+Fig. 7.1 Fig. 7.2 Fig. 7.3
+Finding the Unknown
+Fig. 7.5 Fig. 7.4
+Fig. 7.6 Fig. 7.7 Fig. 7.8
+Discuss the answers with your classmates. Give reasons why you think your answer is right.
+Find the unknown weight of the sack in the following cases. In Fig. 7.10, all the sacks have the same weight.
+Fig. 7.9 Fig. 7.10
+[Hint: If we remove equal weights from both the plates, will the weighing scale still be balanced? Remove one sack from each plate for
+Fig. 7.10.]
+Ganita Prakash | Grade 7 | Part-II
+Fig. 7.11
+Fig. 7.12
+[Hint: Can you remove objects so that the sacks are only on one plate?]
+Note to the Teacher: Encourage your students to find solutions to these problems using different strategies and methods, and ask them to compare and contrast their methods.
+Let us find an unknown value in a different setting.
+Matchstick Pattern
+Consider this sequence of matchstick arrangements.
+Recall that we have studied this sequence in an earlier chapter.
+Finding the Unknown
+The figure shows the first 4 matchstick arrangements along with their position numbers in the sequence.
+Jasmine decides to make a matchstick arrangement that appears in this sequence, using exactly 99 sticks. What will be the position number of this arrangement in the sequence?
+To answer this question, it is useful to know the number of matchsticks in each position.
+We see that the arrangement at position 1 has 2 × (1) + 1 = 3 matchsticks, the arrangement at position 2 has 2 × (2) + 1 = 5 matchsticks, the arrangement at position 3 has 2 × (3) + 1 = 7 matchsticks, and so on.
+So, the nth position will have 2n+1 matchsticks.
+To answer Jasmine’s question, we have to find the value of n such that
+2n + 1 has the value 99, or,
+2n + 1 = 99.
+Can you find ways to get the value of n, such that 2n + 1 = 99?
+Is it possible to make a matchstick arrangement that appears in this sequence using exactly 200 sticks?
+A statement of equality between two algebraic expressions is called an equation. Nowadays, when using symbols, we write an equation as two algebraic expressions with an equal sign ‘=’ between them.
+Here are some more examples of equations:
+3x + 4 = 7,
+20 = y – 3,
+2z + 4 = 5z – 14 etc.
+The process of finding the value(s) of the letter−numbers for which the equality holds, or for which the value of the Left Hand Side (LHS) of the equation becomes equal to the Right Hand Side (RHS) of the equation, is called solving the equation.
+As we saw in the matchstick problem, framing an equation using an unknown quantity as a letter−number can help us find its value.
+Left Hand Side
+2n + 1 = 99
+Right Hand Side
+Ganita Prakash | Grade 7 | Part-II
+For the weighing scale problems in figures 7.6, 7.7, 7.8, 7.9, 7.10, and 7.11, frame equations by using letter-numbers to denote the unknown weight.
+For the problem in Fig. 7.6, let us denote the weight of one fried egg as e.
+Since each slice of bread is 2, we have 2 + 2 + 2 = 6 on one side and e + e on the other side. Since they are equal, we have
+6 = e + e, or
+For the problem in Fig. 7.7, = 4, and we can denote the weight of one as y. So, we have 16 on one side, and 4 + 2y on the other side. Thus, we have the equation
+4 + 2y = 16.
+Solve the equations that you frame and check if you get the same value for the unknown weight as you got previously.
+Frame 5 equations. Find methods to solve them.
+7.2 Solving Equations Systematically
+How did you solve the various equations framed in the previous section?
+One way to solve an equation is to substitute different values in place of the letter−number and to check which value makes LHS = RHS. For example, consider the equation 2n + 1 = 99.
+If we substitute n = 5, we get LHS = 2 × (5) + 1 = 11. It is far away from
+99, the RHS.
+We can try n = 10. The LHS is 21. It is still not equal to 99.
+Can we try n = 30? The LHS is now 61, still much lower than 99.
+Let us try n = 40. The LHS is 81. We are getting closer to 99.
+When n = 50, the LHS is 101. This is just a bit too high.
+When n = 49, the LHS is 99!
+Therefore, the solution to the equation 2n + 1 = 99 is n = 49.
+Can this equation have any other solution?
+This method is called the trial and error method.
+The trial and error method can be inefficient.
+Try solving 5x – 4 = 7 using trial and error.
+Finding the Unknown
+Recall that in the case of the weighing scale, we didn’t use the trial and error method! For some problems, finding the solution was straightforward. For others, we used the fact that when we remove equal weights from both the plates of a balanced weighing scale, it remains balanced. Do equations have a similar property?
+Consider an equation 15 + 8 = 23. If we add, subtract, multiply or divide the same number on both sides, will it still preserve the equality of LHS and RHS?
+For example, you can check by adding 10 to both sides.
+Since the LHS and the RHS of an equation have the same value, performing the same operation on both sides will clearly not change their equality.
+In the weighing scale problems, we removed equal weights so that all the unknown weights were on only one plate of the scale. This made the problem easier to solve. We can use this same strategy to solve an equation as well! Let us first solve some arithmetic problems.
+Example 1: It is known that 14593 – 1459 + 145 – 14 + 88 = 13353. What is the value of 14593 – 1459 + 145 – 14?
+To find the value, do we need to evaluate 14593 – 1459 + 145 – 14?
+No, we can get it by subtracting 88 from 13353.
+Why can we do this?
+We can do this because addition and subtraction are inverse operations. So, the value of the required expression can be found by subtracting 88 from both sides (LHS and RHS), which removes the term
+88 and leaves only the expression to be evaluated on the LHS.
+14593 – 1459 + 145 – 14 + 88 – 88 = 13353 – 88
+Example 2: It is known that 23 × 41 × 11 × 8 × 7 = 5,80,888. What is the value of the expression 23 × 41 × 11 × 8?
+Using the fact that multiplication and division are inverse operations, we can simply divide 5,80,888 by 7 to get the value of the expression.
+Is this the same as dividing both sides by 7, which removes the factor 7 and leaves only the expression to be evaluated on the LHS?
+Example 3: It is known that 12345 – 5432 + 135 – 24 – (–67) = 7091.
+What is the value of the expression 12345 – 5432 + 135 – 24?
+Ganita Prakash | Grade 7 | Part-II
+This problem also can be solved using the fact that addition and subtraction are inverse operations. However, we can use the following method that is perhaps easier to visualise.
+To retain only the expression to be evaluated on the LHS, we need to remove the term –(–67). We can remove this term by adding (–67) to both sides of the equation.
+12345 – 5432 + 132 – 24 – (–67) + (–67) = 7091 + (–67)
+Thus, 12345 – 5432 + 132 – 24 = 7024.
+Example 4: It is known that ( 35
+113) × 24 × 14 × (8
+9) = 94080
+1017 . What is the value of the expression ( 35
+113) × 24 × 14?
+Solution: To retain only the expression to be evaluated on the LHS we need to remove the factor (8
+9). We can do that by dividing both sides by (8
+113) × 24 × 14 × (8
+9)] ÷ (8
+9) = 94080
+1017 ÷ (8
+113) × 24 × 14 × (8
+8)= 94080
+1017 × (9
+113) × 24 × 14 = 11760
+Let us use these ideas to solve the equation 5x – 4 = 7.
+What can we do so that 5x is on one side and the equality between the
+LHS and the RHS still holds?
+To retain only 5x on the LHS, we need to remove the term – 4. This can be done by adding 4 to both sides.
+Thus, 5x – 4 + 4 = 7 + 4.
+Hence, 5x = 11.
+To retain only the unknown x on the LHS, we need to remove the factor 5. This can be done by dividing both sides by 5.
+Thus, 5x
+So, x = 11
+Finding the Unknown
+Can we check that x = 11
+5 is the correct solution to the equation?
+We can check this by substituting x with the value 11
+5 in the equation
+5x – 4 = 7, and checking if the LHS = RHS.
+Substituting x with 11
+5 in the LHS we get,
+LHS = 5 (11
+= 11 – 4
+This is the same as the RHS.
+5 is indeed the correct solution to the equation.
+Example 5: Solve the equation 11y + (–5) = 61.
+To retain only the unknown term 11y on one side, we need to remove the term –5. This can be done by subtracting (–5) from both sides.
+11y + (–5) – (–5) = 61 – (–5).
+That is,
+11y = 66.
+We can directly find the value of y, seeing that 11 × 6 = 66.
+We can also divide both sides by 11 to find y.
+11y ÷11 = 66 ÷ 11.
+So y = 6 is the solution to the equation 11y + (–5) = 61.
+Can you check that this solution is correct?
+Example 6: Solve 6y + 7 = 4y + 21.
+In this equation, expressions with an unknown are on both sides.
+We have seen how to solve equations when the unknown term is on one side. What can be done to bring the unknown terms to the same side?
+Subtracting 4y from both sides, we get
+6y + 7 – 4y = 4y + 21 – 4y.
+2y + 7 = 21.
+Ganita Prakash | Grade 7 | Part-II
+Subtracting 7 from both sides we get
+2y + 7 – 7 = 21 – 7, which gives
+2y = 14.
+We can directly find the value of y, seeing that 2 × (7) = 14.
+We can also divide both sides by 2 to find y.
+2y ÷ 2 = 14 ÷ 2, which gives
+Remember, it is always good to check your solution.
+Figure it Out
+1. Solve these equations and check the solutions.
+(a) 3x – 10 = 35 (b) 5s = 3s (c) 3u – 7 = 2u + 3 (d) 4 (m + 6) – 8 = 2m – 4
+2. Frame an equation that has no solution.
+[Hint: 4 more than a number, and 5 more than a number can never be equal!]
+The procedure to systematically solve an equation can be made efficient if we make an observation. Consider the equation 11y + (–5) = 61, which we solved.
+As the first step, we subtracted – 5 from both sides to remove the term –5.
+11y + (– 5) – (–5) = 61 – (– 5).
+Since this action removes the term – 5 from the LHS, we could have written this step as:
+11y = 61 – (–5).
+Note that we could also have arrived at this step by seeing addition and subtraction as inverse operations, as in the case of Example 1.
+Similarly, when we had 11y = 66, we divided both sides by 11 to remove the factor 11 from the LHS.
+11y ÷ 11 = 66 ÷ 11.
+Finding the Unknown
+Since this action removes the factor 11 in the LHS, we can write this step as:
+y = 66 ÷ 11.
+Again, we could have arrived at this by seeing multiplication and division as inverse operations, as in the case of Example 2.
+Let us write down both these ways of solving an equation.
+11y + (– 5) = 61
+11y + (– 5) – (– 5) = 61 – (– 5).
+11y = 66
+11y ÷ 11 = 66 ÷ 11
+11y + (– 5) = 61
+11y = 61 – (– 5)
+11y = 66 y = 66 ÷ 11
+Let us consider another equation that we solved earlier.
+6y + 7 = 4y + 21
+6y + 7 – 4y = 4y + 21 – 4y
+2y + 7 = 21
+2y + 7 – 7 = 21 – 7
+2y = 14.
+2y ÷ 2 = 14 ÷ 2
+6y + 7 = 4y + 21
+6y + 7 – 4y = 21
+2y + 7 = 21
+2y = 21 – 7
+2y = 14.
+y = 14 ÷ 2
+What happens in cases like u
+Multiplying both sides by 15 leaves only u in the LHS — u = 6 × 15
+Thus, we can make the following observations — (a) When a term that is added or subtracted on one side of an equation is removed from that side, its additive inverse should appear as a term on the other side for the equality to hold. For example, 2y + 7
+= 21 becomes 2y = 21 – 7.
+(b) If one side of an equation is the product of two or more numbers or expressions, and we remove one of the factors, then the other side should be divided by this factor for the equality to hold. For example, 2y = 14 becomes y = 14 ÷ 2.
+(c) If one side of an equation is the quotient of two numbers or expressions, and we remove the divisor, then the other side should be multiplied by this divisor for the equality to hold. For example,
+15 = 6 becomes u = 6 × 15.
+Ganita Prakash | Grade 7 | Part-II
+Solving Problems
+Forming and solving equations gives us the ability to find solutions to many problems in our lives. Let us see a few such examples.
+Example 7: Ranjana creates a sequence of arrangements with square tiles as shown below. Can she extend the sequence and make an arrangement using 100 tiles? If yes, which step in the sequence will it
+Step 1 Step 2 Step 3
+She can look at the pattern in different ways. They are shown below.
+Step 3 Step 4 Step k Step 2
+Method 1
+4 + 4 + 4 + 1 k + k + k + 1
+= 3k + 1
+1 1 1 2 1 2 4 1 4 3 1 3
+3 + 3 + 3 + 1
+1 + 1 + 1 + 1
+2 + 2 + 2 + 1
+Step 3 Step 4 Step k Step 2
+Method 2
+3 5 9 = (4 × 2 + 1) 7
+= 4 + (4 × 2 + 1)
+k + (2k + 1)
+= 3k + 1
+Finding the Unknown
+We have the expression 3k + 1 which gives the number of tiles needed to make an arrangement in Step k.
+To check whether an arrangement is possible using 100 tiles at some
+Step k, we can solve the equation: 3k + 1 = 100. Find the value of k.
+Example 8: Madhubanti wants to organise a party. She decides to buy snacks for the party from the chaat shop in town. Each plate of snacks costs ₹25. The shop charges an additional fixed amount of ₹50 to deliver the snacks to Madhubanti’s house.
+There are 5 members in Madhubanti’s family, including herself. Her parents tell her she can spend ₹500 on this party. How many friends can she invite to the party if she wants to give a plate of snacks to each person, including her family and friends?
+Fatima’s method of solving this problem is shown below.
+She represented the situation using a rough diagram.
+Delivery
+25 × + 50
+Out of ₹500, if we subtract the fixed delivery charge, then Madhubanti is left with ₹450.
+So the question becomes “How many plates of snacks, each costing
+₹25, can be bought for ₹450?”.
+The answer to this is 450 ÷ 25 = 18.
+18 plates of snacks can be bought for ₹450. Considering her 5 family members, she can invite 18 – 5 = 13 friends to her party.
+Ganita Prakash | Grade 7 | Part-II
+Mahesh represented the unknown quantity of the total number of people who can attend the party, including Madhubanthi and her family members, as p.
+Cost incurred = 25p + 50.
+Since this cost should be 500, we have the equation
+25p + 50 = 500.
+Subtracting 50 from both sides,
+25p = 500 – 50.
+25p = 450.
+Dividing both sides by 25, we get p = 450 ÷ 25 = 18.
+18 people can be at her party, including her 5 family members. That means 13 friends can be invited.
+Srikanth decided to represent the unknown quantity of the total number of friends Madhubanthi can invite as f.
+What will be the cost in this case?
+Cost incurred = 25 (f + 5).
+Since Madhubanthi has ₹450 for snacks, we have the equation
+25 (f + 5) = 450.
+Dividing both sides by 25, f + 5 = 18.
+Subtracting 5 from both sides,
+Example 9: Two friends want to save money. Jahnavi starts with an initial amount of ₹4000, and in addition, saves ₹650 per month. Sunita starts with ₹5050 and saves ₹500 per month. After how many months will they have the same amount of money?
+Let m denote the number of months after which their savings are
+What are Jahnavi’s savings after m
+Jahnavi’s savings = 4000 + 650 m.
+What are Sunita’s savings after m months?
+Sunita’s savings = 5050 + 500 m.
+As these amounts are equal after m months, we get the following equation:
+4000 + 650 m = 5050 + 500 m
+4000 + 650 m – 500 m = 5050 (subtracting 500 m from both sides)
+4000 + 150 m = 5050
+150 m = 5050 – 4000 (subtracting 4000 from both sides)
+Finding the Unknown
+150 m = 1050 m = 1050 ÷150 (dividing both sides by 150)
+So, after 7 months, both will have the same amount of money.
+Check the answer.
+Let us solve a few equations.
+Example 10: Solve 28 (x + 4) + 300 = 1000.
+Here are some ways to solve this equation.
+Subtracting 300 from both sides, we get
+28 (x + 4) = 1000 – 300
+28 (x + 4) = 700.
+Dividing both sides by
+28, we get x + 4 = 700 ÷ 28 x + 4 = 25.
+So x = 25 – 4, which gives
+28 (x + 4) + 300 = 1000
+Since 28, 300, and 1000 are divisible by 4, we get a simpler equation if we divide both sides by 4.
+28 (x + 4) + 300
+4 = 1000
+Using the rules of fraction addition, we get
+28 (x + 4)
+4 = 1000
+7 (x + 4) + 75 = 250
+Subtracting 75 from both
+7 (x + 4) = 175
+7x + 28 = 175
+Subtracting 28 from both
+7x = 147
+28 (x + 4) + 300 = 1000
+Simplifying the LHS,
+28x + 112 + 300 = 1000
+28x + 412 = 1000
+Subtracting 412 from both sides, we get
+28x = 1000 – 412
+28x = 588
+Dividing both sides by x = 588 ÷ 28
+Ganita Prakash | Grade 7 | Part-II
+Example 11: Riyaz created a math trick, which he tries out on his friend
+Riyaz asked Akash to perform the following steps without revealing the answer to any of the intermediate steps.
+1. Think of a number.
+2. Subtract 3 from the number.
+3. Multiply the result by 4.
+4. Add 8 to the product.
+5. Reveal the final answer.
+The final answer revealed by Akash was
+24. Using this, Riyaz correctly figured out the starting number that Akash had thought of. Find this number.
+Try the steps using different numbers as the starting number. Do you see any relation between the starting number and final answer?
+The answer can be found by algebraically modeling this scenario.
+In other words, we can form an equation using an unknown. Let the unknown starting number be x.
+What are the expressions we get after each step?
+Steps Expression
+Think of a number. x
+Subtract 3 from the number. x – 3
+Multiply the result by 4. 4 (x – 3) = 4x – 12
+Add 8 to the product. 4x – 12 + 8 = 4x – 4
+Since Akash’s final answer was 24, we have the equation:
+4x – 4 = 24
+4 (x – 1) = 24 x – 1 = 6 (Dividing both sides by 4)
+Thus, Akash thought of the number 7.
+Can you think of a simple rule that you can use to get the starting number from the final answer?
+Finding the Unknown
+Example 12: Ramesh and Suresh have 60 marbles between them.
+Ramesh has 30 more marbles than Suresh. How many marbles does each boy have?
+In this problem, we have two unknowns. If we denote the number of marbles with Ramesh as x and the number of marbles with Suresh as y, then what are the different equations that we have?
+1. The total number of marbles is 60.
+x + y = 60.
+2. Ramesh has 30 marbles more than Suresh.
+x = y + 30.
+1 2 3 30
+How do we find the unknowns using these equations? So far, we have only developed a strategy to solve an equation with one unknown!
+To get such an equation, we can do the following.
+Denote the number of marbles with Suresh as y, and the number of marbles with Ramesh as y + 30.
+S

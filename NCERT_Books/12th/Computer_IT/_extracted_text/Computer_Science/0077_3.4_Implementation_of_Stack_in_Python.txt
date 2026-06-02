@@ -1,0 +1,55 @@
+Queue 65 exercIse
+1. Fill in the blank a) ____________________ is a linear list of elements in which insertion and deletion takes place from different ends.
+b) Operations on a queue are performed in
+__________________ order.
+c) Insertion operation in a queue is called ______________ and deletion operation in a queue is called
+____________________.
+d) Deletion of elements is performed from _______________ end of the queue.
+e) Elements ‘A’,’S’,’D’ and ‘F’ are present in the queue, and they are deleted one at a time, ________________________ is the sequence of element received.
+f) _______________ is a data structure where elements can be added or removed at either end, but not in the g) A deque contains ‘z’,’x’,’c’,’v’ and ‘b’ . Elements received after deletion are ‘z’,’b’,’v’,’x’ and ‘c’. ________
+__________________________ is the sequence of deletion operation performed on deque.
+2. Compare and contrast queue with stack.
+3. How does FIFO describe queue?
+notes• Insertion in a queue happens at the rear end.
+Deletion happens at the front.
+• Insertion operation is known as enqueue and deletion operation is known as dequeue.
+• To support enqueue and dequeue operations, isEmpty, isfull and peek operations are used
+• Deque is a version of queue, which allows insertion and deletion at both ends.
+• A deque can support both stack and queue operations.
+• Other operations supported by deque are insertfront, insertrear, deletefront, deleterear, getfront, getrear, isempty and isfull.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 66
+4. Write a menu driven python program using queue, to implement movement of shuttlecock in it’s box.
+5. How is queue data type different from deque data type?
+6. Show the status of queue after each operation enqueue(34)
+enqueue(54)
+dequeue()
+enqueue(12)
+dequeue()
+enqueue(61)
+dequeue()
+enqueue(1)
+7. Show the status of deque after each operation insertFront(12)
+insertRear(67)
+deletionFront()
+insertRear(43)
+deletionRear()
+deletionFront()
+deletionRear()
+8. Write a python program to check whether the given string is palindrome or not, using deque. (Hint : refer to algorithm 4.1)
+Reprint 2026-27
+In this Chapter
+» Introduction
+» Bubble Sort
+» Selection Sort
+» Insertion Sort
+» Time Complexity of
+Algorithms
+“Every one of today's smartphones has thousands of times more processing power than the computers that guided astronauts to the moon.”
+— Peter Thiel
+5.1 IntroductIon
+Sorting is the process of ordering or arranging a given collection of elements in some particular order. We can sort a collection of numbers in ascending (increasing) or descending (decreasing)
+order. If the collection is of strings, we can sort it in an alphabetical order (a-z or z-a) or according to the length of the string. For example, words in a dictionary are sorted in alphabetical order; seats in an examination hall are ordered according to candidates’ roll number. We can also sort a list of students based on their height or weight.
+Imagine finding the meaning of a word from a dictionary that is not ordered. We will have to search for the word on each page till we find the word, which will be very tedious. That is why dictionaries have the words in alphabetical order and it ease the process of searching.
+5 Sorting
+Reprint 2026-27

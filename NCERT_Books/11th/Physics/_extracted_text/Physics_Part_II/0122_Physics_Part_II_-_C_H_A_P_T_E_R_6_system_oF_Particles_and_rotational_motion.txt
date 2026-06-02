@@ -1,0 +1,154 @@
+PHYSICS 272
+1. The motion that repeats itself is called periodlic motion.
+2. The period T is the time reequired for one complete oscillation, or cycle. It is related to the frequency v by,
+The frequency
+ν of periodic or oscillatory motion is the number of oscillations per unit time. In the SI, it is measured in hertz :
+1 hertz = 1 Hz = 1 oscillation per second = 1s–1
+3. In simple harmonic motion (SHM), the displacement x (t) of a particle from its equilibrium position is given by, x (t) = A cos (
+φ ) (displacement), in which A is the amplitude of the displacement, the quantity (
+φ ) is the phase of the motion, and
+φ is the phase constant. The angular frequency
+ω is related to the period and frequency of the motion by,
+πν = = (angular frequency).
+4. Simple harmonic motion can also be viewed as the projection of uniform circular motion on the diameter of the circle in which the latter motion occurs.
+5. The particle velocity and acceleration during SHM as functions of time are given by, v (t) = –
+ωA sin (
+φ ) (velocity), a (t) = –
+ω2A cos (
+ω2x (t) (acceleration),
+Thus we see that both velocity and acceleration of a body executing simple harmonic motion are periodic functions, having the velocity amplitude vm=
+ω A and acceleration amplitude am =
+ω 2A, respectively.
+6. The force acting in a simple harmonic motion is proportional to the displacement and is always directed towards the centre of motion.
+7. A particle executing simple harmonic motion has, at any time, kinetic energy
+K = ½ mv2 and potential energy U = ½ kx2. If no friction is present the mechanical energy of the system, E = K + U always remains constant even though K and U change with time.
+8. A particle of mass m oscillating under the influence of Hooke’s law restoring force given by F = – k x exhibits simple harmonic motion with
+= (angular frequency)
+π = (period)
+Such a system is also called a linear oscillator.
+9. The motion of a simple pendulum swinging through small angles is approximately simple harmonic. The period of oscillation is given by,
+Reprint 2026-27
+OSCILLATIONS 273
+POINTS TO PONDER
+1. The period T is the least time after which motion repeats itself. Thus, motion repeats itself after nT where n is an integer.
+2. Every periodic motion is not simple harmonic motion. Only that periodic motion governed by the force law F = – k x is simple harmonic.
+3. Circular motion can arise due to an inverse-square law force (as in planetary motion)
+as well as due to simple harmonic force in two dimensions equal to: –m
+ω2r. In the latter case, the phases of motion, in two perpendicular directions (x and y) must differ by π/2. Thus, for example, a particle subject to a force –m
+ω2r with initial position (0,
+A) and velocity (
+ωA, 0) will move uniformly in a circle of radius A.
+4. For linear simple harmonic motion with a given
+ω, two initial conditions are necessary and sufficient to determine the motion completely. The initial conditions may be (i)
+initial position and initial velocity or (ii) amplitude and phase or (iii) energy and phase.
+5. From point 4 above, given amplitude or energy, phase of motion is determined by the initial position or initial velocity.
+6. A combination of two simple harmonic motions with arbitrary amplitudes and phases is not necessarily periodic. It is periodic only if frequency of one motion is an integral multiple of the other’s frequency. However, a periodic motion can always be expressed as a sum of infinite number of harmonic motions with appropriate amplitudes.
+7. The period of SHM does not depend on amplitude or energy or the phase constant.
+Contrast this with the periods of planetary orbits under gravitation (Kepler’s third law).
+8. The motion of a simple pendulum is simple harmonic for small angular displacement.
+9. For motion of a particle to be simple harmonic, its displacement x must be expressible in either of the following forms :
+x = A cos
+ωt + B sin x = A cos (
+α ), x = B sin (
+The three forms are completely equivalent (any one can be expressed in terms of any other two forms).
+Thus, damped simple harmonic motion is not strictly simple harmonic. It is approximately so only for time intervals much less than 2m/b where b is the damping constant.
+Reprint 2026-27
+PHYSICS 274
+Exercises
+13.1 Which of the following examples represent periodic motion?
+(a) A swimmer completing one (return) trip from one bank of a river to the other and back.
+(b) A freely suspended bar magnet displaced from its N-S direction and released.
+(c) A hydrogen molecule rotating about its centre of mass.
+(d) An arrow released from a bow.
+13.2 Which of the following examples represent (nearly) simple harmonic motion and which represent periodic but not simple harmonic motion?
+(a) the rotation of earth about its axis.
+(b) motion of an oscillating mercury column in a U-tube.
+(c) motion of a ball bearing inside a smooth curved bowl, when released from a point slightly above the lower most point.
+(d) general vibrations of a polyatomic molecule about its equilibrium position.
+13.3 Fig. 13.18 depicts four x-t plots for linear motion of a particle. Which of the plots represent periodic motion? What is the period of motion (in case of periodic motion) ?
+Fig. 18.18
+Reprint 2026-27
+OSCILLATIONS 275
+13.4 Which of the following functions of time represent (a) simple harmonic, (b) periodic but not simple harmonic, and (c) non-periodic motion? Give period for each case of periodic motion (
+ω is any positive constant):
+ωt – cos (b) sin3 (c) 3 cos (π/4 – 2
+ωt + cos 3
+ωt + cos 5 (e) exp (–
+13.5 A particle is in linear simple harmonic motion between two points, A and B, 10 cm apart. Take the direction from A to B as the positive direction and give the signs of velocity, acceleration and force on the particle when it is (a) at the end A, (b) at the end B, (c) at the mid-point of AB going towards A, (d) at 2 cm away from B going towards A, (e) at 3 cm away from A going towards B, and (f) at 4 cm away from B going towards A.
+13.6 Which of the following relationships between the acceleration a and the displacement x of a particle involve simple harmonic motion?
+(a) a = 0.7x (b) a = –200x2 (c) a = –10x (d) a = 100x3
+13.7 The motion of a particle executing simple harmonic motion is described by the displacement function, x(t) = A cos (
+If the initial (t = 0) position of the particle is 1 cm and its initial velocity is what are its amplitude and initial phase angle ? The angular frequency of the particle is π s–1. If instead of the cosine function, we choose the sine function to describe the
+SHM : x = B sin (
+α), what are the amplitude and initial phase of the particle with the above initial conditions.
+13.8 A spring balance has a scale that reads from 0 to 50 kg. The length of the scale is 20 cm. A body suspended from this balance, when displaced and released, oscillates with a period of 0.6 s. What is the weight of the body ?
+13.9 A spring having with a spring constant 1200 N m–1 is mounted on a horizontal table as shown in Fig. 13.19. A mass of 3 kg is attached to the free end of the spring. The mass is then pulled sideways to a distance of 2.0 cm and released.
+Fig. 13.19
+Determine (i) the frequency of oscillations, (ii) maximum acceleration of the mass, and (iii) the maximum speed of the mass.
+Reprint 2026-27
+PHYSICS 276
+13.10 In Exercise 13.9, let us take the position of mass when the spring is unstreched as x = 0, and the direction from left to right as the positive direction of x-axis. Give x as a function of time t for the oscillating mass if at the moment we start the stopwatch (t = 0), the mass is (a) at the mean position, (b) at the maximum stretched position, and (c) at the maximum compressed position.
+In what way do these functions for SHM differ from each other, in frequency, in amplitude or the initial phase?
+13.11 Figures 13.20 correspond to two circular motions. The radius of the circle, the period of revolution, the initial position, and the sense of revolution (i.e. clockwise or anti-clockwise) are indicated on each figure.
+Fig. 13.20
+Obtain the corresponding simple harmonic motions of the x-projection of the radius vector of the revolving particle P, in each case.
+13.12 Plot the corresponding reference circle for each of the following simple harmonic motions. Indicate the initial (t =0) position of the particle, the radius of the circle, and the angular speed of the rotating particle. For simplicity, the sense of rotation may be fixed to be anticlockwise in every case: (x is in cm and t is in s).
+(a) x = –2 sin (3t + π/3)
+(b) x = cos (π/6 – t)
+(c) x = 3 sin (2πt + π/4)
+(d) x = 2 cos πt
+13.13 Figure 13.21(a) shows a spring of force constant k clamped rigidly at one end and a mass m attached to its free end. A force F applied at the free end stretches the spring. Figure 13.21 (b) shows the same spring with both ends free and attached to a mass m at either end. Each end of the spring in Fig. 13.21(b) is stretched by the same force F.
+Fig. 13.21 (a) What is the maximum extension of the spring in the two cases ?
+(b) If the mass in Fig. (a) and the two masses in Fig. (b) are released, what is the period of oscillation in each case ?
+Reprint 2026-27
+OSCILLATIONS 277
+13.14 The piston in the cylinder head of a locomotive has a stroke (twice the amplitude)
+of 1.0 m. If the piston moves with simple harmonic motion with an angular frequency of 200 rad/min, what is its maximum speed ?
+13.15 The acceleration due to gravity on the surface of moon is 1.7 m s–2. What is the time period of a simple pendulum on the surface of moon if its time period on the surface of earth is 3.5 s ? (g on the surface of earth is 9.8 m s–2)
+13.16 A simple pendulum of length l and having a bob of mass M is suspended in a car.
+The car is moving on a circular track of radius R with a uniform speed v. If the pendulum makes small oscillations in a radial direction about its equilibrium position, what will be its time period ?
+13.17 A cylindrical piece of cork of density of base area A and height h floats in a liquid of
+ρl. The cork is depressed slightly and then released. Show that the cork oscillates up and down simple harmonically with a period where ρ is the density of cork. (Ignore damping due to viscosity of the liquid).
+13.18 One end of a U-tube containing mercury is connected to a suction pump and the other end to atmosphere. A small pressure difference is maintained between the two columns. Show that, when the suction pump is removed, the column of mercury in the U-tube executes simple harmonic motion.
+Reprint 2026-27
+CHAPTER FOURTEEN
+14.1 INTRODUCTION
+In the previous Chapter, we studied the motion of objects oscillating in isolation. What happens in a system, which is a collection of such objects? A material medium provides such an example. Here, elastic forces bind the constituents to each other and, therefore, the motion of one affects that of the other. If you drop a little pebble in a pond of still water, the water surface gets disturbed. The disturbance does not remain confined to one place, but propagates outward along a circle. If you continue dropping pebbles in the pond, you see circles rapidly moving outward from the point where the water surface is disturbed. It gives a feeling as if the water is moving outward from the point of disturbance. If you put some cork pieces on the disturbed surface, it is seen that the cork pieces move up and down but do not move away from the centre of disturbance. This shows that the water mass does not flow outward with the circles, but rather a moving disturbance is created. Similarly, when we speak, the sound moves outward from us, without any flow of air from one part of the medium to another. The disturbances produced in air are much less obvious and only our ears or a microphone can detect them. These patterns, which move without the actual physical transfer or flow of matter as a whole, are called waves. In this Chapter, we will study such
+Waves transport energy and the pattern of disturbance has information that propagate from one point to another. All our communications essentially depend on transmission of sig- nals through waves. Speech means production of sound waves in air and hearing amounts to their detection. Often, communication involves different kinds of waves. For exam- ple, sound waves may be first converted into an electric cur- rent signal which in turn may generate an electromagnetic wave that may be transmitted by an optical cable or via a
+14.1 Introduction
+14.2 Transverse and longitudinal waves
+14.3 Displacement relation in a progressive wave
+14.4 The speed of a travelling
+14.5 The principle of superposition of waves
+14.6 Reflection of waves
+14.7 Beats
+Points to ponder
+Exercises
+Reprint 2026-27
+WAVES 279 satellite. Detection of the original signal will usu- ally involve these steps in reverse order.
+Not all waves require a medium for their propagation. We know that light waves can travel through vacuum. The light emitted by stars, which are hundreds of light years away, reaches us through inter-stellar space, which is practically a vacuum.
+The most familiar type of waves such as waves on a string, water waves, sound waves, seismic waves, etc. is the so-called mechanical waves.
+These waves require a medium for propagation, they cannot propagate through vacuum. They involve oscillations of constituent particles and depend on the elastic properties of the medium.
+The electromagnetic waves that you will learn in Class XII are a different type of wave.
+Electromagnetic waves do not necessarily require a medium - they can travel through vacuum.
+Light, radiowaves, X-rays, are all electromagnetic waves. In vacuum, all electromagnetic waves have the same speed c, whose value is :
+c = 299, 792, 458 ms–1. (14.1)
+A third kind of wave is the so-called Matter waves. They are associated with constituents of matter : electrons, protons, neutrons, atoms and molecules. They arise in quantum mechanical description of nature that you will learn in your later studies. Though conceptually more abstract than mechanical or electro-magnetic waves, they have already found applications in several devices basic to modern technology; matter waves associated with electrons are employed in electron microscopes.
+In this chapter we will study mechanical waves, which require a material medium for their propagation.
+The aesthetic influence of waves on art and literature is seen from very early times; yet the first scientific analysis of wave motion dates back to the seventeenth century. Some of the famous scientists associated with the physics of wave motion are Christiaan Huygens (1629-1695),
+Robert Hooke and Isaac Newton. The understanding of physics of waves followed the physics of oscillations of masses tied to springs and physics of the simple pendulum. Waves in elastic media are intimately connected with harmonic oscillations. (Stretched strings, coiled springs, air, etc., are examples of elastic media).
+We shall illustrate this connection through simple examples.
+Consider a collection of springs connected to one another as shown in Fig. 14.1. If the spring at one end is pulled suddenly and released, the disturbance travels to the other end. What has happened? The first spring is disturbed from its equilibrium length. Since the second spring is connected to the first, it is also stretched or compressed, and so on. The disturbance moves from one end to the other; but each spring only executes small oscillations about its equilibrium position. As a practical example of this situation, consider a stationary train at a railway station.
+Different bogies of the train are coupled to each other through a spring coupling. When an engine is attached at one end, it gives a push to the bogie next to it; this push is transmitted from one bogie to another without the entire train being bodily displaced.
+Now let us consider the propagation of sound waves in air. As the wave passes through air, it compresses or expands a small region of air. This causes a change in the density of that region,
+δρ, this change induces a change in pressure,
+δp, in that region. Pressure is force per unit area, so there is a restoring force proportional to the disturbance, just like in a spring. In this case, the quantity similar to extension or compression of the spring is the change in density. If a region is compressed, the molecules in that region are packed together, and they tend to move out to the adjoining region, thereby increasing the density or creating compression in the adjoining region. Consequently, the air in the first region undergoes rarefaction. If a region is comparatively rarefied the surrounding air will rush in making the rarefaction move to the adjoining region. Thus, the compression or rarefaction moves from one region to another, making the propagation of a disturbance possible in air.
+Fig. 14.1 A collection of springs connected to each other. The end A is pulled suddenly generating a disturbance, which then propagates to the other end.
+Reprint 2026-27
+PHYSICS 280
+In solids, similar arguments can be made. In a crystalline solid, atoms or group of atoms are arranged in a periodic lattice. In these, each atom or group of atoms is in equilibrium, due to forces from the surrounding atoms. Displacing one atom, keeping the others fixed, leads to restoring forces, exactly as in a spring. So we can think of atoms in a lattice as end points, with springs between pairs of them.
+In the subsequent sections of this chapter we are going to discuss various characteristic properties of waves.
+14.2 TRANSVERSE AND LONGITUDINAL
+We have seen that motion of mechanical waves involves oscillations of constituents of the medium. If the constituents of the medium oscillate perpendicular to the direction of wave propagation, we call the wave a transverse wave.
+If they oscillate along the direction of wave propagation, we call the wave a longitudinal
+Fig.14.2 shows the propagation of a single pulse along a string, resulting fro

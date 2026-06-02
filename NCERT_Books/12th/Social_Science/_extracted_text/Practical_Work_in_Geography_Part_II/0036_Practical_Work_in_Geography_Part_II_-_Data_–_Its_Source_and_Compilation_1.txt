@@ -1,0 +1,253 @@
+24 24 24 24 24
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II
+GGGGGeneral Rules for Dra eneral Rules for Dra eneral Rules for Dra eneral Rules for Dra eneral Rules for Drawing G wing G wing G wing G wing Graphs, Diagrams and M raphs, Diagrams and M raphs, Diagrams and M raphs, Diagrams and M raphs, Diagrams and Maps aps aps aps aps
+1. Selection of a Suitable Method
+Data represent various themes such as temperature, rainfall, growth and distribution of the population, production, distribution and trade of different commodities, etc. These characteristics of the data need to be suitably represented by an appropriate graphical method. For example, data related to the temperature or growth of population between different periods in time and for different countries/states may best be represented using line graphs. Similarly, bar diagrams are suited best for showing rainfall or the production of commodities.
+The population distribution, both human and livestock, or the distribution of the crop producing areas may suitably be represented on dot maps and the population density using choropleth maps.
+2. Selection of Suitable Scale
+The scale is used as measure of the data for representation over diagrams and maps. Hence, the selection of suitable scale for the given data sets should be carefully made and must take into consideration entire data that is to be represented. The scale should neither be too large nor too small.
+3. Design
+We know that the design is an important cartographic task (Refer ‘Essentials of
+Map Making’ as discussed in Chapter 1 of the Practical Work in Geography,
+Part-I (NCERT, 2006), a textbook of Class XI). The following components of the cartographic designs are important. Hence, these should be carefully shown on the final diagram/map.
+The title of the diagram/map indicates the name of the area, reference year of the data used and the caption of the diagram. These components are represented using letters and numbers of different font sizes and thickness. Besides, their placing also matters. Normally, title, subtitle and the corresponding year are shown in the centre at the top of the map/diagram.
+A legend or index is an important component of any diagram/map. It explains the colours, shades, symbols and signs used in the map and diagram. It should also be carefully drawn and must correspond to the contents of the map/diagram.
+Besides, it also needs to be properly positioned. Normally, a legend is shown either at the lower left or lower right side of the map sheet.
+Direction
+The maps, being a representation of the part of the earth’s surface, need be oriented to the directions. Hence, the direction symbol, i. e. North, should also be drawn and properly placed on the final map.
+Construction of Diagrams Construction of Diagrams Construction of Diagrams Construction of Diagrams Construction of Diagrams
+The data possess measurable characteristics such as length, width and volume.
+The diagrams and the maps that are drawn to represent these data related characteristics may be grouped into the following types:
+Reprint 2026-27
+2 5 2 5 2 5 2 5 2 5
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation (i) One-dimensional diagrams, such as line graph, poly graph, bar diagram, histogram, age, sex, pyramid, etc.;
+(ii) Two-dimensional diagram, such as pie diagram and rectangular diagram;
+(iii) Three-dimensional diagrams, such as cube and spherical diagrams.
+It would not be possible to discuss the methods of construction of these many types of diagrams and maps primarily due to the time constraint. We will, therefore, describe the most commonly drawn diagrams and maps and the way they are constructed. These are :
+• Line graphs • Bar diagrams
+• Pie diagram • Wind rose and star diagram
+• Flow Charts
+Line Graph Line Graph Line Graph Line Graph Line Graph
+The line graphs are usually drawn to represent the time series data related to the temperature, rainfall, population growth, birth rates and the death rates. Table
+3.1 provides the data used for the construction of Fig 3.2.
+Construction of a Line Graph (a) Simplify the data by converting it into round numbers, such as the growth rate of population as shown in Table 3.1 for the years 1961 and
+1981 may be rounded to 2.0 and 2.2, respectively.
+(b) Draw X and Y-axis. Mark the time series variables (years/months) on the X axis and the data quantity/value to be plotted (growth of population in per cent or the temperature in ∞C) on Y axis.
+(c) Choose an appropriate scale and label it on Y-axis. If the data involve a negative figure, then the selected scale should also show it as shown in
+Fig. 3.1.
+(d) Plot the data to depict year/month-wise values according to the selected scale on Y-axis, mark the location of the plotted values by a dot and join these dots by a free hand drawn line.
+Fig. 3.1 : Fig. 3.1 : Fig. 3.1 : Fig. 3.1 : Fig. 3.1 : Construction of a Line Graph
+Reprint 2026-27
+26 26 26 26 26
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II
+Example 3.1 : Construct a line graph to represent the data as given in Table 3.1:
+Year Growth rate in percentage
+1911 0.56
+1921 -0.30
+1931 1.04
+1941 1.33
+1951 1.25
+1961 1.96
+1971 2.20
+1981 2.22
+1991 2.14
+2001 1.93
+2011 1.79
+Table 3.1 : Growth rate of Population in India – 1901 to 2011
+Fig. 3.2 : Annual Growth of Population in India 1901-2011
+AAAAActivity ctivity ctivity ctivity ctivity
+Find out the reasons for sudden change in population between 1911 and 1921as shown in Fig. 3.2.
+Polygraph
+Polygraph is a line graph in which two or more than two variables are shown by an equal number of lines for an immediate comparison, such as the growth rate of different crops like rice, wheat, pulses or the birth rates, death rates and life expectancy or sex ratio in different states or countries. A different line pattern such as straight line ( ____ ), broken line (- - - ), dotted line (……) or a combination of dotted and broken line (-.-.-) or line of different colours may be used to indicate the value of different variables (Fig 3.3).
+Reprint 2026-27
+2 7 2 7 2 7 2 7 2 7
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Example 3.2 : Construct a polygraph to compare the growth of sex-ratio in different states as given in the Table 3.2 :
+Fig. 3.3 : Sex-Ratio of Selected States 1961-2011
+Bar Diagram
+The bar diagrams are drawn through columns of equal width. It is also called a columnar diagram. Following rules should be observed while constructing a bar diagram:
+(a) The width of all the bars or columns should be similar.
+(b) All the bars should be placed on equal intervals/distance.
+(c) Bars may be shaded with colours or patterns to make them distinct and attractive.
+The simple, compound or polybar diagram may be constructed to suit the data characteristics.
+Simple Bar Diagram
+A simple bar diagram is constructed for an immediate comparison. It is advisable to arrange the given data set in an ascending or descending order and plot the data variables accordingly. However, time series data are represented according to the sequencing of the time period.
+Example 3.3 : Construct a simple bar diagram to represent the rainfall data of
+Thiruvananthapuram as given in Table 3.3 :
+States/UT 1961 1971 1981 1991 2001 2011
+Delhi 785 801 808 827 821 866
+Haryana 868 867 870 860 846 877
+Uttar Pradesh 907 876 882 876 898 908
+Table 3.2 : Sex-Ratio (Female per 1000 male) of
+Selected Sates – 1961-2011
+Source : Census, 2011
+Reprint 2026-27
+28 28 28 28 28
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II
+Construction
+Draw X and Y-axes on a graph paper. Take an interval of 5 cm and mark it on Y- axis to plot rainfall data in cm. Divide X-axis into 12 equal parts to represent 12 months. The actual rainfall values for each month will be plotted according to the selected scale as shown in Fig. 3.4.
+Months J F M A M J J A S O N D
+Rainfall in cm 2.3 2.1 3.7 10.6 20.8 35.6 22.3 14.6 13.8 27.3 20.6 7.5
+Table 3.3 : Average Monthly Rainfall of Thiruvananthapuram
+Fig. 3.4 : Average Monthly Rainfall of Thiruvananthapuram
+Line and Bar Graph
+The line and bar graphs as drawn separately may also be combined to depict the data related to some of the closely associated characteristics such as the climatic data of mean monthly temperatures and rainfall. In doing so, a single diagram is drawn in which months are represented on X-axis while temperature and rainfall data are shown on Y-axis at both sides of the diagram.
+Example 3.4 : Construct a line graph and bar diagram to represent the average monthly rainfall and temperature data of Delhi as given in Table 3.4 :
+Months Temp. in °C Rainfall in cm.
+Jan. 14.4 2.5
+Feb. 16.7 1.5
+Mar. 23.30 1.3
+Apr. 30.0 1.0
+May 33.3 1.8
+June 33.3 7.4
+Jul. 30.0 19.3
+Aug. 29.4 17.8
+Sep. 28.9 11.9
+Oct. 25.6 1.3
+Nov. 19.4 0.2
+Dec. 15.6 1.0
+Table 3.4 : Average monthly Temperature and Rainfall in Delhi
+Reprint 2026-27
+2 9 2 9 2 9 2 9 2 9
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Construction (a) Draw X and Y-axes of a suitable length and divide X-axis into 12 parts to show months in a year.
+(b) Select a suitable scale with equal intervals of 5° C or 10° C for temperature data on the Y-axis and label it at its right side.
+(c) Similarly, select a suitable scale with equal intervals of 5 cm or 10 cm for rainfall data on the Y-axis and label at its left side.
+(d) Plot temperature data using line graph and the rainfall by bar diagram as shown in Fig. 3.5.
+Fig. 3.5 : Temperature and Rainfall in Delhi
+Multiple Bar Diagram
+Multiple bar diagrams are constructed to represent two or more than two variables for the purpose of comparison. For example, a multiple bar diagram may be constructed to show proportion of males and females in the total, rural and urban population or the share of canal, tube well and well irrigation in the total irrigated area in different states.
+Example 3.5 : Construct a suitable bar diagram to show decadal literacy rate in India during 1951–2011 as given in Table 3.5 :
+Construction (a) Multiple bar diagram may be chosen to represent the above (b) Mark time series data on X-axis and literacy rates on Y-axis as per the selected scale.
+Year Literacy Rate
+Total Male Female population
+1951 18.33 27.16 8.86
+1961 28.3 40.4 15.35
+1971 34.45 45.96 21.97
+1981 43.57 56.38 29.76
+1991 52.21 64.13 39.29
+2001 64.84 75.85 54.16
+2011 73.0 80.9 64.6
+Table 3.5 : Literacy Rate in India,
+1951–2011 (in %)
+Source : Census, 2011
+Reprint 2026-27
+30 30 30 30 30
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II (c) Plot the per cent of total population, male and female in closed columns (Fig 3.6).
+Fig. 3.6 : Literacy Rate in India, 1951-2011
+Compound Bar Diagram
+When different components are grouped in one set of variable or different variables of one component are put together, their representation is made by a compound bar diagram. In this method, different variables are shown in a single bar with different rectangles.
+Example 3.6 : Construct a compound bar diagram to depict the data as shown in Table 3.6 :
+Year Thermal Hydro Nuclear Total
+2008-09 616.2 110.1 14.9 741.2
+2009-10 677.1 104.1 18.6 799.8
+2010-11 704.3 114.2 26.3 844.8
+Table 3.6 : Gross Generation of Electricity in India (in Billion KWh)
+Construction (a) Arrange the data in ascending or descending order.
+(b) A single bar will depict the gross electricity generation in the given year and the generation of thermal, hydro and nuclear electricity be shown by dividing the total length of the bar as shown in Fig 3.7.
+Source: Economic Survey, 2011-12
+Reprint 2026-27
+3 1 3 1 3 1 3 1 3 1
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Pie Diagram Pie Diagram Pie Diagram Pie Diagram Pie Diagram
+Pie diagram is another graphical method of the representation of data. It is drawn to depict the total value of the given attribute using a circle. Dividing the circle into corresponding degrees of angle then represent the sub-sets of the data. Hence, it is also called Divided Circle Divided Circle Divided Circle Divided Circle Divided Circle
+Diagram Diagram Diagram Diagram Diagram.
+The angle of each variable is calculated using the following formulae.
+Value of given State/Region × 360
+Total Value of All States//Regions
+If data are given in percentage form, the angles are calculated using the given formulae.
+Percentage of x × 360
+For example, a pie diagram may be drawn to show the total population of
+India along with the proportion of the rural and urban population. In this case, the circle of an appropriate radius is drawn to represent the total population and its sub-divisions into rural and urban population are shown by corresponding degrees of angle.
+Example 3.7 Example 3.7 Example 3.7 Example 3.7 Example 3.7: Represent the data as given in Table 3.7 (a) with a suitable diagram.
+Calculation of Angles Calculation of Angles Calculation of Angles Calculation of Angles Calculation of Angles (a) Arrange the data on percentages of Indian exports in an ascending (b) Calculate the degrees of angles for showing the given values of India’s export to major regions/ countries of the world,
+Table 3.7 (b). It could be done by multiplying percentage with a constant of 3.6 as derived by dividing the total number of degrees in a circle by
+100, i. e. 360/100.
+Fig. 3.7 : Fig. 3.7 : Fig. 3.7 : Fig. 3.7 : Fig. 3.7 : Gross Electricity Generation in India
+Unit/Region Unit/Region Unit/Region Unit/Region Unit/Region % of Indian Export % of Indian Export % of Indian Export % of Indian Export % of Indian Export
+Europe 20.2
+Africa 6.5
+America 14.8
+Asia and ASEAN 56.2
+Others 2.3
+Total 100
+Table 3.7 (a) : Table 3.7 (a) : Table 3.7 (a) : Table 3.7 (a) : Table 3.7 (a) : India’s Export to Major
+Regions of the World in 2010–11
+Source : Economic Survey 2011-12
+Reprint 2026-27
+32 32 32 32 32
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II (c) Plot the data by dividing the circle into the required number of divisions to show the share of India’s export to different regions/countries (Fig. 3.8).
+Construction (a) Select a suitable radius for the circle to be drawn. A radius of 3, 4 or 5 cm may be chosen for the given data set.
+(b) Draw a line from the centre of the circle to the arc as a radius.
+(c) Measure the angles from the arc of the circle for each category of vehicles in an ascending order clock-wise, starting with smaller angle.
+(d) Complete the diagram by adding the title, sub-title, and the legend. The legend mark be chosen for each variable/category and highlighted by distinct shades/colours.
+Precautions (a) The circle should neither be too big to fit in the space nor too small to be illegible.
+(b) Starting with bigger angle will lead to accumulation of error leading to the plot of the smaller angle difficult.
+Countries % Calculation Degree
+Europe 20.2 20.2 × 3.6 = 72.72 73°
+Africa 6.5 6.5 × 3.6 = 23.4 23°
+America 14.8 14.8 × 3.6 = 53.28 53°
+Asia and ASEAN 56.2 56.2 × 3.6 = 202.32 203°
+Others 2.3 2.3 × 3.6 = 8.28 8°
+Total 100 360°
+Table 3.7 (b) : India’s Export to Major Regions of the World in 2010-11
+Fig. 3.8 : Direction of Indian Exports 2010–11
+Reprint 2026-27
+3 3 3 3 3 3 3 3 3 3
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Flow Maps/Chart Flow Maps/Chart Flow Maps/Chart Flow Maps/Chart Flow Maps/Chart
+Flow chart is a combination of graph and map. It is drawn to show the flow of commodities or people between the places of origin and destination. It is also called Dynamic Map Dynamic Map Dynamic Map Dynamic Map Dynamic Map. Transport map, which shows the number of passengers, vehicles, etc., is the best example of a flow chart. These charts are drawn using lines of proportional width. Many government agencies prepare flow maps to show density of the means of transportation on different routes. The flow maps/ charts are generally drawn to represent two the types of data as given below:
+1. The number and frequency of the vehicles as per the direction of their movement
+2. The number of the passengers and/or the quantity of goods transported.
+Requirements for the Preparation of a Flow Map (a) A route map depicting the desired transport routes along with the connecting stations.
+(b) The data pertaining to the flow of goods, services, number of vehicles, etc., along with the point of origin and destination of the movements.
+(c) The selection of a scale through which the data related to the quantity of passengers and goods or the number of vehicles is to be represented.
+Example 3.8 : Example 3.8 : Example 3.8 : Example 3.8 : Example 3.8 : Construct a flow map to represent the number of trains running in
+Delhi and the adjoining areas as given in the Table 3.8.
+Construction (a) Take an outline map of Delhi and adjoining areas, in which railway line and the nodal stations are depicted (Fig.3.9).
+(b) Select a scale to represent the number of trains. Here, the maximum number is 50 and the minimum is 6. If we select a scale of 1cm = 50 trains, the maximum and minimum numbers will be represented by a strip of 10 mm and 1.2 mm thi

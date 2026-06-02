@@ -1,0 +1,362 @@
+34 34 34 34 34
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II (d) Draw a terraced scale as legend and choose distinct sign or symbol to show the nodal points (stations) within the strip.
+Fig. 3.9 : Fig. 3.9 : Fig. 3.9 : Fig. 3.9 : Fig. 3.9 : Map of Delhi
+Fig. 3.10 : Fig. 3.10 : Fig. 3.10 : Fig. 3.10 : Fig. 3.10 : Traffic (Railway) Flow Map of Delhi
+Tikri Kalan
+Udyog Nagar
+Shalimar Bagh
+Old Delhi Silampur
+Nandnagari
+Mohan Nagar
+Badarpur Palam Vihar
+Pusa Road
+40 30 20 10 5 No. Of Trains
+New Delhi
+Nizamuddin
+Reprint 2026-27
+3 5 3 5 3 5 3 5 3 5
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Example 3. Example 3. Example 3. Example 3. Example 3.99999 : Construct a water flow map of Ganga Basin as shown in Fig. 3.11.
+Construction (a) Take a scale as a strip of 1cm width = 50,000 cusecs of water.
+(b) Make the diagram as shown in Fig. 3.12.
+Thematic Maps Thematic Maps Thematic Maps Thematic Maps Thematic Maps
+Graphs and diagrams serve a useful purpose in providing a comparison between the internal variations within the data of different characteristics represented.
+However, the use of graphs and diagrams, at times, fails to produce a regional perspective. Hence, variety of maps may also be drawn to understand the patterns
+Fig. 3.11 : Fig. 3.11 : Fig. 3.11 : Fig. 3.11 : Fig. 3.11 : Ganga Basin
+Fig. 3.12 : Fig. 3.12 : Fig. 3.12 : Fig. 3.12 : Fig. 3.12 : Construction of a Flow Map
+000,Cusecs of water
+13 42 50
+Reprint 2026-27
+36 36 36 36 36
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II of the regional distributions or the characteristics of variations over space. These maps are also known as the distribution maps distribution maps distribution maps distribution maps distribution maps.
+Requirements for Making a Thematic Map (a) State/District level data about the selected theme.
+(b) Outline map of the study area alongwith administrative boundaries.
+(c) Physical map of the region. For example, physiographic map for population distribution and relief and drainage map for constructing transportation map.
+Rules for Making Thematic Maps (i) The drawing of the thematic maps must be carefully planned. The final map should properly reflect the following components:
+a. Name of the area b. Title of the subject-matter c. Source of the data and year d. Indication of symbols, signs, colours, shades, etc.
+e. Scale (ii) The selection of a suitable method to be used for thematic mapping.
+Classification of Thematic Maps based on Method of Construction Classification of Thematic Maps based on Method of Construction Classification of Thematic Maps based on Method of Construction Classification of Thematic Maps based on Method of Construction Classification of Thematic Maps based on Method of Construction
+The thematic maps are, generally, classified into quantitative and non-quantitative maps. The quantitative maps are drawn to show the variations within the data.
+For example, maps depicting areas receiving more than 200 cm, 100 to 200 cm,
+50 to 100 cm and less than 50 cm of rainfall are referred as quantitative maps.
+These maps are also called statistical maps. The non-quantitative maps, on the other hand, depict the non-measurable characteristics in the distribution of given information, such as a map showing high and low rainfall-receiving areas. These maps are also called qualitative maps. It would not be possible to discuss drawing these different types of thematic maps under the constraint of time. We will, therefore, confine to discuss the methods of the construction of the following types of quantitative maps :
+(a) Dot maps (b) Choropleth maps (c) Isopleth maps
+Dot Maps Dot Maps Dot Maps Dot Maps Dot Maps
+The dot maps are drawn to show the distribution of phenomena such as population, cattle, types of crops, etc. The dots of same size as per the chosen scale are marked over the given administrative units to highlight the patterns of distributions.
+Requirement (a) An administrative map of the given area showing state/district/block boundaries.
+Reprint 2026-27
+3 7 3 7 3 7 3 7 3 7
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation (b) Statistical data on selected theme for the chosen administrative units, i.e., total population, cattle, etc.
+(c) Selection of a scale to determine the value of a dot.
+(d) Physiographic map of the region, especially relief and drainage maps.
+Precaution (a) The lines, demarcating the boundaries of various administrative units, should not be very thick and bold.
+(b) All dots should be of same size.
+Example 3.10 : Example 3.10 : Example 3.10 : Example 3.10 : Example 3.10 : Construct a dot map to represent population data of 2001 as given in Table 3.9.
+Sl. Sl. Sl. Sl. Sl. States/Union States/Union States/Union States/Union States/Union Total Population Total Population Total Population Total Population Total Population No. No. No. No. No.
+No. No. No. No. No. Territories Territories Territories Territories Territories of dots of dots of dots of dots of dots
+1. Jammu & Kashmir 10,069,917 100
+2. Himachal Pradesh 6,077,248 60
+3. Punjab 24,289,296 243
+4. Uttarakhand 8,479,562 85
+5. Haryana 21,082,989 211
+6. Delhi 13,782,976 138
+7. Rajasthan 56,473,122 565
+8. Uttar Pradesh 166,052,859 1,660
+9. Bihar 82,878,796 829
+10. Sikkim 540,493 5
+11. Arunachal Pradesh 1,091,117 11
+12. Nagaland 1,988,636 20
+13. Manipur 2,388,634 24
+14. Mizoram 891,058 89
+15. Tripura 3,191,168 32
+16. Meghalaya 2,306,069 23
+17. Assam 26,638,407 266
+18. West Bengal 80,221,171 802
+19. Jharkhand 26,909,428 269
+20. Odisha 36,706,920 367
+21. Chhattisgarh 20,795,956 208
+22. Madhya Pradesh 60,385,118 604
+23. Gujarat 50,596,992 506
+24. Maharashtra 96,752,247 968
+25. Andhra Pradesh 75,727,541 757
+26. Karnataka 52,733,958 527
+27. Goa 1,343,998 13
+28. Kerala 31,838,619 318
+29. Tamil Nadu 62,110,839 621
+Table 3.9 : Table 3.9 : Table 3.9 : Table 3.9 : Table 3.9 : Population of India, 2001
+Reprint 2026-27
+38 38 38 38 38
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II
+Fig. 3.13 : Population of India, 2001
+Reprint 2026-27
+3 9 3 9 3 9 3 9 3 9
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Construction (a) Select the size and value of a dot.
+(b) Determine the number of dots in each state using the given scale. For example, number of dots in Maharashtra will be 9,67,52,247/100,000
+= 967.52. It may be rounded to 968, as the fraction is more than 0.5.
+(c) Place the dots in each state as per the determined number in all states.
+(d) Consult the physiographic/relief map of India to identify mountainous, desert, and/or snow covered areas and mark lesser number of dots in such areas.
+Choropleth Map Choropleth Map Choropleth Map Choropleth Map Choropleth Map
+The choropleth maps are also drawn to depict the data characteristics as they are related to the administrative units. These maps are used to represent the density of population, literacy/growth rates, sex ratio, etc.
+Requirement for drawing Choropleth Map (a) A map of the area depicting different administrative units.
+(b) Appropriate statistical data according to administrative units.
+Steps to be followed (a) Arrange the data in ascending or descending order.
+(b) Group the data into 5 categories to represent very high, high, medium, low and very low concentrations.
+(c) The interval between the categories may be identified on the following formulae i.e., Range/5 and Range = maximum value – minimum value.
+(d) Patterns, shades or colour to be used to depict the chosen categories should be marked in an increasing or decreasing order.
+Example 3.11: Example 3.11: Example 3.11: Example 3.11: Example 3.11: Construct a Choropleth map to represent the literacy rates in
+India in 2001 as given in Table 3.10.
+Construction (a) Arrange the data in ascending order as shown above.
+(b) Identify the range within the data. In the present case, the states recording the lowest and highest literacy rates are Bihar (47%) and
+Kerala (90.9%), respectively. Hence, the range would be 91.0 – 47.0 = (c) Divide the range by 5 to get categories from very low to very high. (44.0/
+5 = 8.80. We can convert this value to a round number, i. e., t 9.0 (d) Determine the number of the categories alongwith the range of each category. Add 9.0 to the lowest value of 47.0 as so on. We will finally get following categories :
+47 – 56 Very low (Bihar, Jharkhand, Arunachal Pradesh, Jammu and Kashmir)
+56 – 65 Low (Uttar Pradesh, Rajasthan, Andhra Pradesh, Meghalaya,
+Odisha, Assam, Madhya Pradesh, Chhattisgarh)
+Reprint 2026-27
+40 40 40 40 40
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II
+Fig. 3.14 : Literacy Rate, 2001
+Reprint 2026-27
+4 1 4 1 4 1 4 1 4 1
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+65 – 74 Medium (Nagaland, Karnataka, Haryana, West Bengal,
+Sikkim, Gujarat, Punjab, Manipur, Uttarakhand, Tripura,
+Tamil Nadu)
+74 – 83 High (Himachal Pradesh, Maharashtra, Delhi, Goa)
+83 – 92 Very high (Mizoram, Kerala)
+(e) Assign shades/pattern to each category ranging from lower to higher hues.
+(f) Prepare the map as shown in Fig. 3.14.
+(g) Complete the map with respect to the attributes of map design.
+Table 3.10 : Literacy Rate in India, 2001
+Original Data on Literacy in India
+S. States / Union Literacy
+No. Territories Rate
+1. Jammu & Kashmir 55.5
+2. Himachal Pradesh 76.5
+3. Punjab 69.7
+4. Chandigarh 81.9
+5. Uttarakhand 71.6
+6. Haryana 67.9
+7. Delhi 81.7
+8. Rajasthan 60.4
+9. Uttar Pradesh 56.3
+10. Bihar 47.0
+11. Sikkim 68.8
+12. Arunachal Pradesh 54.3
+13. Nagaland 66.6
+14. Manipur 70.5
+15. Mizoram 88.8
+16. Tripura 73.2
+17. Meghalaya 62.6
+18. Assam 63.3
+19. West Bengal 68.6
+20. Jharkhand 53.6
+21. Odisha 63.1
+22. Chhattisgarh 64.7
+23. Madhya Pradesh 63.7
+24. Gujarat 69.1
+25. Daman & Diu 78.2
+26. Dadra & Nagar Haveli 57.6
+27. Maharashtra 76.9
+28. Andhra Pradesh 60.5
+29. Karnataka 66.6
+30. Goa 82.0
+31. Lakshadweep 86.7
+32. Kerala 90.9
+33. Tamil Nadu 73.5
+34. Puducherry 81.2
+35. Andaman & Nicobar 81.3
+Data on Literacy in India as arranged in Ascending order
+S. States / Union Literacy
+No. Territories Rate
+10. Bihar 47.0
+20. Jharkhand 53.6
+12. Arunachal Pradesh 54.3
+01. Jammu & Kashmir 55.5
+9. Uttar Pradesh 56.3
+26. Dadra & Nagar Haveli 57.6
+08. Rajasthan 60.4
+28. Andhra Pradesh 60.5
+17. Meghalaya 62.6
+21. Odisha 63.1
+18. Assam 63.3
+23. Madhya Pradesh 63.7
+22. Chhattisgarh 64.7
+13. Nagaland 66.6
+29. Karnataka 66.6
+06. Haryana 67.9
+19. West Bengal 68.6
+11. Sikkim 68.8
+24. Gujarat 69.1
+03. Punjab 69.7
+14. Manipur 70.5
+05. Uttarakhand 71.6
+16. Tripura 73.2
+33. Tamil Nadu 73.5
+02. Himachal Pradesh 76.5
+27. Maharashtra 76.9
+25. Daman & Diu 78.2
+34. Puducherry 81.2
+35. Andaman & Nicobar 81.3
+07. Delhi 81.7
+04. Chandigarh 81.9
+30. Goa 82.0
+31. Lakshadweep 86.7
+15. Mizoram 88.8
+32. Kerala 90.9
+Reprint 2026-27
+42 42 42 42 42
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II
+Isopleth Map
+We have seen that the data related to the administrative units are represented using choropleth maps. However, the variations within the data, in many cases, may also be observed on the basis of natural boundaries. For example, variations in the degrees of slope, temperature, occurrence of rainfall, etc. possess characteristics of the continuity in the data. These geographical facts may be represented by drawing the lines of equal values on a map. All such maps are termed as Isopleth Map. The word Isopleth is derived from Iso meaning equal and pleth means lines. Thus, an imaginary line, which joins the places of equal values, is referred as Isopleth. The more frequently drawn isopleths include
+Isotherm (equal temperature), Isobar (equal pressure), Isohyets (equal rainfall),
+Isonephs (equal cloudiness), Isohels (equal sunshine), contours (equal heights),
+Isobaths (equal depths), Isohaline (equal salinity), etc.
+Requirement (a) Base line map depicting point location of different places.
+(b) Appropriate data of temperature, pressure, rainfall, etc. over a definite period of time.
+(c) Drawing instrument specially French Curve, etc.
+Rules to be observed (a) An equal interval of values be selected.
+(b) Interval of 5, 10, or 20 is supposed to be ideal.
+(c) The value of Isopleth should be written along the line on either side or in the middle by breaking the line.
+Interpolation
+Interpolation is used to insert the intermediate values between the observed values of at two stations/locations, such as temperature recorded at Chennai and
+Hyderabad or the spot heights of two points. Generally, drawing of isopleths joining the places of same value is also termed as interpolation.
+Method of Interpolation
+For interpolation, follow the following steps:
+(a) Firstly, determine the minimum and maximum values given on the map.
+(b) Calculate the range of value i.e. Range = maximum value – minimum (c) Based on range, determine the interval in a whole number like 5, 10,
+15, etc.
+The exact point of drawing an Isopleth is determined by using the following formulae.
+Point of Isopleth Distance between two points in cm
+= eence between the two values of corresponding points Inte × rrval
+Reprint 2026-27
+4 3 4 3 4 3 4 3 4 3
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+The interval is the difference between the actual value on the map and interpolated value. For example, in an Isotherm map of two places show 28 oC and 33 oC and you want to draw 30 oC isotherm, measure the distance between the two points. Suppose, the distance is 1cm or 10 mm and the difference between
+28 and 33 is 5, whereas, 30 is 2 points away from 28 and 3 points behind 33, thus, exact point of 30 will be
+Thus, isotherm of 30 oC will be plotted 4mm away from 28 oC or 6mm ahead of 33 oC.
+(d) Draw the isopleths of minimum value first; other isopleths may be drawn accordingly.
+Excercises Excercises Excercises Excercises Excercises
+1 . Choose the right answer from the four alternatives given below:
+(i) Which one of the following map shows the population distribution:
+(a) Choropleth maps (b) Isopleth maps (c) Dot maps (d) Square root maps (ii) Which one of the following is best suited to represent the decadal growth of population?
+(a) Line graph (b) Bar diagram (c) Circle diagram (d) Flow diagram
+Fig. 3.15 : Drawing of Isopleths
+Reprint 2026-27
+44 44 44 44 44
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II (iii) Polygraph is constructed to represent:
+(a) Only one variable (b) Two variables only (c) More than two variables (d) None of the above (iv) Which one of the following maps is known as “Dynamic Map”?
+(a) Dot map (b) Choropleth (c) Isopleth (d) Flow map
+2. Answer the following questions in about 30 words:
+(i) What is a thematic map?
+(ii) Differentiate between multiple bar diagram and compound bar diagram.
+(iii) What are the requirements to construct a dot map?
+(iv) Describe the method of constructing a traffic flow map.
+(v) What is an Isopleth map ? How an interpolation is carried out?
+(vi) Describe and illustrate important steps to be followed in preparing a choropleth (vii) Discuss important steps to represent data with help of a pie-diagram.
+AAAAActivity ctivity ctivity ctivity ctivity
+1. Represent the following data with the help of suitable diagram.
+Year Decennial growth (%)
+1911 0.35
+1921 8.27
+1931 19.12
+1941 31.97
+1951 41.42
+1961 26.41
+1971 38.23
+1981 46.14
+1991 36.47
+2001 31.13
+2 . Represent the following data with the help of suitable diagram.
+India : Trends of Urbanisation 1901-2001
+Year Literacy Ratio Enrolment Enrolment Ratio
+Ratio Primary Upper Primary
+Person Male Female Boys Girls Total Boys Girls Total
+1950-51 18.3 27.2 8.86 60.6 25 42.6 20.6 4.6 12.7
+1999-2000 65.4 75.8 54.2 104 85 94.9 67.2 50 58.8
+India : Literacy and Enrolment Ratio in Primary and Upper Primary Schools
+3 . Represent the following data with help of pie-diagram.
+Reprint 2026-27
+4 5 4 5 4 5 4 5 4 5
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+Graphical
+Representation
+4 . Study the table given below and draw the given diagrams/maps.
+States Area in % to Production % to total
+000 ha total area 000 tones production
+West Bengal 5,435 12.3 12,428 14.6
+Uttar Pradesh 5,839 13.2 11,540 13.6
+Andhra Pradesh 4,028 9.1 12,428 13.5
+Punjab 2,611 5.9 9,154 10.8
+Tamil Nadu 2,113 4.8 7,218 8.5
+Bihar 3,671 8.3 5,417 6.4
+Area and Production of Rice in major States (a) Construct a multiple bar diagram to show area under rice in each State.
+(b) Construct a pie-diagram to show the percentage of area under rice in each (c) Construct a dot map to show the production of rice in each State.
+(d) Construct a Choropleth map to show the percentage of production of rice in States.
+5. Show the following data of temperature and rainfall of Kolkata with a suitable diagram.
+Months Temperature in º C Rainfall in cm
+Jan. 19.6 1.2
+Feb. 22.0 2.8
+Mar. 27.1 3.4
+Apr. 30.1 5.1
+May 30.4 13.4
+June 29.9 29.0
+Jul. 28.9 33.1
+Aug. 28.7 33.4
+Sep. 28.9 25.3
+Oct. 27.6 12.7
+Nov. 23.4 2.7
+Dec. 19.7

@@ -1,0 +1,44 @@
+PHYSICS 40 range, R. It is the distance travelled during the time of flight Tf . Therefore, the range R is
+R = (vo cos
+θo) (Tf )
+=(vo cos
+θo) (2 vo sin
+= sin 2 0
+Equation (3.42a) shows that for a given projection velocity vo , R is maximum when sin
+θ0 is maximum, i.e., when
+θ0 = 450.
+The maximum horizontal range is, therefore,
+= (3.42b)
+Example 3.6 Galileo, in his book Two new sciences, stated that “for elevations which exceed or fall short of 45° by equal amounts, the ranges are equal”. Prove this statement.
+Answer For a projectile launched with velocity vo at an angle
+θo , the range is given by
+0 sin 22
+Now, for angles, (45° +
+α ) and ( 45° – (90° + 2
+α ) and ( 90° – 2
+α ) , respectively. The values of sin (90° + 2
+α ) and sin (90° – 2 the same, equal to that of cos 2
+α. Therefore, ranges are equal for elevations which exceed or fall short of 45° by equal amounts
+Example 3.7 A hiker stands on the edge of a cliff 490 m above the ground and throws a stone horizontally with an initial speed of 15 m s-1. Neglecting air resistance, find the time taken by the stone to reach the ground, and the speed with which it hits the ground. (Take g = 9.8 m s-2 ).
+Answer We choose the origin of the x-,and y- axis at the edge of the cliff and t = 0 s at the instant the stone is thrown. Choose the positive direction of x-axis to be along the initial velocity and the positive direction of y-axis to be the vertically upward direction. The x-, and y- components of the motion can be treated independently. The equations of motion are :
+x (t) = xo + vox t y (t) = yo + voy t +(1/2) ay t2
+Here, xo = yo = 0, voy = 0, ay = –g = –9.8 m s-2, vox = 15 m s-1.
+The stone hits the ground when y(t) = – 490 m.
+– 490 m = –(1/2)(9.8) t2.
+This gives t =10 s.
+The velocity components are vx = vox and vy = voy – g t so that when the stone hits the ground :
+vox = 15 m s–1 voy = 0 – 9.8 × 10 = – 98 m s–1
+Therefore, the speed of the stone is
+15 98 99 m s 2 2 1 x y v v −
++ = + = ⊳
+Example 3.8 A cricket ball is thrown at a speed of 28 m s–1 in a direction 30° above the horizontal. Calculate (a) the maximum height, (b) the time taken by the ball to return to the same level, and (c) the distance from the thrower to the point where the ball returns to the same level.
+Answer (a) The maximum height is given by o sin 28 sin 30 m
+2 9.8 10.0 m (b) The time taken to return to the same level is
+Tf = (2 vo sin
+θo )/g = (2× 28 × sin 30° )/9.8
+= 28/9.8 s = 2.9 s (c) The distance from the thrower to the point where the ball returns to the same level is o o sin 2 28 28 sin 60 69 m
+3.10 UNIFORM CIRCULAR MOTION
+When an object follows a circular path at a constant speed, the motion of the object is called uniform circular motion. The word “uniform” refers to the speed, which is uniform (constant)
+throughout the motion. Suppose an object is moving with uniform speed v in a circle of radius
+R as shown in Fig. 3.18. Since the velocity of the object is changing continuously in direction, the object undergoes acceleration. Let us find the magnitude and the direction of this acceleration.
+Reprint 2026-27

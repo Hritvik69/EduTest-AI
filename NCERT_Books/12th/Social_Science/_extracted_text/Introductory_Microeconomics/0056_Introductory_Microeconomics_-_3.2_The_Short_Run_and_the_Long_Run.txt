@@ -1,0 +1,22 @@
+Introductory
+Microeconomics
+Previously, we have discussed that in order to increase the production of output the firm needs to employ more of the variable inputs. This results in an increase in total variable cost, and hence, an increase in total cost. Therefore, as output increases, total variable cost and total cost increase. Total fixed cost, however, is independent of the amount of output produced and remains constant for all levels of production.
+Figure 3.3 illustrates the shapes of total fixed cost, total variable cost and total cost curves for a typical firm. We place output on the x-axis and costs on the y-axis. TFC is a constant which takes the value c1 and does not change with the change in output. It is, therefore, a horizontal straight line cutting the cost axis at the point c1. At q1, TVC is c2 and TC is c3.
+AFC is the ratio of TFC to q. TFC is a constant. Therefore, as q increases, AFC decreases. When output is very close to zero, AFC is arbitrarily large, and as output moves towards infinity, AFC moves towards zero. AFC curve is, in fact, a rectangular hyperbola. If we multiply any value q of output with its corresponding AFC, we always get a constant, namely TFC.
+Figure 3.4 shows the shape of average fixed cost curve for a typical firm.
+We measure output along the horizontal axis and AFC along the vertical axis.
+At q1 level of output, we get the corresponding average fixed cost at F. The TFC can be calculated as
+TFC = AFC × quantity
+= OF × Oq1
+= the area of the rectangle OFCq1
+Average Fixed Cost. The average fixed cost curve is a rectangular hyperbola. The area of the rectangle OFCq1 gives us the total fixed cost.
+q1 O Output
+Fig. 3.4
+The Total Fixed Cost Curve. The slope of the angle ∠AOq0 gives us the average fixed cost at q0.
+O Output
+Fig. 3.5
+We can also calculate AFC from TFC curve. In Figure 3.5, the horizontal straight line cutting the vertical axis at F is the TFC curve. At q0 level of output, total fixed cost is equal to OF. At q0, the corresponding point on the TFC curve is A. Let the angle ∠AOq0
+θ. The AFC at q0 is
+AFC = TFC quantity
+Oq = tan
+Reprint 2026-27

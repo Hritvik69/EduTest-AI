@@ -1,0 +1,72 @@
+discussion, the charged comb ‘polarises’ the piece of paper, i.e., induces a net dipole moment in the direction of field. Further, the electric field due to the comb is not uniform. This non-uniformity of the field makes a dipole to experience a net force on it. In this situation, it is easily seen that the paper should move in the direction of the comb!
+1.12 CONTINUOUS CHARGE DISTRIBUTION
+We have so far dealt with charge configurations involving discrete charges q1, q2, ..., qn. One reason why we restricted to discrete charges is that the mathematical treatment is simpler and does not involve calculus. For many purposes, however, it is impractical to work in terms of discrete charges and we need to work with continuous charge distributions. For example, on the surface of a charged conductor, it is impractical to specify the charge distribution in terms of the locations of the microscopic charged constituents. It is more feasible to consider an area element DS (Fig. 1.21)
+on the surface of the conductor (which is very small on the macroscopic scale but big enough to include a very large number of electrons) and specify the charge DQ on that element. We then define a surface charge s at the area element by
+= ∆ (1.23)
+We can do this at different points on the conductor and thus arrive at a continuous function s, called the surface charge density. The surface charge density s so defined ignores the quantisation of charge and the discontinuity in charge distribution at the microscopic level*.
+s represents macroscopic surface charge density, which in a sense, is a smoothed out average of the microscopic charge density over an area element DS which, as said before, is large microscopically but small macroscopically. The units for s are C/m2.
+Similar considerations apply for a line charge distribution and a volume charge distribution. The linear charge density l of a wire is defined by
+= ∆ (1.24)
+where Dl is a small line element of wire on the macroscopic scale that, however, includes a large number of microscopic charged constituents, and DQ is the charge contained in that line element. The units for
+C/m. The volume charge density (sometimes simply called charge density)
+is defined in a similar manner:
+= ∆ (1.25)
+where DQ is the charge included in the macroscopically small volume element DV that includes a large number of microscopic charged constituents. The units for r are C/m3.
+The notion of continuous charge distribution is similar to that we adopt for continuous mass distribution in mechanics. When we refer to
+FIGURE 1.21
+Definition of linear, surface and volume charge densities.
+In each case, the element (Dl, DS, DV )
+chosen is small on the macroscopic scale but contains a very large number of microscopic constituents.
+* At the microscopic level, charge distribution is discontinuous, because they are discrete charges separated by intervening space where there is no charge.
+Reprint 2026-27
+Electric Charges and Fields the density of a liquid, we are referring to its macroscopic density. We regard it as a continuous fluid and ignore its discrete molecular constitution.
+The field due to a continuous charge distribution can be obtained in much the same way as for a system of discrete charges, Eq. (1.10). Suppose a continuous charge distribution in space has a charge density r. Choose any convenient origin O and let the position vector of any point in the charge distribution be r. The charge density r may vary from point to point, i.e., it is a function of r. Divide the charge distribution into small volume elements of size DV. The charge in a volume element DV is
+Now, consider any general point P (inside or outside the distribution)
+with position vector R (Fig. 1.21). Electric field due to the charge given by Coulomb’s law:
+E r (1.26)
+¢ is the distance between the charge element and P, and ˆr¢ is a unit vector in the direction from the charge element to P. By the superposition principle, the total electric field due to the charge distribution is obtained by summing over electric fields due to different volume elements:
+E r (1.27)
+Note that
+¢, ˆ′ r all can vary from point to point. In a strict mathematical method, we should let DV®0 and the sum then becomes an integral; but we omit that discussion here, for simplicity. In short, using Coulomb’s law and the superposition principle, electric field can be determined for any charge distribution, discrete or continuous or part discrete and part continuous.
+1.13 GAUSS’S LAW
+As a simple application of the notion of electric flux, let us consider the total flux through a sphere of radius r, which encloses a point charge q at its centre. Divide the sphere into small area elements, as shown in
+Fig. 1.22.
+The flux through an area element DS is
+∆ = ∆ = ∆
+E S r S i i (1.28)
+where we have used Coulomb’s law for the electric field due to a single charge q. The unit vector ˆr is along the radius vector from the centre to the area element. Now, since the normal to a sphere at every point is along the radius vector at that point, the area element DS and ˆr have the same direction. Therefore,
+π (1.29)
+since the magnitude of a unit vector is 1.
+The total flux through the sphere is obtained by adding up flux through all the different area elements:
+FIGURE 1.22 Flux through a sphere enclosing a point charge q at its centre.
+Reprint 2026-27
+0 4 all S
+Since each area element of the sphere is at the same distance r from the charge,
+0 4 4 all S
+Now S, the total area of the sphere, equals 4pr 2. Thus,
+π (1.30)
+Equation (1.30) is a simple illustration of a general result of electrostatics called Gauss’s law.
+We state Gauss’s law without proof:
+Electric flux through a closed surface S e0 (1.31)
+q = total charge enclosed by S.
+The law implies that the total electric flux through a closed surface is zero if no charge is enclosed by the surface. We can see that explicitly in the simple situation of Fig. 1.23.
+Here the electric field is uniform and we are considering a closed cylindrical surface, with its axis parallel to the uniform field E. The total f through the surface is f3, where f2 represent the flux through the surfaces 1 and 2 (of circular cross-section) of the cylinder and f3 is the flux through the curved cylindrical part of the closed surface. Now the normal to the surface 3 at every point is perpendicular to E, so by definition of flux, f3 = 0. Further, the outward normal to 2 is along E while the outward normal to 1 is opposite to E.
+Therefore, f1 = –E S1, f2 = +E S2
+S1 = S2 = S where S is the area of circular cross-section. Thus, the total flux is zero, as expected by Gauss’s law. Thus, whenever you find that the net electric flux through a closed surface is zero, we conclude that the total charge contained in the closed surface is zero.
+The great significance of Gauss’s law Eq. (1.31), is that it is true in general, and not only for the simple cases we have considered above. Let us note some important points regarding this law:
+(i) Gauss’s law is true for any closed surface, no matter what its shape or size.
+(ii) The term q on the right side of Gauss’s law, Eq. (1.31), includes the sum of all charges enclosed by the surface. The charges may be located anywhere inside the surface.
+(iii) In the situation when the surface is so chosen that there are some charges inside and some outside, the electric field [whose flux appears on the left side of Eq. (1.31)] is due to all the charges, both inside and outside S. The term q on the right side of Gauss’s law, however, represents only the total charge inside S.
+FIGURE 1.23 Calculation of the flux of uniform electric field through the surface of a cylinder.
+Reprint 2026-27
+Electric Charges and Fields (iv) The surface that we choose for the application of Gauss’s law is called the Gaussian surface. You may choose any Gaussian surface and apply Gauss’s law. However, take care not to let the Gaussian surface pass through any discrete charge. This is because electric field due to a system of discrete charges is not well defined at the location of any charge. (As you go close to the charge, the field grows without any bound.) However, the Gaussian surface can pass through a continuous charge distribution.
+(v) Gauss’s law is often useful towards a much easier calculation of the electrostatic field when the system has some symmetry. This is facilitated by the choice of a suitable Gaussian surface.
+(vi) Finally, Gauss’s law is based on the inverse square dependence on distance contained in the Coulomb’s law. Any violation of Gauss’s law will indicate departure from the inverse square law.
+Example 1.10 The electric field components in Fig. 1.24 are ax1/2, Ey = Ez = 0, in which a = 800 N/C m1/2. Calculate (a) the flux through the cube, and (b) the charge within the cube. Assume that a = 0.1 m.
+FIGURE 1.24
+Solution (a) Since the electric field has only an x component, for faces perpendicular to x direction, the angle between E and DS is
+± p/2. Therefore, the flux f = E.DS is separately zero for each face of the cube except the two shaded ones. Now the magnitude of the electric field at the left face is (x = a at the left face).
+The magnitude of electric field at the right face is a x1/2 = a (2a)1/2 (x = 2a at the right face).
+The corresponding fluxes are fL= EL.DS = ˆ L L S ∆ E n ⋅ =EL DS cos q = –EL DS, since q = 180° fR= ER.DS = ER DS cos q = ER DS, since
+Net flux through the cube
+Reprint 2026-27

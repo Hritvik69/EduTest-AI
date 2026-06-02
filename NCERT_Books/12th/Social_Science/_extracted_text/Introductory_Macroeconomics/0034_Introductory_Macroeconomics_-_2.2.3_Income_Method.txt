@@ -1,0 +1,39 @@
+24 24 24 24 24
+Introductory
+Macroeconomics
+4 In this example, we have left out factor payments in the form of rent and interest. But this will not make any difference to the basic result, because after paying wages the remainder of value added by a firm will be distributed between rent, interest and profits (together called operating surplus).
+Table 2.3: Distributions of factor incomes of firms A and B
+Firm A Firm B
+Wages 20 60
+Profits 30 90
+Recall that GDP by income method = sum total of factor incomes, which is equal to total wages received (workers of A and B) and total profits earned (by A and B), which is equal4 to 80 + 120 = 200.
+2.2.4 Factor Cost, Basic Prices and Market Prices
+In India, the most highlighted measure of national income has been the GDP at factor cost. The Central Statistics Office (CSO) of the Government of India has been reporting the GDP at factor cost and at market prices. In its revision in
+January 2015 the CSO replaced GDP at factor cost with the GVA at basic prices, and the GDP at market prices, which is now called only GDP, is now the most highlighted measure.
+The idea of GVA has already been discussed: it is the value of total output produced in the economy less the value of intermediate consumption (the output which is used in production of output further, and not used in final consumption).
+Here we discuss the concept of basic prices. The distinction between factor cost, basic prices and market prices is based on the distinction between net production taxes (production taxes less production subsidies) and net product taxes (product taxes less product subsidies). Production taxes and subsidies are paid or received in relation to production and are independent of the volume of production such as land revenues, stamp and registration fee. Product taxes and subsidies, on the other hand, are paid or received per unit or product, e.g., excise tax, service tax, export and import duties etc. Factor cost includes only the payment to factors of production, it does not include any tax. In order to arrive at the market prices, we have to add to the factor cost the total indirect taxes less total subsidies. The basic prices lie in between: they include the production taxes (less production subsidies) but not product taxes (less product subsidies). Therefore in order to arrive at market prices we have to add product taxes (less product subsidies) to the basic prices.
+As stated above, now the CSO releases GVA at basic prices. Thus, it includes the net production taxes but not net product taxes. In order to arrive at the GDP (at market prices) we need to add net product taxes to GVA at basic prices.
+GVA at factor costs + Net production taxes = GVA at basic prices
+GVA at basic prices + Net product taxes = GVA at market prices
+Table 2.5 at the end of the chapter gives the figures for GDP (at market prices)
+and GVA at basic prices, while Table 2.6 gives the composition of GDP from expenditure side.
+Reprint 2026-27
+25 25 25 25 25 National
+Accounting
+2.3 SOME MACROECONOMIC IDENTITIES
+Gross Domestic Product measures the aggregate production of final goods and services taking place within the domestic economy during a year. But the whole of it may not accrue to the citizens of the country. For example, a citizen of India working in Saudi Arabia may be earning her wage and it will be included in the
+Saudi Arabian GDP. But legally speaking, she is an Indian. Is there a way to take into account the earnings made by Indians abroad or by the factors of production owned by Indians? When we try to do this, in order to maintain symmetry, we must deduct the earnings of the foreigners who are working within our domestic economy, or the payments to the factors of production owned by the foreigners.
+For example, the profits earned by the Korean-owned Hyundai car factory will have to be subtracted from the GDP of India.
+The macroeconomic variable which takes into account such additions and subtractions is known as Gross
+National Product (GNP). It is, therefore, defined as follows
+GNP ≡ GDP + Factor income earned by the domestic factors of production employed in the rest of the world – Factor income earned by the factors of production of the rest of the world employed in the domestic economy
+Hence, GNP ≡ GDP + Net factor income from abroad (Net factor income from abroad = Factor income earned by the domestic factors of production employed in the rest of the world – Factor income earned by the factors of production of the rest of the world employed in the domestic economy).
+We have already noted that a part of the capital gets consumed during the year due to wear and tear. This wear and tear is called depreciation. Naturally, depreciation does not become part of anybody’s income. If we deduct depreciation from GNP the measure of aggregate income that we obtain is called
+Net National Product (NNP). Thus
+NNP ≡ GNP – Depreciation
+It is to be noted that all these variables are evaluated at market prices.
+Through the expression given above, we get the value of NNP evaluated at market prices. But market price includes indirect taxes. When indirect taxes are imposed on goods and services, their prices go up. Indirect taxes accrue to the government. We have to deduct them from NNP evaluated at market prices in order to calculate that part of NNP which actually accrues to the factors of production. Similarly, there may be subsidies granted by the government on the prices of some commodities (in India petrol is heavily taxed by the government, whereas cooking gas is subsidised). So we need to add subsidies to the NNP evaluated at market prices. The measure that we obtain by doing so is called Net National Product at factor cost or National Income.
+Thus, NNP at factor cost ≡ National Income (NI ) ≡ NNP at market prices – (Indirect taxes – Subsidies) ≡ NNP at market prices – Net indirect taxes (Net indirect taxes ≡ Indirect taxes – Subsidies)
+The foreigners have a share in your domestic economy.
+Discuss this in the classroom.
+Reprint 2026-27

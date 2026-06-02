@@ -1,0 +1,103 @@
+Science 104 all this, a decision is made about how to respond and the information is passed on to the motor areas which control the movement of voluntary muscles, for example, our leg muscles. However, certain sensations are distinct from seeing or hearing, for example, how do we know that we have eaten enough? The sensation of feeling full is because of a centre associated with hunger, which is in a separate part of the fore-brain.
+Study the labelled diagram of the human brain. We have seen that the different parts have specific functions. Can we find out the function of each part?
+Let us look at the other use of the word ‘reflex’ that we have talked about in the introduction. Our mouth waters when we see food we like without our meaning to. Our hearts beat without our thinking about it.
+In fact, we cannot control these actions easily by thinking about them even if we wanted to. Do we have to think about or remember to breathe or digest food? So, in between the simple reflex actions like change in the size of the pupil, and the thought out actions such as moving a chair, there is another set of muscle movements over which we do not have any thinking control. Many of these involuntary actions are controlled by the mid-brain and hind-brain. All these involuntary actions including blood pressure, salivation and vomiting are controlled by the medulla in the hind-brain.
+Think about activities like walking in a straight line, riding a bicycle, picking up a pencil. These are possible due to a part of the hind-brain called the cerebellum. It is responsible for precision of voluntary actions and maintaining the posture and balance of the body. Imagine what would happen if each of these events failed to take place if we were not thinking about it.
+Figure 6.3 Figure 6.3 Figure 6.3 Figure 6.3 Figure 6.3 Human brain
+Reprint 2026-27
+Control and Coordination 105
+6.1.3 How are these Tissues protected?
+A delicate organ like the brain, which is so important for a variety of activities, needs to be carefully protected. For this, the body is designed so that the brain sits inside a bony box. Inside the box, the brain is contained in a fluid-filled balloon which provides further shock absorption. If you run your hand down the middle of your back, you will feel a hard, bumpy structure. This is the vertebral column or backbone which protects the spinal cord.
+6.1.4 How does the Nervous Tissue cause Action?
+So far, we have been talking about nervous tissue, and how it collects information, sends it around the body, processes information, makes decisions based on information, and conveys decisions to muscles for action. In other words, when the action or movement is to be performed, muscle tissue will do the final job. How do animal muscles move? When a nerve impulse reaches the muscle, the muscle fibre must move. How does a muscle cell move? The simplest notion of movement at the cellular level is that muscle cells will move by changing their shape so that they shorten. So the next question is, how do muscle cells change their shape?
+The answer must lie in the chemistry of cellular components. Muscle cells have special proteins that change both their shape and their arrangement in the cell in response to nervous electrical impulses. When this happens, new arrangements of these proteins give the muscle cells a shorter form. Remember when we talked about muscle tissue in
+Class IX, there were different kinds of muscles, such as voluntary muscles and involuntary muscles. Based on what we have discussed so far, what do you think the differences between these would be?
+Q U E S T I O N S
+1. What is the difference between a reflex action and walking?
+2. What happens at the synapse between two neurons?
+3. Which part of the brain maintains posture and equilibrium of the body?
+4. How do we detect the smell of an agarbatti (incense stick)?
+5. What is the role of the brain in reflex action?
+6.2 COORDINA 6.2 COORDINA 6.2 COORDINA 6.2 COORDINA 6.2 COORDINATION IN PL TION IN PL TION IN PL TION IN PL TION IN PL ANTS ANTS ANTS ANTS ANTS
+Animals have a nervous system for controlling and coordinating the activities of the body. But plants have neither a nervous system nor muscles. So, how do they respond to stimuli? When we touch the leaves of a chhui-mui (the ‘sensitive’ or ‘touch-me-not’ plant of the Mimosa family), they begin to fold up and droop. When a seed germinates, the root goes down, the stem comes up into the air. What happens? Firstly, the leaves of the sensitive plant move very quickly in response to touch.
+Reprint 2026-27
+Science 106
+There is no growth involved in this movement. On the other hand, the directional movement of a seedling is caused by growth. If it is prevented from growing, it will not show any movement. So plants show two different types of movement – one dependent on growth and the other independent of growth.
+6.2.1 Immediate Response to Stimulus
+Let us think about the first kind of movement, such as that of the sensitive plant. Since no growth is involved, the plant must actually move its leaves in response to touch. But there is no nervous tissue, nor any muscle tissue. How does the plant detect the touch, and how do the leaves move in response?
+Figure 6.4 Figure 6.4 Figure 6.4 Figure 6.4 Figure 6.4 The sensitive plant
+If we think about where exactly the plant is touched, and what part of the plant actually moves, it is apparent that movement happens at a point different from the point of touch. So, information that a touch has occurred must be communicated. The plants also use electrical-chemical means to convey this information from cell to cell, but unlike in animals, there is no specialised tissue in plants for the conduction of information.
+Finally, again as in animals, some cells must change shape in order for movement to happen. Instead of the specialised proteins found in animal muscle cells, plant cells change shape by changing the amount of water in them, resulting in swelling or shrinking, and therefore in changing shapes (Fig. 6.4).
+6.2.2 Movement Due to Growth
+Some plants like the pea plant climb up other plants or fences by means of tendrils. These tendrils are sensitive to touch. When they come in contact with any support, the part of the tendril in contact with the object does not grow as rapidly as the part of the tendril away from the object.
+This causes the tendril to circle around the object and thus cling to it.
+More commonly, plants respond to stimuli slowly by growing in a particular direction. Because this growth is directional, it appears as if the plant is moving. Let us understand this type of movement with the help of an example.
+Reprint 2026-27
+Control and Coordination 107
+Environmental triggers such as light, or gravity will change the directions that plant parts grow in.
+These directional, or tropic, movements can be either towards the stimulus, or away from it. So, in two different kinds of phototropic movement, shoots respond by bending towards light while roots respond by bending away from it. How does this help the plant?
+Plants show tropism in response to other stimuli as well. The roots of a plant always grow downwards while the shoots usually grow upwards and away from the earth. This upward and downward growth of shoots and roots, respectively, in response to the pull of earth or gravity is, obviously, geotropism (Fig. 6.6). If ‘hydro’ means water and ‘chemo’ refers to chemicals, what would ‘hydrotropism’ and ‘chemotropism’ mean? Can we think of examples of these kinds of directional growth movements? One example of chemotropism is the growth of pollen tubes towards ovules, about which we will learn more when we examine the reproductive processes of living organisms.
+Let us now once again think about how information is communicated in the bodies of multicellular organisms. The movement of the sensitive plant in response to touch is very quick. The movement of sunflowers in response to day or night, on the other hand, is quite slow.
+Growth-related movement of plants will be even slower.
+Even in animal bodies, there are carefully controlled directions to growth. Our arms and fingers grow in certain directions, not haphazardly.
+So controlled movements can be either slow or fast. If fast responses to stimuli are to be made, information transfer must happen very quickly.
+For this, the medium of transmission must be able to move rapidly.
+Activity 6.2 Activity 6.2 Activity 6.2 Activity 6.2 Activity 6.2 n Fill a conical flask with water.
+n Cover the neck of the flask with a wire mesh.
+n Keep two or three freshly germinated bean seeds on the wire mesh.
+n Take a cardboard box which is open from one n Keep the flask in the box in such a manner that the open side of the box faces light coming from a window (Fig. 6.5).
+n After two or three days, you will notice that the shoots bend towards light and roots away from light.
+n Now turn the flask so that the shoots are away from light and the roots towards light. Leave it undisturbed in this condition for a few days.
+n Have the old parts of the shoot and root changed direction?
+n Are there differences in the direction of the new n What can we conclude from this activity?
+Figure 6.5 Figure 6.5 Figure 6.5 Figure 6.5 Figure 6.5
+Response of the plant to the direction of light
+Figure 6.6 Figure 6.6 Figure 6.6 Figure 6.6 Figure 6.6 Plant showing geotropism
+Reprint 2026-27
+Science 108
+Electrical impulses are an excellent means for this. But there are limitations to the use of electrical impulses. Firstly, they will reach only those cells that are connected by nervous tissue, not each and every cell in the animal body. Secondly, once an electrical impulse is generated in a cell and transmitted, the cell will take some time to reset its mechanisms before it can generate and transmit a new impulse. In other words, cells cannot continually create and transmit electrical impulses. It is thus no wonder that most multicellular organisms use another means of communication between cells, namely, chemical communication.
+If, instead of generating an electrical impulse, stimulated cells release a chemical compound, this compound would diffuse all around the original cell. If other cells around have the means to detect this compound using special molecules on their surfaces, then they would be able to recognise information, and even transmit it. This will be slower, of course, but it can potentially reach all cells of the body, regardless of nervous connections, and it can be done steadily and persistently. These compounds, or hormones used by multicellular organisms for control and coordination show a great deal of diversity, as we would expect.
+Different plant hormones help to coordinate growth, development and responses to the environment. They are synthesised at places away from where they act and simply diffuse to the area of action.
+Let us take an example that we have worked with earlier [Activity 6.2].
+When growing plants detect light, a hormone called auxin, synthesised at the shoot tip, helps the cells to grow longer. When light is coming from one side of the plant, auxin diffuses towards the shady side of the shoot.
+This concentration of auxin stimulates the cells to grow longer on the side of the shoot which is away from light. Thus, the plant appears to bend towards light.
+Another example of plant hormones are gibberellins which, like auxins, help in the growth of the stem. Cytokinins promote cell division, and it is natural then that they are present in greater concentration in areas of rapid cell division, such as in fruits and seeds. These are examples of plant hormones that help in promoting growth. But plants also need signals to stop growing. Abscisic acid is one example of a hormone which inhibits growth. Its effects include wilting of leaves.
+Q U E S T I O N S
+1. What are plant hormones?
+2. How is the movement of leaves of the sensitive plant different from the movement of a shoot towards light?
+3. Give an example of a plant hormone that promotes growth.
+4. How do auxins promote the growth of a tendril around a support?
+5. Design an experiment to demonstrate hydrotropism.
+Reprint 2026-27
+Control and Coordination 109
+6.3 HORMONES IN ANIMALS 6.3 HORMONES IN ANIMALS 6.3 HORMONES IN ANIMALS 6.3 HORMONES IN ANIMALS 6.3 HORMONES IN ANIMALS
+How are such chemical, or hormonal, means of information transmission used in animals? What do some animals, for instance squirrels, experience when they are in a scary situation? Their bodies have to prepare for either fighting or running away. Both are very complicated activities that will use a great deal of energy in controlled ways. Many different tissue types will be used and their activities integrated together in these actions. However, the two alternate activities, fighting or running, are also quite different! So here is a situation in which some common preparations can be usefully made in the body. These preparations should ideally make it easier to do either activity in the near future. How would this be achieved?
+If the body design in the squirrel relied only on electrical impulses via nerve cells, the range of tissues instructed to prepare for the coming activity would be limited. On the other hand, if a chemical signal were to be sent as well, it would reach all cells of the body and provide the wide- ranging changes needed. This is done in many animals, including human beings, using a hormone called adrenaline that is secreted from the adrenal glands. Look at Fig. 6.7 to locate these glands.
+Adrenaline is secreted directly into the blood and carried to different parts of the body. The target organs or the specific tissues on which it acts include the heart. As a result, the heart beats faster, resulting in supply of more oxygen to our muscles. The blood to the digestive system and skin is reduced due to contraction of muscles around small arteries in these organs. This diverts the blood to our skeletal muscles. The breathing rate also increases because of the contractions of the diaphragm and the rib muscles. All these responses together enable the animal body to be ready to deal with the situation. Such animal hormones are part of the endocrine system which constitutes a second way of control and coordination in our body.
+Activity 6.3 Activity 6.3 Activity 6.3 Activity 6.3 Activity 6.3 n Look at Fig. 6.7.
+n Identify the endocrine glands mentioned in the figure.
+n Some of these glands have been listed in Table 6.1 and discussed in the text. Consult books in the library and discuss with your teachers to find out about other glands.
+Remember that plants have hormones that control their directional growth. What functions do animal hormones perform? On the face of it, we cannot imagine their role in directional growth. We have never seen an animal growing more in one direction or the other, depending on light or gravity! But if we think about it a bit more, it will become evident that, even in animal bodies, growth happens in carefully controlled places.
+Plants will grow leaves in many places on the plant body, for example.
+But we do not grow fingers on our faces. The design of the body is carefully maintained even during the growth of children.
+Reprint 2026-27
+Science 110
+Let us examine some examples to understand how hormones help in coordinated growth. We have all seen salt packets which say ‘iodised salt’ or ‘enriched with iodine’. Why is it important for us to have iodised salt in our diet? Iodine is necessary for the thyroid gland to make thyroxin hormone. Thyroxin regulates carbohydrate, protein and fat metabolism in the body so as to provide the best balance for growth.
+Iodine is essential for the synthesis of thyroxin. In case iodine is deficient in our diet, there is a possibility that we might suffer from goitre. One of the symptoms in this disease is a swollen neck. Can you correlate this with the position of the thyroid gland in Fig. 6.7?
+Sometimes we come across people who are either very short (dwarfs)
+or extremely tall (giants). Have you ever wondered how this happens?
+Growth hormone is one of the hormones secreted by the pituitary. As its name indicates, growth hormone regulates growth and development of the body. If there is a deficiency of this hormone in childhood, it leads to dwarfism.
+You must have noticed many dramatic changes in your appearance as well as that of your friends as you approached 10–12 years of age.
+These changes associated with puberty are because of the secretion of testosterone in males and oestrogen in females.
+Do you know anyone in your family or friends who has been advised by the doctor to take less sugar in their diet because they are suffering from diabetes? As a treatment, they might be taking injections of insulin.
+This is a hormone which is produced by the pancreas and helps in regulating blood sugar levels. If it is not secreted in proper amounts, the sugar level in the blood rises causing many harmful effects.
+Figure 6.7 Endocrine glands in human beings (a) male, (b) female
+Do You Know?
+Hypothalamus plays an important role in the release of many hormones. For example, when the level of growth hormone is low, the hypothalamus releases growth hormone releasing factor which stimulates the pituitary gland to release growth hormone.
+Reprint 2026-27
+Control and Coordination 111
+If it is so important that hormones should be secreted in precise quantities, we need a mechanism through which this is done. The timing and amount of hormone released are regulated by feedback mechanisms.
+For example, if the sugar levels in blood rise, they are detected by the cells of the pancreas which respond by producing more insulin. As the blood sugar level falls, insulin secretion is reduced.
+Table 6.1 : Some important hormones and their functions
+Activity 6.4 Activity 6.4 Activity 6.4 Activity 6.4 Activity 6.4 n Hormones are secreted by endocrine glands and have specific functions. Complete
+Table 6.1 based on the hormone,

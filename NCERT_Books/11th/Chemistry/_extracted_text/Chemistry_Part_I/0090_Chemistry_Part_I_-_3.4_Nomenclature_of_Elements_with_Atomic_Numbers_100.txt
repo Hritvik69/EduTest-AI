@@ -1,0 +1,72 @@
+78 CHEMISTRY
+3.3 modErn PEriodiC laW and tHE
+PrEsEnt form of tHE PEriodiC
+We must bear in mind that when Mendeleev developed his Periodic table, chemists knew nothing about the internal structure of atom. However, the beginning of the 20th century witnessed profound developments in theories about sub-atomic particles. In
+1913, the English physicist, Henry Moseley observed regularities in the characteristic
+X-ray spectra of the elements. A plot of (where is frequency of X-rays emitted)
+against atomic number (Z) gave a straight line and not the plot of vs atomic mass.
+He thereby showed that the atomic number is a more fundamental property of an element than its atomic mass. mendeleev’s Periodic law was, therefore, accordingly modified. This is known as the modern Periodic law and can be stated as :
+The physical and chemical properties of the elements are periodic functions of their atomic numbers.
+The Periodic law revealed important analogies among the 94 naturally occurring elements (neptunium and plutonium like actinium and protoactinium are also found in pitch blende – an ore of uranium). It stimulated renewed interest in Inorganic
+Chemistry and has carried into the present with the creation of artificially produced short-lived elements.
+You may recall that the atomic number is equal to the nuclear charge (i.e., number of protons) or the number of electrons in a neutral atom. It is then easy to visualize the significance of quantum numbers and electronic configurations in periodicity of elements. In fact, it is now recognized that the
+Periodic Law is essentially the consequence of the periodic variation in electronic configurations, which indeed determine the physical and chemical properties of elements and their compounds.
+Numerous forms of Periodic Table have been devised from time to time. Some forms emphasise chemical reactions and valence, whereas others stress the electronic configuration of elements. A modern version, the so-called “long form” of the Periodic table of the elements (Fig. 3.2), is the most convenient and widely used. The horizontal rows (which Mendeleev called series) are called periods and the vertical columns, groups. Elements having similar outer electronic configurations in their atoms are arranged in vertical columns, referred to as groups or families. According to the recommendation of International Union of
+Pure and Applied Chemistry (IUPAC), the groups are numbered from 1 to 18 replacing the older notation of groups IA … VIIA, VIII,
+IB … VIIB and 0.
+There are altogether seven periods. The period number corresponds to the highest principal quantum number (n) of the elements in the period. The first period contains 2 elements. The subsequent periods consists of
+8, 8, 18, 18 and 32 elements, respectively. The seventh period is incomplete and like the sixth period would have a theoretical maximum (on the basis of quantum numbers) of 32 elements. In this form of the Periodic Table,
+14 elements of both sixth and seventh periods (lanthanoids and actinoids, respectively) are placed in separate panels at the bottom*.
+3.4 nomEnClatUrE of ElEmEnts
+WitH atomiC nUmBErs > 100
+The naming of the new elements had been traditionally the privilege of the discoverer (or discoverers) and the suggested name was ratified by the IUPAC. In recent years this has led to some controversy. The new elements with very high atomic numbers are so unstable that only minute quantities, sometimes only
+* Glenn T. Seaborg’s work in the middle of the 20 th century starting with the discovery of plutonium in 1940, followed by those of all the transuranium elements from 94 to 102 led to reconfiguration of the periodic table placing the actinoids below the lanthanoids. In 1951, Seaborg was awarded the Nobel Prize in chemistry for his work. Element 106 has been named
+Seaborgium (Sg) in his honour.
+Reprint 2026-27
+79 CLASSIFI CATION OF EL EMENTS AND PERIODICITY IN PROPERTIES
+Fig. 3.2
+Long form of the Periodic Table of the Elements with their atomic numbers and ground state outer electronic configurations. The groups are numbered 1-18 in accordance with the 1984 IUPAC recommendations. This notation replaces the old numbering scheme of
+IA–VIIA, VIII, IB–VIIB and 0 for the elements.
+Reprint 2026-27
+80 CHEMISTRY a few atoms of them are obtained. Their synthesis and characterisation, therefore, require highly sophisticated costly equipment and laboratory. Such work is carried out with competitive spirit only in some laboratories in the world. Scientists, before collecting the reliable data on the new element, at times get tempted to claim for its discovery. For example, both American and Soviet scientists claimed credit for discovering element 104.
+The Americans named it Rutherfordium whereas Soviets named it Kurchatovium. To avoid such problems, the IUPAC has made recommendation that until a new element’s discovery is proved, and its name is officially recognised, a systematic nomenclature be derived directly from the atomic number of the element using the numerical roots for
+0 and numbers 1-9. These are shown in
+Table 3.4. The roots are put together in order of digits which make up the atomic number and
+“ium” is added at the end. The IUPAC names for elements with Z above 100 are shown in
+Table 3.5.
+table 3.5 nomenclature of Elements with atomic number above 100 name according to iUPaC nomenclature symbol iUPaC
+Official Name
+Unnilunium
+Unnilbium
+Unniltrium
+Unnilquadium
+Unnilpentium
+Unnilhexium
+Unnilseptium
+Unniloctium
+Unnilennium
+Ununnillium
+Unununnium
+Ununbium
+Ununtrium
+Ununquadium
+Ununpentium
+Ununhexium
+Ununseptium
+Ununoctium
+Mendelevium
+Nobelium
+Lawrencium
+Rutherfordium
+Seaborgium
+Meitnerium
+Darmstadtium
+Rontgenium
+Copernicium
+Nihonium
+Flerovium
+Moscovium
+Livermorium
+Tennessine
+Oganesson table 3.4 notation for iUPaC nomenclature of Elements digit name abbreviation
+Reprint 2026-27

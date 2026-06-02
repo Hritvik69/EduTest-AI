@@ -1,0 +1,115 @@
+174 BIOLOGY
+Thus, growth, differentiation and development are very closely related events in the life of a plant. Broadly, development is considered as the sum of growth and differentiation. Development in plants (i.e., both growth and differentiation) is under the control of intrinsic and extrinsic factors.
+The former includes both intracellular (genetic) or intercellular factors (chemicals such as plant growth regulators) while the latter includes light, temperature, water, oxygen, nutrition, etc.
+13.4 PLANT GROWTH REGULATORS
+13.4.1 Characteristics
+The plant growth regulators (PGRs) are small, simple molecules of diverse chemical composition. They could be indole compounds (indole-3-acetic acid, IAA); adenine derivatives (N6-furfurylamino purine, kinetin), derivatives of carotenoids (abscisic acid, ABA); terpenes (gibberellic acid,
+GA3) or gases (ethylene, C2H4). Plant growth regulators are variously described as plant growth substances, plant hormones or phytohormones in literature.
+The PGRs can be broadly divided into two groups based on their functions in a living plant body. One group of PGRs are involved in growth promoting activities, such as cell division, cell enlargement, pattern formation, tropic growth, flowering, fruiting and seed formation. These are also called plant growth promoters, e.g., auxins, gibberellins and cytokinins. The PGRs of the other group play an important role in plant responses to wounds and stresses of biotic and abiotic origin. They are also involved in various growth inhibiting activities such as dormancy and abscission. The PGR abscisic acid belongs to this group. The gaseous
+PGR, ethylene, could fit either of the groups, but it is largely an inhibitor of growth activities.
+13.4.2 The Discovery of Plant Growth Regulators
+Interestingly, the discovery of each of the five major groups of PGRs have been accidental.
+All this started with the observation of Charles
+Darwin and his son Francis Darwin when they observed that the coleoptiles of canary grass responded to unilateral illumination by growing towards the light source (phototropism). After a series of experiments, it was concluded that the tip of coleoptile was the site of transmittable influence that caused the bending of the entire coleoptile (Figure
+13.10). Auxin was isolated by F.W. Went from tips of coleoptiles of oat seedlings.
+Figure 13.10 Experiment used to demonstrate that tip of the coleoptile is the source of auxin. Arrows indicate direction of light
+Reprint 2026-27
+PLANT GROWTH AND DEVELOPMENT 175
+The ‘bakanae’ (foolish seedling) disease of rice seedlings, was caused by a fungal pathogen Gibberella fujikuroi. E. Kurosawa (1926) reported the appearance of symptoms of the disease in rice seedlings when they were treated with sterile filtrates of the fungus. The active substances were later identified as gibberellic acid.
+F. Skoog and his co-workers observed that from the internodal segments of tobacco stems, the callus (a mass of undifferentiated cells)
+proliferated only if, in addition to auxins the nutrients medium was supplemented with one of the following: extracts of vascular tissues, yeast extract, coconut milk or DNA. Miller et al. (1955), later identified and crystallised the cytokinesis promoting active substance that they termed kinetin.
+During mid-1960s, three independent researches reported the purification and chemical characterisation of three different kinds of inhibitors: inhibitor-B, abscission II and dormin. Later all the three were proved to be chemically identical. It was named abscisic acid (ABA).
+H.H. Cousins (1910) confirmed the release of a volatile substance from ripened oranges that hastened the ripening of stored unripened bananas.
+Later this volatile substance was identified as ethylene, a gaseous PGR.
+Let us study some of the physiological effects of these five categories of PGRs in the next section.
+13.4.3 Physiological Effects of Plant Growth Regulators
+13.4.3.1 Auxins
+Auxins (from Greek ‘auxein’ : to grow) was first isolated from human urine. The term ‘auxin’ is applied to the indole-3-acetic acid (IA A), and to other natural and synthetic compounds having certain growth regulating properties. They are generally produced by the growing apices of the stems and roots, from where they migrate to the regions of their action. Auxins like IA A and indole butyric acid (IBA) have been isolated from plants. NA A (naphthalene acetic acid) and 2, 4-D (2, 4- dichlorophenoxyacetic) are synthetic auxins. All these auxins have been used extensively in agricultural and horticultural practices.
+They help to initiate rooting in stem cuttings, an application widely used for plant propagation. Auxins promote flowering e.g. in pineapples.
+They help to prevent fruit and leaf drop at early stages but promote the abscission of older mature leaves and fruits.
+In most higher plants, the growing apical bud inhibits the growth of the lateral (axillary) buds, a phenomenon called apical dominance.
+Removal of shoot tips (decapitation) usually results in the growth of lateral buds (Figure 13.11). It is widely applied in tea plantations and hedge-making. Can you explain why?
+Reprint 2026-27
+176 BIOLOGY
+Auxins also induce parthenocarpy, e.g., in tomatoes. They are widely used as herbicides.
+2, 4-D, widely used to kill dicotyledonous weeds, does not affect mature monocotyledonous plants. It is used to prepare weed-free lawns by gardeners. Auxin also controls xylem differentiation and helps in cell division.
+13.4.3.2 13.4.3.2 13.4.3.2 13.4.3.2 13.4.3.2 Gibberellins Gibberellins Gibberellins Gibberellins Gibberellins
+Gibberellins are another kind of promotory
+PGR. There are more than 100 gibberellins reported from widely different organisms such as fungi and higher plants. They are denoted as GA1, GA2, GA3 and so on. However,
+Gibberellic acid (GA3) was one of the first gibberellins to be discovered and remains the most intensively studied form. All GAs are acidic. They produce a wide range of physiological responses in the plants.
+Their ability to cause an increase in length of axis is used to increase the length of grapes stalks. Gibberellins, cause fruits like apple to elongate and improve its shape. They also delay senescence. Thus, the fruits can be left on the tree longer so as to extend the market period. GA3 is used to speed up the malting process in brewing industry.
+Sugarcane stores carbohydrate as sugar in their stems. Spraying sugarcane crop with gibberellins increases the length of the stem, thus increasing the yield by as much as 20 tonnes per acre.
+Spraying juvenile conifers with GAs hastens the maturity period, thus leading to early seed production. Gibberellins also promotes bolting (internode elongation just prior to flowering) in beet, cabbages and many plants with rosette habit.
+13.4.3.3 13.4.3.3 13.4.3.3 13.4.3.3 13.4.3.3 Cytokinins Cytokinins Cytokinins Cytokinins Cytokinins
+Cytokinins have specific effects on cytokinesis, and were discovered as kinetin (a modified form of adenine, a purine) from the autoclaved herring sperm DNA. Kinetin does not occur naturally in plants. Search for natural substances with cytokinin-like activities led to the isolation of zeatin from corn-kernels and coconut milk. Since the discovery of zeatin, several naturally occurring cytokinins, and some synthetic compounds with cell division promoting activity, have been identified. Natural cytokinins are
+Figure 13.11 Apical dominance in plants :
+(a) A plant with apical bud intact (b) A plant with apical bud removed
+Note the growth of lateral buds into branches after decapitation.
+Reprint 2026-27
+PLANT GROWTH AND DEVELOPMENT 177 synthesised in regions where rapid cell division occurs, for example, root apices, developing shoot buds, young fruits etc. It helps to produce new leaves, chloroplasts in leaves, lateral shoot growth and adventitious shoot formation. Cytokinins help overcome the apical dominance. They promote nutrient mobilisation which helps in the delay of leaf senescence.
+13.4.3.4 13.4.3.4 13.4.3.4 13.4.3.4 13.4.3.4 Ethylene Ethylene Ethylene Ethylene Ethylene
+Ethylene is a simple gaseous PGR. It is synthesised in large amounts by tissues undergoing senescence and ripening fruits. Influences of ethylene on plants include horizontal growth of seedlings, swelling of the axis and apical hook formation in dicot seedlings. Ethylene promotes senescence and abscission of plant organs especially of leaves and flowers. Ethylene is highly effective in fruit ripening. It enhances the respiration rate during ripening of the fruits. This rise in rate of respiration is called respiratory climactic.
+Ethylene breaks seed and bud dormancy, initiates germination in peanut seeds, sprouting of potato tubers. Ethylene promotes rapid internode/petiole elongation in deep water rice plants. It helps leaves/ upper parts of the shoot to remain above water. Ethylene also promotes root growth and root hair formation, thus helping the plants to increase their absorption surface.
+Ethylene is used to initiate flowering and for synchronising fruit-set in pineapples. It also induces flowering in mango. Since ethylene regulates so many physiological processes, it is one of the most widely used PGR in agriculture. The most widely used compound as source of ethylene is ethephon. Ethephon in an aqueous solution is readily absorbed and transported within the plant and releases ethylene slowly. Ethephon hastens fruit ripening in tomatoes and apples and accelerates abscission in flowers and fruits (thinning of cotton, cherry, walnut). It promotes female flowers in cucumbers thereby increasing the yield.
+13.4.3.5 13.4.3.5 13.4.3.5 13.4.3.5 13.4.3.5 Abscisic acid Abscisic acid Abscisic acid Abscisic acid Abscisic acid
+As mentioned earlier, abscisic acid (ABA) was discovered for its role in regulating abscission and dormancy. But like other PGRs, it also has other wide ranging effects on plant growth and development. It acts as a general plant growth inhibitor and an inhibitor of plant metabolism.
+ABA inhibits seed germination. ABA stimulates the closure of stomata and increases the tolerance of plants to various kinds of stresses.
+Therefore, it is also called the stress hormone. ABA plays an important
+Reprint 2026-27
+178 BIOLOGY role in seed development, maturation and dormancy. By inducing dormancy, ABA helps seeds to withstand desiccation and other factors unfavourable for growth. In most situations, ABA acts as an antagonist
+We may summarise that for any and every phase of growth, differentiation and development of plants, one or the other PGR has some role to play. Such roles could be complimentary or antagonistic. These could be individualistic or synergistic.
+Similarly, there are a number of events in the life of a plant where more than one PGR interact to affect that event, e.g., dormancy in seeds/ buds, abscission, senescence, apical dominance, etc.
+Remember, the role of PGR is of only one kind of intrinsic control.
+Along with genomic control and extrinsic factors, they play an important role in plant growth and development. Many of the extrinsic factors such as temperature and light, control plant growth and development via PGR.
+Some of such events could be: vernalisation, flowering, dormancy, seed germination, plant movements, etc.
+We shall discuss briefly the role of light and temperature (both of them, the extrinsic factors) on initiation of flowering.
+Growth is one of the most conspicuous events in any living organism. It is an irreversible increase expressed in parameters such as size, area, length, height, volume, cell number etc. It conspicuously involves increased protoplasmic material. In plants, meristems are the sites of growth. Root and shoot apical meristems sometimes alongwith intercalary meristem, contribute to the elongation growth of plant axes. Growth is indeterminate in higher plants. Following cell division in root and shoot apical meristem cells, the growth could be arithmetic or geometrical. Growth may not be and generally is not sustained at a high rate throughout the life of cell/ tissue/organ/organism. One can define three principle phases of growth
+– the lag, the log and the senescent phase. When a cell loses the capacity to divide, it leads to differentiation. Differentiation results in development of structures that is commensurate with the function the cells finally has to perform. General principles for differentiation for cell, tissues and organs are similar. A differentiated cell may dedifferentiate and then redifferentiate.
+Since differentiation in plants is open, the development could also be flexible, i.e., the development is the sum of growth and differentiation.
+Plant exhibit plasticity in development.
+Reprint 2026-27
+PLANT GROWTH AND DEVELOPMENT 179
+Plant growth and development are under the control of both intrinsic and extrinsic factors. Intercellular intrinsic factors are the chemical substances, called plant growth regulators (PGR). There are diverse groups of PGRs in plants, principally belonging to five groups: auxins, gibberellins, cytokinins, abscisic acid and ethylene. These PGRs are synthesised in various parts of the plant; they control different differentiation and developmental events. Any PGR has diverse physiological effects on plants.
+Diverse PGRs also manifest similar effects. PGRs may act synergistically or antagonistically. Plant growth and development is also affected by light, temperature, nutrition, oxygen status, gravity and such external factors.
+EXERCISES
+1. Define growth, differentiation, development, dedifferentiation, redifferentiation, determinate growth, meristem and growth rate.
+2. Why is not any one parameter good enough to demonstrate growth throughout the life of a flowering plant?
+3. Describe briefly:
+(a) Arithmetic growth (b) Geometric growth (c) Sigmoid growth curve (d) Absolute and relative growth rates
+4. List five main groups of natural plant growth regulators. Write a note on discovery, physiological functions and agricultural/horticultural applications of any one of them.
+5. Why is abscisic acid also known as stress hormone?
+6. ‘Both growth and differentiation in higher plants are open’. Comment.
+7. ‘Both a short day plant and a long day plant can produce can flower simultaneously in a given place’. Explain.
+8. Which one of the plant growth regulators would you use if you are asked to:
+(a) induce rooting in a twig (b) quickly ripen a fruit (c) delay leaf senescence (d) induce growth in axillary buds (e) ‘bolt’ a rosette plant (f) induce immediate stomatal closure in leaves.
+9. Would a defoliated plant respond to photoperiodic cycle? Why?
+Reprint 2026-27
+180 BIOLOGY
+10. What would be expected to happen if:
+(a) GA3 is applied to rice seedlings (b) dividing cells stop differentiating (c) a rotten fruit gets mixed with unripe fruits (d) you forget to add cytokinin to the culture medium.
+Reprint 2026-27
+The reductionist approach to study of life forms resulted in increasing use of physico-chemical concepts and techniques. Majority of these studies employed either surviving tissue model or straightaway cell- free systems. An explosion of knowledge resulted in molecular biology.
+Molecular physiology became almost synonymous with biochemistry and biophysics. However, it is now being increasingly realised that neither a purely organismic approach nor a purely reductionistic molecular approach would reveal the truth about biological processes or living phenomena. Systems biology makes us believe that all living phenomena are emergent properties due to interaction among components of the system under study. Regulatory network of molecules, supra molecular assemblies, cells, tissues, organisms and indeed, populations and communities, each create emergent properties. In the chapters under this unit, major human physiological processes like, exchange of gases, blood circulation, locomotion and movement are described in cellular and molecular terms. The last two chapters point to the coordination and regulation of body events at the organismic level.
+HUMAN PHYSIOLOGY
+Chapter 14
+Breathing and Exchange of Gases
+Chapter 15
+Body Fluids and
+Circulation
+Chapter 16
+Excretory Products and their Elimination
+Chapter 17
+Locomotion and Movement
+Chapter 18
+Neural Control and
+Coordination
+Chapter 19
+Chemical Coordination and Integration
+Reprint 2026-27
+ALFONSO CORTI, Italian anatomist, was born in 1822. Corti began his scientific career studying the cardiovascular systems of reptiles. Later, he turned his attention to the mammalian auditory system. In 1851, he published a paper describing a structure located on the basilar membrane of the cochlea containing hair cells that convert sound vibrations into nerve impulses, the organ of Corti. He died in the year 1888.
+Alfonso Corti (1822 – 1888)
+Reprint 2026-27
+183 BREATHING AND EXCHANGE OF GASES
+As you have read earlier, oxygen (O2) is utilised by the organisms to indirectly break down simple molecules like glucose, amino acids, fatty acids, etc., to derive energy to perform various activities. Carbon dioxide (CO2) which is harmful is also released during the above catabolic reactions. It is, therefore, evident that O2 has to be continuously provided to the cells and CO2 produced by the cells have to be released out. This process of exchange of O2 from the atmosphere with CO2 produced by the cells is called breathing, commonly known as respiration. Place your hands on your chest; you can feel the chest moving up and down. You know that it is due to breathing. How do we breathe? The respiratory organs and the mechanism of breathing are described in the following sections of this chapter.
+14.1 RESPIRATORY ORGANS
+Mechanisms of breathing vary among different groups of animals depending mainly on their habitats and levels of organisation. Lower invertebrates like sponges, coelenterates, flatworms, etc., exchange O2 with CO2 by simple diffusion over their entire body surface. Earthworms use thei

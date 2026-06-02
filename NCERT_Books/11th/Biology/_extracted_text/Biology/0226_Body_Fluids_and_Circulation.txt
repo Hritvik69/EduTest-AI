@@ -1,0 +1,118 @@
+214 BIOLOGY
+Many nitrogen containing substances, ions, CO2, water, etc., that accumulate in the body have to be eliminated. Nature of nitrogenous wastes formed and their excretion vary among animals, mainly depending on the habitat (availability of water). Ammonia, urea and uric acid are the major nitrogenous wastes excreted.
+Protonephridia, nephridia, malpighian tubules, green glands and the kidneys are the common excretory organs in animals. They not only eliminate nitrogenous wastes but also help in the maintenance of ionic and acid-base balance of body fluids.
+In humans, the excretory system consists of one pair of kidneys, a pair of ureters, a urinary bladder and a urethra. Each kidney has over a million tubular structures called nephrons. Nephron is the functional unit of kidney and has two portions – glomerulus and renal tubule. Glomerulus is a tuft of capillaries formed from afferent arterioles, fine branches of renal artery. The renal tubule starts with a double walled
+Bowman’s capsule and is further differentiated into a proximal convoluted tubule (PCT), Henle’s loop (HL) and distal convoluted tubule (DCT). The DCTs of many nephrons join to a common collecting duct many of which ultimately open into the renal pelvis through the medullary pyramids. The Bowman’s capsule encloses the glomerulus to form Malpighian or renal corpuscle.
+Urine formation involves three main processes, i.e., filtration, reabsorption and secretion. Filtration is a non-selective process performed by the glomerulus using the glomerular capillary blood pressure. About 1200 ml of blood is filtered by the glomerulus per minute to form 125 ml of filtrate in the Bowman’s capsule per composition as that of plasma except the nitrogenous wastes. The porous cellophane membrance of the tube allows the passage of molecules based on concentration gradient. As nitrogenous wastes are absent in the dialysing fluid, these substances freely move out, thereby clearing the blood. The cleared blood is pumped back to the body through a vein after adding anti-heparin to it. This method is a boon for thousands of uremic patients all over the world.
+Kidney transplantation is the ultimate method in the correction of acute renal failures (kidney failure). A functioning kidney is used in transplantation from a donor, preferably a close relative, to minimise its chances of rejection by the immune system of the host. Modern clinical procedures have increased the success rate of such a complicated technique.
+Renal calculi: Stone or insoluble mass of crystallised salts (oxalates, etc.) formed within the kidney.
+Glomerulonephritis: Inflammation of glomeruli of kidney.
+Reprint 2026-27
+EXCRETORY PRODUCTS AND THEIR ELIMINATION 215 minute (GFR). JGA, a specialised portion of the nephrons, plays a significant role in the regulation of GFR. Nearly 99 per cent reabsorption of the filtrate takes place through different parts of the nephrons. PCT is the major site of reabsorption and selective secretion. HL primarily helps to maintain osmolar gradient (300 mOsmolL–1 -1200 mOsmolL–1) within the kidney interstitium. DCT and collecting duct allow extensive reabsorption of water and certain electrolytes, which help in osmoregulation: H+, K+ and NH3 could be secreted into the filtrate by the tubules to maintain the ionic balance and pH of body fluids.
+A counter current mechanism operates between the two limbs of the loop of
+Henle and those of vasa recta (capillary parallel to Henle’s loop). The filtrate gets concentrated as it moves down the descending limb but is diluted by the ascending limb. Electrolytes and urea are retained in the interstitium by this arrangement.
+DCT and collecting duct concentrate the filtrate about four times, i.e., from 300 mOsmolL–1 to 1200 mOsmolL–1, an excellent mechanism of conservation of water.
+Urine is stored in the urinary bladder till a voluntary signal from CNS carries out its release through urethra, i.e., micturition. Skin, lungs and liver also assist in excretion.
+EXERCISES
+1. Define Glomerular Filtration Rate (GFR)
+2. Explain the autoregulatory mechanism of GFR.
+3. Indicate whether the following statements are true or false :
+(a) Micturition is carried out by a reflex.
+(b) ADH helps in water elimination, making the urine hypotonic.
+(c) Protein-free fluid is filtered from blood plasma into the Bowman’s capsule.
+(d) Henle’s loop plays an important role in concentrating the urine.
+(e) Glucose is actively reabsorbed in the proximal convoluted tubule.
+4. Give a brief account of the counter current mechanism.
+5. Describe the role of liver, lungs and skin in excretion.
+6. Explain micturition.
+7. Match the items of column I with those of column II :
+Column I Column II (a) Ammonotelism (i) Birds (b) Bowman’s capsule (ii) Water reabsorption (c) Micturition (iii) Bony fish (d) Uricotelism (iv) Urinary bladder (d) ADH (v) Renal tubule
+Reprint 2026-27
+216 BIOLOGY
+8. What is meant by the term osmoregulation?
+9. Terrestrial animals are generally either ureotelic or uricotelic, not ammonotelic,
+10. What is the significance of juxta glomerular apparatus (JGA) in kidney function?
+11. Name the following:
+(a) A chordate animal having flame cells as excretory structures (b) Cortical portions projecting between the medullary pyramids in the human (c) A loop of capillary running parallel to the Henle’s loop.
+12. Fill in the gaps :
+(a) Ascending limb of Henle’s loop is _______ to water whereas the descending limb is _______ to it.
+(b) Reabsorption of water from distal parts of the tubules is facilitated by hormone
+_______.
+(c) Dialysis fluid contain all the constituents as in plasma except _______.
+(d) A healthy adult human excretes (on an average) _______ gm of urea/day.
+Reprint 2026-27
+LOCOMOTION AND MOVEMENT 217
+Movement is one of the significant features of living beings. Animals and plants exhibit a wide range of movements. Streaming of protoplasm in the unicellular organisms like Amoeba is a simple form of movement.
+Movement of cilia, flagella and tentacles are shown by many organisms.
+Human beings can move limbs, jaws, eyelids, tongue, etc. Some of the movements result in a change of place or location. Such voluntary movements are called locomotion. Walking, running, climbing, flying and swimming are all some forms of locomotory movements. Locomotory structures need not be different from those affecting other types of movements. For example, in Paramoecium, cilia helps in the movement of food through cytopharynx and in locomotion as well. Hydra can use its tentacles for capturing its prey and also use them for locomotion. We use limbs for changes in body postures and locomotion as well. The above observations suggest that movements and locomotion cannot be studied separately. The two may be linked by stating that all locomotions are movements but all movements are not locomotions.
+Methods of locomotion performed by animals vary with their habitats and the demand of the situation. However, locomotion is generally for search of food, shelter, mate, suitable breeding grounds, favourable climatic conditions or to escape from enemies/predators.
+17.1 TYPES OF MOVEMENT
+Cells of the human body exhibit three main types of movements, namely, amoeboid, ciliary and muscular.
+LOCOMOTION AND MOVEMENT
+CHAPTER 17
+17.1 Types of
+Movement
+17.2 Muscle
+17.3 Skeletal
+17.4 Joints
+17.5 Disorders of
+Muscular and
+Skeletal System
+Reprint 2026-27
+218 BIOLOGY
+Some specialised cells in our body like macrophages and leucocytes in blood exhibit amoeboid movement. It is effected by pseudopodia formed by the streaming of protoplasm (as in Amoeba). Cytoskeletal elements like microfilaments are also involved in amoeboid movement.
+Ciliary movement occurs in most of our internal tubular organs which are lined by ciliated epithelium. The coordinated movements of cilia in the trachea help us in removing dust particles and some of the foreign substances inhaled along with the atmospheric air. Passage of ova through the female reproductive tract is also facilitated by the ciliary movement.
+Movement of our limbs, jaws, tongue, etc, require muscular movement. The contractile property of muscles are effectively used for locomotion and other movements by human beings and majority of multicellular organisms. Locomotion requires a perfect coordinated activity of muscular, skeletal and neural systems. In this chapter, you will learn about the types of muscles, their structure, mechanism of their contraction and important aspects of the skeletal system.
+17.2 MUSCLE
+You have studied in Chapter 8 that the cilia and flagella are the outgrowths of the cell membrane. Flagellar movement helps in the swimming of spermatozoa, maintenance of water current in the canal system of sponges and in locomotion of Protists like Euglena. Muscle is a specialised tissue of mesodermal origin. About 40-50 per cent of the body weight of a human adult is contributed by muscles. They have special properties like excitability, contractility, extensibility and elasticity. Muscles have been classified using different criteria, namely location, appearance and nature of regulation of their activities. Based on their location, three types of muscles are identified : (i) Skeletal (ii) Visceral and (iii) Cardiac.
+Skeletal muscles are closely associated with the skeletal components of the body. They have a striped appearance under the microscope and hence are called striated muscles. As their activities are under the voluntary control of the nervous system, they are known as voluntary muscles too. They are primarily involved in locomotory actions and changes of body postures.
+Visceral muscles are located in the inner walls of hollow visceral organs of the body like the alimentary canal, reproductive tract, etc. They do not exhibit any striation and are smooth in appearance. Hence, they are called smooth muscles (nonstriated muscle). Their activities are not under the voluntary control of the nervous system and are therefore known as involuntary muscles. They assist, for example, in the transportation of food through the digestive tract and gametes through the genital tract.
+Reprint 2026-27
+LOCOMOTION AND MOVEMENT 219 muscle fibre is lined by the plasma membrane called sarcolemma enclosing the sarcoplasm. Muscle fibre is a syncitium as the sarcoplasm contains many nuclei. The endoplasmic reticulum, i.e., sarcoplasmic reticulum of the muscle fibres is the store house of calcium ions. A characteristic feature of the muscle fibre is the presence of a large number of parallelly arranged filaments in the sarcoplasm called myofilaments or myofibrils. Each myofibril has alternate dark and light bands on it. A detailed study of the myofibril has established that the striated appearance is due to the distribution pattern of two important proteins – Actin and
+Myosin. The light bands contain actin and is called I-band or Isotropic band, whereas the dark band called ‘A’ or Anisotropic band contains
+As the name suggests, Cardiac muscles are the muscles of heart.
+Many cardiac muscle cells assemble in a branching pattern to form a cardiac muscle. Based on appearance, cardiac muscles are striated. They are involuntary in nature as the nervous system does not control their activities directly.
+Let us examine a skeletal muscle in detail to understand the structure and mechanism of contraction. Each organised skeletal muscle in our body is made of a number of muscle bundles or fascicles held together by a common collagenous connective tissue layer called fascia. Each muscle bundle contains a number of muscle fibres (Figure 17.1). Each
+Fascicle (muscle bundle)
+Muscle fibre (muscle cell)
+Sarcolemma
+Blood capillary
+Figure 17.1 Diagrammatic cross sectional view of a muscle showing muscle bundles and muscle fibres
+Reprint 2026-27
+220 BIOLOGY myosin. Both the proteins are arranged as rod-like structures, parallel to each other and also to the longitudinal axis of the myofibrils. Actin filaments are thinner as compared to the myosin filaments, hence are commonly called thin and thick filaments respectively. In the centre of each ‘I’ band is an elastic fibre called ‘Z’ line which bisects it. The thin filaments are firmly attached to the ‘Z’ line. The thick filaments in the
+‘A’ band are also held together in the middle of this band by a thin fibrous membrane called ‘M’ line. The ‘A’ and ‘I’ bands are arranged alternately throughout the length of the myofibrils. The portion of the myofibril between two successive ‘Z’ lines is considered as the functional unit of contraction and is called a sarcomere (Figure 17.2). In a resting state, the edges of thin filaments on either side of the thick filaments partially overlap the free ends of the thick filaments leaving the central part of the thick filaments. This central part of thick filament, not overlapped by thin filaments is called the ‘H’ zone.
+Figure 17.2 Diagrammatic representation of (a) anatomy of a muscle fibre showing a sarcomere (b) a sarcomere
+Reprint 2026-27
+LOCOMOTION AND MOVEMENT 221
+17.2.1 Structure of Contractile Proteins
+Each actin (thin) filament is made of two ‘F’ (filamentous) actins helically wound to each other. Each ‘F’ actin is a polymer of monomeric
+‘G’ (Globular) actins. Two filaments of another protein, tropomyosin also run close to the ‘F’ actins throughout its length. A complex protein
+Troponin is distributed at regular intervals on the tropomyosin. In the resting state a subunit of troponin masks the active binding sites for myosin on the actin filaments (Figure 17.3a).
+Each myosin (thick) filament is also a polymerised protein. Many monomeric proteins called Meromyosins (Figure 17.3b) constitute one thick filament. Each meromyosin has two important parts, a globular head with a short arm and a tail, the former being called the heavy meromyosin (HMM) and the latter, the light meromyosin (LMM). The HMM component, i.e.; the head and short arm projects outwards at regular distance and angle from each other from the surface of a polymerised myosin filament and is known as cross arm. The globular head is an active ATPase enzyme and has binding sites for ATP and active sites for actin.
+Figure 17.3 (a) An actin (thin) filament (b) Myosin monomer (Meromyosin)
+Actin binding sites
+ATP binding sites
+Cross arm
+17.2.2 Mechanism of Muscle Contraction
+Mechanism of muscle contraction is best explained by the sliding filament theory which states that contraction of a muscle fibre takes place by the sliding of the thin filaments over the thick filaments.
+Reprint 2026-27
+222 222 222 222 222 BIOLOGY
+Muscle contraction is initiated by a signal sent by the central nervous system (CNS) via a motor neuron. A motor neuron along with the muscle fibres connected to it constitute a motor unit. The junction between a motor neuron and the sarcolemma of the muscle fibre is called the neuromuscular junction or motor-end plate. A neural signal reaching this junction releases a neurotransmitter (Acetyl choline) which generates an action potential in the sarcolemma. This spreads through the muscle fibre and causes the release of calcium ions into the sarcoplasm. Increase in
+Ca++ level leads to the binding of calcium with a subunit of troponin on actin filaments and thereby remove the masking of active sites for myosin.
+Utilising the energy from ATP hydrolysis, the myosin head now binds to the exposed active sites on actin to form a cross bridge (Figure 17.4).
+This pulls the attached actin filaments towards the centre of ‘A’ band. The
+‘Z’ line attached to these actins are also pulled inwards thereby causing a shortening of the sarcomere, i.e., contraction. It is clear from the above steps, that during shortening of the muscle, i.e., contraction, the ‘I’ bands get reduced, whereas the ‘A’ bands retain the length (Figure 17.5). The myosin, releasing the ADP and P1 goes back to its relaxed state. A new
+ATP binds and the cross-bridge is broken (Figure 17.4). The ATP is again hydrolysed by the myosin head and the cycle of cross bridge formation
+Figure 17.4 Figure 17.4 Figure 17.4 Figure 17.4 Figure 17.4 Stages in cross bridge formation, rotation of head and breaking of cross bridge
+Reprint 2026-27
+LOCOMOTION AND MOVEMENT 223 and breakage is repeated causing further sliding. The process continues till the Ca++ ions are pumped back to the sarcoplasmic cisternae resulting in the masking of actin filaments. This causes the return of ‘Z’ lines back to their original position, i.e., relaxation. The reaction time of the fibres can vary in different muscles. Repeated activation of the muscles can lead to the accumulation of lactic acid due to anaerobic breakdown of glycogen in them, causing fatigue. Muscle contains a red coloured oxygen storing pigment called myoglobin. Myoglobin content is high in some of the muscles which gives a reddish appearance. Such muscles are called the
+Red fibres. These muscles also contain plenty of mitochondria which can utilise the large amount of oxygen stored in them for ATP production.
+These muscles, therefore, can also be called aerobic muscles. On the other hand, some of the muscles possess very less quantity of myoglobin and therefore, appear pale or whitish. These are the White fibres. Number of mitochondria are also few in them, but the amount of sarcoplasmic reticulum is high. They depend on anaerobic process for energy.
+Figure 17.5 Sliding-filament theory of muscle contraction (movement of the thin filaments and the relative size of the I band and H zones)
+Reprint 2026-27
+224 BIOLOGY
+17.3 SKELETAL SYSTEM
+Skeletal system consists of a framework of bones and a few cartilages.
+This system has a significant role in movement shown by the body.
+Imagine chewing food without jaw bones and walking around without the limb bones. Bone and cartilage are specialised connective tissues.
+The former has a very hard matrix due to calcium salts in it and the latter has slightly pliable matrix due to chondroitin salts. In human beings, this system is made up

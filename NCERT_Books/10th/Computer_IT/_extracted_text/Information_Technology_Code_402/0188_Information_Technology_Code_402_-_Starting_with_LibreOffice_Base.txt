@@ -1,0 +1,208 @@
+Domestic Data entry operator – class X 178 called referential integrity. We will study in detail about referential integrity later in the chapter.
+• Creating relationships between tables restricts the user from entering invalid data in the referenced fields.
+• Any updation in the master table is automatically reflected in the transaction tables.
+Let’s Practice
+Name the type of relationship for the following:
+• Citizen and his Driving License
+• Customer and Product
+• Student and Course
+• Team and Match
+• Player and Country
+• Employee and Project
+Creating Relationships between Tables
+Let us get back to Sports Day database created in the previous chapter. Let us add another field, CategoryID to the table
+Events using Edit option as shown in
+Fig. 10.9.
+Enter 10 records in the Events table of various categories as shown in Fig. 10.10.
+Create another table with the name
+EventCategory with the fields – CategoryID,
+CategoryName, TeacherIncharge and enter the records as shown in Fig. 10.11.
+Hence, there are two tables in the database – Events and EventCategory with a common field as CategoryID.
+Fig. 10.9: Adding field CategoryID in Event table
+Fig. 10.10: Records entered in Event table with added field CategoryID Fig. 10.11: Records entered in EventCategory table
+Database ManageMent systeM Using LibreOffice Writer 179
+In Event table, EventID is the primary key and CategoryID is the foreign key.
+In EventCategory table, CategoryID is the primary key. To set up relationship between these tables follow the following steps.
+Step 1. From main menu of LibreOffice
+Base, click on Tools >
+Relationships…
+Step 2. The Relationship Design screen will appear as shown in Fig.
+10.12. In the middle of the screen there is Add Tables dialog box.
+Both the tables are listed in the dialog box.
+Step 3. In the Add Tables dialog box, click Events table and then click Add button. Similarly add EventCategory table to the
+Relationship Area.
+Step 4. Click Close button to close the Add
+Tables dialog box. Observe that the tables Events and EventCategory table added to the Relationship
+Area along with all its field list as shown in Fig. 10.13.
+Step 5. As discussed before, CategoryID is the common field in the two tables. Hence it will be used to set a relationship between the two tables. To create a relation
+Fig. 10.12: Add Tables dialog box in Relationship
+Design Screen
+Fig. 10.13: Events and EventCategory Tables added in Relationship Design window
+Fig. 10.14: Relationship between two tables between the two tables, we just have to drag the common field CategoryID from the Events table and drop it in
+EventCategory table. A line connecting both the tables with the common field (CategoryID) appears on the screen as shown in Fig. 10.14.
+The line is labeled as ‘l’ on the primary key side and as ‘n’ on the foreign key side. Hence the CatgeoryID from EventCategory table as primary key will have unique values and is called referenced field. On the other hand,
+Domestic Data entry operator – class X 180 in the Events table, the values of CategoryID might be repeated. Here it is known as referencing field. Fig. 10.15 shows that the CategoryID of the
+Events table is referenced field and CategoryID of the EventCategory table is referencing field. This type of relationship where one value of a table is associated with multiple values in another table is a One-to-many relationship.
+In this relationship EventsCategory is the master table. So the master record with a particular
+CategoryID has to be added in EventsCategory table first. Only then the corresponding record can be added in the Events table. Also, only one record with a specific CategoryID will exist in the master table but multiple values of CategoryID might exist in the transaction table, thereby forming a one-to- many relationship.
+Referential Integrity
+According to the principle of referential integrity, no unmatched foreign key values should exist in the database. That means if a record, say Admission No as 1001 is not present or deleted in the master table (Student_Details) of Student database, then there should be no record with Admission no as 1001 in the transaction table (Student_Result) as well. Similarly, in Ruhi’s Sports Day database, if a particular category of sports, say C003 is deleted from the master table
+EventCategory, then there should be no record with
+Category as C003 in the transaction table. Likewise, if any student leaves the school and his record is deleted from Student_Details table, then there is no question of his appearing for exams and having a result.
+Hence corresponding record in the transaction table (Student_Result) should either have NULL value or should be deleted.
+In Ruhi’s Sports Day database as well, the CategoryID that exists in EventCategory table can only be entered in
+Events table. As mentioned before, once the relationship between the two tables has been set, the integrity of data will be managed by the DBMS. LibreOffice Base
+Fig 10.15: CategoryID of Events table is referenced field and CategoryID of
+EventCategory table is referencing field
+Database ManageMent systeM Using LibreOffice Writer 181 will allow only that corresponding record to be entered in the transaction table which already exists in the master table.
+LibreOffice Base gives us following four options to choose from to maintain referential integrity in such cases.
+• No action – This is the default option. This option states that a user should not be allowed to update or delete any record in the master table if any related record exists in the transaction table.
+• Update cascade – This option allows the user to delete or update the referenced field but along with it all the related records in any of the transaction tables will also be deleted or updated.
+• Set NULL – This option assigns NULL value to all the related fields if the master record is deleted or updated.
+• Set default – This option assigns any fixed default value to all the related fields if the master record is deleted or updated.
+To set the relationship properties double click on the relation line joining the two tables, Events and EventCategory. A
+Relations dialog box will open as shown in
+Fig. 10.16.
+By default the radio button with No action option will be selected. Choose any of the desired option and click OK to set the referential integrity between the two tables.
+Let’s Practice
+Form a table in Sports Day database in which one-to-one relationship can be established. Write steps to create such a relation in LibreOffice Base.
+• Relations are set up between the tables to control data redundancy and inconsistency.
+• The most important prerequisite for setting a relationship between the two tables is that there must be a common field(s) between the two tables.
+Fig. 10.16: Relations dialog box
+Domestic Data entry operator – class X 182
+• Three types of relationships can be set up between two tables in a relational database. These are
+One-to-One, One-to-Many and Many-to-Many.
+• In One-to-One type of relationship, one specific record of a master table has one and only one corresponding record in the transaction table.
+• In One-to-Many type of relationship, one specific record of the master table has more than one corresponding records in the related transaction table.
+• In Many-to-Many type of relationship, there are multiple records in the master table that correspond to multiple records in the transaction table.
+• According to the principle of referential integrity, no unmatched foreign key values should exist in the database.
+Prakasan lives in Happy Home Society. He wants to create a database so as to store and manage the maintenance dues received from flat owners of the society. Create the following tables for his database.
+Table: Residents Details Table: Maintenance Dues
+Flat no Receipt_Id
+Owner Name Flat No
+Contact No Date
+Flat Category Amount
+Relate the two tables and thereafter enter minimum five records in both the tables. Which type of relationship did you create? In which table did you enter the data first?
+Uzair manages a boys hostel in an engineering college. He wants to manage the records of the people staying in his hostel by creating a database with the following tables and also set a relationship between the tables.
+Table: Student_Details
+Student_Id
+Father’s Name
+Contact No_student
+Practical Exercises
+Database ManageMent systeM Using LibreOffice Writer 183
+Contact No_ guardian
+Table: Room Details
+Floor (data value can be first, second or third)
+Category (data value can be AC / Non- AC)
+Student Id
+DOO (Date of occupancy)
+Monthly Rent
+Check Your Progress
+A. Multiple choice questions
+1. Which of the following actions can be performed once the tables are created in a database?
+(a) Add a field in a table (b) Rename a table (c) Delete a table (d) All of the above
+2. Which of the following is checked by a DBMS?
+(a) Redundancy (b) Inconsistency (c) Both (a) and (b)
+(d) Neither (a) nor (b)
+3. Which of the following is required to set a relationship between the two tables?
+(a) Both the tables must be in different databases (b) Both the tables must have a common field (c) Both the tables must have the same name (d) Both tables must be stored in documents folder only.
+4. If a record is added in a master table, which of the following is NOT true for transaction table (a) The record in the master table is called the master (b) The corresponding record in transaction table can only be entered once.
+(c) The record in the transaction table is called the transaction record.
+(d) It is possible to add a record in the master table
+5. Which type of relationship exists between a student and the subjects studied by him/her?
+(a) One-to-one (b) One-to-many (c) Many-to-many (d) All of the above
+Domestic Data entry operator – class X 184
+6. Consider the following tables. Which type of relationship can be established between the two tables?
+(a) One-to-one (b) One-to-many (c) Many-to-many (d) None of the above
+Table 1: Item Table 2: Item_Category
+Item_Code Category_Code
+Item_Name Cat_Name
+Price Item_Code
+Qty Cat_Disc
+Category_Code
+7. Which of the following menus contains the Relationship (a) Edit (b) File (c) Tools (d) View
+8. The list of tables to be added is displayed in the __________ dialog box in the Relationship Screen.
+(a) Add Tables (b) Add Databases (c) Both (a) and (b)
+(a) Neither (a) nor (b)
+9. In the relationship design screen, the relationship between the two tables is done using __________ operation.
+(a) Click (b) Double Click (c) Drag and Drop (d) Right click
+10. Which of the following is NOT an option that can be used to maintain referential integrity in a database?
+(a) No Action (b) Set NULL (c) Set Default (d) Set Value
+B. State whether the following statements are True or False
+1. Redundancy is preferred in a database.
+2. In a table, a record for a particular entity should not be repeated.
+3. A single field should always have only one data value.
+4. If a table is edited, the records already entered in it are deleted.
+5. The record in master table should be entered before the corresponding record is entered in the transaction table.
+Database ManageMent systeM Using LibreOffice Writer 185
+6. In one-to-many relationship, one specific record of the master table has more than one corresponding records in the related transaction table.
+7. The Relationship option is present in the Widows menu.
+8. In a database, the referential integrity is maintained by the user.
+9. A relationship is always set between the tables based on a common field.
+10. If the master record is deleted, the transaction records will always be deleted.
+C. Fill in the blanks
+1. A table to be edited is displayed in ___________ view.
+2. The most important prerequisite for setting a relationship between the two tables is that there must be a
+________________between them.
+3. In ________________relationship, one specific record of a master table has one and only one corresponding record in the transaction table.
+4. ___________________is one of the most common types of relationship between the tables in a database.
+5. A record being entered in a _________ table must always exist in a ________ table.
+6. The principle of _______________helps prevent missing data by keeping deleted data from getting out of synch.
+7. Creating ____________ between tables restricts the user from entering invalid data in the referenced fields.
+8. Data integrity is maintained by ______________.
+9. A relationship between customers and products is an example of __________________ relationship.
+10. The __________________ window is used to set relationships between the tables.
+D. Answer the following questions
+1. Give any two advantages of relating a table in a database.
+2. How is redundancy or inconsistency controlled in a database? Explain with an example.
+3. Define referential integrity. Who maintains referential integrity in a database?
+4. Differentiate between one to one relationship and one to many relationship. Give suitable examples to explain your
+5. Explain many to many relationship with an example.
+IntroductIon
+A database is used to store data in an organized manner so as to retrieve it easily and accurately from database.
+To search for the desired record and to retrieve the desired data, we have to give its specifications to DBMS.
+Such specifications are given to the database in the form of queries. For example, we may have to specify the fields that we want to display or any particular data value based on which the records are to be filtered from the table(s). Therefore, we can say that a query is a sort of question asked from a database. Depending upon specifications given in the query, the specific records are searched from the table(s) in the database and then displayed in the desired manner. Such information may be difficult to find by just looking at a single table or multiple tables. In fact as the number of records increase, finding the desired information becomes more and more difficult. By using queries, we are able to retrieve data without going individually through each record in the table(s) and also display them in desired format.
+A query is one of the most important feature of any
+DBMS. Using a query, we can retrieve and display data from one or more tables in a database. This is done by giving specific search criteria to the DBMS so that we are able to view the exact information that we want.
+LibreOffice Base allows us to create a query and even save it as an object in a database. This helps us to run the query multiple times as and when required.
+11 Queries in Base
+Database ManageMent systeM Using LibreOffice Writer 187
+Using a query, we can specify the fields that we want to display and also the criterion based on which the records to be filtered. The information may be retrieved from a single table or from multiple tables. Also the result of the query is displayed in tabular form with field names in columns and the records in rows.
+For example, in a Student database, if we want to display the names and marks of the students in a particular class from the Result table, who have scored less than 320 aggregate marks, then we need to give the following information to the database:
+Name of the table – Result
+Fields to be specified – Name, Marks
+Criterion – Aggregate marks should be less than 320
+In this chapter you will learn to create a query, save it and then run it as and when required.
+Creating a Query
+A query can be created in three ways. In this chapter you will learn the first two methods to create a query.
+(i) Using a Wizard (ii) In Design View (iii) In SQL view
+Fig. 11.1: Records in Events table
+Fig. 11.2: Records in Event Category table
+Creating a Query Using a Wizard
+Let us recall the Sports Day database created in the previous chapters with two tables – Events and EventCategory.
+Let us create a query that will display the
+Event Name and Winner for each event with
+CategoryID as C001. The desired data has to be retrieved from the Events table. To create a query using a wizard, follow the following steps.
+Step 1. Open the Sports Day database. In the Database Design window, click on Queries button present in the
+Database Pane on the left as shown in
+Fig. 11.3.
+Step 2. In the Tasks Area, click on Use Wizard to Create Query… option. The Query Fig. 11.3: Queries icon in Database Pane
+Domestic Data entry operator – class X 188
+Wizard will start as shown in Fig. 11.4.
+It contains the Steps Pane on the left and the Query Details Area on the right.
+Step 3. The first step of the wizard is to select fields from the respective tables. For our query, to display Event Name and
+Winner and the criterion to filter the records based on CategoryID. All these fields are present in Events table.
+Therefore select Events table from the
+Tables list box. The corresponding fields are displayed in the Available
+Fields list box as shown in
+Fig. 11.5.
+Step 4. Select Event Name field from the list box and click the right arrow (>)
+button. The field name will appear in the Fields in the Query list box. Repeat the process for Winner and CategoryID fields as shown in
+Fig. 11.5. Observe that these three fields are moved to Fields in the Query list box.
+Note that once the fields are added they can be moved up and down in order by clicking ∧ and ∨ buttons present on the extreme right of the wizard. Clicking on » button moves all fields to Fields in the Query area and
+« button moves all the fields back to
+Available fields area.
+Step 5. Clicking on the Next button will display the screen to select the sorting order as shown in Fig. 11.7. It will set the sorting order. The result of the query can be displayed in ascending or descending order of any particular field of the table. Since we do not want to set in a particular order, so we click on Next button.
+Step 6. The next step is to set the search conditions or the criteria on the basis
+Fig. 11.4: First step of Query wizard
+Fig. 11.5: Fields of selected Events table displayed in the Available Fields

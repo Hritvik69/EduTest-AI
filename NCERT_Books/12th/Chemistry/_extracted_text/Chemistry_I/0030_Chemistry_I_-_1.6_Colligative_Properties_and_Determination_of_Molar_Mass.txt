@@ -1,0 +1,189 @@
+16 Chemistry
+The expression on the left hand side of the equation as mentioned earlier is called relative lowering of vapour pressure and is equal to the mole fraction of the solute. The above equation can be written as:
+      x n n (1.26)
+Here n1 and n2 are the number of moles of solvent and solute respectively present in the solution. For dilute solutions n2 < < n1, hence neglecting n2 in the denominator we have n (1.27)
+M (1.28)
+Here w1 and w2 are the masses and M1 and M2 are the molar masses of the solvent and solute respectively.
+From this equation (1.28), knowing all other quantities, the molar mass of solute (M2) can be calculated.
+Example 1.6 Example 1.6 Example 1.6 Example 1.6 Example 1.6 The vapour pressure of pure benzene at a certain temperature is 0.850 bar. A non-volatile, non-electrolyte solid weighing 0.5 g when added to
+39.0 g of benzene (molar mass 78 g mol-1). Vapour pressure of the solution, then, is 0.845 bar. What is the molar mass of the solid substance?
+The various quantities known to us are as follows:
+0 = 0.850 bar; p = 0.845 bar; M1 = 78 g mol–1; w2 = 0.5 g; w1 = 39 g
+Substituting these values in equation (2.28), we get
+0.850 bar – 0.845 bar
+0.850 bar =
+0.5 g × 78 g mol
+× 39 g M
+Therefore, M2 = 170 g mol–1
+The vapour pressure of a liquid increases with increase of temperature. It boils at the temperature at which its vapour pressure is equal to the atmospheric pressure. For example, water boils at
+373.15 K (100° C) because at this temperature the vapour pressure of water is 1.013 bar (1 atmosphere). We have also learnt in the last section that vapour pressure of the solvent decreases in the presence of non-volatile solute. Fig. 1.7 depicts the variation of vapour pressure of the pure solvent and solution as a function of temperature. For example, the vapour pressure of an aqueous solution of sucrose is less than 1.013 bar at 373.15 K. In order to make this solution boil, its vapour pressure must be increased to 1.013 bar by raising the temperature above the boiling temperature of the pure solvent (water). Thus, the boiling point of a solution is
+1.6.2 Elevation of
+Boiling Point
+Solution Solution Solution Solution Solution
+Reprint 2026-27
+17 Solutions always higher than that of the boiling point of the pure solvent in which the solution is prepared as shown in Fig. 1.7. Similar to lowering of vapour pressure, the elevation of boiling point also depends on the number of solute molecules rather than their nature. A solution of 1 mol of sucrose in 1000 g of water boils at 373.52 K at one atmospheric pressure.
+b T be the boiling point of pure solvent and b T be the boiling point of solution. The increase in the boiling point 0 b b b    T T T is known as elevation of boiling point.
+Experiments have shown that for dilute solutions the elevation of boiling point (DTb) is directly proportional to the molal concentration of the solute in a solution. Thus
+DTb μ m (1.29)
+or DTb = Kb m (1.30)
+Here m (molality) is the number of moles of solute dissolved in 1 kg of solvent and the constant of proportionality, Kb is called Boiling Point
+Elevation Constant or Molal Elevation Constant (Ebullioscopic
+Constant). The unit of Kb is K kg mol-1. Values of Kb for some common solvents are given in Table 1.3. If w2 gram of solute of molar mass M2 is dissolved in w1 gram of solvent, then molality, m of the solution is given by the expression:
+w (1.31)
+Substituting the value of molality in equation (1.30) we get
+DTb = b 2
+× 1000 × w (1.32)
+M2 = 2 b
+1000 × × w (1.33)
+Thus, in order to determine M2, molar mass of the solute, known mass of solute in a known mass of the solvent is taken and DTb is determined experimentally for a known solvent whose Kb value is known.
+18 g of glucose, C6H12O6, is dissolved in 1 kg of water in a saucepan.
+At what temperature will water boil at 1.013 bar? Kb for water is 0.52
+K kg mol-1.
+Moles of glucose = 18 g/ 180 g mol–1 = 0.1 mol
+Number of kilograms of solvent = 1 kg
+Thus molality of glucose solution = 0.1 mol kg-1
+For water, change in boiling point
+Example 1.7 Example 1.7 Example 1.7 Example 1.7 Example 1.7
+Solution Solution Solution Solution Solution
+Fig. 1.7: The vapour pressure curve for solution lies below the curve for pure water. The diagram shows that DTb denotes the elevation of boiling point of a solvent in solution.
+1.013 bar
+Reprint 2026-27
+18 Chemistry
+The lowering of vapour pressure of a solution causes a lowering of the freezing point compared to that of the pure solvent (Fig. 1.8). We know that at the freezing point of a substance, the solid phase is in dynamic equilibrium with the liquid phase. Thus, the freezing point of a substance may be defined as the temperature at which the vapour pressure of the substance in its liquid phase is equal to its vapour pressure in the solid phase. A solution will freeze when its vapour pressure equals the vapour pressure of the pure solid solvent as is clear from Fig. 1.8. According to Raoult’s law, when a non-volatile solid is added to the solvent its vapour pressure decreases and now it would become equal to that of solid solvent at lower temperature. Thus, the freezing point of the solvent decreases.
+f T be the freezing point of pure solvent and f T be its freezing point when non-volatile solute is dissolved in it. The decrease in freezing f f f    T T T is known as depression in freezing point.
+Similar to elevation of boiling point, depression of freezing point (DTf)
+for dilute solution (ideal solution) is directly proportional to molality, m of the solution. Thus, or DTf = Kf m (1.34)
+The proportionality constant, Kf, which depends on the nature of the solvent is known as Freezing Point Depression Constant or Molal
+Example 1.8 Example 1.8 Example 1.8 Example 1.8 Example 1.8
+DTb = Kb × m = 0.52 K kg mol–1 × 0.1 mol kg–1 = 0.052 K
+Since water boils at 373.15 K at 1.013 bar pressure, therefore, the boiling point of solution will be 373.15 + 0.052 = 373.202 K.
+The boiling point of benzene is 353.23 K. When 1.80 g of a non-volatile solute was dissolved in 90 g of benzene, the boiling point is raised to
+354.11 K. Calculate the molar mass of the solute. Kb for benzene is 2.53
+K kg mol–1
+The elevation (DTb) in the boiling point = 354.11 K – 353. 23 K = 0.88 K
+Substituting these values in expression (2.33) we get
+2.53 K kg mol × 1.8 g × 1000 g kg
+0.88 K × 90 g = 58 g mol–1
+Therefore, molar mass of the solute, M2 = 58 g mol–1
+Fig. 1.8: Diagram showing DTf, depression of the freezing point of a solvent in a solution.
+Solution Solution Solution Solution Solution
+1.6.3 Depression of Freezing
+Reprint 2026-27
+19 Solutions
+Depression Constant or Cryoscopic Constant. The unit of Kf is K kg mol-1. Values of Kf for some common solvents are listed in Table 1.3.
+If w2 gram of the solute having molar mass as M2, present in w1 gram of solvent, produces the depression in freezing point DTf of the solvent then molality of the solute is given by the equation (1.31).
+M (1.31)
+Substituting this value of molality in equation (1.34) we get:
+DTf = f 2 2
+DTf = f 2
+× × 1000 w (1.35)
+M2 = f 2
+× × 1000 w (1.36)
+Thus for determining the molar mass of the solute we should know the quantities w1, w2, DTf, along with the molal freezing point depression constant.
+The values of Kf and Kb, which depend upon the nature of the solvent, can be ascertained from the following relations.
+1000 × 
+H (1.37)
+1000 × 
+H (1.38)
+Here the symbols R and M1 stand for the gas constant and molar mass of the solvent, respectively and Tf and Tb denote the freezing point and the boiling point of the pure solvent respectively in kelvin. Further,
+DfusH and DvapH represent the enthalpies for the fusion and vapourisation of the solvent, respectively.
+Solvent b. p./K Kb/K kg mol-1 f. p./K Kf/K kg mol-1
+Water 373.15 0.52 273.0 1.86
+Ethanol 351.5 1.20 155.7 1.99
+Cyclohexane 353.74 2.79 279.55 20.00
+Benzene 353.3 2.53 278.6 5.12
+Chloroform 334.4 3.63 209.6 4.79
+Carbon tetrachloride 350.0 5.03 250.5 31.8
+Carbon disulphide 319.4 2.34 164.2 3.83
+Diethyl ether 307.8 2.02 156.9 1.79
+Acetic acid 391.1 2.93 290.0 3.90
+Table 1.3: Molal Boiling Point Elevation and Freezing Point
+Depression Constants for Some Solvents
+Reprint 2026-27
+20 Chemistry
+Fig. 1.9
+Level of solution rises in the thistle funnel due to osmosis of solvent.
+45 g of ethylene glycol (C2H6O2) is mixed with 600 g of water. Calculate (a) the freezing point depression and (b) the freezing point of the solution.
+Depression in freezing point is related to the molality, therefore, the molality of the solution with respect to ethylene glycol = moles of ethylene glycol mass of water in kilogram
+Moles of ethylene glycol = 1
+62 g mol = 0.73 mol
+Mass of water in kg = 1
+1000g kg = 0.6 kg
+Hence molality of ethylene glycol = 0.73 mol
+0.60 kg = 1.2 mol kg –1
+Therefore freezing point depression,
+ÄTf = 1.86 K kg mol–1 × 1.2 mol kg–1 = 2.2 K
+Freezing point of the aqueous solution = 273.15 K – 2.2 K = 270.95 K
+1.00 g of a non-electrolyte solute dissolved in 50 g of benzene lowered the freezing point of benzene by 0.40 K. The freezing point depression constant of benzene is 5.12 K kg mol–1. Find the molar mass of the solute.
+Substituting the values of various terms involved in equation (1.36) we get,
+5.12 K kg mol × 1.00 g × 1000 g kg
+0.40 × 50 g
+= 256 g mol-1
+Thus, molar mass of the solute = 256 g mol-1
+Example 1.9 Example 1.9 Example 1.9 Example 1.9 Example 1.9
+Example 1.10 Example 1.10 Example 1.10 Example 1.10 Example 1.10
+There are many phenomena which we observe in nature or at home.
+For example, raw mangoes shrivel when pickled in brine (salt water);
+wilted flowers revive when placed in fresh water, blood cells collapse when suspended in saline water, etc. If we look into these processes we find one thing common in all, that is, all these substances are bound by membranes.
+These membranes can be of animal or vegetable origin and these occur naturally such as pig’s bladder or parchment or can be synthetic such as cellophane.
+These membranes appear to be continuous sheets or films, yet they contain a network of submicroscopic holes or pores. Small solvent
+Solution Solution Solution Solution Solution
+1.6.4 Osmosis and Osmotic
+Pressure
+Reprint 2026-27
+21 Solutions molecules, like water, can pass through these holes but the passage of bigger molecules like solute is hindered. Membranes having this kind of properties are known as semipermeable membranes (SPM).
+Assume that only solvent molecules can pass through these semi- permeable membranes. If this membrane is placed between the solvent and solution as shown in Fig. 1.9, the solvent molecules will flow through the membrane from pure solvent to the solution. This process of flow of the solvent is called osmosis.
+The flow will continue till the equilibrium is attained. The flow of the solvent from its side to solution side across a semipermeable membrane can be stopped if some extra pressure is applied on the solution. This pressure that just stops the flow of solvent is called osmotic pressure of the solution. The flow of solvent from dilute solution to the concentrated solution across a semipermeable membrane is due to osmosis. The important point to be kept in mind is that solvent molecules always flow from lower concentration to higher concentration of solution.
+The osmotic pressure has been found to depend on the concentration of the solution.
+The osmotic pressure of a solution is the excess pressure that must be applied to a solution to prevent osmosis, i.e., to stop the passage of solvent molecules through a semipermeable membrane into the solution. This is illustrated in Fig. 1.10. Osmotic pressure is a colligative property as it depends on the number of solute molecules and not on their identity.
+For dilute solutions, it has been found experimentally that osmotic pressure is proportional to the molarity, C of the solution at a given temperature T. Thus:
+P = C R T (1.39)
+Here P is the osmotic pressure and R is the gas constant.
+P = (n2 /V) R T (1.40)
+Here V is volume of a solution in litres containing n2 moles of solute.
+If w2 grams of solute, of molar mass, M2 is present in the solution, then n2 = w2 / M2 and we can write,
+M (1.41)
+or M2 = ∏
+V (1.42)
+Thus, knowing the quantities w2, T, P and V we can calculate the molar mass of the solute.
+Measurement of osmotic pressure provides another method of determining molar masses of solutes. This method is widely used to determine molar masses of proteins, polymers and other
+Fig. 1.10: The excess pressure equal to the osmotic pressure must be applied on the solution side to prevent osmosis.
+Reprint 2026-27
+22 Chemistry macromolecules. The osmotic pressure method has the advantage over other methods as pressure measurement is around the room temperature and the molarity of the solution is used instead of molality.
+As compared to other colligative properties, its magnitude is large even for very dilute solutions. The technique of osmotic pressure for determination of molar mass of solutes is particularly useful for biomolecules as they are generally not stable at higher temperatures and polymers have poor solubility.
+Two solutions having same osmotic pressure at a given temperature are called isotonic solutions. When such solutions are separated by semipermeable membrane no osmosis occurs between them. For example, the osmotic pressure associated with the fluid inside the blood cell is equivalent to that of
+0.9% (mass/volume) sodium chloride solution, called normal saline solution and it is safe to inject intravenously. On the other hand, if we place the cells in a solution containing more than 0.9% (mass/ volume) sodium chloride, water will flow out of the cells and they would shrink. Such a solution is called hypertonic. If the salt concentration is less than 0.9% (mass/volume), the solution is said to be hypotonic. In this case, water will flow into the cells if placed in this solution and they would swell.
+200 cm3 of an aqueous solution of a protein contains 1.26 g of the protein. The osmotic pressure of such a solution at 300 K is found to be 2.57 × 10-3 bar. Calculate the molar mass of the protein.
+The various quantities known to us are as follows: P = 2.57 × 10–3 bar,
+V = 200 cm3 = 0.200 litre
+T = 300 K
+R = 0.083 L bar mol-1 K-1
+Substituting these values in equation (2.42) we get
+1.26 g × 0.083 L bar K mol × 300 K
+2.57×10 bar × 0.200 L
+ = 61,022 g mol-1
+Example 1.11 Example 1.11 Example 1.11 Example 1.11 Example 1.11
+Solution Solution Solution Solution Solution
+The phenomena mentioned in the beginning of this section can be explained on the basis of osmosis. A raw mango placed in concentrated salt solution loses water via osmosis and shrivel into pickle. Wilted flowers revive when placed in fresh water. A carrot that has become limp because of water loss into the atmosphere can be placed into the water making it firm once again. Water will move into its cells through osmosis. When placed in water containing less than 0.9% (mass/ volume) salt, blood cells swell due to flow of water in them by osmosis.
+People taking a lot of salt or salty food experience water retention in tissue cells and intercellular spaces because of osmosis. The resulting
+Reprint 2026-27
+23 Solutions puffiness or swelling is called edema. Water movement from soil into plant roots and subsequently into upper portion of the plant is partly due to osmosis. The preservation of meat by salting and of fruits by adding sugar protects against bacterial action. Through the process of osmosis, a bacterium on salted meat or candid fruit loses water, shrivels and dies.
+The direction of osmosis can be reversed if a pressure larger than the osmotic pressure is applied to the solution side. That is, now the pure solvent flows out of the solution through the semi permeable membrane. This phenomenon is called reverse osmosis and is of great practical utility. Reverse osmosis is used in desalination of sea water. A schematic set up for the process is shown in Fig. 1.11.
+When pressure more than osmotic pressure is applied, pure water is squeezed out of the sea water through the membrane. A variety of polymer membranes are available for this purpose.
+The pressure required for the reverse osmosis is quite high. A workable porous membrane is a film of cellulose acetate placed over a suitable support. Cellulose acetate is permeable to water but impermeable to impurities and ions present in sea water. These days many countries use desalination plants to meet their potable water requirements.
+1.6.5 Reverse
+Osmosis and
+Purification
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+1.9 Vapour pressure of pure water at 298 K is 23.8 mm Hg. 50 g of urea (NH2CONH2) is dissolved in 850 g of water. Calculate the vapour pressure of water for this solution and its relative lowering.
+1.10 Boiling point of water at 750 mm Hg is 99.63°C. How much sucrose is to be added to 500 g of water such that it boils at 100°C.
+1.11 Calculate the mass of ascorbic acid (Vitamin C, C6H8O6) to be dissolved in
+75 g of acetic acid to lower its melting point by 1.5°C. Kf = 3.9 K kg mol-1.
+1.12 Calculate the osmotic pressure in pascals exerted by a solution prepared by dissolving 1.0 g of polymer of molar mass 185,000 in 450 mL of water at 37°C.
+We know that ionic compounds when dissolved in water dissociate into cations and anions. For example, if we dissolve one mole of KCl (74.5 g)
+in water, we expect one mole each of K+ and Cl– ions to be released in the solution. If this happens, there would be two moles of particles in the solution. If we ignore interionic attractions, one mole of KCl in one kg of water would be expected to increase the boiling point by
+2 × 0.52 K = 1.04 K. Now if we did not know about the degree of
+1.7 1.7 1.7 1.7 1.7 Abnormal Abnormal Abnormal Abnormal Abnormal
+Molar Molar Molar Molar Molar
+Masses Masses Masses Masses Masses
+Fig. 1.11: Reverse osmosis occurs when a pressure larger than the osmotic press

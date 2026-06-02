@@ -1,0 +1,16 @@
+Computer SCienCe – ClaSS xi 226
+Let’s peer review the case studies of others based on the parameters given under “DOCUMENTATION TIPS” at the end of Chapter 5 and provide a feedback to them.
+case study -Based QuestIons
+1. A bank is a financial institution which is involved in borrowing and lending of money. With advancement in technology, online banking, also known as internet banking allows customers of a bank to conduct a range of financial transactions through the bank’s website anytime, anywhere. As part of initial investigation you are suggested to
+• collect a bank’s application form. After careful analysis of the form, identify the information required for opening a savings account. Also enquire about the rate of interest offered for a saving account.
+• The basic two operations performed on an account are Deposit and Withdrawal. Write a menu driven program that accepts either of the two choices of Deposit and Withdrawal, then accepts an amount, performs the transaction and accordingly displays the balance.
+Remember, every bank has a requirement of minimum balance which needs to be taken care of during withdrawal operations. Enquire about the minimum balance required in your bank.
+• Collect the interest rates for opening a fixed deposit in various slabs in a savings bank account. Remember, rates may be different for senior citizens.
+Finally, write a menu driven program having the following options (use functions and appropriate data types):
+• Open a savings bank account
+• Deposit money
+• Withdraw money
+• Take details, such as amount and period for a
+Fixed Deposit and display its maturity amount for a particular customer.
+2. Participating in a quiz can be fun as it provides a competitive element. Some educational institutes use it as a tool to measure knowledge level, abilities
+Reprint 2026-27

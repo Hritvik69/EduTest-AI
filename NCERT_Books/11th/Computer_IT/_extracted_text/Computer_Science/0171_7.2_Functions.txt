@@ -1,0 +1,28 @@
+F unctions 159
+Program 7-14 Program to access any variable outside the function
+#Program 7-14
+#To access any variable outside the function def myFunc1( ):
+y = num + 5 print("Accessing num -> (global) in myFunc1, value = ",num)
+print("Accessing y-> (local variable of myFunc1) accessible, value=",y)
+myFunc1()
+print("Accessing num outside myFunc1 ",num)
+print("Accessing y outside myFunc1 ",y)
+Accessing num -> (global) in myFunc1, value = 5
+Accessing y-> (local variable of myFunc1) accessible, value = 10
+Accessing num outside myFunc1 5
+Traceback (most recent call last):
+File "C:\NCERT\Prog 7-14.py", line 9, in <module> print("Accessing y outside myFunc1 ",y)
+NameError: name ‘y’ is not defined
+Global variable output, Local variable output y generates error when it is accessed outside myfunc1()
+• Any modification to global variable is permanent and affects all the functions where it is used.
+• If a variable with the same name as the global variable is defined inside a function, then it is considered local to that function and hides the global variable.
+• If the modified value of a global variable is to be used outside the function, then the keyword global should be prefixed to the variable name in the function.
+Program 7-15 Write a program to access any variable outside the function.
+#Program 7-15
+#To access any variable outside the function def myfunc1():
+#Prefixing global informs Python to use the updated global
+#variable num outside the function global num print("Accessing num =",num)
+num = 10 print("num reassigned =",num)
+#function ends here myfunc1()
+print("Accessing num outside myfunc1",num)
+Reprint 2026-27

@@ -1,0 +1,44 @@
+S taCk 45
+• A function named display to show the contents of the stack.
+def display(glassStack):
+x=len(glassStack)
+print("Current elements in the stack for i in range(x-1,-1,-1):
+print(glassStack[i])
+Once we define the above functions we can use the following Python code to implement a stack of glasses.
+glassStack = list() # create empty stack
+#add elements to stack element='glass1' print("Pushing element ",element)
+opPush(glassStack,element)
+element='glass2' print("Pushing element ",element)
+opPush(glassStack,element)
+#display number of elements in stack print("Current number of elements in stack is",size(glassStack))
+#delete an element from the stack element=opPop(glassStack)
+print("Popped element is",element)
+#add new element to stack element='glass3' print("Pushing element ",element)
+opPush(glassStack,element)
+#display the last element added to the print("top element is",top(glassStack))
+#display all elements in the stack display(glassStack)
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 46
+#delete all elements from stack while True:
+item=opPop(glassStack)
+if item == None:
+print("Stack is empty now")
+print("Popped element is",item)
+The output of the above program will be as follows:
+Pushing element glass1
+Pushing element glass2
+Current number of elements in stack is 2
+Popped element is glass2
+Pushing element glass3 top element is glass3
+Current elements in the stack are:
+Popped element is glass3
+Popped element is glass1
+Underflow
+Stack is empty now
+3.5 NotatioNs for arithmetic expressioNs
+We write arithmetic expressions using operators in between operands, like x + y, 2 - 3 * y, etc. and use parentheses () to order the evaluation of operators in complex expressions. These expressions follow infix representation and are evaluated using BODMAS rule.
+Polish mathematician Jan Lukasiewicz in the
+1920's introduced a different way of representing arithmetic expression, called polish notation. In such notation, operators are written before their operands.
+So the order of operations and operands determines the result, making parentheses unnecessary. For example, we can write x+y in polish notation as +xy. This is also called prefix notation as we prefix the operator before operands.
+By reversing this logic, we can write an expression by putting operators after their operands. For example, x+y can be written as xy+. This is called reverse polish
+Reprint 2026-27

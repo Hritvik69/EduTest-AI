@@ -1,0 +1,16 @@
+DatabaSe ConCeptS 119 (B) Data Constraint
+Sometimes we put certain restrictions or limitations on the type of data that can be inserted in one or more columns of a table. This is done by specifying one or more constraints on that column(s) while creating the tables. For example, one can define the constraint that the column mobile number can only have non-negative integer values of exactly 10 digits. Since each student shall have one unique roll number, we can put the NOT
+NULL and UNIQUE constraints on the RollNumber column. Constraints are used to ensure accuracy and reliability of data in the database.
+(C) Meta-data or Data Dictionary
+The database schema along with various constraints on the data is stored by DBMS in a database catalog or dictionary, called meta-data. A meta-data is data about the data.
+(D) Database Instance
+When we define database structure or schema, state of database is empty i.e. no data entry is there. After loading data, the state or snapshot of the database at any given time is the database instance. We may then retrieve data through queries or manipulate data
+Teacher Office Staff
+Guardian
+Attendance
+Database
+DBMS Software processes Query
+DBMS Software access database and its definition
+Query Result
+Figure 8.2: STUDENTATTENDANCE database environment
+Reprint 2026-27

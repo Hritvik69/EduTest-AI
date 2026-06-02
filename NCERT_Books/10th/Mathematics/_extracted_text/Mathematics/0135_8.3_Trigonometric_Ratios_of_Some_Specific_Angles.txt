@@ -1,0 +1,156 @@
+I NTRODUCTION TO TRIGONOMETRY 121
+EXERCISE 8.1
+1. In  ABC, right-angled at B, AB = 24 cm, BC = 7 cm. Determine :
+(i) sin A, cos A (ii) sin C, cos C
+2. In Fig. 8.13, find tan P – cot R.
+3. If sin A = 3 ,
+4 calculate cos A and tan A.
+4. Given 15 cot A = 8, find sin A and sec A.
+5. Given sec  = 13 ,
+12 calculate all other trigonometric ratios.
+6. If  A and  B are acute angles such that cos A = cos B, then show that  A =  B.
+7. If cot  = 7 ,
+8 evaluate : (i) (1 sin ) (1 sin ) , (1 cos ) (1 cos )
+    (ii) cot2 
+8. If 3 cot A = 4, check whether
+1 + tan A
+ = cos 2 A – sin 2
+A or not.
+9. In triangle ABC, right-angled at B, if tan A = 1 ,
+3 find the value of:
+(i) sin A cos C + cos A sin C (ii) cos A cos C – sin A sin C
+10. In  PQR, right-angled at Q, PR + QR = 25 cm and PQ = 5 cm. Determine the values of sin P, cos P and tan P.
+11. State whether the following are true or false. Justify your answer.
+(i) The value of tan A is always less than 1.
+(ii) sec A = 12
+5 for some value of angle A.
+(iii) cos A is the abbreviation used for the cosecant of angle A.
+(iv) cot A is the product of cot and A.
+(v) sin  = 4
+3 for some angle .
+8.3 Trigonometric Ratios of Some Specific Angles
+From geometry, you are already familiar with the construction of angles of 30°, 45°,
+60° and 90°. In this section, we will find the values of the trigonometric ratios for these angles and, of course, for 0°.
+Fig. 8.13
+Reprint 2026-27
+122 MATHEMATICS
+Trigonometric Ratios of 45°
+In  ABC, right-angled at B, if one angle is 45°, then the other angle is also 45°, i.e.,  A =  C = 45° (see Fig. 8.14).
+So, BC = AB (Why?)
+Now, Suppose BC = AB = a.
+Then by Pythagoras Theorem, AC2 = AB 2 + BC 2 = a2 + a2 = 2a2 and, therefore, AC = 2 a 
+Using the definitions of the trigonometric ratios, we have :
+sin 45° = side opposite to angle 45° BC 1 hypotenuse AC 2 2 cos 45° = side adjacent to angle 45° AB 1 hypotenuse AC 2 2 tan 45° = side opposite to angle 45° BC 1 side adjacent to angle 45° AB
+Also, cosec 45° = 1 2 sin 45 
+ , sec 45° = 1 2 cos 45 
+ , cot 45° = 1 1 tan 45 
+Trigonometric Ratios of 30° and 60°
+Let us now calculate the trigonometric ratios of 30° and 60°. Consider an equilateral triangle ABC. Since each angle in an equilateral triangle is 60°, therefore,
+ A =  B =  C = 60°.
+Draw the perpendicular AD from A to the side BC (see Fig. 8.15).
+Now  ABD   ACD (Why?)
+Therefore, BD = DC and  BAD =  CAD (CPCT)
+Now observe that:
+ ABD is a right triangle, right- angled at D with  BAD = 30° and  ABD = 60° (see Fig. 8.15).
+Fig. 8.15
+Fig. 8.14
+Reprint 2026-27
+I NTRODUCTION TO TRIGONOMETRY 123
+As you know, for finding the trigonometric ratios, we need to know the lengths of the sides of the triangle. So, let us suppose that AB = 2a.
+Then, BD = 1 BC = and AD 2 = AB 2 – BD 2 = (2a) 2 – (a) 2 = 3a2 ,
+Therefore, AD = 3 a
+Now, we have :
+sin 30° = BD 1
+  , cos 30° = AD 3 3 tan 30° = BD 1
+Also, cosec 30° = 1 2, sin 30 
+ sec 30° = 1 2 cos 30 3 cot 30° = 1 3 tan 30 
+Similarly, sin 60° = AD 3 3
+  , cos 60° = 1
+2 , tan 60° = 3 , cosec 60° = 2 ,
+3 sec 60° = 2 and cot 60° = 1
+Trigonometric Ratios of 0° and 90°
+Let us see what happens to the trigonometric ratios of angle
+A, if it is made smaller and smaller in the right triangle ABC (see Fig. 8.16), till it becomes zero. As  A gets smaller and smaller, the length of the side BC decreases.The point C gets closer to point B, and finally when  A becomes very close to 0°, AC becomes almost the same as AB (see Fig. 8.17).
+Fig. 8.17
+Fig. 8.16
+Reprint 2026-27
+124 MATHEMATICS
+When  A is very close to 0°, BC gets very close to 0 and so the value of sin A = BC
+AC is very close to 0. Also, when  A is very close to 0°, AC is nearly the same as AB and so the value of cos A = AB
+AC is very close to 1.
+This helps us to see how we can define the values of sin A and cos A when
+A = 0°. We define : sin 0° = 0 and cos 0° = 1.
+Using these, we have :
+tan 0° = sin 0° cos 0° = 0, cot 0° = 1 , tan 0° which is not defined. (Why?)
+sec 0° = 1 cos 0 = 1 and cosec 0° = 1 , sin 0 which is again not defined.(Why?)
+Now, let us see what happens to the trigonometric ratios of  A, when it is made larger and larger in  ABC till it becomes 90°. As  A gets larger and larger,  C gets smaller and smaller. Therefore, as in the case above, the length of the side AB goes on decreasing. The point A gets closer to point B. Finally when  A is very close to 90°,
+ C becomes very close to 0° and the side AC almost coincides with side BC (see Fig. 8.18).
+Fig. 8.18
+When  C is very close to 0°,  A is very close to 90°, side AC is nearly the same as side BC, and so sin A is very close to 1. Also when  A is very close to 90°,
+ C is very close to 0°, and the side AB is nearly zero, so cos A is very close to 0.
+So, we define : sin 90° = 1 and cos 90° = 0.
+Now, why don’t you find the other trigonometric ratios of 90°?
+We shall now give the values of all the trigonometric ratios of 0°, 30°, 45°, 60° and 90° in Table 8.1, for ready reference.
+Reprint 2026-27
+I NTRODUCTION TO TRIGONOMETRY 125
+Table 8.1
+     A 0° 30° 45° 60° 90° sin A 0 1 cos A 1 3 tan A 0 1
+3 1 3 Not defined cosec A Not defined 2 2 sec A 1 2
+3 2 2 Not defined cot A Not defined 3 1 1
+Remark : From the table above you can observe that as  A increases from 0° to
+90°, sin A increases from 0 to 1 and cos A decreases from 1 to 0.
+Let us illustrate the use of the values in the table above through some examples.
+Example 6 : In  ABC, right-angled at B,
+AB = 5 cm and  ACB = 30° (see Fig. 8.19).
+Determine the lengths of the sides BC and AC.
+Solution : To find the length of the side BC, we will choose the trigonometric ratio involving BC and the given side AB. Since BC is the side adjacent to angle
+C and AB is the side opposite to angle C, therefore
+BC = tan C
+BC = tan 30° = 1 which gives BC = 5 3 cm
+Fig. 8.19
+Reprint 2026-27
+126 MATHEMATICS
+To find the length of the side AC, we consider sin 30° = AB
+AC (Why?)
+i.e., AC = 10 cm
+Note that alternatively we could have used Pythagoras theorem to determine the third side in the example above, i.e., AC = 2 2 2 2
+AB BC 5 (5 3) cm = 10cm.   
+Example 7 : In  PQR, right - angled at
+Q (see Fig. 8.20), PQ = 3 cm and PR = 6 cm.
+Determine  QPR and  PRQ.
+Solution : Given PQ = 3 cm and PR = 6 cm.
+Therefore, PQ
+PR = sin R or sin R = 3 1
+So,  PRQ = 30° and therefore,  QPR = 60°. (Why?)
+You may note that if one of the sides and any other part (either an acute angle or any side) of a right triangle is known, the remaining sides and angles of the triangle can be determined.
+Example 8 : If sin (A – B) = 1 ,
+2 cos (A + B) = 1 ,
+2 0° < A + B  90°, A > B, find A
+Solution : Since, sin (A – B) = 1
+2 , therefore, A – B = 30° (Why?) (1)
+Also, since cos (A + B) = 1
+2 , therefore, A + B = 60° (Why?) (2)
+Solving (1) and (2), we get : A = 45° and B = 15°.
+Fig. 8.20
+Reprint 2026-27
+I NTRODUCTION TO TRIGONOMETRY 127
+EXERCISE 8.2
+1. Evaluate the following :
+(i) sin 60° cos 30° + sin 30° cos 60° (ii) 2 tan2 45° + cos2 30° – sin2 60° (iii) cos 45° sec 30° + cosec 30° (iv) sin 30° + tan 45° – cosec 60° sec 30° + cos 60° + cot 45°
+5 cos 60 4 sec 30 tan 45 sin 30 cos 30
+    
+2. Choose the correct option and justify your choice :
+2 tan 30
+1 tan 30 (A) sin 60° (B) cos 60° (C) tan 60° (D) sin 30°
+1 tan 45 (A) tan 90° (B) 1 (C) sin 45° (D) 0 (iii) sin 2A = 2 sin A is true when A = (A) 0° (B) 30° (C) 45° (D) 60°
+2 tan 30
+1 tan 30 (A) cos 60° (B) sin 60° (C) tan 60° (D) sin 30°
+3. If tan (A + B) = 3 and tan (A – B) = 1
+3 ; 0° < A + B  90°; A > B, find A and B.
+4. State whether the following are true or false. Justify your answer.
+(i) sin (A + B) = sin A + sin B.
+(ii) The value of sin  increases as  increases.
+(iii) The value of cos  increases as  increases.
+(iv) sin  = cos  for all values of .
+(v) cot A is not defined for A = 0°.
+Reprint 2026-27

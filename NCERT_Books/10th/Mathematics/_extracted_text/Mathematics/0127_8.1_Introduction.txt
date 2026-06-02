@@ -1,0 +1,13 @@
+I NTRODUCTION TO TRIGONOMETRY 113
+There is perhaps nothing which so occupies the middle position of mathematics as trigonometry.
+– J.F. Herbart (1890)
+8.1 Introduction
+You have already studied about triangles, and in particular, right triangles, in your earlier classes. Let us take some examples from our surroundings where right triangles can be imagined to be formed. For instance :
+1. Suppose the students of a school are visiting Qutub Minar. Now, if a student is looking at the top of the Minar, a right triangle can be imagined to be made, as shown in Fig 8.1. Can the student find out the height of the Minar, without actually measuring it?
+2. Suppose a girl is sitting on the balcony of her house located on the bank of a river. She is looking down at a flower pot placed on a stair of a temple situated nearby on the other bank of the river.
+A right triangle is imagined to be made in this situation as shown in Fig.8.2. If you know the height at which the person is sitting, can you find the width of the river?
+INTRODUCTION TO
+TRIGONOMETRY
+Fig. 8.1
+Fig. 8.2
+Reprint 2026-27

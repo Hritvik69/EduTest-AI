@@ -1,0 +1,46 @@
+Computer SCienCe - ClaSS Xii 62
+• A statement to create deque, with name myDeque.
+myDeque = list()
+• A function insertFront(), to insert an element at the front of deque having two parameters - name of deque and element to be inserted. As the element is to be inserted in the beginning, we will use insert()
+with index 0 for it.
+def insertFront(myDeque, element):
+myDeque.insert(0,element)
+• A function insertRear(), to insert an element at the rear of deque. It’s implementation will be the same as enqueue() of normal queue requiring two parameters same as insertFront().
+• A function isEmpty(), to check the presence of element(s) in deque will be the same as the function, with the same name, defined for normal queue.
+• A function deletionRear(), to delete an element from the rear of the deque. It only requires the name of deque and returns the deleted element. We will use pop() without parameter(s) to delete the last element of the deque.
+def deletionRear(myDeque):
+if not (isEmpty()):
+return myDeque.pop()
+# removing data from end of list print(“Deque empty”)
+• A function deletionFront(), to delete an element from the front of deque. It’s implementation will be the same as dequeue() of normal queue.
+• A function getFront(), to read value from the front of deque, without removing it from the queue when the queue is not empty. It accepts the name of deque as parameter and returns a copy of value.
+def getFront(mydeque):
+if not (isEmpty()):
+return mydeque[0] print(“ Queue empty”)
+• A function getRear(), to read value from the rear of the deque, without removing it from the deque. The
+Reprint 2026-27
+Q ueue 63 function accepts deque as argument and returns a copy of value, when the queue is not empty.
+def getRear(mydeque):
+if not (isempty()):
+return mydeque[len(mydeque)-1] print(“ Deque empty”)
+Let us write a main(), function to invoke various
+Deque functions :
+Program 4-2 Implementation of Deque in Python def insertFront(myDeque,element):
+myDeque.insert(0,element)
+def getFront(myDeque):
+if not (isEmpty(myDeque)):
+return myDeque[0] print("Queue underflow")
+def getRear(myDeque):
+if not (isEmpty(myDeque)):
+return myDeque[len(myDeque)-1] print ("Queue underflow")
+def insertRear(myDeque,element):
+myDeque.append(element)
+def isEmpty(myDeque):
+if len(myDeque) == 0:
+return True return False def deletionRear(myDeque):
+if not isEmpty(myDeque):
+return myDeque.pop()
+print("Queue underflow")
+def deletionFront(myDeque):
+if isEmpty(myDeque):
+Reprint 2026-27

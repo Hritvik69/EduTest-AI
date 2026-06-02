@@ -1,0 +1,56 @@
+T uples and dicTionaries 223 exercIse
+1. Consider the following tuples, tuple1 and tuple2:
+tuple1 = (23,1,45,67,45,9,55,45)
+tuple2 = (100,200)
+Find the output of the following statements:
+i. print(tuple1.index(45))
+ii. print(tuple1.count(45))
+iii. print(tuple1 + tuple2)
+iv. print(len(tuple2))
+v. print(max(tuple1))
+vi print(min(tuple1))
+• Tuples are immutable sequences, i.e., we cannot change the elements of a tuple once it is created.
+• Elements of a tuple are put in round brackets separated by commas.
+• If a sequence has comma separated elements without parentheses, it is also treated as a tuple.
+• Tuples are ordered sequences as each element has a fixed position.
+• Indexing is used to access the elements of the tuple; two way indexing holds in dictionaries as in strings and lists.
+• Operator ‘+’ adds one sequence (string, list, tuple)
+to the end of other.
+• Operator ‘*’ repeats a sequence (string, list, tuple)
+by specified number of times
+• Membership operator ‘in’ tells if an element is present in the sequence or not and ‘not in’ does the opposite.
+• Tuple manipulation functions are: len(), tuple(), count(), index(), sorted(), min(), max(),sum().
+• Dictionary is a mapping (non-scalar) data type. It is an unordered collection of key-value pair; key- value pair are put inside curly braces.
+• Each key is separated from its value by a colon.
+• Keys are unique and act as the index.
+• Keys are of immutable type but values can be mutable.
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 224 vii. print(sum(tuple2))
+viii. p r i n t ( s o r t e d ( t u p l e 1 ) )
+print(tuple1)
+2. Consider the following dictionary stateCapital:
+stateCapital = {"AndhraPradesh":"Hyderabad",
+"Bihar":"Patna","Maharashtra":"Mumbai",
+"Rajasthan":"Jaipur"}
+Find the output of the following statements:
+i. print(stateCapital.get("Bihar"))
+ii. print(stateCapital.keys())
+iii. print(stateCapital.values())
+iv. print(stateCapital.items())
+v. print(len(stateCapital))
+vi print("Maharashtra" in stateCapital)
+vii. print(stateCapital.get("Assam"))
+viii. del stateCapital["Rajasthan"] print(stateCapital)
+3. “Lists and Tuples are ordered”. Explain.
+4. With the help of an example show how can you return more than one value from a function.
+5. What advantages do tuples have over lists?
+6. When to use tuple or dictionary in Python. Give some examples of programming situations mentioning their usefulness.
+7. Prove with the help of an example that the variable is rebuilt in case of immutable data types.
+8. TypeError occurs while statement 2 is running.
+Give reason. How can it be corrected?
+>>> tuple1 = (5) #statement 1
+>>> len(tuple1) #statement 2
+Programming Problems
+1. Write a program to read email IDs of n number of students and store them in a tuple. Create two new tuples, one to store only the usernames from the email IDs and second to store domain names from the email IDs. Print all three tuples at the end of the program. [Hint: You may use the function split()]
+2. Write a program to input names of n students and store them in a tuple. Also, input a name from the user and find if this student is present in the tuple or not.
+Reprint 2026-27

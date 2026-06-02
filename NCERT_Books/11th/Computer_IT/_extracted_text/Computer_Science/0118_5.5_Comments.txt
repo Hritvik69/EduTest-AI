@@ -1,0 +1,35 @@
+Computer SCienCe – ClaSS xi 106
+Solution:
+= 20 + (30 * 40) #Step 1
+#precedence of * is more than that of +
+= 20 + 1200 #Step 2
+= 1220 #Step 3
+Example 5.10 How will Python evaluate the following expression?
+20 - 30 + 40
+Solution:
+The two operators (–) and (+) have equal precedence.
+Thus, the first operator, i.e., subtraction is applied before the second operator, i.e., addition (left to right).
+= (20 – 30) + 40 #Step 1
+= -10 + 40 #Step 2
+= 30 #Step 3
+Example 5.11 How will Python evaluate the following expression?
+(20 + 30) * 40
+Solution:
+= (20 + 30) * 40 # Step 1
+#using parenthesis(), we have forced precedence of + to be more than that of *
+= 50 * 40 # Step 2
+= 2000 # Step 3
+Example 5.12 How will the following expression be evaluated in Python?
+15.0 / 4 + (8 + 3.0)
+Solution:
+= 15.0 / 4 + (8.0 + 3.0) #Step 1
+= 15.0 / 4.0 + 11.0 #Step 2
+= 3.75 + 11.0 #Step 3
+= 14.75 #Step 4
+5.10 statement
+In Python, a statement is a unit of code that the Python interpreter can execute.
+Example 5.13
+>>> x = 4 #assignment statement
+>>> cube = x ** 3 #assignment statement
+>>> print (x, cube) #print statement
+Reprint 2026-27

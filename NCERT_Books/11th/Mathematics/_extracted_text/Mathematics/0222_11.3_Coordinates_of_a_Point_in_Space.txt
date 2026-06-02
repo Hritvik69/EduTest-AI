@@ -1,0 +1,37 @@
+210 MATHEMATICS accordingly. Thus, to each point P in the space there corresponds an ordered triplet (x, y, z) of real numbers.
+Conversely, given any triplet (x, y, z), we would first fix the point L on the x-axis corresponding to x, then locate the point M in the XY-plane such that (x, y) are the coordinates of the point M in the XY-plane. Note that LM is perpendicular to the x-axis or is parallel to the y-axis. Having reached the point M, we draw a perpendicular
+MP to the XY-plane and locate on it the point P corresponding to z. The point P so obtained has then the coordinates (x, y, z). Thus, there is a one to one correspondence between the points in space and ordered triplet (x, y, z) of real numbers.
+Alternatively, through the point P in the space, we draw three planes parallel to the coordinate planes, meeting the x-axis, y-axis and z-axis in the points A, B and C, respectively (Fig 11.3). Let OA = x, OB = y and OC = z.
+Then, the point P will have the coordinates x, y and z and we write P (x, y, z). Conversely, given x, y and z, we locate the three points A, B and
+C on the three coordinate axes. Through the points A, B and C we draw planes parallel to the YZ-plane, ZX-plane and XY-plane, respectively. The point of interesection of these three planes, namely, ADPF, BDPE and CEPF is obviously the point P, corresponding to the ordered triplet (x, y, z). We observe that if P (x, y, z) is any point in the space, then x, y and z are perpendicular distances from YZ, ZX and XY planes, respectively.
+ANote The coordinates of the origin O are (0,0,0). The coordinates of any point on the x-axis will be as (x,0,0) and the coordinates of any point in the YZ-plane will be as (0, y, z).
+Remark The sign of the coordinates of a point determine the octant in which the point lies. The following table shows the signs of the coordinates in eight octants.
+Table 11.1
+Fig 11.3
+I II III IV V VI VII VIII x + – – + + – – + y + + – – + + – – z + + + + – – – –
+Coordinates
+Reprint 2026-27
+INTRODUCTION TO THREE DIMENSIONAL GEOMETRY 211
+Example 1 In Fig 11.3, if P is (2,4,5), find the coordinates of F.
+Solution For the point F, the distance measured along OY is zero. Therefore, the coordinates of F are (2,0,5).
+Example 2 Find the octant in which the points (–3,1,2) and (–3,1,– 2) lie.
+Solution From the Table 11.1, the point (–3,1, 2) lies in second octant and the point (–3, 1, – 2) lies in octant VI.
+EXERCISE 11.1
+1. A point is on the x -axis. What are its y-coordinate and z-coordinates?
+2. A point is in the XZ-plane. What can you say about its y-coordinate?
+3. Name the octants in which the following points lie:
+(1, 2, 3), (4, –2, 3), (4, –2, –5), (4, 2, –5), (– 4, 2, –5), (– 4, 2, 5), (–3, –1, 6) (– 2, – 4, –7).
+4. Fill in the blanks:
+(i) The x-axis and y-axis taken together determine a plane known as_______.
+(ii) The coordinates of points in the XY-plane are of the form _______.
+(iii) Coordinate planes divide the space into ______ octants.
+11.4 Distance between Two Points
+We have studied about the distance between two points in two-dimensional coordinate system. Let us now extend this study to three-dimensional system.
+Let P(x1, y1, z1) and Q ( x2, y2, z2)
+be two points referred to a system of rectangular axes OX, OY and OZ.
+Through the points P and Q draw planes parallel to the coordinate planes so as to form a rectangular parallelopiped with one diagonal PQ (Fig 11.4).
+Now, since ∠PAQ is a right angle, it follows that, in triangle PAQ,
+PQ2 = PA2 + AQ2 ... (1)
+Also, triangle ANQ is right angle triangle with ∠ANQ a right angle.
+Fig 11.4
+Reprint 2026-27

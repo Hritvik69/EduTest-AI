@@ -1,0 +1,121 @@
+32 32 32 32 32
+Introductory Macroeconomics
+At a very fundamental level, the macroeconomy (it refers to the economy that we study in macroeconomics) can be seen as working in a circular way. The firms employ inputs supplied by households and produce goods and services to be sold to households. Households get the remuneration from the firms for the services rendered by them and buy goods and services produced by the firms. So we can calculate the aggregate value of goods and services produced in the economy by any of the three methods (a) measuring the aggregate value of factor payments (income method) (b) measuring the aggregate value of goods and services produced by the firms (product method) (c) measuring the aggregate value of spending received by the firms (expenditure method). In the product method, to avoid double counting, we need to deduct the value of intermediate goods and take into account only the aggregate value of final goods and services. We derive the formulae for calculating the aggregate income of an economy by each of these methods. We also take note that goods can also be bought for making investments and these add to the productive capacity of the investing firms. There may be different categories of aggregate income depending on whom these are accruing to. We have pointed out the difference between
+GDP, GNP, NNP at market price, NNP at factor cost, PI and PDI. Since prices of goods and services may vary, we have discussed how to calculate the three important price indices (GDP deflator, CPI, WPI). Finally we have noted that it may be incorrect to treat GDP as an index of the welfare of the country.
+Summary Summary Summary Summary Summary
+Final goods Consumption goods
+Consumer durables Capital goods
+Intermediate goods Stocks
+Flows Gross investment
+Net investment Depreciation
+Wage Interest
+Profit Rent
+Circular flow of income Product method of calculating
+National Income
+Expenditure method of calculating Income method of calculating
+National Income National Income
+Macroeconomic model Input
+Value added Inventories
+Planned change in inventories Unplanned change in inventories
+Gross Domestic Product (GDP) Net Domestic Product (NDP)
+Gross National Product (GNP) Net National Product (NNP)
+(at market price)
+NNP (at factor cost) or Undistributed profits
+National Income (NI)
+Net interest payments made Corporate tax by households
+Transfer payments to the Personal Income (PI)
+households from the government and firms
+Personal tax payments Non-tax payments
+Personal Disposable Income (PDI) National Disposable Income
+K K K K Key Conceptsey Concepts ey Concepts ey Concepts ey Concepts
+Reprint 2026-27
+33 33 33 33 33 National Income Accounting
+1. What are the four factors of production and what are the remunerations to each of these called?
+2. Why should the aggregate final expenditure of an economy be equal to the aggregate factor payments? Explain.
+3. Distinguish between stock and flow. Between net investment and capital which is a stock and which is a flow? Compare net investment and capital with flow of water into a tank.
+4. What is the difference between planned and unplanned inventory accumulation? Write down the relation between change in inventories and value added of a firm.
+5. Write down the three identities of calculating the GDP of a country by the three methods. Also briefly explain why each of these should give us the same value of GDP.
+6. Define budget deficit and trade deficit. The excess of private investment over saving of a country in a particular year was Rs 2,000 crores. The amount of budget deficit was ( – ) Rs 1,500 crores. What was the volume of trade deficit of that country?
+7. Suppose the GDP at market price of a country in a particular year was Rs 1,100 crores.
+Net Factor Income from Abroad was Rs 100 crores. The value of Indirect taxes –
+Subsidies was Rs 150 crores and National Income was Rs 850 crores. Calculate the aggregate value of depreciation.
+8. Net National Product at Factor Cost of a particular country in a year is
+Rs 1,900 crores. There are no interest payments made by the households to the firms/government, or by the firms/government to the households. The Personal
+Disposable Income of the households is Rs 1,200 crores. The personal income taxes paid by them is Rs 600 crores and the value of retained earnings of the firms and government is valued at Rs 200 crores. What is the value of transfer payments made by the government and firms to the households?
+9. From the following data, calculate Personal Income and Personal Disposable
+Rs (crore)
+(a) Net Domestic Product at factor cost 8,000 (b) Net Factor Income from abroad 200 (c) Undisbursed Profit 1,000 (d) Corporate Tax 500 (e) Interest Received by Households 1,500 (f) Interest Paid by Households 1,200 (g) Transfer Income 300 (h) Personal Tax 500
+10. In a single day Raju, the barber, collects Rs 500 from haircuts; over this day, his equipment depreciates in value by Rs 50. Of the remaining Rs 450, Raju pays sales tax worth Rs 30, takes home Rs 200 and retains Rs 220 for improvement and buying of new equipment. He further pays Rs 20 as income tax from his income. Based on this information, complete Raju’s contribution to the following measures of income (a) Gross Domestic Product (b) NNP
+Private Income Nominal GDP
+Real GDP Base year
+GDP Deflator Consumer Price Index (CPI)
+Wholesale Price Index (WPI) Externalities
+Exercises Exercises Exercises Exercises Exercises
+?Reprint 2026-27
+34 34 34 34 34
+Introductory Macroeconomics
+Table 2.5: GVA and GDP for India at constant (2024–25) prices
+6These are provisional estimates released by the CSO in 2018.
+Suggested Readings
+1. Bhaduri, A., 1990. Macroeconomics: The Dynamics of Commodity Production, pages
+1 – 27, Macmillan India Limited, New Delhi.
+2. Branson, W. H., 1992. Macroeconomic Theory and Policy, (third edition), pages
+15 – 34, Harper Collins Publishers India Pvt Ltd., New Delhi.
+3. Dornbusch, R and S. Fischer. 1988. Macroeconomics, (fourth edition) pages 29–
+62, McGraw Hill, Paris.
+4. Mankiw, N. G., 2000. Macroeconomics, (fourth edition) pages 15–76, Macmillan
+Worth Publishers, New York.
+at market price (c) NNP at factor cost (d) Personal income (e) Personal disposable income.
+11. The value of the nominal GNP of an economy was Rs 2,500 crores in a particular year. The value of GNP of that country during the same year, evaluated at the prices of same base year, was Rs 3,000 crores. Calculate the value of the GNP deflator of the year in percentage terms. Has the price level risen between the base year and the year under consideration?
+12. Write down some of the limitations of using GDP as an index of welfare of a country.
+PE (Provisional Estimates)
+S.No. Item 2024–25 (Amount In
+` Crore)
+1. GVA at basic prices 17187446
+2. Net production taxes 1609509
+3. GDP (1+2) 18796955
+Appendix 2.1 Appendix 2.1 Appendix 2.1 Appendix 2.1 Appendix 2.1
+Source: Annual Report, Reserve Bank of India, 2024–25 (Handbook of Statistics on Indian Economy)
+Reprint 2026-27
+35 35 35 35 35 National Income Accounting
+S.No. Item (Provisional
+Estimates)
+(Rs. In Crore)
+Table 2.6: Components of Gross Domestic Product (2011–12)
+Constant Prices
+Appendix 2.2 Appendix 2.2 Appendix 2.2 Appendix 2.2 Appendix 2.2
+Source: Annual Report, Reserve Bank of India, 2024–25 (Handbook of Statistics on
+Indian Economy)
+1. Private Final Consumption Expenditure (PFCE) 10619579
+2. Government Final Consumption Expenditure 1707730
+3. Gross Fixed Capital Formation (GFCF) 6333084
+4. Change in Stocks 319228
+5. Valuables 270758
+Investment (3+4+5) 6923070
+6. Exports of Goods and Services 4068098
+7. Imports of Goods and Services 4229390
+Net Exports (6-7) 161292
+8. Discrepancies 292131
+9. GDP (1+2+3+4+5+6-7+8) 187955
+Reprint 2026-27
+36 36 36 36 36
+Introductory
+Macroeconomics
+Money and Banking Money and Banking Money and Banking Money and Banking Money and Banking
+Money is the commonly accepted medium of exchange. In an economy which consists of only one individual there cannot be any exchange of commodities and hence there is no role for money.
+Even if there is more than one individual but these individuals do not take part in market transactions, example: family living on an isolated island, money has no function for them. However, as soon as there is more than one economic agent who engage themselves in transactions through the market, money becomes an important instrument for facilitating these exchanges. Economic exchanges without the mediation of money are referred to as barter exchanges. However, they presume the rather improbable double coincidence of wants. Consider, for example, an individual who has a surplus of rice which she wishes to exchange for clothing. If she is not lucky enough she may not be able to find another person who has the diametrically opposite demand for rice with a surplus of clothing to offer in exchange. The search costs may become prohibitive as the number of individuals increases. Thus, to smoothen the transaction, an intermediate good is necessary which is acceptable to both parties. Such a good is called money. The individuals can then sell their produces for money and use this money to purchase the commodities they need. Though facilitation of exchanges is considered to be the principal role of money, it serves other purposes as well. Following are the main functions of money in a modern economy.
+3.1 FUNCTIONS OF MONEY
+As explained above, the first and foremost role of money is that it acts as a medium of exchange. Barter exchanges become extremely difficult in a large economy because of the high costs people would have to incur looking for suitable persons to exchange their surpluses.
+Money also acts as a convenient unit of account. The value of all goods and services can be expressed in monetary units. When we say that the value of a certain wristwatch is Rs 500 we mean that the wristwatch can be exchanged for 500 units of money, where a unit of money is rupee in this case. If the price of a pencil is Rs 2 and that of a pen is Rs 10 we can calculate the relative price of a pen with respect to a pencil, viz. a pen is worth 10 ÷ 2 =
+5 pencils. The same notion can be used to calculate the value of
+Reprint 2026-27
+37 37 37 37 37 Money and Banking money itself with respect to other commodities. In the above example, a rupee is worth 1 ÷ 2 = 0.5 pencil or 1 ÷ 10 = 0.1 pen. Thus if prices of all commodities increase in terms of money i.e., there is a general increase in the price level, the value of money in terms of any commodity must have decreased – in the sense that a unit of money can now purchase less of any commodity. We call it a deterioration in the purchasing power of money.
+A barter system has other deficiencies. It is difficult to carry forward one’s wealth under the barter system. Suppose you have an endowment of rice which you do not wish to consume today entirely. You may regard this stock of surplus rice as an asset which you may wish to consume, or even sell off, for acquiring other commodities at some future date. But rice is a perishable item and cannot be stored beyond a certain period. Also, holding the stock of rice requires a lot of space. You may have to spend considerable time and resources looking for people with a demand for rice when you wish to exchange your stock for buying other commodities. This problem can be solved if you sell your rice for money. Money is not perishable and its storage costs are also considerably lower. It is also acceptable to anyone at any point of time. Thus money can act as a store of value for individuals. Wealth can be stored in the form of money for future use.
+However, to perform this function well, the value of money must be sufficiently stable. A rising price level may erode the purchasing power of money. It may be noted that any asset other than money can also act as a store of value, e.g. gold, landed property, houses or even bonds (to be introduced shortly). However, they may not be easily convertible to other commodities and do not have universal acceptability.
+Some countries have made an attempt to move towards an economy which use less of cash and more of digital transactions. A cashless society describes an economic state whereby financial transactions are not connected with money in the form of physical bank notes or coins but rather through the transfer of digital information (usually an electronic representation of money) between the transacting parties. In India government has been consistently investing in various reforms for greater financial inclusion. During the last few years’ initiatives such as Jan Dhan accounts, Aadhar enabled payment systems, e –Wallets, National financial Switch (NFS) and others have strengthened the government resolve to go cashless. Today, financial inclusion is seen as a realistic dream because of mobile and smart phone penetration across the country.
+3.2 DEMAND FOR MONEY AND SUPPLY OF MONEY
+3.2.1. Demand for Money
+The demand for money tells us what makes people desire a certain amount of money. Since money is required to conduct transactions, the value of transactions will determine the money people will want to keep:
+the larger is the quantum of transactions to be made, the larger is the quantity of money demanded. Since the quantum of transactions to be made depends on income, it should be clear that a rise in income will lead to rise in demand for money. Also, when people keep their savings in the form of money rather than putting it in a bank which gives them interest, how much money people keep also depends on rate of interest. Specifically, when interest rates go up, people become less interested in holding money since holding money amounts to holding less of interest-earning deposits, and thus less interest received.
+Therefore, at higher interest rates, money demanded comes down.
+Reprint 2026-27

@@ -1,0 +1,113 @@
+325 HYDROCARBONS an electrophile. Other examples of activating grouSs are –1H2 –1H5 –1HC2CH3 –2CH3 ,
+–CH3 –C2H5, etc.
+In the case of aryl halides, halogens are moderately deactivating. Because of their strong – , effect oYerall electron densit\ on benzene ring decreases. It makes further substitution difficult. However, due to resonance the electron density on o– and p – Sositions is greater than that at the m-position. Hence, they are also o – and p – directing groups. Resonance structures of chlorobenzene are given below:
+In this case, the overall electron density on benzene ring decreases making further substitution difficult, therefore these groups are also called ‘deactivating groups’. The electron density on o – and p – Sosition is comparatively less than that at meta position. Hence, the electrophile attacks on comparatively electron rich meta position resulting in meta substitution.
+9.6 CARCINOGENICITY AND TOXICITY
+Benzene and polynuclear hydrocarbons containing more than two benzene rings fused together are toxic and said to possess cancer producing (carcinogenic)
+property. Such polynuclear hydrocarbons are formed on incomplete combustion of organic materials like tobacco, coal and petroleum. They enter into human body and undergo various biochemical reactions and finally damage DNA and cause cancer.
+Some of the carcinogenic hydrocarbons are given below (see box).
+Meta directing group: The groups which direct the incoming group to meta position are called meta directing groups. Some examples of meta directing grouSs are –122 –C1 –CH2
+–C25 –C22H –C225 –623H, etc.
+Let us take the example of nitro group.
+Nitro group reduces the electron density in the ben]ene ring due to its strong–, effect.
+Nitrobenzene is a resonance hybrid of the following structures.
+Reprint 2026-27
+326 CHEMISTRY
+Hydrocarbons are the compounds of carbon and hydrogen only. Hydrocarbons are mainly obtained from coal and petroleum, which are the major sources of energy. Petrochemicals are the prominent starting materials used for the manufacture of a large number of commercially important products. LPG (liquefied petroleum gas) and CNG (compressed natural gas), the main sources of energy for domestic fuels and the automobile industry, are obtained from petroleum. Hydrocarbons are classified as open chain saturated (alkanes)
+and unsaturated (alkenes and alkynes), cyclic (alicyclic) and aromatic, according to their structure.
+The important reactions of alkanes are free radical substitution, combustion, oxidation and aromatization. Alkenes and alkynes undergo addition reactions, which are mainly electrophilic additions. Aromatic hydrocarbons, despite having unsaturation, undergo mainly electrophilic substitution reactions. These undergo addition reactions only under special conditions.
+Alkanes show conformational isomerism due to free rotation along the C–C sigma bonds. Out of staggered and the eclipsed conformations of ethane, staggered conformation is more stable as hydrogen atoms are farthest apart. Alkenes exhibit geometrical (cis-trans) isomerism due to restricted rotation around the carbon–carbon double bond.
+Benzene and benzenoid compounds show aromatic character. Aromaticity, the property of being aromatic is possessed by compounds having specific electronic structure characterised by Hückel (4n+2)π electron rule. The nature of groups or substituents attached to benzene ring is responsible for activation or deactivation of the benzene ring towards further electrophilic substitution and also for orientation of the incoming group. Some of the polynuclear hydrocarbons having fused benzene ring system have carcinogenic property.
+EXERCISES
+9.1 How do you account for the formation of ethane during chlorination of methane ?
+9.2 Write IUPAC names of the following compounds :
+(a) CH3CH=C(CH3)2 (b) CH 2=CH-C≡C-CH3
+–CH2–CH2–CH=CH2 (f) CH 3(CH2)4 CH (CH2)3 CH3
+CH 2 –CH (CH3)2 (g) CH3 – CH = CH – CH2 – CH = CH – CH – CH2 – CH = CH2
+9.3 For the following compounds, write structural formulas and IUPAC names for all possible isomers having the number of double or triple bond as indicated :
+(a) C4H8 (one double bond) (b) C 5H8 (one triple bond)
+9.4 Write IUPAC names of the products obtained by the ozonolysis of the following compounds :
+(i) Pent-2-ene (ii) 3,4-Dimethylhept-3-ene (iii) 2-Ethylbut-1-ene (iv) 1-Phenylbut-1-ene
+Reprint 2026-27
+327 HYDROCARBONS
+9.5 An alkene ‘A’ on ozonolysis gives a mixture of ethanal and pentan-3-one.
+Write structure and IUPAC name of ‘A’.
+. An alkene μA¶ contains three C – C eight C – H V bonds and one C – C π bond. ‘A’ on ozonolysis gives two moles of an aldehyde of molar mass 44 u. Write IUPAC name of ‘A’.
+9.7 Propanal and pentan-3-one are the ozonolysis products of an alkene? What is the structural formula of the alkene?
+9.8 Write chemical equations for combustion reaction of the following hydrocarbons:
+(i) Butane (ii) Pentene (iii) Hexyne (iv) Toluene
+9.9 Draw the cis and trans structures of hex-2-ene. Which isomer will have higher b.p. and why?
+9.10 Why is benzene extra ordinarily stable though it contains three double
+9.11 What are the necessary conditions for any system to be aromatic?
+9.12 Explain why the following systems are not aromatic?
+(i) (ii) (iii)
+9.13 How will you convert benzene into (i) p-nitrobromobenzene (ii) m- nitrochlorobenzene (iii) p - nitrotoluene (iv) acetophenone?
+9.14 In the alkane H 3C – CH2 – C(CH3)2 – CH2 – CH(CH3)2 identif\ ĈĈĈ carbon atoms and give the number of H atoms bonded to each one of these.
+9.15 What effect does branching of an alkane chain has on its boiling point?
+9.16 Addition of HBr to propene yields 2-bromopropane, while in the presence of benzoyl peroxide, the same reaction yields 1-bromopropane. Explain and give mechanism.
+9.17 Write down the products of ozonolysis of 1,2-dimethylbenzene (o-xylene).
+How does the result support Kekulé structure for benzene?
+9.18 Arrange benzene, n-hexane and ethyne in decreasing order of acidic behaviour. Also give reason for this behaviour.
+9.19 Why does benzene undergo electrophilic substitution reactions easily and nucleophilic substitutions with difficulty?
+9.20 How would you convert the following compounds into benzene?
+(i) Ethyne (ii) Ethene (iii) Hexane
+9.21 Write structures of all the alkenes which on hydrogenation give
+2-methylbutane.
+9.22 Arrange the following set of compounds in order of their decreasing relative reactivity with an electrophile, E (a) Chlorobenzene, 2,4-dinitrochlorobenzene, p-nitrochlorobenzene (b) Toluene, p-H3C – C6H4 – 122, p-O2N – C6H4 – 122.
+9.23 Out of benzene, m–dinitroben]ene and toluene which will undergo nitration most easily and why?
+9.24 Suggest the name of a Lewis acid other than anhydrous aluminium chloride which can be used during ethylation of benzene.
+9.25 Why is Wurtz reaction not preferred for the preparation of alkanes containing odd number of carbon atoms? Illustrate your answer by taking one example.
+Reprint 2026-27
+7.25 15 g
+8.32 Mass of carbon dioxide formed = 0.505 g
+Mass of water formed = 0.0864 g
+8.33 % fo nitrogen = 56
+8.34 % of chlorine = 37.57
+8.35 % of sulphur = 19.66
+9.1 Due to the side reaction in termination step by the combination of two C
+. H3 free radicals.
+9.2 (a) 2-Methyl-but-2-ene (b) Pent-1-ene-3-yne (c) Buta-1, 3-diene (d) 4-Phenylbut-1-ene (e) 2-Methylphenol (f) 5-(2-Methylpropyl)-decane (g) 4-Ethyldeca –1,5,8- triene
+9.3 (a) (i) CH2 = CH – CH2 – CH3 But-1-ene (ii) CH 3 – CH2 = CH – CH3 But-2-ene (iii) CH 2 = C – CH3 2-Methylpropene (b) (i) HC ≡ C – CH2 – CH2 – CH3 Pent-1-yne (ii) CH 3 – C ≡ C – CH2 – CH3 Pent-2-yne (iii) CH 3 – CH – C ≡ CH 3-Methylbut-1-yne
+9.4 (i) Ethanal and propanal (ii) Butan-2-one and pentan-2-one (iii) Methanal and pentan-3-one (iv) Propanal and benzaldehyde
+9.5 3-Ethylpent-2-ene
+9.6 But-2-ene
+9.7 4-Ethylhex-3-ene
+CH3 – CH2– C = CH – CH2–CH3
+CH 2–CH3
+Answer to Some Selected Problems
+Reprint 2026-27
+329 ANSWERS
+9.8 (a) C4H10(g)+13/202(g) ∆ 4CO2(g) + 5H2O(g)
+(b) C5H10(g)+15/202(g) ∆ 5CO2(g) + 5H2O(g)
+(c) C5H10(g) + 17/2 O2(g) ∆ 6CO2(g) + 5H2O(g)
+(d) C7H8(g) + 902(g) ∆ 7CO2(g) + 4H2O(g)
+cis-Hex-2-ene trans-Hex-2-ene
+The cis form will have higher boiling point due to more polar nature leading to stronger intermolecular dipole–dipole interaction, thus requiring more heat energy to separate them.
+9.10 Due to resonance
+9.11 Planar, conjugated ring system with delocalisation of (4n+2) π electrons, where, n is an integer
+9.12 Lack of delocalisation of (4n +2) π electrons in the cyclic system.
+9.13 (i)
+Reprint 2026-27
+330 CHEMISTRY
+15 H attached to 1° carbons
+4 H attached to 2° carbons
+1 H attached to 3° carbons
+9.15 More the branching in alkane, lower will be the boiling point.
+9.16 Refer to addition reaction of HBr to unsymmetrical alkenes in the text.
+All the three products cannot be obtained by any one of the Kekulé’s structures. This shows that benzene is a resonance hybrid of the two resonating structures.
+9.18 H – C ≡ C – H > C6 H 6 > C6 H 14 . Due to maximum s orbital character in enthyne (50 per cent) as compared to 33 per cent in benzene and
+25 per cent in n-hexane.
+9.19 Due to the presence of 6 π electrons, benzene behaves as a rich source of electrons thus being easily attacked by reagents deficient in electrons.
+Reprint 2026-27
+331 ANSWERS
+9.20 (i)
+(ii) C2 H4 Br2 CH2–CH2 alc, KOH CH2=CHNr NaNH2
+9.21 CH2 = C – CH2 – CH3 2-Methylbut-1-ene
+CH3 – C = CH – CH3 2-Methylbut-2-ene
+CH3 – CH –CH = CH2 3-Methylbut-1-ene
+9.22 (a) Chlorobenzene>p-nitrochlorobenzene> 2,4 – dinitrochlorobenzene (b) Toluene > p-CH3-C6H4-NO2 > p-O2N–C6H4–NO2
+9.23 Toleune undergoes nitration most easily due to electron releasing nature of the methyl group.
+9.24 FeCl3
+9.25 Due to the formation of side products. For example, by starting with
+1-bromopropane and 1-bromobutane, hexane and octane are the side products besides heptane.
+Reprint 2026-27

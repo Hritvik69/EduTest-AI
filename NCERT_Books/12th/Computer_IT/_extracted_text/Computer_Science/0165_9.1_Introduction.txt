@@ -1,0 +1,47 @@
+S tructured Query Language (SQL) 153
+• _ (underscore)- used to represent exactly a single character
+Example 9.13 The following query selects details of all those employees whose name starts with 'K'.
+mysql> SELECT * FROM EMPLOYEE
+-> WHERE Ename like 'K%';
++-------+---------+--------+-------+--------+
+| EmpNo | Ename | Salary | Bonus | DeptId |
++-------+---------+--------+-------+--------+
+| 102 | Kritika | 60000 | 123 | D01 |
++-------+---------+--------+-------+--------+
+1 row in set (0.00 sec)
+Example 9.14 The following query selects details of all those employees whose name ends with 'a', and gets a salary more than 45000.
+mysql> SELECT * FROM EMPLOYEE
+-> WHERE Ename like '%a'
+-> AND Salary > 45000;
++-------+---------+--------+-------+--------+
+| EmpNo | Ename | Salary | Bonus | DeptId |
++-------+---------+--------+-------+--------+
+| 102 | Kritika | 60000 | 123 | D01 |
+| 106 | Sanya | 48000 | 695 | D02 |
+| 110 | Tanya | 50000 | 467 | D05 |
++-------+---------+--------+-------+--------+
+3 rows in set (0.00 sec)
+Example 9.15 The following query selects details of all those employees whose name consists of exactly 5 letters and starts with any letter but has ‘ANYA’ after that.
+mysql> SELECT * FROM EMPLOYEE
+-> WHERE Ename like '_ANYA';
++-------+-------+--------+-------+--------+
+| EmpNo | Ename | Salary | Bonus | DeptId |
++-------+-------+--------+-------+--------+
+| 106 | Sanya | 48000 | 695 | D02 |
+| 110 | Tanya | 50000 | 467 | D05 |
++-------+-------+--------+-------+--------+
+2 rows in set (0.00 sec)
+Example 9.16 The following query selects names of all employees containing 'se' as a substring in name.
+mysql> SELECT Ename FROM EMPLOYEE
+-> WHERE Ename like '%se%';
++---------+
+| Ename |
++---------+
+| Joseph |
+| Vergese |
++---------+
+2 rows in set (0.00 sec)
+When we type first letter of a contact name in our contact list in our mobile phones all the names containing that character are displayed. Can you relate SQL statement with the process?
+List other real-life situations where you can visualise a
+SQL statement in operation.
+Reprint 2026-27

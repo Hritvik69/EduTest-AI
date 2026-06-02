@@ -1,0 +1,36 @@
+161 Haloalkanes and Haloarenes
+This class includes:
+(a) Vinylic halides
+These are the compounds in which the halogen atom is bonded to a sp2-hybridised carbon atom of a carbon-carbon double bond (C = C).
+(b) Aryl halides
+These are the compounds in which the halogen atom is directly bonded to the sp2-hybridised carbon atom of an aromatic ring.
+Having learnt the classification of halogenated compounds, let us now learn how these are named. The common names of alkyl halides are derived by naming the alkyl group followed by the name of halide. In the IUPAC system of nomenclature, alkyl halides are named as halosubstituted hydrocarbons.
+For mono halogen substituted derivatives of benzene, common and IUPAC names are the same. For dihalogen derivatives, the prefixes o-, m-, p- are used in common system but in IUPAC system, as you have learnt in Class
+XI, the numerals 1,2; 1,3 and 1,4 are used.
+6.1.3 Compounds
+Containing
+The dihaloalkanes having the same type of halogen atoms are named as alkylidene or alkylene dihalides. The dihalo-compounds having both the halogen atoms are further classified as geminal halides or gem-dihalides when both the halogen atoms are present on the same carbon atom of the
+6.2 Nomenclature 6.2 Nomenclature 6.2 Nomenclature 6.2 Nomenclature 6.2 Nomenclature
+Reprint 2026-27
+162 Chemistry chain and vicinal halides or vic-dihalides when halogen atoms are present on adjacent carbon atoms. In common name system, gem-dihalides are named as alkylidene halides and vic-dihalides are named as alkylene dihalides. In IUPAC system, they are named as dihaloalkanes.
+Structure Common name IUPAC name
+CH3CH2CH(Cl)CH3 sec-Butyl chloride 2-Chlorobutane (CH3)3CCH2Br neo-Pentyl bromide 1-Bromo-2,2-dimethylpropane (CH3)3CBr tert-Butyl bromide 2-Bromo-2-methylpropane
+CH2 = CHCl Vinyl chloride Chloroethene
+CH2 = CHCH2Br Allyl bromide 3-Bromopropene
+CH2Cl2 Methylene chloride Dichloromethane
+CHCl3 Chloroform Trichloromethane
+CHBr3 Bromoform Tribromomethane
+CCl4 Carbon tetrachloride Tetrachloromethane
+CH3CH2CH2F n-Propyl fluoride 1-Fluoropropane o-Chlorotoluene 1-Chloro-2-methylbenzene
+2-Chlorotoluene
+Benzyl chloride Chlorophenylmethane
+Table 6.1: Common and IUPAC Names of some Halides
+Example 6.1 Example 6.1 Example 6.1 Example 6.1 Example 6.1
+Solution Solution Solution Solution Solution
+Draw the structures of all the eight structural isomers that have the molecular formula C5H11Br. Name each isomer according to IUPAC system and classify them as primary, secondary or tertiary bromide.
+CH3CH2CH2CH2CH2Br 1-Bromopentane (1o)
+CH3CH2CH2CH(Br)CH3 2-Bromopentane(2o)
+CH3CH2CH(Br)CH2CH3 3-Bromopentane (2o)
+(CH3)2CHCH2CH2Br 1-Bromo-3-methylbutane (1o)
+Some common examples of halocompounds are mentioned in Table 6.1.
+Reprint 2026-27

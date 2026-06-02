@@ -1,0 +1,29 @@
+GettinG Started with Python 95
+Let us now try to execute few statements in interactive mode to determine the data type of the variable using built-in function type().
+Example 5.3
+>>> num1 = 10
+>>> type(num1)
+<class 'int'>
+>>> num2 = -1210
+>>> type(num2)
+<class 'int'>
+>>> var1 = True
+>>> type(var1)
+<class 'bool'>
+>>> float1 = -1921.9
+>>> type(float1)
+<class 'float'>
+>>> float2 = -9.8*10**2
+>>> print(float2, type(float2))
+-980.0000000000001 <class 'float'>
+>>> var2 = -3+7.2j
+>>> print(var2, type(var2))
+(-3+7.2j) <class 'complex'>
+Variables of simple data types like integers, float, boolean, etc., hold single values. But such variables are not useful to hold a long list of information, for example, names of the months in a year, names of students in a class, names and numbers in a phone book or the list of artefacts in a museum. For this, Python provides data types like tuples, lists, dictionaries and sets.
+5.7.2 Sequence
+A Python sequence is an ordered collection of items, where each item is indexed by an integer. The three types of sequence data types available in Python are
+Strings, Lists and Tuples. We will learn about each of them in detail in later chapters. A brief introduction to these data types is as follows:
+(A) String
+String is a group of characters. These characters may be alphabets, digits or special characters including spaces.
+String values are enclosed either in single quotation
+Reprint 2026-27

@@ -1,0 +1,151 @@
+Domestic Data entry operator – class X 220
+4. Which of the following keys is pressed to select only textbox on the form?
+(b) Shift (c) Ctrl
+5. Which of the following properties in the Properties: Label
+Field text box is used to insert a tool-tip on the form?
+(a) Tool Text (b) Help Text (c) Tool Tip (d) Help Tip
+6. Which of the following objects of LibreOffice Base is used to display data retrieved from one or more tables in a presentable manner?
+(a) Query (b) Form (c) Report (d) Panel
+7. Which of the following values of Date Format property is selected to view a calendar on the form?
+(a) Standard (short)
+(b) Standard (long)
+(c) Default (d) Standard (Medium)
+8. Which of the following commands on the Forms Control toolbar is used to toggle between Design View and Form (a) Design Mode (b) Toggle Mode (c) View Mode (d) Print mode
+9. Using which of the following objects in a database, can a report be generated?
+(a) Tables (b) Queries (c) Both a and b (d) Neither a nor b
+10. Which of the following components open along with the
+Report Wizard?
+(a) Report Builder (b) Add Fields dialog box (c) Both (a) and (b)
+(d) Neither (a) nor (b)
+B. State whether the following statements are True or False
+1. Report is an object of a database but form is not.
+2. We can choose the layout of the form.
+Database ManageMent systeM Using LibreOffice Writer 221
+3. We have to add all fields of the table on the form.
+4. There are two ways n which a form can be created.
+5. A report is generated in a separate window.
+6. Once a control is added on to the form, it cannot be re- positioned.
+7. The Record toolbar has the button to add a new record.
+8. We can create a report only using a table.
+9. By default, the records in a report are sorted in descending
+10. We can group data based on a particular field in a report.
+11. A report can have data only in row and column format.
+12. We can insert both date and time of generation of report.
+13. A report once created cannot be edited.
+C. Fill in the blanks
+1. A form can be used for ____________ and _____________.
+2. Each field control consists of a ____________and
+________________
+3. A ________________ is a piece of text that specifies the data that should be entered in the field value text box.
+4. By default the border of the field text value is displayed in
+_________.
+5. A ____________ is a small piece of text that is displayed when the mouse pointer is placed on a particular control on the form.
+6. The default orientation option for a report is _______________.
+7. A ____________ is the manner in which the labels, field values, titles etc. will be displayed in the report.
+8. The option to insert date and time in the report is present in ___________ menu.
+9. A Report Wizard contains _____________ steps.
+10. A _______ type of report changes automatically as the field values in the base table or query change.
+D. Answer the following questions
+1. Give one difference between a form and a report.
+2. What is a field control with respect to forms?
+3. Which tool on the Forms Record toolbar is used to insert text on the form?
+4. Name the two ways to create a form in LibreOffice Base.
+5. What is the difference between a static and a dynamic
+6. Write the function of Forms Controls toolbar and Records toolbar.
+Maintain Healthy,
+Safe and Secure
+Working Environment
+IntroductIon
+The work culture in IT industry is different from routine office work, where working hours are also not fixed.
+Continuously working in front of the computer creates health problems especially in your eyes. Adopting the safe work practice in the work place, the productivity can be increased.
+This Unit deals with the concept of working environment in IT industry. It focuses on safe working practices at work place. It explains about health related problem caused by the wrong practices and it’s solution.
+It also gives the knowledge about resources required in workplace for smooth working. Further it explains how to deal with computer component and problem related to electrical hazards. It also explains workplace safety guidelines, workplace hazard and it’s control.
+The medical emergency situations and its solution is illustrated.
+13 Health, Safety and Security at Workplace
+IntroductIon
+One evening we were travelling on the busy road of
+Mumbai city. We were looking at the big and tall buildings.
+My friend was telling me that all these buildings hold different IT companies. Suddenly we find that there was a lot of smoke coming out of one building. People working in that building were running away from the building and shouting about the fire. Soon we find that the fire alarm was ringing and fire brigade vehicles along with water tanks were approaching the building. People were telling that there are lot of casualties and the overall damage to the building was worth of several lakhs. This event remind us the importance of health and safety at the workplace.
+IntroductIon to HealtH, Safety Snd SecurIty at Workplace
+Every workplace accident, illness or dispute is a cost to organization, as well as a cost to injured individuals and their families. It is our responsibility to create a safe workplace. This will improve the work environment and the productivity. Employees have to take responsibility for their own health and safety rather than relying solely on the “safety officer” or management.
+Health of an employee is the state of the physical, mental and social well being. Every organisation must
+Fig.13.1: Illustration of fire catches in the office building
+Domestic Data entry operator – class X 224 provide healthy and safety working environment for their employees at the workplace. Health of an employee must be in a good condition so that the employees of the organisation will not suffer from any diseases.
+Cleanliness at the workplace is mandatory. The work places must be cleaned in the morning before the people start working. If it is neat and clean then the people will feel happy to work in that environment. A proper air conditioning is mandatory to provide clean and cool air at workplace. A properly filtered water facility must be available for the employees of the company. A fresh food cafeteria must provide the good quality food for the employees. This will help to maintain the health of the employee. The organisation should maintain a clean washroom facility in good condition to be used by the employees.
+The work environment of the organisation must be safe.
+It must be free from hazards and risk. A hazard is the something that can cause harm to the people. A risk is a probability of causing harm to the people. A proper safety guidelines must be prepared by the company and it should be strictly followed. At regular intervals of time, the safety procedures must be practised by employees.
+Security
+Every employee working in an organisation must feel that they are secured in the company campus.
+Security is a kind of freedom from any potential harm.
+Security ensures the safety of the people working in the organisation. Every organisation must have separate security department. This department should be responsible for various security such as personal safety, computer system safety, electrical safety, transport safety and other equipment safety. The proper security procedures will reduce liabilities, insurance and compensation for organisation. This will increase the business revenue and will reduce the operational charges of the company.
+Maintain HealtHy, Safe and Secure Working environMent 225
+Policies and Procedures for Health, Safety and Security
+The Department of Information Technology (DoIT) has prepared the policy to provide employees with a healthy and safe work environment.
+Definition
+A health, safety and security policy is a written statement by an employer stating the company’s commitment for the protection of the health, safety and security of employees and to the public. It is an endorsed commitment by management to its employees regarding their health, safety and security.
+A health, safety and security program/policy contains the health, safety and security elements of an organisation and objectives which make it possible for the company to achieve its goal in the protection of its workers at the workplace.
+The government has a specific section mentioned in their company laws, which states the minimum requirements to be followed for health, safety and security programme. Each employer or company should follow these requirements. Apart from that the company should also have their own health, safety and security committee to determine the hazards present at the workplace. Once these hazards are identified then their control measures should be specified in the health, safety and security programme.
+Reasons for Health, Safety and Security
+Programs or Policies in Workplace
+There are several reasons that can be specified for safety policy as given below.
+• It clearly indicates the company’s commitment for their employee’s health and safety;
+• It shows the performance of the business and the safety performance are compatible with each
+• It clearly state that the company is not only doing the business for profits but it is taking care of all its stake holders.
+Domestic Data entry operator – class X 226
+• The accountability of every one working for the company is outlined for the workplace health, safety and security;
+• Company can comply national policy on
+Occupational Health and Safety (OH&S) of
+Government of India;
+• Injuries and illness of the employees is prevented through such policy
+A typical policy of an IT company may contain the following OH&S clauses.
+• Provide adequate resources to ensure continual improvement in its OH&S performance.
+• Comply with relevant OH&S legal and other requirements applicable to the organisation and drive for ‘beyond compliance’ leadership.
+• Set appropriate OH&S objectives & targets and conduct periodic performance reviews against these targets.
+• Adopt measures and processes that focus on the prevention of occupation related accidents, injuries, illnesses, and near-misses and strive to continuously improve such processes.
+• Ensure OH&S awareness and build competency associated at all levels to handle individual OH&S responsibilities.
+Workplace Safety Hazards
+The most common definition of hazard is ‘a danger or risk’ that is associated with something. Something can even be considered a hazard if it would be a trigger for causing another hazard to become present, which could hurt someone or something in the area. Workplace hazards poses potential harm to people at work, and that can cause damage to the work environment and everything else in it. Hazards could cause adverse health effects and losses of property and equipment for organisations.
+There is a common way to classify hazards, and not all these are present in all workplaces. In some industries like manufacturing and pharmaceuticals, there are biological and chemical risks that pose risks to the workers. Physical hazards are present as well in
+Maintain HealtHy, Safe and Secure Working environMent 227 many industries where there is exposure to electricity, radiation, extreme pressures, noises and magnetic fields. On the other hand, ergonomic hazards are present in facilities where there are repetitive movements and where workstations are set up haphazardly.
+But it can be generalized that in all these classifications, there are always safety hazards that come up along with the highlighted workplace hazards.
+Physical Hazards
+It is the risks arising from the physical work environment
+– floors, facilities, walls, and ceilings. Physical hazards could also mean working with machinery and electricity- operated machines. Work processes or specific assignments could also qualify as areas where physical hazards are present. There is a vast list of physical hazards across all industries, but when we look at one specific sector, these hazards are also specific to the work setting.
+Falling Off Heights, Slipping and Tripping
+The reasons for falling are attributed to faulty scaffolding and ladders, as a result of contact with electricity, and slipping or crashing into anything that throws the worker off balance (Fig. 13.2). On the other hand, trips and slips occur right on lower levels, particularly the floor, on ramps and any uneven surface in the workplace.
+Various injuries result from simply tripping over things at work, while many more accidents occur when employees slip on the floor, from motorized vehicles or from scaffolding or ladders.
+To avoid falls and slips, all things must be arranged properly. Any spilt liquid, food or other items such as paints must be immediately cleaned to avoid any accidents. Make sure there is proper lighting and all damaged equipment, stairways and light fixtures are repaired immediately.
+Fig.13.2: Falling off height, slipping and tripping
+Domestic Data entry operator – class X 228
+Electrical Hazards
+There are many reasons why workers get electrocuted or suffer from electric shock at work. For the most part, it’s due to coming in direct contact with live wires, or having indirect contact through a conductor. While not all electrical accidents lead to death, there are many life-threatening, severe and often permanent injuries that could result from it. At work, the common causes of electrical accidents are exposed, worn-out wiring, overloading of electrical outlets, ungrounded or faulty equipment, and unsafe use of electrical equipment.
+Employees must be provided basic knowledge of using electrical equipment and common problems.
+Employees must also be provided instructions about electrical safety, such as keeping water and food items away from electrical equipment. Electrical technician and engineers should carry out routine inspections of all wiring to make sure there are no damaged or broken wires.
+Fire Hazards
+Each establishment must comply with housekeeping standards to ensure fire safety. Everyone not follows such requirements, and this leads to accidents resulting to fire. Such incidents not only damage the vital workplace equipment, stock and other items, and the building;
+it could also lead to injuries among its employees. To avoid fire, it is important to observe safety precautions at workplace. The whole organisation must also have first response and emergency mitigation systems in place. Employees should be aware of all emergency exits, including fire escape routes, of the office building and also the locations of fire extinguishers and alarms.
+Health Hazards
+Health refers to the physical well-being of the workers, and this includes the condition of their skin, eyes, ears and all other body parts. But it also includes the health situation of what we cannot see upfront – their respiratory and cardiovascular system, and the nervous system.
+Hazards are present in most workplaces that could
+Maintain HealtHy, Safe and Secure Working environMent 229 impact any part of the human body. For example, a noisy machine or factory environment could damage the sense of hearing of the workers. In the same manner, exposure to bright lights and toxic fumes and vapour could damage the eyes and nose. There are also more serious and long-term health issues arising from hazardous workplaces, such as damage to the lungs because of the exposure to harmful chemicals (Fig. 13.3).
+potentIal SourceS of HazardS In an organISatIon
+Bright light sources behind the display screen can create contrast problems, making it difficult to clearly see your work. Apply the following possible solutions to avoid this.
+• Use blinds or drapes on windows to eliminate bright light. Blinds and furniture placement should be adjusted to allow light into the room, but not directly into your field of view.
+• Use indirect or shielded lighting where possible and avoid intense or uneven lighting in your field of vision. Ensure that lamps have glare shields or shades to direct light away from your line of sight.
+• Reorient the workstation so bright lights from open windows are at right angles with the computer screen.
+• High contrast between light and dark areas of the computer screen, horizontal work surface, and surrounding areas can cause eye fatigue and headaches. So, use well-distributed diffuse light.
+Safety Hazards Biological Hazards Physical Hazards Ergonomic Hazards Chemical Hazards
+Fig.13.3: Health hazards
+Domestic Data entry operator – class X 230
+Hazards using Computers
+Hazards while using computers include poor sitting postures or excessive duration of sitting in one position.
+These hazards may result in pain and strain. Making the same movemen`t repetitively can also cause muscle fatigue. In addition, glare from the computer screen can be harmful to the eyes. Stretching at regular intervals or doing some simple yoga in your seat can mitigate such hazards.
+Handling Office Equipment
+Improper handling of office equipment can result in injuries. For example, sharp-edged equipment if not handled properly, can cause cuts. Staff members should be trained to handle equipment properly. A relevant manual should be made available by the administration on handling equipment.
+Handling Objects
+Lifting or moving heavy items without proper procedure or techniques can be a source of potential hazard.
+Always follow approved procedure and proper posture for lifting or moving objects.
+Stress at Work
+In organisations, you may encounter various stress- causing hazards. Long working hours can be stressful and so can aggressive conflicts or arguments with colleagues. Always look for ways for conflict resolution with colleagues. Have some relaxing hobbies for stress against long working hours.
+Working Environment
+Potential hazards may include poor ventilation, chairs and tables of inappropriate height, hard furniture, poor lighting, staff unaware of emergency procedures, or poor housekeeping. Hazards may also include physical or emotional intimidation, such as bullying or ganging up against someone. The staff should be made aware of

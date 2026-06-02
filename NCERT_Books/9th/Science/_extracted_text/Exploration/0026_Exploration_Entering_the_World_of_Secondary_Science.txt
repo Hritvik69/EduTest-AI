@@ -1,0 +1,143 @@
+Exploration|Grade 9 6
+Example 1.3: Estimate how many litres of air you breathe in one day. Start by estimating how many breaths you take per minute, and the volume of one breath. Your aim is not to find an exact answer, but a reasonable estimate.
+Answer: At rest, we take about 12 – 15 breaths a minute, and there are
+60 × 24 = 1440 minutes in a day, so we take roughly 18 – 22 thousand breaths, about 20 thousand breaths a day. We also need to find the volume of air in one breath. One way to estimate this is to think that it takes about
+4 – 5 breaths to fill a typical rubber party balloon, which when inflated has a volume of about 2 litres. So, one breath is perhaps about 0.5 litre. Hence, we breathe in about 10,000 litres of air a day!
+Now, it is hard to see if this estimate is reasonable or not. But if we go back to our balloon example, one could blow up a balloon in about 20 s, so maybe we could fill 3 balloons a minute. Multiplying
+3 balloon × balloon
+2 litres × day
+1440 minutes will give about 8640 litres, which for estimation purposes is reasonably close to our earlier estimate of
+10,000 litres. Naturally, we would get extremely tired very quickly after blowing balloons nonstop, unlike normal restful breathing.
+Pause and Ponder
+2. Describe one situation where an approximate answer is good enough, and one where you would need a very exact value.
+After Grade 10, if you decide to study science, it will be divided into branches like physics, chemistry, biology and earth science, and even in
+Grades 9 and 10, the chapters you have will focus on some of these areas.
+We’ve highlighted some of the exciting things you may learn about in the
+Next Level Up boxes. However, do remember that the natural world does not have any such boundaries. These divisions are made by us to only help organise knowledge, they are not independent of each other. Most of the real-world problems today, such as understanding climate change, developing medicines, or designing sustainable technologies require ideas from several disciplines together. Science also connects naturally with mathematics, technology, arts, and social sciences. To make sense of the world fully, we need to connect multiple ways of knowing and expressing ideas, each enriching the other.
+Pause and Ponder
+3. Choose a real-life object (maybe a pressure cooker or a mobile phone) or a problem (maybe a traffic jam near your school). Make a sketch listing what kind of ideas from physics, chemistry, biology, earth science, or mathematics are involved. Show how at least two branches of science connect with your example.
+Exploration: Entering the World of Secondary Science 7
+Ready to Go Beyond
+How does a mask really work?
+Solving real problems requires knowledge from several branches of science. During the COVID-19 pandemic, we all used masks for safety (Fig. 1.4).
+Understanding how a mask works requires concepts from physics (particle motion and electrostatic attraction), chemistry (properties of polymer fibres), biology (size and behaviour of viruses), and mathematics (modelling airflow and filtration efficiency).
+Fig. 1.4: A collection of surgical masks
+Finally, as we have mentioned in every textbook, science is not just a collection of facts, equations, or experiments. It is a human activity shaped by curiosity, creativity, collaboration, and careful questioning. It grows as people ask questions, test ideas, share results, and learn from mistakes.
+Science develops over time through the work of many individuals across different cultures and generations. Even if you do not choose to study science beyond Grade 10, scientific thinking will be very important in whatever you do. It helps you understand the technology that surrounds you, and helps you evaluate information critically and make sense of the world you live in. As you begin this stage of exploration, science invites you not only to learn about the world, but also to learn ‘how’ we are trying to understand it.
+Embark on your journey of discovery — looking carefully through the magnifying glass of evidence and guided by the compass of curiosity.
+Happy Exploring!
+It is widely accepted amongst the scientific community that life originated in water. Some researchers believe that life may have originated in small water pools with changing environmental conditions rather than in the oceans. Hot springs are examples of such environments. In India, the hot springs of Puga Valley in
+Ladakh maintain very high temperatures (nearly at the boiling point of water) even in a cold climate. These environmental conditions seem to be similar to those on the early Earth, about
+3.5 billion years ago. The organisms living in these hot springs are mostly heat-loving bacteria called thermophiles, which are unicellular.
+Scientists from the Birbal Sahni Institute of Palaeosciences,
+Lucknow, studied these hot springs and found that calcium carbonate formed rapidly around them. These deposits may have protected early organic molecules from harmful radiation and extreme conditions, and they may have also helped in the formation of the first protective membrane — the barrier that defines a cell.
+All living organisms are made up of cells. The cell represents the basic level at which life exists. Some organisms, such as bacteria or yeast consist of only one cell (unicellular), while others like plants, fish, birds or humans are made up of millions of cells (multicellular)
+that work together. A group of similar cells performing similar
+Cell: The Building
+Block of Life y Where does a cell come from?
+y How have technological interventions facilitated the creation of new knowledge in understanding the world beyond the naked eye?
+y How is the cell structural and functional unit of y How does a cell multiply?
+Think It Over
+Cell: The Building Block of Life 9 functions forms tissues. Different tissues are organised to form an organ and several organs work together to form organ systems.
+Such as, nasal pores, nasal cavity, trachea and lungs form respiratory system.
+Even when cells are organised into tissues, organs, and organ systems the cell remains the fundamental unit of structure and function in all living organisms. This makes us wonder how such tiny cells perform so many different activities. What are the different components of a cell? How do cells in our body communicate with each other? Do cells live forever, or do they die? In this chapter, we will explore the answers to these questions as we enter the fascinating world of cells!
+2.1 How to Study Cells?
+What do we call the ability of the human eye to see two very close objects as separate and distinct? Imagine two tiny dots drawn on a piece of paper. As the dots are moved closer, there comes a point at which they can no longer be seen as separate. When viewed from about 25 cm (the near point of human eye), two points separated by about
+0.1 mm can be seen as distinct; otherwise, they appear as a single point. This is called the limit of resolution of the human eye, which is 0.1 mm.
+A cell is usually too small to be seen by the unaided eye (Fig. 2.1). This raises an important question — how have cell biologists studied the structure and function of cells that are much smaller than the limit of resolution of the human eye?
+You have learnt about convex lens. A convex lens or a combination of lenses, i.e., an objective lens and an eyepiece are used for the magnification of an object (Fig. 2.1) to make it appear larger.
+Robert Hooke was the first person to observe a cell in 1665 using a self-designed microscope (capable of about 200–300X magnification). While examining a thin slice of cork, he observed small box-like compartments and named them ‘cells’.
+In school laboratories, light microscopes are used to observe objects using
+Curiosity
+Chapter 10
+Human height
+Chicken egg
+Fish egg
+Most plant and animal cells
+Most bacteria
+Mitochondrion
+Smallest bacteria
+Ribosomes
+Proteins
+Small molecules
+Unaided eye
+Light microscope
+Electron microscope
+Neem Tree
+Great Indian Bustard
+Fig. 2.1: Size of the objects and its visibility through unaided to aided eye
+Curiosity
+Chapter 2
+10 Exploration|Grade 9 different objective lenses (e.g., 10X, 40X) to achieve better magnification and resolution under visible light. Explore different parts of a microscope (Fig. 2.2) in your school laboratory and use it to observe fine structures of various materials. Under the microscope, you will see a magnified image of an object. Can you estimate its actual size?
+Activity 2.1: Let us estimate the size of a cell
+1. Take a transparent ruler with millimetre (mm)
+markings.
+2. Place the ruler on the stage of microscope, focus on it using the adjustment knob and observe the diameter of the circular field of view through the eyepiece and measure it in mm.
+3. Convert the diameter from mm to micrometre (μm). Suppose the diameter of the visible field is 5 mm, meaning 5 × 1000 = 5000 μm.
+4. Remove the ruler and place an onion peel slide on the stage of the microscope.
+5. Focus on the slide and count the number of cells present along the diameter of the field of view in one straight line.
+6. Estimate the real size of the cell using the formula:
+Unit conversion:
+1 millimetre (mm) = 1000 micrometre (μm)
+Estimated size of the onion peel cell = Diameter of the visible field in micrometre
+Number of cells along the diameter
+Fig. 2.2: Structure of a light microscope
+Eye piece
+Body tube
+Objective
+Course adjustment
+Fine adjustment
+Suppose, 25 cells are seen along the diameter. In that case, the size of one onion cell would be 5000 μm/25 = 200 μm.
+If the estimated size of an onion peel cell is 200 μm, how much does a light microscope magnify this cell? The total magnification of a microscope depends on its magnifying power of the eyepiece and the objective lens. If both the eyepiece and the objective lens have the magnifying power of 10X, then the total magnification will be 100X. This means that a cell with an estimated size of 200 μm will appear 100 times larger.
+Thus, a microscope allows us to see very small structures clearly and is an essential tool for studying the cell structure. Over the years, scientists have improved the microscope by improving its three main features — resolution (measure of clarity), contrast (the difference in brightness between various
+Ready to Go Beyond
+Fig. 2.3: An electron microscope
+Apart from light microscopes, scientists also use powerful electron microscopes that reveal the fine details of a cell structure. These instruments use a beam of electrons instead of light to produce highly magnified images, allowing us to see cell structure at the nanometre scale with remarkable clarity (a nanometre is one-billionth of a metre).
+Curiosity
+Chapter 9
+Cell: The Building Block of Life 11 parts of an object), and magnification. These improvements have turned microscope into a powerful tool for studying
+You can see a picture of the lower surface of Colocasia leaf observed under a Scanning Electron Microscope (Fig. 2.4).
+2.2 Structure of a Cell
+You have learnt that cells are organised into specialised tissues and organs, and collectively perform specific function. For these cells to function as units, they must be able to interact with one another and with their surroundings. These interactions occur at the cell boundary, where substances move between the cells and their external environment. Even single-celled organisms exchange materials and respond to their environment through cell membrane.
+2.2.1 Cell membrane — The universal feature of a cell
+The cell membrane is a thin boundary that surrounds a cell and protects its contents. It defines the individuality of a cell and is also called the plasma membrane. The cell membrane is selectively permeable, which means it allows some substances to pass through it while blocking others. You have learnt how oxygen and carbon dioxide move across the membranes of alveoli in the lungs. How does the structure of the cell membrane in the cells of alveoli control the movement of substances across it?
+Activity 2.2: Let us experiment
+1. With the help of a kitchen knife, carefully cut a potato into two pieces of roughly equal size (Fig. 2.5).
+2. Measure and record the initial weight of both the pieces using a weighing balance.
+3. Put one piece of the potato in Beaker
+A with plain water.
+4. Put the other piece of the potato in
+Beaker B with 20 per cent salt or sugar solution.
+5. Leave them undisturbed for about an hour or until you notice a visible change in the size of the pieces.
+6. Measure and record the final weight of each piece.
+7. Calculate the difference between the initial and their final weights.
+What do you observe? You may observe
+Beaker A — The potato piece swells.
+Beaker B — The potato piece shrinks.
+Curiosity
+Chapter 9
+Fig. 2.5: Experimental set-up, and initial and final states of potato pieces in (a) plain water, and (b) 20 per cent salt solution
+Initial (b) (a)
+Beaker B Beaker A
+Experimental set-up
+Final (b) (a)
+Fig. 2.4: Electron micrograph of lower surface of a Colocasia leaf showing stomata
+12 Exploration|Grade 9
+What do you infer? What do you expect in terms of changes in their weight? The weight of the potato piece in Beaker A has increased, while the weight of the potato piece in Beaker B has decreased. This happens because the cell membrane allows water to move in and out of the cell but not the sugar or salt molecules. Water moves from an area with more water and less solute (dilute solution) to an area with less water and more solute (concentrated solution) until the concentrations in the two areas become equal. This movement of water through a selectively permeable membrane is called osmosis. You have learnt in Activities 7.8 (dye spreading in water) and 7.9 (fragrance spreading in air) in
+Grade 8 that particles of matter intermix, due to a difference in their concentrations, also called a concentration gradient. Diffusion is the net movement of particles from a higher to a lower concentration (which occurs even without a membrane). Osmosis is the diffusion of water across a selectively permeable membrane. In plants, water from the soil enters root cells by this process of osmosis.
+a cell is kept in salt or sugar solutions of different concentrations?
+Solute concentration of extracellular medium = Solute concentration of intracellular medium — Isotonic solution Isotonic
+Solute concentration of extracellular medium < Solute concentration of intracellular medium — Hypotonic solution Hypotonic
+Solute concentration of extracellular medium > Solute concentration of intracellular medium — Hypertonic solution Hypertonic
+Fig. 2.6: Effect of solutions of different concentrations on a cell solution solution solution
+What if ...
+Structurally, the cell membrane is extremely thin, about 7 to 10 nanometres (nm) thick (1 nanometre = 0.000001 mm). It is made up of lipids (fats) and proteins. The fluid-mosaic model explains its structure (Fig. 2.7) :
+y The membrane has a lipid bilayer (two layers of special fat molecules with water attracting heads outwards and water repelling tails inwards) with proteins embedded in them.
+y The molecules can move sideways, flip and rotate within the membrane.
+Hence, it is fluid.
+y Proteins in the membrane act like gatekeepers in helping substances pass through.
+Fig. 2.7: Structure of a cell membrane
+Various types of proteins mung bean seeds are kept in a concentrated solution after soaking in water for 12 hours? What will happen to them?
+What if ...
+Curiosity
+Chapter 7

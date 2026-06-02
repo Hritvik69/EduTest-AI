@@ -1,0 +1,17 @@
+Introductory
+Microeconomics
+If both the goods are perfectly divisible6, the consumer’s budget set would consist of all bundles (x1, x2)
+such that x1 and x2 are any numbers greater than or equal to 0 and p1x1 + p2x2 ≤ M. The budget set can be represented in a diagram as in Figure
+All bundles in the positive quadrant which are on or below the line are included in the budget set.
+The equation of the line is p1x1 + p2x2 = M (2.2)
+The line consists of all bundles which cost exactly equal to M. This line is called the budget line. Points below the budget line represent bundles which cost strictly less than M.
+The equation (2.2) can also be written as7
+= − (2.3)
+The budget line is a straight line with horizontal intercept 1 p and vertical intercept 2 p . The horizontal intercept represents the bundle that the consumer can buy if she spends her entire income on bananas. Similarly, the vertical intercept represents the bundle that the consumer can buy if she spends her entire income on mangoes. The slope of the budget line is 1
+Price Ratio and the Slope of the Budget Line
+Think of any point on the budget line. Such a point represents a bundle which costs the consumer her entire budget. Now suppose the consumer wants to have one more banana. She can do it only if she gives up some amount of the other good. How many mangoes does she have to give up if she wants to have an extra quantity of bananas? It would depend on the prices of the two goods. A quantity of banana costs p1. Therefore, she will have to reduce her expenditure on mangoes by p1 amount, if she wants one more quantity of banana. With p1, she could buy 1 p quantities of mangoes. Therefore, if the consumer wants to have an extra quantity of bananas when she is spending all her money, she will have to give up 1 p quantities of mangoes. In other words, in the given market
+6The goods considered in Example 2.1 were not divisible and were available only in integer units.
+There are many goods which are divisible in the sense that they are available in non-integer units also. It is not possible to buy half an orange or one-fourth of a banana, but it is certainly possible to buy half a kilogram of rice or one-fourth of a litre of milk.
+7In school mathematics, you have learnt the equation of a straight line as y = c + mx where c is the vertical intercept and m is the slope of the straight line. Note that equation (2.3) has the same form.
+Budget Set. Quantity of bananas is measured along the horizontal axis and quantity of mangoes is measured along the vertical axis. Any point in the diagram represents a bundle of the two goods. The budget set consists of all points on or below the straight line having the equation p1x1 + p2x2 = M.
+Reprint 2026-27

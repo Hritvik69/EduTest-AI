@@ -1,0 +1,96 @@
+27 27 27 27 27 National
+Accounting
+Table 2.4: Basic National Income Aggregates5
+• GDP is the market value of all final goods and services produced within a domestic territory of a country measured in a year.
+• All production done by the national residents or the non-residents in a country gets included, regardless of whether that production is owned by a local company or a foreign entity.
+• Everything is valued at market prices.
+MP GDP C I G X M = + + + −
+• GDP at factor cost is gross domestic product at market prices, less net product taxes.
+• Market prices are the prices as paid by the consumers Market prices also include product taxes and subsides. The term factor cost refers to the prices of products as received by the producers. Thus, factor cost is equal to market prices, minus net indirect taxes. GDP at factor cost measures money value of output produced by the firms within the domestic boundaries of a country in a year.
+FC MP GDP GDP NIT = −
+• This measure allows policy-makers to estimate how much the country has to spend just to maintain their current GDP.
+If the country is not able to replace the capital stock lost through depreciation, then GDP will fall.
+. MP MP NDP GDP Dep = −
+• NDP at factor cost is the income earned by the factors in the form of wages, profits, rent, interest, etc., within the domestic territory of a country.
+NDP = NDP - Net Product Taxes - Net ProductionTaxes
+1. Gross Domestic
+Product at Market
+Prices (GDPMP)
+2. GDP at Factor Cost
+3. Net Domestic
+Product at Market
+Prices (NDPMP)
+4. NDP at Factor Cost
+5Following the System of National Accounts 2008 (SNA2008) given by the United Nations in partnership with some other agencies, countries are now switching to new aggregates. India shifted to these aggregates a few years back.
+what is the maximum amount of goods and services the domestic economy has at its disposal. Current transfers from the rest of the world include items such as gifts, aids, etc.
+• Private Income = Factor income from net domestic product accruing to the private sector + National debt interest + Net factor income from abroad
++ Current transfers from government + Other net transfers from the rest of the world.
+Reprint 2026-27
+28 28 28 28 28
+Introductory Macroeconomics
+5. Gross National
+Product at Market
+Prices (GNPMP)
+6. GNP at Factor Cost
+7. Net National
+Product at Market
+Prices (NNPMP)
+8. NNP at Factor Cost
+National Income
+9. GVA at Market Prices
+10. GVA at basic prices
+11. GVA at factor cost
+• GNPMP is the value of all the final goods and services that are produced by the normal residents of India and is measured at the market prices, in a year.
+• GNP refers to all the economic output produced by a nation’s normal residents, whether they are located within the national boundary or abroad.
+• Everything is valued at the market prices.
+GNPMP = GDPMP + NFIA
+• GNP at factor cost measures value of output received by the factors of production belonging to a country in a
+GNP =GNP - Net Product Taxes - Net ProductionTaxes
+• This is a measure of how much a country can consume in a given period of time.
+NNP measures output regardless of where that production has taken place (in domestic territory or abroad).
+NNP GNP Depreciation
+NNP NDP NFIA
+• NNP at factor cost is the sum of income earned by all factors in the production in the form of wages, profits, rent and interest, etc., belonging to a country during a year.
+• It is the National Product and is not bound by production in the national boundaries.
+It is the net domestic factor income added with the net factor income from abroad.
+NI NNP Net Product Taxes - Net ProductionTaxes
+NDP NFIA NNP
+• GDP at market prices
+• GVAMP - Net Product Taxes
+• GVA at basic prices - Net Production Taxes
+Reprint 2026-27
+29 29 29 29 29 National Income Accounting
+2.4 NOMINAL AND REAL GDP
+One implicit assumption in all this discussion is that the prices of goods and services do not change during the period of our study. If prices change, then there may be difficulties in comparing GDPs. If we measure the GDP of a country in two consecutive years and see that the figure for GDP of the latter year is twice that of the previous year, we may conclude that the volume of production of the country has doubled. But it is possible that only prices of all goods and services have doubled between the two years whereas the production has remained constant.
+Therefore, in order to compare the GDP figures (and other macroeconomic variables) of different countries or to compare the GDP figures of the same country at different points of time, we cannot rely on GDPs evaluated at current market prices. For comparison we take the help of real GDP. Real GDP is calculated in a way such that the goods and services are evaluated at some constant set of prices (or constant prices). Since these prices remain fixed, if the Real GDP changes we can be sure that it is the volume of production which is undergoing changes. Nominal GDP, on the other hand, is simply the value of GDP at the current prevailing prices. For example, suppose a country only produces bread.
+In the year 2000 it had produced 100 units of bread, price was Rs 10 per bread.
+GDP at current price was Rs 1,000. In 2001 the same country produced 110 units of bread at price Rs 15 per bread. Therefore nominal GDP in 2001 was Rs
+1,650 (=110 × Rs 15). Real GDP in 2001 calculated at the price of the year 2000 (2000 will be called the base year) will be 110 × Rs 10 = Rs 1,100.
+Notice that the ratio of nominal GDP to real GDP gives us an idea of how the prices have moved from the base year (the year whose prices are being used to calculate the real GDP) to the current year. In the calculation of real and nominal
+GDP of the current year, the volume of production is fixed. Therefore, if these measures differ it is only due to change in the price level between the base year and the current year. The ratio of nominal to real GDP is a well known index of prices. This is called GDP Deflator. Thus if GDP stands for nominal GDP and gdp stands for real GDP then, GDP deflator = GDP
+Sometimes the deflator is also denoted in percentage terms. In such a case deflator = GDP gdp × 100 per cent. In the previous example, the GDP deflator is
+1,100 = 1.50 (in percentage terms this is 150 per cent). This implies that the price of bread produced in 2001 was 1.5 times the price in 2000. Which is true because price of bread has indeed gone up from Rs 10 to Rs 15. Like GDP deflator, we can have GNP deflator as well.
+There is another way to measure change of prices in an economy which is known as the Consumer Price Index (CPI). This is the index of prices of a given basket of commodities which are bought by the representative consumer.
+CPI is generally expressed in percentage terms. We have two years under consideration – one is the base year, the other is the current year. We calculate the cost of purchase of a given basket of commodities in the base year. We also calculate the cost of purchase of the same basket in the current year. Then we express the latter as a percentage of the former. This gives us the Consumer
+Price Index of the current year vis-´a-vis the base year. For example let us take an economy which produces two goods, rice and cloth. A representative consumer buys 90 kg of rice and 5 pieces of cloth in a year. Suppose in the
+Reprint 2026-27
+30 30 30 30 30
+Introductory
+Macroeconomics year 2000 the price of a kg of rice was Rs 10 and a piece of cloth was Rs 100.
+So the consumer had to spend a total sum of Rs 10 × 90 = Rs 900 on rice in
+2000. Similarly, she spent Rs 100 × 5 = Rs 500 per year on cloth. Summation of the two items is, Rs 900 + Rs 500 = Rs 1,400.
+Now suppose the prices of a kg of rice and a piece of cloth has gone up to Rs
+15 and Rs 120 in the year 2005. To buy the same quantity of rice and clothes the representative will have to spend Rs 1,350 and Rs 600 respectively (calculated in a similar way as before). Their sum will be, Rs 1,350 + Rs 600 = Rs 1,950. The
+CPI therefore will be 1,950
+1,400 × 100 = 139.29 (approximately).
+It is worth noting that many commodities have two sets of prices. One is the retail price which the consumer actually pays. The other is the wholesale price, the price at which goods are traded in bulk. These two may differ in value because of the margin kept by traders. Goods which are traded in bulk (such as raw materials or semi-finished goods) are not purchased by ordinary consumers. Like CPI, the index for wholesale prices is called
+Wholesale Price Index (WPI). In countries like USA it is referred to as
+Producer Price Index (PPI). Notice CPI (and analogously WPI) may differ from GDP deflator because
+1. The goods purchased by consumers do not represent all the goods which are produced in a country. GDP deflator takes into account all such goods and services.
+2. CPI includes prices of goods consumed by the representative consumer, hence it includes prices of imported goods. GDP deflator does not include prices of imported goods.
+3. The weights are constant in CPI – but they differ according to production level of each good in GDP deflator.
+2.5 GDP AND WELFARE
+Can the GDP of a country be taken as an index of the welfare of the people of that country? If a person has more income he or she can buy more goods and services and his or her material well-being improves. So it may seem reasonable to treat his or her income level as his or her level of well-being. GDP is the sum total of value of goods and services created within the geographical boundary of a country in a particular year. It gets distributed among the people as incomes (except for retained earnings). So we may be tempted to treat higher level of GDP of a country as an index of greater well-being of the people of that country (to account for price changes, we may take the value of real GDP instead of nominal
+GDP). But there are at least three reasons why this may not be correct.
+1. Distribution of GDP – how uniform is it: If the GDP of the country is rising, the welfare may not rise as a consequence. This is because the rise in GDP may be concentrated in the hands of very few individuals or firms. For the rest, the income may in fact have fallen. In such a case the welfare of the entire country cannot be said to have increased. For example, suppose in year 2000, an imaginary country had 100 individuals each earning Rs 10. Therefore the GDP of the country was Rs 1,000 (by income method). In 2001, let us suppose the same country had 90 individuals earning Rs 9 each, and the rest 10 individual earning Rs 20 each. Suppose there had been no change in the prices of goods and services between these two periods. The GDP of the country in the year 2001 was 90 × (Rs 9) + 10 × (Rs 20) = Rs 810 + Rs 200 = Rs 1,010. Observe that
+Reprint 2026-27

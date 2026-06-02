@@ -1,0 +1,191 @@
+38 MATHEMATICS
+Solution The information is represented in the form of a 3 × 2 matrix as follows:
+ =  
+The entry in the third row and second column represents the number of women workers in factory III.
+Example 2 If a matrix has 8 elements, what are the possible orders it can have?
+Solution We know that if a matrix is of order m × n, it has mn elements. Thus, to find all possible orders of a matrix with 8 elements, we will find all ordered pairs of natural numbers, whose product is 8.
+Thus, all possible ordered pairs are (1, 8), (8, 1), (4, 2), (2, 4)
+Hence, possible orders are 1 × 8, 8 ×1, 4 × 2, 2 × 4
+Example 3 Construct a 3 × 2 matrix whose elements are given by 1 | 3 | ij a i j = − .
+Solution In general a 3 × 2 matrix is given by
+ =  
+Now 1 | 3 | ij a i j = − , i = 1, 2, 3 and j = 1, 2.
+Therefore 11
+1 |1 3 1| 1 a = − × = 12
+|1 3 2 | a = − × =
+| 2 3 1| a = − × = 22
+1 | 2 3 2 | 2 a = − × =
+1 | 3 3 1| 0 a = − × = 32
+| 3 3 2 | a = − × =
+Hence the required matrix is given by
+Reprint 2026-27
+MATRICES 39
+3.3 Types of Matrices
+In this section, we shall discuss different types of matrices.
+(i) Column matrix
+A matrix is said to be a column matrix if it has only one column.
+For example, is a column matrix of order 4 × 1.
+In general, A = [aij] m × 1 is a column matrix of order m × 1.
+(ii) Row matrix
+A matrix is said to be a row matrix if it has only one row.
+For example, 1 4
+= −     is a row matrix.
+In general, B = [bij] 1 × n is a row matrix of order 1 × n.
+(iii) Square matrix
+A matrix in which the number of rows are equal to the number of columns, is said to be a square matrix. Thus an m × n matrix is said to be a square matrix if m = n and is known as a square matrix of order ‘n’.
+For example
+  =  
+  −   is a square matrix of order 3.
+In general, A = [aij] m × m is a square matrix of order m.
+ANote If A = [aij] is a square matrix of order n, then elements (entries) a11, a22, ..., ann are said to constitute the diagonal, of the matrix A. Thus, if
+ = − 
+Then the elements of the diagonal of A are 1, 4, 6.
+Reprint 2026-27
+40 MATHEMATICS (iv) Diagonal matrix
+A square matrix B = [bij] m × m is said to be a diagonal matrix if all its non diagonal elements are zero, that is a matrix B = [bij] m × m is said to be a diagonal matrix if bij = 0, when i ≠ j.
+For example, A = [4], 1 0
+ =  
+, are diagonal matrices of order 1, 2, 3, respectively.
+(v) Scalar matrix
+A diagonal matrix is said to be a scalar matrix if its diagonal elements are equal, that is, a square matrix B = [bij] n × n is said to be a scalar matrix if bij = 0, when i ≠ j bij = k, when i = j, for some constant k.
+For example
+A = [3], 1 0
+=  −   are scalar matrices of order 1, 2 and 3, respectively.
+(vi) Identity matrix
+A square matrix in which elements in the diagonal are all 1 and rest are all zero is called an identity matrix. In other words, the square matrix A = [aij] n × n is an identity matrix, if 1 if
+=  ≠  .
+We denote the identity matrix of order n by In. When order is clear from the context, we simply write it as I.
+For example [1], 1 0 are identity matrices of order 1, 2 and 3, respectively.
+Observe that a scalar matrix is an identity matrix when k = 1. But every identity matrix is clearly a scalar matrix.
+Reprint 2026-27
+MATRICES 41 (vii) Zero matrix
+A matrix is said to be zero matrix or null matrix if all its elements are zero.
+For example, [0], 0 0
+  , 0 0 0
+  , [0, 0] are all zero matrices. We denote zero matrix by O. Its order will be clear from the context.
+3.3.1 Equality of matrices
+Definition 2 Two matrices A = [aij] and B = [bij] are said to be equal if (i) they are of the same order (ii) each element of A is equal to the corresponding element of B, that is aij = bij for all i and j.
+For example, 2 3 2 3
+    are equal matrices but 3 2 2 3
+    are not equal matrices. Symbolically, if two matrices A and B are equal, we write A = B.
+−         =            
+, then x = – 1.5, y = 0, z = 2, a = 6 , b = 3, c = 2
+Example 4 If
+3 4 2 7 0 6 3 2
+6 1 0 6 3 2 2
+3 21 0 2 4 21 0
++ + − −    
+   − − = − − +   
+    − − + −    
+Find the values of a, b, c, x, y and z.
+Solution As the given matrices are equal, therefore, their corresponding elements must be equal. Comparing the corresponding elements, we get x + 3 = 0, z + 4 = 6, 2y – 7 = 3y – 2 a – 1 = – 3, 0 = 2c + 2 b – 3 = 2b + 4,
+Simplifying, we get a = – 2, b = – 7, c = – 1, x = – 3, y = –5, z = 2
+Example 5 Find the values of a, b, c, and d from the following equation:
+5 4 3 11 24
++ − −    
+=    − +    
+Reprint 2026-27
+42 MATHEMATICS
+Solution By equality of two matrices, equating the corresponding elements, we get
+2a + b = 4 5c – d = 11 a – 2b = – 3 4c + 3d = 24
+Solving these equations, we get a = 1, b = 2, c = 3 and d = 4
+EXERCISE 3.1
+1. In the matrix
+2 5 19 7
+A 35 2 12
+17 3 1 5
+, write:
+(i) The order of the matrix, (ii) The number of elements, (iii) Write the elements a13, a21, a33, a24, a23.
+2. If a matrix has 24 elements, what are the possible orders it can have? What, if it has 13 elements?
+3. If a matrix has 18 elements, what are the possible orders it can have? What, if it has 5 elements?
+4. Construct a 2 × 2 matrix, A = [aij], whose elements are given by:
+= (ii) ij
+5. Construct a 3 × 4 matrix, whose elements are given by:
+(i) 1 | 3 | ij a i j = − + (ii) 2 ij a i j = −
+6. Find the values of x, y and z from the following equations:
+=    
+    (ii) 2 6 2
++    
+=    +     (iii)
++ +    
+   + =   
+    +    
+7. Find the value of a, b, c and d from the equation:
+2 3 0 13
+− + −    
+=    − +    
+Reprint 2026-27
+MATRICES 43
+8. A = [aij]m × n\ is a square matrix, if (A) m < n (B) m > n (C) m = n (D) None of these
+9. Which of the given values of x and y make the following pair of matrices equal
+ + −   , 0 2 (A) 1, 7
+= = (B) Not possible to find (C) y = 7, 2
+= (D) 1 2
+10. The number of all possible matrices of order 3 × 3 with each entry 0 or 1 is:
+(A) 27 (B) 18 (C) 81 (D) 512
+3.4 Operations on Matrices
+In this section, we shall introduce certain operations on matrices, namely, addition of matrices, multiplication of a matrix by a scalar, difference and multiplication of matrices.
+3.4.1 Addition of matrices
+Suppose Fatima has two factories at places A and B. Each factory produces sport shoes for boys and girls in three different price categories labelled 1, 2 and 3. The quantities produced by each factory are represented as matrices given below:
+Suppose Fatima wants to know the total production of sport shoes in each price category. Then the total production
+In category 1 : for boys (80 + 90), for girls (60 + 50)
+In category 2 : for boys (75 + 70), for girls (65 + 55)
+In category 3 : for boys (90 + 75), for girls (85 + 75)
+This can be represented in the matrix form as
+80 90 60 50
+75 70 65 55
+90 75 85 75
+ + + 
+  + +  
+Reprint 2026-27
+44 MATHEMATICS
+This new matrix is the sum of the above two matrices. We observe that the sum of two matrices is a matrix obtained by adding the corresponding elements of the given matrices. Furthermore, the two matrices have to be of the same order.
+Thus, if 11 12 13
+21 22 23
+  is a 2 × 3 matrix and 11 12 13
+21 22 23 is another
+2×3 matrix. Then, we define 11 11 12 12 13 13
+21 21 22 22 23 23
+A + B a b a b a b a b a b a b
++ + +  
+=  + + +   .
+In general, if A = [aij] and B = [bij] are two matrices of the same order, say m × n.
+Then, the sum of the two matrices A and B is defined as a matrix C = [cij]m × n, where cij = aij + bij, for all possible values of i and j.
+Example 6 Given 3 1 1
+  =   −
+, find A + B
+Since A, B are of the same order 2 × 3. Therefore, addition of A and B is defined and is given by
+2 3 1 5 1 1 2 3 1 5 0
+A + B 1 1
+2 2 3 3 0 0 6
+    + + − + +
+    = =
+    − + +
+       
+1. We emphasise that if A and B are not of the same order, then A + B is not defined. For example if 2 3 then A + B is not defined.
+2. We may observe that addition of matrices is an example of binary operation on the set of matrices of the same order.
+3.4.2 Multiplication of a matrix by a scalar
+Now suppose that Fatima has doubled the production at a factory A in all categories (refer to 3.4.1).
+Reprint 2026-27
+MATRICES 45
+Previously quantities (in standard units) produced by factory A were
+Revised quantities produced by factory A are as given below:
+Boys Girls
+2 80 2 60 1
+2 2 75 2 65
+3 2 90 2 85
+ × × 
+  × ×  
+This can be represented in the matrix form as
+. We observe that the new matrix is obtained by multiplying each element of the previous matrix by 2.
+In general, we may define multiplication of a matrix by a scalar as follows: if
+A = [aij] m × n is a matrix and k is a scalar, then kA is another matrix which is obtained by multiplying each element of A by the scalar k.
+In other words, kA = k [aij] m × n = [k (aij)] m × n, that is, (i, j)th element of kA is kaij for all possible values of i and j.
+For example, if A =
+3 1 1.5 9 3 4.5
+3 5 7 3 3 5 21 9
+2 0 5 6 0 15
+− = −    
+Negative of a matrix The negative of a matrix is denoted by – A. We define
+– A = (– 1) A.
+Reprint 2026-27

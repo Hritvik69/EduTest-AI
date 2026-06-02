@@ -1,0 +1,143 @@
+100 BIOLOGY made up of nine evenly spaced peripheral fibrils of tubulin protein. Each of the peripheral fibril is a triplet.The adjacent triplets are also linked.
+The central part of the proximal region of the centriole is also proteinaceous and called the hub, which is connected with tubules of the peripheral triplets by radial spokes made of protein. The centrioles form the basal body of cilia or flagella, and spindle fibres that give rise to spindle apparatus during cell division in animal cells.
+8.5.10 Nucleus
+Nucleus as a cell organelle was first described by Robert Brown as early as 1831. Later the material of the nucleus stained by the basic dyes was given the name chromatin by Flemming.
+The interphase nucleus (nucleus of a cell when it is not dividing) has highly extended and elaborate nucleoprotein fibres called chromatin, nuclear matrix and one or more spherical bodies called nucleoli (sing.: nucleolus) (Figure 8.11).
+Electron microscopy has revealed that the nuclear envelope, which consists of two parallel membranes with a space between (10 to 50 nm) called the perinuclear space, forms a barrier between the materials present inside the nucleus and that of the cytoplasm. The outer membrane usually remains continuous with the endoplasmic reticulum and also bears ribosomes on it. At a number of places the nuclear envelope is interrupted by minute pores, which are formed by the fusion of its two membranes. These nuclear pores are the passages through which movement of RNA and protein molecules takes place in both directions between the nucleus and the cytoplasm. Normally, there is only one nucleus per cell, variations in the number of nuclei are also frequently observed. Can you recollect names of organisms that have more than one nucleus per cell? Some mature cells even lack nucleus, e.g., erythrocytes of many mammals and sieve tube cells of vascular plants. Would you consider these cells as ‘living’?
+The nuclear matrix or the nucleoplasm contains nucleolus and chromatin. The nucleoli are spherical structures present in the nucleoplasm. The content of nucleolus is continuous with the rest of the nucleoplasm as it is not a membrane bound structure. It is a site for active ribosomal RNA synthesis. Larger and more numerous nucleoli are present in cells actively carrying out protein synthesis.
+Nucleoplasm
+Nucleolus
+Nuclear pore membrane
+Figure 8.11 Structure of nucleus
+Reprint 2026-27
+CELL: THE UNIT OF LIFE 101
+Kinetochore
+Figure 8.12 Chromosome with kinetochore
+Figure 8.13 Types of chromosomes based on the position of centromere
+You may recall that the interphase nucleus has a loose and indistinct network of nucleoprotein fibres called chromatin. But during different stages of cell division, cells show structured chromosomes in place of the nucleus.
+Chromatin contains DNA and some basic proteins called histones, some non-histone proteins and also RNA. A single human cell has approximately two metre long thread of DNA distributed among its forty six (twenty three pairs) chromosomes. You will study the details of DNA packaging in the form of a chromosome in class XII.
+Every chromosome (visible only in dividing cells)
+essentially has a primary constriction or the centromere on the sides of which disc shaped structures called kinetochores are present (Figure 8.12). Centromere holds two chromatids of a chromosome. Based on the position of the centromere, the chromosomes can be classified into four types (Figure 8.13). The metacentric chromosome has middle centromere forming two equal arms of the chromosome. The sub-metacentric chromosome has centromere slightly away from the middle of the chromosome resulting into one shorter arm and one longer arm. In case of acrocentric chromosome the centromere is situated close to its end forming one extremely short and one very long arm, whereas the telocentric chromosome has a terminal centromere.
+Reprint 2026-27
+102 BIOLOGY
+Sometimes a few chromosomes have non-staining secondary constrictions at a constant location. This gives the appearance of a small fragment called the satellite.
+8.5.11 Microbodies
+Many membrane bound minute vesicles called microbodies that contain various enzymes, are present in both plant and animal cells.
+All organisms are made of cells or aggregates of cells. Cells vary in their shape, size and activities/functions. Based on the presence or absence of a membrane bound nucleus and other organelles, cells and hence organisms can be named as eukaryotic or prokaryotic.
+A typical eukaryotic cell consists of a cell membrane, nucleus and cytoplasm.
+Plant cells have a cell wall outside the cell membrane. The plasma membrane is selectively permeable and facilitates transport of several molecules. The endomembrane system includes ER, golgi complex, lysosomes and vacuoles. All the cell organelles perform different but specific functions. Centrosome and centriole form the basal body of cilia and flagella that facilitate locomotion. In animal cells, centrioles also form spindle apparatus during cell division. Nucleus contains nucleoli and chromatin network. It not only controls the activities of organelles but also plays a major role in heredity.
+Endoplasmic reticulum contains tubules or cisternae. They are of two types:
+rough and smooth. ER helps in the transport of substances, synthesis of proteins, lipoproteins and glycogen. The golgi body is a membranous organelle composed of flattened sacs. The secretions of cells are packed in them and transported from the cell. L ysosomes are single membrane structures containing enzymes for digestion of all types of macromolecules. Ribosomes are involved in protein synthesis. These occur freely in the cytoplasm or are associated with ER. Mitochondria help in oxidative phosphorylation and generation of adenosine triphosphate. They are bound by double membrane;
+the outer membrane is smooth and inner one folds into several cristae. Plastids are pigment containing organelles found in plant cells only. In plant cells, chloroplasts are responsible for trapping light energy essential for photosynthesis. The grana, in the plastid, is the site of light reactions and the stroma of dark reactions. The green coloured plastids are chloroplasts, which contain chlorophyll, whereas the other coloured plastids are chromoplasts, which may contain pigments like carotene and xanthophyll. The nucleus is enclosed by nuclear envelope, a double membrane structure with nuclear pores.
+The inner membrane encloses the nucleoplasm and the chromatin material.
+Thus, cell is the structural and functional unit of life.
+Reprint 2026-27
+CELL: THE UNIT OF LIFE 103
+EXERCISES
+1. Which of the following is not correct?
+(a) Robert Brown discovered the cell.
+(b) Schleiden and Schwann formulated the cell theory.
+(c) Virchow explained that cells are formed from pre-existing cells.
+(d) A unicellular organism carries out its life activities within a single cell.
+2. New cells generate from (a) bacterial fermentation (b) regeneration of old cells (c) pre-existing cells (d) abiotic materials
+3. Match the following
+Column I Column II (a) Cristae (i) Flat membranous sacs in stroma (b) Cisternae (ii) Infoldings in mitochondria (c) Thylakoids (iii) Disc-shaped sacs in Golgi apparatus
+4. Which of the following is correct:
+(a) Cells of all living organisms have a nucleus.
+(b) Both animal and plant cells have a well defined cell wall.
+(c) In prokaryotes, there are no membrane bound organelles.
+(d) Cells are formed de novo from abiotic materials.
+5. What is a mesosome in a prokaryotic cell? Mention the functions that it performs.
+6. How do neutral solutes move across the plasma membrane? Can the polar molecules also move across it in the same way? If not, then how are these transported across the membrane?
+7. Name two cell-organelles that are double membrane bound. What are the characteristics of these two organelles? State their functions and draw labelled diagrams of both.
+8. What are the characteristics of prokaryotic cells?
+9. Multicellular organisms have division of labour. Explain.
+10. Cell is the basic unit of life. Discuss in brief.
+11. What are nuclear pores? State their function.
+12. Both lysosomes and vacuoles are endomembrane structures, yet they differ in terms of their functions. Comment.
+13. Describe the structure of the following with the help of labelled diagrams.
+(i) Nucleus (ii) Centrosome
+14. What is a centromere? How does the position of centromere form the basis of classification of chromosomes. Support your answer with a diagram showing the position of centromere on different types of chromosomes.
+Reprint 2026-27
+104 BIOLOGY
+There is a wide diversity in living organisms in our biosphere. Now a question that arises in our minds is: Are all living organisms made of the same chemicals, i.e., elements and compounds? You have learnt in chemistry how elemental analysis is performed. If we perform such an analysis on a plant tissue, animal tissue or a microbial paste, we obtain a list of elements like carbon, hydrogen, oxygen and several others and their respective content per unit mass of a living tissue. If the same analysis is performed on a piece of earth’s crust as an example of non-living matter, we obtain a similar list. What are the differences between the two lists? In absolute terms, no such differences could be made out. All the elements present in a sample of earth’s crust are also present in a sample of living tissue. However, a closer examination reveals that the relative abundance of carbon and hydrogen with respect to other elements is higher in any living organism than in earth’s crust (Table 9.1).
+9.1 HO W TO ANALYSE CHEMICAL COMPOSITION?
+We can continue asking in the same way, what type of organic compounds are found in living organisms? How does one go about finding the answer?
+To get an answer, one has to perform a chemical analysis. We can take any living tissue (a vegetable or a piece of liver, etc.) and grind it in trichloroacetic acid (Cl3CCOOH) using a mortar and a pestle. We obtain a thick slurry. If we were to strain this through a cheesecloth or cotton we would obtain two fractions. One is called the filtrate or more technically, the acid-soluble pool, and the second, the retentate or the acid-insoluble fraction. Scientists have found thousands of organic compounds in the acid-soluble pool.
+BIOMOLECULES
+CHAPTER 9
+9.1 How to Analyse
+Chemical
+Composition?
+9.2 Primary and
+Secondary
+Metabolites
+9.3 Biomacromolecules
+9.4 Proteins
+9.5 Polysaccharides
+9.6 Nucleic Acids
+9.7 Structure of
+Proteins
+9.8 Enzymes
+Reprint 2026-27
+BIOMOLECULES 105
+In higher classes you will learn about how to analyse a living tissue sample and identify a particular organic compound. It will suffice to say here that one extracts the compounds, then subjects the extract to various separation techniques till one has separated a compound from all other compounds. In other words, one isolates and purifies a compound. Analytical techniques, when applied to the compound give us an idea of the molecular formula and the probable structure of the compound. All the carbon compounds that we get from living tissues can be called ‘biomolecules’. However, living organisms have also got inorganic elements and compounds in them. How do we know this? A slightly different but destructive experiment has to be done. One weighs a small amount of a living tissue (say a leaf or liver and this is called wet weight) and dry it. All the water, evaporates. The remaining material gives dry weight. Now if the tissue is fully burnt, all the carbon compounds are oxidised to gaseous form (CO2, water vapour) and are removed. What is remaining is called ‘ash’. This ash contains inorganic elements (like calcium, magnesium etc). Inorganic compounds like sulphate, phosphate, etc., are also seen in the acid-soluble fraction. Therefore elemental analysis gives elemental composition of living tissues in the form of hydrogen, oxygen, chlorine, carbon etc.
+while analysis for compounds gives an idea of
+Element % Weight of
+Earth’s crust Human body
+Hydrogen (H) 0.14 9.5
+Carbon (C) 0.03 18.5
+Oxygen (O) 46.6 65.0
+Nitrogen (N) very little 3.3
+Sulphur (S) 0.03 0.3
+Sodium (Na) 2.8 0.2
+Calcium (Ca) 3.6 1.5
+Magnesium (Mg) 2.1 0.1
+Silicon (Si) 27.7 negligible
+* Adapted from CNR Rao, Understanding Chemistry,
+Universities Press, Hyderabad.
+TABLE 9.1 A Comparison of Elements Present in Non-living and Living Matter*
+Component Formula
+Sodium Na+
+Potassium K+
+Calcium Ca++
+Magnesium Mg++
+Water H2O
+Compounds NaCl, CaCO3,
+TABLE 9.2 A List of Representative Inorganic
+Constituents of Living Tissues the kind of organic (Figure 9.1) and inorganic constituents (Table 9.2)
+present in living tissues. From a chemistry point of view, one can identify functional groups like aldehydes, ketones, aromatic compounds, etc. But from a biological point of view, we shall classify them into amino acids, nucleotide bases, fatty acids etc.
+Amino acids are organic compounds containing an amino group and an acidic group as substituents on the same carbon i.e., the α-carbon.
+Hence, they are called α-amino acids. They are substituted methanes. There are four substituent groups occupying the four valency positions. These are hydrogen, carboxyl group, amino group and a variable group designated as R group. Based on the nature of R group there are many amino acids. However, those which occur in proteins are only of twenty
+Reprint 2026-27
+106 BIOLOGY types. The R group in these proteinaceous amino acids could be a hydrogen (the amino acid is called glycine), a methyl group (alanine), hydroxy methyl (serine), etc. Three of the twenty are shown in Figure 9.1.
+The chemical and physical properties of amino acids are essentially of the amino, carboxyl and the R functional groups. Based on number of amino and carboxyl groups, there are acidic (e.g., glutamic acid), basic (lysine) and neutral (valine) amino acids. Similarly, there are aromatic amino acids (tyrosine, phenylalanine, tryptophan). A particular property of amino acids is the ionizable nature of –NH2 and –COOH groups. Hence in solutions of different pH, the structure of amino acids changes.
+B is called zwitterionic form.
+Lipids are generally water insoluble. They could be simple fatty acids.
+A fatty acid has a carboxyl group attached to an R group. The R group could be a methyl (–CH3), or ethyl (–C2H5) or higher number of –CH2 groups (1 carbon to 19 carbons). For example, palmitic acid has 16 carbons including carboxyl carbon. Arachidonic acid has 20 carbon atoms including the carboxyl carbon. Fatty acids could be saturated (without double bond) or unsaturated (with one or more C=C double bonds). Another simple lipid is glycerol which is trihydroxy propane. Many lipids have both glycerol and fatty acids. Here the fatty acids are found esterified with glycerol. They can be then monoglycerides, diglycerides and triglycerides. These are also called fats and oils based on melting point. Oils have lower melting point (e.g., gingelly oil) and hence remain as oil in winters. Can you identify a fat from the market? Some lipids have phosphorous and a phosphorylated organic compound in them.
+These are phospholipids. They are found in cell membrane. Lecithin is one example. Some tissues especially the neural tissues have lipids with more complex structures.
+Living organisms have a number of carbon compounds in which heterocyclic rings can be found. Some of these are nitrogen bases – adenine, guanine, cytosine, uracil, and thymine. When found attached to a sugar, they are called nucleosides. If a phosphate group is also found esterified to the sugar they are called nucleotides. Adenosine, guanosine, thymidine, uridine and cytidine are nucleosides. Adenylic acid, thymidylic acid, guanylic acid, uridylic acid and cytidylic acid are nucleotides. Nucleic acids like DNA and RNA consist of nucleotides only. DNA and RNA function as genetic material.
+Reprint 2026-27
+BIOMOLECULES 107
+Cholesterol Phospholipid (Lecithin)
+Fats and oils (lipids)
+(CH )2 14 CH3 COOH
+Fatty acid (Palmitic acid)
+Glycerol Triglyceride (R1, R2 and R3 are fatty acids)
+Nitrogen bases
+Adenine O
+OCH2 P HO
+Adenylic acid
+Nucleotide
+HOCH2 Adenine O
+Uracil O
+Adenosine
+Nucleosides
+C6H12O6 (Glucose) C5H10O5 (Ribose)
+Sugars (Carbohydrates)
+Serine Glycine
+Amino acids
+Figure 9.1 Diagrammatic representation of small molecular weight organic compounds in living tissues
+Adenine (Purine)
+Uracil (Pyrimidine)
+Reprint 2026-27

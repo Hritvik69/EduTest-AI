@@ -1,0 +1,20 @@
+57 Electrochemistry
+Fig. 2.13: Corrosion of iron in atmosphere
+Oxidation: Fe (s)Æ Fe2+ (aq) +2e–
+Reduction: O2 (g) + 4H+(aq) +4e– Æ 2H2O(l)
+Atomospheric oxidation: 2Fe2+(aq) + 2H2O(l) + ½O2(g) Æ Fe2O3(s) + 4H+(aq)
+to thermal plants whose efficiency is about 40%. There has been tremendous progress in the development of new electrode materials, better catalysts and electrolytes for increasing the efficiency of fuel cells.
+These have been used in automobiles on an experimental basis. Fuel cells are pollution free and in view of their future importance, a variety of fuel cells have been fabricated and tried.
+Corrosion slowly coats the surfaces of metallic objects with oxides or other salts of the metal. The rusting of iron, tarnishing of silver, development of green coating on copper and bronze are some of the examples of corrosion. It causes enormous damage to buildings, bridges, ships and to all objects made of metals especially that of iron. We lose crores of rupees every year on account of corrosion.
+In corrosion, a metal is oxidised by loss of electrons to oxygen and formation of oxides. Corrosion of iron (commonly known as rusting) occurs in presence of water and air. The chemistry of corrosion is quite complex but it may be considered essentially as an electrochemical phenomenon. At a particular spot (Fig. 2.13) of an object made of iron, oxidation takes place and that spot behaves as anode and we can write the reaction
+Anode: 2 Fe (s) æÆ 2 Fe2+ + 4 e– o (Fe /Fe)
+E = – 0.44 V
+Electrons released at anodic spot move through the metal and go to another spot on the metal and reduce oxygen in the presence of H+ (which is believed to be available from H2CO3 formed due to dissolution of carbon dioxide from air into water. Hydrogen ion in water may also be available due to dissolution of other acidic oxides from the atmosphere). This spot behaves as cathode with the reaction
+Cathode: O2(g) + 4 H+(aq) + 4 e– æÆ 2 H2O (l ) o
+| | + 2 2 H O H O = 1.23 V E
+The overall reaction being:
+2Fe(s) + O2(g) + 4H+(aq) æÆ 2Fe2 +(aq) + 2 H2O (l) o (cell) E =1.67 V
+The ferrous ions are further oxidised by atmospheric oxygen to ferric ions which come out as rust in the form of hydrated ferric oxide (Fe2O3. x H2O) and with further production of hydrogen ions.
+Prevention of corrosion is of prime importance. It not only saves money but also helps in preventing accidents such as a bridge collapse or failure of a key component due to corrosion. One of the simplest methods of preventing corrosion is to prevent the surface of the metallic object to come in contact with atmosphere. This can be done by covering the surface with paint or by some chemicals (e.g. bisphenol). Another simple method is to cover the surface by other metals (Sn, Zn, etc.) that are inert or react to save the object. An electrochemical method is to provide a sacrificial electrode of another metal (like Mg, Zn, etc.) which corrodes itself but saves the object.
+2.8 2.8 2.8 2.8 2.8 Corrosion Corrosion Corrosion Corrosion Corrosion
+Reprint 2026-27

@@ -1,0 +1,234 @@
+Database ManageMent systeM Using LibreOffice Writer 151
+• Foreign Key – If a field or a combination of fields of one table can be used to uniquely identify records of another table, then that particular field is known as the foreign key. This foreign key helps to build a relation between two tables. Consider the example given below.
+In Student Registration Table, ‘Enrolment_Number’ is the primary key and in the Student Marks Table,
+‘Roll_Number’ is the primary key, whereas ‘Enrollment_
+Number’ is the foreign key. This foreign key can be used to set a relation between two tables.
+• Candidate Key – All the field values that are eligible to be the primary key are the candidate keys for that table. Such fields can neither be left blank nor can have duplicate values. So in the table Student Marks, Enrollment Number and
+Roll Number both are candidate keys.
+• Alternate Key – Out of the candidate keys, one or two are made as primary keys. The others are the alternate keys. Hence, if Roll Number is made as the primary key, Admission Number is the
+Alternate key.
+Objects of an RDBMS
+An object in a database is a structure or a feature that is used to store, represent or retrieve data. In fact a database is a collection of these objects that work on multiple sets of data related to each other. Various objects in a database are as discussed below:
+• Table – As mentioned before, a table is the basic unit of any DBMS. The data is first stored in tables
+Student Registration Table
+Enrolment Number Student Name Class Date of Birth Date of Admission
+XX1234567890 Dipak Kumar 10 06/04/2004 25/06/2018
+XX1234567891 Ram Kumar 10 01/03/2004 24/06/2018
+Primary key: Enrollment Number
+Student Marks Table
+Roll Number Maths Science Vocational Enrolment Number
+44983 87 75 80 XX1234567890
+44990 74 45 75 XX1234567891
+Primary key – Roll Number, Foreign key – Enrollment Number
+Domestic Data entry operator – class X 152 in row and column format. A column represents a field or an attribute while a row represents a record.
+• Forms – A form is a feature of a database using which we can enter data in a table in an easy and user friendly manner. A form consists of text boxes, labels, radio buttons, list boxes, check boxes etc. that give a user friendly interface for entering data. The data entered through the forms is stored in tables.
+• Queries – A query is used to retrieve the desired information from the database. In simple terms, it is a question asked from the database. For example, if we want to view the names of only those students who have scored more than
+50 marks, then we post a query. The data set matching the given criterion is retrieved from the table and displayed on the screen.
+• Reports – The output of a query may be displayed in the form of reports. The usual result of the query is in the form of rows and columns. But if we want the report to be formal and in proper layout, then we can use the Reports feature of RDBMS.
+Let’s Practice
+Consider the following table and answer the questions that
+No. Name Price Quantity Discount
+A001 Pen 20 12 0
+A003 Pencil 15 5 1
+A010 Notebook 50 25 5
+From the above table, identify the primary key. Justify your choice.
+How many fields and how many records does the table have?
+• The raw facts constitutes data.
+• Information is the processed or organised form of data.
+• A database is a collection of logically related data items stored in an organised manner.
+Database ManageMent systeM Using LibreOffice Writer 153
+• The software that is used to create, update and retrieve data is known as database management system (DBMS).
+• Some of the common examples of DBMS are MS
+Access, Open Office or LibreOffice Base, Oracle,
+Ingress, MySQL.
+• Data Model is the structure of database and it describes the manner in which data will be stored and retrieved.
+• There are different data models, such as hierarchical data model, network data model and relational data model.
+• In Hierarchical Data Model, the data is organised into a tree like structure. The data is stored in the form of linked records.
+• In Network Data model, multiple records are linked to same master file.
+• The Relational data model is based on the principle of setting relationships between two or more tables of the same database.
+• Entity is a real world object about which information is to be stored in a database.
+• The details associated with the entity are called attributes.
+• A table is a collection of logically related records.
+It is organised as a set of columns, and can have any number of rows.
+• A field is the smallest entity in the database.
+These are individual record characteristics and are presented as columns within a table.
+• Data values are the raw data represented in numeric, character or alphanumeric form.
+• The data values for all the fields related to a person or object is called a record. It is presented as rows within a table.
+• A primary key is a field that uniquely identifies a row in a table.
+• This foreign key helps to build a relation between two or more tables in a database.
+• All the field values that are eligible to be the primary key are the candidate keys for that table.
+Domestic Data entry operator – class X 154
+• Out of the candidate keys, one or two are made as primary keys. The others are the alternate keys.
+• An object in a database is a structure or a feature that is used to store, represent or retrieve data.
+The various objects in a database are tables, forms, reports and queries.
+• A form is a feature of a database using which we can enter data in a table in an easy and user friendly manner.
+• A query is used to retrieve the desired information from the database.
+• The output of a query may be displayed in the form of reports.
+A. Multiple choice questions
+1. Which of the following can be considered as an example of a database?
+(a) Dictionary (b) Telephone directory (c) Marks Register (d) Newspaper
+2. Which of the following is NOT a DBMS?
+(a) MS Access (b) Open Office Base (c) MS Excel (d) MySQL
+3. DBMS stands for ______________________.
+(a) Data and Books Management System (b) Database Management System (c) Duplicate Books Management System (d) Data Management Multi System
+4. Which of the following data models sets a relation between the two or more tables?
+(a) Relational Data Model (b) Network Data Model (c) Hierarchical Data Model (d) Connection Data Model
+5. The details associated with an entity are called
+____________.
+(a) Table (b) Attributes (c) Records (d) Primary key
+Check Your Progress
+Database ManageMent systeM Using LibreOffice Writer 155
+6. A __________ is represented as rows in a table.
+(a) field (b) attribute (c) record (d) candidate key
+7. In which of the following forms can a data value be represented?
+(a) Numeric (b) Character (c) Alphanumeric (d) All of the above
+8. Which of the following uniquely identifies a row in a table?
+(a) Primary key (b) Alternate key (c) Foreign key (d) Candidate key
+9. A ___________is a feature of a database using which we can enter data in a table in an easy and user friendly manner.
+(a) query (b) report (c) form (d) field
+10. A _____________ is a question asked from a database.
+(a) query (b) report (c) form (d) field
+B. State whether the following statements are True or False
+1. A database cannot be organised.
+2. Data is the collection of raw facts.
+3. A table can be created without a primary key.
+4. Two tables can be related in a network data model.
+5. MS Access is an example of a database.
+C. Fill in the blanks
+1. The raw facts constitutes _____________.
+2. An _____________ is a real world object about which information is to be stored in a database
+3. The output of a query may be displayed in the form of
+________.
+4. The data values for all the fields related to a person or object is called a _________.
+5. All the field values that are eligible to be the primary key are the ___________ keys for that table
+Domestic Data entry operator – class X 156
+D. Answer the following questions
+1. Define the terms (a) Database (b) Data redundancy (c) Report
+2. Give one point of difference between (a) Data and Information, (b) Form and Query, (c) Network and hierarchical data model
+3. Give any four advantages of a DBMS.
+4. Consider the table given below and answer the questions that follow
+Table: Library
+Book_Id Book Name Author Name Price Publisher
+F001 Pride and Prejudice Jane Austen 550 ABC
+S004 Amazing Astronomy E. Shane 1050 ABC
+C005 IT and Mankind MHA Diwaan 2500 HYM (a) Name the fields in the given table.
+(b) Which field should be made the primary key?
+(c) Is there any alternate key in the table?
+(d) How is primary key different from foreign key? Explain with example.
+IntroductIon
+In the previous chapter we have learned about databases and database management system (DBMS).
+LibreOffice Base is a free and open source DBMS. It can be downloaded from www.libreoffice.org and is available for both Linux and Windows operating systems. Data has to be stored in an organised manner using a DBMS.
+Also, the data being stored can be a text, number, date or in any other form. So, we need to understand different types of data that can be stored in a table. The data types of the fields have to be specified while creating tables in a database. Thereafter valid data is entered and stored in a table.
+Data Types
+The nature of data to be entered for various fields are of different types. For example, names are stored in the form of text, age in numbers, fees in decimal numbers, date of birth in date format and so on. A data type refers to the type of data that will be stored in that particular field. The memory size of a field varies according to its data type.
+Some commonly used data types are described below.
+Text Data Type – The text data is a combination of letters, numbers or special characters. No arithmetic calculations can be performed on text data. Examples of text data type is PAN Card Number, Name, Marks, etc.
+9 Starting with LibreOffice Base
+Domestic Data entry operator – class X 158
+Table 9.1: Text Data Types
+Name Data type Description
+Memo LONGVARCHAR
+Stores up to the maximum length indicated by user. It is used to store some descriptive data having more than 255 characters. Memo data type allows to store text data up to
+64,000 characters.
+Text (fix) CHAR
+Stores exactly the length specified by user. Character data type is used to enter fixed number of characters. It can be used for license number, passport number as they have fixed number of characters.
+Text VARCHAR
+Stores upto the specified length. The number of bytes allocated depends on the number of characters entered by the user. For example, the address is defined as varchar (50), and if the address entered by the user is of 20 characters then only 20 bytes will be occupied in the database.
+• Numeric Data Type – Numeric data types consists of numbers. The numbers can be integer or real numbers on which any type of arithmetic calculations can be performed. For example, 10,
+-34.8, 90.6789 , -86 are of numeric data type.
+Table 9.2 lists different numeric data types along with the number of bits/bytes it uses and its range.
+Table 9.2: Numeric data types
+Name Data type Signed Range
+Tiny Integer TYNYINT No 0-255
+Small Integer SMALLINT Yes -32768 to 32768
+Integer INTEGER Yes -2.14×109 to 2.14×109
+BigInt BIGINT Yes -2.3×1018 to 2.3×1018
+Number NUMERIC Yes Unlimited
+Decimal DECIMAL Yes Unlimited
+Float FLOAT Yes
+Real REAL Yes 5×10(-324) to 1.79×10(308)
+Double DOUBLE Yes
+• Currency Data Type – The currency data type indicates the monetary values and can be stored using currencies of various countries. For example
+$100, £ 500 or Rs. 25.50.
+• Date Data Type – This data type is used to indicate dates and time. For example 12/25/2019, 08:45 AM.
+The data and time can be stored in various formats.
+Table 9.3 list various forms of date data type.
+The table below lists various data types that can store textual data.
+Database ManageMent systeM Using LibreOffice Writer 159
+Table 9.3: Various forms of Date data type
+Name Description
+Date Stores the year, month and day as it is stored in the system.
+Time Stores the time of the day as hour, minute and second.
+Timestamp Stores date and time information at once.
+• Boolean – In boolean data type there can be only two values- True or False. This also can be given in multiple formats like Yes/No, True/False,
+• Binary – The Binary data type used to store digitized images and sounds that comes as long string of zeros and ones. It is possible to store photos of the products or employees, or sound snippets or voice messages in Base database.
+Starting with LibreOffice Base
+Annual Sports Day is being held in Ruhi’s school in which various sports competitions will be conducted.
+Ruhi has been asked to create a database consisting of various sports activities and its players. She decides to create a database named, ‘Sports Day’ consisting of a table ‘Events’ that contains the following fields:
+Event_Id - to store Event identification no like E001, E002, etc.
+Event Name - to store name of the event
+Date - to store date on which the event will be conducted
+Winner 1 Name - name of the winner
+Winner 1 Points - points earned y the winner
+Let’s Practice
+What should be the data type of the fields of the table Events that has to be created by Ruhi?
+Which field should be made the primary key?
+Once the table with its fields has been decided, Ruhi decides to start creating the database using LibreOffice
+Base. Follow the following steps to create the database.
+Step 1. Start the LibreOffice Base as per the standard process of starting the application in Windows or Linux. In Windows, click Start > LibreOffice or double click on the LibreOffice icon on the desktop or Select Base Database option from the bottom left panel.
+Domestic Data entry operator – class X 160
+In Ubuntu Linux, click on the Base icon located on the left panel as shown in Fig.
+9.1(a) or click on the Show Applications as shown in Fig. 9.1(b) to search for its icon. Type
+Base in the search box. The LibreOffice Base application icon will be displayed as shown in
+Fig. 9.1(c). Click on the Base icon to open the
+Base application.
+Step 2. A Database Wizard opens as shown in Fig. 9.2.
+It allows you to create a new database or open an existing database.
+Fig. 9.2: LibreOffice Database Wizard
+Tip: To open LibreOffice Base, you may search the application Base on your computer and click on the LibreOffice Base icon.
+Step 3. Since we want to create a new database, so click Create a new database radio button. If any database that has already been created is to be opened, then select Open an Existing
+Database option to select the database to be opened. Thereafter click Next button.
+Step 4. The Next step gives the option to register our database with LibreOffice.org. If we register the database, then our database is made public and hence can be accessed by other people.
+As of now, we would not like to register, so we click and select the radio button with option,
+‘No, do not register the database’.
+Fig. 9.1(a): Clicking on the Base icon on the left panel to open Base
+Fig. 9.1(b): Clicking on Show
+Applications to search for installed packages
+Fig. 9.1(c): Clicking on the searched Base icon to open Base
+Database ManageMent systeM Using LibreOffice Writer 161
+Fig. 9.3: Decide How to Proceed After Saving the Database
+Step 5. This step also asks whether you want to open the database for editing or want to create a table using the wizard. The option Open the database for editing is already selected.
+Step 6. Click Finish button to complete the database creation process. The Save
+As dialog box appears.
+Step 7. Browse for the drive and folder where you want to store your database.
+Step 8. Type the name (Sports Day) in the File name text box.
+Step 9. Click Save button. The database in Base is saved with an extension .odb. Also note that if no name is given to the database, then it is saved with a default name as NewDatabse.odb.
+User Interface of Libre
+Office Base
+Once a database is created, the screen as shown in
+Fig. 9.5 appears. This is the
+User Interface of Open Office
+The various components of the Base User Interface are discussed below:
+Fig. 9.4: Save As dialog box
+Fig. 9.5: User Interface of LibreOffice Base
+Domestic Data entry operator – class X 162
+• Title Bar – The title bar displays the name of a database and an application in which it is made.
+The windows buttons to maximize, minimize or close the window are located on the right corner of the title bar.
+• Menu Bar – The menu bar appears below the title bar. It consists of seven menu items – File,
+Edit, View, Insert, Tools, Window and Help. All these menu items contain commands that help to perform various operations on the database.
+• Standard Toolbar – It is located below the menu bar. It is used to access frequently used tools.
+• Status Bar – It is located at the bottom of the interface window. It displays information about the type of view of the object in the database.
+Database Pane – The database pane is located on the left side of the window. LibreOffice Base is the collection of related data objects known as Tables,
+Forms, Queries, Reports and application modules.
+Depending on the object that is selected, the respective Task Pane and Object Area displaying the created object appears.
+Opening a Database
+To open an already created database, click
+File > Open. The Open dialogue box appears as shown in Fig. 9.6. Browse for the folder where the database to be opened is stored.
+Select the desired database and click on
+Open button.
+Tip: Use the keyboard shortcut key Ctrl+O to open an already existing database.
+Creating a Table
+Once the database is created, we can start working with objects of the database. First and foremost is the creation of the table and then entering data in the table.
+A table in LibreOffice Base can be created using a wizard or using the Design view.
+Creating a Table using a Wizard
+A table can be created at the time of creating a database or after c

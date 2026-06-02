@@ -1,0 +1,203 @@
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 125
+Fig. 6.15: Hyperlink inserted in the spreadsheet
+Step 9. To open the hyperlinked sheet, press the Ctrl key and click on the hyperlinked word “Result-
+X-A”, the sheet will be opened in the new window as shown in Fig. 6.16.
+Fig. 6.16: Hyperlinked sheet open in new window
+Editing a Hyperlink
+To edit an existing link, place the cursor anywhere in the link and right click the hyperlink. A context menu will be displayed as shown in
+Fig. 6.17.
+Click on Edit Hyperlink..., the Hyperlink dialog box will be displayed, where you can make changes to the hyperlink.
+Let’s Practice
+Create a Hyper link to
+Result Analysis spreadsheet.
+Fig. 6.17: Selecting Edit Hyperlink from context menu on right clicking the Hyperlink
+Domestic Data entry operator – class X 126
+On clicking the Remove Hyperlink option, the link will be removed from the text and thus it will not point to any other location.
+Linking to External Data
+Internet is a rich source of information, which is stored in the form of web pages. The web pages are written in
+HTML documents. Data on a web page can be stored in the form of tables.
+The versatility of a spreadsheet allows us to insert tables from HTML documents into Calc. To insert the tables from a HTML document, we can use the External
+Data Dialog box. The steps for the same are given below.
+Step 1. Open the spreadsheet where external data is to be inserted.
+Step 2. Select the cell to store the first cell of the table in the external data.
+Step 3. Select Sheet > Link to External Data.
+Step 4. The External Data dialog box is displayed as shown in Fig. 6.18. Type the URL of the source document or select it from the drop-down list if it is listed and press enter.
+Step 5. A dialog box is displayed to select the language for import as shown in Fig. 6.18. Selecting
+Automatic shows data in the same language as in the webpage.
+Let us Practice
+Create a Hyper link to Result Analysis spreadsheet.
+From the Available Tables/Ranges list, choose the desired table. If you choose HTML_all option, then the entire HTML document is selected. Here in our example suppose we select HTML_10 table to insert as shown in
+Fig. 6.19.
+Fig. 6.19: Inserting a table from a webpage
+Fig. 6.18: Slecting language to import for the webpage
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 127
+The table is inserted in the spreadsheet as shown in
+Fig. 6.20.
+Linking to Registered Data Sources
+LibreOffice Calc allows us to link spreadsheet documents with databases and other data sources. The data source needs to be registered with LibreOffice. Registration is a means to inform LibreOffice about the type of data source and the location of the file. We will restrict our discussion to LibreOffice Base. The extension of
+LibreOffice Base is .odb. You will learn about LibreOffice
+Base in detail in Unit 3. You can access a variety of databases and other data sources and link them to Calc documents. To register a data source that is in *.odb format, follow the steps given below.
+Step 1. Select Tools > Options >
+LibreOffice Base > Databases.
+The Options - LibreOffice
+Base-Databases dialog box appears.
+Step 2. Click the New button to open the Create Database
+Link dialog box as shown in
+Fig. 6.21.
+Fig. 6.20: HTML_10 table inserted from the webpage https://en.wikipedia.org/ wiki/List_of_gravitationally_rounded_objects_of_the_Solar_System#Planets
+Fig. 6.21: Registering databases
+Domestic Data entry operator – class X 128
+Check Your Progress
+A. Multiple choice questions
+1. Insert Sheet dialog can be invoked from _______________.
+(a) sheet (b) insert (c) tools (d) Windows
+2. ______________ refers to cell G5 of sheet named My Sheet.
+(a) $My Sheet.’G5’ (b) $My Sheet_’G5’ (c) $ ‘MySheet’.G5 (d) $ ‘MySheet’_G5
+3. The path of a file has ____________ forward slashes.
+(a) four (b) three
+4. Which of the following feature is used to jump to a different spreadsheet from the current spreadsheet in LibreOffice (a) Macro (b) Hyperlink (c) connect (d) Copy
+B. Fill in the blanks
+1. A relative hyperlink stores the location with respect to the
+___________ location.
+2. While inserting tables from a webpage _____________ selects the entire HTML document.
+3. The extension of LibreOffice base is ______________.
+4. __________ are used to enclose sheet names as there might be a space within sheet names.
+5. The From file option of ___________ Dialog box allows to insert sheet from another file.
+notes Step 3. Enter the location of the database file, or click
+Browse to open a file browser and select the database file.
+Step 4. Type a name to use as the registered name for the database and click OK. The database is added to the list of registered databases.
+Note – The OK button is enabled only when both fields are filled in.
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 129 notes C. State whether the following statements are True or False
+1. A sheet can only be added before the current sheet.
+2. If ‘sales’ sheet has a reference to ‘cost’ sheet then any changes made to ‘cost’ sheet will be reflected in the sales sheet as well.
+3. It is not possible to link a sheet as a reference in another
+4. We can insert data from a table created on a web page into a spreadsheet.
+5. A hyperlink once created on a sheet cannot be deleted.
+D. Answer the following questions
+1. Name the two ways to link the sheets in a LibreOffice Calc.
+2. Differentiate between Relative and Absolute Hyperlink.
+3. Write steps to extract a table from a web page in a spreadsheet.
+4. Write steps to register a data source that is in *.odb format.
+5. State advantages of extracting data from a web page into spreadsheet.
+Lab Exercises
+1. Create three sheets named Jan, Feb and March. In each sheet store the attendance of employees for a month. Apply count function to count the number of days the employees were present by counting P.
+2. Add another sheet named ‘Consolidated Attendance’ that stores total attendance of three months and calculates the percentage.
+3. Create a spreadsheet containing the list of Prime ministers of India with their tenure from the website https:// knowindia.gov.in/general-information/prime-ministers- of-india.php. Perform steps to extract the table from the website into a Calc Sheet and display the count of Prime
+Ministers of India till date.
+IntroductIon
+In LibreOffice Calc, one spreadsheet can be used by more than one user at a time by sharing it. A shared spreadsheet is a same sheet that can be accessed by more than one user and can allow them to make changes simultaneously on it. It saves the trouble of keeping track of multiple copies of the same spreadsheet. Sharing allows working in collaboration so that everyone can contribute, make changes and view it.
+7 Share and Review a
+Spreadsheet
+Fig 7.1: Share Document dialog window
+Fig. 7.2: Confirmation dialog window for sharing a spreadsheet
+Sharing Spreadsheet
+Sharing a spreadsheet is just like a teamwork to work in collaboration with other users. The following are the steps to share the spreadsheet.
+Step 1. Open a new spreadsheet and save it with some name.
+Step 2. Select and click on Tools >
+Share Spreadsheet from main menu bar. This will open the Share Document dialog window as shown in Fig. 7.1 which can be used to enable or disable sharing option.
+Step 3. Click on the checkbox “Share this spreadsheet with other users” to share the spreadsheet and click on OK button. This will open the confirmation dialog window as shown in Fig. 7.2 to save the spreadsheet to activate the shared mode.
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 131
+Step 4. Click on Yes to continue.
+Step 5. Once the spreadsheet is saved, the name of the spreadsheet in the title bar will display (shared)
+along with the name of the spreadsheet.
+Create a spreadsheet and save it with the name Test_1.ods
+Step 1. Create the spreadsheet with the data and save it with
+Test.ods, as shown in Fig. 7.3.
+Fig. 7.3: Contents of spreadsheet Test.ods
+Step 2. Select and click on Tools > Share Spreadsheet from main menu bar. This will open the Share Document dialog window as shown in Fig. 7.1. Put the check- mark on the check box, “Share this spreadsheet with other users”, as shown in the Fig. 7.1.
+Step 3. Click on the checkbox and then on OK button. It will display the Confirmation dialog window to activate the sharing mode as shown in Fig. 7.2. Click Yes to continue.
+Step 4. Observe that shared is added with the name of the document in the title bar as shown in Fig. 7.4.
+Fig. 7.4: Title bar showing the spreadsheet changed to shared
+Practical Activity 7.1
+Domestic Data entry operator – class X 132
+Opening and Saving a Shared Spreadsheet
+Opening a Spreadsheet
+To open a shared spreadsheet, follow the following steps.
+Step 1. While opening a spreadsheet which is a shared spreadsheet, a message will appear as shown in Fig. 7.5 that the spreadsheet is in shared mode and some of the features are not available to use in this spreadsheet.
+Step 2. Click on OK button to open the spreadsheet in shared mode.
+Step 3. If you don’t want this warning option to be displayed again, then check the mark in the checkbox ‘Do not show warning again’.
+Step 4. Once the spreadsheet is saved in shared mode, some of the features will become unavailable for used.
+Step 5. Observe the Edit menu on the main menu bar as shown in Fig. 7.6, that shows Undo,
+Redo, Repeat, Paste, Links to External files,
+ImageMap, Object are not available for use.
+Saving a Shared Spreadsheet
+Follow the steps given below to save a shared spreadsheet:
+Step 1. After making the changes in the shared spreadsheet, you need to save it before closing the spreadsheet.
+Step 2. If two or more users are working at the same time and the changes do not conflict, then the message will appear stating that the spreadsheet has been updated with changes saved by other
+Step 3. If there is any conflict for the changes, then resolve conflict dialog window will appear.
+Step 4. No other user can save the shared spreadsheet when you are resolving the conflicts.
+Step 5. If another user is trying to save the shared document and resolve conflicts, then you will be notified with a message that the file is locked.
+Now, you cannot save it.
+Fig. 7.5: Message box while opening shared spreadsheet
+Fig. 7.6: Edit menu of shared spreadsheet
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 133
+Recording Changes
+This feature of LibreOffice Calc provides different ways to record the changes made by one or other users in the spreadsheet. While recording the changes, the spreadsheet will turn off its shared feature. Follow the following steps for recording changes:
+Step 1. To enable the Record changes, first disable the shared mode of spreadsheet.
+Step 2. To disable the shared mode, open the spreadsheet “Test.ods”.
+Step 3. Select and click on Tools > Share Spreadsheet from main menu bar. This will open the
+Share Document dialog window. Remove the check-mark on the check box, “Share this spreadsheet with other users”, and click on OK button. It will display the Confirmation dialog window to disable the sharing mode. It will give warning to disable the shared mode of a spreadsheet as shown in Fig.
+7.7. Click Yes to continue.
+Step 4. Observe that (shared) word from the name of the spreadsheet has disappeared from the title bar of the spreadsheet.
+Step 5. The feature of Track Changes >
+Record under Edit menu is turned
+ON as shown in Fig. 7.8, which was disabled and not working in the shared spreadsheet.
+Step 6. Now to record track changes, click on
+Edit > Track Changes > Record as shown in Fig. 7.8.
+Step 7. Now change name Sia to Sita in cell
+B5 as shown in Fig. 7.9. Observe that the border colour of the cell in which data has been changed turns to red.
+Also, the changed cell will display the description if the cursor moves to the changed cell.
+Fig. 7.8: Recording Track changes under Edit menu enabled
+Fig. 7.9: Displaying the information of changes recorded under track changes
+Fig. 7.7: Confirmation dialog window to disable sharing mode of spreadsheet
+Domestic Data entry operator – class X 134
+Step 8. Thus, by looking at the spreadsheet, other users can easily know the changes made in the cell and the changes made by whom.
+Assume that you are captain of your school cricket team. Prepare the budget in the spreadsheet for the current academic year.
+Turn ON the feature Track Changes > Record and ask other team members to make necessary changes in the spreadsheet.
+Practical Activity 7.2
+Add, Edit and Format the Comments
+In Calc, the comments are automatically added.
+Also, the author or reviewer can add their own comments as well. Follow the following steps to add your comments:
+Step 1. Select from main menu bar and click on Edit > Track Changes > Comment as shown in Fig. 7.10, to add your own comments.
+Step 2. This will open the Add comment window.
+Enter your comments. Fig. 7.11 shows the comments entered.
+Step 3. Now to view the entered comment, click on the cell B6 as shown in Fig. 7.12. It shows the complete description of the comments entered.
+Fig. 7.10: Selecting Comment under
+Track Changes
+Fig. 7.11: Entering text in Comment dialog window
+Fig. 7.12: Comment displayed with full description
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 135
+Step 4. You can also insert comments to a cell. Click on the cell where you want to insert comments. Then select from main menu Insert >
+Comment as shown in Fig. 7.13.
+Step 5. This type of comments is known as notes or suggestions in the spreadsheet. The box will appear to write the comment as shown in Fig. 7.14. The comment box shows the comments entered as
+“Contains only alphabets”. Once this text is typed in the text box, you can observe a coloured dot in the upper-hand corner of the cell where the comment is added using insert comment.
+Step 6. Once the comment is added, you can display, edit or delete it. To perform these operations, right click on the cell where you have inserted the comments as shown in Fig. 7.15. Observe the options under popup menu.
+Step 7. Select the “Edit Comment” option to edit the comments. It will take you again to the comment textbox to make any changes.
+Step 8. Select “Delete Comment” option to delete the comment.
+Step 9. Select the “Show Comment” to view the comment. By selecting this option, the comments will be displayed. Again when you right click on the cell, you will observe that “Hide Comment” option will be activated in place of “Show
+Comment”. This is because when you are displaying the comments it is already in show mode, which has to be hide.
+Fig. 7.13: Insert Comment
+Fig. 7.14: Comments inserted in comment box
+Fig. 7.15: Right click menu options after inserting comments
+Domestic Data entry operator – class X 136
+Formatting Comment
+You can format the comment box, just like formatting the cell contents.
+It means changing the background colour, border style, and transparency of a comment. Follow the following steps to format the comment.
+Step 1. Right click on the cell where the comment is added.
+Step 2. Select the option “Format cell”, which will display the Format
+Cells dialogue box as shown in
+Fig. 7.16.
+Step 3. You can apply the various formatting features from its tab such as Font, font Effects, Alignment, Borders,
+Background and Cell Protection. Change the font, text colour, fill colour, line colour for the comment box as desired and click on
+OK button to apply the changes. Observe the desired formatting features applied to the comment box.
+Fig. 7.16: Format Cells dialogue box
+Let’s Practice — Save the spreadsheet with some other name.
+Turn off the shared feature. Now, make some changes in the spreadsheet. Also, add comments into the changed cells. Try editing comments and format it with different colours.
+Reviewing Changes – View,
+Accept or Reject Changes
+Once the spreadsheet is edited by all the members of the team. It is the final stage before submitting the spreadsheet. In this stage, we will go through the changes to accept or reject to prepare the final spreadsheet after looking at all the changes made by the team members. Follow the following steps to review changes.
+Step 1. Select and click on Edit >
+Track Changes > Show. It will open the
+Show Changes dialog window as shown in
+Fig. 7.17.
+Fig. 7.17: Show Changes Dialog window

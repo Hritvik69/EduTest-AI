@@ -1,0 +1,20 @@
+41 41 41 41 41 Money to lend and the bank lends out Rs 80 to Jaspal Kaur, which shows up in the bank’s deposits in the next round as liabilities, making a total of Rs 180 as deposits. Now our bank is required to keep 20 per cent of 180 i.e. Rs 36 as cash reserves. Recall that our bank had started with Rs 100 as cash. Since it is required to keep only Rs 36 as reserves, it can lend Rs 64 again (100 – 36 = 64).
+The bank lends out Rs 64 to Junaid. This in turn shows up in the bank as deposits. The process keeps repeating itself till all the required reserves become
+Rs 100. The required reserves will be Rs 100 only when the total deposits become
+Rs 500. This is because for deposits of Rs 500, cash reserves would have to be
+Rs 100 (20 per cent of 500 = 100). The process is illustrated in Table 3.2.
+Table 3.2: Money Multiplier Process
+Column 1 Column 2 Column 3 Column 4
+Round Deposit in Required Loan made
+Bank Reserve by Bank
+1 100.00 20.00 80.00
+2 180.00 36.00 64.00
+... . . .
+Last 500.00 100.00 400.00
+The first column lists each round. The second column depicts the total deposits with the bank at the beginning of each round. Twenty per cent of these deposits need to be deposited with the RBI as required reserves (column 3). What the bank lends in each round gets added to the deposits with the bank in the next round. Column 4 indicates the Loans made by the banks.
+Table 3.3: Balance Sheet of the Bank
+Assets Liabilities
+Reserves Rs 100 Deposits Rs 500 (100+400)
+Loans Rs 400
+Total Rs 500 Total Rs 500
+Reprint 2026-27

@@ -1,0 +1,176 @@
+72 Chemistry
+Fig. 3.3: Variation in the concentration vs time plot for a zero order reaction k = -slope
+Concentration of R
+Comparing (3.6) with equation of a straight line, y = mx + c, if we plot [R] against t, we get a straight line (Fig. 3.3) with slope = –k and intercept equal to [R]0.
+Further simplifying equation (3.6), we get the rate constant, k as
+[ ] [ ] 0 R R
+Zero order reactions are relatively uncommon but they occur under special conditions. Some enzyme catalysed reactions and reactions which occur on metal surfaces are a few examples of zero order reactions. The decomposition of gaseous ammonia on a hot platinum surface is a zero order reaction at high pressure.
+( ) ( ) ( )1130K
+3 2 2 Pt catalyst
+2NH g N g +3H g →
+Rate = k [NH3]0 = k
+In this reaction, platinum metal acts as a catalyst. At high pressure, the metal surface gets saturated with gas molecules. So, a further change in reaction conditions is unable to alter the amount of ammonia on the surface of the catalyst making rate of the reaction independent of its concentration. The thermal decomposition of HI on gold surface is another example of zero order reaction.
+In this class of reactions, the rate of the reaction is proportional to the first power of the concentration of the reactant R. For example,
+Integrating this equation, we get ln [R] = – kt + I (3.8)
+Again, I is the constant of integration and its value can be determined
+When t = 0, R = [R]0, where [R]0 is the initial concentration of the reactant.
+Therefore, equation (3.8) can be written as ln [R]0 = –k × 0 + I ln [R]0 = I
+Substituting the value of I in equation (3.8)
+ln[R] = –kt + ln[R]0 (3.9)
+3.3.2 First Order
+Reactions
+Reprint 2026-27
+73 Chemical Kinetics
+Rearranging this equation ln R kt = −
+R 1 ln R
+ k t (3.10)
+At time t1 from equation (3.8)
+*ln[R]1 = – kt1 + *ln[R]0 (3.11)
+At time t2 ln[R]2 = – kt2 + ln[R]0 (3.12)
+where, [R]1 and [R]2 are the concentrations of the reactants at time t1 and t2 respectively.
+Subtracting (3.12) from (3.11)
+ln[R]1– ln[R]2 = – kt1 – (–kt2)
+[ ] ( ) − = 1 ln R t t k
+= − (3.13)
+Equation (3.9) can also be written as
+Taking antilog of both sides
+[R] = [R]0 e–kt (3.14)
+Comparing equation (3.9) with y = mx + c, if we plot ln [R] against t (Fig. 3.4) we get a straight line with slope = –k and intercept equal to
+The first order rate equation (3.10) can also be written in the form
+R 2.303 log R
+= (3.15)
+log 2.303 R
+If we plot a graph between log [R]0/[R] vs t, (Fig. 3.5), the slope = k/2.303
+Hydrogenation of ethene is an example of first order reaction.
+C2H4(g) + H2 (g) ® C2H6(g)
+Rate = k [C2H4]
+All natural and artificial radioactive decay of unstable nuclei take place by first order kinetics.
+* Refer to Appendix-IV for ln and log (logarithms).
+Reprint 2026-27
+74 Chemistry
+Fig. 3.4: A plot between ln[R] and t for a first order reaction
+Fig. 3.5: Plot of log [R]0/[R] vs time for a first order reaction
+Slope = /2.303 k
+/[R]) 0]
+226 4 222
+88 2 86 Ra He Rn  
+Rate = k [Ra]
+Decomposition of N2O5 and N2O are some more examples of first order reactions.
+The initial concentration of N2O5 in the following first order reaction
+N2O5(g) ® 2 NO2(g) + 1/2O2 (g) was 1.24 × 10–2 mol L–1 at 318 K. The concentration of N2O5 after 60 minutes was 0.20 × 10–2 mol L–1. Calculate the rate constant of the reaction at 318 K.
+For a first order reaction log R =   2 1
+2.303 log R
+1.24 10 mol L 2.303 log
+60 min 0 min 0.20 10 mol L
+= 1 2.303 log 6.2 min k = 0.0304 min-1
+Example 3.5 Example 3.5 Example 3.5 Example 3.5 Example 3.5
+Solution Solution Solution Solution Solution
+Let us consider a typical first order gas phase reaction
+A(g) ® B(g) + C(g)
+Let pi be the initial pressure of A and pt the total pressure at time ‘t’. Integrated rate equation for such a reaction can be derived as
+Total pressure pt = pA + pB + pC (pressure units)
+Reprint 2026-27
+75 Chemical Kinetics pA, pB and pC are the partial pressures of A, B and C, respectively.
+If x atm be the decrease in pressure of A at time t and one mole each of B and C is being formed, the increase in pressure of B and C will also be x atm each.
+A(g) ® B(g) + C(g)
+At t = 0 pi atm 0 atm 0 atm
+At time t (pi–x) atm x atm x atm where, pi is the initial pressure at time t = 0.
+pt = (pi – x) + x + x = pi + x x = (pt - pi)
+where, pA = pi – x = pi – (pt – pi)
+= 2pi – pt
+2.303 log p
+    (3.16)
+2.303 log 2
+The following data were obtained during the first order thermal decomposition of N2O5 (g) at constant volume:
+( ) ( ) ( ) 2 5 2 4 2 g g g 2N O 2N O O → +
+S.No. Time/s Total Pressure/(atm)
+1. 0 0.5
+2. 100 0.512
+Calculate the rate constant.
+Let the pressure of N2O5(g) decrease by 2x atm. As two moles of
+N2O5 decompose to give two moles of N2O4(g) and one mole of O2 (g), the pressure of N2O4 (g) increases by 2x atm and that of O2 (g)
+increases by x atm.
+( ) ( ) ( ) 2 5 2 4 2 g g g 2N O 2N O O → +
+Start t = 0 0.5 atm 0 atm 0 atm
+At time t (0.5 – 2x) atm 2x atm x atm pt = 2 5 2 4 2 N O N O O p p p  
+= (0.5 – 2x) + 2x + x = 0.5 + x x 0.5 t p = −
+2 5 N O p = 0.5 – 2x
+= 0.5 – 2 (pt – 0.5) = 1.5 – 2pt
+At t = 100 s; pt = 0.512 atm
+Example 3.6 Example 3.6 Example 3.6 Example 3.6 Example 3.6
+Solution Solution Solution Solution Solution
+Reprint 2026-27
+76 Chemistry
+The half-life of a reaction is the time in which the concentration of a reactant is reduced to one half of its initial concentration. It is represented as t1/2.
+For a zero order reaction, rate constant is given by equation 3.7.
+[ ] [ ] 0 R R
+[ ] [ ]0
+1 R At , R 2
+The rate constant at t1/2 becomes
+[ ] [ ] 0 0
+1/ 2 R R
+It is clear that t1/2 for a zero order reaction is directly proportional to the initial concentration of the reactants and inversely proportional to the rate constant.
+For the first order reaction,
+0 2.303 R
+= (3.15)
+at t1/2 [ ] [ ]0 R
+= (3.16)
+So, the above equation becomes log / 2 R
+2.303 log 2 t k
+2.303 0.301 t k
+= (3.17)
+2 5 N O p = 1.5 – 2 × 0.512 = 0.476 atm
+Using equation (3.16)
+0.5 atm 2.303 2.303
+100 s 0.476 atm
+2.303 0.0216 4.98 10 s
+3.3.3 Half-Life of a Reaction
+Reprint 2026-27
+77 Chemical Kinetics
+A first order reaction is found to have a rate constant, k = 5.5 × 10-14 s-1.
+Find the half-life of the reaction.
+Half-life for a first order reaction is
+1/ 2 t = 0.693
+1/ 2 t = –14 –1
+5.5 ×10 s = 1.26 × 1013s
+Show that in a first order reaction, time required for completion of
+99.9% is 10 times of half-life (t1/2) of the reaction.
+When reaction is completed 99.9%, [R]n = [R]0 – 0.999[R]0
+0 2.303 R log 0.999 R R t  = 3 2.303 log10 t = 6.909/k
+For half-life of the reaction t1/2 = 0.693/k t = 6.909 10
+It can be seen that for a first order reaction, half-life period is constant, i.e., it is independent of initial concentration of the reacting species. The half-life of a first order equation is readily calculated from the rate constant and vice versa.
+For zero order reaction t1/2 μ μ μ μ μ [R]0. For first order reaction t1/2 is independent of [R]0.
+Example 3.7 Example 3.7 Example 3.7 Example 3.7 Example 3.7
+Solution Solution Solution Solution Solution
+Example 3.8 Example 3.8 Example 3.8 Example 3.8 Example 3.8
+Solution Solution Solution Solution Solution
+Table 3.4 summarises the mathematical features of integrated laws of zero and first order reactions.
+Table 3.4: Integrated Rate Laws for the Reactions of Zero and First Order
+Order Reaction Differential Integrated Straight Half- Units of k type rate law rate law line plot life
+0 R® P d[R]/dt = -k kt = [R]0-[R] [R] vs t [R]0/2k conc time-1 or mol L–1s–1
+1 R® P d[R]/dt = -k[R] [R] = [R]0e-kt ln[R] vs t ln 2/k time-1 or s–1 ln{[R]0/[R]}
+Reprint 2026-27
+78 Chemistry
+Most of the chemical reactions are accelerated by increase in temperature.
+For example, in decomposition of N2O5, the time taken for half of the original amount of material to decompose is 12 min at 50oC, 5 h at
+25oC and 10 days at 0oC. You also know that in a mixture of potassium permanganate (KMnO4) and oxalic acid (H2C2O4), potassium permanganate gets decolourised faster at a higher temperature than that at a lower temperature.
+It has been found that for a chemical reaction with rise in temperature by 10°, the rate constant is nearly doubled.
+The temperature dependence of the rate of a chemical reaction can be accurately explained by Arrhenius equation (3.18). It was first proposed by Dutch chemist, J.H. van’t Hoff but Swedish chemist,
+Arrhenius provided its physical justification and interpretation.
+3.4 Temperature 3.4 Temperature 3.4 Temperature 3.4 Temperature 3.4 Temperature
+Dependence of Dependence of Dependence of Dependence of Dependence of the Rate of a the Rate of a the Rate of a the Rate of a the Rate of a
+Reaction Reaction Reaction Reaction Reaction
+The order of a reaction is sometimes altered by conditions. There are many reactions which obey first order rate law although they are higher order reactions. Consider the hydrolysis of ethyl acetate which is a chemical reaction between ethyl acetate and water. In reality, it is a second order reaction and concentration of both ethyl acetate and water affect the rate of the reaction. But water is taken in large excess for hydrolysis, therefore, concentration of water is not altered much during the reaction. Thus, the rate of reaction is affected by concentration of ethyl acetate only. For example, during the hydrolysis of 0.01 mol of ethyl acetate with 10 mol of water, amounts of the reactants and products at the beginning (t = 0) and completion (t) of the reaction are given as under.
+CH3COOC2H5 + H2O H
+ CH3COOH + C2H5OH t = 0 0.01 mol 10 mol 0 mol 0 mol t 0 mol 9.99 mol 0.01 mol 0.01 mol
+The concentration of water does not get altered much during the course of the reaction. So, the reaction behaves as first order reaction.
+Such reactions are called pseudo first order reactions.
+Inversion of cane sugar is another pseudo first order reaction.
+C12H22O11 + H2O +
+ → C6H12O6 + C6H12O6
+Cane sugar Glucose Fructose
+Rate = k [C12H22O11]
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+3.5 A first order reaction has a rate constant 1.15 × 10-3 s-1. How long will 5 g of this reactant take to reduce to 3 g?
+3.6 Time required to decompose SO2Cl2 to half of its initial amount is 60 minutes. If the decomposition is a first order reaction, calculate the rate constant of the reaction.
+Reprint 2026-27

@@ -1,0 +1,60 @@
+Data CommuniCation 209
+11.6 transmission meDia
+A transmission medium can be anything that can carry signals or data between the source (transmitter)
+and destination (receiver). For example, as we switch on a ceiling fan or a light bulb, the electric wire is the medium that carries electric current from switch to the fan or bulb. Two men are talking as shown in Figure
+11.6. Here the medium is air.
+Figure 11.6: Two person communicating
+In data communication, transmission media are the links that carry messages between two or more communicating devices. Transmission can be classified as guided or unguided. Figure 11.7 shows the classification of communication media.
+In guided transmission, there is a physical link made of wire/cable through which data in terms of signals are propagated between the nodes. These are usually metallic cable, fiber-optic cable, etc. They are also known as wired media.
+In unguided transmission, data travels in air in terms of electromagnetic waves using an antenna. They are also known as wireless media.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 210
+Dish-shaped antennas are used for sending and receiving data at longer distances. These antennas are mounted on taller buildings so that it would be in line-of- sight. Waves gradually become weaker and weaker after travelling a certain distance through the air. Therefore repeaters are installed to regenerate the signals of the same energy.
+11.6.1 Wired Transmission Media
+Any physical link that can carry data in the form of signals belongs to the category of wired transmission media. Three commonly used guided/wired media for data transmission are, twisted pair, coaxial cable, and fiber optic cable. Twisted-pair and coaxial cable carry the electric signals whereas the optical fiber cable carries the light signals.
+(A) Twisted Pair Cable
+A twisted-pair consists of two copper wires twisted like a DNA helical structure. Both the copper wires are insulated with plastic covers. Usually, a number of such pairs are combined together and covered with a protective outer wrapping, as shown in Figure 11.8.
+Figure 11.8: Twisted pair of cables
+Twisted Pair of Cables
+Wireless Media (Electromagnetic
+Twisted Pair
+Cable Co-axial Cable Fiber-Optic
+Cable Radio Waves Micro Waves Infrared Waves
+Communication
+Figure 11.7: Classification of communication media
+Reprint 2026-27
+Data CommuniCation 211
+Each of the twisted pairs act as a single communication link. The use of twisted configuration minimises the effect of electrical interference from similar pairs close by. Twisted pairs are less expensive and most commonly used in telephone lines and LANs. These cables are of two types: Unshielded twisted-pair (UTP) and Shielded twisted-pair (STP), as shown in Figure 11.9.
+(B) Coaxial cable
+Coaxial cable is another type of data transmission medium. It is better shielded and has more bandwidth than a twisted pair. As shown in Figure 11.10, it has a copper wire at the core of the cable which is surrounded with insulating material. The insulator is further surrounded with an outer conductor (usually a copper mesh). This outer conductor is wrapped in a plastic cover. The key to success of coaxial cable is its shielded design that allows the cable's copper core to transmit data quickly, without interference of environmental factors. These types of cables are used to carry signals of higher frequencies to a longer distance.
+Protective
+Plastic Covering Insulating
+Material outer Conductor
+Figure 11.10: A coaxial cable
+Plastic Cover (b) STP (a) UTP
+Plastic Cover
+Metal Shield
+Plastic Cover
+) STP (b) (a) UTP
+Plastic Cover
+Metal Shield
+Figure 11.9: UTP Cable and STP Cable
+Backbone networks interconnect different segments of the network and provide a path to exchange information between different LANs or subnetworks..
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 212
+The number of oscillations a wave makes per second is called its frequency, and it is measured in Hz (Hertz).
+(C) Optical Fibre
+The optical fiber cable carries data as light, which travels inside a thin fiber of glass (Figure 11.11). Optic fiber uses refraction to direct the light through the media. A thin transparent strand of glass at the centre is covered with a layer of less dense glass called cladding. This whole arrangement is covered with an outer jacket made of PVC or Teflon. Such types of cables are usually used in backbone networks. These cables are of light weight and have higher bandwidth which means higher data transfer rate. Signals can travel longer distances and electromagnetic noise cannot affect the cable. However, optic fibers are expensive and unidirectional. Two cables are required for full duplex communication.
+Receiver
+Cladding of less dense material
+Figure 11.11: Fiber optic cable
+11.6.2 Wireless Transmission Media
+In wireless communication technology, information travels in the form of electromagnetic signals through air. Electromagnetic spectrum of frequency ranging from 3 KHz to 900 THz is available for wireless communication (Figure 11.12). Wireless technologies allow communication between two or more devices in short to long distance without requiring any physical media. There are many types of wireless communication technologies such as Bluetooth, WiFi, WiMax etc.
+The electromagnetic spectrum range (3KHz to
+900THz) can be divided into 4 categories (Figure 11.12) -
+Radio waves, Microwaves, Infrared waves and Visible or
+Light waves, according to their frequency ranges. Some
+Geostationary satellites orbiting around the Earth are used to deliver broadband
+Internet service, similar to the way satellite is used for television and telephone signals.
+These satellites use microwaves for communication between a satellite dish placed at our home and the hub of satellite internet service providers.
+Reprint 2026-27

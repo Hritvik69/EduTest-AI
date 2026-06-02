@@ -1,0 +1,31 @@
+Solution (a) Consider the case r > a . The Amperian loop, labelled 2, is a circle concentric with the cross-section. For this loop,
+L = 2 π r
+Ie = Current enclosed by the loop = I
+The result is the familiar expression for a long straight wire
+B (2π r) =
+= [4.15(a)]
+∝ (r > a)
+Now the current enclosed Ie is not I, but is less than this value.
+Since the current distribution is uniform, the current enclosed is,
+Using Ampere’s law, π (2 ) I r
+2π [4.15(b)]
+B ∝ r (r <
+FIGURE 4.14
+Figure (4.14) shows a plot of the magnitude of B with distance r from the centre of the wire. The direction of the field is tangential to the respective circular loop (1 or 2) and given by the right-hand rule described earlier in this section.
+This example possesses the required symmetry so that Ampere’s law can be applied readily.
+It should be noted that while Ampere’s circuital law holds for any loop, it may not always facilitate an evaluation of the magnetic field in every case. For example, for the case of the circular loop discussed in
+Section 4.5, it cannot be applied to extract the simple expression
+μ0I/2R [Eq. (4.12)] for the field at the centre of the loop. However, there exists a large number of situations of high symmetry where the law can be conveniently applied. We shall use it in the next section to calculate
+Reprint 2026-27
+Moving Charges and
+Magnetism the magnetic field produced by a commonly used and very useful magnetic system: the solenoid.
+4.7 THE SOLENOID
+We shall discuss a long solenoid. By long solenoid we mean that the solenoid’s length is large compared to its radius. It consists of a long wire wound in the form of a helix where the neighbouring turns are closely spaced. So each turn can be regarded as a circular loop. The net magnetic field is the vector sum of the fields due to all the turns. Enamelled wires are used for winding so that turns are insulated from each other.
+Figure 4.15 displays the magnetic field lines for a finite solenoid. We show a section of this solenoid in an enlarged manner in Fig. 4.15(a).
+Figure 4.15(b) shows the entire finite solenoid with its magnetic field. In
+Fig. 4.15(a), it is clear from the circular loops that the field between two neighbouring turns vanishes. In Fig. 4.15(b), we see that the field at the interior mid-point P is uniform, strong and along the axis of the solenoid.
+The field at the exterior mid-point Q is weak and moreover is along the axis of the solenoid with no perpendicular or normal component. As the
+FIGURE 4.15 (a) The magnetic field due to a section of the solenoid which has been stretched out for clarity. Only the exterior semi-circular part is shown. Notice how the circular loops between neighbouring turns tend to cancel.
+(b) The magnetic field of a finite solenoid.
+FIGURE 4.16 The magnetic field of a very long solenoid. We consider a rectangular Amperian loop abcd to determine the field.
+Reprint 2026-27

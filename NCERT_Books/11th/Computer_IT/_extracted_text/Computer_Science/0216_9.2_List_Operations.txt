@@ -1,0 +1,44 @@
+Computer SCienCe – ClaSS xi 204 exercIse
+1. What will be the output of the following statements?
+i. list1 = [12,32,65,26,80,10] list1.sort()
+print(list1)
+ii. list1 = [12,32,65,26,80,10] sorted(list1)
+print(list1)
+iii. list1 = [1,2,3,4,5,6,7,8,9,10] list1[::-2] list1[:3] + list1[3:] iv. list1 = [1,2,3,4,5] list1[len(list1)-1]
+2. Consider the following list myList. What will be the elements of myList after the following two operations:
+myList = [10,20,30,40] i. myList.append([50,60])
+ii. myList.extend([80,90])
+• Lists are mutable sequences in Python, i.e., we can change the elements of the list.
+• Elements of a list are put in square brackets separated by comma.
+• A list within a list is called a nested list. List indexing is same as that of strings and starts at
+0. Two way indexing allows traversing the list in the forward as well as in the backward direction.
+• Operator + concatenates one list to the end of other list.
+• Operator * repeats a list by specified number of times.
+• Membership operator in tells if an element is present in the list or not and not in does the opposite.
+• Slicing is used to extract a part of the list.
+• There are many list manipulation functions including: len(), list(), append(), extend(), insert(), count(), find(), remove(), pop(), reverse(), sort(), sorted(), min(), max(), sum().
+Reprint 2026-27
+L ists 205
+3. What will be the output of the following code segment:
+myList = [1,2,3,4,5,6,7,8,9,10] for i in range(0,len(myList)):
+if i%2 == 0:
+print(myList[i])
+4. What will be the output of the following code segment:
+a. myList = [1,2,3,4,5,6,7,8,9,10] del myList[3:] print(myList)
+b. myList = [1,2,3,4,5,6,7,8,9,10] del myList[:5] print(myList)
+c. myList = [1,2,3,4,5,6,7,8,9,10] del myList[::2] print(myList)
+5. Differentiate between append() and extend()
+functions of list.
+6. Consider a list:
+list1 = [6,7,8,9]
+What is the difference between the following operations on list1:
+a. list1 * 2 b. list1 *= 2 c. list1 = list1 * 2
+7. The record of a student (Name, Roll No.,
+Marks in five subjects and percentage of marks) is stored in the following list:
+stRecord = ['Raman','A-36',[56,98,99,72,69],
+Write Python statements to retrieve the following information from the list stRecord.
+a) Percentage of the student b) Marks in the fifth subject c) Maximum marks of the student d) Roll no. of the student e) Change the name of the student from
+‘Raman’ to ‘Raghav’ prograMMIng proBLeMs
+1. Write a program to find the number of times an element occurs in the list.
+2. Write a program to read a list of n integers (positive
+Reprint 2026-27

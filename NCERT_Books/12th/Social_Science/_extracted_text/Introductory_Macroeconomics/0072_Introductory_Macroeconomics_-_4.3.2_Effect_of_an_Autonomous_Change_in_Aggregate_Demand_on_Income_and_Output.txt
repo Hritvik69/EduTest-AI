@@ -1,0 +1,120 @@
+62 62 62 62 62
+Introductory
+Macroeconomics income from this extra production on consumption items – thereby creating further excess demand in the next round.
+Let us register the changes in the values of aggregate demand and output at each round in Table 4.1.
+The last column measures the increments in the value of the output of final goods (and hence the income of the economy) in each round. The second and third columns measure the increments in total consumption expenditure in the economy and increments in the value of aggregate demand in a similar way. In order to find out the total increase in output of the final goods, we must add up the infinite geometric series in the last column, i.e.,
+10 + (0.8)10 + (0.8)2 10 + .........·∞
+= 10 {1 + (0.8) + (0.8)2 + .......·∞} = 10
+1 – 0.8 = 50
+Table 4.1: The Multiplier Mechanism in the Final Goods Market
+Consumption Aggregate Demand Output/Income
+Round 1 0 10 (Autonomous Increment) 10
+Round 2 (0.8)10 (0.8)10 (0.8)10
+Round 3 (0.8)210 (0.8)210 (0.8)210
+Round 4 (0.8)310 (0.8)310 (0.8)310
+. . . etc.
+The increment in equilibrium value of total output thus exceeds the initial increment in autonomous expenditure. The ratio of the total increment in equilibrium value of final goods output to the initial increment in autonomous expenditure is called the investment multiplier of the economy. Recalling that
+10 and 0.8 represent the values of ∆ I = ∆ A and mpc, respectively, the expression for the multiplier can be explained as
+The investment multiplier 1 1
+− ∆ (4.5)
+where Y ∆ is the total increment in final goods output and c mpc = . Observe that the size of the multiplier depends on the value of c . As c becomes larger the multiplier increases.
+Reprint 2026-27
+63 63 63 63 63
+Determination of Income and Employment
+Paradox of Thrift Paradox of Thrift Paradox of Thrift Paradox of Thrift Paradox of Thrift
+If all the people of the economy increase the proportion of income they save (i.e. if the mps of the economy increases) the total value of savings in the economy will not increase – it will either decline or remain unchanged.
+This result is known as the Paradox of Thrift Paradox of Thrift Paradox of Thrift Paradox of Thrift Paradox of Thrift – which states that as people become more thrifty they end up saving less or same as before.
+This result, though sounds apparently impossible, is actually a simple application of the model we have learnt.
+Let us continue with the example. Suppose at the initial equilibrium of Y = 250, there is an exogenous or autonomous shift in peoples’ expenditure pattern – they suddenly become more thrifty. This may happen due to a new information regarding an imminent war or some other impending disaster, which makes people more circumspect and conservative about their expenditures. Hence the mps of the economy increases, or, alternatively, the mpc decreases from 0.8 to 0.5. At the initial income level of AD*
+1 = 250, this sudden decline in mpc will imply a decrease in aggregate consumption spending and hence in aggregate demand, AD = A + cY , by an amount equal to (0.8 – 0.5) 250
+= 75. This can be regarded as an autonomous reduction in consumption expenditure, to the extent that the change in mpc is occurring from some exogenous cause and is not a consequence of changes in the variables of the model. But as aggregate demand decreases by 75, it falls short of the output Y *
+1 = 250 and there emerges an excess supply equal to 75 in the economy. Stocks are piling up in warehouses and producers decide to cut the value of production by 75 in the next round to restore equilibrium in the market. But that would mean a reduction in factor payments in the next round and hence a reduction in income by 75. As income decreases people reduce consumption proportionately but, this time, according to the new value of mpc which is 0.5. Consumption expenditure, and hence aggregate demand, decreases by (0.5)75, which creates again an excess supply in the market. In the next round, therefore, producers reduce output further by (0.5)75. Income of the people decreases accordingly and consumption expenditure and aggregate demand goes down again by (0.5)2 75. The process goes on.
+However, as can be inferred from the dwindling values of the successive round effects, the process is convergent. What is the total decrease in the value of output and aggregate demand? Add up the infinite series 75
++ (0.5) 75 + (0.5)2 75 + ........ • and the total reduction in output turns out
+1 – 0.5 = 150
+But that means the new equilibrium output of the economy is only Y *
+100. People are now saving S *
+2 – (C + c2.Y *
+2 ) = 100 – (40 + 0.5 ×
+100) = 10 in aggregate, whereas under the previous equilibrium they were saving S *
+1 – (C + c1.Y *
+1 ) = 250 – (40 + 0.8 × 250) = 10 at the previous mpc, c1 = 0.8. Total value of savings in the economy has, therefore, remained unchanged.
+When A changes the line shifts upwards or downwards in parallel.
+When c changes, however, the line swings up or down. An increase in mps,
+Reprint 2026-27
+64 64 64 64 64
+Introductory
+Macroeconomics or a decline in mpc, reduces the slope of the AD line and it swings downwards. We depict the situation in Fig. 4.8.
+At the initial values of the parameters, A = 50 and c = 0.8, the equilibrium value of the output and aggregate demand from equation (4.4) was
+1 – 0.8 = 250
+Under the changed value of the parameter c =
+0.5, the new equilibrium value of output and aggregate demand is
+1 – 0.5 = 100
+The equilibrium output and aggregate demand have declined by 150.
+As explained above, this, in turn, implies that there is no change in the total value of savings.
+Paradox of Thrift – Downward Swing of AD Line
+Fig. 4.8
+AD = 1 + c Y 1
+AD = 2 + c Y 2
+4.4 SOME MORE CONCEPTS
+The equilibrium output in the economy also determines the level of employment, given the quantities of other factors of production (think of a production function at aggregate level). This means that the level of output determined by the equality of Y with AD does not necessarily mean the level of output at which everyone is employed.
+Full employment level of income is that level of income where all the factors of production are fully employed in the production process. Recall that equilibrium attained at the point of equality of Y and AD by itself does not signify full employment of resources. Equilibrium only means that if left to itself the level of income in the economy will not change even when there is unemployment in the economy. The equilibrium level of output may be more or less than the full employment level of output. If it is less than the full employment of output, it is due to the fact that demand is not enough to employ all factors of production. This situation is called the situation of deficient demand. It leads to decline in prices in the long run. On the other hand, if the equilibrium level of output is more than the full employment level, it is due to the fact that the demand is more than the level of output produced at full employment level. This situation is called the situation of excess demand. It leads to rise in prices in the long run.
+Reprint 2026-27
+65 65 65 65 65
+Determination of Income and Employment
+When, at a particular price level, aggregate demand for final goods equals aggregate supply of final goods, the final goods or product market reaches its equilibrium. Aggregate demand for final goods consists of ex ante consumption, ex ante investment, government spending etc. The rate of increase in ex ante consumption due to a unit increment in income is called marginal propensity to consume. For simplicity we assume a constant final goods price and constant rate of interest over short run to determine the level of aggregate demand for final goods in the economy. We also assume that the aggregate supply is perfectly elastic at this price. Under such circumstances, aggregate output is determined solely by the level of aggregate demand. This is known as effective demand principle. An increase (decrease) in autonomous spending causes aggregate output of final goods to increase (decrease) by a larger amount through the multiplier process.
+Summary Summary Summary Summary Summary
+K K K K Key Conceptsey Concepts ey Concepts ey Concepts ey Concepts
+Aggregate demand Aggregate supply
+Equilibrium Ex ante
+Ex post Ex ante consumption
+Marginal propensity to consume Ex ante investment
+Unintended changes in inventories Autonomous change
+Parametric shift Effective demand principle
+Paradox of thrift Autonomous expenditure multiplier
+1. 1. 1. 1. 1. What is marginal propensity to consume? How is it related to marginal propensity to save?
+2. 2. 2. 2. 2. What is the difference between ex ante investment and ex post investment?
+3. 3. 3. 3. 3. What do you understand by ‘parametric shift of a line’? How does a line shift when its (i) slope decreases, and (ii) its intercept increases?
+4. 4. 4. 4. 4. What is ‘effective demand’? How will you derive the autonomous expenditure multiplier when price of final goods and the rate of interest are given?
+5. 5. 5. 5. 5. Measure the level of ex-ante aggregate demand when autonomous investment and consumption expenditure (A) is Rs 50 crores, and MPS is
+0.2 and level of income (Y) is Rs 4000 crores. State whether the economy is in equilibrium or not (cite reasons).
+6. 6. 6. 6. 6. Explain ‘Paradox of Thrift’.
+Exercises Exercises Exercises Exercises Exercises
+? Suggested Readings Suggested Readings Suggested Readings Suggested Readings Suggested Readings
+1 . 1 . 1 . 1 . 1 . Dornbusch, R. and S. Fischer. 1990. Macroeconomics, (fifth edition) pages
+63 – 105. McGraw Hill, Paris.
+Reprint 2026-27
+Chapter 5Chapter 5 Governmen Governmen Governmen Governmen Government tt tt Budget Budget Budget Budget Budget and the Economy and the Economy and the Economy and the Economy and the Economy
+We introduced the government in chapter one as denoting the state. We stated that apart from the private sector, there is the government which plays a very important role.
+An economy in which there is both the private sector and the Government is known as a mixed economy. There are many ways in which the government influences economic life. In this chapter, we will limit ourselves to the functions which are carried on through the government budget.
+This chapter proceeds as follows. In section 5.1 we present the components of the government budget to bring out the sources of government revenue and avenues of government spending. In section 5.2 we discuss the topic of balanced, surplus or deficit budget to account for the difference between expenditures and revenue collection. It specifically deals with the meaning of different kinds of budget deficits, their implications and the measures to contain them. Box. 5.1 deals with fiscal policy and a simple description of the multiplier. The role the government plays has implications for its deficits which further affect its debt- what the government owes. The chapter concludes with an analysis of the debt issue.
+5.1 GOVERNMENT BUDGET — MEANING AND ITS COMPONENTS
+There is a constitutional requirement in India (Article 112) to present before the Parliament a statement of estimated receipts and expenditures of the government in respect of every financial year which runs from 1 April to 31 March. This ‘Annual Financial
+Statement’ constitutes the main budget document of the government.
+Although the budget document relates to the receipts and expenditure of the government for a particular financial year, the impact of it will be there in subsequent years.
+There is a need therefore to have two accounts- those that relate to the current financial year only are included in the revenue account (also called revenue budget) and those that concern the assets and liabilities of the government into the capital account (also called capital budget). In order to understand the accounts, it is important to first understand the objectives of the government budget.
+Reprint 2026-27
+5.1.1 Objectives of Government Budget
+The government plays a very important role in increasing the welfare of the people. In order to do that the government intervenes in the economy in the following ways.
+Allocation Function of Government Budget
+Government provides certain goods and services which cannot be provided by the market mechanism i.e. by exchange between individual consumers and producers. Examples of such goods are national defence, roads, government administration etc. which are referred to as public goods.
+To understand why public goods need to be provided by the government, we must understand the difference between private goods such as clothes, cars, food items etc. and public goods. There are two major differences. One, the benefits of public goods are available to all and are not only restricted to one particular consumer. For example, if a person eats a chocolate or wears a shirt, these will not be available to others. It is said that this person’s consumption stands in rival relationship to the consumption of others. However, if we consider a public park or measures to reduce air pollution, the benefits will be available to all. One person’s consumption of a good does not reduce the amount available for consumption for others and so several people can enjoy the benefits, that is, the consumption of many people is not
+‘rivalrous’.
+Two, in case of private goods anyone who does not pay for the goods can be excluded from enjoying its benefits. If you do not buy a ticket, you will not be allowed to watch a movie at a local cinema hall. However, in case of public goods, there is no feasible way of excluding anyone from enjoying the benefits of the good. That is why public goods are called non-excludable. Even if some users do not pay, it is difficult and sometimes impossible to collect fees for the public good. These non- paying users are known as ‘free-riders’. Consumers will not voluntarily pay for what they can get for free and for which there is no exclusive title to the property being enjoyed. The link between the producer and consumer which occurs through the payment process is broken and the government must step in to provide for such goods.
+There is, however, a difference between public provision and public production. Public provision means that they are financed through the budget and can be used without any direct payment. Public goods may be produced by the government or the private sector. When goods are produced directly by the government it is called public production.
+Redistribution Function of Government Budget
+From chapter two we know that the total national income of the country goes to either the private sector, that is, firms and households (known as private income) or the government (known as public income). Out of private income, what finally reaches the households is known as personal income and the amount that can be spent is the personal disposable income. The government sector affects the personal disposable income of households by making transfers and collecting taxes. It is through this that the government can change the distribution of income and bring about a distribution that is considered ‘fair’ by society. This is the redistribution function.
+6 7 6 7 6 7 6 7 6 7 Government Budget and the Economy
+Reprint 2026-27
+68 68 68 68 68
+Introductory Macroeconomics
+Stabilisation Function of Government Budget
+The government may need to correct fluctuations in income and employment.
+The overall level of employment and prices in the economy depends upon the level of aggregate demand which depends on the spending decisions of millions of private economic agents apart from the government. These decisions, in turn, depend on many factors such as income and credit availability. In any period, the level of demand may not be sufficient for full utilisation of labour and other resources of the economy. Since wages and prices do not fall below a level, employment cannot be brought back to the earlier level automatically. The government needs to intervene to raise the aggregate demand.
+On the other hand, there may be times when demand exceeds available output under conditions of high employment and thus may give rise to inflation. In such situations, restrictive conditions may be needed to reduce demand.
+The intervention of the government whether to expand demand or reduce it constitutes the stabilisation function.
+5.1.2 Classification of Receipts
+Revenue Receipts: Revenue receipts are those receipts that do not lead to a claim on the government. They are therefore termed non-redeemable. They are divided into tax and non-tax revenues. Tax revenues, an important component of revenue receipts, have for long been divided into direct taxes (personal income tax) and firms (corporation tax), and indirect taxes like excise taxes (duties levied on goods produced within the country), customs duties (taxes imposed on goods imported into and exported out of India) and service tax1. Other direct taxes like wealth tax, gift tax and estate duty (now abolished) have never brought in large amount of revenue and thus have been referred to as ‘paper taxes’.
+The redistribution objective is sought to be achieved through progressive income taxation, in which higher the income, higher is the tax rate. Firms are taxed on a proportional basis, where the tax rate is a particular proportion of profits. With respect to excise taxes, necessities of life are exempted or taxed at low rates, comforts and semi-luxuries are moderately taxed, and luxuries, tobacco and petroleum products are taxed heavily.
+Non-tax revenue of the central government mainly consists of interest receipts on account of loans by the central government, dividends and profits on investments made by the government, fees and other receipts for services rendered by the government. Cash grants-in-aid from foreign countries and international organisations are also included.
+The estimates of revenue receipts take into account the effects of tax proposals

@@ -1,0 +1,97 @@
+Computer SCienCe – ClaSS xi 122
+Program 6-1 Program to print the difference of two numbers.
+#Program 6-1
+#Program to print the difference of two input numbers num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+diff = num1 - num2 print("The difference of",num1,"and",num2,"is",diff)
+Enter first number 5
+Enter second number 7
+The difference of 5 and 7 is -2
+6.2 S electIon
+Now suppose we have `10 to buy a pen. On visiting the stationery shop, there are a variety of pens priced at
+`10 each. Here, we have to decide which pen to buy.
+Similarly, when we use the direction services of a digital map, to reach from one place to another, we notice that sometimes it shows more than one path like the least crowded path, shortest distance path, etc. We decide the path as per our priority. A decision involves selecting from one of the two or more possible options. In programming, this concept of decision making or selection is implemented with the help of if..else statement.
+Now, suppose we want to display the positive difference of the two numbers num1 and num2 given at program 6-1. For that, we need to modify our approach.
+Look at the flowchart shown in
+Figure 6.2 that subtracts the smaller number from the bigger number so that we always get a positive difference. This selection is based upon the values that are input for the two numbers num1 and num2.
+Figure 6.2: Flow chart depicting decision making
+Reprint 2026-27
+F low oF Control 123
+The syntax of if statement is:
+if condition:
+statement(s)
+In the following example, if the age entered by the user is greater than 18, then print that the user is eligible to vote. If the condition is true, then the indented statement(s) are executed. The indentation implies that its execution is dependent on the condition. There is no limit on the number of statements that can appear as a block under the if statement.
+Example 6.1 age = int(input("Enter your age "))
+if age >= 18:
+print("Eligible to vote")
+A variant of if statement called if..else statement allows us to write two alternative paths and the control condition determines which path gets executed. The syntax for if..else statement is as follows.
+if condition:
+statement(s)
+Let us now modify the example on voting with the condition that if the age entered by the user is greater than 18, then to display that the user is eligible to vote.
+Otherwise display that the user is not eligible to vote.
+age = int(input("Enter your age: "))
+if age >= 18:
+print("Eligible to vote")
+print("Not eligible to vote")
+Now let us use the same concept to modify program
+6-1, so that it always gives a positive difference as the output. From the flow chart in Figure 6.2, it is clear that we need to decide whether num1 > num2 or not and take action accordingly.
+We have to specify two blocks of statements since num1 can be greater than num2 or vice-versa as shown in program 6-2.
+Many a times there are situations that require multiple conditions to be checked and it may lead to many alternatives. In such cases we can chain the conditions using if..elif (elif means else..if).
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 124
+Program 6-2 Program to print the positive difference of two numbers.
+#Program 6-2
+#Program to print the positive difference of two numbers num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+if num1 > num2:
+diff = num1 - num2 diff = num2 - num1 print("The difference of",num1,"and",num2,"is",diff)
+Enter first number: 5
+Enter second number: 6
+The difference of 5 and 6 is 1
+The syntax for a selection structure using elif is as shown below.
+if condition:
+statement(s)
+elif condition:
+statement(s)
+elif condition:
+statement(s)
+Example 6.2 Check whether a number is positive, negative, or zero.
+number = int(input("Enter a number: ")
+if number > 0:
+print("Number is positive")
+elif number < 0:
+print("Number is negative")
+print("Number is zero")
+Example 6.3 Display the appropriate message as per the colour of signal at the road crossing.
+signal = input("Enter the colour: ")
+if signal == "red" or signal == "RED":
+print("STOP")
+elif signal == "orange" or signal ==
+"ORANGE":
+Reprint 2026-27
+F low oF Control 125 print("Be Slow")
+elif signal == "green" or signal == "GREEN":
+print("Go!")
+Number of elif is dependent on the number of conditions to be checked. If the first condition is false, then the next condition is checked, and so on. If one of the conditions is true, then the corresponding indented block executes, and the if statement terminates.
+Let us write a program to create a simple calculator to perform basic arithmetic operations on two numbers.
+The program should do the following:
+• Accept two numbers from the user.
+• Ask user to input any of the operator (+, -, *, /).
+An error message is displayed if the user enters anything else.
+• Display only positive difference in case of the operator "-".
+• Display a message “Please enter a value other than 0” if the user enters the second number as
+0 and operator ‘/’ is entered.
+Program 6-3 Write a program to create a simple calculator performing only four basic operations.
+#Program to create a four function calculator result = 0 val1 = float(input("Enter value 1: "))
+val2 = float(input("Enter value 2: "))
+op = input("Enter any one of the operator (+,-,*,/): ")
+if op == "+":
+result = val1 + val2 elif op == "-":
+if val1 > val2:
+result = val1 - val2 result = val2 - val1 elif op == "*":
+result = val1 * val2 elif op == "/":
+if val2 == 0:
+print("Error! Division by zero is not allowed. Program terminated")
+result = val1/val2 print("Wrong input,program terminated")
+print("The result is ",result)
+Reprint 2026-27

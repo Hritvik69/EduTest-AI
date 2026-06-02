@@ -1,0 +1,28 @@
+Computer SCienCe – ClaSS xi 104
+Table 5.8 Membership operators in Python
+Operator Description Example (Try in Lab)
+in Returns True if the variable/value is found in the specified sequence and False otherwise
+>>> a = [1,2,3]
+>>> 2 in a
+>>> '1' in a not in Returns True if the variable/value is not found in the specified sequence and False otherwise
+>>> a = [1,2,3]
+>>> 10 not in a
+>>> 1 not in a
+5.9 exPressIons
+An expression is defined as a combination of constants, variables, and operators. An expression always evaluates to a value. A value or a standalone variable is also considered as an expression but a standalone operator is not an expression. Some examples of valid expressions are given below.
+(i) 100 (iv) 3.0 + 3.14 (ii) num (v) 23/3 -5 * 7(14 -2)
+(iii) num – 20.4 (vi) "Global" + "Citizen"
+Table 5.7 Identity operators in Python
+Operator Description Example (Try in Lab)
+is Evaluates True if the variables on either side of the operator point towards the same memory location and False otherwise.
+var1 is var2 results to True if id(var1) is equal to id(var2)
+>>> num1 = 5
+>>> type(num1) is int
+>>> num2 = num1
+>>> id(num1)
+>>> id(num2)
+>>> num1 is num2 is not Evaluates to False if the variables on either side of the operator point to the same memory location and True otherwise. var1 is not var2 results to True if id(var1) is not equal to id(var2)
+>>> num1 is not num2 variables are referring to the same object or not. There are two identity operators.
+5.8.6 Membership Operators
+Membership operators are used to check if a value is a member of the given sequence or not.
+Reprint 2026-27

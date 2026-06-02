@@ -1,0 +1,89 @@
+Spatial Information T Spatial Information T Spatial Information T Spatial Information T Spatial Information Technology echnology echnology echnology echnology
+5 7 5 7 5 7 5 7 5 7 to determine the most productive soil for a particular crop, we need to overlay the two sets and compute crop productivity for each soil type. This is like laying one map over another and noting the combinations of soil and productivity.
+A GIS can carry out all these operations. However, the sets of spatial information are linked only when they relate to the same geographical area.
+Spatial Analysis
+The strength of the GIS lies in its analytical capabilities. What distinguish the
+GIS from other information systems are its spatial analysis functions. The analysis functions use the spatial and non-spatial attributes in the database to answer questions about the real world. Geographic analysis facilitates the study of real- world processes by developing and applying models. Such models provide the underlying trends in geographic data and thus, make new possibilities available.
+The objective of geographic analysis is to transform data into useful information to satisfy the requirements of the decision-makers. For example, GIS may effectively be used to predict future trends over space and time related to variety of phenomena. However, before undertaking any GIS based analysis, one needs to identify the problem and define purpose of the analysis. It requires step – by – step procedures to arrive at the conclusions. The following spatial analysis operation may be undertaken using GIS :
+(i) Overlay analysis (ii) Buffer analysis (iii) Network analysis (iv) Digital Terrain Model
+However, under the constraints of time and space only the overlay and buffer analysis operations will be dealt herewith.
+Overlay Analysis Operations
+The hallmark of GIS is overlay operations. An integration of multiple layers of maps using overlay operations is an important analysis function. In other words,
+GIS makes it possible to overlay two or more thematic layers of maps of the same area to obtain a new map layer (Fig. 4.7). The overlay operations of a GIS are
+Fig. 4.7 : Simple Overlay Operation
+Reprint 2026-27
+58 58 58 58 58
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II
+Fig. 4.8 : Urban Land Use in Aligarh City, Uttar Pradesh during 1974 and 2001
+Fig. 4.9 : Urban Land Transformations in Aligarh City during 1974-2001
+Reprint 2026-27
+Spatial Information T Spatial Information T Spatial Information T Spatial Information T Spatial Information Technology echnology echnology echnology echnology
+5 9 5 9 5 9 5 9 5 9 similar to the sieve mapping, i.e., the overlaying of tracing of maps on a light table to make comparisons and obtain an output map.
+Map overlay has many applications. It can be used to study the changes in land use/land cover over two different periods in time and analyse the land transformations. For example, Fig. 4.8 depicts urban land use during 1974 and
+2001. When the two maps overlaid, the changes in urban land use have been obtained (Fig. 4.9) and the urban sprawl is mapped during the given time period (Fig. 4.10). Similarly, overlay analysis is also useful in suitability analysis of the given land use for proposed land uses.
+Fig. 4.10 : Urban Sprawl of Aligarh City, Uttar Pradesh during 1974-2001
+Buffer Operation
+Buffer operation is another important spatial analysis function in GIS. A buffer of a certain specified distance can be created along any point, line or area feature (Fig. 4.11). It is useful in locating the areas/population benefitted or denied of the facilities and services, such as hospitals, medical stores, post office, asphalt roads, regional parks, etc. Similarly, it can also be used to study the impact of point sources of air, noise or water pollution on human health and the size of the population so affected. This kind of analysis is called proximity analysis. The buffer operation will generate polygon feature types irrespective of geographic features and delineates spatial proximity. For example, numbers of household living within one-kilometre buffer from a chemical industrial unit are affected by industrial waste discharged from the unit.
+Arc View/ArcGIS, Geomedia Quantum GIS free opensoftware and all other
+GIS softwares provide modules for buffer analysis along point, line and area features. For example, by using appropriate commands of either of the available software, one can create buffers of 2, 4, 6, 8 and 10 kilometres around the cities having a major hospital located. As a case study, point location of Saharanpur,
+Reprint 2026-27
+60 60 60 60 60
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II
+Muzaffarnagar, Meerut, Ghaziabad, Gautam Budh Nagar and Aligarh has been mapped (Fig. 4.12) and the buffer have been created from the cities where major hospitals are found. One can observe that the areas closer to the cities are better served, people living away from the cities have to travel long distances to utilise the medical services and their areas that are least benefitted (Fig. 4.13).
+Fig. 4.12 : Location Map of the Cities of Western
+Uttar Pradesh
+Fig. 4.13 : Buffers of Specified Distances around Hospitals
+Fig. 4.11 : Buffers of Constant Width Drawn around a
+Point, Line and a Polygon
+Internet sources to learn more:
+• schoolgis.nic.in
+• bhuvan.nrsc.gov.in
+• www.iirs.gov.inReprint 2026-27
+Spatial Information T Spatial Information T Spatial Information T Spatial Information T Spatial Information Technology echnology echnology echnology echnology
+6 1 6 1 6 1 6 1 6 1
+Ex Ex Ex Ex Excercises cercises cercises cercises cercises
+1 . Choose the right answer from the four alternatives given below :
+(i) The spatial data are characterised by the following forms of appearance :
+(a) Positional (b) Linear (c) Areal (d) All the above forms (ii) Which one of the following operations requires analysis module software?
+(a) Data storage (b) Data display (c) Data output (d) Buffering (iii) Which one of the following is disadvantage of Raster data format ?
+(a) Simple data structure (b) Easy and efficient overlaying (c) Compatible with remote sensing imagery (d) Difficult network analysis (iv) Which one of the following is an advantage of Vector data format ?
+(a) Complex data structure (b) Difficult overlay operations (c) Lack of compatibility with remote sensing data (d) Compact data structure (v) Urban change detection is effectively undertaken in GIS core using:
+(a) Overlay operations (b) Proximity analysis (c) Network analysis (d) Buffering
+2. Answer the following questions in about 30 words :
+(i) Differentiate between raster and vector data models.
+(ii) What is an overlay analysis?
+(iii) What are the advantages of GIS over manual methods?
+(iv) What are important components of GIS?
+(v) What are different ways in which spatial data is built in GIS core?
+(vi) What is Spatial Information Technology?
+3. Answer the following questions in about 125 words :
+(i) Discuss raster and vector data formats. Give example.
+(ii) Write an explanatory account of the sequence of activities involved in GIS related work.
+Reprint 2026-27
+Glossary
+Bar Graph : A series of columns or bars drawn proportional in length to the quantities they represent. They are drawn on a selected scale. They may be drawn either horizontally or vertically.
+Central Tendency : The tendency of quantitative data to cluster around some value.
+Choropleth Maps : Maps drawn on quantitative areal basis, calculated as average values per unit of area within specific administrative units, e.g. density of population and percentage of urban to total population. Distribution of a given phenomenon is shown by various shades of a colour or intensity.
+Class Intervals : The difference between the lower and upper limits of any class of a frequency distribution is known as its class interval.
+Correlation Co-efficient : A measure of the degree and direction of relationship between two variables.
+Cumulative Frequency : The measurement of distribution of values in the different class intervals expressed as a percentage of the total frequencies either above or below specified value.
+Dispersion : The degree of internal variations in the different values of a variable.
+Flow Maps : Maps in which the “flow” or movement of people or commodities is represented by riband whose thickness is proportional to the quantity of goods or the number of people moving along different routes.
+Histogram : A graphical representation of a frequency distribution, such as seasonal frequencies of rainfall.
+Mean Deviation : A measure of dispersion derives from the average of deviations from some central value. Such deviations are taken absolutely, i.e., their signs are ignored.
+The central value is generally mean or median.
+Median : It is the value which divides the number of observations in such a way that half the value are less than this value and half of them are more. If the values of a variable are arranged in either ascending of descending order, the median is the middle value.
+Mode : The mode is that value of a variable which occurs maximum number of times.
+Pie Diagram : A circular diagram in which a circle is divided into sectors for presenting data in percentage.
+Standard Deviation : The most commonly used measure of dispersion. The standard deviation is the positive square root of the mean of the squares of deviations from the mean.
+Tabulation : The process of putting raw data into a systematically arranged tabular form.
+Variable : Any characteristic which varies. A quantitative variable is a characteristic which has different values; the differences of which are quantitatively measurable. Rainfall, for example, is a quantitative variables, because the differences in its different values at different places or at different times are quantitatively measurable. A qualitative variable on the other hand, is the characteristic; the different values of which cannot be measured quantitatively. Sex, for example, is a qualitative variable, it can be either male or female. A qualitative variable is also known as an attribute.
+Reprint 2026-27
+Spatial Information T Spatial Information T Spatial Information T Spatial Information T Spatial Information Technology echnology echnology echnology echnology
+6 7 6 7 6 7 6 7 6 7
+Notes Notes Notes Notes Notes
+Reprint 2026-27
+68 68 68 68 68
+PPPPPractical Wractical W ractical W ractical W ractical Work in Geography, P ork in Geography, P ork in Geography, P ork in Geography, P ork in Geography, Part-II art-II art-II art-II art-II
+Notes Notes Notes Notes Notes
+Reprint 2026-27

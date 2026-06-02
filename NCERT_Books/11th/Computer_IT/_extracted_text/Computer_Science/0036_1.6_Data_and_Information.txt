@@ -1,0 +1,35 @@
+Computer SCienCe – ClaSS xi 24 exercISe
+1. Name the software required to make a computer functional. Write down its two primary services.
+2. How does the computer understand a program written in high level language?
+3. Why is the execution time of the machine code less than that of source code?
+4. What is the need of RAM? How does it differ from
+5. What is the need for secondary memory?
+6. How do different components of the computer communicate with each other?
+7. Draw the block diagram of a computer system. Briefly write about the functionality of each component.
+8. What is the primary role of system bus? Why is data bus is bidirectional while address bus is unidirectional?
+9. Differentiate between proprietary software and freeware software. Name two software for each type.
+• System bus is used to transfer data, addresses and control signals between components of the computer system.
+• A microprocessor is a small-sized electronic component inside a computer that performs basic arithmetic and logical operations on data.
+• Microcontroller is a small computing device which has a CPU, a fixed amount of RAM, ROM and other peripherals embedded on a single chip.
+• Software is a set of instructions written to achieve the desired tasks and are mainly categorised as system software, programming tools and application software.
+• Hardware of a computer cannot function on its own.
+It needs software to be operational or functional.
+• Operating system is an interface between the user and the computer and supervises the working of computer system, i.e., it monitors and controls the hardware and software of the computer system.
+Reprint 2026-27
+Computer SyStem 25 noteS 10. Write the main difference between microcontroller and microprocessor. Why do smart home appliances have a microcontroller instead of microprocessor embedded in them?
+11. Mention the different types of data that you deal with while browsing the Internet.
+12. Categorise the following data as structured, semi- structured and unstructured:
+• Newspaper
+• Cricket Match Score
+• HTML Page
+• Patient records in a hospital
+13. Name the input or output device used to do the following:
+a) To output audio b) To enter textual data c) To make hard copy of a text file d) To display the data or information e) To enter audio-based command f) To build 3D models g) To assist a visually-impaired individual in entering data
+14. Identify the category (system, application, programming tool) of the following software:
+a) Compiler b) Assembler c) Ubuntu d) Text editor explore yourSelf
+1. Ask your teacher to help you locate any two device drivers installed on your computer.
+2. Write any two system software and two application software installed on your computer.
+3. Which microprocessor does your personal computer have? Which generation does it belong to?
+4. What is the clock speed of your microprocessor?
+5. Name any two devices in your school or home that have a microcontroller.
+Reprint 2026-27

@@ -1,0 +1,70 @@
+Alternating Current where vs is the voltage across the secondary. Therefore, Eqs. (7.31) and (7.32) can be written as
+= − [7.31(a)]
+= − [7.32(a)]
+From Eqs. [7.31 (a)] and [7.32 (a)], we have
+= (7.33)
+Note that the above relation has been obtained using three assumptions: (i) the primary resistance and current are small; (ii) the same flux links both the primary and the secondary as very little flux escapes from the core, and (iii) the secondary current is small.
+If the transformer is assumed to be 100% efficient (no energy losses), the power input is equal to the power output, and since p = i v, ipvp = isvs (7.34)
+Although some energy is always lost, this is a good approximation, since a well designed transformer may have an efficiency of more than
+95%. Combining Eqs. (7.33) and (7.34), we have
+= = (7.35)
+Since i and v both oscillate with the same frequency as the ac source,
+Eq. (7.35) also gives the ratio of the amplitudes or rms values of corresponding quantities.
+Now, we can see how a transformer affects the voltage and current.
+We have:
+ and I N
+ (7.36)
+That is, if the secondary coil has a greater number of turns than the primary (Ns > Np), the voltage is stepped up (Vs > Vp). This type of arrangement is called a step-up transformer. However, in this arrangement, there is less current in the secondary than in the primary (Np/Ns < 1 and Is
+< Ip). For example, if the primary coil of a transformer has 100 turns and the secondary has 200 turns, Ns/Np = 2 and Np/Ns=1/2. Thus, a 220V input at 10A will step-up to 440 V output at 5.0 A.
+If the secondary coil has less turns than the primary (Ns < Np), we have a step-down transformer. In this case, Vs < Vp and Is > Ip. That is, the voltage is stepped down, or reduced, and the current is increased.
+The equations obtained above apply to ideal transformers (without any energy losses). But in actual transformers, small energy losses do occur due to the following reasons:
+(i) Flux Leakage: There is always some flux leakage; that is, not all of the flux due to primary passes through the secondary due to poor
+Reprint 2026-27
+1. An alternating voltage sin = ω m v v t applied to a resistor R drives a current i = im sin wt in the resistor, m
+= . The current is in phase with the applied voltage.
+2. For an alternating current i = im sin wt passing through a resistor R, the average power loss P (averaged over a cycle) due to joule heating is ( 1/2 )i 2 mR. To express it in the same form as the dc power (P = I 2R), a special value of current is used. It is called root mean square (rms)
+current and is donoted by I:
+Similarly, the rms voltage is defined by
+We have P = IV = I 2R
+3. An ac voltage v = vm sin wt applied to a pure inductor L, drives a current in the inductor i = im sin ( wt – p/2), where im = vm/XL. XL = wL is called inductive reactance. The current in the inductor lags the voltage by p/2. The average power supplied to an inductor over one complete cycle is zero.
+design of the core or the air gaps in the core. It can be reduced by winding the primary and secondary coils one over the other.
+(ii) Resistance of the windings: The wire used for the windings has some resistance and so, energy is lost due to heat produced in the wire (I 2R). In high current, low voltage windings, these are minimised by using thick wire.
+(iii) Eddy currents: The alternating magnetic flux induces eddy currents in the iron core and causes heating. The effect is reduced by using a laminated core.
+(iv) Hysteresis: The magnetisation of the core is repeatedly reversed by the alternating magnetic field. The resulting expenditure of energy in the core appears as heat and is kept to a minimum by using a magnetic material which has a low hysteresis loss.
+The large scale transmission and distribution of electrical energy over long distances is done with the use of transformers. The voltage output of the generator is stepped-up (so that current is reduced and consequently, the I 2R loss is cut down). It is then transmitted over long distances to an area sub-station near the consumers. There the voltage is stepped down. It is further stepped down at distributing sub-stations and utility poles before a power supply of 240 V reaches our homes.
+Reprint 2026-27
+Alternating Current
+4. An ac voltage v = vm sin wt applied to a capacitor drives a current in the capacitor: i = im sin ( wt + p/2). Here,
+= = is called capacitive reactance.
+The current through the capacitor is p/2 ahead of the applied voltage.
+As in the case of inductor, the average power supplied to a capacitor over one complete cycle is zero.
+5. For a series RLC circuit driven by voltage v = vm sin wt, the current is given by i = im sin ( tan C L X X
+C L Z R X X = + − is called the impedance of the circuit.
+The average power loss over a complete cycle is given by
+P = V I cos
+The term cos f is called the power factor.
+6. In a purely inductive or capacitive circuit, cos f = 0 and no power is dissipated even though a current is flowing in the circuit. In such cases, current is referred to as a wattless current.
+7. The phase relationship between current and voltage in an ac circuit can be shown conveniently by representing voltage and current by rotating vectors called phasors. A phasor is a vector which rotates about the origin with angular speed w. The magnitude of a phasor represents the amplitude or peak value of the quantity (voltage or current) represented by the phasor.
+The analysis of an ac circuit is facilitated by the use of a phasor diagram.
+8. A transformer consists of an iron core on which are bound a primary coil of Np turns and a secondary coil of Ns turns. If the primary coil is connected to an ac source, the primary and secondary voltages are related by and the currents are related by
+If the secondary coil has a greater number of turns than the primary, the voltage is stepped-up (Vs > Vp). This type of arrangement is called a step- up transformer. If the secondary coil has turns less than the primary, we have a step-down transformer.
+Reprint 2026-27
+Physical quantity Symbol Dimensions Unit Remarks rms voltage V [M L2 T–3 A–1] V V = 2 m v , vm is the amplitude of the ac voltage.
+rms current I [ A] A I = 2 m i , im is the amplitude of the ac current.
+Reactance:
+Inductive XL [M L2 T –3 A–2] XL =
+Capacitive XC [M L2 T –3 A–2] XC = 1/
+Impedance Z [M L2 T –3 A–2] Depends on elements present in the circuit.
+Resonant w0 [T –1] Hz frequency series RLC circuit
+Quality factor Q Dimensionless 0
+= = for a series
+RLC circuit.
+Power factor Dimensionless = cos f is the phase difference between voltage applied and current in the circuit.
+POINTS TO PONDER
+1. When a value is given for ac voltage or current, it is ordinarily the rms value. The voltage across the terminals of an outlet in your room is normally 240 V. This refers to the rms value of the voltage. The amplitude of this voltage is
+V 2 2(240) 340 m v V = = =
+2. The power rating of an element used in ac circuits refers to its average power rating.
+3. The power consumed in an ac circuit is never negative.
+4. Both alternating current and direct current are measured in amperes.
+But how is the ampere defined for an alternating current? It cannot be derived from the mutual attraction of two parallel wires carrying ac currents, as the dc ampere is derived. An ac current changes direction
+Reprint 2026-27

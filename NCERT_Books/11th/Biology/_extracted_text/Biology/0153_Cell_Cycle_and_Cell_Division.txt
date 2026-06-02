@@ -1,0 +1,129 @@
+PHOTOSYNTHESIS IN HIGHER PLANTS 141 (b) As electrons move through the photosystems, protons are transported across the membrane. This happens because the primary accepter of electron which is located towards the outer side of the membrane transfers its electron not to an electron carrier but to an H carrier.
+Hence, this molecule removes a proton from the stroma while transporting an electron. When this molecule passes on its electron to the electron carrier on the inner side of the membrane, the proton is released into the inner side or the lumen side of the membrane.
+(c) The NADP reductase enzyme is located on the stroma side of the membrane. Along with electrons that come from the acceptor of electrons of PS I, protons are necessary for the reduction of NADP+ to
+NADPH+ H+. These protons are also removed from the stroma.
+Hence, within the chloroplast, protons in the stroma decrease in number, while in the lumen there is accumulation of protons. This creates a proton gradient across the thylakoid membrane as well as a measurable decrease in pH in the lumen.
+Why are we so interested in the proton gradient? This gradient is important because it is the breakdown of this gradient that leads to the synthesis of ATP. The gradient is broken down due to the movement of protons across the membrane to the stroma through the transmembrane
+Figure 11.7 ATP synthesis through chemiosmosis
+Reprint 2026-27
+142 BIOLOGY channel of the CF0 of the ATP synthase. The ATP synthase enzyme consists of two parts: one called the CF0 is embedded in the thylakoid membrane and forms a transmembrane channel that carries out facilitated diffusion of protons across the membrane. The other portion is called CF1 and protrudes on the outer surface of the thylakoid membrane on the side that faces the stroma. The break down of the gradient provides enough energy to cause a conformational change in the CF1 particle of the ATP synthase, which makes the enzyme synthesise several molecules of energy- packed ATP.
+Chemiosmosis requires a membrane, a proton pump, a proton gradient and ATP synthase. Energy is used to pump protons across a membrane, to create a gradient or a high concentration of protons within the thylakoid lumen. ATP synthase has a channel that allows diffusion of protons back across the membrane; this releases enough energy to activate
+ATP synthase enzyme that catalyses the formation of ATP.
+Along with the NADPH produced by the movement of electrons, the
+ATP will be used immediately in the biosynthetic reaction taking place in the stroma, responsible for fixing CO2, and synthesis of sugars.
+11.7 WHERE ARE THE ATP AND NADPH USED?
+We learnt that the products of light reaction are ATP, NADPH and O2. Of these O2 diffuses out of the chloroplast while ATP and NADPH are used to drive the processes leading to the synthesis of food, more accurately, sugars.
+This is the biosynthetic phase of photosynthesis. This process does not directly depend on the presence of light but is dependent on the products of the light reaction, i.e., ATP and NADPH, besides CO2 and H2O. You may wonder how this could be verified; it is simple: immediately after light becomes unavailable, the biosynthetic process continues for some time, and then stops. If then, light is made available, the synthesis starts again.
+Can we, hence, say that calling the biosynthetic phase as the dark dark dark dark dark reaction reaction reaction reaction reaction is a misnomer? Discuss this amongst yourselves.
+Let us now see how the ATP and NADPH are used in the biosynthetic phase. We saw earlier that CO2 is combined with H2O to produce (CH2O)n or sugars. It was of interest to scientists to find out how this reaction proceeded, or rather what was the first product formed when CO2 is taken into a reaction or fixed. Just after world war II, among the several efforts to put radioisotopes to beneficial use, the work of Melvin Calvin is exemplary. The use of radioactive 14C by him in algal photosynthesis studies led to the discovery that the first CO2 fixation product was a
+3-carbon organic acid. He also contributed to working out the complete biosynthetic pathway; hence it was called Calvin cycle after him. The first product identified was 3-phosphoglyceric acid or in short PGA.
+How many carbon atoms does it have?
+Reprint 2026-27
+PHOTOSYNTHESIS IN HIGHER PLANTS 143
+Scientists also tried to know whether all plants have PGA as the first product of CO2 fixation, or whether any other product was formed in other plants. Experiments conducted over a wide range of plants led to the discovery of another group of plants, where the first stable product of
+CO2 fixation was again an organic acid, but one which had 4 carbon atoms in it. This acid was identified to be oxaloacetic acid or OAA. Since then CO2 assimilation during photosynthesis was said to be of two main types: those plants in which the first product of CO2 fixation is a C3 acid (PGA), i.e., the C3 pathway, and those in which the first product was a C4 acid (OAA), i.e., the C4 pathway. These two groups of plants showed other associated characteristics that we will discuss later.
+11.7.1 The Primary Acceptor of CO2
+Let us now ask ourselves a question that was asked by the scientists who were struggling to understand the ‘dark reaction’. How many carbon atoms would a molecule have which after accepting (fixing) CO2, would have 3 carbons (of PGA)?
+The studies very unexpectedly showed that the acceptor molecule was a 5-carbon ketose sugar – ribulose bisphosphate (RuBP). Did any of you think of this possibility? Do not worry; the scientists also took a long time and conducted many experiments to reach this conclusion.
+They also believed that since the first product was a C3 acid, the primary acceptor would be a 2-carbon compound; they spent many years trying to identify a 2-carbon compound before they discovered the 5-carbon
+11.7.2 The Calvin Cycle
+Calvin and his co-workers then worked out the whole pathway and showed that the pathway operated in a cyclic manner; the RuBP was regenerated.
+Let us now see how the Calvin pathway operates and where the sugar is synthesised. Let us at the outset understand very clearly that the Calvin pathway occurs in all photosynthetic plants; it does not matter whether they have C3 or C4 (or any other) pathways (Figure 11.8).
+For ease of understanding, the Calvin cycle can be described under three stages: carboxylation, reduction and regeneration.
+1. Carboxylation – Carboxylation is the fixation of CO2 into a stable organic intermediate. Carboxylation is the most crucial step of the Calvin cycle where CO2 is utilised for the carboxylation of RuBP. This reaction is catalysed by the enzyme RuBP carboxylase which results in the formation of two molecules of 3-PGA. Since this enzyme also has an oxygenation activity it would be more correct to call it RuBP carboxylase-oxygenase or RuBisCO.
+Reprint 2026-27
+144 BIOLOGY
+2. Reduction – These are a series of reactions that lead to the formation of glucose. The steps involve utilisation of 2 molecules of ATP for phosphorylation and two of NADPH for reduction per CO2 molecule fixed. The fixation of six molecules of CO2 and 6 turns of the cycle are required for the formation of one molecule of glucose from the pathway.
+3. Regeneration – Regeneration of the CO2 acceptor molecule RuBP is crucial if the cycle is to continue uninterrupted. The regeneration steps require one ATP for phosphorylation to form RuBP.
+Ribulose-1,5- bisphosphate
+Atmosphere
+C02 + H2O
+Carboxylation
+Regeneration 3-phosphoglycerate phosphate
+Reduction
+Pi +NADP+
+Sucrose, starch
+Figure 11.8 The Calvin cycle proceeds in three stages : (1) carboxylation, during which
+CO2 combines with ribulose-1,5-bisphosphate; (2) reduction, during which carbohydrate is formed at the expense of the photochemically made ATP and NADPH; and (3) regeneration during which the CO2 acceptor ribulose-
+1,5-bisphosphate is formed again so that the cycle continues
+Reprint 2026-27
+PHOTOSYNTHESIS IN HIGHER PLANTS 145
+Hence for every CO2 molecule entering the Calvin cycle, 3 molecules of ATP and 2 of NADPH are required. It is probably to meet this difference in number of ATP and NADPH used in the dark reaction that the cyclic phosphorylation takes place.
+To make one molecule of glucose 6 turns of the cycle are required.
+Work out how many ATP and NADPH molecules will be required to make one molecule of glucose through the Calvin pathway.
+It might help you to understand all of this if we look at what goes in and what comes out of the Calvin cycle.
+Six CO2 One glucose
+18 ATP 18 ADP
+12 NADPH 12 NADP
+11.8 THE C4 PATHWAY
+Plants that are adapted to dry tropical regions have the C4 pathway mentioned earlier. Though these plants have the C4 oxaloacetic acid as the first CO2 fixation product they use the C3 pathway or the Calvin cycle as the main biosynthetic pathway. Then, in what way are they different from C3 plants? This is a question that you may reasonably ask.
+C4 plants are special: They have a special type of leaf anatomy, they tolerate higher temperatures, they show a response to high light intensities, they lack a process called photorespiration and have greater productivity of biomass. Let us understand these one by one.
+Study vertical sections of leaves, one of a C3 plant and the other of a C4 plant. Do you notice the differences? Do both have the same types of mesophylls? Do they have similar cells around the vascular bundle sheath?
+The particularly large cells around the vascular bundles of the C4 plants are called bundle sheath cells, and the leaves which have such anatomy are said to have ‘Kranz’ anatomy. ‘Kranz’ means ‘wreath’ and is a reflection of the arrangement of cells. The bundle sheath cells may form several layers around the vascular bundles; they are characterised by having a large number of chloroplasts, thick walls impervious to gaseous exchange and no intercellular spaces. You may like to cut a section of the leaves of C4 plants – maize or sorghum – to observe the
+Kranz anatomy and the distribution of mesophyll cells.
+It would be interesting for you to collect leaves of diverse species of plants around you and cut vertical sections of the leaves. Observe under the microscope – look for the bundle sheath around the vascular bundles. The presence of the bundle sheath would help you identify the C4 plants.
+Reprint 2026-27
+146 BIOLOGY
+Now study the pathway shown in Figure 11.9. This pathway that has been named the Hatch and Slack Pathway, is again a cyclic process. Let us study the pathway by listing the steps.
+The primary CO2 acceptor is a 3-carbon molecule phosphoenol pyruvate (PEP) and is present in the mesophyll cells. The enzyme responsible for this fixation is PEP carboxylase or PEPcase. It is important to register that the mesophyll cells lack RuBisCO enzyme. The C4 acid
+OAA is formed in the mesophyll cells.
+It then forms other 4-carbon compounds like malic acid or aspartic acid in the mesophyll cells itself, which are transported to the bundle sheath cells. In the bundle sheath cells these C4 acids are broken down to release CO2 and a 3-carbon molecule.
+The 3-carbon molecule is transported back to the mesophyll where it is converted to PEP again, thus, completing the cycle.
+The CO2 released in the bundle sheath cells enters the C3 or the Calvin pathway, a pathway common to all plants. The bundle sheath cells are
+Figure 11.9 Diagrammatic representation of the Hatch and Slack Pathway
+Reprint 2026-27
+PHOTOSYNTHESIS IN HIGHER PLANTS 147 rich in an enzyme Ribulose bisphosphate carboxylase-oxygenase (RuBisCO), but lack PEPcase. Thus, the basic pathway that results in the formation of the sugars, the Calvin pathway, is common to the C3 and
+C4 plants.
+Did you note that the Calvin pathway occurs in all the mesophyll cells of the C3 plants? In the C4 plants it does not take place in the mesophyll cells but does so only in the bundle sheath cells.
+11.9 PHOTORESPIRATION
+Let us try and understand one more process that creates an important difference between C3 and C4 plants – Photorespiration. To understand photorespiration we have to know a little bit more about the first step of the Calvin pathway – the first CO2 fixation step. This is the reaction where RuBP combines with CO2 to form 2 molecules of 3PGA, that is catalysed by RuBisCO.
+RuBP CO PGARuBisCo+  →  × 2 2 3
+RuBisCO that is the most abundant enzyme in the world (Do you wonder why?) is characterised by the fact that its active site can bind to both CO2 and O2 – hence the name. Can you think how this could be possible? RuBisCO has a much greater affinity for CO2 when the CO2: O2 is nearly equal. Imagine what would happen if this were not so! This binding is competitive. It is the relative concentration of O2 and CO2 that determines which of the two will bind to the enzyme.
+In C3 plants some O2 does bind to RuBisCO, and hence CO2 fixation is decreased. Here the RuBP instead of being converted to 2 molecules of
+PGA binds with O2 to form one molecule of phosphoglycerate and phosphoglycolate (2 Carbon) in a pathway called photorespiration. In the photorespiratory pathway, there is neither synthesis of sugars, nor of
+ATP. Rather it results in the release of CO2 with the utilisation of ATP. In the photorespiratory pathway there is no synthesis of ATP or NADPH.
+The biological function of photorespiration is not known yet.
+In C4 plants photorespiration does not occur. This is because they have a mechanism that increases the concentration of CO2 at the enzyme site. This takes place when the C4 acid from the mesophyll is broken down in the bundle sheath cells to release CO2 – this results in increasing the intracellular concentration of CO2. In turn, this ensures that the
+RuBisCO functions as a carboxylase minimising the oxygenase activity.
+Now that you know that the C4 plants lack photorespiration, you probably can understand why productivity and yields are better in these plants. In addition, these plants show tolerance to higher temperatures.
+Based on the above discussion can you compare plants showing the
+C3 and the C4 pathway? Use the table format given in table 11.1 and fill in the information.
+Reprint 2026-27
+148 BIOLOGY
+TABLE 11.1 Fill in the Columns 2 and 3 in this table to highlight the differences between C3 and C4 Plants
+Characteristics C3 Plants C4 Plants Choose from
+Cell type in which the Calvin Mesophyll/Bundle sheath/both cycle takes place
+Cell type in which the initial Mesophyll/Bundle sheath /both carboxylation reaction occurs
+How many cell types does the Two: Bundle sheath and leaf have that fix CO2. mesophyll
+One: Mesophyll
+Three: Bundle sheath, palisade, spongy mesophyll
+Which is the primary CO2 acceptor RuBP/PEP/PGA
+Number of carbons in the 5 / 4 / 3 primary CO2 acceptor
+Which is the primary CO2 PGA/OAA/RuBP/PEP fixation product
+No. of carbons in the primary 3 / 4 / 5
+CO2 fixation product
+Does the plant have RuBisCO? Yes/No/Not always
+Does the plant have PEP Case? Yes/No/Not always
+Which cells in the plant have Mesophyll/Bundle sheath/none
+Rubisco?
+CO2 fixation rate under high Low/ high/ medium light conditions
+Whether photorespiration is High/negligible/sometimes present at low light intensities
+Whether photorespiration is High/negligible/sometimes present at high light intensities
+Whether photorespiration would be High/negligible/sometimes present at low CO2 concentrations
+Whether photorespiration would be High/negligible/sometimes present at high CO2 concentrations
+Temperature optimum 30-40°C/20-25°C/above 40°C
+Examples Cut vertical sections of leaves of different plants and observe under the microscope for Kranz anatomy and list them in the appropriate columns.
+Reprint 2026-27
+PHOTOSYNTHESIS IN HIGHER PLANTS 149
+11.10 FACTORS AFFECTING PHOTOSYNTHESIS
+An understanding of the factors that affect photosynthesis is necessary.
+The rate of photosynthesis is very important in determining the yield of plants including crop plants. Photosynthesis is under the influence of several factors, both internal (plant) and external. The plant factors include the number, size, age and orientation of leaves, mesophyll cells and chloroplasts, internal CO2 concentration and the amount of chlorophyll.
+The plant or internal factors are dependent on the genetic predisposition and the growth of the plant.
+The external factors would include the availability of sunlight, temperature, CO2 concentration and water. As a plant photosynthesises, all these factors will simultaneously affect its rate. Hence, though several factors interact and simultaneously affect photosynthesis or CO2 fixation, usually one factor is the major cause or is the one that limits the rate.
+Hence, at any point the rate will be determined by the factor available at sub-optimal levels.
+When several factors affect any [bio] chemical process, Blackman’s (1905) Law of Limiting Factors comes into effect. This states the following:
+If a chemical process is affected by more than one factor, then its rate will be determined by the factor which is nearest to its minimal value: it is the factor which directly affects the process if its quantity is changed.
+For example, despite the presence of a green leaf and optimal light and CO2 conditions, the plant may not photosynthesise if the temperature is very low. This leaf, if given the optimal temperature, will start photosynthesising.
+11.10.1 Light
+We need to distinguish between light quality, light intensity and the duration of exposure to light, while discussing light as a factor that affects photosynthesis. There is a linear relationship between incident light and CO2 fixation rates at low light intensities. At higher light intensities, gradually the rate does not show further increase as other factors become limiting (Figure 11.10).
+What is interesting to note is that light saturation occurs at 10 per cent of the full sunlight. Hence, except for plants in shade or in dense forests, light is rarely a limiting factor i

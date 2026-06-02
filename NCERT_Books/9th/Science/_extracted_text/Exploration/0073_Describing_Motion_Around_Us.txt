@@ -1,0 +1,189 @@
+Describing Motion Around Us 53
+Let us define another physical quantity, average velocity, which describes how fast the position of an object is changing and in which direction.
+The average velocity of an object in a time interval is the change in the position (or displacement) divided by the time interval in which the change in position (or displacement) occurs. Thus, change in position displacement average velocity = = time interval time interval (4.2a)
+If we represent average velocity by vav , displacement by s and time interval by t , then Eq. (4.2a) can be written as v = t (4.2b)
+To express the average velocity, you need to specify its magnitude as well as the direction. How do we associate direction with velocity when the motion is in a straight line? The direction of the velocity is the same as the direction of displacement and is indicated by a ʻ ʼ or ʻ–ʼ sign.
+The SI unit of average speed and average velocity are the same. It is metre per second which is represented by m s–1 or m/s. It is also commonly measured in kilometre per hour (km h–1).
+To describe how fast or slow a change in a physical quantity happens, we use the idea of a rate of change. The ratio of change in one quantity to the corresponding change in time is called the rate of change. To calculate average velocity, we find the ratio of change in position to the time taken (Eq. 4.2a). So, we can say that average velocity is the average rate of change of position of an object with respect to time.
+Example 4.2: Sarang takes 50 seconds to swim from one end to the other end and back in the swimming pool shown in Fig. 4.7. Find his average speed and average velocity within the time interval of 50 s.
+Total distance travelled by Sarang in 50 s = 50 m displacement of Sarang in 50 s = 0 m
+1 total distance travelled 50 m average speed = = = 1 m s time interval 50 s
+1 displacement 0 m average velocity = = = 0 m s time interval 50 s
+During the 50 s time interval, the average speed of Sarang is approximately
+1 m s –1 while his average velocity is 0 m s –1.
+4. During a family road trip, you drive 200 km north in three hours. Afterwards, you drive 200 km south in two hours. Find the average speed and average velocity for your entire trip.
+5. Under what condition(s) is the (i) magnitude of average velocity of an object equal to its average speed?
+(ii) magnitude of average velocity of an object zero while its average speed is not zero?
+Pause and Ponder
+Fig. 4.7: Swimming pool
+For motion in a straight line, the average speed and the magnitude of average velocity in a time interval are equal if the object moves in one direction.
+Exploration|Grade 9 54
+The average velocity of an object over a large time interval may differ from its velocity at a particular instant. Throughout this chapter, we will use the term ‘velocity’ to mean the velocity of an object at a particular instant.
+Ready to Go Beyond
+What we simply called ‘velocity at an instant’ is known as ‘instantaneous velocity’. As the time interval around an instant is made progressively smaller (Eqn. 4.2b), the change in average velocity gets smaller and smaller. When the time interval becomes infinitesimally small, the average value of velocity approaches a fixed value called the instantaneous velocity. You will learn more about this physical quantity in higher grades.
+The velocity of an object can be constant or it can change with time.
+How can we express the change in velocity of an object?
+4.1.4 Average acceleration
+When you sit in a vehicle and it suddenly moves from rest, you feel a noticeable jolt. Similarly, when the vehicle is in motion and suddenly stops, you experience a jolt. These occurrences capture the feeling of the change in velocity. You can find the change in velocity if you know the velocity at two different instants of time.
+Let us now learn another physical quantity, the average acceleration.
+The average acceleration of an object over a time interval is the change in its velocity divided by the time interval. That is, change in velocity average acceleration = time interval (4.3a)
+final velocity initial velocity average acceleration = time interval
+− (4.3b)
+If the velocity of an object changes from an initial value u at time t1 to the final value v at time t2, the average acceleration a is,
+= − (4.3c)
+The SI unit of average acceleration is m s –2 or m/s2. Like displacement and velocity, we need to specify the magnitude as well as the direction of acceleration. For motion in a straight line, if the magnitude of velocity is increasing in a given time interval, the average acceleration is in the direction of velocity (Fig. 4.8). Whereas, the average acceleration is opposite to the direction of velocity if the magnitude of velocity is decreasing.
+Velocity Velocity
+Acceleration Acceleration
+Fig. 4.8: Direction of average acceleration when magnitude of velocity is (a) increasing, and (b) decreasing
+Car is speeding up Car is slowing down
+The reading of the speedometer of a vehicle is nearly (but not exactly) the same as the magnitude of the velocity at an instant while the direction of tyres gives the direction of velocity at that instant.
+Threads of
+Curiosity
+Describing Motion Around Us 55
+The average acceleration can result from change in the magnitude of velocity or change in its direction, or both. Later in Section 4.4, we will discuss an example of acceleration resulting from only the change of direction of the motion while the speed remains constant.
+Activity 4.2: Let us calculate
+1. The magnitude of average acceleration of cars is generally specified as the time taken by the car to go from 0 km h–1 to 100 km h–1. Look it up on the internet and find this time for various cars, and record those in
+Table 4.2.
+2. Calculate the magnitude of average acceleration for each car.
+Table 4.2: The magnitude of average acceleration in a time interval
+Car type Time interval during which the speed goes from 0 to 100 km h –1
+Magnitude of average acceleration (m s–2 )
+Example 4.3: A bus is moving on a long straight highway (Fig. 4.9) with a velocity of 36 km h–1. The driver presses the accelerator for a time interval of 10 s and velocity of the bus increases to 54 km h–1. For some time, the bus moves at a constant velocity. Then, the driver notices an obstacle on the road ahead and presses the brake. The bus comes to a stop in a time interval of 5 s. Find the average acceleration in the two time intervals, (i) when the accelerator was pressed, and (ii) when the brakes were pressed.
+Fig. 4.9: A bus moving on a long straight highway
+Answer: (i) When the driver presses the accelerator u = 36 km h–1 1000 m
+= 36 × =
+60×60 s 10 m s–1, v = 54 km h–1 = 15 m s–1, t = 10 s, a = ?
+Using Eq. (4.3c), we obtain the average acceleration
+2 15 m s 10 m s 5 m s
+= = = 0.5 m s
+10 s 10 s
+Since the magnitude of velocity of the bus is increasing, the acceleration is acting in the direction of velocity.
+(ii) When the driver presses the brake u = 54 km h–1 = 15 m s–1, v = 0 m s–1, t = 5 s, a = ?
+Using Eq. (4.3c) again, we obtain
+2 0 m s 15 m s 15 m s
+= = = 3 m s
+The minus sign indicates that the acceleration is acting opposite to the direction of velocity (since the magnitude of velocity of the bus is decreasing).
+An object can be moving very fast and yet have zero acceleration.
+Acceleration depends not on how fast an object is moving, but on how quickly its velocity is changing. For example, a bus moving on a straight highway at constant velocity has zero acceleration, even though its velocity may be
+Exploration|Grade 9 56
+The average acceleration during different time intervals can either be constant or changing. For an object moving in a straight line in the same direction, if the magnitude of its velocity increases or decreases by equal amounts in equal intervals of time (for all possible choices of time intervals), the acceleration of the object is constant.
+Example 4.4: As we learnt earlier, when an object is dropped from a height, it takes a straight vertical path downwards before touching the ground. While coming down, the velocity of the object increases as shown in Fig. 4.10 at different instants. Find the magnitude of the average acceleration of the object in every successive interval of a second. Is the average acceleration constant across all intervals? What is the direction of this average acceleration?
+Answer: The magnitude of the average acceleration in every successive interval is
+9.8 0 m s average acceleration between 0 s and 1 s 9.8 m s
+19.6 9.8 m s average acceleration between 1 s and 2 s 9.8 m s
+29.4 19.6 m s average acceleration between 2 s and 3 s 9.8 m s
+39.2 29.4 m s average acceleration between 3 s and 4 s 9.8 m s
+We note that the average acceleration is constant and equal to
+9.8 m s–2. As the velocity is increasing in the direction of motion, the acceleration is in the direction of motion. This acceleration is called the acceleration due to gravitational force by the Earth and is denoted by g.
+Did you notice that in Fig. 4.5, we chose the origin at the ground level while in Fig. 4.10, we chose the origin at the point from where the object is dropped? In this example, we use down side as positive. We can choose the origin and positive direction as per our convenience.
+However, once chosen, it should not be changed while solving a problem.
+Just like we can specify the velocity of an object at an instant, we can specify the acceleration of an object at an instant.
+4.2 Graphical Representation of Motion
+One useful way of representing motion can be a graphical representation. It provides a visual representation of how position, velocity, and acceleration change with time. Such graphs help in comparing the motion of two objects, in calculating physical quantities, or in identifying whether the motion is uniform or non-uniform.
+As you have learnt in Mathematics, graphs come in various forms, each suited to different types of data representation. To describe motion, we will use graphs to show dependence of one physical quantity, such as position, velocity or acceleration, on another quantity, such as time. Let us learn to plot and interpret line graphs for motion.
+Curiosity
+Chapter 5
+Ganita Prakash Ganita Prakash
+Chapter 5
+Fig. 4.10: An object dropped from a height
+80 m v = 39.2 m s–1, t = 4 s v = 29.4 m s–1, t = 3 s v = 19.6 m s–1, t = 2 s v = 9.8 m s–1, t = 1 s u = 0 m s–1, t = 0 s
+In this chapter, we will consider only the cases where the acceleration is constant.
+Ready to
+Go Beyond
+Similar to ʻvelocity at an instantʼ,
+ʻacceleration at an instant’ is known as ‘instantaneous acceleration’. You will learn more about it in higher
+Describing Motion Around Us 57
+All the graphs that we will discuss in this chapter are for motion in a straight line in one direction only. In this special case, distance travelled and magnitude of displacement are equal, and speed and magnitude of velocity are also equal.
+If position is zero at time zero, then the position-time graph is same as the distance-time graph and the velocity-time graph is same as the speed-time graph.
+4.2.1 Plotting graph
+To plot a graph, let us use the data given in Table 4.3 for a vehicle moving on a straight road.
+Table 4.3: Positions of vehicle at different instants of time
+Time 0 s 1 s 2 s 3 s 4 s 5 s 6 s
+Position 0 m 20 m 40 m 60 m 80 m 100 m 120 m
+Fig. 4.11(a): Marking origin, X and Y axes on graph paper
+O Time (s)
+Position (m)
+Activity 4.3: Let us plot a graph
+1. Take a sheet of graph paper. This paper is pre-divided into small squares (Fig. 4.11a), making it easier to plot data accurately.
+2. On the graph paper, draw two lines perpendicular to each other as shown in Fig. 4.11a. Their point of intersection is known as origin O. Mark the horizontal line as OX. It is known as the X-axis. Similarly, mark the vertical line as
+OY. It is called the Y-axis.
+3. Refer to Table 4.3. We need to decide which quantity (time or position) to be shown along each axis. For the data we have (Table 4.3), we will show time along the
+X-axis and position along the Y-axis.
+4. Determine a suitable scale for each quantity to represent it on the graph paper. We need to choose scales that allow us to represent the data effectively and conveniently while utilising the available space. The scale can be
+X-axis: 5 divisions = 1 s
+Y-axis: 5 divisions = 20 m
+5. Use the chosen scale to mark values for time (1 s, 2 s, …)
+along the X-axis from the origin. Similarly, mark values for position (20 m, 40 m, …) along the Y-axis (Fig. 4.11b).
+6. Begin plotting points on the graph paper to represent each set of time and position values from Table 4.3.
+(i) Table 4.3 shows that at time 0 s, the position is also
+0 m. The point corresponding to this set of values on the graph will therefore be the origin itself.
+(ii) At 1 s, the position of vehicle is at 20 m. To mark these values, look for the point that represents 1 s on the X-axis. Draw a line parallel to the Y-axis at
+1 2 3 4 5 6
+Fig. 4.11(b): Plotting points on the
+Position (m)
+Time (s)
+(1 s, 20 m)
+(2 s, 40 m)
+(3 s, 60 m)
+Exploration|Grade 9 58 this point. Then, draw a line parallel to the X-axis from the point corresponding to distance 20 m on the Y-axis. The point where these two lines intersect represents the position 20 m at time t = 1 s on the graph (Fig. 4.11b).
+(iii) Similarly, plot on the graph paper all points corresponding to positions of the vehicle at different instants of time.
+7. Once all points are plotted, connect them to create the position-time graph for the vehicle’s motion (Fig. 4.11c). It is a straight line for the data given in Table 4.3.
+This was an example of plotting a position-time graph.
+Similar procedure can be used to plot the other graphs which you will be learning ahead.
+Ready to Go Beyond
+The intermediate points represent possible values for position of vehicle at intermediate times. They are correct if vehicle is moving with a constant speed.
+Example 4.5: For a vehicle starting from rest and speeding up, the data for position and time are given in Table 4.4. Plot the position-time graph corresponding to it.
+Table 4.4: Positions of vehicle at different instants of time
+Time Position
+8 s 16 m
+10 s 25 m
+12 s 36 m
+Choosing the scale to be
+X-axis: 5 divisions = 2 s
+Y-axis: 5 divisions = 5 m and following the procedure of Activity 4.3, all points corresponding to positions of the vehicle at different instants of time are marked. Unlike Fig. 4.11c, the points do not fall on a straight line. The points can be joined by a curve as shown in Fig. 4.12.
+Now that you know how to plot a graph from the data given for the motion of an object, let us learn to interpret the graphs.
+Remember, a graph is not a route map.
+It does not show the route but how the position of the object changes with time with respect to the origin.
+1 2 3 4 5 6
+Fig. 4.11(c): Making a graph
+Position (m)
+Time (s)
+2 4 6 8 10 12
+Fig. 4.12: Position-time graph of the vehicle
+Position (m)
+Describing Motion Around Us 59
+4.2.2 Position-time graphs
+The position-time graph represents the motion of object, i.e., the change in its position with time. You have already plotted two position-time graphs (Figs. 4.11c and 4.12). Now, what information can you obtain from these graphs about the motion of the object?
+What does the shape of the position-time graph indicate about the nature of motion?
+1 2 3 4 5 6 (a) Constant velocity
+Position (m)
+Time (s)
+2 4 6 8 10 12 (b) Changing velocity
+Position (m)
+Time (s)
+In equal intervals of time (say, between two instants 2 – 3 s and 5 – 6 s)
+the magnitudes of displacements of object are equal (20 m) magnitude of velocity is constant
+In equal intervals of time (say, 4 – 6 s and 10 – 12 s) the magnitudes of displacements of object are increasing magnitude of velocity is increasing
+Fig. 4.13: Position-time graph of a moving object
+As we can see in Fig. 4.13a, a straight line position-time graph indicates that the object is moving with a constant velocity. On the other hand, a curved position-time graph as in Fig. 4.13b, indicates that the velocity is not constant, and thus, the object is in accelerated motion.
+Which physical quantities can be obtained from a position-time graph?
+From the position-time graph, you can find the position of an object at each instant of time. Does the graph provide information about any other physical quantity as well? In fact, you can also calculate how fast the position is changing, i.e., the magnitude of velocity of the object. How can you do that?
+Activity 4.4: Let us calculate
+1. In the position-time graph we plotted (Fig. 4.11c), consider a part (say, AB) of the graph as shown in Fig. 4.14. From A, draw a line parallel to X-axis and another line parallel to
+Y-axis. Repeat the same from B.
+2. Extend the horizontal line from A and a triangle ABC is formed. What do the sides BC and CA of the triangle represent? BC represents the change in position (s2 – s1), and AC represents the change in time (t2 – t1).
+1 2 3 4 5 6
+Fig. 4.14: Calculating velocity from a position-time graph
+Position (m)
+Time (s)
+Exploration|Grade 9 60
+3. As per Eq. (4.2a), by dividing the change in position (BC) by the change in time (CA), you get the average velocity
+4. By extracting values of time t1 and t2, and distances s1 and s2 from the graph, the magnitude of average velocity can be calculated as
+80 m 40 m 40 m 20 m s
+4 s 2 s 2 s
+From a position-time graph, by finding the positions of the object at two instants of time, you can calculate the average velocity by using Eq. (4.2a).
+Geometrically, BC
+CA is called the slope of line AB connecting initial position A and final position B in Fig. 4.14. The slope of a line is the steepness of the line. The slope of a graph gives information about the rate of change of the quantity shown on Y-axis with respect to the quantity shown on X-axis.
+For the case of a curve also, the velocity at any instant can be calculated geometrically from the position-time graph. You will learn how to do it in higher grades.
+Ready to Go Beyond
+Ex

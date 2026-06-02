@@ -1,0 +1,186 @@
+Science 138
+You will see in the above Activity that the nature, position and size of the image formed by a concave mirror depends on the position of the object in relation to points P, F and C. The image formed is real for some positions of the object. It is found to be a virtual image for a certain other position. The image is either magnified, reduced or has the same size, depending on the position of the object. A summary of these observations is given for your reference in Table 9.1.
+9.2.2 Representation of Images Formed by Spherical
+Mirrors Using Ray Diagrams
+We can also study the formation of images by spherical mirrors by drawing ray diagrams. Consider an extended object, of finite size, placed in front of a spherical mirror. Each small portion of the extended object acts like a point source. An infinite number of rays originate from each of these points. To construct the ray diagrams, in order to locate the image of an object, an arbitrarily large number of rays emanating from a point could be considered. However, it is more convenient to consider only two rays, for the sake of clarity of the ray diagram. These rays are so chosen that it is easy to know their directions after reflection from the
+The intersection of at least two reflected rays give the position of image of the point object. Any two of the following rays can be considered for locating the image.
+(i) A ray parallel to the principal axis, after reflection, will pass through the principal focus in case of a concave mirror or appear to diverge from the principal focus in case of a convex mirror.
+This is illustrated in Fig.9.3 (a) and (b).
+Figure 9.3
+Table 9.1 Image formation by a concave mirror for different positions of the object
+Position of the Position of the Size of the Nature of the object image image image
+At infinity At the focus F Highly diminished, Real and inverted point-sized
+Beyond C Between F and C Diminished Real and inverted
+At C At C Same size Real and inverted
+Between C and F Beyond C Enlarged Real and inverted
+At F At infinity Image would not be formed
+Between P and F Behind the mirror Enlarged Virtual and erect
+Reprint 2026-27
+Light – Reflection and Refraction 139 (ii) A ray passing through the principal focus of a concave mirror or a ray which is directed towards the principal focus of a convex mirror, after reflection, will emerge parallel to the principal axis. This is illustrated in Fig.9.4 (a)
+and (b).
+(iii) A ray passing through the centre of curvature of a concave mirror or directed in the direction of the centre of curvature of a convex mirror, after reflection, is reflected back along the same path. This is illustrated in Fig.9.5 (a) and (b). The light rays come back along the same path because the incident rays fall on the mirror along the normal to the reflecting surface.
+(iv) A ray incident obliquely to the principal axis, towards a point P (pole of the mirror), on the concave mirror
+[Fig. 9.6 (a)] or a convex mirror [Fig. 9.6 (b)], is reflected obliquely. The incident and reflected rays follow the laws of reflection at the point of incidence (point P), making equal angles with the principal axis.
+Figure 9.4 Figure 9.4 Figure 9.4 Figure 9.4 Figure 9.4
+Remember that in all the above cases the laws of reflection are followed.
+At the point of incidence, the incident ray is reflected in such a way that the angle of reflection equals the angle of incidence.
+(a) Image formation by Concave Mirror
+Figure 9.7 illustrates the ray diagrams for the formation of image by a concave mirror for various positions of the object.
+Figure 9.5 Figure 9.5 Figure 9.5 Figure 9.5 Figure 9.5
+Figure 9.6 Figure 9.6 Figure 9.6 Figure 9.6 Figure 9.6
+Reprint 2026-27
+Science 140
+Figure 9.7 Figure 9.7 Figure 9.7 Figure 9.7 Figure 9.7 Ray diagrams for the image formation by a concave mirror
+Activity 9.4 Activity 9.4 Activity 9.4 Activity 9.4 Activity 9.4 n Draw neat ray diagrams for each position of the object shown in
+Table 9.1.
+n You may take any two of the rays mentioned in the previous section for locating the image.
+n Compare your diagram with those given in Fig. 9.7.
+n Describe the nature, position and relative size of the image formed in each case.
+n Tabulate the results in a convenient format.
+Uses of concave mirrors
+Concave mirrors are commonly used in torches, search-lights and vehicles headlights to get powerful parallel beams of light. They are often used as shaving mirrors to see a larger image of the face. The dentists use concave mirrors to see large images of the teeth of patients.
+Large concave mirrors are used to concentrate sunlight to produce heat in solar furnaces.
+(b) Image formation by a Convex Mirror
+We studied the image formation by a concave mirror. Now we shall study the formation of image by a convex mirror.
+Reprint 2026-27
+Light – Reflection and Refraction 141
+We consider two positions of the object for studying the image formed by a convex mirror. First is when the object is at infinity and the second position is when the object is at a finite distance from the mirror. The ray diagrams for the formation of image by a convex mirror for these two positions of the object are shown in Fig.9.8 (a) and (b), respectively. The results are summarised in Table 9.2.
+Activity 9.5 Activity 9.5 Activity 9.5 Activity 9.5 Activity 9.5 n Take a convex mirror. Hold it in one hand.
+n Hold a pencil in the upright position in the other hand.
+n Observe the image of the pencil in the mirror. Is the image erect or inverted? Is it diminished or enlarged?
+n Move the pencil away from the mirror slowly. Does the image become smaller or larger?
+n Repeat this Activity carefully. State whether the image will move closer to or farther away from the focus as the object is moved away from the mirror?
+Figure 9.8 Figure 9.8 Figure 9.8 Figure 9.8 Figure 9.8 Formation of image by a convex mirror
+You have so far studied the image formation by a plane mirror, a concave mirror and a convex mirror. Which of these mirrors will give the full image of a large object? Let us explore through an Activity.
+Activity 9.6 Activity 9.6 Activity 9.6 Activity 9.6 Activity 9.6 n Observe the image of a distant object, say a distant tree, in a plane mirror.
+n Could you see a full-length image?
+Table 9.2 Nature, position and relative size of the image formed by a convex mirror
+Position of the Position of the Size of the Nature of the object image image image
+At infinity At the focus F, Highly diminished, Virtual and erect behind the mirror point-sized
+Between infinity Between P and F, Diminished Virtual and erect and the pole P of behind the mirror the mirror
+Reprint 2026-27
+Science 142 n Try with plane mirrors of different sizes. Did you see the entire object in the image?
+n Repeat this Activity with a concave mirror. Did the mirror show full length image of the object?
+n Now try using a convex mirror. Did you succeed? Explain your observations with reason.
+You can see a full-length image of a tall building/tree in a small convex mirror. One such mirror is fitted in a wall of Agra Fort facing Taj
+Mahal. If you visit the Agra Fort, try to observe the full image of Taj
+Mahal. To view distinctly, you should stand suitably at the terrace adjoining the wall.
+Uses of convex mirrors
+Convex mirrors are commonly used as rear-view (wing) mirrors in vehicles. These mirrors are fitted on the sides of the vehicle, enabling the driver to see traffic behind him/her to facilitate safe driving. Convex mirrors are preferred because they always give an erect, though diminished, image. Also, they have a wider field of view as they are curved outwards. Thus, convex mirrors enable the driver to view much larger area than would be possible with a plane mirror.
+Q U E S T I O N S
+1. Define the principal focus of a concave mirror.
+2. The radius of curvature of a spherical mirror is 20 cm. What is its focal
+3. Name a mirror that can give an erect and enlarged image of an object.
+4. Why do we prefer a convex mirror as a rear-view mirror in vehicles?
+9.2.3 Sign Convention for Reflection by Spherical Mirrors
+While dealing with the reflection of light by spherical mirrors, we shall follow a set of sign conventions called the New Cartesian Sign
+Convention. In this convention, the pole (P) of the mirror is taken as the origin (Fig. 9.9). The principal axis of the mirror is taken as the x-axis (X’X) of the coordinate system. The conventions are as follows – (i) The object is always placed to the left of the mirror. This implies that the light from the object falls on the mirror from the left-hand (ii) All distances parallel to the principal axis are measured from the pole of the mirror.
+(iii) All the distances measured to the right of the origin (along
++ x-axis) are taken as positive while those measured to the left of the origin (along – x-axis) are taken as negative.
+(iv) Distances measured perpendicular to and above the principal axis (along + y-axis) are taken as positive.
+(v) Distances measured perpendicular to and below the principal axis (along –y-axis) are taken as negative.
+Reprint 2026-27
+Light – Reflection and Refraction 143
+The New Cartesian Sign Convention described above is illustrated in
+Fig.9.9 for your reference. These sign conventions are applied to obtain the mirror formula and solve related numerical problems.
+9.2.4 Mirror Formula and Magnification
+In a spherical mirror, the distance of the object from its pole is called the object distance (u). The distance of the image from the pole of the mirror is called the image distance (v). You already know that the distance of the principal focus from the pole is called the focal length (f) . There is a relationship between these three quantities given by the mirror formula which is expressed as
++ = (9.1)
+This formula is valid in all situations for all spherical mirrors for all positions of the object. You must use the New Cartesian Sign
+Convention while substituting numerical values for u, v, f, and R in the mirror formula for solving problems.
+Magnification
+Magnification produced by a spherical mirror gives the relative extent to which the image of an object is magnified with respect to the object size.
+It is expressed as the ratio of the height of the image to the height of the object. It is usually represented by the letter m.
+If h is the height of the object and h
+′ is the height of the image, then the magnification m produced by a spherical mirror is given by m = Height of the image ( )
+Height of the object ( )
+The magnification m is also related to the object distance (u) and image distance (v). It can be expressed as:
+Magnification (m) = ′ = −
+You may note that the height of the object is taken to be positive as the object is usually placed above the principal axis. The height of the image should be taken as positive for virtual images. However, it is to be taken as negative for real images. A negative sign in the value of the magnification indicates that the image is real. A positive sign in the value of the magnification indicates that the image is virtual.
+Figure 9.9 Figure 9.9 Figure 9.9 Figure 9.9 Figure 9.9
+The New Cartesian Sign Convention for spherical mirrors
+Reprint 2026-27
+Science 144
+Example 9.1
+A convex mirror used for rear-view on an automobile has a radius of curvature of 3.00 m. If a bus is located at 5.00 m from this mirror, find the position, nature and size of the image.
+Solution
+Radius of curvature, R = + 3.00 m;
+Object-distance, u = – 5.00 m;
+Image-distance, v = ?
+Height of the image, h
+Focal length, f = R/2 = + 3.00 m
+2 = + 1.50 m (as the principal focus of a convex mirror is behind the mirror)
+Since 1 1 1 or, 1 1 1
+= − = + 1
+1.50 – 1 ( 5.00) − = 1
+1.50 + 1
+= 5.00 1.50 v = 7.50
++ = + 1.15 m
+The image is 1.15 m at the back of the mirror.
+Magnification, m = ' h v
+= − = – 1.15 m
+5.00 m −
+= + 0.23
+The image is virtual, erect and smaller in size by a factor of 0.23.
+Example 9.2
+An object, 4.0 cm in size, is placed at 25.0 cm in front of a concave mirror of focal length 15.0 cm. At what distance from the mirror should a screen be placed in order to obtain a sharp image? Find the nature and the size of the image.
+Solution
+Object-size, h = + 4.0 cm;
+Object-distance, u = – 25.0 cm;
+Focal length, f = –15.0 cm;
+Image-distance, v = ?
+Image-size, h
+From Eq. (10.1):
+or, 1 1 1
+= − = 1 1 1 1
+15.0 25.0 15.0 25.0
+Reprint 2026-27
+Light – Reflection and Refraction 145 or, 1 5.0 3.0 2.0
+75.0 75.0 v
+= = or, v = – 37.5 cm
+The screen should be placed at 37.5 cm in front of the mirror. The image is real.
+Also, magnification, m = ' h v
+′ = – v h u = ( 37.5 cm) ( 4.0 cm)
+( 25.0 cm)
+Height of the image, h
+′ = – 6.0 cm
+The image is inverted and enlarged.
+Q U E S T I O N S
+1. Find the focal length of a convex mirror whose radius of curvature is
+2. A concave mirror produces three times magnified (enlarged) real image of an object placed at 10 cm in front of it. Where is the image located?
+9.3 REFRACTION OF LIGHT 9.3 REFRACTION OF LIGHT 9.3 REFRACTION OF LIGHT 9.3 REFRACTION OF LIGHT 9.3 REFRACTION OF LIGHT
+Light seems to travel along straight-line paths in a transparent medium.
+What happens when light enters from one transparent medium to another? Does it still move along a straight-line path or change its direction? We shall recall some of our day-to-day experiences.
+You might have observed that the bottom of a tank or a pond containing water appears to be raised. Similarly, when a thick glass slab is placed over some printed matter, the letters appear raised when viewed through the glass slab. Why does it happen? Have you seen a pencil partly immersed in water in a glass tumbler? It appears to be displaced at the interface of air and water. You might have observed that a lemon kept in water in a glass tumbler appears to be bigger than its actual size, when viewed from the sides. How can you account for such experiences?
+Let us consider the case of the apparent displacement of a pencil, partly immersed in water. The light reaching you from the portion of the pencil inside water seems to come from a different direction, compared to the part above water. This makes the pencil appear to be displaced at the interface. For similar reasons, the letters appear to be raised, when seen through a glass slab placed over it.
+Does a pencil appear to be displaced to the same extent, if instead of water, we use liquids like kerosene or turpentine? Will the letters appear to rise to the same height if we replace a glass slab with a transparent plastic slab? You will find that the extent of the effect is different for different pair of media. These observations indicate that light does not
+Reprint 2026-27
+Science 146 travel in the same direction in all media. It appears that when travelling obliquely from one medium to another, the direction of propagation of light in the second medium changes. This phenomenon is known as refraction of light. Let us understand this phenomenon further by doing a few activities.
+Activity 9.7 Activity 9.7 Activity 9.7 Activity 9.7 Activity 9.7 n Place a coin at the bottom of a bucket filled with water.
+n With your eye to a side above water, try to pick up the coin in one go. Did you succeed in picking up the coin?
+n Repeat the Activity. Why did you not succeed in doing it in one go?
+n Ask your friends to do this. Compare your experience with theirs.
+Activity 9.8 Activity 9.8 Activity 9.8 Activity 9.8 Activity 9.8 n Place a large shallow bowl on a Table and put a coin in it.
+n Move away slowly from the bowl. Stop when the coin just disappears from your sight.
+n Ask a friend to pour water gently into the bowl without disturbing the coin.
+n Keep looking for the coin from your position. Does the coin becomes visible again from your position? How could this happen?
+The coin becomes visible again on pouring water into the bowl. The coin appears slightly raised above its actual position due to refraction of
+Activity 9.9 Activity 9.9 Activity 9.9 Activity 9.9 Activity 9.9 n Draw a thick straight line in ink, over a sheet of white paper placed on a Table.
+n Place a glass slab over the line in such a way that one of its edges makes an angle with the line.
+n Look at the portion of the line under the slab from the sides. What do you observe? Does the line under the glass slab appear to be bent at the edges?
+n Next, place the glass slab such that it is normal to the line. What do you observe now? Does the part of the line under the glass slab appear bent?
+n Look at the line from the top of the glass slab. Does the part of the line, beneath the slab, appear to be raised? Why does this happen?
+9.3.1 Refraction through a Rectangular Glass Slab
+To understand the phenomenon of refraction of light through a glass slab, let us do an Activity.
+Reprint 2026-27
+Light – Reflection and Refraction 147
+In this Activity, you will note, the light ray has changed its direction at points O and O
+′. Note that both the points O and O
+′ lie on surfaces separating two transparent media. Draw a perpendicular NN’ to AB at O and another perpendicular MM
+′ to CD at O′. The light ray at point O has entered from a rarer medium to a denser medium, that is, from air to glass. Note that the light ray has bent towards the normal. At O
+′, the light ray has entered from glass to air, that is, from a denser medium to a rarer medium. The light here has bent away from the normal. Compare the angle of incidence with the angle of refraction at both refracting surfaces AB and CD.
+In Fig. 9.10, a ray EO is obliquely incident on surface AB, called incident ray.
+′ is the refracted ray and O
+′ H is the emergent ray. You may observe that the emergent ray is parallel to the direction of the incident ray. Why does it happen so? The extent of bending of the ray of light at the opposite parallel faces AB (air-glass interface)
+and CD (glass-air interface) of the rectangular glass slab is equal and opposite. This is why the ray emerges parallel to the incident ray.
+However, the light ray is shifted sideward slightly. What happens when

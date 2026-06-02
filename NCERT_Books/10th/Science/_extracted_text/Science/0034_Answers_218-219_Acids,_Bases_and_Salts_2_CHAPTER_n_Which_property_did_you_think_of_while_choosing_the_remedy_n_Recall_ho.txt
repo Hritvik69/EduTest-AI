@@ -1,0 +1,50 @@
+Science 22
+Now write and balance the equation for the above reaction. Since metallic oxides react with acids to give salts and water, similar to the reaction of a base with an acid, metallic oxides are said to be basic oxides.
+2.1.6 Reaction of a Non-metallic Oxide with Base
+You saw the reaction between carbon dioxide and calcium hydroxide (lime water) in Activity 2.5. Calcium hydroxide, which is a base, reacts with carbon dioxide to produce a salt and water. Since this is similar to the reaction between a base and an acid, we can conclude that non- metallic oxides are acidic in nature.
+Q U E S T I O N S
+1. Why should curd and sour substances not be kept in brass and copper vessels?
+2. Which gas is usually liberated when an acid reacts with a metal?
+Illustrate with an example. How will you test for the presence of this gas?
+3. Metal compound A reacts with dilute hydrochloric acid to produce effervescence. The gas evolved extinguishes a burning candle. Write a balanced chemical equation for the reaction if one of the compounds formed is calcium chloride.
+2.2 WHA 2.2 WHA 2.2 WHA 2.2 WHA 2.2 WHAT DO ALL ACIDS AND ALL BASES HA T DO ALL ACIDS AND ALL BASES HA T DO ALL ACIDS AND ALL BASES HA T DO ALL ACIDS AND ALL BASES HA T DO ALL ACIDS AND ALL BASES HAVE IN VE IN VE IN VE IN VE IN
+COMMON? COMMON? COMMON? COMMON? COMMON?
+In Section 2.1 we have seen that all acids have similar chemical properties. What leads to this similarity in properties? We saw in Activity
+2.3 that all acids generate hydrogen gas on reacting with metals, so hydrogen seems to be common to all acids. Let us perform an Activity to investigate whether all compounds containing hydrogen are acidic.
+Activity 2.8 Activity 2.8 Activity 2.8 Activity 2.8 Activity 2.8 n Take solutions of glucose, alcohol, hydrochloric acid, sulphuric acid, etc.
+n Fix two nails on a cork, and place the cork in a 100 mL beaker.
+n Connect the nails to the two terminals of a
+6 volt battery through a bulb and a switch, as shown in Fig. 2.3.
+n Now pour some dilute HCl in the beaker and switch on the current.
+n Repeat with dilute sulphuric acid.
+n What do you observe?
+n Repeat the experiment separately with glucose and alcohol solutions. What do you observe now?
+n Does the bulb glow in all cases?
+Figure 2.3 Figure 2.3 Figure 2.3 Figure 2.3 Figure 2.3
+Acid solution in water conducts electricity
+Reprint 2026-27
+Acids, Bases and Salts 23
+The bulb will start glowing in the case of acids, as shown in Fig. 2.3.
+But you will observe that glucose and alcohol solutions do not conduct electricity. Glowing of the bulb indicates that there is a flow of electric current through the solution. The electric current is carried through the acidic solution by ions.
+Acids contain H+ ion as cation and anion such as Cl– in HCl, NO3
+HNO3, SO2–
+4 in H2SO4, CH3COO– in CH3COOH. Since the cation present in acids is H+, this suggests that acids produce hydrogen ions, H+(aq), in solution, which are responsible for their acidic properties.
+Repeat the same Activity using alkalis such as sodium hydroxide, calcium hydroxide, etc. What can you conclude from the results of this Activity?
+2.2.1 What Happens to an Acid or a Base in a Water Solution?
+Do acids produce ions only in aqueous solution? Let us test this.
+Activity 2.9 Activity 2.9 Activity 2.9 Activity 2.9 Activity 2.9 n Take about 1g solid NaCl in a clean and dry test tube and set up the apparatus as shown in Fig. 2.4.
+n Add some concentrated sulphuric acid to the test tube.
+n What do you observe? Is there a gas coming out of the delivery tube?
+n Test the gas evolved successively with dry and wet blue litmus paper.
+n In which case does the litmus paper change n On the basis of the above Activity, what do you infer about the acidic character of:
+(i) dry HCl gas (ii) HCl solution? Figure 2.4 Figure 2.4 Figure 2.4 Figure 2.4 Figure 2.4 Preparation of HCl gas
+This experiment suggests that hydrogen ions in HCl are produced in the presence of water. The separation of H+ ion from HCl molecules cannot occur in the absence of water.
+HCl + H2O → H3O+ + Cl–
+Hydrogen ions cannot exist alone, but they exist after combining with water molecules. Thus hydrogen ions must always be shown as
+H+(aq) or hydronium ion (H3O+).
+H+ + H2O → H3O+
+We have seen that acids give H3O+ or H+(aq) ion in water. Let us see what happens when a base is dissolved in water.
+NaOH(s) H O 2
+ →  Na+ (aq) + OH– (aq)
+Note to teachers: If the climate is very humid, you will have to pass the gas produced through a guard tube (drying tube) containing calcium chloride to dry the gas.
+Reprint 2026-27

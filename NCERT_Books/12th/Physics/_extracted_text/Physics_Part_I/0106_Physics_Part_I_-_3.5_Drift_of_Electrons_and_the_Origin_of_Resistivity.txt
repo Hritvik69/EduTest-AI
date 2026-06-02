@@ -1,0 +1,80 @@
+Metals have low resistivities in the range of 10–8 Wm to 10–6 Wm. At the other end are insulators like ceramic, rubber and plastics having resistivities 1018 times greater than metals or more. In between the two are the semiconductors. These, however, have resistivities characteristically decreasing with a rise in temperature. The resistivities of semiconductors can be decreased by adding small amount of suitable impurities. This last feature is exploited in use of semiconductors for electronic devices.
+3.8 TEMPERATURE DEPENDENCE OF RESISTIVITY
+The resistivity of a material is found to be dependent on the temperature.
+Different materials do not exhibit the same dependence on temperatures.
+Over a limited range of temperatures, that is not too large, the resistivity of a metallic conductor is approximately given by, a (T–T0)] (3.26)
+rT is the resistivity at a temperature T and r0 is the same at a reference temperature T0.
+a is called the temperature co-efficient of resistivity, and from Eq. (3.26), the dimension of a is (Temperature)–1.
+For metals, a is positive.
+The relation of Eq. (3.26) implies that a graph of rT plotted against T would be a straight line. At temperatures much lower than 0°C, the graph, however, deviates considerably from a straight line (Fig. 3.8).
+Equation (3.26) thus, can be used approximately over a limited range of T around any reference temperature T0, where the graph can be approximated as a straight line.
+FIGURE 3.8
+Resistivity copper as a function of temperature T.
+FIGURE 3.9 Resistivity rT of nichrome as a function of absolute temperature T.
+FIGURE 3.10
+Temperature dependence of resistivity for a typical semiconductor.
+Some materials like Nichrome (which is an alloy of nickel, iron and chromium) exhibit a very weak dependence of resistivity with temperature (Fig. 3.9). Manganin and constantan have similar properties. These materials are thus widely used in wire bound standard resistors since their resistance values would change very little with temperatures.
+Reprint 2026-27
+Electricity
+Unlike metals, the resistivities of semiconductors decrease with increasing temperatures. A typical dependence is shown in Fig. 3.10.
+We can qualitatively understand the temperature dependence of resistivity, in the light of our derivation of Eq. (3.23). From this equation, resistivity of a material is given by
+= = (3.27)
+r thus depends inversely both on the number n of free electrons per unit volume and on the average time t between collisions. As we increase temperature, average speed of the electrons, which act as the carriers of current, increases resulting in more frequent collisions. The average time of collisions t, thus decreases with temperature.
+In a metal, n is not dependent on temperature to any appreciable extent and thus the decrease in the value of t with rise in temperature r to increase as we have observed.
+For insulators and semiconductors, however, n increases with temperature. This increase more than compensates any decrease in
+Eq.(3.23) so that for such materials, r decreases with temperature.
+Example 3.3 An electric toaster uses nichrome for its heating element. When a negligibly small current passes through it, its resistance at room temperature (27.0 °C) is found to be 75.3 W. When the toaster is connected to a 230 V supply, the current settles, after a few seconds, to a steady value of 2.68 A. What is the steady temperature of the nichrome element? The temperature coefficient of resistance of nichrome averaged over the temperature range involved, is 1.70 × 10–4 °C–1.
+Solution When the current through the element is very small, heating effects can be ignored and the temperature T1 of the element is the same as room temperature. When the toaster is connected to the supply, its initial current will be slightly higher than its steady value of 2.68 A. But due to heating effect of the current, the temperature will rise. This will cause an increase in resistance and a slight decrease in current. In a few seconds, a steady state will be reached when temperature will rise no further, and both the resistance of the element and the current drawn will achieve steady values. The resistance R2 at the steady temperature T2 is
+2 3 0 V 8 5 .8
+2 .6 8 A
+Using the relation
+R2 = R1 [1 + a (T2 – T1)] a = 1.70 × 10–4 °C–1, we get
+T2 – T1 –4 (85.8 – 75.3)
+(75.3) 1.70 10
+= × × = 820 °C that is, T2 = (820 + 27.0) °C = 847 °C
+Thus, the steady temperature of the heating element (when heating effect due to the current equals heat loss to the surroundings) is
+Reprint 2026-27
+Example 3.4 The resistance of the platinum wire of a platinum resistance thermometer at the ice point is 5 W and at steam point is
+5.23 W. When the thermometer is inserted in a hot bath, the resistance of the platinum wire is 5.795 W. Calculate the temperature of the
+Solution R0 = 5 W, R100 = 5.23 W and Rt = 5.795 W
+100, (1 ) t
+5.795 5 100
+= 0.795 100
+0.23 × = 345.65 °C
+3.9 ELECTRICAL ENERGY, POWER
+Consider a conductor with end points A and B, in which a current I is flowing from A to B. The electric potential at A and B are denoted by V (A)
+and V (B) respectively. Since current is flowing from A to B, V (A) > V (B)
+and the potential difference across AB is V = V(A) – V(B) > 0.
+In a time interval Dt, an amount of charge DQ = I Dt travels from A to
+B. The potential energy of the charge at A, by definition, was Q V (A) and similarly at B, it is Q V(B). Thus, change in its potential energy DUpot is
+DUpot = Final potential energy – Initial potential energy
+= DQ[(V (B) – V (A)] = –DQ V
+= –I VDt < 0 (3.28)
+If charges moved without collisions through the conductor, their kinetic energy would also change so that the total energy is unchanged.
+Conservation of total energy would then imply that,
+DK = –DUpot (3.29)
+that is,
+DK = I VDt > 0 (3.30)
+Thus, in case charges were moving freely through the conductor under the action of electric field, their kinetic energy would increase as they move. We have, however, seen earlier that on the average, charge carriers do not move with acceleration but with a steady drift velocity. This is because of the collisions with ions and atoms during transit. During collisions, the energy gained by the charges thus is shared with the atoms.
+The atoms vibrate more vigorously, i.e., the conductor heats up. Thus, in an actual conductor, an amount of energy dissipated as heat in the conductor during the time interval Dt is,
+DW = I VDt (3.31)
+The energy dissipated per unit time is the power dissipated
+P = DW/Dt and we have,
+P = I V (3.32)
+Reprint 2026-27
+Electricity
+Using Ohm’s law V = IR, we get
+P = I 2 R = V 2/R (3.33)
+as the power loss (“ohmic loss”) in a conductor of resistance R carrying a current I. It is this power which heats up, for example, the coil of an electric bulb to incandescence, radiating out heat and light.
+Where does the power come from? As we have reasoned before, we need an external source to keep a steady current through the conductor. It is clearly this source which must supply this power. In the simple circuit shown with a cell (Fig.3.11), it is the chemical energy of the cell which supplies this power for as long as it can.
+The expressions for power, Eqs. (3.32) and (3.33), show the dependence of the power dissipated in a resistor R on the current through it and the voltage across it.
+Equation (3.33) has an important application to power transmission. Electrical power is transmitted from power stations to homes and factories, which may be hundreds of miles away, via transmission cables. One obviously wants to minimise the power loss in the transmission cables connecting the power stations to homes and factories. We shall see now how this can be achieved. Consider a device R, to which a power P is to be delivered via transmission cables having a resistance Rc to be dissipated by it finally. If V is the voltage across R and I the current through it, then
+P = V I (3.34)
+The connecting wires from the power station to the device has a finite resistance Rc. The power dissipated in the connecting wires, which is wasted is Pc with
+Pc = I 2 Rc
+= (3.35)
+from Eq. (3.32). Thus, to drive a device of power P, the power wasted in the connecting wires is inversely proportional to V 2. The transmission cables from power stations are hundreds of miles long and their resistance Rc is considerable. To reduce Pc, these wires carry current at enormous values of V and this is the reason for the high voltage danger signs on transmission lines — a common sight as we move away from populated areas. Using electricity at such voltages is not safe and hence at the other end, a device called a transformer lowers the voltage to a value suitable for use.
+3.10 CELLS, EMF, INTERNAL RESISTANCE
+We have already mentioned that a simple device to maintain a steady current in an electric circuit is the electrolytic cell. Basically a cell has two electrodes, called the positive (P) and the negative (N), as shown in
+FIGURE 3.11 Heat is produced in the resistor R which is connected across the terminals of a cell. The energy dissipated in the resistor R comes from the chemical energy of the electrolyte.
+Reprint 2026-27

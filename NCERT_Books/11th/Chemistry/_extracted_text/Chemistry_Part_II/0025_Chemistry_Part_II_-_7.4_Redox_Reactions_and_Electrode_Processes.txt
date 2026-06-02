@@ -1,0 +1,227 @@
+249 REDOX REACTIONS the resultant equation is:
+– (aq) + 2H2
+O (l) → MnO2 (s) + 4 OH– (aq)
+Step 5 : In this step we balance the charges of the two half-reactions in the manner depicted as:
+2I– (aq) → I2 (s) + 2e–
+–(aq) + 2H2
+O(l) + 3e– → MnO2 (s)
++ 4OH–(aq)
+Now to equalise the number of electrons, we multiply the oxidation half-reaction by
+3 and the reduction half-reaction by 2.
+6I–(aq) → 3I2 (s) + 6e–
+– (aq) + 4H2
+O (l) +6e– → 2MnO2 (s)
++ 8OH– (aq)
+Step 6: Add two half-reactions to obtain the net reactions after cancelling electrons on both sides.
+6I–(aq) + 2MnO4
+–(aq) + 4H2
+O(l) → 3I2 (s) +8 OH–(aq)
+Step 7: A final verification shows that the equation is balanced in respect of the number of atoms and charges on both sides.
+7.3.3 Redox Reactions as the Basis for
+Titrations
+In acid-base systems we come across with a titration method for finding out the strength of one solution against the other using a pH sensitive indicator. Similarly, in redox systems, the titration method can be adopted to determine the strength of a reductant/ oxidant using a redox sensitive indicator.
+The usage of indicators in redox titration is illustrated below:
+(i) In one situation, the reagent itself is intensely coloured, e.g., permanganate ion, MnO 4
+–. Here MnO 4
+– acts as the self indicator. The visible end point in this case is achieved after the last of the reductant (Fe 2+ or C 2 O 4
+2–) is oxidised and the first lasting tinge of pink colour appears at
+– concentration as low as 10– mol dm–3 (10– mol L–1). This ensures a minimal
+‘overshoot’ in colour beyond the equivalence point, the point where the reductant and the oxidant are equal in terms of their mole stoichiometry.
+(ii) If there is no dramatic auto-colour change (as with MnO4
+– titration), there are indicators which are oxidised immediately after the last bit of the reactant is consumed, producing a dramatic colour change. The best example is afforded by Cr2
+2–, which is not a self-indicator, but oxidises the indicator substance diphenylamine just after the equivalence point to produce an intense blue colour, thus signalling the end point.
+(iii) There is yet another method which is interesting and quite common. Its use is restricted to those reagents which are able to oxidise I– ions, say, for example, Cu(II):
+(aq) + 4I–(aq) → Cu2 (s) + I2 (aq) (7.59)
+This method relies on the facts that iodine itself gives an intense blue colour with starch and has a very specific reaction with thiosulphate ions (S2
+2–), which too is a redox reaction:
+(aq) + 2 S 2
+2–(aq)→2I–(aq) + S 4
+2–(aq) (7.60)
+, though insoluble in water, remains in solution containing KI as KI3
+On addition of starch after the liberation of iodine from the reaction of Cu2+ ions on iodide ions, an intense blue colour appears.
+This colour disappears as soon as the iodine is consumed by the thiosulphate ions. Thus, the end-point can easily be tracked and the rest is the stoichiometric calculation only.
+7.3.4 Limitations of Concept of Oxidation
+As you have observed in the above discussion, the concept of redox processes has been evolving with time. This process of evolution is continuing. In fact, in recent past the oxidation process is visualised as a decrease in electron density and reduction process as an increase in electron density around the atom(s) involved in the reaction.
+7.4 REDOX REACTIONS AND ELECTRODE
+PROCESSES
+The experiment corresponding to reaction (7.15), can also be observed if zinc rod is dipped in copper sulphate solution. The redox reaction takes place and during the
+Reprint 2026-27
+250 CHEMISTRY reaction, zinc is oxidised to zinc ions and copper ions are reduced to metallic copper due to direct transfer of electrons from zinc to copper ion. During this reaction heat is also evolved. Now we modify the experiment in such a manner that for the same redox reaction transfer of electrons takes place indirectly. This necessitates the separation of zinc metal from copper sulphate solution.
+We take copper sulphate solution in a beaker and put a copper strip or rod in it. We also take zinc sulphate solution in another beaker and put a zinc rod or strip in it. Now reaction takes place in either of the beakers and at the interface of the metal and its salt solution in each beaker both the reduced and oxidized forms of the same species are present. These represent the species in the reduction and oxidation half reactions. A redox couple is defined as having together the oxidised and reduced forms of a substance taking part in an oxidation or reduction half reaction.
+This is represented by separating the oxidised form from the reduced form by a vertical line or a slash representing an interface (e.g. solid/solution). For example in this experiment the two redox couples are represented as Zn 2+ /Zn and Cu 2+ /Cu.
+In both cases, oxidised form is put before the reduced form. Now we put the beaker containing copper sulphate solution and the beaker containing zinc sulphate solution side by side (Fig. 7.3). We connect solutions in two beakers by a salt bridge (a U-tube containing a solution of potassium chloride or ammonium nitrate usually solidified by boiling with agar agar and later cooling to a jelly like substance). This provides an electric contact between the two solutions without allowing them to mix with each other. The zinc and copper rods are connected by a metallic wire with a provision for an ammeter and a switch. The set-up as shown in Fig.7.3 is known as Daniell cell. When the switch is in the off position, no reaction takes place in either of the beakers and no current flows through the metallic wire. As soon as the switch is in the on position, we make the following observations:
+1. The transfer of electrons now does not take place directly from Zn to Cu 2+ but through the metallic wire connecting the two rods as is apparent from the arrow which indicates the flow of current.
+2. The electricity from solution in one beaker to solution in the other beaker flows by the migration of ions through the salt bridge. We know that the flow of current is possible only if there is a potential difference between the copper and zinc rods known as electrodes here.
+The potential associated with each electrode is known as electrode potential.
+If the concentration of each species taking part in the electrode reaction is unity (if any gas appears in the electrode reaction, it is confined to 1 atmospheric pressure) and further the reaction is carried out at 298K, then the potential of each electrode is said to be the Standard Electrode Potential. By convention, the standard electrode potential (E) of hydrogen electrode is 0.00 volts. The electrode potential value for each electrode process is a measure of the relative tendency of the active species in the process to remain in the oxidised/reduced form. A negative E means that the redox couple is a stronger
+Fig.7.3 The set-up for Daniell cell. Electrons produced at the anode due to oxidation of Zn travel through the external circuit to the cathode where these reduce the copper ions. The circuit is completed inside the cell by the migration of ions through the salt bridge. It may be noted that the direction of current is opposite to the direction of electron flow.
+Reprint 2026-27
+251 REDOX REACTIONS
+Reaction (Oxidised form + ne– → Reduced form) E / V (g) + 2e– → 2F– 2.87
+Co3+ + e– → Co2+ 1.81
+O2 + 2H+ + 2e– → 2H2
+– + 8H+ + 5e– → Mn2+ + 4H2
+Au3+ + 3e– → Au(s) 1.40
+Cl2 (g) + 2e– → 2Cl– 1.36
+2– + 14H+ + 6e– → 2Cr3+ + 7H2
+O2 (g) + 4H+ + 4e– → 2H2 (s) + 4H+ + 2e– → Mn2+ + 2H2 O 1.23
+Br2 + 2e– → 2Br– 1.09
+– + 4H+ + 3e– → NO(g) + 2H2
+2Hg2+ + 2e– → Hg2
+Ag+ + e– → Ag(s) 0.80
+Fe3+ + e– → Fe2+ 0.77 (g) + 2H+ + 2e– → H2 O2 0.68 (s) + 2e– → 2I– 0.54
+Cu+ + e– → Cu(s) 0.52
+Cu2+ + 2e– → Cu(s) 0.34
+AgCl(s) + e– → Ag(s) + Cl– 0.22
+AgBr(s) + e– → Ag(s) + Br– 0.10
+2H+ + 2e– → H2 (g) 0.00
+Pb 2+ + 2e– → 3E(s) –013
+Sn2+ + 2e– → 6n(s) –01
+Ni2+ + 2e– → 1i(s) –025
+Fe2+ + 2e– → )e(s) –0
+Cr3+ + 3e– → Cr(s) –07
+Zn2+ + 2e– → =n(s) –07
+O + 2e– → H 2 (g) + 2OH– –03
+Al3+ + 3e– → $l(s) –1
+Mg2+ + 2e– → 0g(s) –23
+Na+ + e– → 1a(s) –271
+Ca2+ + 2e– → Ca(s) –27
+K+ + e– → .(s) –23
+Li+ + e– → /i(s) –305
+Increasing strength of oxidising agent
+Increasing strength of reducing agent
+1. A negative E means that the redox couple is a stronger reducing agent than the H+
+/H2 couple.
+2. A positive E means that the redox couple is a weaker reducing agent than the H+
+/H2 couple.
+Table 7.1 The Standard Electrode Potentials at 298 K
+Ions are present as aqueous species and H2
+O as liquid; gases and solids are shown by g and s respectively.
+reducing agent than the H + /H 2 couple. A positive E means that the redox couple is a weaker reducing agent than the H+
+/H2 couple.
+The standard electrode potentials are very important and we can get a lot of other useful information from them. The values of standard electrode potentials for some selected electrode processes (reduction reactions) are given in
+Table 7.1. You will learn more about electrode reactions and cells in Class XII.
+Reprint 2026-27
+252 CHEMISTRY
+Redox reactions form an important class of reactions in which oxidation and reduction occur simultaneously. Three tier conceptualisation viz, classical, electronic and oxidation number, which is usually available in the texts, has been presented in detail. Oxidation, reduction, oxidising agent (oxidant) and reducing agent (reductant) have been viewed according to each conceptualisation. Oxidation numbers are assigned in accordance with a consistent set of rules. Oxidation number and ion-electron method both are useful means in writing equations for the redox reactions. Redox reactions are classified into four categories:
+combination, decomposition displacement and disproportionation reactions. The concept of redox couple and electrode processes is introduced here. The redox reactions find wide applications in the study of electrode processes and cells.
+EXERCISES
+7.1 Assign oxidation number to the underlined elements in each of the following species:
+(a) NaH 2
+PO4 (b) NaHSO 4 (c) H4 P2 O7 (d) K2 MnO4 (e) CaO 2 (f) NaBH4 (g) H2 S2
+O7 (h) KAl(SO4
+.12 H2 O
+7.2 What are the oxidation number of the underlined elements in each of the following and how do you rationalise your results ?
+(a) KI 3 (b) H2
+S4 O6 (c) Fe3 O4 (d) CH3 CH2
+OH (e) CH3
+7.3 Justify that the following reactions are redox reactions:
+(a) CuO(s) + H2 (g) → Cu(s) + H2
+O3 (s) + 3CO(g) → 2Fe(s) + 3CO2 (g)
+(c) 4BCl3 (g) + 3LiAlH4 (s) → 2B2
+H6 (g) + 3LiCl(s) + 3 AlCl3 (s)
+(d) 2K(s) + F2 (g) → 2K+F– (s)
+(e) 4 NH 3 (g) + 5 O2 (g) → 4NO(g) + 6H2
+7.4 Fluorine reacts with ice and results in the change:
+H 2 O(s) + F2 (g) → HF(g) + HOF(g)
+Justify that this reaction is a redox reaction.
+7.5 Calculate the oxidation number of sulphur, chromium and nitrogen in H2
+–. Suggest structure of these compounds. Count for the fallacy.
+7.6 Write formulas for the following compounds:
+(a) Mercury(II) chloride (b) Nickel(II) sulphate (c) Tin(IV) oxide (d) Thallium(I) sulphate (e) Iron(III) sulphate ( f ) Chromium(III) oxide
+77 6Xggest a list oI tKe sXEstances ZKere carEon can exKiEit oxidation states IroP – to + and nitrogen IroP –3 to +5
+7.8 While sulphur dioxide and hydrogen peroxide can act as oxidising as well as reducing agents in their reactions, ozone and nitric acid act only as oxidants. Why ?
+7.9 Consider the reactions:
+(a) 6 CO 2 (g) + 6H2
+O(l) → C6 H12 O6 (aq) + 6O2
+Reprint 2026-27
+253 REDOX REACTIONS (b) O 3 (g) + H2 O2 (l) → H2 O(l) + 2O2
+Why it is more appropriate to write these reactions as :
+(a) 6CO2 (g) + 12H2
+O(l) → C6 H12 O6 (aq) + 6H2 O(l) + 6O2 (g) + H2
+O2 (l) → H2 O(l) + O2 (g) + O2 (g)
+Also suggest a technique to investigate the path of the above (a) and (b) redox reactions.
+7.10 The compound AgF 2 is unstable compound. However, if formed, the compound acts as a very strong oxidising agent. Why ?
+7.11 Whenever a reaction between an oxidising agent and a reducing agent is carried out, a compound of lower oxidation state is formed if the reducing agent is in excess and a compound of higher oxidation state is formed if the oxidising agent is in excess.
+Justify this statement giving three illustrations.
+7.12 How do you count for the following observations ?
+(a) Though alkaline potassium permanganate and acidic potassium permanganate both are used as oxidants, yet in the manufacture of benzoic acid from toluene we use alcoholic potassium permanganate as an oxidant. Why ? Write a balanced redox equation for the reaction.
+(b) When concentrated sulphuric acid is added to an inorganic mixture containing chloride, we get colourless pungent smelling gas HCl, but if the mixture contains bromide then we get red vapour of bromine. Why ?
+7.13 Identify the substance oxidised reduced, oxidising agent and reducing agent for each of the following reactions:
+(a) 2AgBr (s) + C6 H6 O2 (aq) → 2Ag(s) + 2HBr (aq) + C6 (b) HCHO(l) + 2[Ag (NH3 )2 (aq) + 3OH–(aq) → 2Ag(s) + HCOO–(aq) + 4NH3 (aq)
+(c) HCHO (l) + 2 Cu 2+ (aq) + 5 OH–(aq) → Cu2O(s) + HCOO–(aq) + 3H2 O(l)
+(d) N 2 H4 (l) + 2H2 O2 (l) → N2 (g) + 4H2 O(l)
+(e) Pb(s) + PbO2 (s) + 2H2 (aq) → 2PbSO4 (s) + 2H2 O(l)
+7.14 Consider the reactions :
+2– (aq) + I2 (s) → S4 O6
+2–(aq) + 2I–(aq)
+2–(aq) + 2Br2 (l) + 5 H2 O(l) → 2SO4
+2–(aq) + 4Br–(aq) + 10H+
+Why does the same reductant, thiosulphate react differently with iodine and bromine ?
+7.15 Justify giving reactions that among halogens, fluorine is the best oxidant and among hydrohalic compounds, hydroiodic acid is the best reductant.
+7.16 Why does the following reaction occur ?
+– (aq) + 2F– (aq) + 6H+(aq) → XeO3 (g)+ F2 (g) + 3H2
+What conclusion about the compound Na 4
+XeO6 (of which XeO6
+– is a part) can be drawn from the reaction.
+7.17 Consider the reactions:
+(aq) + 4 AgNO3 (aq) + 2 H2 O(l) → H3 (aq) + 4Ag(s) + 4HNO3 (aq) + 2CuSO4 (aq) + 2 H2
+O(l) → H3 PO4 (aq) + 2Cu(s) + H2
+H5 CHO(l) + 2[Ag (NH3 )2 ]+ (aq) + 3OH–(aq) → C6 H5
+COO–(aq) + 2Ag(s) +
+4NH 3 (aq) + 2 H2 O(l)
+H5 CHO(l) + 2Cu2+ (aq) + 5OH–(aq) → No change observed.
+Reprint 2026-27
+254 CHEMISTRY
+What inference do you draw about the behaviour of Ag + and Cu 2+ from these reactions ?
+71 %alance tKe IolloZing redox reactions E\ ion – electron PetKod  (a) MnO4
+– (aq) + I– (aq) → MnO2 (s) + I2 (s) (in basic medium)
+(b) MnO 4
+– (aq) + SO2 (g) → Mn2+ (aq) + HSO4
+– (aq) (in acidic solution)
+(c) H2 O2 (aq) + Fe2+ (aq) → Fe3+ (aq) + H2
+O (l) (in acidic solution)
+(d) Cr2 O7
+2– + SO2 (g) → Cr3+ (aq) + SO4
+2– (aq) (in acidic solution)
+7.19 Balance the following equations in basic medium by ion-electron method and oxidation number methods and identify the oxidising agent and the reducing agent.
+(s) + OH–(aq) → PH3 (g) + HPO2 (b) N2 H4 (l) + ClO3
+–(aq) → NO(g) + Cl–(g)
+(c) Cl 2
+O7 (g) + H2 O2 (aq) → ClO2
+–(aq) + O2 (g) + H+
+7.20 What sorts of informations can you draw from the following reaction ?
+(CN) 2 (g) + 2OH–(aq) → CN–(aq) + CNO–(aq) + H2 O(l)
+7.21 The Mn3+ ion is unstable in solution and undergoes disproportionation to give Mn2+
+, and H+ ion. Write a balanced ionic equation for the reaction.
+7.22 Consider the elements :
+Cs, Ne, I and F (a) Identify the element that exhibits only negative oxidation state.
+(b) Identify the element that exhibits only postive oxidation state.
+(c) Identify the element that exhibits both positive and negative oxidation states.
+(d) Identify the element which exhibits neither the negative nor does the positive oxidation state.
+7.23 Chlorine is used to purify drinking water. Excess of chlorine is harmful. The excess of chlorine is removed by treating with sulphur dioxide. Present a balanced equation for this redox change taking place in water.
+7.24 Refer to the periodic table given in your book and now answer the following questions:
+(a) Select the possible non metals that can show disproportionation reaction.
+(b) Select three metals that can show disproportionation reaction.
+7.25 In Ostwald’s process for the manufacture of nitric acid, the first step involves the oxidation of ammonia gas by oxygen gas to give nitric oxide gas and steam. What is the maximum weight of nitric oxide that can be obtained starting only with 10.00 g. of ammonia and 20.00 g of oxygen ?
+7.26 Using the standard electrode potentials given in the Table 8.1, predict if the reaction between the following is feasible:
+(a) Fe3+ (aq) and I–(aq)
+(b) Ag +(aq) and Cu(s)
+(c) Fe 3+ (aq) and Cu(s)
+(d) Ag(s) and Fe3+ (e) Br2 (aq) and Fe2+
+Reprint 2026-27
+255 REDOX REACTIONS
+7.27 Predict the products of electrolysis in each of the following:
+(i) An aqueous solution of AgNO3 with silver electrodes (ii) An aqueous solution AgNO3 with platinum electrodes (iii) A dilute solution of H2
+SO4 with platinum electrodes (iv) An aqueous solution of CuCl 2 with platinum electrodes.
+7.28 Arrange the following metals in the order in which they displace each other from the solution of their salts.
+Al, Cu, Fe, Mg and Zn.
+7.29 Given the standard electrode potentials,
+K +. –239, $g+
+/Ag = 0.80V,
+/Hg = 0.79V
+Mg2+0g –2379 Cr3+Cr –079 arrange these metals in their increasing order of reducing power.
+7.30 Depict the galvanic cell in which the reaction Zn(s) + 2Ag + (aq) → Zn2+ (aq) +2Ag(s)
+takes place, Further show:
+(i) which of the electrode is negatively charged, (ii) the carriers of the current in the cell, and (iii) individual reaction at each electrode.
+Reprint 2026-27

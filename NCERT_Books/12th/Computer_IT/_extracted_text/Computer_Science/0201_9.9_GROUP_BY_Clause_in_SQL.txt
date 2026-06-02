@@ -1,0 +1,27 @@
+Computer networkS 189
+An Internet service provider (ISP) is any organisation that provides services for accessing the
+Internet.
+Activity 10.3
+Find and list a few ISPs in your
+10.4.4 Repeater
+Data are carried in the form of signals over the cable.
+These signals can travel a specified distance (usually about 100 m). Signals lose their strength beyond this limit and become weak. In such conditions, original signals need to be regenerated.
+A repeater is an analog device that works with signals on the cables to which it is connected. The weakened signal appearing on the cable is regenerated and put back on the cable by a repeater.
+10.4.5 Hub
+An Ethernet hub (Figure 10.11) is a network device used to connect different devices through wires. Data arriving on any of the lines are sent out on all the others. The limitation of Hub is that if data from two devices come at the same time, they will collide.
+1 2 3 4 5 6 7 8
+Figure 10.11: A network hub with 8 ports
+10.4.6 Switch
+A switch is a networking device (Figure 10.12) that plays a central role in a Local Area Network (LAN). Like a hub, a network switch is used to connect multiple computers or communicating devices. When data arrives, the switch extracts the destination address from the data packet and looks it up in a table to see where to send the packet. Thus, it sends signals to only selected devices instead of sending to all.
+It can forward multiple packets at the same time. A switch does not forward the signals which are noisy or corrupted. It drops such signals and asks the sender to resend it. Figure 10.12: Cables connected to a network switch
+Ethernet switches are common in homes/offices to connect multiple devices thus creating LANs or to access the Internet.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 190
+10.4.7 Router
+A router (Figure 10.13) is a network device that can receive the data, analyse it and transmit it to other networks. A router connects a local area network to the internet. Compared to a hub or a switch, a router has advanced capabilities as it can analyse the data being carried over a network, decide/alter how it is packaged, and send it to another network of a different type. For example, data has been divided into packets of a certain size. Suppose these packets are to be carried over a different type of network which cannot handle bigger packets. In such a case, the data is to be repackaged as smaller packets and then sent over the network by a router.
+Figure 10.13: A router
+A router can be wired or wireless. A wireless router can provide Wi-Fi access to smartphones and other devices. Usually, such routers also contain some ports to provide wired Internet access. These days, home Wi-Fi routers perform the dual task of a router and a modem/ switch. These routers connect to incoming broadband lines, from ISP (Internet Service Provider), and convert them to digital data for computing devices to process.
+10.4.8 Gateway
+As the term “Gateway” suggests, it is a key access point that acts as a “gate” between an organisation's network and the outside world of the Internet (Figure 10.14).
+Gateway serves as the entry and exit point of a network, as all data coming in or going out of a network must first pass through the gateway in order to use routing paths. Besides routing data packets, gateways also maintain information about the host network's internal connection paths and the identified paths of other remote networks. If a node from one network wants to communicate with a node of a foreign network, it will
+Reprint 2026-27

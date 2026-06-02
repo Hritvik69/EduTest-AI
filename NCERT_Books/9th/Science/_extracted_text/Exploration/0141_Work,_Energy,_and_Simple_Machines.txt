@@ -1,0 +1,171 @@
+Work, Energy, and Simple Machines 121
+3. When you pedal a bicycle on a flat road, your muscles supply energy. In what forms does this muscular energy appear as you ride?
+Pause and Ponder
+7.3 Forms of Energy
+As we have seen, energy is the capacity to do work. The examples that we have discussed till now correspond to the mechanical energy. But energy can exist in many other forms as shown in Fig. 7.10. It is possible to change energy from one form to another. For example, electrical energy is converted into light energy in a bulb, and into thermal energy of the water in an electric water heater. The chemical energy in the food we eat powers our muscles and gets converted into mechanical energy. Similarly, a ringing bell converts mechanical energy into sound energy.
+Among these, we will now look more closely at mechanical energy, since it is directly connected to the forces and motions you studied earlier.
+7.4 Mechanical Energy
+Mechanical energy is the energy that an object possesses due to its motion or position. Let us try to quantify mechanical energy by using the concept of work.
+7.4.1 Kinetic energy
+The energy possessed by an object due to its motion is called kinetic energy. All moving objects possess kinetic energy, such as a moving bicycle or a rolling ball.
+How much is the energy possessed by an object by virtue of its motion? It is common to define an object that does not move to have zero kinetic energy. Consider an object that starts from rest and acquires a certain velocity under the influence of a force F (Fig. 7.11). Then by the work-energy theorem, the work done by the force will equal to the energy gained by the object, which is the kinetic energy of the object in this case.
+Initial velocity = 0
+Initial Kinetic energy = 0
+Work done by force
+W = F × s
+Final velocity = v
+Final Kinetic energy = K
+Displacement along the force = s
+Fig. 7.11: Calculating change in kinetic energy using the work-energy theorem
+Let us find a mathematical expression for the kinetic energy. For that, we will first find a general expression for work done by a force on an object of mass m , starting not from rest but from an initial velocity u . Let v be its
+Curiosity
+Chapter 3
+Curiosity
+Chapter 3
+Mechanical energy
+Energy due to motion or position of objects
+Energy related to position or motion of charges
+Thermal energy
+Energy that makes things warm or hot
+Light energy
+Energy that allows us to
+Sound energy
+Energy of vibrations of air or other molecules
+Energy stored in the nuclei of atoms
+Energy stored in fuels and food in the form of chemical bonds between atoms
+Nuclear energy
+Chemical energy
+Electrical energy
+Fig. 7.10: Different forms of energy
+Exploration|Grade 9 122 final velocity and it undergoes a displacement s. To simplify the situation, let us assume that the force F acting on the object is constant. In that case, the acceleration a is also constant, and the kinematic equations can be used. We can then write v 2 = u 2 + 2as
+From the definition of work (Eq. 7.2), the work done W by the force is
+W = F × s
+Using Newton’s second law, F = ma, we get
+W = ma × s
+Substituting the value of s from Eq. (7.4), we obtain, ( )2 2 1
+W m v u = − (7.5)
+From the work-energy theorem (Eq. 7.3), the work done by the force acting on the object translates into the change in the energy of the object.
+Thus, Eq. (7.5) represents the change in the energy of the object.
+If the initial velocity of the object is u = 0, the change in the energy of the object is equal to its final kinetic energy. Thus, using Eq. (7.5), the kinetic energy of an object of mass m moving with a velocity v is
+K mv = (7.6)
+The SI unit of kinetic energy is the joule (J). The kinetic energy has no direction. When positive work is done on the object and its velocity increases, its kinetic energy also increases. If negative work is done on the object and its velocity decreases, its kinetic energy will also decrease. If no work is done by the force on the object (W = 0) and its velocity does not change, then its kinetic energy remains constant.
+Example 7.4: If the velocity of a vehicle doubles in magnitude, what will its kinetic energy be compared to its original value?
+Answer: Let the mass of the vehicle be m and its initial velocity be v. Its initial kinetic energy will be 2 1
+2 mv . If the vehicle travels with a velocity of 2v, its kinetic energy will be ( ) = × m v mv . The new value of the kinetic energy will be 4 times the previous value.
+Example 7.5: In one of their fastest deliveries, an Indian cricketer bowled a cricket ball with an approximate mass of 0.2 kg at a velocity of about
+154.8 km h–1. Calculate the kinetic energy of the ball at the time of its delivery.
+Answer: Mass of the cricket ball = 0.2 kg
+Velocity of the ball = 154.8 km h–1 = 43 m s–1
+= = × × = 2 2 1 1 1 0 2 kg 43 m s 184 9 J
+2 2 . . K mv
+Work, Energy, and Simple Machines 123
+Example 7.6: A jet aircraft of mass 15000 kg lands on the deck of an aircraft carrier (Fig. 7.12). To stop the aircraft within the short length of the deck a hook on the aircraft’s tail is caught in a wire stretched across the deck. The wire exerts an approximately constant backward force of 367500 N and stops the jet within 100 m. What was the velocity of the aircraft just before the wire caught the hook?
+Answer: Let the aircraft approach with a velocity v
+Initial kinetic energy of the aircraft 2 1 15000 kg
+K v = × ×
+Final kinetic energy of the aircraft K = 0 J
+Change in the kinetic energy = 2 1
+0 J 15000 kg
+2 v − × ×
+From Eq. (7.3),
+Change in the kinetic energy = the work done by the wire.
+The displacement of the aircraft and the force that the wire applies are in opposite directions. Therefore, the work done by the force applied by the wire will be negative.
+Using Eq. (7.2), the work done by the wire = F × s = 367500 N × (– 100 m)
+Substituting the values in Eq. (7.3), we obtain ( )2 1 15000 kg 367500 N 100 m
+2 v − × × =− ×
+2 1 2 1 2 2 36750 2 N m kg 4900 kg m s m kg 4900 m s v − − − − × v = 70 m s–1 = 252 km h–1 towards the aircraft carrier.
+4. Two objects A and B of mass m and 4 m have the same kinetic energy. What is the ratio of the magnitude of velocities of A and B?
+5. Does the kinetic energy of an object which moves with constant velocity change with its position?
+Pause and Ponder
+7.4.2 Potential energy
+In Chapter 6, How Forces Affect Motion, you performed an activity (6.1)
+where you could move a stack of coins by releasing the stretched rubber band with which it was in contact. Have you ever played with a slingshot (gulel)? In this case, when you release the stretched elastic band, the object in contact with it shoots in the forward direction (Fig. 7.13a). You might have also watched an archery competition. The archer pulls on the string of the bow bending its arms in the process. When released, the bow comes back along with the string to its original position, and the arrow flies off the bow (Fig. 7.13b).
+In these examples, you notice that when the stretched band or the bent bow is released, it applies a force on the object in contact with it. This sets the object in motion giving it kinetic energy. At the same time, the stretched band or bent bow comes back to its original shape. The stack of coins, ball and the arrow thus gain the kinetic energy they did not originally possess. This energy must have come from the stretched band and the bent bow, which have the capacity to do work due to their shape. The work done by the force which was applied to cause these deformations was stored in the band or the bow.
+Fig. 7.12: A jet aircraft landing on an aircraft carrier
+Fig. 7.13: (b) Shooting an arrow using a bow
+Fig. 7.13: (a) A slingshot
+Exploration|Grade 9 124
+Similarly, when you apply a force and stretch or compress a spring (Fig. 7.14a), you do work on the spring to change or deform its shape. In turn, the spring stores energy or gains a capacity to do work while it is in a deformed state (Fig. 7.14b). While held in this state, the energy of the spring is due to its configuration or shape. When the spring is released, it comes back to its original shape. In the process, the spring transfers its stored energy to the kinetic energy of the object in contact (Fig. 7.14c).
+You need to apply an external force to overcome the internal forces in the spring to deform it. Once you remove this external force, the internal forces undo the deformation, and in the process, it can carry out work.
+Thus, internal forces allow energy to be stored in a deformed object.
+Ready to Go Beyond
+Energy can be stored not only by deforming an object, but also by changing the arrangement of objects in a system. You have learnt that like poles of the magnets repel each other, while unlike poles attract each other.
+You must have experienced that separating unlike poles of two magnets from each other requires applying a force. When unlike poles are separated from each other and released (Fig. 7.15a), they move towards each other and gain kinetic energy. In fact, a small pea kept in between the two strong magnets, could even be crushed by their kinetic energy. This shows that the system of two magnets when separated from each other, can store energy due to their relative positions.
+Fig. 7.15: A system of two (a) magnets, and (b) electric charges
+Magnetic Force Electrostatic Force
+++ -- ++ --
+In the same way, a system of electric charges separated by a distance (Fig. 7.15b) also possesses the stored energy which can do work when released.
+Now, consider a ball lying on the surface of the Earth. The ball and the Earth together form a system. You have learnt earlier that the Earth and ball attract each other. A force is required to do work against the gravitational force to lift the ball to some height. But once the ball is lifted to a height and the force is removed, the ball and the
+Earth rush towards each other, and attain kinetic energy in the process (Fig. 7.16). So, the system of ball and the Earth when separated from each other, store energy due to their relative positions.
+More generally, whenever a system of objects interacts through forces, such as gravitational, electric or magnetic forces, the system can store energy due to the relative positions of the objects.
+The energy stored by an object as a result of its deformation or in a system of objects due to their relative positions is called the potential energy.
+Curiosity
+Chapter 5
+Fig. 7.14: Spring (a) in its original shape, (b) in compressed shape, and (c) moving back to its original shape
+Fig. 7.16: Earth ball
+Gravitational
+Work, Energy, and Simple Machines 125
+Gravitational Potential Energy
+Among the various types of possible ways in which objects can have potential energy, we will look at the simplest case of the gravitational potential energy of Earth-ball system. The Earth is much more massive than the ball, and thus, it hardly moves towards the ball, as discussed in Example 6.8 of
+Chapter 6, How Forces Affect Motion. Therefore, the stored energy of the
+Earth-ball system is often, simply referred to as the gravitational potential energy of the ball. Let us carry out an activity to learn more about the potential energy of the ball due to the gravitational force between the ball and the Earth. Henceforth, in this chapter, potential energy usually refers to the gravitational potential energy.
+Activity 7.1: Let us investigate
+1. Take a heavy ball and a large container filled with loose
+2. Raise the ball over the sand bed to a height of about 1 m and drop it (Fig. 7.17). Is a depression created in the sand?
+Why does the ball create a depression?
+3. Now, raise the ball to the height of 2 m and release it at a slightly different position over the sand bed such that the depressions do not overlap. Repeat this step one more time. Compare the depths of the depressions. Is there any difference? In which case is the depression deepest and in which case the shallowest?
+You find that the depression is deepest when the ball is dropped from the greatest height. Raising a ball to a greater height from the surface of the Earth requires more work. Thus, the ball possesses more energy at greater height. When the ball is released from a greater height, this energy creates a deeper depression. Thus, the greater the height of the ball above the Earth’s surface, the greater is its potential energy.
+We can arrive at an expression for the potential energy of an object by using the work-energy theorem. Consider an object of mass m lying on the ground (Fig. 7.18). We can define the potential energy to be zero in this configuration. To raise the object gradually from the surface of the Earth to a height h , we need to apply a force equal to the force mg between the Earth and the object. The work done W by this applied force on the object is
+W = force × displacement
+W = mg × h = mgh (7.7)
+According to the work-energy theorem (Eq. 7.3), the work done on the object appears as a change in its potential energy. Thus, the potential energy
+U of the object at a height h is given by
+U = mgh (7.8)
+The unit of potential energy is the joule (J), which is the same as the unit of work done or that of kinetic energy.
+Fig. 7.17: Depressions created by a ball in sand dropped from different heights
+Fig. 7.18: Raising an object to a height
+Exploration|Grade 9 126
+Example 7.7: After taking a catch, a fielder threw the cricket ball of mass
+200 g high up in the air about 10 m above the ground in celebration.
+How much potential energy does the ball have when the ball reaches its maximum height? Assume g = 10 m s–2.
+Answer: Using Eq. (7.8), the potential energy of the ball will be equal to mgh = 0.2 kg × 10 m s–2 × 10 m = 20 J
+6. Does the potential energy of an object near the surface of the Earth change if it moves with constant velocity in the horizontal direction?
+What if the object is gradually raised in the vertical direction?
+Pause and Ponder
+Work done on a system against its internal forces, such as gravitational, electric or magnetic forces, can result in a gain of the potential energy of the system. But this is not true for all internal forces. For example, work done against friction does not lead to a storage of energy.
+You will learn how to identify such forces in higher grades.
+Ready to Go Beyond
+7.4.3 Conservation of mechanical energy
+The sum of the kinetic energy and the potential energy of the object is called its mechanical energy. Let us find the mechanical energy of an object at different points as it falls freely due to the gravitational force.
+Once again, consider an object with mass m which has been lifted to a Point A at height h and dropped (Fig. 7.19). Its initial velocity u is equal to zero.
+Thus, at point A (using Eqs. 7.6 and 7.8):
+potential energy of the object = mgh (7.9a)
+kinetic energy of the object = 0 (7.9b)
+mechanical energy = 0 + mgh = mgh (7.9c)
+As the object falls due to the gravitational force (mg) for a time t till point
+B, its velocity increases to a value v. You can find the velocity v of the object and the height h ′ of point B from ground by using the kinematic equations (Use acceleration a to be equal to the acceleration due to gravity g).
+v = u + gt = 0 + gt = gt
+2 2 2 1 1 1 s ut gt h h' gt h' h gt = + → − = + → = −
+Thus, at point B:
+potential energy of the object 2 mgh' mgh mg t = = − (7.10a)
+2 2 2 1 1 kinetic energy of the object 2 2 mv mg t = = (7.10b)
+2 2 2 2 1 1 mechanical energy 2 2 mgh mg t mg t mgh = − + = (7.10c)
+Fig. 7.19 An object falling freely due to (h – h ′)
+Expression (Eq. 7.8) for the potential energy of an object at height h is valid only near the
+Earth’s surface.
+Further away from the Earth’s surface, the gravitational acceleration g decreases. You will learn about the gravitational potential energy of objects far from the Earth in higher
+Ready to Go
+Work, Energy, and Simple Machines 127
+As the object falls down with time t , its potential energy decreases while its kinetic energy increases. Comparing Eq. (7.9) and Eq. (7.10), you find that at time t , the increase in the kinetic energy is equal to 2 2 1
+2 mg t , which is also equal to the decrease in the potential energy, 2 2 1
+2 mg t . This shows that the lost potential energy of the object is converted into kinetic energy during motion, while its mechanical energy remains constant and equal to mgh .
+As an object moves due to the gravitational force, its mechanical energy remains the same, i.e., the mechanical energy of the object is conserved if no other external forces act on it. This is called the conservation of mechanical energy.
+Let us conduct an activity to understand this. Do you remember experimenting with a simple pendulum earlier? Let us use that simple pendulum again to experiment further.
+Activity 7.2: Let us experiment
+1. Set up a simple pendulum as you have learnt in Grade 7.
+2. Paste a white sheet of paper on a wall behind the pendulum. Draw a horizontal line above the position of the bob when it is not oscillating (Fig. 7.20).
+3. Take the bob to one side to a point P, which is at the level of the horizontal line and let it go. Observe it at the extreme points of the first couple of oscillations. Does the bob almost reach the level of the horizontal line?
+At point P, the pendulum bob has the potential energy equal to mgh, where h is the height from the bottom-most point. At point Q, the potential energy is zero, but the pendulum has kinetic energy. Finally at point R, on the other side of the pendulum where it stops, the kinetic energy is zero but the pendulum bob regains its potential energy. The pendulum bob reaches almost the same height it started with. This demonstrates that the mechanical energy of the bob remains constant. However, in real life, the pendulum slows down and eventually stops because of energy loss due to friction at the support and air resistance.
+The conservation of mechanical energy can often be useful in solving several real-life problems.
+Ready to Go Beyond
+Mechanical energy is just one part of a bigger picture. In nature, e

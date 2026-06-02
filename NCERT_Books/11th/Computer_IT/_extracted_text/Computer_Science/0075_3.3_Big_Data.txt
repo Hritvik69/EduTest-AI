@@ -1,0 +1,42 @@
+IntroductIon to Problem SolvIng 63 a dish, with clearly defined steps that, if followed, one will end up preparing the dish.
+We start with a tentative solution plan and keep on refining the algorithm until the algorithm is able to capture all the aspects of the desired solution. For a given problem, more than one algorithm is possible and we have to select the most suitable solution. The algorithm is discussed in section 4.3.
+4.2.3 Coding
+After finalising the algorithm, we need to convert the algorithm into the format which can be understood by the computer to generate the desired solution. Different high level programming languages can be used for writing a program.
+It is equally important to record the details of the coding procedures followed and document the solution.
+This is helpful when revisiting the programs at a later stage. Coding is explained in detail in section 4.8.
+4.2.4 Testing and Debugging
+The program created should be tested on various parameters. The program should meet the requirements of the user. It must respond within the expected time. It should generate correct output for all possible inputs.
+In the presence of syntactical errors, no output will be obtained. In case the output generated is incorrect, then the program should be checked for logical errors, if any.
+Software industry follows standardised testing methods like unit or component testing, integration testing, system testing, and acceptance testing while developing complex applications. This is to ensure that the software meets all the business and technical requirements and works as expected. The errors or defects found in the testing phases are debugged or rectified and the program is again tested. This continues till all the errors are removed from the program.
+Once the software application has been developed, tested and delivered to the user, still problems in terms of functioning can come up and need to be resolved from time to time. The maintenance of the solution, thus, involves fixing the problems faced by the user,
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 64 answering the queries of the user and even serving the request for addition or modification of features.
+4.3 A lgorithm
+In our day-to-day life we perform activities by following certain sequence of steps. Examples of activities include getting ready for school, making breakfast, riding a bicycle, wearing a tie, solving a puzzle and so on. To complete each activity, we follow a sequence of steps.
+Suppose following are the steps required for an activity
+‘riding a bicycle’:
+1) remove the bicycle from the stand,
+2) sit on the seat of the bicycle,
+3) start peddling,
+4) use breaks whenever needed and
+5) stop on reaching the destination.
+Let us now find Greatest Common Divisor (GCD) of two numbers 45 and 54.
+Note: GCD is the largest number that divides both the given numbers.
+Step 1: Find the numbers (divisors) which can divide the given numbers
+Divisors of 45 are: 1, 3, 5, 9, 15, and 45
+Divisors of 54 are: 1, 2, 3, 6, 9, 18, 27,
+Step 2: Then find the largest common number from these two lists.
+Therefore, GCD of 45 and 54 is 9
+Hence, it is clear that we need to follow a sequence of steps to accomplish the task. Such a finite sequence of steps required to get the desired output is called an algorithm. It will lead to the desired result in a finite amount of time, if followed correctly. Algorithm has a definite beginning and a definite end, and consists of a finite number of steps.
+4.3.1 Why do we need an Algorithm?
+A programmer writes a program to instruct the computer to do certain tasks as desired. The computer then follows the steps written in the program code. Therefore, the programmer first prepares a roadmap of the program to be written, before actually writing the code. Without
+The origin of the term
+Algorithm is traced to
+Persian astronomer and mathematician, Abu
+Abdullah Muhammad ibn Musa Al-Khwarizmi (c. 850 AD) as the
+Latin translation of Al-
+Khwarizmi was called
+‘Algorithmi’.
+Activity 4.1
+What sequence of steps will you follow to compute the LCM of two numbers?
+Reprint 2026-27

@@ -1,0 +1,61 @@
+195 Alcohols, Phenols and Ethers
+Allylic and benzylic alcohols may be primary, secondary or tertiary.
+(ii) Compounds containing 2 C OH  sp bond: These alcohols contain
+—OH group bonded to a carbon-carbon double bond, i.e., to a vinylic carbon or to an aryl carbon. These alcohols are also known as vinylic alcohols.
+Vinylic alcohol: CH2 = CH – OH
+7.1.3 Ethers
+CH3 C CH OH 2 (i) H C 2 CH CH OH 2 (ii)
+CH3 CH2 CH OH 2 (iii)
+CH OH CH C
+7.1 Classify the following as primary, secondary and tertiary alcohols:
+7.2 Identify allylic alcohols in the above examples.
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+7.2 Nomenclature 7.2 Nomenclature 7.2 Nomenclature 7.2 Nomenclature 7.2 Nomenclature (a) Alcohols: The common name of an alcohol is derived from the common name of the alkyl group and adding the word alcohol to it.
+For example, CH3OH is methyl alcohol.
+7.1.2 Phenols—
+Mono, Di trihydric
+Ethers are classified as simple or symmetrical, if the alkyl or aryl groups attached to the oxygen atom are the same, and mixed or unsymmetrical, if the two groups are different. Diethyl ether,
+C2H5OC2H5, is a symmetrical ether whereas C2H5OCH3 and C2H5OC6H5 are unsymmetrical ethers.
+Monohydric
+Reprint 2026-27
+196 Chemistry
+According to IUPAC system, the name of an alcohol is derived from the name of the alkane from which the alcohol is derived, by substituting ‘e’ of alkane with the suffix ‘ol’. The position of substituents are indicated by numerals. For this, the longest carbon chain (parent chain) is numbered starting at the end nearest to the hydroxyl group. The positions of the –OH group and other substituents are indicated by using the numbers of carbon atoms to which these are attached. For naming polyhydric alcohols, the ‘e’ of alkane is retained and the ending ‘ol’ is added. The number of –OH groups is indicated by adding the multiplicative prefix, di, tri, etc., before ‘ol’. The positions of –OH groups are indicated by appropriate locants, e.g., HO–CH2–CH2–OH is named as ethane–1, 2-diol. Table 7.1 gives common and IUPAC names of a few alcohols as examples.
+Table 7.1: Common and IUPAC Names of Some Alcohols
+CH3 – OH Methyl alcohol Methanol
+CH3 – CH2 – CH2 – OH n-Propyl alcohol Propan-1-ol
+Isopropyl alcohol Propan-2-ol
+CH3 – CH2 – CH2 – CH2 – OH n-Butyl alcohol Butan-1-ol sec-Butyl alcohol Butan-2-ol
+Isobutyl alcohol 2-Methylpropan-1-ol tert-Butyl alcohol 2-Methylpropan-2-ol
+HO–H2C–CH2–OH Ethylene glycol Ethane-1,2-diol
+Glycerol Propane -1, 2, 3-triol
+Compound Common name IUPAC name
+Cyclic alcohols are named using the prefix cyclo and considering the —OH group attached to C–1.
+Cyclohexanol 2-Methylcyclopentanol (b) Phenols: The simplest hydroxy derivative of benzene is phenol.
+It is its common name and also an accepted IUPAC name. As structure of phenol involves a benzene ring, in its substituted compounds the terms ortho (1,2- disubstituted), meta (1,3-disubstituted) and para (1,4-disubstituted) are often used in the common names.
+Reprint 2026-27
+197 Alcohols, Phenols and Ethers
+Common name Phenol o-Cresol m-Cresol p-Cresol
+IUPAC name Phenol 2-Methylphenol 3-Methylphenol 4-Methylphenol
+Dihydroxy derivatives of benzene are known as 1, 2-, 1, 3- and
+1, 4-benzenediol.
+Common name Catechol
+Benzene- diol 1,2-
+Resorcinol
+Benzene- diol 1,3-
+Hydroquinone or quinol
+Benzene- diol 1,4- IUPAC name (c) Ethers: Common names of ethers are derived from the names of alkyl/ aryl groups written as separate words in alphabetical order and adding the word ‘ether’ at the end. For example, CH3OC2H5 is ethylmethyl ether.
+Table 7.2: Common and IUPAC Names of Some Ethers
+Compound Common name IUPAC name
+CH3OCH3 Dimethyl ether Methoxymethane
+C2H5OC2H5 Diethyl ether Ethoxyethane
+CH3OCH2CH2CH3 Methyl n-propyl ether 1-Methoxypropane
+C6H5OCH3 Methyl phenyl ether Methoxybenzene (Anisole) (Anisole)
+C6H5OCH2CH3 Ethyl phenyl ether Ethoxybenzene (Phenetole)
+C6H5O(CH2)6 – CH3 Heptyl phenyl ether 1-Phenoxyheptane
+CH3 CH O 3 CH
+Methyl isopropyl ether 2-Methoxypropane
+Phenyl isopentyl ether 3- Methylbutoxybenzene
+CH3– O – CH2 – CH2 – OCH3 — 1,2-Dimethoxyethane
+— 2-Ethoxy-
+-1,1-dimethylcyclohexane
+Reprint 2026-27

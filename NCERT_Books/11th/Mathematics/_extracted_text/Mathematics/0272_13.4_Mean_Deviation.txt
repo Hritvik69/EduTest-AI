@@ -1,0 +1,230 @@
+260 MATHEMATICS
+Remember that, in finding a suitable measure of dispersion, we require the distance of each value from a central tendency or a fixed number ‘a’. Recall, that the absolute value of the difference of two numbers gives the distance between the numbers when represented on a number line. Thus, to find the measure of dispersion from a fixed number ‘a’ we may take the mean of the absolute values of the deviations from the central value. This mean is called the ‘mean deviation’. Thus mean deviation about a central value ‘a’ is the mean of the absolute values of the deviations of the observations from ‘a’. The mean deviation from ‘a’ is denoted as M.D. (a). Therefore,
+M.D.(a) = Sum of absolute values of deviations from ' '
+Number of observations
+Remark Mean deviation may be obtained from any measure of central tendency.
+However, mean deviation from mean and median are commonly used in statistical studies.
+Let us now learn how to calculate mean deviation about mean and mean deviation about median for various types of data
+13.4.1 Mean deviation for ungrouped data Let n observations be x1, x2, x3, ...., xn.
+The following steps are involved in the calculation of mean deviation about mean or
+Step 1 Calculate the measure of central tendency about which we are to find the mean deviation. Let it be ‘a’.
+Step 2 Find the deviation of each xi from a, i.e., x1 – a, x2 – a, x3 – a,. . . , xn– a
+Step 3 Find the absolute values of the deviations, i.e., drop the minus sign (–), if it is there, i.e., a x a x a x a x n − − − − ...., , , , 3 2 1
+Step 4 Find the mean of the absolute values of the deviations. This mean is the mean deviation about a, i.e., ( ) M.D.
+Thus M.D. ( x ) = 1
+− ∑ , where x = Mean and M.D. (M) = 1
+− ∑ , where M = Median
+Reprint 2026-27
+STATISTICS 261
+ANote In this Chapter, we shall use the symbol M to denote median unless stated otherwise.Let us now illustrate the steps of the above method in following examples.
+Example 1 Find the mean deviation about the mean for the following data:
+6, 7, 10, 12, 13, 4, 8, 12
+Solution We proceed step-wise and get the following:
+Step 1 Mean of the given data is
+6 7 10 12 13 4 8 12 72 9 x + + + + + + +
+Step 2 The deviations of the respective observations from the mean , x i.e., xi– x are
+6 – 9, 7 – 9, 10 – 9, 12 – 9, 13 – 9, 4 – 9, 8 – 9, 12 – 9, or –3, –2, 1, 3, 4, –5, –1, 3
+Step 3 The absolute values of the deviations, i.e., i x x − are
+3, 2, 1, 3, 4, 5, 1, 3
+Step 4 The required mean deviation about the mean is
+M.D. ( ) x =
+= 3 2 1 3 4 5 1 3 22 2 75
++ + + + + + + = =
+ANote Instead of carrying out the steps every time, we can carry on calculation, step-wise without referring to steps.
+Example 2 Find the mean deviation about the mean for the following data :
+12, 3, 18, 17, 4, 9, 17, 19, 20, 15, 8, 17, 2, 3, 16, 11, 3, 1, 0, 5
+Solution We have to first find the mean ( x ) of the given data
+= ∑ = 20
+200 = 10
+Reprint 2026-27
+262 MATHEMATICS
+The respective absolute values of the deviations from mean, i.e., x xi − are
+2, 7, 8, 7, 6, 1, 7, 9, 10, 5, 2, 7, 8, 7, 6, 1, 7, 9, 10, 5
+Therefore and M.D. ( x ) = 124
+20 = 6.2
+Example 3 Find the mean deviation about the median for the following data:
+3, 9, 5, 3, 12, 10, 18, 4, 7, 19, 21.
+Solution Here the number of observations is 11 which is odd. Arranging the data into ascending order, we have 3, 3, 4, 5, 7, 9, 10, 12, 18, 19, 21
+Now Median =
+  or 6th observation = 9
+The absolute values of the respective deviations from the median, i.e., M ix − are
+6, 6, 5, 4, 2, 0, 1, 3, 9, 10, 12
+Therefore and ( ) 11
+M.D. M M 58 5.27
+= − = × = ∑
+13.4.2 Mean deviation for grouped data We know that data can be grouped into two ways :
+(a) Discrete frequency distribution, (b) Continuous frequency distribution.
+Let us discuss the method of finding mean deviation for both types of the data.
+(a) Discrete frequency distribution Let the given data consist of n distinct values x1, x2, ..., xn occurring with frequencies f1, f2 , ..., fn respectively. This data can be represented in the tabular form as given below, and is called discrete frequency distribution:
+x : x1 x2 x3 ... xn f : f1 f2 f3 ... fn
+Reprint 2026-27
+STATISTICS 263 (i) Mean deviation about mean
+First of all we find the mean x of the given data by using the formula where ∑= denotes the sum of the products of observations xi with their respective frequencies fi and ∑=
+N is the sum of the frequencies.
+Then, we find the deviations of observations xi from the mean x and take their absolute values, i.e., x xi − for all i =1, 2,..., n.
+After this, find the mean of the absolute values of the deviations, which is the required mean deviation about the mean. Thus
+M.D. ( )
+∑ = x x f i i − ∑=1 N (ii) Mean deviation about median To find mean deviation about median, we find the median of the given discrete frequency distribution. For this the observations are arranged in ascending order. After this the cumulative frequencies are obtained. Then, we identify the observation whose cumulative frequency is equal to or just greater than N
+2 , where
+N is the sum of frequencies. This value of the observation lies in the middle of the data, therefore, it is the required median. After finding median, we obtain the mean of the absolute values of the deviations from median.Thus,
+M.D.(M) M
+Example 4 Find mean deviation about the mean for the following data :
+xi 2 5 6 8 10 12 fi 2 8 10 7 8 5
+Reprint 2026-27
+264 MATHEMATICS
+Solution Let us make a Table 13.1 of the given data and append other columns after calculations.
+Table 13.1 xi fi fixi x xi − fi x xi −
+2 2 4 5.5 11
+5 8 40 2.5 20
+6 10 60 1.5 15
+8 7 56 0.5 3.5
+10 8 80 2.5 20
+12 5 60 4.5 22.5
+40 300 92 if , 300 i i x f , 92
+Therefore
+1 1 300 7.5
+= = × = ∑
+M. D. ( ) 92 2.3
+= − = × = ∑
+Example 5 Find the mean deviation about the median for the following data:
+xi 3 6 9 12 13 15 21 22 f i 3 4 5 2 4 5 4 3
+Solution The given observations are already in ascending order. Adding a row corresponding to cumulative frequencies to the given data, we get (Table 13.2).
+Table 13.2 xi 3 6 9 12 13 15 21 22 fi 3 4 5 2 4 5 4 3 c.f. 3 7 12 14 18 23 27 30
+Now, N=30 which is even.
+Reprint 2026-27
+STATISTICS 265
+Median is the mean of the 15th and 16th observations. Both of these observations lie in the cumulative frequency 18, for which the corresponding observation is 13.
+15 observation 16 observation 13 13
+Therefore, Median M 13
+Now, absolute values of the deviations from median, i.e., M ix − are shown in
+Table 13.3.
+Table 13.3
+M ix − 10 7 4 1 0 2 8 9 f i 3 4 5 2 4 5 4 3 fi M ix − 30 28 20 2 0 10 32 27
+30 and M 149 i i i
+= − = ∑ ∑
+Therefore 8
+M. D. (M) M
+30 × = 4.97.
+(b) Continuous frequency distribution A continuous frequency distribution is a series in which the data are classified into different class-intervals without gaps alongwith their respective frequencies.
+For example, marks obtained by 100 students are presented in a continuous frequency distribution as follows :
+Marks obtained 0-10 10-20 20-30 30-40 40-50 50-60
+Number of Students 12 18 27 20 17 6 (i) Mean deviation about mean While calculating the mean of a continuous frequency distribution, we had made the assumption that the frequency in each class is centred at its mid-point. Here also, we write the mid-point of each given class and proceed further as for a discrete frequency distribution to find the mean deviation.
+Let us take the following example.
+Reprint 2026-27
+266 MATHEMATICS
+Example 6 Find the mean deviation about the mean for the following data.
+Marks obtained 10-20 20-30 30-40 40-50 50-60 60-70 70-80
+Number of students 2 3 8 14 8 3 2
+Solution We make the following Table 13.4 from the given data :
+Table 13.4
+Marks Number of Mid-points fixi x xi − fi x xi − obtained students
+10-20 2 15 30 30 60
+20-30 3 25 75 20 60
+30-40 8 35 280 10 80
+40-50 14 45 630 0 0
+50-60 8 55 440 10 80
+60-70 3 65 195 20 60
+70-80 2 75 150 30 60
+40 1800 400
+N 40, 1800, 400 i i i i i f f x f x x
+= = = − = ∑ ∑ ∑
+Therefore
+1 1800 45 and ( ) 7
+M.D. 400 10
+= − = × = ∑
+Shortcut method for calculating mean deviation about mean We can avoid the tedious calculations of computing x by following step-deviation method. Recall that in this method, we take an assumed mean which is in the middle or just close to it in the data. Then deviations of the observations (or mid-points of classes) are taken from the
+Reprint 2026-27
+STATISTICS 267 assumed mean. This is nothing but the shifting of origin from zero to the assumed mean on the number line, as shown in Fig 13.3
+If there is a common factor of all the deviations, we divide them by this common factor to further simplify the deviations. These are known as step-deviations. The process of taking step-deviations is the change of scale on the number line as shown in
+Fig 13.4
+The deviations and step-deviations reduce the size of the observations, so that the computations viz. multiplication, etc., become simpler. Let, the new variable be denoted
+= , where ‘a’ is the assumed mean and h is the common factor. Then, the mean x by step-deviation method is given by f d i iix a h
+Let us take the data of Example 6 and find the mean deviation by using step- deviation method.
+Fig 13.3
+Fig 13.4
+Reprint 2026-27
+268 MATHEMATICS
+Number of students obtained
+Take the assumed mean a = 45 and h = 10, and form the following Table 13.5.
+Table 13.5
+Mid-points 45
+= i i f d x xi − fi x xi −
+10-20 2 15 – 3 – 6 30 60
+20-30 3 25 – 2 – 6 20 60
+30-40 8 35 – 1 – 8 10 80
+40-50 14 45 0 0 0 0
+50-60 8 55 1 8 10 80
+60-70 3 65 2 6 20 60
+70-80 2 75 3 6 30 60
+40 0 400
+Therefore f d i iix a h
+45 10 45
+M D ( ) 10
+= − = = ∑ . .
+ANote The step deviation method is applied to compute x . Rest of the procedure is same.
+(ii) Mean deviation about median The process of finding the mean deviation about median for a continuous frequency distribution is similar as we did for mean deviation about the mean. The only difference lies in the replacement of the mean by median while taking deviations.
+Let us recall the process of finding median for a continuous frequency distribution.
+The data is first arranged in ascending order. Then, the median of continuous frequency distribution is obtained by first identifying the class in which median lies (median class) and then applying the formula
+Reprint 2026-27
+STATISTICS 269 frequency
+2 Median l h where median class is the class interval whose cumulative frequency is just greater than or equal to N
+2 , N is the sum of frequencies, l, f, h and C are, respectively the lower limit , the frequency, the width of the median class and C the cumulative frequency of the class just preceding the median class. After finding the median, the absolute values of the deviations of mid-point xi of each class from the median i.e., M ix − are obtained.
+M.D. (M) M n f x i ii
+The process is illustrated in the following example:
+Example 7 Calculate the mean deviation about median for the following data :
+Class 0-10 10-20 20-30 30-40 40-50 50-60
+Frequency 6 7 15 16 4 2
+Solution Form the following Table 13.6 from the given data :
+Table 13.6
+Class Frequency Cumulative Mid-points Med. xi − fi Med. xi − f i (c.f.) xi
+0-10 6 6 5 23 138
+10-20 7 13 15 13 91
+20-30 15 28 25 3 45
+30-40 16 44 35 7 112
+40-50 4 48 45 17 68
+50-60 2 50 55 27 54
+Reprint 2026-27
+270 MATHEMATICS
+The class interval containing
+2 or 25th item is 20-30. Therefore, 20–30 is the median class. We know that
+Median =
+Here l = 20, C = 13, f = 15, h = 10 and N = 50
+Therefore, Median 25 13
+= + × = 20 + 8 = 28
+Thus, Mean deviation about median is given by
+M.D. (M) =
+− ∑ = 1 508
+50 × = 10.16
+EXERCISE 13.1
+Find the mean deviation about the mean for the data in Exercises 1 and 2.
+1. 4, 7, 8, 9, 10, 12, 13, 17
+2. 38, 70, 48, 40, 42, 55, 63, 46, 54, 44
+Find the mean deviation about the median for the data in Exercises 3 and 4.
+3. 13, 17, 16, 14, 11, 13, 10, 16, 11, 18, 12, 17
+4. 36, 72, 46, 42, 60, 45, 53, 46, 51, 49
+Find the mean deviation about the mean for the data in Exercises 5 and 6.
+5. xi 5 10 15 20 25 f i 7 4 6 3 5
+6. xi 10 30 50 70 90 f i 4 24 28 16 8
+Find the mean deviation about the median for the data in Exercises 7 and 8.
+7. xi 5 7 9 10 12 15 f i 8 6 2 2 2 6
+8. xi 15 21 27 30 35 f i 3 5 6 7 8
+Reprint 2026-27
+STATISTICS 271
+Find the mean deviation about the mean for the data in Exercises 9 and 10.
+9. Income per 0-100 100-200 200-300 300-400 400-500 500-600 600-700 700-800 day in `
+Number 4 8 9 10 7 5 4 3 of persons
+10. Height 95-105 105-115 115-125 125-135 135-145 145-155
+Number of 9 13 26 30 12 10
+11. Find the mean deviation about median for the following data :
+Marks 0-10 10-20 20-30 30-40 40-50 50-60
+Number of 6 8 14 16 4 2
+12. Calculate the mean deviation about median age for the age distribution of 100 persons given below:
+Age 16-20 21-25 26-30 31-35 36-40 41-45 46-50 51-55 (in years)
+Number 5 6 12 14 26 12 16 9
+[Hint Convert the given data into continuous frequency distribution by subtracting 0.5 from the lower limit and adding 0.5 to the upper limit of each class interval]
+13.4.3 Limitations of mean deviation In a series, where the degree of variability is very high, the median is not a representative central tendency. Thus, the mean deviation about median calculated for such series can not be fully relied.
+The sum of the deviations from the mean (minus signs ignored) is more than the sum of the deviations from median. Therefore, the mean deviation about the mean is not very scientific.Thus, in many cases, mean deviation may give unsatisfactory results. Also mean deviation is calculated on the basis of absolute values of the deviations and therefore, cannot be subjected to further algebraic treatment. This implies that we must have some other measure of dispersion. Standard deviation is such a measure of dispersion.
+13.5 Variance and Standard Deviation
+Recall that while calculating mean deviation about mean or median, the absolute values of the deviations were taken. The absolute values were taken to give meaning to the mean deviation, otherwise the deviations may cancel among themselves.
+Another way to overcome this difficulty which arose due to the signs of deviations, is to take squares of all the deviations. Obviously all these squares of deviations are
+Reprint 2026-27

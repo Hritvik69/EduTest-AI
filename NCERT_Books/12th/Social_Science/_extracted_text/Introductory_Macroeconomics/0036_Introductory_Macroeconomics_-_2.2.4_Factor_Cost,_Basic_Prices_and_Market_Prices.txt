@@ -1,0 +1,23 @@
+26 26 26 26 26
+Introductory
+Macroeconomics
+We can further subdivide the National Income into smaller categories. Let us try to find the expression for the part of NI which is received by households. We shall call this Personal Income (PI). First, let us note that out of NI, which is earned by the firms and government enterprises, a part of profit is not distributed among the factors of production. This is called Undistributed Profits (UP). We have to deduct
+UP from NI to arrive at PI, since UP does not accrue to the households. Similarly,
+Corporate Tax, which is imposed on the earnings made by the firms, will also have to be deducted from the NI, since it does not accrue to the households. On the other hand, the households do receive interest payments from private firms or the government on past loans advanced by them. And households may have to pay interests to the firms and the government as well, in case they had borrowed money from either. So, we have to deduct the net interests paid by the households to the firms and government. The households receive transfer payments from government and firms (pensions, scholarship, prizes, for example) which have to be added to calculate the Personal Income of the households.
+Thus, Personal Income (PI) ≡ NI – Undistributed profits – Net interest payments made by households – Corporate tax + Transfer payments to the households from the government and firms.
+However, even PI is not the income over which the households have complete say. They have to pay taxes from PI. If we deduct the Personal Tax Payments (income tax, for example) and Non-tax Payments (such as fines) from PI, we obtain what is known as the Personal Disposable Income. Thus
+Personal Disposable Income (PDI ) ≡ PI – Personal tax payments – Non-tax payments.
+Personal Disposable Income is the part of the aggregate income which belongs to the households. They may decide to consume a part of it, and save the rest. In Fig. 2.3 we present a diagrammatic representation of the relations between these major macroeconomic variables.
+GDP GNP NNP
+ID - Sub
+UP + NIH
+PI PTP +
+National Disposable Income and Private Income
+Apart from these categories of aggregate macroeconomic variables, in India, a few other aggregate income categories are also used in National Income accounting
+• National Disposable Income = Net National Product at market prices
++ Other current transfers from the rest of the world
+The idea behind National Disposable Income is that it gives an idea of
+Fig. 2.3: Diagrammatic representation of the subcategories of aggregate income. NFIA: Net
+Factor Income from Abroad, D: Depreciation, ID: Indirect Taxes, Sub: Subsidies, UP: Undistributed
+Profits, NIH: Net Interest Payments by Households, CT: Corporate Taxes, TrH: Transfers recived by Households, PTP: Personal Tax Payments, NP: Non-Tax Payments.
+Reprint 2026-27

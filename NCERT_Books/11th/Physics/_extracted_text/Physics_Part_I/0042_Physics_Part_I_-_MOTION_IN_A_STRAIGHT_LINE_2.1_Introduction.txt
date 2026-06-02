@@ -1,0 +1,12 @@
+PHYSICS 26
+2.15 Suggest a suitable physical situation for each of the following graphs (Fig 2.12):
+Fig. 2.12
+2.16 Figure 2.13 gives the x-t plot of a particle executing one-dimensional simple harmonic motion. (You will learn about this motion in more detail in Chapter13).
+Give the signs of position, velocity and acceleration variables of the particle at t = 0.3 s, 1.2 s, – 1.2 s.
+Fig. 2.13
+2.17 Figure 2.14 gives the x-t plot of a particle in one-dimensional motion.
+Three different equal intervals of time are shown. In which interval is the average speed greatest, and in which is it the least ? Give the sign of average velocity for each interval.
+2.18 Figure 2.15 gives a speed-time graph of a particle in motion along a constant direction. Three equal intervals of time are shown. In which interval is the average acceleration greatest in magnitude? In which interval is the average speed greatest ? Choosing the positive direction as the constant direction of motion, give the signs of v and a in the three intervals. What are the accelerations at the points A, B, C
+Fig. 2.14
+Fig. 2.15
+Reprint 2026-27

@@ -1,0 +1,210 @@
+Domestic Data entry operator – class X 194
+Step 6. Further, we can also put conditions on groups using the Criterion row. Say, for example to display the average of only Athletics category, type Athletics in the Criterion row under the
+Category Name column. Now, if we run the query the average of only Athletics category will be displayed in the query result.
+• A query is used to retrieve and display data from one or more tables in a database.
+• A specific search criteria is given to the DBMS to view the desired information.
+• The result of the query is displayed in tabular form with field names in columns and the records in rows.
+• A query can be created in three ways.
+■ Using a Wizard
+■ In Design View
+■ In SQL view
+Prakasan lives in Happy Home Society. He has created the following tables in his database so as to store and manage the maintenance dues received from flat owners of the society.
+Table: Residents Details Table: Maintenance Dues
+Flat no Receipt_Id
+Owner Name Flat No
+Contact No Date
+Flat Category Amount
+Create a query to display the following information
+Flat No Owner Receipt Number Date Amount (Please note the change in column headings)
+Uzair manages a boys hostel in an engineering college. To manage the records of the people saying in his hostel, he created a database with the following related tables.
+Practical Exercises
+Database ManageMent systeM Using LibreOffice Writer 195
+Table: Student_Details
+Student_Id
+Father’s Name
+Contact No_student
+Contact No_ guardian
+Table: Room Details
+Floor (data value can be first, second or third)
+Category (data value can be AC / Non- AC)
+Student Id
+DOO (Date of occupancy)
+Monthly Rent
+Create a query to display the following tabular format
+Room No Student Name Category Monthly Rent
+Create a query that displays total monthly rent collected for each category.
+Project Work
+Use the internet to study the process of working of hostels.
+See, what all tables/fields/queries should be further added to the existing database so that it is able to fully automate the working of the boys hostel explained in the above exercise.
+Thereafter make changes in the database created by you in
+LibreOffice Base.
+Check Your Progress
+A. Multiple choice questions
+1. Which of the following is refer to asking questions from the database?
+(a) Report (b) Table (c) Query (d) Database
+2. Which of the following are the ways to design a query?
+(a) Wizard (b) Design View (d) All of the above
+3. Which is a flexible way to create a query?
+(a) Wizard (b) Design View (c) Both (a) and (b)
+(d) Neither (a) nor (b)
+Domestic Data entry operator – class X 196
+4. Into how many parts is the query design window divided?
+(c) Three (d) Four
+5. Which of the following is NOT true about queries?
+(a) It can be created using multiple tables (b) Multiple queries can be created in a database (c) A query can run multiple times (d) A query once created cannot be edited
+6. Which of the following is the shortcut key to run the query?
+7. Which of the following functions can be performed on numerical data while designing a query?
+(b) Minimum (c) Maximum (d) All of the above
+8. In a Query Design wizard, which of the following buttons is clicked to move a field from ‘Available fields’ list box to
+‘Fields in the query‘ list box?
+9. Which of the following relational operators can be applied to set the criterion while designing a query in LibreOffice (d) Add Form
+10. Which of the following dialog box is present when the
+Query Design window is opened for the first time to design a query?
+(a) Add Table (b) Add Query (c) Add Table or Query (d) None of the above
+11. Which of the following step is not performed if there is no numerical data to be worked upon in a query?
+(a) Selection of fields (b) Giving Aliases (c) Summarizing (d) Selection of tables
+Database ManageMent systeM Using LibreOffice Writer 197
+B. State whether the following statements are True or False
+1. You can run a query only once
+2. A query cannot be created from multiple tables
+3. The shortcut key to run a query is F5.
+4. LibreOffice Base provides us with two ways to create a
+5. A query with numerical data cannot be saved.
+6. By default the query result is not sorted.
+7. A query can be used to display the average value of a numerical field.
+8. While designing a query, the criterion can be set on only one field.
+9. Alias is an alternative name for a field in a query.
+10. In query Design window, the visible check box is selected by default.
+11. A query once created using a wizard can only be edited in the Design view.
+C. Fill in the blanks
+1. A ____________ is a sort of question asked from a database.
+2. The result of the query is displayed in ____________ form with field names in columns
+3. A query can be created in ________ways.
+4. The Query Design window is divided into __________ sections.
+5. The shortcut key to run the query is ______________.
+6. The conditions to filter the records are set in the _________
+7. When a table is selected in a Query wizard, the corresponding fields are displayed in the__________________list box.
+8. The result of the query can be displayed in __________ or
+_____________ order of any particular field of the table.
+9. At the most __________ search conditions can be given in the query wizard.
+10. The last step of the Query wizard displays the entire
+____________ of the query.
+11. The _____________ view is a more flexible method to create a query.
+12. To edit any query, right click on the ________ icon of the query that has to be edited.
+13. In the _____________ row of the Query Design grid, we can type the column heading that will be displayed instead of field name when we run the query.
+Domestic Data entry operator – class X 198
+D. Answer the given questions
+1. Define a query? What is the need of creating a query in a database?
+2. Rearrange the steps given below so as to create a query using a wizard.
+3. Give Alias
+4. Select the fields
+5. Set the criterion
+6. Set the sorting order
+7. Give table name
+8. What all information is seen in the overview (last step) of the Query wizard?
+9. What is the use of Alias row in the Design grid of the Query
+Design window?
+10. Name any four mathematical functions that can be applied to numerical data in a query.
+11. Name the three ways of creating a query in LibreOffice
+Database ManageMent systeM Using LibreOffice Writer 199
+IntroductIon
+We know that tables in a database are used to store data in an organized manner. For this we have to enter data into the tables. As seen in previous chapters, data- sheet view is used to enter data into the tables. The row and column format of the data-sheet view is not a user friendly interface. So it is required to develop a user friendly data entry screen for data entry operator or a user, who is not very well versed with computers.
+Moreover, while doing data entry, the user may accidentally or intentionally alter the data in the table.
+Therefore LibreOffice Base provides the Form feature for data entry purposes.
+Also, when the user wants to retrieve and view the data from one or more tables in a database using queries, it is again displayed in data-sheet view. The
+Report feature of OpenOffice Base helps to present the retrieved data in a user friendly, understandable and formatted manner.
+Both reports and forms are considered as objects of the database and are present in the Database
+Pane of the LibreOffice Base User Interface. In this chapter we will learn to create Forms and Reports using
+LibreOffice Base.
+A form is an object of the database that has a user friendly interface where data can be entered and seen in an attractive and easy-to-read format. For any database, it is the front end for data entry and data modification.
+It displays the data in a layout design by us and not just in a simple row and column format.
+12Forms and Reports
+Domestic Data entry operator – class X 200
+Primarily, a form contains field controls arranged in a presentable and user friendly manner. Each field control consists of a label and the field value text box. A label is a piece of text that specifies the data that should be entered in the field value text box. A field value text box is linked to the respective field in the table. We may add all or selected fields from the table on the form. In addition to field controls, it may contain some additional text like titles, headings and names, graphics like logos, list boxes and radio buttons.
+There are two ways to create a form:
+• Using a wizard
+• Using the Design View
+Creating a Form Using a Wizard
+This is the simplest way to create a form. To explain how to create a form using a wizard, we will get back to the
+Sports Day database created in the previous chapters.
+To create a form using wizard, follow the following steps.
+Step 1. Open the Sports Day database created in
+LibreOffice, and click the Form icon on the
+Database Pane as shown in Fig. 12.1.
+Fig. 12.1: Selecting Forms from Database Pane
+Click the option Use Wizard to Create Form… on the Tasks Pane. The Form wizard will open along with a blank database form in design view in the background as shown in Fig. 12.2.
+Database ManageMent systeM Using LibreOffice Writer 201
+Fig. 12.2: Form Wizard and Database Form in Design View
+Step 2. The step 1 of the wizard is to select the tables or queries for which the form has to be created. As we are creating a form for Events table, select
+Events table from “Tables and queries” list box as shown in Fig. 12.2.
+Step 3. After selecting the Events table, all the fields of the Events table will be listed in the Available
+Fields list box as shown in Fig. 12.3.
+Fig. 12.3: Fields of Events table listed in the Available Fields
+Step 4. As we require all the fields to appear in the
+Form, shift all the fields of Event table from
+Available Fields list box to Fields in the Form list box using >> button. Observe that in Fig.
+12.4, all the fields are shifted to Fields in the
+Form list box. Click on Next button to move forward.
+Fig. 12.4: All fields of Events table in Available Fields are shifted to Fields in the Form
+Domestic Data entry operator – class X 202
+Step 5. The second step consists of setting up a subform, i.e. a form within a form. You need to check the checkbox “Add Subform” in
+Fig. 12.5 to add the subform. Since we do not want to set up any subform, click Next button to proceed further.
+Fig. 12.5: Step 2 Set up a subform
+Step 6. The wizard skips the next two steps that relate to the subform and moves on to step 5. This step arrange controls i.e. to set up the design of the form. Observe in Fig. 12.6 that, by default, all controls will be left aligned. Click Right Align radio button to align the controls from the right side of the form. As mentioned before, a field control consists of two parts – label and the field value text box. So in this step we arrange the label and field value text boxes as we want them to be visible on the screen.
+Fig. 12.6: Selecting the Layout of the form
+Four layouts are given in this step of the wizard to choose from:
+• Columnar display with Labels on the left of the field value
+Database ManageMent systeM Using LibreOffice Writer 203
+• Columnar display with Labels on top of the field
+• Display as datasheet
+• Block display with labels on top
+Let us select Columnar Display with labels on the left arrangement. Also note that as we choose the
+Layout type, the fields are arranged in the Form Design view also.
+Step 7. Click Next button.
+Step 8. The step 6 of the wizard asks whether the form will be used for displaying data, entering data or both. As we go with the default settings, so we click Next button as shown in Fig. 12.7.
+Fig. 12.7: Step 6 of form wizard
+Step 9. The next step is to apply styles to the form being created. We can select the desired background colour and border type of the field value text boxes. Observe in Fig. 12.8, by default the border of the field text value is displayed in 3D look. We can select the options No Border or
+Flat if required.
+Fig. 12.8: Applying styles to the form
+Step 10.Click Next button.
+Step 11.The next step is to set the name of the form.
+By default the name of the form is same as the name of the table. Click in the textbox and type a different name if desired, say EventsForm,
+Domestic Data entry operator – class X 204 as shown in Fig. 12.9. In the same step, by default, the radio button with the option Work with the form is selected. If you wish to modify the form after the wizard finishes, click Modify the form option.
+Fig. 12.9: Assigning name to form
+Step 12.Click Finish button. The form with the first record will be displayed on the screen in a separate window. Also, observe that in
+Fig. 12.10, the name of the form, EventsForm will appear in the Object Area of LibreOffice
+User Interface window.
+Fig. 12.10: Form created for Events table
+As shown in Fig. 12.10, on the left of the Form Design window is the Forms Control toolbar and at the bottom is the Records toolbar.
+Forms Control Toolbar
+This toolbar contains various controls that can be added to the form. We will learn about some of the controls later in the chapter.
+Records Toolbar
+The Records toolbar contains the navigation control buttons in the extreme left. With the help of these
+Database ManageMent systeM Using LibreOffice Writer 205 buttons, we can traverse and view the records in the file. As we move from one record to another, the record number in the record text boxes changes.
+Fig. 12.11 shows the navigation control buttons, there are commands to add a new record, save a record, delete a record and so on.
+Fig. 12.11: Records toolbar
+Modifying a Form
+It is possible to modify the form in any manner once it is created. The modification can be to change the background color, font size and color of the text or even positioning of various controls in the form.
+Changing the background color
+Follow the following steps to change the background color of the form.
+Step 1. Open OpenOffice Base User Interface for
+Sports Day database and click on Forms icon in the Database Pane. The name of the saved form (EventsForm) will be displayed in the
+Objects Area.
+Step 2. Right click on the form name and select Edit… option. A separate Form Design View will open.
+Step 3. To change the background color of the form, right click on the form and select Page Style...
+option from the pop up menu as shown in
+Fig. 12.12.
+Fig. 12.12: Selecting the Page Style option from the Edit pop down
+Step 4. The Page Style dialog box will appear, where you select Area tab and choose the desired color from the palette, as shown in Fig. 12.13.
+Domestic Data entry operator – class X 206
+Fig. 12.13: Selecting Colors Palette in Page Style dialog box
+Step 5. Click on OK button. The selected color will be applied on the form as shown in Fig. 12.14.
+Fig. 12.14: Forms with changed background color
+Editing the labels
+To edit the labels, either by changing the text or by changing the formatting effects, follow the following
+Step 1. Place the mouse pointer over the label, say
+EventID to change it.
+Step 2. Press the keyboard shortcut key Ctrl+Click to select the label. The position boxes will appear around the label.
+Step 3. Right click on the selected label and select
+Control Properties… option from the pop up menu as shown in Fig. 12.15.
+Fig. 12.15: Selecting Control Properties by right clicking on the label

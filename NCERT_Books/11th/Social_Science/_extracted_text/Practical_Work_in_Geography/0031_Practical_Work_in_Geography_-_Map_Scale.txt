@@ -1,0 +1,130 @@
+Map Scale
+1. Statement of Scale: The scale of a map may be indicated in the form of a written statement. For example, if on a map a written statement appears stating 1 cm represents 10 km, it means that on that map a distance of 1 cm is representing 10 km of the corresponding ground distance. It may also be expressed in any other system of measurement, i.e. 1 inch represents 10 miles. It is the simplest of the three methods.
+However, it may be noted that the people who are familiar with one system may not understand the statement of scale given in another system of measurement. Another limitation of this method is that if the map is reduced or enlarged, the scale will become redundant and a new scale is to be worked out.
+2. Graphical or Bar Scale: The second type of scale shows map distances and the corresponding ground distances using a line bar with primary and secondary divisions marked on it. This is referred to as the graphical scale or bar scale (Fig. 2.1). It may be noted that the scale readings as shown on the bar scale in Figure 2.1 reads only in kilometres and metres. In yet another bar scale the readings may be shown in miles and furlongs. Hence, like the statement of scale method, this method also finds restricted use for only those who can understand it.
+However, unlike the statement of the scale method, the graphical scale stands valid even when the map is reduced or enlarged. This is the unique advantage of the graphical method of the map scale.
+Figure 2.1
+3. Representative Fraction ( R. F. ): The third type of scale is R.
+F. It shows the relationship between the map distance and the corresponding ground distance in units of length. The use of units to express the scale makes it the most versatile method.
+R. F. is generally shown in fraction because it shows how much the real world is reduced to fit on the map. For example, a fraction of 1 :
+24,000 shows that one unit of length on the map represents 24,000 of the same units on the ground i.e. one mm, one cm or one inch
+Practical Work in Geography on the map representing 24,000 mm, 24,000 cm and 24,000 inches, respectively of the ground. It may, however, be noted that while converting the fraction of units into Metric or English systems, units in centimetre or inch are normally used by convention. This quality of expressing scale in units in R. F. makes it a universally acceptable and usable method. Let us take R. F. of 1 : 36,000 to elaborate the universal nature of R. F.
+If the given scale is 1: 36,000, a person acquainted with the Metric
+System will read the given units by converting them into cm, i.e. the distance of 1 unit on the map as 1 cm and the distance of 36,000 units on the ground distance as 36,000 cm. These values may subsequently be converted into a statement of scale, i.e. 1 cm represents 360 metres.
+(by dividing values in denominator by the number of centimetres in a metre, i.e. 100). Yet another user of the map familiar with the English system of measurement will understand the map scale by converting it into a statement of scale convenient to him/her and read the map scale as 1 inch represents 1,000 yards. The said statement of scale will be obtained by dividing 36,000 units in the denominator by 36 (number of inches in a yard).
+CONVERSION OF SCALE
+If you have carefully read the advantages and limitations of the different methods of scale, then it will not be difficult for you to convert the
+Statement of Scale into Representative Fraction and vice-versa.
+Statement of Scale into R. F.
+Problem Convert the given Statement of Scale of 1 inch represents
+4 miles into R. F.
+Solution The given Statement of Scale may be converted into R. F.
+using the following steps.
+1 inch represents 4 miles or 1 inch represents 4 × 63,360 inches (1 mile = 63,360 or 1 inch represents 253,440 inches
+NOTE : We can now replace the character “inches” into “units” and read it as :
+1 unit represents 253,440 Units
+Answer R. F. 1 : 253, 440
+Map Scale
+R. F. into Statement of Scale
+Problem Convert R. F. 1 : 253, 440 into Statement of Scale (In
+Metric System)
+Solution The given R. F. of 1 : 253, 440 may be converted into
+Statement of Scale using the following steps :
+1 : 253, 440 means that
+1 unit on the map represents 253, 440 units on the ground.
+or 1 cm represents 253, 440/100,000 (1 km = 100,000 or 1 cm represents 2.5344 km
+After rounding of up to 2 decimals, the answer will be :
+Answer 1 cm represents 2.53 km
+Construction of the Graphical/Bar Scale
+Problem 1 Construct a graphical scale for a map drawn at a scale of
+1 : 50,000 and read the distances in kilometre and metre.
+NOTE: By convention, a length of nearly 15 cm is taken to draw a graphical scale.
+Calculations To get the length of line for the graphical scale, these steps may be followed:
+1 : 50,000 means that
+1 unit of the map represents 50,000 units on the ground or 1 cm represents 50,000 cm or 15 cm represents 50,000 × 15/100,000 km or 15 cm represents 7.5 km
+Since the value of 7.5 (km) is not a round number, we can choose 5 or 10 (km) as the round number. In the present case, we choose 5 as the round number.
+To determine the length of the line to show 5 km, the following calculations are to be carried out:
+7.5 km is represented by a line of 15 cm
+5 km will be represented by a line of 15 × 5/7.5 or 5 km will be represented by a line of 10 cm
+Construction The graphical scale may be constructed by following these steps:
+Draw a straight line of 10 cm and divide it into 5 equal parts and assign a value of 1 km each for 4 right side divisions from the 0 mark. Also
+Practical Work in Geography divide the extreme left side division into 10 equal parts and mark each division by a value of 100 metres, beginning from 0. (You may also divide it into 2, 4, or 5 parts and assign a value of 500, 250, or 200 metres to each of the subdivisions respectively from 0.
+Figure 2.2
+Problem 2 Construct a graphical scale when the given Statement of Scale is 1 inch representing 1 mile and read the distances in miles and furlongs.
+NOTE: By convention, a length of nearly 6 inches is taken to draw a graphical scale.
+Calculations To get the length of line for the graphical scale, these steps may be followed:
+1 inch represents 1 mile or 6 inches represents 6 miles
+Construction The graphical scale may be constructed in the following steps:
+Draw a straight line of 6 inches and divide it into 6 equal parts and assign a value of 1 mile each for 5 right side divisions. Also divide the extreme left side division into 4 equal parts and mark each division by a value of 2 miles each, beginning from 0.
+Figure 2.3
+Problem 3 Construct a graphical scale when the given R. F. is 1 :
+50,000 and read the distances in miles and furlongs.
+Calculations To get the length of the line for the graphical scale, these steps may be followed:
+1 : 50,000 means that
+1 unit represents 50,000 units or 1 inch represents 50,000 inches.
+or 6” represents 50,000 × 6/63,360 miles
+= 6’ represents 4.73 miles
+Map Scale
+Since a figure of 4.73 (miles) is not a round number, we take 5 as the round number.
+To determine the length of the line to show 5 km, the following calculations are to be carried out :
+4.73 miles are represented by a line of 6 inches
+5 miles will be represented by a line of 6 × 5/4.73
+= 5 miles will be represented by a line of 6.34 inches
+Construction The graphical scale may be constructed in the following
+To construct a graphical scale to show 5 miles we need to draw a line of
+6.34 inches and divide it into 5 equal parts. The question is how can an unequal line of 6.3 inches be divided into 5 equal parts. To do so we can use the following procedure:
+° Draw a straight line of 6.3 inches.
+° Draw lines at an angle of 400 or 450 from the start and end nodes of the lines and divide them into 5 equal parts of 1 or
+1.5 inches each.
+° Draw dotted lines joining the divisions marked on the two lines.
+° Mark the intersections of these lines at the primary scale.
+By doing so, you will divide the unequal line of 6.3 inches into 5 equal parts. You can repeat the same way to divide the extreme left part on the primary scale into 4 or 8 parts to show the number of furlongs that are equivalent to 1 mile.
+Figure 2.4 Drawing of equal divisions in a graphical scale
+Practical Work in Geography
+EXERCISE
+1. Choose the right answer from the four alternatives given below:
+Which one of the following methods of scale is a universal method?
+(a) Simple Statement (b) Representative Fraction (c) Graphical Scale (d) None of the above
+Map distance in a scale is also known as:
+(a) Numerator (b) Denominator (c) Statement of Scale (d) Representative Fraction
+‘Numerator’ in scale represents:
+(a) Ground distance (b) Map distance (c) Both the distances (d) None of the above
+2. Answer the following questions in about 30 words:
+What are the two different systems of measurement?
+Give one example each of statement of scale in Metric and English
+Why is the Representative Fraction method called a Universal
+What are the major advantages of the graphical method?
+3. Convert the given Statement of Scale into Representative Fraction (R. F.).
+5 cm represents 10 km
+2 inches represents 4 miles
+1 inch represents 1 yard
+1 cm represents 100 metres
+4. Convert the given Representative Fraction (R. F.) into Statement of
+Scale in the System of Measurement shown in parentheses:
+1 : 100,000 (into km)
+1 : 31680 (into furlongs)
+Map Scale
+1 : 126,720 (into miles)
+1 : 50,000 (into metres)
+5. Construct a graphical scale when the given R. F. is 1 : 50,000 and read the distances in kilometre and metre.
+Practical Work in Geography
+Chapter 3
+Latitude, Longitude and
+THE EARTH is nearly a sphere. It is because of the fact that the equatorial radius and the polar radius of the earth is not the same.
+The rotation of the earth over its axis produces bulging at the equator.
+Hence, the actual shape resembles that of an oblate spheroid. The shape of the earth presents some difficulties in positioning its surface features, as there is no point of reference from which to measure the relative positions of other points. Hence, a network of imaginary lines is drawn on a globe or a map to locate various places. Let us find out what are these lines and how are they drawn.
+The spinning of the earth on its axis from west to east provides two natural points of reference, i.e. North and South Poles. They form the basis for the geographical grid. A network of intersecting lines is drawn for the purpose of fixing the locations of different features.
+The grid consists of two sets of horizontal and vertical lines, which are called parallels of latitudes and the meridians of longitudes.
+Horizontal lines are drawn parallel to each other in east-west direction. The line drawn midway between the North Pole and the
+South Pole is called the equator. It is the largest circle and divides the globe into two equal halves. It is also called a great circle. All the other parallels get smaller in size, in proportion to their distance from the equator towards the poles and divide the earth into two unequal halves, also referred to as the small circles. These imaginary lines running east-west are commonly known as the parallels of latitude.
+The vertical lines running north-south, join the two poles. They are called the meridians of longitude. They are spaced farthest apart at the equator and converge at a point at each pole.
+Latitude, Longitude and Time
+Glossary
+Parallels of Latitude : The parallels of latitude refer to the angular distance, in degrees, minutes and seconds of a point north or south of the Equator. Lines of latitude are often referred to as parallels.
+Meridians of Longitude : The meridians of longitude refer to the angular distance, in degrees, minutes, and seconds, of a point east or west of the Prime (Greenwich) Meridian. Lines of longitude are often referred to as meridians.
+The latitudes and longitudes are commonly referred to as geographical coordinates as they provide systematic network of lines upon which the position of various surface features of the earth, can be represented. With the help of these coordinates, location, distance and direction of various points can be easily determined.
+Although an infinite number of parallels and meridians may be drawn on a globe, only a selected number of them are usually drawn on a map.
+Latitudes and longitudes are measured in degrees (°) because they represent angular distances. Each degree is further divided into 60 minutes ( ‘ ) and each minute into 60 seconds ( “ ).
+PARALLELS OF LATITUDES
+The latitude of a place on the earth’s surface is its distance north or south of the equator, measured along the meridian of that place as an angle from the centre of the earth. Lines joining places with the same latitudes are called parallels. The value of equator is 0° and the latitude of the poles are 90°N and 90°S (Fig. 3.1 on the next page). If parallels of latitude are drawn at an interval of one degree, there will be 89 parallels in the northern and the southern hemispheres each. The total number of parallels thus drawn, including the equator, will be 179. Depending upon the location of a feature or a place north or south of the equator, the letter N or S is written along with the value of the latitude.
+If the earth were a perfect sphere, the length of 10 of latitude (a one degree arc of a meridian) would be a constant value, i.e. 111 km everywhere on the earth. This length is almost the same as that of a

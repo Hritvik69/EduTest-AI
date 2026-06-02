@@ -1,0 +1,122 @@
+140 MATHEMATICS
+As in case of arithmetic progression, the problem of finding the nth term or sum of n terms of a geometric progression containing a large number of terms would be difficult without the use of the formulae which we shall develop in the next Section. We shall use the following notations with these formulae:
+a = the first term, r = the common ratio, l = the last term, n = the numbers of terms,
+Sn = the sum of first n terms.
+8.4.1 General term of a G .P. Let us consider a G.P. with first non-zero term ‘a’ and common ratio ‘r’. Write a few terms of it. The second term is obtained by multiplying a by r, thus a2 = ar. Similarly, third term is obtained by multiplying a2 by r. Thus, a3 = a2r = ar2, and so on.
+We write below these and few more terms.
+1st term = a1 = a = ar1–1, 2nd term = a2 = ar = ar2–1, 3rd term = a3 = ar2 = ar3–1
+4th term = a4 = ar3 = ar4–1, 5th term = a5 = ar4 = ar5–1
+Do you see a pattern? What will be 16th term?
+a16 = ar16–1 = ar15
+Therefore, the pattern suggests that the nth term of a G.P. is given by an = arn–1.
+Thus, a, G.P. can be written as a, ar, ar2, ar3, … arn – 1; a, ar, ar2,...,arn – 1... ;according as G.P. is finite or infinite, respectively.
+The series a + ar + ar2 + ... + arn–1 or a + ar + ar2 + ... + arn–1 +...are called finite or infinite geometric series, respectively.
+8.4.2. Sum to n terms of a G .P. Let the first term of a G.P. be a and the common ratio be r. Let us denote by Sn the sum to first n terms of G.P. Then
+Sn = a + ar + ar2 +...+ arn–1 ... (1)
+Case 1 If r = 1, we have Sn = a + a + a + ... + a (n terms) = na
+Case 2 If r ≠ 1, multiplying (1) by r, we have rSn = ar + ar2 + ar3 + ... + arn ... (2)
+Subtracting (2) from (1), we get (1 – r) Sn = a – arn = a(1 – rn)
+This gives or ( 1)
+Example 4 Find the 10th and nth terms of the G.P. 5, 25,125,… .
+Solution Here a = 5 and r = 5. Thus, a10 = 5(5)10–1 = 5(5)9 = 510 and an = arn–1 = 5(5)n–1 = 5n .
+Reprint 2026-27
+SEQUENCES AND SERIES 141
+Example 5 Which term of the G.P., 2,8,32, ... up to n terms is 131072?
+Solution Let 131072 be the nth term of the given G.P. Here a = 2 and r = 4.
+Therefore 131072 = an = 2(4)n – 1 or 65536 = 4n – 1
+This gives 48 = 4n – 1.
+So that n – 1 = 8, i.e., n = 9. Hence, 131072 is the 9th term of the G.P.
+Example 6 In a G.P., the 3rd term is 24 and the 6th term is 192.Find the 10th term.
+Solution Here, a ar 3
+2 24 = = ... (1)
+and a ar 6
+5 192 = = ... (2)
+Dividing (2) by (1), we get r = 2. Substituting r = 2 in (1), we get a = 6.
+Hence a10 = 6 (2)9 = 3072.
+Example 7 Find the sum of first n terms and the sum of first 5 terms of the geometric series 2 4
+1 3 9 ... + + +
+Solution Here a = 1 and r = 2
+3 . Therefore
+1 3 (1 )
+−    
+  −    =
+−    
+     
+In particular,
+= −    
+     
+Example 8 How many terms of the G.P. 3 3
+, , ,... are needed to give the
+Solution Let n be the number of terms needed. Given that a = 3, r = 1
+2 and 3069
+Since (1 )
+Reprint 2026-27
+142 MATHEMATICS
+Therefore
+3069 1 2 6 1
+1 512 21 2
+= = −  
+3072 = 1
+2n = 3069
+3072 1024 or 2n = 1024 = 210, which gives n = 10.
+Example 9 The sum of first three terms of a G.P. is 13
+12 and their product is – 1.
+Find the common ratio and the terms.
+Solution Let a r , a, ar be the first three terms of the G.P. Then r + + = 13
+12 ... (1)
+and ( ) ( ) 1 a a ar –
+  =  
+From (2), we get a3 = – 1, i.e., a = – 1 (considering only real roots)
+Substituting a = –1 in (1), we have r = or 12r2 + 25r + 12 = 0.
+This is a quadratic in r, solving, we get 3 4 r – – = .
+Thus, the three terms of G.P. are : 4 3 –3 3 4 –4
+, 1, for = and , 1, for =
+3 4 4 4 3 3
+– r – r ,
+Example10 Find the sum of the sequence 7, 77, 777, 7777, ... to n terms.
+Solution This is not a G.P., however, we can relate it to a G.P. by writing the terms as
+Sn = 7 + 77 + 777 + 7777 + ... to n terms
+Reprint 2026-27
+SEQUENCES AND SERIES 143
+= 7 [9 99 999 9999 to term]
+9 ... n + + + +
+= 2 3 4 7 [(10 1) (10 1) (10 1) (10 1) terms]
+9 ...n − + − + − + − +
+= 2 3 7 [(10 10 10 terms) (1+1+1+... terms)]
+9 ...n – n + + +
+= 7 10(10 1) 7 10 (10 1)
+9 10 1 9 9
+    − −
+− = −    
+−     .
+Example 11 A person has 2 parents, 4 grandparents, 8 great grandparents, and so on.
+Find the number of his ancestors during the ten generations preceding his own.
+Solution Here a = 2, r = 2 and n = 10
+Using the sum formula Sn = ( 1)
+We have S10 = 2(210 – 1) = 2046
+Hence, the number of ancestors preceding the person is 2046.
+8.4.3 Geometric Mean (G .M.) The geometric mean of two positive numbers a and b is the number ab . Therefore, the geometric mean of 2 and 8 is 4. We observe that the three numbers 2,4,8 are consecutive terms of a G.P. This leads to a generalisation of the concept of geometric means of two numbers.
+Given any two positive numbers a and b, we can insert as many numbers as we like between them to make the resulting sequence in a G.P.
+Let G1, G2,…, Gn be n numbers between positive numbers a and b such that a,G1,G2,G3,…,Gn,b is a G.P. Thus, b being the (n + 2)th term,we have
+Reprint 2026-27
+144 MATHEMATICS
+Example12 Insert three numbers between 1 and 256 so that the resulting sequence is a G.P.
+Solution Let G1, G2,G3 be three numbers between 1 and 256 such that
+1, G1,G2,G3 ,256 is a G.P.
+Therefore 256 = r4 giving r = ± 4 (Taking real roots only)
+For r = 4, we have G1 = ar = 4, G2 = ar2 = 16, G3 = ar3 = 64
+Similarly, for r = – 4, numbers are – 4,16 and – 64.
+Hence, we can insert 4, 16, 64 between 1 and 256 so that the resulting sequences are
+8.5 Relationship Between A.M. and G.M.
+Let A and G be A.M. and G.M. of two given positive real numbers a and b, respectively.
+Thus, we have
+A – G = 2 a b ab + − a b − ≥ ... (1)
+From (1), we obtain the relationship A ≥ G.
+Example 13 If A.M. and G.M. of two positive numbers a and b are 10 and 8, respectively, find the numbers.
+Solution Given that A.M. 10
+= = ... (1)
+and G.M. 8 ab = = ... (2)
+From (1) and (2), we get a + b = 20 ... (3)
+ab = 64 ... (4)
+Putting the value of a and b from (3), (4) in the identity (a – b)2 = (a + b)2 – 4ab, (a – b)2 = 400 – 256 = 144 or a – b = ± 12 ... (5)
+Reprint 2026-27

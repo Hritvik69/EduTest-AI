@@ -1,0 +1,30 @@
+33 Theory of Consumer
+Behaviour
+Relationship between Elasticity and change in Expenditure on a Good
+Suppose at price p, the demand for a good is q, and at price p + ∆p, the demand for the good is q + ∆q.
+At price p, the total expenditure on the good is pq, and at price p + ∆p, the total expenditure on the good is (p + ∆p)(q + ∆q).
+If price changes from p to (p + ∆p), the change in the expenditure on the good is, (p + ∆p)(q + ∆q) – pq = q∆p + p∆q + ∆p∆q.
+For small values of ∆p and ∆q, the value of the term ∆p∆q is negligible, and in that case, the change in the expenditure on the good is approximately given by q∆p + p∆q.
+Approximate change in expenditure = ∆E = q∆p + p∆q = ∆p(q + p q
+= ∆p[q(1 + q p
+∆ )] = ∆p[q(1 + eD)].
+Note that if eD < –1, then q (1 + eD ) < 0, and hence, ∆E has the opposite sign as ∆p, if eD > –1, then q (1 + eD ) > 0, and hence, ∆E has the same sign as ∆p, if eD = –1, then q (1 + eD ) = 0, and hence, ∆E = 0.
+• The budget set is the collection of all bundles of goods that a consumer can buy with her income at the prevailing market prices.
+• The budget line represents all bundles which cost the consumer her entire income.
+The budget line is negatively sloping.
+• The budget set changes if either of the two prices or the income changes.
+• The consumer has well-defined preferences over the collection of all possible bundles. She can rank the available bundles according to her preferences over them.
+• The consumer’s preferences are assumed to be monotonic.
+• An indifference curve is a locus of all points representing bundles among which the consumer is indifferent.
+• Monotonicity of preferences implies that the indifference curve is downward sloping.
+• A consumer’s preferences, in general, can be represented by an indifference map.
+• A consumer’s preferences, in general, can also be represented by a utility function.
+• A rational consumer always chooses her most preferred bundle from the budget set.
+• The consumer’s optimum bundle is located at the point of tangency between the budget line and an indifference curve.
+• The consumer’s demand curve gives the amount of the good that a consumer chooses at different levels of its price when the price of other goods, the consumer’s income and her tastes and preferences remain unchanged.
+• The demand curve is generally downward sloping.
+• The demand for a normal good increases (decreases) with increase (decrease) in the consumer’s income.
+• The demand for an inferior good decreases (increases) as the income of the consumer increases (decreases).
+• The market demand curve represents the demand of all consumers in the market
+S u m m a r y S u m m a r y S u m m a r y S u m m a r y S u m m a r y
+Reprint 2026-27

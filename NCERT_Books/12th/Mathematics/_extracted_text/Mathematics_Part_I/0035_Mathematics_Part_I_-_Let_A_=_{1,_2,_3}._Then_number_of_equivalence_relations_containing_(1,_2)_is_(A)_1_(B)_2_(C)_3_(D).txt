@@ -1,0 +1,43 @@
+INVERSE TRIGONOMETRIC FUNCTIONS 23 its range as the set R – (–1, 1). Actually, secant function restricted to any of the intervals [–π, 0] – { 2
+− π }, [0, ] – 2
+  , [π, 2π] – { 3
+π } etc., is bijective and its range is R – {–1, 1}. Thus sec–1 can be defined as a function whose domain is R– (–1, 1) and range could be any of the intervals [– π, 0] – { 2
+− π }, [0, π] – { 2
+π }, [π, 2π] – { 3
+π } etc.
+Corresponding to each of these intervals, we get different branches of the function sec–1.
+The branch with range [0, π] – { 2
+π } is called the principal value branch of the function sec–1. We thus have sec–1 : R – (–1,1) → [0, π] – { 2
+The graphs of the functions y = sec x and y = sec-1 x are given in Fig 2.4 (i), (ii).
+Finally, we now discuss tan–1 and cot–1
+We know that the domain of the tan function (tangent function) is the set
+{x : x ∈ R and x ≠ (2n +1) 2
+π , n ∈ Z} and the range is R. It means that tan function is not defined for odd multiples of 2
+π . If we restrict the domain of tangent function to
+Fig 2.4 (i) Fig 2.4 (ii)
+Reprint 2026-27
+24 MATHEMATICS
+−π π  
+  , then it is one-one and onto with its range as R. Actually, tangent function restricted to any of the intervals 3 ,
+− π −π  
+−π π  
+  etc., is bijective and its range is R. Thus tan–1 can be defined as a function whose domain is R and range could be any of the intervals 3 ,
+− π −π  
+−π π  
+  and so on. These intervals give different branches of the function tan–1. The branch with range ,
+−π π   is called the principal value branch of the function tan–1.
+We thus have tan–1 : R
+−π π  
+The graphs of the function y = tan x and y = tan–1x are given in Fig 2.5 (i), (ii).
+Fig 2.5 (i) Fig 2.5 (ii)
+We know that domain of the cot function (cotangent function) is the set
+{x : x ∈ R and x ≠ nπ, n ∈ Z} and range is R. It means that cotangent function is not defined for integral multiples of π. If we restrict the domain of cotangent function to (0, π), then it is bijective with and its range as R. In fact, cotangent function restricted to any of the intervals (–π, 0), (0, π), (π, 2π) etc., is bijective and its range is R. Thus cot –1 can be defined as a function whose domain is the R and range as any of the
+Reprint 2026-27
+INVERSE TRIGONOMETRIC FUNCTIONS 25 intervals (–π, 0), (0, π), (π, 2π) etc. These intervals give different branches of the function cot –1. The function with range (0, π) is called the principal value branch of the function cot –1. We thus have cot–1 : R → (0, π)
+The graphs of y = cot x and y = cot–1x are given in Fig 2.6 (i), (ii).
+Fig 2.6 (i) Fig 2.6 (ii)
+The following table gives the inverse trigonometric function (principal value branches) along with their domains and ranges.
+sin–1 : [–1, 1] → , cos–1 : [–1, 1] → [0, π] cosec–1 : R – (–1,1) → ,
+  – {0} sec–1 : R – (–1, 1) → [0, π] – { } tan–1 : R → ,
+−π π   cot–1 : R → (0, π)
+Reprint 2026-27

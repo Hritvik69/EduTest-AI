@@ -1,0 +1,183 @@
+Chapter 7 — Particulate Nature of Matter 109
+Sand is a solid that does not dissolve in water. When added to water, the sand particles settle down and occupy some space in the container, causing the total volume to increase.
+What do you think about the interparticle spacing in solids?
+You learnt earlier that the constituent particles in solids are held together by strong forces of attraction. So, these particles do not move from one place to another and are closely packed. However, despite close packing, some space is left between the particles as shown in Fig. 7.12a. You might assume that the space between particles is filled with air, but this is not the case. They contain nothing at all. Fig. 7.12 summarises the packing of particles and the interparticle spacing in the three states of matter.
+A step further
+Often, we use the term ‘particle’ in different contexts. The meaning of this term changes with the context. For example, while talking about air pollution, the term Suspended Particulate Matter (SPM)
+is used. This term refers to the tiny dust particles suspended in air and not the constituent particles of matter which are extremely small as compared to the dust particles. In fact, even these tiny dust particles are also made up of a very large number of constituent particles, i.e, atoms and molecules.
+7.4 How Particles Move in Different States of Matter?
+Let us find out about the movement of particles in the three states of matter.
+Activity 7.8: Let us experiment z Take a glass tumbler containing water and put a few grains of potassium permanganate into it.
+z What do you observe?
+Fig. 7.12: Magnified schematic pictures of interparticle spacing in the three states of matter (a) Solid (b) Liquid
+Safety first
+Do not touch potassium permanganate with your hands. Use a spoon or a spatula to handle it.
+Reprint 2026-27
+Curiosity — T extbook of Science for Grade 8 z Initially, you will see some streaks of pink colour spreading out from the grain (Fig. 7.13a).
+z With the passage of time, the entire bulk of water will acquire a uniform pink colour (Fig. 7.13b).
+z Do you know why this happens?
+This happens because the water particles are in constant motion. First they pull out the particles of potassium permanganate from its grain, and later they hit these particles so that they get spread throughout the liquid. In the case of many substances, the constituent particles are held together strongly that the water particles are unable to pull these out. Such substances, like sand, are insoluble in water.
+Think like a scientist
+Try it yourself!
+ Take three clean glass tumblers.
+ Pour hot water in one of them, water at room temperature in the second and ice-cold water in the third.
+ Drop a small grain of potassium permanganate into each of them.
+ Watch carefully and compare. What do you observe?
+Water particles move faster in hot water compared to water at room temperature, and even slower in ice-cold water. As a result, the potassium permanganate spreads the fastest in hot water, less quickly in water at room temperature, and the slowest in ice-cold water. Hence, the movement of particles increases when heat is provided.
+Try to depict it by drawing a diagram.
+How can we demonstrate the movement of gas particles that cannot be seen with the naked eye?
+Activity 7.9: Let us find out z Light an incense stick in one corner of the room (Fig. 7.14).
+z Wait for a few minutes and observe.
+z Do you notice the fragrance from a distance?
+Potassium permanganate
+Fig. 7.13: (a) Streaks of pink colour spreading out; (b) Uniform pink colour in glass tumbler
+Reprint 2026-27
+Chapter 7 — Particulate Nature of Matter 111
+Fig. 7.14: Burning of an incense stick
+When an incense stick is burnt in one corner of the room, initially, the fragrance is felt only around the incense stick. Shortly, you can smell the fragrance throughout the room. This happens because the particles of the fragrance spread, filling the entire room. This shows that the particles of air are moving constantly.
+The air particles hit the particles of the fragrance and help them spread throughout the room.
+Oh! Now I know why and how the fragrance of perfume reaches us.
+Can you share a few other real-life situations where you have experienced the movement of gas particles?
+Ever heard of ...
+The particulate nature of matter plays a crucial role in many everyday processes. For example, when we wash clothes stained with oil using soap, numerous soap particles surround the oil particles on the fabric. One end of the soap particle attaches to the oil, and the other mixes with water, thus helping lift the oil off and wash it away (Fig. 7.15). Fig. 7.15: Particles of soap help in cleaning
+Reprint 2026-27
+Curiosity — Textbook of Science for Grade 8
+Based on our learnings from the chapter, we can say that matter is made up of small particles which are held together by the force of attraction. The strength of attractive forces between particles depends on the distance between them, which in turn depends on their thermal (heat) energy. Thus, it is the thermal energy of the particles that determines the physical state of matter. In the solid state, the thermal energy of particles is low, so they remain close to each other and experience strong interparticle attractive forces. This restricts their motion to only small vibrations.
+At the melting point, the thermal energy is used to overcome the attractive forces between particles, allowing the solid to change into a liquid. At this stage, the particles can move away from their fixed positions. The interparticle distance increases slightly, reducing the strength of the attractive forces to a level that allows the particles to move around, though still within a limited space. In the gaseous state, the particles have enough energy to overcome the forces of attraction between them and move freely in all directions. You will learn more about these particles that constitute matter in higher grades.
+Let us wrap up!
+Particle nature of the three states of matter–
+States of Matter
+Solid Liquid Gas
+Interparticle spacing
+Interparticle spacing little more than in solids
+Interparticle spacing
+Particles are closely
+Particles are a little loosely packed than in
+Particles are free
+Interparticle attraction is maximum
+Interparticle attraction is slightly weaker than in solids
+Interparticle attraction is minimum (negligible)
+Movement of particles negligible (only vibrations)
+Movement of particles restricted to limited space
+Movement of particles in all the available space
+Reprint 2026-27
+Chapter 7 — Particulate Nature of Matter 113
+Keep the curiosity alive
+1. Choose the correct option.
+The primary difference between solids and liquids is that the constituent particles are:
+(i) closely packed in solids, while they are stationary in liquids.
+(ii) far apart in solids and have fixed position in liquids.
+(iii) always moving in solids and have fixed position in liquids.
+(iv) closely packed in solids and move past each other in liquids.
+2. Which of the following statements are true? Correct the false statements.
+(i) Melting ice into water is an example of the transformation of a solid into a liquid.
+(ii) Melting process involves a decrease in interparticle attractions during the transformation.
+(iii) Solids have a fixed shape and a fixed volume.
+(iv) The interparticle interactions in solids are very strong, and the interparticle spaces are very small.
+Snapshots
+ Matter is composed of extremely small particles.
+ The particles are held together by interparticle forces of attractions.
+ The interparticle attractions are the strongest in solids, a little weaker in liquids, and the weakest in gases.
+ Solids have a fixed shape and size due to strong interparticle attraction, minimum interparticle space, and no free movement of the constituent particles.
+ The interparticle attraction in liquids is slightly weaker than in solids, enabling the particles to move within a particular space and providing them with a little more interparticle spacing. Therefore, liquids have a definite volume but no fixed shape.
+ The interparticle attractions in gases are negligible, making their particles completely free to move from one place to another and resulting in maximum interparticle space. Therefore, gases have no fixed shape and volume.
+Why? When?
+How long?
+Where? Why not?
+Prepare some questions based on your learnings so far ...
+.....................................................................................
+..................................................................................... Reprint 2026-27 (v) When we heat camphor in one corner of a room, the fragrance reaches all corners of the room.
+(vi) On heating, we are adding energy to the camphor, and the energy is released as a smell.
+3. Choose the correct answer with justification. If we could remove all the constituent particles from a chair, what would (i) Nothing will change.
+(ii) The chair will weigh less due to lost particles.
+(iii) Nothing of the chair will remain.
+4. Why do gases mix easily, while solids do not?
+5. When spilled on the table, milk in a glass tumbler, flows and spreads out, but the glass tumbler stays in the same shape.
+Justify this statement.
+6. Represent diagrammatically the changes in the arrangement of particles as ice melts and transforms into water vapour.
+7. Draw a picture representing particles present in the following:
+(i) Aluminium foil (ii) Glycerin (iii) Methane gas
+8. Observe Fig. 7.16a which shows the image of a candle that was just extinguished after burning for some time. Identify the different states of wax in the figure and match them with
+Fig. 7.16b showing the arrangement of particles.
+9. Why does the water in the ocean taste salty, even though the salt is not visible? Explain.
+10. Grains of rice and rice flour take the shape of the container when placed in different jars. Are they solids or liquids? Explain.
+Fig. 7.16
+Reflect on the questions framed by your friends and try to answer ...
+.....................................................................................
+think ...
+thought ... Maybe ...
+Shouldn’t it
+Reprint 2026-27
+Chapter 7 — Particulate Nature of Matter 115
+Discover, design, and debate z Fix a balloon over the neck of a bottle and put the bottle in hot water. Explore what will happen?
+z Design and create simple models to represent particles of solids, liquids, and gases showing interparticle spacing using clay balls, beads, etc.
+z Pretend to be particles of solids, liquids, and gases, at different temperatures—create and perform a role-play/ dance showing particles in motion.
+z Debate in the class — ‘Gases can spread and fill all the available space’. Is this property of gases beneficial or harmful?
+A step further
+The tiny particles that make up all matter are atoms and molecules.
+For example, iron is made up of atoms of iron, and gold is made up of atoms of gold. Atoms of many elements like hydrogen, oxygen, and sulfur are not able to exist independently. In such cases, a certain number of atoms of the same element combine to form a molecule. For example, two atoms of hydrogen combine and form a stable particle called a molecule of hydrogen. A water molecule is made up of two hydrogen atoms and one oxygen atom. You will learn about atoms and molecules in higher grades.
+Society Science disciplinary
+Projects
+Reprint 2026-27
+Curiosity— Textbook of Science for G rade 8 z Which of the entities in the picture above consist of matter, and which of them do not?
+z How can elements be combined to form a compound?
+z How could the discovery of a compound that absorbs carbon dioxide from the air contribute to solving environmental challenges?
+z Share your questions
+8Nature of Matter :
+Elements, Compounds, and Mixtures
+Probe and ponder
+Reprint 2026-27
+Chapter 8 — Nature of Matter: Elements, Compounds, and Mixtures 117
+Have you ever wondered what the world around you is made of? Look around! The staircase you use, the air you breathe, the water in your bottle, the food in your lunch box, the clothes and shoes you wear, the book you read, the trees outside, the ball you play with and even the stick you carry — all of these are examples of matter, which you have learnt in earlier grades.
+You have also learnt that all these things are made up of tiny particles. Most of the things around us are not made of just one substance; rather they are made up of two or more substances mixed together. Let us now understand how different substances come together to form mixtures.
+8.1 What Are Mixtures?
+Have you ever wondered what makes your poha (Fig. 8.1) so delicious or how to make the perfect sprout salad? While these dishes may seem very different, they share something in common—they are both made by mixing several ingredients.
+We observe the mixing of substances in everyday life. Sugar dissolved in water is also a mixture, and so are soups and lemonade.
+When two or more substances are mixed, where each substance retains its properties, it is called a mixture.
+The individual substances that make up a mixture are called its components.
+The components of a mixture do not react chemically with each other. In some mixtures, the components — like green gram, chickpeas, onion, and tomato in a sprout salad (Fig. 8.2), are easy to see. Such mixtures, where the different components are generally visible with the naked eye or with a magnifying device, are non-uniform in nature. Can you identify a few more examples of non-uniform mixtures around you?
+On the other hand, some mixtures have components that cannot be seen separately even with the help of a microscope.
+For example, sugar and water particles cannot be seen separately in their mixture. Such types of mixtures, where the components are evenly distributed and cannot be distinguished, are uniform in nature (Fig. 8.3). Can you list a few uniform mixtures?
+Fig. 8.1: Poha
+Fig. 8.2: Sprout salad
+Fig. 8.3: Uniform mixture of sugar and water
+Reprint 2026-27
+Curiosity— Textbook of Science for G rade 8
+Mishraloha was the name given to the mixture of two or more metals that had properties distinct from its constituent metals. Ancient
+Indian texts, such as the Charaka Samhita, Susruta Samhita, Rasaratna
+Samucchaya, Rasa Jala Nidhi, etc., mention the use of alloys for medicinal purposes. For example, Bronze, also known as Kamsya, is an alloy made up of Copper (Tamra, 4 parts) and Tin (Vanga, 1 part), was used to improve digestion and boost immunity.
+Our scientific heritage
+8.1.1 Is air a mixture?
+In Curiosity, Grade 6, you learnt about air and its composition in the chapter ‘Nature’s Treasures’. Is air a mixture? What kind of mixture is it?
+You have learnt that air is a uniform mixture of mainly nitrogen, oxygen, argon, carbon dioxide, and water vapour. Out of these, oxygen is required by most of the living beings to stay alive.
+It also helps in combustion. Nitrogen, which constitutes about 78% of the air, does not take part in combustion. We also learnt that air has water vapour in it. When warm air touches a cool surface, the water vapour turns into liquid water, forming tiny droplets. Recall the experiment where you tested the presence of carbon dioxide in the air that we exhale. Let us confirm the presence of carbon dioxide in the air.
+Activity 8.1: Let us experiment z Take a glass tumbler and fill it half with water.
+z Add a small amount of calcium oxide (quick lime) slowly to it.
+z What do you observe?
+z Calcium oxide reacts vigorously with water to form calcium hydroxide and releases heat.
+Safety first
+Perform this step carefully.
+A step further
+Do you know that stainless steel is also a mixture?
+Stainless steel contains iron, nickel, chromium, and a small amount of carbon. They are mixed so uniformly that the entire mixture appears the same throughout and one cannot see the individual substances. Such mixtures are known as alloys. Brass, a mixture of copper and zinc, and bronze, a mixture of copper and tin, are some other examples of alloys (Fig. 8.4).
+Fig. 8.4: Utensils made of stainless steel, brass, and bronze
+Reprint 2026-27
+Chapter 8 — Nature of Matter: Elements, Compounds, and Mixtures 119 z Stir continuously to make a solution of calcium hydroxide. This solution is called lime water.
+z Filter it and observe its colour.
+z Leave this colourless solution in a petri dish for a few hours (Fig. 8.5a).
+z Keep stirring the solution at regular intervals.
+z What do you observe (Fig. 8.5b)?
+z Does it turn milky?
+Can you explain why the solution has turned milky?
+You know that lime water turns milky when carbon dioxide reacts with calcium hydroxide to form calcium carbonate (insoluble tiny white particles) and water (Fig. 8.5). Since lime water turns milky when exposed to air, this activity demonstrates the presence of carbon dioxide in the air.
+Calcium hydroxide + Carbon dioxide Calcium carbonate + Water
+Apart from gases, have you ever observed anything else present in the air? Have you ever noticed tiny shining particles moving in a beam of sunlight entering a dark room through a small opening? What are these particles?
+Activity 8.2: Let us explore z Take a black sheet of paper. Ensure that it is free from any visible dust particles.
+z Place the black sheet of paper undisturbed near an open window (Fig. 8.6a), or in the garden, for a few hours.
+z What do you observe?
+You may notice tiny particles settled on its surface. You may use a magnifying glass to examine the particles more closely (Fig. 8.6b).
+This shows that dust particles are suspended in the air.
+They are not an integral part of the air and are considered pollutants. The nature and the number of dust particles in the air may vary from time to time and from place to place.
+A step further
+The major pollutants present in the air are particulate matter (dust, soot) and gases like carbon monoxide, ozone, nitrogen dioxide, and sulfur dioxide. The air quality index (AQI) is a tool used to describe the air quality.
+Fig. 8.5: Li

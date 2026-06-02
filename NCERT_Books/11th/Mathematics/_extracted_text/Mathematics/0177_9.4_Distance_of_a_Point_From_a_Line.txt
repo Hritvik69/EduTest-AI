@@ -1,0 +1,232 @@
+STRAIGHT LINES 165 line meets the x-and y-axes at the points Q and R, respectively. Then, coordinates of the points are Q C 0
+  and R C
+  . Thus, the area of the triangle PQR is given by ( PQR) PM.QR
+∆ = , which gives 2 area (∆PQR)
+PM = QR ... (1)
+Also, area ( ) 1 1 1 (∆PQR) 0 0 0
+    
+= + + − − − + −     
+    
+2 B A AB y x = + +
+2 area (∆PQR) A B C and
+AB . , y x = + +
+2 2 C C C
+QR 0 0 A B
+= + = + + −  
+Substituting the values of area (∆PQR) and QR in (1), we get
+Fig 9.14
+Reprint 2026-27
+166 MATHEMATICS
+Thus, the perpendicular distance (d) of a line Ax + By+ C = 0 from a point (x1, y1)
+is given by
+9.4.1 Distance between two parallel lines We know that slopes of two parallel lines are equal.
+Therefore, two parallel lines can be taken in the form y = mx + c1 ... (1)
+and y = mx + c2 ... (2)
+Line (1) will intersect x-axis at the point
+  as shown in Fig 9.15.
+Distance between two lines is equal to the length of the perpendicular from point
+A to line (2). Therefore, distance between the lines (1) and (2) is ( ) ( )1 m c c c m d
+− − + −   −  
+Thus, the distance d between two parallel lines 1 y mx c = + and 2 y mx c = + is given by
+If lines are given in general form, i.e., Ax + By + C1 = 0 and Ax + By + C2 = 0, then above formula will take the form 1 2
+Students can derive it themselves.
+Fig 9.15
+Reprint 2026-27
+STRAIGHT LINES 167
+Example 9 Find the distance of the point (3, – 5) from the line 3x – 4y –26 = 0.
+Solution Given line is 3x – 4y –26 = 0 ... (1)
+Comparing (1) with general equation of line Ax + By + C = 0, we get
+A = 3, B = – 4 and C = – 26.
+Given point is (x1, y1) = (3, –5). The distance of the given point from given line is
+3 3 4 5 26 A B C 3.
+5 A B 3 4
+. – – – x y
+Example 10 Find the distance between the parallel lines 3x – 4y +7 = 0 and
+3x – 4y + 5 = 0
+Solution Here A = 3, B = –4, C1 = 7 and C2 = 5. Therefore, the required distance is
+EXERCISE 9.3
+1. Reduce the following equations into slope - intercept form and find their slopes and the y - intercepts.
+(i) x + 7y = 0, (ii) 6x + 3y – 5 = 0, (iii) y = 0.
+2. Reduce the following equations into intercept form and find their intercepts on the axes.
+(i) 3x + 2y – 12 = 0, (ii) 4x – 3y = 6, (iii) 3y + 2 = 0.
+3. Find the distance of the point (–1, 1) from the line 12(x + 6) = 5(y – 2).
+4. Find the points on the x-axis, whose distances from the line 1
++ = are 4 units.
+5. Find the distance between parallel lines (i) 15x + 8y – 34 = 0 and 15x + 8y + 31 = 0 (ii) l (x + y) + p = 0 and l (x + y) – r = 0.
+6. Find equation of the line parallel to the line 3 4 2 0 x y − + = and passing through the point (–2, 3).
+7. Find equation of the line perpendicular to the line x – 7y + 5 = 0 and having x intercept 3.
+8. Find angles between the lines . 1 3 and 1 3 = + = + y x y x
+9. The line through the points (h, 3) and (4, 1) intersects the line 7 9 19 0 x y . − − = at right angle. Find the value of h.
+Reprint 2026-27
+168 MATHEMATICS
+10. Prove that the line through the point (x1, y1) and parallel to the line Ax + By + C = 0 is
+A (x –x1) + B (y – y1) = 0.
+11. Two lines passing through the point (2, 3) intersects each other at an angle of 60o.
+If slope of one line is 2, find equation of the other line.
+12. Find the equation of the right bisector of the line segment joining the points (3, 4)
+and (–1, 2).
+13. Find the coordinates of the foot of perpendicular from the point (–1, 3) to the line 3x – 4y – 16 = 0.
+14. The perpendicular from the origin to the line y = mx + c meets it at the point (–1, 2). Find the values of m and c.
+15. If p and q are the lengths of perpendiculars from the origin to the lines θ 2 cos θ sin θ cos k y x = − and x sec θ + y cosec θ = k, respectively, prove that p2 + 4q2 = k2.
+16. In the triangle ABC with vertices A (2, 3), B (4, –1) and C (1, 2), find the equation and length of altitude from the vertex A.
+17. If p is the length of perpendicular from the origin to the line whose intercepts on the axes are a and b, then show that .
+2 2 2 b a p + =
+Miscellaneous Examples
+Example 11 If the lines 2 3 0 5 3 0 x y , x ky + − = + − = and 3 2 0 x y − − = are concurrent, find the value of k.
+Solution Three lines are said to be concurrent, if they pass through a common point, i.e., point of intersection of any two lines lies on the third line. Here given lines are
+2x + y – 3 = 0 ... (1)
+5x + ky – 3 = 0 ... (2)
+3x – y – 2 = 0 ... (3)
+Solving (1) and (3) by cross-multiplication method, we get
+= = or = 1, = 1
+–2 – 3 –9 + 4 –2 – 3 x y x y .
+Therefore, the point of intersection of two lines is (1, 1). Since above three lines are concurrent, the point (1, 1) will satisfy equation (2) so that
+5.1 + k .1 – 3 = 0 or k = – 2.
+Reprint 2026-27
+STRAIGHT LINES 169
+Example 12 Find the distance of the line 4x – y = 0 from the point P (4, 1) measured along the line making an angle of 135° with the positive x-axis.
+Solution Given line is 4x – y = 0 ... (1)
+In order to find the distance of the line (1) from the point P (4, 1) along another line, we have to find the point of intersection of both the lines. For this purpose, we will first find the equation of the second line (Fig 9.16). Slope of second line is tan 135° = –1. Equation of the line with slope – 1 through the point
+P (4, 1) is y – 1 = – 1 (x – 4) or x + y – 5 = 0 ... (2)
+Solving (1) and (2), we get x = 1 and y = 4 so that point of intersection of the two lines is Q (1, 4). Now, distance of line (1) from the point P (4, 1) along the line (2)
+= the distance between the points P (4, 1) and Q (1, 4).
+= ( ) ( )2 21 4 4 1 3 2 units . − + − =
+Example 13 Assuming that straight lines work as the plane mirror for a point, find the image of the point (1, 2) in the line x – 3y + 4 = 0.
+Solution Let Q (h, k) is the image of the point P (1, 2) in the line x – 3y + 4 = 0 ... (1)
+Therefore, the line (1) is the perpendicular bisector of line segment PQ (Fig 9.17).
+Fig 9.16
+Fig 9.17
+Reprint 2026-27
+170 MATHEMATICS
+Hence Slope of line PQ = 1
+Slope of line 3 4 0 x y so that 2 1 or 3 5 and the mid-point of PQ, i.e., point 
+1 k h will satisfy the equation (1) so that
+3 3 or 0 4
+1 − = − = +  k h ... (3)
+Solving (2) and (3), we get h = 5
+6 and k = 5
+Hence, the image of the point (1, 2) in the line (1) is 6 7
+Example 14 Show that the area of the triangle formed by the lines y = m1x + c1, y = m2x + c2 and x = 0 is ( )2
+Solution Given lines are y = m1 x + c1 ... (1)
+y = m2 x + c2 ... (2)
+x = 0 ... (3)
+We know that line y = mx + c meets the line x = 0 (y-axis) at the point (0, c). Therefore, two vertices of the triangle formed by lines (1) to (3) are
+P (0, c1) and Q (0, c2) (Fig 9.18).
+Third vertex can be obtained by solving equations (1) and (2). Solving (1) and (2), we get
+Fig 9.18
+Reprint 2026-27
+STRAIGHT LINES 171
+2 1 1 2 2 1 c c m c m c
+Therefore, third vertex of the triangle is R ( )
+2 1 1 2 2 1 c c m c m c
+    − −   .
+Now, the area of the triangle is ( ) ( )2
+1 2 2 1 2 1 1 2 2 1
+1 2 1 2 1 2 1 2 c c m c m c c c m c m c m m m m m m m m
+    − − −
+= − + − + − =    
+− − − −    
+Example 15 A line is such that its segment between the lines
+5x – y + 4 = 0 and 3x + 4y – 4 = 0 is bisected at the point (1, 5). Obtain its equation.
+Solution Given lines are
+5x – y + 4 = 0 ... (1)
+3x + 4y – 4 = 0 ... (2)
+Let the required line intersects the lines (1) and (2) at the points, (α1, β1) and (α2, β2), respectively (Fig 9.19). Therefore
+5α1 – β1 + 4 = 0 and
+3 α2 + 4 β2 – 4 = 0 or β1 = 5α1 + 4 and 2
+We are given that the mid point of the segment of the required line between (α1, β1) and (α2, β2) is (1, 5). Therefore
+1 1 2 2 β + β + α α = 1 and = 5
+5α + 4 + 4α + = 2 and = 5, α 2 or α1 + α2 = 2 and 20 α1 – 3 α2 = 20 ... (3)
+Solving equations in (3) for α1 and α2, we get
+Fig 9.19
+Reprint 2026-27
+172 MATHEMATICS
+α = 23 and 2
+= α 23 and hence, 23
+. 5 β1 = + = .
+Equation of the required line passing through (1, 5) and (α1, β1) is
+= − x y or
+23 5 ( 1)
+or 107x – 3y – 92 = 0, which is the equation of required line.
+Example 16 Show that the path of a moving point such that its distances from two lines 3x – 2y = 5 and 3x + 2y = 5 are equal is a straight line.
+Solution Given lines are
+3x – 2y = 5 … (1)
+and 3x + 2y = 5 … (2)
+Let (h, k) is any point, whose distances from the lines (1) and (2) are equal. Therefore
+5 2 3 5 2 3 or
+5 2 3 − + = − −
+− − k h k h k h k h , which gives 3h – 2k – 5 = 3h + 2k – 5 or – (3h – 2k – 5) = 3h + 2k – 5.
+Solving these two relations we get k = 0 or h = 3
+5 . Thus, the point (h, k) satisfies the equations y = 0 or x = 3
+5 , which represent straight lines. Hence, path of the point equidistant from the lines (1) and (2) is a straight line.
+Miscellaneous Exercise on Chapter 9
+1. Find the values of k for which the line (k–3) x – (4 – k2) y + k2 –7k + 6 = 0 is (a) Parallel to the x-axis, (b) Parallel to the y-axis, (c) Passing through the origin.
+2. Find the equations of the lines, which cut-off intercepts on the axes whose sum and product are 1 and – 6, respectively.
+Reprint 2026-27
+STRAIGHT LINES 173
+3. What are the points on the y-axis whose distance from the line 1
+4 units.
+4. Find perpendicular distance from the origin to the line joining the points (cosθ, sin θ)
+and (cos φ, sin φ).
+5. Find the equation of the line parallel to y-axis and drawn through the point of intersection of the lines x – 7y + 5 = 0 and 3x + y = 0.
+6. Find the equation of a line drawn perpendicular to the line 1
+6 4 = + y x through the point, where it meets the y-axis.
+7. Find the area of the triangle formed by the lines y – x = 0, x + y = 0 and x – k = 0.
+8. Find the value of p so that the three lines 3x + y – 2 = 0, px + 2 y – 3 = 0 and
+2x – y – 3 = 0 may intersect at one point.
+9. If three lines whose equations are y = m1x + c1, y = m2x + c2 and y = m3x + c3 are concurrent, then show that m1(c2 – c3) + m2 (c3 – c1) + m3 (c1 – c2) = 0.
+10. Find the equation of the lines through the point (3, 2) which make an angle of 45o with the line x – 2y = 3.
+11. Find the equation of the line passing through the point of intersection of the lines
+4x + 7y – 3 = 0 and 2x – 3y + 1 = 0 that has equal intercepts on the axes.
+12. Show that the equation of the line passing through the origin and making an angle
+θ with the line y mx c is y
+= + = ± tan ‚ tan ‚ 1 ∓ .
+13. In what ratio, the line joining (–1, 1) and (5, 7) is divided by the line x + y = 4?
+14. Find the distance of the line 4x + 7y + 5 = 0 from the point (1, 2) along the line
+2x – y = 0.
+15. Find the direction in which a straight line must be drawn through the point (–1, 2)
+so that its point of intersection with the line x + y = 4 may be at a distance of
+3 units from this point.
+16. The hypotenuse of a right angled triangle has its ends at the points (1, 3) and (– 4, 1). Find an equation of the legs (perpendicular sides) of the triangle which are parallel to the axes.
+17. Find the image of the point (3, 8) with respect to the line x +3y = 7 assuming the line to be a plane mirror.
+18. If the lines y = 3x +1 and 2y = x + 3 are equally inclined to the line y = mx + 4, find the value of m.
+19. If sum of the perpendicular distances of a variable point P (x, y) from the lines x + y – 5 = 0 and 3x – 2y +7 = 0 is always 10. Show that P must move on a line.
+Reprint 2026-27
+174 MATHEMATICS
+20. Find equation of the line which is equidistant from parallel lines 9x + 6y – 7 = 0 and 3x + 2y + 6 = 0.
+21. A ray of light passing through the point (1, 2) reflects on the x-axis at point A and the reflected ray passes through the point (5, 3). Find the coordinates of A.
+22. Prove that the product of the lengths of the perpendiculars drawn from the points ( )2 2 0 a b , − and ( )2 2 0 a b , − − to the line 2 cosθ sin θ 1is
+23. A person standing at the junction (crossing) of two straight paths represented by the equations 2x – 3y + 4 = 0 and 3x + 4y – 5 = 0 wants to reach the path whose equation is 6x – 7y + 8 = 0 in the least time. Find equation of the path that he should follow.
+ÆSlope (m) of a non-vertical line passing through the points (x1, y1) and (x2, y2)
+is given by 2 1 1 2 1 2 m x x , .
+Æ If a line makes an angle á with the positive direction of x-axis, then the slope of the line is given by m = tan α, α ≠ 90°.
+ÆSlope of horizontal line is zero and slope of vertical line is undefined.
+Æ An acute angle (say θ) between lines L1 and L2 with slopes m1 and m2 is given by 2 1 tanθ 1 0 m – m , m m
+ÆTwo lines are parallel if and only if their slopes are equal.
+ÆTwo lines are perpendicular if and only if product of their slopes is –1.
+ÆThree points A, B and C are collinear, if and only if slope of AB = slope of BC.
+ÆEquation of the horizontal line having distance a from the x-axis is either y = a or y = – a.
+ÆEquation of the vertical line having distance b from the y-axis is either x = b or x = – b.
+ÆThe point (x, y) lies on the line with slope m and through the fixed point (xo, yo), if and only if its coordinates satisfy the equation y – yo = m (x – xo).
+Æ Equation of the line passing through the points (x1, y1) and (x2, y2) is given by
+Reprint 2026-27
+STRAIGHT LINES 175
+ÆThe point (x, y) on the line with slope m and y-intercept c lies on the line if and only if y = mx + c.
+ÆIf a line with slope m makes x-intercept d. Then equation of the line is y = m (x – d).
+ÆEquation of a line making intercepts a and b on the x-and y-axis, respectively, is 1 = + b
+ÆAny equation of the form Ax + By + C = 0, with A and B are not zero, simultaneously, is called the general linear equation or general equation of
+ÆThe perpendicular distance (d) of a line Ax + By+ C = 0 from a point (x1, y1)
+is given by 1 1
+ÆDistance between the parallel lines Ax + By + C1 = 0 and Ax + By + C2 = 0, is given by 2 1
+Reprint 2026-27
+176 MATHEMATICS vLet the relation of knowledge to real life be very visible to your pupils and let them understand how by knowledge the world could be transformed. – BERTRAND RUSSELL v
+10.1 Introduction
+In the preceding Chapter 10, we have studied various forms of the equations of a line. In this Chapter, we shall study about some other curves, viz., circles, ellipses, parabolas and hyperbolas. The names parabola and hyperbola are given by Apollonius. These curves are in fact, known as conic sections or more commonly conics because they can be obtained as intersections of a plane with a double napped right circular cone. These curves have a very wide range of applications in fields such as planetary motion, design of telescopes and antennas, reflectors in flashlights and automobile headlights, etc. Now, in the subsequent sections we will see how the intersection of a plane with a double napped right circular cone results in different types of curves.
+10.2 Sections of a Cone
+Let l be a fixed vertical line and m be another line intersecting it at a fixed point V and inclined to it at an angle α (Fig10.1).
+Suppose we rotate the line m around the line l in such a way that the angle α remains constant. Then the surface generated is a double-napped right circular hollow cone herein after referred as
+Apollonius (262 B.C. -190 B.C.)
+10 Chapter
+Fig 10. 1
+CONIC SECTIONS
+Reprint 2026-27

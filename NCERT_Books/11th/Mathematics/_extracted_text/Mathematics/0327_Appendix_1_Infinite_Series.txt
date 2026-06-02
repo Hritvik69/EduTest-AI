@@ -1,0 +1,28 @@
+INFINITE SERIES 315
+Remark 1. Note carefully the condition | x | < 1, i.e., – 1< x < 1 is necessary when m is negative integer or a fraction. For example, if we take x = – 2 and m = – 2, we ( ) ( )( ) ( )( ) ( )2 2 2 3
+1 2 1 2 2 2 ...
+− = + − − + − + or 1= 1 + 4 + 12 + . . .
+This is not possible
+2. Note that there are infinite number of terms in the expansion of (1+ x)m, when m is a negative integer or a fraction
+Consider ( )m a b + = 1 1
+     
++ = +      
+      m m m b b
+  −  
++ + +    
+     
+= ( ) 1 2 2 1 ...
+m m m m m a ma b a b− − −
+This expansion is valid when 1 < a or equivalently when | b | < | a |.
+The general term in the expansion of (a + b)m is ( )( ) ( ) 1 2 ... 1
+1.2.3...
+m m m m r a b
+We give below certain particular cases of Binomial Theorem, when we assume
+1 x < , these are left to students as exercises:
+1. (1 + x) – 1 = 1 – x + x2 – x3 + . . .
+2. (1 – x) – 1 = 1 + x + x2 + x3 + . . .
+3. (1 + x) – 2 = 1 –2 x + 3x2 – 4x3 + . . .
+4. (1 – x) – 2 = 1 +2x + 3x2 + 4x3 + . . .
+Example 1 Expand
+  , when | x | < 2.
+Reprint 2026-27

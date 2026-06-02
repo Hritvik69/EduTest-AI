@@ -1,0 +1,145 @@
+FIGURE 9.1 The incident ray, reflected ray and the normal to the reflecting surface lie in the same plane.
+FIGURE 9.2 The Cartesian Sign Convention.
+them. The path is called a ray of light, and a bundle of such rays constitutes a beam of light.
+In this chapter, we consider the phenomena of reflection, refraction and dispersion of light, using the ray picture of light. Using the basic laws of reflection and refraction, we shall study the image formation by plane and spherical reflecting and refracting surfaces. We then go on to describe the construction and working of some important optical instruments, including the human eye.
+9.2 REFLECTION OF LIGHT BY SPHERICAL MIRRORS
+We are familiar with the laws of reflection. The angle of reflection (i.e., the angle between reflected ray and the normal to the reflecting surface or the mirror) equals the angle of incidence (angle between incident ray and the normal). Also that the incident ray, reflected ray and the normal to the reflecting surface at the point of incidence lie in the same plane (Fig. 9.1). These laws are valid at each point on any reflecting surface whether plane or curved. However, we shall restrict our discussion to the special case of curved surfaces, that is, spherical surfaces. The normal in this case is to be taken as normal to the tangent to surface at the point of incidence. That is, the normal is along the radius, the line joining the centre of curvature of the mirror to the point of incidence.
+We have already studied that the geometric centre of a spherical mirror is called its pole while that of a spherical lens is called its optical centre.
+The line joining the pole and the centre of curvature of the spherical mirror is known as the principal axis. In the case of spherical lenses, the principal axis is the line joining the optical centre with its principal focus as you will see later.
+9.2.1 Sign convention
+To derive the relevant formulae for reflection by spherical mirrors and refraction by spherical lenses, we must first adopt a sign convention for measuring distances. In this book, we shall follow the Cartesian sign convention. According to this convention, all distances are measured from the pole of the mirror or the optical centre of the lens. The distances measured in the same direction as the incident light are taken as positive and those measured in the direction opposite to the direction of incident light are taken as negative (Fig. 9.2).
+The heights measured upwards with respect to x-axis and normal to the
+Reprint 2026-27
+Ray Optics and
+Optical Instruments principal axis (x-axis) of the mirror/lens are taken as positive (Fig. 9.2).
+The heights measured downwards are taken as negative.
+With a common accepted convention, it turns out that a single formula for spherical mirrors and a single formula for spherical lenses can handle all different cases.
+9.2.2 Focal length of spherical mirrors
+Figure 9.3 shows what happens when a parallel beam of light is incident on (a) a concave mirror, and (b) a convex mirror. We assume that the rays are paraxial, i.e., they are incident at points close to the pole P of the mirror and make small angles with the principal axis. The reflected rays converge at a point F on the principal axis of a concave mirror [Fig. 9.3(a)].
+For a convex mirror, the reflected rays appear to diverge from a point F on its principal axis [Fig. 9.3(b)]. The point F is called the principal focus of the mirror. If the parallel paraxial beam of light were incident, making some angle with the principal axis, the reflected rays would converge (or appear to diverge) from a point in a plane through F normal to the principal axis. This is called the focal plane of the mirror [Fig. 9.3(c)].
+FIGURE 9.3 Focus of a concave and convex mirror.
+The distance between the focus F and the pole P of the mirror is called the focal length of the mirror, denoted by f. We now show that f = R/2, where R is the radius of curvature of the mirror. The geometry of reflection of an incident ray is shown in Fig. 9.4.
+Let C be the centre of curvature of the mirror. Consider a ray parallel to the principal axis striking the mirror at M. Then CM will be perpendicular to the mirror at M. Let q be the angle of incidence, and MD
+Reprint 2026-27 be the perpendicular from M on the principal axis. Then, q and –MFP = 2 tanq = MD
+CD and tan 2
+FD (9.1)
+For small q, which is true for paraxial rays, tan q. Therefore, Eq. (9.1) gives
+FD = 2 MD or, FD = CD
+Now, for small q, the point D is very close to the point P.
+Therefore, FD = f and CD = R. Equation (9.2) then gives f = R/2 (9.3)
+9.2.3 The mirror equation
+If rays emanating from a point actually meet at another point after reflection and/or refraction, that point is called the image of the first point. The image is real if the rays actually converge to the point; it is virtual if the rays do not actually meet but appear to diverge from the point when produced backwards. An image is thus a point-to-point correspondence with the object established through reflection and/or refraction.
+In principle, we can take any two rays emanating from a point on an object, trace their paths, find their point of intersection and thus, obtain the image of the point due to reflection at a spherical mirror. In practice, however, it is convenient to choose any two of the following rays:
+(i) The ray from the point which is parallel to the principal axis. The reflected ray goes through the focus of the mirror.
+(ii) The ray passing through the centre of curvature of a concave mirror or appearing to pass through it for a convex mirror. The reflected ray simply retraces the path.
+(iii) The ray passing through (or directed towards) the focus of the concave mirror or appearing to pass through (or directed towards) the focus of a convex mirror. The reflected ray is parallel to the principal axis.
+(iv) The ray incident at any angle at the pole. The reflected ray follows laws of reflection.
+Figure 9.5 shows the ray diagram considering three rays. It shows the image A¢B¢ (in this case, real) of an object A B formed by a concave mirror. It does not mean that only three rays emanate from the point A.
+An infinite number of rays emanate from any source, in all directions.
+Thus, point A¢ is image point of A if every ray originating at point A and falling on the concave mirror after reflection passes through the point A¢.
+FIGURE 9.4 Geometry of reflection of an incident ray on (a) concave spherical mirror, and (b) convex spherical mirror.
+FIGURE 9.5 Ray diagram for image formation by a concave mirror.
+Reprint 2026-27
+Ray Optics and
+Optical Instruments
+We now derive the mirror equation or the relation between the object distance (u), image distance (v) and the focal length ( f ).
+From Fig. 9.5, the two right-angled triangles A¢B¢F and MPF are similar. (For paraxial rays, MP can be considered to be a straight line perpendicular to CP.) Therefore, or B A B F
+= (∵PM = AB) (9.4)
+Since – APB = – A¢PB¢, the right angled triangles A¢B¢P and ABP are also similar. Therefore,
+Comparing Eqs. (9.4) and (9.5), we get
+B P – FP B F B P
+FP FP BP
+= = (9.6)
+Equation (9.6) is a relation involving magnitude of distances. We now apply the sign convention. We note that light travels from the object to the mirror MPN. Hence this is taken as the positive direction. To reach the object AB, image A¢B¢ as well as the focus F from the pole P, we have to travel opposite to the direction of incident light. Hence, all the three will have negative signs. Thus,
+B¢ P = –v, FP = –f, BP = –u
+Using these in Eq. (9.6), we get or – v f v
+Dividing it by v, we get
++ = (9.7)
+This relation is known as the mirror equation.
+The size of the image relative to the size of the object is another important quantity to consider. We define linear magnification (m ) as the ratio of the height of the image (h¢) to the height of the object (h):
+¢ will be taken positive or negative in accordance with the accepted sign convention. In triangles A¢B¢P and ABP, we have,
+With the sign convention, this becomes
+Reprint 2026-27
+′ = (9.9)
+We have derived here the mirror equation, Eq. (9.7), and the magnification formula, Eq. (9.9), for the case of real, inverted image formed by a concave mirror. With the proper use of sign convention, these are, in fact, valid for all the cases of reflection by a spherical mirror (concave or convex) whether the image formed is real or virtual. Figure 9.6 shows the ray diagrams for virtual image formed by a concave and convex mirror.
+You should verify that Eqs. (9.7) and (9.9) are valid for these cases as
+FIGURE 9.6 Image formation by (a) a concave mirror with object between
+P and F, and (b) a convex mirror.
+Example 9.1 Suppose that the lower half of the concave mirror’s reflecting surface in Fig. 9.6 is covered with an opaque (non-reflective)
+material. What effect will this have on the image of an object placed in front of the mirror?
+Solution You may think that the image will now show only half of the object, but taking the laws of reflection to be true for all points of the remaining part of the mirror, the image will be that of the whole object.
+However, as the area of the reflecting surface has been reduced, the intensity of the image will be low (in this case, half).
+Example 9.2 A mobile phone lies along the principal axis of a concave mirror, as shown in Fig. 9.7. Show by suitable diagram, the formation of its image. Explain why the magnification is not uniform. Will the distortion of image depend on the location of the phone with respect to the mirror?
+FIGURE 9.7
+Reprint 2026-27
+Ray Optics and
+Optical Instruments
+Solution
+The ray diagram for the formation of the image of the phone is shown in Fig. 9.7. The image of the part which is on the plane perpendicular to principal axis will be on the same plane. It will be of the same size, i.e., B¢C = BC. You can yourself realise why the image is distorted.
+Example 9.3 An object is placed at (i) 10 cm, (ii) 5 cm in front of a concave mirror of radius of curvature 15 cm. Find the position, nature, and magnification of the image in each case.
+Solution
+The focal length f = –15/2 cm = –7.5 cm (i) The object distance u = –10 cm. Then Eq. (9.7) gives
+10 7 5 v + =
+= = – 30 cm
+The image is 30 cm from the mirror on the same side as the object.
+Also, magnification m = ( 30)
+The image is magnified, real and inverted.
+(ii) The object distance u = –5 cm. Then from Eq. (9.7),
+5 7.5 v + =
+5 7 5 15 cm
+This image is formed at 15 cm behind the mirror. It is a virtual image.
+Magnification m = 15
+The image is magnified, virtual and erect.
+Example 9.4 Suppose while sitting in a parked car, you notice a jogger approaching towards you in the side view mirror of R = 2 m. If the jogger is running at a speed of 5 m s–1, how fast the image of the jogger appear to move when the jogger is (a) 39 m, (b) 29 m, (c) 19 m, and (d) 9 m away.
+Solution
+From the mirror equation, Eq. (9.7), we get
+For convex mirror, since R = 2 m, f = 1 m. Then for u = –39 m, ( 39) 1 39 m
+Since the jogger moves at a constant speed of 5 m s–1, after 1 s the position of the image v (for u = –39 + 5 = –34) is (34/35 )m.
+Reprint 2026-27
+FIGURE 9.8 Refraction and reflection of light.
+The shift in the position of image in 1 s is
+1365 1360 39 34 5 1 m
+40 35 1400 1400 280
+Therefore, the average speed of the image when the jogger is between
+39 m and 34 m from the mirror, is (1/280) m s–1
+Similarly, it can be seen that for u = –29 m, –19 m and –9 m, the speed with which the image appears to move is
+–1 –1 –1 1 1 1 m s , m s and m s ,
+150 60 10 respectively.
+Although the jogger has been moving with a constant speed, the speed of his/her image appears to increase substantially as he/she moves closer to the mirror. This phenomenon can be noticed by any person sitting in a stationary car or a bus. In case of moving vehicles, a similar phenomenon could be observed if the vehicle in the rear is moving closer with a constant speed.
+9.3 REFRACTION
+When a beam of light encounters another transparent medium, a part of light gets reflected back into the first medium while the rest enters the other. A ray of light represents a beam. The direction of propagation of an obliquely incident (0°< i < 90°) ray of light that enters the other medium, changes at the interface of the two media. This phenomenon is called refraction of light. Snell experimentally obtained the following laws of refraction:
+(i) The incident ray, the refracted ray and the normal to the interface at the point of incidence, all lie in the same plane.
+(ii) The ratio of the sine of the angle of incidence to the sine of angle of refraction is constant.
+Remember that the angles of incidence (i ) and refraction (r ) are the angles that the incident and its refracted ray make with the normal, respectively. We have r = (9.10)
+where n 21 is a constant, called the refractive index of the second medium with respect to the first medium. Equation (9.10) is the well-known
+Snell’s law of refraction. We note that n 21 is a characteristic of the pair of media (and also depends on the wavelength of light), but is independent of the angle of incidence.
+From Eq. (9.10), if n 21 > 1, r < i , i.e., the refracted ray bends towards the normal. In such a case medium 2 is said to be optically denser (or denser, in short) than medium 1. On the other hand, if n 21 <1, r > i, the
+Reprint 2026-27
+Ray Optics and
+Optical Instruments refracted ray bends away from the normal. This is the case when incident ray in a denser medium refracts into a rarer medium.
+Note: Optical density should not be confused with mass density, which is mass per unit volume. It is possible that mass density of an optically denser medium may be less than that of an optically rarer medium (optical density is the ratio of the speed of light in two media). For example, turpentine and water. Mass density of turpentine is less than that of water but its optical density is higher.
+If n 21 is the refractive index of medium 2 with respect to medium 1 and n12 the refractive index of medium 1 with respect to medium 2, then it should be clear that
+= (9.11)
+It also follows that if n 32 is the refractive index of medium 3 with respect to medium 2 then n 32 = n 31 × n 12, where n 31 is the refractive index of medium 3 with respect to medium 1.
+Some elementary results based on the laws of refraction follow immediately. For a rectangular slab, refraction takes place at two interfaces (air- glass and glass-air). It is easily seen from Fig. 9.9 that r2 = i1, i.e., the emergent ray is parallel to the incident ray—there is no deviation, but it does suffer lateral displacement/shift with respect to the incident ray. Another familiar observation is that the bottom of a tank filled with water appears to be raised (Fig. 9.10). For viewing near the normal direction, it can be shown that the apparent depth (h1) is real depth (h 2) divided by the refractive index of the medium (water).
+9.4 TOTAL INTERNAL REFLECTION
+When light travels from an optically denser medium to a rarer medium at the interface, it is partly reflected back into the same medium and partly refracted to the second medium. This reflection is called the internal reflection.
+When a ray of light enters from a denser medium to a rarer medium, it bends away from the normal, for example, the ray AO1 B in Fig. 9.11.
+The incident ray AO1 is partially reflected (O1C) and partially transmitted (O1B) or refracted, the angle of refraction (r ) being larger than the angle of incidence (i ). As the angle of incidence increases, so does the angle of
+FIGURE 9.10 Apparent depth for (a) normal, and (b) oblique viewing.
+FIGURE 9.9 Lateral shift of a ray refracted through a parallel-sided slab.
+Reprint 2026-27 refraction, till for the ray AO3, the angle of refraction is p/2. The refracted ray is bent so much away from the normal that it grazes the surface at the interface between the two media. This is shown by the ray
+AO3 D in Fig. 9.11. If the angle of incidence is increased still further (e.g., the ray AO4), refraction is not possible, and the incident ray is totally reflected. This is called total internal reflection. When light gets reflected by a surface, normally some fraction of it gets transmitted. The reflected ray, therefore, is always less intense than the incident ray, howsoever smooth the reflecting surface may be. In total internal reflection, on the other hand, no transmission of light takes place.
+The angle of incidence corresponding to an angle of refraction 90°, say –AO3N, is called the critical angle (ic ) for the given pair of media. We see from Snell’s law [Eq. (9.10)] that if the relative refractive index of the refracting medium is less than one then, since the maximum value of sin r is unity, there is an upper limit to the value of sin i for which the law can be satisfied, that is, i = ic such that sin ic = n 21 (9.12)
+For values of i larger than ic, Snell’s law of refraction cannot be satisfied, and hence no refraction is possible.
+The refractive index of denser medium 1 with respect to rarer medium
+2 will be n12 = 1/sin ic. Some typical critical angles are listed in Table 9.1.
+FIGURE 9.11 Refraction and internal reflection of rays from a point A in the denser medium (water) incident at different angles at the interface with a rarer medium (air).
+A demonstration for total internal reflection
+All optical phenomena can be demonstrated very easily with the use of a laser torch or pointer, which is easily available nowadays. Take a glass beaker with clear water in it. Add a few drops of milk or any other suspension to water and stir so that water becomes a little turbid. Take a laser pointer and shine its beam through the turbid water. You will find that the path of the beam inside the water shines brightly.
+TABLE 9.1 CRITICAL ANGLE OF SOME TRANSPARENT MEDIA WITH RESPECT TO AIR
+Substance medium Refractive index Critical angle
+Water 1.33 48.75
+Crown glass 1.52 41.14
+Dense flint glass 1.62 37.31
+Diamond 2.42 2

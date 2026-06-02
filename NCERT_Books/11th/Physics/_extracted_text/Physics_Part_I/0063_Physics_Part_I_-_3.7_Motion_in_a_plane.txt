@@ -1,0 +1,61 @@
+MOTION IN A PLANE 47 (c) |a−−−−−b| < |a| + |b| (d) |a−−−−−b| > ||a| −−−−− |b||
+When does the equality sign above apply?
+3.7 Given a + b + c + d = 0, which of the following statements are correct :
+(a) a, b, c, and d must each be a null vector, (b) The magnitude of (a + c) equals the magnitude of ( b + d), (c) The magnitude of a can never be greater than the sum of the magnitudes of b, c, and d, (d) b + c must lie in the plane of a and d if a and d are not collinear, and in the line of a and d, if they are collinear ?
+3.8 Three girls skating on a circular ice ground of radius
+200 m start from a point P on the edge of the ground and reach a point Q diametrically opposite to P following different paths as shown in Fig. 3.19. What is the magnitude of the displacement vector for each ? For which girl is this equal to the actual length of path skate ?
+3.9 A cyclist starts from the centre O of a circular park of radius 1 km, reaches the edge P of the park, then cycles along the circumference, and returns to the centre along QO as shown in Fig. 3.20. If the round trip takes 10 min, what is the (a) net displacement, (b) average velocity, and (c) average speed of the cyclist ?
+Fig. 3.20
+3.10 On an open ground, a motorist follows a track that turns to his left by an angle of 600 after every 500 m. Starting from a given turn, specify the displacement of the motorist at the third, sixth and eighth turn. Compare the magnitude of the displacement with the total path length covered by the motorist in each case.
+3.11 A passenger arriving in a new town wishes to go from the station to a hotel located
+10 km away on a straight road from the station. A dishonest cabman takes him along a circuitous path 23 km long and reaches the hotel in 28 min. What is (a) the average speed of the taxi, (b) the magnitude of average velocity ? Are the two equal ?
+3.12 The ceiling of a long hall is 25 m high. What is the maximum horizontal distance that a ball thrown with a speed of 40 m s-1 can go without hitting the ceiling of the hall ?
+3.13 A cricketer can throw a ball to a maximum horizontal distance of 100 m. How much high above the ground can the cricketer throw the same ball ?
+Fig. 3.19
+Reprint 2026-27
+PHYSICS 48
+3.14 A stone tied to the end of a string 80 cm long is whirled in a horizontal circle with a constant speed. If the stone makes 14 revolutions in 25 s, what is the magnitude and direction of acceleration of the stone ?
+3.15 An aircraft executes a horizontal loop of radius 1.00 km with a steady speed of 900 km/h. Compare its centripetal acceleration with the acceleration due to gravity.
+3.16 Read each statement below carefully and state, with reasons, if it is true or false :
+(a) The net acceleration of a particle in circular motion is always along the radius of the circle towards the centre (b) The velocity vector of a particle at a point is always along the tangent to the path of the particle at that point (c) The acceleration vector of a particle in uniform circular motion averaged over one cycle is a null vector
+3.17 The position of a particle is given by
+2 ˆ ˆ ˆ 3.0 2.0 4.0 m t t = − + r i j k where t is in seconds and the coefficients have the proper units for r to be in metres.
+(a) Find the v and a of the particle? (b) What is the magnitude and direction of velocity of the particle at t = 2.0 s ?
+3.18 A particle starts from the origin at t = 0 s with a velocity of 10.0 jɵ m/s and moves in the x-y plane with a constant acceleration of ( ) 8.0 2.0 ɵ ɵ i j + m s-2. (a) At what time is the x- coordinate of the particle 16 m? What is the y-coordinate of the particle at that time? (b) What is the speed of the particle at the time ?
+3.19 ɵi and ɵj are unit vectors along x- and y- axis respectively. What is the magnitude and direction of the vectors ɵ ɵ i j + , and ɵ ɵ i j − ? What are the components of a vector
+A= 2 ɵ ɵ i j + 3 along the directions of ɵ ɵ i j + and ɵ ɵ i j − ? [You may use graphical method]
+3.20 For any arbitrary motion in space, which of the following relations are true :
+(a) vaverage = (1/2) (v (t1) + v (t2))
+(b) v average = [r(t2) - r(t1) ] /(t2 – t1)
+(c) v (t) = v (0) + a t (d) r (t) = r (0) + v (0) t + (1/2) a t2 (e) a average =[ v (t2) - v (t1 )] /( t2 – t1)
+(The ‘average’ stands for average of the quantity over the time interval t1 to t2)
+3.21 Read each statement below carefully and state, with reasons and examples, if it is true or false :
+A scalar quantity is one that (a) is conserved in a process (b) can never take negative values (c) must be dimensionless (d) does not vary from one point to another in space (e) has the same value for observers with different orientations of axes.
+3.22 An aircraft is flying at a height of 3400 m above the ground. If the angle subtended at a ground observation point by the aircraft positions 10.0 s a part is 30°, wat is the speed of the aircraft ?
+Reprint 2026-27
+CHAPTER FOUR
+LAWS OF MOTION
+4.1 INTRODUCTION
+In the preceding Chapter, our concern was to describe the motion of a particle in space quantitatively. We saw that uniform motion needs the concept of velocity alone whereas non-uniform motion requires the concept of acceleration in addition. So far, we have not asked the question as to what governs the motion of bodies. In this chapter, we turn to this basic question.
+Let us first guess the answer based on our common experience. To move a football at rest, someone must kick it.
+To throw a stone upwards, one has to give it an upward push. A breeze causes the branches of a tree to swing; a strong wind can even move heavy objects. A boat moves in a flowing river without anyone rowing it. Clearly, some external agency is needed to provide force to move a body from rest.
+Likewise, an external force is needed also to retard or stop motion. You can stop a ball rolling down an inclined plane by applying a force against the direction of its motion.
+In these examples, the external agency of force (hands, wind, stream, etc) is in contact with the object. This is not always necessary. A stone released from the top of a building accelerates downward due to the gravitational pull of the earth. A bar magnet can attract an iron nail from a distance.
+This shows that external agencies (e.g. gravitational and magnetic forces ) can exert force on a body even from a distance.
+In short, a force is required to put a stationary body in motion or stop a moving body, and some external agency is needed to provide this force. The external agency may or may not be in contact with the body.
+So far so good. But what if a body is moving uniformly (e.g.
+a skater moving straight with constant speed on a horizontal ice slab)? Is an external force required to keep a body in uniform motion?
+4.1 Introduction
+4.2 Aristotle’s fallacy
+4.3 The law of inertia
+4.4 Newton’s first law of motion
+4.5 Newton’s second law of
+4.6 Newton’s third law of motion
+4.7 Conservation of momentum
+4.8 Equilibrium of a particle
+4.9 Common forces in mechanics
+4.10 Circular motion
+4.11 Solving problems in mechanics
+Points to ponder
+Exercises
+Reprint 2026-27

@@ -1,0 +1,28 @@
+Electromagnetic
+Induction
+Solution The angle q made by the area vector of the coil with the magnetic field is 45°. From Eq. (6.1), the initial magnetic flux is
+F = BA cos
+0.1 10 Wb
+Final flux,
+Fmin = 0
+The change in flux is brought about in 0.70 s. From Eq. (6.3), the magnitude of the induced emf is given by ( ) – 0 B
+= 1.0 mV
+And the magnitude of the current is
+10 V 2 mA
+Note that the earth’s magnetic field also produces a flux through the loop. But it is a steady field (which does not change within the time span of the experiment) and hence does not induce any emf.
+Example 6.3
+A circular coil of radius 10 cm, 500 turns and resistance 2 W is placed with its plane perpendicular to the horizontal component of the earth’s magnetic field. It is rotated about its vertical diameter through 180° in 0.25 s. Estimate the magnitudes of the emf and current induced in the coil. Horizontal component of the earth’s magnetic field at the place is 3.0 × 10–5 T.
+Solution
+Initial flux through the coil,
+FB (initial) = BA cos q
+= 3.0 × 10–5 × (p ×10–2) × cos 0°
+= 3p × 10–7 Wb
+Final flux after the rotation,
+FB (final) = 3.0 × 10–5 × (p ×10–2) × cos 180°
+= –3p × 10–7 Wb
+Therefore, estimated value of the induced emf is,
+= 500 × (6p × 10–7)/0.25
+= 3.8 × 10–3 V
+I = e/R = 1.9 × 10–3 A
+Note that the magnitudes of e and I are the estimated values. Their instantaneous values are different and depend upon the speed of rotation at the particular instant.
+Reprint 2026-27

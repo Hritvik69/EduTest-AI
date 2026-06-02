@@ -1,0 +1,127 @@
+58 Chemistry
+The Hydrogen Economy The Hydrogen Economy The Hydrogen Economy The Hydrogen Economy The Hydrogen Economy
+At present the main source of energy that is driving our economy is fossil fuels such as coal, oil and gas. As more people on the planet aspire to improve their standard of living, their energy requirement will increase. In fact, the per capita consumption of energy used is a measure of development. Of course, it is assumed that energy is used for productive purpose and not merely wasted.
+We are already aware that carbon dioxide produced by the combustion of fossil fuels is resulting in the ‘Greenhouse Effect’. This is leading to a rise in the temperature of the Earth’s surface, causing polar ice to melt and ocean levels to rise. This will flood low-lying areas along the coast and some island nations such as Maldives face total submergence. In order to avoid such a catastrope, we need to limit our use of carbonaceous fuels. Hydrogen provides an ideal alternative as its combustion results in water only. Hydrogen production must come from splitting water using solar energy. Therefore, hydrogen can be used as a renewable and non polluting source of energy. This is the vision of the
+Hydrogen Economy. Both the production of hydrogen by electrolysis of water and hydrogen combustion in a fuel cell will be important in the future. And both these technologies are based on electrochemical principles.
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+2.13 Write the chemistry of recharging the lead storage battery, highlighting all the materials that are involved during recharging.
+2.14 Suggest two materials other than hydrogen that can be used as fuels in fuel cells.
+2.15 Explain how rusting of iron is envisaged as setting up of an electrochemical cell.
+Summary Summary Summary Summary Summary
+An electrochemical cell consists of two metallic electrodes dipping in electrolytic solution(s). Thus an important component of the electrochemical cell is the ionic conductor or electrolyte. Electrochemical cells are of two types. In galvanic cell, the chemical energy of a spontaneous redox reaction is converted into electrical work, whereas in an electrolytic cell, electrical energy is used to carry out a non- spontaneous redox reaction. The standard electrode potential for any electrode dipping in an appropriate solution is defined with respect to standard electrode potential of hydrogen electrode taken as zero. The standard potential of the cell can be obtained by taking the difference of the standard potentials of cathode and anode ( ( )
+cell E = Eocathode – Eoanode). The standard potential of the cells are related to standard Gibbs energy (DrGo = –nF ( )
+cell E ) and equilibrium constant (DrGo = – RT ln K) of the reaction taking place in the cell. Concentration dependence of the potentials of the electrodes and the cells are given by Nernst equation.
+The conductivity, k, of an electrolytic solution depends on the concentration of the electrolyte, nature of solvent and temperature. Molar conductivity, defined by = k/c where c is the concentration. Conductivity decreases but molar conductivity increases with decrease in concentration. It increases slowly with decrease in concentration for strong electrolytes while the increase is very steep for weak electrolytes in very dilute solutions. Kohlrausch found that molar conductivity at infinite dilution, for an electrolyte is sum of the contribution of the
+Reprint 2026-27
+59 Electrochemistry molar conductivity of the ions in which it dissociates. It is known as law of independent migration of ions and has many applications. Ions conduct electricity through the solution but oxidation and reduction of the ions take place at the electrodes in an electrochemical cell. Batteries and fuel cells are very useful forms of galvanic cell. Corrosion of metals is essentially an electrochemical phenomenon. Electrochemical principles are relevant to the Hydrogen Economy.
+2.1 Arrange the following metals in the order in which they displace each other from the solution of their salts.
+Al, Cu, Fe, Mg and Zn.
+2.2 Given the standard electrode potentials,
+K+/K = –2.93V, Ag+/Ag = 0.80V,
+Hg2+/Hg = 0.79V
+Mg2+/Mg = –2.37 V, Cr3+/Cr = – 0.74V
+Arrange these metals in their increasing order of reducing power.
+2.3 Depict the galvanic cell in which the reaction
+Zn(s)+2Ag+(aq) ®Zn2+(aq)+2Ag(s) takes place. Further show:
+(i) Which of the electrode is negatively charged?
+(ii) The carriers of the current in the cell.
+(iii) Individual reaction at each electrode.
+2.4 Calculate the standard cell potentials of galvanic cell in which the following reactions take place:
+(i) 2Cr(s) + 3Cd2+(aq) ® 2Cr3+(aq) + 3Cd (ii) Fe2+(aq) + Ag+(aq) ® Fe3+(aq) + Ag(s)
+Calculate the DrGo and equilibrium constant of the reactions.
+2.5 Write the Nernst equation and emf of the following cells at 298 K:
+(i) Mg(s)|Mg2+(0.001M)||Cu2+(0.0001 M)|Cu(s)
+(ii) Fe(s)|Fe2+(0.001M)||H+(1M)|H2(g)(1bar)| Pt(s)
+(iii) Sn(s)|Sn2+(0.050 M)||H+(0.020 M)|H2(g) (1 bar)|Pt(s)
+(iv) Pt(s)|Br–(0.010 M)|Br2(l )||H+(0.030 M)| H2(g) (1 bar)|Pt(s).
+2.6 In the button cells widely used in watches and other devices the following reaction takes place:
+Zn(s) + Ag2O(s) + H2O(l ) ® Zn2+(aq) + 2Ag(s) + 2OH–(aq)
+Determine Dr Go and E o for the reaction.
+2.7 Define conductivity and molar conductivity for the solution of an electrolyte.
+Discuss their variation with concentration.
+2.8 The conductivity of 0.20 M solution of KCl at 298 K is 0.0248 S cm–1. Calculate its molar conductivity.
+2.9 The resistance of a conductivity cell containing 0.001M KCl solution at 298
+K is 1500 W. What is the cell constant if conductivity of 0.001M KCl solution at 298 K is 0.146 × 10–3 S cm–1.
+Exercises Exercises Exercises Exercises Exercises
+Reprint 2026-27
+60 Chemistry
+Answers to Some Intext Questions
+2.5 E(cell) = 0.91 V
+∆ = −o 1 r G 45.54 kJ mol , Kc = 9.62 ×107
+2.9 0.114, 3.67 × 10–4 mol L–1
+2.10 The conductivity of sodium chloride at 298 K has been determined at different concentrations and the results are given below:
+Concentration/M 0.001 0.010 0.020 0.050 0.100 k/S m–1 1.237 11.85 23.15 55.53 106.74
+Calculate
+Λm for all concentrations and draw a plot between
+Λm and c½.
+Find the value of 0
+2.11 Conductivity of 0.00241 M acetic acid is 7.896 × 10–5 S cm–1. Calculate its molar conductivity. If 0
+ for acetic acid is 390.5 S cm2 mol–1, what is its dissociation constant?
+2.12 How much charge is required for the following reductions:
+(i) 1 mol of Al3+ to Al ?
+(ii) 1 mol of Cu2+ to Cu ?
+(iii) 1 mol of MnO4
+– to Mn2+ ?
+2.13 How much electricity in terms of Faraday is required to produce (i) 20.0 g of Ca from molten CaCl2?
+(ii) 40.0 g of Al from molten Al2O3?
+2.14 How much electricity is required in coulomb for the oxidation of (i) 1 mol of H2O to O2?
+(ii) 1 mol of FeO to Fe2O3?
+2.15 A solution of Ni(NO3)2 is electrolysed between platinum electrodes using a current of 5 amperes for 20 minutes. What mass of Ni is deposited at the cathode?
+2.16 Three electrolytic cells A,B,C containing solutions of ZnSO4, AgNO3 and CuSO4, respectively are connected in series. A steady current of 1.5 amperes was passed through them until 1.45 g of silver deposited at the cathode of cell B.
+How long did the current flow? What mass of copper and zinc were deposited?
+2.17 Using the standard electrode potentials given in Table 3.1, predict if the reaction between the following is feasible:
+(i) Fe3+(aq) and I–(aq)
+(ii) Ag+ (aq) and Cu(s)
+(iii) Fe3+ (aq) and Br– (aq)
+(iv) Ag(s) and Fe 3+ (aq)
+(v) Br2 (aq) and Fe2+ (aq).
+2.18 Predict the products of electrolysis in each of the following:
+(i) An aqueous solution of AgNO3 with silver electrodes.
+(ii) An aqueous solution of AgNO3 with platinum electrodes.
+(iii) A dilute solution of H2SO4 with platinum electrodes.
+(iv) An aqueous solution of CuCl2 with platinum electrodes.
+Reprint 2026-27
+Chemistry, by its very nature, is concerned with change.
+Substances with well defined properties are converted by chemical reactions into other substances with different properties. For any chemical reaction, chemists try to find out (a) the feasibility of a chemical reaction which can be predicted by thermodynamics ( as you know that a reaction with DG < 0, at constant temperature and pressure is feasible);
+(b) extent to which a reaction will proceed can be determined from chemical equilibrium;
+(c) speed of a reaction i.e. time taken by a reaction to reach equilibrium.
+Along with feasibility and extent, it is equally important to know the rate and the factors controlling the rate of a chemical reaction for its complete understanding. For example, which parameters determine as to how rapidly food gets spoiled? How to design a rapidly setting material for dental filling?
+Or what controls the rate at which fuel burns in an auto engine? All these questions can be answered by the branch of chemistry, which deals with the study of reaction rates and their mechanisms, called chemical kinetics. The word kinetics is derived from the Greek word ‘kinesis’ meaning movement.
+Thermodynamics tells only about the feasibility of a reaction whereas chemical kinetics tells about the rate of a reaction. For example, thermodynamic data indicate that diamond shall convert to graphite but in reality the conversion rate is so slow that the change is not perceptible at all. Therefore, most people think
+After studying this Unit, you will be
+· define the average and instantaneous rate of a reaction;
+· express the rate of a reaction in terms of change in concentration of either of the reactants or products with time;
+· distinguish between elementary and complex reactions;
+· differentiate between the molecularity and order of a reaction;
+· define rate constant;
+· discuss the dependence of rate of reactions on concentration, temperature and catalyst;
+· derive integrated rate equations for the zero and first order reactions;
+· determine the rate constants for zeroth and first order reactions;
+· describe collision theory.
+Objectives
+Chemical Kinetics helps us to understand how chemical reactions
+3Chemical Kinetics
+Unit Unit Unit Unit Unit
+3Chemical Kinetics
+Reprint 2026-27
+62 Chemistry that diamond is forever. Kinetic studies not only help us to determine the speed or rate of a chemical reaction but also describe the conditions by which the reaction rates can be altered. The factors such as concentration, temperature, pressure and catalyst affect the rate of a reaction. At the macroscopic level, we are interested in amounts reacted or formed and the rates of their consumption or formation. At the molecular level, the reaction mechanisms involving orientation and energy of molecules undergoing collisions, are discussed.
+In this Unit, we shall be dealing with average and instantaneous rate of reaction and the factors affecting these. Some elementary ideas about the collision theory of reaction rates are also given.
+However, in order to understand all these, let us first learn about the reaction rate.
+Some reactions such as ionic reactions occur very fast, for example, precipitation of silver chloride occurs instantaneously by mixing of aqueous solutions of silver nitrate and sodium chloride. On the other hand, some reactions are very slow, for example, rusting of iron in the presence of air and moisture. Also there are reactions like inversion of cane sugar and hydrolysis of starch, which proceed with a moderate speed. Can you think of more examples from each category?
+You must be knowing that speed of an automobile is expressed in terms of change in the position or distance covered by it in a certain period of time. Similarly, the speed of a reaction or the rate of a reaction can be defined as the change in concentration of a reactant or product in unit time. To be more specific, it can be expressed in terms of:
+(i) the rate of decrease in concentration of any one of the reactants, or (ii) the rate of increase in concentration of any one of the products.
+Consider a hypothetical reaction, assuming that the volume of the system remains constant.
+One mole of the reactant R produces one mole of the product P. If
+[R]1 and [P]1 are the concentrations of R and P respectively at time t1 and [R]2 and [P]2 are their concentrations at time t2 then,
+Dt = t2 – t1
+D[R] = [R]2 – [R]1
+D [P] = [P]2 – [P]1
+The square brackets in the above expressions are used to express molar concentration.
+Rate of disappearance of R
+[ ] Decrease in concentration of R R
+= Time taken t
+= − ∆ (3.1)
+3 . 1 3 . 1 3 . 1 3 . 1 3 . 1 Rate of a Rate of a Rate of a Rate of a Rate of a
+Chemical Chemical Chemical Chemical Chemical
+Reaction Reaction Reaction Reaction Reaction
+Reprint 2026-27

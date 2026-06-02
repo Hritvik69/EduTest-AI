@@ -1,0 +1,81 @@
+Computer SCienCe – ClaSS xi 44
+6. Express the following decimal numbers into hexadecimal numbers.
+(i) 548 (ii) 4052 (iii) 58 (iv) 100.25
+7. Express the following hexadecimal numbers into equivalent decimal numbers.
+(i) 4A2 (ii) 9E1A (iii) 6BD (iv) 6C.34
+8. Convert the following binary numbers into octal and hexadecimal numbers.
+(i) 1110001000 (ii) 110110101 (iii) 1010100 (iv) 1010.1001
+9. Write binary equivalent of the following octal numbers.
+(i) 2306 (ii) 5610 (iii) 742 (iv) 65.203
+10. Write binary representation of the following hexadecimal numbers.
+(i) 4026 (ii) BCA1 (iii) 98E (iv) 132.45
+11. How does computer understand the following text?
+(hint: 7 bit ASCII code).
+(i) HOTS (ii) Main (iii) CaSe
+12. The hexadecimal number system uses 16 literals (0 – 9, A– F). Write down its base value.
+13. Let X be a number system having B symbols only.
+Write down the base value of this number system.
+14. Write the equivalent hexadecimal and binary values for each character of the phrase given below.
+‘‘ हम सब एक”
+15. What is the advantage of preparing a digital content in Indian language using UNICODE font?
+16. Explore and list the steps required to type in an
+Indian language using UNICODE.
+17. Encode the word ‘COMPUTER’ using ASCII and convert the encode value into binary values.
+Reprint 2026-27
+3.1 IntroductIon
+Computers have been around for quite some time now. New technologies and initiatives emerge with each passing day. In order to understand the existing technologies and have a better view of the developments around us, we must keep an eye on the emerging trends.
+Many new technologies are introduced almost every day.
+Some of these do not succeed and fade away over time.
+Some of these new technologies prosper and persist over time, gaining attention from users. Emerging trends are the state-of-the-art technologies, which gain popularity and set a new trend among users. In this chapter, we will learn about some emerging trends that will make a huge impact (in the future) on digital economy and interaction in digital societies.
+3.2 A rtIfIcIAl IntellIgence (AI)
+Have you ever wondered how maps in your smartphone are able to guide you to take the fastest route to your destination by analysing real time data, such as traffic congestion? On uploading a photo on a social networking site, has it ever happened that your friends in the photograph were recognised and tagged automatically?
+These are some of the examples of application of
+Artificial Intelligence. The intelligent digital personal assistants like Siri, Google Now, Cortana, Alexa are all powered by AI. Artificial Intelligence endeavours to simulate the natural intelligence of human beings into machines, thus making them behave intelligently. An intelligent machine is supposed to imitate some of the cognitive functions of humans like learning, decision- making and problem solving. In order to make machines perform tasks with minimum human intervention, they are programmed to create a knowledge base and make
+“Computer science is no more about computers than as- tronomy is about telescopes”
+–Edsger Dijkstra
+Chapter 3
+Emerging Trends
+In this chapter
+» Introduction
+» Artificial Intelligence
+» Big Data
+» Internet of Things
+» Cloud Computing
+» Grid Computing
+» Blockchains
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 46
+A knowledge base is a store of information consisting of facts, assumptions and rules which an AI system can use for decision decisions based on it. AI system can also learn from past experiences or outcomes to make new decisions.
+3.2.1 Machine Learning
+Machine Learning is a subsystem of Artificial
+Intelligence, wherein computers have the ability to learn from data using statistical techniques, without being explicitly programmed by a human being. It comprises algorithms that use data to learn on their own and make predictions. These algorithms called models, are first trained and tested using a training data and testing data, respectively. After successive trainings, once these models are able to give results to an acceptable level of accuracy, they are used to make predictions about new and unknown data.
+3.2.2 Natural Language Processing (NLP)
+The predictive typing feature of search engine that helps us by suggesting the next word in the sentence while typing keywords and the spell checking features are examples of Natural Language Processing (NLP).
+It deals with the interaction between human and computers using human spoken languages, such as
+Hindi, English, etc.
+In fact it is possible to search the web or operate or control our devices using our voice. All this has been possible by NLP. An NLP system can perform text-to- speech and speech-to-text conversion as depicted in
+Figure 3.1.
+Machine translation is a rapidly emerging field where machines are already able to translate texts from one language to another with fair amount of correctness. Another emerging application area is automated customer service where a computer software can interact with customers to serve their queries or complaints.
+3.2.3 Immersive Experiences
+With the three-dimensional (3D) videography, the joy of watching movies in theatres has reached to a new level. Video games are also being developed to
+Figure 3.1: Use of natural language processing
+Activity 3.1
+Find out how NLP is helping differently- abled persons?
+Reprint 2026-27
+E mErging TrEnds 47 provide immersive experiences to the player. Immersive experiences allow us to visualise, feel and react by stimulating our senses. It enhances our interaction and involvement, making them more realistic and engaging. Immersive experiences have been used in the field of training, such as driving simulators (Figure 3.2), flight simulator and so on. Immersive experience can be achieved using virtual reality and augmented reality.
+(A) Virtual Reality
+Everything that we experience in our reality is perceived through our senses. From this came the idea that if we can present our senses with made-up or non- real information, our perception of reality would also alter in response to that. Virtual Reality (VR) is a three-dimensional, computer-generated situation that simulates the real world. The user can interact with and explore that environment by getting immersed in it while interacting with the objects and other actions of the user.
+At present, it is achieved with the help of VR Headsets.
+In order to make the experience of VR more realistic, it promotes other sensory information like sound, smell, motion, temperature, etc. It is a comparatively new field and has found its applications in gaming (Figure 3.3), military training, medical procedures, entertainment, social science and psychology, engineering and other areas where simulation is needed for a better understanding and learning.
+(B) Augmented Reality
+The superimposition of computer generated perceptual information over the existing physical surroundings is called as Augmented Reality (AR). It adds components of the digital world to the physical world, along with the associated tactile and other sensory requirements, thereby making the environment interactive and digitally manipulable. Users can access information about the nearest places with reference to their current location.
+They can get information about places and choose on the basis of user reviews. With help of location-based
+AR App, travellers can access real-time information of historical places just by pointing their camera viewfinder to subjects as depicted in Figure 3.4. Location-based
+AR apps are major forms of AR apps.
+Figure 3.2: Driving simulator
+Figure 3.3: Virtual Reality
+Figure 3.4: Location-based
+Augmented Reality
+Unlike Virtual Reality, the
+Augmented Reality does not create something new, it just alters or augments the perception of the underlying physical world through additional information.
+Reprint 2026-27

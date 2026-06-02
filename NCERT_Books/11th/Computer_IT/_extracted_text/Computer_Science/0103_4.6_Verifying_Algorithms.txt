@@ -1,0 +1,31 @@
+GettinG Started with Python 91
+True def from nonlocal while and del global not with as elif if or yield assert else import pass break except in raise
+5.3 IdentIfIers
+In programming languages, identifiers are names used to identify a variable, function, or other entities in a program. The rules for naming an identifier in Python are as follows:
+• The name should begin with an uppercase or a lowercase alphabet or an underscore sign (_). This may be followed by any combination of characters a–z, A–Z, 0–9 or underscore (_). Thus, an identifier cannot start with a digit.
+• It can be of any length. (However, it is preferred to keep it short and meaningful).
+• It should not be a keyword or reserved word given in Table 5.1.
+• We cannot use special symbols like !, @, #, $, %, etc., in identifiers.
+For example, to find the average of marks obtained by a student in three subjects, we can choose the identifiers as marks1, marks2, marks3 and avg rather than a, b, c, or A, B, C.
+avg = (marks1 + marks2 + marks3)/3
+Similarly, to calculate the area of a rectangle, we can use identifier names, such as area, length, breadth instead of single alphabets as identifiers for clarity and more readability.
+area = length * breadth
+5.4 V arIables
+A variable in a program is uniquely identified by a name (identifier). Variable in Python refers to an object — an item or element that is stored in the memory. Value of a variable can be a string (e.g., ‘b’, ‘Global Citizen’), numeric (e.g., 345) or any combination of alphanumeric characters (CD67). In Python we can use an assignment statement to create new variables and assign specific values to them.
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 92
+In the program 5-2, the variable message holds string type value and so its content is assigned within double quotes " " (can also be within single quotes ' '), whereas the value of variable userNo is not enclosed in quotes as it is a numeric value.
+Variable declaration is implicit in Python, means variables are automatically declared and defined when they are assigned a value the first time. Variables must always be assigned values before they are used in expressions as otherwise it will lead to an error in the program. Wherever a variable name occurs in an expression, the interpreter replaces it with the value of that particular variable.
+Program 5-3 Write a Python program to find the area of a rectangle given that its length is 10 units and breadth is 20 units.
+#Program 5-3
+#To find the area of a rectangle length = 10 breadth = 20 area = length * breadth print(area)
+5.5 comments
+Comments are used to add a remark or a note in the source code. Comments are not executed by interpreter.
+gender = 'M' message = "Keep Smiling" price = 987.9
+Program 5-2 Write a program to display values of variables in Python.
+#Program 5-2
+#To display values of variables message = "Keep Smiling" print(message)
+userNo = 101 print('User Number is', userNo)
+Keep Smiling
+User Number is 101
+Reprint 2026-27

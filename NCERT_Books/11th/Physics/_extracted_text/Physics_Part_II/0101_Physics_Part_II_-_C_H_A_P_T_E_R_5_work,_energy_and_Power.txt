@@ -1,0 +1,190 @@
+KINETIC THEORY 251 of a molecule of the gas. Therefore,
+Cl Cl Ar
+Ar Ar Cl v = 70.9
+39.9 =1.77 where M denotes the molecular mass of the gas.
+(For argon, a molecule is just an atom of argon.)
+Taking square root of both sides, v = 1.33
+You should note that the composition of the mixture by mass is quite irrelevant to the above calculation. Any other proportion by mass of argon and chlorine would give the same answers to (i) and (ii), provided the temperature remains unaltered. ⊳
+Example 12.6 Uranium has two isotopes of masses 235 and 238 units. If both are present in Uranium hexafluoride gas which would have the larger average speed ? If atomic mass of fluorine is 19 units, estimate the percentage difference in speeds at any temperature.
+Answer At a fixed temperature the average energy = ½ m <v2 > is constant. So smaller the mass of the molecule, faster will be the speed.
+The ratio of speeds is inversely proportional to the square root of the ratio of the masses. The masses are 349 and 352 units. So v349 / v352 = ( 352/ 349)1/2 = 1.0044 .
+Hence difference V
+∆ = 0.44 %.
+[235U is the isotope needed for nuclear fission.
+To separate it from the more abundant isotope
+238U, the mixture is surrounded by a porous cylinder. The porous cylinder must be thick and narrow, so that the molecule wanders through individually, colliding with the walls of the long pore. The faster molecule will leak out more than the slower one and so there is more of the lighter molecule (enrichment) outside the porous cylinder (Fig. 12.5). The method is not very efficient and has to be repeated several times for sufficient enrichment.]. ⊳
+When gases diffuse, their rate of diffusion is inversely proportional to square root of the masses (see Exercise 12.12 ). Can you guess the explanation from the above answer?
+Fig. 12.5 Molecules going through a porous wall.
+Example 12.7 (a) When a molecule (or an elastic ball) hits a ( massive) wall, it rebounds with the same speed. When a ball hits a massive bat held firmly, the same thing happens. However, when the bat is moving towards the ball, the ball rebounds with a different speed. Does the ball move faster or slower? (Ch.5 will refresh your memory on elastic collisions.)
+(b) When gas in a cylinder is compressed by pushing in a piston, its temperature rises. Guess at an explanation of this in terms of kinetic theory using (a) above.
+(c) What happens when a compressed gas pushes a piston out and expands. What would you observe ?
+(d) Sachin Tendulkar used a heavy cricket bat while playing. Did it help him in anyway ?
+Answer (a) Let the speed of the ball be u relative to the wicket behind the bat. If the bat is moving towards the ball with a speed V relative to the wicket, then the relative speed of the ball to bat is V + u towards the bat. When the ball rebounds (after hitting the massive bat) its speed, relative to bat, is V + u moving away from the bat. So relative to the wicket the speed of the rebounding ball is V + (V + u) = 2V + u, moving away from the wicket. So the ball speeds up after the collision with the bat. The rebound speed will be less than u if the bat is not massive. For a molecule this would imply an increase in temperature.
+Reprint 2026-27
+252 PHYSICS
+You should be able to answer (b) (c) and (d)
+based on the answer to (a).
+(Hint: Note the correspondence, piston‡ bat, cylinder ‡ wicket, molecule ‡ ball.) ⊳
+12.5 LAW OF EQUIPARTITION OF ENERGY
+The kinetic energy of a single molecule is
+2 2 2 1 1 1 t x y z mv mv mv
+ε = + + (12.22)
+For a gas in thermal equilibrium at temperature T the average value of energy denoted by < t
+2 2 2 1 1 1 3 t x y z B mv mv mv k T
+ε = + + = (12.23)
+Since there is no preferred direction, Eq. (12.23)
+x B mv k T = , 2 1 1 y B mv k T = , z B mv k T = (12.24)
+A molecule free to move in space needs three coordinates to specify its location. If it is constrained to move in a plane it needs two; and if constrained to move along a line, it needs just one coordinate to locate it. This can also be expressed in another way. We say that it has one degree of freedom for motion in a line, two for motion in a plane and three for motion in space. Motion of a body as a whole from one point to another is called translation. Thus, a molecule free to move in space has three translational degrees of freedom. Each translational degree of freedom contributes a term that contains square of some variable of motion, e.g., ½ mvx
+2 and similar terms in vy and vz. In, Eq. (12.24) we see that in thermal equilibrium, the average of each such term is
+Molecules of a monatomic gas like argon have only translational degrees of freedom. But what about a diatomic gas such as O2 or N2? A molecule of O2 has three translational degrees of freedom. But in addition it can also rotate about its centre of mass. Figure 12.6 shows the two independent axes of rotation 1 and 2, normal to the axis joining the two oxygen atoms about which the molecule can rotate*. The molecule thus has two rotational degrees of freedom, each of which contributes a term to the total energy consisting of translational energy t rotational energy
+2 2 2 2 2
+1 1 1 1 1
+2 2 2 2 2 t r x y z mv mv mv I I
+ω + = + + + + (12.25)
+* Rotation along the line joining the atoms has very small moment of inertia and does not come into play for quantum mechanical reasons. See end of section 12.6.
+Fig. 12.6 The two independent axes of rotation of a diatomic molecule
+ω2 are the angular speeds about the axes 1 and 2 and I1, I2 are the corresponding moments of inertia. Note that each rotational degree of freedom contributes a term to the energy that contains square of a rotational variable of motion.
+We have assumed above that the O2 molecule is a ‘rigid rotator’, i.e., the molecule does not vibrate. This assumption, though found to be true (at moderate temperatures) for O2, is not always valid. Molecules, like CO, even at moderate temperatures have a mode of vibration, i.e., its atoms oscillate along the interatomic axis like a one-dimensional oscillator, and contribute a vibrational energy
+εv to the total energy:
+t ky = 
+ε ε ε = + + ε (12.26)
+where k is the force constant of the oscillator and y the vibrational co-ordinate.
+Once again the vibrational energy terms in
+Eq. (12.26) contain squared terms of vibrational variables of motion y and dy/dt .
+Reprint 2026-27
+KINETIC THEORY 253
+At this point, notice an important feature in
+Eq.(12.26). While each translational and rotational degree of freedom has contributed only one ‘squared term’ in Eq.(12.26), one vibrational mode contributes two ‘squared terms’ : kinetic and potential energies.
+Each quadratic term occurring in the expression for energy is a mode of absorption of energy by the molecule. We have seen that in thermal equilibrium at absolute temperature T, for each translational mode of motion, the average energy is ½ kBT. The most elegant principle of classical statistical mechanics (first proved by Maxwell) states that this is so for each mode of energy: translational, rotational and vibrational. That is, in equilibrium, the total energy is equally distributed in all possible energy modes, with each mode having an average energy equal to ½ kBT. This is known as the law of equipartition of energy. Accordingly, each translational and rotational degree of freedom of a molecule contributes ½ kBT to the energy, while each vibrational frequency contributes
+2 × ½ kBT = kBT , since a vibrational mode has both kinetic and potential energy modes.
+The proof of the law of equipartition of energy is beyond the scope of this book. Here, we shall apply the law to predict the specific heats of gases theoretically. Later, we shall also discuss briefly, the application to specific heat of solids.
+12.6 SPECIFIC HEAT CAPACITY
+12.6.1 Monatomic Gases
+The molecule of a monatomic gas has only three translational degrees of freedom. Thus, the average energy of a molecule at temperature
+T is (3/2)kBT . The total internal energy of a mole of such a gas is
+B A U k T N RT = × = (12.27)
+The molar specific heat at constant volume,
+Cv (monatomic gas) = d
+2 RT (12.28)
+For an ideal gas,
+Cp – Cv = R (12.29)
+where Cp is the molar specific heat at constant pressure. Thus,
+R (12.30)
+The ratio of specific heats p
+γ = = (12.31)
+12.6.2 Diatomic Gases
+As explained earlier, a diatomic molecule treated as a rigid rotator, like a dumbbell, has 5 degrees of freedom: 3 translational and 2 rotational.
+Using the law of equipartition of energy, the total internal energy of a mole of such a gas is
+B A U k T N RT = × = (12.32)
+The molar specific heats are then given by
+Cv (rigid diatomic) = 5
+R, Cp = 7
+R (12.33)
+γ (rigid diatomic) = 7
+If the diatomic molecule is not rigid but has in addition a vibrational mode
+U k T k T N RT B B A = + v p C R C R
+γ = = = R (12.35)
+12.6.3 Polyatomic Gases
+In general a polyatomic molecule has 3 translational, 3 rotational degrees of freedom and a certain number ( f ) of vibrational modes.
+According to the law of equipartition of energy, it is easily seen that one mole of such a gas has
+ kBT + 3 kBT + f kBT i.e.,Cv = (3 + f ) R, Cp = (4 + f ) R,
+= 3 + (12.36)
+Note that Cp – Cv = R is true for any ideal gas, whether mono, di or polyatomic.
+Table 12.1 summarises the theoretical predictions for specific heats of gases ignoring any vibrational modes of motion. The values are
+Reprint 2026-27
+254 PHYSICS in good agreement with experimental values of specific heats of several gases given in Table 12.2.
+Of course, there are discrepancies between predicted and actual values of specific heats of several other gases (not shown in the table), such as Cl2, C2H6 and many other polyatomic gases.
+Usually, the experimental values for specific heats of these gases are greater than the predicted values as given in Table12.1 suggesting that the agreement can be improved by including vibrational modes of motion in the calculation.
+The law of equipartition of energy is, thus, well verified experimentally at ordinary temperatures.
+Table 12.1 Predicted values of specific heat capacities of gases (ignoring vibrational modes)
+Nature of (J mol-1 (J mol-1 (J mol-1
+Monatomic 12.5 20.8 8.31 1.67
+Diatomic 20.8 29.1 8.31 1.40
+Triatomic 24.93 33.24 8.31 1.33
+Table12.2 Measured values of specific heat capacities of some gases
+Example 12.8 A cylinder of fixed capacity
+44.8 litres contains helium gas at standard temperature and pressure. What is the amount of heat needed to raise the temperature of the gas in the cylinder by
+15.0 °C ? (R = 8.31 J mo1–1 K–1).
+Answer Using the gas law PV =
+μRT, you can easily show that 1 mol of any (ideal) gas at standard temperature (273 K) and pressure (1 atm = 1.01 × 105 Pa) occupies a volume of 22.4 litres. This universal volume is called molar volume. Thus the cylinder in this example contains 2 mol of helium. Further, since helium is monatomic, its predicted (and observed) molar specific heat at constant volume, Cv = (3/2) R, and molar specific heat at constant pressure,
+Cp = (3/2) R + R = (5/2) R . Since the volume of the cylinder is fixed, the heat required is determined by Cv. Therefore,
+Heat required = no. of moles × molar specific heat
+× rise in temperature
+= 2 × 1.5 R × 15.0 = 45 R
+= 45 × 8.31 = 374 J. ⊳
+12.6.4 Specific Heat Capacity of Solids
+We can use the law of equipartition of energy to determine specific heats of solids. Consider a solid of N atoms, each vibrating about its mean position. An oscillation in one dimension has average energy of 2 × ½ kBT = kBT . In three dimensions, the average energy is 3 kBT. For a mole of solid, N = NA, and the total energy is
+U = 3 kBT × NA = 3 RT
+Now at constant pressure ∆Q = ∆U + P∆V
+= ∆U, since for a solid ∆V is negligible. Hence,
+∆ ∆ (12.37)
+Table 12.3 Specific Heat Capacity of some solids at room temperature and atmospheric pressure
+As Table 12.3 shows the prediction generally agrees with experimental values at ordinary temperature (Carbon is an exception).
+12.7 MEAN FREE PATH
+Molecules in a gas have rather large speeds of the order of the speed of sound. Yet a gas leaking
+Reprint 2026-27
+KINETIC THEORY 255 from a cylinder in a kitchen takes considerable time to diffuse to the other corners of the room.
+The top of a cloud of smoke holds together for hours. This happens because molecules in a gas have a finite though small size, so they are bound to undergo collisions. As a result, they cannot move straight unhindered; their paths keep getting incessantly deflected.
+Fig. 12.7 The volume swept by a molecule in time ∆t in which any molecule will collide with it.
+Suppose the molecules of a gas are spheres of diameter d. Focus on a single molecule with the average speed <v>. It will suffer collision with any molecule that comes within a distance d between the centres. In time ∆t, it sweeps a
+πd2 <v> ∆t wherein any other molecule will collide with it (see Fig. 12.7). If n is the number of molecules per unit volume, the molecule suffers n
+πd2 <v> ∆t collisions in time
+∆t. Thus the rate of collisions is n
+πd2 <v> or the time between two successive collisions is on the average,
+τ = 1/(n
+π <v> d2 ) (12.38)
+The average distance between two successive collisions, called the mean free path l, is :
+τ = 1/(n
+πd2) (12.39)
+In this derivation, we imagined the other molecules to be at rest. But actually all molecules are moving and the collision rate is determined by the average relative velocity of the molecules.
+Thus we need to replace <v> by <vr> in Eq.
+(12.38). A more exact treatment gives
+1/ 2 l n d
+π = (12.40)
+Let us estimate l and
+τ for air molecules with average speeds <v> = ( 485m/s). At STP
+= 2.7 × 10 25 m -3.
+Taking, d = 2 × 10–10 m,
+τ = 6.1 × 10–10 s and l = 2.9 × 10–7 m ≈ 1500 d (12.41)
+As expected, the mean free path given by
+Eq. (12.40) depends inversely on the number density and the size of the molecules. In a highly evacuated tube n is rather small and the mean free path can be as large as the length of the
+Example 12.9 Estimate the mean free path for a water molecule in water vapour at 373 K.
+Use information from Exercises 12.1 and Eq.
+(12.41) above.
+Answer The d for water vapour is same as that of air. The number density is inversely proportional to absolute temperature.
+So 25 25 –3 273
+2.7 10 2 10 m n = × × = ×
+Hence, mean free path –7
+4 10 m l = × ⊳
+Note that the mean free path is 100 times the interatomic distance ~ 40 Å = 4 × 10-9 m calculated earlier. It is this large value of mean free path that leads to the typical gaseous behaviour. Gases can not be confined without a container.
+Using, the kinetic theory of gases, the bulk measurable properties like viscosity, heat conductivity and diffusion can be related to the microscopic parameters like molecular size. It is through such relations that the molecular sizes were first estimated.
+Reprint 2026-27
+256 PHYSICS
+1. The ideal gas equation connecting pressure (P ), volume (V ) and absolute temperature
+μ RT = kB NT
+μ is the number of moles and N is the number of molecules. R and kB are universal constants.
+R = 8.314 J mol–1 K–1, kB = A
+N = 1.38 ××××× 10–23 J K–1
+Real gases satisfy the ideal gas equation only approximately, more so at low pressures and high temperatures.
+2. Kinetic theory of an ideal gas gives the relation
+P n m v = where n is number density of molecules, m the mass of the molecule and 2 v is the mean of squared speed. Combined with the ideal gas equation it yields a kinetic interpretation of temperature.
+2 2 B m v k T = , ( )1/ 2 rms v v = 3 B k T
+This tells us that the temperature of a gas is a measure of the average kinetic energy of a molecule, independent of the nature of the gas or molecule. In a mixture of gases at a fixed temperature the heavier molecule has the lower average speed.
+3. The translational kinetic energy
+3 kB NT.
+This leads to a relation
+4. The law of equipartition of energy states that if a system is in equilibrium at absolute temperature T, the total energy is distributed equally in different energy modes of absorption, the energy in each mode being equal to ½ kB T. Each translational and rotational degree of freedom corresponds to one energy mode of absorption and has energy ½ kB T. Each vibrational frequency has two modes of energy (kinetic and potential)
+with corresponding energy equal to
+2 ××××× ½ kB T = kB T.
+5. Using the law of equipartition of energy, the molar specific heats of gases can be determined and the values are in agreement with the experimental values of specific heats of several gases. The agreement can be improved by including vibrational modes of motion.
+6. The mean free path l is the average distance covered by a molecule between two successive collisions :
+where n is the number density and d the diameter of the molecule.
+Reprint 2026-27
+KINETIC THEORY 257
+POINTS TO PONDER
+1. Pressure of a fluid is not only exerted on the wall. Pressure exists everywhere in a fluid.
+Any layer of gas inside the volume of a container is in equilibrium because the pressure is the same on both sides of the layer.
+2. We should not have an exaggerated idea of the intermolecular distance in a gas. At ordinary pressures and temperatures, this is only 10 times or so the interatomic distance in solids and liquids. What is different is the mean free path which in a gas is 100 times the interatomic distance and 1000 times the size of the molecule.
+3. The law of equipartition of energy is stated thus: the energy for each degree of freedom in thermal equilibrium is ½ kB T. Each quadratic term in the total energy expression of a molecule is to be counted as a degree of freedom. Thus, each vibrational mode gives 2 (not 1) degrees of freedom (kinetic and potential energy modes), corresponding to the energy 2 ××××× ½ kB T = kB T.
+4. Molecules of air in a room do not all fall and settle on the ground (due to gravity)
+because of their high speeds and incessant collisions. In equilibrium, there is a very slight increase in density at lower heights (like in the atmosphere). The effect is small since the potential energy (mgh) for

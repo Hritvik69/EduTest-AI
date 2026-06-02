@@ -1,0 +1,120 @@
+318 CHEMISTRY
+Thin film of polyacetylene can be used as electrodes in batteries. These films are good conductors, lighter and cheaper than the metal conductors.
+(b) Cyclic polymerisation: Ethyne on passing through red hot iron tube at 873K undergoes cyclic polymerization. Three molecules polymerise to form benzene, which is the starting molecule for the preparation of derivatives of benzene, dyes, drugs and large number of other organic compounds. This is the best route for entering from aliphatic to aromatic compounds as discussed below:
+Problem 9.14
+How will you convert ethanoic acid into benzene?
+Solution
+9.5 AROMATIC HYDROCARBON
+These hydrocarbons are also known as
+‘arenes’. Since most of them possess pleasant odour (Greek; aroma meaning pleasant smelling), the class of compounds was named as ‘aromatic compounds’. Most of such compounds were found to contain benzene ring. Benzene ring is highly unsaturated but in a majority of reactions of aromatic compounds, the unsaturation of benzene ring is retained. However, there are examples of aromatic hydrocarbons which do not contain a benzene ring but instead contain other highly unsaturated ring. Aromatic compounds containing benzene ring are known as benzenoids and those not containing a benzene ring are known as non-benzenoids.
+S o m e e x a m p l e s o f a r e n e s a r e g i v e n
+Benzene Toluene Naphthalene
+Biphenyl
+9.5.1 Nomenclature and Isomerism
+The nomenclature and isomerism of aromatic hydrocarbons has already been discussed in
+Unit 8. All six hydrogen atoms in benzene are equivalent; so it forms one and only one type of monosubstituted product. When two hydrogen atoms in benzene are replaced by two similar or different monovalent atoms or groups, three different position isomers are possible. The 1, 2 or 1, 6 is known as the ortho (o–  the   or   as meta (m– and the 
+4 as para (p– disubstituted comSounds. A few examples of derivatives of benzene are given below:
+Methylbenzene 1,2-Dimethylbenzene (Toluene) (o-Xylene)
+Reprint 2026-27
+319 HYDROCARBONS
+1,3 Dimethylbenzene 1,4-Dimethylbenzene (m-Xylene) ( p-Xylene)
+9.5.2 Structure of Benzene
+Benzene was isolated by Michael Faraday in 1825. The molecular formula of benzene,
+C6H6, indicates a high degree of unsaturation.
+This molecular formula did not account for its relationship to corresponding alkanes, alkenes and alkynes which you have studied in earlier sections of this unit. What do you think about its possible structure? Due to its unique properties and unusual stability, it took several years to assign its structure.
+Benzene was found to be a stable molecule and found to form a triozonide which indicates the presence of three double bonds. Benzene was further found to produce one and only one monosubstituted derivative which indicated that all the six carbon and six hydrogen atoms of benzene are identical. On the basis of this observation August Kekulé in 1865 proposed the following structure for benzene having cyclic arrangement of six carbon atoms with alternate single and double bonds and one hydrogen atom attached to each carbon atom.
+T h e K e k u l é s t r u c t u r e i n d i c a t e s t h e p o s s i b i l i t y o f t w o i s o m e r i c
+1, 2-dibromobenzenes. In one of the isomers, the bromine atoms are attached to the doubly bonded carbon atoms whereas in the other, they are attached to the singly bonded carbons.
+Friedrich August Kekulé,a German chemist was born in 1829 at Darmsdt in
+Germany. He became Professor in 1856 and Fellow of Royal Society in 1875. He made major contribution to structural organic chemistry by proposing in 1858 that carbon atoms can join to one another to form chains and later in 1865,he found an answer to the challenging problem of benzene structure by suggesting that these chains can close to form rings. He gave the dynamic structural formula to benzene which forms the basis for its modern electronic structure. He described the discovery of benzene structure later as:
+“I was sitting writing at my textbook,but the work did not progress; my thoughts were elsewhere. I turned my chair to the fire, and dozed. Again the atoms were gambolling before my eyes. This time the smaller groups kept modestly in the background. My mental eye, rendered more acute by repeated visions of this kind, could now distinguish larger structures of manifold conformations; long rows,sometimes more closely fitted together; all twisting and turning in snake like motion. But look! What was that? One of the snakes had seized hold of it’s own tail, and the form whirled mockingly before my eyes. As if by a flash of lightning I woke;.... I spent the rest of the night working out the consequences of the hypothesis. Let us learn to dream, gentlemen, and then perhaps we shall learn the truth but let us beware of making our dreams public before they have been approved by the waking mind.”( 1890).
+One hundred years later, on the occasion of Kekulé’s centenary celebrations a group of compounds having polybenzenoid structures have been named as Kekulenes.
+FRIEDRICH
+AUGUST KEKULÉ (7th September
+1829–13th July
+Reprint 2026-27
+320 CHEMISTRY
+However, benzene was found to form only one ortho disubstituted product. This problem was overcome by Kekulé by suggesting the concept of oscillating nature of double bonds in benzene as given below.
+Even with this modification, Kekulé structure of benzene fails to explain unusual stability and preference to substitution reactions than addition reactions, which could later on be explained by resonance.
+Resonance and stability of benzene
+According to Valence Bond Theory, the concept of oscillating double bonds in benzene is now explained by resonance. Benzene is a hybrid of various resonating structures. The two structures, A and B given by Kekulé are the main contributing structures. The hybrid structure is represented by inserting a circle or a dotted circle in the hexagon as shown in (C). The circle represents the six electrons which are delocalised between the six carbon atoms of the benzene ring.
+(A) (B) (C)
+The orbital overlapping gives us better picture about the structure of benzene. All the six carbon atoms in benzene are sp2 hybridized. Two sp2 hybrid orbitals of each carbon atom overlap with sp2 hybrid orbitals of adjacent carbon atoms to form six C—C sigma bonds which are in the hexagonal plane. The remaining sp2 hybrid orbital of each carbon atom overlaps with s orbital of a hydrogen atom to form six C—H sigma bonds. Each carbon atom is now left with one unhybridised p orbital perpendicular to the plane of the ring as shown below:
+The unhybridised p orbital of carbon atoms are close enough to form a π bond by lateral overlap. There are two equal possibilities of forming three π bonds by overlap of p orbitals of C1 –C2 , C3 – C4 , C5 – C6 or C2 – C3 , C4 – C5,
+C 6 – C1 respectively as shown in the following figures.
+Fig. 9.7 (a)
+Fig. 9.7 (b)
+Structures shown in Fig. 9.7(a) and (b)
+correspond to two Kekulé’s structure with localised π bonds. The internuclear distance
+Reprint 2026-27
+321 HYDROCARBONS between all the carbon atoms in the ring has been determined by the X-ray diffraction to be the same; there is equal probability for the p orbital of each carbon atom to overlap with the p orbitals of adjacent carbon atoms [Fig.
+9.7 (c)]. This can be represented in the form of two doughtnuts (rings) of electron clouds
+[Fig. 9.7 (d)], one above and one below the plane of the hexagonal ring as shown below:
+Fig. 9.7 (c) Fig. 9.7 (d)
+The six π electrons are thus delocalised and can move freely about the six carbon nuclei, instead of any two as shown in
+Fig. 9.6 (a) or (b). The delocalised π electron cloud is attracted more strongly by the nuclei of the carbon atoms than the electron cloud localised between two carbon atoms. Therefore, presence of delocalised π electrons in benzene makes it more stable than the hypothetical cyclohexatriene.
+X-Ray diffraction data reveals that benzene is a planar molecule. Had any one of the above structures of benzene (A or B) been correct, two types of C—C bond lengths were expected.
+However, X-ray data indicates that all the six C—C bond lengths are of the same order (139 pm) which is intermediate between
+C— C single bond (154 pm) and C—C double bond (133 pm). Thus the absence of pure double bond in benzene accounts for the reluctance of benzene to show addition reactions under normal conditions, thus explaining the unusual behaviour of benzene.
+9.5.3 Aromaticity
+Benzene was considered as parent ‘aromatic’ compound. Now, the name is applied to all the ring systems whether or not having benzene ring, possessing following characteristics.
+(i) Planarity (ii) Complete delocalisation of the π electrons in the ring (iii) Presence of (4n + 2) π electrons in the ring where n is an integer (n = 0, 1, 2, . . .).
+This is often referred to as Hückel Rule.
+Some examples of aromatic compounds are given below:
+9.5.4 Preparation of Benzene
+Benzene is commercially isolated from coal tar. However, it may be prepared in the laboratory by the following methods.
+(i) Cyclic polymerisation of ethyne:
+(Section 9.4.4)
+(ii) Decarboxylation of aromatic acids:
+Sodium salt of benzoic acid on heating with sodalime gives benzene.
+(electron cloud)
+Reprint 2026-27
+322 CHEMISTRY (iii) Reduction of phenol: Phenol is reduced to benzene by passing its vapours over heated zinc dust
+9.5.5 Properties
+Physical properties
+Aromatic hydrocarbons are non- polar molecules and are usually colourless liquids or solids with a characteristic aroma. You are also familiar with naphthalene balls which are used in toilets and for preservation of clothes because of unique smell of the compound and the moth repellent property. Aromatic hydrocarbons are immiscible with water but are readily miscible with organic solvents.
+They burn with sooty flame.
+Chemical properties
+Arenes are characterised by electrophilic substitution reactions. However, under special conditions they can also undergo addition and oxidation reactions.
+Electrophilic substitution reactions
+The common electrophilic substitution reactions of arenes are nitration, halogenation, sulphonation, Friedel Craft’s alkylation and acylation reactions in which attacking reagent is an electrophile (E + (i) Nitration: A nitro group is introduced into benzene ring when benzene is heated with a mixture of concentrated nitric acid and concentrated sulphuric acid (nitrating mixture).
+Nitrobenzene (ii) Halogenation: Arenes react with halogens in the presence of a Lewis acid like anhydrous
+FeCl 3, FeBr3 or AlCl3 to yield haloarenes.
+Chlorobenzene (iii) Sulphonation: The replacement of a hydrogen atom by a sulphonic acid group in a ring is called sulphonation. It is carried out by heating benzene with fuming sulphuric acid (oleum).
+(iv) Friedel-Crafts alkylation reaction:
+When benzene is treated with an alkyl halide in the presence of anhydrous aluminium chloride, alkylbenene is formed.
+Why do we get isopropyl benzene on treating benzene with 1-chloropropane instead of n-propyl benzene?
+(v) Friedel-Crafts acylation reaction: The reaction of benzene with an acyl halide or acid anhydride in the presence of Lewis acids (AlCl 3) yields acyl benzene.
+Reprint 2026-27
+323 HYDROCARBONS
+If excess of electrophilic reagent is used, further substitution reaction may take place in which other hydrogen atoms of benzene ring may also be successively replaced by the electrophile. For example, benzene on treatment with excess of chlorine in the presence of anhydrous AlCl 3 can be chlorinated to hexachlorobenzene (C6Cl6)
+Mechanism of electrophilic substitution reactions:
+According to experimental evidences, S E (S = substitution; E = electrophilic) reactions are supposed to proceed via the following three (a) Generation of the eletrophile (b) Formation of carbocation intermediate (c) Removal of proton from the carbocation intermediate (a) Generation of electrophile E¨: During chlorination, alkylation and acylation of benzene, anhydrous AlCl3, being a Lewis acid helps in generation of the elctrophile Cl¨, R¨,
+RC¨O (acylium ion) respectively by combining with the attacking reagent.
+In the case of nitration, the electrophile, nitronium ion, is produced by transfer of a proton (from sulphuric acid) to nitric acid in the following manner:
+Protonated Nitronium nitric acid ion
+It is interesting to note that in the process of generation of nitronium ion, sulphuric acid serves as an acid and nitric acid as a base.
+Thus, it is a simple acid-base equilibrium.
+(b) F o r m a t i o n o f C a r b o c a t i o n (arenium ion): Attack of electrophile results in the formation of V-complex or arenium ion in which one of the carbon is sp3 hybridised.
+sigma complex (arenium ion)
+The arenium ion gets stabilised by resonance:
+Reprint 2026-27
+324 CHEMISTRY
+Sigma complex or arenium ion loses its aromatic character because delocalisation of electrons stops at sp3 hybridised carbon.
+(c) Removal of proton: To restore the aromatic character, V -complex releases proton from sp3 hybridised carbon on attack by [AlCl4]– (in case of halogenation, alkylation and acylation) and [HSO 4 ]– (in case of nitration).
+Addition reactions
+Under vigorous conditions, i.e., at high temperature and/ or pressure in the presence of nickel catalyst, hydrogenation of benzene gives cyclohexane.
+Cyclohexane
+Under ultra-violet light, three chlorine molecules add to benzene to produce benzene hexachloride, C 6 H 6 Cl 6 which is also called gammaxane.
+Benzene hexachloride,
+Combustion: When heated in air, benzene burns with sooty flame producing CO 2 and
+6 2 2 2 6
+2 6CO +3H O + → (9.82)
+General combustion reaction for any hydrocarbon may be given by the following chemical equation:
+CxHy + (x + ) O2  x CO2 + H2 O n (9.83)
+9.5.6 Directive influence of a functional group in monosubstituted benzene
+When monosubstituted benzene is subjected to further substitution, three possible disubstituted products are not formed in equal amounts. Two types of behaviour are observed. Either ortho and para products or meta product is predominantly formed. It has also been observed that this behaviour depends on the nature of the substituent already present in the benzene ring and not on the nature of the entering group. This is known as directive influence of substituents.
+Reasons for ortho/para or meta directive nature of groups are discussed below:
+Ortho and para directing groups: The groups which direct the incoming group to ortho and para positions are called ortho and para directing groups. As an example, let us discuss the directive influence of phenolic (–2H grouS. 3henol is resonance h\brid of following structures:
+It is clear from the above resonating structures that the electron density is more on o – and p – Sositions. Hence the substitution takes place mainly at these positions. However, it ma\ be noted that –, effect of – 2H grouS also operates due to which the electron density on ortho and para positions of the benzene ring is slightly reduced. But the overall electron density increases at these positions of the ring due to resonance. 7herefore –2H grouS activates the benzene ring for the attack by
+Reprint 2026-27

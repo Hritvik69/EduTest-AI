@@ -1,0 +1,293 @@
+11. Three Dimensional Geometry 377
+11.1 Introduction 377
+11.2 Direction Cosines and Direction Ratios of a Line 377
+11.3 Equation of a Line in Space 381
+11.4 Angle between Two Lines 383
+11.5 Shortest Distance between Two Lines 385
+12. Linear Programming 394
+12.1 Introduction 394
+12.2 Linear Programming Problem and its Mathematical Formulation 395
+13. Probability 406
+13.1 Introduction 406
+13.2 Conditional Probability 406
+13.3 Multiplication Theorem on Probability 415
+13.4 Independent Events 417
+13.5 Bayes' Theorem 423
+Answers 439
+Reprint 2026-27
+INTEGRALS 225 v Just as a mountaineer climbs a mountain – because it is there, so a good mathematics student studies new material because it is there. — JAMES B. BRISTOL v
+7.1 Introduction
+Differential Calculus is centred on the concept of the derivative. The original motivation for the derivative was the problem of defining tangent lines to the graphs of functions and calculating the slope of such lines. Integral
+Calculus is motivated by the problem of defining and calculating the area of the region bounded by the graph of the functions.
+If a function f is differentiable in an interval I, i.e., its derivative f ′exists at each point of I, then a natural question arises that given f ′at each point of I, can we determine the function? The functions that could possibly have given function as a derivative are called anti derivatives (or primitive) of the function. Further, the formula that gives all these anti derivatives is called the indefinite integral of the function and such process of finding anti derivatives is called integration. Such type of problems arise in many practical situations. For instance, if we know the instantaneous velocity of an object at any instant, then there arises a natural question, i.e., can we determine the position of the object at any instant? There are several such practical and theoretical situations where the process of integration is involved. The development of integral calculus arises out of the efforts of solving the problems of the following types:
+(a) the problem of finding a function whenever its derivative is given, (b) the problem of finding the area bounded by the graph of a function under certain conditions.
+These two problems lead to the two forms of the integrals, e.g., indefinite and definite integrals, which together constitute the Integral Calculus.
+Chapter 7
+INTEGRALS
+G .W. Leibnitz (1646 -1716)
+Reprint 2026-27
+226 MATHEMATICS
+There is a connection, known as the Fundamental Theorem of Calculus, between indefinite integral and definite integral which makes the definite integral as a practical tool for science and engineering. The definite integral is also used to solve many interesting problems from various disciplines like economics, finance and probability.
+In this Chapter, we shall confine ourselves to the study of indefinite and definite integrals and their elementary properties including some techniques of integration.
+7.2 Integration as an Inverse Process of Differentiation
+Integration is the inverse process of differentiation. Instead of differentiating a function, we are given the derivative of a function and asked to find its primitive, i.e., the original function. Such a process is called integration or anti differentiation.
+Let us consider the following examples:
+We know that (sin )
+dx = cos x ... (1)
+dx = x2 ... (2)
+and ( )x d e dx = ex ... (3)
+We observe that in (1), the function cos x is the derived function of sin x. We say that sin x is an anti derivative (or an integral) of cos x. Similarly, in (2) and (3), ex are the anti derivatives (or integrals) of x2 and ex, respectively. Again, we note that for any real number C, treated as constant function, its derivative is zero and hence, we can write (1), (2) and (3) as follows :
+(sin + C) cos = dx and ( + C) =x x d e e
+Thus, anti derivatives (or integrals) of the above cited functions are not unique.
+Actually, there exist infinitely many anti derivatives of each of these functions which can be obtained by choosing C arbitrarily from the set of real numbers. For this reason
+C is customarily referred to as arbitrary constant. In fact, C is the parameter by varying which one gets different anti derivatives (or integrals) of the given function.
+More generally, if there is a function F such that F ( ) = ( )
+dx , ∀ x ∈ I (interval), then for any arbitrary real number C, (also called constant of integration)
+[ ] F ( ) + C dx = f (x), x ∈ I
+Reprint 2026-27
+INTEGRALS 227
+Thus, {F + C, C ∈ R} denotes a family of anti derivatives of f.
+Remark Functions with same derivatives differ by a constant. To show this, let g and h be two functions having the same derivatives on an interval I.
+Consider the function f = g – h defined by f (x) = g (x) – h(x), ∀ x ∈ I
+′ giving f
+′ (x) = g
+′ (x) – h
+′ (x) ∀ x ∈ I
+′ (x) = 0, ∀ x ∈ I by hypothesis, i.e., the rate of change of f with respect to x is zero on I and hence f is constant.
+In view of the above remark, it is justified to infer that the family {F + C, C ∈ R} provides all possible anti derivatives of f.
+We introduce a new symbol, namely, ( ) f x dx ∫ which will represent the entire class of anti derivatives read as the indefinite integral of f with respect to x.
+Symbolically, we write ( ) = F ( ) + C f x dx x ∫ .
+Notation Given that ( )
+dx = , we write y = ( ) f x dx ∫ .
+For the sake of convenience, we mention below the following symbols/terms/phrases with their meanings as given in the Table (7.1).
+Table 7.1
+Symbols/Terms/Phrases Meaning ( ) f x dx ∫ Integral of f with respect to x f (x) in ( ) f x dx ∫ Integrand x in ( ) f x dx ∫ Variable of integration
+Integrate Find the integral
+An integral of f A function F such that
+F′(x) = f (x)
+Integration The process of finding the integral
+Constant of Integration Any real number C, considered as constant function
+Reprint 2026-27
+228 MATHEMATICS
+We already know the formulae for the derivatives of many important functions.
+From these formulae, we can write down immediately the corresponding formulae (referred to as standard formulae) for the integrals of these functions, as listed below which will be used to find integrals of other functions.
+Derivatives Integrals (Anti derivatives)
+n n d x x
+  =  
++ ∫ , n ≠ –1
+Particularly, we note that dx = ; C dx x = + ∫ (ii) ( ) sin cos dx = ; cos sin C x dx x = + ∫ (iii) ( ) – cos sin dx = ; sin cos C x dx – x = + ∫ (iv) ( ) 2 dx = ; 2 sec tan C x dx x = + ∫ (v) ( ) 2
+– cot cosec dx = ; 2 cosec cot C x dx – x = + ∫ (vi) ( ) sec sec tan dx = ; sec tan sec C x x dx x = + ∫ (vii) ( ) – cosec cosec cot dx = ; cosec cot – cosec C x x dx x = + ∫ (viii) ( )– 1 (ix) ( )– 1 (x) ( )– 1
+= + ; – 1 (xi) ( )x x d e e dx = ; Cx x e dx e = + ∫
+Reprint 2026-27
+INTEGRALS 229 (xii) ( ) 1
+= ; 1 log | | C dx x x x d a a dx log a
+  =   a dx log a
+ANote In practice, we normally do not mention the interval over which the various functions are defined. However, in any specific problem one has to keep it in mind.
+7.2.1 Some properties of indefinite integral
+In this sub section, we shall derive some properties of indefinite integrals.
+(I) The process of differentiation and integration are inverses of each other in the sense of the following results :
+d f x dx dx ∫ = f (x)
+and ( ) f x dx ′ ∫ = f (x) + C, where C is any arbitrary constant.
+Proof Let F be any anti derivative of f, i.e., dx = f (x)
+Then ( ) f x dx ∫ = F(x) + C
+Therefore ( )
+d f x dx dx ∫ = ( ) F ( ) + C
+= F ( ) = ( )
+Similarly, we note that f ′(x) = ( )
+and hence ( ) f x dx ′ ∫ = f (x) + C where C is arbitrary constant called constant of integration.
+(II) Two indefinite integrals with the same derivative lead to the same family of curves and so they are equivalent.
+Reprint 2026-27
+230 MATHEMATICS
+Proof Let f and g be two functions such that d f x dx dx ∫ = ( )
+d g x dx or ( ) ( )
+d f x dx – g x dx
+  ∫ ∫ = 0
+Hence ( ) ( ) f x dx – g x dx ∫ ∫ = C, where C is any real number (Why?)
+or ( ) f x dx ∫ = ( ) C g x dx + ∫
+So the families of curves { } 1 1 ( ) C , C R f x dx + ∈ ∫ and { } 2 2 ( ) C , C R g x dx + ∈ ∫ are identical.
+Hence, in this sense, ( ) and ( ) f x dx g x dx ∫ ∫ are equivalent.
+A Note The equivalence of the families { } 1 1 ( ) + C ,C f x dx ∈ ∫ R and
+{ } 2 2 ( ) + C ,C g x dx ∈ ∫ R is customarily expressed by writing ( ) = ( ) f x dx g x dx ∫ ∫ , without mentioning the parameter.
+(III) [ ] ( ) + ( ) ( ) + ( ) f x g x dx f x dx g x dx = ∫ ∫ ∫
+Proof By Property (I), we have
+[ ( ) + ( )] d f x g x dx
+  ∫ = f (x) + g (x) ... (1)
+On the otherhand, we find that ( ) + ( )
+d f x dx g x dx
+  ∫ ∫ = ( ) + ( )
+f x dx g x dx dx dx∫ ∫
+= f (x) + g (x) ... (2)
+Thus, in view of Property (II), it follows by (1) and (2) that ( ) ( ) ( ) f x g x dx + ∫ = ( ) ( ) f x dx g x dx + ∫ ∫ .
+(IV) For any real number k, ( ) ( ) k f x dx k f x dx = ∫ ∫
+Reprint 2026-27
+INTEGRALS 231
+Proof By the Property (I), ( ) ( )
+d k f x dx k f x dx = ∫ .
+Also ( )
+d k f x dx
+  ∫ = ( ) = ( )
+k f x dx k f x
+Therefore, using the Property (II), we have ( ) ( ) k f x dx k f x dx = ∫ ∫ .
+(V) Properties (III) and (IV) can be generalised to a finite number of functions f1, f2, ..., fn and the real numbers, k1, k2, ..., kn giving
+[ ] 1 1 2 2 ( ) ( ) ( ) n n k f x k f x ... k f x dx + + + ∫
+= 1 1 2 2 ( ) ( ) ( ) n n k f x dx k f x dx ... k f x dx + + + ∫ ∫ ∫ .
+To find an anti derivative of a given function, we search intuitively for a function whose derivative is the given function. The search for the requisite function for finding an anti derivative is known as integration by the method of inspection. We illustrate it through some examples.
+Example 1 Write an anti derivative for each of the following functions using the method of inspection:
+(i) cos 2x (ii) 3x2 + 4x3 (iii) 1 x , x ≠ 0
+Solution (i) We look for a function whose derivative is cos 2x. Recall that dx sin 2x = 2 cos 2x or cos 2x = 1 dx (sin 2x) = 1 sin 2
+Therefore, an anti derivative of cos 2x is 1 sin 2 (ii) We look for a function whose derivative is 3x2 + 4x3. Note that ( )3 4 d x x dx + = 3x2 + 4x3.
+Therefore, an anti derivative of 3x2 + 4x3 is x3 + x4.
+Reprint 2026-27
+232 MATHEMATICS (iii) We know that (log ) 0 and [log ( )] ( 1) 0 x , x – x – , x dx x dx – x x
+= > = = <
+Combining above, we get ( ) 1
+Therefore, 1 log dx x x = ∫ is one of the anti derivatives of 1
+Example 2 Find the following integrals:
+1 x – dx
+3 ( 1) x dx + ∫ (iii) ∫ ( 2 – ) + x
+Solution (i) We have
+1 – x – dx x dx – x dx x = ∫ ∫ ∫ (by Property V)
++ +    
++ +     ; C1, C2 are constants of integration
++ , where C = C1 – C2 is another constant of integration.
+ANote From now onwards, we shall write only one constant of integration in the final answer.
+(ii) We have
+3 3 ( 1) x dx x dx dx + = + ∫ ∫ ∫
+5 x x + +
+Reprint 2026-27
+INTEGRALS 233 (iii) We have ( 2 ) 2x x x e – dx x dx e dx – dx
++ = + ∫ ∫ ∫ ∫
+2 – log + C
+2 2 – log + C
+Example 3 Find the following integrals:
+(i) (sin cos ) x x dx + ∫ (ii) cosec (cosec cot ) x x x dx + ∫
+Solution (i) We have (sin cos ) sin cos x x dx x dx x dx + = + ∫ ∫ ∫
+= – cos sin C x x + + (ii) We have (cosec (cosec + cot ) cosec cosec cot x x x dx x dx x x dx = + ∫ ∫ ∫
+= – cot cosec C x – x + (iii) We have
+1 sin 1 sin cos cos cos dx dx – dx sec tan sec x dx – x x dx ∫ ∫
+= tan sec C x – x +
+Example 4 Find the anti derivative F of f defined by f (x) = 4x3 – 6, where F (0) = 3
+Solution One anti derivative of f (x) is x4 – 6x since dx = 4x3 – 6
+Therefore, the anti derivative F is given by
+F(x) = x4 – 6x + C, where C is constant.
+Reprint 2026-27
+234 MATHEMATICS
+Given that F(0) = 3, which gives,
+3 = 0 – 6 × 0 + C or C = 3
+Hence, the required anti derivative is the unique function F defined by
+F(x) = x4 – 6x + 3.
+(i) We see that if F is an anti derivative of f, then so is F + C, where C is any constant. Thus, if we know one anti derivative F of a function f, we can write down an infinite number of anti derivatives of f by adding any constant to F expressed by F(x) + C, C ∈ R. In applications, it is often necessary to satisfy an additional condition which then determines a specific value of C giving unique anti derivative of the given function.
+(ii) Sometimes, F is not expressible in terms of elementary functions viz., polynomial, logarithmic, exponential, trigonometric functions and their inverses etc. We are therefore blocked for finding ( ) f x dx ∫ . For example, it is not possible to find e dx ∫ by inspection since we can not find a function whose derivative is 2 (iii) When the variable of integration is denoted by a variable other than x, the integral formulae are modified accordingly. For instance
+EXERCISE 7.1
+Find an anti derivative (or integral) of the following functions by the method of inspection.
+1. sin 2x 2. cos 3x 3. e2x
+4. (ax + b)2 5. sin 2x – 4 e3x
+Find the following integrals in Exercises 6 to 20:
+(4 + 1)x e dx ∫ 7. 2 (1 – ) x dx ( ) ax bx c dx + + ∫ x e dx + ∫ 10.
+5 4 x x – dx
+3 3 4 x x dx x x x – dx
+∫ 14. (1 ) – x x dx ∫
+Reprint 2026-27
+INTEGRALS 235 ( 3 2 3) x x x dx + + ∫ 16. (2 3cos )x x – x e dx + ∫ (2 3sin 5 ) x – x x dx + ∫ 18. sec (sec tan ) x x x dx + ∫ x∫ 20. 2
+2 – 3sin
+Choose the correct answer in Exercises 21 and 22.
+21. The anti derivative of 1
+  equals
+3 x x + + (B)
+3 x x + + (D)
+22. If 3
+= − such that f (2) = 0. Then f (x) is
++ − (B) 3
++ + (D) 3
+7.3 Methods of Integration
+In previous section, we discussed integrals of those functions which were readily obtainable from derivatives of some functions. It was based on inspection, i.e., on the search of a function F whose derivative is f which led us to the integral of f. However, this method, which depends on inspection, is not very suitable for many functions.
+Hence, we need to develop additional techniques or methods for finding the integrals by reducing them into standard forms. Prominent among them are methods based on:
+1. Integration by Substitution
+2. Integration using Partial Fractions
+3. Integration by Parts
+7.3.1 Integration by substitution
+In this section, we consider the method of integration by substitution.
+The given integral ( ) f x dx ∫ can be transformed into another form by changing the independent variable x to t by substituting x = g (t).
+Reprint 2026-27
+236 MATHEMATICS
+Consider I = ( ) f x dx ∫
+Put x = g(t) so that dx dt = g′(t).
+We write dx = g′(t) dt
+Thus I = ( ) ( ( )) ( ) f x dx f g t g t dt = ′ ∫ ∫
+This change of variable formula is one of the important tools available to us in the name of integration by substitution. It is often important to guess what will be the useful substitution. Usually, we make a substitution for a function whose derivative also occurs in the integrand as illustrated in the following examples.
+Example 5 Integrate the following functions w.r.t. x:
+(i) sin mx (ii) 2x sin (x2 + 1)
+tan sec x x sin (tan )
+Solution (i) We know that derivative of mx is m. Thus, we make the substitution mx = t so that mdx = dt.
+Therefore, 1 sin sin mx dx t dt
+= ∫ ∫ = – 1 m cos t + C = – 1 m cos mx + C (ii) Derivative of x2 + 1 is 2x. Thus, we use the substitution x2 + 1 = t so that
+2x dx = dt.
+Therefore, 2
+2 sin ( 1) sin x x dx t dt + = ∫ ∫ = – cos t + C = – cos (x2 + 1) + C (iii) Derivative of x is
+= . Thus, we use the substitution so that giving x t dx dt
+= = dx = 2t dt.
+tan sec 2 tan sec x x t t t dt dx t x = ∫ ∫ = 4 2
+2 tan sec t t dt ∫
+Again, we make another substitution tan t = u so that sec2 t dt = du
+Reprint 2026-27
+INTEGRALS 237
+Therefore, 4 2 4
+2 tan sec 2 t t dt u du = ∫ ∫ =
+= 5 2 tan C
+5 t + (since u = tan t)
+= 5 2 tan C (since )
+5 x t x + = tan sec x x dx
+∫ = 5 2 tan C
+Alternatively, make the substitution tan x t = (iv) Derivative of 1
+= + . Thus, we use the substitution tan–1 x = t so that 2 x + = dt.
+Therefore , sin (tan ) sin
+– x dx t dt
++∫ ∫ = – cos t + C = – cos (tan –1x) + C
+Now, we discuss some important integrals involving trigonometric functions and their standard integrals using substitution technique. These will be used later without reference.
+(i) ∫tan = log sec + C x dx x
+Put cos x = t so that sin x dx = – dt
+Then tan log C log cos C x dx – – t – x
+= = + = + ∫ ∫ or tan log sec C x dx x = + ∫ (ii) ∫cot = log sin + C x dx x
+We have cos
+Reprint 2026-27
+238 MATHEMATICS
+Put sin x = t so that cos x dx = dt
+Then cot dt
+= ∫ ∫ = log C t + = log sin C x + (iii) ∫sec = log sec + tan + C x dx x x sec (sec tan )
+sec sec + tan
+Put sec x + tan x = t so that sec x (tan x + sec x) dx = dt
+Therefore, sec log + C = log sec tan C x dx t x x
+= = + + ∫ ∫ (iv) ∫cosec = log cosec – cot + C x dx x x cosec (cosec cot )
+cosec (cosec cot )
+Put cosec x + cot x = t so that – cosec x (cosec x + cot x) dx = dt
+So cosec – – log | | – log |cosec cot | C x dx t x x
+= = = + + ∫ ∫ cosec cot cosec cot
+= log cosec cot C x – x +
+Example 6 Find the following integrals:
+sin cos x x dx ∫ (ii) sin x a +∫ (iii) 1
+1 tan dx
+Solution (i) We have sin cos sin cos (sin ) x x dx x x x dx = ∫ ∫ (1 – cos ) cos (sin ) x x x dx ∫
+Put t = cos x so that dt = – sin x dx
+Reprint 2026-27
+INTEGRALS 239
+Therefore, 2 2 sin cos (sin ) x x x dx ∫ = 2 2 (1 – ) t t dt − ∫
+– t t dt – –
+= 3 5 1 1 cos cos C
+– x x + + (ii) Put x + a = t. Then dx = dt. Therefore sin sin ( )
+sin ( ) sin
+= sin cos cos sin t a – t a dt
+= cos – sin cot a dt a t dt ∫ ∫
+= 1 (cos ) (sin ) log sin C a t – a t   +  
+= 1 (cos ) ( ) (sin ) log sin ( ) C a x a – a x a   + + +  
+= 1 cos cos (sin ) log sin ( ) C sin x a a a – a x a – a + +
+Hence, sin x a + ∫ = x cos a – sin a log |sin (x + a)| + C, where, C = – C1 sin a + a cos a, is another arbitrary constant.
+(iii) cos
+1 tan cos sin
+= 1 (cos + sin + cos – sin )
+2 cos sin x x x x dx
+= 1 1 cos – sin
+2 2 cos sin
+= 1 C 1 cos sin
+2 2 2 cos sin x x – x dx
++ + +∫ ... (1)
+Reprint 2026-27

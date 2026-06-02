@@ -1,0 +1,217 @@
+ORGANISATION OF DATA 23 ties them with a rope. Then collects all empty glass bottles in a sack. He heaps the articles of metals in one corner of his shop and sorts them into groups like “iron”, “copper”, “aluminium”,
+“brass” etc., and so on. In this way he groups his junk into different classes
+— “newspapers, “plastics”, “glass”,
+“metals” etc. — and brings order in them. Once his junk is arranged and classified, it becomes easier for him to find a particular item that a buyer may
+Likewise when you arrange your schoolbooks in a certain order, it becomes easier for you to handle them.
+You may classify them according to subjects where each subject becomes a group or a class. So, when you need a particular book on history, for instance, all you need to do is to search that book in the group “History”.
+Otherwise, you would have to search through your entire collection to find the particular book you are looking for.
+While classification of objects or things saves our valuable time and effort, it is not done in an arbitrary manner. The kabadiwallah groups his junk according to the markets for reused goods. For example, under the group “Glass” he would put empty bottles, broken mirrors and windowpanes, etc. Similarly when you classify your history books under the group “History” you would not put a book of a different subject in that group. Otherwise the entire purpose of grouping would be lost. Classification, therefore, is arranging or organising things into groups or classes based on some criteria.
+Activity
+• Visit your local post-office to find out how letters are sorted. Do you know what the pin-code in a letter indicates? Ask your postman.
+2. RAW DATA
+Like the kabadiwallah’s junk, the unclassified data or raw data are highly disorganised. They are often very large and cumbersome to handle. To draw meaningful conclusions from them is a tedious task because they do not yield to statistical methods easily.
+Therefore proper organisation and presentation of such data is needed before any systematic statistical analysis is undertaken. Hence after collecting data the next step is to organise and present them in a classified form.
+Suppose you want to know the performance of students in mathematics and you have collected data on marks in mathematics of 100 students of your school. If you present
+Reprint 2026-27
+24 STATISTICS FOR ECONOMICS them as a table, they may appear something like Table 3.1.
+TABLE 3.1
+Marks in Mathematics Obtained by 100
+Students in an Examination
+47 45 10 60 51 56 66 100 49 40
+60 59 56 55 62 48 59 55 51 41
+42 69 64 66 50 59 57 65 62 50
+64 30 37 75 17 56 20 14 55 90
+62 51 55 14 25 34 90 49 56 54
+70 47 49 82 40 82 60 85 65 66
+49 44 64 69 70 48 12 28 55 65
+49 40 25 41 71 80 0 56 14 22
+66 53 46 70 43 61 59 12 30 35
+45 44 57 76 82 39 32 14 90 25
+Or you could have collected data on the monthly expenditure on food of
+50 households in your neighbourhood to know their average expenditure on food. The data collected, in that case, had you presented as a table, would have resembled Table 3.2. Both Tables
+3.1 and 3.2 are raw or unclassified data. In both the tables you find that
+Table 3.2
+Monthly Household Expenditure (in Rupees)
+on Food of 50 Households
+1904 1559 3473 1735 2760
+2041 1612 1753 1855 4439
+5090 1085 1823 2346 1523
+1211 1360 1110 2152 1183
+1218 1315 1105 2628 2712
+4248 1812 1264 1183 1171
+1007 1180 1953 1137 2048
+2025 1583 1324 2621 3676
+1397 1832 1962 2177 2575
+1293 1365 1146 3222 1396 then you have to first arrange the marks of 100 students either in ascending or in descending order. That is a tedious task. It becomes more tedious, if instead of 100 you have the marks of 1,000 students to handle. Similarly, in Table
+3.2, you would note that it is difficult for you to ascertain the average monthly expenditure of 50 households. And this difficulty will go up manifold if the number was larger
+— say, 5,000 households. Like our kabadiwallah, who would be distressed to find a particular item when his junk becomes large and disarranged, you would face a similar situation when you try to get any information from raw data that are large. In one word, therefore, it is a tedious task to pull information from large unclassified data.
+The raw data are summarised, and made comprehensible by classification.
+When facts of similar characteristics are placed in the same class, it enables one to locate them easily, make comparison, and draw inferences without any difficulty. You have numbers are not arranged in any order.
+Now if you are asked for the highest marks in mathematics from Table 3.1
+Reprint 2026-27
+ORGANISATION OF DATA 25 studied in Chapter 2 that the
+Government of India conducts Census of population every ten years. About
+20 crore persons were contacted in
+Census 2001. The raw data of census are so large and fragmented that it appears an almost impossible task to draw any meaningful conclusion from them. But when the same data is classified according to gender, education, marital status, occupation, etc., the structure and nature of population of India is, then, easily understood.
+The raw data consist of observations on variables. The raw data as given in Tables 3.1 and 3.2 consist of observations on a specific or group of variables. Look at Table 3.1 for instance which contains marks in mathematics scored by 100 students.
+How can we make sense of these marks? The mathematics teacher looking at these marks would be thinking– How have my students done?
+How many have not passed? How we classify the data depends upon the purpose we have in mind. In this case, the teacher wishes to understand in some depth– how these students have done. She would probably choose to construct the frequency distribution.
+This is discussed in the next section.
+Activity
+• Collect data of total weekly expenditure of your family for a year and arrange it in a table. See how many observations you have.
+Arrange the data monthly and find the number of observations.
+3. CLASSIFICATION OF DATA
+The groups or classes of a classification is done in various ways. Instead of classifying your books according to subjects — “History”, “Geography”,
+“Mathematics”, “Science”, etc. — you could have classified them author-wise in an alphabetical order. Or, you could have also classified them according to the year of publication. The way you want to classify them would depend on your requirement.
+Likewise the raw data is classified in various ways depending on the purpose. They can be grouped according to time. Such a classification is known as a Chronological
+Classification. In such a classification, data are classified either in ascending or in descending order with reference to time such as years, quarters, months, weeks, etc. The following example shows the population of India classified in terms of years. The variable ‘population’ is a Time Series as it depicts a series of values for different years.
+Example 1
+Population of India (in crores)
+Year Population (Crores)
+1951 35.7
+1961 43.8
+1971 54.6
+1981 68.4
+1991 81.8
+2001 102.7
+2011 121.0
+In Spatial Classification the data are classified with reference to geographical locations such as countries, states, cities, districts, etc.
+Reprint 2026-27
+26 STATISTICS FOR ECONOMICS
+Example 2 shows the yeild of wheat in different countries.
+Example 2
+Yield of Wheat for Different Countries
+Country Yield of wheat (kg/hectare)
+Canada 3594
+China 5055
+France 7254
+Germany 7998
+India 3154
+Pakistan 2787
+Source: Indian Agricultural Statistics at a Glance, 2015
+Activities
+• In Example 1, find out the years in which India’s population was minimum and maximum,
+• In Example 2, find the country whose yield of wheat is slightly more than that of India’s. How much would that be in terms of percentage?
+• Arrange the countries of
+Example 2 in the ascending order of yield. Do the same exercise for the descending order of yield.
+Sometimes you come across characteristics that cannot be expressed quantitatively. Such characteristics are called Qualities or
+Attributes. For example, nationality, literacy, religion, gender, marital status, etc. They cannot be measured.
+Yet these attributes can be classified on the basis of either the presence or the absence of a qualitative characteristic. Such a classification of data on attributes is called a
+Qualitative Classification. In the following example, we find population of a country is grouped on the basis of the qualitative variable “gender”. An observation could either be a male or a female. These two characteristics could be further classified on the basis of marital status as given below:
+Example 3
+Population
+Male Female
+Married Unmarried Married Unmarried
+The classification at the first stage is based on the presence and absence of an attribute, i.e., male or not male (female). At the second stage, each class
+— male and female, is further sub- divided on the basis of the presence or absence of another attribute, i.e., whether married or unmarried.
+Characteristics, like height, weight, age, income, marks of students, etc., are quantitative in nature. When the collected data of such characteristics are grouped into classes, it becomes a
+Quantitative Classification.
+Activity
+• The objects around can be grouped as either living or non-living. Is it a quantitative classification?
+Reprint 2026-27
+ORGANISATION OF DATA 27
+Example 4
+Frequency Distribution of Marks in
+Mathematics of 100 Students
+Marks Frequency
+40–50 21
+50–60 23
+60–70 19
+90–100 4
+Total 100
+Example 4 shows the quantitative classification of marks in mathematics of 100 students given in Table 3.1.
+Activity
+• Express the values of frequency of Example 4 as proportion or percentage of total frequency.
+Note that frequency expressed in this way is known as relative frequency.
+• In Example 4, which class has the maximum concentration of data? Express it as percentage of total observations. Which class has the minimum concentration of data?
+4. VARIABLES: CONTINUOUS AND
+DISCRETE
+A simple definition of variable, which you have read in the last chapter, does not tell you how it varies.
+Variables differ on the basis of specific criterion. They are broadly classified into two types:
+(i) Continuous and (ii) Discrete.
+A continuous variable can take any numerical value. It may take integral values (1, 2, 3, 4, ...), fractional values (1/2, 2/3, 3/4, ...), and values that are not exact fractions ( 2 =1.414,
+3 =1.732, … , 7 =2.645). For example, the height of a student, as he/she grows say from 90 cm to 150 cm, would take all the values in between them. It can take values that are whole numbers like
+90cm, 100cm, 108cm, 150cm. It can also take fractional values like 90.85 cm, 102.34 cm, 149.99cm etc. that are not whole numbers. Thus the variable
+“height” is capable of manifesting in every conceivable value and its values can also be b r o k e n down into i n f i n i t e gradations.
+Other examples of a continuous variable are weight, time, distance, etc.
+Unlike a continuous variable, a discrete variable can take only certain values. Its value changes only by finite
+“jumps”. It “jumps” from one value to another but does not take any intermediate value between them. For example, a variable like the “number of students in a class”, for different classes, would assume values that are only whole numbers. It cannot take any fractional value like 0.5 because “half of a student” is absurd. Therefore it
+Reprint 2026-27
+28 STATISTICS FOR ECONOMICS cannot take a value like
+25.5 between 25 and 26.
+Instead its value could have been either 25 or
+26. What we observe is that as its value changes from 25 to 26, the values in between them — the fractions are not taken by it. But we should not have the impression that a discrete variable cannot take any fractional value. Suppose X is a variable that takes values like 1/8, 1/
+16, 1/32, 1/64, ... Is it a discrete variable? Yes, because though X takes fractional values it cannot take any value between two adjacent fractional values. It changes or “jumps” from 1/
+8 to 1/16 and from 1/16 to 1/32. But it cannot take a value in between 1/8 and 1/16 or between 1/16 and 1/32.
+Activity
+• Distinguish the following variables as continuous and discrete:
+Area, volume, temperature, number appearing on a dice, crop yield, population, rainfall, number of cars on road and age.
+Example 4 shows how the marks of 100 students are grouped into classes. You will be wondering as to how we got it from the raw data of Table 3.1. But, before we address this question, you must know what a frequency distribution is.
+5. WHAT IS A FREQUENCY DISTRIBUTION?
+A frequency distribution is a comprehensive way to classify raw data of a quantitative variable. It shows how different values of a variable (here, the marks in mathematics scored by a student) are distributed in different classes along with their corresponding class frequencies. In this case we have ten classes of marks: 0–10, 10–20, … ,
+90–100. The term Class Frequency means the number of values in a particular class. For example, in the class 30– 40 we find 7 values of marks from raw data in Table 3.1. They are
+30, 37, 34, 30, 35, 39, 32. The frequency of the class: 30–40 is thus
+7. But you might be wondering why
+40–which is occurring twice in the raw data – is not included in the class 30–
+40. Had it been included the class frequency of 30–40 would have been 9 instead of 7. The puzzle would be clear to you if you are patient enough to read this chapter carefully. So carry on. You will find the answer yourself.
+Each class in a frequency distribution table is bounded by Class
+Limits. Class limits are the two ends of a class. The lowest value is called the
+Lower Class Limit and the highest value the Upper Class Limit. For example, the class limits for the class:
+60–70 are 60 and 70. Its lower class limit is 60 and its upper class limit is
+70. Class Interval or Class Width is the difference between the upper class limit and the lower class limit. For the class 60–70, the class interval is 10 (upper class limit minus lower class
+Reprint 2026-27
+ORGANISATION OF DATA 29
+The Class Mid-Point or Class Mark is the middle value of a class. It lies halfway between the lower class limit and the upper class limit of a class and can be ascertained in the following
+Class Mid-Point or Class Mark
+= (Upper Class Limit + Lower Class Limit)/2
+The class mark or mid-value of each class is used to represent the class.
+Once raw data are grouped into classes, individual observations are not used in further calculations. Instead, the class mark is used.
+TABLE 3.3
+The Lower Class Limits, the Upper Class
+Limits and the Class Mark
+Class Frequency Lower Upper Class
+Class Class Mark
+Limit Limit
+0–10 1 0 10 5
+10–20 8 10 20 15
+20–30 6 20 30 25
+30–40 7 30 40 35
+40–50 21 40 50 45
+50–60 23 50 60 55
+60–70 19 60 70 65
+70–80 6 70 80 75
+80–90 5 80 90 85
+90–100 4 90 100 95
+Frequency Curve is a graphic representation of a frequency distribution. Fig. 3.1 shows the diagrammatic presentation of the frequency distribution of the data in our example above. To obtain the frequency curve we plot the class marks on the X-axis and frequency on the Y-
+Fig.3.1: Diagrammatic Presentation of Frequency
+Distribution of Data.
+How to prepare a Frequency
+Distribution?
+While preparing a frequency distribution, the following five questions need to be addressed:
+1. Should we have equal or unequal sized class intervals?
+2. How many classes should we have?
+3. What should be the size of each
+4. How should we determine the class
+5. How should we get the frequency for each class?
+Should we have equal or unequal sized class intervals?
+There are two situations in which unequal sized intervals are used. First, when we have data on income and other similar variables where the range is very high. For example, income per day may range from nearly Zero to many hundred crores of rupees. In such a situation, equal class intervals are not suitable because (i) if the class
+Reprint 2026-27
+30 STATISTICS FOR ECONOMICS intervals are of moderate size and equal, there would be a large number of classes. (ii) If class intervals are large, we would tend to suppress information on either very small levels or very high levels of income.
+Second, if a large number of values are concentrated in a small part of the range, equal class intervals would lead to lack of information on many values.
+In all other cases, equal sized class intervals are used in frequency distributions.
+How many classes should we have?
+The number of classes is usually between six and fifteen. In case, we are using equal sized class intervals then number of classes can be the calculated by dividing the range (the difference between the largest and the smallest values of variable) by the size of the class intervals.
+Activities
+Find the range of the following:
+• population of India in Example 1,
+• yield of wheat in Example 2.
+What should be the size of each
+The answer to this question depends on the answer to the previous question.
+Given the range of the variable, we can determine the number of classes once we decide the class interval. Thus, we find that these two decisions are interlinked. We cannot decide on one without deciding on the other.
+In Example 4, we have the number of classes as 10. Given the value of range as 100, the class intervals are automatically 10. Note that in the present context we have chosen class intervals that are equal in magnitude.
+However, we could have chosen class intervals that are not of equal magnitude. In that case, the classes would have been of unequal width.
+How should we determine the class
+Class limits should be definite and clearly stated. Generally, open-ended classes such as “70 and over” or “less than 10” are not desirable.
+The lower and upper class limits should be determined in such a manner that frequencies of each class tend to concentrate in the middle of the class intervals.
+Class intervals are of two types:
+(i) Inclusive class intervals: In this case, values equal to the lower and upper limits of a cl

@@ -1,0 +1,43 @@
+Data CommuniCation 217
+Hypertext refers to a document that contains images or text that can be linked to another document or text.
+Protocols also define:
+• how computers identify one another on a network.
+• the form to which the data should be converted for transit.
+• how to decide whether the data received is for that node or to be forwarded to another node.
+• ensuring that all the data have reached the destination without any loss.
+• how to rearrange the packets and process them at the destination.
+If all the rules or protocols of a communication network are defined at one place, it becomes complex to ensure that communicating parties follow the guidelines.
+In this section, we will briefly talk about some of the protocols required in communication.
+11.8.2 HyperText Transfer Protocol (HTTP)
+HTTP stands for HyperText Transfer Protocol. It is the primary protocol used to access the World Wide
+Web. Tim Berners-Lee led the development of HTTP at
+CERN in 1989 in collaboration with Internet
+Engineering Task Force (IETF) and the World Wide
+Web Consortium (W3C).
+HTTP is a request-response (also called client- server) protocol that runs over TCP. The common use of HTTP is between a web browser (client) and a web server (server). HTTP facilitates access of hypertext from the World Wide Web by defining how information are formatted and transmitted, and how the Web servers and browsers should respond to various commands.
+512 Mbps 1024 Mbps
+Received Packets
+Loss Packets
+Figure 11.14: Speed mismatch between two computers can result into loss of data
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 218
+A web page is written using a markup language like
+HTML and is stored on a web server for access via its
+URL. Once a user opens a web browser and types in the
+URL of the intended web page, a logical communication link between the user machine (client) and the web server is created using HTTP.
+For example, whenever we enter the URL http// www.ncert.nic.in in a browser, it sends HTTP request to the web-server where ncert.nic.in is hosted. The
+HTTP response from the web-server fetches and sends the requested Web-page, which is displayed on your browser.
+11.8.3 File Transfer Protocol (FTP)
+File Transfer Protocol (FTP) is the protocol used for transferring files from one machine to another. Like
+HTTP, FTP also works on a client-server model.
+When a user requests for a file transfer with another system, FTP sets up a connection between the two nodes for accessing the file. Optionally, the user can authenticate using user ID and password. The user then specifies the file name and location of the desired file. After that, another connection sets up and the file transfer happens directly between the two machines.
+However, some servers provide FTP logins without authentication for accessing files.
+File transfer between two systems seems simple and straightforward because FTP takes care of issues between two communicating devices, such as:
+• use of different conventions while naming files.
+• representation of text and data in different formats.
+• having different directory structure
+11.8.4 Point to Point Protocol (PPP)
+PPP is a communication protocol which establishes a dedicated and direct connection between two communicating devices. This protocol defines how two devices will authenticate each other and establish a direct link between them to exchange data. For example, two routers with direct connection communicate using
+PPP. The Internet users who connect their home computers to the server of an Internet Service Provider (ISP) through a modem also use PPP.
+The communicating devices should have duplex modes for using this protocol. This protocol maintains
+Reprint 2026-27

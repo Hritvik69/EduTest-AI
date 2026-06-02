@@ -1,0 +1,57 @@
+Electricity
+Or, I R r
+ε (3.40)
+The maximum current that can be drawn from a cell is for and it is r. However, in most cells the maximum allowed current is much lower than this to prevent permanent damage to the cell.
+3.11 3.11 3.11 3.11 3.11 C C C C CELLS ELLS ELLS ELLS ELLS IN IN IN IN IN S S S S SERIES ERIES ERIES ERIES ERIES AND AND AND AND AND IN IN IN IN IN P P P P PARALLEL ARALLEL ARALLEL ARALLEL ARALLEL
+Like resistors, cells can be combined together in an electric circuit. And like resistors, one can, for calculating currents and voltages in a circuit, replace a combination of cells by an equivalent cell.
+FIGURE FIGURE FIGURE FIGURE FIGURE 3.13 3.13 3.13 3.13 3.13 Two cells of emf’s e2 in the series.
+r2 are their internal resistances. For connections across A and C, the combination can be considered as one cell of emf eeq and an internal resistance
+Consider first two cells in series (Fig. 3.13), where one terminal of the two cells is joined together leaving the other terminal in either cell free.
+e2 are the emf’s of the two cells and r2 their internal resistances, respectively.
+V (C) be the potentials at points A, B and C shown in
+Fig. 3.13. Then
+V (B) is the potential difference between the positive and negative terminals of the first cell. We have already calculated it in
+Eq. (3.38) and hence,
+V V V I r AB A B ≡ = ( ) ( )
+– – (3.41)
+Similarly,
+V V V I r BC B C ≡ = ( ) ( )
+– – (3.42)
+Hence, the potential difference between the terminals A and C of the combination is ( ) ( ) ( ) ( ) AC (A ) – (C) A – B B – C V V V V V V V ≡ = + ( ) ( ) 1 2 1 2 – I r r
+ε ε = + + (3.43)
+If we wish to replace the combination by a single cell between A and
+C of emf eeq and internal resistance req, we would have
+I req (3.44)
+Comparing the last two equations, we get eeq = e1 + e2 (3.45)
+r2 (3.46)
+In Fig.3.13, we had connected the negative electrode of the first to the positive electrode of the second. If instead we connect the two negatives,
+Reprint 2026-27
+Eq. (3.42) would change to VBC = – e2–Ir2 and we will get e2) (3.47)
+The rule for series combination clearly can be extended to any number of cells:
+(i) The equivalent emf of a series combination of n cells is just the sum of their individual emf’s, and (ii) The equivalent internal resistance of a series combination of n cells is just the sum of their internal resistances.
+This is so, when the current leaves each cell from the positive electrode. If in the combination, the current leaves any cell from the negative electrode, the emf of the cell enters the expression eeq with a negative sign, as in Eq. (3.47).
+Next, consider a parallel combination of the cells (Fig. 3.14).
+I1 and I2 are the currents leaving the positive electrodes of the cells. At the point B1, I1 and I2 flow in whereas the current I flows out. Since as much charge flows in as out, we have
+I = I1 + I2 (3.48)
+Let V (B1) and V (B2) be the potentials at B1 and B2, respectively.
+Then, considering the first cell, the potential difference across its terminals is V (B1) – V (B2). Hence, from Eq. (3.38)
+( ) ( ) 1 2 1 1 1 – – V V B V B I r
+ε ≡ = (3.49)
+Points B1 and B2 are connected exactly similarly to the second cell. Hence considering the second cell, we also have ( ) ( ) 1 2 2 2 2 – – V V B V B I r
+ε ≡ = (3.50)
+Combining the last three equations
+1 2 I I I = +
+ε ε ε ε 1
+1 1 – – – r r r V r r (3.51)
+Hence, V is given by,
+1 2 2 1 1 2
+= + + (3.52)
+If we want to replace the combination by a single cell, between B1 and
+B2, of emf eeq and internal resistance req, we would have eeq – I req (3.53)
+The last two equations should be the same and hence
+= + (3.54)
+= + (3.55)
+We can put these equations in a simpler way,
+FIGURE 3.14 Two cells in parallel. For connections across A and C, the combination can be replaced by one cell of emf eeq and internal resistances req whose values are given in
+Eqs. (3.54) and (3.55).
+Reprint 2026-27

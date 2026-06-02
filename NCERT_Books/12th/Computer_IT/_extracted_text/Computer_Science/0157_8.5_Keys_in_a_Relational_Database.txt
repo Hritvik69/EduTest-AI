@@ -1,0 +1,341 @@
+S tructured Query Language (SQL) 145
+To select all the data available in a table, we use the following select statement:
+SELECT * FROM table_name;
+Example 9.2 The following query retrieves the name and date of birth of student with roll number 1:
+mysql> SELECT SName, SDateofBirth
+-> FROM STUDENT
+-> WHERE RollNumber = 1;
++--------------+--------------+
+| SName | SDateofBirth |
++--------------+--------------+
+| Atharv Ahuja | 2003-05-15 |
++--------------+--------------+
+1 row in set (0.03 sec)
+9.6.2 QUERYING using Database OFFICE
+Organisations maintain databases to store data in the form of tables. Let us consider the database OFFICE of an organisation that has many related tables like
+EMPLOYEE, DEPARTMENT and so on. Every EMPLOYEE in the database is assigned to a DEPARTMENT and his/her Department number (DeptId) is stored as a foreign key in the table EMPLOYEE. Let us consider the relation ‘EMPLOYEE’ as shown in Table 9.8 and apply the SELECT statement to retrieve data:
+Think and list few examples from your daily life where storing the data in the database and querying the same can be helpful.
+Table 9.8 Records to be inserted into the EMPLOYEE table
+EmpNo Ename Salary Bonus Deptld
+101 Aaliya 10000 234 D02
+102 Kritika 60000 123 D01
+103 Shabbbir 45000 566 D01
+104 Gurpreet 19000 565 D04
+105 Joseph 34000 875 D03
+106 Sanya 48000 695 D02
+107 Vergese 15000 D01
+108 Nachaobi 29000 D05
+109 Daribha 42000 D04
+110 Tanya 50000 467 D05 (A) Retrieve selected columns
+The following query selects employee numbers of all the employees:
+mysql> SELECT EmpNo FROM EMPLOYEE;
++-------+
+| EmpNo |
++-------+
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 146
++-------+
+10 rows in set (0.41 sec)
+The following query selects the employee number and employee name of all the employees, we write:
+mysql> SELECT EmpNo, Ename FROM EMPLOYEE;
++-------+----------+
+| EmpNo | Ename |
++-------+----------+
+| 101 | Aaliya |
+| 102 | Kritika |
+| 103 | Shabbir |
+| 104 | Gurpreet |
+| 105 | Joseph |
+| 106 | Sanya |
+| 107 | Vergese |
+| 108 | Nachaobi |
+| 109 | Daribha |
+| 110 | Tanya |
++-------+----------+
+10 rows in set (0.00 sec)
+(B) Renaming of columns
+In case we want to rename any column while displaying the output, it can be done by using the alias 'AS'. The following query selects Employee name as Name in the output for all the employees:
+mysql> SELECT EName as Name FROM EMPLOYEE;
++----------+
+| Name |
++----------+
+| Aaliya |
+| Kritika |
+| Shabbir |
+| Gurpreet |
+| Joseph |
+| Sanya |
+| Vergese |
+| Nachaobi |
+| Daribha |
+| Tanya |
++----------+
+10 rows in set (0.00 sec)
+Example 9.3 Select names of all employees along with their annual income (calculated as Salary*12). While displaying the query result, rename the column EName as Name mysql> SELECT EName as Name, Salary*12 FROM EMPLOYEE;
+Reprint 2026-27
+S tructured Query Language (SQL) 147
++----------+-----------+
+| Name | Salary*12 |
++----------+-----------+
+| Aaliya | 120000 |
+| Kritika | 720000 |
+| Shabbir | 540000 |
+| Gurpreet | 228000 |
+| Joseph | 408000 |
+| Sanya | 576000 |
+| Vergese | 180000 |
+| Nachaobi | 348000 |
+| Daribha | 504000 |
+| Tanya | 600000 |
++----------+-----------+
+10 rows in set (0.02 sec)
+Observe that in the output, Salary*12 is displayed as the column name for the Annual Income column. In the output table, we can use alias to rename that column as
+Annual Income as shown below:
+mysql> SELECT Ename AS Name, Salary*12 AS 'Annual
+-> FROM EMPLOYEE;
++----------+---------------+
+| Name | Annual Income|
++----------+---------------+
+| Aaliya | 120000 |
+| Kritika | 720000 |
+| Shabbir | 540000 |
+| Gurpreet | 228000 |
+| Joseph | 408000 |
+| Sanya | 576000 |
+| Vergese | 180000 |
+| Nachaobi | 348000 |
+| Daribha | 504000 |
+| Tanya | 600000 |
++----------+---------------+
+10 rows in set (0.00 sec)
+Note: Annual Income will not be added as a new column in the database table. It is just for displaying the output of the query.
+If an aliased column name has space as in the case of Annual
+Income, it should be enclosed in quotes as 'Annual Income (C) Distinct Clause
+By default, SQL shows all the data retrieved through query as output. However, there can be duplicate values.
+The SELECT statement when combined with DISTINCT clause, returns records without repetition (distinct records). For example, while retrieving a department number from employee relation, there can be duplicate values as many employees are assigned to the same department. To select unique department number for all the employees, we use DISTINCT as shown below:
+mysql> SELECT DISTINCT DeptId FROM EMPLOYEE;
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 148
++--------+
+| DeptId |
++--------+
+5 rows in set (0.03 sec)
+(D) WHERE Clause
+The WHERE clause is used to retrieve data that meet some specified conditions. In the OFFICE database, more than one employee can have the same salary.
+Following query gives distinct salaries of the employees working in the department number D01:
+mysql> SELECT DISTINCT Salary
+-> FROM EMPLOYEE
+-> WHERE Deptid='D01';
+As the column DeptId is of string type, its values are enclosed in quotes ('D01').
++--------+
+| Salary |
++--------+
+| 60000 |
+| 45000 |
+| 15000 |
++--------+
+3 rows in set (0.02 sec)
+In the above example, = operator is used in the
+WHERE clause. Other relational operators (<, <=, >, >=,
+!=) can be used to specify such conditions. The logical operators AND, OR, and NOT are used to combine multiple conditions.
+Example 9.4 Display all the details of those employees of
+D04 department who earn more than 5000.
+mysql> SELECT * FROM EMPLOYEE
+-> WHERE Salary > 5000 AND DeptId = 'D04';
++-------+----------+--------+-------+--------+
+| EmpNo | Ename | Salary | Bonus | DeptId |
++-------+----------+--------+-------+--------+
+| 104 | Gurpreet | 19000 | 565 | D04 |
+| 109 | Daribha | 42000 | NULL | D04 |
++-------+----------+--------+-------+--------+
+2 rows in set (0.00 sec)
+Example 9.5 The following query selects records of all the employees except Aaliya.
+mysql> SELECT * FROM EMPLOYEE
+-> WHERE NOT Ename = 'Aaliya';
++-------+----------+--------+-------+--------+
+Reprint 2026-27
+S tructured Query Language (SQL) 149
+| EmpNo | Ename | Salary | Bonus | DeptId |
++-------+----------+--------+-------+--------+
+| 102 | Kritika | 60000 | 123 | D01 |
+| 103 | Shabbir | 45000 | 566 | D01 |
+| 104 | Gurpreet | 19000 | 565 | D04 |
+| 105 | Joseph | 34000 | 875 | D03 |
+| 106 | Sanya | 48000 | 695 | D02 |
+| 107 | Vergese | 15000 | NULL | D01 |
+| 108 | Nachaobi | 29000 | NULL | D05 |
+| 109 | Daribha | 42000 | NULL | D04 |
+| 110 | Tanya | 50000 | 467 | D05 |
++-------+----------+--------+-------+--------+
+9 rows in set (0.00 sec)
+Example 9.6 The following query selects the name and department number of all those employees who are earning salary between 20000 and 50000 (both values inclusive).
+mysql> SELECT Ename, DeptId
+-> FROM EMPLOYEE
+-> WHERE Salary>=20000 AND Salary<=50000;
++----------+--------+
+| Ename | DeptId |
++----------+--------+
+| Shabbir | D01 |
+| Joseph | D03 |
+| Sanya | D02 |
+| Nachaobi | D05 |
+| Daribha | D04 |
+| Tanya | D05 |
++----------+--------+
+6 rows in set (0.00 sec)
+SELECT * FROM EMPLOYEE
+WHERE Salary > 5000 OR DeptId= 20;
+The query in example 9.6 defines a range that can also be checked using a comparison operator BETWEEN, as shown below:
+mysql> SELECT Ename, DeptId
+-> FROM EMPLOYEE
+-> WHERE Salary BETWEEN 20000 AND 50000;
++----------+--------+
+| Ename | DeptId |
++----------+--------+
+| Shabbir | D01 |
+| Joseph | D03 |
+| Sanya | D02 |
+| Nachaobi | D05 |
+| Daribha | D04 |
+| Tanya | D05 |
++----------+--------+
+6 rows in set (0.03 sec)
+Note: The BETWEEN operator defines the range of values in which the column value must fall into, to make the condition true.
+Example 9.7 The following query selects details of all the employees who work in the departments having deptid D01,
+D02 or D04.
+Activity 9.8
+Compare the output produced by the query in Example 9.6 and the output of the following query and differentiate between the
+OR and AND operators.
+What will happen if in the above query we write “Aaliya” as
+“AALIYA” or “aaliya” or “AaLIYA”? Will the query generate the same output or an
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 150 mysql> SELECT *
+-> FROM EMPLOYEE
+-> WHERE DeptId = 'D01' OR DeptId = 'D02' OR
+DeptId = 'D04';
++-------+----------+--------+-------+--------+
+| EmpNo | Ename | Salary | Bonus | DeptId |
++-------+----------+--------+-------+--------+
+| 101 | Aaliya | 10000 | 234 | D02 |
+| 102 | Kritika | 60000 | 123 | D01 |
+| 103 | Shabbir | 45000 | 566 | D01 |
+| 104 | Gurpreet | 19000 | 565 | D04 |
+| 106 | Sanya | 48000 | 695 | D02 |
+| 107 | Vergese | 15000 | NULL | D01 |
+| 109 | Daribha | 42000 | NULL | D04 |
++-------+----------+--------+-------+--------+
+7 rows in set (0.00 sec)
+(E) Membership operator IN
+The IN operator compares a value with a set of values and returns true if the value belongs to that set. The above query can be rewritten using IN operator as shown below:
+mysql> SELECT * FROM EMPLOYEE
+-> WHERE DeptId IN ('D01', 'D02' , 'D04');
++-------+----------+--------+-------+--------+
+| EmpNo | Ename | Salary | Bonus | DeptId |
++-------+----------+--------+-------+--------+
+| 101 | Aaliya | 10000 | 234 | D02 |
+| 102 | Kritika | 60000 | 123 | D01 |
+| 103 | Shabbir | 45000 | 566 | D01 |
+| 104 | Gurpreet | 19000 | 565 | D04 |
+| 106 | Sanya | 48000 | 695 | D02 |
+| 107 | Vergese | 15000 | NULL | D01 |
+| 109 | Daribha | 42000 | NULL | D04 |
++-------+----------+--------+-------+--------+
+7 rows in set (0.00 sec)
+Example 9.8 The following query selects details of all the employees except those working in department number D01 mysql> SELECT * FROM EMPLOYEE
+-> WHERE DeptId NOT IN('D01', 'D02');
++-------+----------+--------+-------+--------+
+| EmpNo | Ename | Salary | Bonus | DeptId |
++-------+----------+--------+-------+--------+
+| 104 | Gurpreet | 19000 | 565 | D04 |
+| 105 | Joseph | 34000 | 875 | D03 |
+| 108 | Nachaobi | 29000 | NULL | D05 |
+| 109 | Daribha | 42000 | NULL | D04 |
+| 110 | Tanya | 50000 | 467 | D05 |
++-------+----------+--------+-------+--------+
+5 rows in set (0.00 sec)
+Note: Here we need to combine NOT with IN as we want to retrieve all records except with DeptId D01 and D02.
+Reprint 2026-27
+S tructured Query Language (SQL) 151 (F) ORDER BY Clause
+ORDER BY clause is used to display data in an ordered form with respect to a specified column. By default,
+ORDER BY displays records in ascending order of the specified column’s values. To display the records in descending order, the DESC (means descending)
+keyword needs to be written with that column.
+Example 9.9 The following query selects details of all the employees in ascending order of their salaries.
+mysql> SELECT * FROM EMPLOYEE
+-> ORDER BY Salary;
++-------+----------+--------+-------+--------+
+| EmpNo | Ename | Salary | Bonus | DeptId |
++-------+----------+--------+-------+--------+
+| 101 | Aaliya | 10000 | 234 | D02 |
+| 107 | Vergese | 15000 | NULL | D01 |
+| 104 | Gurpreet | 19000 | 565 | D04 |
+| 108 | Nachaobi | 29000 | NULL | D05 |
+| 105 | Joseph | 34000 | 875 | D03 |
+| 109 | Daribha | 42000 | NULL | D04 |
+| 103 | Shabbir | 45000 | 566 | D01 |
+| 106 | Sanya | 48000 | 695 | D02 |
+| 110 | Tanya | 50000 | 467 | D05 |
+| 102 | Kritika | 60000 | 123 | D01 |
++-------+----------+--------+-------+--------+
+10 rows in set (0.05 sec)
+Example 9.10 Select details of all the employees in descending order of their salaries.
+mysql> SELECT * FROM EMPLOYEE
+-> ORDER BY Salary DESC;
++-------+----------+--------+-------+--------+
+| EmpNo | Ename | Salary | Bonus | DeptId |
++-------+----------+--------+-------+--------+
+| 102 | Kritika | 60000 | 123 | D01 |
+| 110 | Tanya | 50000 | 467 | D05 |
+| 106 | Sanya | 48000 | 695 | D02 |
+| 103 | Shabbir | 45000 | 566 | D01 |
+| 109 | Daribha | 42000 | NULL | D04 |
+| 105 | Joseph | 34000 | 875 | D03 |
+| 108 | Nachaobi | 29000 | NULL | D05 |
+| 104 | Gurpreet | 19000 | 565 | D04 |
+| 107 | Vergese | 15000 | NULL | D01 |
+| 101 | Aaliya | 10000 | 234 | D02 |
++-------+----------+--------+-------+--------+
+10 rows in set (0.00 sec)
+(G) Handling NULL Values
+SQL supports a special value called NULL to represent a missing or unknown value. For example, the Gphone column in the GUARDIAN table can have missing value for certain records. Hence, NULL is used to represent such unknown values. It is important to note that NULL
+Activity 9.9
+Execute the following
+2 queries and find out what will happen if we specify two columns in the ORDER BY clause:
+SELECT * FROM
+EMPLOYEE
+ORDER BY Salary,
+SELECT * FROM
+EMPLOYEE
+ORDER BY
+Salary,Bonus
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 152 is different from 0 (zero). Also, any arithmetic operation performed with NULL value gives NULL. For example:
+5 + NULL = NULL because NULL is unknown hence the result is also unknown. In order to check for NULL value in a column, we use IS NULL operator.
+Example 9.11 The following query selects details of all those employees who have not been given a bonus. This implies that the bonus column will be blank.
+mysql> SELECT * FROM EMPLOYEE
+-> WHERE Bonus IS NULL;
++-------+----------+--------+-------+--------+
+| EmpNo | Ename | Salary | Bonus | DeptId |
++-------+----------+--------+-------+--------+
+| 107 | Vergese | 15000 | NULL | D01 |
+| 108 | Nachaobi | 29000 | NULL | D05 |
+| 109 | Daribha | 42000 | NULL | D04 |
++-------+----------+--------+-------+--------+
+3 rows in set (0.00 sec)
+Example 9.12 The following query selects names of all employees who have been given a bonus (i.e., Bonus is not null) and works in the department D01.
+mysql> SELECT EName FROM EMPLOYEE
+-> WHERE Bonus IS NOT NULL
+-> AND DeptID = ‘D01’;
++----------+
+| EName |
++----------+
+| Kritika |
+| Shabbir |
++----------+
+2 rows in set (0.00 sec)
+(H) Substring pattern matching
+Many a times we come across situations where we do not want to query by matching exact text or value.
+Rather, we are interested to find matching of only a few characters or values in column values. For example, to find out names starting with “T” or to find out pin codes starting with ‘60’. This is called substring pattern matching. We cannot match such patterns using = operator as we are not looking for an exact match.
+SQL provides a LIKE operator that can be used with the WHERE clause to search for a specified pattern in a column.
+The LIKE operator makes use of the following two wild card characters:
+• % (per cent)- used to represent zero, one, or multiple characters
+Reprint 2026-27

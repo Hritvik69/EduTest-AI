@@ -1,0 +1,71 @@
+Flux through the Gaussian surface
+= flux through the curved cylindrical part of the surface
+= E × 2prl
+The surface includes charge equal to l l. Gauss’s law then gives
+E × 2prl = i.e.,E = 0 2 r
+Vectorially, E at any point is given by
+E n (1.32)
+where ˆn is the radial unit vector in the plane normal to the wire passing through the point. E is directed outward if l is positive and inward if negative.
+Note that when we write a vector A as a scalar multiplied by a unit vector, i.e., as A = A ˆa , the scalar A is an algebraic number. It can be negative or positive. The direction of A will be the same as that of the unit vector ˆa if A > 0 and opposite to ˆa if A < 0. When we want to restrict to non-negative values, we use the symbol A and call it the modulus of A .
+Thus, 0 ≥ A .
+Also note that though only the charge enclosed by the surface ( was included above, the electric field E is due to the charge on the entire wire. Further, the assumption that the wire is infinitely long is crucial.
+Without this assumption, we cannot take E to be normal to the curved part of the cylindrical Gaussian surface. However, Eq. (1.32) is approximately true for electric field around the central portions of a long wire, where the end effects may be ignored.
+1.14.2 Field due to a uniformly charged infinite plane sheet s be the uniform surface charge density of an infinite plane sheet (Fig. 1.27). We take the x-axis normal to the given plane. By symmetry, the electric field will not depend on y and z coordinates and its direction at every point must be parallel to the x-direction.
+We can take the Gaussian surface to be a rectangular parallelepiped of cross-sectional area
+A, as shown. (A cylindrical surface will also do.) As seen from the figure, only the two faces 1 and 2 will contribute to the flux; electric field lines are parallel to the other faces and they, therefore, do not contribute to the total flux.
+The unit vector normal to surface 1 is in –x direction while the unit vector normal to surface 2 is in the +x direction. Therefore, flux E.DS through both the surfaces are equal and add up. Therefore the net flux through the Gaussian surface is 2 EA.
+The charge enclosed by the closed surface is sA.
+Therefore by Gauss’s law,
+FIGURE 1.27 Gaussian surface for a uniformly charged infinite plane sheet.
+Reprint 2026-27
+Electric Charges and Fields
+2 EA = sA/e0 or, E = s/2e0
+Vectorically,
+= E n (1.33)
+where ˆn is a unit vector normal to the plane and going away from it.
+E is directed away from the plate if s is positive and toward the plate s is negative. Note that the above application of the Gauss’ law has brought out an additional fact: E is independent of x also.
+For a finite large planar sheet, Eq. (1.33) is approximately true in the middle regions of the planar sheet, away from the ends.
+1.14.3 Field due to a uniformly charged thin spherical shell s be the uniform surface charge density of a thin spherical shell of radius R (Fig. 1.28). The situation has obvious spherical symmetry. The field at any point P, outside or inside, can depend only on r (the radial distance from the centre of the shell to the point) and must be radial (i.e., along the radius vector).
+(i) Field outside the shell: Consider a point P outside the shell with radius vector r. To calculate E at P, we take the
+Gaussian surface to be a sphere of radius r and with centre
+O, passing through P. All points on this sphere are equivalent relative to the given charged configuration. (That is what we mean by spherical symmetry.) The electric field at each point of the Gaussian surface, therefore, has the same magnitude
+E and is along the radius vector at each point. Thus, E and
+DS at every point are parallel and the flux through each element is E DS. Summing over all DS, the flux through the
+Gaussian surface is E × 4 p r 2. The charge enclosed is s × 4 p R 2. By Gauss’s law
+E × 4 p r 2 = 2 where q = 4 s is the total charge on the spherical shell.
+Vectorially,
+E r (1.34)
+The electric field is directed outward if q > 0 and inward if q < 0. This, however, is exactly the field produced by a charge q placed at the centre O. Thus for points outside the shell, the field due to a uniformly charged shell is as if the entire charge of the shell is concentrated at its centre.
+(ii) Field inside the shell: In Fig. 1.28(b), the point P is inside the shell. The Gaussian surface is again a sphere through P centred at O.
+FIGURE 1.28 Gaussian surfaces for a point with (a) r > R, (b) r < R.
+Reprint 2026-27
+The flux through the Gaussian surface, calculated as before, is
+E × 4 p r2. However, in this case, the Gaussian surface encloses no charge. Gauss’s law then gives
+E × 4 p r2 = 0 i.e., E = 0 (r < R ) (1.35)
+that is, the field due to a uniformly charged thin shell is zero at all points inside the shell*. This important result is a direct consequence of Gauss’s law which follows from Coulomb’s law. The experimental verification of this result confirms the 1/r2 dependence in Coulomb’s law.
+Example 1.12 An early model for an atom considered it to have a positively charged point nucleus of charge Ze, surrounded by a uniform density of negative charge up to a radius R. The atom as a whole is neutral. For this model, what is the electric field at a distance r from the nucleus?
+FIGURE 1.29
+Solution The charge distribution for this model of the atom is as shown in Fig. 1.29. The total negative charge in the uniform spherical charge distribution of radius R must be –Z e, since the atom (nucleus of charge Z e + negative charge) is neutral. This immediately gives us the negative charge density r, since we must have
+To find the electric field E(r) at a point P which is a distance r away from the nucleus, we use Gauss’s law. Because of the spherical symmetry of the charge distribution, the magnitude of the electric field E(r) depends only on the radial distance, no matter what the direction of r. Its direction is along (or opposite to) the radius vector r from the origin to the point P. The obvious Gaussian surface is a spherical surface centred at the nucleus. We consider two situations, namely, r < R and r > R.
+(i) r < R : The electric flux f enclosed by the spherical surface is f = E (r ) × 4 p r 2
+* Compare this with a uniform mass shell discussed in Section 7.5 of Class XI
+Textbook of Physics.
+Reprint 2026-27
+Electric Charges and Fields where E (r ) is the magnitude of the electric field at r. This is because the field at any point on the spherical Gaussian surface has the same direction as the normal to the surface there, and has the same magnitude at all points on the surface.
+The charge q enclosed by the Gaussian surface is the positive nuclear charge and the negative charge within the sphere of radius r,
+Substituting for the charge density r obtained earlier, we have q Z e Z e R
+Gauss’s law then gives,
+The electric field is directed radially outward.
+(ii) r > R: In this case, the total charge enclosed by the Gaussian spherical surface is zero since the atom is neutral. Thus, from Gauss’s
+E (r ) × 4 p r 2 = 0 or E (r ) = 0; r > R
+At r = R, both cases give the same result: E = 0.
+1. Electric and magnetic forces determine the properties of atoms, molecules and bulk matter.
+2. From simple experiments on frictional electricity, one can infer that there are two types of charges in nature; and that like charges repel and unlike charges attract. By convention, the charge on a glass rod rubbed with silk is positive; that on a plastic rod rubbed with fur is then negative.
+3. Conductors allow movement of electric charge through them, insulators do not. In metals, the mobile charges are electrons; in electrolytes both positive and negative ions are mobile.
+4. Electric charge has three basic properties: quantisation, additivity and conservation.
+Quantisation of electric charge means that total charge (q) of a body is always an integral multiple of a basic quantum of charge (e) i.e., q = n e, where n = 0, ±1, ±2, ±3, .... Proton and electron have charges
++e, –e, respectively. For macroscopic charges for which n is a very large number, quantisation of charge can be ignored.
+Additivity of electric charges means that the total charge of a system is the algebraic sum (i.e., the sum taking into account proper signs)
+of all individual charges in the system.
+Conservation of electric charges means that the total charge of an isolated system remains unchanged with time. This means that when
+Reprint 2026-27

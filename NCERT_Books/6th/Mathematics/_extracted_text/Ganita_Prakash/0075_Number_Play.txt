@@ -1,0 +1,274 @@
+Ganita Prakash | Grade 6
+2. Use a protractor to draw angles having the following degree measures:
+a. 110° b. 40° c. 75° d. 112° e. 134°
+3. Draw an angle whose degree measure is the same as the angle given below:
+Also, write down the steps you followed to draw the angle.
+2.11 Types of Angles and their Measures
+We have read about different types of angles in this chapter. We have seen that a straight angle is 180° and a right angle is 90°. How can other types of angles — acute and obtuse — be described in terms of their degree measures?
+Acute Angle: Angles that are smaller than the right angle, i.e., less than 90° and are greater than 0°, are called acute angles.
+Examples of acute angles
+Reprint 2026-27
+Lines and Angles
+Obtuse Angle: Angles that are greater than the right angle and less than the straight angle, i.e., greater than 90° and less than 180°, are called obtuse angles.
+Examples of obtuse angles
+Have we covered all the possible measures that an angle can take?
+Here is another type of angle.
+Reflex angle: Angles that are greater than the straight angle and less than the whole angle, i.e., greater than 180° and less than 360°, are called reflex angles.
+Examples of reflex angles
+Figure it Out
+1. In each of the below grids, join A to other grid points in the figure by a straight line to get:
+a. An acute angle
+Reprint 2026-27
+Ganita Prakash | Grade 6 b. An obtuse angle c. A reflex angle
+Mark the intended angles with curves to specify the angles. One has been done for you.
+2. Use a protractor to find the measure of each angle. Then classify each angle as acute, obtuse, right, or reflex.
+a. ∠PTR b. ∠PTQ c. ∠PTW d. ∠WTP
+Reprint 2026-27
+Lines and Angles
+Let’s Explore
+In this figure, ∠TER = 80 ° . What is the measure of ∠BET? What is the measure of ∠SET? 80 o
+Hint: Observe that ∠REB is a straight angle. Hence, the degree measure of
+∠REB = 180° of which 80° is covered by ∠TER. A similar argument can be applied to find the measure of ∠SET.
+Figure it Out
+1. Draw angles with the following degree measures:
+a. 140 ° b. 82 ° c. 195 ° d. 70 ° e. 35 °
+2. Estimate the size of each angle and then measure it with a protractor:
+a. b. c.
+d. e. f.
+Classify these angles as acute, right, obtuse or reflex angles.
+3. Make any figure with three acute angles, one right angle and two obtuse angles.
+4. Draw the letter ‘M’ such that the angles on the sides are 40 ° each and the angle in the middle is 60 ° .
+5. Draw the letter ‘Y’ such that the three angles formed are 150 ° , 60 ° and 150 ° .
+Reprint 2026-27
+Ganita Prakash | Grade 6
+6. The Ashoka Chakra has 24 spokes. What is the degree measure of the angle between two spokes next to each other? What is the largest acute angle formed between two spokes?
+7. Puzzle: I am an acute angle. If you double my measure, you get an acute angle. If you triple my measure, you will get an acute angle again. If you quadruple (four times) my measure, you will get an acute angle yet again! But if you multiply my measure by 5, you will get an obtuse angle measure. What are the possibilities for my measure?
+S u m m a r y
+ A point determines a location. It is denoted by a capital letter.
+ A line segment corresponds to the shortest distance between two points. The line segment joining points S and T is denoted by ST.
+ A line is obtained when a line segment like ST is extended on both sides indefinitely; it is denoted by ST or sometimes by a single small letter like m.
+ A ray is a portion of a line starting at a point D and going in one direction indefinitely. It is denoted by DP where P is another point on the ray.
+ An angle can be visualised as two rays starting from a common starting point. Two rays OP and OM form the angle ∠POM (also called ∠MOP);
+here, O is called the vertex of the angle, and the rays OP and OM are called the arms of the angle.
+ The size of an angle is the amount of rotation or turn needed about the vertex to rotate one ray of the angle onto the other ray of the angle.
+ The sizes of angles can be measured in degrees. One full rotation or turn is considered as 360 degrees and denoted as 360°.
+ Degree measures of angles can be measured using a protractor.
+ Angles can be straight (180°), right (90°), acute (more than 0° and less than 90°), obtuse (more than 90° and less than 180°), and reflex (more than 180° and less than 360°).
+Reprint 2026-27
+CHAPTER 2 — SOLUTIONS
+Lines and Angles
+Section 2.4
+Page No. 15
+Figure it Out
+Can you help Rihan and Sheetal find their answers?
+Ans. Rihan can draw many/uncountable number of lines through the given point.
+Sheetal can draw only one line through the two given points.
+Q.2. Name the line segments in Fig. 2.4. Which of the five marked points are on exactly one of the line segments? Which are on two of the line segments?
+Ans. LM, MP, PQ, QR
+Points L and R are exactly on one line segment. Points M, P and Q are on two line segments.
+Q.3. Name the rays shown in Fig. 2.5. Is T the starting point of each of these rays?
+Ans. TA, TB, TN and NB
+No, T is the starting point of TB, TN and TA but not of NB.
+Q.4. Draw a rough figure and write labels appropriately to illustrate each of the following:
+a. OP and OQ meet at O.
+b. XY and PQ intersect at point M.
+c. Line l contains points E and F but not point D.
+d. Point P lies on AB.
+Rihan marked a point on a piece of paper. How many lines can he draw that pass through the point?
+Sheetal marked two points on a piece of paper. How many different lines can she draw that pass through both of the points?
+Q.5. In Fig. 2.6, name:
+a. Five points b. A line c. Four rays d. Five line segments a) D, E, O, B and C b) DE or DO or DB or EO or EB or OB c) OC, OB, OE, OD (Try for other rays)
+d) DE, DO, DB, EO, EB (OB; OC are also possible)
+Q.6. Here is a ray OA (Fig. 2.7). It starts at O and passes through the point A. It also through the point B.
+a. Can you also name it as OB? Why?
+b. Can we write OA as AO? Why or why not?
+Ans. a) Yes, O is the starting point and point B lies on the rays that goes endlessly in the direction of A. OA is the extension of OB.
+b) No, OA is a ray with starting point O whereas AO is a ray with starting point A.
+Section 2.5
+Page – 19
+Figure it Out
+Q.1. Can you find the angles in the given pictures? Draw the rays forming any one of the angles and name the vertex of the angle.
+Ans. Yes, one of the angles is ∠BDC. It’s vertex is D. One ray is DC and the other rays DB.
+Try for other pictures.
+Q.2. Draw and label an angle with arms ST and SR.
+Q.4. Name the angles marked in the given figure.
+Ans. ∠RTQ, ∠RTP
+Q.5. Mark any three points on your paper that are not on one line. Label them A, B, C.
+Draw all possible lines going through pairs of these points. How many lines do you get? Name them. How many angles can you name using A, B, C? Write them down, and mark each of them with a curve as in Fig. 2.9.
+Ans. We get three lines AB, BC, CA.
+Using A, B & C we can name three angles: ∠ABC or ∠CBA, ∠BCA or ∠ACB & ∠CAB or ∠BAC.
+Q.6. Now mark any four points on your paper so that no three of them are on one line. Label them
+A, B, C, D. Draw all possible lines going through pairs of these points. How many lines do you get? Name them. How many angles can you name using A, B, C, D? Write them all down, and mark each of them with a curve as in Fig. 2.9.
+Ans. We get six lines AB, BC, CD, DA, AC & BD
+Using A, B, C & D we can name the following angles ∠BAC, ∠CAD, ∠BAD, ∠ADB,
+∠BDC, ∠ADC, ∠DCA, ∠ACB, ∠DCB, ∠CBD, ∠DBA & ∠CBA
+Section 2.6
+Page 20 Is it always easy to compare two angles?
+No. it is not always easy to compare two angles. For eg. 89º & 91º angles cannot be compared without measuring or overlapping. But for the given figures, comparison is easy.
+Where else do we use superimposition to compare?
+A few examples are- line segments, squares and circles. Think of more.
+Figure it out
+Q.1. Fold a rectangular sheet of paper, then draw a line along the fold created. Name and compare the angles formed between the fold and the sides of the paper. Make different angles by folding a rectangular sheet of paper and compare the angles.
+Which is the largest and smallest angle you made?
+Angles Formed: ∠AEF, ∠BEF, ∠DFE, ∠CFE
+Here ∠AEF & ∠CFE are larger than ∠BEF & ∠DFE
+Try more cases by folding rectangular sheets in different ways.
+Q.2. In each case, determine which angle is greater and why.
+a. ∠AOB or ∠XOY b. ∠AOB or ∠XOB c. ∠XOB or ∠XOC
+Discuss with your friends on how you decided which one is greater.
+Ans. (a)- ∠AOB; ∠XOY is an acute angle and ∠AOB = ∠AOX + ∠XOY+∠YOB (b)- ∠AOB (c) – None. ∠XOB = ∠XOC
+Q.3. Which angle is greater: ∠XOY or ∠AOB? Give reasons.
+Ans. By looking at the figure we cannot say. Superimposition or measurement is necessary here.
+Section 2.8
+Q. Is it possible to draw OC such that the two angles are equal to each other in size?
+Ans. Yes, when OA and OB overlap each other on folding the Vidya’s notebook, the crease
+OC will divide ∠AOB in two equal sized angles.
+Q. If a straight angle is formed by half of a full turn, how much of a full turn will form a right
+4 of a full turn.
+Section 2.8
+Page No. 29
+Figure it Out
+Q.4. Get a slanting crease on the paper. Now, try to get another crease that is perpendicular to the slanting crease.
+a. How many right angles do you have now? Justify why the angles are exact right b. Describe how you folded the paper so that any other person who doesn’t know the process can simply follow your description to get the right angle.
+Ans. a. Four right angle. Each angle is ¼ the of the complete angle.
+b. Explore different ways of doing it.
+Figure it Out
+Q.2. Make a few acute angles and a few obtuse angles. Draw them in different orientations.
+Ans. Acute angle
+Obtuse angle
+Q.3. Do you know what the words acute and obtuse mean? Acute means sharp and obtuse means blunt. Why do you think these words have been chosen?
+Ans. In acute angles the opening of the edges is lesser than the obtuse angle which have larger openings.
+Q.4. Find out the number of acute angles in each of the figures below. What will be the next figure and how many acute angles will it have? Do you notice any pattern in the numbers?
+Ans. (i) three (ii) Twelve (iii) Twenty-one
+The next figure will have thirty acute angles.
+Yes, the pattern is 3 × 0 + 1, 3 × 1 + 1, 3 × 2 + 1, 3 × 3 + 1,…
+The number 0,1,2,3,4,….. are number of inner triangles.
+Section 2.9
+Page No. 35
+Figure it out
+Q.1. Write the measures of the following angles:
+a. ∠ KAL
+Ans. a. ∠KAL = 30° Yes, it is possible to count the number of units in 5s or 10s.
+b. ∠WAL = 50° c. ∠TAK = 120°
+Page No. 36
+Q. Name the different angles in the figure and write their measures.
+Ans. ∠POQ = 35°
+∠POR = 95°
+∠POS = 125°
+∠POT = 160°
+∠QOR = 60°
+∠QOS = 90°
+∠QOT = 125°
+∠QOU = 145°
+∠ROS = 30°
+∠ROT = 65°
+∠ROU = 85°
+∠SOT = 35°
+∠SOU = 55°
+∠TOU = 20°
+Page No. 40
+Q. In Fig. 2.20, we have ∠AOB = ∠BOC = ∠COD = ∠DOE = ∠EOF = ∠FOG =
+∠GOH = ∠HOI=_____. Why?
+Ans. Each of the angles = 22.5º
+As the straight angle of 180º is divided into eight equal parts so each of the right angles will be of measure = 180º
+8 = 22.5º
+Figure it Out
+Q.1. Find the degree measures of the following angles using your protractor.
+Ans. ∠IHJ = ∠JHI = 47º
+∠GHK = ∠IHJ = 23º
+∠IHJ = ∠JHI = 108º
+Q.3. Find the degree measures for the angles given below. Check if your paper protractor can be used here!
+Ans. ∠IHJ = 42º, ∠IHJ = 116º
+No, paper protractor cannot work here.
+Q.4. How can you find the degree measure of the angle given below using a protractor?
+Ans. Measure of marked angle = 360º – Measure of unmarked angle
+= 360º - 100º = 260º
+Try other ways to find the marked angle
+Q.5. Measure and write the degree measures for each of the following angles:
+Q.6. Find the degree measures of ∠BXE, ∠CXE, ∠AXB and ∠BXC.
+Ans. ∠BXE = 115º, ∠CXE = 85º, ∠AXB = 65º ∠BXC = 30º
+Q.7. Find the degree measures of ∠PQR, ∠PQS and ∠PQT.
+Ans. ∠PQR =45º ∠PQS=100º ∠PQT=150º.
+Figure it Out
+Q.1. Angles in a clock:
+a. The hands of a clock make different angles at different times. At 1 o’clock, the angle between the hands is 30°. Why?
+b. What will be the angle at 2 o’clock? And at 4 o’clock? 6 o’clock?
+c. Explore other angles made by the hands of a clock.
+Ans. (a) The angles at the centre of the clock is 360º which is divided into 12 equal parts. So.
+The angle between two successive numbers = 360
+12 = 30º (b) At 2’O clock = 60º = 2×30
+At 4’O clock = 120º = 4×30
+At 6’O clock = 180º = 6×30 (c) At 3’O clock = 90º
+At 9’O clock = 270º
+Try for other angles made by the hands of a clock.
+Q.2. The angle of a door:
+Is it possible to express the amount by which a door is opened using an angle? What will be the vertex of the angle and what will be the arms of the angle?
+Ans. Yes, the vertex of the angle will be the point where door meets the wall. The arms will be the edges of the door and the wall.
+Q.3. Vidya is enjoying her time on the swing. She notices that the greater the angle with which she starts the swinging, the greater is the speed she achieves on her swing.
+But where is the angle? Are you able to see any angle?
+Ans. Student may not see the angle, but when the starting arm is fixed as the position where she starts swinging. The angle can be thought to be between positions where she starts the swinging (the initial position) and the position where she attains the greatest position of the swing at any one side.
+Q.4. Here is a toy with slanting slabs attached to its sides; the greater the angles or slopes of the slabs, the faster the balls roll. Can angles be used to describe the slopes of the slabs? What are the arms of each angle? Which arm is visible and which is not?
+Ans. Yes, angles can be used directly to describe slopes of the slab, larger the angle, greater the slope of the slab. For each angle, one arm is a side and one arm is the slope.
+The vertical arm is not visible, whereas the other arm is visible.
+Here in this toy, edges of the slabs are the arms of the angles. Top horizontal ray is not visible, other arms in the form of edges of the slab are visible.
+Teacher should motivate students to get other possible answers.
+Section 2.10
+Figure it Out
+Q.1. In Fig. 2.23, list all the angles possible. Did you find them all? Now, guess the measures of all the angles. Then, measure the angles with a protractor. Record all your numbers in a table. See how close your guesses are to the actual measures.
+Ans. ∠CAP, ∠ACD, ∠APL, ∠DLP, ∠RPL, ∠SLP, ∠PRS, ∠LSR, ∠BRS, ∠CLP Try more!
+Section 2.11
+Figure it Out
+Q.2. Use a protractor to find the measure of each angle. Then classify each angle as acute, obtuse, right or reflex.
+a. ∠PTR = 30º (Acute angle)
+b. ∠PTQ = 60º (Acute angle)
+c. ∠PTW = 102º (Obtuse angle)
+d. ∠WTP = 258º (Reflex angle)
+Let’s Explore:
+Q. In this figure, ∠TER = 80°. What is the measure of ∠BET? What is the measure of
+Ans. ∠BET = 100º, ∠SET = 10º
+Page – 53
+Figure it out
+Q.3. Make any figure with three acute angles, one right angle and two obtuse angles.
+Ans. ∠A, ∠B & ∠C are three acute angles
+∠D, ∠F are obtuse angle
+∠E is right angle
+Q.4. Draw the letter ‘M’ such that the angles on the sides are 40° each and the angle in the middle is 60°.
+Q.5. Draw the letter ‘Y’ such that the three angles formed are 150°, 60° and 150°.
+Q.6. The Ashoka Chakra has 24 spokes. What is the degree measure of the angle between two spokes next to each other? What is the largest acute angle formed between two spokes?
+Ans. The angle between two spokes next to each other is 15º. Largest acute angle between spokes is 75º.
+Q.7. Puzzle: I am an acute angle. If you double my measure, you get an acute angle. If you triple my measure, you will get an acute angle again. If you quadruple (four times) my measure, you will get an acute angle yet again! But if you multiply my measure by 5, you will get an obtuse angle measure. What are the possibilities for my measure?
+Ans. The acute angle can be 19º, 20º, 21º & 22º.
+NUMBER PLAY 3
+Numbers are used in different contexts and in many different ways to organise our lives. We have used numbers to count, and have applied the basic operations of addition, subtraction, multiplication and division on them, to solve problems related to our daily lives.
+In this chapter, we will continue this journey, by playing with numbers, seeing numbers around us, noticing patterns, and learning to use numbers and operations in new ways.
+Think about various situations where we use numbers.
+List five different situations in which numbers are used. See what your classmates have listed, share, and discuss.
+3.1 Numbers can Tell us Things
+What are these numbers telling us?
+Some children in a park are standing in a line. Each one says a number.
+What do you think these numbers mean?
+The children now rearrange themselves, and again each one says a number based on the arrangement.
+Reprint 2026-27
+Ganita Prakash | Grade 6
+Did you figure out what these numbers represent?
+Hint: Could their heights be playing a role?
+A child says ‘1’ if there is only one taller child standing next to them.
+A child says ‘2’ if both the children standing next to them are taller.
+A child says ‘0’, if neither of the children standing next to them are taller.
+That is each person says the number of taller neighbours they have.
+Try answering the questions below and share your reasoning.
+1. Can the children rearrange themselves so that the children standing at the ends say ‘2’?
+2. Can we arrange the children in a line so that all would say only 0s?
+3. Can two children standing next to each other say the same
+4. There are 5 children in a group, all of different heights. Can they stand such that four of them say ‘1’ and the last one says
+‘0’? Why or why not?
+5. For this group of 5 children, is the sequence 1, 1, 1, 1, 1 possible?
+6. Is the sequence 0, 1, 2, 1, 0 possible? Why or why not?
+7. How would you rearrange the five children so that the maximum number of children say ‘2’?
+Reprint 2026-27
+Number Play
+3.2 Supercells
+Observe the numbers written in the table below. Why are some numbers coloured? Discuss.
+200 577 626 345 790 694 109
+43 79 75 63 10 29 28 34
+A c

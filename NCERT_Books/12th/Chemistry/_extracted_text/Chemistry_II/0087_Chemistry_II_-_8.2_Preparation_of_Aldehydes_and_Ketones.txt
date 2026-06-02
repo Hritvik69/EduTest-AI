@@ -1,0 +1,67 @@
+231 Aldehydes, Ketones and Carboxylic Acids
+The carbonyl carbon atom is sp2-hybridised and forms three sigma (s)
+bonds. The fourth valence electron of carbon remains in its p-orbital and forms a p-bond with oxygen by overlap with p-orbital of an oxygen.
+In addition, the oxygen atom also has two non bonding electron pairs.
+Thus, the carbonyl carbon and the three atoms attached to it lie in the same plane and the p-electron cloud is above and below this plane. The bond angles are approximately 120° as expected of a trigonal coplanar structure (Figure 8.1).
+8.1.2 Structure of
+Carbonyl
+Fig.8.1 Orbital diagram for the formation of carbonyl group
+The carbon-oxygen double bond is polarised due to higher electronegativity of oxygen relative to carbon. Hence, the carbonyl carbon is an electrophilic (Lewis acid), and carbonyl oxygen, a nucleophilic (Lewis base) centre. Carbonyl compounds have substantial dipole moments and are polar than ethers. The high polarity of the carbonyl group is explained on the basis of resonance involving a neutral (A) and a dipolar (B) structures as shown.
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+8.1 Write the structures of the following compounds.
+(i) a-Methoxypropionaldehyde (ii) 3-Hydroxybutanal (iii) 2-Hydroxycyclopentane carbaldehyde (iv) 4-Oxopentanal (v) Di-sec. butyl ketone (vi) 4-Fluoroacetophenone
+Some important methods for the preparation of aldehydes and ketones are as follows:
+1. By oxidation of alcohols
+Aldehydes and ketones are generally prepared by oxidation of primary and secondary alcohols, respectively (Unit 7, Class XII).
+2. By dehydrogenation of alcohols
+This method is suitable for volatile alcohols and is of industrial application. In this method alcohol vapours are passed over heavy metal catalysts (Ag or Cu). Primary and secondary alcohols give aldehydes and ketones, respectively (Unit 7, Class XII).
+3. From hydrocarbons (i) By ozonolysis of alkenes: As we know, ozonolysis of alkenes followed by reaction with zinc dust and water gives aldehydes,
+8.2.1 Preparation
+Aldehydes
+8.2 8.2 8.2 8.2 8.2 Preparation of Aldehydes Preparation of Aldehydes Preparation of Aldehydes Preparation of Aldehydes Preparation of Aldehydes and Ketones and Ketones and Ketones and Ketones and Ketones
+Reprint 2026-27
+232 Chemistry ketones or a mixture of both depending on the substitution pattern of the alkene (Unit 9, Class XI).
+(ii) By hydration of alkynes: Addition of water to ethyne in the presence of H2SO4 and HgSO4 gives acetaldehyde. All other alkynes give ketones in this reaction (Unit 9, Class XI).
+1. From acyl chloride (acid chloride)
+Acyl chloride (acid chloride) is hydrogenated over catalyst, palladium on barium sulphate. This reaction is called Rosenmund reduction.
+2. From nitriles and esters
+Nitriles are reduced to corresponding imine with stannous chloride in the presence of hydrochloric acid, which on hydrolysis give corresponding aldehyde.
+This reaction is called Stephen reaction.
+Alternatively, nitriles are selectively reduced by diisobutylaluminium hydride, (DIBAL-H) to imines followed by hydrolysis to aldehydes:
+8.2.2 Preparation
+Aldehydes
+Similarly, esters are also reduced to aldehydes with DIBAL-H.
+3. From hydrocarbons
+Aromatic aldehydes (benzaldehyde and its derivatives) are prepared from aromatic hydrocarbons by the following methods:
+(i) By oxidation of methylbenzene
+Strong oxidising agents oxidise toluene and its derivatives to benzoic acids. However, it is possible to stop the oxidation at the aldehyde stage with suitable reagents that convert the methyl group to an intermediate that is difficult to oxidise further. The following methods are used for this purpose.
+(a) Use of chromyl chloride (CrO2Cl2): Chromyl chloride oxidises methyl group to a chromium complex, which on hydrolysis gives corresponding benzaldehyde.
+Reprint 2026-27
+233 Aldehydes, Ketones and Carboxylic Acids
+This reaction is called Etard reaction.
+(b) Use of chromic oxide (CrO3): Toluene or substituted toluene is converted to benzylidene diacetate on treating with chromic oxide in acetic anhydride. The benzylidene diacetate can be hydrolysed to corresponding benzaldehyde with aqueous acid.
+(iii) By Gatterman – Koch reaction
+When benzene or its derivative is treated with carbon monoxide and hydrogen chloride in the presence of anhydrous aluminium chloride or cuprous chloride, it gives benzaldehyde or substituted benzaldehyde.
+(ii) By side chain chlorination followed by hydrolysis
+Side chain chlorination of toluene gives benzal chloride, which on hydrolysis gives benzaldehyde. This is a commercial method of manufacture of benzaldehyde.
+This reaction is known as Gatterman-Koch reaction.
+1. From acyl chlorides
+Treatment of acyl chlorides with dialkylcadmium, prepared by the reaction of cadmium chloride with Grignard reagent, gives ketones.
+8.2.3 Preparation of Ketones
+Reprint 2026-27
+234 Chemistry
+2. From nitriles
+Treating a nitrile with Grignard reagent followed by hydrolysis yields a ketone.
+Give names of the reagents to bring about the following transformations:
+(i) Hexan-1-ol to hexanal (ii) Cyclohexanol to cyclohexanone (iii) p-Fluorotoluene to (iv) Ethanenitrile to ethanal p-fluorobenzaldehyde (v) Allyl alcohol to propenal (vi) But-2-ene to ethanal (i) C5H5NH+CrO3Cl-(PCC) (ii) Anhydrous CrO3 (iii) CrO3 in the presence (iv) (Diisobutyl)aluminium of acetic anhydride/ hydride (DIBAL-H)
+1. CrO2Cl2 2. HOH (v) PCC (vi) O3/H2O-Zn dust
+Example 8.1 Example 8.1 Example 8.1 Example 8.1 Example 8.1
+Solution Solution Solution Solution Solution (C6H CH ) Cd + 2 CH 5 2 2 3 COCl
+1.CrO Cl 2 2 (iii) C C H Hg2+
+, H SO 2 4 H C 3 (iv)
+Intext Question Intext Question Intext Question Intext Question Intext Question
+8.2 Write the structures of products of the following reactions;
+(i) (ii)
+3. From benzene or substituted benzenes
+When benzene or substituted benzene is treated with acid chloride in the presence of anhydrous aluminium chloride, it affords the corresponding ketone. This reaction is known as Friedel-Crafts acylation reaction.
+Reprint 2026-27

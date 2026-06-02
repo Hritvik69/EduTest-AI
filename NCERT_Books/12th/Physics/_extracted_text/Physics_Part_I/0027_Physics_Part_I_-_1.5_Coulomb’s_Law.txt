@@ -1,0 +1,81 @@
+Electric Charges and Fields handle is brought close to A such that the distance between their centres is 10 cm, as shown in Fig. 1.4(a). The resulting repulsion of A is noted (for example, by shining a beam of light and measuring the deflection of its shadow on a screen). Spheres A and B are touched by uncharged spheres C and D respectively, as shown in Fig. 1.4(b).
+C and D are then removed and B is brought closer to A to a distance of 5.0 cm between their centres, as shown in Fig. 1.4(c).
+What is the expected repulsion of A on the basis of Coulomb’s law?
+Spheres A and C and spheres B and D have identical sizes. Ignore the sizes of A and B in comparison to the separation between their centres.
+Solution Let the original charge on sphere A be q and that on B be q¢. At a distance r between their centres, the magnitude of the electrostatic force on each is given by neglecting the sizes of spheres A and B in comparison to r. When an identical but uncharged sphere C touches A, the charges redistribute on A and C and, by symmetry, each sphere carries a charge q/2.
+Similarly, after D touches B, the redistributed charge on each is q¢/2. Now, if the separation between A and B is halved, the magnitude of the electrostatic force on each is
+′ = ′ = ′ = F q q ( / )( / )
+Thus the electrostatic force on A, due to B, remains unaltered.
+1.6 FORCES BETWEEN MULTIPLE CHARGES
+The mutual electric force between two charges is given by
+Coulomb’s law. How to calculate the force on a charge where there are not one but several charges around? Consider a system of n stationary charges q1, q2, q3, ..., qn in vacuum.
+What is the force on q1 due to q2, q3, ..., qn? Coulomb’s law is not enough to answer this question. Recall that forces of mechanical origin add according to the parallelogram law of addition. Is the same true for forces of electrostatic origin?
+Experimentally, it is verified that force on any charge due to a number of other charges is the vector sum of all the forces on that charge due to the other charges, taken one at a time.
+The individual forces are unaffected due to the presence of other charges. This is termed as the principle of superposition.
+To better understand the concept, consider a system of three charges q1, q2 and q3, as shown in Fig. 1.5(a). The force on one charge, say q1, due to two other charges q2, q3 can therefore be obtained by performing a vector addition of the forces due to each one of these charges. Thus, if the force on q1 due to q2 is denoted by F12, F12 is given by Eq. (1.3) even though other charges are present.
+Thus, F12 = 1
+FIGURE 1.5 A system of (a) three charges (b) multiple charges.
+Reprint 2026-27
+In the same way, the force on q1 due to q3, denoted by F13, is given by which again is the Coulomb force on q1 due to q3, even though other charge q2 is present.
+Thus the total force F1 on q1 due to the two charges q2 and q3 is given as
+F F F r r 1 12 13
+ˆ ˆ (1.4)
+The above calculation of force can be generalised to a system of charges more than three, as shown in Fig. 1.5(b).
+The principle of superposition says that in a system of charges q1, q2, ..., qn, the force on q1 due to q2 is the same as given by Coulomb’s law, i.e., it is unaffected by the presence of the other charges q3, q4, ..., qn. The total force F1 on the charge q1, due to all other charges, is then given by the vector sum of the forces F12, F13, ..., F1n:
+F F F F r r 1 12 13 1n = + + ...+ = +
+ˆ ˆ ++ +
+ε ˆr (1.5)
+The vector sum is obtained as usual by the parallelogram law of addition of vectors. All of electrostatics is basically a consequence of
+Coulomb’s law and the superposition principle.
+Example 1.5 Consider three charges q1, q2, q3 each equal to q at the vertices of an equilateral triangle of side l. What is the force on a charge Q (with the same sign as q) placed at the centroid of the triangle, as shown in Fig. 1.6?
+FIGURE 1.6
+Solution In the given equilateral triangle ABC of sides of length l, if we draw a perpendicular AD to the side BC,
+AD = AC cos 30º = ( 3 /2 ) l and the distance AO of the centroid O from A is (2/3) AD = (1/ 3 ) l. By symmatry AO = BO = CO.
+Reprint 2026-27
+Electric Charges and Fields
+Force F1 on Q due to charge q at A = 3 l along AO
+Force F2 on Q due to charge q at B = 3 l along BO
+Force F3 on Q due to charge q at C = 3 l along CO
+The resultant of forces F2 and F3 is 3 l along OA, by the parallelogram law. Therefore, the total force on Q = 3 l ˆ ˆ r r − ( )
+= 0, where ˆr is the unit vector along OA.
+It is clear also by symmetry that the three forces will sum to zero.
+Suppose that the resultant force was non-zero but in some direction.
+Consider what would happen if the system was rotated through 60° about O.
+Example 1.6 Consider the charges q, q, and –q placed at the vertices of an equilateral triangle, as shown in Fig. 1.7. What is the force on each charge?
+FIGURE 1.7
+Solution The forces acting on charge q at A due to charges q at B and –q at C are F12 along BA and F13 along AC respectively, as shown in Fig. 1.7. By the parallelogram law, the total force F1 on the charge q at A is given by
+F1 = F 1ˆr where 1ˆr is a unit vector along BC.
+The force of attraction or repulsion for each pair of charges has the same magnitude F q
+The total force F2 on charge q at B is thus F2 = F ˆr 2, where ˆr 2 is a unit vector along AC.
+Reprint 2026-27
+Similarly the total force on charge –q at C is F3 = 3 F ˆn , where ˆn is the unit vector along the direction bisecting the ÐBCA.
+It is interesting to see that the sum of the forces on the three charges is zero, i.e.,
+F1 + F2 + F3 = 0
+The result is not at all surprising. It follows straight from the fact that Coulomb’s law is consistent with Newton’s third law. The proof is left to you as an exercise.
+1.7 ELECTRIC FIELD
+Let us consider a point charge Q placed in vacuum, at the origin O. If we place another point charge q at a point P, where OP = r, then the charge Q will exert a force on q as per Coulomb’s law. We may ask the question: If charge q is removed, then what is left in the surrounding? Is there nothing? If there is nothing at the point P, then how does a force act when we place the charge q at P. In order to answer such questions, the early scientists introduced the concept of field. According to this, we say that the charge Q produces an electric field everywhere in the surrounding.
+When another charge q is brought at some point P, the field there acts on it and produces a force. The electric field produced by the charge Q at a point r is given as
+E r r r ( ) = =
+ˆ ˆ (1.6)
+where ˆ = r r/r, is a unit vector from the origin to the point r. Thus, Eq.(1.6)
+specifies the value of the electric field for each value of the position vector r. The word “field” signifies how some distributed quantity (which could be a scalar or a vector) varies with position. The effect of the charge has been incorporated in the existence of the electric field. We obtain the force F exerted by a charge Q on a charge q, as r ˆ (1.7)
+Note that the charge q also exerts an equal and opposite force on the charge Q. The electrostatic force between the charges Q and q can be looked upon as an interaction between charge q and the electric field of
+Q and vice versa. If we denote the position of charge q by the vector r, it experiences a force F equal to the charge q multiplied by the electric field E at the location of q. Thus,
+F(r) = q E(r) (1.8)
+Equation (1.8) defines the SI unit of electric field as N/C*.
+Some important remarks may be made here:
+(i) From Eq. (1.8), we can infer that if q is unity, the electric field due to a charge Q is numerically equal to the force exerted by it. Thus, the electric field due to a charge Q at a point in space may be defined as the force that a unit positive charge would experience if placed
+* An alternate unit V/m will be introduced in the next chapter.
+FIGURE 1.8 Electric field (a) due to a charge Q, (b) due to a charge –Q.
+Reprint 2026-27
+Electric Charges and Fields at that point. The charge Q, which is producing the electric field, is called a source charge and the charge q, which tests the effect of a source charge, is called a test charge. Note that the source charge Q must remain at its original location. However, if a charge q is brought at any point around Q, Q itself is bound to experience an electrical force due to q and will tend to move. A way out of this difficulty is to make q negligibly small. The force F is then negligibly small but the ratio F/q is finite and defines the electric field:
+A practical way to get around the problem (of keeping Q undisturbed in the presence of q) is to hold Q to its location by unspecified forces!
+This may look strange but actually this is what happens in practice.
+When we are considering the electric force on a test charge q due to a charged planar sheet (Section 1.14), the charges on the sheet are held to their locations by the forces due to the unspecified charged constituents inside the sheet.
+(ii) Note that the electric field E due to Q, though defined operationally in terms of some test charge q, is independent of q. This is because
+F is proportional to q, so the ratio F/q does not depend on q. The force F on the charge q due to the charge Q depends on the particular location of charge q which may take any value in the space around the charge Q. Thus, the electric field E due to Q is also dependent on the space coordinate r. For different positions of the charge q all over the space, we get different values of electric field E. The field exists at every point in three-dimensional space.
+(iii) For a positive charge, the electric field will be directed radially outwards from the charge. On the other hand, if the source charge is negative, the electric field vector, at each point, points radially inwards.
+(iv) Since the magnitude of the force F on charge q due to charge Q depends only on the distance r of the charge q from charge Q, the magnitude of the electric field E will also depend only on the distance r. Thus at equal distances from the charge Q, the magnitude of its electric field E is same. The magnitude of electric field E due to a point charge is thus same on a sphere with the point charge at its centre; in other words, it has a spherical symmetry.
+1.7.1 Electric field due to a system of charges
+Consider a system of charges q1, q2, ..., qn with position vectors r1, r2, ..., rn relative to some origin O. Like the electric field at a point in space due to a single charge, electric field at a point in space due to the system of charges is defined to be the force experienced by a unit test charge placed at that point, without disturbing the original positions of charges q1, q2, ..., qn. We can use Coulomb’s law and the superposition principle to determine this field at a point P denoted by position vector r.
+Reprint 2026-27

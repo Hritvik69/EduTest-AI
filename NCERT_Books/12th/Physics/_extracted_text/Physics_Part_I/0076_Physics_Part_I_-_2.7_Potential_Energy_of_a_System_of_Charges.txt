@@ -1,0 +1,56 @@
+(c) Suppose that the same system of charges is now placed in an external electric field E = A (1/r 2); A = 9 × 105 NC–1 m2. What would the electrostatic energy of the configuration be?
+Solution
+1 7 ( 2) 10
+π = –0.7 J.
+(b) W = U2 – U1 = 0 – U = 0 – (–0.7) = 0.7 J.
+(c) The mutual interaction energy of the two charges remains unchanged. In addition, there is the energy of interaction of the two charges with the external electric field. We find, ( ) ( ) 1 1 2 2
+0.09m 0.09m q V q V A A
++ = + r r and the net electrostatic energy is ( ) ( ) 1 2
+7 C 2 C 0.7 J
+4 0.09 m 0.09 m q V q V A A
++ + = + −
+70 20 0.7 49.3 J = − − =
+2.8.3 Potential energy of a dipole in an external field
+Consider a dipole with charges q1 = +q and q2 = –q placed in a uniform electric field E, as shown in Fig. 2.16.
+As seen in the last chapter, in a uniform electric field, the dipole experiences no net force; but experiences a torque ttttt given by t = t = t = t = t = p × E (2.30)
+which will tend to rotate it (unless p is parallel or antiparallel to E). Suppose an external torque tttttext is applied in such a manner that it just neutralises this torque and rotates it in the plane of paper from angle q0 to angle q1 at an infinitesimal angular speed and without angular acceleration. The amount of work done by the external torque will be given by ( ) cos cos pE
+θ 0 1 = − (2.31)
+This work is stored as the potential energy of the system. We can then associate potential energy U( q ) with an inclination q of the dipole.
+Similar to other potential energies, there is a freedom in choosing the angle where the potential energy U is taken to be zero. A natural choice is to take q0 = p / 2. (An explanation for it is provided towards the end of discussion.) We can then write,
+FIGURE 2.16 Potential energy of a dipole in a uniform external field.
+Reprint 2026-27
+Electrostatic Potential and Capacitance
+This expression can alternately be understood also from Eq. (2.29).
+We apply Eq. (2.29) to the present system of two charges +q and –q. The potential energy expression then reads ( ) ( ) ( ) 2
+1 2 [ ] 4 2
+U q V V a
+= − − ′ π × r r (2.33)
+Here, r1 and r2 denote the position vectors of +q and –q. Now, the potential difference between positions r1 and r2 equals the work done in bringing a unit positive charge against field from r2 to r1. The displacement parallel to the force is 2a cos q. Thus, [V(r1)–V (r2)] =
+–E × 2a cos q . We thus obtain, cos 4 2 4 2
+= − − = − − ′ π × π ×
+U pE a a (2.34)
+We note that U q) differs from U( q ) by a quantity which is just a constant for a given dipole. Since a constant is insignificant for potential energy, we can drop the second term in Eq. (2.34) and it then reduces to Eq. (2.32).
+We can now understand why we took q0=p/2. In this case, the work done against the external field E in bringing +q and – q are equal and opposite and cancel out, i.e., q [V (r1) – V (r2)]=0.
+Example 2.6 A molecule of a substance has a permanent electric dipole moment of magnitude 10–29 C m. A mole of this substance is polarised (at low temperature) by applying a strong electrostatic field of magnitude 106 V m–1. The direction of the field is suddenly changed by an angle of 60º. Estimate the heat released by the substance in aligning its dipoles along the new direction of the field. For simplicity, assume 100% polarisation of the sample.
+Solution Here, dipole moment of each molecules = 10–29 C m
+As 1 mole of the substance contains 6 × 1023 molecules, total dipole moment of all the molecules, p = 6 × 1023 × 10–29 C m
+= 6 × 10–6 C m
+Initial potential energy, Ui = –pE cos q = –6×10–6×106 cos 0° = –6 J
+Final potential energy (when q = 60°), Uf = –6 × 10–6 × 106 cos 60° = –3 J
+Change in potential energy = –3 J – (–6J) = 3 J
+So, there is loss in potential energy. This must be the energy released by the substance in the form of heat in aligning its dipoles.
+2.9 ELECTROSTATICS OF CONDUCTORS
+Conductors and insulators were described briefly in Chapter 1.
+Conductors contain mobile charge carriers. In metallic conductors, these charge carriers are electrons. In a metal, the outer (valence) electrons part away from their atoms and are free to move. These electrons are free within the metal but not free to leave the metal. The free electrons form a kind of ‘gas’; they collide with each other and with the ions, and move randomly in different directions. In an external electric field, they drift against the direction of the field. The positive ions made up of the nuclei and the bound electrons remain held in their fixed positions. In electrolytic conductors, the charge carriers are both positive and negative ions; but
+Reprint 2026-27 the situation in this case is more involved – the movement of the charge carriers is affected both by the external electric field as also by the so-called chemical forces (see Chapter 3). We shall restrict our discussion to metallic solid conductors. Let us note important results regarding electrostatics of conductors.
+1. Inside a conductor, electrostatic field is zero
+Consider a conductor, neutral or charged. There may also be an external electrostatic field. In the static situation, when there is no current inside or on the surface of the conductor, the electric field is zero everywhere inside the conductor. This fact can be taken as the defining property of a conductor. A conductor has free electrons. As long as electric field is not zero, the free charge carriers would experience force and drift. In the static situation, the free charges have so distributed themselves that the electric field is zero everywhere inside. Electrostatic field is zero inside a conductor.
+2. At the surface of a charged conductor, electrostatic field must be normal to the surface at every point
+If E were not normal to the surface, it would have some non-zero component along the surface. Free charges on the surface of the conductor would then experience force and move. In the static situation, therefore,
+E should have no tangential component. Thus electrostatic field at the surface of a charged conductor must be normal to the surface at every point. (For a conductor without any surface charge density, field is zero even at the surface.) See result 5.
+3. The interior of a conductor can have no excess charge in the static situation
+A neutral conductor has equal amounts of positive and negative charges in every small volume or surface element. When the conductor is charged, the excess charge can reside only on the surface in the static situation.
+This follows from the Gauss’s law. Consider any arbitrary volume element v inside a conductor. On the closed surface S bounding the volume element v, electrostatic field is zero. Thus the total electric flux through S is zero. Hence, by Gauss’s law, there is no net charge enclosed by S. But the surface S can be made as small as you like, i.e., the volume v can be made vanishingly small. This means there is no net charge at any point inside the conductor, and any excess charge must reside at the surface.
+4. Electrostatic potential is constant throughout the volume of the conductor and has the same value (as inside) on its surface
+This follows from results 1 and 2 above. Since E = 0 inside the conductor and has no tangential component on the surface, no work is done in moving a small test charge within the conductor and on its surface. That is, there is no potential difference between any two points inside or on the surface of the conductor. Hence, the result. If the conductor is charged,
+Reprint 2026-27

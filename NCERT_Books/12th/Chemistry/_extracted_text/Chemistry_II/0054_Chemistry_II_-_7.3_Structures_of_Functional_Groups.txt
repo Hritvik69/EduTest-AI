@@ -1,0 +1,19 @@
+198 Chemistry
+If both the alkyl groups are the same, the prefix ‘di’ is added before the alkyl group. For example, C2H5OC2H5 is diethyl ether.
+According to IUPAC system of nomenclature, ethers are regarded as hydrocarbon derivatives in which a hydrogen atom is replaced by an
+–OR or –OAr group, where R and Ar represent alkyl and aryl groups, respectively. The larger (R) group is chosen as the parent hydrocarbon.
+The names of a few ethers are given as examples in Table 7.2.
+(i) 4-Chloro-2,3-dimethylpentan-1-ol (ii) 2-Ethoxypropane (iii) 2,6-Dimethylphenol (iv) 1-Ethoxy-2-nitrocyclohexane
+OC H 2 5
+Example 7.1 Example 7.1 Example 7.1 Example 7.1 Example 7.1
+Solution Solution Solution Solution Solution (ii) CH3 CH O CH2CH3 (ii) CH3 CH CH OH 2
+7.3 Name the following compounds according to IUPAC system.
+Intext Question Intext Question Intext Question Intext Question Intext Question (i) (ii)
+(iii) (iv) (v)
+In alcohols, the oxygen of the –OH group is attached to carbon by a s ) bond formed by the overlap of a sp3 hybridised orbital of carbon with a sp3 hybridised orbital of oxygen. Fig. 7.1 depicts structural aspects of methanol, phenol and methoxymethane.
+7.3 7.3 7.3 7.3 7.3 Structures of Structures of Structures of Structures of Structures of
+Functional Functional Functional Functional Functional
+Groups Groups Groups Groups Groups
+Fig. 7.1: Structures of methanol, phenol and methoxymethane
+Give IUPAC names of the following compounds:
+Reprint 2026-27

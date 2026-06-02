@@ -1,0 +1,31 @@
+F ile Handling in pytHon 25 write(), the writelines() method does not return the number of characters written in the file. The following code explains the use of writelines().
+>>> myobject=open("myfile.txt",'w')
+>>> lines = ["Hello everyone\n", "Writing
+#multiline strings\n", "This is the
+#third line"]
+>>> myobject.writelines(lines)
+>>>myobject.close()
+On opening myfile.txt, using notepad, its content will appear as shown in Figure 2.1.
+Figure 2.1: Contents of myfile.txt
+2.5 readIng From a text FIle
+We can write a program to read the contents of a file.
+Before reading a file, we must make sure that the file is opened in “r”, “r+”, “w+” or “a+” mode. There are three ways to read the contents of a file:
+2.5.1 The read() method
+This method is used to read a specified number of bytes of data from a data file. The syntax of read() method is:
+file_object.read(n)
+Consider the following set of statements to understand the usage of read() method:
+>>>myobject=open("myfile.txt",'r')
+>>> myobject.read(10)
+'Hello ever'
+>>> myobject.close()
+If no argument or a negative number is specified in read(), the entire file content is read. For example,
+>>> myobject=open("myfile.txt",'r')
+>>> print(myobject.read())
+Hello everyone
+Writing multiline strings
+This is the third line
+>>> myobject.close()
+Activity 2.3
+Run the above code by replacing writelines() with write() and see what happens.
+Can we pass a tuple of numbers as an argument to writelines()? Will it be written to the file or an error will be generated?
+Reprint 2026-27

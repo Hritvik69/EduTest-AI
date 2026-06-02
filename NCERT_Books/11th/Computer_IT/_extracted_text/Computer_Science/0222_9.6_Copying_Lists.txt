@@ -1,0 +1,29 @@
+Computer SCienCe – ClaSS xi 210
+10.2.2 Repetition
+Repetition operation is depicted by the symbol *. It is used to repeat elements of a tuple. We can repeat the tuple elements. The repetition operator requires the first operand to be a tuple and the second operand to be an integer only.
+>>> tuple1 = ('Hello','World')
+>>> tuple1 * 3 ('Hello', 'World', 'Hello', 'World', 'Hello',
+'World')
+#tuple with single element
+>>> tuple2 = ("Hello",)
+>>> tuple2 * 4 ('Hello', 'Hello', 'Hello', 'Hello')
+10.2.3 Membership
+The in operator checks if the element is present in the tuple and returns True, else it returns False.
+>>> tuple1 = ('Red','Green','Blue')
+>>> 'Green' in tuple1
+The not in operator returns True if the element is not present in the tuple, else it returns False.
+>>> tuple1 = ('Red','Green','Blue')
+>>> 'Green' not in tuple1
+10.2.4 Slicing
+Like string and list, slicing can be applied to tuples also.
+#tuple1 is a tuple
+>>> tuple1 = (10,20,30,40,50,60,70,80)
+#elements from index 2 to index 6
+>>> tuple1[2:7] (30, 40, 50, 60, 70)
+#all elements of tuple are printed
+>>> tuple1[0:len(tuple1)] (10, 20, 30, 40, 50, 60, 70, 80)
+#slice starts from zero index
+>>> tuple1[:5] (10, 20, 30, 40, 50)
+#slice is till end of the tuple
+>>> tuple1[2:] (30, 40, 50, 60, 70, 80)
+Reprint 2026-27

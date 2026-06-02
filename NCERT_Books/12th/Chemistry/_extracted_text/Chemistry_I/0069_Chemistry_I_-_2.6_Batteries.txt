@@ -1,0 +1,43 @@
+55 Electrochemistry
+Fig. 2.10: The Lead storage battery.
+The overall reaction is represented by
+Zn(Hg) + HgO(s) ¾® ZnO(s) + Hg(l )
+The cell potential is approximately
+1.35 V and remains constant during its life as the overall reaction does not involve any ion in solution whose concentration can change during its life
+A secondary cell after use can be recharged by passing current through it in the opposite direction so that it can be used again. A good secondary cell can undergo a large number of discharging and charging cycles. The most important secondary cell is the lead storage battery (Fig. 2.10) commonly used in automobiles and invertors. It consists of a lead anode and a grid of lead packed with lead dioxide (PbO2 ) as cathode. A 38% solution of sulphuric acid is used as an electrolyte.
+The cell reactions when the battery is in use are given below:
+Anode: Pb(s) + SO4
+2–(aq) ® PbSO4(s) + 2e–
+Cathode: PbO2(s) + SO4
+2–(aq) + 4H+(aq) + 2e– ® PbSO4 (s) + 2H2O (l )
+i.e., overall cell reaction consisting of cathode and anode reactions is:
+Pb(s) + PbO2(s) + 2H2SO4(aq) ® 2PbSO4(s) + 2H2O(l)
+On charging the battery the reaction is reversed and PbSO4(s) on anode and cathode is converted into Pb and PbO2, respectively.
+Fig. 2.9
+Commonly used mercury cell. The reducing agent is zinc and the oxidising agent is mercury (II) oxide.
+2.6.2 Secondary
+Batteries
+Reprint 2026-27
+56 Chemistry
+Positive plate
+Separator
+Negative plate
+Another important secondary cell is the nickel-cadmium cell (Fig. 2.11) which has longer life than the lead storage cell but more expensive to manufacture.
+We shall not go into details of working of the cell and the electrode reactions during charging and discharging.
+The overall reaction during discharge is:
+Cd (s) + 2Ni(OH)3 (s) ® CdO (s) + 2Ni(OH)2 (s) + H2O (l )
+Production of electricity by thermal plants is not a very efficient method and is a major source of pollution. In such plants, the chemical energy (heat of combustion) of fossil fuels (coal, gas or oil) is first used for converting water into high pressure steam. This is then used to run a turbine to produce electricity. We know that a galvanic cell directly converts chemical energy into electricity and is highly efficient. It is now possible to make such cells in which reactants are fed continuously to the electrodes and products are removed continuously from the electrolyte compartment. Galvanic cells that are designed to convert the energy of combustion of fuels like hydrogen, methane, methanol, etc. directly into electrical energy are called fuel cells.
+One of the most successful fuel cells uses the reaction of hydrogen with oxygen to form water (Fig. 2.12). The cell was used for providing electrical power in the
+Apollo space programme. The water vapours produced during the reaction were condensed and added to the drinking water supply for the astronauts.
+In the cell, hydrogen and oxygen are bubbled through porous carbon electrodes into concentrated aqueous sodium hydroxide solution. Catalysts like finely divided platinum or palladium metal are incorporated into the electrodes for increasing the rate of electrode reactions. The electrode reactions are given below:
+Cathode: O2(g) + 2H2O(l ) + 4e–¾® 4OH–(aq)
+Anode: 2H2 (g) + 4OH–(aq) ¾® 4H2O(l) + 4e–
+Overall reaction being:
+2H2(g) + O2(g) ¾® 2H2O(l )
+The cell runs continuously as long as the reactants are supplied.
+Fuel cells produce electricity with an efficiency of about 70 % compared
+Fig. 2.11
+A rechargeable nickel-cadmium cell in a jelly roll arrangement and separated by a layer soaked in moist sodium or potassium hydroxide.
+2.7 Fuel Cells 2.7 Fuel Cells 2.7 Fuel Cells 2.7 Fuel Cells 2.7 Fuel Cells
+Fig. 2.12: Fuel cell using H2 and O2 produces electricity.
+Reprint 2026-27

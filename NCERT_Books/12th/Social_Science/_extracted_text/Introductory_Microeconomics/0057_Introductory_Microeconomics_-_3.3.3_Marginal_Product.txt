@@ -1,0 +1,159 @@
+47 Production and Costs
+Let us now look at the SMC curve. Marginal cost is the additional cost that a firm incurs to produce one extra unit of output. According to the law of variable proportions, initially, the marginal product of a factor increases as employment increases, and then after a certain point, it decreases. This means initially to produce every extra unit of output, the requirement of the factor becomes less and less, and then after a certain point, it becomes greater and greater. As a result, with the factor price given, initially the
+SMC falls, and then after a certain point, it rises. SMC curve is, therefore, ‘U’-shaped.
+At zero level of output, SMC is undefined. The TVC at a particular level of output is given by the area under the SMC curve up to that level.
+Now, what does the AVC curve look like? For the first unit of output, it is easy to check that SMC and AVC are the same. So both SMC and AVC curves start from the same point. Then, as output increases, SMC falls. AVC being the average of marginal costs, also falls, but falls less than SMC. Then, after a point,
+SMC starts rising. AVC, however, continues to fall as long as the value of SMC remains less than the prevailing value of AVC. Once the SMC has risen sufficiently, its value becomes greater than the value of AVC. The AVC then starts rising. The
+AVC curve is therefore ‘U’-shaped.
+As long as AVC is falling, SMC must be less than the AVC. As AVC rises,
+SMC must be greater than the AVC. So the SMC curve cuts the AVC curve from below at the minimum point of AVC.
+The Average Variable Cost Curve. The area of the rectangle OVBq0 gives us the total variable cost at q0.
+Fig. 3.6 q0 O Output
+The Total Variable Cost Curve. The slope of the angle ∠EOqo gives us the average variable cost at qo.
+O Output
+Fig. 3.7
+In Figure 3.7, we measure output along the horizontal axis and TVC along the vertical axis. At q0 level of output, OV is the total variable cost. Let the angle ∠E0q0 be equal to
+θ. Then, at q0, the AVC can be calculated
+AV C = TVC
+Oq = tan
+Reprint 2026-27
+Introductory
+Microeconomics
+In Figure 3.6 we measure output along the horizontal axis and AVC along the vertical axis. At q0 level of output, AVC is equal to OV . The total variable cost at q0 is
+TVC = AVC × quantity
+= OV × Oq0
+= the area of the rectangle OV Bq0.
+Let us now look at SAC. SAC is the sum of AVC and AFC. Initially, both AVC and AFC decrease as output increases. Therefore, SAC initially falls. After a certain level of output production, AVC starts rising, but AFC continuous to fall. Initially the fall in AFC is greater than the rise in AVC and SAC is still falling. But, after a certain level of production, rise in AVC becomes larger than the fall in AFC. From this point onwards, SAC is rising. SAC curve is therefore ‘U’-shaped.
+It lies above the AVC curve with the vertical difference being equal to the value of AFC. The minimum point of SAC curve lies to the right of the minimum point of AVC curve.
+Similar to the case of AVC and SMC, as long as SAC is falling, SMC is less than the SAC. When SAC is rising, SMC is greater than the SAC. SMC curve cuts the SAC curve from below at the minimum point of SAC.
+Figure 3.8 shows the shapes of short run marginal cost, average variable cost and short run average cost curves for a typical firm. AVC reaches its minimum at q1 units of output. To the left of q1, AVC is falling and SMC is less than AVC. To the right of q1, AVC is rising and SMC is greater than AVC. SMC curve cuts the AVC curve at ‘P ’ which is the minimum point of AVC curve. The minimum point of SAC curve is ‘S ’ which corresponds to the output q2.
+It is the intersection point between
+SMC and SAC curves. To the left of q2, SAC is falling and SMC is less than SAC. To the right of q2, SAC is rising and SMC is greater than SAC.
+3.7.2 Long Run Costs
+In the long run, all inputs are variable. There are no fixed costs. The total cost and the total variable cost therefore, coincide in the long run. Long run average cost (LRAC) is defined as cost per unit of output, i.e.
+LRAC = TC q (3.13)
+Long run marginal cost (LRMC) is the change in total cost per unit of change in output. When output changes in discrete units, then, if we increase production from q1–1 to q1 units of output, the marginal cost of producing q1 th unit will be measured as
+LRMC = (TC at q1 units) – (TC at q1 – 1 units) (3.14)
+Short Run Costs. Short run marginal cost, average variable cost and average cost curves.
+q1 O Output
+Fig. 3.8
+Reprint 2026-27
+49 Production and Costs
+Long Run Costs. Long run marginal cost and average cost curves.
+Fig. 3.9 q1 O Output
+Just like the short run, in the long run, the sum of all marginal costs up to some output level gives us the total cost at that level.
+Shapes of the Long Run Cost Curves
+We have previously discussed the returns to scales. Now let us see their implications for the shape of LRAC.
+IRS implies that if we increase all the inputs by a certain proportion, output increases by more than that proportion. In other words, to increase output by a certain proportion, inputs need to be increased by less than that proportion.
+With the input prices given, cost also increases by a lesser proportion. For example, suppose we want to double the output. To do that, inputs need to be increased, but less than double. The cost that the firm incurs to hire those inputs therefore also need to be increased by less than double. What is happening to the average cost here? It must be the case that as long as IRS operates, average cost falls as the firm increases output.
+DRS implies that if we want to increase the output by a certain proportion, inputs need to be increased by more than that proportion. As a result, cost also increases by more than that proportion. So, as long as DRS operates, the average cost must be rising as the firm increases output.
+CRS implies a proportional increase in inputs resulting in a proportional increase in output. So the average cost remains constant as long as CRS operates.
+It is argued that in a typical firm IRS is observed at the initial level of production. This is then followed by the CRS and then by the DRS. Accordingly, the LRAC curve is a ‘U’-shaped curve. Its downward sloping part corresponds to IRS and upward rising part corresponds to DRS. At the minimum point of the
+LRAC curve, CRS is observed.
+Let us check how the LRMC curve looks like. For the first unit of output, both LRMC and LRAC are the same. Then, as output increases, LRAC initially falls, and then, after a certain point, it rises. As long as average cost is falling, marginal cost must be less than the average cost. When the average cost is rising, marginal cost must be greater than the average cost. LRMC curve is therefore a ‘U’-shaped curve. It cuts the LRAC curve from below at the minimum point of the
+LRAC. Figure 3.9 shows the shapes of the long run marginal cost and the long run average cost curves for a typical firm.
+LRAC reaches its minimum at q1. To the left of q1, LRAC is falling and LRMC is less than the
+LRAC curve. To the right of q1,
+LRAC is rising and LRMC is higher than LRAC.
+Reprint 2026-27
+Introductory
+Microeconomics
+S u m m a r y S u m m a r y S u m m a r y S u m m a r y S u m m a r y
+• For different combinations of inputs, the production function shows the maximum quantity of output that can be produced.
+• In the short run, some inputs cannot be varied. In the long run, all inputs can be
+• Total product is the relationship between a variable input and output when all other inputs are held constant.
+• For any level of employment of an input, the sum of marginal products of every unit of that input up to that level gives the total product of that input at that employment level.
+• Both the marginal product and the average product curves are inverse ‘U’-shaped.
+The marginal product curve cuts the average product curve from above at the maximum point of average product curve.
+• In order to produce output, the firm chooses least cost input combinations.
+• Total cost is the sum of total variable cost and the total fixed cost.
+• Average cost is the sum of average variable cost and average fixed cost.
+• Average fixed cost curve is downward sloping.
+• Short run marginal cost, average variable cost and short run average cost curves are ‘U’-shaped.
+• SMC curve cuts the AVC curve from below at the minimum point of AVC.
+• SMC curve cuts the SAC curve from below at the minimum point of SAC.
+• In the short run, for any level of output, sum of marginal costs up to that level gives us the total variable cost. The area under the SMC curve up to any level of output gives us the total variable cost up to that level.
+• Both LRAC and LRMC curves are ‘U’ shaped.
+• LRMC curve cuts the LRAC curve from below at the minimum point of LRAC.
+K K K K Key
+Concepts ey Concepts ey Concepts ey Concepts ey Concepts
+Production function Short run
+Long run Total product
+Marginal product Average product
+Law of diminishing marginal product Law of variable proportions
+Returns to scale
+Cost function Marginal cost, Average cost
+1. Explain the concept of a production function.
+2. What is the total product of an input?
+3. What is the average product of an input?
+4. What is the marginal product of an input?
+5. Explain the relationship between the marginal products and the total product of an input.
+6. Explain the concepts of the short run and the long run.
+7. What is the law of diminishing marginal product?
+8. What is the law of variable proportions?
+9. When does a production function satisfy constant returns to scale?
+10. When does a production function satisfy increasing returns to scale?
+Exercises Exercises Exercises Exercises Exercises
+Reprint 2026-27
+51 Production and Costs
+11. When does a production function satisfy decreasing returns to scale?
+12. Briefly explain the concept of the cost function.
+13. What are the total fixed cost, total variable cost and total cost of a firm? How are they related?
+14. What are the average fixed cost, average variable cost and average cost of a firm? How are they related?
+15. Can there be some fixed cost in the long run? If not, why?
+16. What does the average fixed cost curve look like? Why does it look so?
+17. What do the short run marginal cost, average variable cost and short run average cost curves look like?
+18. Why does the SMC curve cut the AVC curve at the minimum point of the AVC
+19. At which point does the SMC curve cut the SAC curve? Give reason in support of your answer.
+20. Why is the short run marginal cost curve ‘U’-shaped?
+21. What do the long run marginal cost and the average cost curves look like?
+22. The following table gives the total product schedule of labour. Find the corresponding average product and marginal product schedules of labour.
+23. The following table gives the average product schedule of labour. Find the total product and marginal product schedules. It is given that the total product is zero at zero level of labour employment.
+24. The following table gives the marginal product schedule of labour. It is also given that total product of labour is zero at zero level of employment. Calculate the total and average product schedules of labour.
+25. The following table shows the total cost schedule of a firm.
+What is the total fixed cost schedule of this firm? Calculate the TVC, AFC, AVC, SAC and SMC schedules of the firm.
+Reprint 2026-27
+Introductory
+Microeconomics
+26. The following table gives the total cost schedule of a firm. It is also given that the average fixed cost at
+4 units of output is Rs 5. Find the TVC, TFC, AVC,
+AFC, SAC and SMC schedules of the firm for the corresponding values of output.
+27. A firm’s SMC schedule is shown in the following table. The total fixed cost of the firm is Rs 100. Find the TVC, TC, AVC and SAC schedules of the firm.
+28. Let the production function of a firm be
+Find out the maximum possible output that the firm can produce with 100 units of L and 100 units of K.
+29. Let the production function of a firm be
+Q = 2L2K2
+Find out the maximum possible output that the firm can produce with 5 units of L and 2 units of K. What is the maximum possible output that the firm can produce with zero unit of L and 10 units of K?
+30. Find out the maximum possible output for a firm with zero unit of L and 10 units of K when its production function is
+Q = 5L + 2K
+Reprint 2026-27
+Chapter 4
+The Theor
+The Theory of the F y of the F y of the F y of the F y of the Firm irm irm irm irm under Per er er er erfect Competition fect Competition fect Competition fect Competition fect Competition
+In the previous chapter, we studied concepts related to a firm’s production function and cost curves. The focus of this chapter is different. Here we ask : how does a firm decide how much to produce? Our answer to this question is by no means simple or uncontroversial. We base our answer on a critical, if somewhat unreasonable, assumption about firm behaviour – a firm, we maintain, is a ruthless profit maximiser. So, the amount that a firm produces and sells in the market is that which maximises its profit. Here, we also assume that the firm sells whatever it produces so that ‘output’ and quantity sold are often used interchangebly.
+The structure of this chapter is as follows. We first set up and examine in detail the profit maximisation problem of a firm. Then,0 we derive a firm’s supply curve. The supply curve shows the levels of output that a firm chooses to produce at different market prices.
+Finally, we study how to aggregate the supply curves of individual firms and obtain the market supply curve.
+4.1 PERFECT COMPETITION: DEFINING FEATURES
+In order to analyse a firm’s profit maximisation problem, we must first specify the market environment in which the firm functions.
+In this chapter, we study a market environment called perfect competition. A perfectly competitive market has the following defining features:
+1. The market consists of a large number of buyers and sellers
+2. Each firm produces and sells a homogenous product. i.e., the product of one firm cannot be differentiated from the product of any other firm.
+3. Entry into the market as well as exit from the market are free for firms.
+4. Information is perfect.
+The existence of a large number of buyers and sellers means that each individual buyer and seller is very small compared to the size of the market. This means that no individual buyer or seller can influence the market by their size. Homogenous products further mean that the product of each firm is identical. So a buyer can choose to buy from any firm in the market, and she gets the same product. Free entry and exit mean that it is easy for firms to enter the market, as well as to leave it. This condition is essential
+Reprint 2026-27
+Introductory
+Microeconomics for the large numbers of firms to exist. If entry was difficult, or restricted, then the number of firms in the market could be small. Perfect information implies that all buyers and all sellers are completely informed about the price, quality and other relevant details about the product, as well as the market.
+These features result in the single most distinguishing characteristic of perfect competition: price taking behaviour. From the viewpoint of a firm, what does price-taking entail? A price-taking firm believes that if it sets a price above the market price, it will be unable to sell any quantity of the good that it produces.
+On the other hand, should the set price be less than or equal to the market price, the firm can sell as many units of the good as it wants to sell. From the viewpoint of a buyer, what does price-taking entail? A buyer would obviously like to buy the good at the lowest possible price. However, a price-taking buyer believes that if she asks for a price below the market price, no firm will be willing to sell to her.
+On the other hand, should the price asked be greater than or equal to the market price, the buyer can obtain as many units of the good as she desires to buy.
+Price-taking is often thought to be a reasonable assumption when the market has many firms and buyers have perfect information about the price prevailing in the market. Why? Let us start with a situation where each firm in the market charges the same (market) price. Suppose, now, that a certain firm raises its price above the market price. Observe that since all firms produce the same good and all buyers are aware of the market price, the firm in question loses all its buyers. Furthermore, as these buyers switch their purchases to other firms, no
+“adjustment” problems arise; their demand is readily accommodated when there are so many other firms in the market. Recall, now, that an individual firm’s inability to sell any amount of the good at a price exceeding the market price is precisely what the price-taking assumption stipulates.
+4.2 REVENUE
+We have indicated that in a perfectly competitive market, a firm believes that it can sell as many units of the good as it wants by setting a price less than or equal to the market price. But, if this is the case, surely there is no reason to set a price lower than the market price. In other words, should the firm desire to sell some amount of the good, the price that it sets is exactly equal to the market price.
+A firm earns revenue by selling the good that it produces in the market. Let the market price of a unit of the good be p. Let q be the quantity of the good produced, and therefore sold, by the firm at price p. Then, total revenue (TR) of the firm is defined as the market price of the good (p) multiplied by the firm’s output (q). Hence,
+TR = p × q
+To make matters concrete, consider the following numerical example. Let the market for candles be perfectly competitive and let the market price of a box of candles be Rs 10. For a candle manufacturer,
+Table 4.1 shows how total revenue is related to output. Notice that when no box is sold,
+TR is equal to zero; if one box of candles is sold,
+TR is equ

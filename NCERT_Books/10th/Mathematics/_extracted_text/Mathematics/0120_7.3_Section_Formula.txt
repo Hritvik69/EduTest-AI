@@ -1,0 +1,132 @@
+106 MATHEMATICS
+9. If Q(0, 1) is equidistant from P(5, –3) and R(x, 6), find the values of x. Also find the distances QR and PR.
+10. Find a relation between x and y such that the point (x, y) is equidistant from the point (3, 6) and (– 3, 4).
+7.3 Section Formula
+Let us recall the situation in Section 7.2.
+Suppose a telephone company wants to position a relay tower at P between A and B is such a way that the distance of the tower from B is twice its distance from A. If P lies on AB, it will divide AB in the ratio 1 : 2 (see Fig. 7.9). If we take A as the origin O, and 1 km as one unit on both the axis, the coordinates of B will be (36, 15). In order to know the position of the tower, we must know the coordinates of P. How do we find these coordinates?
+Let the coordinates of P be (x, y). Draw perpendiculars from P and B to the x-axis, meeting it in D and E, respectively. Draw PC perpendicular to BE. Then, by the AA similarity criterion, studied in Chapter 6,  POD and  BPC are similar.
+Therefore , OD OP 1
+  , and PD OP 1
+These equations give x = 12 and y = 5.
+You can check that P(12, 5) meets the condition that OP : PB = 1 : 2.
+Now let us use the understanding that you may have developed through this example to obtain the general formula.
+Consider any two points A(x1
+, y2 ) and assume that P (x, y) divides
+AB internally in the ratio m1 : m2 , i.e.,
+ (see Fig. 7.10).
+Fig. 7.9
+Fig. 7.10
+Reprint 2026-27
+COORDINATE GEOMETRY 107
+Draw AR, PS and BT perpendicular to the x-axis. Draw AQ and PC parallel to the x-axis. Then, by the AA similarity criterion,
+ PAQ ~  BPC
+Therefore, PA AQ
+Now, AQ = RS = OS – OR = x – x1
+PC = ST = OT – OS = x2 – x
+PQ = PS – QS = PS – AR = y – y1
+BC = BT– CT = BT – PS = y2 – y
+Substituting these values in (1), we get
+Taking 1
+ , we get x = 1 2 2 1
+Similarly, taking 1
+ , we get y = 1 2 2 1
+So, the coordinates of the point P(x, y) which divides the line segment joining the points A(x1
+) and B(x2
+), internally, in the ratio m1 : m2 are
+1 2 2 1 1 2 2 1
+,m x m x m y m y
+This is known as the section formula.
+This can also be derived by drawing perpendiculars from A, P and B on the y-axis and proceeding as above.
+If the ratio in which P divides AB is k : 1, then the coordinates of the point P will be
+2 1 2 1 , kx x ky y
+      
+Special Case : The mid-point of a line segment divides the line segment in the ratio
+1 : 1. Therefore, the coordinates of the mid-point P of the join of the points A(x1 and B(x2
+, y2 ) is
+1 2 1 2 1 2 1 2 1 1 1 1, ,
+1 1 1 1 2 2 x x y y x x y y            
+          .
+Let us solve a few examples based on the section formula.
+Reprint 2026-27
+108 MATHEMATICS
+Example 6 : Find the coordinates of the point which divides the line segment joining the points (4, – 3) and (8, 5) in the ratio 3 : 1 internally.
+Solution : Let P(x, y) be the required point. Using the section formula, we get x = 3(8) 1(4) 7
+ , y = 3(5) 1(–3) 3
+Therefore, (7, 3) is the required point.
+Example 7 : In what ratio does the point (– 4, 6) divide the line segment joining the points A(– 6, 10) and B(3, – 8)?
+Solution : Let (– 4, 6) divide AB internally in the ratio m1 : m2
+. Using the section formula, we get (– 4, 6) = 1 2 1 2
+3 6 –8 10,m m m m
+    (1)
+Recall that if (x, y) = (a, b) then x = a and y = b.
+So, – 4 = 1 2
+ and 1 2
+Now, – 4 = 1 2
+ gives us
+– 4m1 – 4m2 = 3m1 – 6m2 i.e., 7m1 = 2m2 i.e., m1 : m2 = 2 : 7
+You should verify that the ratio satisfies the y-coordinate also.
+Now, 1 2
+8 10 m m (Dividing throughout by m2
+Reprint 2026-27
+COORDINATE GEOMETRY 109
+Therefore, the point (– 4, 6) divides the line segment joining the points A(– 6, 10) and
+B(3, – 8) in the ratio 2 : 7.
+Alternatively : The ratio m1 : m2 can also be written as 1 m or k : 1. Let (– 4, 6)
+divide AB internally in the ratio k : 1. Using the section formula, we get (– 4, 6) = 3 6 8 10,
+    
+    (2)
+So, – 4 = 3 6 i.e., – 4k – 4 = 3k – 6 i.e., 7k = 2 i.e., k : 1 = 2 : 7
+You can check for the y-coordinate also.
+So, the point (– 4, 6) divides the line segment joining the points A(– 6, 10) and
+B(3, – 8) in the ratio 2 : 7.
+Note : You can also find this ratio by calculating the distances PA and PB and taking their ratios provided you know that A, P and B are collinear.
+Example 8 : Find the coordinates of the points of trisection (i.e., points dividing in three equal parts) of the line segment joining the points A(2, – 2) and B(– 7, 4).
+Solution : Let P and Q be the points of trisection of AB i.e., AP = PQ = QB (see Fig. 7.11).
+Therefore, P divides AB internally in the ratio 1 : 2. Therefore, the coordinates of P, by applying the section formula, are
+1( 7) 2(2) 1(4) 2( 2),
+     
+    , i.e., (–1, 0)
+Now, Q also divides AB internally in the ratio 2 : 1. So, the coordinates of Q are
+2( 7) 1(2) 2(4) 1( 2),
+     
+    , i.e., (– 4, 2)
+Fig. 7.11
+Reprint 2026-27
+110 MATHEMATICS
+Therefore, the coordinates of the points of trisection of the line segment joining A and
+B are (–1, 0) and (– 4, 2).
+Note : We could also have obtained Q by noting that it is the mid-point of PB. So, we could have obtained its coordinates using the mid-point formula.
+Example 9 : Find the ratio in which the y-axis divides the line segment joining the points (5, – 6) and (–1, – 4). Also find the point of intersection.
+Solution : Let the ratio be k : 1. Then by the section formula, the coordinates of the point which divides AB in the ratio k : 1 are 5 4 6,
+        
+This point lies on the y-axis, and we know that on the y-axis the abscissa is 0.
+Therefore, 5
+So, k = 5
+That is, the ratio is 5 : 1. Putting the value of k = 5, we get the point of intersection as
+Example 10 : If the points A(6, 1), B(8, 2), C(9, 4) and D(p, 3) are the vertices of a parallelogram, taken in order, find the value of p.
+Solution : We know that diagonals of a parallelogram bisect each other.
+So, the coordinates of the mid-point of AC = coordinates of the mid-point of BD i.e., 6 9 1 4,
+  = 8 2 3, p     i.e., 15 5,
+  = 8 5, i.e., p = 7
+Reprint 2026-27
+COORDINATE GEOMETRY 111
+EXERCISE 7.2
+1. Find the coordinates of the point which divides the join of (–1, 7) and (4, –3) in the ratio 2 : 3.
+2. Find the coordinates of the points of trisection of the line segment joining (4, –1)
+and (–2, –3).
+3. To conduct Sports Day activities, in your rectangular shaped school ground ABCD, lines have been drawn with chalk powder at a distance of 1m each. 100 flower pots have been placed at a distance of 1m from each other along AD, as shown in Fig. 7.12. Niharika runs 1
+4 th the distance AD on the 2nd line and posts a green flag. Preet runs 1 the distance AD on the eighth line and posts a red flag. What is the distance between both the flags? If
+Rashmi has to post a blue flag exactly halfway between the line segment joining the two flags, where should she post her flag?
+4. Find the ratio in which the line segment joining the points (– 3, 10) and (6, – 8) is divided by (– 1, 6).
+5. Find the ratio in which the line segment joining A(1, – 5) and B(– 4, 5) is divided by the x-axis. Also find the coordinates of the point of division.
+6. If (1, 2), (4, y), (x, 6) and (3, 5) are the vertices of a parallelogram taken in order, find x and y.
+7. Find the coordinates of a point A, where AB is the diameter of a circle whose centre is (2, – 3) and B is (1, 4).
+8. If A and B are (– 2, – 2) and (2, – 4), respectively, find the coordinates of P such that
+AP = 3 AB
+7 and P lies on the line segment AB.
+9. Find the coordinates of the points which divide the line segment joining A(– 2, 2) and
+B(2, 8) into four equal parts.
+10. Find the area of a rhombus if its vertices are (3, 0), (4, 5), (– 1, 4) and (– 2, – 1) taken in order. [Hint : Area of a rhombus = 1
+2 (product of its diagonals)]
+Fig. 7.12
+Reprint 2026-27

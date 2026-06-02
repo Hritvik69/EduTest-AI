@@ -1,0 +1,178 @@
+Exploring Some Geometric Themes
+Sierpinski Carpet
+Draw the initial few steps (at least till Step 2) of the shape sequence that leads to the Sierpinski Carpet.
+By its construction, each step in the sequence has (i) squares of the same size that remain in the figure, and the size of these squares becomes smaller and smaller as the step number increases, and (ii) square holes that are formed by removing square pieces.
+Do you see any pattern in the number of holes and squares that remain at each step?
+Let Rn represent the number of remaining squares at the nth step, and
+Hn represent the number of holes at the nth step.
+Let us understand how these numbers grow by analysing how the holes and squares that remain are generated from the previous step.
+Every square that remains at a given step, say Step n, gives rise to
+8 squares that remain at the (n + 1)th step. Thus, we have
+Rn + 1 = 8 Rn.
+Can this be used to get a formula for Rn?
+R1 = 8 × 1 = 8
+R2 = 8 × 8 = 82.
+In general, Rn = 8n.
+Similarly, how do we find the number of holes at a given step?
+Every square that remains at the nth step gives rise to a hole in the (n + 1)th step. All the holes present at the nth step remain in the (n + 1)th step as well. Thus,
+Hn + 1 = Hn + Rn.
+So we have
+R0 = 1 H0 = 0
+R1 = 8 H1 = 1
+R2 = 82 H2 = 1 + 8
+R3 = 83 H3 = 1 + 8 + 82
+Ganita Prakash | Grade 8 | Part-II
+Sierpinski Gasket
+Sierpinski came up with another fractal made in a similar way. An equilateral triangle is broken up into 4 identical equilateral triangles by joining the midpoints of the bigger triangle, and then the central triangle is removed. This procedure is repeated on the 3 remaining triangles, and so on.
+Step 0 Step 1 Step 2
+Sierpinski Triangle
+Show that by joining the midpoints of an equilateral triangle, we divide it into 4 identical equilateral triangles.
+[Hint: Note that the corner triangles are isosceles.]
+This fractal is called the Sierpinski Triangle/Gasket.
+Figure it Out
+1. Draw the initial few steps (at least till Step 2) of the shape sequence that leads to the Sierpinski Triangle.
+2. Find the number of holes, and the triangles that remain at each step of the shape sequence that leads to the Sierpinski Triangle.
+3. Find the area of the region remaining at the nth step in each of the shape sequences that lead to the Sierpinski fractals. Take the area of the starting square/triangle to be 1 sq. unit.
+Exploring Some Geometric Themes
+Koch Snowflake
+The Koch Snowflake is another fractal, named after the Swedish mathematician Von Koch, who first described it in 1904. We have already encountered this fractal in Grade 6, Ganita Prakash.
+Step 0 Step 1 Step 2
+Koch Snowflake
+To generate it, we start with an equilateral triangle. Each side is (i) divided into 3 equal parts, and (ii) an equilateral triangle is raised over the middle part, and then the middle part is removed.
+Effectively, each side gets replaced by a ‘bump’ - shaped structure .
+This procedure is repeated on the sides of the new resulting shape, and
+Figure it Out
+1. Draw the initial few steps (at least till Step 2) of the shape sequence that leads to the Koch Snowflake.
+2. Find the number of sides in the nth step of the shape sequence that leads to the Koch Snowflake.
+3. Find the perimeter of the shape at the nth step of the sequence.
+Take the starting equilateral triangle to have a sidelength of 1 unit.
+Ganita Prakash | Grade 8 | Part-II
+Fractals in Art
+Fractals have also long been used in human-made art! Perhaps the oldest such fractals appear in the temples of India. An example occurs in the Kandariya Mahadev Temple in Khajuraho, Madhya Pradesh which was completed in around 1025 C.E.; there one sees a tall temple structure, which is made up of smaller copies of the full structure, on which there are even smaller copies of the same structure, and so on. Fractal-like patterns also occur in temples in Madurai, Hampi,
+Rameswaram, Varanasi, among many others.
+Kandariya Mahadev Temple
+Fractals are also common in traditional African cultures. For example, patterns on Nigerian Fulani wedding blankets often exhibit fractal structures.
+Nigerian Fulani Wedding Blanket
+Exploring Some Geometric Themes
+In the blanket shown in the figure, there are diamond shaped patterns, inside of which there are smaller diamond shaped patterns, and so on.
+The modern maestro of fractal art is undoubtedly the Dutch artist
+M.C. Escher. We have already seen that some of his prints explore the mathematical theme of tiling. One famous example involving fractals is his work ‘Smaller and Smaller’, which exhibits the identical pattern of lizards but at smaller and smaller scales. Here is a print inspired by
+Escher’s ‘Smaller and Smaller’.
+4.2 Visualising Solids
+Build it in Your Imagination
+We will start this section by practising visualisation. For each prompt, feel free to talk to your partner, gesture, draw it in the air — but do not actually draw on paper!
+My method is different. I do not rush into actual work. When I get an idea I start at once building it up in my imagination. I change the construction, make improvements, and operate the device entirely in my mind.
+— Nikolas Tesla (1856 – 1943), the great
+Serbian-American engineer and inventor, who made fundamental contributions to electrical engineering and other fields.
+1. Picture your name, then read off the letters backwards. Make sure to do this by sight, not by sound — really see your name! Now try with your friend’s name.
+Ganita Prakash | Grade 8 | Part-II
+2. Cut off the four corners of an imaginary square, with each cut going between midpoints of adjacent edges. What shape is left over? How can you reassemble the four corners to make another square?
+3. Mark the sides of an equilateral triangle into thirds. Cut off each corner of the triangle, as far as the marks. What shape do you get?
+4. Mark the sides of a square into thirds and cut off each of its corners as far as the marks. What shape is left?
+When we see a solid object, we are really seeing its profile from a specific viewpoint. Depending on our viewpoint, the outline of this profile can vary dramatically!
+Perhaps you’ve noticed interesting profiles of objects yourself, while taking a photograph or observing the shadow of an object? Or, maybe you’ve seen a cartoon like the following, in which a character bursts through a wall and leaves a hole shaped like their outline!
+Exploring Some Geometric Themes
+In previous classes, you’ve seen solids that are much simpler than an elephant or cat, such as cubes, spheres, cylinders, and cones. What would the profiles of these look like, from different viewpoints?
+Can you describe a solid and a viewpoint that would result in each of the following cases? If it helps, you can imagine the solid passing through a wall like Tom did, and leaving a hole of the appropriate shape.
+5. A solid whose profile has a square outline
+6. A solid whose profile has a circular outline
+7. A solid whose profile has a triangular outline
+As we saw with the elephant, a given solid might have very different profiles from different viewpoints. Can you visualise solids that have the following contrasting profiles?
+Spend some time on this, and if you are finding it difficult to visualise, you may look around and use objects that are around you, or that you will make in the next section. Feel free to consider viewpoints from any direction, including directly above the object.
+8. A solid with a rectangular profile from one viewpoint and a circular profile from another viewpoint
+9. A solid with a circular profile from one viewpoint and a triangular one from another viewpoint
+10. A solid with a rectangular profile from one viewpoint and a triangular one from another viewpoint
+11. A solid with a trapezium shaped profile from one viewpoint and a circular one from another viewpoint
+12. A solid with a pentagonal profile from one viewpoint and a rectangular one from another viewpoint
+Are there unique solids for each of the conditions, or can you come up with multiple possibilities?
+Making Solids
+Many basic solid shapes such as a cuboid, parallelopiped, cylinder, cone, prism, and pyramid can be made using foldable flat materials like paper, cardboard, and even metallic sheets! This is one of the methods for manufacturing hollow solids.
+Ganita Prakash | Grade 8 | Part-II
+Cuboid Parallelopiped Cylinder
+Cone Triangular prism Triangular
+While discussing solids that contain plane surfaces in their boundaries, the notion of faces, edges and vertices serves a useful purpose.
+Vertex Edge
+Faces are the plane/flat surfaces of a solid that form its boundary.
+Edges are the line segments that form the sides of the faces, and vertices are the points at which the edges meet. For example, a cuboid or cube has 6 faces, 12 edges and 8 vertices.
+Exploring Some Geometric Themes
+There are multiple types of prisms and pyramids, whose names depend on the shapes of their faces.
+Triangular
+Pentagonal
+Hexagonal
+Prism: A prism, in general, has two congruent polygons as opposite faces, with edges connecting the corresponding vertices of these polygons. All the other faces are parallelograms. Based on the shape of the congruent polygons, prisms may be called triangular prisms, pentagonal prisms, and so on.
+Pyramids: A pyramid, in general, has a polygonal base and a point outside it, and edges connect the point with each of the vertices of the base. Based on the shape of the base, pyramids may be called triangular pyramids, square pyramids, pentagonal pyramids, and so on.
+A triangular pyramid is also known as a tetrahedron.
+Triangular
+Pentagonal
+Hexagonal
+If the congruent polygons of a prism have 10 sides, how many faces, edges and vertices does the prism have? What if the polygons have n
+If the base of a pyramid has 10 sides, how many faces, edges and vertices does the pyramid have? What if the base is an n-sided polygon?
+Now we will see how to make different solids using a foldable flat surface such as paper, cardboard, etc.
+The basic idea is to create a shape on a flat surface that can be folded into the solid. Such a shape is called a net. In other words, a net is obtained by ‘unfolding’ a solid onto a plane.
+Ganita Prakash | Grade 8 | Part-II
+What is a net of a cube?
+Fig. 4.1 is a net of a cube.
+Visualise how it can be folded to form a cube.
+Practical Aspects of Using a Net
+To make an actual cube from its net, certain practical aspects have to be kept in mind. One is that the material used must have sufficient sturdiness for the cube to stand. The second aspect is that there should be some mechanism for attaching the faces together. If cardboard or a similar material is used, cello tape is one way to join the adjacent faces. For less sturdy materials, such as chart paper, it is useful to have extra ‘flaps’ on some of the faces that can be stuck to the adjacent faces. You might have observed this strategy in packaging boxes.
+(i) (ii) (iii)
+However, when we talk about the net of a solid, we consider only the shape formed by unfolding the solid, and not the other supporting flaps that we may use to actually make the solid.
+Apart from using a net, there are other ways to make a cube from paper.
+There are multiple possible nets one can use to build a cube.
+Figure it Out
+1. Which of the following are the nets of a cube? First, try to answer by visualisation. Then, you may use cutouts and try.
+(i) (ii) (iii)
+Fig. 4.1
+Exploring Some Geometric Themes (iv) (v) (vi)
+2. A cube has 11 possible net structures in total. In this count, two nets are considered the same if one can be obtained from the other by a rotation or a flip. For example, the following nets are all considered the same —
+Find all the 11 nets of a cube.
+3. Draw a net of a cuboid having sidelengths:
+(i) 5 cm, 3 cm, and 1 cm (ii) 6 cm, 3 cm, and 2 cm
+Let us find out the nets of other solids.
+A tetrahedron whose faces are equilateral triangles is called a regular tetrahedron.
+What is a net of a regular tetrahedron? Which of the following are nets of a regular tetrahedron?
+Are there any other possible nets?
+A regular tetrahedron has only 2 possible nets.
+Draw a net with appropriate measurements that can be folded into a regular tetrahedron. Verify if it works by making an actual cutout.
+Draw a net with appropriate measurements that can be folded into a square pyramid. Verify if it works by making an actual cutout.
+Ganita Prakash | Grade 8 | Part-II
+What is the net of a cylinder?
+If the circular faces of a cylinder are unfolded, and if a cut is made along the height of the cylinder, as shown in the figure below, then
+What are the sidelengths of the rectangle obtained?
+How will the net of a cone look?
+If the cone is slit open along the line l and then unrolled, what will we
+Observe that all the points on the boundary of the base circle are at equal distances from ‘O’. So after unrolling the cone, the boundary of the net will be a portion of a circle with centre O.
+What surface do you construct by using the above net, in which O is not the centre of the boundary circle? Make a physical model to help you answer this question!
+Draw a net with appropriate measurements that can be folded into a triangular prism. Verify that it works by making an actual cutout.
+Exploring Some Geometric Themes
+Here is a solid called the octahedron, made by joining two square pyramids at their square bases.
+Octahedron
+Can you visualise its net? This is one of its nets.
+Taking all the triangles in the net to be equilateral, make a cutout of the net and fold it to form an octahedron.
+As in the case of cubes, an octahedron too has 11 different nets.
+So far, we have seen solids whose faces are all equilateral triangles (regular tetrahedrons), and all squares (cubes). Does there exist a solid whose faces are all pentagons? Interestingly, the answer is yes!
+This solid is called a dodecahedron. This solid too can be made from a net! Mathematicians have been even able to determine exactly how many nets a dodecahedron has — 43,380.
+Dodecahedron
+Ganita Prakash | Grade 8 | Part-II
+Net of a sphere? Experiment and see if you can make a paper cutout that can perfectly wrap around a ball without leaving any wrinkles, gaps or overlaps.
+Shortest Paths on a Cube
+Let us consider an interesting problem related to the discussion so far.
+We know that on a plane, the shortest path between two points is the straight line between them. Now, what is the shortest path between two points on the surface of a cuboid, if we are allowed to travel only along its surface?
+Let us imagine a hungry ant living on the surface of a cuboid. To its good fortune, there is a laddu on the surface.
+Laddu (at the centre of the top face)
+Ant (at the centre of the side face)
+What is the shortest path for the ant to reach the laddu?
+What about in the following case?
+Laddu (at the centre of the edge)
+If we think that a certain path is the shortest, how can we be sure that it truly is, among all the infinite possibilities?
+For example, are either of these the shortest path?
+Exploring Some Geometric Themes
+[Hint: Draw the net and see how these paths appear on the net.]
+What does this show?
+A path on the surface of the cuboid can be transformed to a path of the same length on the net. Conversely, every path on the net transforms to a path of the same length on the cuboid.
+In the first case, the path marked on the cuboid is the shortest since it transforms to a straight line between the ant and laddu on the net, which is the shortest path between them.
+In the second case, the path marked on the cuboid does not transform to a straight line path on the net, and hence is not the shortest path for the ant to take.
+Laddu (at the centre of the edge)
+The red path is the shortest
+Thus, by using a net, we convert the problem of finding the shortest path on a cuboid to the problem of finding the shortest path on the net.
+Have we now completely analysed the problem of finding the shortest path between two points on a cuboid?

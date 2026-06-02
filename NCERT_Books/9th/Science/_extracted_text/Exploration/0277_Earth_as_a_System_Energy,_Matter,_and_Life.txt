@@ -1,0 +1,150 @@
+257 Earth as a System: Energy, Matter, and Life
+You have also learnt in the earlier grades that all objects radiate heat.
+We feel hot inside a concrete house at night especially during hot summer, this is due to the heat re-radiated by the concrete during the night. However, traditional houses built with thick mud and wooden walls offer cool conditions even in hot summer due to less re-radiation.
+Threads of Curiosity
+Urban Heat Island Effect
+Cities are warmer than their surrounding rural areas, especially during summer and at night. Compared to rural areas, cities have more built-up areas, including buildings of steel, concrete, brick, and roads made up of concrete and asphalt. All these materials absorb solar radiation and retain heat. The re-radiated heat from these materials warms cities more than the surrounding rural areas. This increases energy demand for air conditioning further stressing the urban ecosystems.
+Rural areas and forests have more vegetation, and stay cool through shade and plant transpiration. The urban heat island effect shows how human land use can alter the local climate (Fig. 13.6). Fig. 13.6: Urban heat island effect in a city
+The amount of radiation received by a particular region on the Earth’s surface also depends on its latitude. The uneven heating due to the latitude of a place is important as it determines the atmospheric conditions of that
+13.1.2 Latitude and Earth’s shape
+You have already learnt in earlier grades that the Earth is spherical. As a result, the Sun’s rays strike different latitudes at different angles on the
+Earth. The Sun’s radiation falling on the equatorial region is concentrated over a smaller area, where it is spread over a larger area in the polar region. This is why, equatorial regions remain relatively warm throughout the year, whereas polar regions experience much colder conditions. This uneven heating creates temperature differences between the equator and the poles.
+You have also learnt how the Earth’s spherical shape and the tilt of the
+Earth’s axis of rotation give rise to seasons, and the changing length of daytime during one revolution of the Earth around the Sun. Thus, solar radiation is not evenly distributed across the globe. This uneven heating of the Earth’s surface across the globe drives global winds and ocean currents.
+13.1.3 Role of the atmosphere
+The air surrounding the Earth is called atmosphere. It is held in place by the force of Earth’s gravity. It consists mainly of nitrogen (78%) and oxygen (21%) along with small amounts of argon, carbon dioxide, water vapour, and other gases.
+Curiosity
+Chapter 7
+Exploring Society:
+India and Beyond
+Chapter 3
+Curiosity
+Chapter 12
+Exploration|Grade 9 258
+The Earth’s atmosphere has a layered structure. This structure of the atmosphere is important as it helps explain key weather patterns (Fig. 13.7). Nearly, all weather phenomena take place in the troposphere (with an average height of about 12 km), which is heated from the Earth’s surface.
+In this layer, temperature decreases with height (~6.5 °C/km). As the warm air rises, it drives winds and storms. The height of the troposphere is maximum above the equator and lowest above the polar regions.
+In the stratosphere (12 – 50 km), where the ozone layer is located, ozone absorbs
+UV rays and heats up the atmosphere, so temperature rises with height. This increase in temperature with height in the stratosphere calms the layer due to the lack of vertical mixing of air, keeping weather confined to the troposphere. Above the stratosphere are the mesosphere, thermosphere and exosphere, but they play only a minor role in regulating climate on the surface of the Earth. At about
+100 km above the Earth is the start of the region, we call the outer space. These atmospheric layers show how the atmosphere regulates energy flow, shaping weather, climate and life.
+Table 13.2: Key atmospheric layers
+Layer Approximate altitudes Features
+Troposphere 0 – 12 km Weather formation; temperature decreases with height
+Stratosphere 12 – 50 km Ozone layer absorbs UV;
+temperature increases with height
+The atmosphere plays two crucial roles in protecting the life on the Earth. Firstly, it partly absorbs the incoming solar radiation. The ozone layer blocks the harmful UV rays. Clouds and other gases also absorb some sunlight before it reaches the surface of the Earth (Fig. 13.5). Secondly, it traps outgoing heat.
+The Earth’s surface absorbs sunlight and re-radiates it in the infrared region. Greenhouse gases like CO2, CH4 and water vapour absorb this re-radiated heat, preventing it from escaping into space. Without the atmosphere, the Earth would be too cold for life to survive. However, excess CO2 from human activities enhances the greenhouse effect, causing global warming, which if left unchecked could make the Earth uninhabitable.
+You have also learnt that Venus is hotter than
+Mercury, even though Mercury is closer to the Sun. This is because of the presence of an atmosphere on Venus, which has led to an uncontrolled greenhouse effect.
+Curiosity
+Chapter 13
+Ramanathan, atmospheric scientist, climbed to an altitude of 18,000 feet in the Himalayas in 1934 to measure the ozone levels, and discovered that they were lower than expected. His work laid the foundation for understanding how UV absorption varies with altitude and pollution.
+Later on, he led early monsoon forecasting efforts.
+Meet a Scientist
+1. Visit the website given below and study the effect of the concentration of greenhouse gas on surface temperature, https://phet.colorado.
+edu/en/simulations/ greenhouse-effect
+Pause and Ponder
+Exosphere
+Mount Everest Clouds
+Aircraft
+Troposphere
+Stratosphere
+Mesosphere
+Thermosphere
+Fig. 13.7: Layers of the Earth’s atmosphere
+259 Earth as a System: Energy, Matter, and Life
+The atmosphere is continuously modified by natural processes, influencing weather, climate and energy balance. When solar radiation and cosmic rays interact with the atmosphere, they influence weather and climate, and affect communication systems. Thus, atmosphere makes the
+Earth a unique planet.
+Why is the ozone layer so important?
+The ozone layer is vital to life on the Earth because it acts as a protective shield, absorbing harmful
+UV radiation from the Sun. When ozone molecules are destroyed faster than they are naturally formed, the layer becomes thinner and less effective. In the late 20th century, human-made chemicals called chlorofluorocarbons (CFCs), used in refrigerators and aerosols, caused severe ozone loss over Antarctica, which came to be known as the ozone hole. Increased UV radiation on the Earth can harm the living organisms and the ecosystems. A global agreement known as the
+Montreal Protocol reduced the use of CFCs and the ozone layer is now slowly recovering, showing the power of international scientific cooperation.
+Threads of Curiosity
+13.2 Uneven Heating Causes Wind and Ocean
+Currents
+You have learnt that wind is the movement of air from a region of high pressure to a region of low pressure. These pressure differences are mainly caused by the uneven heating of the Earth’s surface by the Sun. Uneven heating of land and water is also responsible for phenomena, such as land and sea breezes, which you have studied earlier. The same basic idea helps us understand the formation of winds and ocean currents on vastly different scales.
+13.2.1 Local winds
+Uneven heating of the Earth’s surface also produces local winds, such as valley and mountain breezes. In mountainous regions, the slopes and the valley floor do not heat up and cool down at the same rate. During the day, the mountain slopes facing the Sun are heated more rapidly than the valley floor.
+As a result, the air over the slopes becomes warm and rises, creating a low pressure region. Cooler air from the valley moves up the slopes to replace the rising warm air. This flow of air is called a valley breeze (Fig. 13.8a).
+After sunset, the situation reverses. The mountain slopes lose heat faster and become cooler, while the valley floor remains relatively warmer. The air over the slopes becomes cooler and denser, and flows down into the valley. This is known as a mountain breeze (Fig. 13.8b). Such daily changes in the direction of the wind are commonly experienced in hilly regions like Shimla, Dehradun, and other Himalayan valleys. These local winds influence the weather conditions, agriculture and daily life in mountainous regions. They help regulate temperature, moisture conditions and support soil and crop health. Thus, uneven heating of the Earth’s surface sets up winds and forms an important part of the Earth’s atmospheric circulation.
+Curiosity
+Chapter 6
+Fig. 13.8 (a): Valley breeze
+Warm air
+Valley breeze
+Fig. 13.8 (b): Mountain breeze
+Cold air
+Mountain breeze
+Exploration|Grade 9 260
+13.2.2 Planetary winds
+Uneven heating of the Earth between the equator and the poles create belts of low and high pressure. This large scale pressure difference sets the air in motion over long distances, giving rise to planetary winds.
+Near the equator, intense heating by the Sun causes warm air to rise, forming an equatorial low pressure belt.
+As this air rises, it moves poleward at higher altitudes. On cooling, it becomes denser and sinks around 30° North and
+South latitudes, forming the sub-tropical high pressure belts. From these high pressure regions, air flows back towards the equator along the Earth’s surface, completing one circulation cycle (Fig. 13.9a). However, not all the sinking air at the sub-tropical belt returns to the equator. A part of it moves towards the poles along the surface, and rises again around 60° North and South latitudes, where it meets the cold air from the polar regions. This creates the sub-polar low pressure belts.
+In the polar regions (around
+90° North and South), very low temperature causes cold and dense air to sink, forming polar high pressure belts. Air from these regions flows towards the sub-polar belts, completing another circulation cycle (Fig. 13.9b).
+The Earth’s rotation causes these winds to be deflected from their straight paths. As a result, planetary winds follow curved paths rather than moving directly from high pressure to low pressure regions. The winds are deflected towards the right in the
+Nothern Hemisphere and towards the left in the Southern Hemisphere due to the rotation of the Earth on its axis.
+13.2.3 Ocean currents
+Ocean currents are the continuous movement of large masses of ocean water. Similar to winds, planetary pressure differences also drive the ocean currents. Strong planetary winds drag the surface water of the oceans because of friction, setting surface currents in motion. In addition to winds, differences in temperature and salinity, the rotation of the Earth, and the distribution of land masses influence the movement of ocean water. The water of the equatorial and the polar regions have different
+Fig. 13.9 (b): The distribution of pressure belts and planetary winds
+0° Equator Ascending
+Ascending air
+North Pole
+South Pole
+Ascending air
+Descending
+Fig. 13.9 (a): Wind circulation between equatorial low pressure belt and sub-tropical high pressure belt
+30°N 0° 30°S air rises air rises
+Low Pressure
+Earth’s Surface
+High Pressure High Pressure
+261 Earth as a System: Energy, Matter, and Life temperatures. While warm equatorial waters travel over the surface toward the poles, colder and denser waters slowly flow back towards the equator through deeper ocean levels. Ocean water has different salinities depending on the location.
+Water with lower salinity, being less dense, tends to remain near the surface, while higher salinity, denser water sinks and moves at deeper levels in the ocean. The Earth’s rotation deflects these moving water masses, forming large circular patterns called gyres. These rotate clockwise in the
+Northern Hemisphere and counter clockwise in the Southern Hemisphere (Fig. 13.10a). Continents further modify these paths by blocking and redirecting currents.
+Ocean currents play a major role in regulating the Earth’s climate and supporting life. By transporting heat from the equator towards the poles, they reduce temperature differences across the planet. For example, the warm ocean current — the North Atlantic Drift (Fig. 13.10b), an extension of the Gulf Stream (a strong ocean current carrying warm water from the southern part of the North
+American east coast across the Atlantic Ocean) — flows toward the northwestern coast of Europe and keeps many ports ice-free during winter, even at high latitudes. This moderating influence on climate also supports human activities, such as trade and commerce. Ocean currents also support a massive ecosystem by transporting nutrients.
+2. How does the cool mountain breeze benefit agriculture activity, particularly the crops and soil?
+3. What happens to the warm surface of water from the equator as it travels toward the poles?
+What impact does this movement have on the area?
+Pause and Ponder
+Scientists at the Indian Institute of Tropical Meteorology (IITM), Pune, run advanced computer models that couple the energy flows we discussed in this chapter, between atmosphere, oceans, land and ice to simulate the Indian monsoon. These models use data from satellites, buoys in the Indian Ocean, and even stations in Antarctica to improve seasonal forecasts and to study how global warming may change monsoon rainfall patterns across India.
+India’s Scientific Contributions
+Fig. 13.11: Indian Institute of Tropical
+Meteorology (IITM), Pune
+Fig. 13.10 (a): Global surface ocean currents showing circulation like gyres
+GREENLAND
+Fig. 13.10 (b): Gulf Stream brings warm water from the equator
+Exploration|Grade 9 262
+13.3 Biogeochemical Cycles
+Living organisms constantly exchange matter and energy with the air, water, soil and rocks around them. This continuous interaction between the non-living (abiotic) and living (biotic) components of the Earth results in the transfer of matter and energy across various spheres of the Earth, as discussed earlier. This process ensures that essential nutrients, such as carbon, nitrogen and oxygen are recycled, and remain available to support life on the Earth. This cyclic movement of matter and energy between the abiotic and biotic components is called the biogeochemical cycle. There is a dynamic relationship between different ecosystems.
+This interconnectedness helps ecosystems recover from disturbances or degradation and maintain environmental balance.
+We will examine the water, carbon, nitrogen and oxygen cycles. We will try to understand why their balance matters, and explore how they interconnect across spheres and respond to human impacts.
+13.3.1 Water cycle
+You have studied the water cycle and learnt terms like evaporation, transpiration, condensation, precipitation, infiltration and groundwater.
+The water cycle is summarised in Fig. 13.12. In this cycle, water evaporates from water bodies, such as rivers, lakes, oceans, etc., and condenses to form clouds. It returns as precipitation in the form of rain, hail or snow to the surface and finally flows back to the ocean. Some of the water seeps through soil and rocks beneath the Earth’s surface. Water dissolves minerals from soil and rocks. It also supports all terrestrial organisms and transports these nutrients to oceans, and support marine life.
+Climate change is now affecting the water cycle. For example, a warmer atmosphere holds more moisture, causing heavier rains in some areas (like intensified monsoons)
+and droughts elsewhere. Melting glaciers add more water to rivers, raising sea levels in the long run and threatening coastal cities, such as Mumbai and Chennai. Sudden bursts of intense rainfall result in more run off that erodes soil and less infiltration reduces the recharge of groundwater, which in turn, makes sustaining agriculture difficult, especially during dry months. In this way, the water cycle links the cryosphere (glaciers), hydrosphere (rivers and oceans), atmosphere (moisture), geosphere (soil erosion and decreased infiltration), and biosphere (crops and fisheries), all of which are affected by global warming.
+13.3.2 Carbon cycle
+Carbon forms the backbone of life. Every protein, carbohydrate, fat and
+DNA molecule contains carbon. It circulates continuously between the atmosphere (CO2 gas), biosphere (plants and animals), geosphere (carbonate
+Curiosity
+Chapter 7
+Fig. 13.12: Water cycle
+Evaporation
+Condensation
+Ground water
+Transpiration
+Precipitation
+263 Earth as a System: Energy, Matter, and Life rocks and fossil fuels, such as coal and oil), and the hydrosphere (dissolved CO2 and marine shells) as shown schematically in
+Fig. 13.13. Different parts of the carbon cycle operate at very different time scales.
+In the fast cycle, which happens over days to years, plants convert atmospheric
+CO2 into glucose using sunlight through photosynthesis. CO2 is released back into the atmosphere through respiration.
+Animals eat plants and/or other animals.
+When they die, CO2 returns to air because of decomposition.
+In the slow cycle, which happens over millions of years, dead plants and animals get buried, and are converted to fossil fuels, such as coal, oil and gas. These fuels are burnt to provide energy for various needs like heating, cooking, transportation and industrial purposes. When fossil fuels are burnt, carbon is released back as CO2 on a very short time scale. The atmosphere and ocean water continuously exchange CO2.
+The ocean water absorbs atmospheric CO2 to form carbonate and bicarbonate ions.
+Phytoplankton use them for photosynthesis.
+Some marine organisms also use them to form shells. When organisms die, they sink to the ocean floor and their organic matter is stored as carbon for a long period.
+Fig. 13.14: Atmospheric CO2 concentration (1960 – 2025), the
+Keeling curve. The sawtooth pattern shows seasonal dips from yearly plant growth in the Northern Hemisphere absorbing CO2
+310 1960 1965 1970 1975 1980 198

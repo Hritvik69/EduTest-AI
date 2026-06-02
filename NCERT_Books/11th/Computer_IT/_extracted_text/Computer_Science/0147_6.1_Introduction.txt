@@ -1,0 +1,20 @@
+F low oF Control 135 print("Entered number is <= 1, execute again!")
+Output 1:
+Enter the number to be checked: 20
+20 is not a prime number
+Output 2:
+Enter the number to check: 19
+19 is a prime number
+Output 3:
+Enter the number to check: 2
+2 is a prime number
+Output 4:
+Enter the number to check: 1
+Entered number is <= 1, execute again!
+6.5.2 Continue Statement
+When a continue statement is encountered, the control skips the execution of remaining statements inside the body of the loop for the current iteration and jumps to the beginning of the loop for the next iteration. If the loop’s condition is still true, the loop is entered again, else the control is transferred to the statement immediately following the loop.Figure 6.7 shows the flowchart of continue statement. Figure 6.6: Flow chart of continue statement
+Program 6-15 Program to demonstrate the use of continue statement.
+#Program 6-15
+#Prints values from 0 to 6 except 3 for num in range(6):
+num = num + 1 if num == 3:
+Reprint 2026-27

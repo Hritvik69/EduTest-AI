@@ -118,6 +118,15 @@ async function loadLocalOrCachedConcepts(
   chapterName: string,
   chapterTopics: { id: number; name: string }[],
 ) {
+  const fromExtractedText = await loadFromExtractedText(
+    classNum,
+    subject,
+    chapterId,
+    chapterName,
+    chapterTopics,
+  );
+  if (fromExtractedText.length) return fromExtractedText;
+
   const fromLocalPdf = await loadFromLocalPdf(
     classNum,
     subject,
@@ -136,6 +145,39 @@ async function loadLocalOrCachedConcepts(
     }),
     chapterTopics,
   );
+}
+
+async function loadFromExtractedText(
+  classNum: number,
+  subject: string,
+  chapterId: number,
+  chapterName: string,
+  chapterTopics: { id: number; name: string }[],
+) {
+  const textPaths = await candidateExtractedTextPaths(classNum, subject, chapterName);
+  for (const textPath of textPaths) {
+    try {
+      const chapterText = trimChapterText(cleanPdfText(await readFile(textPath, "utf8")));
+      if (chapterText.length < 900) continue;
+
+      return conceptsFromChapterText({
+        text: chapterText,
+        classNum,
+        subject,
+        chapterName,
+        chapterId,
+        chapterTopics,
+      });
+    } catch (error) {
+      console.warn(
+        `Could not load NCERT extracted text ${textPath}: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+    }
+  }
+
+  return [];
 }
 
 async function loadFromLocalPdf(
@@ -176,6 +218,47 @@ async function loadFromLocalPdf(
   return [];
 }
 
+async function candidateExtractedTextPaths(
+  classNum: number,
+  subject: string,
+  chapterName: string,
+) {
+  const root = path.join(process.cwd(), "NCERT_Books");
+  const classDir = path.join(root, `${classNum}th`);
+  if (!existsSync(classDir)) return [];
+
+  const extractedRoot = path.join(
+    classDir,
+    subjectFolderName(subject, classNum),
+    "_extracted_text",
+  );
+  if (!existsSync(extractedRoot)) return [];
+
+  const files = await listTextFiles(extractedRoot);
+  return files
+    .map((filePath) => ({
+      filePath,
+      score: scoreExtractedTextPath(filePath, chapterName),
+    }))
+    .filter((item) => item.score > 0)
+    .sort((left, right) => right.score - left.score)
+    .map((item) => item.filePath);
+}
+
+async function listTextFiles(root: string): Promise<string[]> {
+  const entries = await readdir(root, { withFileTypes: true });
+  const files = await Promise.all(
+    entries.map(async (entry) => {
+      const entryPath = path.join(root, entry.name);
+      if (entry.isDirectory()) return listTextFiles(entryPath);
+      return entry.isFile() && entry.name.toLowerCase().endsWith(".txt")
+        ? [entryPath]
+        : [];
+    }),
+  );
+  return files.flat();
+}
+
 async function candidatePdfPaths(classNum: number, subject: string) {
   if (process.env.EDUTEST_DISABLE_LOCAL_NCERT_PDF === "1") return [];
 
@@ -213,6 +296,24 @@ function scorePdfName(pdfPath: string, subject: string) {
     score += 1;
   }
   return score;
+}
+
+function scoreExtractedTextPath(filePath: string, chapterName: string) {
+  const normalizedChapter = normalizeChapterName(chapterName);
+  const fileTitle = path
+    .basename(filePath, ".txt")
+    .replace(/^\d+_/, "")
+    .replace(/_/g, " ");
+  const normalizedFile = normalizeChapterName(fileTitle);
+
+  if (normalizedFile === normalizedChapter) return 100;
+  if (normalizedFile.includes(normalizedChapter)) return 80;
+  if (normalizedChapter.includes(normalizedFile)) return 70;
+
+  const chapterWords = new Set(normalizedChapter.split(/\s+/).filter((word) => word.length > 3));
+  const fileWords = new Set(normalizedFile.split(/\s+/).filter((word) => word.length > 3));
+  const overlap = Array.from(chapterWords).filter((word) => fileWords.has(word)).length;
+  return overlap >= Math.min(3, chapterWords.size) ? overlap * 10 : 0;
 }
 
 async function readPdfText(pdfPath: string) {

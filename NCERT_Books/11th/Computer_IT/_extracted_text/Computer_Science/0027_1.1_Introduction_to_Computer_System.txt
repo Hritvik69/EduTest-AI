@@ -1,0 +1,28 @@
+Computer SyStem 15 touch or view physically. It comprises the instructions and data to be processed using the computer hardware.
+The computer software and hardware complete any task together.
+The software comprises a set of instructions which on execution deliver the desired outcome. In other words, each software is written for some computational purpose. Some examples of software include operating systems like Ubuntu or Windows 7/10, word processing tool like LibreOffice or Microsoft Word, video player like
+VLC Player, photo editors like GIMP and LibreOffice draw. A document or image stored on the hard disk or pen drive is referred to as a soft-copy. Once printed, the document or an image is called a hard-copy.
+1.7.1 Need of Software
+The sole purpose of a software is to make the computer hardware useful and operational. A software knows how to make different hardware components of a computer work and communicate with each other as well as with the end-user. We cannot instruct the hardware of a computer directly. Software acts as an interface between human users and the hardware.
+Depending on the mode of interaction with hardware and functions to be performed, the software can be broadly classified into three categories viz. (i) System software, (ii) Programming tools and (iii) Application software.
+1.7.2 System Software
+The software that provides the basic functionality to operate a computer by interacting directly with its constituent hardware is termed as system software. A system software knows how to operate and use different hardware components of a computer. It provides services directly to the end user, or to some other software.
+Examples of system software include operating systems, system utilities, device drivers, etc.
+(A) Operating System
+As the name implies, the operating system is a system software that operates the computer. An operating system is the most basic system software, without which other software cannot work. The operating system manages other application programs and provides
+Hardware refers to the physical components of the computer system which can be seen and touched. For example,
+RAM, keyboard, printer, monitor, CPU, etc. On the other hand, software is a set of instructions and data that makes hardware functional to complete the desired task.
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 16 access and security to the users of the system. Some of the popular operating systems are Windows, Linux,
+Macintosh, Ubuntu, Fedora, Android, iOS, etc.
+(B) System Utilities
+Software used for maintenance and configuration of the computer system is called system utility. Some system utilities are shipped with the operating system for example disk defragmentation tool, formatting utility, system restore utility, etc. Another set of utilities are those which are not shipped with the operating system but are required to improve the performance of the system, for example, anti-virus software, disk cleaner tool, disk compression software, etc.
+(C) Device Drivers
+As the name signifies, the purpose of a device driver is to ensure proper functioning of a particular device. When it comes to the overall working of a computer system, the operating system does the work. But everyday new devices and components are being added to a computer system. It is not possible for the operating system alone to operate all of the existing and new devices, where each device has diverse characteristics. The responsibility for overall control, operation and management of a particular device at the hardware level is delegated to its device driver.
+The device driver acts as an interface between the device and the operating system. It provides required services by hiding the details of operations performed at the hardware level of the device. Just like a language translator, a device driver acts as a mediator between the operating system and the attached device. The categorisation of software is shown in Figure 1.13.
+1.7.3 Programming Tools
+In order to get some work done by the computer, we need to give instructions which are applied on the input data to get the desired outcome.
+Computer languages are developed for writing these instructions. Figure 1.13: Categorisation of software
+Activity 1.6
+Ask your teacher to help you locate any two device drivers installed on your computer.
+Reprint 2026-27

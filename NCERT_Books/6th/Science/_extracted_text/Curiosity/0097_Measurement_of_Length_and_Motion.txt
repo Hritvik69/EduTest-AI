@@ -1,0 +1,215 @@
+Measurement of Length and Motion 5 Chapter
+Deepa, a curious eleven-year old girl, lives in a town in the state of Haryana. The new school year has started. Deepa needs a new uniform since she has grown taller. Her mother takes her to a cloth shop. She asks for a two-metre cloth piece. The shopkeeper measures the cloth using a metal measuring rod.
+Then, the tailor takes her measurements using a flexible measuring tape. Her mother instructs the tailor to increase the length of her uniform by char angula (four fingers width).
+the tape and rod similar to the scale that the elder sister has in her geometry box? What did mother mean by char angula?
+Deepa shares her experience with her school friends
+Anish, Hardeep, Padma, Tasneem and this leads to a discussion amongst them.
+Reprint 2026-27
+Curiosity | Textbook of Science | Grade 6
+5.1 How do we Measure?
+Hardeep says, “I have seen my grandmother measuring cloth by the length of her arm.”
+“Have you ever seen how a farmer measures length to divide his field into beds? He walks and counts the number of his strides,” says Padma.
+“Oh, not just the length of the strides—sometimes they also use the length of their feet to measure,” adds Anish.
+Deepa says excitedly, “Measuring length using body parts must be so much fun! Let us also measure something using a body part.”
+“What should we measure? Okay, let us measure the length of the table in our classroom,” says Tasneem.
+Padma adds, “And which body part should we use to measure it?”
+Deepa says, “Let us use our handspan. I will show you how to use it (Fig. 5.1). I have seen my mother using it. She calls it balisht.”
+Hardeep adds, “Okay. Let us also note down our measurements.” Fig. 5.1: Use of handspan for measuring
+Anish Hardeep
+Reprint 2026-27
+Measurement of Length and Motion
+Padma says, “Oh, the number of handspans is different for all of us. So, what can we say about the length of the table?”
+“But why should the number be different?” Hardeep asked thoughtfully.
+Tasneem says, “I can guess. Our handspans are of different sizes.”
+Anish gives an idea, “Let us check this.”
+So, all five of them put their handspans along each other and arrive at the conclusion that the lengths of their handspans are different.
+Deepa says thoughtfully, “No wonder people use scales and measuring tapes.”
+Deepa and her friends compare the length of the table with the length of their handspans. The length of the table is expressed in terms of their handspans. Here, the handspan used for measurement is an example of a unit. And the length is expressed in two parts, a number and a unit. For example, if the length of the table is found to be 13 handspans, then
+13 is the number and ‘handspan’ is the unit selected for the measurement.
+However, handspans and other similar units, such as length of hand, foot, fist or fingers, differ from person to person. Thus, there is a need for such a unit for which measurements of the same length made by different people do not differ.
+Table 5.1: Measuring the length of the table
+Name of the Student Number of Handspans
+Anish Slightly more than 13
+Padma 13
+Tasneem Slightly less than 13
+Deepa Between 13 and 14
+Hardeep 14
+Reprint 2026-27
+Curiosity | Textbook of Science | Grade 6
+India has a rich history of measurement systems dating back to ancient times. Angula (finger width), multiples of angula, dhanusa, and yojana are some of the units mentioned in ancient Indian literature, and used in measuring artefacts, architecture, and town planning. The angula is still used by traditional craftspeople like carpenters and tailors. Several objects with ruled markings which could be scales have been excavated from sites of the Harappan
+Civilisation.
+Fig. 5.2:
+A metre scale
+5.2 Standard Units
+Several systems of units evolved with time in different parts of the world. However, when people started travelling from one place to another, it created a lot of confusion. This led to the different countries coming together and adopting a set of standard units of measurement. The system of units now used is known as the ‘International System of Units’ or
+SI units.
+The SI unit of length is metre. Its symbol is m. A metre scale is shown in Fig. 5.2. One metre (m) is divided into 100 equal divisions.
+Each division is called a centimetre (cm). You may be familiar with a smaller part of the metre scale, typically 15 cm long, shown in
+Fig. 5.3.
+Look carefully at the 15-cm scale. It has markings (in cm) from 0 to 15. The length of any section between two consecutive big marks, such as between 1 and 2 or between
+5 and 6, is 1 cm. Observe that these sections
+Reprint 2026-27
+Measurement of Length and Motion
+Fig. 5.3: A 15-cm scale of 1 cm length are further divided into 10 equal parts. The length of one of these smaller parts is called a millimetre (mm). 1 mm is the smallest value of length that you can measure using this scale. 1 mm is equal to one-tenth of a centimeter (1 mm = 0.1 cm).
+For measuring larger lengths, we use a larger unit called a kilometre (km) which is equal to 1000 metres.
+And for measuring smaller lengths, we use units such as centimetre or millimetre.
+1 km = 1000 m 1 m = 100 cm 1 cm = 10 mm
+Would it be convenient to use the unit metre to measure larger lengths, such as the length of a railway track between two cities, or to measure smaller lengths, such as the thickness of a page of a book?
+In some scales, you might have noticed another scale marking. This scale marking is in inches, where
+1 inch = 2.54 cm. In earlier days, units, such as inch and foot, were used to measure length. These units are still used by some people.
+Reprint 2026-27
+Curiosity | Textbook of Science | Grade 6
+5.3 Correct Way of Measuring Length
+For measuring any length, we need an appropriate scale.
+For example, if you want to measure the length of your pencil, you may use a 15-cm scale. Similarly, if the height of a room is to be measured, you may need a metre scale or a measuring tape. You cannot directly measure the girth of a tree or the size of your chest using a metre scale. For such measurements, flexible measuring tape, such as a tailor’s tape is more suitable.
+While measuring lengths, we need to take care of some
+What is the correct way to place the scale?
+Place the scale in contact with the object along its length as shown in Fig. 5.4.
+Fig. 5.4: Method of placing the scale (b) Incorrect (a) Correct
+What is the correct position of the eye while reading the scale?
+For example, if you are trying to measure the length of a pencil by aligning it with a scale, the position of your eye should be directly above the tip of the pencil (Fig. 5.5).
+No, but we should first learn the correct way of using a scale to measure length.
+Suppose we all measure the length of the table again, but this time using a metre scale. Will our results still be different?
+Reprint 2026-27
+Measurement of Length and Motion
+How to measure the length if the ends of the scale are broken?
+If the ends of the scale are broken or the zero marking is not clear, it can still be used for measurement. With such a scale, use any other full mark of the scale, say, 1.0 cm (Fig. 5.6). Then you must subtract the reading of this mark from the reading at the other end. For example, in
+Fig. 5.6, the reading at one end is 1.0 cm and at the other end, it is 10.4 cm. Therefore, the length of the object is
+10.4 cm–1.0 cm = 9.4 cm.
+Fig. 5.6: Correct method of placing the scale with broken end
+How do visually challenged students measure lengths?
+They use scales with raised markings that can be felt by touching them.
+Fig. 5.5: Correct position of the eye is ‘B’
+Reprint 2026-27
+Curiosity | Textbook of Science | Grade 6
+Object Length of the object
+While writing the length, do not forget to write the unit also. Thus, your result will consist of two parts—one part is a number and the other part is the unit of measurement.
+Some of your friends in the class would have measured the length of the same objects. Compare the lengths measured by you with that of your friends. Are the measured lengths the same or slightly different? If not the same, discuss the possible reasons for the differences.
+Why are some length measuring devices made up of flexible materials?
+Units of length, such as kilometre, metre, centimetre and millimetre, begin with a lowercase letter, except at the beginning of a sentence. Their symbols km, m, cm and mm are also written in lowercase letters, and are never followed by ‘s’ for the plural. Note that a full stop is not written after the symbol, except at the end of a sentence.
+While writing the length, always leave a space between the number and the unit.
+Activity 5.1: Let us measure
+ Select some objects around you, such as a comb, a pen, a pencil, and an eraser to measure their lengths.
+ Measure their lengths one by one using a metre scale and note down the measurements in Table 5.2.
+Table 5.2: Measuring lengths
+Reprint 2026-27
+Measurement of Length and Motion
+5.4 Measuring the Length of a Curved Line
+Anish and his parents fixed electric string lights on the arches of the verandah of their house, as shown in Fig. 5.7, for a celebration at home. How would they have measured the required length of string lights?
+In the case of a curved line, measurements can be made with the help of a flexible measuring tape or by using a thread as shown in Fig. 5.8.
+Fig. 5.7: House decorated with string lights
+Fig. 5.8: Measuring the length of a curved line
+5.5 Describing Position
+One day the teacher informs her students that she has planned an educational visit to a nearby garden. She asks the students to reach there directly in the morning. Deepa and her friends start discussing whether the garden would be closer than their school or farther. Tasneem and Padma say that the garden would be closer, while Deepa and Anish feel that the school would be closer, Hardeep thinks that both would be almost at an equal distance (Fig. 5.9).
+The thread can then be straightened and its length can be measured using a metre scale.
+Fig. 5.9: Location of bus stand, school, garden and houses of Deepa and her friends
+Bus stand School Deepa’s
+Hardeep’s
+Tasneem’s house Garden
+Reprint 2026-27
+Curiosity | Textbook of Science | Grade 6
+Fig. 5.10:
+A measuring tape
+Who do you think is correct? All of them are correct (Fig. 5.9). Then, why are their observations different? They are locating the distances of the school and garden from their houses. If, instead, each of them had thought of distances from a same object or point, say, the bus stand, then their observations would have been the same.
+When distance is stated with respect to a fixed object or point, then this point is called a reference point.
+A few days later, Hardeep tells his friends excitedly,
+“Let us all go to the playground. The sports teacher wants us to help her to draw lines with chuna powder (limestone powder) for making the Kabaddi court for the sports day.”
+Padma: “We will need a longer measuring tape. Let us take it from the sports room.” (Fig. 5.10)
+Deepa: “Let us first decide the point on the ground from which we will measure the distances to start drawing the lines. Let us call this our reference point.” (Fig. 5.11)
+Fig. 5.11: Drawing lines for Kabaddi court
+Reference
+Reprint 2026-27
+Measurement of Length and Motion
+After a few days, Padma was travelling by bus to visit her grandparents in Delhi.
+She was eager to reach Delhi and was reading the kilometre stones on the side of the road. On one of the kilometre stones, it was written ‘Delhi 70 km’ (Fig. 5.12).
+Further on, the next kilometre stone read ‘Delhi 60 km’. Each kilometre stone indicated that she was getting closer to her grandparents’ house.
+These kilometre stones indicated her distance from Delhi. So, Delhi is the reference point in this situation.
+Fig. 5.13: Positions of kilometre stones with respect to Delhi as a reference point
+If the kilometre stone reads ‘Delhi 70 km’ as shown in
+Fig. 5.13, we can say that the position of Padma is 70 km from Delhi. When the kilometre stone reads ‘Delhi 60 km’, the position of Padma is 60 km from Delhi.
+What do such kilometre stones indicate? How could
+Padma conclude that she was getting closer to her destination?
+Fig. 5.12:
+A kilometre stone
+Does this mean that the position of
+Padma, with respect to the reference point, is changing with time? When does the position of an object change with respect to a reference point? Does it change when an object is moving?
+Reprint 2026-27
+Curiosity | Textbook of Science | Grade 6
+5.6 Moving Things
+Activity 5.2: Let us explore
+ Look around and prepare a list of five objects that are in motion and five objects that are at rest.
+ Record your observations in Table 5.3.
+ Think about how you decided whether an object was in motion or at rest. Write your explanation (justification)
+in Table 5.3.
+Table 5.3: Observing things around you
+Objects in motion Justification Objects at rest Justification
+Cow grazing in the field Tree
+Compare and analyse your justifications. How can one decide if an object is in motion or at rest?
+An object is said to be in motion if its position changes with respect to the reference point with time. If an object is not changing its position with respect to the reference point with time, it is said to be at rest.
+Reprint 2026-27
+Measurement of Length and Motion
+Deepa looked around her in the bus and noticed that all the passengers were seated. She looked around again after a minute and found them still occupying their seats. She wondered, ‘Are they moving?’ She concluded that the position of the passengers was not changing with time. Therefore, they were certainly at rest. However, when she looked outside, she felt they were in motion as their positions were changing with respect to things outside.
+The reference point is important in deciding whether an object is at rest or in motion. If Deepa considered herself (or the bus) as the reference point, then the passengers were at rest. However, if she considered any object outside the bus (say a building) as the reference point, then the passengers (and the bus) were in motion.
+Suppose you are travelling on a ship which is moving at a constant speed along a straight line on a calm sea. Suppose there is no window on the ship. Is there any way that you can determine whether the ship is moving or is stationary?
+5.7 Types of Motion
+Activity 5.3: Let us explore
+ Take an eraser and drop it from a certain height.
+ Observe its motion.
+Does it move along a straight line? When an orange drops from the tree, does it move in a straight line? Have you seen the Republic Day parade? Recall the march-past of students during the parade. Do they move on a straight-line path?
+When a heavy box is pushed, it may also move along a straight line (Fig. 5.14).
+Think it
+Reprint 2026-27
+Curiosity | Textbook of Science | Grade 6
+But do things always move along a straight line? You might have enjoyed playing on swings and merry-go-rounds.
+Are these types of motion also linear motion?
+Activity 5.4: Let us investigate
+ Tie an eraser (or a potato) to one end of a thread.
+ Hold the other end of the thread with your hand and whirl it (Fig. 5.15).
+ Observe its motion.
+Is the motion of the eraser the same as that of a merry-go-
+When an object moves along a circular path, its motion is called circular motion.
+Fig. 5.14: Linear motion
+When an object moves along a straight line, its motion is called linear motion. Identify such linear motion in your surroundings.
+Reprint 2026-27
+Measurement of Length and Motion
+Activity 5.5: Let us investigate
+ Tie an eraser (or a potato) to one end of a thread.
+ Hang the eraser by holding the other end of the thread (Fig. 5.16). Keep your hand steady.
+ Using the other hand, take the eraser slightly to one side and then release (Fig. 5.16).
+Does it start moving to and fro? Is its motion similar to the motion of a swing?
+When an object moves to and fro about some fixed position, its motion is called oscillatory motion.
+Fig. 5.16: Oscillatory motion
+Fig. 5.15: Circular motion
+Reprint 2026-27
+Curiosity | Textbook of Science | Grade 6
+Activity 5.6: Let us investigate
+ Take a thin metal strip of about 50 cm long.
+ Hold its one end pressed to a table. You may use a few books or a brick to hold it (Fig. 5.17).
+ Press the free end of the strip slightly and let it go.
+ Observe the motion of this end of the strip.
+Does it move up and down? This is also an example of oscillatory motion.
+Fig. 5.17: Oscillatory motion of a metal strip
+Activity 5.7: Let us identify
+ Look at the picture of a children’s park (Fig. 5.18) or visit a children’s park.
+ Observe different kinds of motions. Classify them as linear, circular or oscillatory motion.
+List them in Table 5.4. Give your justification for why you put each in a certain category.
+If an object repeats its path after a fixed interval of time, its motion is said to be periodic. When an object is in circular motion, it moves along the circular path again and again.
+An object in oscillatory motion also repeats its motion while moving to and fro. Both circular and oscillatory motion are periodic in nature.
+Reprint 2026-27
+Measurement of Length and Motion
+Fig. 5.18: Types of motion observed in a children’s park
+Table 5.4: Types of Motion
+Object Linear
+Circular
+Oscillatory
+Swing Moving to and fro
+Reprint 2026-27
+Curiosity | Textbook of Science | Grade 6
+ The International System of Units (SI units) has been adopted by countries as standard units of measurement.
+ The SI unit of length is metre. Its symbol is m.
+ 1 km = 1000 m, 1 m = 100 cm, 1 cm = 10 mm.
+ When distance is stated with respect to a fixed object or point, then this point is called a reference point.
+ An object is said to be in motion if its position changes with respect to a reference point with time.
+ When an object moves along a straight line, its motion is called linear motion.
+ When an object moves along a circular path, its motion is called circular motion.
+ When any object moves to and fro about

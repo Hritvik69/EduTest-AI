@@ -1,0 +1,104 @@
+314 CHEMISTRY monomers. Other alkenes also undergo polymerisation.
+n(CH2 =CH2) High temp./pressure
+Catalyst —( CH2–CH2 )—
+Polythene n(CH3 –CH=CH2) High temp./pressure
+Catalyst ²(CH–CH2 )—n
+Polypropene
+Polymers are used for the manufacture of plastic bags, squeeze bottles, refrigerator dishes, toys, pipes, radio and T.V. cabinets etc. Polypropene is used for the manufacture of milk crates, plastic buckets and other moulded articles.
+Though these materials have now become common, excessive use of polythene and polypropylene is a matter of great concern for all of us.
+9.4 ALKYNES
+Like alkenes, alkynes are also unsaturated hydrocarbons. They contain at least one triple bond between two carbon atoms. The number of hydrogen atoms is still less in alkynes as compared to alkenes or alkanes. Their general formula is CnHn–.
+The first stable member of alkyne series is ethyne which is popularly known as acetylene. Acetylene is used for arc welding purposes in the form of oxyacetylene flame obtained by mixing acetylene with oxygen gas. Alkynes are starting materials for a large number of organic compounds. Hence, it is interesting to study this class of organic compounds.
+9.4.1 Nomenclature and Isomerism
+In common system, alkynes are named as derivatives of acetylene. In IUPAC system, they are named as derivatives of the corresponding alkanes replacing ‘ane’ by the suffix ‘yne’.
+The position of the triple bond is indicated by the first triply bonded carbon. Common and IUPAC names of a few members of alkyne series are given in Table 9.2.
+You have already learnt that ethyne and propyne have got only one structure but there are two Sossible structures for but\ne – (i) but-1-yne and (ii) but-2-yne. Since these two compounds differ in their structures due to the position of the triple bond, they are known as position isomers. In how many ways, you can construct the structure for the next homologue i.e., the next alkyne with molecular formula C 5H8? Let us try to arrange five carbon atoms with a continuous chain and with a side chain. Following are the possible structures :
+Structure IUPAC name
+1 2 3 4 5
+HC≡C– CH2– CH2– CH3 3ent–\ne
+1 2 3 4 5
+H3C–C≡ C– CH2– CH3 3ent–\ne
+H3C–CH–C≡ CH
+0eth\l but–\ne
+Structures I and II are position isomers and structures I and III or II and III are chain isomers.
+Problem 9.13
+Write structures of different isomers corresponding to the 5 th member of alkyne series. Also write IUPAC names of all the isomers. What type of isomerism is exhibited by different pairs of isomers?
+Solution
+5 th member of alkyne has the molecular formula C6H10. The possible isomers are:
+Table 9.2 Common and IUPAC Names of Alkynes (CnH2n–2)
+Value of n Formula Structure Common name IUPAC name
+2 C2H2 H-C≡CH Acetylene Ethyne
+3 C 3H4 CH 3-C≡CH Methylacetylene Propyne
+4 C4 H6 CH 3CH2-C≡CH Ethylacetylene But-1-yne
+4 C4 H6 CH 3-C≡C-CH3 Dimethylacetylene But-2-yne
+Reprint 2026-27
+315 HYDROCARBONS (a) HC ≡ C – CH2 – CH2 – CH2 – CH3
+Hex-1-yne (b) CH 3 – C ≡C – CH2 – CH2 – CH3
+Hex-2-yne (c) CH 3 – CH2 – C≡C – CH2– CH3
+Hex-3-yne
+3-Methylpent-1-yne
+4-Methylpent-1-yne
+4-Methylpent-2-yne
+3,3-Dimethylbut-1-yne
+Position and chain isomerism shown by different pairs.
+9.4.2 Structure of Triple Bond
+Ethyne is the simplest molecule of alkyne series. Structure of ethyne is shown in
+Fig. 9.6.
+Each carbon atom of ethyne has two sp hybridised orbitals. Carbon-carbon sigma (V)
+bond is obtained by the head-on overlapping of the two sp hybridised orbitals of the two carbon atoms. The remaining sp hybridised orbital of each carbon atom undergoes overlapping along the internuclear axis with the 1s orbital of each of the two hydrogen atoms for ming two C-H sigma bonds.
+H-C-C bond angle is of 180°. Each carbon has two unhybridised p orbitals which are perpendicular to each other as well as to the plane of the C-C sigma bond. The 2p orbitals of one carbon atom are parallel to the 2p orbitals of the other carbon atom, which undergo lateral or sideways overlapping to form two pi (π) bonds between two carbon atoms. Thus ethyne molecule consists of one
+C–C V bond two C–H V bonds and two C–C
+π bonds. The strength of C≡C bond (bond enthalpy 823 kJ mol -1
+) is more than those of C=C bond (bond enthalpy 681 kJ mol–)
+and C–C bond (bond enthalS\  k- mol –).
+The C≡C bond length is shorter (120 pm)
+than those of C=C ( Sm and C–C ( pm). Electron cloud between two carbon atoms is cylindrically symmetrical about the internuclear axis. Thus, ethyne is a linear molecule.
+9.4.3 Preparation
+1. From calcium carbide: On industrial scale, ethyne is prepared by treating calcium carbide with water. Calcium carbide is prepared by heating quick lime with coke. Quick lime can be obtained by heating limestone as shown in the following reactions:
+' CaO + O2 (9.55)
+Fig. 9.6 Orbital picture of ethyne showing (a) sigma overlaps (b) pi overlaps.
+Reprint 2026-27
+316 CHEMISTRY
+CaO + 3C CaC2 + CO (9.56)
+CaC 2 + 2H2O Ca(OH)2 + C2H2 (9.57)
+2. From vicinal dihalides : Vicinal dihalides on treatment with alcoholic potassium hydroxide undergo dehydrohalogenation.
+One molecule of hydrogen halide is eliminated to form alkenyl halide which on treatment with sodamide gives alkyne.
+9.4.4 Properties
+Physical properties
+Physical properties of alkynes follow the same trend of alkenes and alkanes. First three members are gases, the next eight are liquids and the higher ones are solids. All alkynes are colourless. Ethyene has characteristic odour. Other members are odourless. Alkynes are weakly polar in nature. They are lighter than water and immiscible with water but soluble in organic solvents like ethers, carbon tetrachloride and benzene. Their melting point, boiling point and density increase with increase in molar mass.
+Chemical properties
+Alkynes show acidic nature, addition reactions and polymerisation reactions as follows :
+A. Acidic character of alkyne: Sodium metal and sodamide (NaNH 2 ) are strong bases. They react with ethyne to form sodium acetylide with the liberation of dihydrogen gas. These reactions have not been observed in case of ethene and ethane thus indicating that ethyne is acidic in nature in comparison to ethene and ethane. Why is it so ? Has it something to do with their structures and the hybridisation ? You have read that hydrogen atoms in ethyne are attached to the sp hybridised carbon atoms whereas they are attached to sp2 hybridised carbon atoms in ethene and sp3 hybridised carbons in ethane. Due to the maximum percentage of s character (50%), the sp hybridised orbitals of carbon atoms in ethyne molecules have highest electronegativity; hence, these attract the shared electron pair of the C-H bond of ethyne to a greater extent than that of the sp2 hybridised orbitals of carbon in ethene and the sp3 hybridised orbital of carbon in ethane. Thus in ethyne, hydrogen atoms can be liberated as protons more easily as compared to ethene and ethane. Hence, hydrogen atoms of ethyne attached to triply bonded carbon atom are acidic in nature. You may note that the hydrogen atoms attached to the triply bonded carbons are acidic but not all the hydrogen atoms of alkynes.
+HC ≡ CH + Na o HC ≡ C–Na
++ H2
+Monosodium ethynide
+HC ≡ C– Na + Na o Na
++ C– ≡C–Na
+++ H2
+Disodium ethynide
+CH3 – C ≡ C – H  1a+ NH–
+CH3 – C ≡ C– Na
+Sodium propynide (9.61)
+These reactions are not shown by alkenes and alkanes, hence used for distinction between alkynes, alkenes and alkanes. What about the above reactions with but-1-yne and but-2-yne ? Alkanes, alkenes and alkynes follow the following trend in their acidic behaviour :
+i) CH ≡CH > H 2C – CH2 > CH3 –CH3 ii) HC ≡CH > CH 3 –C≡ CH >> CH 3 –C≡C–CH3
+B. Addition reactions: Alkynes contain a triple bond, so they add up, two molecules of dihydrogen, halogen, hydrogen halides etc.
+Formation of the addition product takes place according to the following steps.
+Reprint 2026-27
+317 HYDROCARBONS
+The addition product formed depends upon stability of vinylic cation. Addition in unsymmetrical alkynes takes place according to Markovnikov rule. Majority of the reactions of alkynes are the examples of electrophilic addition reactions. A few addition reactions are given below:
+(i) Addition of dihydrogen
+HC≡CH+H2 Pt/Pd/Ni [H2C = CH2] H2 CH3–CH3
+CH 3–C≡CH + H2 Pt/Pd/Ni [CH3–CH=CH2 ]
+Propyne Propene
+CH3–CH2–CH3 (ii) Addition of halogens
+Reddish orange colour of the solution of bromine in carbon tetrachloride is decolourised. This is used as a test for unsaturation.
+(iii) Addition of hydrogen halides
+Two molecules of hydrogen halides (HCl, HBr,
+HI) add to alkynes to form gem dihalides (in which two halogens are attached to the same carbon atom)
+H–C≡C–HH–%r [CH2 = CH–%r@ā HBr CHBr2
+Bromoethene CH3
+1,1-Dibromoethane (iv) Addition of water
+Like alkanes and alkenes, alkynes are also immiscible and do not react with water.
+However, one molecule of water adds to alkynes on warming with mercuric sulphate and dilute sulphuric acid at 333 K to form carbonyl compounds.
+(v) Polymerisation (a) Linear polymerisation: Under suitable conditions, linear polymerisation of ethyne takes place to produce polyacetylene or polyethyne which is a high molecular weight polyene containing repeating units of (CH = CH – CH = CH and can be reSresented as ²( CH = CH – CH = CH n— Under special conditions, this polymer conducts electricity.
+Reprint 2026-27

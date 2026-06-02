@@ -1,0 +1,38 @@
+Introductory
+Microeconomics
+K K K K Key
+Concepts ey Concepts ey Concepts ey Concepts ey Concepts
+Budget set Budget line
+Preference Indifference
+Indifference curve Marginal Rate of substitution
+Monotonic preferences Diminishing rate of substitution
+Indifference map,Utility function Consumer’s optimum
+Demand Law of demand
+Demand curve Substitution effect
+Income effect Normal good
+Inferior good Substitute
+Complement Price elasticity of demand
+1. What do you mean by the budget set of a consumer?
+2. What is budget line?
+3. Explain why the budget line is downward sloping.
+4. A consumer wants to consume two goods. The prices of the two goods are Rs 4 and Rs 5 respectively. The consumer’s income is Rs 20.
+(i) Write down the equation of the budget line.
+(ii) How much of good 1 can the consumer consume if she spends her entire income on that good?
+(iii) How much of good 2 can she consume if she spends her entire income on that good?
+(iv) What is the slope of the budget line?
+Questions 5, 6 and 7 are related to question 4.
+5. How does the budget line change if the consumer’s income increases to Rs 40 but the prices remain unchanged?
+6. How does the budget line change if the price of good 2 decreases by a rupee but the price of good 1 and the consumer’s income remain unchanged?
+7. What happens to the budget set if both the prices as well as the income double?
+8. Suppose a consumer can afford to buy 6 units of good 1 and 8 units of good 2 if she spends her entire income. The prices of the two goods are Rs 6 and Rs 8 respectively. How much is the consumer’s income?
+9. Suppose a consumer wants to consume two goods which are available only in integer units. The two goods are equally priced at Rs 10 and the consumer’s income is Rs 40.
+(i) Write down all the bundles that are available to the consumer.
+(ii) Among the bundles that are available to the consumer, identify those which cost her exactly Rs 40.
+10. What do you mean by ‘monotonic preferences’?
+11. If a consumer has monotonic preferences, can she be indifferent between the bundles (10, 8) and (8, 6)?
+12. Suppose a consumer’s preferences are monotonic. What can you say about her preference ranking over the bundles (10, 10), (10, 9) and (9, 9)?
+Exercises Exercises Exercises Exercises Exercises taken together at different levels of the price of the good.
+• The price elasticity of demand for a good is defined as the percentage change in demand for the good divided by the percentage change in its price.
+• The elasticity of demand is a pure number.
+• Elasticity of demand for a good and total expenditure on the good are closely related.
+Reprint 2026-27

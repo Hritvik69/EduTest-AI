@@ -1,0 +1,9 @@
+144 MATHEMATICS
+10.1 Introduction
+You have studied in Class IX that a circle is a collection of all points in a plane which are at a constant distance (radius) from a fixed point (centre). You have also studied various terms related to a circle like chord, segment, sector, arc etc.
+Let us now examine the different situations that can arise when a circle and a line are given in a plane.
+So, let us consider a circle and a line PQ. There can be three possibilities given in Fig. 10.1 below:
+Fig. 10.1
+In Fig. 10.1 (i), the line PQ and the circle have no common point. In this case,
+PQ is called a non-intersecting line with respect to the circle. In Fig. 10.1 (ii), there are two common points A and B that the line PQ and the circle have. In this case, we call the line PQ a secant of the circle. In Fig. 10.1 (iii), there is only one point A which is common to the line PQ and the circle. In this case, the line is called a tangent to the
+Reprint 2026-27

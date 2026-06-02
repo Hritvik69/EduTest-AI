@@ -1,0 +1,25 @@
+REAL N UMBERS 9
+But this contradicts the fact that 2 is irrational.
+So, we conclude that 3 2 is irrational.
+EXERCISE 1.2
+1. Prove that 5 is irrational.
+2. Prove that 3 2 5  is irrational.
+3. Prove that the following are irrationals :
+2 (ii) 7 5 (iii) 6 2 
+1.4 Summary
+In this chapter, you have studied the following points:
+1. The Fundamental Theorem of Arithmetic :
+Every composite number can be expressed (factorised) as a product of primes, and this factorisation is unique, apart from the order in which the prime factors occur.
+2. If p is a prime and p divides a2
+, then p divides a, where a is a positive integer.
+3. To prove that 2, 3 are irrationals.
+A NOTE TO THE READER
+You have seen that :
+HCF ( p, q, r) × LCM (p, q, r)  p × q × r, where p, q, r are positive integers (see Example 8). However, the following results hold good for three numbers p, q and r :
+LCM (p, q, r) = HCF( , , )
+HCF( , ) HCF( , ) HCF( , )
+p q r p q r p q q r p r
+HCF (p, q, r) = LCM( , , )
+LCM( , ) LCM( , ) LCM( , )
+p q r p q r p q q r p r
+Reprint 2026-27

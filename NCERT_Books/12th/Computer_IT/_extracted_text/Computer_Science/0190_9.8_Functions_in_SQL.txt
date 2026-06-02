@@ -1,0 +1,228 @@
+Computer SCienCe - ClaSS Xii 178 e) List MovieID, MovieName and Cost for all movies with
+ProductionCost greater than 10,000 and less than
+1,00,000.
+f) List details of all movies which fall in the category of comedy or action.
+g) List details of all movies which have not been released
+4. Suppose your school management has decided to conduct cricket matches between students of Class XI and Class XII. Students of each class are asked to join any one of the four teams – Team Titan, Team Rockers,
+Team Magnet and Team Hurricane. During summer vacations, various matches will be conducted between these teams. Help your sports teacher to do the following:
+a) Create a database “Sports”.
+b) Create a table “TEAM” with following considerations:
+i) It should have a column TeamID for storing an integer value between 1 to 9, which refers to unique identification of a team.
+ii) Each TeamID should have its associated name (TeamName), which should be a string of length not less than 10 characters.
+c) Using table level constraint, make TeamID as the primary key.
+d) Show the structure of the table TEAM using a SQL statement.
+e) As per the preferences of the students four teams were formed as given below. Insert these four rows in
+TEAM table:
+Row 1: (1, Team Titan)
+Row 2: (2, Team Rockers)
+Row 3: (3, Team Magnet)
+Row 3: (4, Team Hurricane)
+f) Show the contents of the table TEAM using a DML statement.
+g) Now create another table MATCH_DETAILS and insert data as shown below. Choose appropriate data types and constraints for each attribute.
+Table: MATCH_DETAILS
+MatchID MatchDate FirstTeamID SecondTeamID FirstTeamScore SecondTeamScore
+M1 2018-07-17 1 2 90 86
+M2 2018-07-18 3 4 45 48
+M3 2018-07-19 1 3 78 56
+M4 2018-07-19 2 4 56 67
+M5 2018-07-18 1 4 32 87
+M6 2018-07-17 2 3 67 51
+5. Using the sports database containing two relations (TEAM, MATCH_DETAILS) and write the queries for the following:
+Reprint 2026-27
+S tructured Query Language (SQL) 179 a) Display the MatchID of all those matches where both the teams have scored more than 70.
+b) Display the MatchID of all those matches where
+FirstTeam has scored less than 70 but SecondTeam has scored more than 70.
+c) Display the MatchID and date of matches played by
+Team 1 and won by it.
+d) Display the MatchID of matches played by Team 2 and not won by it.
+e) Change the name of the relation TEAM to T_DATA.
+Also change the attributes TeamID and TeamName to T_ID and T_NAME respectively.
+6. A shop called Wonderful Garments who sells school uniforms maintains a database SCHOOLUNIFORM as shown below. It consisted of two relations - UNIFORM and COST. They made UniformCode as the primary key for UNIFORM relations. Further, they used UniformCode and Size to be composite keys for COSTrelation. By analysing the database schema and database state, specify SQL queries to rectify the following anomalies.
+a) M/S Wonderful Garments also keeps handkerchiefs of red colour, medium size of Rs. 100 each.
+b) INSERT INTO COST (UCode, Size, Price) values (7,
+'M',100);
+When the above query is used to insert data, the values for the handkerchief without entering its details in the UNIFORM relation is entered. Make a provision so that the data can be entered in the
+COST table only if it is already there in the UNIFORM c) Further, they should be able to assign a new UCode to an item only if it has a valid UName. Write a query to add appropriate constraints to the SCHOOLUNIFORM database.
+d) Add the constraint so that the price of an item is always greater than zero.
+7. Consider the following table named “Product”, showing details of products being sold in a grocery shop.
+PCode PName UPrice Manufacturer
+P01 Washing Powder 120 Surf
+P02 Toothpaste 54 Colgate
+P03 Soap 25 Lux
+P04 Toothpaste 65 Pepsodent
+P05 Soap 38 Dove
+P06 Shampoo 245 Dove
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 180
+Write SQL queries for the following:
+a) Create the table Product with appropriate data types and constraints.
+b) Identify the primary key in Product.
+c) List the Product Code, Product name and price in descending order of their product name. If PName is the same, then display the data in ascending order of price.
+d) Add a new column Discount to the table Product.
+e) Calculate the value of the discount in the table Product as 10 per cent of the UPrice for all those products where the UPrice is more than 100, otherwise the discount will be 0.
+f) Increase the price by 12 per cent for all the products manufactured by Dove.
+g) Display the total number of products manufactured by each manufacturer.
+Write the output(s) produced by executing the following queries on the basis of the information given above in the table Product:
+h) SELECT PName, avg(UPrice) FROM Product GROUP
+BY Pname;
+i) SELECT DISTINCT Manufacturer FROM Product;
+j) SELECT COUNT (DISTINCT PName) FROM Product;
+k) SELECT PName, MAX(UPrice), MIN(UPrice) FROM
+Product GROUP BY PName;
+8. Using the CARSHOWROOM database given in the chapter, write the SQL queries for the following:
+a) Add a new column Discount in the INVENTORY table.
+b) Set appropriate discount values for all cars keeping in mind the following:
+(i) No discount is available on the LXI model.
+(ii) VXI model gives a 10 per cent discount.
+(iii) A 12 per cent discount is given on cars other than LXI model and VXI model.
+c) Display the name of the costliest car with fuel type
+“Petrol”.
+d) Calculate the average discount and total discount available on Baleno cars.
+e) List the total number of cars having no discount.
+Reprint 2026-27
+In this Chapter
+» Introduction to Computer
+Networks
+» Evolution of Networking
+» Types of Networks
+» Network Devices
+» Networking Topologies
+» Identifying Nodes in a Networked
+Communication
+» Internet, Web and the
+Internet of Things
+» Domain Name System
+“Hoaxes use weaknesses in human behavior to ensure they are replicated and distributed. In other words, hoaxes prey on the Human Operating System.”
+— Stewart Kirkpatrick
+10.1 IntroductIon to computer networks
+We are living in a connected world. Information is being produced, exchanged, and traced across the globe in real time. It's possible as almost everyone and everything in the digital world is interconnected through one way or the other.
+Figure 10.1: Interconnection forming a social network
+Computer Networks 10
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 182
+A group of two or more similar things or people interconnected with each other is called network (Figure
+10.1). Some of the examples of network in our everyday life includes:
+• Social network
+• Mobile network
+• Network of computers
+• Airlines, railway, banks, hospitals networks
+A computer network (Figure 10.2) is an interconnection among two or more computers or computing devices.
+Such interconnection allows computers to share data and resources among each other. A basic network may connect a few computers placed in a room.
+The network size may vary from small to large depending on the number of computers it connects.
+A computer network can include different types of hosts (also called nodes) like server, desktop, laptop, cellular phones.
+Networking
+Figure 10.2: A computer network
+Apart from computers, networks include networking devices like switch, router, modem, etc. Networking devices are used to connect multiple computers in different settings. For communication, data in a network is divided into smaller chunks called packets. These packets are then carried over a network. Devices in a network can be connected either through wired media like cables or wireless media like air.
+In a communication network, each device that is a part of a network and that can receive, create, store or send data to different network routes is called a node. In the context of data communication, a node can be a device such as a modem, hub, bridge, switch, router, digital telephone handset, a printer, a computer or a server.
+Activity 10.1
+Identify some other networks in the real world.
+Reprint 2026-27
+Computer networkS 183
+Interconnectivity of computing devices in a network allows us to exchange information simultaneously with many parties through email, websites, audio/video calls, etc. Network allows sharing of resources. For example, a printer can be made available to multiple computers through a network; a networked storage can be accessed by multiple computers. People often connect their devices through hotspot, thus forming a small personal network.
+10.2 evolutIon of networkIng
+In the 1960s a research project was commissioned by
+Advanced Research Projects Agency Network (ARPANET)
+in the U.S. Department of Defence to connect the academic and research institutions located at different places for scientific collaborations. The first message was communicated between the University of California, Los
+Angeles (UCLA) and Stanford Research Institute (SRI).
+Slowly but gradually, more and more organisations joined the ARPANET, and many independent smaller networks were formed. Few of the milestones in the magnificent journey of evolution of computer networks is depicted in the timeline shown in Figure 10.3.
+Activity 10.2
+Create a hotspot using a smartphone and connect other devices to it.
+ARPANET became functional by connecting UCLA and
+Domain Name System introduced
+The term Internet was
+First commercial use of
+ARPANET, was started in the name of Telenet
+The idea of Advanced
+Research Project Agency
+Network (ARPANET) is conceptualized
+TCP/IP introduced as standard protocol on
+Roy Tomlinson develops network messaging or
+E-mail. Symbol @ comes to mean "at"
+National Science
+Foundation brings connectivity to more people with its NSFNET
+First version of Wi-fi (802.11) standard was introduced
+The Berners-Lee at
+CERN developed HTML and URL, thus giving birth to World Wide Web
+1983 1969
+Figure 10.3: Timeline showing evolution of networking
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 184
+10.3 types of networks
+There are various types of computer networks ranging from network of handheld devices (like mobile phones or tablets) connected through Wi-Fi or Bluetooth within a single room to the millions of computers spread across the globe. Some are connected wireless while others are connected through wires.
+Based on the geographical area covered and data transfer rate, computer networks are broadly categorised
+• PAN ( Personal Area Network)
+• LAN (Local Area Network)
+• MAN (Metropolitan Area Network)
+• WAN (Wide Area Network)
+10.3.1 Personal Area Network (PAN)
+It is a network formed by connecting a few personal devices like computers, laptops, mobile phones, smart phones, printers etc., as shown in Figure 10.4. All these devices lie within an approximate range of 10 metres.
+A personal area network may be wired or wireless.
+For example, a mobile phone connected to the laptop through USB forms a wired PAN while two smartphones communicating with each other through Bluetooth technology form a wireless PAN or WPAN.
+Figure 10.4: A Personal Area Network
+Reprint 2026-27
+Computer networkS 185
+10.3.2 Local Area Network (LAN)
+It is a network that connects computers, mobile phones, tablet, mouse, printer, etc., placed at a limited distance.
+The geographical area covered by a LAN can range from a single room, a floor, an office having one or more buildings in the same premise, laboratory, a school, college, or university campus. The connectivity is done by means of wires, Ethernet cables, fibre optics, or Wi-Fi.
+A Local Area Network (LAN) is shown in Figure 10.5.
+Explore and find out the minimum internet speed required to make a video call.
+Figure 10.5: A Local Area Network
+LAN is comparatively secure as only authentic users in the network can access other computers or shared resources. Users can print documents using a connected printer, upload/download documents and software to and from the local server. Such LANs provide the short range communication with the high speed data transfer rates. These types of networks can be extended up to 1 km. Data transfer in LAN is quite high, and usually varies from 10 Mbps (called Ethernet)
+to 1000 Mbps (called Gigabit Ethernet), where Mbps stands for Megabits per second. Ethernet is a set of rules that decides how computers and other devices connect with each other through cables in a local area network
+10.3.3 Metropolitan Area Network (MAN)
+Metropolitan Area Network (MAN) is an extended form of
+LAN which covers a larger geographical area like a city or a town. Data transfer rate in MAN also ranges in Mbps,
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 186 but it is considerably less as compared to LAN. Cable TV network or cable based broadband internet services are examples of MAN. This kind of network can be extended up to 30-40 km. Sometimes, many LANs are connected together to form MAN, as shown in Figure 10.6.
+It is possible to access your bank account from any part of the world. Whether the bank’s network is a
+LAN, MAN, WAN or any other type?
+10.3.4 Wide Area Network (WAN)
+Wide Area Network connects computers and other
+LANs and MANs, which are spread across different geographical locations of a country or in different countries or continents. A WAN could be formed by connecting a LAN to other LANs (Figure 10.7) via wired/wireless media. Large business, educational and government organisations connect their different branches in different locations across the world through
+WAN. The Internet is the largest WAN that connects billions of computers, smartphones and millions of
+LANs from different continents.
+Networking
+Figure 10.6: A Metropolitan Area Network
+Reprint 2026-27
+Computer networkS 187
+Network User
+Network User Network User
+LAN 1 - Delhi LAN 1 - Shimla
+Internet
+Network User
+Network User Network User
+Network Switch Network Switch
+Figure 10.7: A Wide Area Network
+10.4 network devIces
+To communicate data through different transmission media and to configure networks with different functionality, we require different devices like Modem,
+Hub, Switch, Repeater, Router, Gateway, etc. Let us explore them in detail.
+10.4.1 Modem
+Modem stands for ‘MOdulator DEModulator’. It refers to a device used for conversion between analog signals and digital bits. We know computers store and process data in terms of 0s and 1s. However, to transmit data from a sender to a receiver, or while browsing the internet, digital data are converted to an analog signal and the medium (be it free-space or a physical media) carries the signal to the receiver. There are modems connected to both the source and destination nodes. The modem at the sender’s end acts as a modulator that converts the digital data into analog signals. The modem at the receiver’s end acts as a demodulator that converts the analog signals into digital data for the destination node to understand. Figure 10.8 shows connectivity using a modem.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 188
+Digital Signal Digital Signal
+Analog Signal
+Telephone Line
+Modem Modem
+Modulation
+Demodulation Modulation
+Demodulation
+Figure 10.8: Use of modem
+10.4.2 Ethernet Card
+Ethernet card, also known as Network Interface Card (NIC card in short) is a network adapter used to set up a wired network.
+It acts as an interface between computer and the network. It is a circuit board mounted on the motherboard of a computer as shown in Figure
+10.9. The Ethernet cable connects the computer to the network through NIC.
+Ethernet cards can support data transfer between 10
+Mbps and 1 Gbps (1000
+Mbps). Each NIC has a
+MAC address, which helps in uniquely identifying the computer on the network.
+Figure 10.9: A Network Interface Card
+10.4.3 RJ45
+RJ 45 or Registered Jack-45 is an eight-pin connector (Figure 10.10)
+that is used exclusively with
+Ethernet cables for networking.
+It is a standard networking interface that can be seen at the end of all network cables.
+Basically, it is a small plastic plug that fits into RJ-45 jacks of the
+Ethernet cards present in various computing devices.
+Figure 10.10: RJ 45
+Reprint 2026-27

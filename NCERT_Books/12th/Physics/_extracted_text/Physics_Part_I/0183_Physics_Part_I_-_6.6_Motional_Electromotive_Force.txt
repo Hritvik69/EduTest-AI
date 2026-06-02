@@ -1,0 +1,60 @@
+Electromagnetic
+Induction
+We explained the above example with air as the medium within the solenoids. Instead, if a medium of relative permeability
+μr had been present, the mutual inductance would be
+μ0 n1n2π r2
+It is also important to know that the mutual inductance of a pair of coils, solenoids, etc., depends on their separation as well as their relative orientation.
+Example 6.8 Two concentric circular coils, one of small radius r1 and the other of large radius r2, such that r1 << r2, are placed co-axially with centres coinciding. Obtain the mutual inductance of the arrangement.
+Solution Let a current I2 flow through the outer circular coil. The field at the centre of the coil is B2 =
+μ0I2 / 2r2. Since the other co-axially placed coil has a very small radius, B2 may be considered constant over its cross-sectional area. Hence,
+Φ1 = πr 2
+= M12 I2
+From Eq. (6.12)
+Note that we calculated M12 from an approximate value of
+Φ1, assuming the magnetic field B2 to be uniform over the area π r1
+2. However, we can accept this value because r1 << r2.
+Now, let us recollect Experiment 6.3 in Section 6.2. In that experiment, emf is induced in coil C1 wherever there was any change in current through coil C2. Let
+Φ1 be the flux through coil C1 (say of N1 turns) when current in coil C2 is I2.
+Then, from Eq. (6.7), we have
+Φ1 = MI2
+For currents varrying with time, ( ) ( ) 1 1 2 d d
+Since induced emf in coil C1 is given by ( ) 1 1 d
+Reprint 2026-27
+It shows that varying current in a coil can induce emf in a neighbouring coil. The magnitude of the induced emf depends upon the rate of change of current and mutual inductance of the two coils.
+6.7.2 Self-inductance
+In the previous sub-section, we considered the flux in one solenoid due to the current in the other. It is also possible that emf is induced in a single isolated coil due to change of flux through the coil by means of varying the current through the same coil. This phenomenon is called self-induction. In this case, flux linkage through a coil of N turns is proportional to the current through the coil and is expressed as
+Φ = (6.13)
+where constant of proportionality L is called self-inductance of the coil. It is also called the coefficient of self-induction of the coil. When the current is varied, the flux linked with the coil also changes and an emf is induced in the coil. Using Eq. (6.13), the induced emf is given by
+ε = (6.14)
+Thus, the self-induced emf always opposes any change (increase or decrease) of current in the coil.
+It is possible to calculate the self-inductance for circuits with simple geometries. Let us calculate the self-inductance of a long solenoid of cross- sectional area A and length l, having n turns per unit length. The magnetic field due to a current I flowing in the solenoid is B =
+μ0 n I (neglecting edge effects, as before). The total flux linked with the solenoid is ( )( )( ) 0 B N nl n I A where nl is the total number of turns. Thus, the self-inductance is,
+μ = (6.15)
+If we fill the inside of the solenoid with a material of relative permeability
+μr (for example soft iron, which has a high value of relative permeability),
+0 r L n Al
+μ μ = (6.16)
+The self-inductance of the coil depends on its geometry and on the permeability of the medium.
+The self-induced emf is also called the back emf as it opposes any change in the current in a circuit. Physically, the self-inductance plays
+Reprint 2026-27
+Electromagnetic
+Induction the role of inertia. It is the electromagnetic analogue of mass in mechanics.
+So, work needs to be done against the back emf (
+ε ) in establishing the current. This work done is stored as magnetic potential energy. For the current I at an instant in a circuit, the rate of work done is
+If we ignore the resistive losses and consider only inductive effect, then using Eq. (6.14),
+Total amount of work done in establishing the current I is
+W W L I I
+= = ∫ ∫ d d
+Thus, the energy required to build up the current I is,
+W LI = (6.17)
+This expression reminds us of mv 2/2 for the (mechanical) kinetic energy of a particle of mass m, and shows that L is analogous to m (i.e., L is electrical inertia and opposes growth and decay of current in the circuit).
+Consider the general case of currents flowing simultaneously in two nearby coils. The flux linked with one coil will be the sum of two fluxes which exist independently. Equation (6.7) would be modified into
+N1 1 11 1 12 2 M I M I where M11 represents inductance due to the same coil.
+Therefore, using Faraday’s law,
+M11 is the self-inductance and is written as L1. Therefore,
+Example 6.9 (a) Obtain the expression for the magnetic energy stored in a solenoid in terms of magnetic field B, area A and length l of the solenoid. (b) How does this magnetic energy compare with the electrostatic energy stored in a capacitor?
+Solution (a) From Eq. (6.17), the magnetic energy is
+B U LI =
+ = ( )
+0 B since for a solenoid ,
+Reprint 2026-27

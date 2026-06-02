@@ -1,0 +1,42 @@
+bit, so that at the end, conductor 1 gets charge Q. By charge conservation, conductor 2 has charge –Q at the end (Fig 2.30 ).
+In transferring positive charge from conductor 2 to conductor 1, work will be done externally, since at any stage conductor 1 is at a higher potential than conductor 2. To calculate the total work done, we first calculate the work done in a small step involving transfer of an infinitesimal (i.e., vanishingly small)
+amount of charge. Consider the intermediate situation when the conductors 1 and 2 have charges Q
+¢ respectively. At this stage, the potential difference
+¢ between conductors 1 to 2 is Q
+¢/C, where C is the capacitance of the system. Next imagine that a small
+¢ is transferred from conductor 2 to 1. Work done in this step ( d W), resulting in charge Q¢ on conductor 1 increasing to Q
+¢, is given by
+= = ′ ′ ′ (2.68)
+Integrating eq. (2.68)
+= ′ = ′ = ∫
+We can write the final result, in different ways
+= = = (2.69)
+Since electrostatic force is conservative, this work is stored in the form of potential energy of the system. For the same reason, the final result for potential energy [Eq. (2.69)] is independent of the manner in which the charge configuration of the capacitor is built up. When the capacitor discharges, this stored-up energy is released. It is possible to view the potential energy of the capacitor as ‘stored’ in the electric field between the plates. To see this, consider for simplicity, a parallel plate capacitor
+[of area A (of each plate) and separation d between the plates].
+Energy stored in the capacitor
+= × (2.70)
+The surface charge density s is related to the electric field E between the plates,
+= (2.71)
+From Eqs. (2.70) and (2.71) , we get
+Energy stored in the capacitor
+U = ( ) 2
+0 1/ 2 E A d
+ε × (2.72)
+FIGURE 2.30 (a) Work done in a small step of building charge on conductor 1
+¢. (b) Total work done in charging the capacitor may be viewed as stored in the energy of electric field between the plates.
+Reprint 2026-27
+Electrostatic Potential and Capacitance
+Note that Ad is the volume of the region between the plates (where electric field alone exists). If we define energy density as energy stored per unit volume of space, Eq (2.72) shows that
+Energy density of electric field, u =(1/2)
+e0E2 (2.73)
+Though we derived Eq. (2.73) for the case of a parallel plate capacitor, the result on energy density of an electric field is, in fact, very general and holds true for electric field due to any configuration of charges.
+Example 2.10 (a) A 900 pF capacitor is charged by 100 V battery
+[Fig. 2.31(a)]. How much electrostatic energy is stored by the capacitor?
+(b) The capacitor is disconnected from the battery and connected to another 900 pF capacitor [Fig. 2.31(b)]. What is the electrostatic energy stored by the system?
+FIGURE 2.31
+Solution (a) The charge on the capacitor is
+Q = CV = 900 × 10–12 F × 100 V = 9 × 10–8 C
+The energy stored by the capacitor is
+= (1/2) CV 2 = (1/2) QV
+= (1/2) × 9 × 10–8C × 100 V = 4.5 × 10–6 J (b) In the steady situation, the two capacitors have their positive plates at the same potential, and their negative plates at the same potential. Let the common potential difference be V¢. The
+Reprint 2026-27

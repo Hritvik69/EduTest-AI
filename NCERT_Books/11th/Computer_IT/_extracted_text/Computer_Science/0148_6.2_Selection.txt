@@ -1,0 +1,97 @@
+Computer SCienCe – ClaSS xi 136 continue print('Num has value ' + str(num))
+print('End of loop')
+Num has value 1
+Num has value 2
+Num has value 4
+Num has value 5
+Num has value 6
+End of loop
+Observe that the value 3 is not printed in the output, but the loop continues after the continue statement to print other values till the for loop terminates.
+6.6 neSted loopS
+A loop may contain another loop inside it. A loop inside another loop is called a nested loop.
+Program 6-16 Program to demonstrate working of nested for loops.
+#Program 6-16
+#Demonstrate working of nested for loops for var1 in range(3):
+print( "Iteration " + str(var1 + 1) + " of outer loop")
+for var2 in range(2): #nested loop print(var2 + 1)
+print("Out of inner loop")
+print("Out of outer loop")
+Iteration 1 of outer loop
+Out of inner loop
+Iteration 2 of outer loop
+Out of inner loop
+Iteration 3 of outer loop
+Out of inner loop
+Out of outer loop
+Reprint 2026-27
+F low oF Control 137
+Python does not impose any restriction on how many loops can be nested inside a loop or on the levels of nesting. Any type of loop (for/while) may be nested within another loop (for/while).
+Program 6-17 Program to print the pattern for a number input by the user.
+#Program 6-17
+#Program to print the pattern for a number input by the user
+#The output pattern to be generated is
+#1 2 3 4
+#1 2 3 4 5 num = int(input("Enter a number to generate its pattern = "))
+for i in range(1,num + 1):
+for j in range(1,i + 1):
+print(j, end = " ")
+Enter a number to generate its pattern = 5
+1 2 3 4 5
+Program 6-18 Program to find prime numbers between
+2 to 50 using nested for loops.
+#Program 6-18
+#Use of nested loops to find the prime numbers between 2 to 50 for i in range(2, 50):
+while ( j <= (i/2)):
+if (i % j == 0): #factor found break #break out of while loop if ( j > i/j) : #no factor found
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 138 print ( i, "is a prime number")
+print ("Bye Bye!!")
+2 is a prime number
+3 is a prime number
+5 is a prime number
+7 is a prime number
+11 is a prime number
+13 is a prime number
+17 is a prime number
+19 is a prime number
+23 is a prime number
+29 is a prime number
+31 is a prime number
+37 is a prime number
+41 is a prime number
+43 is a prime number
+47 is a prime number
+Bye Bye!!
+Program 6-19 Write a program to calculate the factorial of a given number.
+#Program 6-19
+#The following program uses a for loop nested inside an if..else
+#block to calculate the factorial of a given number num = int(input("Enter a number: "))
+fact = 1
+# check if the number is negative, positive or zero if num < 0:
+print("Sorry, factorial does not exist for negative numbers")
+elif num == 0:
+print("The factorial of 0 is 1")
+for i in range(1, num + 1):
+fact = fact * i print("factorial of ", num, " is ", fact)
+Enter a number: 5
+Factorial of 5 is 120
+Reprint 2026-27
+F low oF Control 139 exercISe
+1. What is the difference between else and elif construct of if statement?
+2. What is the purpose of range() function? Give one example.
+3. Differentiate between break and continue statements using examples.
+4. What is an infinite loop? Give one example.
+5. Find the output of the following program segments:
+(i) a = 110 while a > 100:
+print(a)
+S ummary
+• The if statement is used for selection or decision
+• The looping constructs while and for allow sections of code to be executed repeatedly under some condition.
+• for statement iterates over a range of values or a sequence.
+• The statements within the body of for loop are executed till the range of values is exhausted.
+• The statements within the body of a while are executed over and over until the condition of the while is false.
+• If the condition of the while loop is initially false, the body is not executed even once.
+• The statements within the body of the while loop must ensure that the condition eventually becomes false; otherwise, the loop will become an infinite loop, leading to a logical error in the program.
+• The break statement immediately exits a loop, skipping the rest of the loop’s body. Execution continues with the statement immediately following the body of the loop. When a continue statement is encountered, the control jumps to the beginning of the loop for the next iteration.
+• A loop contained within another loop is called a nested loop.
+Reprint 2026-27

@@ -1,0 +1,120 @@
+67 Chemical Kinetics
+Consider a general reaction aA + bB ® cC + dD where a, b, c and d are the stoichiometric coefficients of reactants and products.
+The rate expression for this reaction is
+Rate μ [A]x [B]y (3.4)
+where exponents x and y may or may not be equal to the stoichiometric coefficients (a and b) of the reactants. Above equation can also be written as
+Rate = k [A]x [B]y (3.4a)
+[ ] [ ] [ ]x y d R A B
+− = (3.4b)
+This form of equation (3.4 b) is known as differential rate equation, where k is a proportionality constant called rate constant. The equation like (3.4), which relates the rate of a reaction to concentration of reactants is called rate law or rate expression. Thus, rate law is the expression in which reaction rate is given in terms of molar concentration of reactants with each term raised to some power, which may or may not be same as the stoichiometric coefficient of the reacting species in a balanced chemical equation. For example:
+2NO(g) + O2(g) ® 2NO2 (g)
+We can measure the rate of this reaction as a function of initial concentrations either by keeping the concentration of one of the reactants constant and changing the concentration of the other reactant or by changing the concentration of both the reactants. The following results are obtained (Table 3.2).
+Table 3.2: Initial rate of formation of NO2
+Experiment Initial [NO]/ mol L-1 Initial [O2]/ mol L-1 Initial rate of formation of NO2/ mol L-1s-1
+1. 0.30 0.30 0.096
+2. 0.60 0.30 0.384
+3. 0.30 0.60 0.192
+4. 0.60 0.60 0.768
+It is obvious, after looking at the results, that when the concentration of NO is doubled and that of O2 is kept constant then the initial rate increases by a factor of four from 0.096 to 0.384 mol L–1s–1. This indicates that the rate depends upon the square of the concentration of
+NO. When concentration of NO is kept constant and concentration of
+O2 is doubled the rate also gets doubled indicating that rate depends on concentration of O2 to the first power. Hence, the rate equation for this reaction will be
+Rate = k [NO]2[O2]
+Reprint 2026-27
+68 Chemistry
+The differential form of this rate expression is given as
+[ ] [ ] [ ]2 d R O NO
+Now, we observe that for this reaction in the rate equation derived from the experimental data, the exponents of the concentration terms are the same as their stoichiometric coefficients in the balanced chemical equation.
+Some other examples are given below:
+Reaction Experimental rate expression
+1. CHCl3 + Cl2 ® CCl4 + HCl Rate = k [CHCl3 ] [Cl2]1/2
+2. CH3COOC2H5 + H2O ® CH3COOH + C2H5OH Rate = k [CH3COOC2H5]1 [H2O]0
+In these reactions, the exponents of the concentration terms are not the same as their stoichiometric coefficients. Thus, we can say that:
+Rate law for any reaction cannot be predicted by merely looking at the balanced chemical equation, i.e., theoretically but must be determined experimentally.
+In the rate equation (3.4)
+Rate = k [A]x [B]y x and y indicate how sensitive the rate is to the change in concentration of A and B. Sum of these exponents, i.e., x + y in (3.4) gives the overall order of a reaction whereas x and y represent the order with respect to the reactants A and B respectively.
+Hence, the sum of powers of the concentration of the reactants in the rate law expression is called the order of that chemical reaction.
+Order of a reaction can be 0, 1, 2, 3 and even a fraction. A zero order reaction means that the rate of reaction is independent of the concentration of reactants.
+3.2.3 Order of a
+Reaction
+Calculate the overall order of a reaction which has the rate expression (a) Rate = k [A]1/2 [B]3/2 (b) Rate = k [A]3/2 [B]–1 (a) Rate = k [A]x [B]y order = x + y
+So order = 1/2 + 3/2 = 2, i.e., second order (b) order = 3/2 + (–1) = 1/2, i.e., half order.
+Example 3.3 Example 3.3 Example 3.3 Example 3.3 Example 3.3
+Solution Solution Solution Solution Solution
+A balanced chemical equation never gives us a true picture of how a reaction takes place since rarely a reaction gets completed in one step. The reactions taking place in one step are called elementary reactions. When a sequence of elementary reactions (called mechanism)
+gives us the products, the reactions are called complex reactions.
+Reprint 2026-27
+69 Chemical Kinetics
+Example 3.4 Example 3.4 Example 3.4 Example 3.4 Example 3.4
+Solution Solution Solution Solution Solution
+These may be consecutive reactions (e.g., oxidation of ethane to CO2 and H2O passes through a series of intermediate steps in which alcohol, aldehyde and acid are formed), reverse reactions and side reactions (e.g., nitration of phenol yields o-nitrophenol and p-nitrophenol).
+Units of rate constant
+For a general reaction aA + bB ® cC + dD
+Rate = k [A]x [B]y
+Where x + y = n = order of the reaction
+[A] [B]y ( ) ( ) = n concentration 1
+= × where [A] [B] time concentration
+Taking SI units of concentration, mol L–1 and time, s, the units of k for different reaction order are listed in Table 3.3
+Table 3.3: Units of rate constant
+Reaction Order Units of rate constant
+Zero order reaction 0 ( )
+mol L 1 mol L s
+First order reaction 1 ( )
+mol L 1 s
+Second order reaction 2 ( )
+mol L 1 mol L s
+Identify the reaction order from each of the following rate constants.
+(i) k = 2.3 × 10–5 L mol–1 s–1 (ii) k = 3 × 10–4 s–1 (i) The unit of second order rate constant is L mol–1 s–1, therefore k = 2.3 × 10–5 L mol–1 s–1 represents a second order reaction.
+(ii) The unit of a first order rate constant is s–1 therefore k = 3 × 10–4 s–1 represents a first order reaction.
+3.2.4 Molecularity
+Reaction
+Another property of a reaction called molecularity helps in understanding its mechanism. The number of reacting species (atoms, ions or molecules) taking part in an elementary reaction, which must collide simultaneously in order to bring about a chemical reaction is called molecularity of a reaction.
+The reaction can be unimolecular when one reacting species is involved, for example, decomposition of ammonium nitrite.
+Reprint 2026-27
+70 Chemistry
+NH4NO2 ® N2 + 2H2O
+Bimolecular reactions involve simultaneous collision between two species, for example, dissociation of hydrogen iodide.
+2HI ® H2 + I2
+Trimolecular or termolecular reactions involve simultaneous collision between three reacting species, for example,
+2NO + O2 ® 2NO2
+The probability that more than three molecules can collide and react simultaneously is very small. Hence, reactions with the molecularity three are very rare and slow to proceed.
+It is, therefore, evident that complex reactions involving more than three molecules in the stoichiometric equation must take place in more than one step.
+KClO3 + 6FeSO4 + 3H2SO4 ® KCl + 3Fe2(SO4)3 + 3H2O
+This reaction which apparently seems to be of tenth order is actually a second order reaction. This shows that this reaction takes place in several steps. Which step controls the rate of the overall reaction? The question can be answered if we go through the mechanism of reaction, for example, chances to win the relay race competition by a team depend upon the slowest person in the team. Similarly, the overall rate of the reaction is controlled by the slowest step in a reaction called the rate determining step. Consider the decomposition of hydrogen peroxide which is catalysed by iodide ion in an alkaline medium.
+Alkaline medium
+ 2H2O + O2
+The rate equation for this reaction is found to be
+    2 2
+Rate H O I
+This reaction is first order with respect to both H2O2 and I–. Evidences suggest that this reaction takes place in two steps (1) H2O2 + I– ® H2O + IO– (2) H2O2 + IO– ® H2O + I– + O2
+Both the steps are bimolecular elementary reactions. Species IO- is called as an intermediate since it is formed during the course of the reaction but not in the overall balanced equation. The first step, being slow, is the rate determining step. Thus, the rate of formation of intermediate will determine the rate of this reaction.
+Thus, from the discussion, till now, we conclude the following:
+(i) Order of a reaction is an experimental quantity. It can be zero and even a fraction but molecularity cannot be zero or a non integer.
+(ii) Order is applicable to elementary as well as complex reactions whereas molecularity is applicable only for elementary reactions.
+For complex reaction molecularity has no meaning.
+Reprint 2026-27
+71 Chemical Kinetics (iii) For complex reaction, order is given by the slowest step and molecularity of the slowest step is same as the order of the overall reaction.
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+3.3 For a reaction, A + B ® Product; the rate law is given by, r = k [ A]1/2 [B]2.
+What is the order of the reaction?
+3.4 The conversion of molecules X to Y follows second order kinetics. If concentration of X is increased to three times how will it affect the rate of formation of Y ?
+We have already noted that the concentration dependence of rate is called differential rate equation. It is not always convenient to determine the instantaneous rate, as it is measured by determination of slope of the tangent at point ‘t’ in concentration vs time plot (Fig. 3.1). This makes it difficult to determine the rate law and hence the order of the reaction. In order to avoid this difficulty, we can integrate the differential rate equation to give a relation between directly measured experimental data, i.e., concentrations at different times and rate constant.
+The integrated rate equations are different for the reactions of different reaction orders. We shall determine these equations only for zero and first order chemical reactions.
+Zero order reaction means that the rate of the reaction is proportional to zero power of the concentration of reactants. Consider the reaction,
+Rate =    0 d R R
+As any quantity raised to power zero is unity
+Rate =   d R 1 d[R] = – k dt
+Integrating both sides
+[R] = – k t + I (3.5)
+where, I is the constant of integration.
+At t = 0, the concentration of the reactant R = [R]0, where [R]0 is initial concentration of the reactant.
+Substituting in equation (3.5)
+[R]0 = –k × 0 + I
+[R]0 = I
+Substituting the value of I in the equation (3.5)
+[R] = -kt + [R]0 (3.6)
+3 . 3 3 . 3 3 . 3 3 . 3 3 . 3 Integrated Integrated Integrated Integrated Integrated
+Rate Rate Rate Rate Rate
+Equations Equations Equations Equations Equations
+3.3.1 Zero Order
+Reactions
+Reprint 2026-27

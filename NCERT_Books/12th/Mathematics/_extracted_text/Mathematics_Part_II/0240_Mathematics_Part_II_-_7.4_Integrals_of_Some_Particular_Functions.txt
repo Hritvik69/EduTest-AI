@@ -1,0 +1,176 @@
+MATHEMATICS 450
+9. cy = log y x –1 10. C ye x + =
+11. log ( x2 + y2) + 2 tan–1 y x = π log 2
+12. y + 2x = 3x2 y 13. cot log
+  =  
+14. cos log
+  =  
+  15. 2 ( 0, )
+16. C 17. D
+EXERCISE 9.5
+1. y = 1
+5 (2sin x – cos x) + C e–2x 2. y = e–2x + Ce–3x xy = + 4. y (sec x + tan x) = sec x + tan x – x + C
+5. y = (tan x – 1) + C e–tanx 6.
+(4log 1) C log (1 log ) C
+= + + y x x x 8. 1 2 1
+= (1+ ) log sin C (1 ) y x x x− −
+= − + 10. (x + y + 1) = C ey x y 12. x = 3y2 + Cy
+13. y = cos x – 2 cos2 x 14. y (1 + x2) = tan–1 x – 4
+15. y = 4 sin3 x – 2 sin2 x 16. x + y + 1 = ex
+17. y = 4 – x – 2 ex 18. C 19. D
+Miscellaneous Exercise on Chapter 9
+1. (i) Order 2; Degree 1 (ii) Order 1; Degree 3 (iii) Order 4; Degree not defined
+Reprint 2026-27
+ANSWERS 451
+4. sin–1y + sin–1x = C 6. cos y = sec
+7. tan–1 y + tan–1(ex) = π
+9. log – 1 x y x y = + + 10. 2 (2 C)x y e x = + sin 2 (sin 0)
+y x x x = − ≠ 12. 2 1
+13. C 14. C
+EXERCISE 10.1
+1. In the adjoining figure, the vector represents the required displacement.
+2. (i) scalar (ii) vector (iii) scalar (iv) scalar (v) scalar (vi) vector
+3. (i) scalar (ii) scalar (iii) vector (iv) vector (v) scalar
+4. (i) Vectors and are coinitial (ii) Vectors and are equal (iii) Vectors and are collinear but not equal
+5. (i) True (ii) False (iii) False (iv) False
+EXERCISE 10.2
+2. An infinite number of possible answers.
+Reprint 2026-27
+MATHEMATICS 452
+3. An infinite number of possible answers.
+4. x = 2, y = 3 5. – 7 and 6; ˆ ˆ –7 and 6 i j
+6. ˆ ˆ 4 j k − − 7. 1 1 2 ˆ ˆ ˆ i j k + +
+8. 1 1 1 ˆ ˆ ˆ i j k + + 9. 1 1 ˆ ˆ
+10. 40 8 16 ˆ ˆ ˆ
+30 30 30 i j k − + 12. 1 2 3
+14 14 14
+13. 1 2 2
+− − 15. (i) 1 4 1 ˆ ˆ ˆ i j k − + + (ii) ˆ ˆ 3 3 i k − +
+16. ˆ ˆ ˆ 3 2 i j k + + 18. (C) 19. (B), (C), (D)
+EXERCISE 10.3
+4 2. 3. 0
+114 6. 16 2 2 2
+3 7 3 7 7.
+8. 9. 13 10. 8
+12. Vector can be any vector 13. 3
+14. Take any two non-zero perpendicular vectors and
+15. 18. (D)
+EXERCISE 10.4
+1. 19 2 2. 2 2 1 ˆ ˆ ˆ i j k ± 3. π 1 1 1
+3, 2 6. Either
+Reprint 2026-27
+ANSWERS 453
+8. No; take any two nonzero collinear vectors
+10. 15 2 11. (B) 12. (C)
+Miscellaneous Exercise on Chapter 10
+1. 3 1ˆ ˆ
+2. 2 2 2
+2 1 2 1 2 1 2 1 2 1 2 1 – , – , ; ( ) ( ) ( ) x x y y z z x x y y z z − − + − + −
+3. 5 3 3 ˆ ˆ
+4. No; take , and r c to represent the sides of a triangle.
+± 6. 3 10ˆ ˆ 10 i j + 7. 3 3 2 ˆ ˆ ˆ
+22 22 22 i j k − +
+8. 2 : 3 9. 3 + 5 10. 1 ˆ ˆ ˆ (3 – 6 2 ); 11 5
+7 i j k +
+12. 1 ˆ ˆ ˆ (160 – 5 70 )
+3 i j k + 13. λ = 1 16. (B)
+17. (D) 18. (C) 19. (B)
+EXERCISE 11.1
+− 2. 1 1 1
+± ± ± 3.
+5. 2 2 3 2 3 2 4 5 1
+, , ; , , ; , ,
+17 17 17 17 17 17 42 42 42
+− − − − − −
+EXERCISE 11.2
+4. , where λ is a real number
+5. and cartesian form is
+Reprint 2026-27
+MATHEMATICS 454
+7. ˆ ˆ ˆ ˆ ˆ ˆ (5 4 6 ) (3 7 2 ) = − + + λ + + r i j k i j k
+8. (i) θ = 1 19
+  (ii) θ = 1 8
+9. (i) θ = 1 26 cos 9 38 (ii) θ = 1 2 p = 12. 3 2
+2 13. 2 29
+19 15. 29
+Miscellaneous Exercise on Chapter 11
+1. 90° 2. 1 0 0
+= = 3. 10
+EXERCISE 12.1
+1. Maximum Z = 16 at (0, 4)
+2. Minimum Z = – 12 at (4, 0)
+3. Maximum Z = 235
+19 at 20
+4. Minimum Z = 7 at 3
+5. Maximum Z = 18 at (4, 3)
+6. Minimum Z = 6 at all the points on the line segment joining the points (6, 0)
+and (0, 3).
+Reprint 2026-27
+ANSWERS 455
+7. Minimum Z = 300 at (60, 0);
+Maximum Z = 600 at all the points on the line segment joining the points (120, 0)
+and (60, 30).
+8. Minimum Z = 100 at all the points on the line segment joining the points (0, 50)
+and (20, 40);
+Maximum Z = 400 at (0, 200)
+9. Z has no maximum value
+10. No feasible region, hence no maximum value of Z.
+EXERCISE 13.1
+1. ( ) ( )
+P E|F , P F|E
+= = 2. ( ) 16
+P A|B 25
+3. (i) 0.32 (ii) 0.64 (iii) 0.98
+5. (i) 4
+11 (ii) 4
+5 (iii) 2
+6. (i) 1
+2 (ii) 3
+7 (iii) 6
+7. (i) 1 (ii) 0
+6 9. 1 10. (a) 1
+3 , (b) 1
+11. (i) 1
+3 (ii) 1
+3 (iii) 3
+12. (i) 1
+2 (ii) 1
+15 15. 0 16. C 17. D
+Reprint 2026-27
+MATHEMATICS 456
+EXERCISE 13.2
+25 2. 25
+102 3. 44
+4. A and B are independent 5. A and B are not independent
+6. E and F are not independent
+7. (i) 1 p = (ii) 1
+8. (i) 0.12 (ii) 0.58 (iii) 0.3 (iv) 0.4
+8 10. A and B are not independent
+11. (i) 0.18 (ii) 0.12 (iii) 0.72 (iv) 0.28
+8 13. (i) 16
+81 , (ii) 20
+81 , (iii) 40
+14. (i) 2
+3 , (ii) 1
+2 15. (i) , (ii) 16. (a) 1
+5 , (b) 1
+3 , (c) 1
+17. D 18. B
+EXERCISE 13.3
+13 4. 12
+133 6. 4
+11 11. 5
+34 12. 11
+13. A 14. C
+Miscellaneous Exercise on Chapter 13
+1. (i) 1 (ii) 0
+2. (i) 1
+3 (ii) 1
+Reprint 2026-27
+ANSWERS 457
+6. 1 2 8
+15 5 15 7. 14
+9. (i) 0.5 (ii) 0.05 10. 16
+11. A 12. C 13. B
+— v v v v v—
+Reprint 2026-27

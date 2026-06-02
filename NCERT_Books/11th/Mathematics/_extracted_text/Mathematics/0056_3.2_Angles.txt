@@ -1,0 +1,116 @@
+44 MATHEMATICS called the initial side and the final position of the ray after rotation is called the terminal side of the angle. The point of rotation is called the vertex. If the direction of rotation is anticlockwise, the angle is said to be positive and if the direction of rotation is clockwise, then the angle is negative (Fig 3.1).
+The measure of an angle is the amount of rotation performed to get the terminal side from the initial side. There are several units for measuring angles. The definition of an angle suggests a unit, viz. one complete revolution from the position of the initial side as indicated in Fig 3.2.
+This is often convenient for large angles. For example, we can say that a rapidly spinning wheel is making an angle of say 15 revolution per second. We shall describe two other units of measurement of an angle which are most commonly used, viz.
+degree measure and radian measure.
+3.2.1 Degree measure If a rotation from the initial side to terminal side is a revolution, the angle is said to have a measure of one degree, written as 1°. A degree is divided into 60 minutes, and a minute is divided into 60 seconds . One sixtieth of a degree is called a minute, written as 1′, and one sixtieth of a minute is called a second, written as 1″.
+Thus, 1° = 60′, 1′ = 60″
+Some of the angles whose measures are 360°,180°, 270°, 420°, – 30°, – 420° are shown in Fig 3.3.
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 45
+3.2.2 Radian measure There is another unit for measurement of an angle, called the radian measure. Angle subtended at the centre by an arc of length 1 unit in a unit circle (circle of radius 1 unit) is said to have a measure of 1 radian. In the Fig
+3.4(i) to (iv), OA is the initial side and OB is the terminal side. The figures show the angles whose measures are 1 radian, –1 radian, 1 1
+2 radian and –1 1
+2 radian.
+(i) (ii) (iii)
+Fig 3.4 (i) to (iv)
+We know that the circumference of a circle of radius 1 unit is 2π. Thus, one complete revolution of the initial side subtends an angle of 2π radian.
+More generally, in a circle of radius r, an arc of length r will subtend an angle of
+1 radian. It is well-known that equal arcs of a circle subtend equal angle at the centre.
+Since in a circle of radius r, an arc of length r subtends an angle whose measure is 1 radian, an arc of length l will subtend an angle whose measure is l r radian. Thus, if in a circle of radius r, an arc of length l subtends an angle θ radian at the centre, we have r or l = r θ.
+Reprint 2026-27
+46 MATHEMATICS
+3.2.3 Relation between radian and real numbers
+Consider the unit circle with centre O. Let A be any point on the circle. Consider OA as initial side of an angle.
+Then the length of an arc of the circle will give the radian measure of the angle which the arc will subtend at the centre of the circle. Consider the line PAQ which is tangent to the circle at A. Let the point A represent the real number zero, AP represents positive real number and
+AQ represents negative real numbers (Fig 3.5). If we rope the line AP in the anticlockwise direction along the circle, and AQ in the clockwise direction, then every real number will correspond to a radian measure and conversely. Thus, radian measures and real numbers can be considered as one and the same.
+3.2.4 Relation between degree and radian Since a circle subtends at the centre an angle whose radian measure is 2π and its degree measure is 360°, it follows that
+2π radian = 360° or π radian = 180°
+The above relation enables us to express a radian measure in terms of degree measure and a degree measure in terms of radian measure. Using approximate value of π as 22
+7 , we have
+1 radian = 180
+° = 57° 16′ approximately.
+Also 1° = π
+180 radian = 0.01746 radian approximately.
+The relation between degree measures and radian measure of some common angles are given in the following table:
+Degree 30° 45° 60° 90° 180° 270° 360°
+Radian π
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 47
+Notational Convention
+Since angles are measured either in degrees or in radians, we adopt the convention that whenever we write angle θ°, we mean the angle whose degree measure is θ and whenever we write angle β, we mean the angle whose radian measure is β.
+Note that when an angle is expressed in radians, the word ‘radian’ is frequently omitted. Thus, π
+π 180 and 45
+= ° = ° are written with the understanding that π and π are radian measures. Thus, we can say that
+Radian measure = π
+180 × Degree measure
+Degree measure = 180
+π × Radian measure
+Example 1 Convert 40° 20′ into radian measure.
+Solution We know that 180° = π radian.
+Hence 40° 20′ = 40 1
+3 degree = π
+180 × 121
+3 radian = 121π
+540 radian.
+Therefore 40° 20′ = 121π
+540 radian.
+Example 2 Convert 6 radians into degree measure.
+Solution We know that π radian = 180°.
+Hence 6 radians = 180
+π × 6 degree = 1080 7
+× degree
+11degree = 343° + 7 60
+× minute [as 1° = 60′]
+= 343° + 38′ + 2
+11 minute [as 1′ = 60″]
+= 343° + 38′ + 10.9″ = 343°38′ 11″ approximately.
+Hence 6 radians = 343° 38′ 11″ approximately.
+Example 3 Find the radius of the circle in which a central angle of 60° intercepts an arc of length 37.4 cm (use 22
+Reprint 2026-27
+48 MATHEMATICS
+Solution Here l = 37.4 cm and θ = 60° = 60π π radian =
+Hence, by r = θ l , we have r = 37.4×3 37.4×3×7
+π 22 = 35.7 cm
+Example 4 The minute hand of a watch is 1.5 cm long. How far does its tip move in
+40 minutes? (Use π = 3.14).
+Solution In 60 minutes, the minute hand of a watch completes one revolution. Therefore, in 40 minutes, the minute hand turns through 2
+3 of a revolution. Therefore, 2
+θ = × 360°
+3 radian. Hence, the required distance travelled is given by l = r θ = 1.5 × 4π
+3 cm = 2π cm = 2 × 3.14 cm = 6.28 cm.
+Example 5 If the arcs of the same lengths in two circles subtend angles 65°and 110° at the centre, find the ratio of their radii.
+Solution Let r1 and r2 be the radii of the two circles. Given that
+θ1 = 65° = π 65
+180 × = 13π
+36 radian and θ2 = 110° = π 110
+180 × = 22π
+36 radian
+Let l be the length of each of the arc. Then l = r1θ1 = r2θ2, which gives
+36 × r1 = 22π
+36 × r2 , i.e., 1
+Hence r1 : r2 = 22 : 13.
+EXERCISE 3.1
+1. Find the radian measures corresponding to the following degree measures:
+(i) 25° (ii) – 47°30′ (iii) 240° (iv) 520°
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 49
+2 . Find the degree measures corresponding to the following radian measures
+16 (ii) – 4 (iii) 5π
+3 (iv) 7π
+3. A wheel makes 360 revolutions in one minute. Through how many radians does it turn in one second?
+4. Find the degree measure of the angle subtended at the centre of a circle of radius 100 cm by an arc of length 22 cm (Use 22
+5. In a circle of diameter 40 cm, the length of a chord is 20 cm. Find the length of minor arc of the chord.
+6. If in two circles, arcs of the same length subtend angles 60° and 75° at the centre, find the ratio of their radii.
+7. Find the angle in radian through which a pendulum swings if its length is 75 cm and th e tip describes an arc of length (i) 10 cm (ii) 15 cm (iii) 21 cm
+3.3 Trigonometric Functions
+In earlier classes, we have studied trigonometric ratios for acute angles as the ratio of sides of a right angled triangle. We will now extend the definition of trigonometric ratios to any angle in terms of radian measure and study them as trigonometric functions.
+Consider a unit circle with centre at origin of the coordinate axes. Let
+P (a, b) be any point on the circle with angle AOP = x radian, i.e., length of arc
+AP = x (Fig 3.6).
+We define cos x = a and sin x = b
+Since ∆OMP is a right triangle, we have
+OM2 + MP2 = OP2 or a2 + b2 = 1
+Thus, for every point on the unit circle, a2 + b2 = 1 or cos2 x + sin2 x = 1
+Since one complete revolution subtends an angle of 2π radian at the centre of the circle, ∠AOB = π
+2 , Fig 3.6
+Reprint 2026-27

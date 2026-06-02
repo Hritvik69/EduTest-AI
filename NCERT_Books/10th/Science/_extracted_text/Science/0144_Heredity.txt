@@ -1,0 +1,98 @@
+Science 132 inherited. This is explained by the fact that each gene set is present, not as a single long thread of DNA, but as separate independent pieces, each called a chromosome. Thus, each cell will have two copies of each chromosome, one each from the male and female parents. Every germ- cell will take one chromosome from each pair and these may be of either maternal or paternal origin. When two germ cells combine, they will restore the normal number of chromosomes in the progeny, ensuring the stability of the DNA of the species. Such a mechanism of inheritance explains the results of the Mendel experiments, and is used by all sexually reproducing organisms. But asexually reproducing organisms also follow similar rules of inheritance. Can we work out how their inheritance might work?
+8.2.4 Sex Determination
+We have discussed the idea that the two sexes participating in sexual reproduction must be somewhat different from each other for a number of reasons. How is the sex of a newborn individual determined? Different species use very different strategies for this. Some rely entirely on environmental cues. Thus, in some animals like a few reptiles, the temperature at which fertilised eggs are kept determines whether the animals developing in the eggs will be male or female. In other animals, such as snails, individuals can change sex, indicating that sex is not genetically determined. However, in human beings, the sex of the individual is largely genetically determined. In other words, the genes inherited from our parents decide whether we will be boys or girls.
+But so far, we have assumed that similar gene sets are inherited from both parents. If that is the case, how can genetic inheritance determine sex?
+The explanation lies in the fact that all human chromosomes are not paired. Most human chromosomes have a maternal and a paternal copy, and we have 22 such pairs. But one pair, called the sex chromosomes, is odd in not always being a perfect pair. Women have a perfect pair of sex chromosomes, both called X. But men have a mismatched pair in which one is a normal-sized X while the other is a short one called Y. So women are XX, while men are XY. Now, can we work out what the inheritance pattern of X and Y will be?
+As Fig. 8.6 shows, half the children will be boys and half will be girls. All children will inherit an X chromosome from their mother regardless of whether they are boys or girls. Thus, the sex of the children will be determined by what they inherit from their father. A child who inherits an X chromosome from her father will be a girl, and one who inherits a Y chromosome from him will be a boy.
+Figure 8.6 Figure 8.6 Figure 8.6 Figure 8.6 Figure 8.6
+Sex determination in human beings
+Reprint 2026-27
+Heredity 133
+Q U E S T I O N S
+1. How do Mendel’s experiments show that traits may be dominant or recessive?
+2. How do Mendel’s experiments show that traits are inherited independently?
+3. A man with blood group A marries a woman with blood group O and their daughter has blood group O. Is this information enough to tell you which of the traits – blood group A or O – is dominant? Why or why not?
+4. How is the sex of the child determined in human beings?
+What you have learnt n Variations arising during the process of reproduction can be inherited.
+n These variations may lead to increased survival of the individuals.
+n Sexually reproducing individuals have two copies of genes for the same trait. If the copies are not identical, the trait that gets expressed is called the dominant trait and the other is called the recessive trait.
+n Traits in one individual may be inherited separately, giving rise to new combinations of traits in the offspring of sexual reproduction.
+n Sex is determined by different factors in various species. In human beings, the sex of the child depends on whether the paternal chromosome is X (for girls) or Y (for boys).
+E X E R C I S E S
+1. A Mendelian experiment consisted of breeding tall pea plants bearing violet flowers with short pea plants bearing white flowers. The progeny all bore violet flowers, but almost half of them were short. This suggests that the genetic make-up of the tall parent can be depicted as (a) TTWW (b) TTww (c) TtWW (d) TtWw
+2. A study found that children with light-coloured eyes are likely to have parents with light-coloured eyes. On this basis, can we say anything about whether the light eye colour trait is dominant or recessive? Why or why not?
+3. Outline a project which aims to find the dominant coat colour in dogs.
+4. How is the equal genetic contribution of male and female parents ensured in the progeny?
+Reprint 2026-27
+Science 134
+Light – Reflection and
+Refraction
+9 CHAPTER
+We see a variety of objects in the world around us. However, we are unable to see anything in a dark room. On lighting up the room, things become visible. What makes things visible? During the day, the sunlight helps us to see objects. An object reflects light that falls on it.
+This reflected light, when received by our eyes, enables us to see things.
+We are able to see through a transparent medium as light is transmitted through it. There are a number of common wonderful phenomena associated with light such as image formation by mirrors, the twinkling of stars, the beautiful colours of a rainbow, bending of light by a medium and so on. A study of the properties of light helps us to explore them.
+By observing the common optical phenomena around us, we may conclude that light seems to travel in straight lines. The fact that a small source of light casts a sharp shadow of an opaque object points to this straight-line path of light, usually indicated as a ray of light.
+More to Know!
+If an opaque object on the path of light becomes very small, light has a tendency to bend around it and not walk in a straight line – an effect known as the diffraction of light. Then the straight-line treatment of optics using rays fails. To explain phenomena such as diffraction, light is thought of as a wave, the details of which you will study in higher classes. Again, at the beginning of the 20th century, it became known that the wave theory of light often becomes inadequate for treatment of the interaction of light with matter, and light often behaves somewhat like a stream of particles. This confusion about the true nature of light continued for some years till a modern quantum theory of light emerged in which light is neither a ‘wave’ nor a ‘particle’ – the new theory reconciles the particle properties of light with the wave nature.
+In this Chapter, we shall study the phenomena of reflection and refraction of light using the straight-line propagation of light. These basic concepts will help us in the study of some of the optical phenomena in nature. We shall try to understand in this Chapter the reflection of light by spherical mirrors and refraction of light and their application in real life situations.
+9.1 REFLECTION OF LIGHT 9.1 REFLECTION OF LIGHT 9.1 REFLECTION OF LIGHT 9.1 REFLECTION OF LIGHT 9.1 REFLECTION OF LIGHT
+A highly polished surface, such as a mirror, reflects most of the light falling on it. You are already familiar with the laws of reflection of light.
+Reprint 2026-27
+Light – Reflection and Refraction 135
+Let us recall these laws – (i) The angle of incidence is equal to the angle of reflection, and (ii) The incident ray, the normal to the mirror at the point of incidence and the reflected ray, all lie in the same plane.
+These laws of reflection are applicable to all types of reflecting surfaces including spherical surfaces. You are familiar with the formation of image by a plane mirror. What are the properties of the image? Image formed by a plane mirror is always virtual and erect. The size of the image is equal to that of the object. The image formed is as far behind the mirror as the object is in front of it. Further, the image is laterally inverted.
+How would the images be when the reflecting surfaces are curved? Let us explore.
+Activity 9.1 Activity 9.1 Activity 9.1 Activity 9.1 Activity 9.1 n Take a large shining spoon. Try to view your face in its curved surface.
+n Do you get the image? Is it smaller or larger?
+n Move the spoon slowly away from your face. Observe the image.
+How does it change?
+n Reverse the spoon and repeat the Activity. How does the image look like now?
+n Compare the characteristics of the image on the two surfaces.
+The curved surface of a shining spoon could be considered as a curved mirror. The most commonly used type of curved mirror is the spherical mirror. The reflecting surface of such mirrors can be considered to form a part of the surface of a sphere. Such mirrors, whose reflecting surfaces are spherical, are called spherical mirrors. We shall now study about spherical mirrors in some detail.
+9.2 SPHERIC 9.2 SPHERIC 9.2 SPHERIC 9.2 SPHERIC 9.2 SPHERICAL MIRRORS AL MIRRORS AL MIRRORS AL MIRRORS AL MIRRORS
+The reflecting surface of a spherical mirror may be curved inwards or outwards. A spherical mirror, whose reflecting surface is curved inwards, that is, faces towards the centre of the sphere, is called a concave mirror.
+A spherical mirror whose reflecting surface is curved outwards, is called a convex mirror. The schematic representation of these mirrors is shown in Fig. 9.1. You may note in these diagrams that the back of the mirror is shaded.
+You may now understand that the surface of the spoon curved inwards can be approximated to a concave mirror and the surface of the spoon bulged outwards can be approximated to a convex mirror.
+Before we move further on spherical mirrors, we need to recognise and understand the meaning of a few terms. These terms are commonly used in discussions about spherical mirrors. The centre of the reflecting surface of a spherical mirror is a point called the pole. It lies on the surface of the mirror. The pole is usually represented by the letter P.
+Figure 9.1 Figure 9.1 Figure 9.1 Figure 9.1 Figure 9.1
+Schematic representation of spherical mirrors; the shaded side is non-reflecting.
+(a) Concave mirror (b) Convex mirror
+Reprint 2026-27
+Science 136
+The reflecting surface of a spherical mirror forms a part of a sphere.
+This sphere has a centre. This point is called the centre of curvature of the spherical mirror. It is represented by the letter C. Please note that the centre of curvature is not a part of the mirror. It lies outside its reflecting surface. The centre of curvature of a concave mirror lies in front of it.
+However, it lies behind the mirror in case of a convex mirror. You may note this in Fig.9.2 (a) and (b). The radius of the sphere of which the reflecting surface of a spherical mirror forms a part, is called the radius of curvature of the mirror. It is represented by the letter R. You may note that the distance PC is equal to the radius of curvature. Imagine a straight line passing through the pole and the centre of curvature of a spherical mirror. This line is called the principal axis. Remember that principal axis is normal to the mirror at its pole. Let us understand an important term related to mirrors, through an Activity.
+Activity 9.2 Activity 9.2 Activity 9.2 Activity 9.2 Activity 9.2
+CAUTION: Do not look at the Sun directly or even into a mirror reflecting sunlight. It may damage your eyes.
+n Hold a concave mirror in your hand and direct its reflecting surface towards the Sun.
+n Direct the light reflected by the mirror on to a sheet of paper held close to the mirror.
+n Move the sheet of paper back and forth gradually until you find on the paper sheet a bright, sharp spot of light.
+n Hold the mirror and the paper in the same position for a few minutes. What do you observe? Why?
+The paper at first begins to burn producing smoke. Eventually it may even catch fire. Why does it burn? The light from the Sun is converged at a point, as a sharp, bright spot by the mirror. In fact, this spot of light is the image of the Sun on the sheet of paper. This point is the focus of the concave mirror. The heat produced due to the concentration of sunlight ignites the paper. The distance of this image from the position of the mirror gives the approximate value of focal length of the mirror.
+Let us try to understand this observation with the help of a ray diagram.
+Observe Fig.9.2 (a) closely. A number of rays parallel to the principal axis are falling on a concave mirror. Observe the reflected rays. They are all meeting/intersecting at a point on the principal axis of the mirror. This point is called the principal focus of the concave mirror. Similarly, observe
+Fig. 9.2 (b). How are the rays parallel to the principal axis, reflected by a convex mirror? The reflected rays appear to come from a point on the principal axis. This point is called the principal focus of the convex mirror. The principal focus is represented by the letter F. The distance between the pole and the principal focus of a spherical mirror is called the focal length. It is represented by the letter f.
+Figure 9.2 Figure 9.2 Figure 9.2 Figure 9.2 Figure 9.2 (a) Concave mirror (b) Convex mirror
+Reprint 2026-27
+Light – Reflection and Refraction 137
+The reflecting surface of a spherical mirror is by-and-large spherical.
+The surface, then, has a circular outline. The diameter of the reflecting surface of spherical mirror is called its aperture. In Fig.9.2, distance MN represents the aperture. We shall consider in our discussion only such spherical mirrors whose aperture is much smaller than its radius of curvature.
+Is there a relationship between the radius of curvature R, and focal length f, of a spherical mirror? For spherical mirrors of small apertures, the radius of curvature is found to be equal to twice the focal length. We put this as R = 2f . This implies that the principal focus of a spherical mirror lies midway between the pole and centre of curvature.
+9.2.1 Image Formation by Spherical Mirrors
+You have studied about the image formation by plane mirrors. You also know the nature, position and relative size of the images formed by them.
+How about the images formed by spherical mirrors? How can we locate the image formed by a concave mirror for different positions of the object?
+Are the images real or virtual? Are they enlarged, diminished or have the same size? We shall explore this with an Activity.
+Activity 9.3 Activity 9.3 Activity 9.3 Activity 9.3 Activity 9.3
+You have already learnt a way of determining the focal length of a concave mirror. In Activity 9.2, you have seen that the sharp bright spot of light you got on the paper is, in fact, the image of the Sun. It was a tiny, real, inverted image. You got the approximate focal length of the concave mirror by measuring the distance of the image from the mirror.
+n Take a concave mirror. Find out its approximate focal length in the way described above. Note down the value of focal length. (You can also find it out by obtaining image of a distant object on a sheet of paper.)
+n Mark a line on a Table with a chalk. Place the concave mirror on a stand. Place the stand over the line such that its pole lies over the line.
+n Draw with a chalk two more lines parallel to the previous line such that the distance between any two successive lines is equal to the focal length of the mirror. These lines will now correspond to the positions of the points P, F and C, respectively. Remember –
+For a spherical mirror of small aperture, the principal focus F lies mid-way between the pole P and the centre of curvature C.
+n Keep a bright object, say a burning candle, at a position far beyond
+C. Place a paper screen and move it in front of the mirror till you obtain a sharp bright image of the candle flame on it.
+n Observe the image carefully. Note down its nature, position and relative size with respect to the object size.
+n Repeat the activity by placing the candle – (a) just beyond C, (b) at C, (c) between F and C, (d) at F, and (e) between P and F.
+n In one of the cases, you may not get the image on the screen.
+Identify the position of the object in such a case. Then, look for its virtual image in the mirror itself.
+n Note down and tabulate your observations.
+Reprint 2026-27

@@ -1,0 +1,112 @@
+MATHEMATICS 106
+Example 1 Check the continuity of the function f given by f (x) = 2x + 3 at x = 1.
+Solution First note that the function is defined at the given point x = 1 and its value is 5.
+Then find the limit of the function at x = 1. Clearly lim ( ) lim (2 3) 2(1) 3 5
+= + = + = lim ( ) 5 (1)
+Hence, f is continuous at x = 1.
+Example 2 Examine whether the function f given by f (x) = x2 is continuous at x = 0.
+Solution First note that the function is defined at the given point x = 0 and its value is 0.
+Then find the limit of the function at x = 0. Clearly lim ( ) lim 0 0 lim ( ) 0 (0)
+Hence, f is continuous at x = 0.
+Example 3 Discuss the continuity of the function f given by f(x) = | x | at x = 0.
+Solution By definition f (x) = , if 0
+Clearly the function is defined at 0 and f (0) = 0. Left hand limit of f at 0 is lim ( ) lim (– ) 0 f x x − −
+Similarly, the right hand limit of f at 0 is lim ( ) lim 0 f x x + +
+Thus, the left hand limit, right hand limit and the value of the function coincide at x = 0. Hence, f is continuous at x = 0.
+Example 4 Show that the function f given by
+3 3, if 0 is not continuous at x = 0.
+Reprint 2026-27
+CONTINUITY AND DIFFERENTIABILITY 107
+Solution The function is defined at x = 0 and its value at x = 0 is 1. When x ≠ 0, the function is given by a polynomial. Hence, lim ( 3) 0 3 3
+Since the limit of f at x = 0 does not coincide with f (0), the function is not continuous at x = 0. It may be noted that x = 0 is the only point of discontinuity for this function.
+Example 5 Check the points where the constant function f (x) = k is continuous.
+Solution The function is defined at all real numbers and by definition, its value at any real number equals k. Let c be any real number. Then
+Since f (c) = k = lim x c → f (x) for any real number c, the function f is continuous at every real number.
+Example 6 Prove that the identity function on real numbers given by f (x) = x is continuous at every real number.
+Solution The function is clearly defined at every point and f (c) = c for every real number c. Also,
+Thus, lim x c → f (x) = c = f (c) and hence the function is continuous at every real number.
+Having defined continuity of a function at a given point, now we make a natural extension of this definition to discuss continuity of a function.
+Definition 2 A real function f is said to be continuous if it is continuous at every point in the domain of f.
+This definition requires a bit of elaboration. Suppose f is a function defined on a closed interval [a, b], then for f to be continuous, it needs to be continuous at every point in [a, b] including the end points a and b. Continuity of f at a means
+→ = f (a)
+and continuity of f at b means
+→ = f(b)
+Observe that lim ( )
+and lim ( )
+do not make sense. As a consequence of this definition, if f is defined only at one point, it is continuous there, i.e., if the domain of f is a singleton, f is a continuous function.
+Reprint 2026-27
+MATHEMATICS 108
+Example 7 Is the function defined by f (x) = | x |, a continuous function?
+Solution We may rewrite f as f (x) = , if 0
+By Example 3, we know that f is continuous at x = 0.
+Let c be a real number such that c < 0. Then f (c) = – c. Also
+→ = lim ( ) –
+→ − = (Why?)
+Since lim ( ) ( )
+= , f is continuous at all negative real numbers.
+Now, let c be a real number such that c > 0. Then f (c) = c. Also
+→ = (Why?)
+Since lim ( ) ( )
+= , f is continuous at all positive real numbers. Hence, f is continuous at all points.
+Example 8 Discuss the continuity of the function f given by f (x) = x3 + x2 – 1.
+Solution Clearly f is defined at every real number c and its value at c is c3 + c2 – 1. We also know that
+→ = 3 2 3 2 lim ( 1) 1
++ − = + −
+Thus lim ( ) ( )
+x c f x f c
+→ = , and hence f is continuous at every real number. This means f is a continuous function.
+Example 9 Discuss the continuity of the function f defined by f (x) = 1 x , x ≠ 0.
+Solution Fix any non zero real number c, we have lim ( ) lim f x x c → →
+Also, since for c ≠ 0, 1 ( ) f c c
+= , we have lim ( ) ( )
+x c f x f c
+→ = and hence, f is continuous at every point in the domain of f. Thus f is a continuous function.
+Reprint 2026-27
+CONTINUITY AND DIFFERENTIABILITY 109
+We take this opportunity to explain the concept of infinity. This we do by analysing the function f (x) = 1 x near x = 0. To carry out this analysis we follow the usual trick of finding the value of the function at real numbers close to 0. Essentially we are trying to find the right hand limit of f at 0. We tabulate this in the following (Table 5.1).
+Table 5.1 x 1 0.3 0.2 0.1 = 10–1 0.01 = 10–2 0.001 = 10–3 10–n f (x) 1 3.333... 5 10 100 = 102 1000 = 103 10n
+We observe that as x gets closer to 0 from the right, the value of f (x) shoots up higher. This may be rephrased as: the value of f (x) may be made larger than any given number by choosing a positive real number very close to 0. In symbols, we write (to be read as: the right hand limit of f (x) at 0 is plus infinity). We wish to emphasise that + ∞ is NOT a real number and hence the right hand limit of f at 0 does not exist (as a real number).
+Similarly, the left hand limit of f at 0 may be found. The following table is self explanatory.
+Table 5.2 x – 1 – 0.3 – 0.2 – 10–1 – 10–2 – 10–3 – 10–n f (x) – 1 – 3.333... – 5 – 10 – 102 – 103 – 10n
+From the Table 5.2, we deduce that the value of f (x) may be made smaller than any given number by choosing a negative real number very close to 0. In symbols, we write (to be read as: the left hand limit of f (x) at 0 is minus infinity). Again, we wish to emphasise that – ∞ is NOT a real number and hence the left hand limit of f at 0 does not exist (as a real number). The graph of the reciprocal function given in Fig 5.3 is a geometric representation of the above mentioned facts. Fig 5.3
+Reprint 2026-27
+MATHEMATICS 110
+Example 10 Discuss the continuity of the function f defined by f (x) = 2, if 1
+Solution The function f is defined at all points of the real line.
+Case 1 If c < 1, then f (c) = c + 2. Therefore, lim ( ) lim( 2) 2
+Thus, f is continuous at all real numbers less than 1.
+Case 2 If c > 1, then f (c) = c – 2. Therefore, lim ( ) lim
+= (x – 2) = c – 2 = f (c)
+Thus, f is continuous at all points x > 1.
+Case 3 If c = 1, then the left hand limit of f at x = 1 is lim ( ) lim ( 2) 1 2 3
+= + = + =
+The right hand limit of f at x = 1 is lim ( ) lim ( 2) 1 2 1 f x x + +
+= − = − = −
+Since the left and right hand limits of f at x = 1 do not coincide, f is not continuous at x = 1. Hence x = 1 is the only point of discontinuity of f. The graph of the function is given in Fig 5.4.
+Example 11 Find all the points of discontinuity of the function f defined by
+Solution As in the previous example we find that f is continuous at all real numbers x ≠ 1. The left hand limit of f at x = 1 is lim ( ) lim ( 2) 1 2 3
+= + = + =
+The right hand limit of f at x = 1 is lim ( ) lim ( 2) 1 2 1 f x x + +
+= − = − = −
+Since, the left and right hand limits of f at x = 1 do not coincide, f is not continuous at x = 1. Hence x = 1 is the only point of discontinuity of f. The graph of the function is given in the Fig 5.5.
+Reprint 2026-27
+CONTINUITY AND DIFFERENTIABILITY 111
+Example 12 Discuss the continuity of the function defined by f (x) = 2, if 0
+− + > 
+Solution Observe that the function is defined at all real numbers except at 0. Domain of definition of this function is
+D1 ∪ D2 where D1 = {x ∈ R : x < 0} and
+D2 = {x ∈ R : x > 0}
+Case 1 If c ∈ D1, then lim ( ) lim
+= (x + 2)
+= c + 2 = f (c) and hence f is continuous in D1.
+Case 2 If c ∈ D2, then lim ( ) lim
+= (– x + 2)
+= – c + 2 = f (c) and hence f is continuous in D2.
+Since f is continuous at all points in the domain of f, we deduce that f is continuous. Graph of this function is given in the Fig 5.6. Note that to graph this function we need to lift the pen from the plane of the paper, but we need to do that only for those points where the function is not defined.
+Example 13 Discuss the continuity of the function f given by f (x) = 2
+Solution Clearly the function is defined at every real number. Graph of the function is given in Fig 5.7. By inspection, it seems prudent to partition the domain of definition of f into three disjoint subsets of the real line.
+Let D1 = {x ∈ R : x < 0}, D2 = {0} and
+D3 = {x ∈ R : x > 0}
+Case 1 At any point in D1, we have f (x) = x2 and it is easy to see that it is continuous there (see Example 2).
+Case 2 At any point in D3, we have f (x) = x and it is easy to see that it is continuous there (see Example 6).
+Reprint 2026-27

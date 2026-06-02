@@ -1,0 +1,27 @@
+Computer SCienCe – ClaSS xi 78 go from A to B (T1) and B to C (T2) are given. That is, we want the algorithm to add time given in hours and minutes. One way to write the algorithm is:
+PRINT value for T1
+INPUT hh1
+INPUT mm1
+PRINT value for T2
+INPUT hh2
+INPUT mm2 hh_total = hh1 + hh2 (Add hours)
+mm_total = mm1 + mm2 (Add mins)
+Print T_total as hh_total, mm_total
+Now let us verify. Suppose the first example we take is T1 = 5 hrs 20 mins and T2 = 7 hrs 30 mins. On dry run, we get the result 12 hrs and 50 mins. This looks fine.
+Now let us take another example where T1 = 4 hrs 50 mins and T2 = 2 hrs 20 mins, and we end up getting the result as 6 hrs 70 mins which is not how we measure time. The result should have been 7 hrs 10 mins.
+With this second example we realise that our algorithm will work only when mm1 + mm2 (mm_total)
+< 60. For all other cases, it will give us output not the way we want. When mm_total >= 60, the algorithm should increase the sum of hours (hh_total) by 1 and reduce mm_total by 60, i.e., (mm_total - 60). So the modified algorithm will be:
+PRINT value for T1
+INPUT hh1
+INPUT mm1
+PRINT value for T2
+INPUT hh2
+INPUT mm2 hh_total = hh1 + hh2 (Add hours)
+mm_total = mm1 + mm2 (Add mins)
+hh_total = hh1 + hh2 (Add hours)
+mm_total = mm1 + mm2 (Add mins)
+IF (mm_total >= 60) THEN hh_total = hh_total + 1 mm_total = mm_total - 60
+PRINT T_total as hh_total, mm_total
+Now we can simulate through algorithm for T1 = 4 hrs 50 mins and T2 = 2 hrs 20 mins, and get T_total
+= 7 hrs and 10 mins, which means the algorithm is working correctly.
+Reprint 2026-27

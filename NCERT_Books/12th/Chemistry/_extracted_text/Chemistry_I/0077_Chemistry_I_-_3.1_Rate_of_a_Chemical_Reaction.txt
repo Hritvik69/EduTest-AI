@@ -1,0 +1,93 @@
+63 Chemical Kinetics
+Rate of appearance of P
+[ ] Increase in concentration of P P
+= Time taken t
+= + ∆ (3.2)
+Since, D[R] is a negative quantity (as concentration of reactants is decreasing), it is multiplied with –1 to make the rate of the reaction a positive quantity.
+Equations (3.1) and (3.2) given above represent the average rate of a reaction, rav.
+Average rate depends upon the change in concentration of reactants or products and the time taken for that change to occur (Fig. 3.1).
+Fig. 3.1: Instantaneous and average rate of a reaction
+Units of rate of a reaction
+From equations (3.1) and (3.2), it is clear that units of rate are concentration time–1. For example, if concentration is in mol L–1 and time is in seconds then the units will be mol L-1s–1. However, in gaseous reactions, when the concentration of gases is expressed in terms of their partial pressures, then the units of the rate equation will be atm s–1.
+From the concentrations of C4H9Cl (butyl chloride) at different times given below, calculate the average rate of the reaction:
+C4H9Cl + H2O ® C4H9OH + HCl during different intervals of time.
+t/s 0 50 100 150 200 300 400 700 800
+[C4H9Cl]/mol L–1 0.100 0.0905 0.0820 0.0741 0.0671 0.0549 0.0439 0.0210 0.017
+We can determine the difference in concentration over different intervals of time and thus determine the average rate by dividing D[R] by Dt (Table 3.1).
+Example 3.1 Example 3.1 Example 3.1 Example 3.1 Example 3.1
+Solution Solution Solution Solution Solution
+Reprint 2026-27
+64 Chemistry
+It can be seen (Table 3.1) that the average rate falls from 1.90 × 0-4 mol L-1s-1 to
+0.4 × 10-4 mol L-1s-1. However, average rate cannot be used to predict the rate of a reaction at a particular instant as it would be constant for the time interval for which it is calculated. So, to express the rate at a particular moment of time we determine the instantaneous rate. It is obtained when we consider the average rate at the smallest time interval say dt ( i.e.
+when Dt approaches zero). Hence, mathematically for an infinitesimally small dt instantaneous rate is given by
+[ ] [ ] −∆ ∆ r t t (3.3)
+As Dt ® 0 or    
+Table 3.1: Average rates of hydrolysis of butyl chloride
+[C4H9CI]t1
+/ [C4H9CI]t2
+/ t1/s t2/s rav × 104/mol L–1s–1 mol L–1 mol L–1 [ ] [ ] ( ) { } = – − ×
+4 9 4 9 2 1 t t
+C H Cl – C H Cl / t t 10
+0.100 0.0905 0 50 1.90
+0.0905 0.0820 50 100 1.70
+0.0820 0.0741 100 150 1.58
+0.0741 0.0671 150 200 1.40
+0.0671 0.0549 200 300 1.22
+0.0549 0.0439 300 400 1.10
+0.0439 0.0335 400 500 1.04
+0.0210 0.017 700 800 0.4
+Instantaneous rate of hydrolysis of butyl chloride(C4H9Cl)
+Reprint 2026-27
+65 Chemical Kinetics
+It can be determined graphically by drawing a tangent at time t on either of the curves for concentration of R and P vs time t and calculating its slope (Fig. 3.1). So in problem 3.1, rinst at 600s for example, can be calculated by plotting concentration of butyl chloride as a function of time. A tangent is drawn that touches the curve at t = 600 s (Fig. 3.2).
+The slope of this tangent gives the instantaneous rate.
+So, rinst at 600 s = – mol L–1 = 5.12 × 10–5 mol L–1s–1
+At t = 250 s rinst = 1.22 × 10–4 mol L–1s–1 t = 350 s rinst = 1.0 × 10–4 mol L–1s–1 t = 450 s rinst = 6.4 ×× 10–5 mol L–1s–1
+Now consider a reaction
+Hg(l) + Cl2 (g) ® HgCl2(s)
+Where stoichiometric coefficients of the reactants and products are same, then rate of the reaction is given as
+[ ] [ ] [ ] 2 2 Hg Cl HgCl
+Rate of reaction = – – i.e., rate of disappearance of any of the reactants is same as the rate of appearance of the products. But in the following reaction, two moles of
+HI decompose to produce one mole each of H2 and I2,
+2HI(g) ® H2(g) + I2(g)
+For expressing the rate of such a reaction where stoichiometric coefficients of reactants or products are not equal to one, rate of disappearance of any of the reactants or the rate of appearance of products is divided by their respective stoichiometric coefficients. Since rate of consumption of HI is twice the rate of formation of H2 or I2, to make them equal, the term D[HI] is divided by 2. The rate of this reaction is given by
+Rate of reaction [ ] [ ] [ ] 2 2 H I 1 HI
+Similarly, for the reaction
+5 Br- (aq) + BrO3
+– (aq) + 6 H+ (aq) ® 3 Br2 (aq) + 3 H2O (l)
+Rate Br BrO H Br H
+= − [ ] = −   = − [ ] = [ ] =
+For a gaseous reaction at constant temperature, concentration is directly proportional to the partial pressure of a species and hence, rate can also be expressed as rate of change in partial pressure of the reactant or the product.
+Reprint 2026-27
+66 Chemistry
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+3.1 For the reaction R ® P, the concentration of a reactant changes from 0.03M to 0.02M in 25 minutes. Calculate the average rate of reaction using units of time both in minutes and seconds.
+3.2 In a reaction, 2A ® Products, the concentration of A decreases from 0.5 mol L–1 to 0.4 mol L–1 in 10 minutes. Calculate the rate during this interval?
+Rate of reaction depends upon the experimental conditions such as concentration of reactants (pressure in case of gases), temperature and catalyst.
+The rate of a chemical reaction at a given temperature may depend on the concentration of one or more reactants and products. The representation of rate of reaction in terms of concentration of the reactants is known as rate law. It is also called as rate equation or rate expression.
+The results in Table 3.1 clearly show that rate of a reaction decreases with the passage of time as the concentration of reactants decrease. Conversely, rates generally increase when reactant concentrations increase. So, rate of a reaction depends upon the concentration of reactants.
+Example 3.2 Example 3.2 Example 3.2 Example 3.2 Example 3.2
+3.2.2 Rate
+Expression and Rate
+Constant
+The decomposition of N2O5 in CCl4 at 318K has been studied by monitoring the concentration of N2O5 in the solution. Initially the concentration of N2O5 is 2.33 mol L–1 and after 184 minutes, it is reduced to 2.08 mol L–1. The reaction takes place according to the equation
+2 N2O5 (g) ® 4 NO2 (g) + O2 (g)
+Calculate the average rate of this reaction in terms of hours, minutes and seconds. What is the rate of production of NO2 during this period?
+Average Rate = − [ ] 
+ = − − ( ) 
+2 08 2 33
+N O mol L
+= 6.79 × 10–4 mol L–1/min = (6.79 × 10–4 mol L–1 min–1) × (60 min/1h)
+= 4.07 × 10–2 mol L–1/h
+= 6.79 × 10–4 mol L–1 × 1min/60s
+= 1.13 × 10–5 mol L–1s–1
+It may be remembered that
+[ ] 2 NO
+∆ 6.79 × 10–4 × 4 mol L–1 min–1 = 2.72 × 10–3 mol L–1min–1
+Solution Solution Solution Solution Solution
+3.2 3.2 3.2 3.2 3.2 Factors Influencing Factors Influencing Factors Influencing Factors Influencing Factors Influencing
+Rate of a Reaction Rate of a Reaction Rate of a Reaction Rate of a Reaction Rate of a Reaction
+3.2.1 Dependence of Rate on
+Concentration
+Reprint 2026-27

@@ -1,0 +1,41 @@
+The total field at P is
+E E E p = + = − − +
+ + − q q r a r a 4
+ε ( ) ( ) ˆ
+ε ( ) ˆp (1.14)
+For r >> a
+ε ˆ (r >> a) (1.15)
+(ii) For points on the equatorial plane
+The magnitudes of the electric fields due to the two charges +q and –q are given by q + = + 4
+ε [1.16(a)] q – = + 4
+ε [1.16(b)] and are equal.
+The directions of E+q and E–q are as shown in
+Fig. 1.17(b). Clearly, the components normal to the dipole axis cancel away. The components along the dipole axis add up. The total electric field is opposite to ˆp . We have
+E = – (E +q + E –q ) cos
+4 2 2 3 2
+ε ( ) ˆ / p (1.17)
+At large distances (r >> a), this reduces to
+E p = − >>
+ε ˆ ( ) (1.18)
+From Eqs. (1.15) and (1.18), it is clear that the dipole field at large distances does not involve q and a separately; it depends on the product qa. This suggests the definition of dipole moment. The dipole moment vector p of an electric dipole is defined by p = q × 2a ˆp (1.19)
+that is, it is a vector whose magnitude is charge q times the separation
+2a (between the pair of charges q, –q) and the direction is along the line from –q to q. In terms of p, the electric field of a dipole at large distances takes simple forms:
+At a point on the dipole axis
+εor (r >> a) (1.20)
+At a point on the equatorial plane
+εor (r >> a) (1.21)
+FIGURE 1.17 Electric field of a dipole at (a) a point on the axis, (b) a point on the equatorial plane of the dipole.
+p is the dipole moment vector of magnitude p = q × 2a and directed from –q to q.
+Reprint 2026-27
+Electric Charges and Fields
+Notice the important point that the dipole field at large distances falls off not as 1/r 2 but as1/r 3. Further, the magnitude and the direction of the dipole field depends not only on the distance r but also on the angle between the position vector r and the dipole moment p.
+We can think of the limit when the dipole size 2a approaches zero, the charge q approaches infinity in such a way that the product p = q × 2a is finite. Such a dipole is referred to as a point dipole. For a point dipole, Eqs. (1.20) and (1.21) are exact, true for any r.
+1.10.2 Physical significance of dipoles
+In most molecules, the centres of positive charges and of negative charges* lie at the same place. Therefore, their dipole moment is zero. CO2 and
+CH4 are of this type of molecules. However, they develop a dipole moment when an electric field is applied. But in some molecules, the centres of negative charges and of positive charges do not coincide. Therefore they have a permanent electric dipole moment, even in the absence of an electric field. Such molecules are called polar molecules. Water molecules, H2O, is an example of this type. Various materials give rise to interesting properties and important applications in the presence or absence of electric field.
+Example 1.9 Two charges ±10 mC are placed 5.0 mm apart. Determine the electric field at (a) a point P on the axis of the dipole 15 cm away from its centre O on the side of the positive charge, as shown in Fig.
+1.18(a), and (b) a point Q, 15 cm away from O on a line passing through
+O and normal to the axis of the dipole, as shown in Fig. 1.18(b).
+FIGURE 1.18
+* Centre of a collection of positive point charges is defined much the same way as the centre of mass: r
+Reprint 2026-27

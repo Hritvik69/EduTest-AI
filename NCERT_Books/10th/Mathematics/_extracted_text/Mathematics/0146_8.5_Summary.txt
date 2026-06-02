@@ -1,0 +1,16 @@
+132 MATHEMATICS (cosec A – sin A) (sec A – cos A) tan A + cot A
+[Hint : Simplify LHS and RHS separately]
+1 tan A 1 tan A
+1 – cot A 1 + cot A
+     
+    
+    = tan2 A
+8.5 Summary
+In this chapter, you have studied the following points :
+1. In a right triangle ABC, right-angled at B, sin A = side opposite to angle A side adjacent to angle A , cos A = hypotenuse hypotenuse tan A = side opposite to angle A side adjacent to angle A .
+2. 1 1 1 sin A , cosec A = ; sec A = ; tan A = tan A = sin A cos A cot A cos A .
+3. If one of the trigonometric ratios of an acute angle is known, the remaining trigonometric ratios of the angle can be easily determined.
+4. The values of trigonometric ratios for angles 0°, 30°, 45°, 60° and 90°.
+5. The value of sin A or cos A never exceeds 1, whereas the value of sec A (0° £ A < 90°) or cosec A (0° < A £ 90º) is always greater than or equal to 1.
+6. sin2 A + cos2 A = 1, sec2 A – tan2 A = 1 for 0° £ A < 90°, cosec2 A = 1 + cot2 A for 0° < A £ 90º.
+Reprint 2026-27

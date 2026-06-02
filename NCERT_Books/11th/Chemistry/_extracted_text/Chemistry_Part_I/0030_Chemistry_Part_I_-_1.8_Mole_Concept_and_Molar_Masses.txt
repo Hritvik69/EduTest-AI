@@ -1,0 +1,33 @@
+18 CHEMISTRY
+This number of entities in 1 mol is so important that it is given a separate name and symbol. It is known as ‘avogadro constant’, or Avogadro number denoted by N A in honour of Amedeo Avogadro. To appreciate the largeness of this number, let us write it with all zeroes without using any powers of ten.
+Hence, so many entities (atoms, molecules or any other particle) constitute one mole of a particular substance.
+We can, therefore, say that 1 mol of hydrogen atoms = 6.022 × 10 23 atoms
+1 mol of water molecules = 6.022 × 10 23 water molecules
+1 mol of sodium chloride = 6.022 ×1023 formula units of sodium chloride
+Having defined the mole, it is easier to know the mass of one mole of a substance or the constituent entities. the mass of one mole of a substance in grams is called its molar mass. The molar mass in grams is numerically equal to atomic/molecular/ formula mass in u.
+Molar mass of water = 18.02 g mol–1
+Molar mass of sodium chloride = 58.5 g mol–1
+1.9 percentaGe compoSition
+So far, we were dealing with the number of entities present in a given sample. But many a time, information regarding the percentage of a particular element present in a compound is required. Suppose, an unknown or new compound is given to you, the first question
+Fig. 1.11 One mole of various substances
+Thus, the formula mass of sodium chloride is atomic mass of sodium + atomic mass of chlorine
+= 23.0 u + 35.5 u = 58.5 u problem 1.1
+Calculate the molecular mass of glucose (C6 H12 O6 ) molecule.
+Solution
+Molecular mass of glucose (C6 H12 O6 )
+= 6 (12.011 u) + 12 (1.008 u) +
+6 (16.00 u)
+= (72.066 u) + (12.096 u) + (96.00 u)
+= 180.162 u
+1.8 mole concept anD molar maSSeS
+Atoms and molecules are extremely small in size and their numbers in even a small amount of any substance is really very large.
+To handle such large numbers, a unit of convenient magnitude is required.
+Just as we denote one dozen for 12 items, score for 20 items, gross for 144 items, we use the idea of mole to count entities at the microscopic level (i.e., atoms, molecules, particles, electrons, ions, etc).
+In SI system, mole (symbol, mol) was introduced as seventh base quantity for the amount of a substance.
+The mole, symbol mol, is the SI unit of amount of substance. One mole contains exactly 6.02214076 × 1023 elementary entities.
+This number is the fixed numerical value of the Avogadro constant, N A , when expressed in the unit mol–1 and is called the Avogadro number. The amount of substance, symbol n, of a system is a measure of the number of specified elementary entities. An elementary entity may be an atom, a molecule, an ion, an electron, any other particle or specified group of particles. It may be emphasised that the mole of a substance always contains the same number of entities, no matter what the substance may be. In order to determine this number precisely, the mass of a carbon–12 atom was determined by a mass spectrometer and found to be equal to 1.992648 × 10 –23 g.
+Knowing that one mole of carbon weighs 12 g, the number of atoms in it is equal to:
+1 992648 10 g C atom
+  6 0221367 1023
+. atoms/mol
+Reprint 2026-27

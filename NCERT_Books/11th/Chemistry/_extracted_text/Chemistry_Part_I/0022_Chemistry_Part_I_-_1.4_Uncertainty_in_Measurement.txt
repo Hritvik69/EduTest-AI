@@ -1,0 +1,120 @@
+10 CHEMISTRY
+In the laboratory, the volume of liquids or solutions can be measured by graduated cylinder, burette, pipette, etc. A volumetric flask is used to prepare a known volume of a solution. These measuring devices are shown in Fig. 1.7.
+Fig. 1.7 Some volume measuring devices
+1.4 Uncertainty in meaSUrement
+Many a time in the study of chemistry, one has to deal with experimental data as well as theoretical calculations. There are meaningful ways to handle the numbers conveniently and fahrenheit) and K (kelvin). Here, K is the
+SI unit. The thermometers based on these scales are shown in Fig. 1.8. Generally, the thermometer with celsius scale are calibrated from 0° to 100°, where these two temperatures are the freezing point and the boiling point of water, respectively. The fahrenheit scale is represented between 32° to 212°.
+The temperatures on two scales are related to each other by the following relationship:
+      F C
+The kelvin scale is related to celsius scale as follows:
+K = °C + 273.15
+It is interesting to note that temperature below 0 °C (i.e., negative values) are possible in Celsius scale but in Kelvin scale, negative temperature is not possible.
+Fig. 1.8 Thermometers using different temperature scales
+1.3.6 Density
+The two properties — mass and volume discussed above are related as follows:
+Density Volume
+Density of a substance is its amount of mass per unit volume. So, SI units of density can be obtained as follows:
+SI unit of density = m 3 or kg m–3
+This unit is quite large and a chemist often expresses density in g cm–3, where mass is expressed in gram and volume is expressed in cm3 . Density of a substance tells us about how closely its particles are packed. If density is more, it means particles are more closely
+1.3.7 temperature
+There are three common scales to measure temperature — °C (degree celsius), °F (degree
+Reprint 2026-27
+11 SOME BASIC CONCEPTS OF CHEMISTRY present the data realistically with certainty to the extent possible. These ideas are discussed below in detail.
+1.4.1 Scientific Notation
+As chemistry is the study of atoms and molecules, which have extremely low masses and are present in extremely large numbers, a chemist has to deal with numbers as large as 602, 200,000,000,000,000,000,000 for the molecules of 2 g of hydrogen gas or as small as
+0.00000000000000000000000166 g mass of a H atom. Similarly, other constants such as
+Planck’s constant, speed of light, charges on particles, etc., involve numbers of the above magnitude.
+It may look funny for a moment to write or count numbers involving so many zeros but it offers a real challenge to do simple mathematical operations of addition, subtraction, multiplication or division with such numbers. You can write any two numbers of the above type and try any one of the operations you like to accept as a challenge, and then, you will really appreciate the difficulty in handling such numbers.
+This problem is solved by using scientific notation for such numbers, i.e., exponential notation in which any number can be represented in the form N × 10n
+, where n is an exponent having positive or negative values and N is a number (called digit term) which varies between 1.000... and 9.999....
+T h u s , w e c a n w r i t e 2 3 2 . 5 0 8 a s
+2.32508 × 10 2 in scientific notation. Note that while writing it, the decimal had to be moved to the left by two places and same is the exponent (2) of 10 in the scientific notation.
+Similarly, 0.00016 can be written as
+1.6 × 10–4. Here, the decimal has to be moved four places to the right and (–4) is the exponent in the scientific notation.
+While performing mathematical operations on numbers expressed in scientific notations, the following points are to be kept in mind.
+reference Standard
+After defining a unit of measurement such as the kilogram or the metre, scientists agreed on reference standards that make it possible to calibrate all measuring devices. For getting reliable measurements, all devices such as metre sticks and analytical balances have been calibrated by their manufacturers to give correct readings. However, each of these devices is standardised or calibrated against some reference. The mass standard is the kilogram since 1889. It has been defined as the mass of platinum-iridium (Pt-Ir) cylinder that is stored in an airtight jar at International Bureau of Weights and Measures in Sevres, France. Pt-Ir was chosen for this standard because it is highly resistant to chemical attack and its mass will not change for an extremely long time.
+Scientists are in search of a new standard for mass. This is being attempted through accurate determination of Avogadro constant. Work on this new standard focuses on ways to measure accurately the number of atoms in a well-defined mass of sample.
+One such method, which uses X-rays to determine the atomic density of a crystal of ultrapure silicon, has an accuracy of about
+1 part in 106 but has not yet been adopted to serve as a standard. There are other methods but none of them are presently adequate to replace the Pt-Ir cylinder. No doubt, changes are expected within this decade.
+The metre was originally defined as the length between two marks on a Pt-Ir bar kept at a temperature of 0°C (273.15 K). In
+1960 the length of the metre was defined as
+1.65076373 × 10 6 times the wavelength of light emitted by a krypton laser. Although this was a cumbersome number, it preserved the length of the metre at its agreed value.
+The metre was redefined in 1983 by CGPM as the length of path travelled by light in vacuum during a time interval of 1/299 792
+458 of a second. Similar to the length and the mass, there are reference standards for other physical quantities.
+Reprint 2026-27
+12 CHEMISTRY
+Multiplication and Division
+These two operations follow the same rules which are there for exponential numbers, i.e.
+mass obtained by an analytical balance is slightly higher than the mass obtained by using a platform balance. Therefore, digit 4 placed after decimal in the measurement by platform balance is uncertain.
+The uncertainty in the experimental or the calculated values is indicated by mentioning the number of significant figures. Significant figures are meaningful digits which are known with certainty plus one which is estimated or uncertain. The uncertainty is indicated by writing the certain digits and the last uncertain digit. Thus, if we write a result as 11.2 mL, we say the 11 is certain and 2 is uncertain and the uncertainty would be +1 in the last digit. Unless otherwise stated, an uncertainty of +1 in the last digit is always understood.
+There are certain rules for determining the number of significant figures. These are stated below:
+(1) All non-zero digits are significant. For example in 285 cm, there are three significant figures and in 0.25 mL, there are two significant figures.
+(2) Zeros preceding to first non-zero digit are not significant. Such zero indicates the position of decimal point. Thus,
+0.03 has one significant figure and
+0.0052 has two significant figures.
+(3) Zeros between two non-zero digits are significant. Thus, 2.005 has four significant figures.
+(4) Zeros at the end or right of a number are significant, provided they are on the right side of the decimal point. For example, 0.200 g has three significant figures. But, if otherwise, the terminal zeros are not significant if there is no decimal point. For example, 100 has only one significant figure, but 100 has three significant figures and 100.0 has four significant figures. Such numbers are better represented in scientific notation. We can express the number
+100 as 1×10 2 for one significant figure,
+1.0×10 2 for two significant figures and
+1.00×10 2 for three significant figures.
+Addition and Subtraction
+For these two operations, first the numbers are written in such a way that they have the same exponent. After that, the coefficients (digit terms) are added or subtracted as the case
+Thus, for adding 6.65×104 and 8.95×103 , exponent is made same for both the numbers.
+Thus, we get (6.65×104 ) + (0.895×104)
+Then, these numbers can be added as follows (6.65 + 0.895)×10 4 = 7.545×10 4
+Similarly, the subtraction of two numbers can be done as shown below:
+(2.5 × 10–2 ) – (4.8 ×10–3)
+= (2.5 × 10–2 ) – (0.48 × 10 –2)
+= (2.5 – 0.48)×10–2 = 2.02 × 10–2
+1.4.2 Significant Figures
+Every experimental measurement has some amount of uncertainty associated with it because of limitation of measuring instrument and the skill of the person making the measurement. For example, mass of an object is obtained using a platform balance and it comes out to be 9.4g. On measuring the mass of this object on an analytical balance, the mass obtained is 9.4213g. The
+5 6 10 6 9 10 5 6 6 9 10
+5 6 6 9 10
+          
+= 38..64 10
+= 3.864 10
+            
+9 8 10 2 5 10 9 8 2 5 102 6 2
+. . . .  66
+9 8 2 5 10
+   
+= 24.50 10
+= 2.450 10
+.55 10 2 7 5 5 10 1 4
+     
+= = 0.4909 0
+= 4.909 10
+Reprint 2026-27
+13 SOME BASIC CONCEPTS OF CHEMISTRY (5) Counting the numbers of object, for example, 2 balls or 20 eggs, have infinite significant figures as these are exact numbers and can be represented by writing infinite number of zeros after placing a decimal i.e., 2 = 2.000000 or
+20 = 20.000000.
+In numbers written in scientific notation, all digits are significant e.g., 4.01×102 has three significant figures, and 8.256×10 –3 has four significant figures.
+However, one would always like the results to be precise and accurate. Precision and accuracy are often referred to while we talk about the measurement.
+precision refers to the closeness of various measurements for the same quantity.
+However, accuracy is the agreement of a particular value to the true value of the result. For example, if the true value for a result is 2.00 g and student ‘A’ takes two measurements and reports the results as 1.95 g and 1.93 g. These values are precise as they are close to each other but are not accurate.
+Another student ‘B’ repeats the experiment and obtains 1.94 g and 2.05 g as the results for two measurements. These observations are neither precise nor accurate. When the third student ‘C’ repeats these measurements and reports 2.01 g and 1.99 g as the result, these values are both precise and accurate.
+This can be more clearly understood from the data given in Table 1.4.
+table 1.4 Data to illustrate precision and accuracy measurements/g
+1 2 Average (g)
+Student A
+Student B
+Student C
+Addition and Subtraction of
+Significant Figures
+The result cannot have more digits to the right of the decimal point than either of the original numbers. 12.11
+Here, 18.0 has only one digit after the decimal point and the result should be reported only up to one digit after the decimal point, which is 31.1.
+Multiplication and Division of
+Significant Figures
+In these operations, the result must be reported with no more significant figures as in the measurement with the few significant figures.
+2.5×1.25 = 3.125
+Since 2.5 has two significant figures, the result should not have more than two significant figures, thus, it is 3.1.
+While limiting the result to the required number of significant figures as done in the above mathematical operation, one has to keep in mind the following points for rounding off the numbers
+1. If the rightmost digit to be removed is more than 5, the preceding number is increased by one. For example, 1.386. If we have to remove 6, we have to round it to 1.39.
+2. If the rightmost digit to be removed is less than 5, the preceding number is not changed. For example, 4.334 if 4 is to be removed, then the result is rounded upto 4.33.
+3. If the rightmost digit to be removed is 5, then the preceding number is not changed if it is an even number but it is increased by one if it is an odd number. For example, if 6.35 is to be rounded by removing 5, we have to increase 3 to 4 giving 6.4 as the result. However, if 6.25 is to be rounded off it is rounded off to 6.2.
+1.4.3 Dimensional analysis
+Often while calculating, there is a need to convert units from one system to the other.
+The method used to accomplish this is called factor label method or unit factor method or dimensional analysis. This is illustrated
+A piece of metal is 3 inch (represented by in)
+long. What is its length in cm?
+Reprint 2026-27

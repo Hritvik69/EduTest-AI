@@ -1,0 +1,22 @@
+244 Chemistry
+Structure Common name IUPAC name
+HCOOH Formic acid Methanoic acid
+CH3COOH Acetic acid Ethanoic acid
+CH3CH2COOH Propionic acid Propanoic acid
+CH3CH2CH2COOH Butyric acid Butanoic acid (CH3)2CHCOOH Isobutyric acid 2-Methylpropanoic acid
+HOOC-COOH Oxalic acid Ethanedioic acid
+HOOC -CH2-COOH Malonic acid Propanedioic acid
+HOOC -(CH2)2-COOH Succinic acid Butanedioic acid
+HOOC -(CH2)3-COOH Glutaric acid Pentanedioic acid
+HOOC -(CH2)4-COOH Adipic acid Hexanedioic acid
+HOOC -CH2-CH(COOH)-CH2-COOH Tricarballylic acid Propane-1, 2, 3- or carballylic acid tricarboxylic acid
+Carboxylic Acids
+Carbon compounds containing a carboxyl functional group, –COOH are called carboxylic acids. The carboxyl group, consists of a carbonyl group attached to a hydroxyl group, hence its name carboxyl. Carboxylic acids may be aliphatic (RCOOH) or aromatic (ArCOOH) depending on the group, alkyl or aryl, attached to carboxylic carbon. Large number of carboxylic acids are found in nature. Some higher members of aliphatic carboxylic acids (C12 – C18) known as fatty acids, occur in natural fats as esters of glycerol. Carboxylic acids serve as starting material for several other important organic compounds such as anhydrides, esters, acid chlorides, amides, etc.
+Since carboxylic acids are amongst the earliest organic compounds to be isolated from nature, a large number of them are known by their common names. The common names end with the suffix –ic acid and have been derived from Latin or Greek names of their natural sources.
+For example, formic acid (HCOOH) was first obtained from red ants (Latin: formica means ant), acetic acid (CH3COOH) from vinegar (Latin:
+acetum, means vinegar), butyric acid (CH3CH2CH2COOH) from rancid butter (Latin: butyrum, means butter).
+In the IUPAC system, aliphatic carboxylic acids are named by replacing the ending –e in the name of the corresponding alkane with – oic acid. In numbering the carbon chain, the carboxylic carbon is numbered one. For naming compounds containing more than one carboxyl group, the alkyl chain leaving carboxyl groups is numbered and the number of carboxyl groups is indicated by adding the multiplicative prefix, dicarboxylic acid, tricarboxylic acid, etc. to the name of parent alkyl chain. The position of –COOH groups are indicated by the arabic numeral before the multiplicative prefix. Some of the carboxylic acids along with their common and IUPAC names are listed in Table 8.3.
+8.6 8.6 8.6 8.6 8.6 Nomenclature and Structure of Carboxyl Group Nomenclature and Structure of Carboxyl Group Nomenclature and Structure of Carboxyl Group Nomenclature and Structure of Carboxyl Group Nomenclature and Structure of Carboxyl Group
+Table 8.3 Names and Structures of Some Carboxylic Acids
+Nomenclature
+Reprint 2026-27

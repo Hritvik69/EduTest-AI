@@ -1,0 +1,121 @@
+LAWS OF MOTION 53 act. One reason is that the cricketer allows a longer time for his hands to stop the ball. As you may have noticed, he draws in the hands backward in the act of catching the ball (Fig. 4.3). The novice, on the other hand, keeps his hands fixed and tries to catch the ball almost instantly. He needs to provide a much greater force to stop the ball instantly, and this hurts. The conclusion is clear: force not only depends on the change in momentum, but also on how fast the change is brought about. The same change in momentum brought about in a shorter time needs a greater applied force. In short, the greater the rate of change of momentum, the greater is the force.
+Fig. 4.3 Force not only depends on the change in momentum but also on how fast the change is brought about. A seasoned cricketer draws in his hands during a catch, allowing greater time for the ball to stop and hence requires a smaller force.
+• Observations confirm that the product of mass and velocity (i.e. momentum) is basic to the effect of force on motion. Suppose a fixed force is applied for a certain interval of time on two bodies of different masses, initially at rest, the lighter body picks up a greater speed than the heavier body. However, at the end of the time interval, observations show that each body acquires the same momentum. Thus the same force for the same time causes the same change in momentum for different bodies. This is a crucial clue to the second law of motion.
+• In the preceding observations, the vector astronaut, once he is out of the spaceship, is zero. By the first law of motion the acceleration of the astronaut is zero. ⊳
+4.5 NEWTON’S SECOND LAW OF MOTION
+The first law refers to the simple case when the net external force on a body is zero. The second law of motion refers to the general situation when there is a net external force acting on the body.
+It relates the net external force to the acceleration of the body.
+Momentum
+Momentum of a body is defined to be the product of its mass m and velocity v, and is denoted p = m v (4.1)
+Momentum is clearly a vector quantity. The following common experiences indicate the importance of this quantity for considering the effect of force on motion.
+• Suppose a light-weight vehicle (say a small car) and a heavy weight vehicle (say a loaded truck) are parked on a horizontal road. We all know that a much greater force is needed to push the truck than the car to bring them to the same speed in same time. Similarly, a greater opposing force is needed to stop a heavy body than a light body in the same time, if they are moving with the same speed.
+• If two stones, one light and the other heavy, are dropped from the top of a building, a person on the ground will find it easier to catch the light stone than the heavy stone. The mass of a body is thus an important parameter that determines the effect of force on its motion.
+• Speed is another important parameter to consider. A bullet fired by a gun can easily pierce human tissue before it stops, resulting in casualty. The same bullet fired with moderate speed will not cause much damage.
+Thus for a given mass, the greater the speed, the greater is the opposing force needed to stop the body in a certain time. Taken together, the product of mass and velocity, that is momentum, is evidently a relevant variable of motion. The greater the change in the momentum in a given time, the greater is the force that needs to be applied.
+• A seasoned cricketer catches a cricket ball coming in with great speed far more easily than a novice, who can hurt his hands in the
+Reprint 2026-27
+PHYSICS 54 character of momentum has not been evident.
+In the examples so far, momentum and change in momentum both have the same direction.
+But this is not always the case. Suppose a stone is rotated with uniform speed in a horizontal plane by means of a string, the magnitude of momentum is fixed, but its direction changes (Fig. 4.4). A force is needed to cause this change in momentum vector.
+This force is provided by our hand through the string. Experience suggests that our hand needs to exert a greater force if the stone is rotated at greater speed or in a circle of smaller radius, or both. This corresponds to greater acceleration or equivalently a greater rate of change in momentum vector. This suggests that the greater the rate of change in momentum vector the greater is the force applied.
+Fig. 4.4 Force is necessary for changing the direction of momentum, even if its magnitude is constant. We can feel this while rotating a stone in a horizontal circle with uniform speed by means of a string.
+These qualitative observations lead to the second law of motion expressed by Newton as follows :
+The rate of change of momentum of a body is directly proportional to the applied force and takes place in the direction in which the force
+Thus, if under the action of a force F for time interval ∆t, the velocity of a body of mass m changes from v to v + ∆v i.e. its initial momentum p = m v changes by m ∆ = ∆ p v . According to the
+Second Law, where k is a constant of proportionality. Taking the limit ∆t → 0, the term t ∆
+∆p becomes the derivative or differential co-efficient of p with respect to t, denoted by d p . Thus
+For a body of fixed mass m, v a (4.3)
+i.e the Second Law can also be written as
+F = k m a (4.4)
+which shows that force is proportional to the product of mass m and acceleration a.
+The unit of force has not been defined so far.
+In fact, we use Eq. (4.4) to define the unit of force.
+We, therefore, have the liberty to choose any constant value for k. For simplicity, we choose k = 1. The second law then is d = = (4.5)
+In SI unit force is one that causes an acceleration of 1 m s-2 to a mass of 1 kg. This unit is known as newton : 1 N = 1 kg m s-2.
+Let us note at this stage some important points about the second law :
+1. In the second law, F = 0 implies a = 0. The second law is obviously consistent with the first law.
+2. The second law of motion is a vector law. It is equivalent to three equations, one for each component of the vectors :
+This means that if a force is not parallel to the velocity of the body, but makes some angle with it, it changes only the component of velocity along the direction of force. The
+Reprint 2026-27
+LAWS OF MOTION 55 component of velocity normal to the force remains unchanged. For example, in the motion of a projectile under the vertical gravitational force, the horizontal component of velocity remains unchanged (Fig. 4.5).
+3. The second law of motion given by Eq. (4.5) is applicable to a single point particle. The force
+F in the law stands for the net external force on the particle and a stands for acceleration of the particle. It turns out, however, that the law in the same form applies to a rigid body or, even more generally, to a system of particles.
+In that case, F refers to the total external force on the system and a refers to the acceleration of the system as a whole. More precisely, a is the acceleration of the centre of mass of the system about which we shall study in detail in
+Chapter 6. Any internal forces in the system are not to be included in F.
+Fig. 4.5 Acceleration at an instant is determined by the force at that instant. The moment after a stone is dropped out of an accelerated train, it has no horizontal acceleration or force, if air resistance is neglected. The stone carries no memory of its acceleration with the train a moment ago.
+4. The second law of motion is a local relation which means that force F at a point in space (location of the particle) at a certain instant of time is related to a at that point at that instant. Acceleration here and now is determined by the force here and now, not by any history of the motion of the particle (See Fig. 4.5).
+Example 4.2 A bullet of mass 0.04 kg moving with a speed of 90 m s–1 enters a heavy wooden block and is stopped after a distance of 60 cm. What is the average resistive force exerted by the block on the
+Answer The retardation ‘a’ of the bullet (assumed constant) is given by
+= = 2 2 – 90 90 m s – 6750 m s
+The retarding force, by the second law of motion, is
+= 0.04 kg × 6750 m s-2 = 270 N
+The actual resistive force, and therefore, retardation of the bullet may not be uniform. The answer therefore, only indicates the average resistive force. ⊳
+Example 4.3 The motion of a particle of mass m is described by y = + 2 1 ut gt . Find the force acting on the particle.
+Answer We know y ut gt = + acceleration, d
+Then the force is given by Eq. (4.5)
+F = ma = mg
+Thus the given equation describes the motion of a particle under acceleration due to gravity and y is the position coordinate in the direction
+We sometimes encounter examples where a large force acts for a very short duration producing a finite change in momentum of the body. For example, when a ball hits a wall and bounces back, the force on the ball by the wall acts for a very short time when the two are in contact, yet the force is large enough to reverse the momentum of the ball. Often, in these situations, the force and the time duration are difficult to ascertain separately. However, the product of force and time, which is the change in momentum of the body remains a measurable quantity. This product is called impulse:
+Impulse = Force × time duration
+= Change in momentum (4.7)
+Reprint 2026-27
+PHYSICS 56
+A large force acting for a short time to produce a finite change in momentum is called an impulsive force. In the history of science, impulsive forces were put in a conceptually different category from ordinary forces. Newtonian mechanics has no such distinction. Impulsive force is like any other force – except that it is large and acts for a short time.
+Example 4.4 A batsman hits back a ball straight in the direction of the bowler without changing its initial speed of 12 m s–1.
+If the mass of the ball is 0.15 kg, determine the impulse imparted to the ball. (Assume linear motion of the ball)
+Answer Change in momentum
+= 0.15 × 12–(–0.15×12)
+= 3.6 N s,
+Impulse = 3.6 N s, in the direction from the batsman to the bowler.
+This is an example where the force on the ball by the batsman and the time of contact of the ball and the bat are difficult to know, but the impulse is readily calculated. ⊳
+4.6 NEWTON’S THIRD LAW OF MOTION
+The second law relates the external force on a body to its acceleration. What is the origin of the external force on the body ? What agency provides the external force ? The simple answer in Newtonian mechanics is that the external force on a body always arises due to some other body. Consider a pair of bodies A and B. B gives rise to an external force on A. A natural question is: Does A in turn give rise to an external force on B ? In some examples, the answer seems clear. If you press a coiled spring, the spring is compressed by the force of your hand. The compressed spring in turn exerts a force on your hand and you can feel it. But what if the bodies are not in contact? The earth pulls a stone downwards due to gravity. Does the stone exert a force on the Earth? The answer is not obvious since we hardly see the effect of the stone on the earth. The answer according to Newton is: Yes, the stone does exert an equal and opposite force on the Earth. We do not notice it since the earth is very massive and the effect of a small force on its motion is negligible.
+Thus, according to Newtonian mechanics, force never occurs singly in nature. Force is the mutual interaction between two bodies. Forces always occur in pairs. Further, the mutual forces between two bodies are always equal and opposite. This idea was expressed by Newton in the form of the third law of motion.
+To every action, there is always an equal and opposite reaction.
+Newton’s wording of the third law is so crisp and beautiful that it has become a part of common language. For the same reason perhaps, misconceptions about the third law abound. Let us note some important points about the third law, particularly in regard to the usage of the terms : action and reaction.
+1. The terms action and reaction in the third law mean nothing else but ‘force’. Using different terms for the same physical concept can sometimes be confusing. A simple and clear way of stating the third law is as follows :
+Forces always occur in pairs. Force on a body A by B is equal and opposite to the force on the body B by A.
+2. The terms action and reaction in the third law may give a wrong impression that action comes before reaction i.e action is the cause and reaction the effect. There is no cause- effect relation implied in the third law. The force on
+B and the force on at the same instant. By the same reasoning, any one of them may be called action and the other reaction.
+3. Action and reaction forces act on different bodies, not on the same body. Consider a pair of bodies A and B. According to the third law,
+FAB = – FBA (4.8)
+(force on A by B) = – (force on B by A)
+Thus if we are considering the motion of any one body (A or B), only one of the two forces is relevant. It is an error to add up the two forces and claim that the net force is zero.
+However, if you are considering the system of two bodies as a whole, FAB and FBA are internal forces of the system (A + B). They add up to give a null force. Internal forces in a body or a system of particles thus cancel away
+Reprint 2026-27
+LAWS OF MOTION 57 in pairs. This is an important fact that enables the second law to be applicable to a body or a system of particles (See Chapter 6).
+Example 4.5 Two identical billiard balls strike a rigid wall with the same speed but at different angles, and get reflected without any change in speed, as shown in Fig. 4.6.
+What is (i) the direction of the force on the wall due to each ball? (ii) the ratio of the magnitudes of impulses imparted to the balls by the wall ?
+Fig. 4.6
+Answer An instinctive answer to (i) might be that the force on the wall in case (a) is normal to the wall, while that in case (b) is inclined at 30° to the normal. This answer is wrong. The force on the wall is normal to the wall in both cases.
+How to find the force on the wall? The trick is to consider the force (or impulse) on the ball due to the wall using the second law, and then use the third law to answer (i). Let u be the speed of each ball before and after collision with the wall, and m the mass of each ball. Choose the x and y axes as shown in the figure, and consider the change in momentum of the ball in each
+Case (a)
+( ) ( ) initial initial 0 x y p mu p = = ( ) ( )final final 0 x y p mu p = − =
+Impulse is the change in momentum vector.
+Therefore, x-component of impulse = – 2 m u y-component of impulse = 0
+Impulse and force are in the same direction.
+Clearly, from above, the force on the ball due to the wall is normal to the wall, along the negative x-direction. Using Newton’s third law of motion, the force on the wall due to the ball is normal to the wall along the positive x-direction. The magnitude of force cannot be ascertained since the small time taken for the collision has not been specified in the problem.
+Case (b)
+( ) cos 30 initial x p m u =  , ( ) sin 30 initial y p m u = −  ( ) – cos 30 final x p m u =  , ( ) sin 30 final y p m u = − 
+Note, while px changes sign after collision, py does not. Therefore, x-component of impulse = –2 m u cos 30° y-component of impulse = 0
+The direction of impulse (and force) is the same as in (a) and is normal to the wall along the negative x direction. As before, using Newton’s third law, the force on the wall due to the ball is normal to the wall along the positive x direction.
+The ratio of the magnitudes of the impulses imparted to the balls in (a) and (b) is
+2 / 2 cos 30 1.2 m u m u = ≈  ⊳
+4.7 CONSERVATION OF MOMENTUM
+The second and third laws of motion lead to an important consequence: the law of conservation of momentum. Take a familiar example. A bullet is fired from a gun. If the force on the bullet by the gun is F, the force on the gun by the bullet is – F, according to the third law.
+The two forces act for a common interval of time
+∆t. According to the second law, F ∆t is the change in momentum of the bullet and – F ∆t is the change in momentum of the gun. Since initially, both are at rest, the change in momentum equals the final momentum for each. Thus if pb is the momentum of the bullet after firing and pg is the recoil momentum of the gun, pg = – pb i.e. pb + pg
+= 0. That is, the total momentum of the (bullet + gun) system is conserved.
+Thus in an isolated system (i.e. a system with no external force), mutual forces between pairs of particles in the system can cause momentum change in individual particles, but since the mutual forces for each pair are equal and opposite, the momentum changes cancel in pairs and the total momentum remains unchanged.
+This fact is known as the law of conservation of momentum :
+Reprint 2026-27
+PHYSICS 58
+The total momentum of an isolated system of interacting particles is conserved.
+An important example of the application of the law of conservation of momentum is the collision of two bodies. Consider two bodies A and B, with initial momenta pA and pB. The bodies collide, get apart, with final momenta p′A and p′B respectively. By the Second Law
+F p p AB A A t ∆ = ′ − and
+F p p BA B B t ∆ = ′ − (where we have taken a common interval of time for both forces i.e. the time for which the two bodies are in contact.)
+Since F F AB BA = − by the third law, ( ) ′ − = − ′ − p p p p A A B B i.e. ′ + ′ = + p p p p A B A B (4.9)
+which shows that the total final momentum of the isolated system equals its initial momentum.
+Notice that this is true whether the collision is elastic or inelastic. In elastic collisions, there is a second condition that the total initial kinetic energy of the system equals the total final kinetic energy (See Chapter 5).
+4.8 EQUILIBRIUM OF A PARTICLE
+Equilibrium of a particle in mechanics refers to the situation when the net external force on the pa

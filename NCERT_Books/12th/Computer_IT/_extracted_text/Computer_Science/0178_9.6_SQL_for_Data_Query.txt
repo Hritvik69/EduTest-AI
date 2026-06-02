@@ -1,0 +1,340 @@
+Computer SCienCe - ClaSS Xii 166
+AVG(column) Returns the average of the values in the specified column.
+mysql> SELECT AVG(Price) FROM
+INVENTORY;
+576091.625000
+SUM(column) Returns the sum of the values for the specified column.
+mysql> SELECT SUM(Price) FROM
+INVENTORY;
+4608733.00
+COUNT(*) Returns the number of records in a table.
+Note: In order to display the number of records that matches a particular criteria in the table, we have to use COUNT(*) with
+WHERE clause.
+mysql> SELECT COUNT(*) from
+MANAGER;
++----------+
+| count(*) |
++----------+
+1 row in set (0.00 sec)
+COUNT(column) Returns the number of values in the specified column ignoring the NULL values.
+In this example, let us consider a MANAGER table having two attributes and four records.
+mysql> SELECT * from MANAGER;
++------ +---------+
+| MNO | MEMNAME |
++------ +---------+
+| 1 | AMIT |
+| 2 | KAVREET |
+| 3 | KAVITA |
+| 4 | NULL |
++------+----------+
+4 rows in set (0.00 sec)
+mysql> SELECT COUNT(MEMNAME) FROM
+MANAGER;
++----------------+
+| COUNT(MEMNAME) |
++----------------+
+1 row in set (0.01 sec)
+Example 9.22 a) Display the total number of records from table
+INVENTORY having a model as VXI.
+mysql> SELECT COUNT(*) FROM INVENTORY WHERE
+Model=”VXI”;
++----------+
+| COUNT(*) |
++----------+
+1 row in set (0.00 sec)
+b) Display the total number of different types of Models available from table INVENTORY.
+mysql> SELECT COUNT(DISTINCT Model) FROM
+INVENTORY;
+Reprint 2026-27
+S tructured Query Language (SQL) 167
++-----------------------+
+| COUNT(DISTINCT MODEL) |
++-----------------------+
+1 row in set (0.09 sec)
+c) Display the average price of all the cars with Model
+LXI from table INVENTORY.
+mysql> SELECT AVG(Price) FROM INVENTORY WHERE
+Model="LXI";
++---------------+
+| AVG(Price) |
++---------------+
+| 548306.500000 |
++---------------+
+1 row in set (0.03 sec)
+9.9 group By cLauSe In SQL
+At times we need to fetch a group of rows on the basis of common values in a column. This can be done using a group by clause. It groups the rows together that contains the same values in a specified column. We can use the aggregate functions (COUNT, MAX, MIN,
+AVG and SUM) to work on the grouped values. HAVING
+Clause in SQL is used to specify conditions on the rows with Group By clause.
+Consider the SALE table from the CARSHOWROOM database:
+Activity 9.15 a) List the total number of cars sold by each employee.
+b) List the maximum sale made employee.
+mysql> SELECT * FROM SALE;
++---------+------+-------+------------+-------------+------+----------+----------+
+|InvoiceNo|CarId |CustId | SaleDate | PaymentMode |EmpID |SalePrice |Commission|
++---------+------+-------+------------+-------------+------+----------+----------+
+| I00001 | D001 | C0001 | 2019-01-24 | Credit Card | E004 |613248.00 | 73589.64 |
+| I00002 | S001 | C0002 | 2018-12-12 | Online | E001 |590321.00 | 70838.52 |
+| I00003 | S002 | C0004 | 2019-01-25 | Cheque | E010 |604000.00 | 72480.00 |
+| I00004 | D002 | C0001 | 2018-10-15 | Bank Finance| E007 |659982.00 | 79198.84 |
+| I00005 | E001 | C0003 | 2018-12-20 | Credit Card | E002 |369310.00 | 44318.20 |
+| I00006 | S002 | C0002 | 2019-01-30 | Bank Finance| E007 |620214.00 | 74425.68 |
++---------+------+-------+------------+-------------+------+----------+----------+
+6 rows in set (0.11 sec)
+CarID, CustID, SaleDate, PaymentMode, EmpID,
+SalePrice are the columns that can have rows with the same values in it. So, Group by clause can be used in these columns to find the number of records of a particular type (column), or to calculate the sum of the price of each car type.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 168
+Example 9.23 a) Display the number of Cars purchased by each
+Customer from SALE table.
+mysql> SELECT CustID, COUNT(*) "Number of Cars"
+FROM SALE GROUP BY CustID;
++--------+----------------+
+| CustID | Number of Cars |
++--------+----------------+
+| C0001 | 2 |
+| C0002 | 2 |
+| C0003 | 1 |
+| C0004 | 1 |
++--------+----------------+
+4 rows in set (0.00 sec)
+b) Display the Customer Id and number of cars purchased if the customer purchased more than 1 car from SALE table.
+mysql> SELECT CustID, COUNT(*) FROM SALE GROUP BY
+CustID HAVING Count(*)>1;
++--------+----------+
+| CustID | COUNT(*) |
++--------+----------+
+| C0001 | 2 |
+| C0002 | 2 |
++--------+----------+
+2 rows in set (0.30 sec)
+c) Display the number of people in each category of payment mode from the table SALE.
+mysql> SELECT PaymentMode, COUNT(PaymentMode)
+FROM SALE GROUP BY Paymentmode ORDER BY
+Paymentmode;
++--------------+--------------------+
+| PaymentMode | Count(PaymentMode) |
++--------------+--------------------+
+| Bank Finance | 2 |
+| Cheque | 1 |
+| Credit Card | 2 |
+| Online | 1 |
++--------------+--------------------+
+4 rows in set (0.00 sec)
+d) Display the PaymentMode and number of payments made using that mode more than once.
+mysql> SELECT PaymentMode, Count(PaymentMode)
+FROM SALE GROUP BY Paymentmode HAVING COUNT(*)>1
+ORDER BY Paymentmode;
++--------------+--------------------+
+| PaymentMode | Count(PaymentMode) |
++--------------+--------------------+
+| Bank Finance | 2 |
+| Credit Card | 2 |
++--------------+--------------------+
+2 rows in set (0.00 sec)
+Reprint 2026-27
+S tructured Query Language (SQL) 169
+9.10 operatIonS on reLatIonS
+We can perform certain operations on relations like
+Union, Intersection and Set Difference to merge the tuples of two tables. These three operations are binary operations as they work upon two tables. Note here that these operations can only be applied if both the relations have the same number of attributes and corresponding attributes in both tables have the same domain.
+9.10.1 UNION (∪)
+This operation is used to combine the selected rows of two tables at a time. If some rows are same in both the tables, then result of the Union operation will show those rows only once. Figure 9.4 shows union of two sets.
+Music Dance
+Figure 9.4: Union of two sets
+Let us consider two relations DANCE and MUSIC shown in Tables 9.18 and 9.19 respectively.
+Table 9.18 DANCE
++------+--------+-------+
+| SNo | Name | Class |
++------+--------+-------+
+| 1 | Aastha | 7A |
+| 2 | Mahira | 6A |
+| 3 | Mohit | 7B |
+| 4 | Sanjay | 7A |
++------+--------+-------+
+Table 9.19 MUSIC
++------+---------+-------+
+| SNo | Name | Class |
++------+---------+-------+
+| 1 | Mehak | 8A |
+| 2 | Mahira | 6A |
+| 3 | Lavanya | 7A |
+| 4 | Sanjay | 7A |
+| 5 | Abhay | 8A |
++------+---------+-------+
+If we need the list of students participating in either of events, then we have to apply UNION operation (represented by symbol U) on relations DANCE and
+MUSIC. The output of UNION operation is shown in
+Table 9.20.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 170
+Table 9.20 DANCE U MUSIC
++------+---------+-------+
+| SNo | Name | Class |
++------+---------+-------+
+| 1 | Aastha | 7A |
+| 2 | Mahira | 6A |
+| 3 | Mohit | 7B |
+| 4 | Sanjay | 7A |
+| 1 | Mehak | 8A |
+| 3 | Lavanya | 7A |
+| 5 | Abhay | 8A |
++------+---------+-------+
+9.10.2 INTERSECT (∩)
+Intersect operation is used to get the common tuples from two tables and is represented by symbol ∩. Figure
+9.5 shows intersection of two sets.
+Music Dance
+Figure 9.5: Intersection of two sets
+Suppose, we have to display the list of students who are participating in both the events (DANCE and
+MUSIC), then intersection operation is to be applied on these two tables. The output of INTERSECT operation is shown in Table 9.21.
+Table 9.21 DANCE ∩ MUSIC
++----+---------+-------+
+| SNo| Name | Class |
++----+---------+-------+
+| 2 | Mahira | 6A |
+| 4 | Sanjay | 7A |
++----+---------+-------+
+9.10.3 MINUS (-)
+This operation is used to get tuples/rows which are in the first table but not in the second table and the operation is represented by the symbol - (minus). Figure
+9.6 shows minus operation (also called set difference)
+between two sets.
+Reprint 2026-27
+S tructured Query Language (SQL) 171
+Music Dance
+Figure 9.6: Difference of two sets
+Suppose we want the list of students who are only participating in MUSIC and not in DANCE event. Then, we will use the MINUS operation, whose output is given in Table 9.22.
+Table 9.22 DANCE - MUSIC
++------+---------+-------+
+| SNo | Name | Class |
++------+---------+-------+
+| 1 | Mehak | 8A |
+| 3 | Lavanya | 7A |
+| 5 | Abhay | 8A |
++------+---------+-------+
+9.10.4 Cartesian Product (X)
+Cartesian product operation combines tuples from two relations. It results in all pairs of rows from the two input relations, regardless of whether or not they have the same values on common attributes. It is denoted as ‘X’.
+The degree of the resulting relation is calculated as the sum of the degrees of both the relations under consideration. The cardinality of the resulting relation is calculated as the product of the cardinality of relations on which cartesian product is applied. Let us use the relations DANCE and MUSIC to show the output of cartesian product. Note that both relations are of degree
+3. The cardinality of relations DANCE and MUSIC is 4 and 5 respectively. Applying cartesian product on these two relations will result in a relation of degree 6 and cardinality 20, as shown in Table 9.23.
+Table 9.23 DANCE X MUSIC
++---+-------+-------+------+---------+-------+
+|SNo| Name | Class | SNo | Name | Class |
++---+-------+-------+------+---------+-------+
+| 1 | Aastha | 7A | 1 | Mehak | 8A |
+| 2 | Mahira | 6A | 1 | Mehak | 8A |
+| 3 | Mohit | 7B | 1 | Mehak | 8A |
+| 4 | Sanjay | 7A | 1 | Mehak | 8A |
+| 1 | Aastha | 7A | 2 | Mahira | 6A |
+| 2 | Mahira | 6A | 2 | Mahira | 6A |
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 172
+| 3 | Mohit | 7B | 2 | Mahira | 6A |
+| 4 | Sanjay | 7A | 2 | Mahira | 6A |
+| 1 | Aastha | 7A | 3 | Lavanya | 7A |
+| 2 | Mahira | 6A | 3 | Lavanya | 7A |
+| 3 | Mohit | 7B | 3 | Lavanya | 7A |
+| 4 | Sanjay | 7A | 3 | Lavanya | 7A |
+| 1 | Aastha | 7A | 4 | Sanjay | 7A |
+| 2 | Mahira | 6A | 4 | Sanjay | 7A |
+| 3 | Mohit | 7B | 4 | Sanjay | 7A |
+| 4 | Sanjay | 7A | 4 | Sanjay | 7A |
+| 1 | Aastha | 7A | 5 | Abhay | 8A |
+| 2 | Mahira | 6A | 5 | Abhay | 8A |
+| 3 | Mohit | 7B | 5 | Abhay | 8A |
+| 4 | Sanjay | 7A | 5 | Abhay | 8A |
++---+-------+-------+------+---------+-------+
+20 rows in set (0.03 sec)
+9.11 uSIng two reLatIonS In a Query
+Till now we have written queries in SQL using a single relation only. In this section, we will learn to write queries using two relations.
+9.11.1 Cartesian product on two tables
+From the previous section, we learnt that application of operator cartesian product on two tables results in a table having all combinations of tuples from the underlying tables. When more than one table is to be used in a query, then we must specify the table names by separating commas in the FROM clause, as shown in
+Example 9.24. On execution of such a query, the DBMS (MySql) will first apply cartesian product on specified tables to have a single table. The following query of example 9.24 applies cartesian product on the two tables DANCE and MUSIC:
+Example 9.24 a) Display all possible combinations of tuples of relations DANCE and MUSIC mysql> SELECT * FROM DANCE, MUSIC;
+As we are using SELECT * in the query, the output will be the Table 9.23 having degree 6 and cardinality 20.
+b) From the all possible combinations of tuples of relations DANCE and MUSIC display only those rows such that the attribute name in both have the same value.
+mysql> SELECT * FROM DANCE D, MUSIC M WHERE
+D.Name = M.Name;
+Reprint 2026-27
+S tructured Query Language (SQL) 173
+Table 9.24 Tuples with same name
++------+--------+-------+------+--------+-------+
+| Sno | Name | Class | Sno | Name | class |
++------+--------+-------+------+--------+-------+
+| 2 | Mahira | 6A | 2 | Mahira | 6A |
+| 4 | Sanjay | 7A | 4 | Sanjay | 7A |
++------+--------+-------+------+--------+-------+
+2 rows in set (0.00 sec)
+Note that in this query we have used table aliases (D for DANCE and M for MUSIC), just like column aliases (see Section 9.6.2) to refer to tables by shortened names.
+It is important to note that table alias is valid only for current query and the original table name cannot be used in the query if its alias is given in FROM clause.
+9.11.2 JOIN on two tables
+JOIN operation combines tuples from two tables on specified conditions. This is unlike cartesian product which make all possible combinations of tuples. While using the JOIN clause of SQL, we specify conditions on the related attributes of two tables within the FROM clause. Usually, such an attribute is the primary key in one table and foreign key in another table. Let us create two tables UNIFORM (UCode, UName, UColor)
+and COST (UCode, Size, Price) in the SchoolUniform database. UCode is Primary Key in table UNIFORM.
+UCode and Size is the Composite Key in table COST.
+Therefore, Ucode is a common attribute between the two tables which can be used to fetch the common data from both tables. Hence, we need to define Ucode as foreign key in the Price table while creating this table.
+Table 9.25 Uniform table
++-------+-------+--------+
+| Ucode | Uname | Ucolor |
++-------+-------+--------+
+| 1 | Shirt | White |
+| 2 | Pant | Grey |
+| 3 | Tie | Blue |
++-------+-------+--------+
+Table 9.26 Cost table
++-------+------+-------+
+| Ucode | Size | Price |
++-------+------+-------+
+| 1 | L | 580 |
+| 1 | M | 500 |
+| 2 | L | 890 |
+| 2 | M | 810 |
++-------+------+-------+
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 174
+Example 9.25 List the UCode, UName, UColor, Size and
+Price of related tuples of tables UNIFORM and COST.
+The given query may be written in three different ways as given below.
+a) Using condition in where clause mysql> SELECT * FROM UNIFORM U, COST C WHERE
+U.UCode = C.UCode;
+Table 9.27 Output of the query
++-------+-------+--------+-------+-----+-------+
+| UCode | UName | UColor | Ucode |Size | Price |
++-------+-------+--------+-------+-----+-------+
+| 1 | Shirt | White | 1 | L | 580 |
+| 1 | Shirt | White | 1 | M | 500 |
+| 2 | Pant | Grey | 2 | L | 890 |
+| 2 | Pant | Grey | 2 | M | 810 |
++-------+-------+--------+-------+-----+-------+
+4 rows in set (0.08 sec)
+As the attribute Ucode is in both tables, we need to use table alias to remove ambiguity. Hence, we have used qualifier with attribute UCode in SELECT and FROM clauses to indicate its scope.
+b) Explicit use of JOIN clause mysql> SELECT * FROM UNIFORM U JOIN COST C ON
+U.Ucode=C.Ucode;
+The output of the query is same as shown in
+Table 9.26. In this query we have used JOIN clause explicitly along with condition in From clause. Hence no condition needs to be given in where clause.
+c) Explicit use of NATURAL JOIN clause
+The output of queries (a) and (b) shown in Table
+9.26 has a repetitive column Ucode having exactly the same values. This redundant column provides no additional information. There is an extension of
+JOIN operation called NATURAL JOIN which works similar to JOIN clause in SQL but removes the redundant attribute. This operator can be used to join the contents of two tables if there is one common attribute in both the tables. The above SQL query using NATURAL JOIN is shown below:
+mysql> SELECT * FROM UNIFORM NATURAL JOIN COST;
++-------+-------+--------+------+-------+
+| UCode | UName | UColor | Size | Price |
++-------+-------+--------+------+-------+
+| 1 | Shirt | White | L | 580 |
+| 1 | Shirt | White | M | 500 |
+| 2 | Pant | Grey | L | 890 |
+Reprint 2026-27
+S tructured Query Language (SQL) 175
+| 2 | Pant | Grey | M | 810 |
++-------+-------+--------+------+-------+
+4 rows in set (0.17 sec)
+It is clear from the output that the result of this query is same as that of queries written in (a) and (b) except that the attribute Ucode appears only once.
+Following are some of the points to be considered while applying JOIN operations on two or more relations:
+• If two tables are to be joined on equality condition on the common attribute, then one may use JOIN with ON clause or NATURAL JOIN in FROM clause.
+If three tables are to be joined on equality condition, then two JOIN or NATURAL JOIN are required.
+• In general, N-1 joins are needed to combine N tables on equality condition.
+• With JOIN clause, we may use any relational operators to combine tuples of two tables.
+• Database is a collection of related tables. MySQL is a ‘relational’ DBMS.
+• DDL (Data Definition Language) includes SQL statements such as, Create table, Alter table and
+Drop table.
+• DML (Data Manipulation Language) includes SQL statements such as, insert, select, update and
+• A table is a collection of rows and columns, where each row is a record and columns describe the feature of records.
+• ALTER TABLE statement is used to make changes in the structure of a table like adding, removing or changing datatype of column(s).
+• UPDATE statement is used to modify existing data in a table.
+• WHERE clause in SQL query is used to enforce condition(s).
+• DISTINCT clause is used to eliminate repetition and display the values only once.
+Reprint 2026-27

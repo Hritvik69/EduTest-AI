@@ -1,0 +1,74 @@
+Computer SCienCe – ClaSS xi 96 marks (e.g., ‘Hello’) or in double quotation marks (e.g.,
+“Hello”). The quotes are not a part of the string, they are used to mark the beginning and end of the string for the interpreter. For example,
+>>> str1 = 'Hello Friend'
+>>> str2 = "452"
+We cannot perform numerical operations on strings, even when the string contains a numeric value, as in str2.
+(B) List
+List is a sequence of items separated by commas and the items are enclosed in square brackets [ ].
+Example 5.4
+#To create a list
+>>> list1 = [5, 3.4, "New Delhi", "20C", 45]
+#print the elements of the list list1
+>>> print(list1)
+[5, 3.4, 'New Delhi', '20C', 45] (C) Tuple
+Tuple is a sequence of items separated by commas and items are enclosed in parenthesis ( ). This is unlike list, where values are enclosed in brackets [ ]. Once created, we cannot change the tuple.
+Example 5.5
+#create a tuple tuple1
+>>> tuple1 = (10, 20, "Apple", 3.4, 'a')
+#print the elements of the tuple tuple1
+>>> print(tuple1)
+(10, 20, "Apple", 3.4, 'a')
+5.7.3 Set
+Set is an unordered collection of items separated by commas and the items are enclosed in curly brackets { }. A set is similar to list, except that it cannot have duplicate entries.
+Once created, elements of a set cannot be changed.
+Example 5.6
+#create a set
+>>> set1 = {10,20,3.14,"New Delhi"}
+>>> print(type(set1))
+<class 'set'>
+>>> print(set1)
+{10, 20, 3.14, "New Delhi"}
+#duplicate elements are not included in set
+Reprint 2026-27
+GettinG Started with Python 97
+>>> set2 = {1,2,1,3}
+>>> print(set2)
+{1, 2, 3}
+5.7.4 None
+None is a special data type with a single value. It is used to signify the absence of value in a situation. None supports no special operations, and it is neither same as False nor 0 (zero).
+Example 5.7
+>>> myVar = None
+>>> print(type(myVar))
+<class 'NoneType'>
+>>> print(myVar)
+5.7.5 Mapping
+Mapping is an unordered data type in Python. Currently, there is only one standard mapping data type in Python called dictionary.
+(A) Dictionary
+Dictionary in Python holds data items in key-value pairs.
+Items in a dictionary are enclosed in curly brackets { }.
+Dictionaries permit faster access to data. Every key is separated from its value using a colon (:) sign. The key
+: value pairs of a dictionary can be accessed using the key. The keys are usually strings and their values can be any data type. In order to access any value in the dictionary, we have to specify its key in square brackets
+Example 5.8
+#create a dictionary
+>>> dict1 = {'Fruit':'Apple',
+'Climate':'Cold', 'Price(kg)':120}
+>>> print(dict1)
+{'Fruit': 'Apple', 'Climate': 'Cold',
+'Price(kg)': 120}
+>>> print(dict1['Price(kg)'])
+5.7.6 Mutable and Immutable Data Types
+Sometimes we may require to change or update the values of certain variables used in a program. However, for certain data types, Python does not allow us to
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 98 change the values once a variable of that type has been created and assigned values.
+Variables whose values can be changed after they are created and assigned are called mutable. Variables whose values cannot be changed after they are created and assigned are called immutable. When an attempt is made to update the value of an immutable variable, the old variable is destroyed and a new variable is created by the same name in memory.
+Python data types can be classified into mutable and immutable as shown in Figure 5.7.
+Let us now see what happens when an attempt is made to update the value of a variable.
+>>> num1 = 300
+This statement will create an object with value 300 and the object is referenced by the identifier num1 as shown in Figure 5.8.
+>>> num2 = num1
+The statement num2 = num1 will make num2 refer to the value 300, also being referred by num1, and stored at memory location number, say 1000.
+So, num1 shares the referenced location with num2 as shown in Figure 5.9.
+Figure 5.8: Object and its identifier
+Figure 5.9: Variables with same value have same identifier
+Figure 5.7: Classification of data types
+Reprint 2026-27

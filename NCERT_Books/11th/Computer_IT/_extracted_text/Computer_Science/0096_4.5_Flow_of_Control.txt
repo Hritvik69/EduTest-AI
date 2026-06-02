@@ -1,0 +1,124 @@
+Computer SCienCe – ClaSS xi 84
+Bill GST, which is the bill after adding 5% of tax in the total bill.
+7. Write pseudocode that will perform the following:
+a) Read the marks of three subjects: Computer
+Science, Mathematics and Physics, out of 100 b) Calculate the aggregate marks c) Calculate the percentage of marks
+8. Write an algorithm to find the greatest among two different numbers entered by the user.
+9. Write an algorithm that performs the following:
+Ask a user to enter a number. If the number is between 5 and 15, write the word GREEN. If the number is between 15 and 25, write the word BLUE.
+if the number is between 25 and 35, write the word
+ORANGE. If it is any other number, write that ALL
+COLOURS ARE BEAUTIFUL.
+10. Write an algorithm that accepts four numbers as input and find the largest and smallest of them.
+11. Write an algorithm to display the total water bill charges of the month depending upon the number of units consumed by the customer as per the following criteria:
+• for the first 100 units @ 5 per unit
+• for next 150 units @ 10 per unit
+• more than 250 units @ 20 per unit
+Also add meter charges of 75 per month to calculate the total water bill .
+12. What are conditionals? When they are required in a program?
+13. Match the pairs
+Flowchart Symbol Functions
+Flow of Control
+Process Step
+Start/Stop of the
+Reprint 2026-27
+IntroductIon to Problem SolvIng 85
+Decision Making
+14. Following is an algorithm for going to school or college. Can you suggest improvements in this to include other options?
+Reach_School_Algorithm a) Wake up b) Get ready c) Take lunch box d) Take bus e) Get off the bus f) Reach school or college
+15. Write a pseudocode to calculate the factorial of a number ( Hint: Factorial of 5, written as
+5! = ) × × × × 5 4 3 2 1 .
+16. Draw a flowchart to check whether a given number is an Armstrong number. An Armstrong number of three digits is an integer such that the sum of the cubes of its digits is equal to the number itself. For example, 371 is an Armstrong number since 3**3 +
+7**3 + 1**3 = 371.
+17. Following is an algorithm to classify numbers as
+“Single Digit”, “Double Digit” or “Big”.
+Classify_Numbers_Algo
+INPUT Number
+IF Number < 9
+" Single Digit "
+Else If Number < 99
+" Double Digit "
+Verify for (5, 9, 47, 99, 100 200) and correct the algorithm if required
+18. For some calculations, we want an algorithm that accepts only positive integers upto 100.
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 86
+Accept_1to100_Algo
+INPUT Number
+IF (0<= Number) AND (Number <= 100)
+a) On what values will this algorithm fail?
+b) Can you improve the algorithm?
+Reprint 2026-27
+5.1 IntroductIon to Python
+We have written algorithms for different problems in
+Chapter 4. Let us now move a step further and create programs using any version of Python 3. But before learning about Python programming language, let us understand what is a programming language and how it works.
+An ordered set of instructions to be executed by a computer to carry out a specific task is called a program, and the language used to specify this set of instructions to the computer is called a programming language.
+As we know that computers understand the language of 0s and 1s which is called machine language or low level language. However, it is difficult for humans to write or comprehend instructions using 0s and 1s. This led to the advent of high-level programming languages like Python, C++, Visual Basic, PHP, Java that are easier to manage by humans but are not directly understood by the computer.
+A program written in a high-level language is called source code. Recall from Chapter 1 that language translators like compilers and interpreters are needed to translate the source code into machine language.
+Python uses an interpreter to convert its instructions into machine language, so that it can be understood by the computer. An interpreter processes the program statements one by one, first translating and then executing. This process is continued until an error is encountered or the whole program is executed successfully. In both the cases, program execution will stop. On the contrary, a compiler translates the entire source code, as a whole, into the object code.
+After scanning the whole program, it generates error messages, if any.
+“Computer programming is an art, because it applies accumulated knowledge to the world, because it requires skill and ingenuity, and especially because it produces objects of beauty. A programmer who subconsciously views himself as an artist will enjoy what he does and will do it better.”
+– Donald Knuth
+Chapter 5
+Getting Started with
+In this chapter
+» Introduction to
+» Python Keywords
+» Identifiers
+» Comments
+» Data Types
+» Operators
+» Expressions
+» Statement
+» Input and Output
+» Type Conversion
+» Debugging
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 88
+5.1.1 Features of Python
+• Python is a high level language. It is a free and open source language.
+• It is an interpreted language, as Python programs are executed by an interpreter.
+• Python programs are easy to understand as they have a clearly defined syntax and relatively simple structure.
+• Python is case-sensitive. For example, NUMBER and number are not same in Python.
+• Python is portable and platform independent, means it can run on various operating systems and hardware platforms.
+• Python has a rich library of predefined functions.
+• Python is also helpful in web development. Many popular web services and applications are built using Python.
+• Python uses indentation for blocks and nested blocks.
+5.1.2 Working with Python
+To write and run (execute) a Python program, we need to have a Python interpreter installed on our computer or we can use any online Python interpreter. The interpreter is also called Python shell. A sample screen of Python interpreter is shown in Figure 5.1:
+Downloading Python
+The latest version of
+Python 3 is available on the official website:
+https://www.python.org/
+Figure 5.1: Python interpreter or shell
+In the above screen, the symbol >>> is the Python prompt, which indicates that the interpreter is ready to take instructions. We can type commands or statements on this prompt to execute them using a
+Python interpreter.
+Reprint 2026-27
+GettinG Started with Python 89
+5.1.3 Execution Modes
+There are two ways to use the Python interpreter:
+a) Interactive mode b) Script mode
+Interactive mode allows execution of individual statement instantaneously. Whereas, Script mode allows us to write more than one instruction in a file called Python source code file that can be executed.
+(A) Interactive Mode
+To work in the interactive mode, we can simply type a
+Python statement on the >>> prompt directly. As soon as we press enter, the interpreter executes the statement and displays the result(s), as shown in Figure 5.2.
+Figure 5.2: Python interpreter in interactive mode
+Working in the interactive mode is convenient for testing a single line code for instant execution. But in the interactive mode, we cannot save the statements for future use and we have to retype the statements to run them again.
+(B) Script Mode
+In the script mode, we can write a Python program in a file, save it and then use the interpreter to execute it.
+Python scripts are saved as files where file name has extension “.py”. By default, the Python scripts are saved in the Python installation folder. To execute a script, we can either:
+a) Type the file name along with the path at the prompt. For example, if the name of the file is prog5-1.py, we type prog5-1.py. We can otherwise open the program directly from IDLE as shown in
+Figure 5.3.
+b) While working in the script mode, after saving the file, click [Run]->[Run Module] from the menu as shown in Figure 5.4.
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 90
+Program 5-1 Write a program to show print statement in script mode.
+Figure 5.3: Python source code file (prog5-1.py)
+5.2 Python Keywords
+Keywords are reserved words. Each keyword has a specific meaning to the Python interpreter, and we can use a keyword in our program only for the purpose for which it has been defined. As Python is case sensitive, keywords must be written exactly as given in Table 5.1.
+Table 5.1 Python keywords
+False class finally is return
+None continue for lambda try c) The output appears on shell as shown in
+Figure 5.5.
+Figure 5.4: Execution of Python in Script mode using IDLE
+Figure 5.5: Output of a program executed in script mode
+Reprint 2026-27

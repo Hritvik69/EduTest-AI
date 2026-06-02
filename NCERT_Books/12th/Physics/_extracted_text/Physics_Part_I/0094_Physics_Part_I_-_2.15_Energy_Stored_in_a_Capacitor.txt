@@ -1,0 +1,108 @@
+12. The energy U stored in a capacitor of capacitance C, with charge Q and voltage V is
+U QV CV Q
+The electric energy density (energy per unit volume) in a region with electric field is (1/2)
+Physical quantity Symbol Dimensions Unit Remark
+Potential or V [M1 L2 T–3 A–1] V Potential difference is physically significant
+Capacitance C [M–1 L–2 T–4 A2] F
+Polarisation P [L–2 AT] C m-2 Dipole moment per unit
+Dielectric constant K [Dimensionless]
+POINTS TO PONDER
+1. Electrostatics deals with forces between charges at rest. But if there is a force on a charge, how can it be at rest? Thus, when we are talking of electrostatic force between charges, it should be understood that each charge is being kept at rest by some unspecified force that opposes the net Coulomb force on the charge.
+2. A capacitor is so configured that it confines the electric field lines within a small region of space. Thus, even though field may have considerable strength, the potential difference between the two conductors of a capacitor is small.
+3. Electric field is discontinuous across the surface of a spherical charged shell. It is zero inside and
+ˆn outside. Electric potential is, however continuous across the surface, equal to q/4p e0R at the surface.
+4. The torque p × E on a dipole causes it to oscillate about E. Only if there is a dissipative mechanism, the oscillations are damped and the dipole eventually aligns with E.
+5. Potential due to a charge q at its own location is not defined – it is infinite.
+6. In the expression qV (r) for potential energy of a charge q, V (r) is the potential due to external charges and not the potential due to q. As seen in point 5, this expression will be ill-defined if V (r) includes potential due to a charge q itself.
+Reprint 2026-27
+Electrostatic Potential and Capacitance
+7. A cavity inside a conductor is shielded from outside electrical influences.
+It is worth noting that electrostatic shielding does not work the other way round; that is, if you put charges inside the cavity, the exterior of the conductor is not shielded from the fields by the inside charges.
+EXERCISES
+2.1 Two charges 5 × 10–8 C and –3 × 10–8 C are located 16 cm apart. At what point(s) on the line joining the two charges is the electric potential zero? Take the potential at infinity to be zero.
+2.2 A regular hexagon of side 10 cm has a charge 5 mC at each of its vertices. Calculate the potential at the centre of the hexagon.
+2.3 Two charges 2 mC and –2 mC are placed at points A and B 6 cm (a) Identify an equipotential surface of the system.
+(b) What is the direction of the electric field at every point on this surface?
+2.4 A spherical conductor of radius 12 cm has a charge of 1.6 × 10–7C distributed uniformly on its surface. What is the electric field (a) inside the sphere (b) just outside the sphere (c) at a point 18 cm from the centre of the sphere?
+2.5 A parallel plate capacitor with air between the plates has a capacitance of 8 pF (1pF = 10–12 F). What will be the capacitance if the distance between the plates is reduced by half, and the space between them is filled with a substance of dielectric constant 6?
+2.6 Three capacitors each of capacitance 9 pF are connected in series.
+(a) What is the total capacitance of the combination?
+(b) What is the potential difference across each capacitor if the combination is connected to a 120 V supply?
+2.7 Three capacitors of capacitances 2 pF, 3 pF and 4 pF are connected in parallel.
+(a) What is the total capacitance of the combination?
+(b) Determine the charge on each capacitor if the combination is connected to a 100 V supply.
+2.8 In a parallel plate capacitor with air between the plates, each plate has an area of 6 × 10–3 m2 and the distance between the plates is 3 mm.
+Calculate the capacitance of the capacitor. If this capacitor is connected to a 100 V supply, what is the charge on each plate of the capacitor?
+Reprint 2026-27
+2.9 Explain what would happen if in the capacitor given in Exercise
+2.8, a 3 mm thick mica sheet (of dielectric constant = 6) were inserted between the plates, (a) while the voltage supply remained connected.
+(b) after the supply was disconnected.
+2.10 A 12pF capacitor is connected to a 50V battery. How much electrostatic energy is stored in the capacitor?
+2.11 A 600pF capacitor is charged by a 200V supply. It is then disconnected from the supply and is connected to another uncharged 600 pF capacitor. How much electrostatic energy is lost in the process?
+Reprint 2026-27
+3.1 INTRODUCTION
+In Chapter 1, all charges whether free or bound, were considered to be at rest. Charges in motion constitute an electric current. Such currents occur naturally in many situations. Lightning is one such phenomenon in which charges flow from the clouds to the earth through the atmosphere, sometimes with disastrous results. The flow of charges in lightning is not steady, but in our everyday life we see many devices where charges flow in a steady manner, like water flowing smoothly in a river. A torch and a cell-driven clock are examples of such devices. In the present chapter, we shall study some of the basic laws concerning steady electric currents.
+3.2 ELECTRIC CURRENT
+Imagine a small area held normal to the direction of flow of charges. Both the positive and the negative charges may flow forward and backward across the area. In a given time interval t, let q+ be the net amount (i.e., forward minus backward) of positive charge that flows in the forward direction across the area. Similarly, let q– be the net amount of negative charge flowing across the area in the forward direction. The net amount of charge flowing across the area in the forward direction in the time interval t, then, is q = q+– q–. This is proportional to t for steady current
+Chapter Three
+ELECTRICITY
+Reprint 2026-27 and the quotient is defined to be the current across the area in the forward direction. (If it turn out to be a negative number, it implies a current in the backward direction.)
+Currents are not always steady and hence more generally, we define the current as follows. Let DQ be the net charge flowing across a cross- section of a conductor during the time interval Dt [i.e., between times t and (t + Dt)]. Then, the current at time t across the cross-section of the conductor is defined as the value of the ratio of DQ to Dt in the limit of Dt tending to zero,
+I t t ∆ →
+≡ ∆ (3.2)
+In SI units, the unit of current is ampere. An ampere is defined through magnetic effects of currents that we will study in the following chapter. An ampere is typically the order of magnitude of currents in domestic appliances. An average lightning carries currents of the order of tens of thousands of amperes and at the other extreme, currents in our nerves are in microamperes.
+3.3 ELECTRIC CURRENTS IN CONDUCTORS
+An electric charge will experience a force if an electric field is applied. If it is free to move, it will thus move contributing to a current. In nature, free charged particles do exist like in upper strata of atmosphere called the ionosphere. However, in atoms and molecules, the negatively charged electrons and the positively charged nuclei are bound to each other and are thus not free to move. Bulk matter is made up of many molecules, a gram of water, for example, contains approximately 1022 molecules. These molecules are so closely packed that the electrons are no longer attached to individual nuclei. In some materials, the electrons will still be bound, i.e., they will not accelerate even if an electric field is applied. In other materials, notably metals, some of the electrons are practically free to move within the bulk material. These materials, generally called conductors, develop electric currents in them when an electric field is applied.
+If we consider solid conductors, then of course the atoms are tightly bound to each other so that the current is carried by the negatively charged electrons. There are, however, other types of conductors like electrolytic solutions where positive and negative charges both can move.
+In our discussions, we will focus only on solid conductors so that the current is carried by the negatively charged electrons in the background of fixed positive ions.
+Consider first the case when no electric field is present. The electrons will be moving due to thermal motion during which they collide with the fixed ions. An electron colliding with an ion emerges with the same speed as before the collision. However, the direction of its velocity after the collision is completely random. At a given time, there is no preferential direction for the velocities of the electrons. Thus on the average, the
+Reprint 2026-27
+Electricity number of electrons travelling in any direction will be equal to the number of electrons travelling in the opposite direction. So, there will be no net electric current.
+Let us now see what happens to such a piece of conductor if an electric field is applied.
+To focus our thoughts, imagine the conductor in the shape of a cylinder of radius R (Fig. 3.1).
+Suppose we now take two thin circular discs of a dielectric of the same radius and put positive charge +Q distributed over one disc and similarly –Q at the other disc. We attach the two discs on the two flat surfaces of the cylinder. An electric field will be created and is directed from the positive towards the negative charge. The electrons will be accelerated due to this field towards
++Q. They will thus move to neutralise the charges. The electrons, as long as they are moving, will constitute an electric current. Hence in the situation considered, there will be a current for a very short while and no current thereafter.
+We can also imagine a mechanism where the ends of the cylinder are supplied with fresh charges to make up for any charges neutralised by electrons moving inside the conductor. In that case, there will be a steady electric field in the body of the conductor. This will result in a continuous current rather than a current for a short period of time. Mechanisms, which maintain a steady electric field are cells or batteries that we shall study later in this chapter. In the next sections, we shall study the steady current that results from a steady electric field in conductors.
+3.4 OHM’S LAW
+A basic law regarding flow of currents was discovered by G.S. Ohm in
+1828, long before the physical mechanism responsible for flow of currents was discovered. Imagine a conductor through which a current I is flowing and let V be the potential difference between the ends of the conductor.
+Then Ohm’s law states that or, V = R I (3.3)
+where the constant of proportionality R is called the resistance of the conductor. The SI units of resistance is ohm, and is denoted by the symbol
+W. The resistance R not only depends on the material of the conductor but also on the dimensions of the conductor. The dependence of R on the dimensions of the conductor can easily be determined as follows.
+Consider a conductor satisfying Eq. (3.3) to be in the form of a slab of length l and cross sectional area A [Fig. 3.2(a)]. Imagine placing two such identical slabs side by side [Fig. 3.2(b)], so that the length of the combination is 2l. The current flowing through the combination is the same as that flowing through either of the slabs. If V is the potential difference across the ends of the first slab, then V is also the potential difference across the ends of the second slab since the second slab is
+FIGURE 3.1 Charges +Q and –Q put at the ends of a metallic cylinder. The electrons will drift because of the electric field created to neutralise the charges. The current thus will stop after a while unless the charges +Q and –Q are continuously replenished.
+FIGURE 3.2
+Illustrating the relation R = rl/A for a rectangular slab of length l and area of cross-section A.
+Reprint 2026-27 identical to the first and the same current I flows through both. The potential difference across the ends of the combination is clearly sum of the potential difference across the two individual slabs and hence equals 2V. The current through the combination is I and the resistance of the combination RC is [from Eq. (3.3)],
+= = (3.4)
+since V/I = R, the resistance of either of the slabs. Thus, doubling the length of a conductor doubles the resistance. In general, then resistance is proportional to
+R l ∝ (3.5)
+Next, imagine dividing the slab into two by cutting it lengthwise so that the slab can be considered as a combination of two identical slabs of length l , but each having a cross sectional area of A/2 [Fig. 3.2(c)].
+For a given voltage V across the slab, if I is the current through the entire slab, then clearly the current flowing through each of the two half-slabs is I/2. Since the potential difference across the ends of the half-slabs is V, i.e., the same as across the full slab, the resistance of each of the half-slabs R1 is
+= = = (3.6)
+Thus, halving the area of the cross-section of a conductor doubles the resistance. In general, then the resistance R is inversely proportional to the cross-sectional area,
+Combining Eqs. (3.5) and (3.7), we have and hence for a given conductor
+ρ = (3.9)
+where the constant of proportionality r depends on the material of the conductor but not on its dimensions.
+r is called resistivity.
+Using the last equation, Ohm’s law reads
+= × = (3.10)
+Current per unit area (taken normal to the current), I/A, is called current density and is denoted by j. The SI units of the current density are A/m2. Further, if E is the magnitude of uniform electric field in the conductor whose length is l, then the potential difference V across its ends is El. Using these, the last equation reads
+GEORG SIMON OHM (1787–1854)
+Georg Simon Ohm (1787–
+1854) German physicist, professor at Munich. Ohm was led to his law by an analogy between the conduction of heat: the electric field is analogous to the temperature gradient, and the electric current is analogous to the heat flow.
+Reprint 2026-27
+Electricity or, E = j r (3.11)
+The above relation for magnitudes E and j can indeed be cast in a vector form. The current density, (which we have defined as the current through unit area normal to the current) is also directed along E, and is also a vector j (ººººº j E/E). Thus, the last equation can be written as, r (3.12)
+s E (3.13)
+r is called the conductivity. Ohm’s law is often stated in an equivalent form, Eq. (3.13) in addition to Eq.(3.3). In the next section, we will try to understand the origin of the Ohm’s law as arising from the characteristics of the drift of electrons.
+3.5 DRIFT OF ELECTRONS AND THE ORIGIN
+OF RESISTIVITY
+As remarked before, an electron will suffer collisions with the heavy fixed ions, but after collision, it will emerge with the same speed but in random directions. If we consider all the electrons, their average velocity will be zero since their directions are random. Thus, if there are N electrons and the velocity of the ith electron (i = 1, 2, 3, ... N ) at a given time is vi, then
+Consider now the situation when an electric field is present. Electrons will be accelerated due to this field by m (3.15)
+where –e is the charge and m is the mass of an electron.
+Consider again the ith electron at a given time t. This electron would have had its last collision some time before t, and let ti be the time elapsed after its last collision. If vi was its velocity immediately after the last collision, then its velocity Vi at time t is
+V v i i i m (3.16)
+since starting with its last collision it was accelerated (Fig. 3.3) with an acceleration given by Eq. (3.15) for a time interval ti. The average velocity of the electrons at time t is the average of all the Vi’s. The average of vi’s is zero [Eq. (3.14)] since immediately after any collision, the direction of the velocity of an electron is completely random. The collisions of the electrons do not occur at regular intervals but at random times. Let us denote by t, the average time between successive collisions. Then at a given time, some of the electrons would have spent
+FIGURE 3.3 A schematic picture of an electron moving from a point A to another point B through repeated collisions, and straight line travel between collisions (full lines). If an electric field is applied as shown, the electron ends up at point B¢ (dotted lines). A slight drift in a direction opposite the electric field is visible.
+Reprint 2026-27

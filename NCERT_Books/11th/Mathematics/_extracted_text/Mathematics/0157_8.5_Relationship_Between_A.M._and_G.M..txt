@@ -1,0 +1,121 @@
+SEQUENCES AND SERIES 145
+Solving (3) and (5), we obtain a = 4, b = 16 or a = 16, b = 4
+Thus, the numbers a and b are 4, 16 or 16, 4 respectively.
+EXERCISE 8.2
+1. Find the 20th and nth terms of the G.P. 5 5 5
+, , , ...
+2. Find the 12th term of a G.P. whose 8th term is 192 and the common ratio is 2.
+3. The 5th, 8th and 11th terms of a G.P. are p, q and s, respectively. Show that q2 = ps.
+4. The 4th term of a G.P. is square of its second term, and the first term is – 3.
+Determine its 7th term.
+5. Which term of the following sequences:
+(a) 2 2 2 4 is 128 ? , , ,... (b) 3 3 3 3 is729 ? , , ,...
+(c) 1 1 1 1
+3 9 27 19683
+, , ,... ?
+6. For what values of x, the numbers 2 7
+– , x, – are in G.P.?
+Find the sum to indicated number of terms in each of the geometric progressions in
+Exercises 7 to 10:
+7. 0.15, 0.015, 0.0015, ... 20 terms.
+8. 7 , 21 , 3 7 , ... n terms.
+9. 1, – a, a2, – a3, ... n terms (if a ≠ – 1).
+10. x3, x5, x7, ... n terms (if x ≠ ± 1).
+11. Evaluate
+12. The sum of first three terms of a G.P. is 39
+10 and their product is 1. Find the common ratio and the terms.
+13. How many terms of G.P. 3, 32, 33, … are needed to give the sum 120?
+14. The sum of first three terms of a G.P. is 16 and the sum of the next three terms is
+128. Determine the first term, the common ratio and the sum to n terms of the G.P.
+15. Given a G.P. with a = 729 and 7th term 64, determine S7.
+Reprint 2026-27
+146 MATHEMATICS
+16. Find a G.P. for which sum of the first two terms is – 4 and the fifth term is
+4 times the third term.
+17. If the 4th, 10th and 16th terms of a G.P. are x, y and z, respectively. Prove that x, y, z are in G.P.
+18. Find the sum to n terms of the sequence, 8, 88, 888, 8888… .
+19. Find the sum of the products of the corresponding terms of the sequences 2, 4, 8,
+16, 32 and 128, 32, 8, 2, 1
+20. Show that the products of the corresponding terms of the sequences a, ar, ar2,
+…arn – 1 and A, AR, AR2, … ARn – 1 form a G.P, and find the common ratio.
+21. Find four numbers forming a geometric progression in which the third term is greater than the first term by 9, and the second term is greater than the 4th by 18.
+22. If the pth, qth and rth terms of a G.P. are a, b and c, respectively. Prove that aq – r br – pcP – q = 1.
+23. If the first and the nth term of a G.P. are a and b, respectively, and if P is the product of n terms, prove that P2 = (ab)n.
+24. Show that the ratio of the sum of first n terms of a G.P. to the sum of terms from (n + 1)th to (2n)th term is 1
+25. If a, b, c and d are in G.P. show that (a2 + b2 + c2) (b2 + c2 + d2) = (ab + bc + cd)2 .
+26. Insert two numbers between 3 and 81 so that the resulting sequence is G.P.
+27. Find the value of n so that a b may be the geometric mean between a and b.
+28. The sum of two numbers is 6 times their geometric mean, show that numbers are in the ratio ( ) ( ) 3 2 2 : 3 2 2 + − .
+29. If A and G be A.M. and G.M., respectively between two positive numbers, prove that the numbers are A A G A G ( )( ) ± + − .
+30. The number of bacteria in a certain culture doubles every hour. If there were 30 bacteria present in the culture originally, how many bacteria will be present at the end of 2nd hour, 4th hour and nth hour ?
+Reprint 2026-27
+SEQUENCES AND SERIES 147
+31. What will Rs 500 amounts to in 10 years after its deposit in a bank which pays annual interest rate of 10% compounded annually?
+32. If A.M. and G.M. of roots of a quadratic equation are 8 and 5, respectively, then obtain the quadratic equation.
+Miscellaneous Examples
+Example 14 If a, b, c, d and p are different real numbers such that (a2 + b2 + c2)p2 – 2(ab + bc + cd) p + (b2 + c2 + d2) ≤ 0, then show that a, b, c and d are in G.P.
+Solution Given that (a2 + b2 + c2) p2 – 2 (ab + bc + cd) p + (b2 + c2 + d2) ≤ 0 ... (1)
+But L.H.S.
+= (a2p2 – 2abp + b2) + (b2p2 – 2bcp + c2) + (c2p2 – 2cdp + d2), which gives (ap – b)2 + (bp – c)2 + (cp – d)2 ≥ 0 ... (2)
+Since the sum of squares of real numbers is non negative, therefore, from (1) and (2), we have, (ap – b)2 + (bp – c)2 + (cp – d)2 = 0 or ap – b = 0, bp – c = 0, cp – d = 0
+This implies that b c d p
+Hence a, b, c and d are in G.P.
+Miscellaneous Exercise On Chapter 8
+1. If f is a function satisfying f (x +y) = f(x) f(y) for all x, y ∈ N such that f(1) = 3 and 1
+= ∑ , find the value of n.
+2. The sum of some terms of G.P. is 315 whose first term and the common ratio are
+5 and 2, respectively. Find the last term and the number of terms.
+3. The first term of a G.P. is 1. The sum of the third term and fifth term is 90.
+Find the common ratio of G.P.
+4. The sum of three numbers in G.P. is 56. If we subtract 1, 7, 21 from these numbers in that order, we obtain an arithmetic progression. Find the numbers.
+5. A G.P. consists of an even number of terms. If the sum of all the terms is 5 times the sum of terms occupying odd places, then find its common ratio.
+Reprint 2026-27
+148 MATHEMATICS
+6. If a bx
+− ≠ ( ) , 0 then show that a, b, c and d are in G.P.
+7. Let S be the sum, P the product and R the sum of reciprocals of n terms in a G.P.
+Prove that P2Rn = Sn.
+8. If a, b, c, d are in G.P, prove that (an + bn), (bn + cn), (cn + dn) are in G.P.
+9. If a and b are the roots of x2 – 3x + p = 0 and c, d are roots of x2 – 12x + q = 0, where a, b, c, d form a G.P. Prove that (q + p) : (q – p) = 17:15.
+10. The ratio of the A.M. and G.M. of two positive numbers a and b, is m : n. Show that ( ) ( )2 2 2 2
+: a b m m – n : m – m – n = + .
+11. Find the sum of the following series up to n terms:
+(i) 5 + 55 +555 + … (ii) .6 +. 66 +. 666+…
+12. Find the 20th term of the series 2 × 4 + 4 × 6 + 6 × 8 + ... + n terms.
+13. A farmer buys a used tractor for Rs 12000. He pays Rs 6000 cash and agrees to pay the balance in annual instalments of Rs 500 plus 12% interest on the unpaid amount. How much will the tractor cost him?
+14. Shamshad Ali buys a scooter for Rs 22000. He pays Rs 4000 cash and agrees to pay the balance in annual instalment of Rs 1000 plus 10% interest on the unpaid amount. How much will the scooter cost him?
+15. A person writes a letter to four of his friends. He asks each one of them to copy the letter and mail to four different persons with instruction that they move the chain similarly. Assuming that the chain is not broken and that it costs 50 paise to mail one letter. Find the amount spent on the postage when 8th set of letter is
+16. A man deposited Rs 10000 in a bank at the rate of 5% simple interest annually.
+Find the amount in 15th year since he deposited the amount and also calculate the total amount after 20 years.
+17. A manufacturer reckons that the value of a machine, which costs him Rs. 15625, will depreciate each year by 20%. Find the estimated value at the end of 5 years.
+18. 150 workers were engaged to finish a job in a certain number of days. 4 workers dropped out on second day, 4 more workers dropped out on third day and so on.
+It took 8 more days to finish the work. Find the number of days in which the work was completed.
+Reprint 2026-27
+SEQUENCES AND SERIES 149
+ÆBy a sequence, we mean an arrangement of number in definite order according to some rule. Also, we define a sequence as a function whose domain is the set of natural numbers or some subsets of the type {1, 2, 3, ....k}. A sequence containing a finite number of terms is called a finite sequence. A sequence is called infinite if it is not a finite sequence.
+ÆLet a1, a2, a3, ... be the sequence, then the sum expressed as a1 + a2 + a3 + ...
+is called series. A series is called finite series if it has got finite number of
+ÆA sequence is said to be a geometric progression or G.P., if the ratio of any term to its preceding term is same throughout. This constant factor is called the common ratio. Usually, we denote the first term of a G.P. by a and its common ratio by r. The general or the nth term of G.P. is given by an= arn – 1.
+The sum Sn of the first n terms of G.P. is given by ( ) ( ) – 1 1–
+= or , if r
+ÆThe geometric mean (G.M.) of any two positive numbers a and b is given by ab i.e., the sequence a, G, b is G.P.
+Historical Note
+Evidence is found that Babylonians, some 4000 years ago, knew of arithmetic and geometric sequences. According to Boethius (510), arithmetic and geometric sequences were known to early Greek writers. Among the Indian mathematician,
+Aryabhatta (476) was the first to give the formula for the sum of squares and cubes of natural numbers in his famous work Aryabhatiyam, written around
+499. He also gave the formula for finding the sum to n terms of an arithmetic sequence starting with pth term. Noted Indian mathematicians Brahmgupta
+Reprint 2026-27
+150 MATHEMATICS
+— v v v v v — (598), Mahavira (850) and Bhaskara (1114-1185) also considered the sum of squares and cubes. Another specific type of sequence having important applications in mathematics, called Fibonacci sequence, was discovered by Italian mathematician
+Leonardo Fibonacci (1170-1250). Seventeenth century witnessed the classification of series into specific forms. In 1671 James Gregory used the term infinite series in connection with infinite sequence. It was only through the rigorous development of algebraic and set theoretic tools that the concepts related to sequence and series could be formulated suitably.
+Reprint 2026-27
+G G G G G eometry, as a logical system, is a means and even the most powerful means to make children feel the strength of the human spirit that is of their own spirit. – H. FREUDENTHALv
+9.1 Introduction
+We are familiar with two-dimensional coordinate geometry from earlier classes. Mainly, it is a combination of algebra and geometry. A systematic study of geometry by the use of algebra was first carried out by celebrated French philosopher and mathematician René Descartes, in his book
+‘La Géométry, published in 1637. This book introduced the notion of the equation of a curve and related analytical methods into the study of geometry. The resulting combination of analysis and geometry is referred now as analytical geometry. In the earlier classes, we initiated the study of coordinate geometry, where we studied about coordinate axes, coordinate plane, plotting of points in a plane, distance between two points, section formulae, etc. All these concepts are the basics of coordinate geometry.
+Let us have a brief recall of coordinate geometry done in earlier classes. To recapitulate, the location of the points (6, – 4) and (3, 0) in the XY-plane is shown in Fig 9.1.
+We may note that the point (6, – 4) is at 6 units distance from the y-axis measured along the positive x-axis and at 4 units distance from the x-axis measured along the negative y-axis. Similarly, the point (3, 0) is at 3 units distance from the y-axis measured along the positive x-axis and has zero distance from the x-axis.
+We also studied there following important formulae:
+9 Chapter
+STRAIGHT LINES
+René Descartes (1596 -1650)
+Reprint 2026-27

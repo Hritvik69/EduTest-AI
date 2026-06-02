@@ -1,0 +1,18 @@
+PHYSICS 16
+Fig. 2.3 Velocity–time graph for motions with constant acceleration. (a) Motion in positive direction with positive acceleration, (b) Motion in positive direction with negative acceleration, (c) Motion in negative direction with negative acceleration, (d) Motion of an object with negative acceleration that changes direction at time t1. Between times 0 to t1, it moves in positive x - direction and between t1 and t2 it moves in the opposite direction.
+Instantaneous acceleration is defined in the same way as the instantaneous velocity :
+a lim t t ∆ →
+The acceleration at an instant is the slope of the tangent to the v–t curve at that instant.
+Since velocity is a quantity having both m a g n i t u d e a n d d i r e c t i o n , a c h a n g e i n velocity may involve either or both of these factors. Acceleration, therefore, may result from a change in speed (magnitude), a change in direction or changes in both. Like velocity, acceleration can also be positive, negative or zero. Position-time graphs for motion with positive, negative and zero acceleration are shown in Figs. 2.4 (a), (b)
+and (c), respectively. Note that the graph curves upward for positive acceleration;
+downward for negative acceleration and it is a straight line for zero acceleration.
+Although acceleration can vary with time, our study in this chapter will be restricted to motion with constant acceleration. In this case, the average acceleration equals the constant value of acceleration during the interval. If the velocity of an object is vo at t
+= 0 and v at time t, we have a , v v a t
+Fig. 2.2 Position-time graph for motion with (a) positive acceleration; (b) negative acceleration, and (c) zero acceleration.
+Let us see how velocity-time graph looks like for some simple cases. Fig. 2.3 shows velocity- time graph for motion with constant acceleration for the following cases :
+(a) An object is moving in a positive direction with a positive acceleration.
+(b) An object is moving in positive direction with a negative acceleration.
+(c) An object is moving in negative direction with a negative acceleration.
+(d) An object is moving in positive direction till time t1, and then turns back with the same negative acceleration.
+An interesting feature of a velocity-time graph for any moving object is that the area under the curve represents the displacement over a given time interval. A general proof of this statement requires use of calculus. We can, however, see that it is true for the simple case of an object moving with constant velocity u. Its velocity-time graph is as shown in Fig. 2.4.
+Reprint 2026-27

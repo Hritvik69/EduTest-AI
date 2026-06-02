@@ -1,0 +1,134 @@
+Chapter 3: Election and Representation
+Who decides which constituency is to be reserved? On what basis is this decision taken? This decision is taken by an independent body called the Delimitation Commission. The Delimitation
+Commission is appointed by the President of India and works in collaboration with the Election Commission of India. It is appointed for the purpose of drawing up the boundaries of constituencies all over the country. A quota of constituencies to be reserved in each State is fixed depending on the proportion of SC or ST in that State. After drawing the boundaries, the Delimitation Commission looks at the composition of population in each constituency. Those constituencies that have the highest proportion of Scheduled Tribe population are reserved for ST.
+In the case of Scheduled Castes, the Delimitation Commission looks at two things. It picks constituencies that have higher proportion of
+Scheduled Caste population. But it also spreads these constituencies in different regions of the State. This is done because the Scheduled
+Caste population is generally spread evenly throughout the country.
+These reserved constituencies can be rotated each time the
+Delimitation exercise is undertaken.
+The Constitution does not make similar reservation for other disadvantaged groups. Of late there has been a strong demand seeking reservation of seats in the Lok Sabha and State Assemblies for women. Given the fact that very few women are elected to representative bodies, the demand for reserving one-third seats for women was articulated for many years. Reservation of seats for women has already been provided for rural and urban local bodies.
+We shall discuss this in chapter on Local Governments. A similar provision for Lok Sabha and Vidhan Sabhas has been provided through the Nari Shakti Vandan Adhiniyam (Women's Reservation
+Act, 2023).
+F F F F FREE REE REE REE REE AND AND AND AND AND F F F F FAIR AIR AIR AIR AIR E E E E ELECTIONS LECTIONS LECTIONS LECTIONS LECTIONS
+The true test of any election system is its ability to ensure a free and fair electoral process. If we want democracy to be translated into reality on the ground, it is important that the election system is impartial and transparent. The system of election must also allow the aspirations of the voter to find legitimate expression through the electoral results.
+Reprint 2026-27
+Indian Constitution at Work
+Universal franchise and right to contest
+Apart from laying down a method of elections, the
+Constitution answers two basic questions about elections:
+Who are the voters? Who can contest elections? In both these respects our Constitution follows the well established democratic practices.
+You already know that democratic elections require that all adult citizens of the country must be eligible to vote in the elections. This is known as universal adult franchise. In many countries, citizens had to fight long battles with the rulers to get this right. In many countries, women could get this right very late and only after struggle. One of the important decisions of the framers of the Indian Constitution was to guarantee every adult citizen in India, the right to vote.
+Till 1989, an adult Indian meant an Indian citizen above the age of 21. An amendment to the Constitution in 1989, reduced the eligibility age to 18. Adult franchise ensures that all citizens are able to participate in the
+Check your progress
+The proportion of Muslims in the population of India is about 14.2 per cent. But the number of Muslim
+MPs in the Lok Sabha has usually been less than 6 per cent, less than half of their share in population. A similar situation prevails in most State Assemblies.
+Three students drew different conclusions from this fact. Write down whether and why you agree or disagree with each of them.
+Hilal: This demonstrates the unfairness of the
+FPTP system. We should have opted for PR system.
+Arif: This shows the wisdom of granting reservations to SC and ST. What is needed is a reservation of seats for Muslims on the same lines as for SC and ST.
+Saba: There is no point in talking about Muslims as a whole. Muslim women are not going to get any share in any of these systems. We need a separate quota for Muslim women.
+Am I or am I not an adult? I am mature enough to choose my future career, old enough to get a driving license, but not old enough to vote! If laws can apply to me, why can’t I decide on who makes those
+Reprint 2026-27
+Chapter 3: Election and Representation process of selecting their representative. This is consistent with the principle of equality and non-discrimination that we studied in the chapter on rights. Many people thought and many think so today that giving the right to vote to everyone irrespective of educational qualification was not right. But our Constitution makers had a firm belief in the ability and worth of all adult citizens as equals in the matter of deciding what is good for the society, the country and for their own constituencies.
+What is true of the right to vote is also true of right to contest election. All citizens have the right to stand for election and become the representative of the people.
+However, there are different minimum age requirements for contesting elections. For example, in order to stand for Lok Sabha or Assembly election, a candidate must be at least 25 years old.
+There are some other restrictions also. For instance, there is a legal provision that a person who has undergone imprisonment for two or more years for some offence is disqualified from contesting elections. But there are no restrictions of income, education or class or gender on the right to contest elections. In this sense, our system of election is open to all citizens.
+Independent Election Commission
+Several efforts have been made in India to ensure the free and fair election system and process. The most important among these is the
+Why is universal adult franchise compared to an elephant? Is it unmanageable? Or is it like the story in which everyone describes the elephant only by its parts?
+READ A CARTOON
+Shankar. Copyright: Children’s Book Trust.
+21 October 1951
+Reprint 2026-27
+Indian Constitution at Work creation of an independent Election Commission to ‘supervise and conduct’ elections. Do you know that in many countries, there is an absence of an independent mechanism for conducting elections?
+Article 324 of the Indian Constitution provides for an independent
+Election Commission for the ‘superintendence, direction and control of the electoral roll and the conduct of elections’ in India. These words in the Constitution are very important, for they give the Election
+Commission a decisive role in virtually everything to do with elections.
+The Supreme Court has agreed with this interpretation of the
+Constitution.
+To assist the Election Commission of India there is a Chief Electoral
+Officer in every state. The Election Commission is not responsible for the conduct of local body elections. As we shall study in the chapter on Local Government, the State Election Commissioners work independently of the Election Commission of India and each has its own sphere of operation.
+The Election Commission of India can either be a single member or a multi-member body. Till 1989, the Election Commission was single member. Just before the 1989 general elections, two Election
+Commissioners were appointed, making the body multi-member.
+Soon after the elections, the Commission reverted to its single member status. In 1993, two Election Commissioners were once again appointed and the Commission became multi-member and has remained multi-member since then. Initially there were many apprehensions about a multi-member Commission. There was a sharp difference of opinion between the then Chief Election
+Article 324: (1)
+The superintendence, direction and control of the preparation of the electoral rolls for, and the conduct of, all elections to Parliament and to the Legislature of every State and of elections to the offices of President and Vice-
+President held under this Constitution shall be vested in a Commission (referred to in this
+Constitution as the Election Commission).
+Reprint 2026-27
+Chapter 3: Election and Representation
+Commissioner and the other Commissioners about who had how much power. The matter had to be settled by the
+Supreme Court. Now there is a general consensus that a multi-member Election Commission is more appropriate as power is shared and there is greater accountability.
+The Chief Election Commissioner (CEC) presides over the Election Commission, but does not have more powers than the other Election Commissioners. The CEC and the two Election Commissioners have equal powers to take all decisions relating to elections as a collective body. They are appointed by the President of India on the advice of the Council of Ministers. It is therefore possible for a ruling party to appoint a partisan person to the Commission who might favour them in the elections. This fear has led many to suggest that this procedure should be changed.
+Many persons have suggested that a different method should be followed that makes consultation with the leader of opposition and the Chief Justice of India necessary for the appointment of CEC and Election Commissioners.
+The Constitution ensures the security of the tenure of the CEC and Election Commissioners. They are appointed for a six year term or continue till the age of 65, whichever is earlier. The CEC can be removed before the expiry of
+Has this now been settled? Or can the government go back to a single member Election
+Commission? Does the
+Constitution allow this game?
+Special majority
+Special majority means:
+± Two-thirds majority of those present and voting, and
+± Simple majority of the total membership of the House.
+Let us say that you have to pass a resolution in your class with a special majority. Imagine further that your class has a total student strength of 57. But on the day of voting, only 51 students are present and 50 students participated in voting. When would you say that the resolution has been passed with ‘special majority’ in this situation?
+In this book you will find mention of ‘special majority’ in at least three other chapters. One is in the next chapter on Executive, where we discuss the impeachment of the President of India. Find out the other two places where special majority is discussed.
+Reprint 2026-27
+Indian Constitution at Work the term, by the President if both Houses of Parliament make such a recommendation with a special majority. This is done to ensure that a ruling party cannot remove a CEC who refuses to favour it in elections. The Election Commissioners can be removed by the
+President of India.
+The Election Commission of India has a wide range of functions.
+± It supervises the preparation of up-to-date voters’ list. It makes every effort to ensure that the voters’ list is free of errors like non- existence of names of registered voters or existence of names of those non-eligible or non-existent.
+± It also determines the timing of elections and prepares the election schedule. The election schedule includes the notification of elections, date from which nominations can be filed, last date for filing nominations, last date of scrutiny, last date of withdrawal, date of polling and date of counting and declaration of results.
+± During this entire process, the Election Commission has the power to take decisions to ensure a free and fair poll. It can postpone or cancel the election in the entire country or a specific State or constituency on the grounds that the atmosphere is vitiated and therefore, a free and fair election may not be possible. The
+Commission also implements a model code of conduct for parties and candidates. It can order a re-poll in a specific constituency.
+It can also order a recount of votes when it feels that the counting process has not been fully fair and just.
+± The Election Commission accords recognition to political parties and allots symbols to each of them.
+The Election Commission has very limited staff of its own. It conducts the elections with the help of the administrative machinery.
+However, once the election process has begun, the commission has control over the administration as far as election related work is concerned. During the election process, the administrative officers of the State and central governments are assigned election related duty and in this respect, the Election Commission has full control over them. The EC can transfer the officers, or stop their transfers; it can take action against them for failing to act in a non-partisan manner.
+Over the years, the Election Commission of India has emerged as an independent authority which has asserted its powers to ensure fairness in the election process. It has acted in an impartial and unbiased manner in order to protect the sanctity of the electoral process. The record of Election Commission also shows that every
+Reprint 2026-27
+Chapter 3: Election and Representation improvement in the functioning of institutions does not require legal or constitutional change. It is widely agreed that the Election
+Commission is more independent and assertive now than it was till
+25 years ago. This is not because the powers and constitutional protection of the Election Commission have increased. The Election
+Commission has started using more effectively the powers it always had in the Constitution.
+Since 1951–52, seventeen
+Lok Sabha elections have been held. Many more State assembly elections and by-elections have been conducted by the Election
+Commission. The EC has faced many difficult situations such as holding elections in militancy affected areas like Assam,
+Punjab or Jammu and Kashmir.
+It has also faced the difficult situation of having to postpone the election process mid-way in
+1991 when the ex-Prime Minister
+Rajiv Gandhi was assassinated during campaigning. In 2002, the Election Commission faced another critical situation when the Gujarat Assembly was dissolved and elections had to be conducted. But the Election
+Commission found that unprecedented violence in that State had made it impossible to hold free and fair elections immediately. The
+Election Commission decided to postpone elections to the
+State Assembly by a few months. The Supreme Court upheld this decision of the
+Election Commission.
+The Netaji is afraid of EC. Why do leaders fear the Election Commission? Is this good for democracy?
+READ A CARTOON
+R K Laxman in The Times of India.
+Reprint 2026-27
+Indian Constitution at Work
+Can we reduce the influence of money and muscle power by changing the law? Does anything change in reality by changing the law?
+Check your progress Check your progress Check your progress Check your progress Check your progress
+Why do you think does the Election Commission have the following powers and privileges? What could have happened if these did not exist?
+The Commission can issue orders to government employees engaged in any election related duty.
+The government cannot remove the Chief
+Election Commissioner.
+The Commission can cancel an election if it thinks that it was not fair.
+E E E E ELECTORAL LECTORAL LECTORAL LECTORAL LECTORAL R R R R REFORMS EFORMS EFORMS EFORMS EFORMS
+No system of election can ever be perfect. And in actual election process, there are bound to be many flaws and limitations. Any democratic society has to keep searching for mechanisms to make elections free and fair to the maximum. With the acceptance of adult suffrage, freedom to contest elections, and the establishment of an independent Election Commission, India has tried to make its election process free and fair. However, the experience of the past 72 years has given rise to many suggestions for reforming our election system. The Election
+Commission, political parties, various independent groups, and many scholars have come up with proposals for electoral reform. Some of these suggestions are about changing the constitutional provisions discussed in this
+Chapter:
+± Our system of elections should be changed from the
+FPTP to some variant of the PR system. This would
+Reprint 2026-27
+Chapter 3: Election and Representation ensure that parties get seats, as far as possible, in proportion to the votes they get.
+± There should be a special provision to ensure that at least one- third women are elected to the parliament and assemblies.
+± There should be stricter provisions to control the role of money in electoral politics. The elections expenses should be paid by the government out of a special fund.
+± Candidates with any criminal case should be barred from contesting elections, even if their appeal is pending before a
+± There should be complete ban on the use of caste and religious appeals in the campaign.
+± There should be a law to regulate the functioning of political parties and to ensure that they function in a transparent and democratic manner.
+These are but a few suggestions. There is no consensus about these suggestions. Even if there was a consensus, there are limits to what the laws and formal provisions can do. Free and fair elections can be held only if the candidates, the parties and those involved in the election process agree to abide by the spirit of democratic competition.
+Apart from legal reforms, there are two other ways of ensuring that elections reflect the expectations and democratic aspirations of the people. One is, of course, that people themselves have to be more
+READ A CARTOON
+Should a person accused of a serious crime be barred from contesting elections?
+R K Laxman in The Times of India.
+Reprint 2026-27
+Indian Constitution at Work vigilant, more actively involved in political activities. But there are limits to the extent to which ordinary people can engage in politics on a regular basis. Therefore, it is necessary that various political institutions and voluntary organisations are developed and are active in functioning as watchdog for ensuring free and fair ele

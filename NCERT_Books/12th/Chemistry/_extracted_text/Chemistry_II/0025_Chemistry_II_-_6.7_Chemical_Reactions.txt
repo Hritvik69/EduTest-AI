@@ -1,0 +1,146 @@
+169 Haloalkanes and Haloarenes
+Solubility
+The haloalkanes are very slightly soluble in water. In order to dissolve haloalkane in water, energy is required to overcome the attractions between the haloalkane molecules and break the hydrogen bonds between water molecules. Less energy is released when new attractions are set up between the haloalkane and the water molecules as these are not as strong as the original hydrogen bonds in water. As a result, the solubility of haloalkanes in water is low. However, haloalkanes tend to dissolve in organic solvents because the new intermolecular attractions between haloalkanes and solvent molecules have much the same strength as the ones being broken in the separate haloalkane and solvent molecules.
+Table 6.3: Density of Some Haloalkanes
+Bromo, iodo and polychloro derivatives of hydrocarbons are heavier than water. The density increases with increase in number of carbon atoms, halogen atoms and atomic mass of the halogen atoms (Table 6.3).
+The reactions of haloalkanes may be divided into the following categories:
+1. Nucleophilic substitution
+2. Elimination reactions
+3. Reaction with metals.
+(1) Nucleophilic substitution reactions
+You have learnt in Class XI that nucleophiles are electron rich species.
+Therefore, they attack at that part of the substrate molecule which is electron deficient. The reaction in which a nucleophile replaces
+6.6 Arrange each set of compounds in order of increasing boiling points.
+(i) Bromomethane, Bromoform, Chloromethane, Dibromomethane.
+(ii) 1-Chloropropane, Isopropyl chloride, 1-Chlorobutane.
+Intext Question Intext Question Intext Question Intext Question Intext Question
+6.7 6.7 6.7 6.7 6.7 Chemical Chemical Chemical Chemical Chemical
+Reactions Reactions Reactions Reactions Reactions
+Compound Density (g/mL) Compound Density (g/mL)
+n–C3H7Cl 0.89 CH2Cl2 1.336 n–C3H7Br 1.335 CHCl3 1.489 n-C3H7I 1.747 CCl4 1.595
+6.7.1 Reactions of
+Haloalkanes
+Reprint 2026-27
+170 Chemistry already existing nucleophile in a molecule is called nucleophilic substitution reaction. Haloalkanes are substrate in these reactions.
+In this type of reaction, a nucleophile reacts with haloalkane (the substrate) having a partial positive charge on the carbon atom bonded to halogen. A substitution reaction takes place and halogen atom, called leaving group departs as halide ion. Since the substitution reaction is initiated by a nucleophile, it is called nucleophilic substitution reaction.
+It is one of the most useful classes of organic reactions of alkyl halides in which halogen is bonded to sp3 hybridised carbon. The products formed by the reaction of haloalkanes with some common nucleophiles are given in Table 6.4.
+Groups like cyanides and nitrites possess two nucleophilic centres and are called ambident nucleophiles. Actually cyanide group is a hybrid of two contributing structures and therefore can act as a nucleophile in two different ways [VC∫N ´ :C=NV], i.e., linking through
+Table 6.4: Nucleophilic Substitution of Alkyl Halides (R–X)
+Reagent Nucleophile Substitution Class of main (Nu–) product R–Nu product
+NaOH (KOH) HO– ROH Alcohol
+H2O H2O ROH Alcohol
+NaOR¢ R¢O– ROR¢ Ether
+NaI I– R—I Alkyl iodide
+NH3 NH3 RNH2 Primary amine
+R¢NH2 R¢NH2 RNHR¢ Sec. amine
+R¢R¢¢NH R¢R¢¢NH RNR¢R¢¢ Tert. amine
+KCN RCN Nitrile (cyanide)
+AgCN Ag-CN: RNC Isonitrile (isocyanide)
+KNO2 O=N—O R—O—N=O Alkyl nitrite
+AgNO2 Ag—Ö—N=O R—NO2 Nitroalkane
+R¢COOAg R¢COO– R¢COOR Ester
+LiAlH4 H RH Hydrocarbon
+R¢– M+ R¢– RR¢ Alkane
+Reprint 2026-27
+171 Haloalkanes and Haloarenes carbon atom resulting in alkyl cyanides and through nitrogen atom leading to isocyanides. Similarly nitrite ion also represents an ambident nucleophile with two different points of linkage [–O— N
+=O]. The linkage through oxygen results in alkyl nitrites while through nitrogen atom, it leads to nitroalkanes.
+Mechanism: This reaction has been found to proceed by two different mechanims which are described below:
+(a) Substitution nucleophilic bimolecular (SN2)
+The reaction between CH3Cl and hydroxide ion to yield methanol and chloride ion follows a second order kinetics, i.e., the rate depends upon the concentration of both the reactants.
+Haloalkanes react with KCN to form alkyl cyanides as main product while AgCN forms isocyanides as the chief product. Explain.
+KCN is predominantly ionic and provides cyanide ions in solution.
+Although both carbon and nitrogen atoms are in a position to donate electron pairs, the attack takes place mainly through carbon atom and not through nitrogen atom since C—C bond is more stable than C—N bond. However, AgCN is mainly covalent in nature and nitrogen is free to donate electron pair forming isocyanide as the main product.
+Example 6.5 Example 6.5 Example 6.5 Example 6.5 Example 6.5
+Solution Solution Solution Solution Solution
+The above reaction can be represented diagrammatically as shown in
+Fig. 6.2.
+It depicts a bimolecular nucleophilic substitution (SN2) reaction;
+the incoming nucleophile interacts with alkyl halide causing the carbon-halide bond to break and a new bond is formed between carbon and attacking nucleophile. Here it is C-O bond formed between
+C and -OH. These two processes take place simultaneously in a
+Fig. 6.2: Red ball represents the incoming hydroxide ion and green ball represents the outgoing halide ion
+In the year 1937,
+Edward Davies Hughes and Sir Christopher
+Ingold proposed a mechanism for an SN2 reaction.
+The solid wedge represents the bond coming out of the paper, dashed line going down the paper and a straight line representing bond in the plane of the paper.
+Reprint 2026-27
+172 Chemistry single step and no intermediate is formed. As the reaction progresses and the bond between the incoming nucleophile and the carbon atom starts forming, the bond between carbon atom and leaving group weakens. As this happens, the three carbon-hydrogen bonds of the substrate start moving away from the attacking nucleophile. In transition state all the three C-H bonds are in the same plane and the attacking and leaving nucleophiles are partially attached to the carbon. As the attacking nucleophile approaches closer to the carbon,
+C-H bonds still keep on moving in the same direction till the attacking nucleophile attaches to carbon and leaving group leaves the carbon.
+As a result configuration is inverted, the configuration (See box) of carbon atom under attack inverts in much the same way as an umbrella is turned inside out when caught in a strong wind. This process is called as inversion of configuration. In the transition state, the carbon atom is simultaneously bonded to incoming nucleophile and the outgoing leaving group. Such structures are unstable and cannot be isolated. Thus, in the transition state, carbon is simultaneously bonded to five atoms.
+Hughes worked under
+Ingold and earned a
+D.Sc. degree from the
+University of London.
+Since this reaction requires the approach of the nucleophile to the carbon bearing the leaving group, the presence of bulky substituents on or near the carbon atom have a dramatic inhibiting effect. Of the simple alkyl halides, methyl halides react most rapidly in SN2 reactions because there are only three small hydrogen atoms. Tertiary halides are the least reactive because bulky groups hinder the approaching
+Configuration
+Spacial arrangement of functional groups around carbon is called its configuration.
+See the structures (A) and (B) given below carefully.
+These are the two structures of the same compound. They differ in spacial arrangement of functional groups attached to carbon. Structure (A) is mirror image of Structure (B).
+We say configuration of carbon in structure (A) is mirror image of the configuration of carbon in structure (B).
+Reprint 2026-27
+173 Haloalkanes and Haloarenes nucleophiles. Thus the order of reactivity followed is:
+Primary halide > Secondary halide > Tertiary halide.
+(b) Substitution nucleophilic unimolecular (SN1)
+SN1 reactions are generally carried out in polar protic solvents (like water, alcohol, acetic acid, etc.). The reaction between tert- butyl bromide and hydroxide ion yields tert-butyl alcohol and follows the first order kinetics, i.e., the rate of reaction depends upon the concentration of only one reactant, which is tert- butyl bromide.
+It occurs in two steps. In step I, the polarised C—Br bond undergoes slow cleavage to produce a carbocation and a bromide ion. The carbocation thus formed is then attacked by nucleophile in step II to complete the substitution reaction.
+Fig.6.3: Steric effects in SN2 reaction. The relative rate of SN2 reaction is given in parenthesis
+Reprint 2026-27
+174 Chemistry
+Step I is the slowest and reversible. It involves the C–Br bond breaking for which the energy is obtained through solvation of halide ion with the proton of protic solvent. Since the rate of reaction depends upon the slowest step, the rate of reaction depends only on the concentration of alkyl halide and not on the concentration of hydroxide ion. Further, greater the stability of carbocation, greater will be its ease of formation from alkyl halide and faster will be the rate of reaction. In case of alkyl halides, 30 alkyl halides undergo SN1 reaction very fast because of the high stability of 30 carbocations. We can sum up the order of reactivity of alkyl halides towards SN1 and SN2 reactions as follows:
+For the same reasons, allylic and benzylic halides show high reactivity towards the SN1 reaction. The carbocation thus formed gets stabilised through resonance (Unit 8, Class XI) as shown below:
+In the following pairs of halogen compounds, which would undergo
+SN2 reaction faster?
+Example 6.6 Example 6.6 Example 6.6 Example 6.6 Example 6.6
+H2C 2 C CH
+H2C 2 CH C
+Solution Solution Solution Solution Solution It is primary halide and therefore undergoes SN2 reaction faster.
+As iodine is a better leaving group because of its large size, it will be released at a faster rate in the presence of incoming nucleophile.
+Example 6.7 Example 6.7 Example 6.7 Example 6.7 Example 6.7 Predict the order of reactivity of the following compounds in SN1 and SN2 reactions:
+(i) The four isomeric bromobutanes (ii) C6H5CH2Br, C6H5CH(C6H5)Br, C6H5CH(CH3)Br, C6H5C(CH3)(C6H5)Br
+For a given alkyl group, the reactivity of the halide, R-X, follows the same order in both the mechanisms R–I> R–Br>R–Cl>>R–F.
+Reprint 2026-27
+175 Haloalkanes and Haloarenes (c) Stereochemical aspects of nucleophilic substitution reactions
+In order to understand the stereochemical aspects of substitution reactions, we need to learn some basic stereochemical principles and notations (optical activity, chirality, retention, inversion, racemisation, etc.).
+(i) Optical activity: Plane of plane polarised light produced by passing ordinary light through Nicol prism is rotated when it is passed through the solutions of certain compounds. Such compounds are called optically active compounds. The angle by which the plane polarised light is rotated is measured by an instrument called polarimeter. If the compound rotates the plane of plane polarised light to the right, i.e., clockwise direction, it is called dextrorotatory (Greek for right rotating) or the d-form and is indicated by placing a positive (+) sign before the degree of rotation. If the light is rotated towards left (anticlockwise direction), the compound is said to be laevo-rotatory or the l-form and a negative (–) sign is placed before the degree of rotation. Such (+) and (–) isomers of a compound are called optical isomers and the phenomenon is termed as optical isomerism.
+(ii) Molecular asymmetry, chirality and enantiomers: The observation of Louis Pasteur (1848) that crystals of certain compounds exist in the form of mirror images laid the foundation of modern stereochemistry. He demonstrated that aqueous solutions of both types of crystals showed optical rotation, equal in magnitude (for solution of equal concentration)
+but opposite in direction. He believed that this difference in optical activity was associated with the three dimensional arrangements of atoms in the molecules (configurations) of (i) CH3CH2CH2CH2Br < (CH3)2CHCH2Br < CH3CH2CH(Br)CH3 < (CH3)3CBr (SN1)
+CH3CH2CH2CH2Br > (CH3)2CHCH2Br > CH3CH2CH(Br)CH3 > (CH3)3CBr (SN2)
+Of the two primary bromides, the carbocation intermediate derived from (CH3)2CHCH2Br is more stable than derived from CH3CH2CH2CH2Br because of greater electron donating inductive effect of (CH3)2CH- group. Therefore, (CH3)2CHCH2Br is more reactive than CH3CH2CH2CH2Br in SN1 reactions.
+CH3CH2CH(Br)CH3 is a secondary bromide and (CH3)3CBr is a tertiary bromide. Hence the above order is followed in SN1. The reactivity in SN2 reactions follows the reverse order as the steric hinderance around the electrophilic carbon increases in that order.
+(ii) C6H5C(CH3)(C6H5)Br > C6H5CH(C6H5)Br > C6H5CH(CH3)Br > C6H5CH2Br (SN1)
+C6H5C(CH3)(C6H5)Br < C6H5CH(C6H5)Br < C6H5CH(CH3)Br < C6H5CH2Br (SN2)
+Of the two secondary bromides, the carbocation intermediate obtained from C6H5CH(C6H5)Br is more stable than obtained from C6H5CH(CH3)Br because it is stabilised by two phenyl groups due to resonance. Therefore, the former bromide is more reactive than the latter in SN1 reactions. A phenyl group is bulkier than a methyl group. Therefore, C6H5CH(C6H5)Br is less reactive than C6H5CH(CH3)Br in SN2 reactions.
+Solution Solution Solution Solution Solution
+William Nicol (1768-
+1851) developed the first prism that produced plane polarised light.
+Reprint 2026-27
+176 Chemistry two types of crystals. Dutch scientist, J. Van’t Hoff and French scientist, C. Le Bel in the same year (1874), independently argued that the spatial arrangement of four groups (valencies)
+around a central carbon is tetrahedral and if all the substituents attached to that carbon are different, the mirror image of the molecule is not superimposed (overlapped) on the molecule;
+such a carbon is called asymmetric carbon or stereocentre.
+The resulting molecule would lack symmetry and is referred to as asymmetric molecule. The asymmetry of the molecule along with non superimposability of mirror images is responsible for the optical activity in such organic compounds.
+The symmetry and asymmetry are also observed in many day to day objects: a sphere, a cube, a cone, are all identical to their mirror images and can be superimposed.
+However, many objects are non superimposable on their mirror images. For example, your left and right hand look similar but if you put your left hand on your right hand by moving them in the same plane, they do not coincide. The objects which are non- superimposable on their mirror image (like a pair of hands) are said to be chiral and this property is known as chirality. Chiral molecules are optically active, while the objects, which are, superimposable on their mirror images are called achiral. These molecules are optically inactive.
+The above test of molecular chirality can be applied to organic molecules by constructing models and its mirror images or by drawing three dimensional structures and attempting to superimpose them in our minds. There are other aids, however, that can assist us in recognising chiral molecules. One such aid is the presence of
+As you can see very clearly, propan-2-ol (A) does not contain an asymmetric carbon, as all the four groups attached to the tetrahedral carbon are not different. We rotate the mirror image (B) of the molecule by 180° (structure
+C) and try to overlap the structure (C) with the structure (A), these structures completely overlap. Thus propan-2-ol is an achiral molecule.
+Jacobus Hendricus
+Van’t Hoff (1852-1911)
+received the first Nobel
+Prize in Chemistry in
+1901 for his work on solutions.
+Fig 6.4: Some common examples of chiral and achiral objects a single asymmetric carbon atom. Let us consider two simple molecules propan-2-ol (Fig.6.5) and butan-2-ol (Fig.6.6)
+and their mirror images.
+Fig 6.5: B is mirror image of A; B is rotated by 180o and C is obtained; C is superimposable on A.
+Reprint 2026-27
+177 Haloalkanes and Haloarenes
+Butan-2-ol has four different groups attached to the tetrahedral carbon and as expected is chiral. Some common examples of chiral molecules such as
+2-chlorobutane, 2, 3-dihyroxypropanal, (OHC–CHOH–CH2OH), bromochloro-iodomethane (BrClCHI), 2-bromopropanoic acid (H3C–CHBr–COOH), etc.
+Fig. 6.7: A chiral molecule and its mirror image
+The stereoisomers related to each other as non- superimposable mirror images are called enantiomers (Fig. 6.7). A and B in Fig. 6.5 and D and E in Fig. 6.6 are enantiomers.
+Enantiomers possess identical physical properties namely, melting point, boiling point, refractive index, etc. They only differ with respect to the rotation of plane polarised light. If one of the enantiomer is dextro rotatory, the other will be laevo rotatory.
+A mixture containing two enantiomers in equal proportions will have zero optical rotation, as the rotation due to one isomer will be cancelled by the rotation due to the other isomer. Such a mixture is known as racemic mixture or racemic modification. A racemic mixture is represented by prefixing dl or (±) before the name, for example (±) butan-2-ol. The process of conversion of enantiomer into a racemic mixture is known as racemisation.
+Example 6.8 Example 6.8 Example 6.8 Example 6.8 Example 6.8 Identify chiral and achiral molecules in each of the following pair of compounds. (Wedge and Dash representations according to Class XI.
+Fig 6.6: E is mirror image of D; E is rotated by 180o to get F and F is non superimposable on its mirror image D.
+However, the sign of optical rotation is not necessarily related to the absolute (actual) configuration of the molecule.
+Reprint 2026-27
+178 Chemistry (iii) Retention: Retention of configuration is the preservation of the spatial arrangement of bonds to an asymmetric centre during a chemical reaction or transformation.
+In general, if during a reaction, no bond to the stereocentre is broken, the product will have the same general con

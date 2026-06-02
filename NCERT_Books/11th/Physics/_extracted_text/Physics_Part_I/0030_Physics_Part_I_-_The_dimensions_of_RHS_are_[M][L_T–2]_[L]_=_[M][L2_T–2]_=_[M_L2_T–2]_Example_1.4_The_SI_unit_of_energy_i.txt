@@ -1,0 +1,14 @@
+PHYSICS 14
+Table 2.1 Limiting value of ∆
+2.2 INSTANTANEOUS VELOCITY AND
+The average velocity tells us how fast an object has been moving over a given time interval but does not tell us how fast it moves at different instants of time during that interval. For this, we define instantaneous velocity or simply velocity v at an instant t.
+The velocity at an instant is defined as the limit of the average velocity as the time interval
+Dt becomes infinitesimally small. In other words, where the symbol lim t 0   stands for the operation of taking limit as Dtg0 of the quantity on its right. In the language of calculus, the quantity on the right hand side of Eq. (2.1a) is the differential coefficient of x with respect to t and is denoted by d t . It is the rate of change of position with respect to time, at that instant.
+We can use Eq. (2.1a) for obtaining the v a l u e o f v e l o c i t y a t a n i n s t a n t e i t h e r graphically or numerically. Suppose that we want to obtain graphically the value of velocity at time t = 4 s (point P) for the motion of the car represented in Fig.2.1 calculation.
+Let us take Dt = 2 s centred at t = 4 s. Then, by the definition of the average velocity, the slope of line P1P2 ( Fig. 2.1) gives the value of average velocity over the interval 3 s to 5 s.
+Fig. 2.1 Determining velocity from position-time graph. Velocity at t = 4 s is the slope of the tangent to the graph at that instant.
+Now, we decrease the value of Dt from 2 s to 1 s. Then line P1P2 becomes Q1Q2 and its slope gives the value of the average velocity over the interval 3.5 s to 4.5 s. In the limit Dt ® 0, the line P1P2 becomes tangent to the position- time curve at the point P and the velocity at t
+= 4 s is given by the slope of the tangent at that point. It is difficult to show this p r o c e s s g r a p h i c a l l y . B u t i f w e u s e numerical method to obtain the value of the velocity, the meaning of the limiting process becomes clear. For the graph shown in Fig. 2.1, x = 0.08 t3. Table 2.1 gives the value of Dx/Dt calculated for Dt equal to 2.0 s,
+1.0 s, 0.5 s, 0.1 s and 0.01 s centred at t =
+4.0 s. The second and third columns give the value of t1= t t and t t t f o u r t h a n d t h e f i f t h c o l u m n s g i v e t h e
+Reprint 2026-27

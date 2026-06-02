@@ -1,0 +1,18 @@
+Computer SCienCe - ClaSS Xii 50 the popped elements and PUSH the computed value onto the Stack
+Step 4: IF Stack has a single element
+THEN POP the element and OUTPUT as the net result
+ELSE OUTPUT “Invaild Postfix expression”
+Example 3.2
+Figure 3.4 shows the step-by-step process of evaluation of the postfix expression 7 8 2 * 4 / + using Algorithm
+PUSH PUSH PUSH
+POP POP two elements, apply the operator and push back the result
+SYMBOL : 7 8 2
+ACTION :
+SYMBOL : +
+ACTION :
+Result = 11 elements, apply the operator and push back the elements, apply the operator and push back the result
+SYMBOL : * 4 /
+Expression
+Figure 3.4: Evaluation of postfix expression 7 8 2 * 4 /+
+Write an algorithm to evaluate any prefix expression using a
+Reprint 2026-27

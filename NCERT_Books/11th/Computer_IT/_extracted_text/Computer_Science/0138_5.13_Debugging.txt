@@ -1,0 +1,172 @@
+Computer SCienCe – ClaSS xi 126
+Enter value 1: 84
+Enter value 2: 4
+Enter any one of the operator (+,-,*,/): /
+The result is 21.0
+In the program, for the operators "-" and "/", there exists an if..else condition within the elif block.
+This is called nested if. We can have many levels of nesting inside if..else statements.
+6.3 IndentatIon
+In most programming languages, the statements within a block are put inside curly brackets. However, Python uses indentation for block as well as for nested block structures. Leading whitespace (spaces and tabs) at the beginning of a statement is called indentation.
+In Python, the same level of indentation associates statements into a single block of code. The interpreter checks indentation levels very strictly and throws up syntax errors if indentation is not correct. It is a common practice to use a single tab for each level of indentation.
+In the program 6-4, the if-else statement has two blocks of statements and the statements in each block are indented with the same amount of spaces or tabs.
+Program 6-4 Program to find the larger of the two pre-specified numbers.
+#Program 6-4
+#Program to find larger of the two numbers num1 = 5 num2 = 6 if num1 > num2: #Block1 print("first number is larger")
+print("Bye")
+else: #Block2 print("second number is larger")
+print("Bye Bye")
+second number is larger
+Reprint 2026-27
+F low oF Control 127
+6.4 repetItIon
+Often, we repeat a tasks, for example, payment of electricity bill, which is done every month. Figure 6.3 shows the life cycle of butterfly that involves four stages, i.e., a butterfly lays eggs, turns into a caterpillar, becomes a pupa, and finally matures as a butterfly. The cycle starts again with laying of eggs by the butterfly.
+This kind of repetition is also called iteration.
+Repetition of a set of statements in a program is made possible using looping constructs.
+To understand further, let us look at the program 6-5. Figure 6.3: Iterative process occurring in nature
+Program 6-5 Write a program to print the first five natural numbers.
+#Program 6-5
+#Print first five natural numbers print(1)
+print(2)
+print(3)
+print(4)
+print(5)
+What should we do if we are asked to print the first 100,000 natural numbers? Writing 100,000 print statements would not be an efficient solution. It would be tedious and not the best way to do the task. Writing a program having a loop or repetition is a better solution.
+The program logic is given below:
+1. Take a variable, say count, and set its value to 1.
+2. Print the value of count.
+3. Increment the variable (count += 1).
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 128
+4. Repeat steps 2 and 3 as long as count has a value less than or equal to 100,000 (count <= 100,000).
+Looping constructs provide the facility to execute a set of statements in a program repetitively, based on a condition. The statements in a loop are executed again and again as long as particular logical condition remains true. This condition is checked based on the value of a variable called the loop’s control variable. When the condition becomes false, the loop terminates. It is the responsibility of the programmer to ensure that this condition eventually does become false so that there is an exit condition and it does not become an infinite loop.
+For example, if we did not set the condition count <=
+100000, the program would have never stopped. There are two looping constructs in Python - for and while.
+6.4.1 The ‘For’ Loop
+The for statement is used to iterate over a range of values or a sequence. The for loop is executed for each of the items in the range. These values can be either numeric, or, as we shall see in later chapters, they can be elements of a data type like a string, list, or tuple.
+With every iteration of the loop, the control variable checks whether each of the values in the range have been traversed or not. When all the items in the range are exhausted, the statements within loop are not executed; the control is then transferred to the statement immediately following the for loop. While using for loop, it is known in advance the number of times the loop will execute.
+The flowchart depicting the execution of a for loop is given in Figure 6.4.
+(A) Syntax of the For Loop for <control-variable> in <sequence/ items in range>:
+<statements inside body of the
+Figure 6.4: Flow chart of for loop
+Reprint 2026-27
+F low oF Control 129
+Program 6-6 Program to print the characters in the string ‘PYTHON’ using for loop.
+#Program 6-6
+#Print the characters in word PYTHON using for loop for letter in 'PYTHON':
+print(letter)
+Program 6-7 Program to print the numbers in a given sequence using for loop.
+#Program 6-7
+#Print the given sequence of numbers using for loop count = [10,20,30,40,50] for num in count:
+print(num)
+Program 6-8 Program to print even numbers in a given sequence using for loop.
+#Program 6-8
+#Print even numbers in the given sequence numbers = [1,2,3,4,5,6,7,8,9,10] for num in numbers:
+if (num % 2) == 0:
+print(num,'is an even Number')
+2 is an even Number
+4 is an even Number
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 130
+6 is an even Number
+8 is an even Number
+10 is an even Number
+Note: Body of the loop is indented with respect to the for statement.
+(B) The Range() Function
+The range() is a built-in function in Python. Syntax of range() function is:
+range([start], stop[, step])
+It is used to create a list containing a sequence of integers from the given start value upto stop value (excluding stop value), with a difference of the given step value. We will learn about functions in the next chapter. To begin with, simply remember that function takes parameters to work on. In function range(), start, stop and step are parameters.
+The start and step parameters are optional. If start value is not specified, by default the list starts from 0. If step is also not specified, by default the value increases by 1 in each iteration. All parameters of range() function must be integers. The step parameter can be a positive or a negative integer excluding zero.
+Example 6.4
+#start and step not specified
+>>> list(range(10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+#default step value is 1
+>>> list(range(2, 10))
+[2, 3, 4, 5, 6, 7, 8, 9]
+#step value is 5
+>>> list(range(0, 30, 5))
+[0, 5, 10, 15, 20, 25]
+#step value is -1. Hence, decreasing
+#sequence is generated
+>>> list (range (0, -9, -1))
+[0, -1, -2, -3, -4, -5, -6, -7, -8]
+The function range() is often used in for loops for generating a sequence of numbers.
+Reprint 2026-27
+F low oF Control 131
+Program 6-9 Program to print the multiples of 10 for numbers in a given range.
+#Program 6-9
+#Print multiples of 10 for numbers in a given range for num in range(5):
+if num > 0:
+print(num * 10)
+6.4.2 The ‘While’ Loop
+The while statement executes a block of code repeatedly as long as the control condition of the loop is true. The control condition of the while loop is executed before any statement inside the loop is executed. After each iteration, the control condition is tested again and the loop continues as long as the condition remains true. When this condition becomes false, the statements in the body of loop are not executed and the control is transferred to the statement immediately following the body of while loop. If the condition of the while loop is initially false, the body is not executed even once.
+The statements within the body of the while loop must ensure that the condition eventually becomes false; otherwise the loop will become an infinite loop, leading to a logical error in the program.
+The flowchart of while loop is shown in Figure 6.5.
+Syntax of while Loop while test_condition:
+body of while
+Figure 6.5: Flow chart of while Loop
+Initialisation
+Statement
+Statements following the while loop
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 132
+Program 6-10 Program to print first 5 natural numbers using while loop.
+#Program 6-10
+#Print first 5 natural numbers using while loop count = 1 while count <= 5:
+print(count)
+count += 1
+Program 6-11 Program to find the factors of a whole number using while loop.
+#Program 6-11
+#Find the factors of a number using while loop num = int(input("Enter a number to find its factor: "))
+print (1, end=' ') #1 is a factor of every number factor = 2 while factor <= num/2 :
+if num % factor == 0:
+#the optional parameter end of print function specifies the delimeter
+#blank space(' ') to print next value on same line print(factor, end=' ')
+factor += 1 print (num, end=' ') #every number is a factor of itself
+Enter a number to find its factors : 6
+Note: Body of the loop is indented with respect to the while statement. Similarly, the statements within if are indented with respect to positioning of if statement.
+6.5 B reak and contInue Statement
+Looping constructs allow programmers to repeat tasks efficiently. In certain situations, when some particular condition occurs, we may want to exit from a loop (come
+Reprint 2026-27
+F low oF Control 133 out of the loop forever) or skip some statements of the loop before continuing further in the loop. These requirements can be achieved by using break and continue statements, respectively. Python provides these statements as a tool to give more flexibility to the programmer to control the flow of execution of a program.
+6.5.1 Break Statement
+The break statement alters the normal flow of execution as it terminates the current loop and resumes execution of the statement following that loop.
+Figure 6.5: Flowchart for using break statement in loop
+Program 6-12 Program to demonstrate use of break statement.
+#Program 6-12
+#Program to demonstrate the use of break statement in loop for num in range(10):
+num = num + 1 if num == 8:
+print('Num has value ' + str(num))
+print('Encountered break!! Out of loop')
+Num has value 1
+Num has value 2
+Num has value 3
+Num has value 4
+Num has value 5
+Num has value 6
+Num has value 7
+Encountered break!! Out of loop
+Note: When value of num becomes 8, the break statement is executed and the for loop terminates.
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 134
+Program 6-13 Find the sum of all the positive numbers entered by the user. As soon as the user enters a negative number, stop taking in any further input from the user and display the sum.
+#Program 6-13
+#Find the sum of all the positive numbers entered by the user
+#till the user enters a negative number.
+entry = 0 sum1 = 0 print("Enter numbers to find their sum, negative number ends the while True:
+#int() typecasts string to integer entry = int(input())
+if (entry < 0):
+sum1 += entry print("Sum =", sum1)
+Enter numbers to find their sum, negative number ends the loop:
+Sum = 12
+Program 6-14 Program to check if the input number is prime or not.
+#Program 6-14
+#Write a Python program to check if a given number is prime or not.
+num = int(input("Enter the number to be checked: "))
+flag = 0 #presume num is a prime number if num > 1 :
+for i in range(2, int(num / 2)):
+if (num % i == 0):
+flag = 1 #num is a not prime number break #no need to check any further if flag == 1:
+print(num , "is not a prime number")
+print(num , "is a prime number")
+Reprint 2026-27

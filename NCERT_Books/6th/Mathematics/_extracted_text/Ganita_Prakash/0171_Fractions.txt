@@ -1,0 +1,235 @@
+Prime Time
+2. Who am I?
+a. I am a number less than 40. One of my factors is 7.
+The sum of my digits is 8.
+b. I am a number less than 100. Two of my factors are 3 and 5.
+One of my digits is 1 more than the other.
+3. A number for which the sum of all its factors is equal to twice the number is called a perfect number. The number 28 is a perfect number. Its factors are 1, 2, 4, 7, 14 and 28. Their sum is 56 which is twice 28. Find a perfect number between 1 and 10.
+4. Find the common factors of:
+a. 20 and 28 b. 35 and 50 c. 4, 8 and 12 d. 5, 15 and 25
+5. Find any three numbers that are multiples of 25 but not multiples
+6. Anshu and his friends play the ‘idli-vada’ game with two numbers, which are both smaller than 10. The first time anybody says ‘idli- vada’ is after the number 50. What could the two numbers be which are assigned ‘idli’ and ‘vada’?
+7. In the treasure hunting game, Grumpy has kept treasures on 28 and 70. What jump sizes will land on both the numbers?
+8. In the diagram below, Guna has erased all the numbers except the common multiples. Find out what those numbers could be and fill in the missing numbers in the empty regions.
+Multiples of ____
+Common multiples
+Multiples of ____
+9. Find the smallest number that is a multiple of all the numbers from 1 to 10, except for 7.
+10. Find the smallest number that is a multiple of all the numbers from 1 to 10.
+Reprint 2026-27
+Ganita Prakash | Grade 6
+5.2 Prime Numbers
+Guna and Anshu want to pack figs (anjeer) that grow in their farm.
+Guna wants to put 12 figs in each box and Anshu wants to put 7 figs in each box.
+How many arrangements are possible?
+Think and find out the different ways how —
+1. Guna can arrange 12 figs in a rectangular manner.
+2. Anshu can arrange 7 figs in a rectangular manner.
+Guna has listed out these possibilities.
+Observe the number of rows and columns in each of the arrangements.
+How are they related to 12?
+In the second arrangement, for example, 12 figs are arranged in two columns of 6 each or 12 = 2 × 6.
+Anshu could make only one arrangement: 7 × 1 or 1 × 7. There are no other rectangular arrangements possible.
+In each of Guna’s arrangements, multiplying the number of rows by the number of columns gives the number 12. So, the number of rows or columns are factors of 12.
+We saw that the number 12 can be arranged in a rectangle in more than one way as 12 has more than two factors. The number 7 can be arranged in only one way, as it has only two factors — 1 and 7.
+Numbers that have only two factors are called prime numbers or primes. Here are the first few primes — 2, 3, 5, 7, 11, 13, 17, 19. Notice that the factors of a prime number are 1 and the number itself.
+What about numbers that have more than two factors? They are called composite numbers. The first few composite numbers are — 4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20.
+Reprint 2026-27
+Prime Time
+What about 1, which has only one factor? The number 1 is neither a prime nor a composite number.
+How many prime numbers are there from 21 to 30? How many composite numbers are there from 21 to 30?
+Can we list all the prime numbers from 1 to 100?
+Here is an interesting way to find prime numbers. Just follow the steps given below and see what happens.
+Step 1: Cross out 1 because it is neither prime nor composite.
+Step 2: Circle 2, and then cross out all multiples of 2 after that, i.e., 4, 6, 8, and so on.
+Step 3: You will find that the next uncrossed number is 3.
+Circle 3 and then cross out all the multiples of 3 after that, i.e., 6, 9, 12, and so on.
+Step 4: The next uncrossed number is 5. Circle 5 and then cross out all the multiples of 5 after that, i.e., 10, 15, 20, and
+Step 5: Continue this process till all the numbers in the list are either circled or crossed out.
+All the circled numbers are prime numbers. All the crossed out numbers, other than 1, are composite numbers. This method is called the Sieve of Eratosthenes.
+This procedure can be carried on for numbers greater than 100 also.
+Eratosthenes was a Greek mathematician who lived around 2200 years ago and developed this method of listing primes.
+1 2 3 4 5 6 7 8 9 10
+11 12 13 14 15 16 17 18 19 20
+21 22 23 24 25 26 27 28 29 30
+31 32 33 34 35 36 37 38 39 40
+41 42 43 44 45 46 47 48 49 50
+51 52 53 54 55 56 57 58 59 60
+61 62 63 64 65 66 67 68 69 70
+71 72 73 74 75 76 77 78 79 80
+81 82 83 84 85 86 87 88 89 90
+91 92 93 94 95 96 97 98 99 100
+It is definitely not some magic; there should be a reason why it works.
+Reprint 2026-27
+Ganita Prakash | Grade 6
+Guna and Anshu started wondering how this simple method is able to find prime numbers! Think how this method works. Read the steps given above again and see what happens after each step is carried out.
+Figure it Out
+1. We see that 2 is a prime and also an even number. Is there any other even prime?
+2. Look at the list of primes till 100. What is the smallest difference between two successive primes? What is the largest difference?
+3. Are there an equal number of primes occurring in every row in the table on the previous page? Which decades have the least number of primes? Which have the most number of primes?
+Primes through the Ages
+Prime numbers are the building blocks of all whole numbers. Starting from the time of the Greek civilisation (more than 2000 years ago) to this day, mathematicians are still struggling to uncover their secrets!
+Food for thought: is there a largest prime number? Or does the list of prime numbers go on without an end? A mathematician named
+Euclid found the answer and so will you in a later class!
+Fun fact: The largest prime number that anyone has ‘written down’ is so large that it would take around 6500 pages to write it! So they could only write it on a computer!
+4. Which of the following numbers are prime: 23, 51, 37, 26?
+5. Write three pairs of prime numbers less than 20 whose sum is a multiple of 5.
+6. The numbers 13 and 31 are prime numbers. Both these numbers have same digits 1 and 3. Find such pairs of prime numbers up to 100.
+7. Find seven consecutive composite numbers between 1 and 100.
+8. Twin primes are pairs of primes having a difference of 2. For example, 3 and 5 are twin primes. So are 17 and 19. Find the other twin primes between 1 and 100.
+Reprint 2026-27
+Prime Time
+9. Identify whether each statement is true or false. Explain.
+a. There is no prime number whose units digit is 4.
+b. A product of primes can also be prime.
+c. Prime numbers do not have any factors.
+d. All even numbers are composite numbers.
+e. 2 is a prime and so is the next number, 3. For every other prime, the next number is composite.
+10. Which of the following numbers is the product of exactly three distinct prime numbers: 45, 60, 91, 105, 330?
+11. How many three-digit prime numbers can you make using each of 2, 4 and 5 once?
+12. Observe that 3 is a prime number, and 2 × 3 + 1 = 7 is also a prime.
+Are there other primes for which doubling and adding 1 gives another prime? Find at least five such examples.
+5.3 Co-prime numbers for safekeeping treasures
+Which pairs are safe?
+Let us go back to the treasure finding game. This time, treasures are kept on two numbers. Jumpy gets the treasures only if he is able to reach both the numbers with the same jump size. There is also a new rule — a jump size of 1 is not allowed.
+Where should Grumpy place the treasures so that Jumpy cannot reach both the treasures?
+Will placing the treasure on 12 and 26 work? No! If the jump size is chosen to be 2, then Jumpy will reach both 12 and 26.
+What about 4 and 9? Jumpy cannot reach both using any jump size other than 1. So, Grumpy knows that the pair 4 and 9 is safe.
+Check if these pairs are safe:
+a. 15 and 39 b. 4 and 15 c. 18 and 29 d. 20 and 55
+Reprint 2026-27
+Ganita Prakash | Grade 6
+What is special about safe pairs? They don’t have any common factor other than 1. Two numbers are said to be co-prime to each other if they have no common factor other than 1.
+Example: As 15 and 39 have 3 as a common factor, they are not co-prime. But 4 and 9 are co-prime.
+Which of the following pairs of numbers are co-prime?
+a. 18 and 35 b. 15 and 37 c. 30 and 415 d. 17 and 69 e. 81 and 18
+While playing the ‘idli-vada’ game with different number pairs, Anshu observed something interesting!
+1. Sometimes the first common multiple was the same as the product of the two numbers.
+2. At other times the first common multiple was less than the product of the two numbers.
+Find examples for each of the above. How is it related to the number pair being co-prime?
+Co-prime art
+Observe the following thread art. The first diagram has 12 pegs and the thread is tied to every fourth peg (we say that the thread-gap is 4). The second diagram has 13 pegs and the thread-gap is 3. What about the other diagrams? Observe these pictures, share and discuss your findings in class.
+15 24 1 2 3
+10 11 12 13 14
+In some diagrams, the thread is tied to every peg. In some, it is not. Is it related to the two numbers (the number of pegs and the thread-gap) being co-prime?
+Reprint 2026-27
+Prime Time
+Make such pictures for the following:
+a. 15 pegs, thread-gap of 10 b. 10 pegs, thread-gap of 7 c. 14 pegs, thread-gap of 6 d. 8 pegs, thread-gap of 3
+5.4 Prime Factorisation
+Checking if two numbers are co-prime
+Teacher: Are 56 and 63 co-prime?
+Anshu and Guna: If they have a common factor other than 1, then they are not co-prime. Let us check.
+Anshu: I can write 56 = 14 × 4 and 63 = 21 × 3. So, 14 and 4 are factors, of 56. Further, 21 and 3 are factors of
+63. So, there are no common factors. The numbers are co-prime.
+Guna: Hold on. I can also write 56 = 7 × 8 and 63 = 9 × 7.
+We see that 7 is a factor of both numbers, so, they are not co-prime.
+Clearly Guna is right, as 7 is a common factor.
+But where did Anshu go wrong?
+Writing 56 = 14 × 4 tells us that 14 and 4 are both factors of 56, but it does not tell all the factors of 56. The same holds for the factors of 63.
+Try another example: 80 and 63. There are many ways to factorise both numbers.
+80 = 40 × 2 = 20 × 4 = 10 × 8 = 16 × 5 = ???
+63 = 9 × 7 = 3 × 21 = ???
+We have written ‘???’ to say that there may be more ways to factorise these numbers. But if we take any of the given factorisations, for example, 80 = 16 × 5 and 63 = 9 × 7, then there are no common factors. Can we conclude that 80 and 63 are co-prime? As Anshu’s mistake above shows, we cannot conclude that as there may be other ways to factorise the numbers.
+What this means is that we need a more systematic approach to check if two numbers are co-prime.
+Reprint 2026-27
+Ganita Prakash | Grade 6
+Prime factorisation
+Take a number such as 56. It is composite, as we saw that it can be written as 56 = 4 × 14 . So, both 4 and 14 are factors of 56. Now take one of these, say 14. It is also composite and can be written as 14 = 2 × 7.
+Therefore, 56 = 4 × 2 × 7. Now, 4 is composite and can be written as
+4 = 2 × 2. Therefore, 56 = 2 × 2 × 2 × 7. All the factors appearing here, 2 and 7, are prime numbers. So, we cannot divide them further.
+In conclusion, we have written 56 as a product of prime numbers.
+This is called prime factorisation of 56. The individual factors are called prime factors. For example, the prime factors of 56 are 2 and 7.
+Every number greater than 1 has a prime factorisation. The idea is the same: keep breaking the composite numbers into factors till only primes are left.
+The number 1 does not have any prime factorisation. It is not divisible by any prime number.
+What is the prime factorisation of a prime number like 7? It is just
+7 (we cannot break it down any further).
+Let us see a few more examples.
+By going through different ways of breaking down the number, we wrote 63 as 3 × 3 × 7 and as 3 × 7 × 3. Are they different? Not really! The same prime numbers 3 and 7 occur in both cases. Further,
+3 appears two times in both and 7 appears once.
+Here, you see four different ways to get prime factorisation of 36.
+Observe that in all four cases, we get two 2s and
+Multiply back to see that you get 36 in all four cases.
+For any number, it is a remarkable fact that there is only one prime factorisation, except that the prime factors may come in different
+2×18 3×12 4×9 6×6
+2×2×9 3×3×4 2×2×9 2×3×6
+2×2×3×3 3×3×2×2 2×2×3×3 2×3×2×3
+2×3×2×3 2×2×3×3
+Reprint 2026-27
+Prime Time orders. As we explain below, the order is not important. However, as we saw in these examples, there are many ways to arrive at the prime factorisation!
+Does the order matter?
+Using this diagram, can you explain why 30 = 2 × 3 × 5, no matter which way you multiply
+2, 3, and 5?
+When multiplying numbers, we can do so in any order. The end result is the same. That is why, when two 2s and two 3s are multiplied in any order, we get 36. In a later class, we shall study this under the names of commutativity and associativity of multiplication.
+Thus, the order does not matter. Usually we write the prime numbers in increasing order. For example, 225 = 3 × 3 × 5 × 5 or 30 =
+2 × 3 × 5.
+Prime factorisation of a product of two numbers
+When we find the prime factorisation of a number, we first write it as a product of two factors. For example, 72 = 12 × 6. Then, we find the prime factorisation of each of the factors. In the above example,
+12 = 2 × 2 × 3 and 6 = 2 × 3. Now, can you say what the prime factorisation of 72 is?
+The prime factorisation of the original number is obtained by putting these together.
+72 = 2 × 2 × 3 × 2 × 3
+Reprint 2026-27
+Ganita Prakash | Grade 6
+We can also write this as 2 × 2 × 2 × 3 × 3. Multiply and check that you get 72 back!
+Observe how many times each prime factor occurs in the factorisation of 72.
+Compare it with how many times it occurs in the factorisations of
+12 and 6 put together.
+Figure it Out
+1. Find the prime factorisations of the following numbers: 64, 104,
+105, 243, 320, 141, 1728, 729, 1024, 1331, 1000.
+2. The prime factorisation of a number has one 2, two 3s, and one
+11. What is the number?
+3. Find three prime numbers, all less than 30, whose product is 1955.
+4. Find the prime factorisation of these numbers without multiplying a. 56 × 25 b. 108 × 75 c. 1000 × 81
+5. What is the smallest number whose prime factorisation has:
+a. three different prime numbers?
+b. four different prime numbers?
+Prime factorisation is of fundamental importance in the study of numbers. Let us discuss two ways in which it can be useful.
+Using prime factorisation to check if two numbers are co-prime
+Let us again take the numbers 56 and 63. How can we check if they are co-prime? We can use the prime factorisation of both numbers —
+56 = 2 × 2 × 2 × 7 and 63 = 3 × 3 × 7
+Now, we see that 7 is a prime factor of 56 as well as 63. Therefore,
+56 and 63 are not co-prime.
+What about 80 and 63? Their prime factorisations are as follows:
+80 = 2 × 2 × 2 × 2 × 5 and 63 = 3 × 3 × 7
+There are no common prime factors. Can we conclude that they are co-prime? Suppose they have a common factor that is composite.
+Would the prime factors of this composite common factor appear in the prime factorisation of 80 and 63?
+Reprint 2026-27
+Prime Time
+Therefore, we can say that if there are no common prime factors, then the two numbers are co-prime.
+Let us see some examples.
+Example: Consider 40 and 231. Their prime factorisations are as follows:
+40 = 2 × 2 × 2 × 5 and 231 = 3 × 7 × 11
+We see that there are no common primes that divide both 40 and
+231. Indeed, the prime factors of 40 are 2 and 5 while, the prime factors of 231 are 3, 7, and 11. Therefore, 40 and 231 are co-prime!
+Example: Consider 242 and 195. Their prime factorisations are as follows:
+242 = 2 × 11 × 11 and 195 = 3 × 5 × 13
+The prime factors of 242 are 2 and 11. The prime factors of 195 are 3, 5, and 13. There are no common prime factors. Therefore, 242 and 195 are co-prime.
+Using prime factorisation to check if one number is divisible by another
+We can say that if one number is divisible by another, the prime factorisation of the second number is included in the prime factorisation of the first number.
+We say that 48 is divisible by 12 because when we divide 48 by 12, the remainder is zero. How can we check if one number is divisible by another without carrying out long division?
+Example: Is 168 divisible by 12? Find the prime factorisations of both:
+168 = 2 × 2 × 2 × 3 × 7 and 12 = 2 × 2 × 3
+Since we can multiply in any order, now it is clear that,
+168 = 2 × 2 × 3 × 2 × 7 = 12 × 14
+Therefore, 168 is divisible by 12.
+Example: Is 75 divisible by 21? Find the prime factorisations of both:
+75 = 3 × 5 × 5 and 21 = 3 × 7
+Reprint 2026-27
+Ganita Prakash | Grade 6
+As we saw in the discussion above, if 75 was a multiple of 21, then all prime factors of 21 would also be prime factors of 75. However, 7 is a prime factor of 21 but not a prime factor of 75. Therefore, 75 is not divisible by 21.
+Example: Is 42 divisible by 12? Find the prime factorisations of both:
+42 = 2 × 3 × 7 and 12 = 2 × 2 × 3
+All prime factors of 12 are also prime factors of 42. But the prime factorisation of 12 is not included in the prime factorisation of 42.
+This is because 2 occurs twice in the prime factorisation of 12 but only once in the prime factorisation of 42. This means that 42 is not divisible by 12.
+We can say that if one number is divisible by another, then the prime factorisation of the second number is included in the prime factorisation of the first number.
+Figure it Out
+1. Are the following pairs of numbers co-prime? Guess first and then use prime factorisation to verify your answer.
+a. 30 and 45 b. 57 and 85 c. 121 and 1331 d. 343 and 216
+2. Is the first number divisible by the second? Use prime factorisation.
+a. 225 and 27 b. 96 and 24 c. 343 and 17 d. 999 and 99
+3. The first number has prime factorisation 2 × 3 × 7 and the second number has prime factorisation 3 × 7 × 11. Are they co-prime?
+Does one of them divide the other?
+4. Guna says, “Any two prime numbers are co-prime?”. Is he right?
+5.5 Divisibility Tests
+So far, we have been finding factors of numbers in different contexts, including to determine if a number is

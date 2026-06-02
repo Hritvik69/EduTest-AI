@@ -1,0 +1,301 @@
+Computer SCienCe - ClaSS Xii 156
+9.8 functIonS In SQL
+In this section, we will understand how to use single row functions, multiple row functions, group records based on some criteria, and working on multiple tables using SQL.
+Inventory
+YearManufacture
+FuelType Sale
+InvoiceNo
+SaleDate
+PaymentMode
+SalePrice
+Customer
+CustName
+Employee
+Designaiton
+Figure 9.2: Schema diagram of database CARSHOWROOM
+Let us create a database called CARSHOWROOM having the schema as shown in Figure 9.2 It has the following four relations:
+1) INVENTORY: Stores name, price, model, year of manufacturing, and fuel type for each car in inventory of the showroom,
+2) CUSTOMER: Stores customer id, name, address, phone number and email for each customer,
+3) SALE: Stores the invoice number, car id, customer id, sale date, mode of payment, sales person’s employee id and selling price of the car sold,
+4) EMPLOYEE: Stores employee id, name, date of birth, date of joining, designation and salary of each employee in the showroom.
+The records of the four relations are shown in Tables
+9.9, 9.10, 9.11, and 9.12, respectively.
+Table 9.9 INVENTORY mysql> SELECT * FROM INVENTORY;
++--------+--------------+------------+-------------+-------------------+--------------+
+| CarId | CarName | Price | Model | YearManufacture | Fueltype |
++--------+--------------+------------+-------------+-------------------+--------------+
+| D001 | Dzire | 582613.00 | LXI | 2017 | Petrol |
+Reprint 2026-27
+S tructured Query Language (SQL) 157
+| D002 | Dzire | 673112.00 | VXI | 2018 | Petrol |
+| B001 | Baleno | 567031.00 | Sigma1.2 | 2019 | Petrol |
+| B002 | Baleno | 647858.00 | Delta1.2 | 2018 | Petrol |
+| E001 | EECO | 355205.00 | 5 STR STD | 2017 | CNG |
+| E002 | EECO | 654914.00 | CARE | 2018 | CNG |
+| S001 | SWIFT | 514000.00 | LXI | 2017 | Petrol |
+| S002 | SWIFT | 614000.00 | VXI | 2018 | Petrol |
++--------+--------------+------------+-------------+-------------------+--------------+
+8 rows in set (0.00 sec)
+Table 9.10 CUSTOMER mysql> SELECT * FROM CUSTOMER;
++--------+--------------+-------------------------+------------+---------------------+
+| CustId | CustName | CustAdd | Phone | Email |
++--------+--------------+-------------------------+------------+---------------------+
+| C0001 | Amit Saha | L-10, Pitampura | 4564587852 | amitsaha2@gmail.com |
+| C0002 | Rehnuma | J-12, SAKET | 5527688761 | rehnuma@hotmail.com |
+| C0003 | Charvi Nayyar| 10/9, FF, Rohini | 6811635425 | charvi123@yahoo.com |
+| C0004 | Gurpreet | A-10/2, SF, Mayur Vihar | 3511056125 | gur_singh@yahoo.com |
++--------+--------------+-------------------------+------------+---------------------+
+4 rows in set (0.00 sec)
+Table 9.11 SALE mysql> SELECT * FROM SALE;
++-----------+-------+--------+------------+--------------+-------+-----------+
+| InvoiceNo | CarId | CustId | SaleDate | PaymentMode | EmpID | SalePrice |
++-----------+-------+--------+------------+--------------+-------+-----------+
+| I00001 | D001 | C0001 | 2019-01-24 | Credit Card | E004 | 613248.00 |
+| I00002 | S001 | C0002 | 2018-12-12 | Online | E001 | 590321.00 |
+| I00003 | S002 | C0004 | 2019-01-25 | Cheque | E010 | 604000.00 |
+| I00004 | D002 | C0001 | 2018-10-15 | Bank Finance | E007 | 659982.00 |
+| I00005 | E001 | C0003 | 2018-12-20 | Credit Card | E002 | 369310.00 |
+| I00006 | S002 | C0002 | 2019-01-30 | Bank Finance | E007 | 620214.00 |
++-----------+-------+--------+------------+--------------+-------+-----------+
+6 rows in set (0.00 sec)
+Table 9.12 EMPLOYEE mysql> SELECT * FROM EMPLOYEE;
++-------+----------+------------+------------+--------------+--------+
+| EmpID | EmpName | DOB | DOJ | Designation | Salary |
++-------+----------+------------+------------+--------------+--------+
+| E001 | Rushil | 1994-07-10 | 2017-12-12 | Salesman | 25550 |
+| E002 | Sanjay | 1990-03-12 | 2016-06-05 | Salesman | 33100 |
+| E003 | Zohar | 1975-08-30 | 1999-01-08 | Peon | 20000 |
+| E004 | Arpit | 1989-06-06 | 2010-12-02 | Salesman | 39100 |
+| E006 | Sanjucta | 1985-11-03 | 2012-07-01 | Receptionist | 27350 |
+| E007 | Mayank | 1993-04-03 | 2017-01-01 | Salesman | 27352 |
+| E010 | Rajkumar | 1987-02-26 | 2013-10-23 | Salesman | 31111 |
++-------+----------+------------+------------+--------------+--------+
+7 rows in set (0.00 sec)
+We know that a function is used to perform some particular task and it returns zero or more values as a result. Functions are useful while writing SQL queries also. Functions can be applied to work on single or multiple records (rows) of a table. Depending on their application in one or multiple rows, SQL functions are
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 158
+Numeric Functions
+String Functions
+LENGTH()
+INSERT()
+Date Functions
+MONTHNAME()
+DAYNAME()
+Single Row Functions
+Figure 9.3: Three categories of single-row functions in SQL categorised as Single Row functions and Aggregate functions.
+9.8.1 Single Row Functions
+These are also known as Scalar functions. Single row functions are applied on a single value and return a single value. Figure 9.3 lists different single row functions under three categories — Numeric (Math),
+String, Date and Time.
+Math Functions accept numeric value as input and return a numeric value as a result. String
+Functions accept character value as input and return either character or numeric values as output. Date and
+Time functions accept date and time value as input and return numeric or string or Date and Time as output.
+(A) Math Functions
+Three commonly used numeric functions are POWER(),
+ROUND() and MOD(). Their usage along with syntax is given in Table 9.13.
+Table 9.13 Math Functions
+Function Description Example with output
+POWER(X,Y)
+can also be written as
+POW(X,Y)
+Calculates X to the power Y. mysql> SELECT POWER(2,3);
+ROUND(N,D) Rounds off number N to D number of decimal places.
+Note: If D=0, then it rounds off the number to the nearest integer.
+mysql>SELECT ROUND(2912.564, 1);
+mysql> SELECT ROUND(283.2);
+MOD(A, B) Returns the remain der after dividing number A by number B.
+mysql> SELECT MOD(21, 2);
+Reprint 2026-27
+S tructured Query Language (SQL) 159
+Example 9.18 In order to increase sales, suppose the car dealer decides to offer his customers to pay the total amount in 10 easy EMIs (equal monthly instalments). Assume that
+EMIs are required to be in multiples of 10000. For that, the dealer wants to list the CarID and Price along with the following data from the Inventory table:
+a) Calculate GST as 12 per cent of Price and display the result after rounding it off to one decimal place.
+mysql> SELECT ROUND(12/100*Price,1) "GST" FROM
+INVENTORY;
++------------+
+| 69913.6 |
+| 80773.4 |
+| 68043.7 |
+| 77743.0 |
+| 42624.6 |
+| 78589.7 |
+| 61680.0 |
+| 73680.0 |
++------------+
+8 rows in set (0.00 sec)
+b) Add a new column FinalPrice to the table inventory which will have the value as sum of Price and 12 per cent of the GST.
+mysql> ALTER TABLE INVENTORY ADD(FinalPrice
+Numeric(10,1));
+Query OK, 8 rows affected (0.03 sec)
+Records: 8 Duplicates: 0 Warnings: 0 mysql> UPDATE INVENTORY SET
+FinalPrice=Price+Round(Price*12/100,1);
+Query OK, 8 rows affected (0.01 sec)
+Rows matched: 8 Changed: 8 Warnings: 0
+Activity 9.10
+Using the table SALE of CARSHOWROOM database, write
+SQL queries for the following:
+a) Display the
+InvoiceNo and commission value rounded off to zero decimal places.
+b) Display the details of SALE where payment mode is credit mysql> SELECT * FROM INVENTORY;
++-------+--------+-----------+-----------+----------------+----------+------------+
+| CarId |CarName | Price | Model |YearManufacture | FuelType | FinalPrice |
++-------+--------+-----------+-----------+----------------+----------+------------+
+| D001 | Dzire | 582613.00 | LXI | 2017 | Petrol | 652526.6 |
+| D002 | Dzire | 673112.00 | VXI | 2018 | Petrol | 753885.4 |
+| B001 | Baleno | 567031.00 | Sigma1.2 | 2019 | Petrol | 635074.7 |
+| B002 | Baleno | 647858.00 | Delta1.2 | 2018 | Petrol | 725601.0 |
+| E001 | EECO | 355205.00 | 5 STR STD | 2017 | CNG | 397829.6 |
+| E002 | EECO | 654914.00 | CARE | 2018 | CNG | 733503.7 |
+| S001 | SWIFT | 514000.00 | LXI | 2017 | Petrol | 575680.0 |
+| S002 | SWIFT | 614000.00 | VXI | 2018 | Petrol | 687680.0 |
++-------+--------+-----------+-----------+----------------+----------+------------+
+8 rows in set (0.00 sec)
+c) Calculate and display the amount to be paid each month (in multiples of 1000) which is to be calculated after dividing the FinalPrice of the car into
+10 instalments.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 160 d) After dividing the amount into EMIs, find out the remaining amount to be paid immediately, by performing modular division.
+Following SQL query can be used to solve the above mentioned (c) and (d) problem:
+mysql> SELECT CarId, FinalPrice, ROUND(FinalPrice-
+MOD(FinalPrice,1000)/10,0) "EMI",
+MOD(FinalPrice,10000) "Remaining Amount" FROM
+INVENTORY;
++-------+--------------+---------+------------------+
+| CarId | FinalPrice | EMI | Remaining Amount |
++-------+--------------+---------+------------------+
+| D001 | 652526.6 | 652474 | 2526.6 |
+| D002 | 753885.4 | 753797 | 3885.4 |
+| B001 | 635074.7 | 635067 | 5074.7 |
+| B002 | 725601.0 | 725541 | 5601.0 |
+| E001 | 397829.6 | 397747 | 7829.6 |
+| E002 | 733503.7 | 733453 | 3503.7 |
+| S001 | 575680.0 | 575612 | 5680.0 |
+| S002 | 687680.0 | 687612 | 7680.0 |
++-------+--------------+---------+------------------+
+8 rows in set (0.00 sec)
+Example 9.19 a) Let us now add a new column Commission to the
+SALE table. The column Commission should have a total length of 7 in which 2 decimal places to be there.
+mysql> ALTER TABLE SALE ADD(Commission
+Numeric(7,2));
+Query OK, 6 rows affected (0.34 sec)
+Records: 6 Duplicates: 0 Warnings: 0 b) Let us now calculate commission for sales agents as
+12% of the SalePrice, Insert the values to the newly added column Commission and then display records of the table SALE where commission > 73000.
+mysql> UPDATE SALE SET
+Commission=12/100*SalePrice;
+Query OK, 6 rows affected (0.06 sec)
+Rows matched: 6 Changed: 6 Warnings: 0 mysql> SELECT * FROM SALE WHERE Commission > 73000;
++----------+------+--------+-----------+-------------+-------+-----------+------------+
+|invoiceno |carid | custid | saledate | paymentmode | empid | saleprice | Commission |
++----------+------+--------+-----------+-------------+-------+-----------+------------+
+| I00001 |D001 | C0001 | 2019-01-24 | Credit Card | E004 | 613248.00 | 73589.64 |
+| I00004 |D002 | C0001 | 2018-10-15 | Bank Finance| E007 | 659982.00 | 79198.84 |
+| I00006 |S002 | C0002 | 2019-01-30 | Bank Finance | E007 | 620214.00 | 74425.68 |
++----------+------+--------+-----------+-------------+-------+-----------+------------+
+3 rows in set (0.02 sec)
+Reprint 2026-27
+S tructured Query Language (SQL) 161
+Table 9.14 String Functions
+Function Description Example with output
+UCASE(string)
+UPPER(string)
+converts string into uppercase. mysql> SELECT
+UCASE(“Informatics
+Practices”);
+INFORMATICS PRACTICES
+LOWER(string)
+LCASE(string)
+converts string into lowercase. mysql> SELECT
+LOWER(“Informatics
+Practices”);
+informatics practices
+MID(string, pos, n)
+SUBSTRING(string,
+SUBSTR(string, pos, n)
+Returns a substring of size n starting from the specified position (pos) of the string. If n is not specified, it returns the substring from the position pos till end of the string.
+mysql> SELECT
+MID(“Informatics”, 3, 4);
+mysql> SELECT
+MID(‘Informatics’,7);
+LENGTH(string) Return the number of characters in the specified string.
+mysql> SELECT
+LENGTH(“Informatics”);
+LEFT(string, N) Returns N number of characters from the left side of the string.
+mysql> SELECT
+LEFT(“Computer”, 4);
+c) Display InvoiceNo, SalePrice and Commission such that commission value is rounded off to 0.
+mysql> SELECT InvoiceNo, SalePrice,
+Round(Commission,0) FROM SALE;
++-----------+-----------+---------------------+
+| InvoiceNo | SalePrice | Round(Commission,0) |
++-----------+-----------+---------------------+
+| I00001 | 613248.00 | 73590 |
+| I00002 | 590321.00 | 70839 |
+| I00003 | 604000.00 | 72480 |
+| I00004 | 659982.00 | 79198 |
+| I00005 | 369310.00 | 44317 |
+| I00006 | 620214.00 | 74426 |
++-----------+-----------+---------------------+
+6 rows in set (0.00 sec)
+(B) String Functions
+String functions can perform various operations on alphanumeric data which are stored in a table. They can be used to change the case (uppercase to lowercase or vice-versa), extract a substring, calculate the length of a string and so on. String functions and their usage are shown in Table 9.14.
+Activity 9.11
+Using the table
+INVENTORY from
+CARSHOWROOM database, write sql queries for the following:
+a) Convert the CarMake to uppercase if its value starts with the letter ‘B’.
+b) If the length of the car’s model is greater than 4 then fetch the substring starting from position
+3 till the end from attribute
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 162
+RIGHT(string, N) Returns N number of characters from the right side of the string.
+mysql> SELECT
+RIGHT(“SCIENCE”, 3);
+INSTR(string, substring)
+Returns the position of the first occurrence of the substring in the given string. Returns 0, if the substring is not present in the mysql> SELECT
+INSTR(“Informatics”,
+LTRIM(string) Returns the given string after removing leading white space characters.
+mysql> SELECT LENGTH(“
+DELHI”), LENGTH(LTRIM(“
+DELHI”));
++--------+--------+
+| 7 | 5 |
++--------+--------+
+1 row in set (0.00 sec)
+RTRIM(string) Returns the given string after removing trailing white space characters.
+mysql>SELECT LENGTH(“PEN
+“)LENGTH(RTRIM(“PEN “));
++--------+--------+
+| 5 | 3 |
++--------+--------+
+1 row in set (0.00 sec)
+TRIM(string) Returns the given string after removing both leading and trailing white space characters.
+mysql> SELECT LENGTH(“
+MADAM “),LENGTH(TRIM(“
+MADAM “));
++--------+--------+
+| 9 | 5 |
++--------+--------+
+1 row in set (0.00 sec)
+Example 9.20 Let us use Customer relation shown in Table
+9.10 to understand the working of string functions.
+a) Display customer name in lower case and customer email in upper case from table CUSTOMER.
+mysql> SELECT LOWER(CustName), UPPER(Email) FROM
+CUSTOMER;
++-----------------+---------------------+
+| LOWER(CustName) | UPPER(Email) |
++-----------------+---------------------+
+| amit saha | AMITSAHA2@GMAIL.COM |
+| rehnuma | REHNUMA@HOTMAIL.COM |
+| charvi nayyar | CHARVI123@YAHOO.COM |
+| gurpreet | GUR_SINGH@YAHOO.COM |
++-----------------+---------------------+
+4 rows in set (0.00 sec)
+b) Display the length of the email and part of the email from the email id before the character ‘@’. Note - Do not print ‘@’.
+mysql> SELECT LENGTH(Email), LEFT(Email, INSTR(Email,
+"@")-1) FROM CUSTOMER;
+Activity 9.12
+Using the table
+EMPLOYEE from
+CARSHOWROOM database, write
+SQL queries for the following:
+a) Display employee name and the last 2 characters of his EmpId.
+b) Display designation of employee and the position of character ‘e’ in designation, if present.
+Reprint 2026-27

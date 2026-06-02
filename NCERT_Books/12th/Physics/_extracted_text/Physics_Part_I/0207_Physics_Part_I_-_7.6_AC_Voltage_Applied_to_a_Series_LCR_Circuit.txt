@@ -1,0 +1,98 @@
+Alternating Current ( ) [ ] sin sin( ) m m p v i v t i t
+ω φ = = × +
+[ ] cos cos(2 )
+m m v i t
+ω φ = − + (7.29)
+The average power over a cycle is given by the average of the two terms in
+R.H.S. of Eq. (7.29). It is only the second term which is time-dependent.
+Its average is zero (the positive half of the cosine cancels the negative half). Therefore,
+φ = [7.30(a)]
+This can also be written as,
+2 cos P I Z
+φ = [7.30(b)]
+So, the average power dissipated depends not only on the voltage and current but also on the cosine of the phase angle
+φ between them. The quantity cos
+φ is called the power factor. Let us discuss the following
+Case (i) Case (i) Case (i) Case (i) Case (i)
+Resistive circuit: If the circuit contains only pure
+R, it is called resistive. In that case
+φ = 0, cos
+φ = 1. There is maximum power dissipation.
+Case (ii) Case (ii) Case (ii) Case (ii) Case (ii)
+Purely inductive or capacitive circuit: If the circuit contains only an inductor or capacitor, we know that the phase difference between voltage and current is π/2. Therefore, cos
+φ = 0, and no power is dissipated even though a current is flowing in the circuit. This current is sometimes referred to as wattless current.
+Case (iii) Case (iii) Case (iii) Case (iii) Case (iii)
+LCR series circuit: In an
+LCR series circuit, power dissipated is given by Eq. (7.30) where
+φ = tan–1 (
+φ may be non-zero in
+RCL circuit. Even in such cases, power is dissipated only in the resistor.
+Case (iv) Case (iv) Case (iv) Case (iv) Case (iv)
+Power dissipated at resonance in LCR circuit: At resonance
+XL= 0, and
+φ = 0. Therefore, cos
+φ = 1 and
+P = I 2Z =
+R. That is, maximum power is dissipated in a circuit (through
+R) at resonance.
+Example 7.7 Example 7.7 Example 7.7 Example 7.7 Example 7.7 (a) For circuits used for transporting electric power, a low power factor implies large power loss in transmission. Explain.
+(b) Power factor can often be improved by the use of a capacitor of appropriate capacitance in the circuit. Explain.
+Solution Solution Solution Solution Solution (a) We know that
+φ where cos
+φ is the power factor.
+To supply a given power at a given voltage, if cos
+φ is small, we have to increase current accordingly. But this will lead to large power loss
+R) in transmission.
+(b)Suppose in a circuit, current
+I lags the voltage by an angle power factor cos
+We can improve the power factor (tending to 1) by making
+Z tend to
+R. Let us understand, with the help of a phasor diagram (Fig. 7.15)
+E E E E EXAMPLE XAMPLE XAMPLE XAMPLE XAMPLE
+7.7 7.7 7.7 7.7 7.7
+Reprint 2026-27 how this can be achieved. Let us resolve I into two components. Ip along the applied voltage V and Iq perpendicular to the applied voltage. Iq as you have learnt in Section 7.7, is called the wattless component since corresponding to this component of current, there is no power loss. IP is known as the power component because it is in phase with the voltage and corresponds to power loss in the circuit.
+It’s clear from this analysis that if we want to improve power factor, we must completely neutralize the lagging wattless current Iq by an equal leading wattless current I
+¢q. This can be done by connecting a capacitor of appropriate value in parallel so that Iq and I¢q cancel each other and P is effectively Ip V.
+Example 7.8 A sinusoidal voltage of peak value 283 V and frequency
+50 Hz is applied to a series LCR circuit in which
+R = 3 W, L = 25.48 mH, and C = 796 mF. Find (a) the impedance of the circuit; (b) the phase difference between the voltage across the source and the current; (c) the power dissipated in the circuit; and (d) the power factor.
+Solution (a) To find the impedance of the circuit, we first calculate XL and XC.
+XL = 2 pnL
+= 2 × 3.14 × 50 × 25.48 × 10–3 W = 8 W
+2 3.14 50 796 10−
+Therefore, ( ) 3 (8 4) L C Z R X X = + − = + − (b) Phase difference, f = tan–1 C L X X
+ = − ° − tan . 1 4 8
+FIGURE 7.15
+Reprint 2026-27
+Alternating Current f is negative, the current in the circuit lags the voltage across the source.
+(c) The power dissipated in the circuit is
+Now, I im
+Therefore, A W 2 (40 ) 3 4800 P = × Ω = (d) Power factor =   cos cos –53.1 0.6
+Example 7.9 Suppose the frequency of the source in the previous example can be varied. (a) What is the frequency of the source at which resonance occurs? (b) Calculate the impedance, the current, and the power dissipated at the resonant condition.
+Solution (a) The frequency at which the resonance occurs is
+25.48 10 796 10 LC
+222.1rad/s =
+0 221.1 Hz 35.4Hz
+2 2 3.14 (b) The impedance Z at resonant condition is equal to the resistance:
+3 Z R = = Ω
+The rms current at resonance is
+3 66 7 . A
+The power dissipated at resonance is (66.7) 3 13.35 kW P I R = × = × =
+You can see that in the present case, power dissipated at resonance is more than the power dissipated in Example 7.8.
+Example 7.10 At an airport, a person is made to walk through the doorway of a metal detector, for security reasons. If she/he is carrying anything made of metal, the metal detector emits a sound. On what principle does this detector work?
+Solution The metal detector works on the principle of resonance in ac circuits. When you walk through a metal detector, you are, in fact, walking through a coil of many turns. The coil is connected to a capacitor tuned so that the circuit is in resonance. When you walk through with metal in your pocket, the impedance of the circuit changes – resulting in significant change in current in the circuit. This change in current is detected and the electronic circuitry causes a sound to be emitted as an alarm.
+Reprint 2026-27
+7.8 TRANSFORMERS
+For many purposes, it is necessary to change (or transform) an alternating voltage from one to another of greater or smaller value. This is done with a device called transformer using the principle of mutual induction.
+A transformer consists of two sets of coils, insulated from each other.
+They are wound on a soft-iron core, either one on top of the other as in
+Fig. 7.16(a) or on separate limbs of the core as in Fig. 7.16(b). One of the coils called the primary coil has Np turns. The other coil is called the secondary coil; it has Ns turns. Often the primary coil is the input coil and the secondary coil is the output coil of the transformer.
+FIGURE 7.16 Two arrangements for winding of primary and secondary coil in a transformer:
+(a) two coils on top of each other, (b) two coils on separate limbs of the core.
+When an alternating voltage is applied to the primary, the resulting current produces an alternating magnetic flux which links the secondary and induces an emf in it. The value of this emf depends on the number of turns in the secondary. We consider an ideal transformer in which the primary has negligible resistance and all the flux in the core links both primary and secondary windings. Let f be the flux in each turn in the core at time t due to current in the primary when a voltage vp is applied to it.
+Then the induced emf or voltage es, in the secondary with Ns turns is
+ε = − (7.31)
+The alternating flux f also induces an emf, called back emf in the primary. This is
+ε = − (7.32)
+ep = vp. If this were not so, the primary current would be infinite since the primary has zero resistance (as assumed). If the secondary is an open circuit or the current taken from it is small, then to a good approximation
+Reprint 2026-27

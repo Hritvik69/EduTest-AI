@@ -1,0 +1,26 @@
+58 58 58 58 58
+Introductory
+Macroeconomics
+Where C is Autonomous expenditure and c is the marginal propensity to consume.
+How can this relation be shown as a graph? To answer this question we will need to recall the “intercept form of the linear equation”,
+Y = a + bX
+Here, the variables are X and
+Y and there is a linear relation between them. a and b are constants. This equation is depicted in figure 4.1. The constant ‘a’ is shown as the
+“intercept” on the Y axis, i.e, the value of Y when X is zero. The constant ‘b’ is the slope of the line i.e. tangent
+Consumption Function –
+Graphical Representation
+Using the same logic, the consumption function can be shown as follows:
+Consumption function, where, C = intercept of the consumption function c = slope of consumption function
+Investment Function –
+Graphical Representation
+In a two sector model, there are two sources of final demand, the first is consumption and the second is investment.
+The investment function was shown as I = I
+Graphically, this is shown as a horizontal line at a height equal to I above the horizontal axis.
+In this model, I is autonomous which means, it is the same no matter whatever is the level of
+Intercept form of the linear equation.
+Fig. 4.1
+Consumption function with intercept C .
+Fig. 4.2
+Investment function with I as autonomous.
+Fig. 4.3
+Reprint 2026-27

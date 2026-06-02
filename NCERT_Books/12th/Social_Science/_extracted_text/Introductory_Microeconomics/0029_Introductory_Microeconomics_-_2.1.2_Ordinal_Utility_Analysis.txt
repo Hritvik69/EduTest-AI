@@ -1,0 +1,53 @@
+19 Theory of Consumer
+Behaviour
+2.3 OPTIMAL CHOICE OF THE CONSUMER
+The budget set consists of all bundles that are available to the consumer. The consumer can choose her consumption bundle from the budget set. But on what basis does she choose her consumption bundle from the ones that are available to her? In economics, it is assumed that the consumer chooses her consumption bundle on the basis of her tatse and preferences over the bundles in the budget set. It is generally assumed that the consumer has well defined preferences over the set of all possible bundles. She can compare any two bundles. In other words, between any two bundles, she either prefers one to the other or she is indifferent between the two.
+Changes in the Set of Available Bundles of Goods Resulting from Changes in the
+Price of bananas. An increase in the price of bananas makes the budget line steeper as in panel (a). A decrease in the price of bananas makes the budget line flatter as in panel (b).
+Equality of the Marginal Rate of Substitution and the Ratio of the Prices
+The optimum bundle of the consumer is located at the point where the budget line is tangent to one of the indifference curves. If the budget line is tangent to an indifference curve at a point, the absolute value of the slope of the indifference curve (MRS) and that of the budget line (price ratio) are same at that point. Recall from our earlier discussion that the slope of the indifference curve is the rate at which the consumer is willing to substitute one good for the other. The slope of the budget line is the rate at which the consumer is able to substitute one good for the other in the market. At the optimum, the two rates should be the same. To see why, consider a point where this is not so. Suppose the MRS at such a point is 2 and suppose the two goods have the same price. At this point, the consumer is willing to give up 2 mangoes if she is given an extra banana. But in the market, she can buy an extra banana if she gives up just 1 mango. Therefore, if she buys an extra banana, she can have more of both the goods compared to the bundle represented by the point, and hence, move to a preferred bundle. Thus, a point at which the MRS is greater, the price ratio cannot be the optimum. A similar argument holds for any point at which the MRS is less than the price ratio.
+Reprint 2026-27
+Introductory
+Microeconomics
+In economics, it is generally assumed that the consumer is a rational individual. A rational individual clearly knows what is good or what is bad for her, and in any given situation, she always tries to achieve the best for herself.
+Thus, not only does a consumer have well-defined preferences over the set of available bundles, she also acts according to her preferences. From the bundles which are available to her, a rational consumer always chooses the one which gives her maximum satisfaction.
+In the earlier sections, it was observed that the budget set describes the bundles that are available to the consumer and her preferences over the available bundles can usually be represented by an indifference map. Therefore, the consumer’s problem can also be stated as follows: The rational consumer’s problem is to move to a point on the highest possible indifference curve given her budget set.
+If such a point exists, where would it be located? The optimum point would be located on the budget line. A point below the budget line cannot be the optimum. Compared to a point below the budget line, there is always some point on the budget line which contains more of at least one of the goods and no less of the other, and is, therefore, preferred by a consumer whose preferences are monotonic. Therefore, if the consumer’s preferences are monotonic, for any point below the budget line, there is some point on the budget line which is preferred by the consumer. Points above the budget line are not available to the consumer. Therefore, the optimum (most preferred) bundle of the consumer would be on the budget line.
+Where on the budget line will the optimum bundle be located? The point at which the budget line just touches (is tangent to), one of the indifference curves would be the optimum.9 To see why this is so, note that any point on the budget line other than the point at which it touches the indifference curve lies on a lower indifference curve and hence is inferior. Therefore, such a point cannot be the consumer’s optimum. The optimum bundle is located on the budget line at the point where the budget line is tangent to an indifference curve.
+Figure 2.12 illustrates the consumer’s optimum. At * *
+1 2 ( , ) x x , the budget line is tangent to the black coloured indifference curve. The first thing to note is that the indifference curve just touching the budget line is the highest possible indifference curve given the consumer’s budget set. Bundles on the indifference curves above this, like the grey one, are not affordable. Points on the indifference curves below this, like the blue one, are certainly inferior to the points on the indifference curve, just touching the budget line. Any other point on the budget line lies on a lower indifference curve and hence, is inferior
+1 2 ( , ) x x . Therefore, * *
+1 2 ( , ) x x is the consumer’s optimum bundle.
+9 To be more precise, if the situation is as depicted in Figure 2.12 then the optimum would be located at the point where the budget line is tangent to one of the indifference curves. However, there are other situations in which the optimum is at a point where the consumer spends her entire income on one of the goods only.
+Consumer’s Optimum. The point (x ∗ which the budget line is tangent to an indifference curve represents the consumers
+Reprint 2026-27
+21 Theory of Consumer
+Behaviour
+2.4 DEMAND
+In the previous section, we studied the choice problem of the consumer and derived the consumer’s optimum bundle given the prices of the goods, the consumer’s income and her preferences. It was observed that the amount of a good that the consumer chooses optimally, depends on the price of the good itself, the prices of other goods, the consumer’s income and her tastes and preferences. The quantity of a commodity that a consumer is willing to buy and is able to afford, given prices of goods and consumer’s tastes and preferences is called demand for the commodity. Whenever one or more of these variables change, the quantity of the good chosen by the consumer is likely to change as well. Here we shall change one of these variables at a time and study how the amount of the good chosen by the consumer is related to that variable.
+2.4.1 Demand Curve and the Law of
+If the prices of other goods, the consumer’s income and her tastes and preferences remain unchanged, the amount of a good that the consumer optimally chooses, becomes entirely dependent on its price. The relation between the consumer’s optimal choice of the quantity of a good and its price is very important and this relation is called the demand function. Thus, the consumer’s demand function for a good
+Functions
+Consider any two variables x and y. A function y = f (x)
+is a relation between the two variables x and y such that for each value of x, there is an unique value of the variable y. In other words, f (x) is a rule which assigns an unique value y for each value of x. As the value of y depends on the value of x, y is called the dependent variable and x is called the independent variable.
+EXAMPLE 1
+Consider, for example, a situation where x can take the values 0, 1, 2, 3 and suppose corresponding values of y are 10, 15, 18 and 20, respectively.
+Here y and x are related by the function y = f (x) which is defined as follows:
+f (0) = 10; f (1) = 15; f (2) = 18 and f (3) = 20.
+EXAMPLE 2
+Consider another situation where x can take the values 0, 5, 10 and 20.
+And suppose corresponding values of y are 100, 90, 70 and 40, respectively.
+Demand Curve. The demand curve is a relation between the quantity of the good chosen by a consumer and the price of the good. The independent variable (price) is measured along the vertical axis and dependent variable (quantity) is measured along the horizontal axis. The demand curve gives the quantity demanded by the consumer at each price.
+Reprint 2026-27
+Introductory
+Microeconomics
+Here, y and x are related by the function y = f (x ) which is defined as follows:
+f (0) = 100; f (10) = 90; f (15) = 70 and f (20) = 40.
+Very often a functional relation between the two variables can be expressed in algebraic form like y = 5 + x and y = 50 – x
+A function y = f (x) is an increasing function if the value of y does not decrease with increase in the value of x. It is a decreasing function if the value of y does not increase with increase in the value of x. The function in
+Example 1 is an increasing function. So is the function y = x + 5. The function in Example 2 is a decreasing function. The function y = 50 – x is also decreasing.
+Graphical Representation of a Function
+A graph of a function y = f (x) is a diagrammatic representation of the function. Following are the graphs of the functions in the examples given above.
+Usually, in a graph, the independent variable is measured along the horizontal axis and the dependent variable is measured along the vertical axis. However, in economics, often the opposite is done. The demand curve, for example, is drawn by taking the independent variable (price) along the vertical axis and the dependent variable (quantity) along the horizontal axis.
+The graph of an increasing function is upward sloping or and the graph of a decreasing function is downward sloping. As we can see from the diagrams above, the graph of y = 5 + x is upward sloping and that of y = 50 – x, is downward sloping.
+Reprint 2026-27

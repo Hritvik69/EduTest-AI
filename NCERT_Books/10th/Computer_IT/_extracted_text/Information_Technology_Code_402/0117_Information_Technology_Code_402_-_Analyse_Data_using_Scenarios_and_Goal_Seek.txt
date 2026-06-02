@@ -1,0 +1,229 @@
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 107 notes Rules for naming a Macro, Module or a Library:
+While naming a Macro, Module or a Library the name should :
+• Begin with a letter
+• Not contain spaces
+• Not contain special characters except for _ (underscore)
+Running a Macro
+Let us now run the macro for another sheet which requires its heading in cell A1 to be given the same format as recorded in the Formatheading macro. To run a macro we need to perform the following steps.
+Step 1. Type the heading in cell A1
+Step 2. Use Tools > Macros > Run Macro to open the
+Macro Selector dialog box as shown in Fig. 5.6.
+Fig. 5.6 shows three names in the library. Out of which
+• LibreOffice Macros library is provided by
+LibreOffice and contains modules with pre recorded macros and should not be changed.
+• My Macros contain macros that we write or add to LibreOffice.
+• Untitled1 is the name of the worksheet we are working on. Since at this time we have not saved
+Fig. 5.6: Selecting and runnig a Macro
+Domestic Data entry operator – class X 108
+Run a previously created Macro Formatheading.
+Step 1. Type the heading in cell A1.
+Step 2. Open the Macro selector dialog box by clicking Tools
+-> Macros-> Run Macro
+Step 3. Click on MyMacros > Standard > Module1. Then select Formatheading from the Macro Name box and click Run as shown in Fig. 5.6.
+You will observe that the Heading in Cell A1 is formatted.
+The action recorded by a macro is recorded as instructions in a programming language called BASIC. It is also possible to view and thus edit the code of a macro. But remember, it is advised to edit a macro only if you have knowledge of the language in which the macro is written which is BASIC in case of CALC. You can view the code generated for the macros by going to Tools >
+Macros > Edit Macros.
+Choose the macro name from the Object Catalog and the associated code will be visible as shown in Fig. 5.7.
+Fig. 5.7: Code generated for macro in IDE
+Warning – Do not make any changes to the code unless you are aware of the language.
+Note – The code of a macro begins with Sub followed by the name of the macro and ends with End Sub .
+the worksheet with another name it is showing
+Untitled1. You will see further that Untitled1 will be replaced with the name of the spreadsheet.
+Step 3. Select the library and module in the Library
+Step 4. Select the macro in the Macro name list.
+Step 5. Click Run to run the macro.
+Practical Activity 5.2
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 109
+Creating and Organising a Simple Macro
+Till now we have learned to record, store and run the macro. The recorded macro is internally stored as instructions written in a programming language that are executed when the macro is executed or run.
+We selected a library or module to store our recorded macro, similarly while creating a macro, either create a new library/module or edit an existing module stored in a library. Use the following steps to organize the macro.
+Step 1. Click on Tools > Macros > Organize Macros >
+LibreOffice Basic to open the LibreOffice Basic
+Macro dialog window as shown in Fig. 5.8.
+Step 2. Click Organizer to open the Basic Macro
+Organizer dialog as shown in Fig. 5.9.
+Fig. 5.8: Basic Macro dialog window Fig. 5.9: LibreOffice Basic Macro Organiser
+Create a library to store a macro
+To create a new library containing modules, click on
+Library > New.
+Use the following steps to create a module to store a macro.
+Choose the Modules Tab and select a Module. Click on New to create a new Module.
+Domestic Data entry operator – class X 110
+Create a simple Macro using BASIC programming instructions that will display Hello in a dialog box stored in the Standard module as shown in Fig. 5.10 when executed.
+Fig. 5.10: A Dialog Displaying Hello using macro
+Step 1. Open the LibreOffice Basic Macro dialog box using
+Tools > Macros > Organize Macros > LibreOffice
+Step 2. From the Basic Macros dialog box select Organizer
+Step 3. From Modules tab, select My Macros folder and click on New button as shown in Fig. 5.11.
+Fig. 5.11: Creating a Module with name Hello
+Step 4. Give a name to the New Module say ‘Hello’ and click
+Ok. You will see Hello under Standard Library in My
+Macros Library.
+Fig. 5.12: Module Hello in Basic Macro Organizer Dialog
+Step 5. Select Hello and click Edit (Fig. 5.12) to open the
+Integrated Development Environment (IDE). It is a text editor that allows you to create and edit macros.
+Type Print “Hello” between Sub Main and End Sub as shown in Fig. 5.13.
+Practical Activity 5.3notes
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 111
+Fig. 5.13: Code of Hello Macro
+The created module can be executed as explained in the previous section. Besides, the module can be executed from the IDE by either clicking the Run button or pressing F5.
+Calculate the number of tiles required for flooring of a room using macro as a function. The length and width of the room and the length and width of a tile is entered in the sheet as shown in Fig. 5.14.
+Fig. 5.14: Sheet storing length and width of floor and tile
+Macro as a Function
+Consider a situation wherein you need to perform calculations that are repetitive in nature. Assume that the same formula needs to be applied to different data in different sheets and there is no predefined function for it.
+In such a situation will it not be convenient if we could create a macro that performs the calculations? It will save us the effort of remembering and typing the formulas. It is possible to do so if we use Macro as a function. Instead of writing instructions in between Sub and End Sub, we can write instructions in between Function and End
+Function. A function is capable of accepting arguments or values. It can perform operations on the arguments, perform calculations and return the result.
+Practical Activity 5.4
+Domestic Data entry operator – class X 112
+Step 1. Enter data in a sheet and save it with the name as
+Calculatetiles.ods
+Step 2. Select Tools > Macros > Organize Macros >
+LibreOffice Basic to open the LibreOffice Basic
+Macros dialog.
+Step 3. Choose Calculatetiles.ods. Click on New and type a name. We have named it as Calctiles as shown in
+Fig. 5.15 and press OK.
+Fig. 5.15: Creating a New Module to define function
+Step 4. Write a function to calculate the number of tiles. A function starts with Function followed by the name of the function and then the statements to calculate area of the floor, tiles and number of tiles and store the final result in the name of the function as shown in Fig. 5.16. Press the Save button on the toolbar or press Ctrl+S.
+Fig. 5.16: IDE showing function definition to calculate number of tiles
+Note: The text in grey is preceded by ‘ (single quote) indicating it is a comment. A comment is written to write descriptive text to support the code.
+Step 5. Use the function in the sheet as shown in Fig. 5.17.
+Fig. 5.17: Sheet using Macro as a function
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 113
+A. Multiple choice questions
+1. Macro Recordings can be enabled from the ________ option in the menu bar.
+(a) Sheet (b) Data (c) Tools (d) Window.
+2. Which of the following is an invalid Macro Name?
+(a) 1formatword (b) format word (c) format*word (d) Format_word.
+3. Which of the following Libraries contains modules with prerecorded macros and should not be changed?
+(a) My Macros (b) LibreOfficeMacros (c) Untitled1 (d) Test.
+4. Identify which of the following is a programming Language?
+(a) Calc (b) BASIC (c) Writer (d) Macro.
+5. The Module can be executed from the IDE by pressing
+_________________.
+5. Which of the following is the default name of the Macro
+_______________.
+(a) Default (b) Main (c) Macro1 (d) Main_Macro
+Step 6. Use fill handle to drag the function for other cells. The final sheet is shown in Fig. 5.18.
+Fig. 5.18: Displaying Number of tiles using Macro as a function
+Check Your Progress
+Domestic Data entry operator – class X 114
+B. Fill in the blanks
+1. ________ library is automatically loaded when the document is opened.
+2. IDE stands for _______________________________.
+3. Macro as a function is capable of accepting ___________ and returning a ____________.
+4. Macro ________________ allows us to add, delete a module.
+5. The code of macro begins with __________ followed by the name of the macro and ends with __________.
+6. By default a macro is saved in the _____________ .
+C. State whether the following statements are True or False
+1. Macro is a group of instructions executing a single instruction.
+2. Once created, Macro can be used any number of times.
+3. By default, the Macro recording feature is turned on.
+4. It is not possible to stop recording of a Macro.
+5. Every Macro should be given a unique name.
+6. A macro once created can be edited later.
+D. Answer the following questions
+1. What is a Macro? List any two real life situations where they can be used.
+2. List the actions that are not recorded by a macro.
+3. How is LibreOffice Macros Library different from my
+4. Differentiate between predefined function in Calc and
+Macros as a function
+5. List the rules that should be kept in mind while naming a macro.
+6. Give any one advantage of macros.
+Lab Exercises
+1. Record a Macro that performs Bold, Underline on the
+Heading in Cell A1. Give macro the name BoldunderlineA1 and save it in a New Module named Basic Formatting which is created in a New Library named DocumenHeadingA1.
+2. Record a Macro that creates a bar chart for data stored in cells A2 – A9 and K2 to K9.
+3. Run the macro recorded in (i) and display a barchart for the following data showing Minimum and Maximum temperature from 2010-2017.
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 115
+Source: https://data.gov.in/resources/seasonal-and-annual-minmax- temp-series-india-1901-2017
+Collect information about the population of the South
+Asian countries form the Internet and store it in a Calc sheet. Run the Macro created in (i) to display a chart for the data stored.
+Create Macro as a function to calculate Amount to be paid after a 5% discount. A sample sheet for the same is given below.
+Fig. 5.19: Lab Exercise 5
+4. Anuja has to create a Marks list for every term. The format is as follows :
+Fig. 5.20: Sample Sheet for Marks Entry (a) Record two macros to create the format given in
+Fig. 5.20.
+(b) To enter names of students in the list so that she doesn’t need to retype or copy the names
+Run the above created macros for a new sheet.
+5. Use Macro as a function to calculate Mileage of a vehicle.
+Mileage (in km/L) is calculated as Distance Travelled (in km)/ Fuel filled (in Litre). Create a sheet with three columns Distance Travelled (in Km), Fuel filled (in L) and
+Mileage (in km/L).
+IntroductIon
+We have learned in Class IX to organise the data in a spreadsheet. Let us take a situation where the marks scored by each student of three terms in three terminal examinations are stored in three different sheets
+Term1, Term2, Term3. Now to generate final result in single result sheet by finding the average marks of each subject, what would be the ideal solution?
+Retyping or copying the marks can be one solution but it will be time consuming and also there are chances of committing typing errors.
+Instead, the ideal solution will be to find a way to refer the marks stored in the sheets Term1, Term2 and
+Term3. In this manner, there are nearly no chances of errors and if the marks of a subject are changed, they will be reflected and thus ensuring correctness while performing calculations, such as calculating average.
+In this chapter, we will learn how to create multiple sheets, and also to link the data in multiple sheets. It can be done in two ways, one is creating reference to other sheets/documents by using keyboard and mouse, and other is by linking external data.
+Setting up Multiple Sheets
+Let us consider a worksheet storing marks of the first term in a sheet named Term1 as shown in
+Fig. 6.1.
+To add a new sheet in the spreadsheet, click on the Add Sheet by clicking on the (+) sign located in the left bottom of the spreadsheet.
+6 Linking Spreadsheet Data
+Fig. 6.1: Marks scored by students in Term1
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 117
+Alternatively, you can right click anywhere on the sheet tab and select Insert sheet option from the drop-down list displayed as shown in Fig. 6.2. It gives us a choice to put the new sheet, assign the name of the sheets, delete a sheet and so on.
+Note: Insert Sheet dialog box can be invoked from the menu option Sheet > Insert Sheet
+Fig. 6.2: Inserting a new sheet using context menu displayed after right click option
+Add a new sheet to store data for Term2 in the spreadsheet by using the Insert Sheet Dialog box.
+Step 1. Open the Insert Sheet Dialog and add a sheet after the current sheet by selecting After Current Sheet option. The current sheet is our active sheet which in this case is Term1 as shown in Fig. 6.1.
+Step 2. Name the Sheet as Term2 as shown in Fig. 6.3.
+Fig. 6.3: Insert sheet dialog
+Step 3. Enter the marks obtained by the students in second term in Term2 sheet as shown in Fig. 6.4.
+Step 4. Insert a new sheet and name it as “Result”.
+Fig. 6.4: Marks scored by students in Term2
+Note: You can use the macro created by you in the previous chapter to create the format of the result sheet and populate the name of the student column to save time.
+Practical Activity 6.1
+Domestic Data entry operator – class X 118
+Creating Reference to Other Sheets by Using
+Keyboard and Mouse
+We have been using cell references for applying functions and formulas in class IX. In this section we will learn how to reference cells in other sheets using mouse and keyboard.
+To calculate the final result, it is required to store the final marks for each subject in the sheet named “Result” inserted in Activity 6.1 by applying the formula (Marks obtained in Term1 + Marks obtained in Term2)/2. As we know that marks obtained in Term1 and Term2 are stored in different sheets named Term1 and Term2 respectively.
+To calculate the final marks for English in in the cell C4 of Result sheet, as shown in Fig. 6.5, follow the following steps.
+Step 1. First copy the Roll No and Name of the
+Student from Term1 sheet to Result sheet, copy all headings of and give the name as
+Final Result.
+Step 2. Click on the = icon next to the input line (or type = in cell C4), type Sum() and click between the brackets.
+Step 3. Now click on the Term1 sheet and click the
+English Marks for the first student and add (,)
+comma for the next value
+Step 4. Next click on the Term 2 sheet and click the
+English Marks for the first student.
+Step 5. To calculate average type /2 after the sum(+) as shown in Fig. 6.5 to calculate average.
+Step 6. Press Enter key, the average is displayed in cell
+C4 of Result sheet. Then use fill handle to fill the cells up to the last student’s data.
+Step 7. The result sheet gives the average marks scored by each student in English as shown in
+Fig. 6.5.
+Step 8. You can copy the same formula for other subjects.
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 119
+Fig. 6.5: Result sheet after referencing the data from
+Term1 and Term2 sheets
+Any changes made to marks in Term1 and Term2 sheet will be reflected in the result sheet as well. That is how the sheets are linked together.
+We had selected cell reference by clicking on the cells. An alternative could be to type the reference. First, we need to understand how referencing is performed across sheets in the same spreadsheet document.
+Hence, to refer to a cell in another sheet precede the cell reference with a ‘$’ sign. It is then followed by the name of the sheet in ‘ ‘ ’ (single quotes) followed by a .
+(dot) and then the cell address. For example, to refer a cell C4 of sheet named Term1 we will type:
+$‛Term 1’.C4
+Note: Single quotes (‘ ’) are used as there is a space between Term and 1 in the sheet name.
+Let’s Practice– Calculate Final marks for all the subjects by referencing with Keyboard for one of the columns and mouse for other columns.
+Creating Reference to Other Documents by Using Keyboard and Mouse
+In the previous section we had0 created references to other sheets in a spreadsheet. Sometimes we may intend to reference sheets stored in another spreadsheet file.
+Let us consider a situation where it is required to create a Summary report consisting of the average of result sheets for each section of a class. To do so, we need to insert sheets that are stored in different files.
+Fig. 6.6 shows the final result of class X-A and Fig. 6.7 shows Final Result of class X-B.
+Domestic Data entry operator – class X 120
+Create Summary of result in a spreadsheet document named
+Result Analysis of class X-A and X-B as shown in Fig. 6.8.
+Fig. 6.8: Result Analysis spreadsheet
+Since the marks of both the classes are stored in separate spreadsheet file and Result Analysis itself is a separate spreadsheet, therefore we need to create reference to other spreadsheets.
+Step 1. Open the spreadsheets namely Result-X-A, Result-X-B and Result Analysis.
+Step 2. Click on cell B4 of Result Analysis spreadsheet and type =MAX(), as shown in Fig. 6.9.
+Step 3. Click between the brackets of MAX() and then click on the cell range containing marks of English in Result sheet of Result-X-A spreadsheet.
+Step 4. Type (,) comma and click on the cell containing marks of English in the Result sheet of Result-X-B spreadsheet.
+Step 5. Press Enter, Maximum of the marks will be displayed in cell B4 as shown in Fig. 6.9.
+Fig. 6.6: Result of class X-A stored in
+Result-X-A spreadsheet
+Fig. 6.7: Result of class X-B stored in
+Result-X-B spreadsheet
+Practical Activity 6.2
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 121
+Fig. 6.9: Displaying the highest score in English using Max function
+We had selected cell reference by clicking on the cells in the separate spreadsheet and an alternative could be to type the reference. First, we need to understand how referencing is performed across different

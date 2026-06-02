@@ -1,0 +1,38 @@
+and the potential difference V0 is
+V0 = E0d
+The capacitance C0 in this case is
+ε = = (2.46)
+Consider next a dielectric inserted between the plates fully occupying the intervening region. The dielectric is polarised by the field and, as explained in Section 2.10, the effect is equivalent to two charged sheets (at the surfaces of the dielectric normal to the field) with surface charge densities sp and – sp. The electric field in the dielectric then corresponds to the case when the net surface charge density on the plates is ±(
+That is,
+= (2.47)
+so that the potential difference across the plates is
+= = (2.48)
+For linear dielectrics, we expect sp to be proportional to E0, i.e., to sp ) is proportional to s and we can write
+σ σ − = (2.49)
+where K is a constant characteristic of the dielectric. Clearly, K > 1. We then have
+= = (2.50)
+The capacitance C, with dielectric between the plates, is then
+= = (2.51)
+The product e0K is called the permittivity of the medium and is denoted by e0 K (2.52)
+For vacuum K = 1 and e0 is called the permittivity of the vacuum.
+The dimensionless ratio
+= (2.53)
+is called the dielectric constant of the substance. As remarked before, from Eq. (2.49), it is clear that K is greater than 1. From Eqs. (2.46) and
+= (2.54)
+Thus, the dielectric constant of a substance is the factor (>1) by which the capacitance increases from its vacuum value, when the dielectric is inserted fully between the plates of a capacitor. Though we arrived at
+Reprint 2026-27
+Electrostatic Potential and Capacitance
+Eq. (2.54) for the case of a parallel plate capacitor, it holds good for any type of capacitor and can, in fact, be viewed in general as a definition of the dielectric constant of a substance.
+Example 2.8 A slab of material of dielectric constant K has the same area as the plates of a parallel-plate capacitor but has a thickness (3/4)d, where d is the separation of the plates. How is the capacitance changed when the slab is inserted between the plates?
+Solution Let E0 = V0/d be the electric field between the plates when there is no dielectric and the potential difference is V0. If the dielectric is now inserted, the electric field in the dielectric will be E = E0/K.
+The potential difference will then be
+The potential difference decreases by the factor (K + 3)/4K while the free charge Q0 on the plates remains unchanged. The capacitance thus increases
+2.14 COMBINATION OF CAPACITORS
+We can combine several capacitors of capacitance C1, C2,…, Cn to obtain a system with some effective capacitance C. The effective capacitance depends on the way the individual capacitors are combined. Two simple possibilities are discussed below.
+2.14.1 Capacitors in series
+Figure 2.26 shows capacitors C1 and C2 combined in series.
+The left plate of C1 and the right plate of C2 are connected to two terminals of a battery and have charges Q and –Q , respectively. It then follows that the right plate of C1 has charge –Q and the left plate of C2 has charge Q. If this was not so, the net charge on each capacitor would not be zero. This would result in an electric field in the conductor connecting C1and C2. Charge would flow until the net charge on both C1 and
+C2 is zero and there is no electric field in the conductor connecting C1 and C2. Thus, in the series combination, charges on the two plates (±Q) are the same on each capacitor. The total
+FIGURE 2.26 Combination of two capacitors in series.
+FIGURE 2.27 Combination of n capacitors in series.
+Reprint 2026-27

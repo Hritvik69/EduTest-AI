@@ -1,0 +1,88 @@
+Moving Charges and
+Magnetism
+Example 4.3 What is the radius of the path of an electron (mass
+9 × 10-31 kg and charge 1.6 × 10–19 C) moving at a speed of 3 ×107 m/s in a magnetic field of 6 × 10–4 T perpendicular to it? What is its frequency? Calculate its energy in keV. ( 1 eV = 1.6 × 10–19 J).
+Solution Using Eq. (4.5) we find r = m v / (qB ) = 9 ×10–31 kg × 3 × 107 m s–1 / ( 1.6 × 10–19 C × 6 × 10–4 T )
+= 28 × 10–2 m = 28 cm n = v / (2 pr) = 17×106 s–1 = 17×106 Hz =17 MHz.
+E = (½ )mv 2 = (½ ) 9 × 10–31 kg × 9 × 1014 m2/s2 = 40.5 ×10–17 J
+≈ 4×10–16 J = 2.5 keV.
+particle would be a helical one (Fig. 4.6). The distance moved along the magnetic field in one rotation is called pitch p. Using Eq. [4.6 (a)], p = v||T = 2pm v|| / q B [4.6(b)]
+The radius of the circular component of motion is called the radius of the helix.
+4.4 MA G N E T I C FI E L D D U E T O A CU R R E N T
+ELEMENT, BIOT-SAVART LAW
+All magnetic fields that we know are due to currents (or moving charges) and due to intrinsic magnetic moments of particles.
+Here, we shall study the relation between current and the magnetic field it produces. It is given by the Biot-Savart’s law.
+Fig. 4.7 shows a finite conductor XY carrying current I. Consider an infinitesimal element dl of the conductor. The magnetic field dB due to this element is to be determined at a point P which is at a distance r from it. Let q be the angle between dl and the displacement vector r. According to Biot-Savart’s law, the magnitude of the magnetic field dB is proportional to the current
+I, the element length |dl|, and inversely proportional to the square of the distance r. Its direction* is perpendicular to the plane containing dl and r . Thus, in vector notation, l r [4.7(a)] m0/4p is a constant of proportionality. The above expression holds when the medium is vacuum.
+FIGURE 4.7 Illustration of the Biot-Savart law. The current element I d produces a field dB at a distance r. The ƒ sign indicates that the field is perpendicular to the plane of this page and directed into it.
+* The sense of dl × r is also given by the Right Hand Screw rule : Look at the plane containing vectors dl and r. Imagine moving from the first vector towards second vector. If the movement is anticlockwise, the resultant is towards you.
+If it is clockwise, the resultant is away from you.
+Reprint 2026-27
+The magnitude of this field is,
+B [4.7(b)] where we have used the property of cross-product. Equation [4.7 (a)] constitutes our basic equation for the magnetic field. The proportionality constant in SI units has the exact value,
+7 0 10 Tm/A
+π [4.7(c)]
+μ0 the permeability of free space (or vacuum).
+The Biot-Savart law for the magnetic field has certain similarities, as well as, differences with the Coulomb’s law for the electrostatic field. Some of these are:
+(i) Both are long range, since both depend inversely on the square of distance from the source to the point of interest. The principle of superposition applies to both fields. [In this connection, note that the magnetic field is linear in the source I dl just as the electrostatic field is linear in its source: the electric charge.] (ii) The electrostatic field is produced by a scalar source, namely, the electric charge. The magnetic field is produced by a vector source I dl.
+(iii) The electrostatic field is along the displacement vector joining the source and the field point. The magnetic field is perpendicular to the plane containing the displacement vector r and the current element I dl.
+(iv) There is an angle dependence in the Biot-Savart law which is not present in the electrostatic case. In Fig. 4.7, the magnetic field at any point in the direction of dl (the dashed line) is zero. Along this line,
+θ = 0, sin
+θ = 0 and from Eq. [4.7(a)], |dB| = 0.
+There is an interesting relation between
+ε0, the permittivity of free
+μ0, the permeability of free space; and c, the speed of light in vacuum:
+0 0 0 4 4
+ε = π π ( )7
+= × 8 2 2 (3 10 ) c
+We will discuss this connection further in Chapter 8 on the electromagnetic waves. Since the speed of light in vacuum is constant, the product
+ε0 is fixed in magnitude. Choosing the value of either
+μ0, fixes the value of the other. In SI units,
+μ0 is fixed to be equal to
+4π × 10–7 in magnitude.
+Example 4.4 An element ˆ ∆ = ∆x i l is placed at the origin and carries a large current I = 10 A (Fig. 4.8). What is the magnetic field on the y- axis at a distance of 0.5 m. ∆x = 1 cm.
+FIGURE 4.8
+Reprint 2026-27
+Moving Charges and
+Magnetism
+Solution
+B [using Eq. (4.7)] d 10 m l x −
+= ∆ = , I = 10 A, r = 0.5 m = y, 7
+/ 4 10 A
+θ = 90° ; sin
+10 10 10
+B = 4 × 10–8 T
+The direction of the field is in the +z-direction. This is so since,
+ˆ ˆ d = ∆ × i × j x y r l ( ) ˆ ˆ y x = ∆ i × j ˆ y x = ∆ k
+We remind you of the following cyclic property of cross-products,
+ˆ ˆ ˆ ˆ ˆ ˆ ˆ ˆ ˆ ; ; × = × = × = i j k j k i k i j
+Note that the field is small in magnitude.
+In the next section, we shall use the Biot-Savart law to calculate the magnetic field due to a circular loop.
+4.5 MAGNETIC FIELD ON THE AXIS OF A CIRCULAR
+CURRENT LOOP
+In this section, we shall evaluate the magnetic field due to a circular coil along its axis. The evaluation entails summing up the effect of infinitesimal current elements (I dl) mentioned in the previous section. We assume that the current I is steady and that the evaluation is carried out in free space (i.e., vacuum).
+Fig. 4.9 depicts a circular loop carrying a steady current I. The loop is placed in the plane with its centre at the origin O and has a radius R. The x-axis is the axis of the loop. We wish to calculate the magnetic field at the point P on this axis. Let x be the distance of P from the centre O of the loop.
+Consider a conducting element dl of the loop. This is shown in Fig. 4.9. The magnitude dB of the magnetic field due to dl is given by the Biot-Savart law [Eq. 4.7(a)],
+= × r I d r2 = x2 +
+R2 . Further, any element of the loop will be perpendicular to the displacement vector from the element to the axial point. For example, the element dl in Fig. 4.9 is in the plane, whereas, the displacement vector r from dl to the axial point P is in the plane. Hence |dl × r|=r dl. Thus,
+= + (4.9)
+FIGURE 4.9 Magnetic field on the axis of a current carrying circular loop of radius R. Shown are the magnetic field dB (due to a line element dl ) and its components along and perpendicular to the axis.
+Reprint 2026-27
+The direction of dB is shown in Fig. 4.9. It is perpendicular to the plane formed by dl and r. It has an x-component dBx and a component perpendicular to x-axis, dB⊥. When the components perpendicular to the x-axis are summed over, they cancel out and we obtain a null result.
+For example, the dB⊥ component due to dl is cancelled by the contribution due to the diametrically opposite dl element, shown in
+Fig. 4.9. Thus, only the x-component survives. The net contribution along x-direction can be obtained by integrating dBx = dB cos
+θ over the loop.
+For Fig. 4.9,
+2 2 1/ 2
+θ = + (4.10)
+From Eqs. (4.9) and (4.10),
+3/ 2 2 2
+The summation of elements dl over the loop yields 2πR, the circumference of the loop. Thus, the magnetic field at P due to entire circular loop is
+3 / 2 2 2
+B i i (4.11)
+As a special case of the above result, we may obtain the field at the centre of the loop. Here x = 0, and we obtain,
+= B i (4.12)
+The magnetic field lines due to a circular wire form closed loops and are shown in Fig. 4.10. The direction of the magnetic field is given by (another) right-hand thumb rule stated below:
+Curl the palm of your right hand around the circular wire with the fingers pointing in the direction of the current. The right-hand thumb gives the direction of the magnetic field.
+FIGURE 4.10 The magnetic field lines for a current loop. The direction of the field is given by the right-hand thumb rule described in the text. The upper side of the loop may be thought of as the north pole and the lower side as the south pole of a magnet.
+Reprint 2026-27

@@ -1,0 +1,141 @@
+290 MATHEMATICS
+14.1.1 Occurrence of an event Consider the experiment of throwing a die. Let E denotes the event “ a number less than 4 appears”. If actually ‘1’ had appeared on the die then we say that event E has occurred. As a matter of fact if outcomes are 2 or 3, we say that event E has occurred
+Thus, the event E of a sample space S is said to have occurred if the outcome
+ω of the experiment is such that ω ∈ E. If the outcome ω is such that ω ∉ E, we say that the event E has not occurred.
+14.1.2 Types of events Events can be classified into various types on the basis of the elements they have.
+1. Impossible and Sure Events The empty set φ and the sample space S describe events. In fact φ is called an impossible event and S, i.e., the whole sample space is called the sure event.
+To understand these let us consider the experiment of rolling a die. The associated sample space is
+S = {1, 2, 3, 4, 5, 6}
+Let E be the event “ the number appears on the die is a multiple of 7”. Can you write the subset associated with the event E?
+Clearly no outcome satisfies the condition given in the event, i.e., no element of the sample space ensures the occurrence of the event E. Thus, we say that the empty set only correspond to the event E. In other words we can say that it is impossible to have a multiple of 7 on the upper face of the die. Thus, the event E = φ is an impossible
+Now let us take up another event F “the number turns up is odd or even”. Clearly
+F = {1, 2, 3, 4, 5, 6,} = S, i.e., all outcomes of the experiment ensure the occurrence of the event F. Thus, the event F = S is a sure event.
+2. Simple Event If an event E has only one sample point of a sample space, it is called a simple (or elementary) event.
+In a sample space containing n distinct elements, there are exactly n simple
+For example in the experiment of tossing two coins, a sample space is
+S={HH, HT, TH, TT}
+There are four simple events corresponding to this sample space. These are
+E1= {HH}, E2={HT}, E3= { TH} and E4={TT}.
+Reprint 2026-27
+PROBABILITY 291
+3. Compound Event If an event has more than one sample point, it is called a
+Compound event.
+For example, in the experiment of “tossing a coin thrice” the events
+E: ‘Exactly one head appeared’
+F: ‘Atleast one head appeared’
+G: ‘Atmost one head appeared’ etc.
+are all compound events. The subsets of S associated with these events are
+E={HTT,THT,TTH}
+F={HTT,THT, TTH, HHT, HTH, THH, HHH}
+G= {TTT, THT, HTT, TTH}
+Each of the above subsets contain more than one sample point, hence they are all compound events.
+14.1.3 Algebra of events In the Chapter on Sets, we have studied about different ways of combining two or more sets, viz, union, intersection, difference, complement of a set etc. Like-wise we can combine two or more events by using the analogous set notations.
+Let A, B, C be events associated with an experiment whose sample space is S.
+1. Complementary Event For every event A, there corresponds another event
+A′ called the complementary event to A. It is also called the event ‘not A’.
+For example, take the experiment ‘of tossing three coins’. An associated sample space is
+S = {HHH, HHT, HTH, THH, HTT, THT, TTH, TTT}
+Let A={HTH, HHT, THH} be the event ‘only one tail appears’
+Clearly for the outcome HTT, the event A has not occurred. But we may say that the event ‘not A’ has occurred. Thus, with every outcome which is not in A, we say that ‘not A’ occurs.
+Thus the complementary event ‘not A’ to the event A is
+A′ = {HHH, HTT, THT, TTH, TTT} or A′ = {ω : ω ∈ S and ω ∉A} = S – A.
+2. The Event ‘A or B’ Recall that union of two sets A and B denoted by A ∪ B contains all those elements which are either in A or in B or in both.
+When the sets A and B are two events associated with a sample space, then
+‘A ∪ B’ is the event ‘either A or B or both’. This event ‘A ∪ B’ is also called ‘A or B’.
+Therefore Event ‘A or B’ = A ∪ B
+= {ω : ω ∈ A or ω ∈ B}
+Reprint 2026-27
+292 MATHEMATICS
+3. The Event ‘A and B’ We know that intersection of two sets A ∩ B is the set of those elements which are common to both A and B. i.e., which belong to both
+‘A and B’.
+If A and B are two events, then the set A ∩ B denotes the event ‘A and B’.
+Thus, A ∩ B = {ω : ω ∈ A and ω ∈ B}
+For example, in the experiment of ‘throwing a die twice’ Let A be the event
+‘score on the first throw is six’ and B is the event ‘sum of two scores is atleast 11’ then
+A = {(6,1), (6,2), (6,3), (6,4), (6,5), (6,6)}, and B = {(5,6), (6,5), (6,6)} so A ∩ B = {(6,5), (6,6)}
+Note that the set A ∩ B = {(6,5), (6,6)} may represent the event ‘the score on the first throw is six and the sum of the scores is atleast 11’.
+4. The Event ‘A but not B’ We know that A–B is the set of all those elements which are in A but not in B. Therefore, the set A–B may denote the event ‘A but not
+B’.We know that
+A – B = A ∩ B´
+Example 1 Consider the experiment of rolling a die. Let A be the event ‘getting a prime number’, B be the event ‘getting an odd number’. Write the sets representing the events (i) Aor B (ii) A and B (iii) A but not B (iv) ‘not A’.
+Solution Here S = {1, 2, 3, 4, 5, 6}, A = {2, 3, 5} and B = {1, 3, 5}
+Obviously (i) ‘A or B’ = A ∪ B = {1, 2, 3, 5} (ii) ‘A and B’ = A ∩ B = {3,5} (iii) ‘A but not B’ = A – B = {2} (iv) ‘not A’ = A′ = {1,4,6}
+14.1.4 Mutually exclusive events In the experiment of rolling a die, a sample space is S = {1, 2, 3, 4, 5, 6}. Consider events, A ‘an odd number appears’ and B ‘an even number appears’
+Clearly the event A excludes the event B and vice versa. In other words, there is no outcome which ensures the occurrence of events A and B simultaneously. Here
+A = {1, 3, 5} and B = {2, 4, 6}
+Clearly A ∩ B = φ, i.e., A and B are disjoint sets.
+In general, two events A and B are called mutually exclusive events if the occurrence of any one of them excludes the occurrence of the other event, i.e., if they can not occur simultaneously. In this case the sets A and B are disjoint.
+Reprint 2026-27
+PROBABILITY 293
+Again in the experiment of rolling a die, consider the events A ‘an odd number appears’ and event B ‘a number less than 4 appears’
+Obviously A = {1, 3, 5} and B = {1, 2, 3}
+Now 3 ∈ A as well as 3 ∈ B
+Therefore, A and B are not mutually exclusive events.
+Remark Simple events of a sample space are always mutually exclusive.
+14.1.5 Exhaustive events Consider the experiment of throwing a die. We have
+S = {1, 2, 3, 4, 5, 6}. Let us define the following events
+A: ‘a number less than 4 appears’,
+B: ‘a number greater than 2 but less than 5 appears’ and C: ‘a number greater than 4 appears’.
+Then A = {1, 2, 3}, B = {3,4} and C = {5, 6}. We observe that
+A ∪ B ∪ C = {1, 2, 3} ∪ {3, 4} ∪ {5, 6} = S.
+Such events A, B and C are called exhaustive events. In general, if E1, E2, ..., En are n events of a sample space S and if
+E E E E E S
+∪ ∪ ∪ ∪ = ∪ = then E1, E2, ...., En are called exhaustive events.In other words, events E1, E2, ..., En are said to be exhaustive if atleast one of them necessarily occurs whenever the experiment is performed.
+Further, if Ei ∩ Ej = φ for i ≠ j i.e., events Ei and Ej are pairwise disjoint and i , then events E1, E2, ..., En are called mutually exclusive and exhaustive
+We now consider some examples.
+Example 2 Two dice are thrown and the sum of the numbers which come up on the dice is noted. Let us consider the following events associated with this experiment
+A: ‘the sum is even’.
+B: ‘the sum is a multiple of 3’.
+C: ‘the sum is less than 4’.
+D: ‘the sum is greater than 11’.
+Which pairs of these events are mutually exclusive?
+Reprint 2026-27
+294 MATHEMATICS
+Solution There are 36 elements in the sample space S = {(x, y): x, y = 1, 2, 3, 4, 5, 6}.
+A = {(1, 1), (1, 3), (1, 5), (2, 2), (2, 4), (2, 6), (3, 1), (3, 3), (3, 5), (4, 2), (4, 4), (4, 6), (5, 1), (5, 3), (5, 5), (6, 2), (6, 4), (6, 6)}
+B = {(1, 2), (2, 1), (1, 5), (5, 1), (3, 3), (2, 4), (4, 2), (3, 6), (6, 3), (4, 5), (5, 4),
+C = {(1, 1), (2, 1), (1, 2)} and D = {(6, 6)}
+We find that
+A ∩ B = {(1, 5), (2, 4), (3, 3), (4, 2), (5, 1), (6, 6)} ≠ φ
+Therefore, A and B are not mutually exclusive events.
+Similarly A ∩ C ≠ φ, A ∩ D ≠ φ, B ∩ C ≠ φ and B ∩ D ≠ φ.
+Thus, the pairs of events, (A, C), (A, D), (B, C), (B, D) are not mutually exclusive
+Also C ∩ D = φ and so C and D are mutually exclusive events.
+Example 3 A coin is tossed three times, consider the following events.
+A: ‘No head appears’, B: ‘Exactly one head appears’ and C: ‘Atleast two heads appear’.
+Do they form a set of mutually exclusive and exhaustive events?
+Solution The sample space of the experiment is
+S = {HHH, HHT, HTH, THH, HTT, THT, TTH, TTT} and A = {TTT}, B = {HTT, THT, TTH}, C = {HHT, HTH, THH, HHH}
+A ∪ B ∪ C = {TTT, HTT, THT, TTH, HHT, HTH, THH, HHH} = S
+Therefore, A, B and C are exhaustive events.
+Also, A ∩ B = φ, A ∩ C = φ and B ∩ C = φ
+Therefore, the events are pair-wise disjoint, i.e., they are mutually exclusive.
+Hence, A, B and C form a set of mutually exclusive and exhaustive events.
+EXERCISE 14.1
+1. A die is rolled. Let E be the event “die shows 4” and F be the event “die shows even number”. Are E and F mutually exclusive?
+2. A die is thrown. Describe the following events:
+(i) A: a number less than 7 (ii) B: a number greater than 7 (iii) C: a multiple of 3 (iv) D: a number less than 4 (v) E: an even number greater than 4 (vi) F: a number not less than 3
+Also find A ∪ B, A ∩ B, B ∪ C, E ∩ F, D ∩ E, A – C, D – E, E ∩ F′, F′
+Reprint 2026-27
+PROBABILITY 295
+3. An experiment involves rolling a pair of dice and recording the numbers that come up. Describe the following events:
+A: the sum is greater than 8, B: 2 occurs on either die
+C: the sum is at least 7 and a multiple of 3.
+Which pairs of these events are mutually exclusive?
+4. Three coins are tossed once. Let A denote the event ‘three heads show”, B denote the event “two heads and one tail show”, C denote the event” three tails show and D denote the event ‘a head shows on the first coin”. Which events are (i) mutually exclusive? (ii) simple? (iii) Compound?
+5. Three coins are tossed. Describe (i) Two events which are mutually exclusive.
+(ii) Three events which are mutually exclusive and exhaustive.
+(iii) Two events, which are not mutually exclusive.
+(iv) Two events which are mutually exclusive but not exhaustive.
+(v) Three events which are mutually exclusive but not exhaustive.
+6. Two dice are thrown. The events A, B and C are as follows:
+A: getting an even number on the first die.
+B: getting an odd number on the first die.
+C: getting the sum of the numbers on the dice ≤ 5.
+Describe the events (i) A′ (ii) not B (iii) A or B (iv) A and B (v) A but not C (vi) B or C (vii) B and C (viii) A ∩ B′ ∩ C′
+7. Refer to question 6 above, state true or false: (give reason for your answer)
+(i) A and B are mutually exclusive (ii) A and B are mutually exclusive and exhaustive (iii) A = B′ (iv) A and C are mutually exclusive (v) A and B′ are mutually exclusive.
+(vi) A′, B′, C are mutually exclusive and exhaustive.
+14.2 Axiomatic Approach to Probability
+In earlier sections, we have considered random experiments, sample space and events associated with these experiments. In our day to day life we use many words about the chances of occurrence of events. Probability theory attempts to quantify these chances of occurrence or non occurrence of events.
+Reprint 2026-27

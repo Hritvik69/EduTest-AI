@@ -1,0 +1,28 @@
+2 Chemistry
+Type of Solution Solute Solvent Common Examples
+Gaseous Solutions Gas Gas Mixture of oxygen and nitrogen gases
+Liquid Gas Chloroform mixed with nitrogen gas
+Solid Gas Camphor in nitrogen gas
+Liquid Solutions Gas Liquid Oxygen dissolved in water
+Liquid Liquid Ethanol dissolved in water
+Solid Liquid Glucose dissolved in water
+Solid Solutions Gas Solid Solution of hydrogen in palladium
+Liquid Solid Amalgam of mercury with sodium
+Solid Solid Copper dissolved in gold
+Table 1.1: Types of Solutions consisting of two components). Here each component may be solid, liquid or in gaseous state and are summarised in Table 1.1.
+Composition of a solution can be described by expressing its concentration. The latter can be expressed either qualitatively or quantitatively. For example, qualitatively we can say that the solution is dilute (i.e., relatively very small quantity of solute)
+or it is concentrated (i.e., relatively very large quantity of solute). But in real life these kinds of description can add to lot of confusion and thus the need for a quantitative description of the solution.
+There are several ways by which we can describe the concentration of the solution quantitatively.
+(i) Mass percentage (w/w): The mass percentage of a component of a solution is defined as:
+Mass % of a component
+Mass of the component in the solution 100
+Total mass of the solution (1.1)
+For example, if a solution is described by 10% glucose in water by mass, it means that 10 g of glucose is dissolved in 90 g of water resulting in a 100 g solution. Concentration described by mass percentage is commonly used in industrial chemical applications.
+For example, commercial bleaching solution contains 3.62 mass percentage of sodium hypochlorite in water.
+(ii) Volume percentage (V/V): The volume percentage is defined as:
+Volume % of a component = 
+Volume of the component 100
+Total volume of solution
+1.2 1.2 1.2 1.2 1.2 Expressing Expressing Expressing Expressing Expressing
+Concentration Concentration Concentration Concentration Concentration of Solutions of Solutions of Solutions of Solutions of Solutions
+Reprint 2026-27

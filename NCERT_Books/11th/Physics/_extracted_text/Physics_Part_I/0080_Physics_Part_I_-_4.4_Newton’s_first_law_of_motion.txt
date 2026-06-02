@@ -1,0 +1,57 @@
+PHYSICS 64
+θ = mv2/R (4.20b)
+From Eq. (4.20a), we obtain
+N cos sin
+Substituting value of N in Eq. (4.20b), we get mg sin cos mv cos sin R v Rg tan
+  (4.21)
+Comparing this with Eq. (4.18) we see that maximum possible speed of a car on a banked road is greater than that on a flat road.
+μs = 0 in Eq. (4.21 ), vo = ( R g tan θ ) ½ (4.22)
+At this speed, frictional force is not needed at all to provide the necessary centripetal force.
+Driving at this speed on a banked road will cause little wear and tear of the tyres. The same equation also tells you that for v < vo, frictional force will be up the slope and that a car can be parked only if tan
+Example 4.10 A cyclist speeding at
+18 km/h on a level road takes a sharp circular turn of radius 3 m without reducing the speed. The co-efficient of static friction between the tyres and the road is 0.1. Will the cyclist slip while taking the turn?
+Answer On an unbanked road, frictional force alone can provide the centripetal force needed to keep the cyclist moving on a circular turn without slipping. If the speed is too large, or if the turn is too sharp (i.e. of too small a radius)
+or both, the frictional force is not sufficient to provide the necessary centripetal force, and the cyclist slips. The condition for the cyclist not to slip is given by Eq. (4.18) :
+v2 ≤ μs R g
+Now, R = 3 m, g = 9.8 m s-2, μs = 0.1. That is,
+μs R g = 2.94 m2 s-2. v = 18 km/h = 5 m s-1; i.e., v2 = 25 m2 s-2. The condition is not obeyed.
+The cyclist will slip while taking the circular turn. ⊳
+Example 4.11 A circular racetrack of radius 300 m is banked at an angle of 15°.
+If the coefficient of friction between the wheels of a race-car and the road is 0.2, what is the (a) optimum speed of the race- car to avoid wear and tear on its tyres, and (b) maximum permissible speed to avoid slipping ?
+Answer On a banked road, the horizontal component of the normal force and the frictional force contribute to provide centripetal force to keep the car moving on a circular turn without slipping. At the optimum speed, the normal reaction’s component is enough to provide the needed centripetal force, and the frictional force is not needed. The optimum speed vo is given by
+Eq. (4.22):
+vO = (R g tan
+Here R = 300 m,
+θ = 15°, g = 9.8 m s-2; we vO = 28.1 m s-1.
+The maximum permissible speed vmax is given by
+Eq. (4.21):
+4.11 SOLVING PROBLEMS IN MECHANICS
+The three laws of motion that you have learnt in this chapter are the foundation of mechanics.
+You should now be able to handle a large variety of problems in mechanics. A typical problem in mechanics usually does not merely involve a single body under the action of given forces.
+More often, we will need to consider an assembly of different bodies exerting forces on each other.
+Besides, each body in the assembly experiences the force of gravity. When trying to solve a problem of this type, it is useful to remember the fact that we can choose any part of the assembly and apply the laws of motion to that part provided we include all forces on the chosen part due to the remaining parts of the assembly.
+We may call the chosen part of the assembly as the system and the remaining part of the assembly (plus any other agencies of forces) as the environment. We have followed the same
+Reprint 2026-27
+LAWS OF MOTION 65 method in solved examples. To handle a typical problem in mechanics systematically, one should use the following steps :
+(i) Draw a diagram showing schematically the various parts of the assembly of bodies, the links, supports, etc.
+(ii) Choose a convenient part of the assembly as one system.
+(iii) Draw a separate diagram which shows this system and all the forces on the system by the remaining part of the assembly. Include also the forces on the system by other agencies. Do not include the forces on the environment by the system. A diagram of this type is known as ‘a free-body diagram’.
+(Note this does not imply that the system under consideration is without a net force).
+(iv) In a free-body diagram, include information about forces (their magnitudes and directions) that are either given or you are sure of (e.g., the direction of tension in a string along its length). The rest should be treated as unknowns to be determined using laws of motion.
+(v) If necessary, follow the same procedure for another choice of the system. In doing so, employ Newton’s third law. That is, if in the free-body diagram of A, the force on A due to
+B is shown as F, then in the free-body diagram of B, the force on B due to A should be shown as –F.
+The following example illustrates the above procedure :
+Example 4.12 See Fig. 4.15. A wooden block of mass 2 kg rests on a soft horizontal floor. When an iron cylinder of mass 25 kg is placed on top of the block, the floor yields steadily and the block and the cylinder together go down with an acceleration of
+0.1 m s–2. What is the action of the block on the floor (a) before and (b) after the floor yields ? Take g = 10 m s–2. Identify the action-reaction pairs in the problem.
+(a) The block is at rest on the floor. Its free-body diagram shows two forces on the block, the force of gravitational attraction by the earth equal to 2 × 10 = 20 N; and the normal force
+R of the floor on the block. By the First Law, the net force on the block must be zero i.e.,
+R = 20 N. Using third law the action of the block (i.e. the force exerted on the floor by the block) is equal to 20 N and directed vertically downwards.
+(b) The system (block + cylinder) accelerates downwards with 0.1 m s-2. The free-body diagram of the system shows two forces on the system : the force of gravity due to the earth (270 N); and the normal force R ′ by the floor. Note, the free-body diagram of the system does not show the internal forces between the block and the cylinder. Applying the second law to the system,
+270 – R′ = 27 × 0.1N ie. R′ = 267.3 N
+Fig. 4.15
+By the third law, the action of the system on the floor is equal to 267.3 N vertically downward.
+Action-reaction pairs
+For (a): (i) the force of gravity (20 N) on the block by the earth (say, action); the force of gravity on the earth by the block (reaction) equal to 20 N directed upwards (not shown in the figure).
+(ii) the force on the floor by the block (action); the force on the block by the floor (reaction).
+For (b): (i) the force of gravity (270 N) on the system by the earth (say, action); the force of gravity on the earth by the system (reaction), equal to 270 N,
+Reprint 2026-27

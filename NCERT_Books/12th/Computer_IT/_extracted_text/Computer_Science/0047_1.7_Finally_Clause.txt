@@ -1,0 +1,117 @@
+F ile Handling in pytHon 35
+Output of Program 2-8:
+RESTART: Path_to_file\Program2-8.py
+WORKING WITH BINARY FILES
+Enter Records of Employees
+RECORD No. 1
+Employee number : 11
+Employee Name : D N Ravi
+Basic Salary : 32600
+Allowances : 4400
+TOTAL SALARY : 37000
+Do you wish to enter more records (y/n)? y
+RECORD No. 2
+Employee number : 12
+Employee Name : Farida Ahmed
+Basic Salary : 38250
+Allowances : 5300
+TOTAL SALARY : 43550
+Do you wish to enter more records (y/n)? n
+Record entry OVER
+Size of binary file (in bytes): 216
+Now reading the employee records from the file
+Record Number : 1
+[11, 'D N Ravi', 32600, 4400, 37000]
+Record Number : 2
+[12, 'Farida Ahmed', 38250, 5300, 43550]
+As each employee record is stored as a list in the file empfile.dat, hence while reading the file, a list is displayed showing record of each employee. Notice that in Program 2-8, we have also used try.. except block to handle the end-of-file exception.
+• A file is a named location on a secondary storage media where data are permanently stored for later access.
+• A text file contains only textual information consisting of alphabets, numbers and other
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 36 special symbols. Such files are stored with extensions like .txt, .py, .c, .csv, .html, etc. Each byte of a text file represents a character.
+• Each line of a text file is stored as a sequence of ASCII equivalent of the characters and is terminated by a special character, called the End of Line (EOL).
+• Binary file consists of data stored as a stream of bytes.
+• open() method is used to open a file in Python and it returns a file object called file handle. The file handle is used to transfer data to and from the file by calling the functions defined in the Python’s io module.
+• close() method is used to close the file. While closing a file, the system frees up all the resources like processor and memory allocated to it.
+• write() method takes a string as an argument and writes it to the text file.
+• writelines() method is used to write multiple strings to a file. We need to pass an iterable object like lists, tuple etc. containing strings to writelines() method.
+• read([n]) method is used to read a specified number of bytes (n) of data from a data file.
+• readline([n]) method reads one complete line from a file where lines are ending with a newline (\n). It can also be used to read a specified number (n) of bytes of data from a file but maximum up to the newline character (\n).
+• readlines() method reads all the lines and returns the lines along with newline character, as a list of strings.
+• tell() method returns an integer that specifies the current position of the file object. The position so specified is the byte position from the beginning of the file till the current position of the file object.
+• seek()method is used to position the file object at a particular position in a file.
+Reprint 2026-27
+F ile Handling in pytHon 37
+E xErcisE
+1. Differentiate between:
+a) text file and binary file b) readline() and readlines()
+c) write() and writelines()
+2. Write the use and syntax for the following methods:
+a) open()
+b) read()
+c) seek()
+d) dump()
+3. Write the file mode that will be used for opening the following files. Also, write the Python statements to open the following files:
+a) a text file “example.txt” in both read and write mode b) a binary file “bfile.dat” in write mode c) a text file “try.txt” in append and read mode d) a binary file “btry.dat” in read only mode.
+4. Why is it advised to close a file after we are done with the read and write operations? What will happen if we do not close it? Will some error message be flashed?
+5. What is the difference between the following set of statements (a) and (b):
+a) P = open(“practice.txt”,”r”)
+P.read(10)
+b) with open(“practice.txt”, “r”) as P:
+x = P.read()
+6. Write a command(s) to write the following lines to the text file named hello.txt. Assume that the file is opened in append mode.
+“ Welcome my class”
+“It is a fun place”
+“You will learn and play”
+• Pickling is the process by which a Python object is converted to a byte stream.
+• dump() method is used to write the objects in a binary file.
+• load() method is used to read data from a binary
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 38
+7. Write a Python program to open the file hello.txt used in question no 6 in read mode to display its contents. What will be the difference if the file was opened in write mode instead of append mode?
+8. Write a program to accept string/sentences from the user till the user enters “END” to. Save the data in a text file and then display only those sentences which begin with an uppercase alphabet.
+9. Define pickling in Python. Explain serialization and deserialization of Python object.
+10. Write a program to enter the following records in a binary
+Item No integer
+Item_Name string
+Qty integer
+Price float
+Number of records to be entered should be accepted from the user. Read the file to display the records in the following format:
+Item No:
+Item Name :
+Quantity:
+Price per item:
+Amount: ( to be calculated as Price * Qty)
+Reprint 2026-27
+In this Chapter
+» Introduction
+» Operations on Stack
+» Implementation of Stack in Python
+» Notations for Arithmetic
+Expressions
+» Conversion From Infix To
+Postfix Notation
+» Evaluation of Postfix
+Expression
+“We're going to be able to ask our computers to monitor things for us, and when certain conditions happen, are triggered, the computers will take certain actions and inform us after the fact.”
+— Steve Jobs
+3.1 IntroductIon
+We have learnt about different data types in
+Python for handling values in Class XI. Recall that String, List, Set, Tuple, etc. are the sequence data types that can be used to represent collection of elements either of the same type or different types. Multiple data elements are grouped in a particular way for faster accessibility and efficient storage of data. That is why we have used different data types in python for storing data values. Such grouping is referred as a data structure.
+A data structure defines a mechanism to store, organise and access data along with operations (processing) that can be efficiently performed on the data. For example, string is a data structure containing a sequence of elements where each element is a character. On the other hand, list is a sequence data structure in which each element may be of different types. We can apply different operations like reversal, slicing, counting of
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 40
+Other important data structures in Computer
+Science include
+Array, Linked
+List, Binary Trees,
+Heaps, Graph,
+Sparse Matrix,
+A data structure in which elements are organised in a sequence is called linear data structure.
+elements, etc. on list and string. Hence, a data structure organises multiple elements in a way so that certain operations on each element as well as the collective data unit could be performed easily.
+Stack and Queue are two other popular data structures used in programming. Although not directly available in Python, it is important to learn these concepts as they are extensively used in a number of programming languages. In this chapter, we will study about stack, its implementation using Python as well as its applications.
+3.2 Stack
+We have seen piles of books in the library or stack of plates at home (Figure 3.1). To put another book or another plate in such a pile, we always place (add to the pile) the object at the top only. Likewise, to remove a book or a plate from such a pile, we always remove (delete from the pile) the object from the top only. This is because in a large pile, it is inconvenient to add or remove an object from in between or bottom. Such an arrangement of elements in a linear order is called a stack. We add new elements or remove existing elements from the same end, commonly referred to as the top of the stack. It thus follows the Last-In-First-out (LIFO)
+principle. That is, the element which was inserted last (the most recent element) will be the first one to be taken out from the stack.
+Figure 3.1: Stack of plates and books
+Reprint 2026-27

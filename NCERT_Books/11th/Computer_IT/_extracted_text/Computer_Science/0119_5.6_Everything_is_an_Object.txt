@@ -1,0 +1,24 @@
+GettinG Started with Python 107
+5.11 I nPut and outPut
+Sometimes, a program needs to interact with the user’s to get some input data or information from the end user and process it to give the desired output. In Python, we have the input() function for taking the user input.
+The input() function prompts the user to enter data.
+It accepts all user input as string. The user may enter a number or a string but the input() function treats them as strings only. The syntax for input() is:
+input ([Prompt])
+Prompt is the string we may like to display on the screen prior to taking the input, and it is optional. When a prompt is specified, first it is displayed on the screen after which the user can enter data. The input() takes exactly what is typed from the keyboard, converts it into a string and assigns it to the variable on left-hand side of the assignment operator (=). Entering data for the input function is terminated by pressing the enter key.
+Example 5.14
+>>> fname = input("Enter your first name: ")
+Enter your first name: Arnab
+>>> age = input("Enter your age: ")
+Enter your age: 19
+>>> type(age)
+<class 'str'>
+The variable fname will get the string ‘Arnab’, entered by the user. Similarly, the variable age will get the string
+‘19’. We can typecast or change the datatype of the string data accepted from user to an appropriate numeric value. For example, the following statement will convert the accepted string to an integer. If the user enters any non-numeric value, an error will be generated.
+Example 5.15
+#function int() to convert string to integer
+>>> age = int( input("Enter your age:"))
+Enter your age: 19
+>>> type(age)
+<class 'int'>
+Python uses the print() function to output data to standard output device — the screen. We will learn about function in Chapter 7. The function print() evaluates the expression before displaying it on the screen. The print()
+Reprint 2026-27

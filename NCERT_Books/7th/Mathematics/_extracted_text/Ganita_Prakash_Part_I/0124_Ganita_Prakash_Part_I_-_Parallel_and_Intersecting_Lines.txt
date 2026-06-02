@@ -1,0 +1,356 @@
+A Peek Beyond the Point
+We start by comparing the most significant digits (digits with the highest place value) of the two numbers. If the digits are the same, we compare the next smaller place value. We keep going till we find a position where the digits are not equal. The number with the larger digit at this position is the greater of the two.
+Why can we stop comparing at this point? Can we be sure that whatever digits are there after this will not affect our conclusion?
+Which decimal number is greater?
+(a) 1.23 or 1.32 (b) 3.81 or 13.800 (c) 1.009 or 1.090
+Closest Decimals
+Consider the decimal numbers 0.9, 1.1, 1.01, and 1.11. Identify the decimal number that is closest to 1.
+Let us compare the decimal numbers. Arranging these in ascending order, we get 0.9 < 1 < 1.01 < 1.1 < 1.11. Among the neighbours of 1, 1.01 is 1/100 away from 1 whereas 0.9 is 10/100 away from 1. Therefore,
+1.01 is closest to 1.
+Which of the above is closest to 1.09?
+Which among these is closest to 4: 3.56, 3.65, 3.099?
+Which among these is closest to 1: 0.8, 0.69, 1.08?
+In each case below use the digits 4, 1, 8, 2, and 5 exactly once and try to make a decimal number as close as possible to 25.
+Reprint 2026-27
+Ganita Prakash | Grade 7
+3.7 Addition and Subtraction of Decimals
+Priya requires 2.7 m of cloth for her skirt, and Shylaja requires 3.5m for her kurti. What is the total quantity of cloth needed?
+We have to find the sum of 2.7m + 3.5m.
+Earlier, we saw how to add 2 7
+10 + 3 5
+10 (also shown below). Can you carry out the same addition using decimal notation? It is shown below.
+Share your observations.
+The total quantity of cloth needed is 6.2 m.
+How much longer is Shylaja’s cloth compared to Priya’s?
+We have to find the difference of 3.5m – 2.7m. Again, observe how the differences 3 5
+10 – 2 7
+10 and 3.5m – 2.7m are computed.
+As you can see, the standard procedure for adding and subtracting whole numbers can be used to add and subtract decimals.
+A detailed view of the underlying place value calculation is shown below for the sum 75.345 + 86.691. Its compact form is shown next to it.
+Reprint 2026-27
+A Peek Beyond the Point
+Write the detailed place value computation for 84.691 – 77.345, and its compact form.
+Figure it Out
+1. Find the sums (a) 5.3 + 2.6 (b) 18 + 8.8 (c) 2.15 + 5.26 (d) 9.01 + 9.10 (e) 29.19 + 9.91 (f) 0.934 + 0.6 (g) 0.75 + 0.03 (h) 6.236 + 0.487
+2. Find the differences (a) 5.6 – 2.3 (b) 18 – 8.8 (c) 10.4 – 4.5 (d) 17 – 16.198 (e) 17 – 0.05 (f) 34.505 – 18.1 (g) 9.9 – 9.09 (h) 6.236 – 0.487
+Decimal Sequences
+Observe this sequence of decimal numbers and identify the change after each term.
+4.4, 4.8. 5.2, 5.6, 6.0, …
+We can see that 0.4 is being added to a term to get the next term.
+Continue this sequence and write the next 3 terms.
+7 × 10 5 × 1 3 × 1
+10 4 × 1
+100 5 × 1
+8 × 10 6 × 1 6 × 1
+10 9 × 1
+100 1 × 1
+16 × 10 12 × 1 10 × 1
+10 13 × 1
+100 6 × 1
+1 × 1 1 × 10 1 × 100
+=162.036
+Reprint 2026-27
+Ganita Prakash | Grade 7
+Similarly, identify the change and write the next 3 terms for each sequence given below. Try to do this computation mentally.
+(a) 4.4, 4.45, 4.5, … (b) 25.75, 26.25, 26.75, … (c) 10.56, 10.67, 10.78, … (d) 13.5, 16, 18.5, … (e) 8.5, 9.4, 10.3, … (f) 5, 4.95, 4.90, … (g) 12.45, 11.95, 11.45, … (h) 36.5, 33, 29.5, …
+Make your own sequences and challenge your classmates to extend the pattern.
+Estimating Sums and Differences
+Sonu has observed sums and differences of decimal numbers and says,
+“If we add two decimal numbers, then the sum will always be greater than the sum of their whole number parts. Also, the sum will always be less than 2 more than the sum of their whole number parts.”
+Let us use an example to understand what his claim means:
+If the two numbers to be added are 25.936 and 8.202, the claim is that their sum will be greater than 25 + 8 (whole number parts) and will be less than 25 + 1 + 8 + 1.
+What do you think about this claim? Verify if this is true for these numbers. Will it work for any 2 decimal numbers?
+What about for the sum of 25.93603259 and 8.202?
+Similarly, come up with a way to narrow down the range of whole numbers within which the difference of two decimal numbers will lie.
+Note to the Teacher: Estimating the result before computing may help in identifying if a mistake happens with the calculation.
+3.8 More on the Decimal System
+Decimal and Measurement Disasters
+Decimal point and unit conversion mistakes may seem minor sometimes but they can lead to serious problems. Here are some actual incidents in which such errors caused major issues.
+Reprint 2026-27
+A Peek Beyond the Point
+• In 2013, the finance office of Amsterdam City Council (Netherlands)
+mistakenly sent out €188 million in housing benefits instead of the intended €1.8 million due to a programming error that processed payments in euro cents instead of euros. (1 euro-cent = 1/100
+• In 1983, a decimal error nearly caused a disaster for an Air Canada
+Boeing 767. The ground staff miscalculated the fuel, loading 22,300 pounds instead of kilograms—about half of what was needed (1 pound ~ 0.453 kg). The plane ran out of fuel mid-air, forcing the pilots to make an emergency landing at an abandoned airfield.
+Fortunately, everyone survived.
+Several incidents have occurred due to incorrect reading of decimal numbers while giving medication. For example, reading 0.05 mg as 0.5 mg can lead to using a medicine 10 times more than the prescribed quantity. It is therefore important to pay attention to units and the location of the decimal point.
+Deceptive Decimal Notation
+Sarayu gets a message: “The bus will reach the station 4.5 hours post noon.” When will the bus reach the station: 4:05 p.m., 4:50 p.m., 4:25 p.m.?
+None of these! Here, 0.5 hours means splitting an hour into 10 equal parts and taking 5 parts out of it. Each part will be 6 minutes (60 minutes/10) long. 5 such parts make 30 minutes. So, the bus will reach the station at 4:30.
+Here is a short-story of a decimal mishap: A girl measures the width of an opening as 2 ft 5 inches but conveys to the carpenter to make a door 2.5 ft wide. The carpenter makes a door of width 2 ft 6 inches (since 1 ft = 12 inches, 0.5 ft = 6 inches), and it wouldn’t close fully.
+I said the door’s width should be
+It is 2.5 ft! You can verify.
+Reprint 2026-27
+Ganita Prakash | Grade 7
+If you watch cricket, you might have noticed decimal-looking numbers like ‘Overs left: 5.5’. Does this mean 5 overs and 5 balls or 5 overs and 3 balls? Here, 5.5 overs means 5 5
+6 overs (as 1 over = 6 balls), i.e., 5 overs and 5 balls.
+Where else can we see such ‘non-decimals’ with a decimal-like notation?
+A Pinch of History – Decimal Notation Over Time
+Decimal fractions (i.e., fractions with denominators like 1
+1000 , and so on) are used in the works of a number of ancient Indian astronomers and mathematicians, including in the important 8th century works of Śhrīdharāchārya on arithmetic and algebra. Decimal notation, in essentially its modern form, was described in detail in
+Kitāb al-Fuṣūl fī al-Ḥisāb al Hindī (The Book of Chapters on Indian
+Arithmetic) by Abūl Ḥassan al-Uqlīdisī, an Arab mathematician, in around 950 CE. He represented the number 0.059375 as 0ˈ 059375.
+In the 15th century, to separate whole numbers from fractional parts, a number of different notations were used:
+• a vertical mark on the last digit of the whole number part (as shown above),
+• use of different colours and
+• a numerical superscript giving the number of fractional decimal places (0.36 would be written as 36
+In the 16th century, John Napier, a Scottish mathematician, and
+Christopher Clavius, a German mathematician, used the point/period (‘.’) to separate the whole number and the fractional parts, while
+François Viète, a French mathematician, used the comma (‘,’) instead.
+Currently, several countries use the comma to separate the integer part and the fractional part. In these countries, the number 1,000.5 is written as 1 000,5 (space as a thousand separator). But the decimal point has endured as the most popular notation for writing numbers having fractional parts in the Indian place value system.
+Figure it Out
+1. Convert the following fractions into decimals:
+100 (b) 16
+1000 (c) 12
+10 (d) 254
+Reprint 2026-27
+A Peek Beyond the Point
+2. Convert the following decimals into a sum of tenths, hundredths and thousandths:
+(a) 0.34 (b) 1.02 (c) 0.8 (d) 0.362
+3. What decimal number does each letter represent in the number line below?
+6.6 6.5 6.4
+4. Arrange the following quantities in descending order:
+(a) 11.01, 1.011, 1.101, 11.10, 1.01 (b) 2.567, 2.675, 2.768, 2.499, 2.698 (c) 4.678 g, 4.595 g, 4.600 g, 4.656 g, 4.666 g (d) 33.13 m, 33.31 m, 33.133 m, 33.331 m, 33.313 m
+5. Using the digits 1, 4, 0, 8, and 6 make:
+(a) the decimal number closest to 30 (b) the smallest possible decimal number between 100 and 1000.
+6. Will a decimal number with more digits be greater than a decimal number with fewer digits?
+7. Mahi purchases 0.25 kg of beans, 0.3 kg of carrots, 0.5 kg of potatoes,
+0.2 kg of capsicums, and 0.05 kg of ginger. Calculate the total weight of the items she bought.
+8. Pinto supplies 3.79 L, 4.2 L, and 4.25 L of milk to a milk dairy in the first three days. In 6 days, he supplies 25 litres of milk. Find the total quantity of milk supplied to the dairy in the last three days.
+9. Tinku weighed 35.75 kg in January and 34.50 kg in February. Has he gained or lost weight? How much is the change?
+10. Extend the pattern: 5.5, 6.4, 6.39, 7.29, 7.28, 6.18, 6.17, ____, _____
+11. How many millimeters make 1 kilometer?
+12. Indian Railways offers optional travel insurance for passengers who book e-tickets. It costs 45 paise per passenger. If 1 lakh people opt for insurance in a day, what is the total insurance fee paid?
+13. Which is greater?
+1000 or 1
+Reprint 2026-27
+Ganita Prakash | Grade 7 (b) One-hundredth or 90 thousandths?
+(c) One-thousandth or 90 hundredths?
+14. Write the decimal forms of the quantities mentioned (an example is given):
+(a) 87 ones, 5 tenths and 60 hundredths = 88.10 (b) 12 tens and 12 tenths (c) 10 tens, 10 ones, 10 tenths, and 10 hundredths (d) 25 tens, 25 ones, 25 tenths, and 25 hundredths
+15. Using each digit 0 – 9 not more than once, fill the boxes below so that the sum is closest to 10.5:
+16. Write the following fractions in decimal form:
+• We can split a unit into smaller parts to get more exact/accurate measurements.
+• We extended the Indian place value system and saw that
+» 1 unit = 10 one-tenths,
+» 1 tenth = 10 one-hundredths,
+» 1 hundredth = 10 one-thousandths,
+» 10 one-hundredths = 1 tenth,
+» 100 one-hundredths = 1 unit.
+• A decimal point (‘.’) is used in the Indian place value system to separate the whole number part of a number from its fractional part.
+• We also learnt how to compare decimal numbers, locate them on the number line, and perform addition and subtraction on them.
+Reprint 2026-27
+Page No. 47
+Write the measurements of the objects shown in the picture.
+Eraser → 2 4
+10 cm, Pencil → 4 5
+10 cm → 4 1
+2 cm, Chalk → 1 4
+Page No. 49
+Arrange the lengths in increasing order:
+𝟏𝟎 (b) 1 𝟕
+𝟏𝟎 (c) 𝟏𝟑𝟎
+𝟏𝟎 (d) 13 𝟏 (e) 10 𝟓
+𝟏𝟎 (f) 7 𝟔
+𝟏𝟎 (g) 6 𝟕
+𝟏𝟎 (h) 𝟒
+10 , 1 7
+10 , 6 7
+10 , 7 6
+10 , 10 5
+10 , 130
+10 , 13 1
+Chapter – 3
+A Peek Beyond the Point
+Page No. 50
+Arrange the following lengths in increasing order: 4 1
+10 , 41 1
+Increasing order: 4
+10 = 4 1
+10 , 41 1
+Page No. 51
+The lengths of the body parts of a honeybee are given. Find its total
+Head = 2 3
+10 units
+Thorax = 5 4
+10 units
+Abdomen = 7 5
+10 units
+Ans: 15 2
+10 units.
+Page No. 52
+A Celestial Pearl Danio’s length is 𝟐 𝟒
+𝟏𝟎 cm, and the length of a
+Philippine Goby is 𝟗
+𝟏𝟎 cm. What is the difference in their lengths?
+Ans: 1 5
+Observe the given sequences of numbers. Identify the change after each term and extend the pattern:
+(a) 4, 4 𝟑
+𝟏𝟎, 4 𝟔
+𝟏𝟎, _______, _______, _______, _______ (b) 8 𝟐
+𝟏𝟎, 8 𝟕
+𝟏𝟎, 9 𝟐
+𝟏𝟎, _______, _______, _______, _______ (c) 7 𝟔
+𝟏𝟎, 8 𝟕
+𝟏𝟎, _______, _______, _______, _______ (d) 5 𝟕
+𝟏𝟎, 5 𝟑
+𝟏𝟎, _______, _______, _______, _______ (e) 13 𝟓
+𝟏𝟎, 13, 12 𝟓
+𝟏𝟎, _______, _______, _______, _______ (f) 11 𝟓
+𝟏𝟎, 10 𝟒
+𝟏𝟎, 9 𝟑
+𝟏𝟎, _______, _______, _______, _______ (a) 4, 4 3
+10 , 4 6
+10 , 4 9
+10 , 5 2
+10 , 5 5
+10 , 5 8
+10 → increment of 3
+10 each time.
+10 , 8 7
+10 , 9 2
+10 , 9 7
+10 , 10 2
+10 , 10 7
+10 , 11 2
+10 → increment of 5
+10 each time.
+10 , 8 7
+10 , 9 8
+10 , 10 9
+10 , 12, 13 1
+10 → increment of 1 + 1
+10 , 5 3
+10 , 4 9
+10 , 4 5
+10 , 4 1
+10 , 3 7
+10 → subtracting: 4
+10 each time (e) 13 5
+10 , 13 , 12 5
+10 , 12, 11 5
+10 , 11, 10 5
+10 → decreasing by 5 (f) 11 5
+10 , 10 4
+10 , 9 3
+10 , 8 2
+10 , 7 1
+10 , 6 → decreasing by 1 1
+Page No. 53
+How many one‑hundredths make one‑tenth? Can we also say that the length is 4 units and 45 one‑hundredths?
+So, 10 one‑hundredths make one‑tenth.
+Yes, we can write it 4 + 45
+100 = 4 units and 45 one‑hundredths.
+Page No. 54
+Observe the figure below. Notice the markings and the corresponding lengths written in the boxes when measured from 0.
+Fill the lengths in the empty boxes.
+For the lengths shown below write the measurements and read out the measures in words.
+Measurement − 5 37
+In words: Five and thirtyseven-hundredths.
+Measurement − 15 3
+In words: Fifteen and three-hundredths.
+Page No. 55
+Measurement − 7 52
+In words: Seven and fiftytwo-hundredths.
+Measurement − 9 80
+In words: Nine and eighty-hundredths.
+In each group, identify the longest and the shortest lengths. Mark each length on the scale.
+(a) Longest = 33
+100 Shortest = 3 (b) Longest = 3 1
+10 Shortest = 1 3 (c) Longest = 54
+100 Shortest = 4 (d) Longest = 3 6
+100 Shortest = 3 6
+Page No. 56 (e) Longest = 1 8
+100 Shortest = 9 (f) Longest = 7 5
+100 Shortest = 7 3 (g) Longest = 65
+100 Shortest = 5 7
+Page No. 58
+Figure it Out
+Find the sums and differences
+10 + 3 4
+Ans: 3 34
+100 + 2 1
+Ans: 11 7 (c) 15 6
+100 + 14 3
+100 – 4 4
+Ans: 3 3
+100 – 5 3
+Ans: 3 3 (f) 12 6
+Ans: 11 63
+Page No. 63
+Make a place value table similar to the one above. Write each quantity in decimal form and in terms of place value, and read the
+Question
+Hundreds
+Hundredths
+Thousandth
+2 ones, 3 tenths and 5 hundredths
+– – 2 3 5 – 2 + 3
+Two point three five (or thirty-five hundredths)
+1 ten and 5
+– 1 – 5 – – 10 + 5
+10 = 10.5 Ten point five (or ten and five
+4 ones and hundredths
+– – 4 – 6 – 4 + 0 + 6
+Four point zero six (or four and six hundredths)
+1 hundred,
+1 one and 1 hundredth
+1 – 1 – 1 – 100 + 0 + 1 + 0 + 1
+One hundred one point zero one (or one hundred one and one hundredth)
+100 and 9
+10 – – – 9 8 – 9
+Zero point nine eight (or ninety- hundredths)
+Page No. 64
+Write these quantities in decimal form:
+(a) 234 hundredths
+Ans: 2.34 (b) 105 tenths.
+Ans: 10.5
+– – – 5 – 5
+100 = 0.05 Zero point zero five (or hundredths)
+– – – 1 – – 1
+10 = 0.1 Zero point one (or one
+10 = 4.1
+Two point zero one
+Four point
+Seven point zero zero
+13.117 Thirteen point one one seven.
+Fill in the blanks below (mm < – > cm)
+12 mm= 1.2 cm 56 mm = 5.6 cm 70 mm = 7.0 cm
+9 mm = 0.9 cm 134 mm = 13.4 cm 2036 mm = 203.6 cm
+Page No. 66
+Fill in blanks (cm <-> m):
+36 cm = 0.36 m 50 cm = 0.5 m 89 cm = 0.89 m
+4 cm = 0.04 m 325 cm = 3.25 m 207 cm = 2.07 m
+How many mm does 1 meter have?
+Ans: 1m = 1000 mm
+Can we write 1 mm = 𝟏
+𝟏𝟎𝟎𝟎 m?
+Ans: Yes
+Page No. 68
+Fill in the blanks below (g < – > kg)
+465 g = 0.465 kg 68 g = 0.068 kg 1560 g = 1.56 kg
+704 g = 0.704 kg 560 g = 0.56 kg 2500 g = 2.5 kg
+Page No. 69
+Fill in the blanks below (rupee < – > paise)
+10 p = ₹0.10 5 p = ₹0.05 36 p = ₹0.36
+50 p = ₹0.50 99 p = ₹0.99 250 p = ₹2.50
+Page No. 70
+Name all the divisions between 1 and 1.1 on the number line.
+Ans: The small divisions between 1 and 1.1 on the number line (if the sub- division is of 10 parts) are: 1.01, 1.02, 1.03, 1.04, 1.05, 1.06, 1.07, 1.08, 1.09
+Identify and write the decimal numbers against the letters.
+Page No. 71
+Can you tell which of these is the smallest and which is the largest?
+Decimal Number Units Tenths Hundredths Thousandths
+0.2 0 2 0 0
+0.20 0 2 0 0
+0.200 0 2 0 0
+0.02 0 0 2 0
+0.002 0 0 0 2
+0.2 = 0.20 = 0.200 is the largest.
+0.002 is the smallest.
+Which of these are the same: 4.5, 4.05, 0.405, 4.050, 4.50, 4.005, 04.50?
+Ans: 4.5, 4.50, and 04.50 are equal.
+4.05 and 4.050 are equal.
+Identify the decimal number in the last number line in Figure (b)
+denoted by ‘?’
+Make such number lines for the decimal numbers: (a) 9.876 (b) 0.407.
+Ans: (a) (b)

@@ -1,0 +1,43 @@
+In this Chapter
+» Introduction
+» Linear Search
+» Binary Search
+» Search by Hashing
+6.1 IntroductIon
+We store many things in our home and find them out later as and when required. Sometimes we remember the exact location of a required item.
+But, sometimes we do not remember the exact location and in that case we need to search for the required item. A computer also stores lots of data to be retrieved later as and when demanded by a user or a program.
+Searching means locating a particular element in a collection of elements. Search result determines whether that particular element is present in the collection or not. If it is present, we can also find out the position of that element in the given collection. Searching is an important technique in computer science. In order to design algorithms, programmers need to understand the different ways in which a collection of data can be searched for retrieval.
+6 Searching
+“Even though most people won't be directly involved with programming, everyone is affected by computers, so an educated person should have a good understanding of how computer hardware, software, and networks operate.”
+— Brian Kernighan
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 82
+6.2 LInear Search
+Linear search is the most fundamental and the simplest search method. It is an exhaustive searching technique where every element of a given list is compared with the item to be searched (usually referred to as ‘key’).
+So, each element in the list is compared one by one with the key. This process continues until an element matching the key is found and we declare that the search is successful. If no element matches the key and we have traversed the entire list, we declare the search is unsuccessful i.e., the key is not present in the list.
+This item by item comparison is done in the order, in which the elements are present in the list, beginning at the first element of the list and moving towards the last.
+Thus, it is also called sequential search or serial search.
+This technique is useful for collection of items that are small in size and are unordered.
+Given a list numList of n elements and key value K,
+Algorithm 6.1 uses a linear search algorithm to find the position of the key K in numList.
+Algorithm 6.1 : Linear Search
+LinearSearch(numList, key, n)
+Step 1: SET index = 0
+Step 2: WHILE index < n, REPEAT Step 3
+Step 3: IF numlist[index]= key THEN
+PRINT “Element found at position”, index+1 index = index+1
+Step 4: PRINT “Search unsuccessful”
+Example 6.1 Assume that the numList has seven elements
+[8, -4, 7, 17, 0, 2, 19] so, n = 7. We need to search for the key, say 17 in numList. Table 6.1 shows the elements in the given list along with their index values.
+Table 6.1 Elements in numList alongwith their index value
+Index in numList 0 1 2 3 4 5 6
+Value 8 -4 7 17 0 2 19
+The step-by-step process of linear search using
+Algorithm 6.1. is given in Table 6.2.
+Activity 6.1
+Consider a list of 15 elements:
+L=[2,3,9,7,-
+6,11,12,17,45,23,29,
+31,-37,41,43].
+Determine the number of comparisons linear search makes to search for key = 12.
+Reprint 2026-27

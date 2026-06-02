@@ -1,0 +1,127 @@
+53 STRUCTURE OF ATOM
+In view of these inherent weaknesses in the
+Bohr model, there was no point in extending
+Bohr model to other atoms. In fact an insight into the structure of the atom was needed which could account for wave-particle duality of matter and be consistent with Heisenberg uncertainty principle. This came with the advent of quantum mechanics.
+2.6 QUantUm mecHanical moDel of
+Classical mechanics, based on Newton’s laws of motion, successfully describes the motion of all macroscopic objects such as a falling stone, orbiting planets etc., which have essentially a particle-like behaviour as shown in the previous section. However it fails when applied to microscopic objects like electrons, atoms, molecules etc. This is mainly because of the fact that classical mechanics ignores the concept of dual behaviour of matter especially for sub-atomic particles and the uncertainty principle. The branch of science that takes into account this dual behaviour of matter is called quantum mechanics.
+Quantum mechanics is a theoretical science that deals with the study of the motions of the microscopic objects that have both observable wave like and particle like properties. It specifies the laws of motion that these objects obey. When quantum mechanics is applied to macroscopic objects (for which wave like properties are insignificant) the results are the same as those from the classical mechanics.
+Quantum mechanics was developed independently in 1926 by Werner Heisenberg and Erwin Schrödinger. Here, however, we shall be discussing the quantum mechanics which is based on the ideas of wave motion.
+The fundamental equation of quantum mechanics was developed by Schrödinger and it won him the Nobel Prize in Physics in
+1933. This equation which incorporates wave- particle duality of matter as proposed by de
+Broglie is quite complex and knowledge of higher mathematics is needed to solve it. You will learn its solutions for different systems in higher classes.
+For a system (such as an atom or a molecule whose energy does not change with time) the schrödinger equation is written as where is a mathematical operator called Hamiltonian. Schrödinger gave a recipe of constructing this operator from the expression for the total energy of the system. The total energy of the system takes into account the kinetic energies of all the sub-atomic particles (electrons, nuclei), attractive potential between the electrons and nuclei and repulsive potential among the electrons and nuclei individually. Solution of this equation gives E and
+Hydrogen Atom and the Schrödinger
+Equation
+When Schrödinger equation is solved for hydrogen atom, the solution gives the possible energy levels the electron can occupy and the corresponding wave function(s) ( the electron associated with each energy level. These quantized energy states and corresponding wave functions which are characterized by a set of three quantum numbers (principal quantum number n, azimuthal quantum number l and magnetic quantum number m l ) arise as a natural consequence in the solution of the
+Schrödinger equation. When an electron is in any energy state, the wave function
+Erwin Schrödinger, an
+Austrian physicist received his Ph.D. in theoretical physics from the University of Vienna in 1910. In 1927
+Schrödinger succeeded Max
+Planck at the University of
+Berlin at Planck’s request.
+In 1933, Schrödinger left
+B e r l i n b e c a u s e o f h i s opposition to Hitler and
+Nazi policies and returned to Austria in 1936. After the invasion of Austria by Germany, Schrödinger was forcibly removed from his professorship. He then moved to Dublin,
+Ireland where he remained for seventeen years.
+Schrödinger shared the Nobel Prize for Physics with P.A.M. Dirac in 1933.
+Erwin Schrödinger (1887–1961)
+Reprint 2026-27
+54 CHEMISTRY corresponding to that energy state contains all information about the electron. The wave function is a mathematical function whose value depends upon the coordinates of the electron in the atom and does not carry any physical meaning. Such wave functions of hydrogen or hydrogen like species with one electron are called atomic orbitals. Such wave functions pertaining to one-electron species are called one-electron systems. The probability of finding an electron at a point within an atom is proportional to the | that point. The quantum mechanical results of the hydrogen atom successfully predict all aspects of the hydrogen atom spectrum including some phenomena that could not be explained by the Bohr model.
+Application of Schrödinger equation to multi-electron atoms presents a difficulty: the
+Schrödinger equation cannot be solved exactly for a multi-electron atom. This difficulty can be overcome by using approximate methods.
+Such calculations with the aid of modern computers show that orbitals in atoms other than hydrogen do not differ in any radical way from the hydrogen orbitals discussed above. The principal difference lies in the consequence of increased nuclear charge.
+Because of this all the orbitals are somewhat contracted. Further, as you shall see later (in subsections 2.6.3 and 2.6.4), unlike orbitals of hydrogen or hydrogen like species, whose energies depend only on the quantum number n, the energies of the orbitals in multi-electron atoms depend on quantum numbers n and l.
+important features of the Quantum mechanical model of atom
+Quantum mechanical model of atom is the picture of the structure of the atom, which emerges from the application of the Schrödinger equation to atoms. The following are the important features of the quantum-mechanical model of atom:
+1. The energy of electrons in atoms is quantized (i.e., can only have certain specific values), for example when electrons are bound to the nucleus in
+2. The existence of quantised electronic energy levels is a direct result of the wave like properties of electrons and are allowed solutions of Schrödinger wave equation.
+3. Both the exact position and exact velocity of an electron in an atom cannot be determined simultaneously (Heisenberg uncertainty principle). The path of an electron in an atom therefore, can never be determined or known accurately. That is why, as you shall see later on, one talks of only probability of finding the electron at different points in an atom.
+4. an atomic orbital is the wave function
+ψ for an electron in an atom.
+Whenever an electron is described by a wave function, we say that the electron occupies that orbital. Since many such wave functions are possible for an electron, there are many atomic orbitals in an atom. These “one electron orbital wave functions” or orbitals form the basis of the electronic structure of atoms. In each orbital, the electron has a definite energy. An orbital cannot contain more than two electrons. In a multi-electron atom, the electrons are filled in various orbitals in the order of increasing energy. For each electron of a multi-electron atom, there shall, therefore, be an orbital wave function characteristic of the orbital it occupies.
+All the information about the electron in an atom is stored in its orbital wave function
+ψ and quantum mechanics makes it possible to extract this information out of
+5. The probability of finding an electron at a point within an atom is proportional to the square of the orbital wave function
+ψ| 2 at that point. |
+ψ| 2 is known as probability density and is always positive. From the value of | different points within an atom, it is possible to predict the region around the nucleus where electron will most probably be found.
+2.6.1 orbitals and Quantum numbers
+A large number of orbitals are possible in an atom. Qualitatively these orbitals can
+Reprint 2026-27
+55 STRUCTURE OF ATOM be distinguished by their size, shape and orientation. An orbital of smaller size means there is more chance of finding the electron near the nucleus. Similarly shape and orientation mean that there is more probability of finding the electron along certain directions than along others. Atomic orbitals are precisely distinguished by what are known as quantum numbers. Each orbital is designated by three quantum numbers labelled as n, l and m l.
+the principal quantum number ‘n’ is a positive integer with value of n = 1,2,3.......
+The principal quantum number determines the size and to large extent the energy of the orbital. For hydrogen atom and hydrogen like species (He+ , Li2+ , .... etc.) energy and size of the orbital depends only on ‘n’.
+The principal quantum number also identifies the shell. With the increase in the value of ‘n’, the number of allowed orbital increases and are given by ‘n2 ’ all the orbitals of a given value of ‘n’ constitute a single shell of atom and are represented by the following letters n = 1 2 3 4 ............
+Shell = K L M N ............
+Size of an orbital increases with increase of principal quantum number ‘n’. In other words the electron will be located away from the nucleus. Since energy is required in shifting away the negatively charged electron from the positively charged nucleus, the energy of the orbital will increase with increase of n.
+azimuthal quantum number. ‘l’ is also known as orbital angular momentum or subsidiary quantum number. It defines the three-dimensional shape of the orbital. For a given value of n, l can have n values ranging from 0 to n – 1, that is, for a given value of n, the possible value of l are : l = 0, 1, 2, ..........
+For example, when n = 1, value of l is only
+0. For n = 2, the possible value of l can be 0 and 1. For n = 3, the possible l values are 0,
+1 and 2.
+Each shell consists of one or more sub-shells or sub-levels. The number of sub-shells in a principal shell is equal to the value of n. For example in the first shell (n = 1), there is only one sub-shell which corresponds to l = 0. There are two sub-shells (l = 0, 1) in the second shell (n = 2), three (l = 0, 1, 2) in third shell (n = 3) and so on. Each sub-shell is assigned an azimuthal quantum number (l).
+Sub-shells corresponding to different values of l are represented by the following symbols.
+Value for l : 0 1 2 3 4 5 ............
+notation for s p d f g h ............
+sub-shell
+Table 2.4 shows the permissible values of
+‘l ’ for a given principal quantum number and the corresponding sub-shell notation.
+magnetic orbital quantum number.
+‘m l’ gives information about the spatial orientation of the orbital with respect to standard set of co-ordinate axis. For any sub-shell (defined by ‘l’ value) 2l+1 values of ml are possible and these values are given by :
+ml = – l, – (l –1), – (l– 2)... 0,1... (l – 2), (l–1), l
+Thus for l = 0, the only permitted value of m l = 0, [2(0)+1 = 1, one s orbital]. For l =
+1, m l can be –1, 0 and +1 [2(1)+1 = 3, three p orbitals]. For l = 2, ml = –2, –1, 0, +1 and +2,
+[2(2)+1 = 5, five d orbitals]. It should be noted that the values of m l are derived from l and that the value of l are derived from n.
+table 2.4 subshell notations n l subshell notation
+Reprint 2026-27
+56 CHEMISTRY
+Each orbital in an atom, therefore, is defined by a set of values for n, l and m l. An orbital described by the quantum numbers n = 2, l = 1, ml = 0 is an orbital in the p sub- shell of the second shell. The following chart gives the relation between the subshell and the number of orbitals associated with it.
+Value of l 0 1 2 3 4 5
+Subshell notation s p d f g h number of orbitals 1 3 5 7 9 11
+Electron spin ‘s’ : The three quantum numbers labelling an atomic orbital can be used equally well to define its energy, shape and orientation. But all these quantum numbers are not enough to explain the line spectra observed in the case of multi-electron atoms, that is, some of the lines actually occur in doublets (two lines closely spaced), triplets (three lines, closely spaced) etc. This suggests the presence of a few more energy levels than predicted by the three quantum numbers.
+In 1925, George Uhlenbeck and Samuel
+Goudsmit proposed the presence of the fourth quantum number known as the electron spin quantum number (m s). An electron spins around its own axis, much in a similar way as earth spins around its own axis while revolving around the sun. In other words, an electron has, besides charge and mass, intrinsic spin angular quantum number. Spin angular momentum of the electron — a vector quantity, can have two orientations relative to the chosen axis. These two orientations are distinguished by the spin quantum numbers ms which can take the values of +½ or –½.
+These are called the two spin states of the electron and are normally represented by two arrows, ↑ (spin up) and ↓ (spin down). Two electrons that have different ms values (one +½ and the other –½) are said to have opposite spins. An orbital cannot hold more than two electrons and these two electrons should have opposite spins.
+To sum up, the four quantum numbers provide the following information :
+i) n defines the shell, determines the size of the orbital and also to a large extent the energy of the orbital.
+ii) There are n subshells in the nth shell. l identifies the subshell and determines the shape of the orbital (see section
+2.6.2). There are (2l+1) orbitals of each type in a subshell, that is, one s orbital (l = 0), three p orbitals (l = 1) and five d orbitals (l = 2) per subshell. To some extent l also determines the energy of the orbital in a multi-electron atom.
+iii) m l designates the orientation of the orbital. For a given value of l, m l has (2l+1) values, the same as the number of orbitals per subshell. It means that orbit, orbital and its importance
+Orbit and orbital are not synonymous. An orbit, as proposed by Bohr, is a circular path around the nucleus in which an electron moves. A precise description of this path of the electron is impossible according to Heisenberg uncertainty principle. Bohr orbits, therefore, have no real meaning and their existence can never be demonstrated experimentally. An atomic orbital, on the other hand, is a quantum mechanical concept and refers to the one electron wave function
+ψ in an atom. It is characterized by three quantum numbers (n, l and ml) and its value depends upon the coordinates of the electron.
+ψ has, by itself, no physical meaning. It is the square of the wave function i.e., | which has a physical meaning. |
+ψ| 2 at any point in an atom gives the value of probability density at that point. Probability density (|
+ψ| 2 ) is the probability per unit volume and the product of | and a small volume (called a volume element) yields the probability of finding the electron in that volume (the reason for specifying a small volume element is that |
+ψ| 2 varies from one region to another in space but its value can be assumed to be constant within a small volume element).
+The total probability of finding the electron in a given volume can then be calculated by the sum of all the products of |
+ψ| 2 and the corresponding volume elements. It is thus possible to get the probable distribution of an electron in an orbital.
+Reprint 2026-27
+57 STRUCTURE OF ATOM the number of orbitals is equal to the number of ways in which they are oriented.
+iv) ms refers to orientation of the spin of the electron.
+According to the German physicist,
+Max Born, the square of the wave function
+) at a point gives the probability density of the electron at that point. The variation
+ψ 2 as a function of r for 1s and 2s orbitals is given in Fig. 2.12(b). Here again, you may note that the curves for 1s and 2s orbitals are different.
+It may be noted that for 1s orbital the probability density is maximum at the nucleus and it decreases sharply as we move away from it. On the other hand, for 2s orbital the probability density first decreases sharply to zero and again starts increasing.
+After reaching a small maxima it decreases again and approaches zero as the value of r increases further. The region where this probability density function reduces to zero is called nodal surfaces or simply nodes.
+In general, it has been found that ns-orbital has (n – 1) nodes, that is, number of nodes increases with increase of principal quantum number n. In other words, number of nodes for 2s orbital is one, two for 3s and so on.
+These probability density variation can be visualised in terms of charge cloud diagrams
+[Fig. 2.13(a)]. In these diagrams, the density
+Fig. 2.12 The plots of (a) the orbital wave function ψ(r); (b) the variation of probability density ψ 2 (r) as a function of distance r of the electron from the nucleus for 1s and 2s orbitals.
+Problem 2.17
+What is the total number of orbitals associated with the principal quantum number n = 3 ?
+solution
+For n = 3, the possible values of l are
+0, 1 and 2. Thus there is one 3s orbital (n = 3, l = 0 and ml = 0); there are three
+3p orbitals (n = 3, l = 1 and m l = –1, 0,
++1); there are five 3d orbitals (n = 3, l =
+2 and m l = –2, –1, 0, +1+, +2).
+Therefore, the total number of orbitals is 1+3+5 = 9
+The same value can also be obtained by using the relation; number of orbitals
+= n2 , i.e. 32 = 9.
+Problem 2.18
+Using s, p, d, f notations, describe the orbital with the following quantum (a) n = 2, l = 1, (b) n = 4, l = 0, (c) n = 5, l = 3, (d) n = 3, l = 2 solution n l orbital a) 2 1 2p b) 4 0 4s c) 5 3 5f d) 3 2 3d
+2.6.2 shapes of atomic orbitals
+The orbital wave function or
+ψ for an electron in an atom has no physical meaning. It is simply a mathematical function of the coordinates of the electron. However, for different orbitals the plots of corresponding wave functions as a function of r (the distance from the nucleus) are different. Fig. 2.12(a), gives such plots for 1s (n = 1, l = 0) and 2s (n = 2, l = 0) orbitals.
+Reprint 2026-27
+58 CHEMISTRY of the dots in a region represents electron probability density in that region.
+boundary surface diagrams of constant probability density for different orbitals give a fairly good representation of the shapes of the orbitals. In this representation, a boundary surface or contour surface is drawn in space for an orbital on whic

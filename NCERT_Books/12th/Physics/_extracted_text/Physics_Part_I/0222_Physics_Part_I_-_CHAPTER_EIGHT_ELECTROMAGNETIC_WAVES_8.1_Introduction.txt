@@ -1,0 +1,18 @@
+wave had to come in the low frequency region (the radio wave region), as in the Hertz’s experiment (1887).
+Hertz’s successful experimental test of Maxwell’s theory created a sensation and sparked off other important works in this field. Two important achievements in this connection deserve mention. Seven years after Hertz, Jagdish Chandra Bose, working at
+Calcutta (now Kolkata), succeeded in producing and observing electromagnetic waves of much shorter wavelength (25 mm to 5 mm). His experiment, like that of Hertz’s, was confined to the laboratory.
+At around the same time, Guglielmo Marconi in Italy followed Hertz’s work and succeeded in transmitting electromagnetic waves over distances of many kilometres.
+Marconi’s experiment marks the beginning of the field of communication using electromagnetic waves.
+8.3.2 Nature of electromagnetic waves
+It can be shown from Maxwell’s equations that electric and magnetic fields in an electromagnetic wave are perpendicular to each other, and to the direction of propagation. It appears reasonable, say from our discussion of the displacement current. Consider
+Fig. 8.2. The electric field inside the plates of the capacitor is directed perpendicular to the plates. The magnetic field this gives rise to via the displacement current is along the perimeter of a circle parallel to the capacitor plates. So B and E are perpendicular in this case. This is a general feature.
+In Fig. 8.3, we show a typical example of a plane electromagnetic wave propagating along the z direction (the fields are shown as a function of the z coordinate, at a given time t). The electric field Ex is along the x-axis, and varies sinusoidally with z, at a given time. The magnetic field By is along the y-axis, and again varies sinusoidally with z. The electric and magnetic fields Ex and By are perpendicular to each other, and to the direction z of propagation. We can write Ex and
+By as follows:
+Ex= E0 sin (kz– wt ) [8.7(a)]
+By= B0 sin (kz– wt ) [8.7(b)]
+Here k is related to the wave length l of the wave by the usual equation
+Heinrich Rudolf Hertz (1857 – 1894) German physicist who was the first to broadcast and receive radio waves. He produced electro- magnetic waves, sent them through space, and measured their wave- length and speed. He showed that the nature of their vibration, reflection and refraction was the same as that of light and heat waves, establishing their identity for the first time.
+He also pioneered research on discharge of electricity through gases, and discovered the photoelectric effect.
+HEINRICH RUDOLF HERTZ (1857–1894)
+FIGURE 8.3 A linearly polarised electromagnetic wave, propagating in the z-direction with the oscillating electric field E along the x-direction and the oscillating magnetic field B along the y-direction.
+Reprint 2026-27

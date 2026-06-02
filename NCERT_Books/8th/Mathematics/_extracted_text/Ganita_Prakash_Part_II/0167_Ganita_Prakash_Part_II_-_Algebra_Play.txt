@@ -1,0 +1,158 @@
+2. The figure shows a path (the shaded portion)
+laid around a rectangular park EFGH.
+(i) What measurements do you need to find the area of the path? Once you identify the lengths to be measured, assign possible values of your choice to these measurements and find the area of the path. Give a formula for the area.
+An example of a formula — Area of a rectangle = length × width.
+[Hint: There is a relation between the areas of EFGH, the path, and ABCD.] (ii) If the width of the path along each side is given, can you find its area? If not, what other measurements do you need? Assign values of your choice to these measurements and find the area of the path. Give a formula for the area using these measurements.
+[Hint: Break the path into rectangles.] (iii) Does the area of the path change when the outer rectangle is moved while keeping the inner rectangular park EFGH inside it, as shown?
+3. The figure shows a plot with sides 14m and 12m, and with a crosspath. What other measurements do you need to find the area of the crosspath? Once you identify the lengths to be measured, assign some possible values of your choice and find the area of the path. Give a formula for the area based on the measurements you choose.
+Ganita Prakash | Grade 8 | Part-II
+4. Find the area of the spiral tube shown in the figure. The tube has the same width throughout.
+[Hint: There are different ways of finding the area. Here is one method.]
+What should be the length of the straight tube if it is to have the same area as the bent tube on the left?
+5. In this figure, if the sidelength of the square is doubled, what is the increase in the areas of the regions 1, 2 and 3? Give reasons.
+6. Divide a square into 4 parts by drawing two perpendicular lines inside the square as shown in the figure.
+Rearrange the pieces to get a larger square, with a hole inside.
+You can try this activity by constructing the square using cardboard, thick chart paper, or similar materials.
+Triangles
+In the given figure, which triangle has a greater area: ∆XDC or ∆YDC, if both the rectangles are identical?
+In the given figure, which triangle has a greater area: ∆XDC or ∆YBC, if both the rectangles are identical?
+In each case, by dropping the altitudes from X and Y, it becomes clear that each triangle has exactly half the area of the rectangle ABCD.
+Find the area of ∆ XDC.
+Fig. 7.1
+To find the area of a triangle, what measurements do we need?
+We need the sidelengths of the outer rectangle, as in Fig. 7.1.
+How do we get the outer rectangle from the given triangle?
+Ganita Prakash | Grade 8 | Part-II
+BCDE is a rectangle (how?). Let us take its sidelengths to be height and base.
+Area ( ∆ABC) = 1
+2 × base × height
+Since BXAE is a rectangle (how?), the height of the rectangle is the same as the height of the triangle.
+Thus, if the height and the base of a triangle are known, we can find its area.
+Area of a triangle = 1
+2 × base × height.
+Will this formula hold for the kind of triangle, around which we cannot draw a rectangle with BC as the base?
+Here is one way to look at it. The area of ∆ABC is the difference of the areas of ∆ADC and ∆ADB, each of which can be enclosed in a rectangle, as in Fig. 7.1.
+Area (∆ABC) = 1
+2 × h × DC – 1
+2 × h × DB
+2 × h (DC – DB)
+2 × h × BC
+Thus, the area formula holds for all types of triangles.
+Some Applications of the Area Formula
+Find BY.
+BY can be found using the formula for the area of a triangle.
+What is Area (∆ABC)?
+Area (∆ABC) = 1
+2 × AX × BC = 15
+2 sq. units.
+The area of the triangle can also be written as
+Area (∆ABC) = 1
+2 × BY × AC = 1
+2 × 4 × BY = 2 BY.
+2 BY = 15
+So, BY = 15
+4 = 3.75 units.
+Are the 4 triangles obtained by drawing the diagonals of a rectangle (regions 1 – 4 in the figure) of equal areas?
+Clearly, the triangles 1 – 4 are not four congruent triangles.
+To compare their areas, let us consider any two adjacent triangles, say 1 and 2.
+Since the area of a triangle depends on its height and the base, let us consider suitable height-base pairs in each of the triangles. If OD and OB are taken as the bases, then we see that both triangles have the same altitude!
+We also have OB = OD, since the diagonals of a rectangle bisect each other. So, the triangles 1 and 2 have equal areas.
+Arguing this way, we can show that all four triangles have equal areas.
+From this problem, we can make the following general statement.
+In a triangle, the line joining a vertex to the midpoint of its opposite side divides the triangle into two triangles of equal
+Triangles 1 and 2 have equal areas as they have the same measures for height and base
+Ganita Prakash | Grade 8 | Part-II
+Triangles between Parallel Lines with a Common Base
+Line l‖BC. Consider the different triangles that have BC as their base, and with their third vertex lying anywhere on l.
+(i) Which of these triangles has the maximum area, and which has the minimum area?
+(ii) Which of these triangles has the maximum perimeter, and which has the minimum perimeter?
+Here, we will only show how to find the triangle with the minimum perimeter, and leave the other questions as exercises.
+Intuition might suggest that the triangle with the minimum perimeter can be obtained by constructing the perpendicular bisector of BC.
+But how do we justify that this triangle has the least perimeter among all the triangles?
+Firstly, note that in all these triangles, BC is a common side. Therefore, it is enough to consider the sum of the other two sides.
+Let us imagine the line l as a mirror. Then we get a reflection of all the points and lines below it.
+While studying the properties of a plane mirror, we experimentally observed that the distance of the image behind the mirror is the same as the distance of the object (that creates the image) in front of the mirror.
+This law can be used to locate the reflections of the points lying below the line l.
+What can we say about the lengths of AB and its reflection AB ́ ?
+Since ∆AXB ≅ ∆AXB ́ , AB = AB ́ .
+Similarly, AC = AC ́ .
+Therefore, the length of the path B A C is the same as the length of the path B A Ć .
+This is true no matter where point A is on line l.
+So, finding point A that gives the shortest possible path B A C is the same as finding a point A that gives the shortest possible path B A C ́ .
+But the solution to the latter problem is clear — choose
+A on the straight line BC ́ , since BC ́ is the shortest possible path from B to C ́ .
+Therefore, this triangle ∆ABC has the minimum perimeter.
+Analyse whether A lies on the perpendicular bisector of BC.
+Figure it Out
+1. Find the areas of the following triangles:
+A T 3 cm
+Ganita Prakash | Grade 8 | Part-II
+2. Find the length of the altitude BY.
+3. Find the area of ∆SUB, given that it is isosceles,
+SE is perpendicular to UB, and the area of ∆SEB is
+24 sq. units.
+In the Śulba-Sūtras, which are ancient Indian geometric texts that deal with the construction of altars, we can find many interesting problems on the topic of areas. When altars are built, they must have the exact prescribed shape and area. This gives rise to problems of the kind where one has to transform a given shape into another of the same area. The
+Śulba-Sūtras give solutions to many such problems.
+Such problems are also posed and solved in Euclid’s Elements.
+Here are two problems of this kind.
+4. [Śulba-Sūtras] Give a method to transform a rectangle into a triangle of equal area.
+5. [Śulba-Sūtras] Give a method to transform a triangle into a rectangle of equal area.
+6. ABCD, BCEF, and BFGH are identical squares.
+(i) If the area of the red region is 49 sq. units, then what is the area of the blue region?
+(ii) In another version of this figure, if the total area enclosed by the blue and red regions is 180 sq. units, then what is the area of each square?
+7. If M and N are the midpoints of XY and XZ, what fraction of the area of ∆XYZ is the area of ∆XMN? [Hint: Join NY]
+8. Gopal needs to carry water from the river to his water tank. He starts from his house. What is the shortest path he can take from his house to the river and then to the water tank? Roughly recreate the map in your notebook and trace the shortest path.
+Water tank
+Area of any Polygon
+How do we find the area of this quadrilateral?
+What measurements do we need for this?
+If we join BD, the quadrilateral ABCD gets divided into two triangles. By finding their areas, we can find the area of ABCD.
+How do we find the area of this pentagon?
+Can any polygon be divided into triangles?
+It can be seen that any polygon can be divided into triangles. Thus, by knowing how to compute the area of a triangle, we can find the area of any polygon.
+Ganita Prakash | Grade 8 | Part-II
+Figure it Out
+1. Find the area of the quadrilateral ABCD given that AC = 22 cm,
+BM = 3 cm, DN = 3 cm, BM is perpendicular to AC, and DN is perpendicular to AC.
+2. Find the area of the shaded region given that ABCD is a rectangle.
+3. What measurements would you need to find the area of a regular hexagon?
+4. What fraction of the total area of the rectangle is the area of the blue region?
+5. Give a method to obtain a quadrilateral whose area is half that of a given quadrilateral.
+One can derive special formulae to find the areas of a parallelogram, rhombus and trapezium.
+Parallelogram
+We can derive a special formula for the area of a parallelogram by converting it into a rectangle of equal area.
+Give a method to convert a parallelogram into a rectangle of equal area.
+You can try this using a cut-out of a parallelogram.
+Construct AX perpendicular to CD — represented in short as AX CD ^ .
+We call this a height of the parallelogram. Cut the parallelogram into
+∆AXD and trapezium ABCX.
+Can ∆AXD and ABCX fit together, as shown in the figure, to get a rectangle?
+One simple way to check this is to identify the triangle that can complete
+ABCX to a rectangle, and then check if this triangle is congruent to ∆AXD.
+Observe that ∠X = 90°, and so ∠A = 90°, since AB‖XC. We need another right angle to get a rectangle (what about the fourth angle?). To get the third right angle, extend XC to the right and then construct a line perpendicular to XC that passes through B. The ∆BYC completes ABCX to a rectangle. Is ∆AXD congruent to it?
+BY = AX (since ABYX is a rectangle)
+∠BYC = ∠AXD = 90°
+BC = AD (since ABCD is a parallelogram)
+So, by the RHS congruency criterion, ∆BYC ≅ ∆AXD. Thus, ∆AXD will fit exactly over the region occupied by ∆BYC, and convert the parallelogram into a rectangle.
+The process of cutting a figure into pieces and rearranging them to get a different figure of equal area is called dissection.
+Ganita Prakash | Grade 8 | Part-II
+How do we find the area of a parallelogram by dissecting it into a rectangle?
+Area of the parallelogram ABCD = Area of the rectangle ABYX.
+Area of the rectangle ABYX = AX × XY.
+AX is the height of the parallelogram.
+Is there a relation between XY and DC?
+Since DX = CY, we get DC = XY by adding the common part XC to DX and CY. Since DC is the base of the parallelogram, we get
+Area of the parallelogram = base × height.
+Can the area of the parallelogram be determined by taking another side as the base and its corresponding
+Can the parallelogram be cut along CZ and rearranged to form a rectangle?
+It can be seen that this is indeed possible, and so any side and its corresponding height can be used to find the area of a parallelogram.
+Figure it Out
+1. Observe the parallelograms in the figure below.
+(i) What can we say about the areas of all these parallelograms?
+(ii) What can we say about their perimeters? Which figure appears to have the maximum perimeter, and which has the minimum perimeter?
+(a) (b) (c) (d)
+(e) (f) (g)
+2. Find the areas of the following parallelograms:
+3. Find QN.
+4. Consider a rectangle and a parallelogram of the same sidelengths: 5 cm and 4 cm. Which has the greater area? [Hint: Imagine constructing them on the same base.]
+5. Give a method to obtain a rectangle whose area is twice that of a given triangle. What are the different methods that you can think of?

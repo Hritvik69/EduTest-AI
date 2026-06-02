@@ -1,0 +1,408 @@
+Ganita Prakash | Grade 6
+It is easy to add up fractional units to obtain the sum 1, if one uses the same fractional unit, for example,
+2 = 1, 1
+3 = 1, 1
+4 = 1, etc.
+However, can you think of a way to add fractional units that are all different to get 1?
+It is not possible to add two different fractional units to get 1.
+The reason is that 1
+2 is the largest fractional unit, and 1
+To get different fractional units, we would have to replace at least one of the 1
+2 ’s with some smaller fractional unit - but then the sum would be less than 1! Therefore, it is not possible for two different fractional units to add up to 1.
+We can try to look instead for a way to write 1 as the sum of three different fractional units.
+1. Can you find three different fractional units that add up to 1?
+It turns out there is only one solution to this problem (up to changing the order of the 3 fractions)! Can you find it? Try to find it before reading further.
+Here is a systematic way to find the solution. We know that
+3 = 1. To get the fractional units to be different, we will have to increase at least one of the 1
+3 ’s, and decrease at least one of the
+3 ’s to compensate for that increase. The only way to increase
+3 to another fractional unit is to replace it by 1
+2 . So 1
+2 must be one of the fractional units.
+4 = 1. To get the fractional units to be different, we will have to increase one of the 1
+4 ’s and decrease the other 1 compensate for that increase. Now the only way to increase 1
+Reprint 2026-27
+Fractions another fractional unit, that is different from 1
+2 , is to replace it by 1
+So two of the fractions must be 1
+3 ! What must be third fraction then, so that the three fractions add up to 1?
+This explains why there is only one solution to the above problem.
+What if we look for four different fractional units that add up to 1?
+2. Can you find four different fractional units that add up to 1?
+It turns out that this problem has six solutions! Can you find at least one of them? Can you find them all?
+You can try using similar reasoning as in the cases of two and three fractional units — or find your own
+Once you find one solution, try to divide a circle into parts like in the figure above to visualise it!
+Reprint 2026-27
+Ganita Prakash | Grade 6
+ Fraction as equal share: When a whole number of units is divided into equal parts and shared equally, a fraction results.
+ Fractional Units: When one whole basic unit is divided into equal parts, then each part is called a fractional unit.
+ Reading Fractions: In a fraction such as 5
+6 , 5 is called the numerator and 6 is called the denominator.
+ Mixed fractions contain a whole number part and a fractional part.
+ Number line: Fractions can be shown on a number line. Every fraction has a point associated with it on the number line.
+ Equivalent Fractions: When two or more fractions represent the same share or number, they are called equivalent fractions.
+ Lowest terms: A fraction whose numerator and denominator have no common factor other than 1 is said to be in lowest terms or in its simplest form.
+ Brahmagupta’s method for adding fractions: When adding fractions, convert them into equivalent fractions with the same fractional unit (i.e., the same denominator), and then add the number of fractional units in each fraction to obtain the sum. This is accomplished by adding the numerators while keeping the same denominator.
+ Brahmagupta’s method for subtracting fractions: When subtracting fractions, convert them into equivalent fractions with the same fractional unit (i.e., the same denominator), and then subtract the number of fractional units. This is accomplished by subtracting the numerators while keeping the same denominator.
+Reprint 2026-27
+CHAPTER 7 — SOLUTIONS
+Fractions
+Section 7.1
+Page no. 152
+Figure it out
+Q1. Three guavas together weigh 1 kg. If they are roughly of the same size, each guava will roughly weigh ____kg.
+Q2. A wholesale merchant packed 1 kg of rice in four packets of equal weight. The weight of each packet is_______ kg.
+Q3. Four friends ordered 3 glasses of sugarcane juice and shared it equally among themselves. Each one drank ____ glass of sugarcane juice
+Q4. The big fish weighs 𝟏
+𝟐 kg. The small one weighs 𝟏
+𝟒 kg. Together they weigh ____ kg.
+Q5. Arrange these fraction words in order of size from the smallest to the biggest in the empty box below:
+One and a half, three quarters, one and a quarter, half, quarter, two and a half.
+Section 7.2
+Page No. 154
+Q. By dividing the whole chikki into 6 equal parts in different ways, we get 1/6 chikki pieces of different shapes. Are they of the same size?
+Ans. Yes, they are of the same size.
+Page No. 155
+Figure it out
+Q. The figures below show different fractional units of a whole chikki. How much of a whole chikki is each piece?
+Ans. a. 1
+Section 7.3
+Figure it out Page No. 158
+Q1. continue this table of 𝟏
+𝟐 for 2 more steps.
+2 = 6 times 1
+2 = 7 times 1
+Q2. Can you create a similar table for 𝟏
+1-time quarter
+2 times quarter
+3 times quarter
+4 times quarter
+Try Further!
+Q4. Draw a picture and write an addition statement as above to show:
+a. 5 times 𝟏
+𝟒 of a roti b. 9 times 𝟏
+𝟒 of a roti
+4 = 5 times quarter
+4 = 9 times quarter = 2 + 1
+Q5. Match each fractional unit with the correct picture:
+Section 7.4
+Page no. 159
+Q1. Here, the fractional unit is dividing a length of 1 unit into three equal parts. Write the fraction that gives the length of the blue line in the box or in your notebook.
+Q2. Here, a unit is divided into 5 equal parts. Write the fraction that gives the length of the blue lines in the respective boxed or in your notebook.
+Q3. Now, a unit is divided into 8 equal parts. Write the appropriate fractions in your notebook.
+Page no. 160
+Figure it out
+Q1. On a number line, draw lines of lengths 𝟏
+𝟏𝟎, 𝟑
+𝟏𝟎, and 𝟒
+Q3. How many fractions lie between 0 and 1? Think, discuss with your classmates, and write your answer.
+Ans. Uncountable number of fractions
+Q4. What is the length of the blue line and black line shown below? The distance between
+0 and 1 is 1 unit long, and it is divided into two equal parts. The length of each part
+𝟐. So the blue line is 𝟏
+𝟐 units long. Write the fraction that gives the length of the black line in the box.
+Q5. Write the fraction that gives the lengths of the black lines in the respective boxes.
+Section 7.5
+Page No. 162
+Figure it out
+Q1. How many whole units are there in 𝟕
+Ans. There are 3 whole units in 7
+Q2. How many whole units are there in 𝟒
+𝟑 and in 𝟕
+Ans. There is 1 whole unit in 4
+3 and 2 whole units in 7
+Figure it out
+Q1. Figure out the number of whole units in each of the following fractions:
+𝟑 b. 𝟏𝟏
+𝟓 c. 𝟗
+Ans. a. 2
+Q2. Can all fractions greater than 1 be written as such mixed numbers?
+Ans. No. For example: 8
+4 = 2 cannot be written as a mixed number.
+Q3. Write the following fractions as mixed fractions (e.g., 𝟗
+𝟐 = 𝟒 𝟏
+𝟐 b. 𝟗
+𝟓 c. 𝟐𝟏
+𝟏𝟗 d. 𝟒𝟕
+𝟗 e. 𝟏𝟐
+𝟏𝟏 f. 𝟏𝟗
+Ans. a. 9
+19 = 1 2
+11 = 1 1
+Page No. 163
+Figure it out
+Q1. Write the following mixed numbers as fractions:
+𝟒 b. 7 𝟐
+𝟑 c. 9𝟒
+𝟗 d. 3𝟏
+𝟔 e. 2 𝟑
+𝟏𝟏 f. 3 𝟗
+Ans. a. 31
+= 1 + 1 + 1 + 1
+= (4 × 1
+4) + (4 × 1
+Section 7.6
+Page no. 164
+Q1. Are the lengths 𝟏
+𝟐 and 𝟑
+𝟔 equal?
+Ans. Yes.
+Q2. Are 𝟐
+𝟑 and 𝟒
+𝟔 equivalent fractions? Why?
+Ans. Yes, since they are of equal length which can be seen in fractional wall also.
+Q3. How many pieces of length 𝟏
+𝟔 will make a length of 𝟏
+Ans. 3 pieces.
+Q4. How many pieces of length 𝟏
+𝟔 will make a length of 𝟏
+Ans. 2 pieces.
+Page no. 165
+Figure it out
+Q1. Are 𝟑
+𝟖, and 𝟓
+𝟏𝟎 are equivalent fractions? Why?
+Ans. Yes. In the fraction wall their lengths can be seen to be equal.
+Q2. Write two equivalent fractions for 𝟐
+Ans. Two equivalent fractions for 2
+9. (Try for other equivalent fractions also)
+𝟔 = = = = = ……. (Write as many as you can)
+15 = …….
+Page no. 166
+Figure it out
+Q1. Three rotis are shared equally by four children. Show the division in the picture and write a fraction for how much each child gets. Also, write the corresponding division facts, addition facts, and, multiplication facts.
+Fraction of roti each child gets is ______.
+Division fact:
+Addition fact:
+Multiplication fact:
+Compare your picture and answers with your classmates!
+Ans. Each child gets 3
+Division fact: 3  4 = 3
+Addition fact: 3 = 3
+Multiplication fact: 3 = 4 × 3
+Q2. Draw a picture to show how much each child gets when 2 rotis are shared equally by
+4 children. Also, write the corresponding division facts, addition facts, and multiplication facts.
+Ans. 2 Rotis equally shared by 4 children. Each child
+Division fact :2  4 = 2
+Addition fact: 2 = 1
+Multiplication fact: 2 = 4 × 1
+Q3. Anil was in a group where 2 cakes were divided equally among 5 children. How much cake would Anil get?
+Ans. Anil would get 2
+Page no. 168
+Section 7.6
+Figure it out
+Q1. Find the missing numbers:
+a. 5 glasses of juice shared equally among 4 friends is the same as ____ glasses of juice shared equally among 8 friends.
+b. 4 kg of potatoes divided equally in 3 bags is the same as 12 kgs of potatoes divided equally in __ bags.
+𝟑 = 𝟏𝟐 c. 7 rotis divided among 5 children is the same as____rotis divided among _____ children.
+Ans. One of the choices is 14, 10 (Try for other options also.)
+Page no. 170
+Section 7.6
+Q. Suppose the number of children is kept the same, but the number of units that are being shared is increased? What can you say about each child’s share now? Why?
+Discuss how your reasoning explains
+𝟕 and 𝟏
+Ans. Each child will have larger share now.
+If the number of units to be shared increase with same number of children then each child will have larger share.
+Q. Now, decide in which of the two groups will each child get a larger share:
+1. Group 1: 3 glasses of sugarcane juice divided equally among 4 children.
+Group 2: 7 glasses of sugarcane juice divided equally among 10 children.
+2. Group 1: 4 glasses of sugarcane juice divided equally among 7 children.
+Group 2: 5 glasses of sugarcane juice divided equally among 7 children.
+Which groups were easier to compare? Why?
+Ans. Each child’s share in group 1 = 4
+Each child’s share in group 2 = 5
+The groups in second part were easier to compare because the number of children is
+Page no. 172
+Section 7.6
+Q. Find equivalent fractions for the given pairs of fractions such that the fractional units are the same.
+𝟐 and 𝟑
+𝟓 b. 𝟖
+𝟑 and 𝟓
+𝟔 c. 𝟑
+𝟒 and 𝟑
+𝟓 d. 𝟔
+𝟕 and 𝟖
+𝟒 and 𝟓
+𝟐 f. 𝟏
+𝟏𝟎 and 𝟐
+𝟗 g. 𝟖
+𝟑 and 𝟏𝟏
+𝟒 h. 𝟏𝟑
+𝟔 and 𝟏
+10 and 6
+20 and 12
+35 and 56
+4 and 10
+90 and 20
+12 and 33
+18 and 2
+Page no. 173
+Section 7.6
+Figure it out
+Q. Express the following fractions in lowest terms:
+𝟓𝟏 b. 𝟔𝟒
+𝟏𝟒𝟒 c. 𝟏𝟐𝟔
+𝟏𝟒𝟕 d. 𝟓𝟐𝟓
+Ans. a. 1
+Page no. 174
+Section 7.7
+Figure it out
+Q1. Compare the following fractions and justify your answers:
+𝟐 b. 𝟒
+𝟕 c. 𝟕
+𝟏𝟎 , 𝟗
+𝟓 e. 𝟗
+Q2. Write the following fractions in ascending order.
+𝟏𝟎, 𝟏𝟏
+𝟏𝟓, 𝟐
+𝟓 b. 𝟏𝟗
+𝟐𝟒 , 𝟓
+Ans. a. 2
+Q3. Write the following fractions in descending order.
+𝟏𝟔, 𝟕
+𝟖, 𝟏𝟑
+𝟒 , 𝟏𝟕
+𝟑𝟐 b. 𝟑
+𝟒, 𝟏𝟐
+𝟏𝟐, 𝟓
+Ans. a. 13
+Section 7.8
+Page no. 177
+Q. Try adding 𝟒
+𝟕 using a number line. Do you get the same answer?
+7 = 1 + 3
+Yes, using a number line, the answer is same.
+Page no. 179
+Section 7.8
+Figure it out
+Q1. Add the following fractions using Brahmagupta’s method:
+Q2. Rahim mixes 𝟐
+𝟑 litres of yellow paint with 𝟑
+𝟒 litres of blue paint to make green paint.
+What is the volume of green paint he has made?
+Ans. 1 5
+12 litres
+Q3. Geeta bought 𝟐
+𝟓 meter of lace and Shamim bought 𝟑
+𝟒 meter of the same lace to put a complete border on a table cloth whose perimeter is 1 meter long. Find the total length of the lace they both have bought. Will the lace be sufficient to cover the whole border?
+Ans. Total length of the lace = 1 3
+Section 7.8
+Figure it out (Page no. 181)
+4, in lowest terms)
+Q3. 𝟏𝟎
+𝟐𝟕 - 𝟏
+3, in lowest terms)
+Page no. 181
+Section 7.8
+Figure it out
+Ans. 1. 1
+Figure it out
+Q1. Carry out the following subtractions using Brahmagupta’s method:
+Ans. a. 1
+Q2. Subtract as indicated:
+𝟒 from 𝟏𝟎
+𝟑 b. 𝟏𝟖
+𝟓 from 𝟐𝟑
+𝟑 c. 𝟐𝟗
+𝟕 from 𝟒𝟓
+Ans. a. 1
+Q3. Solve the following problems:
+a. Jaya’s school is 𝟕
+𝟏𝟎 km from her home. She takes an auto for 𝟏
+𝟐 km from her home daily, and then walks the remaining distance to reach her school. How much does she walk daily to reach the school?
+b. Jeevika takes 𝟏𝟎
+𝟑 minutes to take a complete round of the park and her friend
+Namit takes 𝟏𝟑
+𝟒 minutes to do the same. Who takes less time and by how much?
+Ans. a. 1 b. Namit takes less time than Jeevika, by 1
+12 minutes
+Playing with
+ConstruCtions
+8.1 Artwork
+Observe the following figures and try drawing them freehand.
+Fig. 8.1
+Reprint 2026-27
+Ganita Prakash | Grade 6
+Now, arm yourself with a ruler and a compass. Let us explore if we can draw these figures with these tools and get familiar with a compass.
+Observe the way a compass is made. What can one draw with the compass? Explore!
+Do you know what curves are? They are any shapes that can be drawn on paper with a pencil, and include straight lines, circles and other figures as shown below:
+Mark a point ‘P’ in your notebook. Then, mark as many points as possible, in different directions, that are 4 cm away from P.
+Think: Imagine marking all the points of 4 cm distance from the point P. How would they look?
+Try to draw it and verify if it is correct by taking some points on the curve and checking if their distances from P are indeed 4 cm.
+Explore, if you have not already done so, and see if a compass can be used for this purpose.
+You can start by marking a few points of distance 4 cm from P using the compass.
+How can this be done?
+Reprint 2026-27
+Playing with Constructions
+You will have to open up the compass against a ruler (see Fig. 8.2)
+such that the distance between the tip of the compass and the pencil is 4 cm.
+Now, try to get the full curve.
+Hint: Keep the point of the compass fixed moving only the pencil.
+What is the shape of the curve? It is a circle!
+Take a point on the circle. What will be its distance from P— equal to 4 cm, less than 4 cm or greater than 4 cm? Similarly, what will be the distance between P and another point on the circle?
+As shown in the figure, the point P is called the centre of the circle and the distance between the centre and any point on the circle is called the radius of the circle.
+1 0 2 3 4 5 6 7
+Fig. 8.2
+Having explored the use of a compass, go ahead and recreate the images in Fig. 8.1.
+Can you make the figures look as good as the figures shown there?
+Try again if you want to!
+Also, has the use of instruments made the construction easier?
+Now try constructing the following figures.
+Reprint 2026-27
+Ganita Prakash | Grade 6
+Construct
+1. A Person
+How will you draw this?
+This figure has two components.
+You might have figured out a way of drawing the first part. For drawing the second part, see this.
+The challenge here is to find out where to place the tip of the compass and the radius to be taken for drawing this curve. You can fix a radius in the compass and try placing the tip of the
+Reprint 2026-27
+Playing with Constructions compass in different locations to see which point works for getting the curve. Use your estimate where to keep the tip.
+2. Wavy Wave
+Construct this.
+As the length of the central line is not specified, we can take it to be of any length.
+Let us take AB to be the central line such that the length of AB is
+8 cm. We write this as AB = 8 cm.
+Here, the first wave is drawn as a half circle.
+Figure it Out
+1. What radius should be taken in the compass to get this half circle?
+What should be the length of AX?
+2. Take a central line of a different length and try to draw the wave
+3. Try to recreate the figure where the waves are smaller than a half circle (as appearing in the neck of the figure, ‘A Person’).
+The challenge here is to get both the waves to be identical.
+This may be tricky!
+Reprint 2026-27
+Ganita Prakash | Grade 6
+How do you draw these eyes with a compass?
+For a hint, go to the end of the chapter.
+Make other artwork of your choice with a ruler and a compass.
+8.2 Squares and Rectangles
+Now, let us look at some basic figures having straight lines in their boundary.
+Fig. 8.3
+What shapes are these? Yes, these are our familiar squares and rectangles. But what makes them squares and rectangles?
+Consider this rectangle ABCD.
+The points A, B, C and D are the corners of the rectangle. Lines AB, BC, CD and DA are its sides. Its angles are ∠A, ∠B, ∠C
+The blue sides AB and CD are called opposite sides, as they lie opposite to each other. Likewise, AD and BC is the other pair of opposite sides.
+Fig. 8.4
+Reprint 2026-27
+Playing with Constructions
+Recall that, in a rectangle:
+R1) The opposite sides are equal in length, and
+R2) All the angles are 90°.
+As in the case of rectangles, the corners and sides are defined for a square in the same manner.
+A square satisfies the following two properties:
+S1) All the sides are equal, and
+S2) All the angles are 90o.
+See the rectangle in Fig. 8.4 and the name given to it: ABCD. This rectangle can also be named in other ways — BCDA, CDAB, DABC,
+ADCB, DCBA, CBAD and BADC. So, can a rectangle be named using any combination of the labels around its corners? No! For example, it cannot be named ABDC or ACBD. Can you see what names are allowed and what names are not?
+In a valid name, the corners occur in an order of travel around the rectangle, starting from any corner.
+Which of the following is not a name for this square?
+Rotated Squares and Rectangles
+Here is a square piece of paper having all its sides equal in length and all angles equal to 90°. It is rotated as shown in the figure. Is it still a square?
+Let us check if the rotated paper still satisfies the properties of a square.
+• Are all the sides still equal? Yes.
+• Are all the angles still 90°? Yes.
+Reprint 2026-27
+Ganita Prakash | Grade 6
+Rotating a square does not change its lengths and angles.
+Ther

@@ -1,0 +1,117 @@
+InformatIon and CommunICatIon teChnology SkIllS 101 headphone port is called the line out port, i.e., it is meant for sound output.
+• Ethernet port (as shown in Figure 3.18) is used for connecting the system to high speed Internet cable.
+• Power port (as shown in Figure 3.19) is used for connecting the computer system to the power
+Figure 3.18: Ethernet Port
+Figure 3.19: Power Port
+The teacher will facilitate these activities by showing you the e-learning module for this lesson via http://www.psscive.ac.in/
+Employability_Skills.html. The module will include videos and e-content for the above topics as well as detailed instructions for some activities below.
+Initial thinking activity
+After watching the initial video write why do you think it is important to know the different parts of a computer?
+Activity 1
+Knowing your computer
+Materials required
+Pen/pencil, notebook
+Procedure
+• Form groups of 5 students each group.
+• List the basic input output devices you need in a computer.
+• Draw a diagram of a computer system showing all the devices connected to it. Label the diagram and mention the uses of the various devices.
+• One volunteer from the group presents the illustration to the class and explains it to the students.
+Activity 2
+Connecting devices to a computer
+Materials required
+Pen/pencil, notebook, computer
+Procedure
+• Form groups of 5 students in each group.
+• Each member of the group connects one of the parts of the computer, such as printer, monitor, keyboard, mouse and the speakers to the central processing unit.
+• Fit the cables into the correct ports as explained and check if each device is working properly.
+Unit 3.indd 101 23-08-2018 16:20:39
+E mployability SkillS – ClaSS iX 102
+A. Multiple choice questions
+1. Which of the following units make up the CPU? Choose and tick all the correct options.
+(a) Processing Unit (b) Input Unit (c) Memory Unit (d) Control Unit (e) Output Unit
+2. Which of the following are names of ports in a computer?
+Choose and tick all the correct options.
+(a) HDMI (b) Input (e) Ethernet
+3. There is a talent contest in your town. For participating in the audition, you have to send a recording of a song.
+What would you connect to your computer to record your song?
+(a) Keyboard (b) Microphone (c) Scanner (d) Mouse
+B. Short answer questions
+Write the purpose of the I/O devices
+Input/Output device Purpose
+Mic/microphone
+Barcode Reader
+What have you learnt?
+After completing this session, you will be able to
+• identify the basic parts of a computer.
+• list the use of input and output devices.
+• list the functions of the CPU.
+• differentiate between RAM and ROM.
+• identify the different ports and connections on a computer.
+Check Your Progress noteS
+Unit 3.indd 102 23-08-2018 16:20:39
+InformatIon and CommunICatIon teChnology SkIllS 103
+S eSSIon 5: baSIc computer operatIonS
+Computer hardware and software
+A computer system consists of two main parts—the hardware and the software. The physical parts that we can see and touch are called the hardware. It is the machinery of a computer. These are the keyboard, monitor, CPU, etc. The software that we cannot see makes the hardware work the way we want. For example, as shown in Figure 3.20, the monitor is a physical device or the hardware. When we start a program, it is displayed on the monitor. This is done by the software which displays things on monitor. Hardware would not be of any use without the software.
+The most important software in any computer is the
+Operating System (OS). This is the software that starts
+Figure 3.21: Ubuntu Desktop
+Figure 3.20: Hardware and Software working as soon as we switch on a computer. It displays the desktop on the monitor. Some of the most commonly used operating systems for laptops and desktop are
+Ubuntu (as shown in Figure 3.21), Microsoft Windows and Mac OS.
+Mobile devices also have operating system that helps them perform their functions. Some of the mobile
+Unit 3.indd 103 23-08-2018 16:20:39
+E mployability SkillS – ClaSS iX 104 operating systems are Apple iOS and Google Android (as shown in Figure 3.22).
+All the computer applications, such as browsers, games, Office tools, etc., are also software programs that perform a particular function.
+Starting a computer
+What is the first thing you do after you wake up in the morning? What if your father tells you to do your homework immediately? Can you do it? Maybe, but normally you would do some daily activities and get ready before you start working? Similarly when a computer is switched on, it performs some basic processes/ functions, before it is ready to take instructions from the user.
+To start a computer, press the Power button on the CPU. This will start the Windows operating system and display the Windows desktop on the monitor.
+Basic functions performed when a computer
+Just as we go about with our morning routine, without anyone telling us what to do, a computer automatically runs a basic program called BIOS (Basic Input/Output
+System) as soon as it is switched on or the power button is pushed on.
+The BIOS first does a self-test. If the self-test shows that the system is fine, the BIOS will load the
+Operating System. This means that the computer’s operating system, for example Ubuntu, is now ready to take inputs from the user.
+Login and logout
+When multiple people use the same computer, each person has his/her own files and applications. To make sure nobody else sees your work, you have login-IDs and passwords. A login and password is like a key to the lock which allows you to use the computer.
+Figure 3.22: Mobile Android OS
+Figure 3.23: Starting a Computer
+Figure 3.24: Sign-in in Windows
+Unit 3.indd 104 23-08-2018 16:20:40
+InformatIon and CommunICatIon teChnology SkIllS 105
+When you login to the computer with your login-ID and password (as shown in Figures 3.24 and 3.25), the computer knows that you are an authorised person and allows you to work on the applications in the computer.
+Once you finish working, you must log out or sign out so that no one else can see your work.
+Shutting down a computer
+You can shut down the computer in Ubuntu by clicking
+“Systems” at the top right and then click on Shut Down as shown in Figure 3.25. When you click Shut down, the Operating System will close all the applications and turn off the computer.
+Using the keyboard
+A keyboard is an input device used to type text, numbers and commands into the computer, as shown in Figure 3.26.
+Function keys
+Keys labelled from F1 to
+F12 are function keys.
+You use them to perform specific functions. Their functions differ from program to program. The function of the F1 key in most programs is to get help on that program. Some keyboards may have fewer function
+Control keys
+Keys, such as Control (CTRL), SHIFT, SPACEBAR,
+ALT, CAPS LOCK, and TAB, are special control keys that perform special functions depending on when and where they are used.
+Enter key
+The label on this key can be either ENTER or RETURN, depending on the brand of computer that you are using.
+You use the ENTER or the RETURN key to move the
+Figure 3.25: Sign-in in
+Figure 3.26: Parts of a Keyboard
+Unit 3.indd 105 23-08-2018 16:20:40
+E mployability SkillS – ClaSS iX 106 cursor to the beginning of a new line. In some programs, it is used to send commands and to confirm a task on a computer.
+Punctuation keys
+It includes keys for punctuation marks, such as colon (:), semicolon (;), question mark (?), single quotation marks (‘ ’), and double quotation marks (“ ”).
+Navigation keys
+Keys, such as the arrow keys, HOME, END, PAGE UP, and PAGE DOWN are navigation keys. These are used to move up and down, right and left in a document. The
+HOME and END keys move the cursor to the left/right end of a line of text, respectively. The PAGE UP and
+PAGE DOWN keys are used to move one page up and one page down, respectively.
+Command keys
+Keys, such as INSERT (INS), DELETE (DEL), and
+BACKSPACE are command keys. When the INSERT key is turned ON, it helps you overwrite characters to the right of the cursor. The DELETE key and the BACKSPACE key are used to remove typed text, characters, and other objects on the right and left side of the cursor, respectively.
+Windows key
+Pressing this key opens the Start menu.
+Using a mouse
+A mouse, as shown in Figure 3.27 is a small device that you can use to move, select, and open items on your computer screen. Let us see some of the functions that can be performed using a mouse. Different application will behave differently to the mouse actions. Here we use the File Explorer to see the effect of the mouse action.
+Roll over/hover
+Some actions can be done by simply rolling over or hovering over an item. When you bring the mouse
+Figure 3.27: Mouse
+Unit 3.indd 106 23-08-2018 16:20:40

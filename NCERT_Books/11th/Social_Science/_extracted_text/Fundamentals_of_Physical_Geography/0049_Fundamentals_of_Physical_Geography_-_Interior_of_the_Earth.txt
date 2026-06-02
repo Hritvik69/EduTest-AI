@@ -1,0 +1,96 @@
+GEOMORPHIC PROCESSES 39 driving forces. It should become clear from this chart that for each process there exists a distinct driving force or energy.
+As there are different climatic regions owing to variations in thermal gradients created by latitudinal, seasonal, and land and water spread on the surface of the earth, the exogenic geomorphic processes vary from region to region. The density, type and distribution of vegetation which largely depend upon precipitation and temperature also exert under volcanoes in the Unit II and under igneous rocks in the preceding chapter in this
+What do the words volcanism and volcanoes indicate?
+EXOGENIC PROCESSES
+The exogenic processes derive their energy from atmosphere determined by the ultimate energy from the sun and also the gradients created by tectonic factors.
+Why do you think that the slopes or gradients are created by tectonic factors?
+Gravitational force acts upon all earth materials having a sloping surface and tend to produce movement of matter in down slope direction. Force applied per unit area is called stress. Stress is produced in a solid by pushing or pulling. This induces deformation. Forces acting along the faces of earth materials are shear stresses (separating forces). It is this stress that breaks rocks and other earth materials. The shear stresses result in angular displacement or slippage.
+Besides the gravitational stress earth materials become subjected to molecular stresses that may be caused by a number of factors amongst which temperature changes, crystallisation and melting are the most common. Chemical processes normally lead to loosening of bonds between grains, dissolving of soluble minerals or cementing materials. Thus, the basic reason that leads to weathering, mass movements, and erosion is development of stresses in the body of the earth materials.
+Temperature and precipitation are the two important climatic elements that control various processes.
+All the exogenic geomorphic processes are covered under a general term, denudation. The word ‘denude’ means to strip off or to uncover. Weathering, mass wasting/movements, erosion and transportation are included in denudation.
+The flow chart (Figure 5.1) gives the denudation processes and their respective influence indirectly on exogenic geomorphic processes. Within different climatic regions there may be local variations of the effects of different climatic elements due to altitudinal differences, aspect variations and the variation in the amount of insolation received by north and south facing slopes as compared to east and west facing slopes. Further, due to differences in wind velocities and directions, amount and kind of precipitation, its intensity, the relation between precipitation and evaporation, daily range of temperature, freezing and thawing frequency, depth of frost penetration, the geomorphic processes vary within any climatic region.
+What is the sole driving force behind all the exogenic processes?
+Climatic factors being equal, the intensity of action of exogenic geomorphic processes depends upon type and structure of rocks. The term structure includes such aspects of rocks as folds, faults, orientation and inclination of beds, presence or absence of joints, bedding planes, hardness or softness of constituent minerals, chemical susceptibility of mineral constituents; the permeability or impermeability
+Figure 5.1 : Denudational processes and their driving forces
+Reprint 2026-27
+FUNDAMENTALS OF PHYSICAL GEOGRAPHY 40 etc. Different types of rocks with differences in their structure offer varying resistances to various geomorphic processes. A particular rock may be resistant to one process and non- resistant to another. And, under varying climatic conditions, particular rocks may exhibit different degrees of resistance to geomorphic processes and hence they operate at differential rates and give rise to differences in topography. The effects of most of the exogenic geomorphic processes are small and slow and may be imperceptible in a short time span, but will in the long run affect the rocks severely due to continued fatigue.
+Finally, it boils down to one fact that the differences on the surface of the earth though originally related to the crustal evolution continue to exist in some form or the other due to differences in the type and structure of earth materials, differences in geomorphic processes and in their rates of operation.
+Some of the exogenic geomorphic processes have been dealt in detail here.
+WEATHERING
+Weathering is action of elements of weather and climate over earth materials. There are a number of processes within weathering which act either individually or together to affect the earth materials in order to reduce them to fragmental state.
+Weathering is defined as mechanical disintegration and chemical decom- position of rocks through the actions of various elements of weather and climate.
+As very little or no motion of materials takes place in weathering, it is an in-situ or on-site process.
+Is this little motion which can occur sometimes due to weathering synonymous with transportation? If not, why?
+Weathering processes are conditioned by many complex geological, climatic, topographic and vegetative factors. Climate is of particular importance. Not only weathering processes differ from climate to climate, but also the depth of the weathering mantle (Figure 5.2).
+Figure 5.2 : Climatic regimes and depth of weathering mantles (adapted and modified from Strakhov, 1967)
+Activity
+Mark the latitude values of different climatic regimes in Figure 6.2 and compare the details.
+There are three major groups of weathering processes : (i) chemical; (ii) physical or mechanical; (iii) biological weathering processes.
+Very rarely does any one of these processes ever operate completely by itself, but quite often a dominance of one process can be seen.
+Chemical Weathering Processes
+A group of weathering processes viz; solution, carbonation, hydration, oxidation and reduction act on the rocks to decompose, dissolve or reduce them to a fine clastic state through chemical reactions by oxygen, surface and/or soil water and other acids. Water and air (oxygen and carbon dioxide) along with heat must be present to speed up all chemical reactions. Over and above the carbon dioxide present in the air, decomposition of plants and animals increases the quantity of carbon dioxide underground. These chemical reactions on various minerals are very much similar to the chemical reactions in a laboratory.
+Physical Weathering Processes
+Physical or mechanical weathering processes depend on some applied forces. The applied
+Reprint 2026-27
+GEOMORPHIC PROCESSES 41 forces could be: (i) gravitational forces such as overburden pressure, load and shearing stress;
+(ii) expansion forces due to temperature changes, crystal growth or animal activity;
+(iii) water pressures controlled by wetting and drying cycles. Many of these forces are applied both at the surface and within different earth materials leading to rock fracture. Most of the physical weathering processes are caused by thermal expansion and pressure release.
+These processes are small and slow but can cause great damage to the rocks because of continued fatigue the rocks suffer due to repetition of contraction and expansion.
+BIOLOGICAL ACTIVITY AND WEATHERING
+Biological weathering is contribution to or removal of minerals and ions from the weathering environment and physical changes due to growth or movement of organisms.
+Burrowing and wedging by organisms like earthworms, termites, rodents etc., help in exposing the new surfaces to chemical attack and assists in the penetration of moisture and air. Human beings by disturbing vegetation, ploughing and cultivating soils, also help in mixing and creating new contacts between air, water and minerals in the earth materials.
+Decaying plant and animal matter help in the production of humic, carbonic and other acids which enhance decay and solubility of some elements. Plant roots exert a tremendous pressure on the earth materials mechanically breaking them apart.
+SPECIAL EFFECTS OF WEATHERING
+Exfoliation
+This has already been explained under physical weathering processes of unloading, thermal contraction and expansion and salt weathering. Exfoliation is a result but not a process. Flaking off of more or less curved sheets of shells from over rocks or bedrock results in smooth and rounded surfaces (Figure 5.3). Exfoliation can occur due to expansion and contraction induced by temperature changes. Exfoliation domes and tors result due to unloading and thermal expansion respectively.
+SIGNIFICANCE OF WEATHERING
+Weathering processes are responsible for breaking down the rocks into smaller fragments and preparing the way for formation of not only regolith and soils, but also erosion and mass movements. Biomes and bio-diversity is basically a result of forests (vegetation) and forests depend upon the depth of weathering mantles. Erosion cannot be significant if the rocks are not weathered.
+That means, weathering aids mass wasting, erosion and reduction of relief and changes in landforms are a consequence of erosion.
+Weathering of rocks and deposits helps in the enrichment and concentrations of certain valuable ores of iron, manganese, aluminium, copper etc., which are of great importance for the national economy. Weathering is an important process in the formation of soils.
+When rocks undergo weathering, some materials are removed through chemical or physical leaching by groundwater and thereby the concentration of remaining (valuable) materials increases. Without such a weathering taking place, the concentration of the same valuable material may not be sufficient and economically viable to exploit, process and refine. This is what is called enrichment.
+MASS MOVEMENTS
+These movements transfer the mass of rock debris down the slopes under the direct influence of gravity. That means, air, water or
+Fig.5.3 : Exfoliation (Flacking) and granular disintegration
+Reprint 2026-27
+FUNDAMENTALS OF PHYSICAL GEOGRAPHY 42 ice do not carry debris with them from place to place but on the other hand the debris may carry with it air, water or ice. The movements of mass may range from slow to rapid, affecting shallow to deep columns of materials and include creep, flow, slide and fall. Gravity exerts its force on all matter, both bedrock and the products of weathering. So, weathering is not a pre-requisite for mass movement though it aids mass movements. Mass movements are very active over weathered slopes rather than over unweathered materials.
+Mass movements are aided by gravity and no geomorphic agent like running water, glaciers, wind, waves and currents participate in the process of mass movements. That means mass movements do not come under erosion though there is a shift (aided by gravity) of materials from one place to another. Materials over the slopes have their own resistance to disturbing forces and will yield only when force is greater than the shearing resistance of the materials. Weak unconsolidated materials, thinly bedded rocks, faults, steeply dipping beds, vertical cliffs or steep slopes, abundant precipitation and torrential rains and scarcity of vegetation etc., favour mass movements.
+Several activating causes precede mass movements. They are : (i) removal of support from below to materials above through natural or artificial means; (ii) increase in gradient and height of slopes; (iii) overloading through addition of materials naturally or by artificial filling; (iv) overloading due to heavy rainfall, saturation and lubrication of slope materials;
+(v) removal of material or load from over the original slope surfaces; (vi) occurrence of earthquakes, explosions or machinery;
+(vii) excessive natural seepage; (viii) heavy drawdown of water from lakes, reservoirs and rivers leading to slow outflow of water from under the slopes or river banks; (ix) indis- criminate removal of natural vegetation.
+Heave (heaving up of soils due to frost growth and other causes), flow and slide are the three forms of movements. Figure 5.5 shows the relationships among different types of mass movements, their relative rates of movement and moisture limits.
+Landslides
+These are relatively rapid and perceptible movements. The materials involved are relatively dry. The size and shape of the detached mass depends on the nature of discontinuities in the rock, the degree of weathering and the steepness of the slope. Depending upon the type of movement of materials several types are identified in this category.
+Slump is slipping of one or several units of rock debris with a backward rotation with respect to the slope over which the movement takes place (Figure 5.4). Rapid rolling or sliding
+Figure 5.5 : Landslide scars in Shiwalik Himalayan ranges near river Sarada at India-Nepal border, Uttar Pradesh of earth debris without backward rotation of mass is known as debris slide. Debris fall is nearly a free fall of earth debris from a vertical or overhanging face. Sliding of individual rock masses down bedding, joint or fault surfaces is rockslide. Over steep slopes, rock sliding is very fast and destructive. Figure 5.5 shows landslide scars over steep slopes. Slides occur as planar failures along discontinuities like
+Figure 5.4 : Slumping of debris with backward rotation
+Reprint 2026-27
+GEOMORPHIC PROCESSES 43 bedding planes that dip steeply. Rock fall is free falling of rock blocks over any steep slope keeping itself away from the slope. Rock falls occur from the superficial layers of the rock face, an occurrence that distinguishes it from rockslide which affects materials up to a substantial depth.
+Between mass wasting and mass movements, which term do you feel is most appropriate? Why? Can solifluction be included under rapid flow movements?
+Why it can be and can’t be?
+In our country, debris avalanches and landslides occur very frequently in the
+Himalayas. There are many reasons for this. One, the Himalayas are tectonically active. They are mostly made up of sedimentary rocks and unconsolidated and semi-consolidated deposits. The slopes are very steep. Compared to the
+Himalayas, the Nilgiris bordering
+Tamilnadu, Karnataka, Kerala and the
+Western Ghats along the west coast are relatively tectonically stable and are mostly made up of very hard rocks; but, still, debris avalanches and landslides occur though not as frequently as in the
+Himalayas, in these hills. Why? Many slopes are steeper with almost vertical cliffs and escarpments in the Western
+Ghats and Nilgiris. Mechanical weathering due to temperature changes and ranges is pronounced. They receive heavy amounts of rainfall over short periods.
+So, there is almost direct rock fall quite frequently in these places along with landslides and debris avalanches.
+EROSION AND DEPOSITION
+Erosion involves acquisition and transportation of rock debris. When massive rocks break into smaller fragments through weathering and any other process, erosional geomorphic agents like running water, groundwater, glaciers, wind and waves remove and transport it to other places depending upon the dynamics of each of these agents. Abrasion by rock debris carried by these geomorphic agents also aids greatly in erosion. By erosion, relief degrades, i.e., the landscape is worn down. That means, though weathering aids erosion it is not a pre-condition for erosion to take place. Weathering, mass-wasting and erosion are degradational processes. It is erosion that is largely responsible for continuous changes that the earth’s surface is undergoing. As indicated in Figure 6.1, denudational processes like erosion and transportation are controlled by kinetic energy.
+The erosion and transportation of earth materials is brought about by wind, running water, glaciers, waves and ground water. Of these the first three agents are controlled by climatic conditions. They represent three states of matter — gaseous (wind), liquid (running water) and solid (glacier) respectively.
+Can you compare the three climatically controlled agents?
+The work of the other two agents of erosion-waves and ground water is not controlled by climate. In case of waves it is the location along the interface of litho and hydro sphere — coastal region — that will determine the work of waves, whereas the work of ground water is determined more by the lithological character of the region. If the rocks are permeable and soluble and water is available only then karst topography develops. In the next chapter we shall be dealing with the landforms produced by each of these agents of erosion.
+Deposition is a consequence of erosion.
+The erosional agents loose their velocity and hence energy on gentler slopes and the materials carried by them start to settle themselves. In other words, deposition is not actually the work of any agent. The coarser materials get deposited first and finer ones later. By deposition depressions get filled up.
+The same erosional agents viz., running water, glaciers, wind, waves and groundwater act as aggradational or depositional agents also.
+What happens to the surface of the earth due to erosion and deposition is elaborated
+Reprint 2026-27
+FUNDAMENTALS OF PHYSICAL GEOGRAPHY 44
+Is weathering solely responsible for soil formation? If not, why?
+Pedology is soil science. A pedologist is a soil-scientist.
+Soil-forming Factors
+Five basic factors control the formation of soils:
+(i) parent material; (ii) topography; (iii) climate;
+(iv) biological activity; (v) time. In fact soil forming factors act in union and affect the action of one another.
+Parent Material
+Parent material is a passive control factor in soil formation. Parent materials can be any in-situ or on-site weathered rock debris (residual soils) or transported deposits (transported soils). Soil formation depends upon the texture (sizes of debris) and structure (disposition of individual grains/particles of debris) as well as the

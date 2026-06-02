@@ -1,0 +1,20 @@
+E mErging TrEnds 59 notes • A grid is a computer network of geographically dispersed and heterogeneous computational resources.
+• Blockchain is a system that allows a group of connected computers to maintain a single updated and secure ledger which is updated only after all the nodes in the network authenticate the transaction.
+exercIse
+1. List some of the cloud-based services that you are using at present.
+2. What do you understand by the Internet of Things?
+List some of its potential applications.
+3. Write short notes on the following:
+a) Cloud Computing b) Big data and its Characteristics
+4. Explain the following along with their applications.
+a) Artificial Intelligence b) Machine Learning
+5. Differentiate between cloud computing and grid computing with suitable examples.
+6. Justify the following statement:
+“Storage of data is cost-effective and time saving in cloud computing.”
+7. What is on-demand service? How it is provided in cloud computing?
+8. Write examples of the following:
+a) Government provided cloud computing platform b) Large scale private cloud service providers and the services they provide
+9. A company interested in cloud computing is looking for a provider who offers a set of basic services, such as virtual server provisioning and on demand storage that can be combined into a platform for deploying and running customised applications.
+What type of cloud computing model fits these requirements?
+a) Platform as a Service b) Software as a Service c) Application as a Service d) Infrastructure as a Service
+Reprint 2026-27

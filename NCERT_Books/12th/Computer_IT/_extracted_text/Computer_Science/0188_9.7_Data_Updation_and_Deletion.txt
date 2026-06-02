@@ -1,0 +1,51 @@
+Computer SCienCe - ClaSS Xii 176 exercISe
+1. Answer the following questions:
+a) Define RDBMS. Name any two RDBMS software.
+b) What is the purpose of the following clauses in a select statement?
+i) ORDER BY ii) GROUP BY c) Site any two differences between Single Row Functions and Aggregate Functions.
+d) What do you understand by Cartesian Product?
+e) Differentiate between the following statements:
+noteS • The BETWEEN operator defines the range of values inclusive of boundary values.
+• The IN operator selects values that match any value in the given list of values.
+• NULL values can be tested using IS NULL and IS
+NOT NULL.
+• ORDER BY clause is used to display the result of a
+SQL query in ascending or descending order with respect to specified attribute values. By default, the order is ascending.
+• LIKE operator is used for pattern matching. % and _ are two wild card characters. The per cent (%) symbol is used to represent zero or more characters. The underscore (_) symbol is used to represent a single character.
+• A Function is used to perform a particular task and return a value as a result.
+• Single Row functions work on a single row of the table and return a single value.
+• Multiple Row functions work on a set of records as a whole and return a single value. Examples include COUNT, MAX, MIN, AVG and SUM.
+• GROUP BY function is used to group rows of a table that contain the same values in a specified
+• Join is an operation which is used to combine rows from two or more tables based on one or more common fields between them.
+Reprint 2026-27
+S tructured Query Language (SQL) 177 i) ALTER and UPDATE ii) DELETE and DROP f) Write the name of the functions to perform the following operations:
+i) To display the day like “Monday”, “Tuesday”, from the date when India got independence.
+ii) To display the specified number of characters from a particular position of the given string.
+iii) To display the name of the month in which you were born.
+iv) To display your name in capital letters.
+2. Write the output produced by the following SQL statements:
+a) SELECT POW(2,3);
+b) SELECT ROUND(342.9234,-1);
+c) SELECT LENGTH("Informatics Practices");
+d) SELECT YEAR(“1979/11/26”),
+MONTH(“1979/11/26”), DAY(“1979/11/26”),
+MONTHNAME(“1979/11/26”);
+e) SELECT LEFT("INDIA",3), RIGHT("Computer
+Science",4), MID("Informatics",3,4),
+SUBSTR("Practices",3);
+3. Consider the following MOVIE table and write the SQL queries based on it.
+MovieID MovieName Category ReleaseDate ProductionCost
+BusinessCost
+001 Hindi_Movie Musical 2018-04-23 124500 130000
+002 Tamil_Movie Action 2016-05-17 112000 118000
+003 English_Movie Horror 2017-08-06 245000 360000
+004 Bengali_Movie Adventure 2017-01-04 72000 100000
+005 Telugu_Movie Action - 100000 -
+006 Punjabi_Movie Comedy - 30500 - a) Display all the information from the Movie table.
+b) List business done by the movies showing only
+MovieID, MovieName and Total_Earning. Total_
+Earning to be calculated as the sum of ProductionCost and BusinessCost.
+c) List the different categories of movies.
+d) Find the net profit of each movie showing its
+MovieID, MovieName and NetProfit. Net Profit is to be calculated as the difference between Business Cost and Production Cost.
+Reprint 2026-27

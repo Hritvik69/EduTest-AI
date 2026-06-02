@@ -1,0 +1,75 @@
+14 chemistry
+Solution
+We know that 1 in = 2.54 cm
+From this equivalence, we can write cm . equals 1 and 2 54 also equals 1. Both of these are called unit factors. If some number is multiplied by these unit factors (i.e., 1), it will not be affected otherwise.
+Say, the 3 in given above is multiplied by the unit factor. So,
+3 in = 3 in × 2 54 in = 3 × 2.54 cm = 7.62 cm
+Now, the unit factor by which multiplication is to be done is that unit factor ( 2 54 the above case) which gives the desired units i.e., the numerator should have that part which is required in the desired result.
+It should also be noted in the above example that units can be handled just like other numerical part. It can be cancelled, divided, multiplied, squared, etc. Let us study one more example.
+A jug contains 2 L of milk. Calculate the volume of the milk in m3 .
+Solution
+Since 1 L = 1000 cm 3 and 1m = 100 cm, which gives
+100 1 100
+To get m3 from the above unit factors, the first unit factor is taken and it is cubed.
+     
+Now 2 L = 2 ×1000 cm3
+2 54 1 2 54
+The above is multiplied by the unit factor
+2 1000 1
+10 2 103
+     
+How many seconds are there in 2 days?
+Solution
+Here, we know 1 day = 24 hours (h)
+then, 1h = 60 min so, for converting 2 days to seconds, i.e., 2 days – – – – – – = – – – seconds
+The unit factors can be multiplied in series in one step only as follows:
+= 2 × 24 × 60 × 60 s
+= 172800 s
+1.5 laWS of chemical comBinationS
+The combination of elements t o f o r m c o m p o u n d s i s governed by the following five basic laws.
+1.5.1 law of conservation
+This law was put forth by Antoine Lavoisier in 1789. He performed careful experimental studies for combustion reactions and reached to the conclusion that in all physical and chemical changes, there is no net change in mass duting the process. Hence, he reached to the conclusion that matter can neither be created nor destroyed. This is called ‘Law of Conservation of Mass’. This law formed the basis for several later developments in chemistry. Infact, this was the result of exact measurement of masses of reactants and products, and carefully planned experiments performed by Lavoisier.
+Antoine Lavoisier (1743–1794)
+Reprint 2026-27
+15 SOME BASIC CONCEPTS OF CHEMISTRY are produced in a chemical reaction they do so in a simple ratio by volume, provided all gases are at the same temperature and pressure.
+Thus, 100 mL of hydrogen combine with 50 mL of oxygen to give 100 mL of water vapour.
+Hydrogen + Oxygen → Water
+100 mL 50 mL 100 mL
+Thus, the volumes of hydrogen and oxygen which combine (i.e., 100 mL and
+50 mL) bear a simple ratio of 2:1.
+Gay Lussac’s discovery of integer ratio in volume relationship is actually the law of definite proportions by volume. The law of definite proportions, stated earlier, was with respect to mass. The Gay Lussac’s law was explained properly by the work of Avogadro in 1811.
+1.5.5 avogadro’s law
+In 1811, Avogadro proposed that equal volumes of all gases at the same temperature and pressure should contain equal number of molecules. Avogadro made a distinction between atoms and molecules which is quite understandable in present times. If we consider again the reaction of hydrogen and oxygen to produce water, we see that two volumes of hydrogen combine with one volume of oxygen to give two volumes of water without leaving any unreacted oxygen.
+Note that in the Fig. 1.9 (Page 16) each box contains equal number of molecules. In fact, Avogadro could explain the above result by considering the molecules to be polyatomic. If hydrogen and oxygen were considered as diatomic as recognised now, then the above results are easily understandable.
+However, Dalton and others believed at that time that atoms of the same kind
+1.5.2 Law of Definite Proportions
+This law was given by, a
+French chemist, Joseph
+Proust. He stated that a given compound always contains exactly the same proportion of elements by weight.
+Proust worked with two samples of cupric carbonate
+— one of which was of natural origin and the other was synthetic. He found that the composition of elements present in it was same for both the samples as shown below:
+Natural Sample
+Synthetic Sample
+Thus, he concluded that irrespective of the source, a given compound always contains same elements combined together in the same proportion by mass. The validity of this law has been confirmed by various experiments.
+It is sometimes also referred to as law of
+Definite Composition.
+1.5.3 law of multiple proportions
+This law was proposed by Dalton in 1803.
+According to this law, if two elements can combine to form more than one compound, the masses of one element that combine with a fixed mass of the other element, are in the ratio of small whole numbers.
+For example, hydrogen combines with oxygen to form two compounds, namely, water and hydrogen peroxide.
+Hydrogen + Oxygen → Water
+2g 16g 18g
+Hydrogen + Oxygen → Hydrogen Peroxide
+2g 32g 34g
+Here, the masses of oxygen (i.e., 16 g and 32 g), which combine with a fixed mass of hydrogen (2g) bear a simple ratio, i.e., 16:32 or 1: 2.
+1.5.4 Gay lussac’s law of Gaseous
+This law was given by Gay Lussac in 1808.
+He observed that when gases combine or
+Joseph Proust (1754–1826)
+Joseph Louis
+Gay Lussac
+Lorenzo Romano
+Amedeo Carlo
+Avogadro di
+Quareqa edi (1776–1856)
+Reprint 2026-27

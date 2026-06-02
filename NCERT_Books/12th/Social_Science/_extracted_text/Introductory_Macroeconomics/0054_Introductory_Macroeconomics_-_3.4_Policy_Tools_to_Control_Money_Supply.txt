@@ -1,0 +1,124 @@
+44 44 44 44 44
+Introductory
+Macroeconomics spends this income over the month on the output produced by the firm – the only good available in this economy! Thus, at the beginning of each month the worker has a money balance of Rs 100 and the firm a balance of
+Rs 0. On the last day of the month the picture is reversed – the firm has gathered a balance of Rs 100 through its sales to the worker. The average money holding of the firm as well as the worker is equal to Rs 50 each. Thus the total transaction demand for money in this economy is equal to Rs 100.
+The total volume of monthly transactions in this economy is Rs 200 – the firm has sold its output worth Rs 100 to the worker and the latter has sold her services worth Rs 100 to the firm. The transaction demand for money of the economy is again a fraction of the total volume of transactions in the economy over the unit period of time.
+In general, therefore, the transaction demand for money in an economy,
+T , can be written in the following form
+T = k.T (3.1)
+where, T is the total value of (nominal) transactions in the economy over unit period and k is a positive fraction.
+The two-person economy described above can be looked at from another angle. You may perhaps find it surprising that the economy uses money balance worth only Rs 100 for making transactions worth Rs 200 per month.
+The answer to this riddle is simple – each rupee is changing hands twice a month. On the first day, it is being transferred from the employer’s pocket to that of the worker and sometime during the month, it is passing from the worker’s hand to the employer’s. The number of times a unit of money changes hands during the unit period is called the velocity of circulation of money. In the above example, it is 2, inverse of half – the ratio of money balance and the value of transactions. Thus, in general, we may rewrite equation (3.1) in the following form
+T = T, or, v.Md
+T = T (3.2)
+where, v = 1/k is the velocity of circulation. Note that the term on the right hand side of the above equation, T, is a flow variable whereas money demand,
+T , is a stock concept – it refers to the stock of money people are willing to hold at a particular point of time. The velocity of money, v, however, has a time dimension. It refers to the number of times every unit of stock changes hand during a unit period of time, say, a month or a year. Thus, the left hand side, v.Md
+T, measures the total value of monetary transactions that has been made with this stock in the unit period of time. This is a flow variable and is, therefore, equal to the right hand side.
+We are ultimately interested in learning the relationship between the aggregate transaction demand for money of an economy and the (nominal)
+GDP in a given year. The total value of annual transactions in an economy includes transactions in all intermediate goods and services and is clearly much greater than the nominal GDP. However, normally, there exists a stable, positive relationship between value of transactions and the nominal
+GDP. An increase in nominal GDP implies an increase in the total value of transactions and hence a greater transaction demand for money from equation (3.1). Thus, in general, equation (3.1) can be modified in the following way
+T = kPY (3.3)
+Reprint 2026-27
+45 45 45 45 45 Money where Y is the real GDP and P is the general price level or the GDP deflator. The above equation tells us that transaction demand for money is positively related to the real income of an economy and also to its average price level.
+The Speculative Motive
+An individual may hold her wealth in the form of landed property, bullion, bonds, money etc. For simplicity, let us club all forms of assets other than money together into a single category called ‘bonds’. Typically, bonds are papers bearing the promise of a future stream of monetary returns over a certain period of time. These papers are issued by governments or firms for borrowing money from the public and they are tradable in the market. Consider the following two-period bond. A firm wishes to raise a loan of Rs 100 from the public. It issues a bond that assures Rs 10 at the end of the first year and Rs
+10 plus the principal of Rs 100 at the end of the second year. Such a bond is said to have a face value of Rs 100, a maturity period of two years and a coupon rate of 10 per cent. Assume that the rate of interest prevailing in your savings bank account is equal to 5 per cent. Naturally you would like to compare the earning from this bond with the interest earning of your savings bank account. The exact question that you would ask is as follows: How much money, if kept in my savings bank account, will generate Rs 10 at the end of one year? Let this amount be X. Therefore
+X (1 + 5
+100 ) = 10
+In other words,
+This amount, Rs X, is called the present value of Rs 10 discounted at the market rate of interest. Similarly, let Y be the amount of money which if kept in the savings bank account will generate Rs 110 at the end of two years. Thus, the present value of the stream of returns from the bond should be equal to
+PV = X + Y = 10
+Calculation reveals that it is Rs 109.29 (approx.). It means that if you put Rs 109.29 in your savings bank account it will fetch the same return as the bond. But the seller of the bond is offering the same at a face value of only Rs 100. Clearly the bond is more attractive than the savings bank account and people will rush to get hold of the bond. Competitive bidding will raise the price of the bond above its face value, till price of the bond is equal to its PV. If price rises above the PV the bond becomes less attractive compared to the savings bank account and people would like to get rid of it.
+The bond will be in excess supply and there will be downward pressure on the bond-price which will bring it back to the PV. It is clear that under competitive assets market condition the price of a bond must always be equal to its present value in equilibrium.
+Now consider an increase in the market rate of interest from 5 per cent to 6 per cent. The present value, and hence the price of the same bond, will
+Reprint 2026-27
+46 46 46 46 46
+Introductory Macroeconomics (10 100) 10
+6 6(1 ) (1 )
+  = 107.33 (approx.)
+It follows that the price of a bond is inversely related to the market rate of interest.
+Different people have different expectations regarding the future movements in the market rate of interest based on their private information regarding the economy. If you think that the market rate of interest should eventually settle down to 8 per cent per annum, then you may consider the current rate of 5 per cent too low to be sustainable over time. You expect interest rate to rise and consequently bond prices to fall. If you are a bond holder a decrease in bond price means a loss to you – similar to a loss you would suffer if the value of a property held by you suddenly depreciates in the market. Such a loss occurring from a falling bond price is called a capital loss to the bond holder. Under such circumstances, you will try to sell your bond and hold money instead. Thus speculations regarding future movements in interest rate and bond prices give rise to the speculative demand for money.
+When the interest rate is very high everyone expects it to fall in future and hence anticipates capital gains from bond-holding. Hence people convert their money into bonds. Thus, speculative demand for money is low. When interest rate comes down, more and more people expect it to rise in the future and anticipate capital loss. Thus they convert their bonds into money giving rise to a high speculative demand for money. Hence speculative demand for money is inversely related to the rate of interest. Assuming a simple form, the speculative demand for money can be written as r r (3.4)
+where r is the market rate of interest and rmax and rmin are the upper and lower limits of r, both positive constants. It is evident from the above equation that as r decreases from rmax to rmin, the value
+S increases from 0 to ∞ .
+As mentioned earlier, interest rate can be thought of as an opportunity cost or
+‘price’ of holding money balance. If supply of money in the economy increases and people purchase bonds with this extra money, demand for bonds will go up, bond prices will rise and rate of interest will decline.
+In other words, with an increased supply of money in the economy the price you have to pay for holding money balance, viz. the rate of interest, should
+Fig. 3.1 r – r max r – rmin
+The Speculative Demand for Money
+Reprint 2026-27
+47 47 47 47 47 Money and Banking come down. However, if the market rate of interest is already low enough so that everybody expects it to rise in future, causing capital losses, nobody will wish to hold bonds. Everyone in the economy will hold their wealth in money balance and if additional money is injected within the economy it will be used up to satiate people’s craving for money balances without increasing the demand for bonds and without further lowering the rate of interest below the floor rmin. Such a situation is called a liquidity trap. The speculative money demand function is infinitely elastic here.
+In Fig. 3.1 the speculative demand for money is plotted on the horizontal axis and the rate of interest on the vertical axis. When r = rmax, speculative demand for money is zero. The rate of interest is so high that everyone expects it to fall in future and hence is sure about a future capital gain. Thus everyone has converted the speculative money balance into bonds. When r = rmin, the economy is in the liquidity trap. Everyone is sure of a future rise in interest rate and a fall in bond prices. Everyone puts whatever wealth they acquire in the form of money and the speculative demand for money is infinite.
+Total demand for money in an economy is, therefore, composed of transaction demand and speculative demand. The former is directly proportional to real GDP and price level, whereas the latter is inversely related to the market rate of interest. The aggregate money demand in an economy can be summarised by the following equation
+Md = M d or, Md = kPY + r r
+THE SUPPLY OF MONEY : VARIOUS MEASURES
+In a modern economy money consists mainly of currency notes and coins issued by the monetary authority of the country. In India currency notes are issued by the Reserve Bank of India (RBI), which is the monetary authority in India. However, coins are issued by the Government of India.
+Apart from currency notes and coins, the balance in savings, or current account deposits, held by the public in commercial banks is also considered money since cheques drawn on these accounts are used to settle transactions. Such deposits are called demand deposits as they are payable by the bank on demand from the account-holder. Other deposits, e.g. fixed deposits, have a fixed period to maturity and are referred to as time deposits.
+Though a hundred-rupee note can be used to obtain commodities worth
+Rs 100 from a shop, the value of the paper itself is negligible – certainly less than Rs 100. Similarly, the value of the metal in a five-rupee coin is probably not worth Rs 5. Why then do people accept such notes and coins in exchange of goods which are apparently more valuable than these? The value of the currency notes and coins is derived from the guarantee provided by the issuing authority of these items. Every currency note bears on its face a promise from the Governor of RBI that if someone produces the note to RBI, or any other commercial bank, RBI will be responsible for
+Reprint 2026-27
+48 48 48 48 48
+Introductory
+Macroeconomics
+2See Appendix 3.2 for an estimate of the variations in M1 and M3 over time.
+giving the person purchasing power equal to the value printed on the note.
+The same is also true of coins. Currency notes and coins are therefore called fiat money. They do not have intrinsic value like a gold or silver coin. They are also called legal tenders as they cannot be refused by any citizen of the country for settlement of any kind of transaction. Cheques drawn on savings or current accounts, however, can be refused by anyone as a mode of payment. Hence, demand deposits are not legal tenders.
+Legal Definitions: Narrow and Broad Money
+Money supply, like money demand, is a stock variable. The total stock of money in circulation among the public at a particular point of time is called money supply. RBI publishes figures for four alternative measures of money supply, viz. M1, M2, M3 and M4. They are defined as follows
+M1 = CU + DD
+M2 = M1 + Savings deposits with Post Office savings banks
+M3 = M1 + Net time deposits of commercial banks
+M4 = M3 + Total deposits with Post Office savings organisations (excluding
+National Savings Certificates)
+where, CU is currency (notes plus coins) held by the public and DD is net demand deposits held by commercial banks. The word ‘net’ implies that only deposits of the public held by the banks are to be included in money supply. The interbank deposits, which a commercial bank holds in other commercial banks, are not to be regarded as part of money supply.
+M1 and M2 are known as narrow money. M3 and M4 are known as broad money. These measures are in decreasing order of liquidity. M1 is most liquid and easiest for transactions whereas M4 is least liquid of all.
+M3 is the most commonly used measure of money supply. It is also known as aggregate monetary resources2.
+Reprint 2026-27
+49 49 49 49 49 Money
+Box No. 3.2: Demonetisation
+Demonetisation was a new initiative taken by the Government of India in
+November 2016 to tackle the problem of corruption, black money, terrorism and circulation of fake currency in the economy. Old currency notes of
+Rs 500, and Rs 1000 were no longer legal tender. New currency notes in the denomination of Rs 500 and Rs 2000 were launched. The public were advised to deposit old currency notes in their bank account till 31 December 2016 without any declaration and upto 31March 2017 with the RBI with declaration
+Further to avoid a complete breakdown and cash crunch, notes government had allowed exchange of Rs 4000 old currency the by new currency per person and per day. Further till 12 December 2016, old currency notes were acceptable as legal tender at petrol pumps, government hospitals and for payment of government dues, like taxes, power bills, etc.
+This move received both appreciation and criticism. There were long queues outside banks and ATM booths. The shortage of currency in circulation had an adverse impact on the economic activities. However, things improved with time and normalcy returned.
+This move has had positive impact also. It improved tax compliance as a large number of people were bought in the tax ambit. The savings of an individual were channelised into the formal financial system. As a result, banks have more resources at their disposal which can be used to provide more loans at lower interest rates. It is a demonstration of State’s decision to put a curb on black money, showing that tax evasion will no longer be tolerated. Tax evasion will result in financial penalty and social condemnation. Tax compliance will improve and corruption will decrease.
+Demonetisation could also help tax administration in another way, by shifting transactions out of the cash economy into the formal payment system.
+Households and firms have begun to shift from cash to electronic payment technologies.
+Exchange of commodities without the mediation of money is called Barter Exchange.
+It suffers from lack of double coincidence of wants. Money facilitates exchanges by acting as a commonly acceptable medium of exchange. In a modern economy, people hold money broadly for two motives – transaction motive and speculative motive.
+Supply of money, on the other hand, consists of currency notes and coins, demand and time deposits held by commercial banks, etc. It is classified as narrow and broad money according to the decreasing order of liquidity. In India, the supply of money is regulated by the Reserve Bank of India (RBI) which acts as the monetary authority of the country. Various actions of the public, the commercial banks of the country and RBI are responsible for changes in the supply of money in the economy.
+RBI regulates money supply by controlling the stock of high powered money, the bank rate and reserve requirements of the commercial banks. It also sterilises the money supply in the economy against external shocks.
+Summary Summary Summary Summary Summary
+Reprint 2026-27
+50 50 50 50 50
+Introductory Macroeconomics
+Barter exchange Double coincidence of wants
+Money Medium of exchange
+Unit of account Store of value
+Bonds Rate of interest
+Liquidity trap Fiat money
+Legal tender Narrow money
+Broad money Currency deposit ratio
+Reserve deposit ratio High powered money
+Money multiplier Lender of last resort
+Open market operation Bank Rate
+Cash Reserve Ratio (CRR) Repo Rate
+Reverse Repo Rate
+K K K K Key Conceptsey Concepts ey Concepts ey Concepts ey Concepts
+Suggested Readings
+1. Dornbusch, R. and S. Fischer. 1990. Macroeconomics, (fifth edition) pages 345 –
+427, McGraw Hill, Paris.
+2. Sikdar, S., 2006. Principles of Macroeconomics, pages 77 – 89, Oxford
+University Press, New Delhi.
+1. What is a barter system? What are its drawbacks?
+2. What are the main functions of money? How does money overcome the shortcomings of a barter system?
+3. What is transaction demand for money? How is it related to the value of transactions over a specified period of time?
+4. What are the alternative definitions of money supply in India?
+5. What is a ‘legal tender’? What is ‘fiat money’?
+6. What is High Powered Money?
+7. Explain the functions of a commercial bank.
+8. What is money multiplier? What determines the value of this multiplier?
+9. What are the instruments of monetary policy of RBI?
+10. Do you consider a commercial bank ‘creator of money’ in the economy?
+11. What role of RBI is known as ‘lender of last resort’?
+Ex

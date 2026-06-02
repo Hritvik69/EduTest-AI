@@ -1,0 +1,57 @@
+Introductory
+Macroeconomics
+Suggested Readings
+1. Bhaduri, A., 1990. Macroeconomics: The Dynamics of Commodity Production, pages 1 – 27, Macmillan India Limited, New Delhi.
+2. Mankiw, N. G., 2000. Macroeconomics, pages 2 – 14, Macmillan Worth
+Publishers, New York.
+So far we have described the major players in the domestic economy.
+But all the countries of the world are also engaged in external trade.
+The external sector is the fourth important sector in our study. Trade with the external sector can be of two kinds
+1. The domestic country may sell goods to the rest of the world. These are called exports.
+2. The economy may also buy goods from the rest of the world. These are called imports. Besides exports and imports, the rest of the world affects the domestic economy in other ways as well.
+3. Capital from foreign countries may flow into the domestic country, or the domestic country may be exporting capital to foreign countries.
+Macroeconomics deals with the aggregate economic variables of an economy. It also takes into account various interlinkages which may exist between the different sectors of an economy. This is what distinguishes it from microeconomics; which mostly examines the functioning of the particular sectors of the economy, assuming that the rest of the economy remains the same. Macroeconomics emerged as a separate subject in the 1930s due to Keynes. The Great Depression, which dealt a blow to the economies of developed countries, had provided
+Keynes with the inspiration for his writings. In this book we shall mostly deal with the working of a capitalist economy. Hence it may not be entirely able to capture the functioning of a developing country.
+Macroeconomics sees an economy as a combination of four sectors, namely households, firms, government and external sector.
+Summary Summary Summary Summary Summary
+1. What is the difference between microeconomics and macroeconomics?
+2. What are the important features of a capitalist economy?
+3. Describe the four major sectors in an economy according to the macroeconomic point of view.
+4. Describe the Great Depression of 1929.
+? Exercises Exercises Exercises Exercises Exercises
+Rate of interest Wage rate
+Profits Economic agents or units
+Great Depression Unemployment rate
+Four factors of production Means of production
+Inputs Land
+Labour Capital
+Entrepreneurship Investment expenditure
+Wage labour Capitalist country or capitalist
+Firms Capitalist firms
+Output Households
+Government External sector
+Exports Imports
+K K K K Key Conceptsey Concepts ey Concepts ey Concepts ey Concepts
+Reprint 2026-27
+National Income Accounting National Income Accounting National Income Accounting National Income Accounting National Income Accounting
+In this chapter we will introduce the fundamental functioning of a simple economy. In section 2.1 we describe some primary ideas we shall work with. In section 2.2 we describe how we can view the aggregate income of the entire economy going through the sectors of the economy in a circular way. The same section also deals with the three ways to calculate the national income; namely product method, expenditure method and income method. The last section 2.3 describes the various sub-categories of national income. It also defines different price indices like GDP deflator,
+Consumer Price Index, Wholesale Price Indices and discusses the problems associated with taking GDP of a country as an indicator of the aggregate welfare of the people of the country.
+2.1 SOME BASIC CONCEPTS OF MACROECONOMICS
+One of the pioneers of the subject we call in economics today,
+Adam Smith, named his most influential work – An Enquiry into the Nature and Cause of the Wealth of Nations. What generates the economic wealth of a nation? What makes countries rich or poor? These are some of the central questions of economics. It is not that countries which are endowed with a bounty of natural wealth – minerals or forests or the most fertile lands – are naturally the richest countries. In fact the resource rich Africa and Latin
+America have some of the poorest countries in the world, whereas many prosperous countries have scarcely any natural wealth.
+There was a time when possession of natural resources was the most important consideration but even then the resource had to be transformed through a production process.
+The economic wealth, or well-being, of a country thus does not necessarily depend on the mere possession of resources; the point is how these resources are used in generating a flow of production and how, as a consequence, income and wealth are generated from that process.
+Let us now dwell upon this flow of production. How does this flow of production arise? People combine their energies with natural and manmade environment within a certain social and technological structure to generate a flow of production.
+In our modern economic setting this flow of production arises out of production of commodities – goods and services by millions of enterprises large and small. These enterprises range from giant
+Reprint 2026-27
+10 10 10 10 10
+Introductory Macroeconomics corporations employing a large number of people to single entrepreneur enterprises. But what happens to these commodities after being produced? Each producer of commodities intends to sell her output. So from the smallest items like pins or buttons to the largest ones like aeroplanes, automobiles, giant machinery or any saleable service like that of the doctor, the lawyer or the financial consultant–the goods and services produced are to be sold to the consumers.
+The consumer may, in turn, be an individual or an enterprise and the good or service purchased by that entity might be for final use or for use in further production. When it is used in further production it often loses its characteristic as that specific good and is transformed through a productive process into another good. Thus a farmer producing cotton sells it to a spinning mill where the raw cotton undergoes transformation to yarn; the yarn is, in turn, sold to a textile mill where, through the productive process, it is transformed into cloth;
+the cloth is, in turn, transformed through another productive process into an article of clothing which is then ready to be sold finally to the consumers for final use. Such an item that is meant for final use and will not pass through any more stages of production or transformations is called a final good.
+Why do we call this a final good? Because once it has been sold it passes out of the active economic flow. It will not undergo any further transformation at the hands of any producer. It may, however, undergo transformation by the action of the ultimate purchaser. In fact many such final goods are transformed during their consumption. Thus the tea leaves purchased by the consumer are not consumed in that form – they are used to make drinkable tea, which is consumed.
+Similarly most of the items that enter our kitchen are transformed through the process of cooking. But cooking at home is not an economic activity, even though the product involved undergoes transformation. Home cooked food is not sold to the market. However, if the same cooking or tea brewing was done in a restaurant where the cooked product would be sold to customers, then the same items, such as tea leaves, would cease to be final goods and would be counted as inputs to which economic value addition can take place. Thus it is not in the nature of the good but in the economic nature of its use that a good becomes a final good.
+Of the final goods, we can distinguish between consumption goods and capital goods. Goods like food and clothing, and services like recreation that are consumed when purchased by their ultimate consumers are called consumption goods or consumer goods. (This also includes services which are consumed but for convenience we may refer to them as consumer goods.)
+Then there are other goods that are of durable character which are used in the production process. These are tools, implements and machines. While they make production of other commodities feasible, they themselves don’t get transformed in the production process. They are also final goods yet they are not final goods to be ultimately consumed. Unlike the final goods that we have considered above, they are the crucial backbone of any production process, in aiding and enabling the production to take place. These goods form a part of capital, one of the crucial factors of production in which a productive enterprise has invested, and they continue to enable the production process to go on for continuous cycles of production. These are capital goods and they gradually undergo wear and tear, and thus are repaired or gradually replaced over time.
+The stock of capital that an economy possesses is thus preserved, maintained and renewed partially or wholly over time and this is of some importance in the discussion that will follow.
+Reprint 2026-27

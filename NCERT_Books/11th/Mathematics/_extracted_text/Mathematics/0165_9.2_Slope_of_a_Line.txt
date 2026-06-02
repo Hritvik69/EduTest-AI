@@ -1,0 +1,132 @@
+STRAIGHT LINES 153
+The angle (say) θ made by the line l with positive direction of x-axis and measured anti clockwise is called the inclination of the line. Obviously
+0° ≤ θ ≤ 180° (Fig 9.2).
+We observe that lines parallel to x-axis, or coinciding with x-axis, have inclination of 0°. The inclination of a vertical line (parallel to or coinciding with y-axis) is 90°.
+Definition 1 If θ is the inclination of a line l, then tan θ is called the slope or gradient of the line l.
+The slope of a line whose inclination is 90° is not defined.
+The slope of a line is denoted by m.
+Thus, m = tan θ, θ ≠ 90°
+It may be observed that the slope of x-axis is zero and slope of y-axis is not defined.
+9.2.1 Slope of a line when coordinates of any two points on the line are given
+We know that a line is completely determined when we are given two points on it.
+Hence, we proceed to find the slope of a line in terms of the coordinates of two points on the line.
+Let P(x1, y1) and Q(x2, y2) be two points on non-vertical line l whose inclination is θ. Obviously, x1 ≠ x2, otherwise the line will become perpendicular to x-axis and its slope will not be defined. The inclination of the line l may be acute or obtuse. Let us take these two cases.
+Draw perpendicular QR to x-axis and
+PM perpendicular to RQ as shown in
+Figs. 9.3 (i) and (ii).
+Case 1 When angle θ is acute:
+In Fig 9.3 (i), ∠MPQ = θ. ... (1)
+Therefore, slope of line l = m = tan θ.
+But in ∆MPQ, we have 2 1
+= = − ... (2)
+Fig 9. 3 (i)
+Reprint 2026-27
+154 MATHEMATICS
+From equations (1) and (2), we have
+Case II When angle θ is obtuse:
+In Fig 9.3 (ii), we have
+∠MPQ = 180° – θ.
+Therefore, θ = 180° – ∠MPQ.
+Now, slope of the line l m = tan θ
+= tan ( 180° – ∠MPQ) = – tan ∠MPQ
+− = − − = 2 1
+Consequently, we see that in both the cases the slope m of the line through the points (x1, y1) and (x2, y2) is given by 2 1
+9.2.2 Conditions for parallelism and perpendicularity of lines in terms of their slopes In a coordinate plane, suppose that non-vertical lines l1 and l2 have slopes m1 and m2, respectively. Let their inclinations be α and
+β, respectively.
+If the line l1 is parallel to l2 (Fig 9.4), then their inclinations are equal, i.e.,
+α = β, and hence, tan α = tan β
+Therefore m1 = m2, i.e., their slopes are equal.
+Conversely, if the slope of two lines l1 and l2 is same, i.e., m1 = m2.
+Then tan α = tan β.
+By the property of tangent function (between 0° and 180°), α = β.
+Therefore, the lines are parallel.
+Fig 9. 3 (ii)
+Fig 9. 4
+Reprint 2026-27
+STRAIGHT LINES 155
+Hence, two non vertical lines l1 and l2 are parallel if and only if their slopes are equal.
+If the lines l1 and l2 are perpendicular (Fig 9.5), then β = α + 90°.
+Therefore, tan β = tan (α + 90°)
+= – cot α = 1 i.e., m2 = 1
+− or m1 m2 = – 1
+Conversely, if m1 m2 = – 1, i.e., tan α tan β = – 1.
+Then tan α = – cot β = tan (β + 90°) or tan (β – 90°)
+Therefore, α and β differ by 90°.
+Thus, lines l1 and l2 are perpendicular to each other.
+Hence, two non-vertical lines are perpendicular to each other if and only if their slopes are negative reciprocals of each other, i.e., m2=
+− or, m1 m2 = – 1.
+Let us consider the following example.
+Example 1 Find the slope of the lines:
+(a) Passing through the points (3, – 2) and (–1, 4), (b) Passing through the points (3, – 2) and (7, – 2), (c) Passing through the points (3, – 2) and (3, 4), (d) Making inclination of 60° with the positive direction of x-axis.
+Solution (a) The slope of the line through (3, – 2) and (– 1, 4) is
+4 ( 2) 6 3 (b) The slope of the line through the points (3, – 2) and (7, – 2) is
+–2 – (–2) 0 (c) The slope of the line through the points (3, – 2) and (3, 4) is
+Fig 9. 5
+Reprint 2026-27
+156 MATHEMATICS
+4 – (–2) 6 m , which is not defined.
+(d) Here inclination of the line α = 60°. Therefore, slope of the line is m = tan 60° = 3 .
+9.2.3 Angle between two lines When we think about more than one line in a plane, then we find that these lines are either intersecting or parallel. Here we will discuss the angle between two lines in terms of their slopes.
+Let L1 and L2 be two non-vertical lines with slopes m1 and m2, respectively. If α1 and α2 are the inclinations of lines L1 and L2, respectively. Then
+α tan and α tan 2 2 1 1 = = m m .
+We know that when two lines intersect each other, they make two pairs of vertically opposite angles such that sum of any two adjacent angles is 180°. Let θ and
+φ be the adjacent angles between the lines L1 and L2 (Fig 9.6). Then
+θ = α2 – α1 and α1, α2 ≠ 90°.
+Therefore tan θ = tan (α2 – α1) 2 1 2 1
+1 tan tan 1
++ + (as 1 + m1m2 ≠ 0)
+and φ = 180° – θ so that tan φ = tan (180° – θ ) = – tan θ = 2 1
++ , as 1 + m1m2 ≠ 0
+Fig 9. 6
+Now, there arise two cases:
+Reprint 2026-27
+STRAIGHT LINES 157
+Case I If 2 1 m m + is positive, then tan θ will be positive and tan φ will be negative, which means θ will be acute and φ will be obtuse.
+Case II If 2 1 m m + is negative, then tan θ will be negative and tan φ will be positive, which means that θ will be obtuse and φ will be acute.
+Thus, the acute angle (say θ) between lines L1 and L2 with slopes m1 and m2, respectively, is given by tan θ , as 1 0
++ ... (1)
+The obtuse angle (say φ) can be found by using φ =1800 – θ.
+Example 2 If the angle between two lines is π
+4 and slope of one of the lines is 1
+2 , find the slope of the other line.
+Solution We know that the acute angle θ between two lines with slopes m1 and m2 is given by 2 1
+= + ... (1)
+Let m1 = 2
+1 , m2 = m and θ = π
+Now, putting these values in (1), we get
+π 2 2 tan or 1
+1 1 4 1 1 which gives
+2 2 1 or 1
+Reprint 2026-27
+158 MATHEMATICS
+Therefore 3 or 3 m m . = = −
+Hence, slope of the other line is
+− . Fig 9.7 explains the reason of two answers.
+Example 3 Line through the points (–2, 6) and (4, 8) is perpendicular to the line through the points (8, 12) and (x, 24). Find the value of x.
+Solution Slope of the line through the points (– 2, 6) and (4, 8) is
+Slope of the line through the points (8, 12) and (x, 24) is
+24 12 12
+Since two lines are perpendicular, m1 m2 = –1, which gives
+1 12 1 or = 4
+EXERCISE 9.1
+1. Draw a quadrilateral in the Cartesian plane, whose vertices are (– 4, 5), (0, 7), (5, – 5) and (– 4, –2). Also, find its area.
+2. The base of an equilateral triangle with side 2a lies along the y-axis such that the mid-point of the base is at the origin. Find vertices of the triangle.
+Reprint 2026-27
+STRAIGHT LINES 159
+3. Find the distance between P (x1, y1) and Q (x2, y2) when : (i) PQ is parallel to the y-axis, (ii) PQ is parallel to the x-axis.
+4. Find a point on the x-axis, which is equidistant from the points (7, 6) and (3, 4).
+5. Find the slope of a line, which passes through the origin, and the mid-point of the line segment joining the points P (0, – 4) and B (8, 0).
+6. Without using the Pythagoras theorem, show that the points (4, 4), (3, 5) and (–1, –1) are the vertices of a right angled triangle.
+7. Find the slope of the line, which makes an angle of 30° with the positive direction of y-axis measured anticlockwise.
+8. Without using distance formula, show that points (– 2, – 1), (4, 0), (3, 3) and (–3, 2) are the vertices of a parallelogram.
+9. Find the angle between the x-axis and the line joining the points (3,–1) and (4,–2).
+10. The slope of a line is double of the slope of another line. If tangent of the angle between them is 3
+1 , find the slopes of the lines.
+11. A line passes through (x1, y1) and (h, k). If slope of the line is m, show that k – y1 = m (h – x1).
+9.3 Various Forms of the Equation of a Line
+We know that every line in a plane contains infinitely many points on it. This relationship between line and points leads us to find the solution of the following problem:
+How can we say that a given point lies on the given line? Its answer may be that for a given line we should have a definite condition on the points lying on the line.
+Suppose P (x, y) is an arbitrary point in the XY-plane and L is the given line. For the equation of L, we wish to construct a statement or condition for the point P that is true, when P is on L, otherwise false. Of course the statement is merely an algebraic equation involving the variables x and y. Now, we will discuss the equation of a line under different conditions.
+9.3.1 Horizontal and vertical lines If a horizontal line L is at a distance a from the x- axis then ordinate of every point lying on the line is either a or – a [Fig 9.8 (a)].
+Therefore, equation of the line L is either y = a or y = – a. Choice of sign will depend upon the position of the line according as the line is above or below the y-axis. Similarly, the equation of a vertical line at a distance b from the y-axis is either x = b or x = – b [Fig 9.8(b)].
+Reprint 2026-27

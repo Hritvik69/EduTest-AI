@@ -1,0 +1,17 @@
+Computer SCienCe - ClaSS Xii 230
+9 Do not install an anti-spyware or antivirus program presented to you in a pop-up or ad.
+9 Use the pop-up window’s ‘X’ icon located on the top-right of the popup to close the ad instead of clicking on the ‘close’ button in the pop-up. If you notice an installation has been started, cancel immediately to avoid further damage.
+12.3 anTivirus
+Antivirus is a software, also known as anti-malware.
+Initially, antivirus software was developed to detect and remove viruses only and hence the name anti- virus. However, with time it has evolved and now comes bundled with the prevention, detection, and removal of a wide range of malware.
+12.3.1 Methods of Malware Identification used by
+Antivirus (A) Signature-based detection
+In this method, an antivirus works with the help of a signature database known as “Virus Definition File (VDF)”. This file consists of virus signatures and is updated continuously on a real-time basis. This makes the regular update of the antivirus software a must. If there is an antivirus software with an outdated VDF, it is as good as having no antivirus software installed, as the new malware will infect the system without getting detected. This method also fails to detect malware that has an ability to change its signature (polymorphic) and the malware that has some portion of its code encrypted.
+(B) Sandbox detection
+In this method, a new application or file is executed in a virtual environment (sandbox) and its behavioural fingerprint is observed for a possible malware. Depending on its behaviour, the antivirus engine determines if it is a potential threat or not and proceeds accordingly.
+Although this method is a little slow, it is very safe as the new unknown application is not given access to actual resources of the system.
+(C) Data mining techniques
+This method employs various data mining and machine learning techniques to classify the behaviour of a file as either benign or malicious.
+Virus Signature
+A virus signature is a consecutive sequence of bytes that is commonly found in a certain malware sample. That means it’s contained within the malware or the infected file and not in unaffected files.
+Reprint 2026-27

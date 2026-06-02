@@ -1,0 +1,198 @@
+Database ManageMent systeM Using LibreOffice Writer 207
+Step 4. The Properties: Label Field dialog box will appear as shown in Fig. 12.16. It contains various properties of the selected label. In the text box after Label property, type Event ID. The label caption on the form changes accordingly.
+Fig. 12.16: Changing the label caption from the Properties Label Field
+Similarly we can change other properties of the selected label like width, height, alignment, font style and font size.
+Step 5. After making the desired changes close the
+Properties dialog box by clicking the cross (x) button on the top right of the dialog box.
+The changes made will be applied on the selected text.
+Moving a control
+It is possible to move the to another location in the form. Click on the control that has to be moved. Both the label and the text box for field value will be selected and position handlers will be placed around the control. If only one of these have to be re-positioned then press Ctrl key while clicking on that control. Now, click and drag the control to move to the desired location (Fig. 12.17).
+Fig. 12.17: Moving a control
+Domestic Data entry operator – class X 208
+Changing the size of the textbox control
+To change the size of the textbox control, press Ctrl button while clicking on the textbox. It will be selected with position handlers around it. Place the mouse pointer on any of these handlers. It will change to a double sided arrow. Click and drag them to the desired size.
+Adding a Tool tip
+A tool-tip is a small piece of text that is displayed when the mouse pointer is placed on a particular control. Say for example, if the mouse pointer is placed over EventID text-box, a message ‘Enter Event Identification Number’ can be displayed. This will make entering data for the user easy. Such type of text that appears when the mouse pointer is placed on a particular control is called the tool-tip text or help text. Let us add a tool-tip for
+EventID control by following the steps given below.
+Step 1. Press Ctrl button and click on EventID text box.
+Step 2. Right click and select Control Properties… option. The Properties: Text Box dialog box will be displayed as shown in Fig. 12.18.
+Fig. 12.18: Adding a tooltip in Properties Text Box
+Step 3. In the dialog box, scroll down till Help Text property appears.
+Step 4. Type ‘Enter Event Identification number’ in the text box.
+Step 5. Close the dialog box by clicking on cross (X)
+button. Now, if the mouse pointer is placed over
+EventID text box, the tool tip will be displayed as shown in the Fig. 12.19.
+Fig. 12.19: Displaying tool tip
+Database ManageMent systeM Using LibreOffice Writer 209
+Forms Controls Toolbar
+The forms control toolbar contains various tools to add or edit controls on the form. Let us learn to use few of these tools.
+Adding a calendar for the date field
+While filling up a form on a computer, mostly a calendar is displayed. This is because it is easy to choose a date rather than typing it. To add the calendar to the date field in the form, follow the steps given below:
+Step 1. Place the mouse pointer over the Date text box and press Ctrl+Click to select it.
+Step 2. Right click and select Control Properties….
+Step 3. In the Properties: Date Field dialog box, scroll down for Date Format property. By default,
+Standard (short) format will be displayed.
+Step 4. Click to open the list box and select Standard (long) format.
+Step 5. Scroll down further till you find the DropDown property. By default its value will be No. Select
+Yes. The control properties set is shown in
+Fig. 12.20.
+Fig. 12.20: Control Properties set for Date field
+Step 6. Close the dialog box. The selected date control text box on the form changes to a list box with an arrow being displayed in the extreme right as shown in Fig. 12.21.
+Fig. 12.21: Date Control field with Calender
+Adding text to the form
+While designing a form, we may need to enter titles, headings or subheadings. It is called as Labels. It is
+Domestic Data entry operator – class X 210 possible to create Labels in the form while designing.
+Follow the following steps to insert the title text in the form.
+Step 1. Click the Label ( ) tool on the Form Controls tool box as shown in Fig. 12.22.
+Step 2. On the form, click and drag the mouse to create a label field box. It will also have position handlers.
+Step 3. Double click on box to open the Properties:
+Label Field dialog box.
+Step 4. Type the title as “Data Entry Form” in the Label property, as shown in Fig. 12.23.
+Step 5. Set the Font property by clicking the Font button in front of the Font property. The
+Character dialog box will be displayed as shown in Fig. 12.24, where you can set the font type, style and size. Choose the desired font style and size and click on OK button.
+Step 6. Close the Properties: Label Field dialog box.
+The title with the selected formatting effects will be displayed on the form.
+After applying and editing various controls, the final form for entering data in the Events table looks as shown in Fig. 12.25.
+Fig. 12.25: Modified Data Entry Form for Events table
+Adding a new record using a form
+After you have finished designing the form, you can display or insert records using this form. For this purpose, you have to shift from Design View to Form
+View by clicking on Design Mode button on the Forms
+Controls toolbar. The Form View window appears with the first record displayed in the respective text boxes as shown in the Fig. 12.26.
+Fig. 12.22: Selecting Label icon on Form Controls tool box
+Fig. 12.23: Properties Label
+Field dialog box for the created label
+Fig. 12.24: Setting font type, style and size in Character dialog box
+Database ManageMent systeM Using LibreOffice Writer 211
+Fig. 12.26: Displaying form in Design view by clicking on Design Mode button on Form Controls
+To add a new record into the table using this form, click on New Record button on the Records toolbar as shown in Fig. 12.27.
+Fig. 12.27: Adding a new record by clicking on New Record
+A blank form with the cursor blinking in the first text box i.e. EventID will be displayed.
+Fig. 12.28: New blank record showing the next record number
+Observe that the record pointer shows the record 11, as there were already 10 records in the table. Once the record is entered, click on Save Record button on the
+Records toolbar to save the record in the table.
+To delete any record, navigate to the record by either typing the record number in the Record text box or by
+Domestic Data entry operator – class X 212 using the navigation buttons. Thereafter click Delete button on the Records toolbar. The next record will be displayed in the form.
+To toggle between Design view and Form view press
+Design Mode button on the Forms Controls toolbar.
+When we create a form in Design View, all the controls are placed on the form using various tools given in the
+Forms Control toolbar.
+A report is another useful feature of a database management system. We have seen that the records that have been extracted using a query are displayed in a simple row and column format. Instead, using a report we can present the retrieved data in an attractive and customized manner. We can create a report based on a table or a query or both. Preferably, if a report has to be generated from multiple tables, a query should be created first and then that query can be used to generate the report.
+Let us create a report using the table Events from the Sports Day database. Follow the following steps to create a report.
+Step 1. In the LibreOffice Base User Interface, click on the Reports icon in the Database Pane.
+Step 2. From the Tasks Pane, click Use Wizard to
+Create Report… option.
+Step 3. The Report wizard along with two other windows will be displayed. One of the window is Report Builder window and the other is Add
+Field dialog box. We will confine our study to the wizard (Fig. 12.29).
+Fig. 12.29: Report Wizard, Report Builder and Add Fields dialog box
+Step 4. The first step of wizard is to select the table and the corresponding fields that we want to
+Database ManageMent systeM Using LibreOffice Writer 213 display in our report. From the Tables or
+Queries list box, select the table Events.
+Step 5. All the fields of the Events table will be listed in the Available Fields list box.
+Click >> button to shift all the fields to Fields in report list box. Fig. 12.30 shows the Fields in report list box after shifting.
+Step 6. Click on the Next button. The next step is to label the fields. By default, the column headers will be displayed as labels or column headers for the field values. As fields names are generally shortened, to change to more self-explanatory names, type the new names in the respective text boxes.
+Step 7. Click on the Next button. The next step is to group the data based on any of the fields in the report. Since we do not want to group as of now, click on the Next
+Step 8. The fourth step is to set the Sort options.
+If the data to be displayed in the report has to be sorted in either ascending or descending order of a particular field, specify the field and sorting order in this step. Say, for example, select the field EventID. The radio button for
+Ascending is already selected. Select
+Descending radio button to display the records in descending order as shown in
+Fig. 12.32.
+Step 9. Click on the Next button to move on to the next step in which the layout of the report will be selected.
+Step 10. A layout is the manner in which the labels, field values and titles will be displayed in the report. Out of various
+Layout options given, choose the desired layout, say Tabular and also the layout of headers and footers (Default). You may also choose the orientation option
+Landscape or Portrait in this step.
+Fig. 12.30: Selecting table Events and fields after shifting to Fields in report list box
+Fig. 12.31: Step 2 of wizard Labelling the fields
+Fig. 12.32: Setting the Sorting options
+Fig. 12.33: Choosing the Layout
+Domestic Data entry operator – class X 214
+Keep the default orientation option Landscape selected by default as shown in Fig. 12.33.
+Step 11. Click on the Next button to move to last step.
+Here we name the report and to specify the manner in which we want to proceed after the wizard finishes. Type the name of the report as
+EventsReport, as shown in Fig. 12.34. By default the type of report is Dynamic. That means as the field values in the base table or query change, the report will also change automatically. If you don’t want automatic updation of the report, choose the Static option. In this step, specify whether you would like to modify the report or create the report once the wizard finishes.
+Select the default option to create the report with current setting.
+Fig. 12.34: Step 6 Create report of the wizard
+Step 12. Click on Finish button to display the report as shown in Fig. 12.35.
+Fig. 12.35: Report generated from Events table
+Database ManageMent systeM Using LibreOffice Writer 215
+Inserting other controls in the report
+As you can observe the report generated in Fig. 12.35, the report is very simple and boring. We can make it more presentable by inserting some more controls like titles, author name, date of generation of report etc.
+Right click on the Report name (EventsReport) on the
+LibreOffice User Interface and then select the Edit… option. The Report Builder window will open as shown in Fig. 12.36. In this window, various controls can be inserted using the Report Controls toolbar.
+Fig. 12.36: Report Builder window
+Inserting Titles and Headings
+To insert the title of the report, follow the following steps.
+Step 1. Click on the Label tool available on the Report
+Controls toolbar.
+Step 2. Bring the mouse pointer on the report. Click and drag to insert the label textbox.
+Step 3. Double click on it to open the Properties dialog box. Type the title text that you want to display in the Label property textbox, say “Annual
+Sports Day Report” and also set the font style and size using the Font property as shown in
+Fig. 12.37.
+Fig. 12.37: Assigning label name and setting font in Properties dialog box
+Domestic Data entry operator – class X 216
+Step 4. Close the Properties dialog box. Double click on the EventsReport in the Reports of Database
+Pane. The report will be displayed with with the formatted effects as shown in Fig. 12.38.
+Fig. 12.38: Report with formatted effects
+Inserting Date and Time
+To insert the date on which the report is generated, follow the following steps.
+Step 1. Click in the Page Header area to make it active.
+Step 2. Click Insert > Date and Time… option as shown in Fig. 12.39.
+Fig. 12.39: Inserting Date and Time in Header
+Step 3. The Date and Time dialog box will be displayed as shown in Fig. 12.40. Select the desired format for date and time format and click on
+OK button.
+Fig. 12.40: Date and Time dialog boxu
+The date will be inserted on the top left corner of the Page Header area. You may click and
+Database ManageMent systeM Using LibreOffice Writer 217 drag it to reposition it in any place in the Page
+Header area. The final report looks as shown in
+Fig. 12.41.
+Fig. 12.41: Report with Title and Date
+To create a report that groups the retrieved data according to a particular field, specify the field name according to which the retrieved data has to be grouped in step 3 of the wizard.
+For example, if we want to display the details of events category wise, shift CategoryID field to
+Groupings list box as shown in Fig. 12.42.
+Fig. 12.42: Moving CategoryID for Grouping records
+The category wise report will be generated as shown shown in Fig. 12.43.
+Fig. 12.43: Report generated Category wise
+Domestic Data entry operator – class X 218
+• A form is an object of the database that has a user friendly interface where data can be entered and seen in an attractive and easy-to-read format.
+• A form contains field controls arranged in a presentable and user friendly manner.
+• Each field control consists of a label and the field value text box.
+• There are two ways to create a form – Using a wizard, Using the Design View
+• The forms control toolbar contains various tools to add or edit controls on the form.
+• A report is used to present the retrieved data in an attractive and customized manner.
+• We can create a report based on a table or a query or both.
+1. Prakasan lives in Happy Home Society. He has created the following tables in his database so as to store and manage the maintenance dues received from flat owners of the society.
+Table: Residents Details
+Receipt_Id
+Table : Maintenance Dues
+Owner Name
+Contact No
+Flat Category
+In the previous chapter, Prakasan had created a query to display the following information
+Flat No Owner Receipt Number Date Amount (Please note the change in column headings)
+Create a form for data entry of Resident Details and Maintenance
+Dues table. Also create a report based on the query created above.
+Practical Exercises
+Database ManageMent systeM Using LibreOffice Writer 219
+2. Uzair manages a boys hostel in an engineering college. To manage the records of the people saying in his hostel, he created a database with the following related tables.
+Table : Student_Details
+Student_Id
+Father’s Name
+Contact No_student
+Contact No_ guardian
+Table: Room Details
+Floor (data value can be first, second or third)
+Category (data value can be AC / Non- AC)
+Student Id
+DOO (Date of occupancy)
+Monthly Rent
+Create a query to display the following tabular format
+Room No Student Name Category Monthly Rent
+Create a query that displays total monthly rent collected for each category.
+Create a form for data entry of both the tables.
+Generate a report the displays information retrieved from both the queries in a presentable manner.
+Check Your Progress
+A. Multiple choice questions
+1. Which of the following toolbars contains the Label tool?
+(a) Standard Toolbar (b) Forms Controls Toolbar (c) Records toolbar (d) Formatting toolbar
+2. The Record toolbar has the buttons to move to the (a) first record (b) second record (c) last record (d) all records
+3. Which of the following is NOT true about forms?
+(a) It is the front end for data entry (b) It can contain only text fields (c) Graphics can be inserted on the form (d) It can contain only fixed number of records

@@ -1,0 +1,66 @@
+Solution (a) Field at P due to charge +10 mC
+12 2 1 2
+4 (8.854 10 C N m )
+π × 2 4 2 (15 0.25) 10 m −
+= 4.13 × 106 N C–1 along BP
+Field at P due to charge –10 mC
+12 2 1 2
+4 (8.854 10 C N m ) − − −
+= π × 2 4 2 (15 0.25) 10 m −
+= 3.86 × 106 N C–1 along PA
+The resultant electric field at P due to the two charges at A and B is
+= 2.7 × 105 N C–1 along BP.
+In this example, the ratio OP/OB is quite large (= 60). Thus, we can expect to get approximately the same result as above by directly using the formula for electric field at a far-away point on the axis of a dipole.
+For a dipole consisting of charges ± q, 2a distance apart, the electric field at a distance r from the centre on the axis of the dipole has a magnitude
+ε (r/a >> 1)
+where p = 2a q is the magnitude of the dipole moment.
+The direction of electric field on the dipole axis is always along the direction of the dipole moment vector (i.e., from –q to q). Here, p =10–5 C × 5 × 10–3 m = 5 × 10–8 C m
+Therefore,
+12 2 1 2
+2 5 10 C m
+4 (8.854 10 C N m )
+π × 3 6 3 (15) 10 m −
+× × = 2.6 × 105 N C–1 along the dipole moment direction AB, which is close to the result obtained earlier.
+(b) Field at Q due to charge + 10 mC at B
+12 2 1 2
+4 (8.854 10 C N m )
+π × 2 2 4 2
+[15 (0.25) ] 10 m −
+= 3.99 × 106 N C–1 along BQ
+Field at Q due to charge –10 mC at A
+12 2 1 2
+4 (8.854 10 C N m )
+π × 2 2 4 2
+[15 (0.25) ] 10 m −
+= 3.99 × 106 N C–1 along QA.
+Clearly, the components of these two forces with equal magnitudes cancel along the direction OQ but add up along the direction parallel to BA. Therefore, the resultant electric field at Q due to the two charges at A and B is
+= 2 × 6 –1
+0.25 3.99 10 N C
+15 (0.25) × ×
++ along BA
+= 1.33 × 105 N C–1 along BA.
+As in (a), we can expect to get approximately the same result by directly using the formula for dipole field at a point on the normal to the axis of the dipole:
+Reprint 2026-27
+Electric Charges and Fields
+ε (r/a >> 1)
+12 2 –1 –2
+5 10 C m
+4 (8.854 10 C N m )
+= π × 3 6 3 (15) 10 m −
+= 1.33 × 105 N C–1.
+The direction of electric field in this case is opposite to the direction of the dipole moment vector. Again, the result agrees with that obtained
+1.11 DIPOLE IN A UNIFORM EXTERNAL FIELD
+Consider a permanent dipole of dipole moment p in a uniform external field E, as shown in Fig. 1.19. (By permanent dipole, we mean that p exists irrespective of E; it has not been induced by E.)
+There is a force qE on q and a force –qE on –q. The net force on the dipole is zero, since E is uniform. However, the charges are separated, so the forces act at different points, resulting in a torque on the dipole. When the net force is zero, the torque (couple) is independent of the origin. Its magnitude equals the magnitude of each force multiplied by the arm of the couple (perpendicular distance between the two antiparallel forces).
+Magnitude of torque = q E × 2 a sin
+= 2 q a E sin
+Its direction is normal to the plane of the paper, coming out of it.
+The magnitude of p × E is also p E sin q and its direction is normal to the paper, coming out of it. Thus, ttttt = p × E (1.22)
+This torque will tend to align the dipole with the field
+E. When p is aligned with E, the torque is zero.
+What happens if the field is not uniform? In that case, the net force will evidently be non-zero. In addition there will, in general, be a torque on the system as before. The general case is involved, so let us consider the simpler situations when p is parallel to E or antiparallel to E. In either case, the net torque is zero, but there is a net force on the dipole if E is not uniform.
+Figure 1.20 is self-explanatory. It is easily seen that when p is parallel to E, the dipole has a net force in the direction of increasing field. When p is antiparallel to E, the net force on the dipole is in the direction of decreasing field. In general, the force depends on the orientation of p with respect to E.
+This brings us to a common observation in frictional electricity. A comb run through dry hair attracts pieces of paper. The comb, as we know, acquires charge through friction. But the paper is not charged. What then explains the attractive force? Taking the clue from the preceding
+FIGURE 1.19 Dipole in a uniform electric field.
+FIGURE 1.20 Electric force on a dipole: (a) E parallel to p, (b) E antiparallel to p.
+Reprint 2026-27

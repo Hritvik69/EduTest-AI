@@ -1,0 +1,14 @@
+Computer SCienCe - ClaSS Xii 124 in which data are distinct (unique) and not NULL. That way, we can uniquely distinguish each tuple of a relation.
+So, relational data model imposes some restrictions or constraints on the values of the attributes and how the contents of one relation be referred through another relation. These restrictions are specified at the time of defining the database through different types of keys as given below:
+8.5.1 Candidate Key
+A relation can have one or more attributes that takes distinct values. Any of these attributes can be used to uniquely identify the tuples in the relation. Such attributes are called candidate keys as each of them are candidates for the primary key.
+As shown in Figure 8.4, the relation GUARDIAN has four attributes out of which GUID and GPhone always take unique values. No two guardians will have same phone number or same GUID. Hence, these two attributes are the candidate keys as they both are candidates for primary key.
+8.5.2 Primary Key
+Out of one or more candidate keys, the attribute chosen by the database designer to uniquely identify the tuples in a relation is called the primary key of that relation.
+The remaining attributes in the list of candidate keys are called the alternate keys.
+In the relation GUARDIAN, suppose GUID is chosen as primary key, then GPhone will be called the alternate key.
+8.5.3 Composite Primary Key
+If no single attribute in a relation is able to uniquely distinguish the tuples, then more than one attribute are taken together as primary key. Such primary key consisting of more than one attribute is called Composite
+Primary key.
+In relation ATTENDANCE, Roll Number cannot be used as primary key as roll number of same student will appear in another row for a different date. Similarly, in relation Attendance, AttendanceDate cannot be used as primary key because same date is repeated for each roll number. However combination of these two attributes RollNumber and AttendanceDate together would always have unique value in ATTENDANCE table as on any working day, of a student would be
+Reprint 2026-27

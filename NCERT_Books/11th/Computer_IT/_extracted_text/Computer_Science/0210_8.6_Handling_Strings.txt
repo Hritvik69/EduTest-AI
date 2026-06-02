@@ -1,0 +1,166 @@
+Computer SCienCe – ClaSS xi 198
+Reference of list in Main 70615968
+The list before the function call
+[10, 20, 30, 40, 50]
+Reference of list Inside Function 70615968 #The id remains same
+The list after the function call
+[15, 25, 35, 45, 55]
+Observe that, when we pass a list as an argument, we actually pass a reference to the list. Hence any change made to list2 inside the function is reflected in the actual list list1.
+(B) If the list is assigned a new value inside the function then a new list object is created and it becomes the local copy of the function. Any changes made inside the local copy of the function are not reflected back to the calling function.
+Program 9-2 Program to increment the elements of the list passed as parameter.
+#Program 9-2
+#Function to increment the elements of the list passed as argument def increment(list2):
+print("\nID of list inside function before assignment:", id(list2))
+list2 = [15,25,35,45,55] #List2 assigned a new list print("ID of list changes inside function after assignment:", id(list2))
+print("The list inside the function after assignment is:")
+print(list2)
+#end of function list1 = [10,20,30,40,50] #Create a list print("ID of list before function call:",id(list1))
+print("The list before function call:")
+print(list1)
+increment(list1) #list1 passed as parameter to function print('\nID of list after function call:',id(list1))
+print("The list after the function call:")
+print(list1)
+ID of list before function call: 65565640
+The list before function call:
+[10, 20, 30, 40, 50]
+ID of list inside function before assignment:65565640
+ID of list changes inside function after assignment:65565600
+The list inside the function after assignment is:
+Reprint 2026-27
+L ists 199
+[15, 25, 35, 45, 55]
+ID of list after function call: 65565640
+The list after the function call:
+[10, 20, 30, 40, 50]
+9.8 LIst ManIpuLatIon
+In this chapter, we have learnt to create a list and the different ways to manipulate lists. In the following programs, we will apply the various list manipulation methods.
+Program 9-3 Write a menu driven program to perform various list operations, such as:
+• Append an element
+• Insert an element
+• Append a list to the given list
+• Modify an existing element
+• Delete an existing element from its position
+• Delete an existing element with a given value
+• Sort the list in ascending order
+• Sort the list in descending order
+• Display the list.
+#Program 9-3
+#Menu driven program to do various list operations myList = [22,4,16,38,13] #myList already has 5 elements choice = 0 while True:
+print("The list 'myList' has the following elements", myList)
+print("\nL I S T O P E R A T I O N S")
+print(" 1. Append an element")
+print(" 2. Insert an element at the desired position")
+print(" 3. Append a list to the given list")
+print(" 4. Modify an existing element")
+print(" 5. Delete an existing element by its position")
+print(" 6. Delete an existing element by its value")
+print(" 7. Sort the list in ascending order")
+print(" 8. Sort the list in descending order")
+print(" 9. Display the list")
+print(" 10. Exit")
+choice = int(input("ENTER YOUR CHOICE (1-10): "))
+#append element if choice == 1:
+element = int(input("Enter the element to be appended: "))
+myList.append(element)
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 200 print("The element has been appended\n")
+#insert an element at desired position elif choice == 2:
+element = int(input("Enter the element to be inserted: "))
+pos = int(input("Enter the position:"))
+myList.insert(pos,element)
+print("The element has been inserted\n")
+#append a list to the given list elif choice == 3:
+newList = eval(input( "Enter the elements separated by commas"))
+myList.extend(list(newList))
+print("The list has been appended\n")
+#modify an existing element elif choice == 4:
+i = int(input("Enter the position of the element to be modified: "))
+if i < len(myList):
+newElement = int(input("Enter the new element: "))
+oldElement = myList[i] myList[i] = newElement print("The element",oldElement,"has been modified\n")
+print("Position of the element is more than the length of list")
+#delete an existing element by position elif choice == 5:
+i = int(input("Enter the position of the element to be deleted: "))
+if i < len(myList):
+element = myList.pop(i)
+print("The element",element,"has been deleted\n")
+print("\nPosition of the element is more than the length of list")
+#delete an existing element by value elif choice == 6:
+element = int(input("\nEnter the element to be deleted: "))
+if element in myList:
+myList.remove(element)
+print("\nThe element",element,"has been deleted\n")
+print("\nElement",element,"is not present in the list")
+#list in sorted order
+Reprint 2026-27
+L ists 201 elif choice == 7:
+myList.sort()
+print("\nThe list has been sorted")
+#list in reverse sorted order elif choice == 8:
+myList.sort(reverse = True)
+print("\nThe list has been sorted in reverse order")
+#display the list elif choice == 9:
+print("\nThe list is:", myList)
+#exit from the menu elif choice == 10:
+print("Choice is not valid")
+print("\n\nPress any key to continue..............")
+ch = input()
+The list 'myList' has the following elements [22, 4, 16, 38, 13]
+L I S T O P E R A T I O N S
+1. Append an element
+2. Insert an element at the desired position
+3. Append a list to the given list
+4. Modify an existing element
+5. Delete an existing element by its position
+6. Delete an existing element by its value
+7. Sort the list in ascending order
+8. Sort the list in descending order
+9. Display the list
+10. Exit
+ENTER YOUR CHOICE (1-10): 8
+The list has been sorted in reverse order
+The list 'myList' has the following elements [38, 22, 16, 13, 4]
+L I S T O P E R A T I O N S
+1. Append an element
+2. Insert an element at the desired position
+3. Append a list to the given list
+4. Modify an existing element
+5. Delete an existing element by its position
+6. Delete an existing element by its value
+7. Sort the list in ascending order
+8. Sort the list in descending order
+9. Display the list
+10. Exit
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 202
+ENTER YOUR CHOICE (1-10): 5
+Enter the position of the element to be deleted: 2
+The element 16 has been deleted
+The list 'myList' has the following elements [38, 22, 13, 4]
+L I S T O P E R A T I O N S
+1. Append an element
+2. Insert an element at the desired position
+3. Append a list to the given list
+4. Modify an existing element
+5. Delete an existing element by its position
+6. Delete an existing element by its value
+7. Sort the list in ascending order
+8. Sort the list in descending order
+9. Display the list
+10. Exit
+Program 9-4 A program to calculate average marks of n students using a function where n is entered by the user.
+#Program 9-4
+#Function to calculate average marks of n students def computeAverage(list1,n):
+#initialize total total = 0 for marks in list1:
+#add marks to total total = total + marks average = total / n return average
+#create an empty list list1 = [] print("How many students marks you want to enter: ")
+n = int(input())
+for i in range(0,n):
+print("Enter marks of student",(i+1),":")
+marks = int(input())
+#append marks in the list list1.append(marks)
+average = computeAverage(list1,n)
+print("Average marks of",n,"students is:",average)
+How many students marks you want to enter:
+Enter marks of student 1:
+Reprint 2026-27

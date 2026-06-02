@@ -1,0 +1,201 @@
+PROBABILITY 433
+14. If A and B are two events such that A ⊂ B and P(B) ≠ 0, then which of the following is correct?
+(A) P (B)
+P(A | B) P (A)
+= (B) P(A|B) < P(A)
+(C) P(A|B) ≥ P(A) (D) None of these
+Miscellaneous Examples
+Example 22 Coloured balls are distributed in four boxes as shown in the following table:
+Box Colour
+Black White Red Blue
+I 3 4 5 6
+II 2 2 2 2
+III 1 2 3 1
+IV 4 3 1 5
+A box is selected at random and then a ball is randomly drawn from the selected box. The colour of the ball is black, what is the probability that ball drawn is from the box III?
+Solution Let A, E1, E2, E3 and E4 be the events as defined below :
+A : a black ball is selected E1 : box I is selected
+E2 : box II is selected E3 : box III is selected
+E4 : box IV is selected
+Since the boxes are chosen at random,
+Therefore P(E1) = P(E2) = P(E3) = P(E4) = 1
+Also P(A|E1) = 3
+18 , P(A|E2) = 2
+8 , P(A|E3) = 1
+7 and P(A|E4) = 4
+P(box III is selected, given that the drawn ball is black) = P(E3|A). By Bayes' theorem,
+Reprint 2026-27
+434 MATHEMATICS
+P(E3|A) = 3 3
+1 1 2 2 3 3 4 4
+P(E ) P(A|E )
+P(E )P(A|E ) P(E ) P(A|E ) + P(E ) P(A|E ) P(E ) P(A|E )
+4 7 0.165
+1 3 1 1 1 1 1 4
+4 18 4 4 4 7 4 13
+× + × + × + ×
+Example 23 A and B throw a die alternatively till one of them gets a ‘6’ and wins the game. Find their respective probabilities of winning, if A starts first.
+Solution Let S denote the success (getting a ‘6’) and F denote the failure (not getting
+Thus, P(S) = 1 5
+P(A wins in the first throw) = P(S) = 1
+A gets the third throw, when the first throw by A and second throw by B result into failures.
+Therefore, P(A wins in the 3rd throw) = P(FFS) = 5 5 1
+P(F) P(F)P(S) = 6 6 6
+  ×  
+P(A wins in the 5th throw) = P (FFFFS) =  and so on.
+Hence, P(A wins) = 1
+ + ...
+P(B wins) = 1 – P (A wins) = 6 5
+Remark If a + ar + ar2 + ... + arn–1 + ..., where | r | < 1, then sum of this infinite G.P.
+is given by .
+r − (Refer A.1.3 of Class XI Text book).
+Reprint 2026-27
+PROBABILITY 435
+Example 24 If a machine is correctly set up, it produces 90% acceptable items. If it is incorrectly set up, it produces only 40% acceptable items. Past experience shows that
+80% of the set ups are correctly done. If after a certain set up, the machine produces
+2 acceptable items, find the probability that the machine is correctly setup.
+Solution Let A be the event that the machine produces 2 acceptable items.
+Also let B1 represent the event of correct set up and B2 represent the event of incorrect setup.
+Now P(B1) = 0.8, P(B2) = 0.2
+P(A|B1) = 0.9 × 0.9 and P(A|B2) = 0.4 × 0.4
+Therefore P(B1|A) = 1 1
+P (B ) P (A|B )
+P (B ) P(A|B ) + P (B ) P(A|B )
+= 0.8 × 0.9 × 0.9 648 0.95
+0.8 × 0.9 × 0.9 + 0.2 × 0.4 × 0.4 680
+Miscellaneous Exercise on Chapter 13
+1. A and B are two events such that P (A) ≠ 0. Find P(B|A), if (i) A is a subset of B (ii) A ∩ B = φ
+2. A couple has two children, (i) Find the probability that both children are males, if it is known that at least one of the children is male.
+(ii) Find the probability that both children are females, if it is known that the elder child is a female.
+3. Suppose that 5% of men and 0.25% of women have grey hair. A grey haired person is selected at random. What is the probability of this person being male?
+Assume that there are equal number of males and females.
+4. Suppose that 90% of people are right-handed. What is the probability that at most 6 of a random sample of 10 people are right-handed?
+5. If a leap year is selected at random, what is the chance that it will contain 53 tuesdays?
+6. Suppose we have four boxes A,B,C and D containing coloured marbles as given
+Reprint 2026-27
+436 MATHEMATICS
+Box Marble colour
+Red White Black
+One of the boxes has been selected at random and a single marble is drawn from it. If the marble is red, what is the probability that it was drawn from box A?, box B?,
+7. Assume that the chances of a patient having a heart attack is 40%. It is also assumed that a meditation and yoga course reduce the risk of heart attack by
+30% and prescription of certain drug reduces its chances by 25%. At a time a patient can choose any one of the two options with equal probabilities. It is given that after going through one of the two options the patient selected at random suffers a heart attack. Find the probability that the patient followed a course of meditation and yoga?
+8. If each element of a second order determinant is either zero or one, what is the probability that the value of the determinant is positive? (Assume that the indi- vidual entries of the determinant are chosen independently, each value being assumed with probability 1
+9. An electronic assembly consists of two subsystems, say, A and B. From previ- ous testing procedures, the following probabilities are assumed to be known:
+P(A fails) = 0.2
+P(B fails alone) = 0.15
+P(A and B fail) = 0.15
+Evaluate the following probabilities (i) P(A fails|B has failed) (ii) P(A fails alone)
+10. Bag I contains 3 red and 4 black balls and Bag II contains 4 red and 5 black balls.
+One ball is transferred from Bag I to Bag II and then a ball is drawn from Bag II.
+The ball so drawn is found to be red in colour. Find the probability that the transferred ball is black.
+Choose the correct answer in each of the following:
+11. If A and B are two events such that P(A) ≠ 0 and P(B | A) = 1, then (A) A ⊂ B (B) B ⊂ A (C) B = φ (D) A = φ
+Reprint 2026-27
+PROBABILITY 437
+12. If P(A|B) > P(A), then which of the following is correct :
+(A) P(B|A) < P(B) (B) P(A ∩ B) < P(A) . P(B)
+(C) P(B|A) > P(B) (D) P(B|A) = P(B)
+13. If A and B are any two events such that P(A) + P(B) – P(A and B) = P(A), then (A) P(B|A) = 1 (B) P(A|B) = 1 (C) P(B|A) = 0 (D) P(A|B) = 0
+The salient features of the chapter are –
+® The conditional probability of an event E, given the occurrence of the event F is given by P (E F)
+P(E | F) P(F)
+= , P(F) ≠ 0
+® 0 ≤ P (E|F) ≤ 1, P (E′|F) = 1 – P (E|F)
+P ((E ∪ F)|G) = P (E|G) + P (F|G) – P ((E ∩ F)|G)
+® P (E ∩ F) = P (E) P (F|E), P (E) ≠ 0
+P (E ∩ F) = P (F) P (E|F), P (F) ≠ 0
+® If E and F are independent, then
+P (E ∩ F) = P (E) P (F)
+P (E|F) = P (E), P (F) ≠ 0
+P (F|E) = P (F), P(E) ≠ 0
+® Theorem of total probability
+Let {E1, E2, ...,En) be a partition of a sample space and suppose that each of
+E1, E2, ..., En has nonzero probability. Let A be any event associated with S,
+P(A) = P(E1) P (A|E1) + P (E2) P (A|E2) + ... + P (En) P(A|En)
+® Bayes' theorem If E1, E2, ..., En are events which constitute a partition of sample space S, i.e. E1, E2, ..., En are pairwise disjoint and E1 4 E2 4 ... 4 En = S and A be any event with nonzero probability, then
+P(E A P(E ) P(A|E )
+P(E ) P (A|E )
+Reprint 2026-27
+438 MATHEMATICS
+Historical Note
+The earliest indication on measurement of chances in game of dice appeared in 1477 in a commentary on Dante's Divine Comedy. A treatise on gambling named liber de Ludo Alcae, by Geronimo Carden (1501-1576) was published posthumously in 1663. In this treatise, he gives the number of favourable cases for each event when two dice are thrown.
+Galileo (1564-1642) gave casual remarks concerning the correct evaluation of chance in a game of three dice. Galileo analysed that when three dice are thrown, the sum of the number that appear is more likely to be 10 than the sum 9, because the number of cases favourable to 10 are more than the number of cases for the appearance of number 9.
+Apart from these early contributions, it is generally acknowledged that the true origin of the science of probability lies in the correspondence between two great men of the seventeenth century, Pascal (1623-1662) and Pierre de Fermat (1601-1665). A French gambler, Chevalier de Metre asked Pascal to explain some seeming contradiction between his theoretical reasoning and the observation gathered from gambling. In a series of letters written around 1654,
+Pascal and Fermat laid the first foundation of science of probability. Pascal solved the problem in algebraic manner while Fermat used the method of combinations.
+Great Dutch Scientist, Huygens (1629-1695), became acquainted with the content of the correspondence between Pascal and Fermat and published a first book on probability, "De Ratiociniis in Ludo Aleae" containing solution of many interesting rather than difficult problems on probability in games of chances.
+The next great work on probability theory is by Jacob Bernoulli (1654-1705), in the form of a great book, "Ars Conjectendi" published posthumously in 1713 by his nephew, Nicholes Bernoulli. To him is due the discovery of one of the most important probability distribution known as Binomial distribution. The next remarkable work on probability lies in 1993. A. N. Kolmogorov (1903-1987) is credited with the axiomatic theory of probability. His book, ‘Foundations of probability’ published in 1933, introduces probability as a set function and is considered a ‘classic!’.
+— v v v v v—
+Reprint 2026-27
+ANSWERS 439
+EXERCISE 7.1
+1. 1 cos 2
+2 x − 2. 1 sin 3
+3 x 3. 2 1
+4. 3 1 ( )
+a + 5. 3 1 4 x e − − 6. 3 4 C x x − + 8.
+ax bx cx + + + 9. 3 2 C x x x + − + 11.
+7 x x x + + + 13.
+x x − + 15.
+x x x + + +
+16. 2 3sin + Cx x x e − + 17.
+x x x + + +
+18. tan x + sec x + C 19. tan x – x + C
+20. 2 tan x – 3 sec x + C 21. C
+EXERCISE 7.2
+1. log (1 + x2) + C 2. 3 1 (log| |) C
+3 x + 3. log 1+ log C x +
+4. cos (cos x) + C 5. 1 cos 2( ) C a + + 7.
+( 2) ( 2) C x x + − + +
+Reprint 2026-27
+MATHEMATICS 440
+1 (1 2 ) C
+6 x + + 9.
+4 ( 1) C
+3 x x + + + 10. 2log 1 C x − +
+11. 2 4( 8) C
+3 x x + − + ( 1) ( 1) C x x − + − + 13. 3 2
+18(2 3 ) x (log ) C
+− 15. 2 1 log | 9 4x | C
+− − + 16. 2 3 1 C
+− + 18. 1
++ 19. log ( ) +Cx x
+20. 2 2 1 log ( ) C
++ + 21. 1 tan (2 3) C
+2 x x − − +
+22. 1 tan (7 4 ) C
+4 x − − + 23. 1 2 1 (sin ) C
+24. 1 log 2sin 3cos C
+2 x x + + 25. 1 C (1 tan ) x +
+26. 2sin C x + 27.
+1 (sin 2 ) C
+3 x + 28. 2 1+sin C x +
+29. 2 1 (logsin ) C
+2 x + 30. – log 1+ cos C x + 31. 1 C
+1+ cos x +
+32. 1 log cos sin C x x x − + + 33. 1 log cos sin C x x x − − +
+34. 2 tan C x + 35. 3 1 (1 log ) C
+3 x + + 36. 3 1 ( log ) C
+3 x x + +
+37. 1 4 1 cos (tan ) C
+− + 38. D
+Reprint 2026-27
+ANSWERS 441
+EXERCISE 7.3
+1. 1 sin (4 10) C x x − + + 2. 1 1 cos 7 cos C x x − + +
+4 4 sin sin sin x x x x + + +
+4. 3 1 1 cos (2 1) cos (2 1) C x x − + + + + 5. 6 4 1 1 cos cos C
+2 2 cos cos cos x x x − −
+12 12 sin sin x x −
+ + C 8. 2 tan C
+9. tan C x − + 10. 3 1 1 sin 2 sin 4 C x x x − + +
+11. 3 1 1 sin 4 sin 8 C x x x + + + 12. x – sin x + C
+13. 2 (sinx + x cosα) + C 14. 1 C cos +sin x x
+15. 3 1 1 sec 2 sec 2 C x x − + 16. 3 1 tan tan C
+3 x x x − + +
+17. sec x – cosec x + C 18. tan x + C log tan tan C x x + + 20. log cos sin C x x + +
+π − + 22. 1 cos ( )
+sin ( ) cos ( )
+23. A 24. B
+EXERCISE 7.4 tan + C x− 2. 2 1 log 2 1 4 C
+2 x x + + +
+Reprint 2026-27

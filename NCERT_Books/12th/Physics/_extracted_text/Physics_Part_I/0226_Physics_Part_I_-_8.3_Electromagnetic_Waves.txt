@@ -1,0 +1,52 @@
+8.4.3 Infrared waves
+Infrared waves are produced by hot bodies and molecules. This band lies adjacent to the low-frequency or long-wave length end of the visible spectrum. Infrared waves are sometimes referred to as heat waves. This is because water molecules present in most materials readily absorb infrared waves (many other molecules, for example, CO2, NH3, also absorb infrared waves). After absorption, their thermal motion increases, that is, they heat up and heat their surroundings. Infrared lamps are used in physical therapy. Infrared radiation also plays an important role in maintaining the earth’s warmth or average temperature through the greenhouse effect. Incoming visible light (which passes relatively easily through the atmosphere) is absorbed by the earth’s surface and re- radiated as infrared (longer wavelength) radiations. This radiation is trapped by greenhouse gases such as carbon dioxide and water vapour.
+Infrared detectors are used in Earth satellites, both for military purposes and to observe growth of crops. Electronic devices (for example semiconductor light emitting diodes) also emit infrared and are widely used in the remote switches of household electronic systems such as TV sets, video recorders and hi-fi systems.
+8.4.4 Visible rays
+It is the most familiar form of electromagnetic waves. It is the part of the spectrum that is detected by the human eye. It runs from about
+4 × 1014 Hz to about 7 × 1014 Hz or a wavelength range of about 700 –
+400 nm. Visible light emitted or reflected from objects around us provides us information about the world. Our eyes are sensitive to this range of wavelengths. Different animals are sensitive to different range of wavelengths. For example, snakes can detect infrared waves, and the
+‘visible’ range of many insects extends well into the utraviolet.
+8.4.5 Ultraviolet rays
+It covers wavelengths ranging from about 4 × 10–7 m (400 nm) down to
+6 × 10–10m (0.6 nm). Ultraviolet (UV) radiation is produced by special lamps and very hot bodies. The sun is an important source of ultraviolet light. But fortunately, most of it is absorbed in the ozone layer in the atmosphere at an altitude of about 40 – 50 km. UV light in large quantities has harmful effects on humans. Exposure to UV radiation induces the production of more melanin, causing tanning of the skin. UV radiation is absorbed by ordinary glass. Hence, one cannot get tanned or sunburn through glass windows.
+Welders wear special glass goggles or face masks with glass windows to protect their eyes from large amount of UV produced by welding arcs.
+Due to its shorter wavelengths, UV radiations can be focussed into very narrow beams for high precision applications such as LASIK (Laser- assisted in situ keratomileusis) eye surgery. UV lamps are used to kill germs in water purifiers.
+Ozone layer in the atmosphere plays a protective role, and hence its depletion by chlorofluorocarbons (CFCs) gas (such as freon) is a matter of international concern.
+Reprint 2026-27
+Electromagnetic
+8.4.6 X-rays
+Beyond the UV region of the electromagnetic spectrum lies the X-ray region. We are familiar with X-rays because of its medical applications. It covers wavelengths from about 10–8 m (10 nm) down to 10–13 m (10–4 nm). One common way to generate X-rays is to bombard a metal target by high energy electrons. X-rays are used as a diagnostic tool in medicine and as a treatment for certain forms of cancer. Because X-rays damage or destroy living tissues and organisms, care must be taken to avoid unnecessary or over exposure.
+8.4.7 Gamma rays
+They lie in the upper frequency range of the electromagnetic spectrum and have wavelengths of from about 10–10m to less than 10–14m. This high frequency radiation is produced in nuclear reactions and also emitted by radioactive nuclei. They are used in medicine to destroy cancer cells.
+Table 8.1 summarises different types of electromagnetic waves, their production and detections. As mentioned earlier, the demarcation between different regions is not sharp and there are overlaps.
+TABLE 8.1 DIFFERENT TYPES OF ELECTROMAGNETIC WAVES
+Type Wavelength range Production Detection
+Radio > 0.1 m Rapid acceleration and Receiver’s aerials decelerations of electrons in aerials
+Microwave 0.1m to 1 mm Klystron valve or Point contact diodes magnetron valve
+Infra-red 1mm to 700 nm Vibration of atoms Thermopiles and molecules Bolometer, Infrared photographic film
+Light 700 nm to 400 nm Electrons in atoms emit The eye light when they move from Photocells one energy level to a Photographic film lower energy level
+Ultraviolet 400 nm to 1nm Inner shell electrons in Photocells atoms moving from one Photographic film energy level to a lower level
+X-rays 1nm to 10–3 nm X-ray tubes or inner shell Photographic film electrons Geiger tubes
+Ionisation chamber
+Gamma rays <10–3 nm Radioactive decay of the -do-
+Reprint 2026-27
+1. Maxwell found an inconsistency in the Ampere’s law and suggested the existence of an additional current, called displacement current, to remove this inconsistency. This displacement current is due to time-varying electric field and is given by and acts as a source of magnetic field in exactly the same way as conduction current.
+2. An accelerating charge produces electromagnetic waves. An electric charge oscillating harmonically with frequency n, produces electromagnetic waves of the same frequency n. An electric dipole is a basic source of electromagnetic waves.
+3. Electromagnetic waves with wavelength of the order of a few metres were first produced and detected in the laboratory by Hertz in 1887. He thus verified a basic prediction of Maxwell’s equations.
+4. Electric and magnetic fields oscillate sinusoidally in space and time in an electromagnetic wave. The oscillating electric and magnetic fields, E and
+B are perpendicular to each other, and to the direction of propagation of the electromagnetic wave. For a wave of frequency n, wavelength propagating along z-direction, we have
+E = Ex (t) = E0 sin (kz –
+= E0 sin 2 2 0 π π z t E z t
+B = By(t) = B0 sin (kz –
+= B z t B z t
+0 0 2 2 sin sin π π
+They are related by E0/B0 = c.
+5. The speed c of electromagnetic wave in vacuum is related to free space permeability and permittivity constants) as follows:
+0 0 1/ c
+μ ε = . The value of c equals the speed of light obtained from optical measurements.
+Light is an electromagnetic wave; c is, therefore, also the speed of light.
+Electromagnetic waves other than light also have the same velocity c in free space.
+The speed of light, or of electromagnetic waves in a material medium is given by 1/ v m is the permeability of the medium and e its permittivity.
+6. The spectrum of electromagnetic waves stretches, in principle, over an infinite range of wavelengths. Different regions are known by different names; g-rays, X-rays, ultraviolet rays, visible rays, infrared rays, microwaves and radio waves in order of increasing wavelength from 10–2 Å or 10–12 m to 106 m.
+They interact with matter via their electric and magnetic fields which set in oscillation charges present in all matter. The detailed interaction and so the mechanism of absorption, scattering, etc., depend on the wavelength of the electromagnetic wave, and the nature of the atoms and molecules in the medium.
+Reprint 2026-27

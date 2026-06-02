@@ -1,0 +1,43 @@
+IntroductIon to Problem SolvIng 65 a roadmap, the programmer may not be able to clearly visualise the instructions to be written and may end up developing a program which may not work as expected.
+Such a roadmap is nothing but the algorithm which is the building block of a computer program. For example, searching using a search engine, sending a message, finding a word in a document, booking a taxi through an app, performing online banking, playing computer games, all are based on algorithms.
+Writing an algorithm is mostly considered as a first step to programming. Once we have an algorithm to solve a problem, we can write the computer program for giving instructions to the computer in high level language. If the algorithm is correct, computer will run the program correctly, every time. So, the purpose of using an algorithm is to increase the reliability, accuracy and efficiency of obtaining solutions.
+(A) Characteristics of a good algorithm
+• Precision — the steps are precisely stated or defined.
+• Uniqueness — results of each step are uniquely defined and only depend on the input and the result of the preceding steps.
+• Finiteness — the algorithm always stops after a finite number of steps.
+• Input — the algorithm receives some input.
+• Output — the algorithm produces some output.
+(B) While writing an algorithm, it is required to clearly identify the following:
+• The input to be taken from the user
+• Processing or computation to be performed to get the desired result
+• The output desired by the user
+4.4 repreSentAtIon of A lgorIthmS
+Using their algorithmic thinking skills, the software designers or programmers analyse the problem and identify the logical steps that need to be followed to reach a solution. Once the steps are identified, the need is to
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 66
+Table 4.1 Shapes or symbols to draw flow charts
+Flowchart symbol Function Description
+Start/End Also called “Terminator” symbol. It indicates where the flow starts and ends.
+Process Also called “Action Symbol,” it represents a process, action, or a single step.
+Decision A decision or branching point, usually a yes/no or true/ false question is asked, and based on the answer, the path gets split into two branches.
+Input/Output Also called data symbol, this parallelogram shape is used to input or output data
+Arrow Connector to show order of flow between shapes.
+write down these steps along with the required input and desired output. There are two common methods of representing an algorithm —flowchart and pseudocode.
+Either of the methods can be used to represent an algorithm while keeping in mind the following:
+• it showcases the logic of the problem solution, excluding any implementational details
+• it clearly reveals the flow of control during execution of the program
+4.4.1 Flowchart — Visual Representation of Algorithms
+A flowchart is a visual representation of an algorithm.
+A flowchart is a diagram made up of boxes, diamonds and other shapes, connected by arrows. Each shape represents a step of the solution process and the arrow represents the order or link among the steps.
+There are standardised symbols to draw flowcharts.
+Some are given in Table 4.1.
+Example 4.1: Write an algorithm to find the square of a
+Before developing the algorithm, let us first identify the input, process and output:
+• Input: Number whose square is required
+• Process: Multiply the number by itself to get its square
+• Output: Square of the number
+Algorithm to find square of a number.
+Step 1: Input a number and store it to num
+Step 2: Compute num * num and store it in square
+Step 3: Print square
+Reprint 2026-27

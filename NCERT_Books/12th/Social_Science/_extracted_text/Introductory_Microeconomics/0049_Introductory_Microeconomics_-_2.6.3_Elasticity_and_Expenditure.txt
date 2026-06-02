@@ -1,0 +1,106 @@
+39 Production and Costs
+In the long run, all factors of production can be varied. A firm in order to produce different levels of output in the long run may vary both the inputs simultaneously. So, in the long run, there is no fixed factor.
+For any particular production process, long run generally refers to a longer time period than the short run. For different production processes, the long run periods may be different. It is not advisable to define short run and long run in terms of say, days, months or years. We define a period as long run or short run simply by looking at whether all the inputs can be varied or not.
+3.3 TOTAL PRODUCT, AVERAGE PRODUCT AND MARGINAL PRODUCT
+3.3.1 Total Product
+Suppose we vary a single input and keep all other inputs constant. Then for different levels of that input, we get different levels of output. This relationship between the variable input and output, keeping all other inputs constant, is often referred to as Total Product (TP) of the variable input.
+Let us again look at Table 3.1. Suppose capital is fixed at 4 units. Now in the Table 3.1, we look at the column where capital takes the value 4. As we move down along the column, we get the output values for different values of labour. This is the total product of labour schedule with K2 = 4. This is also sometimes called total return to or total physical product of the variable input. This is shown again in the second column of table in 3.2
+Once we have defined total product, it will be useful to define the concepts of average product (AP) and marginal product (MP). They are useful in order to describe the contribution of the variable input to the production process.
+3.3.2 Average Product
+Average product is defined as the output per unit of variable input. We calculate
+The last column of table 3.2 gives us a numerical example of average product of labour (with capital fixed at 4) for the production function described in table 3.1. Values in this column are obtained by dividing TP (column 2) by
+L (Column 1).
+3.3.3 Marginal Product
+Marginal product of an input is defined as the change in output per unit of change in the input when all other inputs are held constant. When capital is held constant, the marginal product of labour is
+Change in output
+MP Change in input
+= ∆ (3.3)
+where ∆ represents the change of the variable.
+The third column of table 3.2 gives us a numerical example of Marginal
+Product of labour (with capital fixed at 4) for the production function described in table 3.1. Values in this column are obtained by dividing change in TP by
+Reprint 2026-27
+Introductory
+Microeconomics
+Average product of an input at any level of employment is the average of all marginal products up to that level. Average and marginal products are often referred to as average and marginal returns, respectively, to the variable input.
+3.4 THE LAW OF DIMINISHING MARGINAL PRODUCT AND
+THE LAW OF VARIABLE PROPORTIONS
+If we plot the data in table 3.2 on graph paper, placing labour on the X-axis and output on the Y-axis, we get the curves shown in the diagram below. Let us examine what is happening to TP. Notice that TP increases as labour input increases. But the rate at which it increases is not constant. An increase in labour from 1 to 2 increases TP by 10 units. An increase in labour from 2 to 3 increases
+TP by 12. The rate at which TP increases, as explained above, is shown by the
+MP. Notice that the MP first increases (upto 3 units of labour) and then begins to change in L. For example, when L changes from 1 to 2, TP changes from 10 to
+MPL= (TP at L units) – (TP at L – 1 unit) (3.4)
+Here, Change in TP = 24 -10 = 14
+Change in L = 1
+Marginal product of the 2nd unit of labour = 14/1 = 14
+Since inputs cannot take negative values, marginal product is undefined at zero level of input employment. For any level of an input, the sum of marginal products of every preceeding unit of that input gives the total product. So total product is the sum of marginal products.
+Table 3.2: Total Product, Marginal product and Average product
+Labour TP MPL APL
+1 10 10 10
+2 24 14 12
+3 40 16 13.33
+4 50 10 12.5
+5 56 6 11.2
+6 57 1 9.5
+Reprint 2026-27
+41 Production and Costs fall. This tendency of the MP to first increase and then fall is called the law of variable proportions or the law of diminishing marginal product. Law of variable proportions say that the marginal product of a factor input initially rises with its employment level. But after reaching a certain level of employment, it starts falling.
+Why does this happen? In order to understand this, we first define the concept of factor proportions. Factor proportions represent the ratio in which the two inputs are combined to produce output.
+As we hold one factor fixed and keep increasing the other, the factor proportions change. Initially, as we increase the amount of the variable input, the factor proportions become more and more suitable for the production and marginal product increases. But after a certain level of employment, the production process becomes too crowded with the variable input.
+Suppose table 3.2 describes the output of a farmer who has 4 hectares of land, and can choose how much labour he wants to use. If he uses only 1 worker, he has too much land for the worker to cultivate alone. As he increases the number of workers, the amount of labour per unit land increases, and each worker adds proportionally more and more to the total output. Marginal product increases in this phase. When the fourth worker is hired, the land begins to get
+‘crowded’. Each worker now has insufficient land to work efficiently. So the output added by each additional worker is now proportionally less. The marginal product begins to fall.
+We can use these observations to describe the general shapes of the TP, MP and AP curves as below.
+3.5 SHAPES OF TOTAL PRODUCT, MARGINAL PRODUCT
+AND AVERAGE PRODUCT CURVES
+An increase in the amount of one of the inputs keeping all other inputs constant results in an increase in output. Table 3.2 shows how the total product changes as the amount of labour increases. The total product curve in the input-output plane is a positively sloped curve. Figure 3.1 shows the shape of the total product curve for a typical firm.
+We measure units of labour along the horizontal axis and output along the vertical axis.
+With L units of labour, the firm can at most produce q1 units of
+According to the law of variable proportions, the marginal product of an input initially rises and then after a certain level of employment, it starts falling. The MP curve therefore, looks like an inverse
+‘U’-shaped curve as in figure 3.2.
+Let us now see what the AP curve looks like. For the first unit of the variable input, one can easily check that the MP and the
+Total Product. This is a total product curve for labour. When all other inputs are held constant, it shows the different output levels obtainable from different units of labour.
+Fig. 3.1
+Reprint 2026-27
+Introductory
+Microeconomics
+AP are same. Now as we increase the amount of input, the MP rises.
+AP being the average of marginal products, also rises, but rises less than MP. Then, after a point, the MP starts falling. However, as long as the value of MP remains higher than the value of the AP, the AP continues to rise. Once MP has fallen sufficiently, its value becomes less than the AP and the AP also starts falling. So AP curve is also inverse ‘U’-shaped.
+As long as the AP increases, it must be the case that MP is greater than AP. Otherwise, AP cannot rise.
+Similarly, when AP falls, MP has to be less than AP. It, follows that MP curve cuts AP curve from above at its maximum.
+Figure 3.2 shows the shapes of AP and MP curves for a typical firm.
+The AP of factor 1 is maximum at L. To the left of L, AP is rising and MP is greater than AP. To the right of L, AP is falling and MP is less than AP.
+3.6 RETURNS TO SCALE
+The law of variable proportions arises because factor proportions change as long as one factor is held constant and the other is increased. What if both factors can change? Remember that this can happen only in the long run. One special case in the long run occurs when both factors are increased by the same proportion, or factors are scaled up.
+When a proportional increase in all inputs results in an increase in output by the same proportion, the production function is said to display Constant returns to scale (CRS).
+When a proportional increase in all inputs results in an increase in output by a larger proportion, the production function is said to display Increasing
+Returns to Scale (IRS)
+Decreasing Returns to Scale (DRS) holds when a proportional increase in all inputs results in an increase in output by a smaller proportion.
+For example, suppose in a production process, all inputs get doubled.
+As a result, if the output gets doubled, the production function exhibits CRS.
+If output is less than doubled, then DRS holds, and if it is more than doubled, then IRS holds.
+Returns to Scale
+Consider a production function q = f (x1, x2)
+where the firm produces q amount of output using x1 amount of factor 1 and x2 amount of factor 2. Now suppose the firm decides to increase the employment level of both the factors t (t > 1) times. Mathematically, we
+Fig. 3.2
+Labour L O
+Average and Marginal Product. These are average and marginal product curves of labour.
+Reprint 2026-27
+43 Production and Costs
+3.7.1 Short Run Costs
+We have previously discussed the short run and the long run. In the short run, some of the factors of production cannot be varied, and therefore, remain fixed. The cost that a firm incurs to employ these fixed inputs is called the total fixed cost (TFC). Whatever amount of output the firm
+3.7 COSTS
+In order to produce output, the firm needs to employ inputs. But a given level of output, typically, can be produced in many ways. There can be more than one input combinations with which a firm can produce a desired level of output.
+In Table 3.1, we can see that 50 units of output can be produced by three different input combinations (L = 6, K = 3), (L = 4, K = 4) and (L = 3, K = 6). The question is which input combination will the firm choose? With the input prices given, it will choose that combination of inputs which is least expensive. So, for every level of output, the firm chooses the least cost input combination.
+Thus the cost function describes the least cost of producing each level of output given prices of factors of production and technology.
+can say that the production function exhibits constant returns to scale if we have, f (tx1, tx2) = t.f (x1, x2)
+ie the new output level f (tx1, tx2) is exactly t times the previous output level f (x1, x2).
+Similarly, the production function exhibits increasing returns to scale if, f (tx1, tx2) > t.f (x1, x2).
+It exhibits decreasing returns to scale if, f (tx1, tx2) < t.f (x1, x2).
+Cobb-Douglas Production Function
+Consider a production function
+β are constants. The firm produces q amount of output using x1 amount of factor 1 and x2 amount of factor 2. This is called a
+Cobb-Douglas production function. Suppose with x1 = 1 x and x2 = 2 x , we have q0 units of output, i.e.
+q0 = 1 x
+If we increase both the inputs t (t > 1) times, we get the new output q1 = (t 1 x )
+α (t 2 x )
+β = 1, we have q1 = tq0. That is, the output increases t times. So the production function exhibits CRS. Similarly, when
+β > 1, the production function exhibits IRS. When
+β < 1 the production function exhibits DRS.
+Reprint 2026-27

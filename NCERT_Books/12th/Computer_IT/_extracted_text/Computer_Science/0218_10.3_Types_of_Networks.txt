@@ -1,0 +1,39 @@
+Computer SCienCe - ClaSS Xii 206
+Example 11.1 A user wants to upload a text document at the rate of 10 pages per 20 second. What will be the required data rate of the channel? (Assume that 1 page contains 1600 characters and each character is of 8 bits).
+Solution:
+11.4 types of Data CommuniCation
+Data communication happens in the form of signals between two or more computing devices or nodes.
+The transfer of data happens over a point-to-point or multipoint communication channel. Data communication between different devices are broadly categorised into 3 types: Simplex communication, Half- duplex communication, and Full-duplex communication.
+11.4.1 Simplex Communication
+It is a one way or unidirectional communication between two devices in which one device is sender and other one is receiver. Devices use the entire capacity of the link to transmit the data. It is like a one way street where vehicles can move in only one direction. For example, data entered through a keyboard or audio sent to a speaker are one way communications.
+With the advent of IoT, controlling home appliances is another example of simplex communication as shown in the Figure 11.3. One can control fans, lights, fridge, oven etc. while sitting in the office or driving a car.
+Figure 11.3: Simplex communication
+11.4.2 Half-duplex Communication
+It is two way or bidirectional communication between two devices in which both the devices can send and receive data or control signals in both directions, but not at the same time, as shown in Figure 11.4. While one device is sending data, the other one will receive and vice-versa. It is like sharing a one-way narrow bridge among vehicles
+Simplex One Direction
+Reprint 2026-27
+Data CommuniCation 207 moving in both directions. Vehicles cannot pass the bridge simultaneously. Basically, it is a simplex channel where the direction of transmission can be switched.
+Application of such type of communication can be found in walkie-talkie where one can press the push-to-talk button and talk. This enables the transmitter and turns off the receiver in that device and others can only listen.
+Figure 11.4: Half-duplex where communication occurs in two different moments.
+11.4.3 Full-duplex Communication
+It is two way or bidirectional communication in which both devices can send and receive data simultaneously, as shown in Figure 11.5. It is like a two way road where vehicles can go in both directions at the same time.
+This type of communication channel is employed to allow simultaneous communication, for example, in our mobile phones and landline telephones. The capacity of the transmission link is shared between the signals going in both directions. This can be done either by using two physically separate simplex lines — one for sending and other for receiving, or the capacity of the single channel is shared between the signals travelling in different directions.
+Figure 11.5: Full duplex transmission of data
+Both Directions
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 208
+11.5 switChing teChniques
+In a network having multiple devices, we are interested to know how to connect the sender and receiver so that one-to-one communication is possible. One solution is to make a dedicated connection between each pair of devices (mesh topology) or between a central device and every other device (a star topology). However, we know that such methods are costly in case of large networks.
+An alternative to this is switching whereby data is routed through various nodes in a network. This switching process forms a temporary route for the data to be transmitted. Two commonly used switching techniques are — Circuit Switching and Packet
+Switching.
+11.5.1 Circuit Switching
+In circuit switching, before a communication starts, a dedicated path is identified between the sender and the receiver. This path is a connected sequence of links between network nodes. All packets follow the same path established during the connection.
+In earlier days, when we placed a telephone call, the switching equipment within the telephone system finds out a physical path or channel all the way from our telephone at home to the receiver’s telephone. This is an example of circuit switching.
+11.5.2 Packet Switching
+In packet switching, each information or message to be transmitted between sender and receiver is broken down into smaller pieces, called packets. These packets are then transmitted independently through the network. Different packets of the same message may take different routes depending on availability.
+Each packet has two parts — a header containing the address of the destination and other information, and the main message part. When all the packets reach the destination, they are reassembled and the complete message is received by the receiver.
+Unlike circuit switching, a channel is occupied in packet switching only during the transmission of the packet. On completion of the transmission, the channel is available for transfer of packets from other communicating parties.
+VoIP is a communication methodology designed to deliver both voice and multimedia communications over Internet protocol.
+Voice over Long-
+Term Evolution (VoLTE) is a standard for high- speed wireless communication for mobile phones, including IoT and wearables.
+Reprint 2026-27

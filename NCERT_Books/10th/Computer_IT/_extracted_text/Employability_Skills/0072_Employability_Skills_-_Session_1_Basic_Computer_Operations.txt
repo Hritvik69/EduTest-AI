@@ -1,0 +1,104 @@
+E mployability SkillS – ClaSS X 62
+What Have You Learnt?
+After completing this session, you will be able to
+• define time management.
+• list the steps for managing time effectively.
+• create a to-do list of various activities that you need to do in a day (in order of priority).
+S eSSion 1: BaSic computer operationS
+ICT stands for Information and Communication
+Technology. ICT refers to all the methods, tools, concepts related to storing, recording and sending digital information.
+Information can be recorded or stored in many ways, handwritten on paper, written using a typewriter and so on. When information is stored and recorded on electronic devices, it takes on a ‘digital’ form. ICT devices are tablets, smartphones and laptops as shown in Figure 3.1.
+ICT skills help us to communicate, run our business and stay connected with our family and friends. Hence, every person needs to acquire
+ICT skills and build them to stay updated with the latest software and applications (apps).
+Computer Hardware and Software
+A computer system consists of two main parts— the hardware and the software. The physical parts that we can see and touch are called
+Unit Unit
+Information and
+Communication
+Technology Skills
+Figure 3.1: ICT Devices
+E mployability SkillS – ClaSS X 64 hardware. It is the machinery of a computer.
+These are the keyboard, monitor, CPU, etc.
+There is another important part i.e., the software. Though we cannot see it, it makes the hardware work the way we want.
+The monitor is a physical device or the hardware. When we start a program, for example, a game, it is displayed on the monitor.
+This is done by the software which displays text, images and videos on the monitor as shown in Figure 3.2. Hardware would not be able to function without software.
+Mobile devices, such as smartphones and tablets are also computer systems with hardware and software.
+They are simply smaller in size and can be easily carried around.
+The most important software in any computer is the
+Operating System (OS). This is the software that starts working as soon as we switch on a computer. It displays the desktop on the monitor. Some of the most commonly used operating systems for laptops and desktop are
+Ubuntu, Microsoft Windows and Mac OS.
+Mobile devices also have an operating system that helps them perform their functions. Some of the mobile operating systems are Apple iOS and Google Android (as shown in Figure 3.3).
+All the computer applications, such as browsers, games, Office tools, etc., are also software programs that perform particular functions.
+Starting a Computer
+What is the first thing you do after you wake up in the morning? What if your father tells you to do your homework immediately? Can you do it? Normally you would do some daily activities and get ready before you start working? Similarly, when a computer is switched on, it performs some basic processes/functions before it is ready to take instructions from the user.
+To start a computer, press the Power button on the
+CPU. This will start the operating system and display the Ubuntu desktop as shown in Figure 3.4 or the main screen on the monitor.
+Figure 3.3: Mobile Android OS
+Figure 3.4: Power Button
+Figure 3.2: Hardware and Software
+Software Hardware
+InformatIon and CommunICatIon teChnology SkIllS 65
+Basic Functions performed when a computer
+Just as we go about our morning routine without anyone telling us what to do, a computer automatically runs a basic program called BIOS (Basic Input/Output
+System) as soon as it is switched on or the power button is pushed on.
+The BIOS first does a self-test. If the self-test shows that the system is fine, the BIOS will load the
+Operating System. This means that the computer’s operating system, for example, Ubuntu, is now ready to take user inputs.
+Login and Logout
+Just like we keep our cupboards locked at home we need to keep our computer locked when we are not working on it. This will ensure that no unauthorised person can see or make changes to our information without taking our permission. To make sure your computer is locked, you have login-IDs and passwords. A login and password is like a key to the lock which allows you to use the computer.
+When you login to the computer with your login-ID and password (as shown in Figure 3.5), the computer knows that you are an authorised person and allows you to work on the applications in the computer. Once you finish working, you must log out or sign out so that no one else can see your work.
+Figure 3.5: Login Screen Figure 3.6: Log Out
+E mployability SkillS – ClaSS X 66
+Shutting Down a Computer
+You can shut down the computer in Ubuntu by clicking
+Systems button at the top right and then click Shut
+Down as shown in Figure 3.6. When you click Shut down, the Operating System will close all the applications and turn off the computer.
+Using the Keyboard
+A keyboard is an input device used to type text, numbers and commands into the computer. It is shown in
+Figure 3.7.
+Figure 3.7: Parts of a Keyboard
+Function Keys
+Keys labeled from F1 to F12 are function keys. You use them to perform specific functions. Their functions differ from program to program. The function of the F1 key in most programs is to get help on that program.
+Some keyboards may have fewer function keys.
+(a) Control keys: Keys, such as Control (CTRL),
+SHIFT, SPACEBAR, ALT, CAPS LOCK and TAB, are special control keys that perform special functions depending on when and where they are used.
+(b) Enter key: The label on this key can be either
+ENTER or RETURN, depending on the brand of computer that you are using. You use the ENTER or the RETURN key to move the cursor to the beginning of a new line. In some programs, it is used to send commands and to confirm a task on a computer.
+InformatIon and CommunICatIon teChnology SkIllS 67 (c) Punctuation keys: Punctuation keys include keys for punctuation marks, such as colon (:), semicolon (;), question mark (?), single quotation marks (‘ ’), and double quotation marks (“ ”).
+(d) Navigation keys: Keys, such as the arrow keys,
+HOME, END, PAGE UP, and PAGE DOWN are navigation keys. These are used to move up and down, right and left in a document. The HOME and END keys move the cursor to the left/right end of a line of text, respectively. The PAGE UP and PAGE DOWN keys are used to move one page up and one page down, respectively.
+(e) Command keys: Keys, such as INSERT (INS),
+DELETE (DEL), and BACKSPACE are command keys. When the INSERT key is turned ON, it helps you overwrite characters to the right of the cursor. The DELETE key and the BACKSPACE key are used to remove typed text, characters and other objects on the right and left side of the cursor, respectively.
+(f) Windows key: Pressing this key opens the
+Start menu
+Using a Mouse
+A mouse as shown in Figure 3.8 is a small device that you can use to move, select and open items on your computer screen. Let us see some of the functions that can be performed using a mouse. Different application will behave differently to the mouse actions. Here we use the File Explorer to see the effect of the mouse action.
+Roll Over or Hover
+Some actions can be done by simply rolling over or hovering over an item. When you bring the mouse over a file in File Explorer, it will show the details of that file as shown in Figure 3.9.
+Point and Click
+As you move the mouse on your desk, a pointer moves correspondingly on your screen. The mouse allows you to select an item on the
+Figure 3.8: Mouse
+Left-click
+Right-click
+Figure 3.9 Roll Over
+E mployability SkillS – ClaSS X 68 screen. When you click a particular file, it gets selected as shown in Figure 3.10.
+Drag and Drop
+To move an item, you need to click it, and then holding the mouse button down, move the item to a new location. After you move the item to the new location, you release the mouse button. This is called drag and drop.
+When you drag a file in File Explorer, you can pick it up from the present location and drop it in a new location where you release the mouse as shown in Figure 3.11.
+Double-click
+Double-clicking means to quickly click the left mouse button twice. When we double- click on a file, it will open the file.
+Practical Exercise
+The teacher will facilitate these activities by showing you the e-Learning lesson athttp://www.psscive.ac.in/stud_text_book.
+html ->Using a Computer. This will include videos and e-content for the above topics as well as detailed instructions for some activities below.
+Initial Thinking Activity
+After watching the initial video write what do you think happens when you start a computer and enter data using a keyboard and mouse?
+Activity 1
+Group Demo on Use of Computer
+Material required
+Pen, notebook, computer
+Procedure
+• Form groups depending on the number of computers available. One student starts the computer and logs in.
+• Another student identifies the keys on the keyboard.
+A third student then performs all the functions of the mouse such as hover, click, double-click, etc.
+• Discuss and note differences between hardware and software and also how they work together to perform a task on the computer.
+Figure 3.10 Point and Click
+Figure 3.11 Drag and Drop

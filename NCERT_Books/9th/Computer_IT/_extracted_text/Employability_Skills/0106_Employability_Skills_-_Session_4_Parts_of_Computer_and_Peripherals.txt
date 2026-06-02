@@ -1,0 +1,144 @@
+InformatIon and CommunICatIon teChnology SkIllS 93
+Figure 3.7: Home Screen of a Mobile
+Table 3.3: Basic Features of a Mobile Device
+Bluetooth: This is a short-range wireless technology which helps you connect with other devices that are within 30 feet of where you are. Once connected, you can send messages and songs.
+Chargeable Battery: This is a portable power pack which can be recharged. It allows you to use the device anywhere.
+Wi-Fi: This is a wireless network technology that helps you connect to the local area network. This is used to connect to the Internet and work with e-mails, social media and anything to do which requires internet.
+Touch Screen: The output display of a mobile device is a touch screen. This helps you to run apps and type anything into the mobile by simply touching different areas of the screen with your finger.
+Camera: Smartphones and Tablet have a front and back camera to capture pictures and videos.
+Clock: Every mobile device has a clock which can be set according to the time in your country.
+Cellular network connectivity: This provides the network through which you can make calls.
+Global Positioning System: It is a navigation (direction finding) system that helps you to navigate, find direction and maps to specific locations.
+Home screen of a mobile device
+The home screen is the first (start) screen of a mobile device (Figure 3.7). There are three main parts of the home screen.
+Basic gestures used
+Gestures are used to interact with the touchscreen of your mobile device. For example, instead of clicking a mouse to open an App, you tap on the touchscreen. Some of these gestures’ as shown in Figure 3.8 are as follows:
+• Tap: Touch the screen with your finger, once, to
+Unit 3.indd 93 23-08-2018 16:20:38
+E mployability SkillS – ClaSS iX 94
+• Tap and hold: This is similar to right-clicking your mouse.
+• Drag: To tap, hold and move your finger across the screen.
+• Swipe: To slide finger to the right, left, up or down of the screen like turning a page.
+• Double tap: To tap twice quickly─this is to zoom out (increase the size of) of something. For example, to make a word appear bigger.
+• Pinch: To bring thumb and finger together on the screen─to zoom in (reduce the size). For example, to make a picture appear smaller.
+The teacher will facilitate these activities by showing you the e-learning module for this lesson via http://www.psscive.ac.in/
+Employability_Skills.html. The module will include videos and e-content for the above topics as well as detailed instructions for some activities below.
+Activity
+Getting familiar with a mobile device
+Materials required
+Pen, notebook, smartphone, tablet
+Procedure
+• Form groups’ depending on the number of mobile devices available. For example, if you have 3 smartphones and
+2 Tablet, form 5 groups.
+• Each member starts the device and notes down the names of icons in the status bar and the dock. One group of volunteers shall come in front of the class and read aloud what they have noted.
+• The class then discusses the various features of the icons.
+Check Your Progress
+A. Multiple choice questions
+1. What is a short-range wireless communication technology called?
+(a) Wi-Fi (b) Internet (c) Bluetooth
+Figure 3.8: Basic gestures
+Unit 3.indd 94 23-08-2018 16:20:38
+InformatIon and CommunICatIon teChnology SkIllS 95
+2. Which part of the home screen is visible on all pages?
+(a) Status bar (b) Main icon area (c) Dock (d) Clock
+3. What does GPS stand for?
+(a) Global Positioning System (b) Global Payment System (c) Global Program System (d) Global Pointing System
+What have you learnt?
+After completing this session, you will be able to
+• identify various parts of a mobile device and list their functions.
+• list the important features of a mobile device.
+S eSSIon 4: partS of a computer and perIpheralS
+Parts of a computer
+A computer system is a programmable machine designed to store and retrieve information and perform arithmetic and logical operations to produce meaningful results in desired format. It consists of three main units: Input Unit, Central Processing
+Unit (CPU) and Output Unit. Different computers have different ways in which the input, processing and output units are connected. In desktop computers, as shown in Figure 3.9, all three units are separate devices. It has: (i)
+a keyboard, which is the input unit, (ii) a box with the Central Processing
+Unit, which is the processing unit and (iii) a monitor, which is the output unit. Input unit helps the user to enter raw data and instructions into the computer system, central processing unit performs the required operations Figure 3.9: Desktop Computer
+Unit 3.indd 95 23-08-2018 16:20:38
+E mployability SkillS – ClaSS iX 96 as per given instructions and the output unit produces meaningful results in the desired format for the user. The CPU is further divided into three parts:
+(i) control unit (CU), (ii) arithmetic and logic unit (ALU), and (iii) memory unit (MU). Control unit acts as a receptionist and a manager of a company. It receives each and every instruction from user and coordinates between different parts to perform various operations.
+Arithmetic and logic unit acts as an accountant of a company, which performs all the mathematical and logical calculations and the memory unit acts as a temporary store of a company, where small amount of data is stored while other operations are being performed.
+In a laptop, all three units, input, processing and output are combined into one device. Input and output devices are also called ‘peripherals’. These are plugged into the computer using connection ports.
+Input devices
+An input device is used to enter information into the computer. A keyboard, as shown in Figure 3.10, is an input device used to enter letters, numbers and control functions. Microphone is an input device that is connected to the computer to record sound. A web camera is a device used to record videos. Many computers come with built-in microphones and webcams. Another input device is a scanner that copies physical documents and stores them in a computer in digital (computer-readable)
+format. For example, if you fill an admission form for a college, you can scan it and then e-mail it to the college instead of sending the actual form by post.
+Output devices
+Output devices bring information from the computer to the user. If you want to calculate the percentage marks, you input all your marks using a keyboard, the computer calculates using the formula and you see the results on a monitor screen. This monitor, as shown in
+Figure 3.11, is the output device on which the computer displays the output information. In the same way, a
+Figure 3.10: Keyboard
+Figure 3.11: Monitor
+Unit 3.indd 96 23-08-2018 16:20:38
+InformatIon and CommunICatIon teChnology SkIllS 97 printer is an output device which gives us the hard copy of the information processed by the computer. If you want to hear the song you have recorded, you can use speakers to play them. Just like input devices, output devices can also be either separate or built-into the computer.
+The commonly used peripheral devices are given in
+Table 3.4.
+Other peripheral devices and their functions
+In large retail stores, a peripheral device commonly found is the barcode reader or barcode scanner. It is used for recording the items purchased in order to create the receipt/bill. In offices and homes, we use a peripheral device known as scanner, and it is used to convert the information on a paper document into a digital information document.
+Table 3.4: Common Peripheral Devices
+Keyboard: It is used to provide input to the computer on what to do, which could be in the form of typed letters, numbers, and symbols.
+Mouse: We use it to go to different parts of the screen on the monitor.
+Microphone: It is used to record voice on the computer, and communicate.
+Projector: It is used to project images or video from computer on a screen.
+Monitor: It displays all the visual output that
+CPU produces after processing the input.
+Speakers: It plays back all the sound- based output.
+Scanner: It is a device that scans/ captures a paper image, document and converts it to digital file on computer.
+Printer: It helps to print out the visual output on the paper, as displayed on the monitor.
+Figure 3.12: Barcode scanning
+Unit 3.indd 97 23-08-2018 16:20:38
+E mployability SkillS – ClaSS iX 98
+Central Processing Unit
+The Central Processing Unit (CPU) of the computer as shown in Figure 3.13, is like our brain. How does our brain work? Our eyes see (input) a mathematical problem and sends the details to the brain. The brain thinks (processes) and gets the result while the hand writes it on paper (output). In a similar way, the CPU also processes information received from the keyboard and gives the output to the monitor or the printer. Just as our brain can understand arithmetic and logical information, the CPU can also solve mathematical and logical problems.
+There are 3 main parts of the CPU.
+• Control unit: It acts like a receiver and a manager of a company. It receives inputs from user and controls different parts to do the operations required.
+• Processing unit: It acts as an accountant of a company and performs all the mathematical and logical calculations.
+• Memory unit: It acts as the storage room of a company, where data is stored temporarily (RAM)
+as well as for a long time (ROM).
+Understanding RAM and ROM
+Let us take the example of a kitchen to understand the meaning of RAM and ROM. If you are a cook, what would you keep on the kitchen counter? And what would you store away in the kitchen shelves? Well, all the things you need immediately and regularly will be on the counter. And things that you do not access often will be in the shelves. Random Access Memory (RAM) is like the kitchen counter to a computer that is switched on, and Read Only Memory (ROM) is like the storage shelf. Flash memory is usually an external device which is a mix of both RAM and ROM. Some key differences between various storage devices are given in Table 3.5.
+Figure 3.13: Central
+Processing Unit
+Unit 3.indd 98 23-08-2018 16:20:39
+InformatIon and CommunICatIon teChnology SkIllS 99
+Figure 3.14: Storage Devices
+Compact Disc USB Flash Drive DVD External Hard Disk
+Table 3.5: Types of Memory Storage Devices
+RAM ROM Flash Memory
+• When you are doing tasks on your computer, you use
+• Permanently stores information
+• Can permanently store information
+• Temporarily stores information
+• Information is lost when computer is switched off
+• Information can be changed easily.
+• Information is stored when computer is off
+• Information cannot be changed easily
+• It is mainly used when starting the computer.
+• Information is not lost when computer is switched off
+• Information can be changed on easily. It is mainly used in removable storage devices (like USB), and its usage is based on user’s needs.
+Motherboard
+Motherboard, also referred to as a system board, is the main circuit board inside a computer. It connects input, processing and output devices.
+Some other important parts of a computer system are storage devices, ports and connections.
+Storage devices
+In order to transfer files from one computer to another one, you need smaller storage devices which you can carry easily from one place to another. These storage devices are used to store digital information. The commonly used storage devices are USB flash drive, hard disk, CD, DVD, etc., as shown in Figure 3.14. They
+Unit 3.indd 99 23-08-2018 16:20:39
+E mployability SkillS – ClaSS iX 100 mainly differ in their storage capacity (how much data they can store).
+You may have heard of a computer with data storage capacity of 500 MB or 2GB. What does that mean?
+Data is stored in the form of bits and bytes. Bit (Binary
+Digit, represented by 0 or 1) is the smallest storage unit.
+Eight bits combined together form a byte, which in turn represents a character (numerals/letters/symbols).
+• 8 bits make a byte and 1024 bytes make a kilobyte
+• 1024 KB make 1 megabyte (MB)
+• 1024 megabyte make 1 gigabyte (GB)
+• 1024 gigabyte make 1 terabyte (TB)
+Very simply, more the number of bytes, larger and more number of files can be stored.
+Ports and connections
+How do you think we connect our keyboard or mouse to the CPU? We do it with the help of wires. Where do you think the wires go in the CPU? The slots or channels into which we connect the mouse/keyboard/external hard disk wires are called ports. Thus, ports help us connect input, output and storage devices in a computer
+There are several types of ports that you can use to connect a computer to an external devices and networks.
+These are:
+• Universal serial bus or the USB port (as shown in
+Figure 3.15) which connects peripheral devices, such as a mouse or a keyboard or a printer to a computer using the cable.
+• Display port (as shown in Figure 3.16) which connects the monitor, or any display unit, to the computer using the cable. These can be of different types, like Video Graphics Array (VGA)
+and High Definition Multimedia Interface (HDMI), depending on the requirement.
+• Audio ports (as shown in Figure 3.17) help to connect microphone, speakers, and headphones to a computer system. Often, the speaker and
+Figure 3.15: USB Port
+Figure 3.16: RGB Display port (Left) and HDMI port (Right)
+Figure 3.17: Audio Ports
+Unit 3.indd 100 23-08-2018 16:20:39

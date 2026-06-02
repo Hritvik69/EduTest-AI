@@ -1,0 +1,24 @@
+167 Haloalkanes and Haloarenes
+Alkyl halides are colourless when pure. However, bromides and iodides develop colour when exposed to light. Many volatile halogen compounds have sweet smell.
+6.2 Why is sulphuric acid not used during the reaction of alcohols with KI?
+6.3 Write structures of different dihalogen derivatives of propane.
+6.4 Among the isomeric alkanes of molecular formula C5H12, identify the one that on photochemical chlorination yields (i) A single monochloride.
+(ii) Three isomeric monochlorides.
+(iii) Four isomeric monochlorides.
+6.5 Draw the structures of major monohalo products in each of the following reactions:
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+Write the products of the following reactions: Example 6.4 Example 6.4 Example 6.4 Example 6.4 Example 6.4
+Solution Solution Solution Solution Solution
+6.6 6.6 6.6 6.6 6.6 Physical Physical Physical Physical Physical
+Properties Properties Properties Properties Properties
+Reprint 2026-27
+168 Chemistry
+Melting and boiling points
+Methyl chloride, methyl bromide, ethyl chloride and some chlorofluoromethanes are gases at room temperature. Higher members are liquids or solids. As we have already learnt, molecules of organic halogen compounds are generally polar. Due to greater polarity as well as higher molecular mass as compared to the parent hydrocarbon, the intermolecular forces of attraction (dipole-dipole and van der Waals)
+are stronger in the halogen derivatives. That is why the boiling points of chlorides, bromides and iodides are considerably higher than those of the hydrocarbons of comparable molecular mass.
+The attractions get stronger as the molecules get bigger in size and have more electrons. The pattern of variation of boiling points of different halides is depicted in Fig. 6.1. For the same alkyl group, the boiling points of alkyl halides decrease in the order: RI> RBr> RCl> RF. This is because with the increase in size and mass of halogen atom, the magnitude of van der Waal forces increases.
+The boiling points of isomeric haloalkanes decrease with increase in branching. For example, 2-bromo-2-methylpropane has the lowest boiling point among the three isomers.
+Boiling points of isomeric dihalobenzenes are very nearly the same.
+However, the para-isomers are high melting as compared to their ortho- and meta-isomers. It is due to symmetry of para-isomers that fits in crystal lattice better as compared to ortho- and meta-isomers.
+Fig. 6.1: Comparison of boiling points of some alkyl halides
+Reprint 2026-27

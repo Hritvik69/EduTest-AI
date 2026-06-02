@@ -1,0 +1,53 @@
+237 REDOX REACTIONS
+) is reduced because oxygen has been removed from it.
+(iii) With the careful application of the concept of electronegativity only we may infer that sodium is oxidised and hydrogen is reduced.
+Reaction (iii) chosen here prompts us to think in terms of another way to define redox reactions.
+7.2 REDOX REACTIONS IN TERMS OF
+ELECTRON TRANSFER REACTIONS
+We have already learnt that the reactions
+2Na(s) + Cl 2 (g) → 2NaCl (s) (7.12)
+4Na(s) + O2 (g) → 2Na2
+O(s) (7.13)
+2Na(s) + S(s) → Na 2 S(s) (7.14)
+are redox reactions because in each of these reactions sodium is oxidised due to the addition of either oxygen or more electronegative element to sodium. Simultaneously, chlorine, oxygen and sulphur are reduced because to each of these, the electropositive element sodium has been added. From our knowledge of chemical bonding we also know that sodium chloride, sodium oxide and sodium sulphide are ionic compounds and perhaps better written as Na+
+Cl– (s), (Na+
+O2–(s), and (Na+
+S2–(s). Development of charges on the species produced suggests us to rewrite the reactions (7.12 to 7.14) in the following manner :
+For convenience, each of the above processes can be considered as two separate steps, one involving the loss of electrons and the other the gain of electrons. As an illustration, we may further elaborate one of these, say, the formation of sodium chloride.
+2 Na(s) → 2 Na+ (g) + 2e– (g) + 2e– → 2 Cl–(g)
+Each of the above steps is called a half reaction, which explicitly shows involvement of electrons. Sum of the half reactions gives the overall reaction :
+2 Na(s) + Cl2 (g) → 2 Na+ Cl– (s) or 2 NaCl (s)
+Reactions 7.12 to 7.14 suggest that half reactions that involve loss of electrons are called oxidation reactions. Similarly, the half reactions that involve gain of electrons are called reduction reactions. It may not be out of context to mention here that the new way of defining oxidation and reduction has been achieved only by establishing a correlation between the behaviour of species as per the classical idea and their interplay in electron-transfer change. In reactions (7.12 to 7.14) sodium, which is oxidised, acts as a reducing agent because it donates electron to each of the elements interacting with it and thus helps in reducing them. Chlorine, oxygen and sulphur are reduced and act as oxidising agents because these accept electrons from sodium. To summarise, we may mention that
+Oxidation : Loss of electron(s) by any species.
+Reduction : Gain of electron(s) by any species.
+Oxidising agent : Acceptor of electron(s).
+Reducing agent : Donor of electron(s).
+Problem 7.2 Justify that the reaction:
+2 Na(s) + H 2 (g) → 2 NaH (s) is a redox
+Solution
+Since in the above reaction the compound formed is an ionic compound, which may also be represented as Na + H– (s), this suggests that one half reaction in this process is :
+2 Na (s) → 2 Na + (g) + 2e–
+Reprint 2026-27
+238 CHEMISTRY and the other half reaction is:
+H2 (g) + 2e– → 2 H–(g)
+This splitting of the reaction under examination into two half reactions automatically reveals that here sodium is oxidised and hydrogen is reduced, therefore, the complete reaction is a redox change.
+7.2.1 Competitive Electron Transfer
+Reactions
+Place a strip of metallic zinc in an aqueous solution of copper nitrate as shown in Fig.
+7.1, for about one hour. You may notice that the strip becomes coated with reddish metallic copper and the blue colour of the solution disappears. Formation of Zn2+ ions among the products can easily be judged when the blue colour of the solution due to
+Cu 2+ has disappeared. If hydrogen sulphide gas is passed through the colourless solution containing Zn2+ ions, appearance of white zinc sulphide, ZnS can be seen on making the solution alkaline with ammonia.
+The reaction between metallic zinc and the aqueous solution of copper nitrate is :
+Zn(s) + Cu 2+ (aq) → Zn 2+ (aq) + Cu(s) (7.15)
+In reaction (7.15), zinc has lost electrons to form Zn2+ and, therefore, zinc is oxidised.
+Evidently, now if zinc is oxidised, releasing electrons, something must be reduced, accepting the electrons lost by zinc. Copper ion is reduced by gaining electrons from the zinc.
+Reaction (7.15) may be rewritten as :
+At this stage we may investigate the state of equilibrium for the reaction represented by equation (7.15). For this purpose, let us place a strip of metallic copper in a zinc sulphate solution. No visible reaction is noticed and attempt to detect the presence of Cu2+ ions by passing H2
+S gas through the solution to produce the black colour of cupric sulphide,
+CuS, does not succeed. Cupric sulphide has such a low solubility that this is an extremely sensitive test; yet the amount of Cu2+ formed cannot be detected. We thus conclude that the state of equilibrium for the reaction (7.15)
+greatly favours the products over the reactants.
+Let us extend electron transfer reaction now to copper metal and silver nitrate solution in water and arrange a set-up as shown in
+Fig. 7.2. The solution develops blue colour due to the formation of Cu 2+ ions on account of the reaction:
+Fig. 7.1 Redox reaction between zinc and aqueous solution of copper nitrate occurring in a beaker.
+Here, Cu(s) is oxidised to Cu 2+ (aq) and (aq) is reduced to Ag(s). Equilibrium greatly favours the products Cu 2+ (aq) and Ag(s).
+By way of contrast, let us also compare the reaction of metallic cobalt placed in nickel sulphate solution. The reaction that occurs here is :
+Reprint 2026-27

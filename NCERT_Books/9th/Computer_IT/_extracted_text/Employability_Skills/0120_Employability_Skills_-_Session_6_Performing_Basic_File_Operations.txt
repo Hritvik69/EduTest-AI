@@ -1,0 +1,265 @@
+InformatIon and CommunICatIon teChnology SkIllS 107 over a file in File Explorer, it will show the details of that file as shown in
+Figure 3.28.
+Point and click
+As you move the mouse on your desk, a pointer moves correspondingly on your screen. The mouse allows you to select an item on the screen. When you click a particular file, it gets selected as shown in Figure 3.29.
+Drag and drop
+To move an item, you need to click it, and then holding the mouse button down, move the item to a new location.
+After you move the item to the new location, you release the mouse button.
+This is called drag and drop. When you drag a file in File Explorer, you can pick it up from the present location and drop it in a new location where you release the mouse as shown in Figure 3.30.
+Double-click
+It means to quickly click the left mouse button twice. When we double-click the file icon, it will open the file.
+The teacher will facilitate these activities by showing you the e-learning module for this lesson via http://www.psscive.ac.in/
+Employability_Skills.html. The module will include videos and e-content for the above topics as well as detailed instructions for some activities below.
+Initial thinking activity
+After watching the initial video write what do you think happens when you start a computer and how do you enter data using a keyboard and mouse?
+Figure 3.29: Point and Click
+Figure 3.30: Drag and Drop
+Figure 3.28: Roll Over
+Unit 3.indd 107 23-08-2018 16:20:40
+E mployability SkillS – ClaSS iX 108
+Activity 1
+Use of computer
+Materials required
+Pen/pencil, notebook, computer
+Procedure
+1. Form groups depending on the number of computers available.
+2. One student starts the computer and logs in. Another student identifies the keys on the keyboard. Another student then performs all the functions of the mouse, such as hover, click, double-click, etc.
+3. After the students have performed all the activities, they will shut down the computer. Other students watch and give feedback on what was done right and which tasks can be improved.
+Activity 2
+Using the keyboard
+Material required
+Computer
+Procedure
+• Form groups depending on the number of computers available.
+• Open a text editor in Ubuntu by typing ‘editor’ in the search bar and then selecting the
+Text Editor. You can also open
+Notepad in Windows by typing
+Notepad on the Windows Search bar and then selecting Notepad from the search result.
+• Each student types the following letters on the text editor.
+Position your hands on the keyboard, as given in the
+Figure 3.31 and type the given letters and words. After one student is done, the next student practices the same until.
+All student should get a chance.
+Letters in the home: rowasdf; lkjhj; asdfgf; lkjhj;
+Letters in the top row: qwerty poiuy trewq yuiop
+Letters in the bottom: rowzxcvb nm,./bvcxz.,mn
+• Now, each student types five words using the keyboard.
+For example, add, all, ask, sad, gas, dad, lad, had, hall, fall, row, tow, top, out, pot, rot, wire, tire, type, write, cab, nab, man, can, van, ban. All students in the group should get a chance to practice.
+Figure 3.31: Typing
+Unit 3.indd 108 23-08-2018 16:20:40
+InformatIon and CommunICatIon teChnology SkIllS 109
+After completing this session, you will be able to
+• start and shut down a computer.
+• identify the various keys on a keyboard and their associated functions.
+• use a mouse.
+• type simple words.
+S eSSIon 6: performIng baSIc fIle operatIonS
+Need to perform basic file operations
+In any school (or office), each teacher has a separate cabinet, as shown in Figure 3.32 where they keep the files of different students/classes on separate shelves.
+Similarly, information on a computer is stored in Figure 3.32: File Cabinet
+A. Multiple choice questions
+1. Which of the following functions are performed using a mouse. Choose and tick all the correct options.
+(a) Turn on computer (b) Typing (c) Right click (d) Drag and Drop an Icon
+2. What is the term used when you press and hold the left mouse key and move the mouse around?
+(a) Highlighting (b) Dragging (c) Selecting (d) Moving
+3. Rearrange the steps for starting a computer in the correct sequence.
+(a) Desktop appears after login ( )
+(b) Login screen appears ( )
+(c) Power on Self-Test (POST) starts ( )
+(d) Operating system starts ( )
+(e) Welcome screen appears ( )
+B. Short answer questions
+1. Describe the functions of at least 5 types of keys.
+2. Describe the functions of a mouse.
+Check Your Progress
+What Have You Learnt?
+Unit 3.indd 109 23-08-2018 16:20:40
+E mployability SkillS – ClaSS iX 110
+Figure 3.33: Opening Text Editor Figure 3.34: Text Editor electronic files, which can be put into separate folders.
+It is easier to manage the electronic files as they can be simply copied, moved, renamed or even deleted.
+Files and folders
+All information stored in a computer is kept in files.
+Different types of files store different types of information.
+Each file is given a file name and has a file name extension that identifies the file type. (The file name and file name extension are separated by a period or a ‘dot’.)
+For example, a document (e.g., with the name Neha)
+created using Notepad (a type of computer application to create simple text files) will have the extension .txt.
+There are other types like .doc, .xls, etc. An image file usually has an extension .jpg, while a sound file usually has .mp3. A folder is a location where a group of files can be stored.
+Creating a file (using a text editor in Ubuntu)
+When a student, Neha, joins a class, the teacher creates a file on the computer to store Neha’s information, such as name, address, phone number, etc. Let us create a new file using a text editor in Ubuntu.
+• To open a text editor, type ‘editor’ in the search dialog box. Then double-click the text editor option as shown in Figure 3.33 and 3.34. This will open a blank document. In Windows, you can open Notepad and type in the text.
+Unit 3.indd 110 23-08-2018 16:20:40
+InformatIon and CommunICatIon teChnology SkIllS 111
+The teacher will facilitate these activities by showing you the e-learning module for this lesson viahttp://www.psscive.ac.in/
+Employability_Skills.html. The module will include videos and e-content for the above topics as well as detailed instructions for some activities below.
+Initial thinking activity
+After watching the initial video in the e-learning lesson for this topic why do you think it’s important to know how files are stored in a computer?
+Activity 1
+Create a file
+Materials required
+Pen/pencil, notebook, computer
+Procedure
+• Form groups, depending on the number of computers available. Each member of the group creates a file. Others can watch and give feedback on what was done correctly and what can be improved.
+• Open a text editor in Ubuntu or Notepad in Windows.
+• Type details, such as name, class, address, parent’s name, etc., for a student
+• Save the file on the desktop.
+Each student studies the shortcut given below:
+CTRL+z undo
+CTRL+y redo
+CTRL+a select all
+CTRL+x cut
+CTRL+c copy
+CTRL+v paste
+CTRL+p print
+CTRL+s save
+The first group asks the other groups a questions (e.g., what does CRTL+Z do? or what is the shortcut for Copy).
+Figure 3.35: Saving a File
+• Here you can add text, such as ‘Neha Tiwari, Shakti Nagar,
+New Delhi. M: 7856453451’
+• To save the file click Save.
+In the Save As dialog box, browse to the Desktop folder, type the name as ‘Neha’ and click Save as shown in
+Figure 3.35.
+Unit 3.indd 111 23-08-2018 16:20:40
+E mployability SkillS – ClaSS iX 112
+A. Multiple choice questions
+1. Which one of the following shortcut key is used to paste a file? Tick mark the correct answer.
+(a) Ctrl + C (b) Ctrl + P (c) Ctrl + V (d) Ctrl + X
+2. Which of the following is a valid file extension for
+Notepad file? Tick mark the correct answer.
+(a) .jpg (b) .doc (c) .text (d) .txt
+3. Which key do you use to copy something? Tick mark the correct answer.
+(a) Ctrl+X (b) Ctrl+C (c) Ctrl+Z (d) Ctrl+T
+What Have You Learnt?
+After completing this session, you will be able to
+• demonstrate the knowledge of the computer files and folders.
+• open a new file in a text editor, type in the details and save the file.
+S eSSIon 7: communIcatIon and networkIng
+— baSIcS of Internet
+The Internet is a huge network of computers around the world. Using the Internet you can get any information that is stored in a web page on the World Wide Web.
+You can do all this by connecting your computer to the
+Internet.
+If your computer is connected to the Internet, you say that your computer is online. With the help of the
+Internet, you can gather a lot of knowledge which is available on it. The knowledge is stored in a big library/ storehouse, called the World Wide Web (WWW) or the
+Web. It is a collection of different websites that you can view if you are connected to the Internet. You can also
+Check Your Progress
+Figure 3.36: the Internet
+Unit 3.indd 112 23-08-2018 16:20:40
+InformatIon and CommunICatIon teChnology SkIllS 113 use these websites to buy something, watch movies, read books, learn new skills, educate yourself, find the best colleges to study further, etc.
+Uses of the Internet
+There is no limit to what you can do online, but some of the most common uses are given in Table 3.6.
+Table 3.6: Common uses of Internet
+Search information: You can get the latest information about anything that is uploaded on the web, whether it is result, news about an earthquake, a cricket match or the election details.
+Shopping: You can buy and sell products, such as books and electronic goods over the Internet.
+You can also pay for these products via digital modes of payments, such as wallets, plastic cardsor through e-banking.
+Entertainment: You can listen to music, play games, watch movies or share pictures.
+Online booking: You can book movie tickets, hotels, bus/train/ plane tickets, etc., online.
+E-mail and chatting: You can talk or send messages to people all around the world quickly and easily. The messages you send over the Internet can reach any part of world in just a few seconds. For example,
+Gmail and Outlook.
+Online learning: There are a number of courses available online─some are free while others are not. You can do a course on a topic you like or want to know more about.
+Social networking: You can share your interests, knowledge and stories with your family and friends around the world.
+For example, Facebook and
+Twitter.
+Online banking: You can do banking operations, like checking details of your bank account or transferring money from one account to another through mobile banking/NEFT/RTGS.
+Connecting to the Internet
+As shown in Figure 3.37, to connect to the Internet, you (a) A device, such as a computer, laptop or mobile.
+(b) A connection device, i.e., a modem.
+An Internet Service Provider (ISP)─i.e., the telephone company which provides the Internet connectivity using the phone lines or a wireless network.
+Unit 3.indd 113 23-08-2018 16:20:41
+E mployability SkillS – ClaSS iX 114
+Types of connections (a) Wired connections: When our computer is connected to the
+Internet using a wire, it is called a wired connection (as shown in
+Figure 3.38). We use Ethernet cables (cables used for connecting to the Internet) to connect to the modem which connects to the ISP using a phone line.
+(b) Wireless connection: You can also connect your computer to the
+Internet using wireless technology as shown in Figure 3.38A. Laptops need a wireless Internet card to connect to a modem with using any
+Bandwidth
+Bandwidth is the amount of data that can be transmitted over a network in a certain amount of time. To understand
+Figure 3.37: Connecting to the Internet
+Figure 3.38: Wired connection bandwidth, Let us take the example of a pipe, the amount of water flowing through a pipe depends on its thickness.
+Similarly, the amount of data that your network can receive or send depends on its bandwidth. In case of digital devices, the bandwidth is usually expressed in bits per second (bps) or bytes per second and in case
+Figure 3.38A: Wireless connection
+Unit 3.indd 114 23-08-2018 16:20:41
+InformatIon and CommunICatIon teChnology SkIllS 115 of analog devices, the bandwidth is expressed in cycles per second, or Hertz (Hz).
+Data transfer speed over the networks (including the internet) is calculated in terms of bits per second.
+1 Kbps (kilo bits per second) = 1000 bits per second
+1 Mbps (mega bits per second) = 1000 kilo bits per second
+1 Gbps (giga bits per second) = 1,000 mega bits per
+Internet browser
+To see the information on the various websites, you need an Internet Browser. An Internet Browser is an application or a software program on your computer or laptop which helps you visit the various websites.
+Some examples of browsers are Google Chrome, Mozilla
+Firefox and Internet Explorer.
+(a) Searching for information: Do the steps below to search for information on the Internet.
+Open an Internet browser, as shown in Figure 3.40.
+• Type the topic, on which you want information, in the search box and hit the Enter key.
+Figure 3.39: Some Internet
+Browsers
+• The search results having the required information will be displayed.
+• In Ubuntu, click Firefox icon as shown in Figure
+3.41 to open Firefox Mozilla browser and search for information.
+Figure 3.40: Internet Explorer Figure 3.41: Firefox in Ubuntu
+Unit 3.indd 115 23-08-2018 16:20:41
+E mployability SkillS – ClaSS iX 116
+The teacher will facilitate these activities by showing you the e-learning module for this lesson via http://www.psscive.ac.in/
+Employability_Skills.html. The module will include videos and e-content for the above topics as well as detailed instructions for some activities below.
+Initial thinking activity
+After watching the initial video in the e-learning lesson for this topic, write down why do you think the first person did not have enough information about available jobs.
+Activity 1
+Uses of the Internet
+Materials required
+Pen/pencil, notebook
+Procedure
+• Form groups depending on the number of computers available.
+• Discuss the various uses of the Internet. Every member gives one use and what he/she would do using an Internet connection. Rest of the group should give feedback on whether it is correct and not. One group volunteers and presents to class. Students give feedback.
+Check Your Progress
+A. Multiple choice questions
+1. To connect to the Internet, the computer has to be connected to the ____________________________.
+(a) Internet Society (b) Internet Architecture (c) Internet Service Provider (d) Large Area Network
+2. What is the Internet?
+(a) Phone connections (b) Collection of computer networks (c) Network of computers in an office (d) None of the above
+B. Short answer question
+1. Write a short note on the uses of internet.
+Unit 3.indd 116 23-08-2018 16:20:41
+InformatIon and CommunICatIon teChnology SkIllS 117
+What have you learnt?
+After completing this session, you will be able to
+• search information on the Internet.
+• identify the various uses of Internet.
+S eSSIon 8: communIcatIon and networkIng —
+Internet browSIng
+World Wide Web
+The World Wide Web (WWW) or simply the Web is a huge collection of information as shown symbolically in Figure 3.42. It is a vast network of linked hypertext files, stored on computers throughout the world, that can provide a computer user with information on a huge variety of subjects. Thus, it serves as a platform through which users can use or share information.
+It is made up of
+• A web page
+• A web browser
+• A system to transfer information between the web browser and the web pages
+Web page
+A web page is a document present on a computer that is connected to the Internet. There are hundreds of web pages. Each web page has a unique address/location like the address of a house. We can use the address to see a particular web page. For example, the address of
+NCERT is http://ncert.nic.in as shown in Figure 3.43.
+To view a web page you need a web browser on your computer.
+Web browser
+A web browser (commonly referred to as a browser) is a software application for using and sharing information on the World Wide Web.
+Figure 3.42: Symbolic
+Representation of World Wide
+Web (WWW)
+Figure 3.43: Web
+Unit 3.indd 117 23-08-2018 16:20:41
+E mployability SkillS – ClaSS iX 118
+The most popular web browsers that are used today are shown in
+Figure 3.44.
+If you want to see a web page that gives information on plants, you type that address in the web browser in the address bar as shown in Figure 3.45.
+Then the web page on plants will be displayed in the browser.
+(a) Hyperlinks: Very often, there are hyperlinks (highlighted and underlined words) present on web pages. If you click a hyperlink, it will take you to another part on the same page or to a different page.
+(b) Important parts of a web browser (as shown in
+Figure 3.46):
+(i) Address bar (Alt+d): You can type the address/URL of a web page in this box and press Enter.
+The browser will display the page linked to that URL.
+(ii) Tabbed browsing (Ctrl+T): Tabbed browsing allows a user to view multiple pages in the same window. So if you want to compare two types of plants, for example, trees and shrubs, you can open the two in two different tabs.
+(iii) Back and forward buttons (Alt+Left or right arrow keys): These buttons allow you to go back to the last page viewed, or go forward to the next page viewed. For example, in the previous example, if you click ‘Back’ arrow on the ‘Flowers’ page it will take you back to the ‘Table of Content’.
+Mozilla Firefox Google Chrome Internet Explorer Apple Safari Opera
+Figure 3.44: Web browsers
+Figure 3.46: Parts of a Browser
+Figure 3.45: Web browser
+Unit 3.indd 118 23-08-2018 16:20:42
+InformatIon and CommunICatIon teChnology SkIllS 119 (iv) Refresh button (F5):
+Sometimes, you do not see the complete page correctly. You can reload the page by clicking the
+Refresh button.
+(v) Steps to browse a web page: Open a web browser, such as
+Internet Explorer or
+Google Chrome. To search for information, follow the given steps: Figure 3.47: Searching for Information

@@ -1,0 +1,245 @@
+402 MATHEMATICS
+Example 4 Determine graphically the minimum value of the objective function
+Z = – 50x + 20y ... (1)
+subject to the constraints:
+2x – y ≥ – 5 ... (2)
+3x + y ≥ 3 ... (3)
+2x – 3y ≤ 12 ... (4)
+x ≥ 0, y ≥ 0 ... (5)
+Solution First of all, let us graph the feasible region of the system of inequalities (2) to (5). The feasible region (shaded) is shown in the Fig 12.5. Observe that the feasible region is unbounded.
+We now evaluate Z at the corner points.
+From this table, we find that – 300 is the smallest value of Z at the corner point (6, 0). Can we say that minimum value of Z is – 300? Note that if the region would have been bounded, this smallest value of Z is the minimum value of Z (Theorem 2).
+But here we see that the feasible region is unbounded. Therefore, – 300 may or may not be the minimum value of Z. To decide this issue, we graph the inequality
+– 50x + 20y < – 300 (see Step 3(ii) of corner Point Method.)
+i.e., – 5x + 2y < – 30 and check whether the resulting open half plane has points in common with feasible region or not. If it has common points, then –300 will not be the minimum value of Z.
+Otherwise, –300 will be the minimum value of Z.
+Fig 12.5
+Corner Point Z = – 50x + 20y (0, 5) 100 (0, 3) 60 (1, 0) –50 (6, 0) – 300 smallest ←
+Reprint 2026-27
+LINEAR PROGRAMMING 403
+As shown in the Fig 12.5, it has common points. Therefore, Z = –50 x + 20 y has no minimum value subject to the given constraints.
+In the above example, can you say whether z = – 50 x + 20 y has the maximum value 100 at (0,5)? For this, check whether the graph of – 50 x + 20 y > 100 has points in common with the feasible region. (Why?)
+Example 5 Minimise Z = 3x + 2y subject to the constraints:
+x + y ≥ 8 ... (1)
+3x + 5y ≤ 15 ... (2)
+x ≥ 0, y ≥ 0 ... (3)
+Solution Let us graph the inequalities (1) to (3) (Fig 12.6). Is there any feasible region?
+Why is so?
+From Fig 12.6, you can see that there is no point satisfying all the constraints simultaneously. Thus, the problem is having no feasible region and hence no feasible solution.
+Remarks From the examples which we have discussed so far, we notice some general features of linear programming problems:
+(i) The feasible region is always a convex region.
+(ii) The maximum (or minimum)
+solution of the objective function occurs at the vertex (corner) of the feasible region. If two corner points produce the same maximum (or minimum) value of the objective function, then every point on the line segment joining these points will also give the same maximum (or minimum) value.
+EXERCISE 12.1
+Solve the following Linear Programming Problems graphically:
+1. Maximise Z = 3x + 4y subject to the constraints : x + y ≤ 4, x ≥ 0, y ≥ 0.
+Fig 12.6
+Reprint 2026-27
+404 MATHEMATICS
+2. Minimise Z = – 3x + 4 y subject to x + 2y ≤ 8, 3x + 2y ≤ 12, x ≥ 0, y ≥ 0.
+3. Maximise Z = 5x + 3y subject to 3x + 5y ≤ 15, 5x + 2y ≤ 10, x ≥ 0, y ≥ 0.
+4. Minimise Z = 3x + 5y such that x + 3y ≥ 3, x + y ≥ 2, x, y ≥ 0.
+5. Maximise Z = 3x + 2y subject to x + 2y ≤ 10, 3x + y ≤ 15, x, y ≥ 0.
+6. Minimise Z = x + 2y subject to 2x + y ≥ 3, x + 2y ≥ 6, x, y ≥ 0.
+Show that the minimum of Z occurs at more than two points.
+7. Minimise and Maximise Z = 5x + 10 y subject to x + 2y ≤ 120, x + y ≥ 60, x – 2y ≥ 0, x, y ≥ 0.
+8. Minimise and Maximise Z = x + 2y subject to x + 2y ≥ 100, 2x – y ≤ 0, 2x + y ≤ 200; x, y ≥ 0.
+9. Maximise Z = – x + 2y, subject to the constraints:
+x ≥ 3, x + y ≥ 5, x + 2y ≥ 6, y ≥ 0.
+10. Maximise Z = x + y, subject to x – y ≤ –1, –x + y ≤ 0, x, y ≥ 0.
+® A linear programming problem is one that is concerned with finding the optimal value (maximum or minimum) of a linear function of several variables (called objective function) subject to the conditions that the variables are non-negative and satisfy a set of linear inequalities (called linear constraints).
+Variables are sometimes called decision variables and are non-negative.
+Historical Note
+In the World War II, when the war operations had to be planned to economise expenditure, maximise damage to the enemy, linear programming problems came to the forefront.
+The first problem in linear programming was formulated in 1941 by the Russian mathematician, L. Kantorovich and the American economist, F. L. Hitchcock,
+Reprint 2026-27
+LINEAR PROGRAMMING 405 both of whom worked at it independently of each other. This was the well known transportation problem. In 1945, an English economist, G.Stigler, described yet another linear programming problem – that of determining an optimal diet.
+In 1947, the American economist, G. B. Dantzig suggested an efficient method known as the simplex method which is an iterative procedure to solve any linear programming problem in a finite number of steps.
+L. Katorovich and American mathematical economist, T. C. Koopmans were awarded the nobel prize in the year 1975 in economics for their pioneering work in linear programming. With the advent of computers and the necessary softwares, it has become possible to apply linear programming model to increasingly complex problems in many areas.
+— v v v v v—
+Reprint 2026-27
+406 MATHEMATICS v The theory of probabilities is simply the Science of logic quantitatively treated. – C.S. PEIRCE v
+13.1 Introduction
+In earlier Classes, we have studied the probability as a measure of uncertainty of events in a random experiment.
+We discussed the axiomatic approach formulated by
+Russian Mathematician, A.N. Kolmogorov (1903-1987)
+and treated probability as a function of outcomes of the experiment. We have also established equivalence between the axiomatic theory and the classical theory of probability in case of equally likely outcomes. On the basis of this relationship, we obtained probabilities of events associated with discrete sample spaces. We have also studied the addition rule of probability. In this chapter, we shall discuss the important concept of conditional probability of an event given that another event has occurred, which will be helpful in understanding the Bayes' theorem, multiplication rule of probability and independence of events. We shall also learn an important concept of random variable and its probability distribution and also the mean and variance of a probability distribution. In the last section of the chapter, we shall study an important discrete probability distribution called Binomial distribution. Throughout this chapter, we shall take up the experiments having equally likely outcomes, unless stated otherwise.
+13.2 Conditional Probability
+Uptill now in probability, we have discussed the methods of finding the probability of events. If we have two events from the same sample space, does the information about the occurrence of one of the events affect the probability of the other event? Let us try to answer this question by taking up a random experiment in which the outcomes are equally likely to occur.
+Consider the experiment of tossing three fair coins. The sample space of the experiment is
+S = {HHH, HHT, HTH, THH, HTT, THT, TTH, TTT}
+Chapter 13
+PROBABILITY
+Pierre de Fermat (1601-1665)
+Reprint 2026-27
+PROBABILITY 407
+Since the coins are fair, we can assign the probability 1
+8 to each sample point. Let
+E be the event ‘at least two heads appear’ and F be the event ‘first coin shows tail’.
+E = {HHH, HHT, HTH, THH} and F = {THH, THT, TTH, TTT}
+Therefore P(E) = P ({HHH}) + P ({HHT}) + P ({HTH}) + P ({THH})
+= 1 1 1 1 1
+8 8 8 8 2
++ + + = (Why ?)
+and P(F) = P ({THH}) + P ({THT}) + P ({TTH}) + P ({TTT})
+= 1 1 1 1 1
+8 8 8 8 2
+Also E ∩ F = {THH} with P(E ∩ F) = P({THH}) = 1
+Now, suppose we are given that the first coin shows tail, i.e. F occurs, then what is the probability of occurrence of E? With the information of occurrence of F, we are sure that the cases in which first coin does not result into a tail should not be considered while finding the probability of E. This information reduces our sample space from the set S to its subset F for the event E. In other words, the additional information really amounts to telling us that the situation may be considered as being that of a new random experiment for which the sample space consists of all those outcomes only which are favourable to the occurrence of the event F.
+Now, the sample point of F which is favourable to event E is THH.
+Thus, Probability of E considering F as the sample space = 1 or Probability of E given that the event F has occurred = 1
+This probability of the event E is called the conditional probability of E given that F has already occurred, and is denoted by P (E|F).
+Thus P(E|F) = 1
+Note that the elements of F which favour the event E are the common elements of
+E and F, i.e. the sample points of E ∩ F.
+Reprint 2026-27
+408 MATHEMATICS
+Thus, we can also write the conditional probability of E given that F has occurred as
+P(E|F) = Number of elementary eventsfavourable to E F
+Number of elementaryevents which arefavourable to F
+Dividing the numerator and the denominator by total number of elementary events of the sample space, we see that P(E|F) can also be written as
+P(E|F) =
+P(E F) (S)
+(F) P(F)
+= ... (1)
+Note that (1) is valid only when P(F) ≠ 0 i.e., F ≠ φ (Why?)
+Thus, we can define the conditional probability as follows :
+Definition 1 If E and F are two events associated with the same sample space of a random experiment, the conditional probability of the event E given that F has occurred, i.e. P (E|F) is given by
+P(E|F) = P (E F)
+∩ provided P(F) ≠ 0
+13.2.1 Properties of conditional probability
+Let E and F be events of a sample space S of an experiment, then we have
+Property 1 P (S|F) = P(F|F) = 1
+We know that
+P(S|F) = P (S F) P(F) 1
+P (F) P (F)
+Also P(F|F) = P (F F) P(F) 1
+P (F) P(F)
+Thus P(S|F) = P(F|F) = 1
+Property 2 If A and B are any two events of a sample space S and F is an event of S such that P(F) ≠ 0, then
+P((A ∪ B)|F) = P(A|F) + P(B|F) – P((A ∩ B)|F)
+Reprint 2026-27
+PROBABILITY 409
+In particular, if A and B are disjoint events, then
+P((A∪B)|F) = P(A|F) + P(B|F)
+P((A ∪ B)|F) = P[(A B) F]
+= P[(A F) (B F)] (by distributive law of union of sets over intersection)
+= P (A F)+ P(B F) – P(A B F)
+= P (A F) P (B F) P[(A B) F]
+P(F) P(F) P(F)
+= P (A|F) + P (B|F) – P ((A ∩ B)|F)
+When A and B are disjoint events, then
+P ((A ∩ B)|F) = 0
+⇒ P ((A ∪ B)|F) = P (A|F) + P(B|F)
+Property 3 P (E′|F) = 1 − P (E|F)
+From Property 1, we know that P(S|F) = 1
+⇒ P (E ∪ E′|F) = 1 since S = E ∪ E′
+⇒ P(E|F) + P (E′|F) = 1 since E and E′ are disjoint events
+Thus, P (E′|F) = 1 − P (E|F)
+Let us now take up some examples.
+Example 1 If P (A) = 7
+13 , P(B) = 9
+13 and P (A ∩ B) = 4
+13 , evaluate P (A|B).
+Solution We have
+P (A B) 4 13 P(A|B) = 9 P ( B) 9
+Example 2 A family has two children. What is the probability that both the children are boys given that at least one of them is a boy ?
+Reprint 2026-27
+410 MATHEMATICS
+Solution Let b stand for boy and g for girl. The sample space of the experiment is
+S = {(b, b), (g, b), (b, g), (g, g)}
+Let E and F denote the following events :
+E : ‘both the children are boys’
+F : ‘at least one of the child is a boy’
+Then E = {(b,b)} and F = {(b,b), (g,b), (b,g)}
+Now E ∩ F = {(b,b)}
+Thus P (F) = 3
+4 and P (E ∩ F )= 1
+Therefore P (E|F) =
+P (E F) 1 4
+3 P ( F) 3
+Example 3 Ten cards numbered 1 to 10 are placed in a box, mixed up thoroughly and then one card is drawn randomly. If it is known that the number on the drawn card is more than 3, what is the probability that it is an even number?
+Solution Let A be the event ‘the number on the card drawn is even’ and B be the event ‘the number on the card drawn is greater than 3’. We have to find P(A|B).
+Now, the sample space of the experiment is S = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+Then A = {2, 4, 6, 8, 10}, B = {4, 5, 6, 7, 8, 9, 10} and A ∩ B = {4, 6, 8, 10}
+Also P(A) = 5 7 4
+, P ( B) = and P (A B)
+10 10 10
+Then P(A|B) =
+P (A B) 4 10
+7 P (B) 7
+Example 4 In a school, there are 1000 students, out of which 430 are girls. It is known that out of 430, 10% of the girls study in class XII. What is the probability that a student chosen randomly studies in Class XII given that the chosen student is a girl?
+Solution Let E denote the event that a student chosen randomly studies in Class XII and F be the event that the randomly chosen student is a girl. We have to find P (E|F).
+Reprint 2026-27
+PROBABILITY 411
+Now P(F) = 430 0.43
+1000 = and 43
+P( E F) = 0.043
+∩ = (Why?)
+Then P(E|F) = P (E F) 0.043 0.1
+P( F) 0.43
+Example 5 A die is thrown three times. Events A and B are defined as below:
+A : 4 on the third throw
+B : 6 on the first and 5 on the second throw
+Find the probability of A given that B has already occurred.
+Solution The sample space has 216 outcomes.
+(1,1,4) (1,2,4) ... (1,6,4) (2,1,4) (2,2,4) ... (2,6,4)
+(3,1,4) (3,2,4) ... (3,6,4) (4,1,4) (4,2,4) ...(4,6,4)
+(5,1,4) (5,2,4) ... (5,6,4) (6,1,4) (6,2,4) ...(6,6,4)
+B = {(6,5,1), (6,5,2), (6,5,3), (6,5,4), (6,5,5), (6,5,6)} and A ∩ B = {(6,5,4)}.
+Now P(B) = 6
+216 and P (A ∩ B) = 1
+Then P(A|B) =
+P (A B) 1 216
+6 P(B) 6
+Example 6 A die is thrown twice and the sum of the numbers appearing is observed to be 6. What is the conditional probability that the number 4 has appeared at least
+Solution Let E be the event that ‘number 4 appears at least once’ and F be the event that ‘the sum of the numbers appearing is 6’.
+Then, E = {(4,1), (4,2), (4,3), (4,4), (4,5), (4,6), (1,4), (2,4), (3,4), (5,4), (6,4)} and F = {(1,5), (2,4), (3,3), (4,2), (5,1)}
+We have P(E) = 11
+36 and P (F) = 5
+Also E ∩ F = {(2,4), (4,2)}
+Reprint 2026-27
+412 MATHEMATICS
+Therefore P(E ∩ F) = 2
+Hence, the required probability
+P (E|F) =
+P (E F) 2 36
+5 P (F) 5
+For the conditional probability discussed above, we have considered the elemen- tary events of the experiment to be equally likely and the corresponding definition of the probability of an event was used. However, the same definition can also be used in the general case where the elementary events of the sample space are not equally likely, the probabilities P (E ∩ F) and P (F) being calculated accordingly. Let us take up the following example.
+Example 7 Consider the experiment of tossing a coin. If the coin shows head, toss it again but if it shows tail, then throw a die. Find the conditional probability of the event that ‘the die shows a number greater than 4’ given that ‘there is at least one tail’.
+Solution The outcomes of the experiment can be represented in following diagrammatic manner called the ‘tree diagram’.
+The sample space of the experiment may be described as
+S = {(H,H), (H,T), (T,1), (T,2), (T,3), (T,4), (T,5), (T,6)} where (H, H) denotes that both the tosses result into head and (T, i) denote the first toss result into a tail and the number i appeared on the die for i = 1,2,3,4,5,6.
+Thus, the probabilities assigned to the 8 elementary (H, H), (H, T), (T, 1), (T, 2), (T, 3) (T, 4), (T, 5), (T, 6)
+are 1 1 1 1 1 1 1 1
+, , , , , , ,
+4 4 12 12 12 12 12 12 respectively which is clear from the Fig 13.2.
+Fig 13.1
+Fig 13.2
+Reprint 2026-27
+PROBABILITY 413
+Let F be the event that ‘there is at least one tail’ and E be the event ‘the die shows a number greater than 4’. Then
+F = {(H,T), (T,1), (T,2), (T,3), (T,4), (T,5), (T,6)}
+E = {(T,5), (T,6)} and E ∩ F = {(T,5), (T,6)}
+Now P (F) = P({(H,T)}) + P ({(T,1)}) + P ({(T,2)}) + P ({(T,3)})
++ P ({(T,4)}) + P({(T,5)}) + P({(T,6)})
+= 1 1 1 1 1 1 1 3
+4 12 12 12 12 12 12 4
++ + + + + + = and P (E ∩ F) = P ({(T,5)}) + P ({(T,6)}) = 1 1 1
+Hence P(E|F) =
+P (E F) 2 6
+3 P (F) 9
+EXERCISE 13.1
+1. Given that E and F are events such that P(E) = 0.6, P(F) = 0.3 and
+P(E ∩ F) = 0.2, find P (E|F) and P (F|E)
+2. Compute P(A|B), if P(B) = 0.5 and P (A ∩ B) = 0.32
+3. If P (A) = 0.8, P (B) = 0.5 and P (B|A) = 0.4, find (i) P (A ∩ B) (ii) P(A|B) (iii) P(A ∪ B)
+4. Evaluate P(A ∪ B), if 2P(A) = P(B) = 5
+13 and P(A|B) = 2
+5. If P(A) = 6
+11 , P(B) = 5
+11 and P(A ∪ B) 7
+= , find (i) P(A∩B) (ii) P(A|B) (iii) P(B|A)
+Determine P(E|F) in Exercises 6 to 9.
+6. A coin is tossed three times, where (i) E : head on third toss , F : heads on first two tosses (ii) E : at least two heads , F : at most two heads (iii) E : at most two tails , F : at least one tail
+Reprint 2026-27

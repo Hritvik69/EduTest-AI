@@ -1,0 +1,29 @@
+Computer SCienCe – ClaSS xi 118
+Principal or money lent = P, Rate of interest = R% per annum and Time = T years. Then Simple Interest (SI) = (P x R x T)/ 100.
+Amount payable = Principal + SI.
+P, R and T are given as input to the program.
+12. Write a program to calculate in how many days a work will be completed by three persons A, B and
+C together. A, B, C take x days, y days and z days respectively to do the job alone. The formula to calculate the number of days if they work together is xyz/(xy + yz + xz) days where x, y, and z are given as input to the program.
+13. Write a program to enter two integers and perform all arithmetic operations on them.
+14. Write a program to swap two numbers using a third variable.
+15. Write a program to swap two numbers without using a third variable.
+16. Write a program to repeat the string ‘‘GOOD
+MORNING” n times. Here ‘n’ is an integer entered by the user.
+17. Write a program to find average of three numbers.
+18. The volume of a sphere with radius r is 4/3πr3 . Write a Python program to find the volume of spheres with radius 7cm, 12cm, 16cm, respectively.
+19. Write a program that asks the user to enter their name and age. Print a message addressed to the user that tells the user the year in which they will turn 100 years old.
+20. The formula E = mc 2 states that the equivalent energy (E) can be calculated as the mass (m) multiplied by the speed of light (c = about
+3×10 8 m/s) squared. Write a program that accepts the mass of an object and determines its energy.
+21. Presume that a ladder is put upright against a wall. Let variables length and angle store the length of the ladder and the angle that it forms with the ground as it leans against the wall. Write a Python program to compute
+Reprint 2026-27
+GettinG Started with Python 119 the height reached by the ladder on the wall for the following values of length and angle:
+a) 16 feet and 75 degrees b) 20 feet and 0 degrees c) 24 feet and 45 degrees d) 24 feet and 80 degrees case study -based QuestIon
+Schools use “Student Management Information System” (SMIS) to manage student-related data. This system provides facilities for:
+• recording and maintaining personal details of students.
+• maintaining marks scored in assessments and computing results of students.
+• keeping track of student attendance.
+• managing many other student-related data. Let us automate this process step by step.
+Identify the personal details of students from your school identity card and write a program to accept these details for all students of your school and display them in the following format.
+documentatIon tIPs
+It is a fact that a properly documented program is easy to read, understand and is flexible for future development. Therefore, it is important that one pays extra attention to documentation while coding. Let us assess the documentation done by us in our case study program and also find out whether our friends also pay similar attention to documentation or not.
+Reprint 2026-27

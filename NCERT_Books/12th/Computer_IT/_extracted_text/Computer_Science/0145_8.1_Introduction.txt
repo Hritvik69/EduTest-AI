@@ -1,0 +1,23 @@
+S tructured Query Language (SQL) 133
+• SQL is case insensitive. For example, the column names ‘salary’ and ‘SALARY’ are the same for SQL.
+• Always end SQL statements with a semicolon (;).
+• To enter multiline SQL statements, we don’t write “;” after the first line. We press the Enter key to continue on the next line. The prompt mysql> then changes to
+“->”, indicating that statement is continued to the next line. After the last line, put “;” and press enter.
+9.3 data typeS and conStraIntS In MySQL
+We know that a database consists of one or more relations and each relation (table) is made up of attributes (column). Each attribute has a data type. We can also specify constraints for each attribute of a relation.
+9.3.1 Data type of Attribute
+Data type of an attribute indicates the type of data value that an attribute can have. It also decides the operations that can be performed on the data of that attribute.
+For example, arithmetic operations can be performed on numeric data but not on character data. Commonly used data types in MySQL are numeric types, date and time types, and string types as shown in Table 9.1.
+Activity 9.2
+What are the other data types supported in MySQL? Are there other variants of integer and float data type?
+Table 9.1 Commonly used data types in MySQL
+Data type Description
+CHAR(n) Specifies character type data of length n where n could be any value from 0 to
+255. CHAR is of fixed length, means, declaring CHAR (10) implies to reserve spaces for 10 characters. If data does not have 10 characters (e.g., ‘city’ has four characters), MySQL fills the remaining 6 characters with spaces padded on the right.
+VARCHAR(n) Specifies character type data of length where n could be any value from 0 to
+65535. But unlike CHAR, VARCHAR(n) is a variable-length data type. That is, declaring VARCHAR (30) means a maximum of 30 characters can be stored but the actual allocated bytes will depend on the length of entered string. So ‘city’ in VARCHAR (30) will occupy space needed to store 4 characters only.
+INT INT specifies an integer value. Each INT value occupies 4 bytes of storage. The range of unsigned values allowed in a 4 byte integer type are 0 to 4,294,967,295.
+For values larger than that, we have to use BIGINT, which occupies 8 bytes.
+FLOAT Holds numbers with decimal points. Each FLOAT value occupies 4 bytes.
+DATE The DATE type is used for dates in 'YYYY-MM-DD' format. YYYY is the 4 digit year, MM is the 2 digit month and DD is the 2 digit date. The supported range is '1000-01-01' to '9999-12-31'.
+Reprint 2026-27

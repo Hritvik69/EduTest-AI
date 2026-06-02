@@ -1,0 +1,87 @@
+6 CHEMISTRY and molecules from the previous classes;
+however, you will be studying about them in detail in Unit 2. Sodium, copper, silver, hydrogen, oxygen, etc., are some examples of elements. Their all atoms are of one type.
+However, the atoms of different elements are different in nature. Some elements, such as sodium or copper, contain atoms as their constituent particles, whereas, in some others, the constituent particles are molecules which are formed by two or more atoms. For example, hydrogen, nitrogen and oxygen gases consist of molecules, in which two atoms combine to give their respective molecules. This is illustrated in Fig. 1.3.
+elements are present in a compound in a fixed and definite ratio and this ratio is characteristic of a particular compound. Also, the properties of a compound are different from those of its constituent elements. For example, hydrogen and oxygen are gases, whereas, the compound formed by their combination i.e., water is a liquid. It is interesting to note that hydrogen burns with a pop sound and oxygen is a supporter of combustion, but water is used as a fire extinguisher.
+1.3 propertieS of matter anD their meaSUrement
+1.3.1 physical and chemical properties
+Every substance has unique or characteristic properties. These properties can be classified into two categories — physical properties, such as colour, odour, melting point, boiling point, density, etc., and chemical properties, like composition, combustibility, ractivity with acids and bases, etc.
+physical properties can be measured or observed without changing the identity or the composition of the substance. The measurement or observation of chemical properties requires a chemical change to occur. Measurement of physical properties does not require occurance of a chemical change. The examples of chemical properties are characteristic reactions of different substances; these include acidity or basicity, combustibility, etc. Chemists describe, interpret and predict the behaviour of substances on the basis of knowledge of their physical and chemical properties, which are determined by careful measurement and experimentation. In the following section, we
+When two or more atoms of different elements combine together in a definite ratio, the molecule of a compound is obtained.
+Moreover, the constituents of a compound cannot be separated into simpler substances by physical methods. They can be separated by chemical methods. Examples of some compounds are water, ammonia, carbon dioxide, sugar, etc. The molecules of water and carbon dioxide are represented in Fig. 1.4.
+Note that a water molecule comprises two hydrogen atoms and one oxygen atom.
+Similarly, a molecule of carbon dioxide contains two oxygen atoms combined with one carbon atom. Thus, the atoms of different
+Fig. 1.4 A depiction of molecules of water and carbon dioxide
+Water molecule
+Carbon dioxide molecule (CO2 )
+Fig. 1.3 A representation of atoms and molecules
+Reprint 2026-27
+7 SOME BASIC CONCEPTS OF CHEMISTRY will learn about the measurement of physical properties.
+1.3.2 measurement of physical properties
+Quantitative measurement of properties is reaquired for scientific investigation. Many properties of matter, such as length, area, volume, etc., are quantitative in nature. Any quantitative observation or measurement is represented by a number followed by units in which it is measured. For example, length of a room can be represented as 6 m; here,
+6 is the number and m denotes metre, the unit in which the length is measured.
+E a r l i e r , t w o d i f f e r e n t s y s t e m s o f measurement, i.e., the english System and the metric System were being used in different parts of the world. The metric system, which originated in France in late eighteenth century, was more convenient as it was based on the decimal system. Late, need of a common standard system was felt by the scientific community. Such a system was established in 1960 and is discussed in detail below.
+1.3.3 the international System of Units (Si)
+The International System of Units (in
+French Le Systeme International d’Unités
+— abbreviated as SI) was established by the 11 th General Conference on Weights and
+Measures (CGPM from Conference Generale des Poids et Measures). The CGPM is an inter- governmental treaty organisation created by a diplomatic treaty known as Metre Convention, which was signed in Paris in 1875.
+the Si system has seven base units and they are listed in Table 1.1. These units pertain to the seven fundamental scientific quantities. The other physical quantities, such as speed, volume, density, etc., can be derived from these quantities.
+maintaining the national
+Standards of measurement
+The system of units, including unit definitions, keeps on changing with time.
+Whenever the accuracy of measurement of a particular unit was enhanced substantially by adopting new principles, member nations of metre treaty (signed in 1875), agreed to change the formal definition of that unit. Each modern industrialised country, including India, has a National Metrology
+Institute (NMI), which maintains standards of measurements. This responsibility has been given to the National Physical Laboratory (NPL), New Delhi. This laboratory establishes experiments to realise the base units and derived units of measurement and maintains
+National Standards of Measurement. These standards are periodically inter-compared with standards maintained at other National
+Metrology Institutes in the world, as well as those, established at the International
+Bureau of Standards in Paris.
+table 1.1 Base physical Quantities and their Units
+Base physical
+Quantity
+Symbol for
+Quantity
+Symbol for
+Electric current
+Thermodynamic temperature
+Amount of substance
+Luminous intensity kilogram
+Reprint 2026-27
+8 CHEMISTRY
+These prefixes are listed in Table 1.3.
+Let us now quickly go through some of the quantities which you will be often using in this book.
+The definitions of the SI base units are given in Table 1.2.
+The SI system allows the use of prefixes to indicate the multiples or submultiples of a unit.
+Table 1.2 Definitions of SI Base Units
+Unit of length metre
+The metre, symbol m is the SI unit of length. It is defined by taking the fixed numerical value of the speed of light in vacuum c to be 299792458 when expressed in the unit ms –1, where the second is defined in terms of the caesium frequencyV Cs .
+Unit of mass kilogram
+The kilogram, symbol kg. is the SI unit of mass. It is defined by taking the fixed numerical value of the Planck constant h to be 6.62607015×10–34 when expressed in the unit Js, which is equal to kgm2 s–1 , where the metre and the second are defined in terms of c and V Cs.
+Unit of time second
+The second symbol s, is the SI unit of time. It is defined by taking the fixed numerical value of the caesium frequency V Cs the unperturbed ground-state hyperfine transition frequency of the caesium-133 atom, to be 9192631770 when expressed in the unit Hz, which is equal to s–1.
+Unit of electric current ampere
+The ampere, symbol A, is the SI unit of electric current. It is defined by taking the fixed numerical value of the elementary charge e to be 1.602176634×10 –19 when expressed in the unit
+C, which is equal to As, where the second is defined in terms of V Cs.
+thermodynamic temperature
+The Kelvin, symbol k, is the SI unit of thermodynamic temperature. It is defined by taking the fixed numerical value of the Boltzmann constant k to be 1.380649×10 –23 when expressed in the unit JK–1, which is equal to kgm 2 s–2k–1 where the kilogram, metre and second are defined in terms of h, c and V Cs.
+Unit of amount of substance mole
+The mole, symbol mol, is the SI unit of amount of substance.
+One mole contains exactly 6.02214076×1023 elementary entities. This number is the fixed numerical value of the
+Avogadro constant, N A, when expressed in the unit mol–1 and is called the Avogadro number. The amount of substance, symbol n, of a system is a measure of the number of specified elementary entities. An elementary entity may be an atom, a molecule, an ion, an electron, any other particle or specified group of particles.
+Unit of luminous intensity candela
+The candela, symbol cd is the SI unit of luminous intensity in a given direction. It is defined by taking the fixed numerical value of the luminous efficacy of monochromatic radiation of frequency 540×1012 Hz, Kcd , to be 683 when expressed in the unit lm·W–1, which is equal to cd·sr·W–1, or cd sr kg–1 m–2s 3, where the kilogram, metre and second are defined in terms of h, c and V Cs.
+Reprint 2026-27
+9 Some BaSic conceptS of chemiStry
+Fig. 1.5 Analytical balance
+1.3.4 mass and Weight mass of a substance is the amount of matter present in it, while weight is the force exerted by gravity on an object. The mass of a substance is constant, whereas, its weight may vary from one place to another due to change in gravity. You should be careful in using these terms.
+The mass of a substance can be determined accurately in the laboratory by using an analytical balance (Fig. 1.5).
+The SI unit of mass as given in Table 1.1 is kilogram. However, its fraction named as gram (1 kg = 1000 g), is used in laboratories due to the smaller amounts of chemicals used in chemical reactions.
+1.3.5 volume
+Volume is the amont of space occupied by a substance. It has the units of (length)3 . So in
+SI system, volume has units of m3
+. But again, in chemistry laboratories, smaller volumes are used. Hence, volume is often denoted in cm 3 or dm3 units.
+A common unit, litre (L) which is not an
+SI unit, is used for measurement of volume of liquids.
+1 L = 1000 mL, 1000 cm3 = 1 dm3
+Fig. 1.6 helps to visualise these relations.
+Fig. 1.6 Different units used to express
+Table 1.3 Prefixes used in the SI System multiple Prefix Symbol
+Reprint 2026-27

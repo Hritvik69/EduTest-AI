@@ -1,0 +1,40 @@
+length of that element dl [Note: Btdl=B.d l]. All such products are added together. We consider the limit as the lengths of elements get smaller and their number gets larger. The sum then tends to an integral. Ampere’s law states that this integral is equal to
+μ0 times the total current passing through the surface, i.e.,
+μ0I [4.13(a)] where I is the total current through the surface. The integral is taken over the closed loop coinciding with the boundary C of the surface. The relation above involves a sign-convention, given by the right-hand rule. Let the fingers of the right-hand be curled in the sense the boundary is traversed in the loop integral “B.dl. Then the direction of the thumb gives the sense in which the current I is regarded as positive.
+For several applications, a much simplified version of
+Eq. [4.13(a)] proves sufficient. We shall assume that, in such cases, it is possible to choose the loop (called an amperian loop) such that at each point of the loop, either (i) B is tangential to the loop and is a non-zero constant (ii) B is normal to the loop, or (iii) B vanishes.
+Now, let L be the length (part) of the loop for which B is tangential. Let Ie be the current enclosed by the loop.
+Then, Eq. (4.13) reduces to,
+μ0Ie [4.13(b)]
+When there is a system with a symmetry such as for a straight infinite current-carrying wire in Fig. 4.13, the
+Ampere’s law enables an easy evaluation of the magnetic field, much the same way Gauss’ law helps in determination of the electric field. This is exhibited in the
+Example 4.8 below. The boundary of the loop chosen is a circle and magnetic field is tangential to the circumference of the circle. The law gives, for the left hand side of Eq. [4.13 (b)], B. 2πr. We find that the magnetic field at a distance r outside the wire is tangential and given by
+B × 2πr =
+μ0 I/ (2πr) (4.14)
+The above result for the infinite wire is interesting from several points of view.
+ANDRE AMPERE (1775 –1836)
+Andre Ampere (1775 –
+1836) Andre Marie Ampere was a French physicist, mathematician and chemist who founded the science of electrodynamics. Ampere was a child prodigy who mastered advanced mathematics by the age of
+12. Ampere grasped the significance of Oersted’s discovery. He carried out a large series of experiments to explore the relationship between current electricity and magnetism. These investigations culminated in 1827 with the publication of the
+‘Mathematical Theory of
+Electrodynamic Pheno- mena Deduced Solely from
+Experiments’. He hypo- thesised that all magnetic phenomena are due to circulating electric currents. Ampere was humble and absent- minded. He once forgot an invitation to dine with the
+Emperor Napoleon. He died of pneumonia at the age of
+61. His gravestone bears the epitaph: Tandem Felix (Happy at last).
+(i) It implies that the field at every point on a circle of radius r, (with the wire along the axis), is same in magnitude. In other words, the magnetic field
+Reprint 2026-27
+Moving Charges and
+Magnetism possesses what is called a cylindrical symmetry. The field that normally can depend on three coordinates depends only on one: r.
+Whenever there is symmetry, the solutions simplify.
+(ii) The field direction at any point on this circle is tangential to it.
+Thus, the lines of constant magnitude of magnetic field form concentric circles. Notice now, in Fig. 4.1(c), the iron filings form concentric circles. These lines called magnetic field lines form closed loops. This is unlike the electrostatic field lines which originate from positive charges and end at negative charges. The expression for the magnetic field of a straight wire provides a theoretical justification to Oersted’s experiments.
+(iii) Another interesting point to note is that even though the wire is infinite, the field due to it at a non-zero distance is not infinite. It tends to blow up only when we come very close to the wire. The field is directly proportional to the current and inversely proportional to the distance from the (infinitely long) current source.
+(iv) There exists a simple rule to determine the direction of the magnetic field due to a long wire. This rule, called the right-hand rule*, is:
+Grasp the wire in your right hand with your extended thumb pointing in the direction of the current. Your fingers will curl around in the direction of the magnetic field.
+Ampere’s circuital law is not new in content from Biot-Savart law.
+Both relate the magnetic field and the current, and both express the same physical consequences of a steady electrical current. Ampere’s law is to
+Biot-Savart law, what Gauss’s law is to Coulomb’s law. Both, Ampere’s and Gauss’s law relate a physical quantity on the periphery or boundary (magnetic or electric field) to another physical quantity, namely, the source, in the interior (current or charge). We also note that Ampere’s circuital law holds for steady currents which do not fluctuate with time. The following example will help us understand what is meant by the term enclosed current.
+Example 4.7 Figure 4.13 shows a long straight wire of a circular cross-section (radius a) carrying steady current I. The current I is uniformly distributed across this cross-section. Calculate the magnetic field in the region r < a and r > a.
+FIGURE 4.13
+* Note that there are two distinct right-hand rules: One which gives the direction of B on the axis of current-loop and the other which gives direction of B for a straight conducting wire. Fingers and thumb play different roles in the two.
+Reprint 2026-27

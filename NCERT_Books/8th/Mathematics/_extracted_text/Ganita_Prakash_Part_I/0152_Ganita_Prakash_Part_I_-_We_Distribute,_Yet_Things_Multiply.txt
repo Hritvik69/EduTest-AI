@@ -1,0 +1,316 @@
+Quadrilaterals
+Which Quad?
+Gameplay
+1. Fold a sheet into half.
+2. Now, fold it once more into a quarter.
+3. Make a triangular crease at the corner that is at the middle of the paper.
+4. Open the sheet. What is the shape formed by the creases?
+5. How would you fold the quarter paper to get the kinds of creases shown in the following image.
+6. How would you fold the quarter paper such that a square is formed?
+Reprint 2026-27 (Figures shown are merely indicative.)
+Page No. 94
+Figure it Out
+1. Find all the other angles inside the following rectangles.
+(i) (ii) S (i) ∠ABD = 30° ∠CAD = 60° ∠ADB = 60°
+∠BDC = 30° ∠ACD = 30° ∠ACB = 60° (ii) ∠POS = 110° ∠QOP = 70° ∠ROS = 70°
+∠OQR = 35° ∠ORQ = 35° ∠OQP = 55°
+∠OPQ = 55° ∠ORS = 55° ∠OSR = 55°
+2. Draw a quadrilateral whose diagonals have equal lengths of 8 cm that bisect each other, and intersect at an angle of (i) 30° (ii) 40° (iii) 90° (iv) 140°
+Ans . (i) 30°
+Lengths of diagonals = 8 cm.
+Draw a line segment AB = 8 cm.
+Take midpoint O on AB
+Draw an angle 30° at O on OB
+From O draw an arc on the line l such that OC = OD = 4 cm
+Join AD, DB, BC & AC
+ADBC is the required quadrilateral.
+4 QUADRILATERALS (ii) 40°, (iii) 90°, (iv) 140°, all can be drawn with the same process as in (i).
+3. Consider a circle with centre O. Line segments PL and AM are two perpendicular diameters of the circle. What is the figure APML?
+Reason and/or experiment to figure this out.
+Ans. APML is a square.
+4. We have seen how to get 90° using paper folding. Now, suppose we do not have any paper but two sticks of equal length, and a thread.
+How do we make an exact 90° using these?
+Ans. Let AB and CD be the equal sticks. Put them together as shown in the figure such that their midpoints coincide at O. Now fix one end of the thread at A, pass it through C, and extend it to B, as shown in the figure.
+ACBD is a rectangle since their diagonals are equal and bisect each other. Hence ∠C = 90°.
+There are other ways to get 90°.
+One is by using the properties of an isosceles triangle. Try it out!
+5. We saw that one of the properties of a rectangle is that its opposite sides are parallel. Can this be chosen as a definition of a rectangle?
+In other words, is every quadrilateral that has opposite sides parallel and equal, a rectangle?
+Ans. No, this cannot be taken as a definition of a rectangle.
+Page No. 102
+Figure it Out
+1. Find the remaining angles in the following quadrilaterals.
+(i) ∠E = 140°, ∠R = ∠E = 140° and ∠A = ∠P = 40° (ii) ∠Q = 70°
+∠S = 70° and ∠R = 110° (iii) ∠XVU=∠XVW=30°
+∠WXU=∠UVW=60°.
+So, ∠UXV=∠WXV=30°
+∠U = 180° – ∠WVU = 180° – 60° = 120°, ∠W = ∠U = 120°.
+(iv) ∠OEI = 20°, ∠AOE = 20°, ∠EOI = 20°, ∠A = 140°, ∠I = 140°
+2. Using the diagonal properties, construct a parallelogram whose diagonals are of lengths 7 cm and 5 cm, and intersect at an angle of
+Ans. Draw a line segment
+AB = 7 cm
+Take mid point O on
+AB. Draw an angle
+140° at O on AB. Draw an arc 2.5 cm from O to line l at C & D. Join
+AC, AD, BD & BC (i) (ii)
+A O 7 cm
+Now, ADBC is the required parallelogram.
+3. Using the diagonal properties, construct a rhombus whose diagonals are of lengths 4 cm and 5 cm.
+Ans. Draw a line segment AB = 5 cm
+Take mid point ‘O’ on AB. At ‘O’ draw a line perpendicular or an angle 90° at ‘O’ . Take point
+C& D on perpendicular such that OC = OD = 2 cm. Join AD,
+BD, CB & AC.
+Now ADBC is the required rhombus.
+Page No. 107
+Figure it Out
+1. Find all the sides and the angles of the quadrilateral obtained by joining two equilateral triangles with sides 4 cm.
+Ans. Each angle of equilateral triangle is 60°.
+Refer the diagram.
+2. Construct a kite whose diagonals are of lengths 6 cm and 8 cm.
+Ans. Diagonals of Kite is perpendicular to each other. Draw a line segment PQ = 6 cm. Draw a perpendicular bisector of PQ. Suppose it cuts PQ at T. Join PR, RQ, QS and PS such that RS = 8 cm. Now PRQS is the required
+3. Find the remaining angles in the following trapeziums —
+105° 135° (i) (ii)
+Ans. (i) In trapezium, PQ||RS
+∠R = 75°.
+So, ∠S = 45° (ii) In trapezium ABCD given AD = BC
+Then ∠A = 80°
+Since AD = BC. So trapezium
+ABCD is an isosceles trapezium. Thus ∠B = ∠A = 80°
+4. Draw a Venn diagram showing the set of parallelograms, kites, rhombuses, rectangles, and squares. Then, answer the following questions — (i) What is the quadrilateral that is both a kite and a parallelogram?
+(ii) Can there be a quadrilateral that is both a kite and a rectangle?
+(iii) Is every kite a rhombus? If not, what is the correct relationship between these two types of quadrilaterals?
+Kite Rhombus
+Rectangle
+Parallelogram
+105° 135° (i) Rhombus and Square.
+(iii) No.
+A rhombus is a kite whereas a kite need not be a rhombus.
+5. If PAIR and RODS are two rectangles, find ∠IOD.
+Ans. ∠IOD = 30°
+6. Construct a square with diagonal 6 cm without using a protractor.
+Ans. Draw a line segment
+AB = 6 cm. Now using a compass, draw a line perpendicular to AB through its mid-point.
+Take points C & D on this line from O, such that OC
+= OD = 3 cm Join, AC, BC,
+BD & AD.
+ACBD is the required
+7. CASE is a square. The points U, V, W and X are the midpoints of the sides of the square. What type of quadrilateral is UVWX?
+Find this by using geometric reasoning, as well as by construction and measurement. Find other ways of constructing a square within a square such that the vertices of the inner square lie on the sides of the outer square, as shown in Figure (b).
+Ans. In (a) Given CASE is a square. Let side of square be
+Then half of side = 2
+In right ∆CUV, UV2 = CU 2 + CV 2 =
+So UV = 1
+Similarly, UX = XW = VW = 1
+Now, In ∆CUV, ∠C = 90° and CU = CV
+So, ∠1 = ∠2 = 45° or ∠3 = ∠4 = 45°
+So, ∠1 + ∠3 + ∠5 = 180° (Linear Pair)
+∠5 = 90°
+Similarly, ∠6 = ∠7 = ∠8 = 90°
+In quadrilateral UXWV, all sides and angles are equal (90°) so
+UXWN is square.
+8. If a quadrilateral has four equal sides and one angle of 90°, will it be a square? Find the answer using geometric reasoning as well as by construction and measurement.
+Ans. Yes it will be a square.
+A quadrilateral with four equal sides is a rhombus. In a rhombus opposite angles are equal and adjacent angles are supplementary .
+One angle is 90° then adjacent angle and opposite angle will be 90°.
+All four angles are equal to 90 o . So it is a square.
+9. What type of a quadrilateral is one in which the opposite sides are equal? Justify your answer.
+Hint: Draw a diagonal and check for congruent triangles.
+Ans. This quadrilateral is a parallelogram. In ∆ABC and ∆ACD, AB = CD,
+BC = AD and AC = AC. So, by SSS congruence ∆ABC ≅ ∆CDA
+Therefore ∠1 = ∠4 and ∠2 = ∠3
+∠1 and ∠4 are the alternate angles of AB and CD.
+So AB║CD
+And ∠3 and ∠2 are the alternate angles of BC & AD
+So BC║AD.
+Thus both the pairs of opposite sides are parallel.
+Hence ABCD is a parallelogram.
+10. Will the sum of the angles in a quadrilateral such as the following one also be 360°? Find the answer using geometric reasoning as well as by constructing this figure and measuring.
+Ans. Yes, the sum of angles in a quadrilateral ADCB is 360°.
+Join BD, Now Sum of angles of ∆ADB = 180°
+And sum of angles of ∆BDC = 180°
+Adding both sums of angles of quadrilateral = 360°
+11. State whether the following statements are true or false. Justify your answers.
+(i) A quadrilateral whose diagonals are equal and bisect each other must be a square.
+(ii) A quadrilateral having three right angles must be a rectangle.
+(iii) A quadrilateral whose diagonals bisect each other must be a parallelogram.
+(iv) A quadrilateral whose diagonals are perpendicular to each other must be a rhombus.
+(v) A quadrilateral in which the opposite angles are equal must be a parallelogram.
+(vi) A quadrilateral in which all the angles are equal is a rectangle.
+(vii) Isosceles trapeziums are parallelograms.
+(i) False. In a square the diagonals are also perpendicular to each (ii) True. The fourth angle will also be equal to 90°, because sum of all angles is equal to 360°.
+(iii) True (iv) False. It may be a Kite also.
+(v) True.
+(vi) True.
+(vii) False. The other pair of opposite sides may not be parallel.
+5.1 Is This a Multiple Of?
+Sum of Consecutive Numbers
+Anshu is exploring sums of consecutive numbers. He has written the following —
+Now, he is wondering —
+• “Can I write every natural number as a sum of consecutive numbers?”
+• “Which numbers can I write as the sum of consecutive numbers in more than one way?”
+• “Ohh, I know all odd numbers can be written as a sum of two consecutive numbers. Can we write all even numbers as a sum of consecutive numbers?”
+• “Can I write 0 as a sum of consecutive numbers? Maybe I should use negative numbers.”
+Explore these questions and any others that may occur to you.
+Discuss them with the class.
+Take any 4 consecutive numbers. For example, 3, 4, 5, and 6. Place ‘+’ and
+‘–’ signs in between the numbers. How many different possibilities exist?
+Write all of them.
+7 = 3 + 4
+10 = 1 + 2 + 3 + 4
+12 = 3 + 4 + 5
+15 = 7 + 8
+= 4 + 5 + 6
+= 1 + 2 + 3 + 4 + 5
+3 + 4 – 5 + 6
+3 – 4 – 5 – 6
+NUMBER PLAY 5
+Reprint 2026-27
+Number Play
+Eight such expressions are possible. You can use the diagram below to systematically list all the possibilities.
+Evaluate each expression and write the result next to it. Do you notice anything interesting?
+Now, take four other consecutive numbers. Place the ‘+’ and ‘–’ signs as you have done before. Find out the results of each expression.
+What do you observe?
+Repeat this for one more set of 4 consecutive numbers. Share your findings.
+Some sums appear always no matter which 4 consecutive numbers are chosen. Isn’t that interesting?
+Do these patterns occur no matter which 4 consecutive numbers are chosen? Is there a way to find out through reasoning?
+Hint: Use algebra and describe the 8 expressions in a general form.
+You might have noticed that the results of all expressions are even numbers. Even numbers have a factor of 2. Negative numbers having a factor 2 are also even numbers, for example, – 2, – 4, – 6, and so on.
+Check if anyone in your class got an odd number.
+When 4 consecutive numbers are chosen, no matter how the ‘+’ and
+‘–’ signs are placed between them, the resulting expressions always have even parity.
+3 + 4 + 5 + 6
+3 + 4 + 5 – 6
+3 + 4 – 5 + 6 = 8
+3 – 4 – 5 – 6 = – 12
+5 + 6 – 7 + 8 = 12
+5 – 6 – 7 – 8 = – 16
+__ + __ – __ + __ = __
+__ – __ – __ – __ = __
+Reprint 2026-27
+Ganita Prakash | Grade 8
+Now take any 4 numbers, place ‘+’ and ‘–’ signs in the eight different ways, and evaluate the resulting expression. What do you observe about their parities?
+Repeat this with other sets of 4 numbers.
+Is there a way to explain why this happens?
+Hint: Think of the rules for parity of the sum or difference of two numbers.
+Explanation 1: Let us consider any of the 8 expressions formed by four numbers a, b, c, and d. When one of its signs is switched, its value always increases or decreases by an even number! Let us see why.
+Consider one of the expressions: a + b – c – d.
+Replacing +b by – b, we get a – b – c – d.
+By how much has the number changed? It has changed by (a + b – c – d) – (a – b – c – d)
+= a + b – c – d – a + b + c + d (notice how the signs changed when we opened the second set of brackets)
+= 2b (this is an even number).
+If the difference between two numbers is even, can they have different parities? No! So either both are even or both are odd.
+Now, let us see what happens when a negative sign is switched to a positive sign.
+Replace any negative sign in the expression a + b – c – d with a positive sign and find the difference between the two numbers.
+What do you conclude from this observation?
+Starting from any expression, we can get 7 expressions by switching one or more ‘+’ and ‘–’ signs. Thus, all the expressions have the same parity!
+Explanation 2: We know that odd ± odd = even even ± even = even odd ± even = odd.
+We have seen that the parity of a + b and a – b is the same, regardless of the parities of a and b.
+In short, a ± b have the same parity. By the same argument, a ± b + c and a ± b – c have the same parity. Extending this further, we can say that all the expressions a ± b ± c ± d have the same parity.
+Reprint 2026-27
+Number Play
+Explanation 3: This can also be explained using the positive and negative token model you studied in the chapter on
+Integers. Try to think how.
+The number of ways to choose 4 numbers a, b, c, d and combine them using
+‘+’ and ‘–’ signs is infinite. Mathematical reasoning allows us to prove that all the combinations a ± b ± c ± d always have the same parity, without having to go through them one by one.
+Is the phenomenon of all the expressions having the same parity limited to taking 4 numbers? What do you think?
+Breaking Even
+We know how to identify even numbers. Without computing them, find out which of the following arithmetic expressions are even.
+Using our understanding of how parity behaves under different operations, identify which of the following algebraic expressions give an even number for any integer values for the letter-numbers.
+3g + 5h 2a + 2b 2u – 4v 4m + 2n
+6m – 3n 13k – 5k b2 + 1 4k × 3j x2 + 2
+Several problems in mathematics can be thought about and solved in different ways. While the method you came up with may be dear to you, it can be amusing and enriching to know how others thought about it. Two tidbits: ‘share’ and ‘listen’.
+‘What if …?’, ‘Will it always happen?’— Wondering and posing questions and conjectures is as much a part of mathematics as problem solving.
+672 – 348 43 + 37 708 – 477 4 × 347 × 3
+119 × 303 809 + 214 5133
+543 – 479
+Reprint 2026-27
+Ganita Prakash | Grade 8
+The expression 4m + 2q will always evaluate to an even number for any integer values of m and q. We can justify this in two different ways —
+• We know 4m is even and 2q is even for any integers m and q.
+Therefore, their sum will also be even.
+• The expression 4m + 2q is equal to the expression 2(2m + q). Here, the expression 2(2m + q) means 2 times 2m + q. In other words, 2 is a factor of this expression. Therefore, this expression will always give an even number for any integers m and q.
+For example, if m = 4 and q = – 9, the expression 4m + 2q becomes
+4 × 4 + 2 × (–9) = – 2, which is an even number.
+In the expression x2 + 2, x2 is even if x is even, and x2 is odd if x is odd.
+Therefore, the expression x2 + 2 will not always give an even number.
+An example and a non-example for when the expression evaluates to an even number — (i) if x = 6, then x2 + 2 = 38, and (ii) if x = 3, then x2 + 2 = 11.
+Similarly, determine and explain which of the other expressions always give even numbers. Write a couple of examples and non-examples, as appropriate, for each expression.
+Write a few algebraic expressions which always give an even number.
+Pairs to Make Fours
+Take a pair of even numbers. Add them. Is the sum divisible by 4?
+Try this with different pairs of even numbers.
+When is the sum a multiple of 4, and when is it not?
+Is there a general rule or a pattern?
+Even numbers can be of two types based on the remainders they leave when divided by 4.
+Even numbers that are multiples of 4 leave a remainder of 0 when divided by 4.
+Even numbers that are not multiples of 4 leave a remainder 2 when divided by 4.
+Reprint 2026-27
+Number Play
+When will two even numbers add up to give a multiple of 4?
+This problem is similar to the question of identifying when adding two numbers will result in an even number. Can you see this?
+There are three cases to examine:
+What happens when we add a multiple of 4 to an even number that is not a multiple of 4? Is it similar to the case of the parity of the sum of an even and an odd number?
+Look at the following expressions and the visualisation. Write the corresponding explanation and examples.
+Explanation with Algebra and Visualisation Examples two (even)
+numbers that are multiples of 4 will always give a multiple
+4p and 4q.
+= 4 (p + q).
+4, 12, 16, 24,
+= 4 (3 + 4)
+= 4 (4 + 7)
+Adding two even numbers that are not multiples of 4 will always give a multiple of 4 because their remainders of
+2 add up to 4.
+(4p + 2) and (4q + 2).
+(4p + 2) + (4q + 2)
+= 4p + 4q + 4
+= 4 (p + q + 1).
+(p + q + 1) rows
+2, 6, 10, 18,
+2 + 6 = 8.
+6 + 10 = 16.
+22 + 6 = 28.
+Reprint 2026-27
+Ganita Prakash | Grade 8
+Notice how we are able to generalise and prove properties of arithmetic using algebra and also using visualisation.
+Always, Sometimes, or Never
+We examine different statements about factors and multiples and determine whether a statement is ‘Always True’, ‘Sometimes True’, or
+‘Never True’.
+We know that the sum of any two multiples of 2 is also a multiple of 2.
+1. If 8 exactly divides two numbers separately, it must exactly divide their sum.
+Statement 1 is always true. Determine if it is true with subtraction.
+Explanation with Algebra and Visualisation Examples
+4p and (4q + 2)
+= 4p + (4q + 2)
+= 4p + 4q + 2
+= 4 (p + q) + 2.
+a remainder 2
+Explanation with Algebra and Visualisation Examples
+The two numbers have 8 as a factor;
+in other words, the two numbers are multiples of 8.
+8a and 8b. 8 and 16.
+16 and 56.
+80 and 120.
+As multiples of 8 are obtained by repeatedly adding
+8, the sum of two multiples of 8 will also be a multiple
+= 8 (a + b).
+8 + 16 = 8(1 + 2)
+16 + 56 = 72.
+80 + 120 = 200.
+Reprint 2026-27
+Number Play
+In general, if a divides M and a divides N, then a divides M + N and a divides M – N. In other words, if M and N are multiples of a, then
+M + N and M – N will also be multiples of a.
+2. If a number is divisible by 8, then 8 also divides any two numbers (separately) that add up to the number.
+So, statement 2 is sometimes true.
+3. If a number is divisible by 7, then all multiples of that number will be divisible by 7.
+The number 7jm or (7 × j × m) has a factor of 7. We can see that
+Statement 3 is always true.
+Explanation with Algebra and Visualisation Examples
+A number divisible by 8 is a multiple of 8.
+8m 8, 16, 56, 72.
+A number divisible by 8 can be expressed as a sum of two multiples of 8 or sum of two non- multiples of 8.
+8m = 8a + 8b
+8m = p + q (p, q not multiples of m = (a+b)
+72 = 48 + 24
+= 8×6 + 8×3).
+72 = 50 +

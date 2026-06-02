@@ -1,0 +1,232 @@
+Chapter 8 — Nature of Matter: Elements, Compounds, and Mixtures 125
+As you heat the sugar, it turns brown (Fig. 8.12b). Later, it begins to char, i.e., it turns blackish (Fig. 8.12c).
+You will find small droplets of water inside the boiling tube near its open end.
+Where did this water come from? Was it in the dry sugar, or did it come by the condensation of water vapour in the air?
+Since we are heating the tube, the water must have come from the dry sugar and not from the air. Can you predict what is left behind? Charcoal (carbon) is left behind in the boiling tube. You can scoop it out in a watch glass (Fig. 8.12c)
+and explore if it burns like coal.
+Sugar decomposes on heating and gives carbon and water. As you know, water consists of hydrogen and oxygen.
+Hence, sugar cannot be an element.
+It may be stated that sugar is a chemical compound consisting of the elements carbon, hydrogen, and oxygen.
+Let us explore more about compounds.
+Activity 8.5: Let us experiment (Demonstration activity)
+Safety First Safety first
+This activity may be demonstrated under the supervision of the teacher. It may be performed in a fume hood or a well-ventilated area. Do not inhale the gases.
+z Take 5.6 grams of iron filings (Fig. 8.13a) and 3.2 grams of sulfur powder (Fig. 8.13b) on a watch glass. Observe them carefully.
+Fig. 8.13: (a) Iron filings; (b) Sulfur powder
+Test tube holder (a) Heating of sugar
+Fig. 8.12: Heating sugar in a boiling tube
+Charcoal (carbon)
+Watch glass (c) Charcoal placed on a watch glass
+Test tube holder droplets (b) Colour of the sugar changes on heating
+Sugar after
+Reprint 2026-27
+Curiosity— Textbook of Science for G rade 8 (b) Sample B
+Fig. 8.17: Responses of
+Samples A and B to a z Mix them thoroughly in a watch glass. Label this mixture as Sample A (Fig. 8.14).
+z Observe it carefully.
+z Is this a uniform or a non-uniform mixture? Can you still observe both iron and sulfur as separate substances?
+z Take half of Sample A in a china dish and gently heat it (Fig. 8.15a) with continuous stirring until a black mass is z Let the content of the china dish cool.
+z Place this black mass in a mortar and grind it with the help of a pestle.
+z Now, put it on another watch glass and label it as
+Sample B (Fig. 8.15b).
+z Now, you have two samples — Sample A and Sample B (Fig. 8.16a and 8.16b). Compare both the Samples A and B step by step and record your observations in Table 8.2.
+Fig. 8.16: (a) Sample A; (b) Sample B
+Step 1 — Appearance z Compare the appearance of Sample A and Sample B like colour and texture.
+Step 2 — Magnet test z Take a magnet and move it over the Samples A (Fig. 8.17a)
+and B (Fig. 8.17b), one by one.
+z What do you observe?
+Step 3 — Gas test z Take a small amount of
+Sample A in a test tube and add a few drops of dilute hydrochloric acid (Fig. 8.18a).
+China dish
+Sample A
+Wire gauze
+Tripod stand
+Fig. 8.15: (a) Heating Sample A; (b) Black mass
+Sample B
+Sample A
+Fig. 8.14: A mixture of iron filings and sulfur powder
+Safety first
+Be careful while handling hydrochloric acid.
+(a) Sample A
+Reprint 2026-27
+Chapter 8 — Nature of Matter: Elements, Compounds, and Mixtures 127 (b) Sample B (a) Sample A
+Test tube Test tube
+Test tube
+Fig. 8.18: Samples A and B in dilute hydrochloric acid z What do you observe?
+z Gently smell the evolved gas by wafting it towards your nose (Fig. 8.19).
+z Test the evolved gas by bringing a burning splinter or a lighted candle near the mouth of the test tube (Fig. 8.20a).
+(a) Sample A (b) Sample B
+Fig. 8.20: Testing gases
+Safety first
+Never smell anything directly.
+z What do you observe?
+z Repeat the above steps with Sample B as well (Fig. 8.18b and
+Fig. 8.19: Correct way to waft the fumes of an evolved gas
+S.No. Experiment Observations
+Sample A Sample B
+Appearance (i) Colour (ii) Texture
+2. Magnet test
+Gas test (i) Odour (ii) Burning
+Table 8.2: Comparison of Samples A and B
+Reprint 2026-27
+Curiosity— Textbook of Science for G rade 8
+Some discussion points z Do the Samples, A and B look the same?
+z Which sample exhibits magnetic properties?
+z Can we separate the components of Samples A and B?
+z On adding dilute hydrochloric acid, do gases evolve in both
+Samples A and B?
+z In both the cases, do the gases smell the same or different?
+z Also, categorise the substances used in this activity into mixtures, compounds, and elements.
+Sample A: We can say that Sample A is a mixture of the two elements—iron and sulfur. Its components retain their properties, and their black and yellow coloured particles can be seen.
+On bringing magnet near Sample A, the iron filings get attracted towards the magnet. Hence, iron and sulfur can be separated.
+You might have observed that in Sample A, iron in the mixture reacts with dilute hydrochloric acid to form iron chloride and hydrogen gas. The gas is colourless, has no smell, and burns with a ‘pop’ sound.
+The reaction can be represented as —
+Iron + Dilute Hydrochloric acid Iron chloride + Hydrogen gas
+Sulfur on the other hand, is left as a yellow solid at the bottom of the test tube. This shows that sulfur does not react with hydrochloric acid.
+Sample B: The black mass obtained in Sample B is iron sulfide.
+We observe that the texture and the colour are the same throughout.
+It is formed by heating the two elements, iron and sulfur. It is not attracted by a magnet. The new substance has completely different properties, and iron and sulfur can no longer be separated. Hence, we can say that a compound has been formed. Can you explain now why the magnet has no effect on Sample B?
+Also, Sample B, iron sulfide, reacts with dilute hydrochloric acid, to form iron chloride and hydrogen sulfide gas. The gas is colourless and has a rotten egg-like odour.
+The reaction can be represented as —
+Sample A
+Sample B
+Iron sulfide + Dilute Hydrochloric acid Iron chloride + Hydrogen sulfide
+8.4 How Do We Use Elements, Compounds, and Mixtures?
+Elements, compounds, and mixtures are all around us. The air we breathe is a mixture of gases like oxygen, nitrogen, and carbon dioxide. Water, which is essential for life, is a compound
+Reprint 2026-27
+Chapter 8 — Nature of Matter: Elements, Compounds, and Mixtures 129 made of elements, hydrogen and oxygen. Elements like iron and aluminium are used to construct bridges, buildings, and vehicles.
+Understanding these concepts is not just about recognising what surrounds us; it is also the key to innovation. For instance, chemists study how elements combine to create compounds, enabling them to invent life-saving medicines and vaccines to fight diseases. This knowledge also helps in the creation of fertilisers thereby enhancing crop production that feeds the ever-increasing human population globally.
+Engineers and material scientists rely on their understanding of compounds and mixtures to design materials with unique properties.
+For example, they have developed alloys like stainless steel, which is stronger and more durable than pure iron. Wood, steel, and concrete, which are used as building materials, are all mixtures.
+You learnt that various metals are obtained from minerals.
+Let us learn about these minerals.
+An example of a ‘wonder’ material developed by material scientists is graphene aerogel. This is made from carbon and is said to be the lightest material on earth. It is so light that even grass can hold it (Fig. 8.21).
+It is highly porous and therefore, has a high absorbing capacity. For this reason, it can potentially be used as an environmental cleaner, for example, to clean up oil spills in both seas and on land. It is useful in fabricating energy-saving devices and special coatings for buildings.
+Fig. 8.21
+A step further
+8.5 What Are Minerals?
+Most rocks are a mixture of minerals, which can be viewed with the eyes, or by using a magnifying glass or a microscope. Some of the minerals are called native minerals, which are pure elements and not compounds.
+These can be metals, such as gold, silver, copper, etc., or non-metals like sulfur, carbon, etc.
+Most of the minerals are compounds made up of more than one element. Some common examples of minerals include quartz, calcite, mica, pyroxene, and olivine (Fig. 8.22). Many things that we use in our everyday life are made up of minerals or elements extracted from minerals.
+For example, cement is made from calcite, quartz, alumina, and iron oxide, which are minerals or are obtained from minerals. Talcum powder is made from the mineral talc.
+Pyroxene
+Olivine Talc
+Quartz Calcite
+Fig. 8.22: Some minerals
+Reprint 2026-27
+Curiosity— Textbook of Science for G rade 8
+Elements and compounds are the building blocks of matter—everything that has mass and takes up space. They make the materials we see and use every day. However, not everything around us is matter. Light, heat, electricity, and even thoughts and emotions are important parts of our world, but they are not made of matter. Understanding what matter is—and what it is not—helps us better understand the world around us.
+Use of elements, compounds, and mixtures in Indian Art
+The Dhokra art is an old craft from Bihar and
+Odisha that uses different metals to create beautiful figures inspired by nature (Fig. 8.23).
+The process begins with shaping a design in beeswax. This wax model is covered with clay to make a mould. After the clay hardens, the wax is melted out, leaving a hollow space. This space is then filled with molten brass or bronze which makes Dhokra art strong and gives it a shiny golden colour. The figures often show animals, people, and nature, reflecting tribal creativity and tradition.
+Our scientific heritage
+Fig. 8.23: Dhokra art
+Snapshots
+ A mixture consists two or more substances mixed together. These substances retain their individual properties and do not react chemically with each other.
+ The individual substances that make up a mixture are called its components.
+ A pure substance consists the same type of particles. All the constituent particles of that substance behave identically.
+ Pure substance can be either an element or a compound.
+ Elements are the simplest substances that cannot be broken down further into simpler substances. They are the building blocks of all matter.
+ Substances which are composed of two or more elements combined chemically in a fixed ratio and have different properties from their constituent elements are called compounds.
+ Minerals are natural, solid substances found on the Earth. They have a fixed chemical composition. Most often they are compounds but rarely, they can also be pure elements.
+Reprint 2026-27
+Chapter 8 — Nature of Matter: Elements, Compounds, and Mixtures 131
+Keep the curiosity alive
+1. Consider the following reaction where two substances,
+A and B, combine to form a product C:
+Assume that A and B cannot be broken down into simpler substances by chemical reactions. Based on this information, which of the following statements is correct?
+(i) A, B, and C are all compounds and only C has a fixed composition.
+(ii) C is a compound, and A and B have a fixed composition.
+(iii) A and B are compounds, and C has a fixed composition.
+(iv) A and B are elements, C is a compound, and has a fixed composition.
+2. Assertion: Air is a mixture.
+Reason: A mixture is formed when two or more substances are mixed, without undergoing any chemical change.
+(i) Both Assertion and Reason are true and Reason is the correct explanation for Assertion.
+(ii) Both Assertion and Reason are true, but Reason is not the correct explanation for Assertion.
+(iii) Assertion is true, but Reason is false.
+(iv) Assertion is false, but Reason is true.
+3. Water, a compound, has different properties compared to those of the elements oxygen and hydrogen from which it is formed. Justify this statement.
+4. In which of the following cases are all the examples correctly matched? Give reasons in support of your answers.
+(i) Elements — water, nitrogen, iron, air.
+(ii) Uniform mixtures— minerals, seawater, bronze, air.
+(iii) Pure substances— carbon dioxide, iron, oxygen, sugar.
+(iv) Non-uniform mixtures — air, sand, brass, muddy water.
+5. Iron reacts with moist air to form iron oxide, and magnesium burns in oxygen to form magnesium oxide. Classify all the substances involved in the above reactions as elements, compounds or mixtures, with justification.
+Prepare some questions based on your learnings so far ...
+.....................................................................................
+Why? When?
+How long?
+Where? Why not?
+Reprint 2026-27
+Curiosity— Textbook of Science for G rade 8
+Gas (A)_____?
+hydrochloric acid
+Iron filings
+Fig. 8.24
+6. Classify the following as elements, compounds, or mixtures in Table 8.3.
+Carbon dioxide, sand, seawater, magnesium oxide, muddy water, aluminium, gold, oxygen, rust, iron sulfide, glucose, air, water, fruit juice, nitrogen, sodium chloride, sulfur, hydrogen, baking soda.
+Elements Compounds Mixtures
+Table 8.3
+Identify pure substances amongst these and list them below.
+Pure substances
+7. What new substance is formed when a mixture of iron filings and sulfur powder is heated, and how is it different from the original mixture? Also, write the word equation for the reaction.
+8. Is it possible for a substance to be classified as both an element and a compound?
+Explain why or why not.
+9. How would our daily lives be changed if water were not a compound but a mixture of hydrogen and oxygen?
+10. Analyse Fig. 8.24. Identify Gas A. Also, write the word equation of the chemical reaction.
+11. Write the names of any two compounds made only from non-metals, and also mention two uses of each of them.
+12. How can gold be classified as both a mineral and a metal?
+Reflect on the questions framed by your friends and try to answer ...
+.....................................................................................
+think ...
+thought ... Maybe ...
+Shouldn’t it
+Reprint 2026-27
+Chapter 8 — Nature of Matter: Elements, Compounds, and Mixtures 133
+Discover, design, and debate z Design and create comic strips from real-life examples to differentiate between elements, compounds, and mixtures with diagrams and illustrate their properties and uses.
+z Search for discoveries of some elements (such as phosphorus, sodium), compounds (such as penicillin) and mixtures (such as brass, bronze, stainless steel). Present your findings in the class.
+z Let us search: Read labels on items like detergents or snacks, and try to list the mixtures and compounds they contain.
+z Work in groups: Each group will pretend to be in the role of either an element, a compound, or a mixture. Debate which category among them is the most important.
+Science Society disciplinary
+Projects
+Reprint 2026-27
+Curiosity— Textbook of Science for G rade 8
+The Amazing World of Solutes, Solvents, and Solutions
+Probe and ponder z What do you think is happening in the picture above?
+z What happens when you add too much sugar to your tea and it stops dissolving? How can you solve this problem?
+z Why do sugar and salt dissolve in water but not in oil? Why is water considered a good solvent?
+z Why are water bottles usually tall and cylindrical in shape instead of spherical?
+Share your questions
+Reprint 2026-27
+Chapter 9 — The Amazing World of Solutes, Solvents, and Solutions 135
+You must have taken an Oral Rehydration Solution (ORS) at some time in your life. ORS is used to treat dehydration by keeping your body hydrated. You have learnt to prepare ORS at home in
+Curiosity, Grade 6. You may have wondered why every sip of your homemade ORS tastes the same, no matter how much you drink. Why does it not taste salty in one sip and sweet in another?
+This is because when you add sugar and salt to water, they form a mixture in which the components are evenly distributed throughout.
+Can you predict whether this mixture is uniform or not (Fig. 9.1)? What happens when chalk powder is mixed with water—does it form a uniform mixture?
+When salt and sugar are mixed with water, a uniform mixture is formed, whereas when chalk powder or sand, or sawdust is mixed with water, the components are not evenly distributed. Such mixtures are known as non-uniform mixtures (Fig. 9.2a and 9.2b).
+Let us explore the science of mixing things together.
+9.1 What Are Solute, Solvent, and Solution?
+A uniform mixture, such as that of salt or sugar, and water, is called a solution.
+Whenever a solid is mixed with a liquid to form a solution, the solid component is called the solute, and the liquid component is called the solvent. The solute dissolves in the solvent to form a solution (Fig. 9.3).
+Solute + Solvent Solution
+When a solution is formed by mixing two liquids, it is not always clear which substance is dissolving the other. In such cases, the substance present in smaller amount is called the solute, while the one in larger amount is called the solvent.
+Fig. 9.1: Mixture of sugar, salt, and water
+Fig. 9.2: Mixture of (a) Sand and water; (b) Sawdust and water
+We know air is a mixture.
+Would a mixture of gases also be considered a solution?
+Fig. 9.3: Magnified schematic picture of a solute evenly distributed in a solvent
+Reprint 2026-27
+Curiosity— Textbook of Science for G rade 8
+Ever heard of ...
+The Chashni (sugar syrup) of the Indian sweet Gulab jamun is made of a large amount of sugar (solid) dissolved in a small amount of water (liquid). However, the water is still considered as the solvent and sugar as the solute (Fig. 9.4)! Fig. 9.4: Gulab jamuns dipped in sugar syrup
+9.2 How Much Solute Can a Fixed Amount of
+Solvent Dissolve?
+Activity 9.1: Let us investigate z Take a clean glass tumbler and fill it half with water.
+z Add one spoon of salt into it and stir well till it dissolves completely (Fig. 9.5).
+z Gradually add a spoonful of salt into the glass tumbler and stir. Observe how many spoons of salt you can add before it stops dissolving completely.
+z Record your observations in Table 9.1.
+Amount of salt taken (teaspoon)
+Observation (salt dissolves/salt does not dissolve)
+Table 9.1: Dissolution of salt in water
+Some discussion

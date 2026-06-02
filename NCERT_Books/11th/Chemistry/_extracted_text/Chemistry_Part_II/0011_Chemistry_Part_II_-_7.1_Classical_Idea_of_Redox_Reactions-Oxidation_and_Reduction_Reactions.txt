@@ -1,0 +1,62 @@
+235 REDOX REACTIONS
+Chemistry deals with varieties of matter and change of one kind of matter into the other. Transformation of matter from one kind into another occurs through the various types of reactions. One important category of such reactions is Redox Reactions. A number of phenomena, both physical as well as biological, are concerned with redox reactions. These reactions find extensive use in pharmaceutical, biological, industrial, metallurgical and agricultural areas. The importance of these reactions is apparent from the fact that burning of different types of fuels for obtaining energy for domestic, transport and other commercial purposes, electrochemical processes for extraction of highly reactive metals and non-metals, manufacturing of chemical compounds like caustic soda, operation of dry and wet batteries and corrosion of metals fall within the purview of redox processes. Of late, environmental issues like Hydrogen Economy (use of liquid hydrogen as fuel) and development of ‘Ozone Hole’ have started figuring under redox phenomenon.
+7.1 CLASSICAL IDEA OF REDOX REACTIONS –
+OXIDATION AND REDUCTION REACTIONS
+Originally, the term oxidation was used to describe the addition of oxygen to an element or a compound. Because of the presence of dioxygen in the atmosphere (~20%), many elements combine with it and this is the principal reason why they commonly occur on the earth in the form of their oxides. The following reactions represent oxidation processes according to the limited definition of oxidation:
+2 Mg (s) + O2 (g) → 2 MgO (s) (7.1)
+S (s) + O2 (g) → SO2 (g) (7.2)
+After studying this unit you will be
+ identify redox reactions as a class of reactions in which oxidation and reduction reactions occur simultaneously;
+ define the terms oxidation, reduction, oxidant (oxidising agent) and reductant (reducing
+ explain mechanism of redox reactions by electron transfer process;
+ use the concept of oxidation number to identify oxidant and reductant in a reaction;
+ classify redox reaction into c o m b i n a t i o n ( s y n t h e s i s ) , decomposition, displacement a n d d i s p r o p o r t i o n a t i o n reactions;
+ suggest a comparative order among various reductants and oxidants;
+ balance chemical equations using (i) oxidation number (ii) half reaction method;
+ lear n the concept of redox reactions in terms of electrode processes.
+REDOX REACTIONS
+Where there is oxidation, there is always reduction –
+Chemistry is essentially a study of redox systems.
+Reprint 2026-27
+236 CHEMISTRY
+In reactions (7.1) and (7.2), the elements magnesium and sulphur are oxidised on account of addition of oxygen to them.
+Similarly, methane is oxidised owing to the addition of oxygen to it.
+CH4 (g) + 2O2 (g) → CO2 (g) + 2H2
+O (l) (7.3)
+A careful examination of reaction (7.3) in which hydrogen has been replaced by oxygen prompted chemists to reinterpret oxidation in terms of removal of hydrogen from it and, therefore, the scope of term oxidation was broadened to include the removal of hydrogen from a substance. The following illustration is another reaction where removal of hydrogen can also be cited as an oxidation reaction.
+S(g) + O2 (g) → 2 S (s) + 2 H2
+O (l) (7.4)
+As knowledge of chemists grew, it was natural to extend the term oxidation for reactions similar to (7.1 to 7.4), which do not involve oxygen but other electronegative elements. The oxidation of magnesium with fluorine, chlorine and sulphur etc. occurs according to the following reactions :
+Mg (s) + F 2 (g) → MgF2 (s) (7.5)
+Mg (s) + Cl2 (g) → MgCl2 (s) (7.6)
+Mg (s) + S (s) → MgS (s) (7.7)
+Incorporating the reactions (7.5 to
+7.7) within the fold of oxidation reactions encouraged chemists to consider not only the removal of hydrogen as oxidation, but also the removal of electropositive elements as oxidation. Thus the reaction :
+2K4 [Fe(CN)6
+](aq) + H2
+O2 (aq) →2K3
+[Fe(CN)6
++ 2 KOH (aq)
+is interpreted as oxidation due to the removal of electropositive element potassium from potassium ferrocyanide before it changes to potassium ferricyanide. To summarise, the term “oxidation” is defined as the addition of oxygen/electronegative element to a substance or removal of hydrogen/ electropositive element from a substance.
+In the beginning, reduction was considered as removal of oxygen from a compound.
+However, the term reduction has been broadened these days to include removal of oxygen/electronegative element from a substance or addition of hydrogen/ electropositive element to a substance.
+According to the definition given above, the following are the examples of reduction processes:
+2 HgO (s) 2 Hg (l) + O2 (g) (7.8)
+(removal of oxygen from mercuric oxide )
+2 FeCl3 (aq) + H2 (g) →2 FeCl2 (aq) + 2 HCl(aq)
+(removal of electronegative element, chlorine from ferric chloride)
+CH2 = CH2 (g) + H2 (g) → H3C – CH3 (g) (7.10)
+(addition of hydrogen)
+2HgCl2 (aq) + SnCl2 (aq) → Hg2
+Cl2 (s)+SnCl4 (aq)
+(addition of mercury to mercuric chloride)
+In reaction (7.11) simultaneous oxidation of stannous chloride to stannic chloride is also occurring because of the addition of electronegative element chlorine to it. It was soon realised that oxidation and reduction always occur simultaneously (as will be apparent by re-examining all the equations given above), hence, the word “redox” was coined for this class of chemical reactions.
+Problem 7.1
+In the reactions given below, identify the species undergoing oxidation and reduction:
+S (g) + Cl2 (g) → 2 HCl (g) + S (s)
+(ii) 3Fe 3
+O4 (s) + 8 Al (s) → 9 Fe (s)
+(iii) 2 Na (s) + H 2 (g) → 2 NaH (s)
+Solution (i) H 2 S is oxidised because a more electronegative element, chlorine is added to hydrogen (or a more electropositive element, hydrogen has been removed from S). Chlorine is reduced due to addition of hydrogen to it.
+(ii) Aluminium is oxidised because oxygen is added to it. Ferrous ferric oxide
+Reprint 2026-27

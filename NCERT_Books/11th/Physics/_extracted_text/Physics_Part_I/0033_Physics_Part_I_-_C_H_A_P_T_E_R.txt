@@ -1,0 +1,90 @@
+MOTION IN A STRAIGHT LINE 17
+Fig. 2.4 Area under v–t curve equals displacement of the object over a given time interval.
+The v-t curve is a straight line parallel to the time axis and the area under it between t = 0 and t = T is the area of the rectangle of height u and base T. Therefore, area = u × T = uT which is the displacement in this time interval. How come in this case an area is equal to a distance?
+Think! Note the dimensions of quantities on the two coordinate axes, and you will arrive at the answer.
+Note that the x-t, v-t, and a-t graphs shown in several figures in this chapter have sharp kinks at some points implying that the functions are not differentiable at these points. In any realistic situation, the functions will be differentiable at all points and the graphs will be smooth.
+What this means physically is that acceleration and velocity cannot change values abruptly at an instant. Changes are always continuous.
+2.4 KINEMATIC EQUATIONS FOR
+UNIFORMLY ACCELERATED MOTION
+For uniformly accelerated motion, we can derive some simple equations that relate displacement (x), time taken (t), initial velocity (v0), final velocity (v) and acceleration (a). Equation (2.4)
+already obtained gives a relation between final and initial velocities v and v0 of an object moving with uniform acceleration a :
+v = v0 + at (2.4)
+This relation is graphically represented in Fig. 2.5.
+The area under this curve is :
+Area between instants 0 and t = Area of triangle
+ABC + Area of rectangle OACD ( ) – 0 0
+1 v v t + v t
+Fig. 2.5 Area under v-t curve for an object with uniform acceleration.
+As explained in the previous section, the area under v-t curve represents the displacement.
+Therefore, the displacement x of the object is :
+2 0 0 x v v t + v t = (2.5)
+But 0 v v a t − =
+Therefore, 2 x a t + v t = x v t at = + (2.6)
+Equation (2.5) can also be written as x t v t = = (2.7a)
+= (constant acceleration only)
+Equations (2.7a) and (2.7b) mean that the object has undergone displacement x with an average velocity equal to the arithmetic average of the initial and final velocities.
+From Eq. (2.4), t = (v – v0)/a. Substituting this in
+Eq. (2.7a), we get x v t v v v v
+ = − 0 0
+0 2 v v ax = + (2.8)
+Reprint 2026-27
+PHYSICS 18
+This equation can also be obtained by substituting the value of t from Eq. (2.4) into Eq.
+(2.6). Thus, we have obtained three important equations :
+0 v v at = + x v t at = +
+0 2 v v ax = + (2.9a)
+connecting five quantities v0, v, a, t and x. These are kinematic equations of rectilinear motion for constant acceleration.
+The set of Eq. (2.9a) were obtained by assuming that at t = 0, the position of the particle, x is 0. We can obtain a more general equation if we take the position coordinate at t = 0 as non- zero, say x0. Then Eqs. (2.9a) are modified (replacing x by x – x0 ) to :
+0 v v at = + x x v t at = + + (2.9b)
+0 0 2 ( ) v v a x x = + − (2.9c)
+Example 2.2 Obtain equations of motion for constant acceleration using method of calculus.
+Answer By definition dv = a dt
+Integrating both sides d d v a t
+0 0 ∫ ∫ = constant)
+0 – v v at =
+0 v v at = +
+Further, d dx = v dt
+Integrating both sides
+∫ = ∫ v t
+= + ( ) ∫ v at t x x v t a t = + x v t a t + +
+We can write or, v dv = a dx
+Integrating both sides, v v a x x =
+0 0 2 – v v a x x = +
+The advantage of this method is that it can be used for motion with non-uniform acceleration
+Now, we shall use these equations to some important cases. ⊳
+Example 2.3 A ball is thrown vertically upwards with a velocity of 20 m s–1 from the top of a multistorey building. The height of the point from where the ball is thrown is 25.0 m from the ground. (a) How high will the ball rise ? and (b) how long will it be before the ball hits the ground?
+Take g = 10 m s–2.
+Answer (a) Let us take the y-axis in the vertically upward direction with zero at the ground, as shown in Fig. 2.6.
+Now vo = + 20 m s–1, a = – g = –10 m s–2, v = 0 m s–1
+If the ball rises to height y from the point of launch, then using the equation
+0 v v 2 a y – y = +
+0 = (20)2 + 2(–10)(y – y0)
+Solving, we get, (y – y0) = 20 m.
+(b) We can solve this part of the problem in two ways. Note carefully the methods used.
+Reprint 2026-27
+MOTION IN A STRAIGHT LINE 19
+Fig. 2.6
+FIRST METHOD : In the first method, we split the path in two parts : the upward motion (A to
+B) and the downward motion (B to C) and calculate the corresponding time taken t1 and t2. Since the velocity at B is zero, we have :
+v = vo + at
+0 = 20 – 10t1
+Or, t1 = 2 s
+This is the time in going from A to B. From B, or the point of the maximum height, the ball falls freely under the acceleration due to gravity. The ball is moving in negative y direction. We use equation y y v t at = + +
+We have, y0 = 45 m, y = 0, v0 = 0, a = – g = –10 m s–2
+0 = 45 + (½) (–10) t2
+Solving, we get t2 = 3 s
+Therefore, the total time taken by the ball before it hits the ground = t1 + t2 = 2 s + 3 s = 5 s.
+SECOND METHOD : The total time taken can also be calculated by noting the coordinates of initial and final positions of the ball with respect to the origin chosen and using equation y y v t at = + +
+Now y0 = 25 m y = 0 m vo = 20 m s-1, a = –10m s–2, t = ?
+0 = 25 +20 t + (½) (-10) t2
+Or, 5t2 – 20t – 25 = 0
+Solving this quadratic equation for t, we get
+Note that the second method is better since we do not have to worry about the path of the motion as the motion is under constant acceleration.
+Example 2.4 Free-fall : Discuss the motion of an object under free fall. Neglect air resistance.
+Answer An object released near the surface of the Earth is accelerated downward under the influence of the force of gravity. The magnitude of acceleration due to gravity is represented by g. If air resistance is neglected, the object is said to be in free fall. If the height through which the object falls is small compared to the earth’s radius, g can be taken to be constant, equal to 9.8 m s–2. Free fall is thus a case of motion with uniform acceleration.
+We assume that the motion is in y-direction, more correctly in –y-direction because we choose upward direction as positive. Since the acceleration due to gravity is always downward, it is in the negative direction and we have a = – g = – 9.8 m s–2
+The object is released from rest at y = 0. Therefore, v0 = 0 and the equations of motion become:
+v = 0 – g t = –9.8 t m s–1 y = 0 – ½ g t2 = –4.9 t 2 m v2 = 0 – 2 g y = –19.6 y m2 s–2
+These equations give the velocity and the distance travelled as a function of time and also the variation of velocity with distance. The variation of acceleration, velocity, and distance, with time have been plotted in Fig. 2.7(a), (b)
+and (c).
+Reprint 2026-27

@@ -1,0 +1,97 @@
+Data CommuniCation 219 data integrity ensuring that the packets arrive in order.
+It intimates the sender about damage or lost packets and asks to resend it.
+11.8.5 Simple Mail Transfer Protocol (SMTP)
+SMTP is a protocol used for email services. It uses information written on the message header (like an envelope on a letter sent by post), and is not concerned with the content of the email message. Each email header contains email addresses of recipients. The email containing header and body are entered into a queue of outgoing mails.
+The SMTP sender program takes mails from the outgoing queue and transmits them to the destination(s).
+When the SMTP sender successfully delivers a particular mail to one or more destinations, it removes the corresponding receiver’s email address from the mail’s destination list. When that mail is delivered to all the recipients, it is removed from the outgoing queue.
+The SMTP receiver program accepts each mail that has arrived and places it in the appropriate user mailbox.
+11.8.6 Transmission Control Protocol (TCP)/
+Internet Protocol (IP)
+TCP/IP stands for Transmission Control Protocol/
+Internet Protocol. It is a set of standardised rules that uses a client-server model of communication in which a user or machine (a client) requests a service by a server in the network.
+The IP protocol ensures that each computer or node connected to the Internet is assigned an IP address, which is used to identify each node independently. It can be considered to be the adhesive that holds the whole
+Internet together. TCP ensures that the message or data is broken into smaller chunks, called IP packets. Each of these packets are routed (transmitted) through the
+Internet, along a path from one router to the next, until it reaches the specified destination. TCP guarantees the delivery of packets on the designated IP address. It is also responsible for ordering the packets so that they are delivered in sequence.
+There are many redundant connection paths in the Internet, with backbones and ISPs connecting to each other in multiple locations. So, there are many
+Activity 11.3
+Find and list other Email
+Protocols.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 220 possible paths between two hosts. Hence, two packets of the same message can take two different routes depending on congestion and other factors in different possible routes. When all the packets finally reach the destination machine, they are reassembled into the original message at the receiver’s end.
+• Data communication refers to the exchange of data between two or more networked or connected devices like laptops, PC, printers, routers etc.
+• Sender, receiver, messages, channel and protocols are major components of data communication.
+• In data communication, transmission media are the links that carry messages between two or more communicating devices. These are broadly classified into guided and unguided media.
+• In guided transmission, there is a physical link made of wire/cable through which data in terms of signals are propagated between the nodes.
+These are usually metallic cable, fiber-optic cable, etc. They are also known as wired media.
+• In unguided transmission, data travels in air in terms of electromagnetic waves using an antenna.
+They are also known as wireless media.
+• The capacity of channels is measured in bandwidth. The unit of bandwidth is Hertz.
+• Communication can be done in three different modes — simplex, half-duplex, and full-duplex communication.
+• Switching techniques are alternative to dedicated lines whereby data is routed through various nodes in a network. It forms a temporary route for the data to be transmitted. Two commonly used switching techniques are – circuit switching and packet switching.
+• Electromagnetic spectrum of frequency ranging from 3 KHz to 900 THz is available for wireless communication. This spectrum range (3KHz to
+900THz) can be divided into four categories- Radio
+Reprint 2026-27
+Data CommuniCation 221 exerCise
+1. What is data communication? What are the main components of data communication?
+2. Which communication mode allows communication in both directions simultaneously?
+3. Among LAN, MAN, and WAN, which has the highest speed and which one can cover the largest area?
+waves, Microwaves, Infrared waves and Visible or
+Light waves, according to their frequency ranges.
+• Bluetooth is a short-range wireless technology that can be used to connect mobile-phones, mouse, headphones, keyboards, computers, etc.
+wirelessly over a short distance.
+• Based on the architecture of the mobile network, mobile communication technologies are classified into different generations identified as 1G, 2G,
+3G, 4G, and 5G.
+• In communication, protocol is a set of standard rules that the communicating parties — the sender, the receiver, and all other intermediate devices need to follow. Flow control, access control, addressing, etc. are examples of protocol.
+• HTTP stands for HyperText Transfer Protocol. It is the primary protocol used to access the World
+Wide Web, which was developed by Tim Berners-
+Lee at CERN in 1989.
+• File Transfer Protocol (FTP) is the protocol used for transferring files from one machine to another. Like HTTP, FTP also works on a client- server model.
+• Point-to-Point protocol (PPP) defines how two devices will authenticate each other and establish a direct link between them to exchange data.
+• TCP/IP stands for Transmission Control Protocol/
+Internet Protocol. It is a set of standardised rules that uses a client-server model of communication in which a user or machine (a client) requests a service by a server in the network.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 222
+4. What are three categories of wired media? Explain them.
+5. Compare wired and wireless media.
+6. Which transmission media carries signals in the form of
+7. List out the advantages and disadvantages of optical fiber cable.
+8. What is the range of frequency for radio waves?
+9. 18 Gbps is equal to how many Bits per second?
+10. HTTP stands for?
+11. Write short note on the following:
+b) Bandwidth c) Bluetooth e) Data transfer rate
+12. What is protocol in data communication? Explain with an example.
+13. A composite signal contains frequencies between 500
+MHz and 1GHz. What is the bandwidth of a signal?
+Reprint 2026-27
+In this Chapter
+» Threats and Prevention
+» Malware
+» Antivirus
+» HTTP vs HTTPS
+» Firewall
+» Cookies
+» Hackers and Crackers
+» Network Security Threats
+“Treat your password like your toothbrush. Don't let anybody else use it, and get a new one every six months.”
+— Clifford Stoll
+12.1 ThreaTs and PrevenTion
+Being alone is the most ideal situation for an individual in terms of security. It applies to computers as well. A computer with no link to an external device or computer is free from the security threats arising otherwise. However, it is not an ideal solution for a human being or a computer to stay aloof in order to mitigate any security threats, as the world at present is on its way to become fully connected. This connectedness of various devices and computers has brought into our focus the various network threats and its prevention.
+Network security is concerned with protection of our device as well as data from illegitimate access or misuse. Threats include all the ways in which one can exploit any vulnerability or weakness in a network or communication system in order to cause harm or damage one’s reputation.
+Security Aspects 12
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 224
+12.2 Malware
+Malware is a short term used for MALicious softWARE.
+It is any software developed with an intention to damage hardware devices, steal data, or cause any other trouble to the user. Various types of malware have been created from time-to-time, and large-scale damages have been inflicted. Many of these malware programs have been identified and counter measures have been initiated.
+However, different types of malware keep on coming on a regular basis that compromise the security of computer systems and cause intangible damages. Besides, each year, malware incur financial damages worth billions of dollars worldwide. Viruses, Worms, Ransomware,
+Trojans, and Spyware are some of the kinds of malware.
+12.2.1 Virus
+The term computer virus was coined by Fred Cohen in
+1985 and has been borrowed from biological science with almost similar meaning and behavior, the only difference is that the victim is a computer system and the virus is a malicious software. A virus is a piece of software code created to perform malicious activities and hamper resources of a computer system like CPU time, memory, personal files, or sensitive information.
+Mimicking the behaviour of a biological virus, the computer virus spreads on contact with another system, i.e. a computer virus infects other computer systems that it comes into contact with by copying or inserting its code into the computer programs or software (executable files). A virus remains dormant on a system and is activated as soon as the infected file is opened (executed) by a user.
+Viruses behave differently, depending upon the reason or motivation behind their creation. Some of the most common intentions or motives behind viruses include stealing passwords or data, corrupting files, spamming the user’s email contacts, and even taking control of the user’s machine. Some well-known viruses include CryptoLocker, ILOVEYOU, MyDoom, Sasser and Netsky, Slammer, Stuxnet, etc.
+12.2.2 Worms
+The Worm is also a malware that incurs unexpected or damaging behaviour on an infected computer system.
+The major difference between a worm and a virus is that
+Reprint 2026-27

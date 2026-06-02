@@ -1,0 +1,38 @@
+underStanding data 103 get results and after analysing those results, we make conclusions or decisions.
+We find automated data processing in situations like online bill payment, registration of complaints, booking tickets, etc. Figure 7.1 illustrates basic steps used to process the data to get the output.
+Figure 7.2 shows some tasks along with data, processing and generated output/information.
+7.5 statIstIcal technIques for data ProcessIng
+Given a set of data values, we need to process them to get information. There are various techniques which help us to have preliminary understanding about the data.
+Figure 7.2: Data based problem statements
+Figure 7.1: Steps in data processing
+Data Processing RAW DATA (Numbers/
+Text/Image)
+INFORMATION (In the form of table/ chart/text)
+Input Processing Output
+Data Collection
+Data Prepration
+Data Entry
+Retrieve
+Classify
+Processing System
+Data Process Cycle
+Processing of filled in details for correctness of data received, eligibility as per advertisement or not, fees paid or not, photo and signature uploaded or not. Then, generate a roll number and add this applicant in the list of eligible applicants.
+Student details like name, address, qualification, marks, mobile number, photo and sign, center choice, online fee payment details like credit/debit card, net banking or other mode of payment, etc.
+Examination Admit card specifying roll number, center address, date and time of test.
+A website handling online filling of student details for a competitive examination and generating admit card
+Checking for valid PIN number, existing bank balance, if satisfied, then deduction of amount from that account and counting of rupees and initiate printing of receipt
+ATM PIN number, account type, account number, card number,
+ATM location from where money was withdrawn, date and time, and amount to be withdrawn.
+Currency notes, printed slip with transaction details
+A Bank handling withdrawals of cash through ATMs of its own branch
+Verify login details and check availability of berth in that class. If payment done, issue tickets and deduct that number from the total available tickets on that coach.
+Allocate PNR number and berths or generate a waiting number for that
+Journey start and end stations, date of journey, number of tickets required, class of travel (Sleeper/AC/other), berth preference (if any), passenger name(s) and age(s), mobile and email id, payment related details,
+Generate ticket with berth and coach number, or issue ticket with a waiting list number
+Issue of train ticket
+Problem Statement Processing Output
+Inputs against which data are collected
+A website handling online filling of student details for a competitive examination and generating admit card
+A Bank handling withdrawals of cash through ATMs of its own branch
+Issue of train ticket
+Reprint 2026-27

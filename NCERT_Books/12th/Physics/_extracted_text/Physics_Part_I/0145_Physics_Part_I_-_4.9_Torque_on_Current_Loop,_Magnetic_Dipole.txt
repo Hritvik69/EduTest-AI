@@ -1,0 +1,92 @@
+Moving Charges and
+Magnetism e → m p (electrostatic dipole)
+→ B E (electrostatic field)
+We then obtain, which is precisely the field for an electric dipole at a point on its axis.
+considered in Chapter 1, Section 1.9 [Eq. (1.20)].
+It can be shown that the above analogy can be carried further. We had found in Chapter 1 that the electric field on the perpendicular bisector of the dipole is given by [See Eq.(1.21)], where x is the distance from the dipole. If we replace p ‡ m and 0 0 1/ in the above expression, we obtain the result for B for a point in the plane of the loop at a distance x from the centre. For x >>R,
+4π x x R ; >> [4.25(b)]
+The results given by Eqs. [4.25(a)] and [4.25(b)] become exact for a point magnetic dipole.
+The results obtained above can be shown to apply to any planar loop:
+a planar current loop is equivalent to a magnetic dipole of dipole moment m = I A, which is the analogue of electric dipole moment p. Note, however, a fundamental difference: an electric dipole is built up of two elementary units — the charges (or electric monopoles). In magnetism, a magnetic dipole (or a current loop) is the most elementary element. The equivalent of electric charges, i.e., magnetic monopoles, are not known to exist.
+We have shown that a current loop (i) produces a magnetic field (see
+Fig. 4.10) and behaves like a magnetic dipole at large distances, and (ii) is subject to torque like a magnetic needle. This led Ampere to suggest that all magnetism is due to circulating currents. This seems to be partly true and no magnetic monopoles have been seen so far. However, elementary particles such as an electron or a proton also carry an intrinsic magnetic moment, not accounted by circulating currents.
+4.10 THE MOVING COIL GALVANOMETER
+Currents and voltages in circuits have been discussed extensively in
+Chapters 3. But how do we measure them? How do we claim that current in a circuit is 1.5 A or the voltage drop across a resistor is 1.2 V?
+Figure 4.20 exhibits a very useful instrument for this purpose: the moving coil galvanometer (MCG). It is a device whose principle can be understood on the basis of our discussion in Section 4.9.
+The galvanometer consists of a coil, with many turns, free to rotate about a fixed axis (Fig. 4.20), in a uniform radial magnetic field. There is a cylindrical soft iron core which not only makes the field radial but also increases the strength of the magnetic field. When a current flows through the coil, a torque acts on it. This torque is given by Eq. (4.20) to be
+τ = NI AB
+Reprint 2026-27 where the symbols have their usual meaning. Since the field is radial by design, we have taken sin
+θ = 1 in the above expression for the torque. The magnetic torque NIAB tends to rotate the coil. A spring Sp provides a counter torque k
+φ that balances the magnetic torque NIAB; resulting in a steady angular deflection
+φ. In equilibrium
+φ = NI AB where k is the torsional constant of the spring; i.e. the restoring torque per unit twist. The deflection indicated on the scale by a pointer attached to the spring. We have k I (4.26)
+The quantity in brackets is a constant for a given galvanometer.
+The galvanometer can be used in a number of ways.
+It can be used as a detector to check if a current is flowing in the circuit. We have come across this usage in the Wheatstone’s bridge arrangement. In this usage the neutral position of the pointer (when no current is flowing through the galvanometer) is in the middle of the scale and not at the left end as shown in Fig.4.20.
+Depending on the direction of the current, the pointer’s deflection is either to the right or the left.
+The galvanometer cannot as such be used as an ammeter to measure the value of the current in a given circuit. This is for two reasons: (i) Galvanometer is a very sensitive device, it gives a full- scale deflection for a current of the order of
+μA. (ii) For measuring currents, the galvanometer has to be connected in series, and as it has a large resistance, this will change the value of the current in the circuit. To overcome these difficulties, one attaches a small resistance rs, called shunt resistance, in parallel with the galvanometer coil; so that most of the current passes through the shunt. The resistance of this arrangement is,
+RG rs / (RG + rs ) ≃ rs if RG >> rs
+If rs has small value, in relation to the resistance of the rest of the circuit Rc, the effect of introducing the measuring instrument is also small and negligible. This arrangement is schematically shown in Fig. 4.21.
+The scale of this ammeter is calibrated and then graduated to read off the current value with ease. We define the current sensitivity of the galvanometer as the deflection per unit current. From Eq. (4.26) this current sensitivity is,
+φ = (4.27)
+A convenient way for the manufacturer to increase the sensitivity is to increase the number of turns N. We choose galvanometers having sensitivities of value, required by our experiment.
+FIGURE 4.20 The moving coil galvanometer. Its elements are described in the text. Depending on the requirement, this device can be used as a current detector or for measuring the value of the current (ammeter) or voltage (voltmeter).
+FIGURE 4.21
+Conversion of a galvanometer (G) to an ammeter by the introduction of a shunt resistance rs of very small value in parallel.
+Reprint 2026-27
+Moving Charges and
+Magnetism
+The galvanometer can also be used as a voltmeter to measure the voltage across a given section of the circuit. For this it must be connected in parallel with that section of the circuit. Further, it must draw a very small current, otherwise the voltage measurement will disturb the original set up by an amount which is very large. Usually we like to keep the disturbance due to the measuring device below one per cent. To ensure this, a large resistance R is connected in series with the galvanometer.
+This arrangement is schematically depicted in Fig.4.22. Note that the resistance of the voltmeter is now,
+RG + R ≃ R : large
+The scale of the voltmeter is calibrated to read off the voltage value with ease. We define the voltage sensitivity as the deflection per unit voltage. From Eq. (4.26),
+ 1 (4.28)
+An interesting point to note is that increasing the current sensitivity may not necessarily increase the voltage sensitivity. Let us take Eq. (4.27)
+which provides a measure of current sensitivity. If N → 2N, i.e., we double the number of turns, then
+Thus, the current sensitivity doubles. However, the resistance of the galvanometer is also likely to double, since it is proportional to the length of the wire. In Eq. (4.28), N →2N, and R →2R, thus the voltage sensitivity, remains unchanged. So in general, the modification needed for conversion of a galvanometer to an ammeter will be different from what is needed for converting it into a voltmeter.
+Example 4.12 In the circuit (Fig. 4.23) the current is to be measured. What is the value of the current if the ammeter shown (a) is a galvanometer with a resistance RG = 60.00 Ω; (b) is a galvanometer described in (a) but converted to an ammeter by a shunt resistance rs = 0.02 Ω; (c) is an ideal ammeter with zero resistance?
+FIGURE 4.23
+FIGURE 4.22
+Conversion of a galvanometer (G) to a voltmeter by the introduction of a resistance R of large value in series.
+Reprint 2026-27
+1. The total force on a charge q moving with velocity v in the presence of magnetic and electric fields B and E, respectively is called the Lorentz force. It is given by the expression:
+F = q (v × B + E)
+The magnetic force q (v × B) is normal to v and work done by it is zero.
+2. A straight conductor of length l and carrying a steady current I experiences a force F in a uniform external magnetic field B,
+F = I l × B where|l| = l and the direction of l is given by the direction of the current.
+3. In a uniform magnetic field B, a charge q executes a circular orbit in a plane normal to B. Its frequency of uniform circular motion is called the cyclotron frequency and is given by:
+This frequency is independent of the particle’s speed and radius. This fact is exploited in a machine, the cyclotron, which is used to accelerate charged particles.
+4. The Biot-Savart law asserts that the magnetic field dB due to an element dl carrying a steady current I at a point P at a distance r from the current element is:
+To obtain the total field at P, we must integrate this vector expression over the entire length of the conductor.
+5. The magnitude of the magnetic field due to a circular coil of radius R carrying a current I at an axial distance x from the centre is
+Solution (a) Total resistance in the circuit is,
+3 63 G R + = Ω . Hence, I = 3/63 = 0.048 A.
+(b) Resistance of the galvanometer converted to an ammeter is,
+G s + = × ( . ) ≃ 0.02Ω
+Total resistance in the circuit is,
+0.02 3 3.02 Ω + Ω = Ω . Hence, I = 3/3.02 = 0.99 A.
+(c) For the ideal ammeter with zero resistance,
+I = 3/3 = 1.00 A
+Reprint 2026-27
+Moving Charges and
+Magnetism
+2 2 3 / 2
+At the centre this reduces to
+6. Ampere’s Circuital Law: Let an open surface S be bounded by a loop
+C. Then the Ampere’s law states that B l .d I =
+Ñ where I refers to the current passing through S. The sign of I is determined from the right-hand rule. We have discussed a simplified form of this law. If B is directed along the tangent to every point on the perimeter L of a closed curve and is constant in magnitude along perimeter then, where Ie is the net current enclosed by the closed circuit.
+7. The magnitude of the magnetic field at a distance R from a long, straight wire carrying a current I is given by:
+The field lines are circles concentric with the wire.
+8. The magnitude of the field B inside a long solenoid carrying a current where n is the number of turns per unit length.
+9. Parallel currents attract and anti-parallel currents repel.
+10. A planar loop carrying a current I, having N closely wound turns, and an area A possesses a magnetic moment m where, m = N I A and the direction of m is given by the right-hand thumb rule : curl the palm of your right hand along the loop with the fingers pointing in the direction of the current. The thumb sticking out gives the direction of m (and A)
+When this loop is placed in a uniform magnetic field B, the force F on it is: F = 0
+And the torque on it is,
+τ = m × B
+In a moving coil galvanometer, this torque is balanced by a counter- torque due to a spring, yielding
+φ = NI AB
+φ is the equilibrium deflection and k the torsion constant of the spring.
+11. A moving coil galvanometer can be converted into a ammeter by introducing a shunt resistance rs, of small value in parallel. It can be converted into a voltmeter by introducing a resistance of a large value in series.
+Reprint 2026-27

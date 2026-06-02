@@ -1,0 +1,37 @@
+Ganita Prakash | Grade 8 | Part-II (e) The following week, if all of them cycled 1 more time than they did the previous week, what would be the average and median of the next week’s data?
+11. A dart-throwing competition was organised in a school. The number of throws participants took to hit the bull’s eye (the centre circle) is given in the table below. Describe the data using its minimum, maximum, mean and median.
+No. of trials 1 2 3 4 5 6 7 8 9 10
+No. of students 1 0 0 1 4 9 12 15 10 10
+5.2 Visualising and Interpreting Data
+So far we have learnt how to read and make pictographs, bar graphs, clustered-bar graphs, and dot plots. We now examine some more ways of visualising data.
+Line Graphs
+Temperature
+The following figure is a clustered-column graph that shows the monthly maximum temperature in Kerala and Punjab in 2023.
+Now, observe the following graph. Do both these graphs represent the same information?
+Tales by Dots and Lines
+We call such a graph made up of lines a line graph. Line graphs are generally used to visualise data across time.
+How do we get the maximum temperature over a month in a state?
+There could be a few weather stations across the state that regularly track the local temperature. We can get the monthly maximum temperature by looking at the maximum value among all the values recorded across the state.
+To identify and interpret the information presented, let us follow a two-step process.
+Step 1: Identify what is given
+Notice how the graph is organised, what scale is used, and what patterns the data shows.
+• The data for each month for a city is marked and connected by lines to show the change over time. Kerala’s data is shown using blue circle marks connected by blue lines and
+Punjab’s data is shown in red.
+When we try to understand how the data is collected or produced, we gain a clearer idea of its scope and can interpret it more meaningfully. It also helps us identify any limitations, such as bias or missing information, and decide how confidently we can draw conclusions from the data.
+The different shape markers help in easily distinguishing if the graph is printed in greyscale/black-and-white, or for people who find it difficult to distinguish colour.
+Ganita Prakash | Grade 8 | Part-II
+• The horizontal line shows the months of the year. The vertical line shows the temperature in oC.
+Step 2: Infer and interpret from what is given
+Analyse and interpret each of the observations you made. Share appropriate summary/conclusion statements.
+• In Punjab, the monthly maximum temperature increases from
+January to June, reaching a high of 38oC. Then, it reduces to just under 35oC in July, stays mostly flat till September, and then falls continuously till December, reaching about 23oC. January has the lowest among the monthly maximum temperature of about 19oC.
+• Kerala’s trend is different — it stays mostly flat throughout the year.
+The peak is around 33oC in April and the lowest point is around
+29oC in July. Notice that the monthly maximum temperatures in
+Kerala are similar both in summer and winter!
+• In short, the temperature in Punjab varies more, reaching colder and warmer temperatures than in Kerala.
+This can trigger questions in different directions, some of which can be answered using data. Here are some directions to think about —
+• Why are the trends so distinct in these two states?
+What factors determine a region’s temperature?
+• You might be curious to look at the trends of a few other states. Are there other types of trends that states exhibit?
+• Which states show trends similar to Punjab’s? Is there anything common between these states?

@@ -1,0 +1,207 @@
+DatabaSe ConCeptS 125 marked attendance only once. Hence {RollNumber,
+AttendanceDate} will make the of ATTENDANCE relation composite primary key.
+8.5.4 Foreign Key
+A foreign key is used to represent the relationship between two relations. A foreign key is an attribute whose value is derived from the primary key of another relation. This means that any attribute of a relation (referencing), which is used to refer contents from another (referenced) relation, becomes foreign key if it refers to the primary key of referenced relation. The referencing relation is called Foreign Relation. In some cases, foreign key can take NULL value if it is not the part of primary key of the foreign table. The relation in which the referenced primary key is defined is called primary relation or master relation.
+In Figure 8.5, two foreign keys in Student Attendance database are shown using schema diagram where the foreign key is displayed as a directed arc (arrow)
+originating from it and ending at the corresponding attribute of the primary key of the referenced table. The underlined attributes make the primary key of that table.
+Figure 8.5: STUDENTATTENDANCE database with the primary and foreign keys
+STUDENT RollNumber SName SDateofBirth GUID
+GUARDIAN GUID GName GPhone GAddress
+ATTENDANCE AttendanceDate RollNumber AttendanceStatus
+• A file in a file system is a container to store data in a computer.
+• File system suffers from Data Redundancy, Data Inconsistency, Data
+Isolation, Data Dependence and Controlled Data sharing.
+• Database Management System (DBMS) is a software to create and manage databases. A database is a collection of tables.
+• Database schema is the design of a database.
+• A database constraint is a restriction on the type of data that that can be inserted into the table.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 126 exercISe
+1. Give the terms for each of the following:
+a) Collection of logically related records.
+b) DBMS creates a file that contains description about the data stored in the database.
+c) Attribute that can uniquely identify the tuples in a relation.
+d) Special value that is stored when actual data value is unknown for an attribute.
+e) An attribute which can uniquely identify tuples of the table but is not defined as primary key of the table.
+f) Software that is used to create, manipulate and maintain a relational database.
+2. Why foreign keys are allowed to have NULL values?
+Explain with an example.
+3. Differentiate between:
+a) Database state and database schema b) Primary key and foreign key c) Degree and cardinality of a relation
+• Database schema and database constraints are stored in database catalog.
+• The snapshot of the database at any given time is the database instance.
+• A query is a request to a database for information retrieval and data manipulation (insertion, deletion or update). It is written in Structured
+Query Language (SQL).
+• Relational DBMS (RDBMS) is used to store data in related tables. Rows and columns of a table are called tuples and attributed respectively. A table is referred to as a relation.
+• Destructions on data stored in a RDBMS is applied by use of keys such as
+Candidate Key, Primary Key, Composite Primary Key, Foreign Key.
+• Primary key in a relation is used for unique identification of tuples.
+• Foreign key is used to relate two tables or relations.
+• Each column in a table represents a feature (attribute) of a record. Table stores the information for an entity whereas a row represents a record.
+• Each row in a table represents a record. A tuple is a collection of attribute values that makes a record unique.
+• A tuple is a unique entity whereas attribute values can be duplicate in the table.
+• SQL is the standard language for RDBMS systems like MySQL.
+Reprint 2026-27
+DatabaSe ConCeptS 127
+4. Compared to a file system, how does a database management system avoid redundancy in data through a database?
+5. What are the limitations of file system that can be overcome by a relational DBMS?
+6. A school has a rule that each student must participate in a sports activity. So each one should give only one preference for sports activity. Suppose there are five students in a class, each having a unique roll number.
+The class representative has prepared a list of sports preferences as shown below. Answer the following:
+Table: Sports Preferences
+Roll_no Preference
+9 Cricket
+13 Football
+17 Badminton
+17 Football
+21 Hockey
+NULL Kabaddi a) Roll no 24 may not be interested in sports. Can a NULL value be assigned to that student’s preference field?
+b) Roll no 17 has given two preferences in sports. Which property of relational DBMC is violated here? Can we use any constraint or key in the relational DBMS to check against such violation, if any?
+c) Kabaddi was not chosen by any student. Is it possible to have this tuple in the Sports Preferences relation?
+7. In another class having 2 sections, the two respective class representatives have prepared 2 separate Sports
+Preferences tables, as shown below:
+Sports preference of section 1 (arranged on roll number
+Table: Sports Preferences
+Roll_no Sports
+9 Cricket
+13 Football
+17 Badminton
+21 Hockey
+24 Cricket
+Sports preference of section 2 (arranged on Sports name column, and column order is also different)
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 128
+Table: Sports Preferences
+Sports Roll_no
+Badminton 17
+Cricket 9
+Cricket 24
+Football 13
+Hockey 21
+Are the states of both the relations equivalent? Justify.
+8. The school canteen wants to maintain records of items available in the school canteen and generate bills when students purchase any item from the canteen. The school wants to create a canteen database to keep track of items in the canteen and the items purchased by students. Design a database by answering the following questions:
+a) To store each item name along with its price, what relation should be used? Decide appropriate attribute names along with their data type. Each item and its price should be stored only once. What restriction should be used while defining the relation?
+b) In order to generate bill, we should know the quantity of an item purchased. Should this information be in a new relation or a part of the previous relation? If a new relation is required, decide appropriate name and data type for attributes. Also, identify appropriate primary key and foreign key so that the following two restrictions are satisfied:
+i) The same bill cannot be generated for different ii) Bill can be generated only for available items in the canteen.
+c) The school wants to find out how many calories students intake when they order an item. In which relation should the attribute ‘calories’ be stored?
+9. An organisation wants to create a database EMP-
+DEPENDENT to maintain following details about its employees and their dependent.
+EMPLOYEE(AadharNumber, Name, Address,
+Department,EmployeeID)
+DEPENDENT(EmployeeID, DependentName,
+Relationship)
+a) Name the attributes of EMPLOYEE, which can be used as candidate keys.
+b) The company wants to retrieve details of dependent of a particular employee. Name the tables and the key which are required to retrieve this detail.
+Reprint 2026-27
+DatabaSe ConCeptS 129 c) What is the degree of EMPLOYEE and DEPENDENT relation?
+10. School uniform is available at M/s Sheetal Private
+Limited. They have maintained SCHOOL_UNIFORM
+Database with two relations viz. UNIFORM and COST.
+The following figure shows database schema and its state.
+a) Can they insert the following tuples to the UNIFORM
+Relation? Give reasons in support of your answer.
+i) 7, Handkerchief, NULL ii) 4, Ribbon, Red iii) 8, NULL, White b) Can they insert the following tuples to the COST
+Relation? Give reasons in support of your answer.
+i) 7, S, 0 ii) 9, XL, 100
+11. In a multiplex, movies are screened in different auditoriums. One movie can be shown in more than one auditorium. In order to maintain the record of movies, the multiplex maintains a relational database consisting of two relations viz. MOVIE and AUDI respectively as shown below:
+Movie(Movie_ID, MovieName, ReleaseDate)
+Audi(AudiNo, Movie_ID, Seats, ScreenType,
+TicketPrice)
+School Uniform Database
+Table: UNIFORM
+Attribute UCode UName UColor
+Constraints Primary Key Not Null -
+Table: COST
+Attribute UCode Size Price
+Constraints Composite Primary Key >0
+Attributes and Constraints
+UCode Size COST Price
+1 XL 620
+2 XL 940
+3 XL 910
+6 XL 160
+Table: COST
+Table: UNIFORM
+UCode UName UColor
+1 Shirt White
+2 Pant Grey
+3 Skirt Grey
+4 Tie Blue
+5 Socks Blue
+6 Belt Blue
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 130 a) Is it correct to assign Movie_ID as the primary key in the MOVIE relation? If no, then suggest an appropriate primary key.
+b) Is it correct to assign AudiNo as the primary key in the AUDI relation? If no, then suggest appropriate primary key.
+c) Is there any foreign key in any of these relations?
+12. For the above given database STUDENT-PROJECT, answer the following:
+a) Name primary key of each table.
+b) Find foreign key(s) in table PROJECT-ASSIGNED.
+c) Is there any alternate key in table STUDENT? Give justification for your answer.
+d) Can a user assign duplicate value to the field RollNo of STUDENT table? Jusify.
+13. For the above given database STUDENT-PROJECT, can we perform the following operations?
+a) Insert a student record with missing roll number b) Insert a student record with missing registration number value.
+c) Insert a project detail without submission-date.
+d) Insert a record with registration ID IP-101-19 and
+ProjectNo 206 in table PROJECT-ASSIGNED.
+Student Project Database
+Table: PROJECT ASSIGNED
+Table: PROJECT
+ProjectNo PName SubmissionDate
+101 Airline Database 12/01/2018
+102 Library Database 12/01/2018
+103 Employee Database 15/01/2018
+104 Student Database 12/01/2018
+105 Inventory Database 15/01/2018
+106 Railway Database 15/01/2018
+Registration_ID ProjectNo
+IP-101-15 101
+IP-104-15 103
+CS-103-14 102
+CS-101-14 105
+CS-101-10 104
+Table: STUDENT
+Roll No Name Class Section Registration_ID
+11 Mohan XI 1 IP-101-15
+12 Sohan XI 2 IP-104-15
+21 John XII 1 CS-103-14
+22 Meena XII 2 CS-101-14
+23 Juhi XII 2 CS-101-10
+Reprint 2026-27
+In this Chapter
+» Introduction
+» Structured Query Language
+» Data Types and
+Constraints in MySQL
+» SQL for Data Definition
+» SQL for Data
+Manipulation
+» SQL for Data Query
+» Data Updation and
+Deletion
+» Functions in SQL
+» GROUP BY Clause in SQL
+» Operations on Relations
+» Using Two Relations in a
+“Any unique image that you desire probably already exists on the internet or in some database... The problem today is no longer how to create the right image, but how to find an already existing one. ”
+— Lev Manovich
+9.1 IntroductIon
+We have learnt about Relational Database
+Management Systems (RDBMS) and its purpose in the previous chapter. There are many
+RDBMS such as MySQL, Microsoft SQL Server,
+PostgreSQL, Oracle, etc. that allow us to create a database consisting of relations. These RDBMS also allow us to store, retrieve and manipulate data on that database through queries. In this chapter, we will learn how to create, populate and query databases using MySQL.
+9.2 Structured Query Language (SQL)
+One has to write application programs to access data in case of a file system. However, for database management systems there are special kinds of languages called query language that can be used to access and manipulate data from the database.
+The Structured Query Language (SQL) is the most popular query language used by major relational
+9 Structured Query
+Language (SQL)
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 132 database management systems such as MySQL,
+ORACLE, SQL Server, etc.
+SQL is easy to learn as the statements comprise of descriptive English words and are not case sensitive.
+We can create and interact with a database using SQL easily. Benefit of using SQL is that we do not have to specify how to get the data from the database. Rather, we simply specify what is to be retrieved, and SQL does the rest. Although called a query language, SQL can do much more, besides querying. SQL provides statements for defining the structure of the data, manipulating data in the database, declaring constraints and retrieving data from the database in various ways, depending on our requirements.
+In this chapter, we will use the StudentAttendance discussed in chapter 8 and create a database. We will also learn how to populate databases with data, manipulate data and retrieve data from a database through SQL queries.
+9.2.1 Installing MySQL
+MySQL is an open source RDBMS software which can be easily downloaded from the official website https:// dev.mysql.com/downloads. After installing MySQL, start MySQL service. The appearance of mysql> prompt (Figure 9.1) means that MySQL is ready to accept SQL statements.
+Activity 9.1
+Find and list other types of databases other than
+Figure 9.1: MySQL Shell
+Following are some important points to be kept in mind while using SQL:
+Reprint 2026-27

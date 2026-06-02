@@ -1,0 +1,22 @@
+160 Chemistry
+Haloalkanes and haloarenes may be classified as follows:
+These may be classified as mono, di, or polyhalogen (tri-,tetra-, etc.)
+compounds depending on whether they contain one, two or more halogen atoms in their structures. For example,
+Monohalocompounds may further be classified according to the hybridisation of the carbon atom to which the halogen is bonded, as discussed below.
+This class includes (a) Alkyl halides or haloalkanes (R—X)
+In alkyl halides, the halogen atom is bonded to an alkyl group (R).
+They form a homologous series represented by CnH2n+1X. They are further classified as primary, secondary or tertiary according to the nature of carbon to which halogen is attached. If halogen is attached to a primary carbon atom in an alkyl halide, the alkyl halide is called primary alkyl halide or 1° alkyl halide. Similarly, if halogen is attached to secondary or tertiary carbon atom, the alkyl halide is called secondary alkyl halide (2°) and tertiary (3°) alkyl halide, respectively.
+(b) Allylic halides
+These are the compounds in which the halogen atom is bonded to an sp3-hybridised carbon atom adjacent to carbon-carbon double bond (C=C) i.e. to an allylic carbon.
+(c) Benzylic halides
+These are the compounds in which the halogen atom is bonded to an sp3-hybridised carbon atom attached to an aromatic ring.
+6.1 6.1 6.1 6.1 6.1 Classification Classification Classification Classification Classification
+6.1.1 On the
+Basis of
+Number of
+6.1.2 Compounds
+Containing
+Bond (X= F,
+Cl, Br, I)
+Allylic carbon
+Reprint 2026-27

@@ -1,0 +1,39 @@
+Consider the farmer we mentioned above. For simplicity, we assume that the farmer uses only two inputs to produce wheat: land and labour. A production function tells us the maximum amount of wheat he can produce for a given amount of land that he uses, and a given number of hours of labour that he performs. Suppose that he uses 2 hours of labour/ day and 1 hectare of land to produce a maximum of 2 tonnes of wheat. Then, a function that describes this relation is called a production function.
+One possible example of the form this could take is:
+q = K × L,
+Where, q is the amount of wheat produced, K is the area of land in hectares,
+L is the number of hours of work done in a day.
+Describing a production function in this manner tells us the exact relation between inputs and output. If either K or L increase, q will also increase. For any L and any K, there will be only one q. Since by definition we are taking the maximum output for any level of inputs, a production function deals only with the efficient use of inputs. Efficiency implies that it is not possible to get any more output from the same level of inputs.
+A production function is defined for a given technology. It is the technological knowledge that determines the maximum levels of output that can be produced using different combinations of inputs. If the technology improves, the maximum levels of output obtainable for different input combinations increase. We then have a new production function.
+The inputs that a firm uses in the production process are called factors of production. In order to produce output, a firm may require any number of different inputs. However, for the time being, here we consider a firm that produces output using only two factors of production – labour and capital. Our production function, therefore, tells us the maximum quantity of output (q) that can be produced by using different combinations of these two factors of productions-
+Labour (L) and Capital (K).
+We may write the production function as q = f(L,K) (3.1)
+where, L is labour and K is capital and q is the maximum output that can be produced.
+A numerical example of production function is given in Table 3.1. The left column shows the amount of labour and the top row shows the amount of capital. As we move to the right along any row, capital increases and as we move down along any column, labour increases. For different values of the two factors,
+37 Production and Costs
+Table 3.1: Production Function
+Factor Capital
+0 1 2 3 4 5 6
+0 0 0 0 0 0 0 0
+1 0 1 3 7 10 12 13
+2 0 3 10 18 24 29 33
+Labour 3 0 7 18 30 40 46 50
+4 0 10 24 40 50 56 57
+5 0 12 29 46 56 58 59
+6 0 13 33 50 57 59 60
+Reprint 2026-27
+Introductory
+Microeconomics the table shows the corresponding output levels. For example, with 1 unit of labour and 1 unit of capital, the firm can produce at most 1 unit of output; with
+2 units of labour and 2 units of capital, it can produce at most 10 units of output; with 3 units of labour and 2 units of capital, it can produce at most 18 units of output and so on.
+In our example, both the inputs are necessary for the production. If any of the inputs becomes zero, there will be no production. With both inputs positive, output will be positive. As we increase the amount of any input, output increases.
+3.2 THE SHORT RUN AND THE LONG RUN
+Before we begin with any further analysis, it is important to discuss two concepts– the short run and the long run.
+In the short run, at least one of the factor – labour or capital – cannot be varied, and therefore, remains fixed. In order to vary the output level, the firm can vary only the other factor. The factor that remains fixed is called the fixed factor whereas the other factor which the firm can vary is called the variable
+Consider the example represented through Table 3.1. Suppose, in the short run, capital remains fixed at 4 units. Then the corresponding column shows the different levels of output that the firm may produce using different quantities of labour in the short run.
+Isoquant
+In Chapter 2, we have learnt about indifference curves. Here, we introduce a similar concept known as isoquant. It is just an alternative way of representing the production function. Consider a production function with two inputs labour and capital. An isoquant is the set of all possible combinations of the two inputs that yield the same maximum possible level of output. Each isoquant represents a particular level of output and is labelled with that amount of output.
+Let us return to table 3.1 notice that the output of 10 units can be produced in 3 ways (4L,
+1K), (2L, 2K), (1L, 4K). All these combination of L, K lie on the same isoquant, which represents the level of output 10. Can you identify the sets of inputs that will lie on the isoquant q = 50?
+The diagram here generalizes this concept. We place L on the X axis and
+K on the Y axis. We have three isoquants for the three output levels, namely q = q1, q = q2 and q = q3. Two input combinations (L1, K2) and (L2, K1) give us the same level of output q1. If we fix capital at K1 and increase labour to L3, output increases and we reach a higher isoquant, q = q2. When marginal products are positive, with greater amount of one input, the same level of output can be produced only using lesser amount of the other. Therefore, isoquants are negatively sloped.
+Reprint 2026-27

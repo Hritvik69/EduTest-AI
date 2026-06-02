@@ -1,0 +1,25 @@
+Computer SCienCe – ClaSS xi 22 systems which provide voice-based control to users include iOS (Siri), Android (Google Now or “OK Google”),
+Microsoft Windows 10 (Cortana) and so on.
+(E) Gesture-based Interface
+Some smartphones based on Android and iOS as well as laptops let users interact with the devices using gestures like waving, tilting, eye motion and shaking.
+This technology is evolving faster and it has promising potential for application in gaming, medicine and other areas.
+1.8.2 Functions of Operating System
+Now let us explore the important services and tasks that an operating system provides for managing the computer system.
+(A) Process Management
+While a computer system is operational, different tasks are running simultaneously. A program is intended to carry out various tasks. A task in execution is known as process. We can activate a system monitor program that provides information about the processes being executed on a computer. In some systems it can be activated using Ctrl+Alt+Delete. It is the responsibility of operating system to manage these processes and get multiple tasks completed in minimum time. As CPU is the main resource of computer system, its allocation among processes is the most important service of the operating system. Hence process management concerns the management of multiple processes, allocation of required resources, and exchange of information among processes.
+(B) Memory Management
+Primary or main memory of a computer system is usually limited. The main task of memory management is to give (allocate) and take (free) memory from running processes. Since there are multiple processes running at a time, there arises a need to dynamically (on-the-go)
+allocate and free memory to the processes. Operating system should do it without affecting other processes that are already residing in the memory and once the process is finished, it is again the responsibility of the operating system to take the memory space back for re-
+Operating system is called resource manager as it manages different resources like main memory, CPU,
+I/O devices, so that each resource is used optimally and system performance does not deteriorate.
+Reprint 2026-27
+Computer SyStem 23 utilisation. Hence, memory management concerns with management of main memory so that maximum memory is occupied or utilised by large number of processes while keeping track of each and every location within the memory as free or occupied.
+(C) File Management
+Data and programs are stored as files in the secondary storage of a computer system. File management involves the creation, updation, deletion and protection of these files in the secondary memory. Protection is a crucial function of an operating system, as multiple users can access and use a computer system. There must be a mechanism in place that will stop users from accessing files that belong to some other user and have not been shared with them. File management system manages secondary memory, while memory management system handles the main memory of a computer system.
+(D) Device Management
+A computer system has many I/O devices and hardware connected to it. Operating system manages these heterogeneous devices that are interdependent. The operating system interacts with the device driver and the related software for a particular device. The operating system must also provide the options for configuring a particular device, so that it may be used by an end user or some other device. Just like files, devices also need security measures and their access to different devices must be restricted by the operating system to the authorised users, software and other hardware only.
+S ummary
+• A computing device, also referred as computer, processes the input data as per given instructions to generate desired output.
+• Computer system has four physical components viz. (i) CPU, (ii) Primary Memory, (iii) Input Device and (iv) Output Devices. They are referred to as hardware of computer.
+• Computer system has two types of primary memories viz. (i) RAM, the volatile memory and (ii) ROM, the non-volatile memory.
+Reprint 2026-27

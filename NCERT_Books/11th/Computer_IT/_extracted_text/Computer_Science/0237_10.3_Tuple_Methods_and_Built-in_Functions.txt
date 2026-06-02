@@ -1,0 +1,20 @@
+T uples and dicTionaries 225
+We can accomplish these by:
+(a) writing a user defined function (b) using the built-in function
+3. Write a Python program to find the highest 2 values in a dictionary.
+4. Write a Python program to create a dictionary from a string.
+Note: Track the count of the letters from the string.
+Sample string : 'w3resource'
+Expected output : {'3': 1, 's': 1, 'r': 2, 'u': 1, 'w': 1, 'c': 1,
+'e': 2, 'o': 1}
+5. Write a program to input your friends’ names and their Phone Numbers and store them in the dictionary as the key-value pair. Perform the following operations on the dictionary:
+a) Display the name and phone number of all your b) Add a new key-value pair in this dictionary and display the modified dictionary c) Delete a particular friend from the dictionary d) Modify the phone number of an existing friend e) Check if a friend is present in the dictionary or f) Display the dictionary in sorted order of names
+Case study-based Question
+For the SMIS System given in Chapter 5, let us do the following:
+Write a program to take in the roll number, name and percentage of marks for n students of Class X. Write user defined functions to
+• accept details of the n students (n is the number of students)
+• search details of a particular student on the basis of roll number and display result
+• display the result of all the students
+• find the topper amongst them
+• find the subject toppers amongst them (Hint: use Dictionary, where the key can be roll number and the value is an immutable data type containing name and percentage)
+Reprint 2026-27

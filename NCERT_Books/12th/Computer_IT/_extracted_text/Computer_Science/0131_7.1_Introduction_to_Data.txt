@@ -1,0 +1,97 @@
+DatabaSe ConCeptS 119 (B) Data Constraint
+Sometimes we put certain restrictions or limitations on the type of data that can be inserted in one or more columns of a table. This is done by specifying one or more constraints on that column(s) while creating the tables. For example, one can define the constraint that the column mobile number can only have non-negative integer values of exactly 10 digits. Since each student shall have one unique roll number, we can put the NOT
+NULL and UNIQUE constraints on the RollNumber column. Constraints are used to ensure accuracy and reliability of data in the database.
+(C) Meta-data or Data Dictionary
+The database schema along with various constraints on the data is stored by DBMS in a database catalog or dictionary, called meta-data. A meta-data is data about the data.
+(D) Database Instance
+When we define database structure or schema, state of database is empty i.e. no data entry is there. After loading data, the state or snapshot of the database at any given time is the database instance. We may then retrieve data through queries or manipulate data
+Teacher Office Staff
+Guardian
+Attendance
+Database
+DBMS Software processes Query
+DBMS Software access database and its definition
+Query Result
+Figure 8.2: STUDENTATTENDANCE database environment
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 120 through updation, modification or deletion. Thus, the state of database can change, and thus a database schema can have many instances at different times.
+(E) Query
+A query is a request to a database for obtaining information in a desired way. Query can be made to get data from one table or from a combination of tables. For example, “find names of all those students present on
+Attendance Date 2000-01-02” is a query to the database.
+To retrieve or manipulate data, the user needs to write query using a query language called, which is discussed in chapter 8.
+(F) Data Manipulation
+Modification of database consists of three operations viz. Insertion, Deletion or Update. Suppose, Rivaan joins as a new student in the class then the student details need to be added in STUDENT as well as in GUARDIAN files of the Student Attendance database. This is called
+Insertion operation on the database. In case a student leaves the school, then his/her data as well as her guardian details need to be removed from STUDENT,
+GUARDIAN and ATTENDANCE files, respectively. This is called Deletion operation on the database. Suppose
+Atharv’s Guardian has changed his mobile number, his
+GPhone should be updated in GUARDIAN file. This is called Update operation on the database.
+(G) Database Engine
+Database engine is the underlying component or set of programs used by a DBMS to create database and handle various queries for data retrieval and manipulation.
+8.4 relatIonal data model
+Different types of DBMS are available and their classification is done based on the underlying data model.
+A data model describes the structure of the database, including how data are defined and represented, relationships among data, and the constraints. The most commonly used data model is Relational Data Model.
+Other types of data models include object-oriented data model, entity-relationship data model, document model and hierarchical data model. This book discusses the
+DBMS based on relational data model.
+In relational model, tables are called relations that store data for different columns. Each table can have
+Limitations of DBMS
+Increased Complexity:
+Use of DBMS increases the complexity of maintaining functionalities like security, consistency, sharing and integrity
+Increased data vulnerability:
+As data are stored centrally, it increases the chances of loss of data due to any failure of hardware or software. It can bring all operations to a halt for all the users.
+Reprint 2026-27
+DatabaSe ConCeptS 121 multiple columns where each column name should be unique. For example, each row in the table represents a related set of values. Each row of Table 8.5 represents a particular guardian and has related values viz. guardian’s
+ID with guardian name, address and phone number.
+Thus, a table consists of a collection of relationships.
+It is important to note here that relations in a database are not independent tables, but are associated with each other. For example, relation ATTENDANCE has attribute
+RollNumber which links it with corresponding student record in relation STUDENT. Similarly, attribute GUID is placed with STUDENT table for extracting guardian details of a particular student. If linking attributes are not there in appropriate relations, it will not be possible to keep the database in correct state and retrieve valid information from the database.
+Figure 8.3 shows the relational database Student
+Attendance along with the three relations (tables)
+STUDENT, ATTENDANCE and GUARDIAN.
+Table 8.7 Relation schemas along with its description of Student Attendance database
+Relation Scheme Description of attributes
+STUDENT(RollNumber,
+SName, SDateofBirth,
+RollNumber: unique id of the student
+SName: name of the student
+SDateofBirth: date of birth of the student
+GUID: unique id of the guardian of the student
+ATTENDANCE (AttendanceDate,
+RollNumber,
+AttendanceStatus)
+AttendanceDate: date on which attendance is taken
+RollNumber: roll number of the student
+AttendanceStatus: whether present (P) or absent(A)
+Note that combination of AttendanceDate and RollNumber will be unique in each record of the table
+GUARDIAN(GUID,
+GName, GPhone,
+GAddress)
+GUID: unique id of the guardian
+GName: name of the guardian
+GPhone: contact number of the guardian
+GAddress: contact address of the guardian
+Figure 8.3: Representing STUDENTATTENDANCE database using Relational Data Model
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 122
+Each tuple (row) in a relation (table) corresponds to data of a real world entity (for example, Student,
+Guardian, and Attendance). In the GUARDIAN relation (Table 8.5), each row represents the facts about the guardian and each column name in the GUARDIAN table is used to interpret the meaning of data stored under that column. A database that is modeled on relational data model concept is called Relational Database. Figure 8.4 shows relation GUARDIAN with some populated data.
+Let us now understand the commonly used terminologies in relational data model using Figure 8.4.
+i) ATTRIBUTE: Characteristic or parameters for which data are to be stored in a relation. Simply stated, the columns of a relation are the attributes which are also referred as fields. For example, GUID,
+GName, GPhone and GAddress are attributes of relation GUARDIAN.
+ii) TUPLE: Each row of data in a relation (table) is called a tuple. In a table with n columns, a tuple is a relationship between the n related values.
+iii) DOMAIN: It is a set of values from which an attribute can take a value in each row. Usually, a data type is used to specify domain for an attribute. For example, in STUDENT relation, the attribute RollNumber takes integer values and hence its domain is a set of integer values. Similarly, the set of character strings constitutes the domain of the attribute SName.
+iv) DEGREE: The number of attributes in a relation is called the Degree of the relation. For example, relation GUARDIAN with four attributes is a relation of degree 4.
+Relation
+GUID GName GPhone GAddress
+444444444444 Amit Ahuja 5711492685 G-35, Ashok Vihar, Delhi
+111111111111 Baichung Bhutia 3612967082 Flat no. 5, Darjeeling Appt., Shimla
+101010101010 Himanshu Shah 4726309212 26/77, West Patel Nagar, Ahmedabad
+333333333333 Danny Dsouza S -13, Ashok Village, Daman
+466444444666 Sujata P. 3801923168 HNO-13, B- block, Preet Vihar, Madurai
+Relation GuaRdian with 4 attribute/
+Record/tuple/row
+Facts about RELATION GUARDIAN:
+1. Degree (Number of attributes) = 4
+2. Cardinality (Number of rows/tuples/records) = 5
+3. Relation is a flat file i.e, each column has a single value and each record has same number of columns
+Figure 8.4: Relation GuaRdian with its attributes and tuples
+Reprint 2026-27

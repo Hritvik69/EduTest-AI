@@ -1,0 +1,28 @@
+Computer SCienCe – ClaSS xi 26
+6. Check the size of RAM and HDD of a computer in your school. Make a table and write their size in
+Bytes, Kilobytes, Megabytes and Gigabytes.
+7. List all secondary storage devices available at your school or home.
+8. Which operating system is installed on your computer at home or school?
+Reprint 2026-27
+2.1 IntroductIon
+Have you ever thought how the keys on the computer keyboard that are in human recognisable form are interpreted by the computer system? This section briefly discusses text interpretation by the computer.
+We have learnt in the previous chapter that computer understands only binary language of 0s and
+1s. Therefore, when a key on the keyboard is pressed, it is internally mapped to a unique code, which is further converted to binary.
+Example 2.1 When the key ‘A’ is pressed (Figure 2.1), it is internally mapped to a decimal value 65 (code value), which is then converted to its equivalent binary value for the computer to understand.
+Figure 2.1: Encoding of data entered using keyboard
+Similarly, when we press alphabet ‘अ’ on hindi keyboard, internally it is mapped to a hexadecimal value 0905, whose binary equivalent is 0000100100000101.
+So what is encoding? The mechanism of converting data into an equivalent cipher using specific code is
+“We owe a lot to the
+Indians, who taught us how to count, without which no worthwhile scientific discovery could have been
+–Albert Einstein
+Chapter 2
+Encoding Schemes and
+Number System
+In this chapter
+» Introduction to
+Encoding
+» UNICODE
+» Number System
+» Conversion
+Between Number
+Reprint 2026-27

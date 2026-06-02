@@ -1,0 +1,155 @@
+Domestic Data entry operator – class iX 2 used for creating, storing, and transferring information.
+Computer takes data as input, processes it and produces the results as output. The information is the result of data processing. Data refers to the facts or raw material, which are processed to get the information.
+Number of boys and girls in a class is a factual data of the classroom. This is an example of data related to the students in the class. Some conclusion can be drawn based on the data. This conclusion is information. The decisions are taken on the basis of data and information.
+IT is a tightly integrated part of business. Computers and information systems are an essential part of every business today. Like accounting and legal, every business needs to invest in technology to compete. IT has several benefits for a business, such as it helps in reaching more potential customers, developing a business relationship with potential customers, streamlining operations, reducing costs, improving efficiency, maximising profit, minimising waste, providing better service to customers, supporting better relationships with key partners, and allowing customers to better guide the business.
+Information Technology enabled Services
+Information Technology that enables the business by improving the quality of service is Information
+Technology enabled Services (ITeS). ITeS is also called web-enabled services or remote services that cover the entire operations which exploit Information Technology for improving the efficiency of an organisation. These services provide a wide range of career options that include opportunities in all offices like call centres, payrolls, logistics management, revenue claims processing, medical billing, coding, medical transcription, legal databases, back office operations, content development,
+GIS (geographical information system), web services and Human Resource (HR) services, etc.
+ITeS is defined as outsourcing of processes that can be enabled with information technology and covers diverse areas like finance, HR, administration, health care, telecommunication, manufacturing, etc.
+IntroductIon to It–Ite S InduStry 3 notes E-enabled services radically reduce costs and improve service standards. In short, Internet service provider aims to provide B2B e-commerce solutions. ITeS offers different services integrated in a single delivery mechanism to end users. The services may include:
+Medical Transcription, Customer Relationship
+Management, Data Entry and Data Processing,
+Software development, Data Warehousing, IT Help
+Desk Services, Enterprise Resource Planning and
+Telecommunication Services.
+BPO services
+Business Process Outsourcing (BPO) services means performing business operations through an outside service provider. BPO also comes under IT services as
+IT plays a very useful role in optimising the business performance. The BPO industry is highly organised and hence various kinds of jobs are outsourced in India.
+India has the expertise in reducing costs with firm control on the quality of the service.
+Some of the BPO services are as follows:
+(a) Financial and Accounting Services (b) Taxation and Insurance Services (c) E-Publishing and Web Promotion (d) Legal Services and Content Writing (e) Multimedia and Design Services (f) Document Management Services (g) Software Testing Services (h) Health Care Services
+BPM industry in India
+The IT BPM (Business Process Management) industry has been fueling India’s growth. In addition to contributing towards the country’s Gross Domestic Product (GDP)
+and exports, the growth of the IT BPM industry has provided India with a wide range of economic and social benefits which includes creating employment, raising income levels, and promoting exports. It has placed India on the world map with an image of a technologically advanced and knowledge-based economy. This sector attracts amongst the largest investments by venture
+Domestic Data entry operator – class iX 4 notes capitalist and has been credited with enabling the entrepreneurial ventures of many in the country.
+The IT-BPM industry has almost doubled in terms of revenue and contribution to India’s GDP over the last decade (2008–18). BPO Service Industry is doing exceptionally well in India because of the following advantages:
+(a) BPO service providers in India invest in hi-tech hardware and software to deliver the best of services. They follow quality checks to ensure error free and exceptional service.
+(b) Government of India is encouraging the BPO
+Industry in India by providing necessary infrastructure and logistical support.
+(c) BPO Industry in India is highly developed and capable of delivering numerous types of BPO services in exceptional quality.
+Structure of the IT-BPM industry
+The organisations within the IT-BPM industry are categorised along the following parameters:
+• Sector the organisation is serving
+• Type as well as range of offering the organisation provides
+• Geographic spread of operations
+• Revenues and size of operations (a) Multinational Companies (MNCs): MNCs have their headquarters outside India but operate in multiple locations worldwide including those in
+India. They cater to external clients (both domestic and/or global).
+(b) Indian Service Providers (ISPs): ISPs started with their operations in India. Most of these organisations have their headquarters in India while having offices in many international locations. While most have a client base, which is global as well as domestic, there are some that have focussed on serving only the
+Indian clients.
+(c) Global In-house Centers (GIC): GIC organisations cater to the needs of their parent company only and do not serve external clients.
+IntroductIon to It–Ite S InduStry 5
+This model allows the organisation the option to keep IT Operations in-house and at the same time take advantage of expanding their global footprint and offering opportunities for innovation in a cost-effective manner.
+IT applications
+In technologically developed nations, Information
+Technology has become a part of everyday life. For a user, computer is a tool that provides the desired information, whenever needed. The use of computer and Information Technology can be observed at home, workplace, in the modern service industry and in all aspects of our life. It includes listening to music, watching movies, playing games, doing office work, chatting and sending messages, managing daily planner, reading books, paying utility bills, booking ticket to travel, bank operations, etc. Computers and ICT is used in industries, in offices, and in house also. The various application areas are business, banking, insurance, education, marketing, health care, engineering design, military, communication, animation, research, agriculture and government.
+IT in home computing
+A personal computer (PC) is used to work at home, to do household accounts, play games, surf the web, use
+Fig. 1.1: IT applications
+Domestic Data entry operator – class iX 6 e-mail, create music, and pursue a range of other hobbies. PC is also used to play games. It includes action games, role playing games, puzzles and many more. A PC with a CD-ROM drive, sound card, and speakers can play audio CD. A computer can be used from home to study a wide range of online training courses. Computers and digital devices are now used for online shopping and e-commerce.
+IT in everyday life
+In our daily life, we use washing machines, microwave oven and many other products using which have embedded software. We can store all the information about our important work, appointments schedules and list of contacts in a computer. Computer is, therefore, playing a very important role in our lives and now we cannot imagine the world without computers.
+IT in library
+Nowadays many libraries are computerised. Each book has a barcode associated with it. This makes it easier for the library to a keep track of books and the availability of a specific book.
+Computer software is used to issue and return the book. Each book in the library has a magnetic strip attached to it that is deactivated before the book can be borrowed.
+IT at workplace
+In the office environment, computers and computer applications are used to perform office work more effectively.
+Fig. 1.3: IT in everyday life
+Fig. 1.4: IT in library
+Fig. 1.2: IT in home computing
+IntroductIon to It–Ite S InduStry 7
+In assembly-line industries, where attention to detail, speed and efficiency are important, automation is becoming more and more common. Internet and
+Office applications form the basis of modern business.
+IT in education
+Computers and Information Technology are extensively used in education for teaching-learning and assessment.
+The software and hardware technology is used for creation and transmission of information in various forms including still pictures, audio, video and animation to the learners. The learning becomes easy and accessible through IT. A lot of teaching resources are available for teachers to teach in a better way. Online assessment helps to assess the students without any biasness. The students, teachers and educational administrators and every stakeholder in the education sector has benefitted with the integration of IT in education.
+(a) ICT in the classroom
+There are many ways in which the ICT is used for education in the classroom, such as
+• e-learning classrooms;
+• smart-board presentations;
+• videos on experiments;
+• creation of images and video;
+• desktop publishing of magazines, letters and documents;
+• educational games;
+• learning using the CD-ROM media; and
+• gathering educational information on the
+Internet.
+(b) Education — anywhere anytime
+Any student in India can access the NCERT book online through the website www.epathshala.nic.in or mobile app.
+Fig. 1.6: IT in education
+Fig. 1.5: IT at workplace
+Domestic Data entry operator – class iX 8
+Apart from this there are a variety of websites and mobile apps to access educational resources on any topic.
+You can also contact a teacher or a trainer via
+Internet to use WBT (Web-based Training). In this way education has reached the far flung areas by reaching the unreached.
+(c) Teaching aids and media
+ICT is used mostly as a teaching aid in schools to
+• use pictures, animations and audio-visuals to explain subjects that are difficult to explain.
+• make the lessons interesting using presentations.
+• organise lessons using the computer.
+• obtain the information relevant to the subjects.
+(d) Learning Management System (LMS)
+A Learning Management System (LMS) is being used by many countries to manage school systems. A student or teacher can register himself/herself on the official website to access LMS and can get many services from
+LMS. The student can be benefited by using LMS, as it can be used to
+• learn lessons anytime and anywhere.
+• submit queries, getting replies and submit comments through forums.
+• participate in the co-curricular activities via
+• monitor the progress of their children (by parents).
+IT in entertainment
+Information Technology has had a major impact on the entertainment industry.
+Internet is a major source of entertainment.
+One can download and view movies, play games, chat, use multimedia, incorporate visual and sound effects using computers, etc. Digital broadcasting has changed the way we experience television, with more interactive programming and participation.
+Fig 1.7: IT in entertainment
+IntroductIon to It–Ite S InduStry 9
+IT in communication
+Communication is used to convey messages and ideas, pictures, or speeches. A person who receives this must understand clearly and correctly.
+Modern communication makes use of the computer system. We use computers for email, chatting, FTP, telnet and video conferencing.
+IT in business
+Computers are used in business organisations for payroll calculation, budgeting, sales analysis, financial forecasting, managing and maintaining stocks. A lot of business transactions happen through Internet called e-commerce.
+IT facilitates marketing, customer visit, product browsing, shopping basket checkout, tax and shopping, receipt and process order. E-commerce offers services pertaining to processing inventory management, transactions, documentation, presentations, and gathering product information. Smart cards, such as credit cards and debit cards are used in shops. These cards have a metallic strip on which the user’s Personal
+Identification Number (PIN), and account number is stored and can be read when it is passed through a special reader. Airlines use large-scale computer applications for their reservations system, both in the airports and in central reservations call-centers. Other businesses that have large-scale computing requirements are insurance claims systems and online banking, which both have large numbers of users and operators interacting across one system.
+IT in science and engineering
+Scientists and engineers use computers for performing complex scientific calculations, Computer Aided
+Design (CAD) or Computer Aided Manufacturing (CAM)
+applications are used for drawing, designing and for simulating and testing the designs. Computers are used for storing large amount of data, performing complex calculations and for visualising
+Fig. 1.8: IT in Communication
+Domestic Data entry operator – class iX 10
+3-dimensional objects. Complex scientific applications like rocket launching, space exploration, etc., are not possible without the computers.
+IT in banking
+Computer is an essential part of the modern banking system. Every activity of a bank is now online. The customer’s data and transactions are recorded by computers. Recurring deposits (e-RD), Fixed deposits (e-FD), money transfer from one account to another (NEFT, RTGS), online transactions are done using
+Internet. Capital market transactions, financial analysis and related services are available in online platforms. Bank customers use Automated Teller
+Machines (ATM) for cash deposits and withdrawal, or to view current balance.
+IT in insurance
+Insurance companies keep all records up to date with the help of computer database. Procedures for continuation of policies, starting date, date of next installment, maturity date, interest dues, survival benefits, and bonus are declared by using computers in insurance companies. Many online policies are also available which can be purchased by using the website of insurance companies.
+IT in marketing
+In marketing, computers are used for advertising of products, by using arts and graphics facility it is possible to create interesting advertisements of various products so that the goal of selling can be achieved.
+Using e-commerce websites, people can purchase items even sitting at home.
+IT in health care
+ICT is used in the health sector in numerous ways.
+Hospital Management System is used to maintain and manage patients’ records as well as various activities pertaining to hospital administration. The computerised
+IntroductIon to It–Ite S InduStry 11
+Fig. 1.9 (a) MRI machine Fig. 1.9 (b) Detailed images machines are used for ECG, EEG, Ultrasound and CT
+Scan. The variety of measuring instruments and surgical equipment are used to monitor patients’ conditions during complex surgery. Expert system is used for diagnosis. Health care manufacturing companies use computers to aid the production of diagnostic tools and instruments. Computers are an integral part of laboratories and dispensaries. They are used in scanning and diagnosing different diseases.
+(a) Use of ICT in diagnosis
+With the advancements in computer hardware and software technology, various high-tech machines are used in the diagnosis and treatment of critical diseases.
+Using expert system, diseases can be diagnosed at the early stages and the patients can be given treatment accordingly. Some of these machines are:
+(i) Computerised Axial Tomography Machine (CAT): Using this machine three-dimensional (3D) images of different parts of the body can be made. These images are helpful in the diagnosis of diseases.
+(ii) MRI (Magnetic Resonance Imaging Machine):
+MRI machines are used to give the digital impression of internal organs of the body by using strong magnetic fields and radio waves. The digital images are very helpful in the detection and in deciding the treatment of diseases.
+Domestic Data entry operator – class iX 12 (iii) Electrocardiogram (ECG) Machine: The
+ECG machine is used to monitor the heartbeat. When the heart pumps blood to different parts of the body some electrical impulses are produced. This machine records the electrical impulses and shows it in the form of a graph.
+(iv) Cardiac Screening Machine: This machine displays the physiology of the heart and it displays the movements inside the heart. Through this machine it is possible to diagnose problems of the heart, such as thinning of veins and then recommend treatment.
+(v) EEG (Electro - encephalography) Machine:
+This machine is used to record the activities of the brain. The small electrical probes attached to the head receive the electrical impulses of the brain and display them on a computer screen. This device can retrieve the data in both states where a patient is awake or asleep.
+(vi) Blood Sugar Testing Machine: This device analyses a sample of blood and determines the blood glucose level.
+(vii) Blood Pressure Measuring Machine: This device which is worn as a wrist band can measure the blood pressure of a person at
+Fig. 1.11: Cardiac Screening Machine and Display
+Fig. 1.12: EEG Machine and Display
+Fig. 1.13: Sugar Testing Machine
+Fig. 1.10 (a) ECG Machine Fig. 1.10 (b) ECG Graph
+IntroductIon to It–Ite S InduStry 13
+Practical Exercise
+Fig. 1.14: Measuring Blood
+Pressure rest or when he/she is involved in some physical activity.
+IT in the government and public service
+The government uses large-scale computer applications in its daily operations and is actively encouraging e-governance practices. Digital India and e-governance initiative of Government of India are be

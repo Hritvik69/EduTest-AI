@@ -1,0 +1,242 @@
+PRESENTATION OF DATA 41
+Census of India 2001 reported that
+Indian population had risen to 102 crore of which only 49 crore were females against 53 crore males. Seventy-four crore people resided in rural India and only 28 crore lived in towns or cities.
+While there were 62 crore non-worker population against 40 crore workers in the entire country. Urban population had an even higher share of non-workers (19 crore) against workers (9 crore) as compared to the rural population where there were 31 crore workers out of a 74 crore population...
+In both the cases data have been presented only in the text. A serious drawback of this method of presentation is that one has to go through the complete text of presentation for comprehension. But, it is also true that this matter often enables one to emphasise certain points of the presentation.
+and columns (read vertically). For example see Table 4.1 tabulating information about literacy rates. It has three rows (for male, female and total)
+and three columns (for urban, rural and total). It is called a 3 × 3 Table giving
+9 items of information in 9 boxes called the "cells" of the Table. Each cell gives information that relates an attribute of gender ("male", "female" or total) with a number (literacy percentages of rural people, urban people and total). The most important advantage of tabulation is that it organises data for further statistical treatment and decision- making. Classification used in tabulation is of four kinds:
+• Qualitative
+• Quantitative
+• Temporal and
+• Spatial
+Qualitative classification
+When classification is done according to attributes, such as social status, physical status, nationality, etc., it is called qualitative classification. For example, in Table 4.1 the attributes for classification are sex and location which are qualitative in nature.
+TABLE 4.1
+Literacy in India by sex and location (per cent)
+Location Total
+Sex Rural Urban
+Male 79 90 82
+Female 59 80 65
+Total 68 84 74
+Source: Census of India 2011. (Literacy rates relate to population aged 7 years and above)
+3. TABULAR PRESENTATION OF DATA
+In a tabular presentation, data are presented in rows (read horizontally)
+Reprint 2026-27
+42 STATISTICS FOR ECONOMICS
+Quantitative classification
+In quantitative classification, the data are classified on the basis of characteristics which are quantitative in nature. In other words these characteristics can be measured quantitatively. For example, age, height, production, income, etc are quantitative characteristics. Classes are formed by assigning limits called class limits for the values of the characteristic under consideration. An example of quantit- ative classification is given in Table 4.2.
+Calculate the missing figures in the Table.
+TABLE 4.2
+Distribution of 542 respondents by their age in an election study in Bihar
+Age group No. of (yrs) respondents Per cent
+20–30 3 0.55
+30–40 61 11.25
+40–50 132 24.35
+50–60 153 28.24
+60–70 ? ?
+70–80 51 9.41
+80–90 2 0.37
+All ? 100.00
+Source: Assembly election Patna central constituency 2005, A.N. Sinha Institute of Social
+Studies, Patna.
+Here classifying characteristic is age in years and is quantifiable.
+Activities
+• Discuss how the total values are arrived at in Table 4.1
+• Construct a table presenting data on preferential liking of the students of your class for Star
+News, Zee News, BBC World,
+CNN, Aaj Tak and DD News.
+• Prepare a table of (i) heights (in cm) and (ii) weights (in kg) of students of your class.
+Temporal classification
+In this classification time becomes the classifying variable and data are categorised according to time. Time may be in hours, days, weeks, months, years, etc. For example, see Table 4.3.
+TABLE 4.3
+Yearly sales of a tea shop from 1995 to 2000
+Years Sale (Rs in lakhs)
+1995 79.2
+1996 81.3
+1997 82.4
+1998 80.5
+1999 100.2
+2000 91.2
+Data Source: Unpublished data.
+In this table the classifying characteristic is sales in a year and takes values in the scale of time.
+Activity
+• Go to your school office and collect data on the number of students studied in the school in each class for the last ten years and present the data in a table.
+Spatial classification
+When classification is done on the basis of place, it is called spatial classification. The place may be a village/town, block, district, state, country, etc.
+Table 4.4 is an example of spatial classification.
+Reprint 2026-27
+PRESENTATION OF DATA 43
+TABLE 4.4
+Export from India to rest of the world in
+2013-14 as share of total export (per cent)
+Destination Export share
+USA 12.5
+Germany 2.4
+Other EU 10.9
+Japan 2.2
+Russia 0.7
+China 4.7
+West Asia -Gulf Coop. Council 15.3
+Other Asia 29.4
+Others 18.8
+All 100.0 (Total Exports: US $ 314.40 billion)
+Activity
+• Construct a table presenting data collected from students of your class according to their native states/residential locality.
+4. TABULATION OF DATA AND PARTS
+OF A TABLE
+To construct a table it is important to learn first what are the parts of a good statistical table. When put together systematically these parts form a table.
+The most simple way of conceptualising a table is to present the data in rows and columns alongwith some explanatory notes. Tabulation can be done using one-way, two-way or three- way classification depending upon the number of characteristics involved. A good table should essentially have the following:
+(i) Table Number
+Table number is assigned to a table for identification purpose. If more than one table is presented, it is the table number that distinguishes one table from another. It is given at the top or at the beginning of the title of the table.
+Generally, table numbers are whole numbers in ascending order if there are many tables in a book. Subscripted numbers, like 1.2, 3.1, etc., are also used for identifying the table according to its location. For example, Table 4.5 should be read as the fifth table of the fourth chapter, and so on (See Table 4.5).
+(ii) Title
+The title of a table narrates about the contents of the table. It has to be clear, brief and carefully worded so that the interpretations made from the table are clear and free from ambiguity. It finds place at the head of the table succeeding the table number or just below it (See Table 4.5).
+(iii) Captions or Column Headings
+At the top of each column in a table a column designation is given to explain figures of the column. This is called caption or column heading (See Table 4.5).
+(iv) Stubs or Row Headings
+Like a caption or column heading, each row of the table has to be given a heading. The designations of the rows are also called stubs or stub items, and the complete left column is known as
+Reprint 2026-27
+44 STATISTICS FOR ECONOMICS stub column. A brief description of the row headings may also be given at the left hand top in the table. (See Table (v) Body of the Table
+Body of a table is the main part and it contains the actual data. Location of any one figure/data in the table is fixed and determined by the row and column of the table. For example, data in the second row and fourth column indicate that 25 crore females in rural
+India were non-workers in 2001 (See
+Table 4.5).
+(vi) Unit of Measurement
+The unit of measurement of the figures in the table (actual data)
+should always be stated alongwith the title. If different units are there for rows or columns of the table, t h e s e u n i t s m u s t b e s t a t e d alongwith ‘stubs’ or ‘captions’. If f i g u r e s a r e l a r g e , t h e y s h o u l d be rounded up and the method (Note : Table 4.5 presents the same data in tabular form already presented through case 2 in textual presentation of data)
+Table 4.5 Population of India according to workers and non-workers by gender and location, 2001
+Location Gender Workers Non-worker Total
+Main Marginal Total
+Male 17 3 20 18 38
+Female 6 5 11 25 36
+Total 23 8 31 43 74
+Male 7 1 8 7 15
+Female 1 0 1 12 13
+Total 8 1 9 19 28
+Male 24 4 28 25 53
+Female 7 5 12 37 49
+Total 31 9 40 62 102
+Source : Census of India 2001
+Note : Figures are rounded to nearest crore
+Body of the table
+Row Headings/stubs
+Column Headings/Captions
+Table Number
+Reprint 2026-27
+PRESENTATION OF DATA 45 of rounding should be indicated (See
+Table 4.5).
+(vii) Source
+It is a brief statement or phrase indicating the source of data presented in the table. If more than one source is there, all the sources are to be written in the source. Source is generally written at the bottom of the table. (See Table 4.5).
+(viii) Note
+Note is the last part of the table. It explains the specific feature of the data content of the table which is not self explanatory and has not been explained earlier.
+Activities
+• How many rows and columns are essentially required to form a table?
+• Can the column/row headings of a table be quantitative?
+• Can you present tables 4.2 and
+4.3 after rounding off figures appropriately.
+• Present the first two sentences of case 2 on p.41 as a table.
+Some details for this would be found elsewhere in this chapter.
+5. DIAGRAMMATIC PRESENTATION OF
+This is the third method of presenting data. This method provides the quickest understanding of the actual situation to be explained by data in comparison to tabular or textual presentations. Diagrammatic presenta- tion of data translates quite effectively the highly abstract ideas contained in numbers into more concrete and easily comprehensible form.
+Diagrams may be less accurate but are much more effective than tables in presenting the data.
+There are various kinds of diagrams in common use. Amongst them the important ones are the following:
+(i) Geometric diagram (ii) Frequency diagram (iii) Arithmetic line graph
+Geometric Diagram
+Bar diagram and pie diagram come in the category of geometric diagram. The bar diagrams are of three types — simple, multiple and component bar diagrams.
+Bar Diagram
+Simple Bar Diagram
+Bar diagram comprises a group of equispaced and equiwidth rectangular bars for each class or category of data.
+Height or length of the bar reads the magnitude of data. The lower end of the bar touches the base line such that the height of a bar starts from the zero unit.
+Bars of a bar diagram can be visually compared by their relative height and accordingly data are comprehended quickly. Data for this can be of frequency or non-frequency type. In non-frequency type data a particular characteristic, say production, yield, population, etc. at various points of time or of different states are noted and corresponding bars are made of the respective heights according to the values of the characteristic to construct the diagram. The values of the characteristics (measured or counted)
+Reprint 2026-27
+46 STATISTICS FOR ECONOMICS retain the identity of each value. Figure
+4.1 is an example of a bar diagram.
+Activity
+• Collect the number of students in each class studying in the current year in your school.
+Draw a bar diagram for the same table.
+Different types of data may require different modes of diagrammatical representation. Bar diagrams are suitable both for frequency type and non-frequency type variables and attributes. Discrete variables like family size, spots on a dice, grades in an examination, etc. and attributes such as gender, religion, caste, country, etc.
+can be represented by bar diagrams.
+Bar diagrams are more convenient for non-frequency data such as income- expenditure profile, export/imports over the years, etc.
+A category that has a longer bar (literacy of Kerala) than another category (literacy of West Bengal), has more of the measured (or enumerated)
+characteristics than the other. Bars (also called columns) are usually used in time series data (food grain produced between 1980 and 2000, decadal variation in work participation
+TABLE 4.6
+Literacy Rates of Major States of India
+2001 2011
+Major Indian States Male Female Male Female
+Andhra Pradesh (AP) 70.3 50.4 75.6 59.7
+Assam (AS) 71.3 54.6 78.8 67.3
+Bihar (BR) 59.7 33.1 73.4 53.3
+Jharkhand (JH) 67.3 38.9 78.4 56.2
+Gujarat (GJ) 79.7 57.8 87.2 70.7
+Haryana (HR) 78.5 55.7 85.3 66.8
+Karnataka (KA) 76.1 56.9 82.9 68.1
+Kerala (KE) 94.2 87.7 96.0 92.0
+Madhya Pradesh (MP) 76.1 50.3 80.5 60.0
+Chhattisgarh (CH) 77.4 51.9 81.5 60.6
+Maharashtra (MR) 86.0 67.0 89.8 75.5
+Odisha (OD) 75.3 50.5 82.4 64.4
+Punjab (PB) 75.2 63.4 81.5 71.3
+Rajasthan (RJ) 75.7 43.9 80.5 52.7
+Tamil Nadu (TN) 82.4 64.4 86.8 73.9
+Uttar Pradesh (UP) 68.8 42.2 79.2 59.3
+Uttarakhand (UK) 83.3 59.6 88.3 70.7
+West Bengal (WB) 77.0 59.6 82.7 71.2
+India 75.3 53.7 82.1 65.5
+Reprint 2026-27
+PRESENTATION OF DATA 47
+Fig. 4.1: Bar diagram showing male literacy rates of major states of India, 2011. (Literacy rates relate to population aged 7 years and above)
+rate, registered unemployed over the years, literacy rates, etc.) (Fig 4.2).
+Bar diagrams can have different forms such as multiple bar diagram and component bar diagram.
+Activities
+• How many states (among the major states of India) had higher female literacy rate than the national average in 2011?
+• Has the gap between maximum and minimum female literacy rates over the states in two consecutive census years 2001 and 2011 declined?
+Multiple Bar Diagram
+Multiple bar diagrams (Fig.4.2) are used for comparing two or more sets of data, for example income and expenditure or import and export for different years, marks obtained in different subjects in different classes,
+Component Bar Diagram
+Component bar diagrams or charts (Fig.4.3), also called sub-diagrams, are very useful in comparing the sizes of different component parts (the elements or parts which a thing is made up of)
+and also for throwing light on the relationship among these integral parts.
+For example, sales proceeds from different products, expenditure pattern in a typical Indian family (components being food, rent, medicine, education, power, etc.), budget outlay for receipts and expenditures, components of labour force, population etc.
+Component bar diagrams are usually shaded or coloured suitably.
+Reprint 2026-27
+48 STATISTICS FOR ECONOMICS
+TABLE 4.7
+Enrolment by gender at schools (per cent)
+of children aged 6–14 years in a district of
+Gender Enrolled Out of school (per cent) (per cent)
+Boy 91.5 8.5
+Girl 58.6 41.4
+All 78.0 22.0
+Data Source: Unpublished data
+A component bar diagram shows the bar and its sub-divisions into two or more components. For example, the bar might show the total population of children in the age-group of 6–14 years.
+The components show the proportion of those who are enrolled and those who are not. A component bar diagram might also contain different component bars for boys, girls and the total of children in the given age group range, as shown in Figure 4.3. To construct a component bar diagram, first of all, a bar is constructed on the x-axis with its height equivalent to the total value of the bar [for per cent data the bar height is of 100 units (Figure 4.3)].
+Otherwise the height is equated to total value of the bar and proportional heights of the components are worked out using unitary method. Smaller components are given priority in parting the bar.
+Fig. 4.2: Multiple bar (column) diagram showing female literacy rates over two census years 2001 and 2011 by major states of India. (Data Source Table 4.6)
+Interpretation: It can be very easily derived from Figure 4.2 that female literacy rate over the years was on increase throughout the country. Similar other interpretations can be made from the figure.
+For example, the figure shows that the states of Bihar, Jharkhand and Uttar Pradesh experienced the sharpest rise in female literacy, etc.
+Fig. 4.3: Enrolment at primary level in a district of Bihar (Component Bar Diagram)
+Reprint 2026-27
+PRESENTATION OF DATA 49
+Pie Diagram
+A pie diagram is also a component diagram, but unlike a bar diagram, here it is a circle whose area is proportionally divided among the components (Fig.4.4) it represents. It is also called a pie chart. The circle is divided into as many parts as there are components by drawing straight lines from the centre to the circumference.
+Pie charts usually are not drawn with absolute values of a category. The values of each category are first expressed as percentage of the total value of all the categories. A circle in a pie chart, irrespective of its value of radius, is thought of having 100 equal parts of 3.6° (360°/100) each. To find out the angle, the component shall subtend at the centre of the circle, each percentage figure of every component is multiplied by 3.6°. An example of this conversion of percentages of components into angular components of the circle is shown in Table 4.8.
+It may be interesting to note that data represented by a component bar diagram can also be represented equally well by a pie chart, the only requirement being that absolute values of the components have to be converted into percentages before they can be used for a pie diagram.
+TABLE 4.8
+Distribution of Indian population (2011)
+by their working status (crores)
+Status Population Per cent Angular
+Component
+Marginal Worker 12 9.9 36°
+Main Worker 36 29.8 107°
+Non-worker 73 60.3 217°
+All 102 100.0 360°
+Activities
+• Represent data presented through Figure 4.4 by a component bar diagram.
+• Does the area of a pie have any bearing on the total value of the data to be represented by the pie diagram?
+Fig. 4.4: Pie diagram for different categories of
+Indian population according to working status
+Reprint 2026-27
+50 STATISTICS FOR ECONOMICS
+Frequency Diagram
+Data in the form of grouped frequency distributions are generally represented by frequency diagrams like histogram, frequency polygon, frequency curve and ogive.
+Histogram
+A histogram is a two dimensional diagram. It is a set of rectangles with base as the intervals between class boundaries (along X-axis) and with areas proportional to the class frequency (Fig.4.5). If the class intervals are of equal width, which they generally are, the area of the rectangles are proportional to their respective frequencies. However, in some type of data, it is convenient, at times necessary, to use vary

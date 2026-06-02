@@ -1,0 +1,75 @@
+18 CHEMISTRY
+This number of entities in 1 mol is so important that it is given a separate name and symbol. It is known as ‘avogadro constant’, or Avogadro number denoted by N A in honour of Amedeo Avogadro. To appreciate the largeness of this number, let us write it with all zeroes without using any powers of ten.
+Hence, so many entities (atoms, molecules or any other particle) constitute one mole of a particular substance.
+We can, therefore, say that 1 mol of hydrogen atoms = 6.022 × 10 23 atoms
+1 mol of water molecules = 6.022 × 10 23 water molecules
+1 mol of sodium chloride = 6.022 ×1023 formula units of sodium chloride
+Having defined the mole, it is easier to know the mass of one mole of a substance or the constituent entities. the mass of one mole of a substance in grams is called its molar mass. The molar mass in grams is numerically equal to atomic/molecular/ formula mass in u.
+Molar mass of water = 18.02 g mol–1
+Molar mass of sodium chloride = 58.5 g mol–1
+1.9 percentaGe compoSition
+So far, we were dealing with the number of entities present in a given sample. But many a time, information regarding the percentage of a particular element present in a compound is required. Suppose, an unknown or new compound is given to you, the first question
+Fig. 1.11 One mole of various substances
+Thus, the formula mass of sodium chloride is atomic mass of sodium + atomic mass of chlorine
+= 23.0 u + 35.5 u = 58.5 u problem 1.1
+Calculate the molecular mass of glucose (C6 H12 O6 ) molecule.
+Solution
+Molecular mass of glucose (C6 H12 O6 )
+= 6 (12.011 u) + 12 (1.008 u) +
+6 (16.00 u)
+= (72.066 u) + (12.096 u) + (96.00 u)
+= 180.162 u
+1.8 mole concept anD molar maSSeS
+Atoms and molecules are extremely small in size and their numbers in even a small amount of any substance is really very large.
+To handle such large numbers, a unit of convenient magnitude is required.
+Just as we denote one dozen for 12 items, score for 20 items, gross for 144 items, we use the idea of mole to count entities at the microscopic level (i.e., atoms, molecules, particles, electrons, ions, etc).
+In SI system, mole (symbol, mol) was introduced as seventh base quantity for the amount of a substance.
+The mole, symbol mol, is the SI unit of amount of substance. One mole contains exactly 6.02214076 × 1023 elementary entities.
+This number is the fixed numerical value of the Avogadro constant, N A , when expressed in the unit mol–1 and is called the Avogadro number. The amount of substance, symbol n, of a system is a measure of the number of specified elementary entities. An elementary entity may be an atom, a molecule, an ion, an electron, any other particle or specified group of particles. It may be emphasised that the mole of a substance always contains the same number of entities, no matter what the substance may be. In order to determine this number precisely, the mass of a carbon–12 atom was determined by a mass spectrometer and found to be equal to 1.992648 × 10 –23 g.
+Knowing that one mole of carbon weighs 12 g, the number of atoms in it is equal to:
+1 992648 10 g C atom
+  6 0221367 1023
+. atoms/mol
+Reprint 2026-27
+19 Some BaSic conceptS of chemiStry you would ask is: what is its formula or what are its constituents and in what ratio are they present in the given compound? For known compounds also, such information provides a check whether the given sample contains the same percentage of elements as present in a pure sample. In other words, one can check the purity of a given sample by analysing this
+Let us understand it by taking the example of water (H2
+O). Since water contains hydrogen and oxygen, the percentage composition of both these elements can be calculated as follows:
+Mass % of an element = mass of that element in the compound 100 molar mass of th ee compound
+Molar mass of water = 18.02 g
+Mass % of hydrogen =
+Mass % of oxygen = 16.00
+18.02 100 ×
+Let us take one more example. What is the percentage of carbon, hydrogen and oxygen in ethanol?
+Molecular formula of ethanol is: C2 H5 OH
+Molar mass of ethanol is:
+(2×12.01 + 6×1.008 + 16.00) g = 46.068 g
+Mass per cent of carbon
+= 24.02 g
+46.068 g 100 × = 52.14%
+Mass per cent of hydrogen
+= 6.048 g
+46.068 g 100 × = 13.13%
+Mass per cent of oxygen
+= 16.00 g
+46.068 g 100 × = 34.73%
+After understanding the calculation of per cent of mass, let us now see what information can be obtained from the per cent composition data.
+1.9.1 empirical formula for molecular
+An empirical formula represents the simplest whole number ratio of various atoms present in a compound, whereas, the molecular formula shows the exact number of different types of atoms present in a molecule of a compound.
+If the mass per cent of various elements present in a compound is known, its empirical formula can be determined. Molecular formula can further be obtained if the molar mass is known. The following example illustrates this sequence.
+problem 1.2
+A compound contains 4.07% hydrogen,
+24.27% carbon and 71.65% chlorine.
+Its molar mass is 98.96 g. What are its empirical and molecular formulas?
+Solution
+Step 1. conversion of mass per cent to grams
+Since we are having mass per cent, it is convenient to use 100 g of the compound as the starting material. Thus, in the
+100 g sample of the above compound,
+4.07g hydrogen, 24.27g carbon and
+71.65g chlorine are present.
+Step 2. convert into number moles of each element
+Divide the masses obtained above by respective atomic masses of various elements. This gives the number of moles of constituent elements in the compound
+Moles of hydrogen = 4.07 g
+1.008 g = 4.04
+Moles of carbon = 24.27 g g 12 01 2 021
+Moles of chlorine = 71.65 g g 35 453 2 021
+Reprint 2026-27

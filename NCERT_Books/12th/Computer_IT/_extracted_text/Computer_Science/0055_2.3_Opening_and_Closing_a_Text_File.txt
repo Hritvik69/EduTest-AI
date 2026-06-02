@@ -1,0 +1,19 @@
+S taCk 43
+3.4 ImplementatIon of Stack In python
+We have learnt so far that a stack is a linear and ordered collection of elements. The simple way to implement a stack in Python is using the data type list. We can fix either of the sides of the list as TOP to insert/remove elements. It is to be noted that we are using built-in methods append() and pop() of the list for implementation of the stack. As these built-in methods insert/delete elements at the rightmost end of the list, hence explicit declaration of TOP is not needed.
+Let us write a program to create a STACK (stack of glasses as given in Figure 3.2) in which we will:
+• insert/delete elements (glasses)
+• check if the STACK is empty (no glasses in the stack)
+• find the number of elements (glasses) in the STACK
+• read the value of the topmost element (number on the topmost glass) in the STACK
+The program shall define the following functions to perform these operations:
+• Let us create an empty stack named glassStack.
+We will do so by assigning an empty list to the identifier named glassStack:
+glassStack = list()
+• A function named isEmpty to check whether the stack glassStack is empty or not. Remember trying to remove an element from an empty stack would result in ‘underflow’. This function returns True if the stack is empty, else returns False.
+def isEmpty(glassStack):
+if len(glassStack)==0:
+return True return False
+• A function named opPush to insert (PUSH) a new element in stack. This function has two parameters
+- the name of the stack in which the element is to be inserted (glassStack) and the element that needs to be inserted. We know that insertion of an element is always done at the TOP of the stack. Hence, we
+Reprint 2026-27

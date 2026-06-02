@@ -1,0 +1,109 @@
+Alternating Current with the source frequency and the attractive force would average to zero. Thus, the ac ampere must be defined in terms of some property that is independent of the direction of the current. Joule heating is such a property, and there is one ampere of rms value of alternating current in a circuit if the current produces the same average heating effect as one ampere of dc current would produce under the same conditions.
+5. In an ac circuit, while adding voltages across different elements, one should take care of their phases properly. For example, if VR and VC are voltages across R and C, respectively in an RC circuit, then the total voltage across RC combination is 2 2
+RC R C V V V = + and not
+VR + VC since VC is p/2 out of phase of VR.
+6. Though in a phasor diagram, voltage and current are represented by vectors, these quantities are not really vectors themselves. They are scalar quantities. It so happens that the amplitudes and phases of harmonically varying scalars combine mathematically in the same way as do the projections of rotating vectors of corresponding magnitudes and directions. The ‘rotating vectors’ that represent harmonically varying scalar quantities are introduced only to provide us with a simple way of adding these quantities using a rule that we already know as the law of vector addition.
+7. There are no power losses associated with pure capacitances and pure inductances in an ac circuit. The only element that dissipates energy in an ac circuit is the resistive element.
+8. In a RLC circuit, resonance phenomenon occur when XL = XC or
+ω = . For resonance to occur, the presence of both L and C elements in the circuit is a must. With only one of these (L or C )
+elements, there is no possibility of voltage cancellation and hence, no resonance is possible.
+9. The power factor in a RLC circuit is a measure of how close the circuit is to expending the maximum power.
+10. In generators and motors, the roles of input and output are reversed. In a motor, electric energy is the input and mechanical energy is the output. In a generator, mechanical energy is the input and electric energy is the output. Both devices simply transfor m energy from one form to another.
+11. A transformer (step-up) changes a low-voltage into a high-voltage.
+This does not violate the law of conservation of energy. The current is reduced by the same proportion.
+Reprint 2026-27
+EXERCISES
+7.1 A 100 W resistor is connected to a 220 V, 50 Hz ac supply.
+(a) What is the rms value of current in the circuit?
+(b) What is the net power consumed over a full cycle?
+7.2 (a) The peak voltage of an ac supply is 300 V. What is the rms voltage?
+(b) The rms value of current in an ac circuit is 10 A. What is the peak current?
+7.3 A 44 mH inductor is connected to 220 V, 50 Hz ac supply. Determine the rms value of the current in the circuit.
+7.4 A 60 mF capacitor is connected to a 110 V, 60 Hz ac supply. Determine the rms value of the current in the circuit.
+7.5 In Exercises 7.3 and 7.4, what is the net power absorbed by each circuit over a complete cycle. Explain your answer.
+7.6 A charged 30 mF capacitor is connected to a 27 mH inductor. What is the angular frequency of free oscillations of the circuit?
+7.7 A series LCR circuit with R = 20 W, L = 1.5 H and C = 35 mF is connected to a variable-frequency 200 V ac supply. When the frequency of the supply equals the natural frequency of the circuit, what is the average power transferred to the circuit in one complete cycle?
+7.8 Figure 7.17 shows a series LCR circuit connected to a variable frequency 230 V source. L = 5.0 H, C = 80mF, R = 40 W.
+(a) Determine the source frequency which drives the circuit in resonance.
+(b) Obtain the impedance of the circuit and the amplitude of current at the resonating frequency.
+(c) Determine the rms potential drops across the three elements of the circuit. Show that the potential drop across the LC combination is zero at the resonating frequency.
+FIGURE 7.17
+Reprint 2026-27
+Chapter Eight
+ELECTROMAGNETIC
+8.1 INTRODUCTION
+In Chapter 4, we learnt that an electric current produces magnetic field and that two current-carrying wires exert a magnetic force on each other.
+Further, in Chapter 6, we have seen that a magnetic field changing with time gives rise to an electric field. Is the converse also true? Does an electric field changing with time give rise to a magnetic field? James Clerk
+Maxwell (1831-1879), argued that this was indeed the case – not only an electric current but also a time-varying electric field generates magnetic field. While applying the Ampere’s circuital law to find magnetic field at a point outside a capacitor connected to a time-varying current, Maxwell noticed an inconsistency in the Ampere’s circuital law. He suggested the existence of an additional current, called by him, the displacement current to remove this inconsistency.
+Maxwell formulated a set of equations involving electric and magnetic fields, and their sources, the charge and current densities. These equations are known as Maxwell’s equations. Together with the Lorentz force formula (Chapter 4), they mathematically express all the basic laws of electromagnetism.
+The most important prediction to emerge from Maxwell’s equations is the existence of electromagnetic waves, which are (coupled) time- varying electric and magnetic fields that propagate in space. The speed of the waves, according to these equations, turned out to be very close to
+Reprint 2026-27 the speed of light( 3 ×108 m/s), obtained from optical measurements. This led to the remarkable conclusion that light is an electromagnetic wave. Maxwell’s work thus unified the domain of electricity, magnetism and light. Hertz, in 1885, experimentally demonstrated the existence of electromagnetic waves. Its technological use by Marconi and others led in due course to the revolution in communication that we are witnessing
+In this chapter, we first discuss the need for displacement current and its consequences. Then we present a descriptive account of electromagnetic waves.
+The broad spectrum of electromagnetic waves, stretching from g rays (wavelength ~10–12 m) to long radio waves (wavelength ~106 m) is described.
+8.2 DISPLACEMENT CURRENT
+We have seen in Chapter 4 that an electrical current produces a magnetic field around it. Maxwell showed that for logical consistency, a changing electric field must also produce a magnetic field. This effect is of great importance because it explains the existence of radio waves, gamma rays and visible light, as well as all other forms of electromagnetic waves.
+To see how a changing electric field gives rise to a magnetic field, let us consider the process of charging of a capacitor and apply Ampere’s circuital law given by (Chapter 4)
+m0 i (t ) (8.1)
+to find magnetic field at a point outside the capacitor.
+Figure 8.1(a) shows a parallel plate capacitor C which is a part of circuit through which a time-dependent current i (t ) flows . Let us find the magnetic field at a point such as P, in a region outside the parallel plate capacitor. For this, we consider a plane circular loop of radius r whose plane is perpendicular to the direction of the current-carrying wire, and which is centred symmetrically with respect to the wire [Fig. 8.1(a)]. From symmetry, the magnetic field is directed along the circumference of the circular loop and is the same in magnitude at all points on the loop so that if B is the magnitude of the field, the left side of Eq. (8.1) is B (2
+So we have
+B (2pr) = m0i (t ) (8 .2)
+JAMES CLERK MAXWELL (1831–1879)
+James Clerk Maxwell (1831 – 1879) Born in
+Edinburgh, Scotland, was among the greatest physicists of the nineteenth century. He derived the thermal velocity distribution of molecules in a gas and was among the first to obtain reliable estimates of molecular parameters from measurable quantities like viscosity, etc.
+Maxwell’s greatest acheivement was the unification of the laws of electricity and magnetism (discovered by Coulomb, Oersted,
+Ampere and Faraday)
+into a consistent set of equations now called
+Maxwell’s equations.
+From these he arrived at the most important conclusion that light is an electromagnetic wave. Interestingly,
+Maxwell did not agree with the idea (strongly suggested by the
+Faraday’s laws of electrolysis) that electricity was particulate in nature.
+Reprint 2026-27
+Electromagnetic
+Now, consider a different surface, which has the same boundary. This is a pot like surface [Fig. 8.1(b)] which nowhere touches the current, but has its bottom between the capacitor plates; its mouth is the circular loop mentioned above. Another such surface is shaped like a tiffin box (without the lid) [Fig. 8.1(c)]. On applying Ampere’s circuital law to such surfaces with the same perimeter, we find that the left hand side of
+Eq. (8.1) has not changed but the right hand side is zero and not since no current passes through the surface of Fig. 8.1(b) and (c). So we have a contradiction; calculated one way, there is a magnetic field at a point P; calculated another way, the magnetic field at P is zero.
+Since the contradiction arises from our use of Ampere’s circuital law, this law must be missing something. The missing term must be such that one gets the same magnetic field at point P, no matter what surface is used.
+We can actually guess the missing term by looking carefully at
+Fig. 8.1(c). Is there anything passing through the surface S between the plates of the capacitor? Yes, of course, the electric field! If the plates of the capacitor have an area A, and a total charge Q, the magnitude of the electric field E between the plates is (Q/A)/e0 (see Eq. 2.41). The field is perpendicular to the surface S of Fig. 8.1(c). It has the same magnitude over the area A of the capacitor plates, and vanishes outside it. So what is the electric flux
+FE through the surface S ? Using Gauss’s law, it is
+= E (8.3)
+Now if the charge Q on the capacitor plates changes with time, there is a current i = (dQ/dt), so that using Eq. (8.3), we have
+This implies that for consistency,
+ = i (8.4)
+This is the missing term in Ampere’s circuital law. If we generalise this law by adding to the total current carried by conductors through the surface, another term which is e0 times the rate of change of electric flux through the same surface, the total has the same value of current i for all surfaces. If this is done, there is no contradiction in the value of B obtained anywhere using the generalised Ampere’s law. B at the point P is non-zero no matter which surface is used for calculating it. B at a point P outside the plates [Fig. 8.1(a)] is the same as at a point M just inside, as it should be. The current carried by conductors due to flow of charges is called conduction current. The current, given by Eq. (8.4), is a new term, and is due to changing electric field (or electric displacement, an old term still used sometimes). It is, therefore, called displacement current or Maxwell’s displacement current. Figure 8.2 shows the electric and magnetic fields inside the parallel plate capacitor discussed above.
+The generalisation made by Maxwell then is the following. The source of a magnetic field is not just the conduction electric current due to flowing
+FIGURE 8.1 A parallel plate capacitor C, as part of a circuit through which a time dependent current i (t) flows, (a) a loop of radius r, to determine magnetic field at a point P on the loop;
+(b) a pot-shaped surface passing through the interior between the capacitor plates with the loop shown in (a) as its rim; (c) a tiffin- shaped surface with the circular loop as its rim and a flat circular bottom S between the capacitor plates. The arrows show uniform electric field between the capacitor plates.
+Reprint 2026-27 charges, but also the time rate of change of electric field. More precisely, the total current i is the sum of the conduction current denoted by ic, and the displacement current denoted by id (= ✒0
+✂E/dt)). So we have c d c i i i i t
+ε = + = + (8.5)
+In explicit terms, this means that outside the capacitor plates, we have only conduction current ic = i, and no displacement current, i.e., id = 0. On the other hand, inside the capacitor, there is no conduction current, i.e., ic = 0, and there is only displacement current, so that id = i.
+The generalised (and correct) Ampere’s circuital law has the same form as Eq. (8.1), with one difference: “the total current passing through any surface of which the closed loop is the perimeter” is the sum of the conduction current and the displacement current.
+The generalised law is
+B l i Ñ d = d
+μ μ ε 0 0 i t and is known as Ampere-Maxwell law.
+In all respects, the displacement current has the same physical effects as the conduction current. In some cases, for example, steady electric fields in a conducting wire, the displacement current may be zero since the electric field E does not change with time. In other cases, for example, the charging capacitor above, both conduction and displacement currents may be present in different regions of space. In most of the cases, they both may be present in the same region of space, as there exist no perfectly conducting or perfectly insulating medium. Most interestingly, there may be large regions of space where there is no conduction current, but there is only a displacement current due to time-varying electric fields. In such a region, we expect a magnetic field, though there is no (conduction)
+current source nearby! The prediction of such a displacement current can be verified experimentally. For example, a magnetic field (say at point
+M) between the plates of the capacitor in Fig. 8.2(a) can be measured and is seen to be the same as that just outside (at P).
+The displacement current has (literally) far reaching consequences.
+One thing we immediately notice is that the laws of electricity and magnetism are now more symmetrical*. Faraday’s law of induction states that there is an induced emf equal to the rate of change of magnetic flux.
+Now, since the emf between two points 1 and 2 is the work done per unit charge in taking it from 1 to 2, the existence of an emf implies the existence of an electric field. So, we can rephrase Faraday’s law of electromagnetic induction by saying that a magnetic field, changing with time, gives rise to an electric field. Then, the fact that an electric field changing with time gives rise to a magnetic field, is the symmetrical counterpart, and is
+FIGURE 8.2 (a) The electric and magnetic fields E and B between the capacitor plates, at the point M. (b) A cross sectional view of Fig. (a).
+* They are still not perfectly symmetrical; there are no known sources of magnetic field (magnetic monopoles) analogous to electric charges which are sources of electric field.
+Reprint 2026-27
+Electromagnetic a consequence of the displacement current being a source of a magnetic field. Thus, time- dependent electric and magnetic fields give rise to each other! Faraday’s law of electromagnetic induction and Ampere-Maxwell law give a quantitative expression of this statement, with the current being the total current, as in Eq. (8.5). One very important consequence of this symmetry is the existence of electromagnetic waves, which we discuss qualitatively in the next section.
+MAXWELL’S EQUATIONS IN VACUUM
+1. “E.dA = Q/✒0 (Gauss’s Law for electricity)
+2. “B.dA = 0 (Gauss’s Law for magnetism)
+3. “E.dl = –d l = (Faraday’s Law)
+4. “B.dl = = d
+μ μ ε 0 0 i t
+Φ (Ampere – Maxwell Law)
+8.3 ELECTROMAGNETIC WAVES
+8.3.1 Sources of electromagnetic waves
+How are electromagnetic waves produced? Neither stationary charges nor charges in uniform motion (steady currents) can be sources of electromagnetic waves. The former produces only electrostatic fields, while the latter produces magnetic fields that, however, do not vary with time.
+It is an important result of Maxwell’s theory that accelerated charges radiate electromagnetic waves. The proof of this basic result is beyond the scope of this book, but we can accept it on the basis of rough, qualitative reasoning. Consider a charge oscillating with some frequency.
+(An oscillating charge is an example of accelerating charge.) This produces an oscillating electric field in space, which produces an oscillating magnetic field, which in turn, is a source of oscillating electric field, and so on. The oscillating electric and magnetic fields thus regenerate each other, so to speak, as the wave propagates through the space. The frequency of the electromagnetic wave naturally equals the frequency of oscillation of the charge. The energy associated with the propagating wave comes at the expense of the energy of the source – the accelerated charge.
+From the preceding discussion, it might appear easy to test the prediction that light is an electromagnetic wave. We might think that all we needed to do was to set up an ac circuit in which the current oscillate at the frequency of visible light, say, yellow light. But, alas, that is not possible. The frequency of yellow light is about 6 × 1014 Hz, while the frequency that we get even with modern electronic circuits is hardly about
+1011 Hz. This is why the experimental demonstration of electromagnetic
+Reprint 2026-27

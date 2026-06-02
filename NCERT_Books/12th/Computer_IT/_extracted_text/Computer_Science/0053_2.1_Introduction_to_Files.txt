@@ -1,0 +1,17 @@
+S taCk 41
+How does a compiler or an interpreter handle function calls in a program?
+The operating system in computer or mobile allocates memory to different applications for their execution. How does an operating system keep track of the free memory that can be allocated among programs/ applications to be executed?
+3.2.1 APPLICATIONS OF STACK
+Some of the applications of stack in real-life are:
+• Pile of clothes in an almirah
+• Multiple chairs in a vertical pile
+• Bangles worn on wrist
+• Pile of boxes of eatables in pantry or on a kitchen
+Some examples of application of stack in programming are as follows:
+• When we need to reverse a string, the string is traversed from the last character till the first character. i.e. characters are traversed in the reverse order of their appearance in the string. This is very easily done by putting the characters of a string in a stack.
+• We use text/image editor for editing the text/image where we have options to redo/undo the editing done. When we click on the redo /undo icon, the most recent editing is redone/undone. In this scenario, the system uses a stack to keep track of changes made.
+• While browsing the web, we move from one web page to another by accessing links between them. In order to go back to the last visited web page, we may use the back button on the browser. Let us say we accessed a web page P1 from where we moved to web page P2 followed by browsing of web page P3. Currently, we are on web page P3 and want to revisit web page P1.
+We may go to a previously visited web page by using the BACK button of the browser. On clicking the
+BACK button once, we are taken from web page P3 to web page P2, another click on BACK shows web page P1. In this case, the history of browsed pages is maintained as stack.
+• While writing any arithmetic expression in a program, we may use parentheses to order the evaluation of operators. While executing the program, the compiler checks for matched parentheses i.e. each opening parenthesis should have a corresponding closing parenthesis and the pairs of parentheses are properly nested. In case of parentheses are
+Reprint 2026-27

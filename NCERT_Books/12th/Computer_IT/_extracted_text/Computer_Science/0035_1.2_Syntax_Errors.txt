@@ -1,0 +1,46 @@
+F ile Handling in pytHon 23
+In the above statement, the file myfile.txt is opened in append and read modes. The file object will be at the end of the file. That means we can write data at the end of the file and at the same time we can also read data from the file using the file object named myObject.
+2.3.2 Closing a file
+Once we are done with the read/write operations on a file, it is a good practice to close the file. Python provides a close() method to do so. While closing a file, the system frees the memory allocated to it. The syntax of close() is:
+file_object.close()
+Here, file_object is the object that was returned while opening the file.
+Python makes sure that any unwritten or unsaved data is flushed off (written) to the file before it is closed.
+Hence, it is always advised to close the file once our work is done. Also, if the file object is re-assigned to some other file, the previous file is automatically closed.
+2.3.3 Opening a file using with clause
+In Python, we can also open a file using with clause.
+The syntax of with clause is:
+with open (file_name, access_mode) as file_
+The advantage of using with clause is that any file that is opened using this clause is closed automatically, once the control comes outside the with clause. In case the user forgets to close the file explicitly or if an exception occurs, the file is closed automatically. Also, it provides a simpler syntax.
+with open(“myfile.txt”,”r+”) as myObject:
+content = myObject.read()
+Here, we don’t have to close the file explicitly using close() statement. Python will automatically close the file.
+2.4 WrItIng to a text FIle
+For writing to a file, we first need to open it in write or append mode. If we open an existing file in write mode, the previous data will be erased, and the file object will be positioned at the beginning of the file. On the other
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 24 hand, in append mode, new data will be added at the end of the previous data as the file object is at the end of the file. After opening the file, we can use the following methods to write data in the file.
+• write() - for writing a single string
+• writelines() - for writing a sequence of strings
+2.4.1 The write() method write() method takes a string as an argument and writes it to the text file. It returns the number of characters being written on single execution of the write() method.
+Also, we need to add a newline character (\n) at the end of every sentence to mark the end of line.
+Consider the following piece of code:
+>>> myobject=open("myfile.txt",'w')
+>>> myobject.write("Hey I have started
+#using files in Python\n")
+>>> myobject.close()
+On execution, write() returns the number of characters written on to the file. Hence, 41, which is the length of the string passed as an argument, is displayed.
+Note: ‘\n’ is treated as a single character
+If numeric data are to be written to a text file, the data need to be converted into string before writing to the file. For example:
+>>>myobject=open("myfile.txt",'w')
+>>> marks=58
+#number 58 is converted to a string using
+>>> myobject.write(str(marks))
+>>>myobject.close()
+The write() actually writes data onto a buffer. When the close() method is executed, the contents from this buffer are moved to the file located on the permanent storage.
+2.4.2 The writelines() method
+This method is used to write multiple strings to a file.
+We need to pass an iterable object like lists, tuple, etc.
+containing strings to the writelines() method. Unlike
+For a newly created file, is there any difference between write() and append()
+methods?
+We can also use the flush() method to clear the buffer and write contents in buffer to the file. This is how programmers can forcefully write to the file as and when required.
+Reprint 2026-27

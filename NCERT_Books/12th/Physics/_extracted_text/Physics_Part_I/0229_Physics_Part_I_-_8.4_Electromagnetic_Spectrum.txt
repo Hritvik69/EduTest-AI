@@ -1,0 +1,169 @@
+Electromagnetic
+POINTS TO PONDER
+1. The basic difference between various types of electromagnetic waves lies in their wavelengths or frequencies since all of them travel through vacuum with the same speed. Consequently, the waves differ considerably in their mode of interaction with matter.
+2. Accelerated charged particles radiate electromagnetic waves. The wavelength of the electromagnetic wave is often correlated with the characteristic size of the system that radiates. Thus, gamma radiation, having wavelength of 10–14 m to 10–15 m, typically originate from an atomic nucleus. X-rays are emitted from heavy atoms. Radio waves are produced by accelerating electrons in a circuit. A transmitting antenna can most efficiently radiate waves having a wavelength of about the same size as the antenna. Visible radiation emitted by atoms is, however, much longer in wavelength than atomic size.
+3. Infrared waves, with frequencies lower than those of visible light, vibrate not only the electrons, but entire atoms or molecules of a substance. This vibration increases the internal energy and consequently, the temperature of the substance. This is why infrared waves are often called heat waves.
+4. The centre of sensitivity of our eyes coincides with the centre of the wavelength distribution of the sun. It is because humans have evolved with visions most sensitive to the strongest wavelengths from the sun.
+EXERCISES
+8.1 Figure 8.5 shows a capacitor made of two circular plates each of radius 12 cm, and separated by 5.0 cm. The capacitor is being charged by an external source (not shown in the figure). The charging current is constant and equal to 0.15A.
+(a) Calculate the capacitance and the rate of change of potential difference between the plates.
+(b) Obtain the displacement current across the plates.
+(c) Is Kirchhoff’s first rule (junction rule) valid at each plate of the capacitor? Explain.
+FIGURE 8.5
+8.2 A parallel plate capacitor (Fig. 8.6) made of circular plates each of radius
+R = 6.0 cm has a capacitance C = 100 pF. The capacitor is connected to a 230 V ac supply with a (angular) frequency of 300 rad s–1.
+Reprint 2026-27 (a) What is the rms value of the conduction current?
+(b) Is the conduction current equal to the displacement current?
+(c) Determine the amplitude of B at a point 3.0 cm from the axis between the plates.
+FIGURE 8.6
+8.3 What physical quantity is the same for X-rays of wavelength
+10–10 m, red light of wavelength 6800 Å and radiowaves of wavelength
+8.4 A plane electromagnetic wave travels in vacuum along z-direction.
+What can you say about the directions of its electric and magnetic field vectors? If the frequency of the wave is 30 MHz, what is its wavelength?
+8.5 A radio can tune in to any station in the 7.5 MHz to 12 MHz band.
+What is the corresponding wavelength band?
+8.6 A charged particle oscillates about its mean equilibrium position with a frequency of 109 Hz. What is the frequency of the electromagnetic waves produced by the oscillator?
+8.7 The amplitude of the magnetic field part of a harmonic electromagnetic wave in vacuum is B0 = 510 nT. What is the amplitude of the electric field part of the wave?
+8.8 Suppose that the electric field amplitude of an electromagnetic wave is E0 = 120 N/C and that its frequency is n = 50.0 MHz. (a) Determine,
+B0,w, k, and l. (b) Find expressions for E and B.
+8.9 The terminology of different parts of the electromagnetic spectrum is given in the text. Use the formula E = h n (for energy of a quantum of radiation: photon) and obtain the photon energy in units of eV for different parts of the electromagnetic spectrum. In what way are the different scales of photon energies that you obtain related to the sources of electromagnetic radiation?
+8.10 In a plane electromagnetic wave, the electric field oscillates sinusoidally at a frequency of 2.0 × 1010 Hz and amplitude 48 V m–1.
+(a) What is the wavelength of the wave?
+(b) What is the amplitude of the oscillating magnetic field?
+(c) Show that the average energy density of the E field equals the average energy density of the B field. [c = 3 × 108 m s–1.]
+Reprint 2026-27
+CHAPTER 1
+1.1 6 × 10–3 N (repulsive)
+1.2 (a) 12 cm (b) 0.2 N (attractive)
+1.3 2.4 × 1039. This is the ratio of electric force to the gravitational force (at the same distance) between an electron and a proton.
+1.5 Charge is not created or destroyed. It is merely transferred from one body to another.
+1.6 Zero N
+1.8 (a) 5.4 × 106 N C–1 along OB (b) 8.1 × 10–3 N along OA
+1.9 Total charge is zero. Dipole moment = 7.5 × 10–8 C m along z-axis.
+1.10 10–4 N m
+1.11 (a) 2 × 1012, from wool to polythene.
+(b) Yes, but of a negligible amount ( = 2 × 10–18 kg in the example).
+1.12 (a) 1.5 × 10–2 N (b) 0.24 N
+1.13 Charges 1 and 2 are negative, charge 3 is positive. Particle 3 has the highest charge to mass ratio.
+1.14 (a) 30Nm2/C, (b) 15 Nm2/C
+1.15 Zero. The number of lines entering the cube is the same as the number of lines leaving the cube.
+1.16 (a) 0.07 mC (b) No, only that the net charge inside is zero.
+1.17 2.2 × 105 N m2/C
+1.18 1.9 × 105 N m2/C
+1.19 (a) –103 N m2/C; because the charge enclosed is the same in the two cases.
+(b) –8.8 nC
+1.20 – 6.67 nC
+1.21 (a) 1.45 × 10–3 C (b) 1.6 × 108 Nm2/C
+1.22 10 mC/m
+1.23 (a) Zero, (b) Zero, (c) 1.9 N/C
+Reprint 2026-27
+CHAPTER 2
+2.1 10 cm, 40 cm away from the positive charge on the side of the negative charge.
+2.2 2.7 × 106 V
+2.3 (a) The plane normal to AB and passing through its mid-point has zero potential everywhere.
+(b) Normal to the plane in the direction AB.
+2.4 (a) Zero (b) 105 N C–1 (c) 4.4 × 104 N C–1
+2.5 96 pF
+2.6 (a) 3 pF (b) 40 V
+2.7 (a) 9 pF (b) 2 × 10–10 C, 3 × 10–10 C, 4 × 10–10 C
+2.8 18 pF, 1.8 × 10–9 C
+2.9 (a) V = 100 V, C = 108 pF, Q = 1.08 × 10–8 C (b) Q = 1.8 × 10–9 C, C = 108 pF, V = 16.6 V
+2.10 1.5 × 10–8 J
+2.11 6 × 10–6 J
+CHAPTER 3
+3.1 30 A
+3.2 17 Ω, 8.5 V
+3.3 1027 °C
+3.4 2.0 × 10–7 Ω m
+3.5 0.0039 °C–1
+3.6 867 °C
+3.7 Current in branch AB = (4/17) A, in BC = (6/17) A, in CD = (–4/17) A, in AD = (6/17) A, in BD. = (–2/17) A, total current = (10/17) A.
+3.8 11.5 V; the series resistor limits the current drawn from the external source. In its absence, the current will be dangerously high.
+3.9 2.7 × 104 s (7.5 h)
+CHAPTER 4
+4.1 π × 10–4 T ≃ 3.1 × 10–4 T
+4.2 3.5 × 10–5 T
+Reprint 2026-27
+4.3 4 × 10–6 T, vertical up
+4.4 1.2 × 10–5 T, towards south
+4.5 0.6 N m–1
+4.6 8.1 × 10–2 N; direction of force given by Fleming’s left-hand rule
+4.7 2 × 10–5 N; attractive force normal to A towards B
+4.8 8π × 10–3 T ≃ 2.5 × 10–2 T
+4.9 0.96 N m
+4.10 (a) 1.4, (b) 1
+4.11 4.2 cm
+4.12 18 MHz
+4.13 (a) 3.1 Nm, (b) No, the answer is unchanged because the formula
+τττττ = N I A × B is true for a planar loop of any shape.
+CHAPTER 5
+5.1 0.36 J T–1
+5.2 (a) m parallel to B; U = –mB = – 4.8 × 10–2 J: stable.
+(b) m anti-parallel to B; U = +mB = +4.8 × 10–2 J; unstable.
+5.3 0.60 J T–1 along the axis of the solenoid determined by the sense of flow of the current.
+5.4 7.5 ×10–2 J
+5.5 (a) (i) 0.33 J (ii) 0.66 J (b) (i) Torque of magnitude 0.33 J in a direction that tends to align the magnitude moment vector along B. (ii) Zero.
+5.6 (a) 1.28 A m2 along the axis in the direction related to the sense of current via the right-handed screw rule.
+(b) Force is zero in uniform field; torque = 0.048 Nm in a direction that tends to align the axis of the solenoid (i.e., its magnetic moment vector) along B.
+5.7 (a) 0.96 g along S-N direction.
+(b) 0.48 G along N-S direction.
+CHAPTER 6
+6.1 (a) Along qrpq (b) Along prq, along yzx (c) Along yzx (d) Along zyx (e) Along xry (f ) No induced current since field lines lie in the plane of the loop.
+Reprint 2026-27
+6.2 (a) Along adcd (flux through the surface increases during shape change, so induced current produces opposing flux).
+(b) Along a′d′c′b′ (flux decreases during the process)
+6.3 7.5 × 10–6 V
+6.4 (1) 2.4 × 10–4 V, lasting 2 s (2) 0.6 × 10–4 V, lasting 8 s
+6.5 100 V
+6.6 (a) 1.5 × 10–3 V, (b) West to East, (c) Eastern end.
+6.8 30 Wb
+CHAPTER 7
+7.1 (a) 2.20 A (b) 484 W
+7.2 (a) 300
+2 212 1 = . V (b) 10 2 14 1 = . A
+7.3 15.9 A
+7.4 2.49 A
+7.5 Zero in each case.
+7.6 1.1 × 103 s–1
+7.7 2,000 W
+7.8 (a) 50 rad s–1 (b) 40 Ω, 8.1 A (c) VLrms = 1437 5 . V, VCrms = 1437 5 . V , VRrms = 230 V
+LCrms rms = −
+CHAPTER 8
+8.1 (a) 0 / C A d
+ε = = 8.00 pF dt = 10 –1
+1.87 10 V s = ×
+Reprint 2026-27
+ε ΦΕ = . Now across the capacitor
+ΦE = EA, ignoring end corrections.
+Therefore, 0
+= . Therefore,
+= , which implies id = i = 0.15 A.
+(c) Yes, provided by ‘current’ we mean the sum of conduction and displacement currents.
+8.2 (a) Irms = Vrms ωC = 6.9μA (b) Yes. The derivation in Exercise 8.1(b) is true even if i is oscillating in time.
+(c) The formula 0 goes through even if id (and therefore B ) oscillates in time. The formula shows they oscillate in phase. Since id = i, we have
+= , where B0 and i0 are the amplitudes of the oscillating magnetic field and current, respectively. i0= rms
+2I = 9.76 μA. For r = 3 cm, R = 6 cm, B0 = 1.63 × 10–11 T.
+8.3 The speed in vacuum is the same for all: c = 3 × 108 m s–1.
+8.4 E and B in x-y plane and are mutually perpendicular, 10 m.
+8.5 Wavelength band: 40 m – 25 m.
+8.6 109 Hz
+8.7 153 N/C
+8.8 (a) 400 nT, 3.14 × 108 rad/s, 1.05 rad/m, 6.00 m.
+(b) E = { (120 N/C) sin[(1.05 rad/m)]x – (3.14 × 108 rad/s)t]} jˆ
+B = { (400 nT) sin[(1.05 rad/m)]x – (3.14 × 108 rad/s)t]} kˆ
+8.9 Photon energy (for
+λ = 1 m)
+6.63 10 3 10 eV 1.24 10 eV
+× × × = ×
+Photon energy for other wavelengths in the figure for electromagnetic spectrum can be obtained by multiplying approximate powers of ten. Energy of a photon that a source produces indicates the spacings of the relevant energy levels of the source. For example,
+λ = 10–12 m corresponds to photon energy = 1.24 × 106 eV = 1.24 MeV. This indicates that nuclear energy levels (transition between which causes
+Reprint 2026-27
+γ-ray emission) are typically spaced by 1 MeV or so. Similarly, a visible wavelength
+λ = 5 × 10–7 m, corresponds to photon energy
+= 2.5 eV. This implies that energy levels (transition between which gives visible radiation) are typically spaced by a few eV.
+8.10 (a)
+λ = (c/ν) = 1.5 × 10–2 m (b) B0 = (E0/c) = 1.6 × 10–7 T (c) Energy density in E field: uE = (1/2)
+Energy density in B field: uB = (1/2
+Using E = cB, and c =
+μ ε , uE = uB
+Reprint 2026-27

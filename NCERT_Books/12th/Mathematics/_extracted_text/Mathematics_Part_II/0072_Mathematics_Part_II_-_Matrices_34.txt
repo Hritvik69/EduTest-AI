@@ -1,0 +1,323 @@
+282 MATHEMATICS
+So 1 = A (x2 + 1) + (Bx + C) (x – 1)
+= (A + B) x2 + (C – B) x + A – C
+Equating coefficients on both sides, we get A + B = 0, C – B = 0 and A – C = 1, which give 1 1
+A , B C –
+= = = . Substituting values of A, B and C in (2), we get ( 1) ( 1) x x − + = 2 2
+2( 1) 2 ( 1) 2( 1)
+− + + ... (3)
+Again, substituting (3) in (1), we have ( 1) ( 1)
+x x x − + + = 2 2 ( 1) 2( 1) 2 ( 1) 2( 1)
+Therefore
+4 2 2 – 1 log 1 – log ( 1) – tan C
+2 2 4 2 ( 1) ( 1)
+dx x x x x x x x = + + − + +
+Example 38 Find 2 log (log ) (log )
+Solution Let 2
+I log (log ) (log )
+log (log ) (log )
+In the first integral, let us take 1 as the second function. Then integrating it by parts, we get log (log ) log (log )
+x x x dx log (log ) log (log )
+− + ∫ ∫ ... (1)
+Again, consider log x∫ , take 1 as the second function and integrate it by parts, we have 2 log log (log )
+dx x x dx
+     
+=      
+       
+∫ ∫ ... (2)
+Reprint 2026-27
+INTEGRALS 283
+Putting (2) in (1), we get
+I log (log ) log (log ) (log )
+x x x x x
+= − − + ∫ ∫ = log (log ) C
+Example 39 Find cot tan x x dx   +  ∫
+Solution We have
+I = cot tan x x dx   +  ∫ tan (1 cot ) x x dx = + ∫
+Put tan x = t2, so that sec2 x dx = 2t dt or dx = 4
+Then I = 2 4
++   +  
+2 = 2 = 2
++ +    +    
+  +   + − +        
+− = y, so that 2
+  dt = dy. Then
+2 2 tan C = 2 tan C
+ = + +
+– 1 – 1 1 tan 1
+2 tan C = 2 tan C
+  − −  
++ +          
+Example 40 Find 4 sin 2 cos 2
+9 – cos (2 )
+Solution Let 4 sin 2 cos 2
+9 – cos 2
+Reprint 2026-27
+284 MATHEMATICS
+Put cos2 (2x) = t so that 4 sin 2x cos 2x dx = – dt
+Therefore –1 1 2
+I – – sin C sin cos 2 C
+4 4 3 4 3 9 –
+−    
+= = + = − +    
+Example 41 Evaluate
+1 sin ( ) x x dx
+Solution Here f (x) = | x sin πx | = sin for 1 1 sin for 1 2
+π − ≤ ≤ 
+− π ≤ ≤ 
+Therefore
+1 | sin | x x dx sin sin x x dx x x dx
+− π + − π ∫ ∫ sin sin x x dx x x dx
+− π − π ∫ ∫
+Integrating both integrals on righthand side, we get
+1 | sin | x x dx
+2 1 1 3 1  
+− − − = +   π π π π π  
+Example 42 Evaluate 2 2 2 2 0 cos sin
+Solution Let I = 2 2 2 2 2 2 2 2 0 0 cos sin cos ( ) sin ( )
+x dx x dx a x b x a x b x
++ π − + π −∫ ∫ (using P4)
+= 2 2 2 2 2 2 2 2 0 0 cos sin cos sin a x b x a x b x
+= 2 2 2 2 0 I
+Thus 2I = 2 2 2 2 0 cos sin
+Reprint 2026-27
+INTEGRALS 285 or I = 2
+2 2 2 2 2 2 2 2 0 0
+2 2 cos sin cos sin a x b x a x b x
++ +∫ ∫ (using P6)
+2 2 2 2 2 2 2 2 cos sin cos sin
++ +     a x b x a x b x
+2 2 2 2 2 2 sec cosec
++ +     x dx x dx a b x a x b
+2 2 2 2 2 2 tan t cot
+π − = =  + +   dt du put x and x u a b t a u b tan – tan
+π π     ab a ab b = –1 –1
++    ab a b =
+Miscellaneous Exercise on Chapter 7
+Integrate the functions in Exercises 1 to 23.
+x x − 2. 1 x a x b + + + 3. 2 x ax x − [Hint: Put x = a ( 1) x x +
+[Hint: 1 1 1 1
+1 x x x x
+, put x = t6] ( 1) ( 9)
+x x + + 7. sin x a − 8.
+5 log 4 log
+3 log 2 log
+1 2sin cos cos ( ) cos ( ) x a x b + + x − 13. (1 ) (2 )
+e e + + 14. 2 2 ( 1) ( 4) x x + +
+15. cos3 x elog sinx 16. e3 logx (x4 + 1)– 1 17. f ′ (ax + b) [f (ax + b)]n
+Reprint 2026-27
+286 MATHEMATICS sin sin ( ) x x + α 19. 1
++ 20. 2 sin 2 ( 1) ( 2)
++ + 22. – 1 1
+1 log ( 1) 2 log x x x
+  + + − 
+Evaluate the definite integrals in Exercises 24 to 31.
+cos 4 sin
+9 16 sin 2
+0 sin 2 tan (sin ) x x dx
+1 [| 1| | 2 | | 3 |] x x x dx − + − + − ∫
+Prove the following (Exercises 32 to 37)
+3 3 ( 1)
++∫ 33. 1 x e dx = ∫
+34. 1 17 4
+1 cos 0 x x dx
+− = ∫ 35. 3 2
+0 2 tan 1 log 2 x dx
+= − ∫ 37. 1 1
+Choose the correct answers in Exercises 38 to 40
++∫ is equal to (A) tan–1 (ex) + C (B) tan–1 (e–x) + C (C) log (ex – e–x) + C (D) log (ex + e–x) + C (sin cos )
+x x +∫ is equal to
+Reprint 2026-27
+INTEGRALS 287 (A) –1 C sin cos x x +
++ (B) log |sin cos | C x x + + (C) log |sin cos | C x x − + (D) 2 (sin cos ) + x x
+40. If f (a + b – x) = f (x), then ( )
+a x f x dx ∫ is equal to a b f b x dx
++ − ∫ (B) ( )
+a b f b x dx b a f x dx
+∫ (D) ( )
+a b f x dx
+® Integration is the inverse process of differentiation. In the differential calculus, we are given a function and we have to find the derivative or differential of this function, but in the integral calculus, we are to find a function whose differential is given. Thus, integration is a process which is the inverse of differentiation.
+Let F( ) ( )
+dx = . Then we write ( ) F ( ) C f x dx x = + ∫ . These integrals are called indefinite integrals or general integrals, C is called constant of integration. All these integrals differ by a constant.
+® Some properties of indefinite integrals are as follows:
+1. [ ( ) ( )] ( ) ( ) f x g x dx f x dx g x dx + = + ∫ ∫ ∫
+2. For any real number k, ( ) ( ) k f x dx k f x dx = ∫ ∫
+More generally, if f1, f2, f3, ... , fn are functions and k1, k2, ... ,kn are real numbers. Then
+1 1 2 2 [ ( ) ( ) ... ( )] n n k f x k f x k f x dx + + + ∫
+= 1 1 2 2 ( ) ( ) ... ( ) n n k f x dx k f x dx k f x dx + + + ∫ ∫ ∫
+® Some standard integrals
++ ∫ , n ≠ – 1. Particularly, C dx x = + ∫
+Reprint 2026-27
+288 MATHEMATICS (ii) cos sin C x dx x = + ∫ (iii) sin – cos C x dx x = + ∫ sec tan C x dx x = + ∫ (v) 2 cosec – cot C x dx x = + ∫ (vi) sec tan sec C x x dx x = + ∫ (vii) cosec cot – cosec C x x dx x = + ∫ (viii) 1
++∫ (xii) Cx x e dx e = + ∫ (xiii) C
+= + ∫ (xiv) 1 log | | C dx x
+® Integration by partial fractions
+Recall that a rational function is ratio of two polynomials of the form P( )
+where P(x) and Q (x) are polynomials in x and Q (x) ≠ 0. If degree of the polynomial P (x) is greater than the degree of the polynomial Q (x), then we may divide P (x) by Q (x) so that 1 P ( ) P( ) T ( )
+Q( ) Q( )
+= + , where T(x) is a polynomial in x and degree of P1 (x) is less than the degree of Q(x). T(x)
+being polynomial can be easily integrated. 1 P ( )
+x can be integrated by expressing 1 P ( )
+x as the sum of partial fractions of the following type:
+1. ( ) ( )
+− − = A B
+− − , a ≠ b ( ) x a x a
+Reprint 2026-27
+INTEGRALS 289 ( ) ( ) ( )
+x a x b x c
+− − − = A B C x a x b x c ( ) x a x b x a x a x bx c
+− + + = 2
+A B + C x x a x bx c where x2 + bx + c can not be factorised further.
+® Integration by substitution
+A change in the variable of integration often reduces an integral to one of the fundamental integrals. The method in which we change the variable to some other variable is called the method of substitution. When the integrand involves some trigonometric functions, we use some well known identities to find the integrals. Using substitution technique, we obtain the following standard integrals.
+(i) tan log sec C x dx x = + ∫ (ii) cot log sin C x dx x = + ∫ (iii) sec log sec tan C x dx x x = + + ∫ (iv) cosec log cosec cot C x dx x x = − + ∫
+® Integrals of some special functions a x a x a (ii) 2 2 a a x a x
+− −∫ (iii) 1 (iv) 2 2
+2 2 log C dx x x a
+2 2 sin C (vi) 2 2
+2 2 log | | C dx x x a
+® Integration by parts
+For given functions f1 and f2, we have
+Reprint 2026-27
+290 MATHEMATICS
+, i.e., the integral of the product of two functions = first function × integral of the second function – integral of {differential coefficient of the first function × integral of the second function}. Care must be taken in choosing the first function and the second function. Obviously, we must take that function as the second function whose integral is well known to us.
+® [ ( ) ( )] ( ) Cx x e f x f x dx e f x dx ′ + = + ∫ ∫
+® Some special types of integrals
+2 2 2 2 2 2 x a dx x a x x a − = − − + − + ∫
+2 2 2 2 2 2 x a dx x a x x a + = + + + + + ∫
+2 2 2 2 1 a x dx a x a
+− = − + + ∫ (iv) Integrals of the types 2 2 ax bx c ax bx c + + + +
+∫ ∫ can be transformed into standard form by expressing ax2 + bx + c = b c b c b a x x a x a a a a a
+       
++ + = + + −        
+          (v) Integrals of the types 2 2 px q dx px q dx ax bx c ax bx c
+∫ ∫ can be transformed into standard form by expressing
+A ( ) B A (2 ) B px q ax bx c ax b
++ = + + + = + + , where A and B are determined by comparing coefficients on both sides.
+® We have defined ( )
+a f x dx ∫ as the area of the region bounded by the curve y = f (x), a ≤ x ≤ b, the x-axis and the ordinates x = a and x = b. Let x be a
+Reprint 2026-27
+INTEGRALS 291 given point in [a, b]. Then ( )
+a f x dx ∫ represents the Area function A (x).
+This concept of area function leads to the Fundamental Theorems of Integral
+Calculus.
+® First fundamental theorem of integral calculus
+Let the area function be defined by A(x) = ( )
+a f x dx ∫ for all x ≥ a, where the function f is assumed to be continuous on [a, b]. Then A′ (x) = f (x) for all x ∈ [a, b].
+® Second fundamental theorem of integral calculus
+Let f be a continuous function of x defined on the closed interval [a, b] and let F be another function such that F( ) ( )
+dx = for all x in the domain of f, then [ ] ( ) F( ) C F ( ) F ( )
+a a f x dx x b a = + = − ∫ .
+This is called the definite integral of f over the range [a, b], where a and b are called the limits of integration, a being the lower limit and b the upper limit.
+— v v v v v—
+Reprint 2026-27
+292 MATHEMATICS v One should study Mathematics because it is only through Mathematics that nature can be conceived in harmonious form. – BIRKHOFF v
+8.1 Introduction
+In geometry, we have learnt formulae to calculate areas of various geometrical figures including triangles, rectangles, trapezias and circles. Such formulae are fundamental in the applications of mathematics to many real life problems. The formulae of elementary geometry allow us to calculate areas of many simple figures.
+However, they are inadequate for calculating the areas enclosed by curves. For that we shall need some concepts of Integral Calculus.
+In the previous chapter, we have studied to find the area bounded by the curve y = f (x), the ordinates x = a, x = b and x-axis, while calculating definite integral as the limit of a sum. Here, in this chapter, we shall study a specific application of integrals to find the area under simple curves, area between lines and arcs of circles, parabolas and ellipses (standard forms only). We shall also deal with finding the area bounded by the above said curves.
+8.2 Area under Simple Curves
+In the previous chapter, we have studied definite integral as the limit of a sum and how to evaluate definite integral using
+Fundamental Theorem of Calculus. Now, we consider the easy and intuitive way of finding the area bounded by the curve y = f (x), x-axis and the ordinates x = a and x = b. From Fig 8.1, we can think of area under the curve as composed of large number of very thin vertical strips. Consider an arbitrary strip of height y and width dx, then dA (area of the elementary strip) = ydx, where, y = f (x).
+Chapter 8
+APPLICATION OF INTEGRALS
+A.L. Cauchy (1789-1857)
+Reprint 2026-27
+APPLICATION OF INTEGRALS 293
+This area is called the elementary area which is located at an arbitrary position within the region which is specified by some value of x between a and b. We can think of the total area A of the region between x-axis, ordinates x = a, x = b and the curve y = f (x) as the result of adding up the elementary areas of thin strips across the region
+PQRSP. Symbolically, we express
+A = A ( )
+d ydx f x dx = = ∫ ∫ ∫
+The area A of the region bounded by the curve x = g (y), y-axis and the lines y = c, y = d is given by xdy g y dy = ∫ ∫
+Here, we consider horizontal strips as shown in the Fig 8.2
+Remark If the position of the curve under consideration is below the x-axis, then since f (x) < 0 from x = a to x = b, as shown in Fig 8.3, the area bounded by the curve, x-axis and the ordinates x = a, x = b come out to be negative. But, it is only the numerical value of the area which is taken into consideration. Thus, if the area is negative, we take its absolute value, i.e., ( )
+a f x dx ∫ .
+Generally, it may happen that some portion of the curve is above x-axis and some is below the x-axis as shown in the Fig 8.4. Here, A1 < 0 and A2 > 0. Therefore, the area
+A bounded by the curve y = f (x), x-axis and the ordinates x = a and x = b is given by A = | A1| + A2.
+Reprint 2026-27
+294 MATHEMATICS
+Example 1 Find the area enclosed by the circle x2 + y2 = a2.
+Solution From Fig 8.5, the whole area enclosed by the given circle
+= 4 (area of the region AOBA bounded by the curve, x-axis and the ordinates x = 0 and x = a) [as the circle is symmetrical about both x-axis and y-axis] ydx ∫ (taking vertical strips)
+a x dx − ∫
+Since x2 + y2 = a2 gives y = 2 2
+As the region AOBA lies in the first quadrant, y is taken as positive. Integrating, we get the whole area enclosed by the given circle
+  π   = π    
+Reprint 2026-27
+APPLICATION OF INTEGRALS 295
+Alternatively, considering horizontal strips as shown in Fig 8.6, the whole area of the region enclosed by circle xdy ∫ = 2 2 a y dy − ∫ (Why?)
+Example 2 Find the area enclosed by the ellipse
+Solution From Fig 8.7, the area of the region ABA′B′A bounded by the ellipse area of the region AOBA the first quadrant bounded by the curve x axis and the ordinates x x a
+− = =   (as the ellipse is symmetrical about both x-axis and y-axis)
+4 (taking verticalstrips)
++ = 1 gives 2 2 b
+= ± − , but as the region AOBA lies in the first quadrant, y is taken as positive. So, the required area is
+4 a b a x dx
+  (Why?)
+2 1 4 0 sin 1 0
+× + −    
+     
+Reprint 2026-27
+296 MATHEMATICS
+Alternatively, considering horizontal strips as shown in the Fig 8.8, the area of the ellipse is
+= 4 0 xdy
+∫ = 4 2 2 b b y dy
+− ∫ (Why?)
+2 –1 4 0 sin 1 0
+× + −    
+     
+EXERCISE 8.1
+1. Find the area of the region bounded by the ellipse
+2. Find the area of the region bounded by the ellipse
+Choose the correct answer in the following Exercises 3 and 4.
+3. Area lying in the first quadrant and bounded by the circle x2 + y2 = 4 and the lines x = 0 and x = 2 is (A) π (B) 2
+4. Area of the region bounded by the curve y2 = 4x, y-axis and the line y = 3 is (A) 2 (B) 9
+Miscellaneous Examples
+Example 3 Find the area of the region bounded by the line y = 3x + 2, the x-axis and the ordinates x = –1 and x = 1.
+Reprint 2026-27
+APPLICATION OF INTEGRALS 297
+Solution As shown in the Fig 8.9, the line y = 3x + 2 meets x-axis at x = 2
+− and its graph lies below x-axis for and above x-axis for .
+The required area = Area of the region ACBA +
+Area of the region ADEA (3 2) (3 2) x dx x dx
+− − + + + ∫ ∫
+2 1 2 2 3
++ + +    
+    = 1 25 13
+Example 4 Find the area bounded by the curve y = cos x between x = 0 and
+Solution From the Fig 8.10, the required area = area of the region OABO + area of the region BCDB + area of the region
+Thus, we have the required area
+3π π 2π 2 2 cos cos cos x dx x dx x dx + + ∫ ∫ ∫
+= [ ] [ ] [ ] sin sin sin x x x
+= 1 + 2 + 1 = 4
+Fig 8.10
+Reprint 2026-27
+298 MATHEMATICS
+Miscellaneous Exercise on Chapter 8
+1. Find the area under the given curves and given lines:
+(i) y = x2, x = 1, x = 2 and x-axis (ii) y = x4, x = 1, x = 5 and x-axis
+2. Sketch the graph of y = 3 x + and evaluate .
+3. Find the area bounded by the curve y = sin x between x = 0 and x = 2π.
+Choose the correct answer in the following Exercises from 4 to 5.
+4. Area bounded by the curve y = x3, the x-axis and the ordinates x = – 2 and x = 1 is (A) – 9 (B) 15
+− (C) 15
+4 (D) 17
+5. The area bounded by the curve y = x | x | , x-axis and the ordinates x = – 1 and x = 1 is given by (A) 0 (B) 1
+[Hint : y = x2 if x > 0 and y = – x2 if x < 0].
+® The area of the region bounded by the curve y = f (x), x-axis and the lines x = a and x = b (b > a) is given by the formula: Area ( )
+ydx f x dx = = ∫ ∫ .
+® The area of the region bounded by the curve x = φ (y), y-axis and the lines y = c, y = d is given by the formula: Area ( )
+xdy y dy = = φ ∫ ∫ .
+Historical Note
+The origin of the Integral Calculus goes back to the early period of development of Mathematics and it is related to the method of exhaustion developed by the mathematicians of ancient Greece. This method arose in the solution of problems on calculating areas of plane figures, surface areas and volumes of solid bodies etc. In this sense, the method of exhaustion can be regarded as an early method
+Reprint 2026-27
+APPLICATION OF INTEGRALS 299 of integration. The greatest development of method of exhaustion in the early period was obtained in the works of Eudoxus (440 B.C.) and Archimedes (300 B.C.)
+Systematic approach to the theory of Calculus began in the 17th century.
+In 1665, Newton began his work on the Calculus described by him as the theory of fluxions and used his theory in finding the tangent and radius of curvature at any point on a curve. Newton introduced the basic notion of inverse function called the anti derivative (indefinite integral) or the inverse method of tangents.
+During 1684-86, Leibnitz published an article in the Acta Eruditorum which he called Calculas summatorius, since it was connected with the summation of a number of infinitely small areas, whose sum, he indicated by the symbol ‘∫’. In
+1696, he followed a suggestion made by J. Bernoulli and changed this article to
+Calculus integrali. This corresponded to Newton’s inverse method of tangents.
+Both Newton and Leibnitz adopted quite independent lines of approach which was radically different. However, respective theories accomplished results that were practically identical. Leibnitz used the notion of definite integral and what is quite certain is that he first clearly appreciated tie up between the antiderivative and the definite integral.
+Conclusively, the fundamental concepts and theory of Integral Calculus and primarily its relationships with Differential Calculus were developed in the work of P.de Fermat, I. Newton and G. Leibnitz at the end of 17th century. However, this justification by the concept of limit was only developed in the works of A.L.
+Cauchy in the early 19th century. Lastly, it is worth mentioning the following quotation by Lie Sophie’s:
+“It may be said that the conceptions of differential quotient and integral which in their origin certainly go back to Archimedes were introduced in Science by the investigations of Kepler, Descartes, Cavalieri, Fermat and Wallis .... The discovery that differentia

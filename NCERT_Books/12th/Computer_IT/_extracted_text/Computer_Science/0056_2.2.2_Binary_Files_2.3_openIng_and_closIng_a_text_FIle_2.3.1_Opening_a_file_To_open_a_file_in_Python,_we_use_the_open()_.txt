@@ -1,0 +1,20 @@
+Computer SCienCe - ClaSS Xii 44 shall use the built-in method append() of list to add an element to the stack that always adds at the end of the list. As there is no limit on the size of list in Python, the implemented stack will never be full unless there is no more space available in memory.
+Hence, we will never face ‘overflow’ (no space for new element) condition for stack.
+def opPush(glassStack,element):
+glassStack.append(element)
+• A function named size to read the number of elements in the glassStack. We will use the len()
+function of list in Python to find the number of elements in the glassStack.
+def size(glassStack):
+return len(glassStack)
+• A function named top to read the most recent element (TOP) in the glassStack.
+def top(glassStack):
+if isEmpty(glassStack):
+print('Stack is empty')
+return None x =len(glassStack)
+element=glassStack[x-1] return element
+• A function named opPop to delete the topmost element from the stack. It takes one parameter - the name of the stack (glassStack) from which element is to be deleted and returns the value of the deleted element. The function first checks whether the stack is empty or not. If it is not empty, it removes the topmost element from it. We shall use the built- in method pop() of Python list that removes the element from the end of the list.
+def opPop(glassStack):
+if isEmpty(glassStack):
+print('underflow')
+return None return(glassStack.pop())
+Reprint 2026-27

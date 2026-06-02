@@ -1,0 +1,57 @@
+75 CLASSIFI CATION OF EL EMENTS AND PERIODICITY IN PROPERTIES
+3.2 GEnEsis of PEriodiC
+ClassifiCation
+Classification of elements into groups and development of Periodic Law and Periodic
+Table are the consequences of systematising the knowledge gained by a number of scientists through their observations and experiments. The German chemist, Johann
+Dobereiner in early 1800’s was the first to consider the idea of trends among properties of elements. By 1829 he noted a similarity among the physical and chemical properties of several groups of three elements (triads). In each case, he noticed that the middle element of each of the triads had an atomic weight about half way between the atomic weights of the other two (Table 3.1). Also the properties of the middle element were in between those of the other two members. Since Dobereiner’s the periodic recurrence of properties. This also did not attract much attention. The
+English chemist, John Alexander Newlands in 1865 profounded the law of octaves. He arranged the elements in increasing order of their atomic weights and noted that every eighth element had properties similar to the first element (Table 3.2). The relationship was just like every eighth note that resembles the first in octaves of music. Newlands’s Law of
+Octaves seemed to be true only for elements up to calcium. Although his idea was not widely accepted at that time, he, for his work, was later awarded Davy Medal in 1887 by the
+Royal Society, London.
+The Periodic Law, as we know it today owes its development to the Russian chemist,
+Dmitri Mendeleev (1834-1907) and the
+German chemist, Lothar Meyer (1830-1895).
+table 3.1 dobereiner’s triads
+Element atomic weight Element atomic weight Element atomic table 3.2 newlands’ octaves
+Element li Be B C n o f
+At. wt. 7 9 11 12 14 16 19
+Element na mg al si P s Cl
+At. wt. 23 24 27 29 31 32 35.5
+Element K Ca
+At. wt. 39 40 relationship, referred to as the law of triads, seemed to work only for a few elements, it was dismissed as coincidence. The next reported attempt to classify elements was made by a
+French geologist, A.E.B. de Chancourtois in
+1862. He arranged the then known elements in order of increasing atomic weights and made a cylindrical table of elements to display
+Working independently, both the chemists in
+1869 proposed that on arranging elements in the increasing order of their atomic weights, similarities appear in physical and chemical properties at regular intervals. Lothar Meyer plotted the physical properties such as atomic volume, melting point and boiling point against atomic weight and obtained
+Reprint 2026-27
+76 CHEMISTRY a periodically repeated pattern. Unlike
+Newlands, Lothar Meyer observed a change in length of that repeating pattern. By 1868,
+Lothar Meyer had developed a table of the elements that closely resembles the Modern
+Periodic Table. However, his work was not published until after the work of Dmitri
+Mendeleev, the scientist who is generally credited with the development of the Modern
+Periodic Table.
+While Dobereiner initiated the study of periodic relationship, it was Mendeleev who was responsible for publishing the Periodic
+Law for the first time. It states as follows :
+The properties of the elements are a periodic function of their atomic weights.
+Mendeleev arranged elements in horizontal rows and vertical columns of a table in order of their increasing atomic weights in such a way that the elements with similar properties occupied the same vertical column or group.
+Mendeleev’s system of classifying elements was more elaborate than that of Lothar
+Meyer’s. He fully recognized the significance of periodicity and used broader range of physical and chemical properties to classify the elements. In particular, Mendeleev relied on the similarities in the empirical formulas and properties of the compounds formed by the elements. He realized that some of the elements did not fit in with his scheme of classification if the order of atomic weight was strictly followed. He ignored the order of atomic weights, thinking that the atomic measurements might be incorrect, and placed the elements with similar properties together.
+For example, iodine with lower atomic weight than that of tellurium (Group VI) was placed in Group VII along with fluorine, chlorine, bromine because of similarities in properties (Fig. 3.1). At the same time, keeping his primary aim of arranging the elements of similar properties in the same group, he proposed that some of the elements were still undiscovered and, therefore, left several gaps in the table. For example, both gallium and germanium were unknown at the time
+Mendeleev published his Periodic Table.
+He left the gap under aluminium and a gap under silicon, and called these elements
+Eka-aluminium and Eka-silicon. Mendeleev predicted not only the existence of gallium and germanium, but also described some of their general physical properties. These elements were discovered later. Some of the properties predicted by Mendeleev for these elements and those found experimentally are listed in
+Table 3.3.
+The boldness of Mendeleev’s quantitative predictions and their eventual success made him and his Periodic Table famous.
+Mendeleev’s Periodic Table published in 1905 is shown in Fig. 3.1.
+table 3.3 mendeleev’s Predictions for the Elements Eka-aluminium (Gallium) and
+Eka-silicon (Germanium)
+Property Eka-aluminium (predicted)
+Eka-silicon (predicted)
+Germanium atomic weight 68 70 72 72.6 density/(g/cm 3 ) 5.9 5.94 5.5 5.36 melting point/K Low 302.93 High 1231 formula of oxide E 2 O3 Ga2 O3 EO 2 GeO2 formula of chloride E Cl3 GaCl3 ECl4 GeCl4
+Reprint 2026-27
+77 CLASSIFI CATION OF EL EMENTS AND PERIODICITY IN PROPERTIES
+PERIODIC
+ELEMENTS
+IN GROUPS
+Fig. 3.1
+Mendeleev’s Periodic Table published earlier
+Reprint 2026-27

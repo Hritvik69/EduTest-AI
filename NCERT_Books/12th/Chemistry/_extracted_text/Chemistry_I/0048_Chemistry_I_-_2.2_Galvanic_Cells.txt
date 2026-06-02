@@ -1,0 +1,72 @@
+34 Chemistry
+The potential difference between the two electrodes of a galvanic cell is called the cell potential and is measured in volts. The cell potential is the difference between the electrode potentials (reduction potentials) of the cathode and anode. It is called the cell electromotive force (emf) of the cell when no current is drawn through the cell. It is now an accepted convention that we keep the anode on the left and the cathode on the right while representing the galvanic cell. A galvanic cell is generally represented by putting a vertical line between metal and electrolyte solution and putting a double vertical line between the two electrolytes connected by a salt bridge. Under this convention the emf of the cell is positive and is given by the potential of the half- cell on the right hand side minus the potential of the half-cell on the left hand side i.e.,
+Ecell = Eright – Eleft
+This is illustrated by the following example:
+Cell reaction:
+Cu(s) + 2Ag+(aq) ¾® Cu2+(aq) + 2 Ag(s) (2.4)
+Half-cell reactions:
+Cathode (reduction): 2Ag+(aq) + 2e– ® 2Ag(s) (2.5)
+Anode (oxidation): Cu(s) ® Cu2+(aq) + 2e– (2.6)
+It can be seen that the sum of (3.5) and (3.6) leads to overall reaction (2.4) in the cell and that silver electrode acts as a cathode and copper electrode acts as an anode. The cell can be represented as:
+Cu(s)|Cu2+(aq)||Ag+(aq)|Ag(s)
+and we have Ecell = Eright – Eleft = EAg+úAg – ECu2+úCu (2.7)
+The potential of individual half-cell cannot be measured. We can measure only the difference between the two half-cell potentials that gives the emf of the cell. If we arbitrarily choose the potential of one electrode (half-cell) then that of the other can be determined with respect to this. According to convention, a half-cell called standard hydrogen electrode (Fig.3.3)
+represented by Pt(s)ú H2(g)ú H+(aq), is assigned a zero potential at all temperatures corresponding to the reaction
+H+ (aq) + e– ® 1
+The standard hydrogen electrode consists of a platinum electrode coated with platinum black. The electrode is dipped in an acidic solution and pure hydrogen gas is bubbled through it. The concentration of both the reduced and oxidised forms of hydrogen is maintained at unity (Fig. 2.3). This implies that the pressure of hydrogen gas is one bar and the concentration of hydrogen ion in the solution is one molar.
+Measurement of Electrode
+Potential
+Fig. 2.3: Standard Hydrogen Electrode (SHE).
+Reprint 2026-27
+35 Electrochemistry
+At 298 K the emf of the cell, standard hydrogen electrode ÁÁsecond half-cell constructed by taking standard hydrogen electrode as anode (reference half-cell) and the other half-cell as cathode, gives the reduction potential of the other half-cell. If the concentrations of the oxidised and the reduced forms of the species in the right hand half-cell are unity, then the cell potential is equal to standard electrode potential, EoR of the given half-cell.
+Eo = EoR – EoL
+As EoL for standard hydrogen electrode is zero.
+Eo = EoR – 0 = EoR
+The measured emf of the cell:
+Pt(s) Á H2(g, 1 bar) Á H+ (aq, 1 M) ÁÁ Cu2+ (aq, 1 M) ˙ Cu is 0.34 V and it is also the value for the standard electrode potential of the half-cell corresponding to the reaction:
+Cu2+ (aq, 1M) + 2 e– Æ Cu(s)
+Similarly, the measured emf of the cell:
+Pt(s) Á H2(g, 1 bar) Á H+ (aq, 1 M) ÁÁ Zn2+ (aq, 1M) Á Zn is -0.76 V corresponding to the standard electrode potential of the half-cell reaction:
+Zn2+ (aq, 1 M) + 2e– Æ Zn(s)
+The positive value of the standard electrode potential in the first case indicates that Cu2+ ions get reduced more easily than H+ ions. The reverse process cannot occur, that is, hydrogen ions cannot oxidise Cu (or alternatively we can say that hydrogen gas can reduce copper ion)
+under the standard conditions described above. Thus, Cu does not dissolve in HCl. In nitric acid it is oxidised by nitrate ion and not by hydrogen ion. The negative value of the standard electrode potential in the second case indicates that hydrogen ions can oxidise zinc (or zinc can reduce hydrogen ions).
+In view of this convention, the half reaction for the Daniell cell in
+Fig. 2.1 can be written as:
+Left electrode: Zn(s) Æ Zn2+ (aq, 1 M) + 2 e–
+Right electrode: Cu2+ (aq, 1 M) + 2 e– Æ Cu(s)
+The overall reaction of the cell is the sum of above two reactions and we obtain the equation:
+Zn(s) + Cu2+ (aq) Æ Zn2+ (aq) + Cu(s)
+emf of the cell = Eocell = EoR – EoL
+= 0.34V – (– 0.76)V = 1.10 V
+Sometimes metals like platinum or gold are used as inert electrodes.
+They do not participate in the reaction but provide their surface for oxidation or reduction reactions and for the conduction of electrons.
+For example, Pt is used in the following half-cells:
+Hydrogen electrode: Pt(s)|H2(g)| H+(aq)
+With half-cell reaction: H+ (aq)+ e– Æ ½ H2(g)
+Bromine electrode: Pt(s)|Br2(aq)| Br–(aq)
+Reprint 2026-27
+36 Chemistry
+With half-cell reaction: ½ Br2(aq) + e– Æ Br–(aq)
+The standard electrode potentials are very important and we can extract a lot of useful information from them. The values of standard electrode potentials for some selected half-cell reduction reactions are given in Table 2.1. If the standard electrode potential of an electrode is greater than zero then its reduced form is more stable compared to hydrogen gas. Similarly, if the standard electrode potential is negative then hydrogen gas is more stable than the reduced form of the species.
+It can be seen that the standard electrode potential for fluorine is the highest in the Table indicating that fluorine gas (F2) has the maximum tendency to get reduced to fluoride ions (F–) and therefore fluorine gas is the strongest oxidising agent and fluoride ion is the weakest reducing agent. Lithium has the lowest electrode potential indicating that lithium ion is the weakest oxidising agent while lithium metal is the most powerful reducing agent in an aqueous solution. It may be seen that as we go from top to bottom in Table 2.1 the standard electrode potential decreases and with this, decreases the oxidising power of the species on the left and increases the reducing power of the species on the right hand side of the reaction. Electrochemical cells are extensively used for determining the pH of solutions, solubility product, equilibrium constant and other thermodynamic properties and for potentiometric titrations.
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+2.1 How would you determine the standard electrode potential of the system
+Mg2+|Mg?
+2.2 Can you store copper sulphate solutions in a zinc pot?
+2.3 Consult the table of standard electrode potentials and suggest three substances that can oxidise ferrous ions under suitable conditions.
+2.3 2.3 2.3 2.3 2.3 Nernst Nernst Nernst Nernst Nernst
+Equation Equation Equation Equation Equation
+We have assumed in the previous section that the concentration of all the species involved in the electrode reaction is unity. This need not be always true. Nernst showed that for the electrode reaction:
+Mn+(aq) + ne–Æ M(s)
+the electrode potential at any concentration measured with respect to standard hydrogen electrode can be represented by:
+( ) ( ) + + = n n
+M / M M / M
+E E – RT nF ln [M] but concentration of solid M is taken as unity and we have ( ) ( ) + + = n n
+M / M M / M
+E E – RT nF ln n+
+[M ] (2.8)
+E has already been defined, R is gas constant (8.314 JK–1 mol–1),
+F is Faraday constant (96487 C mol–1), T is temperature in kelvin and
+[Mn+] is the concentration of the species, Mn+.
+Reprint 2026-27

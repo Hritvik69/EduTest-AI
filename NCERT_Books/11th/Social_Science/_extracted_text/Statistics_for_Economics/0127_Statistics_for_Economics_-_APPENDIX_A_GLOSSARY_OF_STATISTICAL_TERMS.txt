@@ -1,0 +1,85 @@
+APPENDIX A 115
+Employee One who gets paid for a job or for working for another person.
+Employer One who pays another person to do or do some work.
+Enumerator A person who collects the data.
+Exclusive Method A method of classifying observations in which an observation equal to either the upper class limit or the lower class limit of a class is not put in that class but is put in the class above or below.
+Frequency The number of times an observation occurs in raw data. In a frequency distribution it means the number of observations in a class.
+Frequency Array A classification of a discrete variable that shows different values of the variable along with their corresponding frequencies.
+Frequency Curve The graph of a frequency distribution in which class frequencies on Y-axis are plotted against the values of class marks on X-axis.
+Frequency Distribution A classification of a quantitative variable that shows how different values of the variable are distributed in different classes along with their corresponding class frequencies.
+Inclusive Method A method of classifying observations in which an observations equal to the upper class limit of a class as well as the lower class limit is put in that class.
+Informant Individual/unit f r o m whom the desired information is obtained.
+Multi Modal Distribution The distribution that has more than two modes.
+Non-Sampling Error It arises in data collection due to (i) sampling bias, (ii) non-response, (iii) error in data acquisition.
+Observation A unit of raw data.
+Percentiles A value which divides the data into hundred equal parts so there are 99 percentiles in the data.
+Policy The measure to solve an economic problem.
+Population Population means all the individuals/units for whom the information has to be sought.
+Qualitative Classification Classification based on quality. For example classification of people according to gender, marital status etc.
+Qualitative Data Information or data expressed in terms of qualities.
+Quantitative Data A (often large) set of numbers systematically arranged for conveying specific information on a subject for better understanding or decision-making.
+Reprint 2026-27
+Questionnaire A list of questions prepared by an investigator on the subject of enquiry. The respondent is required to answer the questions.
+Random Sampling It is a method of sampling in which the representative set of informants is selected in a way that every individual is given equal chance of being selected as an informant.
+Range Difference between the maximum and the minimum values of a variable.
+Relative Frequency Frequency of a class as proportion or percentage of total frequency
+Sample Survey Method A method, where observations are obtained on a representative set of individuals (the sample), selected from the population.
+Sampling Error It is the numerical difference between the estimate from the sample and the corresponding true value of the parameter from the population.
+Scarcity It means the lack of availability.
+Seasonality Periodicity in data variation with time period less than one year.
+Seller One who sells goods for profit.
+Service Provider One who provides a service to others for a payment.
+Spatial Classification Classification based on geographical location.
+Statistics The method of collecting, organising, presenting and analysing data to draw meaningful conclusion. Further, it also means data.
+Structured Questionnaire Structured Questionnaire consists of “closed- ended” questions, for which alternative possible answers to choose from are provided.
+Tally Marking The counting of observations in a class using tally (/) marks.
+Tallies are grouped in fives.
+Time Series Data arranged in chronological order or two variable data where one of the variables is time.
+Univariate Distribution The frequency distribution of one variable.
+Variable A variable is a quantity used to measure an “attribute” (such as height, weight, number etc.) of some thing or some persons, which can take different values in different situations.
+Weighted Average The average is calculated by providing the different data points with different weights.
+116 STATISTICS FOR ECONOMICS
+Reprint 2026-27
+APPENDIX B
+TABLE OF TWO-DIGIT RANDOM NUMBERS
+03 47 43 73 86 36 96 47 36 61 46 98 63 71 62 33 26 16 80 45 60 11 14 10 95
+97 74 24 67 62 42 81 14 57 20 42 53 32 37 32 27 07 36 07 51 24 51 79 89 73
+16 76 62 27 66 56 50 26 71 07 32 90 79 78 53 13 55 38 58 59 88 97 54 14 10
+12 56 85 99 26 96 96 68 27 31 05 03 72 93 15 57 12 10 14 21 88 26 49 81 76
+55 59 56 35 64 38 54 82 46 22 31 62 43 09 90 06 18 44 32 53 23 83 01 30 30
+16 22 77 94 39 49 54 43 54 82 17 37 93 23 78 87 35 20 96 43 84 26 34 91 64
+84 42 17 53 31 57 24 55 06 88 77 04 74 47 67 21 76 33 50 25 83 92 12 06 76
+63 01 63 78 59 16 95 55 67 19 98 10 50 71 75 12 86 73 58 07 44 39 52 38 79
+33 21 12 34 29 78 64 56 07 82 52 42 07 44 38 15 51 00 13 42 99 66 02 79 54
+57 60 86 32 44 09 47 27 96 54 49 17 46 09 62 90 52 84 77 27 08 02 73 43 28
+18 18 07 92 46 44 17 16 58 09 79 83 86 19 62 06 76 50 03 10 55 23 64 05 05
+26 62 38 97 75 84 16 07 44 99 83 11 46 32 24 20 14 85 88 45 10 93 72 88 71
+23 42 40 64 74 82 97 77 77 81 07 45 32 14 08 32 98 94 07 72 93 85 79 10 75
+52 36 28 19 95 50 92 26 11 97 00 56 76 31 38 80 22 02 53 53 86 60 42 04 53
+37 85 94 35 12 83 39 50 08 30 42 34 07 96 88 54 42 06 87 98 35 85 29 48 39
+70 29 17 12 13 40 33 20 38 26 13 89 51 03 74 17 76 37 13 04 07 74 21 19 30
+56 62 18 37 35 96 83 50 87 75 97 12 25 93 47 70 33 24 03 54 97 77 46 44 80
+99 49 57 22 77 88 42 95 45 72 16 64 36 16 00 04 43 18 66 79 94 77 24 21 90
+16 08 15 04 72 33 27 14 34 09 45 59 34 68 49 12 72 07 34 45 99 27 72 95 14
+31 16 93 32 43 50 27 89 87 19 20 15 37 00 49 52 85 66 60 44 38 68 88 11 80
+68 34 30 13 70 55 74 30 77 40 44 22 78 84 26 04 33 46 09 52 68 07 97 06 57
+74 57 25 65 76 59 29 97 68 60 71 91 38 67 54 13 58 18 24 76 15 54 55 95 52
+27 42 37 86 53 48 55 90 65 72 96 57 69 36 10 96 46 92 42 45 97 60 49 04 91
+00 39 68 29 61 66 37 32 20 30 77 84 57 03 29 10 45 65 04 26 11 04 96 67 24
+29 94 98 94 24 68 49 69 10 82 53 75 91 93 30 34 25 20 57 27 40 48 73 51 92
+16 90 82 66 59 83 62 64 11 12 67 19 00 71 74 60 47 21 29 68 02 02 37 03 31
+11 27 94 75 06 06 09 19 74 66 02 94 37 34 02 76 70 90 30 86 38 45 94 30 38
+35 24 10 16 20 33 32 51 26 38 79 78 45 04 91 16 92 53 56 16 02 75 50 95 98
+38 23 16 86 38 42 38 97 01 50 87 75 66 81 41 40 01 74 91 62 48 51 84 08 32
+31 96 25 91 47 96 44 33 49 13 34 86 82 53 91 00 52 43 48 85 27 55 26 89 62
+66 67 40 67 14 64 05 71 95 86 11 05 65 09 68 76 83 20 37 90 57 16 00 11 66
+14 90 84 45 11 75 73 88 05 90 52 27 41 14 86 22 98 12 22 08 07 52 74 95 80
+68 05 51 18 00 33 96 02 75 19 07 60 62 93 55 59 33 82 43 90 49 37 38 44 59
+20 46 78 73 90 97 51 40 14 02 04 02 33 31 08 39 54 16 49 36 47 95 93 13 30
+64 19 58 97 79 15 06 15 93 20 01 90 10 75 06 40 78 78 89 62 02 67 74 17 33
+05 26 93 70 60 22 35 85 15 13 92 03 51 59 77 59 56 78 06 83 52 91 05 70 74
+07 97 10 88 23 09 98 42 99 64 61 71 62 99 15 06 51 29 16 93 58 05 77 09 51
+68 71 86 85 85 54 87 66 47 54 73 32 08 11 12 44 95 92 63 16 29 56 24 29 48
+26 99 61 65 53 58 37 78 80 70 42 10 50 67 42 32 17 55 85 74 94 44 67 16 94
+14 65 52 68 75 87 59 36 22 41 26 78 63 06 55 13 08 27 01 50 15 29 39 39 43
+Reprint 2026-27

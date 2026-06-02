@@ -1,0 +1,52 @@
+F unctions 157
+Enter Length of the rectangle: 45
+Enter Breadth of the rectangle: 66
+Area is: 2970.0
+Perimeter is: 222.0
+Multiple values in
+Python are returned through a tuple. (Ch. 10)
+#Program 7-13
+#Function to simulate a traffic light
+#It is required to make 2 user defined functions trafficLight() and
+#light().
+def trafficLight():
+signal = input("Enter the colour of the traffic light: ")
+if (signal not in ("RED","YELLOW","GREEN")):
+print("Please enter a valid Traffic Light colour in
+CAPITALS")
+value = light(signal) #function call to light()
+if (value == 0):
+print("STOP, Your Life is Precious.")
+elif (value == 1):
+print ("PLEASE GO SLOW.")
+Program 7-13 Write a program that simulates a traffic light . The program should consist of the following:
+1. A user defined function trafficLight( ) that accepts input from the user, displays an error message if the user enters anything other than RED,
+YELLOW, and GREEN. Function light() is called and following is displayed depending upon return value from light().
+a) “STOP, your life is precious” if the value returned by light() is 0.
+b) “Please WAIT, till the light is Green “ if the value returned by light() is 1 c) “GO! Thank you for being patient” if the value returned by light() is 2.
+2. A user defined function light() that accepts a string as input and returns 0 when the input is RED,
+1 when the input is YELLOW and 2 when the input is GREEN. The input should be passed as an argument.
+3. Display “ SPEED THRILLS BUT KILLS” after the function trafficLight( ) is executed.
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 158 print("GO!,Thank you for being patient.")
+#function ends here def light(colour):
+if (colour == "RED"):
+return(0);
+elif (colour == "YELLOW"):
+return (1)
+return(2)
+#function ends here trafficLight()
+print("SPEED THRILLS BUT KILLS")
+Enter the colour of the traffic light: YELLOW
+PLEASE GO SLOW.
+SPEED THRILLS BUT KILLS
+7.4 scope oF a V arIable
+A variable defined inside a function cannot be accessed outside it. Every variable has a well-defined accessibility. The part of the program where a variable is accessible can be defined as the scope of that variable. A variable can have one of the following two scopes:
+A variable that has global scope is known as a global variable and a variable that has a local scope is known as a local variable.
+(A) Global Variable
+In Python, a variable that is defined outside any function or any block is known as a global variable. It can be accessed in any functions defined onwards. Any change made to the global variable will impact all the functions in the program where that variable can be accessed.
+(B) Local Variable
+A variable that is defined inside any function or a block is known as a local variable. It can be accessed only in the function or a block where it is defined. It exists only till the function executes.
+Variable
+Figure 7.6: Scope of a variable
+Reprint 2026-27

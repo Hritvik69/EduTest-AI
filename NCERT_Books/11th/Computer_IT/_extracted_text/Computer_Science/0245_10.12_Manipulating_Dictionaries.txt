@@ -1,0 +1,133 @@
+S ocietal impact 233 conferencing, posting on forums, social networking sites, etc. All these are great ways to connect with people in order to exchange ideas, share data and knowledge. Good communication over email, chat room and other such forums require a digital citizen to abide by the communication etiquettes as shown in Figure 11.3.
+(A) Be Precise
+• Respect time: we should not waste precious time in responding to unnecessary emails or comments unless they have some relevance for us. Also, we should not always expect an instant response as the recipient may have other priorities.
+• Respect data limits: For concerns related to data and bandwidth, very large attachments may be avoided. Rather send compressed files or link of the files through cloud shared storage like Google
+Drive, Microsoft OneDrive, Yahoo Dropbox, etc.
+(B) Be Polite
+Whether the communication is synchronous (happening in real time like chat, audio/video calls) or asynchronous (like email, forum post or comments), we should be polite and non-aggressive in our communication. We should avoid being abusive even if we don’t agree with others’ point of view.
+(C) Be Credible
+We should be cautious while making a comment, replying or writing an email or forum post as such acts decide our credibility over a period of time. That is how we decide to follow some particular person’s forum posts while ignoring posts of other members of the forum. On various discussion forums, we usually try to go through the previous comments of a person and judge their credibility before relying on that person’s comments.
+11.3.3 Social Media Etiquettes
+In the current digital era, we are familiar with different kinds social media and we may have an account on
+Facebook, Google+, Twitter, Instagram, Pinterest, or the YouTube channel. Social media are websites or
+Avoid Spam!!
+On receiving junk email (called Spam), neither reply nor open any attachment in such
+No Permanent Deletion!!
+We can post or comment anything on Internet, and delete it later.
+√ But remember, it cannot be permanently deleted.
+It is recorded in our
+Digital Footprint.
+√ This is how many culprits who spread hate, bully others or engage in criminal activities are traced and apprehended.
+Figure 11.3: Communication etiquettes
+Credible
+Communication Etiquettes
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 234 applications that enable their users to participate in social networking by creating and sharing content with others in the community. These platforms encourage users to share their thoughts and experiences through posts or pictures. In this way users can interact with other online users of those social media apps or channels.
+This is why the impact and outreach of social media has grown exponentially.
+It has begun to shape the outcome of politics, business, culture, education and more. In social media too, there are certain etiquettes we need to follow as shown in
+Figure 11.4.
+(A) Be Secure
+• Choose password wisely: it is vital for social network users. News of breaching or leakage of user data from social network often attracts headlines.
+Users should be wary of such possibilities and must know how to safeguard themselves and their accounts. The minimum one can do is to have strong and frequently changed password.
+Never share personal credentials like username and password with others.
+• Know who you befriend: social networks usually encourage connecting with users (making friends), sometime even those whom we don’t know or have not met. However, we need to be careful while befriending unknown people as their intentions possibly could be malicious and unsafe.
+• Beware of fake information: fake news, messages and posts are common in social networks. As a user, we should be aware of them. With experience, we should be able to figure out whether a news, message or post is genuine or fake. Thus, we should not blindly believe in everything that we come across on such platforms, we should apply our knowledge and experience to validate such news, message or post.
+(B) Be Reliable
+• Think before uploading: we can upload almost anything on social network. However, remember that once uploaded, it is always there in the remote server even if we delete the files. Hence we
+Don’t Meet Up!!
+√ Never arrange to meet an online friend because it may not be safe.
+√ No matter how genuine someone is appearing online, they might be pretending and hiding their real identity.
+Play Safe!!
+Think carefully before sharing personal photos.
+Is having the same password for all your accounts on different websites safe?
+Think and Reflect
+Figure 11.4: Social media etiquettes
+Choose password wisely
+Know who you befriend
+Beware of fake information
+Think before you upload
+Reprint 2026-27
+S ocietal impact 235 need to be cautious while uploading or sending sensitive or confidential files which have a bearing on our privacy.
+11.4 Data Protection
+In this digital age, data or information protection is mainly about the privacy of data stored digitally.
+Elements of data that can cause substantial harm, embarrassment, inconvenience and unfairness to an individual, if breached or compromised, is called sensitive data. Examples of sensitive data include biometric information, health information, financial information, or other personal documents, images or audios or videos. Privacy of sensitive data can be implemented by encryption, authentication, and other secure methods to ensure that such data is accessible only to the authorised user and is for a legitimate purpose.
+All over the world, each country has its own data protection policies (laws). These policies are legal documents that provide guidelines to the user on processing, storage and transmission of sensitive information. The motive behind implementation of these policies is to ensure that sensitive information is appropriately protected from modification or disclosure.
+11.4.1 Intellectual Property Right (IPR)
+When someone owns a house or a motorcycle, we say that the person owns that property. Similarly, if someone comes out with a new idea, this original idea is that person’s intellectual property. Intellectual
+Property refers to the inventions, literary and artistic expressions, designs and symbols, names and logos.
+The ownership of such concepts lies with the creator, or the holder of the intellectual property. This enables the creator or copyright owner to earn recognition or financial benefit by using their creation or invention.
+Intellectual Property is legally protected through copyrights, patents, trademarks,etc.
+(A) Copyright
+Copyright grants legal rights to creators for their original works like writing, photograph, audio recordings, video, sculptures, architectural works, computer software, and other creative works like literary and artistic work.
+Why should we always mention the source from which we got an idea or used resources (text, image, audio, video, etc.) to prepare a project or a writeup?
+Think and Reflect
+Activity 11.3
+Supose someone's email password is ‘tecnnology’ which is weak. Can you suggest a stronger password?
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 236
+Copyrights are automatically granted to creators and authors. Copyright law gives the copyright holder a set of rights that they alone can avail legally. The rights include right to copy (reproduce) a work, right to create derivative works based upon it, right to distribute copies of the work to the public, and right to publicly display or perform the work. It prevents others from copying, using or selling the work. For example, writer Rudyard
+Kipling holds the copyright to his novel, ‘The Jungle
+Book’, which tells the story of Mowgli, the jungle boy.
+It would be an infringement of the writer’s copyright if someone used parts of the novel without permission. To use other’s copyrighted material, one needs to obtain a license from them.
+(B) Patent
+A patent is usually granted for inventions. Unlike copyright, the inventor needs to apply (file) for patenting the invention. When a patent is granted, the owner gets an exclusive right to prevent others from using, selling, or distributing the protected invention. Patent gives full control to the patentee to decide whether or how the invention can be used by others. Thus it encourages inventors to share their scientific or technological findings with others. A patent protects an invention for
+20 years, after which it can be freely used. Recognition and/or financial benefit foster the right environment, and provide motivation for more creativity and innovation.
+(C) Trademark
+Trademark includes any visual symbol, word, name, design, slogan, label, etc., that distinguishes the brand or commercial enterprise, from other brands or commercial enterprises. For example, no company other than Nike can use the Nike brand to sell shoes or clothes. It also prevents others from using a confusingly similar mark, including words or phrases. For example, confusing brands like “Nikke” cannot be used. However, it may be possible to apply for the Nike trademark for unrelated goods like notebooks.
+11.4.2 Violation of IPR
+Violation of intellectual property right may happen in one of the following ways:
+Executing IPR: say for a software
+√ Code of the software will be protected by a copyright
+√ Functional expression of the idea will be protected by a
+√ The name and logo of the software will come under a registered trademark
+Reprint 2026-27
+S ocietal impact 237 (A) Plagiarism
+With the availability of Internet, we can instantly copy or share text, pictures and videos. Presenting someone else’s idea or work as one’s own idea or work is called plagiarism. If we copy some contents from Internet, but do not mention the source or the original creator, then it is considered as an act of plagiarism. Further, if someone derives an idea or a product from an already existing idea or product, but instead presents it a new idea, then also it is plagiarism. It is a serious ethical offense and sometimes considered as an act of fraud.
+Even if we take contents that are open for public use, we should cite the author or source to avoid plagiarism.
+(B) Copyright Infringement
+Copyright infringement is when we use other person’s work without obtaining their permission to use or we have not paid for it, if it is being sold. Suppose we download an image from the Internet and use it in our project. But if the owner of the copyright of the image does not permit its free usage, then using such an image even after giving reference of the image in our project is a violation of copyright. Just because it is on the
+Internet, does not mean that it is free for use. Hence, check the copyright status of writer’s work before using it to avoid plagiarism.
+(C) Trademark Infringement
+Trademark Infringement means unauthorised use of other’s trademark on products and services. An owner of a trademark may commence legal proceedings against someone who infringes its registered trademark.
+11.4.3 Public Access and Open Source Software
+Copyright sometimes put restriction on the usage of the copyrighted works by anyone else. If others are allowed to use and built upon the existing work, it will encourage collaboration and would result in new innovations in the same direction. Licenses provide rules and guidelines for others to use the existing work.
+When authors share their copyrighted works with others under public license, it allows others to use and even modify the content. Open source licenses help others to contribute to existing work or project without seeking special individual permission to do so.
+Beware!!
+√ Plagiarism means using other’s work and not giving adequate citation for use.
+√ Copyright infringement means using another person’s work, without permission or without paying for it, if it is being sold.
+Activity 11.4
+Explore the follouing websites to know about open/public licensing:
+(i) creativecommons.org for cc, and (ii) gnu.org for GNU GPL
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 238
+The GNU General public license (GPL) and the
+Creative Commons (CC) are two popular categories of public licenses. CC is used for all kind of creative works like websites, music, film, literature, etc. CC enables the free distribution of an otherwise copyrighted work.
+It is used when an author wants to give people the right to share, use and build upon a work that they have created. GPL is primarily designed for providing public licence to a software. GNU GPL is another free software license, which provides end users the freedom to run, study, share and modify the software, besides getting regular updates.
+Users or companies who distribute GPL license works may charge a fee for copies or give them free of charge. This distinguishes the GPL license from freeware software licenses like Skype, Adobe Acrobat reader, etc. that allow copying for personal use but prohibit commercial distribution, or proprietary licenses where copying is prohibited by copyright law.
+Many of the proprietary software that we use are sold commercially and their program code (source code) are not shared or distributed. However, there are certain software available freely for anyone and their source code is also open for anyone to access, modify, correct and improve. Free and open source software (FOSS)
+has a large community of users and developers who are contributing continuously towards adding new features or improving the existing features. For example, Linux kernel-based operating systems like Ubuntu and Fedora come under FOSS. Some of the popular FOSS tools are office packages, like Libre Office, browser like Mozilla
+Firefox, etc.
+Software piracy is the unauthorised use or distribution of software. Those who purchase a license for a copy of the software do not have the rights to make additional copies without the permission of the copyright owner. It amounts to copyright infringement regardless of whether it is done for sale, for free distribution or for copier’s own use. One should avoid software piracy. Using a pirated software not only degrades the performance of a computer system, but also affects the software industry which in turn affects the economy of a country.
+Remember
+√ CC licenses are a set of copyright licenses that give the recipients, rights to copy, modify and redistribute the creative material, but giving the authors, the liberty to decide the conditions of licensing.
+√ GPL is the most widely used free software license which grants the recipients, rights to copy, modify and redistribute the software and that the same rights are preserved in all derivative works.
+Reprint 2026-27
+S ocietal impact 239
+11.5 cyber crIme
+Criminal activities or offences carried out in a digital environment can be considered as cyber crime. In such crimes, either the computer itself is the target or the computer is used as a tool to commit a crime. Cyber crimes are carried out against either an individual, or a group, or an organisation or even against a country, with the intent to directly or indirectly cause physical harm, financial loss or mental harassment. A cyber criminal attacks a computer or a network to reach other computers in order to disable or damage data or services.
+Apart from this, a cyber criminal may spread viruses and other malwares in order to steal private and confidential data for blackmailing and extortion. A computer virus is some lines of malicious code that can copy itself and can have detrimental effect on the computers, by destroying data or corrupting the system. Similarly, malware is a software designed to specifically gain unauthorised access to computer systems. The nature of criminal activities are alarmingly increasing day-by-day, with frequent reports of hacking, ransomware attacks, denial-of-service, phishing, email fraud, banking fraud and identity theft.
+11.5.1 Hacking
+Hacking is the act of unauthorised access to a computer, computer network or any digital system. Hackers usually have technical expertise of the hardware and software.
+They look for bugs to exploit and break into the system.
+Hacking, when done with a positive intent, is called ethical hacking. Such ethical hackers are known as white hat hackers. They are specialists in exploring any vulnerability or loophole during testing of the software.
+Thus, they help in improving the security of a software.
+An ethical hacker may exploit a website in order to discover its security loopholes or vulnerabilities. He then reports his findings to the website owner. Thus, ethical hacking is actually preparing the owner against any cyber attack.
+A non-ethical hacker is the one who tries to gain unauthorised access to computers or networks in order to steal sensitive data with the intent to damage or bring down systems. They are called black hat hackers
+Remember!!
+Cyber crime is defined as a crime in which computer is the medium of crime (hacking, phishing, spamming), or the computer is used as a tool to commit crimes (extortion, data breaches,
+Activity 11.5
+How can you unsubscribe from a mail group or block an email sender?
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 240 or crackers. Their primary focus is on security cracking and data stealing. They use their skill for illegal or malicious purposes. Such hackers try to break through system securities for identity theft, monetary gain, to bring a competitor or rival site down, to leak sensitive information, etc.
+11.5.2 Phishing and Fraud Emails
+Phishing is an unlawful activity where fake websites or emails that look original or authentic are presented to the user to fraudulently collect sensitive and personal details, particularly usernames, passwords, banking and credit card details. The most common phishing method is through email spoofing where a fake or forged email address is used and the user presumes it to be from an authentic source. So you might get an email from an address that looks similar to your bank or educational institution, asking for your information, but if you l

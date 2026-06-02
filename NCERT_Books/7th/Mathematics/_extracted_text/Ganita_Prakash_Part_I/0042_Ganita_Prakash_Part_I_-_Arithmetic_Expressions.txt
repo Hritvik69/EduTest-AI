@@ -1,0 +1,328 @@
+Page No. 3
+Figure it out
+1. According to the 2011 Census, the population of the town of
+Chintamani was about 75,000. How much less than one lakh is
+Ans: 75,000 is 25,000 less than 1 lakh.
+2. The estimated population of Chintamani in the year 2024 is
+1,06,000.
+How much more than one lakh is 1,06,000?
+Ans: 1,06,000 is 6,000 more than 1 lakh.
+3. By how much did the population of Chintamani increase from
+2011 to 2024?
+Ans: Increase in population from 2011 to 2024 is 31,000.
+Look at the picture on the right. Somu is 1 metre tall. If each floor is about four times his height, what is the approximate height of the building? (Refer textbook for the picture)
+Ans: 40 m
+Which is taller — The Statue of Unity or this building? How much taller? ____________m.
+Ans: The Statue of Unity is 140 m taller than the building.
+How tall is the Kunchikal waterfall compared to the building? 410 m.
+How many floors should Somu’s building have to be as high as the waterfall? approx 113 floors .
+Page No. 4
+Write each of the numbers given below in words:
+(a) 3,00,600
+Ans: Three lakh six hundred (b) 5,04,085
+Ans: Five lakh four thousand eighty five
+Chapter – 1
+Large Numbers Around Us (c) 27,30,000
+Ans: Twenty seven lakh thirty thousand (d) 70,53,138
+Ans: Seventy lakh fifty three thousand one hundred thirty eight
+Page No. 5
+Write the corresponding number for each of the following:
+(a) One lakh twenty-three thousand four hundred and fifty-six.
+Ans: 1,23,456 (b) Four lakh seven thousand seven hundred and four.
+Ans: 4,07,704 (c) Fifty lakhs five thousand and fifty.
+Ans: 50,05,050 (d) Ten lakhs two hundred and thirty-five.
+Ans: 10,00,235
+Thoughtful thousand (a) Three thousand? 3 times (b) 10,000? 10 times (c) Fifty three thousand? 53 times (d) 90,000? 90 times (e) One Lakh? 100 times (f) 1,53,000 ? 153 times (g) How many thousands are required to make one lakh? 100
+Tedious tens (a) Five hundred? 50 times (b) 780? 78 times (c) 1000? 100 times (d) 3700? 370 times (e) 10,000? 1000 times (f) One lakh? 10,000 times (g) 4350 ? 435 times
+Handy Hundreds (a) Four hundred? 4 times (b) 3,700? 37 times (c) 10,000? 100 times (d) Fifty three thousand? 530 times (e) 90,000? 900 times (f) 97,600? 976 times (g) 1,00,000? 1000 times (h) 58200 ? 582 times (i) How many hundreds are required to make ten thousand ? 100 (j) How many hundreds are required to make one lakh? 1000 (k) Handy Hundreds says, “There are some numbers which Tedious
+Tens and Thoughtful Thousands can’t show but I can”. Is this statement true? Think and explore.
+Page No. 6
+Find a different way to get 5072 and write an expression for the same.
+Buttons 5072
++10,00,000
++1,00,000
++1,000 5 4 1
++100 10 40
++10 7 7 6
++1 2 2 12
+Figure it out
+1. For each number given below, write expressions for at least two different ways to obtain the number through button clicks. Think like Chitti and be creative.
+Ans: Some ways are given below. Try more ways.
+(a) 8300
+Ans: (8 × 1000) + (3 × 100)
+or, (5 × 1000) + (33 × 100)
+(b) 40629
+Ans: (40 × 1000) + (6 × 100) + (2 × 10) + (9 × 1)
+or, (30 × 1000) + (106 × 100) +(29 × 1)
+(c) 56354
+Ans: (56 × 1000) + (3 × 100) + (5 × 10) + (4 × 1)
+or, (46 × 1000) + (103 × 100) + (54 × 1)
+(d) 66666
+Ans: (66 × 1000) + (6 × 100) + (66 × 1)
+or, (6 × 10000) + (6 × 1000) + (6 × 100) + (6 × 10) + (6 × 1)
+(e) 367813 (3 × 100000) + (6 × 10000) + (7 × 1000) ) + (8 × 100) + (1 × 10) + (3 × 1)
+or, (36 × 10000) + (78 × 1000) + (13 × 1)
+Page No. 7
+Creative Chitti has some questions for you — (a) You have to make exactly 30 button presses. What is the largest 3- digit number you can make? What is the smallest 3-digit number you can make?
+Ans: 993 is the largest 3-digit number that can be made using 30 button presses.
+102 is the smallest 3-digit number that can be made using 30 button presses.
+(b) 997 can be made using 25 clicks. Can you make 997 with a different number of clicks?
+Ans: 997 can also be made as – (8 × 100) + (19 × 10) + (7 × 1)
+Number of clicks = 8 + 19 + 7
+How can we get the numbers (a) 5072, (b) 8300, using as few button clicks as possible?
+(a) 5072 = (5 × 1000) + (7 × 10) + (2 × 1)
+Number of clicks = 14 (b) 8300 = (8 × 1000) + (3 × 100)
+Number of clicks = 11
+Figure it out
+1. For the numbers in the previous exercise, find out how to get each number by making the smallest number of button clicks and write the expression.
+(a) 8300 = (8 × 1000) + (3 × 100)
+Number of clicks = 11 (b) 40629 = (4 × 10000) + (6 × 100) + (2 × 10) + (9 × 1)
+Number of clicks = 4 + 6 + 2 + 9 = 21 (c) 56354 = (5 × 10000) + (6 × 1000) + (3 × 100) + (5 × 10) + (4 × 1)
+Number of clicks = 5 + 6 + 3 + 5 + 4 = 23 (d) 66666 = (6 × 10000) + (6 × 1000) + (6 × 100) + (6 × 10) + (6 × 1)
+Number of clicks = 6 + 6 + 6 + 6 + 6 = 30 (f) 367813 = (3 × 100000) + (6 × 10000) + (7 × 1000) + (8 × 100) + (1 × 10) + (3 × 1)
+Number of clicks = 3 + 6 + 7 + 8 + 1 + 3 = 28
+2. Do you see any connection between each number and the corresponding smallest number of button clicks?
+Ans: The smallest number of buttons click for each number is the sum of its digit.
+Page No. 8
+How many zeros does a thousand lakh have? 8 zeros
+How many zeros does a hundred thousand have? 5 zeros
+Page No. 9
+Figure it out
+1. Read the numbers and write their number names in both the Indian and American systems:
+Sl. No. Indian System American System (a) 4050678 40,50,678
+Forty Lakh Fifty Thousand Six
+Hundred Seventy-Eight
+4,050,678
+Four Millions Fifty
+Thousand Six Hundred
+Seventy-Eight (b) 48121620 4,81,21,620
+Four Crore Eighty-One Lakh
+Twenty-One Thousand Six
+Hundred Twenty
+48,121,620
+Forty Eight Millions One
+Hundred Twenty One
+Thousand Six Hundred (c) 20022002 2,00,22,002
+Two Crore Twenty Two Thousand
+20,022,002
+Twenty millions twenty two thousand and two (d) 246813579 24,68,13,579
+Twenty Four Crore Sixty Eight
+Lakh Thirteen Thousand Five
+Hundred Seventy Nine
+246,813,579
+Two Hundred Forty Six
+Millions Eight Hundred
+Thirteen Thousand Five
+Hundred Seventy Nine (e) 345000543 34,50,00,543 345,000,543
+Thirty four crore fifty lakh five hundred forty three
+Three hundred forty five millions five hundred forty three (f) 1020304050 1,02,03,04,050
+One Arab two crore three lakh four thousand fifty
+1,020,304,050
+One billion twenty millions three hundred four thousand fifty
+2. Write the following numbers in Indian place value notation:
+(a) One crore one lakh one thousand Ten
+Ans: 1,01,01,010 (b) One billion one million one thousand one
+Ans: 1,00,10,01,001 (c) Ten crore twenty lakh thirty thousand forty
+Ans: 10,20,30,040 (d) Nine billion eighty million seven hundred thousand six hundred
+Ans: 9,08,07,00,600
+3. Compare and write ‘<’, ‘>’ or ‘=’:
+(a) 30 thousand __<__ 3 lakhs (b) 500 lakhs ___>___ 5 million (c) 800 thousand __<__ 8 million (d) 640 crore ___<___ 60 billion
+Page No. 10
+Think and share situations where it is appropriate to (a) round up, (b) round down, (c) either rounding up or rounding down is okay and (d) when exact numbers are needed.
+(a) Buying food/fruits for a group.
+(b) Estimating time remaining to leave for the school (catching the school bus).
+(c) Distance estimation between places, especially far off places.
+(d) Handling money in banks.
+Find more such situations.
+Page No. 11
+Similarly, write the five nearest neighbours for these numbers:
+(a) 3,87,69,957
+Nearest thousand 3,87,70,000
+Nearest ten thousand 3,87,70,000
+Nearest lakh 3,88,00,000
+Nearest ten lakh 3,90,00,000
+Nearest crore 4,00,00,000 (b) 29,05,32,481
+Nearest thousand 29,05,32,000
+Nearest ten thousand 29,05,30,000
+Nearest lakh 29,05,00,000
+Nearest ten lakh 29,10,00,000
+Nearest crore 29,00,00,000
+Page No. 13
+From the information given in the table answer the following questions by approximation: (Refer table on P. 12–13
+1. What is your general observation about this data? Share with the
+Ans: One of the observations is –
+Most cities shown in the table have seen a significant rise in population from 2001 to 2011.
+Think of more observations.
+2. What is an appropriate title for the above table?
+Ans: Population of some Indian cities in 2001 and 2011.
+3. How much is the population of Pune in 2011? Approximately, by how much has it increased compared to 2001?
+Ans: Population of Pune in 2011 is 31,15,431.
+The population of Pune has approximately increased by 6 lakh.
+4. Which city’s population increased the most between 2001 and -2011?
+Ans: Bengaluru has shown maximum increase in population which is
+41,24,644.
+5. Are there cities whose population has almost doubled? Which are
+Ans: Yes, they are Bengaluru, Hyderabad, Surat and Vadodara
+6. By what number should we multiply Patna’s population to get a number/population close to that of Mumbai?
+Ans: We need to multiply Patna’s population by 7.39 to get a number close to the population of Mumbai.
+Page No. 14
+Using the meaning of multiplication and division, can you explain why multiplying by 5 is the same as dividing by 2 and multiplying by 10?
+Ans: 10 ÷ 2 is the same as 5.
+Figure it out
+1. Find quick ways to calculate these products:
+(a) 2 × 1768 × 50
+= 2 × 50 × 1768
+= 100 × 1768 (b) 72 × 125 [Hint: 125 = 1000
+= 72 × 1000
+8 × 1000 = 9 × 1000 (c) 125 × 40 × 8 × 25
+= 125 × 8 × 40 × 25
+= 1000 × 1000
+2. Calculate these products quickly.
+(a) 25 × 12 = _____________
+25 × 12 = 100
+= 100 × 12
+= 100 × 3 (b) 25 × 240 = _____________
+25 × 240 = 100
+= 100 × 240
+= 100 × 60 (c) 250 × 120 = _____________
+250 × 120 = 1000
+= 1000 × 120
+= 1000 × 30 (d) 2500 × 12 =_____________
+= 2500 × 12 = 10,000
+= 10,000 × 12
+= 10,000 × 3 (e) __1200____×_1,00,000_____= 120000000
+Page No. 15
+Observe the number of digits in the two numbers being multiplied and their product in each case. Is there any connection between the numbers being multiplied and the number of digits in their product?
+The maximum digits in their product will be the sum of the digits of the two numbers.
+The minimum digit in their product will be one less than their sum.
+Roxie says that the product of two 2-digit numbers can only be a 3- or a 4-digit number. Is she correct?
+Ans: Yes, Roxie is correct.
+Should we try all possible multiplications with 2-digit numbers to tell whether Roxie’s claim is true? Or is there a better way to find
+Ans: She can just check the minimum and maximum number of digits possible.
+Can multiplying a 3-digit number with another 3-digit number give a
+4-digit number?
+Ans: No.
+Can multiplying a 4-digit number with a 2-digit number give a 5-digit
+Ans: Yes.
+Observe the multiplication statements below. Do you notice any patterns? See if this pattern extends for other numbers as well.
+Page No. 16
+5-digit × 5-digit = 9 or 10
+8-digit × 3-digit = 10 or 11
+12-digit × 13-digit = 24 or 25
+Page No. 19
+Find out if you can reach the Sun in a lifetime, if you travel 1000 kilometers every day. (You had written down the distance between the Earth and the Sun in a previous exercise.)
+Ans: We cannot reach the sun in a lifetime because it takes approx. 403
+Make necessary reasonable assumptions and answer the questions (a) If a single sheet of paper weighs 5 grams, could you lift one lakh sheets of paper together at the same time?
+Ans: Weight of one lakh (1,00,000) sheets = 500 kg.
+Since a person cannot lift 500 kg so, we cannot lift one lakh sheets of paper.
+(b) If 250 babies are born every minute across the world, will a million babies be born in a day?
+Ans: Babies born in one day = 3,60,000 babies.
+3,60,000 is less than one million (10 lakh)
+Hence, a million babies cannot born in a day.
+(c) Can you count 1 million coins in a day? Assume you can count 1 coin every second.
+Ans: No. Because, Coins counted per day = 86,400
+Figure it out
+Page No. 19
+1. Using all digits from 0 – 9 exactly once (the first digit cannot be 0) to create a 10-digit number, write the — (a) Largest multiple of 5
+Ans: largest multiple of 5 = 9876543210 (b) Smallest even number
+Ans: The smallest such even number = 1023456798
+2. The number 10,30,285 in words is ten lakhs thirty thousand two hundred eighty-five, which has 42 letters. Give a 7-digit number name which has the maximum number of letters.
+Ans: One such number is 77,77,777, which has 60 letters.
+3. Write a 9-digit number where exchanging any two digits results in a bigger number. How many such numbers exist?
+Ans: One such number is 987654312.
+Exchanging last two digits, we get 987654321, which is bigger number than the initial number.
+Try more!
+4. Strike out 10 digits from the number 12345123451234512345 so that the remaining number is as large as possible.
+Ans: 5534512345
+6. Suppose you write down all the numbers 1, 2, 3, 4, …, 9, 10, 11, and so on. The tenth digit you write is ‘1’ and the eleventh digit is ‘0’, as part of the number 10. (This question can be solved in different ways. One of the way is —)
+(a) What would the 1000th digit be? At which number would it
+Ans: Digits from 1 to 9 = 9 digits
+Digits from 10 to 99 = 99-10+1 = 90 numbers × 2 = 180 digits
+Total digits from 1 to 99 = 9 + 180 = 189 digits
+Remaining digits to reach 1000th digit = 1000 – 189 = 811
+Number of 3-digit numbers = 811
+3 = 270 full numbers + 1 digit left
+The first 3-digit number is 100
+270th 3-digit number is 100 + 270 – 1 = 369
+The next number is 370.
+The first digit of 370, which is 3, is the 1000th digit.
+(b) What number would contain the millionth digit?
+Ans: The millionth digit occurs in the number 185184+1=1,85,185.
+(c) When would you have written the digit ‘5’ for the 5000th time?
+Ans: 13995
+7. A calculator has only ‘+10,000’ and ‘+100’ buttons. Write an expression describing the number of button clicks to be made for the following numbers:
+(a) 20,800
+Ans: 20,800 = (2 × 10,000) + (8 × 100)
+Total clicks = 2 + 8 = 10 button clicks.
+(b) 92,100
+Ans: 92,100 = (9 × 10,000) + (21 × 100)
+Total clicks = 9 + 21 = 30 button clicks.
+(c) 1,20,500
+Ans: 1,20,500 = (12 × 10,000) + (5 × 100)
+Total clicks = 12 + 5 = 17 button clicks.
+(d) 65,30,000
+Ans: 65,30,000 = (653 × 10,000)
+Total clicks = 653 button clicks.
+(e) 70,25,700
+Ans: 70,25,700 = (702 × 10,000) + (57 × 100)
+Total clicks = 759 button clicks.
+8. How many lakhs make a billion?
+Ans: 10,000 lakh make a billion.
+9. You are given two sets of number cards numbered from 1 – 9. Place a number card in each box below to get the (a) largest possible sum (b)
+smallest possible difference of two resulting numbers.
+(a) Ans:
+Sum = 1,00,54,320
+9 9 8 8 7 7 6
+6 5 5 4 4 (b) Ans:
+Difference = 10,22,447
+10. You are given some number cards; 4000, 13000, 300, 70000, 150000, 20,
+5. Using the cards get as close as you can to the numbers below using any operation you want. Each card can be used only once for making a particular number.
+(a) 1,10,000: 4000 × (20 + 5) + 13000 = 1,13,000 (b) 2,00,000:
+Ans: closest estimate = 1,50,000 + 70,000 – (4000 × 5) = 2,00,000.
+(c) 5,80,000:
+Ans: closest estimate = (1,50,000 × 4) – (4000 × 5) = 5,80,000.
+(d) 12,45,000:
+closest estimate = (70,000 × 20) – 1,50,000 – 4,000 – (300 × 5) =
+12,44,500.
+(e) 20,90,800:
+Ans: closest estimate = (1,50,000 × 14) + 4,000 – 13,000 = 20,91,000.
+11. Find out how many coins should be stacked to match the height of the
+Statue of Unity. Assume each coin is 1 mm thick.
+Height of each coin = 1 mm
+Height of Statue of Unity = 180 m = 180 × 100 × 10 mm = 1, 80,000 mm.
+Number of coins to be stacked = 1,80,000 mm ÷ 1 mm = 1,80,000 coins.
+12. Grey-headed Albatrosses have a roughly 7-feet wide wingspan. They are known to migrate across several oceans. Albatrosses can cover about 900 – 1000 km in a day. One of the longest single trips recorded is about 12,000 km. How many days would such a trip take to cross an ocean approximately?
+1 1 2 2 3 3 4
+9 9 8 8 7
+Estimated number of days if it flies 900 km/day = 12,000 ÷ 900
+= 13.3 days
+Estimated number of days if it flies 1000 km/day = 12,000 ÷ 1000
+= 12 days
+Hence it would take approximately 12 to 14 days for a grey headed albatross to complete a 12,000 km trip to cross an ocean.
+13. A bar-tailed godwit holds the record for the longest recorded non- stop flight. It travelled 13,560 km from Alaska to Australia without stopping. Its journey started on 13 October 2022 and continued for about 11 days. Find out the approximate distance it covered every day. Find out the approximate distance it covered every hour.
+Distance covered per day = 13,560 km ÷ 11 days = 1232.73 km or 1233 km.
+Distance covered per hour = 1233 ÷ 24 = 51.36 km or 51 km.
+14. Bald eagles are known to fly as high as 4500 – 6000 m above the ground level. Mount Everest is about 8850 m high. Aeroplanes can fly as high as 10,000 – 12,800 m. How many times bigger are these heights compared to Somu’s building?
+Height of Somu’s building = 40 m (i) Bald eagles’ flight height = 4500 – 6000 m
+Lower estimate = 4500 ÷ 40 = 112.5 times
+Upper estimate = 6000 ÷ 40 = 150 times
+Bald eagles fly about 112 to 150 times higher than Somu’s building.
+(ii) Mount Everest height = 8850 m
+Now, 8850 ÷ 40 = 221.25
+Mount Everest is approximately 221 times taller than Somu’s building.
+(iii) Aeroplanes flight height = 10,000 – 12,000 m
+Lower estimate = 10,000 ÷ 40 = 250
+Upper estimate = 12800 ÷ 40 = 320.
+Airplanes fly about 250 to 320 times as high as Somu’s building.
+2.1 Simple Expressions
+You may have seen mathematical phrases like 13 + 2, 20 – 4, 12 × 5, and
+18 ÷ 3. Such phrases are called arithmetic expressions.
+Every arithmetic expression has a value which is the number it evaluates to. For example, the value of the expression 13 + 2 is 15. This expression can be read as ‘13 plus 2’ or ‘the sum of 13 and 2’.
+We use the equality sign ‘=’ to denote the relationship between an arithmetic expression and its value. For example:
+13 + 2 = 15.
+Example 1: Mallika spends ₹25 every day for lunch at school. Write the expression for the total amount she spends on lunch in a week from Monday to Friday.
+The expression for the total amount is 5 × 25.
+5 × 25 is “5 times 25” or “the product of 5 and 25”.
+Different expressions can have the same value. Here are multiple ways to express the number 12, using two numbers and any of the four operations +, – , × and ÷:
+10 + 2, 15 – 3, 3 × 4, 24 ÷ 2.
+Choose your favourite number and

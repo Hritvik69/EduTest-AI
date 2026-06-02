@@ -1,0 +1,33 @@
+DETERMINANTS 103
+Historical Note
+The Chinese method of representing the coefficients of the unknowns of several linear equations by using rods on a calculating board naturally led to the discovery of simple method of elimination. The arrangement of rods was precisely that of the numbers in a determinant. The Chinese, therefore, early developed the idea of subtracting columns and rows as in simplification of a determinant
+Mikami, China, pp 30, 93.
+Seki Kowa, the greatest of the Japanese Mathematicians of seventeenth century in his work ‘Kai Fukudai no Ho’ in 1683 showed that he had the idea of determinants and of their expansion. But he used this device only in eliminating a quantity from two equations and not directly in the solution of a set of simultaneous linear equations. T. Hayashi, “The Fakudoi and Determinants in Japanese
+Mathematics,” in the proc. of the Tokyo Math. Soc., V.
+Vendermonde was the first to recognise determinants as independent functions.
+He may be called the formal founder. Laplace (1772), gave general method of expanding a determinant in terms of its complementary minors. In 1773 Lagrange treated determinants of the second and third orders and used them for purpose other than the solution of equations. In 1801, Gauss used determinants in his theory of numbers.
+The next great contributor was Jacques - Philippe - Marie Binet, (1812) who stated the theorem relating to the product of two matrices of m-columns and n- rows, which for the special case of m = n reduces to the multiplication theorem.
+Also on the same day, Cauchy (1812) presented one on the same subject. He used the word ‘determinant’ in its present sense. He gave the proof of multiplication theorem more satisfactory than Binet’s.
+The greatest contributor to the theory was Carl Gustav Jacob Jacobi, after this the word determinant received its final acceptance.
+Reprint 2026-27
+MATHEMATICS 104 vThe whole of science is nothing more than a refinement of everyday thinking.” — ALBERT EINSTEIN v
+5.1 Introduction
+This chapter is essentially a continuation of our study of differentiation of functions in Class XI. We had learnt to differentiate certain functions like polynomial functions and trigonometric functions. In this chapter, we introduce the very important concepts of continuity, differentiability and relations between them. We will also learn differentiation of inverse trigonometric functions. Further, we introduce a new class of functions called exponential and logarithmic functions. These functions lead to powerful techniques of differentiation. We illustrate certain geometrically obvious conditions through differential calculus. In the process, we will learn some fundamental theorems in this area.
+5.2 Continuity
+We start the section with two informal examples to get a feel of continuity. Consider the function ( ) 2, if 0
+This function is of course defined at every point of the real line. Graph of this function is given in the Fig 5.1. One can deduce from the graph that the value of the function at nearby points on x-axis remain close to each other except at x = 0. At the points near and to the left of 0, i.e., at points like – 0.1, – 0.01, – 0.001, the value of the function is 1. At the points near and to the right of 0, i.e., at points like 0.1, 0.01,
+Chapter 5
+CONTINUITY AND
+DIFFERENTIABILITY
+Sir Issac Newton (1642-1727)
+Reprint 2026-27
+CONTINUITY AND DIFFERENTIABILITY 105
+0.001, the value of the function is 2. Using the language of left and right hand limits, we may say that the left (respectively right) hand limit of f at 0 is 1 (respectively 2). In particular the left and right hand limits do not coincide. We also observe that the value of the function at x = 0 concides with the left hand limit. Note that when we try to draw the graph, we cannot draw it in one stroke, i.e., without lifting pen from the plane of the paper, we can not draw the graph of this function. In fact, we need to lift the pen when we come to 0 from left. This is one instance of function being not continuous at x = 0.
+Now, consider the function defined as
+This function is also defined at every point. Left and the right hand limits at x = 0 are both equal to 1. But the value of the function at x = 0 equals 2 which does not coincide with the common value of the left and right hand limits. Again, we note that we cannot draw the graph of the function without lifting the pen. This is yet another instance of a function being not continuous at x = 0.
+Naively, we may say that a function is continuous at a fixed point if we can draw the graph of the function around that point without lifting the pen from the plane of the paper.
+Mathematically, it may be phrased precisely as follows:
+Definition 1 Suppose f is a real function on a subset of the real numbers and let c be a point in the domain of f. Then f is continuous at c if lim ( ) ( )
+x c f x f c
+More elaborately, if the left hand limit, right hand limit and the value of the function at x = c exist and equal to each other, then f is said to be continuous at x = c. Recall that if the right hand and left hand limits at x = c coincide, then we say that the common value is the limit of the function at x = c. Hence we may also rephrase the definition of continuity as follows: a function is continuous at x = c if the function is defined at x = c and if the value of the function at x = c equals the limit of the function at x = c. If f is not continuous at c, we say f is discontinuous at c and c is called a point of discontinuity of f.
+Reprint 2026-27

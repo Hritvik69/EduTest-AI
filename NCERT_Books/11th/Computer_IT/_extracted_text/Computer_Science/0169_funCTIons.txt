@@ -1,0 +1,30 @@
+F unctions 157
+Enter Length of the rectangle: 45
+Enter Breadth of the rectangle: 66
+Area is: 2970.0
+Perimeter is: 222.0
+Multiple values in
+Python are returned through a tuple. (Ch. 10)
+#Program 7-13
+#Function to simulate a traffic light
+#It is required to make 2 user defined functions trafficLight() and
+#light().
+def trafficLight():
+signal = input("Enter the colour of the traffic light: ")
+if (signal not in ("RED","YELLOW","GREEN")):
+print("Please enter a valid Traffic Light colour in
+CAPITALS")
+value = light(signal) #function call to light()
+if (value == 0):
+print("STOP, Your Life is Precious.")
+elif (value == 1):
+print ("PLEASE GO SLOW.")
+Program 7-13 Write a program that simulates a traffic light . The program should consist of the following:
+1. A user defined function trafficLight( ) that accepts input from the user, displays an error message if the user enters anything other than RED,
+YELLOW, and GREEN. Function light() is called and following is displayed depending upon return value from light().
+a) “STOP, your life is precious” if the value returned by light() is 0.
+b) “Please WAIT, till the light is Green “ if the value returned by light() is 1 c) “GO! Thank you for being patient” if the value returned by light() is 2.
+2. A user defined function light() that accepts a string as input and returns 0 when the input is RED,
+1 when the input is YELLOW and 2 when the input is GREEN. The input should be passed as an argument.
+3. Display “ SPEED THRILLS BUT KILLS” after the function trafficLight( ) is executed.
+Reprint 2026-27

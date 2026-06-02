@@ -1,0 +1,168 @@
+199 Alcohols, Phenols and Ethers
+The bond angle in alcohols is slightly less than the tetrahedral angle (109°-28¢). It is due to the repulsion between the unshared electron pairs of oxygen. In phenols, the –OH group is attached to sp2 hybridised carbon of an aromatic ring. The carbon– oxygen bond length (136 pm) in phenol is slightly less than that in methanol. This is due to (i) partial double bond character on account of the conjugation of unshared electron pair of oxygen with the aromatic ring (Section 7.4.4) and (ii) sp2 hybridised state of carbon to which oxygen is attached.
+In ethers, the four electron pairs, i.e., the two bond pairs and two lone pairs of electrons on oxygen are arranged approximately in a tetrahedral arrangement. The bond angle is slightly greater than the tetrahedral angle due to the repulsive interaction between the two bulky (–R) groups. The C–O bond length (141 pm) is almost the same as in alcohols.
+7.4.1 Preparation of Alcohols
+Alcohols are prepared by the following methods:
+1. From alkenes (i) By acid catalysed hydration: Alkenes react with water in the presence of acid as catalyst to form alcohols. In case of unsymmetrical alkenes, the addition reaction takes place in accordance with Markovnikov’s rule.
+Mechanism
+The mechanism of the reaction involves the following three steps:
+Step 1: Protonation of alkene to form carbocation by electrophilic attack of H3O+.
+H2O + H+ ® H3O+
+Step 2: Nucleophilic attack of water on carbocation.
+Step 3: Deprotonation to form an alcohol.
+7.4 7.4 7.4 7.4 7.4 Alcohols and Alcohols and Alcohols and Alcohols and Alcohols and
+Phenols Phenols Phenols Phenols Phenols
+Reprint 2026-27
+200 Chemistry (ii) By hydroboration–oxidation: Diborane (BH3)2 reacts with alkenes to give trialkyl boranes as addition product. This is oxidised to alcohol by hydrogen peroxide in the presence of aqueous sodium hydroxide.
+The addition of borane to the double bond takes place in such a manner that the boron atom gets attached to the sp2 carbon carrying greater number of hydrogen atoms. The alcohol so formed looks as if it has been formed by the addition of water to the alkene in a way opposite to the Markovnikov’s rule. In this reaction, alcohol is obtained in excellent yield.
+2. From carbonyl compounds (i) By reduction of aldehydes and ketones: Aldehydes and ketones are reduced to the corresponding alcohols by addition of hydrogen in the presence of catalysts (catalytic hydrogenation).
+The usual catalyst is a finely divided metal such as platinum, palladium or nickel. It is also prepared by treating aldehydes and ketones with sodium borohydride (NaBH4) or lithium aluminium hydride (LiAlH4). Aldehydes yield primary alcohols whereas ketones give secondary alcohols.
+(ii) By reduction of carboxylic acids and esters: Carboxylic acids are reduced to primary alcohols in excellent yields by lithium aluminium hydride, a strong reducing agent.
+(i) LiAlH4 (ii) H O 2
+RCH OH 2
+However, LiAlH4 is an expensive reagent, and therefore, used for preparing special chemicals only. Commercially, acids are reduced to alcohols by converting them to the esters (Section
+7.4.4), followed by their reduction using hydrogen in the presence of catalyst (catalytic hydrogenation).
+Hydroboration - oxidation was first reported by H.C.
+Brown in 1959. For his studies on boron containing organic compounds, Brown shared the 1979 Nobel prize in Chemistry with G. Wittig.
+The numbers in front of the reagents along the arrow indicate that the second reagent is added only when the reaction with first is complete.
+Reprint 2026-27
+201 Alcohols, Phenols and Ethers
+3. From Grignard reagents
+Alcohols are produced by the reaction of Grignard reagents (Unit 6,
+Class XII) with aldehydes and ketones.
+The first step of the reaction is the nucleophilic addition of Grignard reagent to the carbonyl group to form an adduct. Hydrolysis of the adduct yields an alcohol.
+The overall reactions using different aldehydes and ketones are as follows:
+You will notice that the reaction produces a primary alcohol with methanal, a secondary alcohol with other aldehydes and tertiary alcohol with ketones.
+Give the structures and IUPAC names of the products expected from the following reactions:
+(a) Catalytic reduction of butanal.
+(b) Hydration of propene in the presence of dilute sulphuric acid.
+(c) Reaction of propanone with methylmagnesium bromide followed by hydrolysis.
+Example 7.2 Example 7.2 Example 7.2 Example 7.2 Example 7.2
+Solution Solution Solution Solution Solution(a) (b)
+Phenol, also known as carbolic acid, was first isolated in the early nineteenth century from coal tar. Nowadays, phenol is commercially produced synthetically. In the laboratory, phenols are prepared from benzene derivatives by any of the following methods:
+7.4.2 Preparation of Phenols
+The reaction of
+Grignard reagents with methanal produces a primary alcohol, with other aldehydes, secondary alcohols and with ketones, tertiary alcohols.
+Reprint 2026-27
+202 Chemistry
+1. From haloarenes
+Chlorobenzene is fused with NaOH at 623K and 320 atmospheric pressure. Phenol is obtained by acidification of sodium phenoxide so produced (Unit 6, Class XII).
+2. From benzenesulphonic acid
+Benzene is sulphonated with oleum and benzene sulphonic acid so formed is converted to sodium phenoxide on heating with molten sodium hydroxide. Acidification of the sodium salt gives phenol.
+3. From diazonium salts
+A diazonium salt is formed by treating an aromatic primary amine with nitrous acid (NaNO2 + HCl) at 273-278 K. Diazonium salts are hydrolysed to phenols by warming with water or by treating with dilute acids (Unit 9, Class XII).
+2 N + HCl 2 +
+Benzene diazonium chloride
+4. From cumene
+Phenol is manufactured from the hydrocarbon, cumene. Cumene (isopropylbenzene) is oxidised in the presence of air to cumene hydroperoxide. It is converted to phenol and acetone by treating it with dilute acid. Acetone, a by-product of this reaction, is also obtained in large quantities by this method.
+Most of the worldwide production of phenol is from cumene.
+Reprint 2026-27
+203 Alcohols, Phenols and Ethers
+Alcohols and phenols consist of two parts, an alkyl/aryl group and a hydroxyl group. The properties of alcohols and phenols are chiefly due to the hydroxyl group. The nature of alkyl and aryl groups simply modify these properties.
+Boiling Points
+The boiling points of alcohols and phenols increase with increase in the number of carbon atoms (increase in van der Waals forces). In alcohols, the boiling points decrease with increase of branching in carbon chain (because of decrease in van der Waals forces with decrease in surface
+The –OH group in alcohols and phenols is involved in intermolecular hydrogen bonding as shown below:
+It is interesting to note that boiling points of alcohols and phenols are higher in comparison to other classes of compounds, namely hydrocarbons, ethers, haloalkanes and haloarenes of comparable molecular masses. For example, ethanol and propane have comparable molecular masses but their boiling points differ widely. The boiling point of methoxymethane is intermediate of the two boiling points.
+7.4.3 Physical
+Properties
+7.4 Show how are the following alcohols prepared by the reaction of a suitable
+Grignard reagent on methanal ?
+7.5 Write structures of the products of the following reactions:
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+Reprint 2026-27
+204 Chemistry
+The high boiling points of alcohols are mainly due to the presence of intermolecular hydrogen bonding in them which is lacking in ethers and hydrocarbons.
+Solubility
+Solubility of alcohols and phenols in water is due to their ability to form hydrogen bonds with water molecules as shown. The solubility decreases with increase in size of alkyl/aryl (hydro- phobic) groups. Several of the lower molecular mass alcohols are miscible with water in all proportions.
+Arrange the following sets of compounds in order of their increasing boiling points:
+(a) Pentan-1-ol, butan-1-ol, butan-2-ol, ethanol, propan-1-ol, methanol.
+(b) Pentan-1-ol, n-butane, pentanal, ethoxyethane.
+(a) Methanol, ethanol, propan-1-ol, butan-2-ol, butan-1-ol, pentan-1-ol.
+(b) n-Butane, ethoxyethane, pentanal and pentan-1-ol.
+Example 7.3 Example 7.3 Example 7.3 Example 7.3 Example 7.3
+Solution Solution Solution Solution Solution
+Alcohols are versatile compounds. They react both as nucleophiles and electrophiles. The bond between O–H is broken when alcohols react as nucleophiles.
+7.4.4 Chemical
+Reactions
+Alcohols as nucleophiles (i)
+(ii) The bond between C–O is broken when they react as electrophiles. Protonated alcohols react in this manner.
+Protonated alcohols as electrophiles
+Based on the cleavage of O–H and C–O bonds, the reactions of alcohols and phenols may be divided into two groups:
+Reprint 2026-27
+205 Alcohols, Phenols and Ethers (a) Reactions involving cleavage of O–H bond
+1. Acidity of alcohols and phenols (i) Reaction with metals: Alcohols and phenols react with active metals such as sodium, potassium and aluminium to yield corresponding alkoxides/phenoxides and hydrogen.
+In addition to this, phenols react with aqueous sodium hydroxide to form sodium phenoxides.
+Sodium phenoxide
+The above reactions show that alcohols and phenols are acidic in nature. In fact, alcohols and phenols are Brönsted acids i.e., they can donate a proton to a stronger base (B:).
+(ii) Acidity of alcohols: The acidic character of alcohols is due to the polar nature of O–H bond. An electron-releasing group (–CH3, –C2H5) increases electron density on oxygen tending to decrease the polarity of O-H bond. This decreases the acid strength. For this reason, the acid strength of alcohols decreases in the following order:
+Reprint 2026-27
+206 Chemistry
+Alcohols are, however, weaker acids than water. This can be illustrated by the reaction of water with an alkoxide.
+This reaction shows that water is a better proton donor (i.e., stronger acid) than alcohol. Also, in the above reaction, we note that an alkoxide ion is a better proton acceptor than hydroxide ion, which suggests that alkoxides are stronger bases (sodium ethoxide is a stronger base than sodium hydroxide).
+Alcohols act as Bronsted bases as well. It is due to the presence of unshared electron pairs on oxygen, which makes them proton acceptors.
+(iii) Acidity of phenols: The reactions of phenol with metals (e.g., sodium, aluminium) and sodium hydroxide indicate its acidic nature. The hydroxyl group, in phenol is directly attached to the sp2 hybridised carbon of benzene ring which acts as an electron withdrawing group. Due to this, the charge distribution in phenol molecule, as depicted in its resonance structures, causes the oxygen of –OH group to be positive.
+The reaction of phenol with aqueous sodium hydroxide indicates that phenols are stronger acids than alcohols and water.
+Let us examine how a compound in which hydroxyl group attached to an aromatic ring is more acidic than the one in which hydroxyl group is attached to an alkyl group.
+The ionisation of an alcohol and a phenol takes place as follows:
+Due to the higher electronegativity of sp2 hybridised carbon of phenol to which –OH is attached, electron density decreases on oxygen. This increases the polarity of O–H bond and results in an increase in ionisation of phenols than that of alcohols.
+Now let us examine the stabilities of alkoxide and phenoxide ions. In alkoxide ion, the negative charge is localised on oxygen while in phenoxide ion, the charge is delocalised.
+The delocalisation of negative charge (structures I-V) makes
+Reprint 2026-27
+207 Alcohols, Phenols and Ethers phenoxide ion more stable and favours the ionisation of phenol.
+Although there is also charge delocalisation in phenol, its resonance structures have charge separation due to which the phenol molecule is less stable than phenoxide ion.
+o-Nitrophenol o–O2N–C6H4–OH 7.2 m-Nitrophenol m–O2N–C6H4–OH 8.3 p-Nitrophenol p-O2N–C6H4–OH 7.1
+Phenol C6H5–OH 10.0 o-Cresol o-CH3–C6H4–OH 10.2 m-Cresol m-CH3C6H4–OH 10.1 p-Cresol p-CH3–C6H4–OH 10.2
+Ethanol C2H5OH 15.9
+Table 7.3: pKa Values of some Phenols and Ethanol
+Compound Formula pKa
+From the above data, you will note that phenol is million times more acidic than ethanol.
+Arrange the following compounds in increasing order of their acid strength:
+Propan-1-ol, 2,4,6-trinitrophenol, 3-nitrophenol, 3,5-dinitrophenol, phenol, 4-methylphenol.
+Propan-1-ol, 4-methylphenol, phenol, 3-nitrophenol, 3,5-dinitrophenol,
+2,4, 6-trinitrophenol.
+Example 7.4 Example 7.4 Example 7.4 Example 7.4 Example 7.4
+Solution Solution Solution Solution Solution
+2. Esterification
+Alcohols and phenols react with carboxylic acids, acid chlorides and acid anhydrides to form esters.
+In substituted phenols, the presence of electron withdrawing groups such as nitro group, enhances the acidic strength of phenol. This effect is more pronounced when such a group is present at ortho and para positions. It is due to the effective delocalisation of negative charge in phenoxide ion when substituent is at ortho or para position. On the other hand, electron releasing groups, such as alkyl groups, in general, do not favour the formation of phenoxide ion resulting in decrease in acid strength. Cresols, for example, are less acidic than phenol.
+The greater the pKa value, the weaker the
+Reprint 2026-27
+208 Chemistry
+Pyridine
+R/Ar +R’ l OH COC R/ArOCOR + HCl ’
+The reaction with carboxylic acid and acid anhydride is carried out in the presence of a small amount of concentrated sulphuric acid. The reaction is reversible, and therefore, water is removed as soon as it is formed. The reaction with acid chloride is carried out in the presence of a base (pyridine) so as to neutralise HCl which is formed during the reaction. It shifts the equilibrium to the right hand side. The introduction of acetyl (CH3CO) group in alcohols or phenols is known as acetylation. Acetylation of salicylic acid produces aspirin.
+(b) Reactions involving cleavage of carbon – oxygen (C–O) bond in alcohols
+The reactions involving cleavage of C–O bond take place only in alcohols. Phenols show this type of reaction only with zinc.
+1. Reaction with hydrogen halides: Alcohols react with hydrogen halides to form alkyl halides (Refer Unit 6, Class XII).
+ROH + HX ® R–X + H2O
+The difference in reactivity of three classes of alcohols with HCl distinguishes them from one another (Lucas test). Alcohols are soluble in Lucas reagent (conc. HCl and ZnCl2) while their halides are immiscible and produce turbidity in solution. In case of tertiary alcohols, turbidity is produced immediately as they form the halides easily. Primary alcohols do not produce turbidity at room temperature.
+2. Reaction with phosphorus trihalides: Alcohols are converted to alkyl bromides by reaction with phosphorus tribromide (Refer
+Unit 6, Class XII).
+3. Dehydration: Alcohols undergo dehydration (removal of a molecule of water) to form alkenes on treating with a protic acid e.g., concentrated H2SO4 or H3PO4, or catalysts such as anhydrous zinc chloride or alumina.
+Ethanol undergoes dehydration by heating it with concentrated
+H2SO4 at 443 K.
+Aspirin possesses analgesic, anti- inflammatory and antipyretic properties.
+Reprint 2026-27
+209 Alcohols, Phenols and Ethers
+Secondary and tertiary alcohols are dehydrated under milder conditions. For example
+Thus, the relative ease of dehydration of alcohols follows the following order:
+Tertiary Secondary Primary > >
+The mechanism of dehydration of ethanol involves the following steps:
+Mechanism
+Step 1: Formation of protonated alcohol.
+Step 2: Formation of carbocation: It is the slowest step and hence, the rate determining step of the reaction.
+Step 3: Formation of ethene by elimination of a proton.
+The acid used in step 1 is released in step 3. To drive the equilibrium to the right, ethene is removed as it is formed.
+4. Oxidation: Oxidation of alcohols involves the formation of a carbon- oxygen double bond with cleavage of an O-H and C-H bonds.
+Such a cleavage and formation of bonds occur in oxidation reactions. These are also known as dehydrogenation reactions as these involve loss of dihydrogen from an alcohol molecule. Depending on the oxidising agent used, a primary alcohol is oxidised to an aldehyde which in turn is oxidised to a carboxylic acid.
+Tertiary carbocations are more stable and therefore are easier to form than secondary and primary carbocations; tertiary alcohols are the easiest to dehydrate.
+Reprint 2026-27
+210 Chemistry
+Strong oxidising agents such as acidified potassium permanganate are used for getting carboxylic acids from alcohols directly. CrO3 in anhydrous medium is used as the oxidising agent for the isolation of aldehydes.
+R H R C OH CHO 
+A better reagent for oxidation of primary alcohols to aldehydes in good yield is pyridinium chlorochromate (PCC), a complex of chromium trioxide with pyridine and HCl.
+O CH CH CH H CH CH O CH CH CH         
+Secondary alcohols are oxidised to ketones by chromic anhyride
+Tertiary alcohols do not undergo oxidation reaction. Under strong reaction conditions such as strong oxidising agents (KMnO4) and elevated temperatures, cleavage of various C-C bonds takes place and a mixture of carboxylic acids containing lesser number of carbon atoms is formed.
+When the vapours of a primary or a secondary alcohol are passed over heated copper at 573 K, dehydrogenation takes place and an aldehyde or a ketone is formed while tertiary alcohols undergo dehydration.
+Biological oxidation of methanol and ethanol in the body produces the corresponding aldehyde followed by the acid. At times the alcoholics, by mistake, drink ethanol, mixed with methanol also called denatured alcohol. In the body, methanol is oxidised first to methanal and then to methanoic acid, which may cause blindness and death. A methanol poisoned patient is treated by giving intravenous infusions of diluted ethanol. The enzyme respons

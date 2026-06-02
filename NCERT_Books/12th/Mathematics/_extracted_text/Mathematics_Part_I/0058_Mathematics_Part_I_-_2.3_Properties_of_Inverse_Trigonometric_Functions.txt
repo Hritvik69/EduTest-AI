@@ -1,0 +1,183 @@
+46 MATHEMATICS
+For example, let A = 3 1
+ −   , then – A is given by
+– A = (– 1) 3 1 3 1
+A ( 1) 5 5 x x
+− −    
+= − =    − −    
+Difference of matrices If A = [aij], B = [bij] are two matrices of the same order, say m × n, then difference A – B is defined as a matrix D = [dij], where dij = aij – bij, for all value of i and j. In other words, D = A – B = A + (–1) B, that is sum of the matrix
+A and the matrix – B.
+Example 7 If 1 2 3 3 1 3
+2 3 1 1 0 2
+−    
+= =    −     , then find 2A – B.
+Solution We have
+2A – B = 2 1 2 3
+= 2 4 6 3 1 3
+4 6 2 1 0 2
+− −    
++    −    
+= 2 3 4 1 6 3 1 5 3
+4 1 6 0 2 2 5 6 0
+− + − −    
+=    + + −    
+3.4.3 Properties of matrix addition
+The addition of matrices satisfy the following properties:
+(i) Commutative Law If A = [aij], B = [bij] are matrices of the same order, say m × n, then A + B = B + A.
+Now A + B = [aij] + [bij] = [aij + bij]
+= [bij + aij] (addition of numbers is commutative)
+= ([bij] + [aij]) = B + A (ii) Associative Law For any three matrices A = [aij], B = [bij], C = [cij] of the same order, say m × n, (A + B) + C = A + (B + C).
+Now (A + B) + C = ([aij] + [bij]) + [cij]
+= [aij + bij] + [cij] = [(aij + bij) + cij]
+= [aij + (bij + cij)] (Why?)
+= [aij] + [(bij + cij)] = [aij] + ([bij] + [cij]) = A + (B + C)
+Reprint 2026-27
+MATRICES 47 (iii) Existence of additive identity Let A = [aij] be an m × n matrix and
+O be an m × n zero matrix, then A + O = O + A = A. In other words, O is the additive identity for matrix addition.
+(iv) The existence of additive inverse Let A = [aij]m × n be any matrix, then we have another matrix as – A = [– aij]m × n such that A + (– A) = (– A) + A= O. So
+– A is the additive inverse of A or negative of A.
+3.4.4 Properties of scalar multiplication of a matrix
+If A = [aij] and B = [bij] be two matrices of the same order, say m × n, and k and l are scalars, then (i) k(A +B) = k A + kB, (ii) (k + l)A = k A + l A (ii) k (A + B) = k ([aij] + [bij])
+= k [aij + bij] = [k (aij + bij)] = [(k aij) + (k bij)]
+= [k aij] + [k bij] = k [aij] + k [bij] = kA + kB (iii) ( k + l) A = (k + l) [aij]
+= [(k + l) aij] + [k aij] + [l aij] = k [aij] + l [aij] = k A + l A
+Example 8 If
+A 4 2 and B 4 2
+−    
+   = − =   
+    −    
+, then find the matrix X, such that
+2A + 3X = 5B.
+Solution We have 2A + 3X = 5B or 2A + 3X – 2A = 5B – 2A or 2A – 2A + 3X = 5B – 2A (Matrix addition is commutative)
+or O + 3X = 5B – 2A (– 2A is the additive inverse of 2A)
+or 3X = 5B – 2A (O is the additive identity)
+or X = 1
+3 (5B – 2A)
+X 5 4 2 2 4 2
+3 5 1 3 6
+  −    
+     = − −      
+      −      
+10 10 16 0
+1 20 10 8 4
+3 25 5 6 12
+  − −    
+     + −      
+      − − −      
+Reprint 2026-27
+48 MATHEMATICS
+10 16 10 0
+1 20 8 10 4
+3 25 6 5 12
+− − +  
+ − + 
+  − − −  
+  − −  
+Example 9 Find X and Y, if 5 2
+  and 3 6
+− =  −  
+Solution We have ( ) ( ) 5 2 3 6
+X Y X Y 0 9 0 1
++ + − = +    −     or (X + X) + (Y – Y) = 8 8 or X = 8 8 4 4 1
+0 8 0 4 2
+=    
+Also (X + Y) – (X – Y) = 5 2 3 6
+−    −     or (X – X) + (Y + Y) = 5 3 2 6
+ +   ⇒ 2 4 or Y = 2 4 1 2 1
+0 10 0 5 2
+− −    
+=    
+Example 10 Find the values of x and y from the following equation:
+2 7 3 1 2
+−    
++    −     = 7 6
+Solution We have
+2 7 3 1 2
+−    
++    −     = 7 6
+  ⇒ 2 10 3 4 7 6
+14 2 6 1 2 15 14
+−      
++ =      −      
+Reprint 2026-27
+MATRICES 49 or 2 3 10 4
+14 1 2 6 2
+ + − +   = 7 6
+⇒ 2 3 6 7 6
+15 2 4 15 14
++    
+=    −     or 2x + 3 = 7 and 2y – 4 = 14 (Why?)
+or 2x = 7 – 3 and 2y = 18 or x = 4
+2 and y = 18 i.e. x = 2 and y = 9.
+Example 11 Two farmers Ramkishan and Gurcharan Singh cultivates only three varieties of rice namely Basmati, Permal and Naura. The sale (in Rupees) of these varieties of rice by both the farmers in the month of September and October are given by the following matrices A and B.
+(i) Find the combined sales in September and October for each farmer in each variety.
+(ii) Find the decrease in sales from September to October.
+(iii) If both farmers receive 2% profit on gross sales, compute the profit for each farmer and for each variety sold in October.
+Solution (i) Combined sales in September and October for each farmer in each variety is given by
+Reprint 2026-27
+50 MATHEMATICS (ii) Change in sales from September to October is given by (iii) 2% of B = 2 B
+100 × = 0.02 × B
+Thus, in October Ramkishan receives ` 100, ` 200 and ` 120 as profit in the sale of each variety of rice, respectively, and Grucharan Singh receives profit of ` 400,
+` 200 and ` 200 in the sale of each variety of rice, respectively.
+3.4.5 Multiplication of matrices
+Suppose Meera and Nadeem are two friends. Meera wants to buy 2 pens and 5 story books, while Nadeem needs 8 pens and 10 story books. They both go to a shop to enquire about the rates which are quoted as follows:
+Pen – ` 5 each, story book – ` 50 each.
+How much money does each need to spend? Clearly, Meera needs ` (5 × 2 + 50 × 5)
+that is ` 260, while Nadeem needs (8 × 5 + 50 × 10) `, that is ` 540. In terms of matrix representation, we can write the above information as follows:
+Requirements Prices per piece (in Rupees) Money needed (in Rupees)
+5 2 5 50 260
+8 5 10 50 540
+× + ×    
+=    × + ×    
+Suppose that they enquire about the rates from another shop, quoted as follows:
+pen – ` 4 each, story book – ` 40 each.
+Now, the money required by Meera and Nadeem to make purchases will be respectively ` (4 × 2 + 40 × 5) = ` 208 and ` (8 × 4 + 10 × 40) = ` 432
+Reprint 2026-27
+MATRICES 51
+Again, the above information can be represented as follows:
+Requirements Prices per piece (in Rupees) Money needed (in Rupees)
+4 2 40 5 208
+8 4 10 4 0 432
+× + ×    
+=    × + ×    
+Now, the information in both the cases can be combined and expressed in terms of matrices as follows:
+Requirements Prices per piece (in Rupees) Money needed (in Rupees)
+5 2 5 50 4 2 40 5
+8 5 10 5 0 8 4 10 4 0
+× + × × + ×  
+ × + × × + ×  
+= 260 208
+The above is an example of multiplication of matrices. We observe that, for multiplication of two matrices A and B, the number of columns in A should be equal to the number of rows in B. Furthermore for getting the elements of the product matrix, we take rows of A and columns of B, multiply them element-wise and take the sum.
+Formally, we define multiplication of matrices as follows:
+The product of two matrices A and B is defined if the number of columns of A is equal to the number of rows of B. Let A = [aij] be an m × n matrix and B = [bjk] be an n × p matrix. Then the product of the matrices A and B is the matrix C of order m × p.
+To get the (i, k)th element cik of the matrix C, we take the ith row of A and kth column of B, multiply them elementwise and take the sum of all these products. In other words, if A = [aij]m × n, B = [bjk]n × p, then the ith row of A is [ai1 ai2 ... ain] and the kth column of
+, then cik = ai1 b1k + ai2 b2k + ai3 b3k + ... + ain bnk = 1
+The matrix C = [cik]m × p is the product of A and B.
+For example, if 1 1 2
+ = − 
+  −  
+, then the product CD is defined
+Reprint 2026-27
+52 MATHEMATICS and is given by
+0 3 4 5 4
+−    = −    
+    −  
+. This is a 2 × 2 matrix in which each entry is the sum of the products across some row of C with the corresponding entries down some column of D. These four computations are
+Thus 13 2
+CD 17 13
+=  −  
+Example 12 Find AB, if 6 9 2 6 0
+2 3 7 9 8
+= =    
+Solution The matrix A has 2 columns which is equal to the number of rows of B.
+Hence AB is defined. Now
+6(2) 9(7) 6(6) 9(9) 6(0) 9(8)
+AB 2(2) 3(7) 2(6) 3(9) 2(0) 3(8)
++ + +  
+=  + + +  
+= 12 63 36 81 0 72
+4 21 12 27 0 24
++ + +  
+ + + +   = 75 117 72
+25 39 24
+Reprint 2026-27

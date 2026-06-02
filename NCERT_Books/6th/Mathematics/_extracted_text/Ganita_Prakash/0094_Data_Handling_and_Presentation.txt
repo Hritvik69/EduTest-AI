@@ -1,0 +1,280 @@
+Ganita Prakash | Grade 6
+6. Can you fill a supercell table without repeating numbers such that there are no supercells? Why or why not?
+7. Will the cell having the largest number in a table always be a supercell? Can the cell having the smallest number in a table be a supercell? Why or why not?
+8. Fill a table such that the cell having the second largest number is not a supercell.
+9. Fill a table such that the cell having the second largest number is not a supercell but the second smallest number is a supercell. Is it possible?
+10. Make other variations of this puzzle and challenge your classmates.
+Let’s do the supercells activity with more rows.
+Here the neighbouring cells are those that are immediately to the left, right, top and bottom.
+The rule remains the same: a cell becomes a supercell if the number in it is greater than all the numbers in its neighbouring cells. In Table 1, 8632 is greater than all its neighbours 4580,
+8280, 4795 and 1944.
+Complete Table 2 with 5-digit numbers whose digits are ‘1’,
+‘0’, ‘6’, ‘3’, and ‘9’ in some order.
+Only a coloured cell should have a number greater than all its neighbours.
+The biggest number in the table is ____________ .
+2430 7500 7350 9870
+3115 4795 9124 9230
+4580 8632 8280 3446
+5785 1944 5805 6034
+96,301 36,109
+13,609 60,319 19,306
+Reprint 2026-27
+Number Play
+The smallest even number in the table is ____________.
+The smallest number greater than 50,000 in the table is ____________.
+Once you have filled the table above, put commas appropriately after the thousands digit.
+3.3 Patterns of Numbers on the Number Line
+We are quite familiar with number lines now. Let’s see if we can place some numbers in their appropriate positions on the number line. Here are the numbers: 2180, 2754, 1500, 3600, 9950, 9590, 1050,
+3050, 5030, 5300 and 8400.
+1000 2000
+3000 4000 5000 6000 7000 8000 9000 10,000
+Figure it Out
+Identify the numbers marked on the number lines below, and label the remaining positions.
+9996 9997
+2010 2020
+15,077 15,078 15,083
+86,705 87,705
+Put a circle around the smallest number and a box around the largest number in each of the sequences above.
+Reprint 2026-27
+Ganita Prakash | Grade 6
+3.4 Playing with Digits
+We start writing numbers from 1, 2, 3 … and so on. There are nine
+1-digit numbers.
+Find out how many numbers have two digits, three digits, four digits, and five digits.
+From 1–9
+Digit sums of numbers
+Komal observes that when she adds up digits of certain numbers the sum is the
+For example, adding the digits of the number 68 will be same as adding the digits of 176 or 545.
+Figure it Out
+1. Digit sum 14 a. Write other numbers whose digits add up to 14.
+b. What is the smallest number whose digit sum is 14?
+c. What is the largest 5-digit whose digit sum is 14?
+d. How big a number can you form having the digit sum of 14? Can you make an even bigger number?
+2. Find out the digit sums of all the numbers from 40 to 70.
+Share your observations with the class.
+3. Calculate the digit sums of 3-digit numbers whose digits are consecutive (for example, 345). Do you see a pattern? Will this pattern continue?
+Reprint 2026-27
+Number Play
+Digit Detectives
+After writing numbers from 1 to 100,
+Dinesh wondered how many times he would have written the digit ‘7’!
+Among the numbers 1–100, how many times will the digit ‘7’ occur?
+Among the numbers 1–1000, how many times will the digit ‘7’ occur?
+3.5 Pretty Palindromic Patterns
+What pattern do you see in these numbers: 66, 848, 575, 797, 1111?
+These numbers read the same from left to right and from right to left.
+Try and see. Such numbers are called palindromes or palindromic numbers.
+All palindromes using 1, 2, 3
+The numbers 121, 313, 222 are some examples of palindromes using the digits ‘1’, ‘2’, 3’.
+Write all possible 3-digit palindromes using these digits.
+Reverse-and-add palindromes
+Now, look at these additions. Try to figure out what is happening.
+Steps to follow: Start with a
+2-digit number. Add this number to its reverse. Stop if you get a palindrome or else repeat the steps of reversing the digits and
+Try the same procedure for some other numbers, and perform the same steps. Stop if
+Reprint 2026-27
+Ganita Prakash | Grade 6 you get a palindrome. There are numbers for which you have to repeat this a large number of times.
+Are there numbers for which you do not reach a palindrome
+Will reversing and adding numbers repeatedly, starting with a 2-digit number, always give a palindrome? Explore and find
+Puzzle time
+Write the number in words:
+h th u t
+I am a 5-digit palindrome.
+I am an odd number.
+My ‘t’ digit is double of my ‘u’ digit.
+My ‘h’ digit is double of my ‘t’ digit.
+Who am I? _________________
+3.6 The Magic Number of Kaprekar
+D.R. Kaprekar was a mathematics teacher in a government school in Devlali, Maharashtra. He liked playing with numbers very much and found many beautiful patterns in numbers that were previously unknown.
+In 1949, he discovered a fascinating and magical phenomenon when playing with 4-digit numbers.
+*The answer is yes! For 3-digit numbers the answer is unknown. It is suspected that starting with 196 never yields a palindrome!
+Reprint 2026-27
+Number Play
+Follow these steps and experience the magic for yourselves! Pick any 4-digit number having at least two different digits, say 6382.
+Make the largest number from these digits. Call it A.
+Make the smallest number from these digits. Call it B.
+Subtract B from A. Call it C.
+C = A – B
+Take a 4-digit number.
+Use digits
+What happens if we continue doing this?
+A = 8632 A = 6642 A = 7641 A =
+B = 2368 B = 2466 B = 1467 B =
+C = 8632–2368 C = 6642–2466 C = 7641–1467 C =
+= 6264 = 4176 = 6174
+Take different 4-digit numbers and try carrying out these steps. Find out what happens. Check with your friends what they got.
+You will always reach the magic number ‘6174’! The number
+‘6174’ is now called the ‘Kaprekar constant’.
+Carry out these same steps with a few 3-digit numbers. What number will start repeating?
+Reprint 2026-27
+Ganita Prakash | Grade 6
+3.7 Clock and Calendar Numbers
+On the usual 12-hour clock, there are timings with different patterns.
+For example, 4:44, 10:10, 12:21.
+Try and find out all possible times on a 12-hour clock of each of these types.
+Manish has his birthday on
+20/12/2012 where the digits ‘2’, ‘0’, ‘1’, and ‘2’ repeat in that order.
+Find some other dates of this form from the past.
+His sister, Meghana, has her birthday on 11/02/2011 where the digits read the same from left to right and from right to left.
+Find all possible dates of this form from the past.
+Jeevan was looking at this year’s calendar. He started wondering,
+“Why should we change the calendar every year? Can we not reuse a calendar?”. What do you think?
+You might have noticed that last year’s calendar was different from this year’s. Also, next year’s calendar will also be different from the previous years.
+But, will any year’s calendar repeat again after some years? Will all dates and days in a year match exactly with that of another year?
+Figure it Out
+1. Pratibha uses the digits ‘4’, ‘7’, ‘3’ and ‘2’, and makes the smallest and largest 4-digit numbers with them: 2347 and 7432. The difference between these two numbers is 7432 – 2347 = 5085. The sum of these two numbers is 9779. Choose 4 - digits to make:
+a. the difference between the largest and smallest numbers greater than 5085.
+Reprint 2026-27
+Number Play b. the difference between the largest and smallest numbers less than 5085.
+c. the sum of the largest and smallest numbers greater than 9779.
+d. the sum of the largest and smallest numbers less than 9779.
+2. What is the sum of the smallest and largest 5-digit palindrome?
+What is their difference?
+3. The time now is 10:01. How many minutes until the clock shows the next palindromic time? What about the one after that?
+4. How many rounds does the number 5683 take to reach the Kaprekar constant?
+3.8 Mental Math
+Observe the figure below. What can you say about the numbers and the lines drawn?
+38,800 3,400
+28,000 63,000
+61,600 19,500
+31,000 20,900
+Numbers in the middle column are added in different ways to get the numbers on the sides (1500 + 1500 + 400 = 3400). The numbers in the middle can be used as many times as needed to get the desired sum. Draw arrows from the middle to the numbers on the sides to obtain the desired sums.
+Two examples are given. It is simpler to do it mentally!
+38,800 = 25,000 + 400 × 2 + 13,000
+3400 = 1500 + 1500 + 400
+Reprint 2026-27
+Ganita Prakash | Grade 6
+Can we make 1,000 using the numbers in the middle? Why not?
+What about 14,000, 15,000 and 16,000? Yes, it is possible. Explore how.
+What thousands cannot be made?
+Adding and Subtracting
+Here, using the numbers in the boxes, we are allowed to use both addition and subtraction to get the required number. An example is shown.
+39,800 = 40,000 – 800 + 300 + 300
+45,000 =
+17,500 =
+21,400 =
+Digits and Operations
+An example of adding two 5-digit numbers to get another 5-digit number is 12,350 + 24,545 = 36,895.
+An example of subtracting two 5-digit numbers to get another
+5-digit number is 48,952 – 24,547 = 24,405.
+Figure it Out
+1. Write an example for each of the below scenarios whenever possible.
+5-digit +
+5-digit to give a 5-digit sum more than 90,250
+5-digit –
+5-digit to give a difference less than
++ 4-digit to give a
+6-digit sum
+− 4-digit a 4-digit difference
++ 3-digit to give a
+6-digit sum
+– 3-digit a 4-digit difference
++ 5-digit to give a
+6-digit sum
+− 5-digit a 3-digit difference
+5-digit +
+5-digit to give 18,500
+5-digit −
+5-digit to give 91,500
+40,000 7,000
+300 1,500
+12,000 800
+Reprint 2026-27
+Number Play
+Could you find examples for all the cases? If not, think and discuss what could be the reason. Make other such questions and challenge your classmates.
+2. Always, Sometimes, Never?
+Below are some statements. Think, explore and find out if each of the statement is ‘Always true’, ‘Only sometimes true’ or ‘Never true’. Why do you think so? Write your reasoning and discuss this with the class.
+a. 5-digit number + 5-digit number gives a 5-digit number b. 4-digit number + 2-digit number gives a 4-digit number c. 4-digit number + 2-digit number gives a 6-digit number d. 5-digit number – 5-digit number gives a 5-digit number e. 5-digit number – 2-digit number gives a 3-digit number
+3.9 Playing with Number Patterns
+Here are some numbers arranged in some patterns. Find out the sum of the numbers in each of the below figures. Should we add them one by one or can we use a quicker way?
+Share and discuss in class the different methods each one of you used to solve these questions.
+Reprint 2026-27
+Ganita Prakash | Grade 6
+32 32 32 32 32 32 32 32
+64 64 64 64
+500 1000
+15 15 25 25
+3.10 An Unsolved Mystery — the Collatz Conjecture!
+Look at the sequences below—the same rule is applied in all the sequences:
+a. 12, 6, 3, 10, 5, 16, 8, 4, 2, 1 b. 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1 c. 21, 64, 32, 16, 8, 4, 2, 1 d. 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1
+Do you see how these sequences were formed?
+Reprint 2026-27
+Number Play
+The rule is: one starts with any number; if the number is even, take half of it; if the number is odd, multiply it by 3 and add 1;
+Notice that all four sequences above eventually reached the number 1. In 1937, the German mathematician, Lothar Collatz conjectured that the sequence will always reach 1, regardless of the whole number you start with. Even today — despite many mathematicians working on it — it remains an unsolved problem as to whether Collatz’s conjecture is true! Collatz’s conjecture is one of the most famous unsolved problems in mathematics.
+Make some more Collatz sequences like those above, starting with your favourite whole numbers. Do you always reach 1?
+Do you believe the conjecture of Collatz that all such sequences will eventually reach 1? Why or why not?
+3.11 Simple Estimation
+At times, we may not know or need an exact count of things and an estimate is sufficient for the purpose at hand. For example, your school headmaster might know the exact number of students enrolled in your school, but you may only know an estimated count. How many students are in your school? About 150? 400? A thousand?
+Paromita’s class section has 32 children. The other 2 sections of her class have 29 and 35 children. So, she estimated the number of children in her class to be about 100. Along with Class 6, her school also has Classes 7–10 and each class has 3 sections each. She assumed a similar number in each class and estimated the number of students in her school to be around 500.
+Figure it Out
+We shall do some simple estimates. It is a fun exercise, and you may find it amusing to know the various numbers around us. Remember,
+Reprint 2026-27
+Ganita Prakash | Grade 6 we are not interested in the exact numbers for the following questions.
+Share your methods of estimation with the class.
+1. Steps you would take to walk:
+a. From the place you are sitting to the classroom door b. Across the school ground from start to end c. From your classroom door to the school gate d. From your school to your home
+2. Number of times you blink your eyes or number of breaths you a. In a minute b. In an hour c. In a day
+3. Name some objects around you that are:
+a. a few thousand in number b. more than ten thousand in number
+Estimate the answer
+Try to guess within 30 seconds. Check your guess with your friends.
+1. Number of words in your maths textbook:
+a. More than 5000 b. Less than 5000
+2. Number of students in your school who travel to school by bus:
+a. More than 200 b. Less than 200
+3. Roshan wants to buy milk and 3 types of fruit to make fruit custard for 5 people. He estimates the cost to be ₹100. Do you agree with him? Why or why not?
+4. Estimate the distance between Gandhinagar (in Gujarat) to
+Kohima (in Nagaland).
+Hint: Look at the map of India to locate these cities.
+Reprint 2026-27
+Number Play
+5. Sheetal is in Grade 6 and says she has spent around 13,000 hours in school till date. Do you agree with her? Why or why not?
+6. Earlier, people used to walk long distances as they had no other means of transport. Suppose you walk at your normal pace.
+Approximately, how long would it take you to go from:
+a. Your current location to one of your favourite places nearby.
+b. Your current location to any neighbouring state’s capital city.
+c. The southernmost point in India to the northernmost point in
+7. Make some estimation questions and challenge your classmates!
+3.12 Games and Winning Strategies
+Numbers can also be used to play games and develop winning strategies.
+Here is a famous game called 21. Play it with a classmate. Then try it at home with your family!
+Rules for Game #1: The first player says 1, 2 or 3. Then the two players take turns adding 1, 2, or 3 to the previous number said. The first player to reach 21 wins!
+Play this game several times with your classmate. Are you starting to see the winning strategy?
+Which player can always win if they play correctly? What is the pattern of numbers that the winning player should say?
+There are many variations of this game. Here is another common variation:
+Rules for Game #2: The first player says a number between 1 and
+10. Then the two players take turns adding a number between 1 and
+10 to the previous number said. The first player to reach 99 wins!
+Play this game several times with your classmate. See if you can figure out the corresponding winning strategy in this case! Which
+Reprint 2026-27
+Ganita Prakash | Grade 6 player can always win? What is the pattern of numbers that the winning player should say this time?
+Make your own variations of this game — decide how much one can add at each turn, and what number is the winning number. Then play your game several times, and figure out the winning strategy and which player can always win!
+Figure it Out
+1. There is only one supercell (number greater than all its neighbours) in this grid. If you exchange two digits of one of the numbers, there will be 4 supercells. Figure out which digits to swap.
+2. How many rounds does your year of birth take to reach the
+Kaprekar constant?
+3. We are the group of 5-digit numbers between 35,000 and 75,000 such that all of our digits are odd. Who is the largest number in our group? Who is the smallest number in our group? Who among us is the closest to 50,000?
+4. Estimate the number of holidays you get in a year including weekends, festivals and vacation. Then, try to get an exact number and see how close your estimate is.
+5. Estimate the number of liters a mug, a bucket and an overhead tank can hold.
+6. Write one 5-digit number and two 3-digit numbers such that their sum is 18,670.
+7. Choose a number between 210 and 390. Create a number pattern similar to those shown in Section 3.9 that will sum up to this number.
+16,200 39,344 29,765
+45,306 23,609
+19,381 50,319 38,408
+62,871 Try
+Reprint 2026-27
+Number Play
+8. Recall the sequence of Powers of 2 from Chapter 1, Table 1. Why is the Collatz conjecture correct for all the starting numbers in this sequence?
+9. Check if the Collatz Conjecture holds for the starting number 100.
+10. Starting with 0, players alternate adding numbers between 1 and 3.
+The first person to reach 22 wins. What is the winning strategy now?
+S u m m a r y
+ Numbers can be used for many different purposes including, to convey information, make and discover patterns, estimate magnitudes, pose and solve puzzles, and play and win games.
+ Thinking about and formulating set procedures to use numbers for these purposes is a useful skill and capacity (called ‘computational thinking’).
+ Many problems about numbers can be very easy to pose, but very difficult to solve. Indeed, numerous such problems are still unsolved (for example, Collatz’s Conjecture).
+Reprint 2026-27
+CHAPTER 3 — SOLUTIONS
+Number Play
+Q. Think about various situations where we use numbers. List five different situations in which numbers are used. See what your classmates have listed, share, and discuss.
+Ans. Five different possible situati

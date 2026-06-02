@@ -1,0 +1,19 @@
+Computer SCienCe - ClaSS Xii 64 print("Queue underflow")
+return myDeque.pop(0)
+def main():
+dQu = list()
+choice = int(input('enter 1 to use as normal queue 2 otherwise if choice == 1:
+element = input("data for insertion at rear ")
+insertRear(dQu,element)
+element = getFront(dQu)
+print("data at the beginning of queue is ", element)
+element = input("data for insertion at front ")
+insertRear(dQu,element)
+print('data removed from front of queue is ', deletionFront(dQu))
+enter 1 to use as normal queue 2 otherwise : 1 data for insertion at rear 23 data at the beginning of queue is 23 data for insertion at rear 45 data removed from front of queue is 23 data removed from front of queue is 45
+Queue underflow data removed from front of queue is None enter 1 to use as normal queue 2 otherwise : 2 data for insertion at front 34 data at the end of queue is 34 data for insertion at front 56 data removed from rear of queue is 34 data removed from rear of queue is 56
+Queue underflow data removed from rear of queue is None
+• Queue is an ordered linear data structure, following FIFO strategy.
+• Front and Rear are used to indicate beginning and end of queue.
+• In Python, the use of predefined methods takes care of Front and Rear.
+Reprint 2026-27

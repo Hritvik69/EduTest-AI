@@ -1,0 +1,44 @@
+Computer SCienCe – ClaSS xi 76 of statements need to be repeated. Such requirements of unknown number of repetitions are handled using
+WHILE construct.
+Example 4.9: Write pseudocode and draw flowchart to accept numbers till the user enters 0 and then find their average.
+Pseudocode is as follows:
+Step 1: SET count = 0, sum = 0
+Step 2: INPUT num
+Step 3: WHILE num is not equal to 0, REPEAT Steps 4 to 6
+Step 4: sum = sum + num
+Step 5: count = count + 1
+Step 6: INPUT num
+Step 7: COMPUTE average = sum/count
+Step 8: PRINT average
+The flowchart representation is shown in Figure 4.11.
+In this example, we do not know how many numbers a user is going to enter before entering 0. This is handled by checking the condition repeatedly till the condition becomes false.
+Figure 4.11: Flowchart to accept numbers till the user enters 0
+Activity 4.4
+Let us answer the following questions using the pesudocode given in example 4.9:
+1) What will the sum when the input are 6,
+7, 4, 8, 2, 5, 0, 3, 1.
+2) What will be the value of count?
+3) Why did we use the input statement to enter num twice?
+4) Why did we divide sum by count?
+5) Can there be any other approach?
+Reprint 2026-27
+IntroductIon to Problem SolvIng 77
+4.6 Verifying Algorithms
+Can you imagine what would happen if a banking software does not work correctly? Suppose functioning of the online money transfer module is not programmed correctly, and it credits into the account only half the amount transacted!
+What happens if the account is debited instead of being credited. Such a faulty software will mess up the working of the complete system and cause havoc! Today software are used in even more critical services — like in the medical field or in space shuttles. Such software needs to work correctly in every situation. Therefore, the software designer should make sure that the functioning of all the components are defined correctly, checked and verified in every possible way.
+When we were told that the formula for the sum of first N natural numbers is N(N+1)
+2 , how did we verify it?
+Well, we can check this for small numbers, for which we can manually calculate the sum. Let N = 6, then the sum is 1 + 2 + 3 + 4 + 5 + 6 = 21
+Using formula we get sum = 6x(6+1)
+We can try with some more numbers this way to ensure that the formula works correctly.
+In the same way, when we have written an algorithm, we want to verify that it is working as expected. To verify, we have to take different input values and go through all the steps of the algorithm to yield the desired output for each input value and may modify or improve as per the need. The method of taking an input and running through the steps of the algorithm is sometimes called dry run. Such a dry run will help us to:
+1. Identify any incorrect steps in the algorithm
+2. Figure out missing details or specifics in the algorithm
+It is important to decide the type of input value to be used for the simulation. In case all possible input values are not tested, then the program will fail. What if there is some other case for which it does not work? Let us look at some examples.
+Write an algorithm to calculate the time taken to go from place A to C (T_total) via B where time taken to
+Why is verification of algorithm an important step in problem solving?
+Think and Reflect
+Activity 4.5
+Write an algorithm to take as input the measurement of length and breadth in feet and inches (e.g., 5 ft 6 inch)
+of a rectangular shape and calculate its area and perimeter.
+Reprint 2026-27

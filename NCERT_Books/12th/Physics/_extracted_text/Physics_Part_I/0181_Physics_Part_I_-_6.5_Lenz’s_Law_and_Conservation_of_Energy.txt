@@ -1,0 +1,53 @@
+Electromagnetic
+Induction
+Example 6.7
+A wheel with 10 metallic spokes each 0.5 m long is rotated with a speed of 120 rev/min in a plane normal to the horizontal component of earth’s magnetic field HE at a place. If HE = 0.4 G at the place, what is the induced emf between the axle and the rim of the wheel? Note that 1 G = 10–4 T.
+Solution
+Induced emf = (1/2)
+= (1/2) × 4π × 0.4 × 10–4 × (0.5)2
+= 6.28 × 10–5 V
+The number of spokes is immaterial because the emf’s across the spokes are in parallel.
+6.7 INDUCTANCE
+An electric current can be induced in a coil by flux change produced by another coil in its vicinity or flux change produced by the same coil. These two situations are described separately in the next two sub-sections.
+However, in both the cases, the flux through a coil is proportional to the current. That is,
+Further, if the geometry of the coil does not vary with time then,
+For a closely wound coil of N turns, the same magnetic flux is linked with all the turns. When the flux
+ΦB through the coil changes, each turn contributes to the induced emf. Therefore, a term called flux linkage is used which is equal to N
+ΦB for a closely wound coil and in such a case
+The constant of proportionality, in this relation, is called inductance.
+We shall see that inductance depends only on the geometry of the coil and intrinsic material properties. This aspect is akin to capacitance which for a parallel plate capacitor depends on the plate area and plate separation (geometry) and the dielectric constant K of the intervening medium (intrinsic material property).
+Inductance is a scalar quantity. It has the dimensions of [M L2 T–2 A–2] given by the dimensions of flux divided by the dimensions of current. The
+SI unit of inductance is henry and is denoted by H. It is named in honour of Joseph Henry who discovered electromagnetic induction in USA, independently of Faraday in England.
+6.7.1 Mutual inductance
+Consider Fig. 6.12 which shows two long co-axial solenoids each of length l. We denote the radius of the inner solenoid S1 by r1 and the number of turns per unit length by n1. The corresponding quantities for the outer solenoid S2 are r2 and n2, respectively. Let N1 and N2 be the total number of turns of coils S1 and S2, respectively.
+Reprint 2026-27
+When a current I2 is set up through S2, it in turn sets up a magnetic flux through S1. Let us denote it by
+The corresponding flux linkage with solenoid S1 is
+N1 1 12 2 M I
+Φ = (6.7)
+M12 is called the mutual inductance of solenoid S1 with respect to solenoid S2. It is also referred to as the coefficient of mutual induction.
+For these simple co-axial solenoids it is possible to calculate M12. The magnetic field due to the current I2 in
+μ0n2I2. The resulting flux linkage with coil S1 is, ( ) ( ) ( )2
+1 1 1 1 0 2 2 N n l r n I
+0 1 2 1 2 n n r l I
+μ = π (6.8)
+where n1l is the total number of turns in solenoid S1.
+Thus, from Eq. (6.7) and Eq. (6.8),
+μ0n1n2πr 2
+1 l (6.9)
+Note that we neglected the edge effects and considered the magnetic field
+μ0n2I2 to be uniform throughout the length and width of the solenoid S2. This is a good approximation keeping in mind that the solenoid is long, implying l >> r2.
+We now consider the reverse case. A current I1 is passed through the solenoid S1 and the flux linkage with coil S2 is,
+Φ2 = M21 I1 (6.10)
+M21 is called the mutual inductance of solenoid S2 with respect to solenoid S1.
+The flux due to the current I1 in S1 can be assumed to be confined solely inside S1 since the solenoids are very long. Thus, flux linkage with solenoid S2 is ( ) ( ) ( )2
+2 2 2 1 0 1 1 N n l r n I where n2l is the total number of turns of S2. From Eq. (6.10),
+μ0n1n2πr 2
+1l (6.11)
+Using Eq. (6.9) and Eq. (6.10), we get
+M12 = M21= M (say) (6.12)
+We have demonstrated this equality for long co-axial solenoids.
+However, the relation is far more general. Note that if the inner solenoid was much shorter than (and placed well inside) the outer solenoid, then we could still have calculated the flux linkage N1
+Φ1 because the inner solenoid is effectively immersed in a uniform magnetic field due to the outer solenoid. In this case, the calculation of M12 would be easy. However, it would be extremely difficult to calculate the flux linkage with the outer solenoid as the magnetic field due to the inner solenoid would vary across the length as well as cross section of the outer solenoid. Therefore, the calculation of M21 would also be extremely difficult in this case. The equality M12=M21 is very useful in such situations.
+FIGURE 6.12 Two long co-axial solenoids of same length l .
+Reprint 2026-27

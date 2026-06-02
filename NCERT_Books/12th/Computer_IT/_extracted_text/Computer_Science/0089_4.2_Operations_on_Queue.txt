@@ -1,0 +1,16 @@
+S orting 77
+Program 5-3 Implementation of insertion sort using def insertion_Sort(list3):
+n= len(list3)
+for i in range(n): # Traverse through all elements temp = list3[i] while j >=0 and temp< list3[j] :
+list3[j+1] = list3[j] list3[j+1] = temp numList = [8, 7, 13, 1, -9, 4] insertion_Sort(numList)
+print (“The sorted list is :”)
+for i in range(len(numList)):
+print (numList[i], end=" ")
+The sorted list is :
+-9 1 4 7 8 13
+5.5 Time ComplexiTy of AlgoriThms
+We have studied that there can be more than one approach to solve a problem using a computer. In Class XI, we compared four different algorithms to check whether a given number is prime or not. For the same problem, one algorithm may require more processing time than the other. The amount of time an algorithm takes to process a given data can be called its time complexity.
+For a small set of data elements shown in examples of this chapter so far, the time and memory required by different algorithms do not differ significantly. However, in the real world, sorting algorithms are required to work on huge amounts of data. In such cases, the total time utilisation becomes significant, and therefore it is important to consider the time complexity of an algorithm before being used in a real world data set.
+Computer scientists proposing different techniques for sorting are always interested to find out their time complexity. The aim is to find out how a sorting algorithm behaves if the order of input elements changes or if the number of elements in the list increases or decreases.
+Such comparisons help to decide which algorithm is more suitable for which kind of data and application.
+Reprint 2026-27

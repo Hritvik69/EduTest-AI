@@ -1,0 +1,21 @@
+39 Production and Costs
+In the long run, all factors of production can be varied. A firm in order to produce different levels of output in the long run may vary both the inputs simultaneously. So, in the long run, there is no fixed factor.
+For any particular production process, long run generally refers to a longer time period than the short run. For different production processes, the long run periods may be different. It is not advisable to define short run and long run in terms of say, days, months or years. We define a period as long run or short run simply by looking at whether all the inputs can be varied or not.
+3.3 TOTAL PRODUCT, AVERAGE PRODUCT AND MARGINAL PRODUCT
+3.3.1 Total Product
+Suppose we vary a single input and keep all other inputs constant. Then for different levels of that input, we get different levels of output. This relationship between the variable input and output, keeping all other inputs constant, is often referred to as Total Product (TP) of the variable input.
+Let us again look at Table 3.1. Suppose capital is fixed at 4 units. Now in the Table 3.1, we look at the column where capital takes the value 4. As we move down along the column, we get the output values for different values of labour. This is the total product of labour schedule with K2 = 4. This is also sometimes called total return to or total physical product of the variable input. This is shown again in the second column of table in 3.2
+Once we have defined total product, it will be useful to define the concepts of average product (AP) and marginal product (MP). They are useful in order to describe the contribution of the variable input to the production process.
+3.3.2 Average Product
+Average product is defined as the output per unit of variable input. We calculate
+The last column of table 3.2 gives us a numerical example of average product of labour (with capital fixed at 4) for the production function described in table 3.1. Values in this column are obtained by dividing TP (column 2) by
+L (Column 1).
+3.3.3 Marginal Product
+Marginal product of an input is defined as the change in output per unit of change in the input when all other inputs are held constant. When capital is held constant, the marginal product of labour is
+Change in output
+MP Change in input
+= ∆ (3.3)
+where ∆ represents the change of the variable.
+The third column of table 3.2 gives us a numerical example of Marginal
+Product of labour (with capital fixed at 4) for the production function described in table 3.1. Values in this column are obtained by dividing change in TP by
+Reprint 2026-27

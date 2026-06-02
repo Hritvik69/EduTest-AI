@@ -1,0 +1,120 @@
+GettinG Started with Python 101
+Table 5.4 Relational operators in Python
+Operator Operation Description Example (Try in Lab)
+== Equals to If the values of two operands are equal, then the condition is True, otherwise it is False
+>>> num1 == num2
+>> str1 == str2
+!= Not equal to If values of two operands are not equal, then condition is True, otherwise it is False
+>>> num1 != num2
+>>> str1 != str2
+>>> num1 != num3
+> Greater than If the value of the left-side operand is greater than the value of the right- side operand, then condition is True, otherwise it is False
+>>> num1 > num2
+>>> str1 > str2
+< Less than If the value of the left-side operand is less than the value of the right- side operand, then condition is True, otherwise it is False
+>>> num1 < num3
+>>> str2 < str1
+>= Greater than or equal to
+If the value of the left-side operand is greater than or equal to the value of the right-side operand, then condition is True, otherwise it is False
+>>> num1 >= num2
+>>> num2 >= num3
+>>> str1 >= str2
+<= Less than or equal to
+If the value of the left operand is less than or equal to the value of the right operand, then is True otherwise it is
+>>> num1 <= num2
+>>> num2 <= num3
+>>> str1 <= str2
+5.8.3 Assignment Operators
+Assignment operator assigns or changes the value of the variable on its left.
+Table 5.5 Assignment operators in Python
+Operator Description Example (Try in Lab)
+= Assigns value from right-side operand to left- side operand
+>>> num1 = 2
+>>> num2 = num1
+>>> num2
+>>> country = 'India'
+>>> country them. Assume the Python variables num1 = 10, num2
+= 0, num3 = 10, str1 = "Good", str2 =
+"Afternoon" for the following examples:
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 102
++= It adds the value of right-side operand to the left-side operand and assigns the result to the left-side operand
+Note: x += y is same as x = x + y
+>>> num1 = 10
+>>> num2 = 2
+>>> num1 += num2
+>>> num1
+>>> num2
+>>> str1 = 'Hello'
+>>> str2 = 'India'
+>>> str1 += str2
+>>> str1
+'HelloIndia'
+-= It subtracts the value of right-side operand from the left-side operand and assigns the result to left-side operand
+Note: x -= y is same as x = x - y
+>>> num1 = 10
+>>> num2 = 2
+>>> num1 -= num2
+>>> num1
+*= It multiplies the value of right-side operand with the value of left-side operand and assigns the result to left-side operand
+Note: x *= y is same as x = x * y
+>>> num1 = 2
+>>> num2 = 3
+>>> num1 *= 3
+>>> num1
+>>> a = 'India'
+>>> a *= 3
+'IndiaIndiaIndia'
+/= It divides the value of left-side operand by the value of right-side operand and assigns the result to left-side operand
+Note: x /= y is same as x = x / y
+>>> num1 = 6
+>>> num2 = 3
+>>> num1 /= num2
+>>> num1
+%= It performs modulus operation using two operands and assigns the result to left-side
+Note: x %= y is same as x = x % y
+>>> num1 = 7
+>>> num2 = 3
+>>> num1 %= num2
+>>> num1
+//= It performs floor division using two operands and assigns the result to left-side operand
+Note: x //= y is same as x = x // y
+>>> num1 = 7
+>>> num2 = 3
+>>> num1 //= num2
+>>> num1
+**= It performs exponential (power) calculation on operators and assigns value to the left-side
+Note: x **= y is same as x = x ** y
+>>> num1 = 2
+>>> num2 = 3
+>>> num1 **= num2
+>>> num1
+Reprint 2026-27
+GettinG Started with Python 103
+5.8.5 Identity Operators
+Identity operators are used to determine whether the value of a variable is of a certain type or not. Identity operators can also be used to determine whether two
+5.8.4 Logical Operators
+There are three logical operators supported by Python.
+These operators (and, or, not) are to be written in lower case only. The logical operator evaluates to either
+True or False based on the logical operands on either side. Every value is logically either True or False. By default, all values are True except None, False, 0 (zero), empty collections "", (), [], {}, and few other special values. So if we say num1 = 10, num2 = -20, then both num1 and num2 are logically True.
+Table 5.6 Logical operators in Python
+Operator Operation Description Example (Try in Lab)
+and Logical AND If both the operands are
+True, then condition becomes True
+>>> True and True
+>>> num1 = 10
+>>> num2 = -20
+>>> bool(num1 and num2)
+>>> True and False
+>>> num3 = 0
+>>> bool(num1 and num3)
+>>> False and False or Logical OR If any of the two operands are True, then condition becomes True
+>>> True or True
+>>> True or False
+>>> bool(num1 or num3)
+>>> False or False not Logical NOT Used to reverse the logical state of its operand
+>>> num1 = 10
+>>> bool(num1)
+>>> not num1
+>>> bool(num1)
+Reprint 2026-27

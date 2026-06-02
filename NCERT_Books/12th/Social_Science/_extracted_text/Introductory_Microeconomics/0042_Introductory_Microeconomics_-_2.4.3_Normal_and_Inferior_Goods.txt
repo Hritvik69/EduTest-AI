@@ -1,0 +1,16 @@
+Introductory
+Microeconomics the good will go up (See row 1 in table 2.5). And if the percentage decline in quantity is equal to the percentage increase in the price, the expenditure on the good will remain unchanged (see row 3 in table 2.5).
+Now consider a decline in the price of the good. If the percentage increase in quantity is greater than the percentage decline in the price, the expenditure on the good will go up(see row 4 in table 2.5). On the other hand, if the percentage increase in quantity is less than the percentage decline in the price, the expenditure on the good will go down(see row 5 in table 2.5). And if the percentage increase in quantity is equal to the percentage decline in the price, the expenditure on the good will remain unchanged (see row 6 in table 2.5).
+The expenditure on the good would change in the opposite direction as the price change if and only if the percentage change in quantity is greater than the percentage change in price, ie if the good is price-elastic (see rows 2 and 4 in table 2.5). The expenditure on the good would change in the same direction as the price change if and only if the percentage change in quantity is less than the percentage change in price, i.e., if the good is price inelastic (see rows 1 and 5 in table 2.5). The expenditure on the good would remain unchanged if and only if the percentage change in quantity is equal to the percentage change in price, i.e., if the good is unit-elastic (see rows 3 and 6 in table 2.5).
+Change Change in % Change % Change Impact on Nature of price in Price Quantity in price in quantity Expenditure Elasticity of (P) demand (Q) demand = P×Q demand de
+1 ↑ ↓ +10 -8 ↑ Price Inelastic
+2 ↑ ↓ +10 -12 ↓ Price Elastic
+3 ↑ ↓ +10 -10 No Change Unit Elastic
+4 ↓ ↑ -10 +15 ↑ Price Elastic
+5 ↓ ↑ -10 +7 ↓ Price Inelastic
+6 ↓ ↑ -10 +10 No Change Unit Elastic
+Table 2.5: For hypothetic cases of price rise and drop, the following table summarises the relationship between elasticity and change in expenditure of a commodity
+Rectangular Hyperbola
+An equation of the form where x and y are two variables and c is a constant, giving us a curve called rectangular hyperbola. It is a downward sloping curve in the x-y plane as shown in the diagram. For any two points p and q on the curve, the areas of the two rectangles Oy1px1 and Oy2qx2 are same and equal to c.
+If the equation of a demand curve takes the form pq = e, where e is a constant, it will be a rectangular hyperbola, where price (p) times quantity (q) is a constant. With such a demand curve, no matter at what point the consumer consumes, her expenditures are always the same and equal to e.
+Reprint 2026-27

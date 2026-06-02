@@ -1,0 +1,109 @@
+2p rn = n l, n = 1, 2, 3... (12.12)
+Figure 12.8 illustrates a standing particle wave on a circular orbit for n = 4, i.e., 2prn = 4 l, where l is the de Broglie wavelength of the electron moving in nth orbit. From Chapter 11, we have l = h/p, where p is the magnitude of the electron’s momentum. If the speed of the electron is much less than the speed of light, the momentum is mvn. Thus, mvn. From Eq. (12.12), we have
+2p rn = n h/mvn or m vn rn = nh/2p
+This is the quantum condition proposed by Bohr for the angular momentum of the electron [Eq. (12.15)]. In Section 12.5, we saw that this equation is the basis of explaining the discrete orbits and energy levels in hydrogen atom. Thus de Broglie hypothesis provided an explanation for Bohr’s second postulate for the quantisation of angular momentum of the orbiting electron. The quantised electron orbits and energy states are due to the wave nature of the electron and only resonant standing waves can persist.
+Bohr’s model, involving classical trajectory picture (planet-like electron orbiting the nucleus), correctly predicts the gross features of the hydrogenic atoms*, in particular, the frequencies of the radiation emitted or selectively absorbed. This model however has many limitations.
+Some are:
+(i) The Bohr model is applicable to hydrogenic atoms. It cannot be extended even to mere two electron atoms such as helium. The analysis of atoms with more than one electron was attempted on the lines of
+Bohr’s model for hydrogenic atoms but did not meet with any success.
+Difficulty lies in the fact that each electron interacts not only with the positively charged nucleus but also with all other electrons.
+The formulation of Bohr model involves electrical force between positively charged nucleus and electron. It does not include the electrical forces between electrons which necessarily appear in multi-electron atoms.
+(ii) While the Bohr’s model correctly predicts the frequencies of the light emitted by hydrogenic atoms, the model is unable to explain the relative intensities of the frequencies in the spectrum. In emission spectrum of hydrogen, some of the visible frequencies have weak intensity, others strong. Why? Experimental observations depict that some transitions are more favoured than others. Bohr’s model is unable to account for the intensity variations.
+Bohr’s model presents an elegant picture of an atom and cannot be generalised to complex atoms. For complex atoms we have to use a new and radical theory based on Quantum Mechanics, which provides a more complete picture of the atomic structure.
+* Hydrogenic atoms are the atoms consisting of a nucleus with positive charge
++Ze and a single electron, where Z is the proton number. Examples are hydrogen atom, singly ionised helium, doubly ionised lithium, and so forth. In these atoms more complex electron-electron interactions are nonexistent.
+Reprint 2026-27
+1. Atom, as a whole, is electrically neutral and therefore contains equal amount of positive and negative charges.
+2. In Thomson’s model, an atom is a spherical cloud of positive charges with electrons embedded in it.
+3. In Rutherford’s model, most of the mass of the atom and all its positive charge are concentrated in a tiny nucleus (typically one by ten thousand the size of an atom), and the electrons revolve around it.
+4. Rutherford nuclear model has two main difficulties in explaining the structure of atom: (a) It predicts that atoms are unstable because the accelerated electrons revolving around the nucleus must spiral into the nucleus. This contradicts the stability of matter. (b) It cannot explain the characteristic line spectra of atoms of different elements.
+5. Atoms of most of the elements are stable and emit characteristic spectrum. The spectrum consists of a set of isolated parallel lines termed as line spectrum. It provides useful information about the atomic structure.
+6. To explain the line spectra emitted by atoms, as well as the stability of atoms, Niel’s Bohr proposed a model for hydrogenic (single elctron)
+atoms. He introduced three postulates and laid the foundations of quantum mechanics:
+(a) In a hydrogen atom, an electron revolves in certain stable orbits (called stationary orbits) without the emission of radiant energy.
+(b) The stationary orbits are those for which the angular momentum is some integral multiple of h/2p. (Bohr’s quantisation condition.)
+That is L = nh/2p, where n is an integer called the principal quantum number.
+(c) The third postulate states that an electron might make a transition from one of its specified non-radiating orbits to another of lower energy. When it does so, a photon is emitted having energy equal to the energy difference between the initial and final states. The frequency ( n) of the emitted photon is then given by n = Ei – Ef
+An atom absorbs radiation of the same frequency the atom emits, in which case the electron is transferred to an orbit with a higher value of n.
+7. As a result of the quantisation condition of angular momentum, the electron orbits the nucleus at only specific radii. For a hydrogen atom it is given by
+The total energy is also quantised:
+= –13.6 eV/n2
+The n = 1 state is called ground state. In hydrogen atom the ground state energy is –13.6 eV. Higher values of n correspond to excited states (n > 1). Atoms are excited to these higher states by collisions with other atoms or electrons or by absorption of a photon of right frequency.
+Reprint 2026-27
+8. de Broglie’s hypothesis that electrons have a wavelength
+λ = h/mv gave an explanation for Bohr’s quantised orbits by bringing in the wave- particle duality. The orbits correspond to circular standing waves in which the circumference of the orbit equals a whole number of wavelengths.
+9. Bohr’s model is applicable only to hydrogenic (single electron) atoms.
+It cannot be extended to even two electron atoms such as helium.
+This model is also unable to explain for the relative intensities of the frequencies emitted even by hydrogenic atoms.
+POINTS TO PONDER POINTS TO PONDER POINTS TO PONDER POINTS TO PONDER POINTS TO PONDER
+1. Both the Thomson’s as well as the Rutherford’s models constitute an unstable system. Thomson’s model is unstable electrostatically, while
+Rutherford’s model is unstable because of electromagnetic radiation of orbiting electrons.
+2. What made Bohr quantise angular momentum (second postulate) and not some other quantity? Note, h has dimensions of angular momentum, and for circular orbits, angular momentum is a very relevant quantity. The second postulate is then so natural!
+3. The orbital picture in Bohr’s model of the hydrogen atom was inconsistent with the uncertainty principle. It was replaced by modern quantum mechanics in which Bohr’s orbits are regions where the electron may be found with large probability.
+4. Unlike the situation in the solar system, where planet-planet gravitational forces are very small as compared to the gravitational force of the sun on each planet (because the mass of the sun is so much greater than the mass of any of the planets), the electron-electron electric force interaction is comparable in magnitude to the electron- nucleus electrical force, because the charges and distances are of the same order of magnitude. This is the reason why the Bohr’s model with its planet-like electron is not applicable to many electron atoms.
+5. Bohr laid the foundation of the quantum theory by postulating specific orbits in which electrons do not radiate. Bohr’s model include only one quantum number n. The new theory called quantum mechanics supports Bohr’s postulate. However in quantum mechanics (more generally accepted), a given energy level may not correspond to just one quantum state. For example, a state is characterised by four quantum numbers (n, l, m, and s), but for a pure Coulomb potential (as in hydrogen atom) the energy depends only on n.
+6. In Bohr model, contrary to ordinary classical expectation, the frequency of revolution of an electron in its orbit is not connected to the frequency of spectral line. The later is the difference between two orbital energies divided by h. For transitions between large quantum numbers (n to n
+– 1, n very large), however, the two coincide as expected.
+7. Bohr’s semiclassical model based on some aspects of classical physics and some aspects of modern physics also does not provide a true picture of the simplest hydrogenic atoms. The true picture is quantum mechanical affair which differs from Bohr model in a number of fundamental ways. But then if the Bohr model is not strictly correct, why do we bother about it? The reasons which make Bohr’s model still useful are:
+Reprint 2026-27 (i) The model is based on just three postulates but accounts for almost all the general features of the hydrogen spectrum.
+(ii) The model incorporates many of the concepts we have learnt in classical physics.
+(iii) The model demonstrates how a theoretical physicist occasionally must quite literally ignore certain problems of approach in hopes of being able to make some predictions. If the predictions of the theory or model agree with experiment, a theoretician then must somehow hope to explain away or rationalise the problems that were ignored along the way.
+EXERCISES
+12.1 Choose the correct alternative from the clues given at the end of the each statement:
+(a) The size of the atom in Thomson’s model is .......... the atomic size in Rutherford’s model. (much greater than/no different from/much less than.)
+(b) In the ground state of .......... electrons are in stable equilibrium, while in .......... electrons always experience a net force.
+(Thomson’s model/ Rutherford’s model.)
+(c) A classical atom based on .......... is doomed to collapse.
+(Thomson’s model/ Rutherford’s model.)
+(d) An atom has a nearly continuous mass distribution in a ..........
+but has a highly non-uniform mass distribution in ..........
+(Thomson’s model/ Rutherford’s model.)
+(e) The positively charged part of the atom possesses most of the mass in .......... (Rutherford’s model/both the models.)
+12.2 Suppose you are given a chance to repeat the alpha-particle scattering experiment using a thin sheet of solid hydrogen in place of the gold foil. (Hydrogen is a solid at temperatures below 14 K.)
+What results do you expect?
+12.3 A difference of 2.3 eV separates two energy levels in an atom. What is the frequency of radiation emitted when the atom make a transition from the upper level to the lower level?
+12.4 The ground state energy of hydrogen atom is –13.6 eV. What are the kinetic and potential energies of the electron in this state?
+12.5 A hydrogen atom initially in the ground level absorbs a photon, which excites it to the n = 4 level. Determine the wavelength and frequency of photon.
+12.6 (a) Using the Bohr’s model calculate the speed of the electron in a hydrogen atom in the n = 1, 2, and 3 levels. (b) Calculate the orbital period in each of these levels.
+12.7 The radius of the innermost electron orbit of a hydrogen atom is
+5.3×10–11 m. What are the radii of the n = 2 and n =3 orbits?
+12.8 A 12.5 eV electron beam is used to bombard gaseous hydrogen at room temperature. What series of wavelengths will be emitted?
+12.9 In accordance with the Bohr’s model, find the quantum number that characterises the earth’s revolution around the sun in an orbit of radius 1.5 × 1011 m with orbital speed 3 × 104 m/s. (Mass of earth
+= 6.0 × 1024 kg.)
+Reprint 2026-27
+13.1 INTRODUCTION
+In the previous chapter, we have learnt that in every atom, the positive charge and mass are densely concentrated at the centre of the atom forming its nucleus. The overall dimensions of a nucleus are much smaller than those of an atom. Experiments on scattering of a-particles demonstrated that the radius of a nucleus was smaller than the radius of an atom by a factor of about 104. This means the volume of a nucleus is about 10–12 times the volume of the atom. In other words, an atom is almost empty. If an atom is enlarged to the size of a classroom, the nucleus would be of the size of pinhead. Nevertheless, the nucleus contains most (more than 99.9%) of the mass of an atom.
+Does the nucleus have a structure, just as the atom does? If so, what are the constituents of the nucleus? How are these held together? In this chapter, we shall look for answers to such questions. We shall discuss various properties of nuclei such as their size, mass and stability, and also associated nuclear phenomena such as radioactivity, fission and fusion.
+13.2 ATOMIC MASSES AND COMPOSITION OF NUCLEUS
+The mass of an atom is very small, compared to a kilogram; for example, the mass of a carbon atom, 12C, is 1.992647 × 10–26 kg. Kilogram is not a very convenient unit to measure such small quantities. Therefore, a
+Chapter Thirteen
+Reprint 2026-27 different mass unit is used for expressing atomic masses. This unit is the atomic mass unit (u), defined as 1/12th of the mass of the carbon (12C)
+atom. According to this definition mass of one C atom
+1.992647 10 kg
+1.660539 10 kg−
+= × (13.1)
+The atomic masses of various elements expressed in atomic mass unit (u) are close to being integral multiples of the mass of a hydrogen atom. There are, however, many striking exceptions to this rule. For example, the atomic mass of chlorine atom is 35.46 u.
+Accurate measurement of atomic masses is carried out with a mass spectrometer, The measurement of atomic masses reveals the existence of different types of atoms of the same element, which exhibit the same chemical properties, but differ in mass. Such atomic species of the same element differing in mass are called isotopes. (In Greek, isotope means the same place, i.e. they occur in the same place in the periodic table of elements.) It was found that practically every element consists of a mixture of several isotopes. The relative abundance of different isotopes differs from element to element. Chlorine, for example, has two isotopes having masses 34.98 u and 36.98 u, which are nearly integral multiples of the mass of a hydrogen atom. The relative abundances of these isotopes are
+75.4 and 24.6 per cent, respectively. Thus, the average mass of a chlorine atom is obtained by the weighted average of the masses of the two isotopes, which works out to be
+= 75.4 34.98 24.6 36.98
+= 35.47 u which agrees with the atomic mass of chlorine.
+Even the lightest element, hydrogen has three isotopes having masses
+1.0078 u, 2.0141 u, and 3.0160 u. The nucleus of the lightest atom of hydrogen, which has a relative abundance of 99.985%, is called the proton. The mass of a proton is
+1.00727 u 1.67262 10 kg p m −
+= = × (13.2)
+This is equal to the mass of the hydrogen atom (= 1.00783u), minus the mass of a single electron (me = 0.00055 u). The other two isotopes of hydrogen are called deuterium and tritium. Tritium nuclei, being unstable, do not occur naturally and are produced artificially in laboratories.
+The positive charge in the nucleus is that of the protons. A proton carries one unit of fundamental charge and is stable. It was earlier thought that the nucleus may contain electrons, but this was ruled out later using arguments based on quantum theory. All the electrons of an atom are outside the nucleus. We know that the number of these electrons outside the nucleus of the atom is Z, the atomic number. The total charge of the
+Reprint 2026-27 atomic electrons is thus (–Ze), and since the atom is neutral, the charge of the nucleus is (+Ze). The number of protons in the nucleus of the atom is, therefore, exactly Z, the atomic number.
+Discovery of Neutron
+Since the nuclei of deuterium and tritium are isotopes of hydrogen, they must contain only one proton each. But the masses of the nuclei of hydrogen, deuterium and tritium are in the ratio of 1:2:3. Therefore, the nuclei of deuterium and tritium must contain, in addition to a proton, some neutral matter. The amount of neutral matter present in the nuclei of these isotopes, expressed in units of mass of a proton, is approximately equal to one and two, respectively. This fact indicates that the nuclei of atoms contain, in addition to protons, neutral matter in multiples of a basic unit. This hypothesis was verified in 1932 by James Chadwick who observed emission of neutral radiation when beryllium nuclei were bombarded with alpha-particles ( a-particles are helium nuclei, to be discussed in a later section). It was found that this neutral radiation could knock out protons from light nuclei such as those of helium, carbon and nitrogen. The only neutral radiation known at that time was photons (electromagnetic radiation). Application of the principles of conservation of energy and momentum showed that if the neutral radiation consisted of photons, the energy of photons would have to be much higher than is available from the bombardment of beryllium nuclei with a-particles.
+The clue to this puzzle, which Chadwick satisfactorily solved, was to assume that the neutral radiation consists of a new type of neutral particles called neutrons. From conservation of energy and momentum, he was able to determine the mass of new particle ‘as very nearly the same as mass of proton’.
+The mass of a neutron is now known to a high degree of accuracy. It is m n = 1.00866 u = 1.6749×10–27 kg (13.3)
+Chadwick was awarded the 1935 Nobel Prize in Physics for his discovery of the neutron.
+A free neutron, unlike a free proton, is unstable. It decays into a proton, an electron and a antineutrino (another elementary particle), and has a mean life of about 1000s. It is, however, stable inside the nucleus.
+The composition of a nucleus can now be described using the following terms and symbols:
+Z - atomic number = number of protons [13.4(a)]
+N - neutron number = number of neutrons [13.4(b)]
+A - mass number = Z + N
+= total number of protons and neutrons [13.4(c)]
+One also uses the term nucleon for a proton or a neutron. Thus the number of nucleons in an atom is its mass number A.
+Nuclear species or nuc

@@ -1,0 +1,452 @@
+240 MATHEMATICS
+Now, consider cos sin
+I cos sin x – x dx
+Put cos x + sin x = t so that (cos x – sin x) dx = dt
+Therefore 2 I log C
+= = + ∫ = 2 log cos sin C x x + +
+Putting it in (1), we get
+1 2 C C 1
++ + log cos sin
+1 tan 2 2 2 2 dx x x x
+= 1 2 C C 1
++ log cos sin x x x + + +
+= 1 2 C C 1
++ log cos sin C C x x x , 
++ + = +  
+EXERCISE 7.2
+Integrate the functions in Exercises 1 to 37:
+x + 2. ( )2 log x x x +
+4. sin sin (cos ) x x 5. sin ( ) cos ( ) ax b ax b + +
+6. ax b + 7. 2 x x + 8. 2
+1 2 x x + (4 2) 1 x x x + + + 10.
+x – x 11. 4 x + , x > 0
+3 5 3 ( 1) x – x 13.
+x + 14. 1 x x , x > 0, 1 ≠ m
+– x 16. 2 3 x e + 17. 2
+Reprint 2026-27
+INTEGRALS 241
+21. tan2 (2x – 3) 22. sec2 (7 – 4x) 23.
+24. 2cos 3sin
+6cos 4sin x x + 25. 2 2 cos (1 tan ) x – x 26. cos x
+27. sin 2 cos 2 x x 28.
+x + 29. cot x log sin x x + 31. ( )2 x + 32. 1
+1 cot x +
+1 tan – x 34. tan x x 35. ( )2
+36. ( )2 ( 1) log x x x
++ + 37. ( )3 1 4
+Choose the correct answer in Exercises 38 and 39.
+10 10 log 10
++∫ equals (A) 10x – x10 + C (B) 10x + x10 + C (C) (10x – x10)–1 + C (D) log (10x + x10) + C
+39. 2 2 equals (A) tan x + cot x + C (B) tan x – cot x + C (C) tan x cot x + C (D) tan x – cot 2x + C
+7.3.2 Integration using trigonometric identities
+When the integrand involves some trigonometric functions, we use some known identities to find the integral as illustrated through the following example.
+Example 7 Find (i) 2 cos x dx ∫ (ii) sin 2 cos 3 x x dx ∫ (iii) 3 sin x dx ∫
+Reprint 2026-27
+242 MATHEMATICS
+Solution (i) Recall the identity cos 2x = 2 cos2 x – 1, which gives cos2 x = 1 cos 2
+Therefore, = 1 (1 + cos 2 )
+2 x dx ∫ = 1 1 cos 2 dx x dx + ∫ ∫
+= 1 sin 2 C (ii) Recall the identity sin x cos y = 1
+2 [sin (x + y) + sin (x – y)] (Why?)
+= 1 1 cos 5 cos C
++ +    cos 5 cos C
+– x x + + (iii) From the identity sin 3x = 3 sin x – 4 sin3 x, we find that sin3 x = 3sin sin 3
+Therefore, 3 sin x dx ∫ = 3 1 sin sin 3 x dx – x dx ∫ ∫
+– cos cos 3 C
+Alternatively, 3 2 sin sin sin x dx x x dx = ∫ ∫ = 2 (1 – cos ) sin x x dx ∫
+Put cos x = t so that – sin x dx = dt
+Therefore, 3 sin x dx ∫ = ( )2
+1 – t dt − ∫ =
+– dt t dt – t + = + + ∫ ∫ cos cos C
+– x x + +
+Remark It can be shown using trigonometric identities that both answers are equivalent.
+Reprint 2026-27
+INTEGRALS 243
+EXERCISE 7.3
+Find the integrals of the functions in Exercises 1 to 22:
+1. sin2 (2x + 5) 2. sin 3x cos 4x 3. cos 2x cos 4x cos 6x
+4. sin3 (2x + 1) 5. sin3 x cos3 x 6. sin x sin 2x sin 3x
+7. sin 4x sin 8x 8. 1 cos x + 9. cos
+10. sin4 x 11. cos4 2x 12.
+13. cos 2 cos 2
+α 14. cos sin x + 15. tan3 2x sec 2x
+16. tan4x 17.
+cos 2 2sin sin cos x x 20. ( )2 x x + 21. sin – 1 (cos x)
+cos ( ) cos ( ) x – a x – b
+Choose the correct answer in Exercises 23 and 24.
+sin cos is equal to (A) tan x + cot x + C (B) tan x + cosec x + C (C) – tan x + cot x + C (D) tan x + sec x + C (1 ) equals (A) – cot (exx) + C (B) tan (xex) + C (C) tan (ex) + C (D) cot (ex) + C
+7.4 Integrals of Some Particular Functions
+In this section, we mention below some important formulae of integrals and apply them for integrating many other related standard integrals:
+(1) ∫ 2 2
+= log + C a x a x a
+Reprint 2026-27
+244 MATHEMATICS (2) ∫ 2 2
+= log + C a a x a x (3) ∫ – 1 a a x + a (4) ∫ 2 2
+2 2 = log + – + C dx x x a (5) ∫ – 1
+2 2 = sin + C (6) ∫ 2 2
+2 2 = log + + + C dx x x a
+We now prove the above results:
+(1) We have 2 2 ( ) ( ) x – a x a x – a = +
+= 1 ( ) – ( ) 1 1 1
+2 ( ) ( ) 2 x a x – a – a x – a x a a x – a x a
+  +  
+=     + +    
+Therefore, 2 2 dx dx dx a x – a x a x – a
+=  +  
+1 log ( )| log ( )| C
+2 | x – a – | x a
+= 1 log C (2) In view of (1) above, we have
+1 1 ( ) ( )
+2 ( ) ( ) – a a x a x a x
+  + + −
+=  + −   = 1 1 1
+2a a x a x
++   − +  
+Reprint 2026-27
+INTEGRALS 245
+Therefore, 2 2 a x∫ = 1 a a x a x
++   − +  
+= 1 [ log | | log | |] C
+2 a x a x a − − + + +
+= 1 log C
+ANote The technique used in (1) will be explained in Section 7.5.
+(3) Put x = a tan θ. Then dx = a sec2 θ dθ.
+Therefore, 2 2 x a +∫ =
+= 1 1 1 1
+θ θ C tan C– x
+= + = + ∫ (4) Let x = a secθ. Then dx = a secθ tan θ d θ.
+Therefore, 2 2
+∫ = 2 2 2 secθ tanθ θ
+= 1 secθ θ log secθ + tanθ + C d = ∫
+1 log log C x x – a a + − + log + C x x – a + , where C = C1 – log |a| (5) Let x = a sinθ. Then dx = a cosθ dθ.
+Therefore, 2 2
+∫ = 2 2 2
+θ = θ + C = sin C– x (6) Let x = a tan θ. Then dx = a sec2 θ dθ.
+Therefore, 2 2
+= 1 θ θ secθ θ = log (sec tan ) C d + + ∫
+Reprint 2026-27
+246 MATHEMATICS
+1 log log C x x a | a |2 log C x x a2
++ + + , where C = C1 – log |a|
+Applying these standard formulae, we now obtain some more formulae which are useful from applications point of view and can be applied directly to evaluate other integrals.
+(7) To find the integral 2 ax bx c + +∫ , we write ax2 + bx + c = b c b c b a x x a x – a a a a a
+       
++ + = + +        
+         
+Now, put 2
++ = so that dx = dt and writing a a = ± . We find the integral reduced to the form 2 2 a t k ±∫ depending upon the sign of and hence can be evaluated.
+(8) To find the integral of the type , proceeding as in (7), we obtain the integral using the standard formulae.
+(9) To find the integral of the type 2
++ +∫ , where p, q, a, b, c are constants, we are to find real numbers A, B such that
++ = A ( ) + B = A (2 ) + B px q ax bx c ax b dx + + +
+To determine A and B, we equate from both sides the coefficients of x and the constant terms. A and B are thus obtained and hence the integral is reduced to one of the known forms.
+Reprint 2026-27
+INTEGRALS 247 (10) For the evaluation of the integral of the type 2 ( ) px q dx
+∫ , we proceed as in (9) and transform the integral into known standard forms.
+Let us illustrate the above methods by some examples.
+Example 8 Find the following integrals:
+(i) 2 16 x −∫ (ii) 2
+Solution (i) We have 2 2 2
+−∫ ∫ = 4
++ [by 7.4 (1)]
+Put x – 1 = t. Then dx = dt.
+Therefore, 2 sin ( ) C– t + [by 7.4 (5)] sin ( – 1) C– x +
+Example 9 Find the following integrals :
+(i) 2 6 13 x x − +∫ (ii) 2 x x + −∫ (iii) 2
+Solution (i) We have x2 – 6x + 13 = x2 – 6x + 32 – 32 + 13 = (x – 3)2 + 4
+So, 6 13 x x2 − +∫ = ( )2 2
+Let x – 3 = t. Then dx = dt
+Therefore, 6 13 x x2 − +∫ = 1
++∫ [by 7.4 (3)]
+Reprint 2026-27
+248 MATHEMATICS (ii) The given integral is of the form 7.4 (7). We write the denominator of the integrand,
+3 13 10 x x – + = 2 13 10
+     
++      
+        (completing the square)
+Thus 3 13 10 x x2 + −∫ = 2 2
++ −     x t + = . Then dx = dt.
+Therefore, 3 13 10 x x2 + −∫ = 2
+1 6 log C
+[by 7.4 (i)]
+1 6 6 log C
+13 17 17
+1 3 2 1 1 log C log
+17 5 17 3
++ , where C = 1
+Reprint 2026-27
+INTEGRALS 249 (iii) We have 2 2 5 2 5 5 x x x x –
+  −  
+∫ (completing the square)
+x – t = . Then dx = dt.
+Therefore, 5 2
+5 5 t t –  
+  [by 7.4 (4)]
+= 2 1 1 2 x – x – + +
+Example 10 Find the following integrals:
++ +∫ (ii) 2
+Solution (i) Using the formula 7.4 (9), we express x + 2 = ( )2
+A 2 6 5 B dx + + + = A (4 6) B x + +
+Equating the coefficients of x and the constant terms from both sides, we get
+4A = 1 and 6A + B = 2 or A = 1
+4 and B = 1
+Therefore, 2
++ +∫ = 1 4 6 1
+4 2 2 6 5 2 6 5 x x x x2 2
++ + + +∫ ∫
++ (say) ... (1)
+Reprint 2026-27
+250 MATHEMATICS
+In I1, put 2x2 + 6x + 5 = t, so that (4x + 6) dx = dt
+Therefore, I1 = 1 log C
+1 log | 2 6 5 | C x x + + + ... (2)
+and I2 = 2 2
+5 2 2 6 5 3 2
++ +     x t + = , so that dx = dt, we get
+1 tan 2 C
+[by 7.4 (3)] tan 2 + C
+  = ( )1
+2 tan 2 3 + C– x + ... (3)
+Using (2) and (3) in (1), we get ( )2 1 2 1 1 log 2 6 5 tan 2 3 C
+4 2 2 6 5
+– x dx x x x
++ = + + + + + where, C = 1 2 C C (ii) This integral is of the form given in 7.4 (10). Let us express x + 3 = 2
+A (5 4 ) + B d – x – x dx = A (– 4 – 2x) + B
+Equating the coefficients of x and the constant terms from both sides, we get
+– 2A = 1 and – 4 A + B = 3, i.e., A = 1
+– and B = 1
+Reprint 2026-27
+INTEGRALS 251
+Therefore, 2
+∫ = ( ) 2 2
+2 5 4 5 4
+– – x dx dx
+– I1 + I2 ... (1)
+In I1, put 5 – 4x – x2 = t, so that (– 4 – 2x) dx = dt.
+Therefore, I1= ( ) 2
+– x dx dt
+∫ ∫ = 1 2 C t +
+1 2 5 4 C – x – x + ... (2)
+Now consider I2 = 2 2
+5 4 9 ( 2)
+Put x + 2 = t, so that dx = dt.
+Therefore, I2 = 1
+2 2 sin + C
+∫ [by 7.4 (5)]
+– x + + ... (3)
+Substituting (2) and (3) in (1), we obtain
+5 – 4 – + sin C
+= + ∫ , where 1
+EXERCISE 7.4
+Integrate the functions in Exercises 1 to 23.
+x + 2. 2
+1 4x + 3.
+2 1 – x +
+9 25 – x 5. 4 x a + 9.
+Reprint 2026-27
+252 MATHEMATICS
+2 2 x x + + 11. 2
+9 6 5 x x + + 12. 2
+7 6 – x – x
+13. ( )( )
+1 2 x – x – 14. 2
+8 3x – x + 15. ( )( )
+x – a x – b
+19. ( )( )
+Choose the correct answer in Exercises 24 and 25.
+24. 2 equals x x + +∫ (A) x tan–1 (x + 1) + C (B) tan–1 (x + 1) + C (C) (x + 1) tan–1x + C (D) tan–1x + C
+25. 2 equals (A) –1 1 9 8 x −   +  
+  (B) –1 1 8 9 x −   +   (C) –1 1 9 8 x −   +  
+  (D) –1 1 9 8 x −   +  
+7.5 Integration by Partial Fractions
+Recall that a rational function is defined as the ratio of two polynomials in the form x , where P (x) and Q(x) are polynomials in x and Q(x) ≠ 0. If the degree of P(x)
+is less than the degree of Q(x), then the rational function is called proper, otherwise, it is called improper. The improper rational functions can be reduced to the proper rational
+Reprint 2026-27
+INTEGRALS 253 functions by long division process. Thus, if P( )
+x is improper, then 1 P ( ) P( ) T( )
+Q( ) Q( )
+where T(x) is a polynomial in x and 1 P ( )
+x is a proper rational function. As we know how to integrate polynomials, the integration of any rational function is reduced to the integration of a proper rational function. The rational functions which we shall consider here for integration purposes will be those whose denominators can be factorised into linear and quadratic factors. Assume that we want to evaluate P( )
+x ∫ , where P( )
+is proper rational function. It is always possible to write the integrand as a sum of simpler rational functions by a method called partial fraction decomposition. After this, the integration can be carried out easily using the already known methods. The following
+Table 7.2 indicates the types of simpler partial fractions that are to be associated with various kind of rational functions.
+Table 7.2
+S.No. Form of the rational function Form of the partial fraction
+1. ( – ) ( – )
++ , a ≠ b A B x – a x – b x – a x – a ( – ) ( ) ( )
+x a x – b x – c
++ + A B C x – a x – b x – c ( – ) ( )
+x a x – b ( ) x – a x – b x – a ( – ) ( )
+x a x bx c
+A B + C x x – a x bx c where x2 + bx + c cannot be factorised further
+In the above table, A, B and C are real numbers to be determined suitably.
+Reprint 2026-27
+254 MATHEMATICS
+Example 11 Find ( 1) ( 2)
+x x + +∫
+Solution The integrand is a proper rational function. Therefore, by using the form of partial fraction [Table 7.2 (i)], we write ( 1) ( 2) x x + + = A B
++ + ... (1)
+where, real numbers A and B are to be determined suitably. This gives
+1 = A (x + 2) + B (x + 1).
+Equating the coefficients of x and the constant term, we get
+A + B = 0 and 2A + B = 1
+Solving these equations, we get A =1 and B = – 1.
+Thus, the integrand is given by ( 1) ( 2) x x + + = 1 – 1
+Therefore, ( 1) ( 2)
+x x + + ∫ = 1 2 x x + +∫ ∫
+= log 1 log 2 C x x + − + +
+Remark The equation (1) above is an identity, i.e. a statement true for all (permissible)
+values of x. Some authors use the symbol ‘≡’ to indicate that the statement is an identity and use the symbol ‘=’ to indicate that the statement is an equation, i.e., to indicate that the statement is true only for certain values of x.
+Example 12 Find
+Solution Here the integrand
++ is not proper rational function, so we divide x2 + 1 by x2 – 5x + 6 and find that
+Reprint 2026-27
+INTEGRALS 255
+1 1 ( 2) ( 3) 5 6 x – x – x – x ( 2) ( 3)
+x – x – = A B
+2 3 x – x –
+So that 5x – 5 = A (x – 3) + B (x – 2)
+Equating the coefficients of x and constant terms on both sides, we get A + B = 5 and 3A + 2B = 5. Solving these equations, we get A = – 5 and B = 10
++ = 5 10
+1 2 3 x – x –
+Therefore,
+− + ∫ ∫ ∫
+= x – 5 log | x – 2 | + 10 log | x – 3 | + C.
+Example 13 Find 2 ( 1) ( 3)
+Solution The integrand is of the type as given in Table 7.2 (4). We write ( 1) ( 3)
+x x + + = 2
+1 3 ( 1) x x x
+So that 3x – 2 = A (x + 1) (x + 3) + B (x + 3) + C (x + 1)2
+= A (x2 + 4x + 3) + B (x + 3) + C (x2 + 2x + 1 )
+Comparing coefficient of x2, x and constant term on both sides, we get
+A + C = 0, 4A + B + 2C = 3 and 3A + 3B + C = – 2. Solving these equations, we get
+A B and C
+, = = = . Thus the integrand is given by ( 1) ( 3)
+4 ( 1) 4 ( 3) 2 ( 1)
+x x x + + +
+Therefore, 2 ( 1) ( 3)
++ +∫ = 2
+4 1 2 4 3 ( 1)
+dx dx dx
++ + +∫ ∫ ∫
+= 11 5 11 log +1 log 3 C
+4 2 ( + 1) 4
+= 11 + 1 5
+4 + 3 2 ( + 1)
+Reprint 2026-27
+256 MATHEMATICS
+Example 14 Find ( 1) ( 4)
+x x + +∫
+Solution Consider ( 1) ( 4)
+x x + + and put x2 = y.
+( 1) ( 4)
+x x + + = ( 1) ( 4)
+Write ( 1) ( 4)
+y y + + = A B
+So that y = A (y + 4) + B (y + 1)
+Comparing coefficients of y and constant terms on both sides, we get A + B = 1 and 4A + B = 0, which give ( 1) ( 4)
+x x + + = 2 2
+3 ( 1) 3 ( 4)
+Therefore, ( 1) ( 4)
+x x + +∫ = 2 2
+= 1 1 1 4 1 tan tan C
+– x + × +
+= 1 1 1 2 tan tan C
+In the above example, the substitution was made only for the partial fraction part and not for the integration part. Now, we consider an example, where the integration involves a combination of the substitution method and the partial fraction method.
+Example 15 Find ( )
+3 sin 2 cos
+5 cos 4 sin
+Solution Let y = sinφ
+Then dy = cosφ dφ
+Reprint 2026-27
+INTEGRALS 257
+Therefore, ( )
+3 sin 2 cos
+5 cos 4 sin
+φ φ∫ = 2
+5 (1 ) 4
+– – y – y∫ y – y +∫
+3 2 I (say)
+Now, we write ( )2
+2 ( 2) y y
+− − [by Table 7.2 (2)]
+Therefore, 3y – 2 = A (y – 2) + B
+Comparing the coefficients of y and constant term, we get A = 3 and B – 2A = – 2, which gives A = 3 and B = 4.
+Therefore, the required integral is given by
+2 ( 2) dy y – y –∫ = 2 y – y –∫ ∫
+3 log 2 4 C
+− + +  
+3 log sin 2 C
+3 log (2 sin ) + C
+− φ + − φ (since, 2 – sin φ is always positive)
+Example 16 Find ( 2) ( 1)
+Solution The integrand is a proper rational function. Decompose the rational function into partial fraction [Table 2.2(5)]. Write ( 1) ( 2)
+Therefore, x2 + x + 1 = A (x2 + 1) + (Bx + C) (x + 2)
+Reprint 2026-27
+258 MATHEMATICS
+Equating the coefficients of x2, x and of constant term of both sides, we get
+A + B =1, 2B + C = 1 and A + 2C = 1. Solving these equations, we get
+A , B and C
+Thus, the integrand is given by ( 1) ( 2)
+5 ( 2) 1
+5 ( 2) 5 1
+Therefore, ( +1) ( 2)
++∫ = 2 2
+3 1 2 1 1
+5 2 5 5 1 1 dx x dx dx
++ + +∫ ∫ ∫
+= 2 1 3 1 1 log 2 log 1 tan C x x x + + + + +
+EXERCISE 7.5
+Integrate the rational functions in Exercises 1 to 21.
+1. ( 1) ( 2)
+x x + + 2. 2
+9 x – 3. 3 1 ( 1) ( 2) ( 3)
+x – x – x –
+4. ( 1) ( 2) ( 3)
+x – x – x – 5. 2 x x + + 6.
+( 1) ( – 1)
+x x + 8. 2 ( 1) ( 2)
+x – x + 9. 3 2 ( 1) (2 3)
+( 1) ( 4)
+x x + − 12.
+(1 ) (1 ) x x − + 14. 2 x + 15. 4 x x + [Hint: multiply numerator and denominator by x n – 1 and put xn = t ] (1 – sin ) (2 – sin )
+x x [Hint : Put sin x = t]
+Reprint 2026-27
+INTEGRALS 259 ( 1) ( 2)
+( 3) ( 4)
++ + 19. 2 2 ( 1) ( 3)
+x x + + 20. 4 ( 1) x x – e – [Hint : Put ex = t]
+Choose the correct answer in each of the Exercises 22 and 23.
+22. ( 1) ( 2)
+x x − −∫ equals
+−   +  
+−   (D) log ( 1) ( 2) C x x − − + x x +∫ equals log log ( +1) + C x x − (B) 2 1 log log ( +1) + C log log ( +1) + C x x − + (D) 2 1 log log ( +1) + C
+7.6 Integration by Parts
+In this section, we describe one more method of integration, that is found quite useful in integrating products of functions.
+If u and v are any two differentiable functions of a single variable x (say). Then, by the product rule of differentiation, we have dx = dv du
+Integrating both sides, we get uv = dv du u dx v dx dx∫ = du uv – v dx dx ∫ ... (1)
+Let u = f (x) and dv dx = g (x). Then dx = f ′(x) and v = ( ) g x dx ∫
+Reprint 2026-27
+260 MATHEMATICS
+Therefore, expression (1) can be rewritten as ( ) ( ) f x g x dx ∫ = ( ) ( ) [ ( ) ] ( ) f x g x dx – g x dx f x dx ′ ∫ ∫ ∫ i.e., ( ) ( ) f x g x dx ∫ = ( ) ( ) [ ( ) ( ) ] f x g x dx – f x g x dx dx ′ ∫ ∫ ∫
+If we take f as the first function and g as the second function, then this formula may be stated as follows:
+“The integral of the product of two functions = (first function) × (integral of the second function) – Integral of [(differential coefficient of the first function)
+× (integral of the second function)]”
+Example 17 Find cos x x dx ∫
+Solution Put f (x) = x (first function) and g (x) = cos x (second function).
+Then, integration by parts gives cos x x dx ∫ = cos [ ( ) cos ] x x dx – x x dx dx dx ∫ ∫ ∫
+= sin sin x x – x dx ∫ = x sin x + cos x + C
+Suppose, we take f (x) = cos x and g (x) = x. Then cos x x dx ∫ = cos [ (cos ) ] x x dx – x x dx dx
+= ( ) 2 2 x x dx + ∫
+Thus, it shows that the integral cos x x dx ∫ is reduced to the comparatively more complicated integral having more power of x. Therefore, the proper choice of the first function and the second function is significant.
+(i) It is worth mentioning that integration by parts is not applicable to product of functions in all cases. For instance, the method does not work for sin x x dx ∫ .
+The reason is that there does not exist any function whose derivative is x sin x.
+(ii) Observe that while finding the integral of the second function, we did not add any constant of integration. If we write the integral of the second function cos x
+Reprint 2026-27
+INTEGRALS 261 as sin x + k, where k is any constant, then cos x x dx ∫ = (sin ) (sin ) x x k x k dx + − + ∫
+= (sin ) (sin x x k x dx k dx + − − ∫ ∫
+= (sin ) cos C x x k x – kx + − + = sin cos C x x x + +
+This shows that adding a constant to the integral of the second function is superfluous so far as the final result is concerned while applying the method of integration by parts.
+(iii) Usually, if any function is a power of x or a polynomial in x, then we take it as the first function. However, in cases where other function is inverse trigonometric function or logarithmic function, then we take them as first function.
+Example 18 Find log x dx ∫
+Solution To start with, we are unable to guess a function whose derivative is log x. We take log x as the first function

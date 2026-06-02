@@ -1,0 +1,223 @@
+Domestic Data entry operator – class X 44
+For improving the visual appeal of the newsletter, add some images in it. Following are the details given for adding images.
+Leaf 1: Add a relevant photo of school in bottom right corner, as shown in picture.
+Photo should have good contrast and brightness. Add black border to photo.
+Leaf 2: Add photograph of toppers of Class
+X and Class XII.
+Make adjustment to display photograph of student in appropriate table and in front of their name. As this page might be printed in black, convert them to grayscale with proper contrast.
+Leaf 3: Add few relevant pictures in the given style on this leaf. Apply at least two types of image filter on the pictures.
+Q.2 Master Udit is helping his drawing teacher to create digital drawings. His teacher asks him to write down the steps to create the following two drawings. In the first drawing, objects are grouped and second drawing was created by resizing objects of first drawing. How would you help her to do so using drawing tools of Writer?
+Q.3 Miss Roshni has downloaded a flowchart to be included in her report. She asks for your help, in creating an editable copy of the flowchart. Write steps to draw it using
+Drawing tools of Writer.
+Read Input
+Process Data Create Report
+Read Input
+Digital Documentation (aDvanceD) using libreoffice Writer 45
+A. Multiple choice questions
+1. The text or image which appears faintly in the background of a page is called _________________.
+(a) Water mark (b) Trade mark (c) Copyright (d) Embossing
+2. JPG or JPEG in image format stands for _________________.
+(a) Joint Photographic Experts Group (b) Joint Picture Experts Group (c) Joint Photographic Experts Graph (d) Joint Photographic Experts General
+3. In Drawing Object Properties toolbar, Grouping options provided are _________________.
+(a) Exit Group (b) Ungroup (c) Enter Group (d) All of these
+4. Which of the following is not the correct file extension for an image file?
+(a) GIF (b) JPEG (c) Odt (d) PNG
+5. Image toolbar does not provide a tool for _________________.
+(a) filtering (b) cropping (c) copying (d) flipping
+B. Fill in the blanks
+1. _________ tool cuts off non-desirable part of the image.
+2. To change both brightness and contrast of the image
+________________ tool can be used.
+3. To simulate the effect of time on picture _____________ tool is used.
+4. _________ place image at the bottom of all objects.
+5. An image can be deleted by ____________ it and pressing
+DELETE key.
+6. In drawing tools, basic shapes list provide ____________
+7. Anchor act as _____________ point for a drawing.
+8. There are ________________ options for aligning an image horizontally.
+9. The ___________ handles of image are used for rotating it.
+10. Changing properties of an object _____________ creation, retain them throughout the session
+C. Short answer type questions
+1. What is a digital image? How can you create one?
+2. Write steps to insert an image from the gallery using
+Drag and Drop method.
+Check Your Progress notes
+Domestic Data entry operator – class X 46
+3. How is resizing of image different from cropping it?
+4. What are the tools available in drawing toolbar? Describe any five tools.
+5. How is linking of an image different from embedding?
+Give a situation in which you would prefer to link an image.
+6. Write steps to change properties for drawing objects.
+7. What are the benefits and drawbacks of grouping drawing objects?
+8. Describe any two tools from Drawing Object Properties toolbar.
+9. Write steps to insert an image in a basic drawing shape.
+10. Write factors controlling positioning of an image in a document.
+As we all know that LibreOffice Writer is a word processor that provides a variety of features. You have already learned some of the features, such as formatting, editing, inserting tables and images, styling the text and inserting graphics in the document. In this chapter, you will be learning some advanced features of LibreOffice Writer that will be used to create professional documents. To give the listing of the contents of the document, we can use the Table of Contents feature, which is based on different types of heading styles. LibreOffice Writer also provides templates to create professional documents.
+When multiple users are working on a single document, the Track Changes feature can be used to keep a track of the editing being done by each user.
+Table of Contents
+In Class IX, you had learned to insert tables in a document, where the data was represented in a row and column format. In this chapter, we will discuss Table of
+Contents (ToC). You must have seen table of contents in the beginning of your books. It contains a list of topics and subtopics that have been covered in the book along with page numbers.
+Table of Contents, allows to insert an automated table of contents in a document. The entries or contents of this table are automatically taken from the headings and sub headings of the document. Also, these contents are hyperlinked in the table. So by clicking on any topic in the table of contents, we can navigate directly to the selected topic. But before creating table of contents, you need to first understand the concept of hierarchy of headings.
+3 Advanced Features of Writer
+Domestic Data entry operator – class X 48
+Hierarchy of Headings
+LibreOffice Writer supports up to 10 levels of headings H1 to H10. These headings are applied to the headings of the document. The following process will demonstrate how to apply these headings to the headings in the document.
+Step 1. Create a new document in
+LibreOffice Writer and enter the text Heading 1 to Heading
+10 as shown in Fig. 3.1.
+Step 2. Click on the Styles button from the right side bar. Click on the Paragraph Styles and then Headings. The Styles dialog window will display the list of headings from Heading
+1 to Heading 10 as shown in
+Fig. 3.1.
+Step 3. Place the cursor on Heading
+1 as typed in the document.
+Then click on the Heading 1 from the Styles dialog window.
+Step 4. Repeat Step 2 for the words
+Heading 2 to Heading 10.
+Step 4. Observe that Heading 1 to
+Heading 10 is applied to the words Heading 1 to Heading
+10 of the document and these headings have changed as per the applied style as shown in
+Fig. 3.2. Observe the change in Figs. 3.1 and 3.2.
+Once the desired heading styles are applied in the document, the same hierarchy will be reflected in the table of contents also.
+Creating a Table of Contents (ToC)
+Before you start creating the table of contents or ToC in a document, you must ensure that proper heading styles, such as Heading 1, Heading 2, Heading 3 and so on are inserted in the document. The correct ToC will be
+Fig. 3.2: Document after applying 10 Headings
+Fig. 3.1: Hierarchy of 10 Headings
+Digital Documentation (aDvanceD) using libreoffice Writer 49 generated only if proper paragraph styling for headings is applied to the document. Once a styled document is created, follow the steps given below to insert the ToC in the given document:
+Step 1. Open the earlier created file
+“documentation.odt”.
+Step 2. Assign proper heading styles to the various headings in the document from the
+Styles dialog box. For example, assign the heading styles as shown in Fig. 3.3 in the “documentation.
+odt” file.
+Step 3. Place the cursor at the position where the table of contents is to be inserted. Usually, it is in the beginning of the document.
+Step 4. From main menu, select Insert > Table of
+Contents and Index
+> Table of Contents,
+Index or Bibliography.
+The Table of
+Contents, Index and
+Bibliography dialog box will be displayed as shown in Fig. 3.4.
+Step 5. By default, the Type tab will be selected with a preview of ToC on the right side of the dialog box. On the left of the dialog box, is the Types and Title section. In the Title text box, the default name of the ToC, i.e. Table of Contents is displayed. You can change this name, just by typing in the text box. Type the desired title of the ToC say “Contents” in the Title text box.
+The title will be changed in the Preview section as shown in Fig. 3.4.
+Fig. 3.3: Planning for assigning headings styles
+Fig. 3.4: Table of Contents, Index or Bibliography dialog box
+Domestic Data entry operator – class X 50
+By default, the checkbox for Protected against
+Manual Changes option is selected. This protects the
+ToC from any accidental change. If this box is unchecked, then the contents of ToC can be changed directly on the document page, just like any other text on the document.
+In the Create Index or
+Table of Contents List box, the Entire Document option is selected in the For list box. So the ToC will be automatically created from the headings and sub-headings of entire document.
+The Outline check box is selected, so the complete outline of the ToC is shown in the preview. Click and deselect it if you do not want to see it.
+Step 5. Click OK button. The Table of Contents will be inserted in the document as shown in Fig. 3.5.
+Note that all the headings will appear with page numbers in the ToC. The entries in the ToC are hyperlinked. Moving a mouse pointer over any of the entries will show a tool tip stating to press Ctrl+click to open hyperlink followed by the heading title. Pressing
+Ctrl+click the cursor will directly move on to the selected section heading.
+Fig. 3.5: Table of Contents inserted in a document
+Practical Activity 3.1
+Rimjhim has created a report on Environmental Pollution in LibreOffice Writer. She has applied proper heading styles to all section headings of the document. Now, to add table of contents to the document with the heading as Rimjhim’s Table of Contents, follow the steps given below.
+Step 1. Open the document in LibreOffice Writer.
+Step 2. Select Insert > Table of Contents and Index > Table of Contents, Index or Bibliography. The Table of
+Contents, Index and Bibliography dialog box will be displayed.
+Digital Documentation (aDvanceD) using libreoffice Writer 51
+Step 3. In the Type the Titles text box, type Rimjhim’s Table of
+Contents.
+Step 4. Click OK. The Table of Contents will be inserted in
+Rimjhim’s document.
+Customisation of ToC
+Once the ToC is inserted, we can customise it according to our requirements. To do so, right click anywhere on the ToC and select
+Edit Index option from the popup menu as shown in Fig. 3.6.
+The Table of Contents, Index or Bibliography dialog box will be displayed as shown in
+Fig. 3.7. As seen in the previous section, the dialog box has five tabs – Type, Entries, Styles,
+Columns and Background. The options in these tabs can be used to edit the table in various ways.
+The changes made will be reflected in the Preview section of the dialog box.
+Fig. 3.7: Selecting Entries Tab in Table of Contents, Index or Bibliography dialog window
+Fig. 3.6: Selecting Edit Index option from the pop up menu
+Domestic Data entry operator – class X 52
+Type Tab: is active by default after opening the Table of Contents, Entries or
+Bibliography dialog box to insert the ToC.
+Entries Tab: contains options to set styles for various entries in the ToC.
+Styles Tab: contains options to apply the desired styles to the text of each level in the table of contents. To apply a custom paragraph style to any level, follow the steps given below.
+Step 1. Click and select the level from the Levels list
+Step 2. Click and select the desired paragraph style from the Paragraph Styles list box.
+Step 3. Click the OK button to apply the selected paragraph style to the selected outline level.
+The assigned style appears in square brackets
+Fig. 3.8: Background Tab in Table of Contents, Index or Bibliography dialog window in the Levels list and will also be visible in the Preview
+Step 4. Click OK button to apply the selected
+To remove the applied paragraph styling, select the desired level in the Levels list box, and then click the
+Default button.
+Columns Tab: contains options to set the number of columns that we want to have in our ToC.
+Background Tab: contains options to change the background of the ToC as shown in
+Fig. 3.8. The current background color will be displayed in the Active
+Color window.
+Digital Documentation (aDvanceD) using libreoffice Writer 53
+To change the background color follow the following
+Step 1. Click the Color button on the top of the dialog box.
+Step 2. Select the desired color from the Colors palette.
+The selected color will appear in the
+New color window.
+Step 3. To add the selected color to the custom palette, click Add
+Button below the color palette. Now, the added color can be re-used whenever required.
+Step 4. Click OK to apply the desired color to the ToC (Fig. 3.9).
+To remove the background colour from the ToC, click None button present on the top of the dialog box.
+LibreOffice Writer also allows to add a graphic as a background of the ToC.
+For this, select the Bitmap button in the Background tab of the dialog box.
+Select the desired graphic option and click OK button (Fig. 3.10).
+Maintaining a Table of Contents
+As we know now that a table of contents is a snapshot of the entire document at any given point in time. If any changes are made to the document section headings or page numbering, it should be reflected in the Table of Contents as well. Maintaining a Table of Contents consists of updating and deleting the ToC.
+Fig. 3.9: ToC with changed background color
+Fig. 3.10: Adding graphic as a background of the ToC
+Domestic Data entry operator – class X 54
+Updating the ToC
+Writer does not update the ToC automatically.
+The following activity shows how to update a
+ToC manually.
+Practical Activity 3.2
+Some more sections are added in the document, accordingly the
+ToC needs to be changed. To update a ToC manually, follow the steps given below.
+Step 1. Right-click anywhere in the ToC.
+Step 2. From the pop-up menu as shown in Fig. 3.11, select
+Update Index option. Writer updates the ToC so as to reflect any changes made in the document. The reflected changes in ToC is shown in Fig. 3.12.
+Fig. 3.12: Updated ToC
+Fig. 3.11: Selecting options for updating and editing a ToC
+Digital Documentation (aDvanceD) using libreoffice Writer 55
+Rimjhim has edited her document after the ToC was inserted.
+Now she wants to update the ToC and also wants a pink coloured background. Write the steps that Rimjhim should follow.
+Step 1. To update the ToC, right-click anywhere in the ToC.
+From the pop-up menu, select Update Index option as shown in Fig. 3.11.
+Step 2. To apply a coloured background, right click anywhere on the ToC and select Edit Index option from the pop- up menu.
+Step 3. From the Table of Contents, Index or Bibliography dialog box, select the Background tab. The current background color will be displayed in the Active Color
+Step 4. Click the Color button on the top of the dialog box.
+Step 5. Select the desired color from the Colors palette. The selected color will appear in the New color window.
+Step 6. Click OK to apply the desired color to the ToC.
+Deleting ToC
+To delete the ToC, right click on the table and select
+Delete Index option from the pop-up menu. The ToC will be deleted.
+Practical Activity 3.3
+Using Templates
+A template is a preset layout that helps to create professional and/or formal documents easily. In the previous chapters, we have learned styling of different document objects using templates. In this section, we will learn to create document templates. Sometimes there is a need to copy specific content including graphics, such as logo of a company, image of a product or text, such as tag lines of a product or a company, legal notices or even headers and footers in multiple documents.
+Instead of adding and then formatting the objects in all documents, we can use templates. For example, templates can be used to create a resume, chapter or project report. A template can contain all the features or objects that a regular document can contain – text, graphics, styles and can even use any language. In a template we can create and save defined headings, text formats, styles, page numbers, headers and footers.
+Domestic Data entry operator – class X 56
+When new documents are created from these templates, they have the same content segregation, formatting features and appearance as that of the applied templates.
+At the same time, Writer also allows us to edit the styles and contents of the document to which the template is applied. All documents in Writer are based upon templates. If no specific template is specified, then
+Writer uses the default template as blank document template for the file being created.
+Checking the template of the document
+To see what template is associated with a document, select Properties option from the File menu. The
+Properties dialog box will be displayed as shown in
+Fig. 3.13. Since the document was created from the default template, no template is listed in Fig. 3.13.
+Fig. 3.13: Document properties with no template
+Digital Documentation (aDvanceD) using libreoffice Writer 57
+When the document is created with template, this window will display the name of the template. For example, if you want to create a document with template.
+Follow the steps given below.
+Step 1. Create a new document from File > New >
+Templates …
+Step 2. A template selection window will be displayed as shown in Fig. 3.14. Select a template, for example, select the first template ‘Modern business letter’.
+Step 3. Click on Open button, a document with the selected template will open as shown in
+Fig. 3.15.
+Step 4. Now check the template of the created document from File > Properties. Observe that the template name ‘Modern business letter sans-serif’ is displayed under Template in the
+Property dialog box as shown in Fig. 3.16.
+Fig. 3.14: Selecting a template
+Domestic Data entry operator – class X 58
+Fig. 3.16: Document Properties with template name Modern business letter sans-serif
+Fig. 3.15: Document created by selecting template
+Digital Documentation (aDvanceD) using libreoffice Writer 59
+Creating a Template
+You have learnt how to create a document with predefined template.
+It is al

@@ -1,0 +1,65 @@
+A galvanometer of 15W resistance is connected across BD. Calculate the current through the galvanometer when a potential difference of
+10 V is maintained across AC.
+Solution Considering the mesh BADB, we have
+100I1 + 15Ig – 60I2 = 0 or 20I1 + 3Ig – 12I2= 0 [3.65(a)]
+Considering the mesh BCDB, we have
+10 (I1 – Ig) – 15Ig – 5 (I2 + Ig ) = 0
+10I1 – 30Ig –5I2 = 0
+2I1 – 6Ig – I2 = 0 [3.65(b)]
+Considering the mesh ADCEA,
+60I2 + 5 (I2 + Ig) = 10
+65I2 + 5Ig = 10
+13I2 + Ig = 2 [3.65(c)]
+Multiplying Eq. (3.65b) by 10
+20I1 – 60Ig – 10I2 = 0 [3.65(d)]
+From Eqs. (3.65d) and (3.65a) we have
+63Ig – 2I2 = 0
+I2 = 31.5Ig [3.65(e)]
+Substituting the value of I2 into Eq. [3.65(c)], we get
+13 (31.5Ig ) + Ig = 2
+410.5 Ig = 2
+Ig = 4.87 mA.
+1. Current through a given area of a conductor is the net charge passing per unit time through the area.
+2. To maintain a steady current, we must have a closed circuit in which an external agency moves electric charge from lower to higher potential energy. The work done per unit charge by the source in taking the charge from lower to higher potential energy (i.e., from one terminal of the source to the other) is called the electromotive force, or emf, of the source. Note that the emf is not a force; it is the voltage difference between the two terminals of a source in open circuit.
+3. Ohm’s law: The electric current I flowing through a substance is proportional to the voltage V across its ends, i.e., V μ I or V = RI, where R is called the resistance of the substance. The unit of resistance is ohm: 1W = 1 V A–1.
+Reprint 2026-27
+Electricity
+4. The resistance R of a conductor depends on its length l and cross-sectional area A through the relation, r, called resistivity is a property of the material and depends on temperature and pressure.
+5. Electrical resistivity of substances varies over a very wide range. Metals have low resistivity, in the range of 10–8 W m to 10–6 W m. Insulators like glass and rubber have 1022 to 1024 times greater resistivity.
+Semiconductors like Si and Ge lie roughly in the middle range of resistivity on a logarithmic scale.
+6. In most substances, the carriers of current are electrons; in some cases, for example, ionic crystals and electrolytic liquids, positive and negative ions carry the electric current.
+7. Current density j gives the amount of charge flowing per second per unit area normal to the flow, j = nq vd where n is the number density (number per unit volume) of charge carriers each of charge q, and vd is the drift velocity of the charge carriers. For electrons q = – e. If j is normal to a cross-sectional area
+A and is constant over the area, the magnitude of the current I through the area is nevd A.
+8. Using E = V/l, I = nevd A, and Ohm’s law, one obtains
+The proportionality between the force eE on the electrons in a metal due to the external field E and the drift velocity vd (not acceleration)
+can be understood, if we assume that the electrons suffer collisions with ions in the metal, which deflect them randomly. If such collisions occur on an average at a time interval where a is the acceleration of the electron. This gives
+9. In the temperature range in which resistivity increases linearly with temperature, the temperature coefficient of resistivity a is defined as the fractional increase in resistivity per unit increase in temperature.
+10. Ohm’s law is obeyed by many substances, but it is not a fundamental law of nature. It fails if (a) V depends on I non-linearly.
+(b) the relation between V and I depends on the sign of V for the same absolute value of V.
+(c) The relation between V and I is non-unique.
+An example of (a) is when r increases with I (even if temperature is kept fixed). A rectifier combines features (a) and (b). GaAs shows the feature (c).
+11. When a source of emf e is connected to an external resistance R, the voltage Vext across R is given by
+Vext = IR = R where r is the internal resistance of the source.
+Reprint 2026-27
+Physical Quantity Symbol Dimensions Unit Remark
+Electric current I [A] A SI base unit
+Charge Q, q [T A] C
+Voltage, Electric V [M L2 T–3 A–1] V Work/charge potential difference
+Electromotive force e [M L2 T –3 A–1] V Work/charge
+Resistance R [M L2 T –3 A–2] W R = V/I
+Resistivity r [M L3 T –3 A–2] W m R =
+Electrical s [M–1 L–3 T3 A2] S conductivity
+Electric field E [M L T –3 A–1] V m–1 Electric force
+Drift speed vd [L T –1] m s–1 vd
+Relaxation time
+Current density j [L–2 A] A m–2 current/area
+Mobility m [M–1 L0 T2 A] m 2 V–1s –1 / d v E
+12. Kirchhoff’s Rules – (a) Junction Rule: At any junction of circuit elements, the sum of currents entering the junction must equal the sum of currents leaving it.
+(b) Loop Rule: The algebraic sum of changes in potential around any closed loop must be zero.
+13. The Wheatstone bridge is an arrangement of four resistances – R1, R2,
+R3, R4 as shown in the text. The null-point condition is given by using which the value of one resistance can be determined, knowing the other three resistances.
+POINTS TO PONDER
+1. Current is a scalar although we represent current with an arrow.
+Currents do not obey the law of vector addition. That current is a scalar also follows from it’s definition. The current I through an area of cross-section is given by the scalar product of two vectors:
+I = j . DS where j and DS are vectors.
+Reprint 2026-27

@@ -1,0 +1,22 @@
+GettinG Started with Python 93
+They are added with the purpose of making the source code easier for humans to understand. They are used primarily to document the meaning and purpose of source code and its input and output requirements, so that we can remember later how it functions and how to use it. For large and complex software, it may require programmers to work in teams and sometimes, a program written by one programmer is required to be used or maintained by another programmer. In such situations, documentations in the form of comments are needed to understand the working of the program.
+In Python, a comment starts with # (hash sign).
+Everything following the # till the end of that line is treated as a comment and the interpreter simply ignores it while executing the statement.
+Example 5.1
+#Variable amount is the total spending on
+#grocery amount = 3400
+#totalMarks is sum of marks in all the tests
+#of Mathematics totalMarks = test1 + test2 + finalTest
+Program 5-4 Write a Python program to find the sum of two numbers.
+#Program 5-4
+#To find the sum of two numbers num1 = 10 num2 = 20 result = num1 + num2 print(result)
+5.6 eVerythIng Is an object
+Python treats every value or data item whether numeric, string, or other type (discussed in the next section) as an object in the sense that it can be assigned to some variable or can be passed to a function as an argument.
+Every object in Python is assigned a unique identity (ID) which remains the same for the lifetime of that object.
+This ID is akin to the memory address of the object. The function id() returns the identity of an object.
+In the context of Object
+Oriented Programming (OOP), objects are a representation of the real world, such as employee, student, vehicle, box, book, etc. In any object oriented programming language like C++, JAVA, etc., each object has two things associated with it: (i) data or attributes and (ii) behaviour or methods. Further there are concepts of class and class hierarchies from which objects can be instantiated. However,
+OOP concepts are not in the scope of our present discussions.
+Python also comes under the category of object oriented programming.
+However, in Python, the definition of object is loosely casted as some objects may not have attributes or others may not have methods.
+Reprint 2026-27

@@ -1,0 +1,35 @@
+Introductory
+Microeconomics
+Notice that MU3 is less than
+MU2. You may also notice that total utility increases but at a diminishing rate: The rate of change in total utility due to change in quantity of commodity consumed is a measure of marginal utility. This marginal utility diminishes with increase in consumption of the commodity from 12 to 6, 6 to 4 and so on. This follows from the law of diminishing marginal utility. Law of Diminishing
+Marginal Utility states that marginal utility from consuming each additional unit of a commodity declines as its consumption increases, while keeping consumption of other commodities constant.
+MU becomes zero at a level when TU remains constant. In the example, TU does not change at 5th unit of consumption and therefore MU5= 0. Thereafter,
+TU starts falling and MU becomes negative.
+Derivation of Demand Curve in the Case of a Single Commodity (Law of
+Diminishing Marginal Utility)
+Cardinal utility analysis can be used to derive demand curve for a commodity.
+What is demand and what is demand curve? The quantity of a commodity that a consumer is willing to buy and is able to afford, given prices of goods and income of the consumer, is called demand for that commodity. Demand for a commodity x, apart from the price of x itself, depends on factors such as prices of other commodities (see substitutes and complements 2.4.4), income of the consumer and tastes and preferences of the consumers. Demand curve is a graphic presentation of various quantities of a commodity that a consumer is willing to buy at different prices of the same commodity, while holding constant prices of other related commodities and income of the consumer.
+Figure 2.2 presents hypothetical demand curve of an individual for commodity x at its different prices.
+Quantity is measured along the horizontal axis and price is measured along the vertical axis.
+The downward sloping demand curve shows that at lower prices, the individual is willing to buy more of commodity x; at higher prices, she is willing to buy less of commodity x.
+Therefore, there is a negative relationship between price of a commodity and quantity demanded which is referred to as the Law of Demand.
+An explaination for a downward sloping demand curve rests on the notion of diminishing marginal utility. The law of diminishing marginal utility states that each successive unit of a commodity provides lower marginal utility.
+Demand curve of an individual for commodity x
+The values of marginal and total utility derived from consumption of various amounts of a commodity. The marginal utility diminishes with increase in consumption of the commodity.
+Reprint 2026-27
+11 Theory of Consumer
+Behaviour
+Therefore the individual will not be willing to pay as much for each additional unit and this results in a downward sloping demand curve. At a price of Rs. 40 per unit x, individual’s demand for x was 5 units. The 6th unit of commodity x will be worth less than the 5th unit. The individual will be willing to buy the 6th unit only when the price drops below Rs. 40 per unit. Hence, the law of diminishing marginal utility explains why demand curves have a negative slope.
+2.1.2 Ordinal Utility Analysis
+Cardinal utility analysis is simple to understand, but suffers from a major drawback in the form of quantification of utility in numbers. In real life, we never express utility in the form of numbers. At the most, we can rank various alternative combinations in terms of having more or less utility. In other words, the consumer does not measure utility in numbers, though she often ranks various consumption bundles. This forms the starting point of this topic – Ordinal
+Utility Analysis.
+A consumer’s preferences over the set of available bundles can often be represented diagrammatically. We have already seen that the bundles available to the consumer can be plotted as points in a two- dimensional diagram. The points representing bundles which give the consumer equal utility can generally be joined to obtain a curve like the one in Figure 2.3. The consumer is said to be indifferent on the different bundles because each point of the bundles give the consumer equal utility. Such a curve joining all points representing bundles among which the consumer is indifferent is called an indifference curve. All the points such as A, B, C and D lying on an indifference curve provide the consumer with the same level of satisfaction.
+It is clear that when a consumer gets one more banana, he has to forego some mangoes, so that her total utility level remains the same and she remains on the same indifference curve. Therefore, indifference curve slopes downward.
+The amount of mangoes that the consumer has to forego, in order to get an additional banana, her total utility level being the same, is called marginal rate of substitution (MRS). In other words, MRS is simply the rate at which the consumer will substitute bananas for mangoes, so that her total utility remains constant. So, / MRS Y X =| ∆ ∆ | 3.
+One can notice that, in the table 2.2, as we increase the quantity of bananas, the quantity of mangoes sacrificed for each additional banana declines. In other words, MRS diminishes with increase in the number of bananas. As the number
+3 / / ( / ) 0 Y X Y X if Y X | ∆ ∆ |= ∆ ∆ ∆ ∆ ≥
+/ ( / ) 0 Y X if Y X = −∆ ∆ ∆ ∆ <
+/ MRS Y X =| ∆ ∆ | means that MRS equals only the magnitude of the expression / Y X ∆ ∆ . If
+/ 3 /1 Y X ∆ ∆ = − it means MRS=3.
+Indifference curve. An indifference curve joins all points representing bundles which are considered indifferent by the consumer.
+Reprint 2026-27

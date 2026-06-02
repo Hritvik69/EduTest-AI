@@ -1,0 +1,88 @@
+LIMITS AND DERIVATIVES 235
+Proof We know that sin (– x) = – sin x and cos( – x) = cos x. Hence, it is sufficient to prove the inequality for π
+In the Fig 12.10, O is the centre of the unit circle such that the angle AOC is x radians and 0 < x < π
+2 . Line segments B A and
+CD are perpendiculars to OA. Further, join AC. Then
+Area of OAC ∆ < Area of sector OAC < Area of ∆ OAB.
+i.e., 2 1 1
+OA.CD .π.(OA) OA.AB i.e., CD < x . OA < AB.
+From ∆ OCD, sin x = CD
+OA (since OC = OA) and hence CD = OA sin x. Also tan x = AB hence AB = OA. tan x. Thus
+OA sin x < OA. x < OA. tan x.
+Since length OA is positive, we have sin x < x < tan x.
+Since 0 < x < π
+2 , sinx is positive and thus by dividing throughout by sin x, we have
+< . Taking reciprocals throughout, we have which complete the proof.
+Theorem 5 The following are two important limits.
+= . (ii) 0
+Proof (i) The inequality in (*) says that the function sin x x is sandwiched between the function cos x and the constant function which takes value 1.
+Fig 12.10
+Reprint 2026-27
+236 MATHEMATICS
+Further, since 0 x→ cos x = 1, we see that the proof of (i) of the theorem is complete by sandwich theorem.
+To prove (ii), we recall the trigonometric identity 1 – cos x = 2 sin2
+2sin sin lim lim .sin 2
+         =   lim .lim sin 1.0 0
+      = =  
+Observe that we have implicitly used the fact that 0 x → is equivalent to 0 x → . This may be justified by putting y = 2
+Example 4 Evaluate: (i) 0 lim sin 2 x x → (ii) 0
+Solution (i) 0 lim sin 2 x lim . .2
+4 sin 2 x sin 4 sin 2
+2.lim 4 2 x
+÷    
+= 4 0 2 0 sin 4 sin 2
+2. lim lim
+÷    
+= 2.1.1 = 2 (as x → 0, 4x → 0 and 2x → 0)
+Reprint 2026-27
+LIMITS AND DERIVATIVES 237 (ii) We have 0 lim cos x x x → = 0 0 lim . lim cos x x x x → → = 1.1 = 1
+A general rule that needs to be kept in mind while evaluating limits is the following.
+Say, given that the limit ( )
+g x → exists and we want to evaluate this. First we check the value of f (a) and g(a). If both are 0, then we see if we can get the factor which is causing the terms to vanish, i.e., see if we can write f(x) = f1 (x) f2(x) so that f1 (a) = 0 and f2 (a) ≠ 0. Similarly, we write g(x) = g1 (x) g2(x), where g1(a) = 0 and g2(a) ≠ 0. Cancel out the common factors from f(x) and g(x) (if possible) and write
+= , where q(x) ≠ 0.
+Then ( )
+g x q a →
+EXERCISE 12.1
+Evaluate the following limits in Exercises 1 to 22.
+lim 7 x x
+  3. 2
+− 6. ( )5 lim 2 5 3 x
+− − 9. 0 ax bx c a b c cx bx a →
++ + + + ≠
+2 lim 2 x bx → 14. 0 lim , , 0
+Reprint 2026-27
+238 MATHEMATICS lim π π x x → − 17. 0 lim cos 1 x lim sin x lim , , 0 ax bx a b a b
++ , 21. 0 lim (cosec cot )
+23. Find ( )0
+→ and ( )1
+→ , where ( ) ( )
+=  + > 
+24. Find ( )1
+→ , where ( ) 2
+= − − > 
+25. Evaluate ( )0
+→ , where ( )
+26. Find ( )0
+→ , where ( ) , 0
+27. Find ( )5
+→ , where ( ) | | 5 f x x = −
+28. Suppose ( )
+and if 1 x→ f (x) = f (1) what are possible values of a and b?
+Reprint 2026-27
+LIMITS AND DERIVATIVES 239
+29. Let a1, a2, . . ., an be fixed real numbers and define a function ( ) ( ) ( ) ( ) 1 2 ... n f x x a x a x a = − − − .
+What is 1 x a → f (x) ? For some a ≠ a1, a2, ..., an, compute lim x a → f (x).
+30. If ( )
+For what value (s) of a does lim x a → f (x) exists?
+31. If the function f(x) satisfies ( )
+− , evaluate ( )1
+32. If ( )
+f x nx m x
+= + ≤ ≤ 
+. For what integers m and n does both ( )0 and ( )1
+→ exist?
+12.5 Derivatives
+We have seen in the Section 13.2, that by knowing the position of a body at various time intervals it is possible to find the rate at which the position of the body is changing.
+It is of very general interest to know a certain parameter at various instants of time and try to finding the rate at which it is changing. There are several real life situations where such a process needs to be carried out. For instance, people maintaining a reservoir need to know when will a reservoir overflow knowing the depth of the water at several instances of time, Rocket Scientists need to compute the precise velocity with which the satellite needs to be shot out from the rocket knowing the height of the rocket at various times. Financial institutions need to predict the changes in the value of a particular stock knowing its present value. In these, and many such cases it is desirable to know how a particular parameter is changing with respect to some other parameter.
+The heart of the matter is derivative of a function at a given point in its domain of definition.
+Reprint 2026-27

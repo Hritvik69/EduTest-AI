@@ -1,0 +1,145 @@
+Computer SCienCe - ClaSS Xii 54
+4.1.1 First In First Out (FIFO)
+Queue follows the principle of First In First Out (FIFO), since the element entering first in the queue will be the first one to come out of it. Thus, the element that has been longest in the queue will be removed first. It is also known as a First Come First Served (FCFS) approach.
+Queue is an arrangement in which new objects/items always get added at one end, usually called the REAR, and objects/items always get removed from the other end, usually called the FRONT of the queue. REAR is also known as TAIL and FRONT as HEAD of a queue.
+4.1.2 Applications of Queue (A) The concept of queue has many applications in real-life:
+• If a train ticket is in the waiting list (such as W/L1), it means the ticket is in a queue of tickets waiting to get confirmed, as per the increasing order of waiting numbers. If a confirmed ticket is cancelled, the W/
+L1 numbered ticket is removed from the FRONT of the waiting queue and confirmed.
+• Sometimes on calling a customer service centre, the
+Interactive Voice Response System (IVRS) tells us to wait till a support person is available. Here the call is put into a queue of customers waiting to be serviced.
+• Imagine there is a single-lane one-way road, then the vehicle that entered first will exit first, following the concept of queue. Likewise, vehicles in a highway toll tax booth are served following the principle of FIFO.
+Figure 4.2: Queue of cars in a petrol pump
+Reprint 2026-27
+Queue 55 (B) Following are some examples of application of queue in computer science:
+• Suppose there is a web-server hosting a web-site to declare result(s). This server can handle a maximum of 50 concurrent requests to view result(s). So, to serve thousands of user requests, a Queue would be the most appropriate data structure to use.
+• Some Operating Systems (OS) are required to handle multiple tasks called - jobs, seeking to use the processor. But we know that a processor can handle only one task at a time. Therefore, in a multitasking operating system, jobs are lined up (queued) and then given access to the processor according to some order.
+The simplest way is to give access to the processor on a FIFO basis, that is according to the order in which the jobs arrive with a request for the processor.
+• When we send print commands from multiple files from the same computer or from different computers using a shared printer. The OS puts these print requests in a queue and sends them to the printer one by one on a FIFO basis.
+4.2 operatIons on Queue
+Following the FIFO approach, data structure queue supports the following operations:
+• ENQUEUE: is used to insert a new element to the queue at the rear end. We can insert elements in the queue till there is space in the queue for adding more elements. Inserting elements beyond capacity of the queue will result in an exception - known as
+Overflow.
+• DEQUEUE: is used to remove one element at a time from the front of the queue. We can delete elements from a queue until it is empty, trying to delete an element from an empty queue will result in exception
+- known as Underflow.
+To perform enqueue and dequeue efficiently on a queue, following operations are also required:
+• IS EMPTY : used to check whether the queue has any element or not, so as to avoid Underflow exception while performing dequeue operation.
+In the web-server example (for result declaration), suppose the server receives a request from an
+Administrator to access the result of a school on an urgent basis, along with other requests from students to check individual results.
+Can you suggest some strategy to ensure service to all as per their urgency?
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 56
+• PEEK : used to view elements at the front of the queue, without removing it from the queue.
+• IS FULL : used to check whether any more elements can be added to the queue or not, to avoid Overflow exceptions while performing enqueue operation.
+Figure 4.3 shows the various stages of a simple queue containing alphabets. In the figure, Front of the queue is on the left and Rear on the right.
+Operation performed Status of queue after operation enqueue(z) Z F R enqueue(x) Z X F R enqueue(c) Z X F C R dequeue() X F C R enqueue(v) X F C V R dequeue() F C V R dequeue() F V R
+Figure 4.3: Various Stages of Stack Operations
+4.3 ImplementatIon of Queue usIng python
+There are many ways in which queues can be implemented in a computer program, one way is using the list data type of Python. For creating a queue structure in the program, following functions need to be defined:
+• Let’s create a queue named myQueue. We can create it by assigning an empty list.
+myQueue = list()
+• A function (enqueue) to insert a new element at the end of queue. The function has two parameters
+- name of the queue and element which is to be inserted in the queue.
+def enqueue(myQueue, element):
+myQueue.append(element)
+Note: append() function always adds an element at the end of the list, hence Rear of queue.
+• We don’t need to implement Is Full, as Python being a dynamic language, does not ask for the
+While using a list to implement queue, we can designate either end of the list as Front or Rear of the queue.
+But we have to fix either of the ends index[0] or index[n-1] as
+Front and fix the opposite end as
+Reprint 2026-27
+Queue 57
+Can you implement a queue data structure using tuple or dictionary?
+While choosing the name of above functions general naming convention w.r.t. the queue is followed. As these are user defined functions any other name can also be used.
+creation of list having fixed size. Hence, we will never encounter a situation when the queue is full.
+• A function (isEmpty) to check, if the queue has an element or not? This can be done by checking the length of the queue. The function has a parameter
+-- name of the queue and returns True if the queue is empty False otherwise.
+def isEmpty(myQueue):
+if len(myQueue)==0:
+return True return False
+• A function (dequeue) to delete an element from the front of the queue. It has one parameter - name of the queue and returns the deleted element. The function first checks if the queue is empty or not, for successful deletion.
+def dequeue(myQueue):
+if not (isEmpty(myQueue)):
+return myQueue.pop(0)
+print(“Queue is empty”)
+Note: The pop() function with index[0] will delete the element from the beginning of the list, hence Front of queue.
+• A function (size) to get the number of elements in the queue. We can use the len() function of Python’s list to find the number of elements in the queue. The function has one parameter - name of the queue and returns the number of elements in the queue.
+def size(myQueue):
+return len(myQueue)
+• A function (peek) to simply read, but not to delete, the element at the front end of the queue. For this, we can read the element at index[0] of the queue.
+The function has one parameter - name of the queue and returns the value of element at Front if queue is not empty, None otherwise.
+def peek(myQueue):
+if isEmpty(myQueue):
+print('Queue is empty')
+return None return myQueue[0]
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 58
+Let us consider the example of a queue that people form while waiting at a bank cash counter. Usually, following are the events that occur in queue:
+• Two friends come together and go to the cash counter, i.e. they form a queue - enqueue operation is performed two times.
+• As soon as the person at the front is serviced, he will be removed from the queue - thus dequeue operation is performed. Cashier calls Next to serve the next person who is now at the front of the queue.
+• Cashier wants to know the length of the queue - size of the queue is checked.
+• Meanwhile, a few more people walk in the bank, and three of them join the queue at the cash counter, i.e.
+enqueue happens 3 times.
+• Another person gets served and leaves the counter, i.e. dequeue is performed. Cashier calls Next to serve another person.
+• The Next three people get served one after another, i.e. dequeue is performed thrice.
+• Cashier calls Next and realises that there are no more people to be served - underflow situation happens
+Now, let us write the code for the above scenario of the bank.
+Program 4-1 myQueue = list()
+# each person to be assigned a code as P1, P2, P3,...
+element = input("enter person’s code to enter in queue :”)
+enqueue(myQueue,element)
+element = input("enter person’s code for insertion in queue :")
+enqueue(myQueue,element)
+print("person removed from queue is:", dequeue(myQueue))
+print(“Number of people in the queue is :”,size(myQueue))
+element = input("enter person’s code to enter in queue :")
+enqueue(myQueue,element)
+element = input("enter person’s code to enter in queue :")
+enqueue(myQueue,element)
+element = input("enter person’s code to enter in queue :")
+enqueue(myQueue,element)
+Activity 4.1
+How can you avoid printing of None, when trying to print an empty
+Activity 4.2
+What if the content of the complete queue is to be listed?
+Write a function
+Reprint 2026-27
+Queue 59 print("Now we are going to remove remaining people from the while not isEmpty(myQueue):
+print("person removed from queue is ", dequeue(myQueue))
+enter person’s code to enter in queue :P1 enter person’s code to enter in queue :P2 person removed from the queue is :p1 number of people in the queue is :1 enter person’s code to enter in queue :P3 enter person’s code to enter in queue :P4 enter person’s code to enter in queue :P5
+Now we are going to remove remaining people from the queue person removed from the queue is :p2 person removed from the queue is :p3 person removed from the queue is :p4 person removed from the queue is :p5
+Queue is empty
+4.4 IntroductIon to deQue
+Deque (pronounced as “deck”) is an arrangement in which addition and removal of element(s) can happen from any end, i.e. head/front or tail/rear. This data structure does not apply any restriction on the side from which addition/removal of elements should happen, so it can be used to implement stack or queue in the program. It is also known as Double ended queue, because it permits insertion, deletion operations from any end.
+(insertion) Push (deletion) Pop
+Front Rear
+Push (insertion)
+Pop (deletion)
+Figure 4.4: Basic deque structure displaying head and tail to implement stack or queue.
+4.4.1 Applications of Deque
+• At a train ticket purchasing counter, a normal queue of people is formed for purchasing a ticket. A person at the front purchased the ticket and left the counter.
+After a while they return back to the counter to ask
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 60 something. As they have already purchased a ticket, they may have the privilege to join the queue from the front.
+• Vehicles in a highway toll tax booth are served following the principle of queue. There are multiple queues if there are parallel booths at the toll gate. In case all vehicles of a booth are served then vehicles from the other booth(s) are asked to form a queue in front of the vacant booth. So, vehicles at the end of those queues will leave (removed from the end from where queue was joined) current booth and join queue at the vacant booth.
+Following are some examples where data structure deque maybe applied in computer science:
+• To maintain browser history (URL), usually a stack is used, because once a tab is closed and if you press ctrl+shift+T, the most recently closed URL is opened first. As the number of URLs which can be stored in history is fixed, so when this list of URLs becomes large, URLs from the end of the list (i.e. which were least visited) gets deleted.
+• Same happens for providing the Do and Undo option in any text editor.
+• To check whether a given string is palindrome or not?
+Process string left to right (character wise) and insert it in deque from tail/rear like a normal queue. Once the entire string is processed (i.e. inserted in deque)
+we will take out (delete) a character from both the ends and match them till there is no character left or only one character left in deque. In either case, string is palindrome.
+4.4.2 Operations on Deque
+• INSERTFRONT: This operation is used to insert a new element at the front of the deque.
+• INSERTREAR: This operation is the same as a normal queue, i.e. insert a new element at the rear of the deque.
+• DELETIONFRONT: This operation is the same as normal queue, i.e. to remove an element from the front of the deque.
+• DELETIONREAR: This operation is used to remove one element at a time from the rear of the deque.
+Activity 4.4
+In a deque, if insertion and deletion of elements is done from the opposite end, it will behave as
+1) Queue
+2) Stack
+4) None of the
+Activity 4.3
+In a deque, if insertion and deletion of elements is done from the same end, it will behave as
+1) Queue
+2) Stack
+4) None of the
+Reprint 2026-27

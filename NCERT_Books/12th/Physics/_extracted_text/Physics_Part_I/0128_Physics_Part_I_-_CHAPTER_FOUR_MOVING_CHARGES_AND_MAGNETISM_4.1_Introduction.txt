@@ -1,0 +1,15 @@
+4.3 MOTION IN A MAGNETIC FIELD
+We will now consider, in greater detail, the motion of a charge moving in a magnetic field. We have learnt in Mechanics (see Class XI book, Chapter
+5) that a force on a particle does work if the force has a component along (or opposed to) the direction of motion of the particle. In the case of motion of a charge in a magnetic field, the magnetic force is perpendicular to the velocity of the particle. So no work is done and no change in the magnitude of the velocity is produced (though the direction of momentum may be changed). [Notice that this is unlike the force due to an electric field, q E, which can have a component parallel (or antiparallel) to motion and thus can transfer energy in addition to momentum.]
+We shall consider motion of a charged particle in a uniform magnetic field. First consider the case of v perpendicular to B. The perpendicular force, q v × B, acts as a centripetal force and produces a circular motion perpendicular to the magnetic field.
+The particle will describe a circle if v and B are perpendicular to each other (Fig. 4.5).
+If velocity has a component along B, this component remains unchanged as the motion along the magnetic field will not be affected by the magnetic field. The motion in a plane perpendicular to B is as before a circular one, thereby producing a helical motion (Fig. 4.6).
+You have already learnt in earlier classes (See Class XI,
+Chapter 3) that if r is the radius of the circular path of a particle, then a force of m v2 / r, acts perpendicular to the path towards the centre of the circle, and is called the centripetal force. If the velocity v is perpendicular to the magnetic field B, the magnetic force is perpendicular to both v and B and acts like a centripetal force. It has a magnitude q v B.
+Equating the two expressions for centripetal m v 2/r = q v B, which gives r = m v / qB (4.5)
+for the radius of the circle described by the charged particle. The larger the momentum, the larger is the radius and bigger the circle described. If w is the angular frequency, then v w r. So, n = q B/ m [4.6(a)] which is independent of the velocity or energy .
+n is the frequency of rotation. The independence of n from energy has important application in the design of a cyclotron.
+The time taken for one revolution is T= 2p/ n. If there is a component of the velocity parallel to the magnetic field (denoted by v||), it will make the particle move along the field and the path of the
+FIGURE 4.5 Circular motion
+FIGURE 4.6 Helical motion
+Reprint 2026-27

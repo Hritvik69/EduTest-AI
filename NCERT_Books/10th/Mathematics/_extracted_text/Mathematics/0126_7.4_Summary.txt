@@ -1,0 +1,25 @@
+112 MATHEMATICS
+7.4 Summary
+In this chapter, you have studied the following points :
+1. The distance between P(x1 , y1
+) and Q(x2
+, y2 ) is 2 2
+2 1 2 1 ( ) ( ) . x x y y   
+2. The distance of a point P(x, y) from the origin is 2 2 . x y 
+3. The coordinates of the point P(x, y) which divides the line segment joining the points A(x1 , y1 ) and B(x2 , y2 ) internally in the ratio m1 : m2 are
+1 2 2 1 1 2 2 1
+, m x m x m y m y
+      
+4. The mid-point of the line segment joining the points P(x1
+) and Q(x2
+, y2 ) is
+1 2 1 2 , x x y y    
+A NOTE TO THE READER
+Section 7.3 discusses the Section Formula for the coordinates (x, y) of a point P which divides internally the line segment joining the points
+A(x1 , y1 ) and B(x2 , y2 ) in the ratio m1 : m2 as follows :
+x = 1 2 2 1
+ , y = 1 2 2 1
+Note that, here, PA : PB = m1 : m2 .
+However, if P does not lie between A and B but lies on the line AB, outside the line segment AB, and PA : PB = m1 : m2 , we say that P divides externally the line segment joining the points A and B. You will study
+Section Formula for such case in higher classes.
+Reprint 2026-27

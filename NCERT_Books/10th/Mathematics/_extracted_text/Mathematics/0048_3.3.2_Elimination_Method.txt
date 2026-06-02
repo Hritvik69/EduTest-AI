@@ -1,0 +1,65 @@
+34 MATHEMATICS (vi) Five years hence, the age of Jacob will be three times that of his son. Five years ago, Jacob’s age was seven times that of his son. What are their present ages?
+3.3.2 Elimination Method
+Now let us consider another method of eliminating (i.e., removing) one variable. This is sometimes more convenient than the substitution method. Let us see how this method
+Example 8 : The ratio of incomes of two persons is 9 : 7 and the ratio of their expenditures is 4 : 3. If each of them manages to save ` 2000 per month, find their monthly incomes.
+Solution : Let us denote the incomes of the two person by ` 9x and ` 7x and their expenditures by ` 4y and ` 3y respectively. Then the equations formed in the situation is given by :
+9x – 4y = 2000 (1)
+and 7x – 3y = 2000 (2)
+Step 1 : Multiply Equation (1) by 3 and Equation (2) by 4 to make the coefficients of y equal. Then we get the equations:
+27x – 12y = 6000 (3)
+28x – 12y = 8000 (4)
+Step 2 : Subtract Equation (3) from Equation (4) to eliminate y, because the coefficients of y are the same. So, we get (28x – 27x) – (12y – 12y) = 8000 – 6000 i.e., x = 2000
+Step 3 : Substituting this value of x in (1), we get
+9(2000) – 4y = 2000 i.e., y = 4000
+So, the solution of the equations is x = 2000, y = 4000. Therefore, the monthly incomes of the persons are ` 18,000 and ` 14,000, respectively.
+Verification : 18000 : 14000 = 9 : 7. Also, the ratio of their expenditures =
+18000 – 2000 : 14000 – 2000 = 16000 : 12000 = 4 : 3
+Remarks :
+1. The method used in solving the example above is called the elimination method, because we eliminate one variable first, to get a linear equation in one variable.
+Reprint 2026-27
+PAIR OF LINEAR EQUATIONS IN TWO VARIABLES 35
+In the example above, we eliminated y. We could also have eliminated x. Try doing it that way.
+2. You could also have used the substitution, or graphical method, to solve this problem. Try doing so, and see which method is more convenient.
+Let us now note down these steps in the elimination method :
+Step 1 : First multiply both the equations by some suitable non-zero constants to make the coefficients of one variable (either x or y) numerically equal.
+Step 2 : Then add or subtract one equation from the other so that one variable gets eliminated. If you get an equation in one variable, go to Step 3.
+If in Step 2, we obtain a true statement involving no variable, then the original pair of equations has infinitely many solutions.
+If in Step 2, we obtain a false statement involving no variable, then the original pair of equations has no solution, i.e., it is inconsistent.
+Step 3 : Solve the equation in one variable (x or y) so obtained to get its value.
+Step 4 : Substitute this value of x (or y) in either of the original equations to get the value of the other variable.
+Now to illustrate it, we shall solve few more examples.
+Example 9 : Use elimination method to find all possible solutions of the following pair of linear equations :
+2x + 3y = 8 (1)
+4x + 6y = 7 (2)
+Solution :
+Step 1 : Multiply Equation (1) by 2 and Equation (2) by 1 to make the coefficients of x equal. Then we get the equations as :
+4x + 6y = 16 (3)
+4x + 6y = 7 (4)
+Step 2 : Subtracting Equation (4) from Equation (3), (4x – 4x) + (6y – 6y) = 16 – 7 i.e., 0 = 9, which is a false statement.
+Therefore, the pair of equations has no solution.
+Example 10 : The sum of a two-digit number and the number obtained by reversing the digits is 66. If the digits of the number differ by 2, find the number. How many such numbers are there?
+Reprint 2026-27
+36 MATHEMATICS
+Solution : Let the ten’s and the unit’s digits in the first number be x and y, respectively.
+So, the first number may be written as 10 x + y in the expanded form (for example,
+56 = 10(5) + 6).
+When the digits are reversed, x becomes the unit’s digit and y becomes the ten’s digit. This number, in the expanded notation is 10y + x (for example, when 56 is reversed, we get 65 = 10(6) + 5).
+According to the given condition.
+(10x + y) + (10y + x) = 66 i.e., 11(x + y) = 66 i.e., x + y = 6 (1)
+We are also given that the digits differ by 2, therefore, either x – y = 2 (2)
+or y – x = 2 (3)
+If x – y = 2, then solving (1) and (2) by elimination, we get x = 4 and y = 2.
+In this case, we get the number 42.
+If y – x = 2, then solving (1) and (3) by elimination, we get x = 2 and y = 4.
+In this case, we get the number 24.
+Thus, there are two such numbers 42 and 24.
+Verification : Here 42 + 24 = 66 and 4 – 2 = 2. Also 24 + 42 = 66 and 4 – 2 = 2.
+EXERCISE 3.3
+1. Solve the following pair of linear equations by the elimination method and the substitution method :
+(i) x + y = 5 and 2x – 3y = 4 (ii) 3x + 4y = 10 and 2x – 2y = 2 (iii) 3x – 5y – 4 = 0 and 9x = 2y + 7 (iv) 2 1 and 3 x     
+2. Form the pair of linear equations in the following problems, and find their solutions (if they exist) by the elimination method :
+(i) If we add 1 to the numerator and subtract 1 from the denominator, a fraction reduces to 1. It becomes 1
+2 if we only add 1 to the denominator. What is the fraction?
+(ii) Five years ago, Nuri was thrice as old as Sonu. Ten years later, Nuri will be twice as old as Sonu. How old are Nuri and Sonu?
+(iii) The sum of the digits of a two-digit number is 9. Also, nine times this number is twice the number obtained by reversing the order of the digits. Find the number.
+Reprint 2026-27

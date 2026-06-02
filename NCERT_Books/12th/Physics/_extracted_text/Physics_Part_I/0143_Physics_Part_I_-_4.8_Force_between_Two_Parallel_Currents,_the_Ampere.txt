@@ -1,0 +1,44 @@
+Moving Charges and
+Magnetism
+Solution (a) From Eq. (4.12)
+Here, N = 100; I = 3.2 A, and R = 0.1 m. Hence,
+1 (using π × 3.2 = 10)
+= 2 × 10–3 T
+The direction is given by the right-hand thumb rule.
+(b) The magnetic moment is given by Eq. (4.24), m = N I A = N I π r2 = 100 × 3.2 × 3.14 × 10–2 = 10 A m2
+The direction is once again given by the right-hand thumb rule.
+(c) τ = m × B [from Eq. (4.23)]
+= m B sin
+Initially,
+θ = 0. Thus, initial torque
+τi = 0. Finally,
+θ = π/2 (or 90º).
+Thus, final torque
+τf = m B = 10 × 2 = 20 N m.
+(d) From Newton’s second law,
+I is the moment of inertia of the coil. From chain rule,
+ω ω θ ω ω
+Using this,
+I d sin d = m B
+Integrating from
+θ = 0 to
+θ = π/2,
+Example 4.11 (a) A current-carrying circular loop lies on a smooth horizontal plane.
+Can a uniform magnetic field be set up in such a manner that the loop turns around itself (i.e., turns about the vertical axis).
+(b) A current-carrying circular loop is located in a uniform external magnetic field. If the loop is free to turn, what is its orientation of stable equilibrium? Show that in this orientation, the flux of
+Reprint 2026-27 the total field (external field + field produced by the loop) is maximum.
+(c) A loop of irregular shape carrying current is located in an external magnetic field. If the wire is flexible, why does it change to a circular shape?
+Solution (a) No, because that would require τττττ to be in the vertical direction.
+But τττττ = I A × B, and since A of the horizontal loop is in the vertical direction,
+τ would be in the plane of the loop for any B.
+(b) Orientation of stable equilibrium is one where the area vector A of the loop is in the direction of external magnetic field. In this orientation, the magnetic field produced by the loop is in the same direction as external field, both normal to the plane of the loop, thus giving rise to maximum flux of the total field.
+(c) It assumes circular shape with its plane normal to the field to maximise flux, since for a given perimeter, a circle encloses greater area than any other shape.
+4.9.2 Circular current loop as a magnetic dipole
+In this section, we shall consider the elementary magnetic element: the current loop. We shall show that the magnetic field (at large distances)
+due to current in a circular current loop is very similar in behaviour to the electric field of an electric dipole. In Section 4.5, we have evaluated the magnetic field on the axis of a circular loop, of a radius R, carrying a steady current I. The magnitude of this field is [(Eq. (4.11)],
+3 / 2 2 2 and its direction is along the axis and given by the right-hand thumb rule (Fig. 4.10). Here, x is the distance along the axis from the centre of the loop. For x >> R, we may drop the R2 term in the denominator. Thus,
+Note that the area of the loop A = πR2. Thus,
+As earlier, we define the magnetic moment m to have a magnitude IA, m = I A. Hence, m [4.25(a)]
+The expression of Eq. [4.25(a)] is very similar to an expression obtained earlier for the electric field of a dipole. The similarity may be seen if we substitute,
+ε → 0 0 1/
+Reprint 2026-27

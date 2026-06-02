@@ -1,0 +1,163 @@
+Atomic Foundations of Matter 167
+In the above activities, we have used many compounds. Let us learn how these are formed from the elements. Let us take an example of water, is there a fixed ratio in which hydrogen can combine with oxygen to form it, or can they combine in any ratio? This leads us to another important law.
+9.2 Law of Constant Proportions
+Soon after Lavoisier, Joseph Proust proposed that in any compound formed by two or more elements, the elements combine in a fixed ratio by mass. In other words, elements in a compound have definite proportions irrespective of its source. For example, if the water collected from various sources, such as rivers, borewells or the ocean, is purified and analysed. It is always found to contain hydrogen and oxygen in a mass ratio of 1:8. What does it convey? If 9 g of purified water from any source is decomposed, 1 g of hydrogen and 8 g of oxygen are always obtained. This proportion is written as 1:8.
+This is known as the Law of Constant Proportions, or the Law of Definite Proportions, or sometimes as
+Proust’s Law.
+In many ancient civilisations, red pigment derived from rocks was widely used in painting and as a colouring agent for various objects. In India, it was known as hingula, and in Latin and English, as cinnabar. Over the centuries, it was discovered in many civilisations that heating cinnabar could yield two elements — mercury and sulfur in mass percentage of around 86.22% and
+13.78%, respectively. Interestingly, most civilisations also found that grinding mercury and sulfur together in this ratio could form cinnabar, although the toxic nature of both prevented this process from becoming widespread.
+Fig. 9.5: Cinnabar
+Threads of Curiosity
+Example 9.3: Sodium chloride (NaCl) contains sodium and chlorine in the mass ratio of 23:35.5. If 46 g of sodium reacts completely, how much chlorine is needed to form NaCl?
+Solution: Mass of chlorine required = (35.5 ÷ 23) × 46 = 71 g
+3. A compound consists of 40% sulfur and 60% oxygen by mass. In a sample of the same compound containing 20 g of sulfur, what mass of oxygen must be present to satisfy the Law of Constant Proportions?
+4. Carbon monoxide (CO) contains carbon and oxygen in the mass ratio of 3:4. How much oxygen will combine with 9 g of carbon to form carbon monoxide?
+5. The Law of Definite Proportions holds true for compounds but not for mixtures. Give reason.
+6. Students X and Y, both prepared an oxide of copper by combining copper and oxygen in the ratios of 4:1 and 8:2, respectively. Do their results justify the Law of Constant Proportions?
+Explain.
+Pause and Ponder
+Joseph Louis
+Proust was a prominent French chemist known for his careful experimental work. He contributed to the
+Law of Definite Proportions by showing that chemical compounds always contain elements in fixed ratios by mass. For example, Proust studied the composition of copper carbonate. He showed that copper carbonate always contains copper, carbon and oxygen in the same proportion by mass, no matter how it was prepared or where it was found. His work laid an important foundation that helped shape modern chemistry.
+Meet a Scientist
+Exploration|Grade 9 168
+The two laws discussed here formed the basis of Dalton’s Atomic
+Theory. This theory attempts to logically explain why substances combine in fixed proportions and why there is no loss or gain of mass during a chemical reaction. Dalton later explained these by proposing that during a chemical reaction, atoms are indivisible and merely rearrange, rather than being created or destroyed.
+9.3 Dalton’s Atomic Theory
+John Dalton proposed his atomic theory in terms of certain postulates.
+These postulates combined earlier experimental observations and served as the basis for modern scientific theory. A postulate is a fundamental assumption accepted as truth without formal proof from which further ideas are formed or developed.
+John Dalton postulated that:
+y All matter is made up of very tiny particles called atoms, which participate in chemical reactions.
+y Atoms are indivisible particles, which cannot be created or destroyed in a chemical reaction.
+y Atoms of a given element are identical in mass and chemical properties.
+y Atoms of different elements have different masses and chemical properties.
+y Atoms combine in the ratio of simple whole numbers to form compounds.
+y The relative number and kinds of atoms are constant in a given compound.
+Dalton’s postulates provide the basis for the modern understanding of atoms and their behaviour.
+For example, hydrogen and oxygen atoms combine to form water, but the atoms themselves are not destroyed or changed into something else.
+Similarly, when magnesium burns in air, a white powder of magnesium oxide forms. This shows that the atoms of magnesium have combined with those of oxygen to form magnesium oxide.
+7. Assertion (A): 2 g of hydrogen combines with 16 g of oxygen to form 18 g of water.
+Reason (R): According to Dalton’s Atomic Theory, atoms combine in a simple whole number ratio by mass to form compounds.
+Choose the correct option:
+(i) Both A and R are true, and R is the correct explanation of A.
+(ii) Both A and R are true, but R is not the correct explanation of A.
+(iii) A is true, but R is false.
+(iv) A is false, but R is true.
+Pause and Ponder
+Later, scientists discovered how atoms combine to form molecules.
+Let us explore further!
+John Dalton was born in
+England. In 1793,
+Dalton moved to Manchester to teach mathematics, physics and chemistry at a college. He spent most of his life teaching and researching there. In 1808, he presented his atomic theory, which proved to be a turning point in the study of matter.
+Meet a Scientist
+What if ...
+atoms could combine in any ratio and not in a fixed ratio? How would this affect the substances around us?
+Atomic Foundations of Matter 169
+9.4 How Atoms Combine?
+Atoms of an element can combine to form a molecule of that element.
+For example, a hydrogen molecule consists of two hydrogen atoms.
+Atoms of different elements combine to form a molecule of a compound.
+For example, one hydrogen atom and one chlorine atom combine to form a molecule of hydrogen chloride. A molecule can be defined as an electrically neutral entity consisting of more than one atom that is capable of independent existence and shows all the properties of that substance.
+It should also be remembered that some elements, such as helium, exist only as atoms because its atoms are stable.
+In Chapter 8, Journey Inside the Atom, you learnt that atoms with
+8 electrons in the outermost (valence) shell (2 electrons if the K-shell is the outermost shell) are stable. If the number of electrons in a valence shell is less than eight, then they may share, gain or lose electrons to complete their valence shell and become stable. In this process, atoms of elements combine to form compounds. This generally takes place in two ways. These y Sharing of electrons — Share a few or all of their valence electrons with another atom.
+y Transfer of electrons — Transfer one or more of the valence electrons to another atom, or accept one or more electrons from some other atom.
+When atoms combine, the total energy of the system becomes lower than the sum of the energies of the individual atoms, making the resulting arrangement more stable. The force that holds atoms together is called a chemical bond. Let us explore it further.
+9.4.1 Bonding by sharing of electrons — Covalent Bond
+A. Molecules of elements
+Let us understand the formation of molecules of elements by the sharing of electrons, as described below.
+Consider the formation of a hydrogen molecule:
+y Write the electronic configuration of hydrogen (atomic number 1). It has only one electron in the K-shell.
+y Since, a K-shell can have a total of two electrons, it needs one more electron to become stable.
+Thus, a hydrogen atom shares one electron with another hydrogen atom to form a hydrogen molecule (H2), as shown in Fig. 9.6. The shared pair of electrons attracts both the nuclei and makes the molecule stable.
+This type of interaction between atoms through a shared pair of electrons is called a covalent bond. If two atoms are joined by sharing one electron each, they are said to be joined by a single bond.
+This is generally depicted by drawing a single line between the symbols of the two atoms as H—H.
+Let us take the case of a chlorine molecule.
+Hydrogen atom
+Hydrogen atom Hydrogen molecule
+Fig. 9.6: Formation of a hydrogen molecule
+Exploration|Grade 9 170
+The chlorine atom has seven electrons in its valence shell.
+Each chlorine atom requires one electron to attain a stable electronic configuration. A chlorine molecule is formed by the sharing of one electron each by two chlorine atoms, as shown in Fig. 9.7. This shared pair of electrons holds the two chlorine atoms together as a molecule.
+Fig. 9.7: Formation of a chlorine molecule
+Chlorine
+Chlorine molecule
+Since, the two atoms that share one electron pair are said to be bonded by a single covalent bond, the chlorine (Cl2) molecule can be represented as Cl— Cl.
+Let us explore the bonding in an oxygen molecule.
+Write down the electronic configuration of the oxygen atom (atomic number 8). You can observe that the number of electrons present in its valence shell is six, and it requires two more electrons to complete its octet.
+So, two oxygen atoms share two electrons each, forming an oxygen molecule (O2), as shown in Fig. 9.8.
+Oxygen atom Oxygen atom Oxygen molecule
+Fig. 9.8: Formation of an oxygen molecule
+In this case, the two atoms are joined by two pairs of shared electrons, and are held together by a double bond. It can be depicted by drawing two lines between two oxygen atoms as O=O.
+B. Molecules of compounds
+In the section 9.4.1A, you learnt about the formation of molecules of elements, where two atoms of the same element combine. What happens if atoms of two different elements combine? Let us understand by taking an example of the formation of hydrogen chloride molecule.
+You can do it by using the following steps:
+y Write the electronic configurations of hydrogen and chlorine atoms (atomic number of hydrogen is 1 and chlorine is 17).
+y Calculate the number of electrons required by chlorine to complete its octet and by hydrogen to complete its duplet.
+Together we are strong …
+Just as atoms share electrons to form covalent bonds, we too, can share and care to build strong relationships with people around us. This sharing brings unity and stability, laying the foundation for a stronger community, and ultimately, a strong
+8. Nitrogen has five valence electrons. Draw the structure of the nitrogen molecule (N2).
+9. The atomic number of fluorine is 9. Explain the formation of the fluorine molecule (F2).
+Pause and Ponder
+Atomic Foundations of Matter 171
+You must have noticed that atoms of both hydrogen and chlorine need one electron each to attain stable electronic configurations. Hence, both the atoms share one electron each to form a molecule of hydrogen chloride, as shown in Fig. 9.9.
+Fig. 9.9: Formation of a hydrogen chloride molecule
+Chlorine atom Hydrogen chloride molecule
+Hydrogen atom
+Since the hydrogen and chlorine atoms in a hydrogen chloride (HCl)
+molecule bond by sharing electrons, it is a covalent compound. Also, since hydrogen and chlorine atoms share one pair of electrons, they are bonded by a single bond and it can be depicted as H— Cl.
+You know that hydrogen and oxygen combine to form water.
+Hydrogen needs only one electron, while oxygen needs two electrons to acquire stable electronic configurations. How can oxygen share its two electrons with another atom that requires only one electron? This is achieved by two hydrogen atoms sharing an electron each with an oxygen atom, as shown in Fig. 9.10.
+Hydrogen molecule
+Fig. 9.10: Formation of a water molecule
+Thus the water molecule formed is represented as H2O, which indicates the presence of two hydrogen atoms and one oxygen atom.
+Atoms can release enormous energy when their nuclei split or combine to form new elements. This is called atomic or nuclear energy, and it plays a vital role in modern life. Beyond electricity generation, it is used in medicine, scientific research and space exploration. In nuclear power plants, the thermal energy from nuclear reactions produces steam that drives turbines and generates electricity, a cleaner alternative to fossil fuels. In India, scientists like Raja Ramanna (often called the Father of the Indian Nuclear
+Programme) made significant contributions in developing the nation’s
+Nuclear Energy Programme and promoting its peaceful use for development.
+Bridging Science and Society
+C. Naming covalent compounds
+Covalent compounds are named by indicating the number of atoms of each element in the compound. To name these compounds, a prefix system is
+10. Show the formation of the following molecules:
+(i) Carbon dioxide (ii) Hydrogen sulfide (iii) Ammonia (NH3)
+11. Neon (atomic number 10) neither transfers nor shares its valence electrons.
+Explain.
+Pause and Ponder
+Exploration|Grade 9 172 used to indicate the number of atoms of each element in the molecule. The first element retains its regular name, while the second element ends in -ide.
+Prefixes, such as mono- (1), di- (2), tri- (3), tetra- (4), penta- (5), hexa- (6), etc., indicate the number of atoms. However, mono- is usually omitted for the first element but is used for the second element. If a prefix ends with ‘o’ or ‘a’ and the element starts with a vowel, drop the last vowel (for example, monoxide, pentoxide). If the prefix ends with ‘i’, keep it for pronunciation (for example, dioxide, trioxide).
+Examples y CO is named as carbon monoxide (not monooxide).
+y CO2 is named as carbon dioxide (not monocarbon dioxide).
+y CS2 is named as carbon disulfide, showing two sulfur atoms.
+y PCl3 is named as phosphorus trichloride, showing three chlorine atoms.
+y SF6 is named as sulfur hexafluoride, showing six fluorine atoms.
+y N2O4 is named as dinitrogen tetroxide (not tetraoxide).
+y N2O5 is named as dinitrogen pentoxide.
+When hydrogen is the first element in the formula, no prefix is added before hydrogen, irrespective of the number of its atoms. For example, H2S is named hydrogen sulfide, not dihydrogen sulfide.
+A few binary compounds are known only by their common names.
+For example, H2O, which would usually be named hydrogen monoxide, is commonly known as water. Similarly, NH3, which is actually nitrogen trihydride, is known as ammonia.
+9.4.2 Bonding by electron transfer — Ionic bond
+If the valence shell of an atom has less than four electrons, it would generally donate its valence electrons to achieve a stable electronic configuration. Identify four such elements among the first 18 elements by using their electronic configurations given in Table 8.4 of the Chapter 8,
+Journey Inside the Atom. Atoms with more than 4 valence electrons usually gain or share electrons to complete an octet.
+You are familiar with sodium chloride (common salt), whose chemical formula is NaCl. Let us take the bonding in NaCl as an example.
+The atomic number of sodium is 11. Its valence shell contains only one electron, which can attain a stable electronic configuration after losing this valence electron. Will it still be neutral after losing one electron? If not, what charge would it carry and why?
+When sodium atom (Fig. 9.11a) loses its valence electron, it becomes a positively charged species, called a sodium cation, represented as Na+ (Fig. 9.11b). It is so because it would have 11 protons and 10 electrons.
+Fig. 9.11: Formation of a sodium cation
+Sodium loses one electron (a) Sodium atom (Na) (b) Sodium cation (Na+)
+Atomic Foundations of Matter 173
+On the other hand, the electronic configuration of a chlorine atom shows that it has seven valence electrons (Fig. 9.12a). It can attain a stable electronic configuration by gaining one electron from another atom. After gaining one extra electron, it acquires a negative charge and is called a chloride anion, represented as Cl– (Fig. 9.12b).
+Fig. 9.12: Formation of a chloride anion (a) Chlorine atom (Cl) (b) Chloride anion (Cl –)
+Chlorine accepts one electron
+Cations and anions are collectively called ions. Once the sodium and chloride ions are formed, they are held together by the electrostatic force of attraction due to their opposite charges (Fig. 9.13). The electrostatic force of attraction between oppositely charged ions that holds them together is called an ionic bond.
+Na. + Cl Na+ + Cl –
+Fig. 9.13: Formation of sodium chloride by transfer of electron
+Ionic compounds usually do not remain as single units. They form three-dimensional (3-D) crystals in which ions are arranged in a repeating pattern.
+For example, in sodium chloride (NaCl), each sodium ion (Na+) is surrounded by six chloride ions (Cl–), and each chloride ion is surrounded by six sodium ions (Fig. 9.14a).
+These oppositely charged ions are arranged in a regular, repeating 3-D pattern known as a crystal structure (Fig. 9.14b).
+Fig. 9.14: Sodium chloride: (a) crystals, (b) crystal structure, and (c) crystal lattice
+The crystal structure is represented as a crystal lattice, with ions depicted as points or dots (Fig. 9.14c). It helps to visualise the arrangement of ions in the crystal. You will learn more about the crystal structure in higher grades.
+Threads of Curiosity
+Some elements like sulfur have six electrons in their outer shell and need to gain two electrons to complete their octet. When a sulfur atom gains two electrons, it acquires two units of negative charge and is represented as S2–.
+Exploration|Grade 9 174
+12. What kind of ion will oxygen (O) form?
+13. Fill in the blanks.
+Among magnesium and chlorine, magnesium atom can give two electrons to become Mg2+. However, chlorine can take only one electron to become ____________. Now, __________ ion of magnesium and __________ ions of chlorine combine to give magnesium chloride.
+14. Show the formation of cations of potassium (K) and cal

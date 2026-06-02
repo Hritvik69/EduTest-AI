@@ -1,0 +1,84 @@
+52 Chemistry
+There were no constant current sources available during Faraday’s times. The general practice was to put a coulometer (a standard electrolytic cell) for determining the quantity of electricity passed from the amount of metal (generally silver or copper) deposited or consumed. However, coulometers are now obsolete and we now have constant current (I)
+sources available and the quantity of electricity Q, passed is given by
+Q is in coloumbs when I is in ampere and t is in second.
+The amount of electricity (or charge) required for oxidation or reduction depends on the stoichiometry of the electrode reaction. For example, in the reaction:
+Ag +(aq) + e– ® Ag(s) (2.30)
+One mole of the electron is required for the reduction of one mole of silver ions.
+We know that charge on one electron is equal to 1.6021 × 10–19C.
+Therefore, the charge on one mole of electrons is equal to:
+NA × 1.6021 × 10–19 C = 6.02 × 1023 mol–1 × 1.6021 × 10–19
+C = 96487 C mol–1
+This quantity of electricity is called Faraday and is represented by the symbol F.
+For approximate calculations we use 1F ≃ 96500 C mol–1.
+For the electrode reactions:
+Mg2+(l) + 2e– ¾® Mg(s) (2.31)
+Al3+(l) + 3e– ¾® Al(s) (2.32)
+It is obvious that one mole of Mg2+ and Al3+ require 2 mol of electrons (2F) and 3 mol of electrons (3F) respectively. The charge passed through the electrolytic cell during electrolysis is equal to the product of current in amperes and time in seconds. In commercial production of metals, current as high as 50,000 amperes are used that amounts to about
+0.518 F per second.
+A solution of CuSO4 is electrolysed for 10 minutes with a current of
+1.5 amperes. What is the mass of copper deposited at the cathode?
+t = 600 s charge = current × time = 1.5 A × 600 s = 900 C
+According to the reaction:
+Cu2+(aq) + 2e– = Cu(s)
+We require 2F or 2 × 96487 C to deposit 1 mol or 63 g of Cu.
+For 900 C, the mass of Cu deposited
+= (63 g mol–1 × 900 C)/(2 × 96487 C mol–1) = 0.2938 g.
+Example 2.10 Example 2.10 Example 2.10 Example 2.10 Example 2.10
+Solution Solution Solution Solution Solution
+Products of electrolysis depend on the nature of material being electrolysed and the type of electrodes being used. If the electrode is inert (e.g., platinum or gold), it does not participate in the chemical reaction and acts only as source or sink for electrons. On the other hand, if the electrode is reactive, it participates in the electrode reaction.
+Thus, the products of electrolysis may be different for reactive and inert
+2.5.1 Products of
+Electrolysis
+Reprint 2026-27
+53 Electrochemistry electrodes.The products of electrolysis depend on the different oxidising and reducing species present in the electrolytic cell and their standard electrode potentials. Moreover, some of the electrochemical processes although feasible, are so slow kinetically that at lower voltages these do not seem to take place and extra potential (called overpotential) has to be applied, which makes such process more difficult to occur.
+For example, if we use molten NaCl, the products of electrolysis are sodium metal and Cl2 gas. Here we have only one cation (Na+) which is reduced at the cathode (Na+ + e– Æ Na) and one anion (Cl–) which is oxidised at the anode (Cl– Æ ½Cl2 + e–). During the electrolysis of aqueous sodium chloride solution, the products are NaOH, Cl2 and H2. In this case besides Na+ and Cl– ions we also have H+ and OH– ions along with the solvent molecules, H2O.
+At the cathode there is competition between the following reduction reactions:
+Na+ (aq) + e– Æ Na (s) ( )
+cell E = – 2.71 V
+H+ (aq) + e– Æ ½ H2 (g) ( )
+cell E = 0.00 V
+The reaction with higher value of Eo is preferred and therefore, the reaction at the cathode during electrolysis is:
+H+ (aq) + e– Æ ½ H2 (g) (2.33)
+but H+ (aq) is produced by the dissociation of H2O, i.e.,
+H2O (l ) Æ H+ (aq) + OH– (aq) (2.34)
+Therefore, the net reaction at the cathode may be written as the sum of (2.33) and (2.34) and we have
+H2O (l ) + e– Æ ½H2(g) + OH– (2.35)
+At the anode the following oxidation reactions are possible:
+Cl– (aq) Æ ½ Cl2 (g) + e– cell E = 1.36 V (2.36)
+2H2O (l ) Æ O2 (g) + 4H+(aq) + 4e– cell E = 1.23 V (2.37)
+The reaction at anode with lower value of E o is preferred and therefore, water should get oxidised in preference to Cl– (aq). However, on account of overpotential of oxygen, reaction (2.36) is preferred. Thus, the net reactions may be summarised as:
+NaCl (aq) H O 2
+ →  Na+ (aq) + Cl– (aq)
+Cathode: H2O(l ) + e– Æ ½ H2(g) + OH– (aq)
+Anode: Cl– (aq) Æ ½ Cl2(g) + e–
+Net reaction:
+NaCl(aq) + H2O(l ) Æ Na+(aq) + OH–(aq) + ½H2(g) + ½Cl2(g)
+The standard electrode potentials are replaced by electrode potentials given by Nernst equation (Eq. 2.8) to take into account the concentration effects. During the electrolysis of sulphuric acid, the following processes are possible at the anode:
+2H2O(l ) Æ O2(g) + 4H+(aq) + 4e– cell E = +1.23 V (2.38)
+Reprint 2026-27
+54 Chemistry
+2– (aq) Æ S2O8
+2– (aq) + 2e– cell E = 1.96 V (2.39)
+For dilute sulphuric acid, reaction (2.38) is preferred but at higher concentrations of H2SO4, reaction (2.39) is preferred.
+Any battery (actually it may have one or more than one cell connected in series) or cell that we use as a source of electrical energy is basically a galvanic cell where the chemical energy of the redox reaction is converted into electrical energy. However, for a battery to be of practical use it should be reasonably light, compact and its voltage should not vary appreciably during its use. There are mainly two types of batteries.
+In the primary batteries, the reaction occurs only once and after use over a period of time battery becomes dead and cannot be reused again. The most familiar example of this type is the dry cell (known as Leclanche cell after its discoverer) which is used commonly in our transistors and clocks. The cell consists of a zinc container that also acts as anode and the cathode is a carbon (graphite) rod surrounded by powdered manganese dioxide and carbon (Fig.2.8). The space between the electrodes is filled by a moist paste of ammonium chloride (NH4Cl) and zinc chloride (ZnCl2). The electrode reactions are complex, but they can be written approximately as follows :
+Anode: Zn(s) æÆ Zn2+ + 2e–
+Cathode: MnO2+ NH4
+++ e–æÆ MnO(OH) + NH3
+In the reaction at cathode, manganese is reduced from the + 4 oxidation state to the +3 state. Ammonia produced in the reaction forms a complex with Zn2+ to give
+[Zn (NH3)4]2+. The cell has a potential of nearly 1.5 V.
+Mercury cell, (Fig. 2.9) suitable for low current devices like hearing aids, watches, etc. consists of zinc – mercury amalgam as anode and a paste of HgO and carbon as the cathode. The electrolyte is a paste of KOH and ZnO. The electrode reactions for the cell are given below:
+Anode: Zn(Hg) + 2OH– æÆ ZnO(s) + H2O + 2e–
+Cathode: HgO + H2O + 2e– æÆ Hg(l ) + 2OH–
+2.6 Batteries 2.6 Batteries 2.6 Batteries 2.6 Batteries 2.6 Batteries
+2.6.1 Primary
+Batteries
+Fig. 2.8: A commercial dry cell consists of a graphite (carbon) cathode in a zinc container; the latter acts as the anode.
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+2.10 If a current of 0.5 ampere flows through a metallic wire for 2 hours, then how many electrons would flow through the wire?
+2.11 Suggest a list of metals that are extracted electrolytically.
+2.12 Consider the reaction: Cr2O7
+2– + 14H+ + 6e– Æ 2Cr3+ + 7H2O
+What is the quantity of electricity in coulombs needed to reduce 1 mol of Cr2O7
+Reprint 2026-27

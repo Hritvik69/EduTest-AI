@@ -1,0 +1,257 @@
+Fractions in Disguise
+Kishanlal (retailer) buys sweaters from a wholesaler at a price of ₹300 per sweater. The marked price he quotes his customers is ₹480. After bargaining, he sells this sweater at ₹430. Notice that the selling price is greater than the cost price, resulting in a profit of ₹430 – ₹300 = ₹130. If the selling price is less than the cost price, it will result in a loss.
+Example 4: Find out the percentage profit Kishanlal made on this sweater.
+We shall consider the cost price to be 100% to find out the percentage profit made with reference to the cost price. The following rough diagram describes this situation.
+The profit amount is ₹130.
+The percentage profit is 130
+300 × 100 = 43.3%.
+Find the profit percentage of the wholesaler and the manufacturer.
+Shambhavi owns a stationery shop. She procures 200 page notebooks at
+₹36 per book. She sells them with a profit margin of 20%. Find the selling
+She sells crayon boxes at ₹50 per box with a profit margin of 25%. How much did Shambhavi buy them from the wholesaler?
+Example 5: The rice stock in Raghu’s provision store is getting old. He had purchased the rice at ₹35 per kg. To clear his stock, he sells 10 kg rice for ₹300. Find out the percentage loss.
+The amount Raghu had paid towards buying the 10 kg rice is ₹350. He sold it for ₹300.
+The loss is ₹350 – ₹300 = ₹50.
+The percentage loss is 50
+350 × 100 = 14.28%.
+Could we have just calculated the loss percentage per kg instead? Would it be the same?
+Example 6: Shyamala had procured decorative vases at ₹2650 per piece.
+One of the pieces was slightly damaged. She decides to sell it at a loss of
+18%. How much will she get by selling this piece?
+Try making an estimate. Draw a rough diagram depicting the given situation.
+Selling price
+Kishanlal’s buying price
+50 Selling price
+Cost price
+Ganita Prakash | Grade 8 | Part-II
+Two methods of solving this are shown.
+With respect to the buying price being 100%, the selling price is
+18% less than the buying price.
+That is, the selling price would
+82% of 2650 = 0.82 × 2650 = 2173.
+The loss amount is 18% of 2650.
+That is, 18
+100 × 2650 = 477.
+Reducing this from the buying price, 2650 – 477 = 2173.
+The sale amount of the damaged vase would be ₹2173.
+Due to heavy rains, Snehal could not transport strawberries to Hyderabad from his farm in Panchgani.
+He sells some of his stock at ₹80 per kg with a 12% loss.
+What is the cost price?
+You have probably seen percentages mentioned when shops offer discounts! Do you know what 30% off (or
+30% discount) means? It means that the shop is willing to reduce the price of the item by 30%.
+A utensil store is offering a 35% discount on the cooker with an MRP ₹1800. What is the selling price? If the cost price was ₹900, what is the percentage profit made after the sale?
+Suppose Kishanlal achieved a sales of ₹80,000 last month. Out of this, the amount he spent on buying these goods he sold last month was
+₹48,000. The difference amount, ₹80,000 – ₹48,000 = ₹32,000, is called gross profit.
+After deducting the other expenses he incurred (such as transport cost, employee’s salary, electricity bill, etc.) amounting to ₹8,000, the amount remaining is called net profit, which is
+₹32,000 – ₹8,000 = ₹24,000.
+Note: In this chapter, the term profit refers to gross profit.
+Manisha sells fertiliser. She buys 50 kg bags at ₹500 per bag. She sells it at ₹750 per bag making a profit of 250
+500 × 100 = 50%.
+Although, with respect to the ₹750 amount she has earned by selling a bag, the profit percentage is 250
+750 × 100 = 33.33%.
+Profit percentage is calculated based on the price the goods bought when we want to know “How much profit did I make compared to what I invested in buying the goods?”.
+Fractions in Disguise
+Profit percentage is calculated based on the revenue (sales amount)
+when we want to know “How much (net) profit did I make on my overall revenue?”.
+Suppose, in a month she made sales of ₹1,50,000. The cost of buying the goods was ₹1,00,000. So, the gross profit is ₹50,000. The monthly expenses amounted to ₹5,000. The net profit is ₹45,000.
+Out of monthly revenue (₹1,50,000), the net profit percentage is
+150000 × 100 = 3
+10 × 100 = 30%.
+Tax rates, like the GST (Goods and Services Tax)
+rate or the Income Tax rates, are also specified as percentages. You may have noticed GST mentioned as part of bills. This means that the tax is part of the amount we pay and this amount goes to the government.
+Check if the calculations are correct in the bill
+You may share any bills you have at home with the class. Observe the different elements present in the bills. Are there any similarities or differences in these bills?
+Figure it Out
+1. If a shopkeeper buys a geometry box for ₹75 and sells it for ₹110, what is his profit margin with respect to the cost?
+2. I am a carpenter and I make chairs. The cost of materials for a chair is ₹475 and I want to have a profit margin of 50%. At what price should I sell a chair?
+3. The total sales of a company (also called revenue) was ₹2.5 crore last year. They had a healthy profit margin of 25%. What was the total expenditure (costs) of the company last year?
+4. A clothing shop offers a 25% discount on all shirts. If the original price of a shirt is ₹300, how much will Anwar have to pay to buy this shirt?
+5. The petrol price in 2015 was ₹60 and ₹100 in 2025. What is the percentage increase in the price of petrol?
+(i) 50% (ii) 40% (iii) 60% (iv) 66.66% (v) 140% (vi) 160.66%
+Ganita Prakash | Grade 8 | Part-II
+3. Samson bought a car for ₹4,40,000 after getting a 15% discount from the car dealer. What was the original price of the car?
+4. 1600 people voted in an election and the winner got 500 votes. What percent of the total votes did the winner get? Can you guess the minimum number of candidates who stood for the election?
+5. The price of 1 kg of rice was ₹38 in 2024. It is ₹42 in 2025. What is the rate of inflation? (Inflation is the percentage increase in prices.)
+6. A number increased by 20% becomes 90. What is the number?
+7. A milkman sold two buffaloes for ₹80,000 each. On one of them, he made a profit of 5% and on the other a loss of 10%. Find his overall profit or loss.
+8. The population of elephants in a national park increased by 5% in the last decade. If the population of the elephants last decade is p, the population now is (i) p × 0.5 (ii) p × 0.05 (iii) p × 1.5 (iv) p × 1.05 (v) p + 1.50
+9. Which of the following statement(s) mean the same as — “The demand for cameras has fallen by 85% in the last decade”?
+(i) The demand now is 85% of the demand a decade ago.
+(ii) The demand a decade ago was 85% of the demand now.
+(iii) The demand now is 15% of the demand a decade ago.
+(iv) The demand a decade ago was 15% of the demand now.
+(v) The demand a decade ago was 185% of the demand now.
+(vi) The demand now is 185% of the demand a decade ago.
+Growth and Compounding
+You might have come across statements like, “1 year interest for FD (Fixed Deposit) in the bank @ 6% per annum” or “Savings account with interest @ 2.5% per annum”. Interest is the extra money paid by institutions like banks or post offices on money deposited (kept) with them.
+Interest is also paid by people or institutions when they borrow money.
+In a Fixed Deposit (FD), you deposit a specific amount of money for a fixed period at a predetermined interest rate. The money remains locked for the chosen duration, and the bank pays you interest on it.
+You cannot withdraw the amount before the maturity date without incurring a penalty. At the end of the term, you receive both your original deposit and the interest earned.
+Fractions in Disguise
+For example, a bank says that the interest rate for fixed deposits is 10% p.a. What do you understand by this statement? What is the ‘p.a.’ next to the percentage?
+‘p.a.’ is the short form of per annum, which means for every year. The specified interest rate indicates that if you invest ₹6000 as a deposit for a year with the bank, they will give you ₹600 as interest on this deposit.
+The 10% is the rate of interest and the ₹6000 on which the interest is calculated is the principal. The amount after 1 year in your bank account
+6000 + (0.10 × 6000)
+(principal) + (10% interest on principal)
+= 6000 + 600 = 6600.
+In other words, the amount deposited,
+₹6000, will become 110% (or increase by 10%),
+6000 × 110% = 6000 × 110
+100 = 6000 × 1.1 = 6600.
+This can also be expressed as
+Amount after 1 year = Principal (P) + rate of interest (r) of P
+Example 7: If one deposits ₹6000 in the bank, what is the amount after
+3 years?
+That depends on the choice of FD. There are two possibilities:
+1. Option 1: The interest is paid out regularly (for example, every year).
+The principal amount is returned after the maturity period.
+Interest returned (10% p.a.)
+Amount in
+Beginning ₹6000
+Ending ₹600 returned
+Beginning ₹6000
+Ending ₹600 returned
+Beginning ₹6000
+Ending ₹600 returned
+Total amount received ₹1800 + ₹6000 = ₹7800
+Amount after 1 year
+Principal (initial deposit)
+Ganita Prakash | Grade 8 | Part-II
+2. Option 2: The interest gained every time (say after each year) is added back to the FD, thus increasing the principal amount for the subsequent period. After the maturity period, the entire amount is returned. This phenomenon is called compounding.
+Interest added back (10% p.a.)
+Amount in
+Beginning ₹6000
+Ending ₹600 added back
+Beginning ₹6600
+Ending ₹660 added back
+Beginning ₹7260
+Ending ₹726 ₹7986
+₹7986 is returned
+Total amount received ₹7986
+We can see that with compounding, the final amount is more.
+Example 8: What percent is the total amount received with respect to the amount deposited in both the options?
+This can be calculated by finding total amount received amount deposited × 100.
+Without Compounding With Compounding
+6000 × 100 = 130% = 1.3.
+In other words, the total amount received = 6000 × (1 + 0.1 + 0.1 + 0.1)
+= 6000 × 1.3.
+The percentage gain over 3 years is 30%.
+6000 × 100 = 133.1% = 1.331.
+In other words, the total amount received
+= 6000 × 1.1 × 1.1 × 1.1.
+= 6000 × 1.331
+The percentage gain over 3 years is 33.1%.
+Figure it Out
+1. Bank of Yahapur offers an interest of 10% p.a. Compare how much one gets if they deposit ₹20,000 for a period of 2 years with compounding and without compounding annually.
+Fractions in Disguise
+2. Bank of Wahapur offers an interest of 5% p.a. Compare how much one gets if one deposits ₹20,000 for a period of 4 years with compounding and without compounding annually.
+3. Do you observe anything interesting in the solutions of the two questions above? Share and discuss.
+Let us try to generalise the pattern observed in each of the options.
+Example 9: What is the amount we get back if we invest ₹6000 at an interest rate of 10% p.a. for ‘t’ years?
+No Compounding
+Here, the interest gained every term is paid back. Therefore, the principal amount for every term shall remain the same, and as a result, the interest gained every term also shall be the same.
+The interest gained in 1 term is 6000 × 0.1
+The interest gained in 3 terms is
+6000 × 0.1 × 3
+The total amount at the end of an FD of 3 years is
+6000 + (6000 × 0.1 × 3).
+The interest gained in 1 term is p × r (p is the principal, r is the rate of interest in percentage)
+The interest gained in t terms is p × r × t
+The total amount at the end of an FD of t years is p + (p × r × t )= p + prt
+= p (1 + rt).
+With Compounding
+Here, the interest gained every term/year is added back to the FD.
+Therefore, the principal amount increases after every term, and as a result, the interest gained every term also increases proportionately.
+The total amount in the FD after Year 1 is (6000) × 1.1 (principal for Year 1)
+The total amount in the FD after Year 2 is (6000 × 1.1) × 1.1 (principal for Year 2)
+The total amount in the FD after Year 3 is (6000 × 1.1 × 1.1) × 1.1 (principal for Year 3)
+The total amount in the FD after t years is
+6000 × (1.1 × 1.1 × 1.1…..× 1.1)
+6000 × (1.1)t.
+The total amount in the FD after Year 1 is (p) × (1 + r)
+(principal for Year 1)
+The total amount in the FD after Year 2 is p × (1 + r) × (1 + r)
+(principal for Year 2)
+The total amount in the FD after Year 3 is p × (1 + r) × (1 + r) × (1 + r)
+(principal for Year 3)
+The total amount in the FD after t years is p × (1 + r) × (1 + r) × …..× (1 + r)
+p × (1 + r)t.
+Ganita Prakash | Grade 8 | Part-II
+Suppose we want to know the expression/formula to find the total interest amount gained at the end of the maturity period. What would be the formula for each of the two options?
+Figure it Out
+4. Jasmine invests amount ‘p’ for 4 years at an interest of 6% p.a. Which of the following expression(s) describe the total amount she will get after 4 years when compounding is not done?
+(i) p × 6 × 4 (ii) p × 0.6 × 4 (iii) p × 0.6 (iv) p × 0.06
+100 × 4 (v) p × 1.6 × 4 (vi) p × 1.06 × 4 (vii) p + (p × 0.06 × 4)
+5. The post office offers an interest of 7% p.a. How much interest would one get if one invests ₹50,000 for 3 years without compounding?
+How much more would one get if it was compounded?
+6. Giridhar borrows a loan of ₹12,500 at 12% per annum for 3 years without compounding and Raghava borrows the same amount for the same time period at 10% per annum, compounded annually.
+Who pays more interest and by how much?
+7. Consider an amount ₹1000. If this grows at 10% p.a., how long will it take to double when compounding is done vs. when compounding is not done? Is compounding an example of exponential growth and not-compounding an example of linear
+8. The population of a city is rising by about 3% every year. If the current population is 1.5 crore, what is the expected population after 3 years?
+9. In a laboratory, the number of bacteria in a certain experiment increases at the rate of 2.5% per hour. Find the number of bacteria at the end of 2 hours if the initial count is 5,06,000.
+Several items or materials lose financial value over time. Suppose someone buys a bike at your home for ₹1,00,000 and after a few years they want to sell it. The value of the bike at that time will be less than
+₹1,00,000. It could depend on various factors, including how many years have passed since the purchase, how many kilometres the vehicle has been used for, if there has been any damage, or if any parts have been replaced. This is called depreciation — reduction of value due to use and age of the item.
+Fractions in Disguise
+Example 10: A TV is bought at a price of ₹21,000. After 1 year, the value of the TV depreciates by 5%. Find the value of the TV after one year.
+The amount of reduction in the value is 5% of 21,000 = 0.05 × 21,000
+The current value is 21,000 – 1050
+= 19,950.
+The value of the TV after 1 year will be 95% of the current value
+= 95% of 21,000 = 0.95 × 21,000
+= 19,950.
+The value of the TV after 1 year will be ₹19,950.
+Example 11: The population of a village was observed to be reducing by about 10% every decade. If the current population is 1250, what is the expected population after 3 decades?
+The population 1 decade later will be 0.9 times the population of the current decade.
+Therefore, the population after
+1 decade will be 1250 × 0.9.
+The population after 2 decades will be 1250 × 0.9 × 0.9.
+The population after 3 decades will be 1250 × 0.9 × 0.9 × 0.9
+= 911.25.
+First decade’s decrease = 0.1 × 1250
+Population after 1 decade
+= 1250 – 125 = 1125.
+Second decade’s decrease
+= 0.1 × 1125 = 112.5 ≅ 112.
+Population after 2 decades
+= 1125 – 112 = 1013
+Third decade’s population decrease
+= 0.1 × 1013 = 101.3 ≅ 101.
+Population after 3 decades
+= 1013 – 101 = 912.
+Rounding off, we can say that the expected population after 3 decades will be around 910.
+Tricky Percentages
+Would You Rather?
+You have won a contest. The organisers offer you two options to choose from:
+Option A: You deposit ₹100 and you get back ₹300.
+Option B: You deposit ₹1000 and you get back ₹1500.
+What is the percentage gain each option gives? You can choose any option only once. Which option would you choose? Why?
+Ganita Prakash | Grade 8 | Part-II
+While comparing percentages, we have to be mindful that we are comparing fractions or proportions and not absolute values.
+A provision store is offering a stock clearance sale. Customers can choose one of the two options — 20% discount or ₹50 discount—for any purchase above ₹150. Which option would you choose if you want to:
+(i) buy items worth ₹180 (ii) buy items worth ₹225 (iii) buy items worth ₹300
+Example 12: A bakery called Cakely is offering a 30% + 20% discount on all cakes.
+Another bakery called Cakify is offering a
+50% discount on all cakes. Would you rather choose Cakely or Cakify if you want the cheaper cost?
+It seems that both the options should give the same benefit. Although mathematically
+30% + 20% is the same as 50%, the usage of
+30% + 20% in shopping means compounding.
+Suppose you want to buy a cake worth ₹200.
+Cakely’s 30% + 20% →
+Applying the 30% discount → the price of cake is ₹200 – ₹60 = ₹140.
+Applying the 20% discount on ₹140 → the price of cake is ₹140 – ₹28 = ₹112.
+Cakify’s 50% →
+The 50% discount makes the price of the cake
+Fractions in Disguise
+A Mishap
+Example 13: After Surbhi bought cookware from the wholesaler, she kept a profit margin of 50% on all the products. To clear off the remaining stock, she thought she would offer a 50% discount and come out without any loss.
+(i) Do you think she didn’t make any loss?
+(ii) If she had sold goods (originally) for ₹12,000 after discount, how much loss did she incur? What is the percentage loss?
+(iii) What should have been the percentage discount offered so that she sold the goods at the price she had bought (i.e., no profit or loss)?
+Let us model the situation first.
+Suppose the worth of the products she bought from the wholesaler is x.
+The worth corresponding to the selling price (with a 50% margin) is 1.5x.
+A 50% discount on this price will make the worth 0.75x.
+(i) This means the selling price is 3
+4 of the price the goods were bought at, i.e., a 25% loss.
+(ii) If she had sold goods worth ₹12,000,
+0.75x = 12,000 x =

@@ -1,0 +1,14 @@
+...... (2.18)
+If we have a continuous charge distribution characterised by a charge r (r), we divide it, as before, into small volume elements each of size Dv and carrying a charge rDv. We then determine the potential due to each volume element and sum (strictly speaking , integrate) over all such contributions, and thus determine the potential due to the entire distribution.
+We have seen in Chapter 1 that for a uniformly charged spherical shell, the electric field outside the shell is as if the entire charge is concentrated at the centre. Thus, the potential outside the shell is given by
+= π ( ) r R ≥ [2.19(a)] where q is the total charge on the shell and R its radius. The electric field inside the shell is zero. This implies (Section 2.6) that potential is constant inside the shell (as no work is done in moving a charge inside the shell), and, therefore, equals its value at the surface, which is
+= π [2.19(b)]
+Example 2.2 Two charges 3 × 10–8 C and –2 × 10–8 C are located
+15 cm apart. At what point on the line joining the two charges is the electric potential zero? Take the potential at infinity to be zero.
+Solution Let us take the origin O at the location of the positive charge.
+The line joining the two charges is taken to be the x-axis; the negative charge is taken to be on the right side of the origin (Fig. 2.7).
+FIGURE 2.7
+Let P be the required point on the x-axis where the potential is zero.
+If x is the x-coordinate of P, obviously x must be positive. (There is no possibility of potentials due to the two charges adding up to zero for x < 0.) If x lies between O and A, we have where x is in cm. That is, which gives x = 9 cm.
+If x lies on the extended line OA, the required condition is
+Reprint 2026-27

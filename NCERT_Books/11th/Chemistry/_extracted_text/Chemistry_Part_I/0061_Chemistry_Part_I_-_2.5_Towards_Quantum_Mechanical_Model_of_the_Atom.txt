@@ -1,0 +1,114 @@
+49 STRUCTURE OF ATOM
+Problem 2.10
+What are the frequency and wavelength of a photon emitted during a transition from n = 5 state to the n = 2 state in the hydrogen atom?
+solution
+Since ni = 5 and nf = 2, this transition gives rise to a spectral line in the visible region of the Balmer series. From equation (2.17)
+2 18 10 1
+It is an emission energy
+The frequency of the photon (taking energy in terms of magnitude) is given by
+= 6.91×1014 Hz
+Problem 2.11
+Calculate the energy associated with the first orbit of He+ . What is the radius of this orbit?
+solution ( . ) 2 18 10 18 2
+2 atom–1
+For He+ , n = 1, Z = 2
+18 2 18 10 2
+1 8 72 10      
+ ( . )( ) .
+The radius of the orbit is given by equation (2.15)
+= ( . ) 0 0529 2
+Since n = 1, and Z = 2 r nm nm n = =
+0 0529 1
+2 0 02645
+2.4.2 limitations of bohr’s model
+Bohr’s model of the hydrogen atom was no doubt an improvement over Rutherford’s nuclear model, as it could account for the stability and line spectra of hydrogen atom and hydrogen like ions (for example, He+
+Be3+ , and so on). However, Bohr’s model was too simple to account for the following points.
+i) It fails to account for the finer details (doublet, that is two closely spaced lines)
+of the hydrogen atom spectrum observed by using sophisticated spectroscopic techniques. This model is also unable to explain the spectrum of atoms other than hydrogen, for example, helium atom which possesses only two electrons. Further, Bohr’s theory was also unable to explain the splitting of spectral lines in the presence of magnetic field (Zeeman effect) or an electric field (Stark effect).
+ii) It could not explain the ability of atoms to form molecules by chemical bonds.
+In other words, taking into account the points mentioned above, one needs a better theory which can explain the salient features of the structure of complex atoms.
+2.5 toWarDs QUantUm mecHanical moDel of tHe atom
+In view of the shortcoming of the Bohr’s model, attempts were made to develop a more suitable and general model for atoms. Two important developments which contributed significantly in the formulation of such a model were:
+1. Dual behaviour of matter,
+2. Heisenberg uncertainty principle.
+2.5.1 Dual behaviour of matter
+The French physicist, de Broglie, in 1924 proposed that matter, like radiation, should also exhibit dual behaviour i.e., both particle and wavelike properties. This means that just as the photon has momentum as well as wavelength, electrons should also have momentum as well as wavelength, de Broglie, from this analogy, gave the following relation between wavelength (λ) and momentum (p) of a material particle.
+Reprint 2026-27
+50 CHEMISTRY solution
+According to de Brogile equation (2.22)
+     ( . )( )
+6 626 10
+= 6.626 × 10 –34 m (J = kg m2 s–2 )
+Problem 2.13
+The mass of an electron is 9.1×10–31 kg.
+If its K.E. is 3.0×10 –25 J, calculate its wavelength.
+solution
+Since K.E. = ½ mv2 v K E kg m s
+2 2 3 0 10
+1 2 25 2 2
+= 812 m s–1
+Js 6 626 10 . 34 kg m s 9 1 10 812 ( . )( )1 31
+= 8967 × 10 –10 m = 896.7 nm
+Problem 2.14
+Calculate the mass of a photon with wavelength 3.6 Å.
+solution
+λ = 3.6 Å = 3.6 × 10–10 m
+Velocity of photon = velocity of light
+= 6.135 × 10 –29 kg p v (2.22)
+where m is the mass of the particle, v its velocity and p its momentum. de Broglie’s prediction was confirmed experimentally when it was found that an electron beam undergoes diffraction, a phenomenon characteristic of waves. This fact has been put to use in making an electron microscope, which is based on the wavelike behaviour of electrons just as an ordinary microscope utilises the wave nature of light. An electron microscope is a powerful tool in modern scientific research because it achieves a magnification of about 15 million
+It needs to be noted that according to de
+Broglie, every object in motion has a wave character. The wavelengths associated with ordinary objects are so short (because of their large masses) that their wave properties cannot be detected. The wavelengths associated with electrons and other subatomic particles (with very small mass) can however be detected experimentally. Results obtained from the following problems prove these points qualitatively.
+Problem 2.12
+What will be the wavelength of a ball of mass 0.1 kg moving with a velocity of
+10 m s–1 ?
+2.5.2 Heisenberg’s Uncertainty Principle
+Werner Heisenberg a German physicist in
+1927, stated uncertainty principle which is the consequence of dual behaviour of matter and radiation. it states that it is impossible to determine simultaneously, the exact position and exact momentum (or velocity)
+of an electron.
+Mathematically, it can be given as in equation (2.23).
+Louis de Broglie (1892 – 1987)
+Louis de Broglie, a French physicist, studied history as an undergraduate in the early 1910’s. His interest turned to science as a result of his assignment to radio communications in World
+W a r I . H e r e c e i v e d h i s
+Dr. Sc. from the University of Paris in 1924.
+He was professor of theoretical physics at the University of Paris from 1932 untill his retirement in 1962. He was awarded the
+Nobel Prize in Physics in 1929.
+Reprint 2026-27
+51 STRUCTURE OF ATOM where ∆x is the uncertainty in position and
+∆p x (or ∆vx ) is the uncertainty in momentum (or velocity) of the particle. If the position of the electron is known with high degree of accuracy (∆x is small), then the velocity of the electron will be uncertain [∆(v x ) is large]. On the other hand, if the velocity of the electron is known precisely (∆(vx ) is small), then the position of the electron will be uncertain (∆x will be large). Thus, if we carry out some physical measurements on the electron’s position or velocity, the outcome will always depict a fuzzy or blur picture.
+The uncertainty principle can be best understood with the help of an example.
+Suppose you are asked to measure the thickness of a sheet of paper with an unmarked metrestick. Obviously, the results obtained would be extremely inaccurate and meaningless. In order to obtain any accuracy, you should use an instrument graduated in units smaller than the thickness of a sheet of the paper. Analogously, in order to determine the position of an electron, we must use a meterstick calibrated in units of smaller than the dimensions of electron (keep in mind that an electron is considered as a point charge and is therefore, dimensionless).
+To observe an electron, we can illuminate it with “light” or electromagnetic radiation. The
+“light” used must have a wavelength smaller than the dimensions of an electron. The high momentum photons of such light p h would change the energy of electrons by collisions. In this process we, no doubt, would be able to calculate the position of the electron, but we would know very little about the velocity of the electron after the collision.
+Significance of Uncertainty Principle
+One of the important implications of the
+Heisenberg Uncertainty Principle is that it rules out existence of definite paths or trajectories of electrons and other similar particles. The trajectory of an object is determined by its location and velocity at various moments. If we know where a body is at a particular instant and if we also know its velocity and the forces acting on it at that instant, we can tell where the body would be sometime later. We, therefore, conclude that the position of an object and its velocity fix its trajectory. Since for a sub-atomic object such as an electron, it is not possible simultaneously to determine the position and velocity at any given instant to an arbitrary degree of precision, it is not possible to talk of the trajectory of an electron.
+the effect of Heisenberg Uncertainty
+Principle is significant only for motion of microscopic objects and is negligible for that of macroscopic objects. This can be seen from the following examples.
+If uncertainty principle is applied to an object of mass, say about a milligram (10–6 kg),
+Werner Heisenberg (1901 – 1976) Werner Heisenberg (1901 – 1976) received his Ph.D. in physics from the University of Munich in 1923. He then spent a year working with Max
+Born at Gottingen and three years with Niels Bohr in Copenhagen. He was professor of physics at the University of Leipzig from 1927 to 1941. During World War II, Heisenberg was in charge of German research on the atomic bomb. After the war he was named director of Max Planck Institute for physics in Gottingen. He was also accomplished mountain climber. Heisenberg was awarded the Nobel Prize in Physics in 1932.
+Reprint 2026-27
+52 CHEMISTRY
+The value of ∆v∆x obtained is extremely small and is insignificant. Therefore, one may say that in dealing with milligram- sized or heavier objects, the associated uncertainties are hardly of any real consequence.
+In the case of a microscopic object like an electron on the other hand. ∆v.∆x obtained is much larger and such uncertainties are of real consequence. For example, for an electron whose mass is 9.11×10 –31 kg., according to
+Heisenberg uncertainty principle
+It, therefore, means that if one tries to find the exact location of the electron, say to an uncertainty of only 10–8 m, then the uncertainty ∆v in velocity would be which is so large that the classical picture of electrons moving in Bohr’s orbits (fixed)
+cannot hold good. it, therefore, means that the precise statements of the position and momentum of electrons have to be replaced by the statements of probability, that the electron has at a given position and momentum. this is what happens in the quantum mechanical model of atom.
+= 0.579×10 7 m s–1 (1J = 1 kg m2 s –2 )
+= 5.79×10 6 m s–1
+Problem 2.16
+A golf ball has a mass of 40g, and a speed of 45 m/s. If the speed can be measured within accuracy of 2%, calculate the uncertainty in the position.
+solution
+The uncertainty in the speed is 2%, i.e.,
+Using the equation (2.22)
+= 1.46×10 –33 m
+This is nearly ~ 10 18 times smaller than the diameter of a typical atomic nucleus. As mentioned earlier for large particles, the uncertainty principle sets no meaningful limit to the precision of measurements.
+Reasons for the Failure of the Bohr Model
+One can now understand the reasons for the failure of the Bohr model. In Bohr model, an electron is regarded as a charged particle moving in well defined circular orbits about the nucleus. The wave character of the electron is not considered in Bohr model.
+Further, an orbit is a clearly defined path and this path can completely be defined only if both the position and the velocity of the electron are known exactly at the same time. This is not possible according to the
+Heisenberg uncertainty principle. Bohr model of the hydrogen atom, therefore, not only ignores dual behaviour of matter but also contradicts Heisenberg uncertainty principle.
+Problem 2.15
+A microscope using suitable photons is employed to locate an electron in an atom within a distance of 0.1 Å. What is the uncertainty involved in the measurement of its velocity?
+solution
+∆ x ∆p = or ∆ x m ∆ v
+Reprint 2026-27

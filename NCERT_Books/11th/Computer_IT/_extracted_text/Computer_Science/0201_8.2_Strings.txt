@@ -1,0 +1,74 @@
+9.1 IntroductIon to LIst
+The data type list is an ordered sequence which is mutable and made up of one or more elements. Unlike a string which consists of only characters, a list can have elements of different data types, such as integer, float, string, tuple or even another list. A list is very useful to group together elements of mixed data types.
+Elements of a list are enclosed in square brackets and are separated by comma. Like string indices, list indices also start from 0.
+Example 9.1
+#list1 is the list of six even numbers
+>>> list1 = [2,4,6,8,10,12]
+>>> print(list1)
+[2, 4, 6, 8, 10, 12]
+#list2 is the list of vowels
+>>> list2 = ['a','e','i','o','u']
+>>> print(list2)
+['a', 'e', 'i', 'o', 'u']
+#list3 is the list of mixed data types
+>>> list3 = [100,23.5,'Hello']
+>>> print(list3)
+[100, 23.5, 'Hello']
+#list4 is the list of lists called nested
+>>> list4 =[['Physics',101],['Chemistry',202],
+['Maths',303]]
+>>> print(list4)
+[['Physics', 101], ['Chemistry', 202],
+['Maths', 303]]
+9.1.1 Accessing Elements in a List
+The elements of a list are accessed in the same way as characters are accessed in a string.
+“Measuring programming progress by lines of code is like measuring aircraft building progress by weight.”
+–Bill Gates
+Chapter 9
+In this chapter
+» Introduction to List
+» List Operations
+» Traversing a List
+» List Methods and
+Built-in Functions
+» Nested Lists
+» Copying Lists
+» List as Arguments to Function
+» List Manipulation
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 190
+#initializes a list list1
+>>> list1 = [2,4,6,8,10,12]
+>>> list1[0] #return first element of list1
+>>> list1[3] #return fourth element of list1
+#return error as index is out of range
+>>> list1[15]
+IndexError: list index out of range
+#an expression resulting in an integer index
+>>> list1[1+4]
+>>> list1[-1] #return first element from right
+#length of the list list1 is assigned to n
+>>> n = len(list1)
+>>> print(n)
+#return the last element of the list1
+>>> list1[n-1]
+#return the first element of list1
+>>> list1[-n]
+9.1.2 Lists are Mutable
+In Python, lists are mutable. It means that the contents of the list can be changed after it has been created.
+#List list1 of colors
+>>> list1 = ['Red','Green','Blue','Orange']
+#change/override the fourth element of list1
+>>> list1[3] = 'Black'
+>>> list1 #print the modified list list1
+['Red', 'Green', 'Blue', 'Black']
+9.2 LIst operatIons
+The data type list allows manipulation of its contents through various operations as shown below.
+9.2.1 Concatenation
+Python allows us to join two or more lists using concatenation operator depicted by the symbol +.
+#list1 is list of first five odd integers
+>>> list1 = [1,3,5,7,9]
+#list2 is list of first five even integers
+>>> list2 = [2,4,6,8,10]
+#elements of list1 followed by list2
+Reprint 2026-27

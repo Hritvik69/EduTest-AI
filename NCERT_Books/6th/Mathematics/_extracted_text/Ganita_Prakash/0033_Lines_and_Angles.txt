@@ -1,0 +1,245 @@
+CHAPTER 1 — SOLUTIONS
+Patterns in Mathematics
+Page No. 2.
+Section 1.1
+Figure it Out
+Q1. Can you think of other examples where mathematics helps us in our everyday lives?
+Ans. Some examples are paying for fruits, vegetables, groceries etc. calculation of speed of vehicles, designs or patterns in different buildings, finding area of any plot or out own home. There could be many more such contexts in our everyday lives. Discuss for other examples also.
+Q2. How has mathematics helped propel humanity forward? (You might think of examples involving: carrying out scientific experiments; running our economy and democracy; building bridges, houses or other complex structures; making TVs, mobile phones, computers, bicycles, trains, cars, planes, calendars, clocks, etc.)
+Ans. Teacher student discussion is required.
+Page No. 3.
+Section 1.2
+Figure it Out
+Q.1. Can you recognize the pattern in each of the sequences in Table 1?
+Ans. Yes, There is a pattern in each case.
+Powers of 2- 1,2,4 = 2 x 2, 8 = 2 x 2 x2 ,16 = 2 x 2 x2 x 2 x 2…
+Powers of 3 - 1, 3, 9 = 3 x 3 = 27 =3 x 3 x3,…
+Virahanka numbers- 1,2, 3, 5 = 2 + 3, 8 = 3 + 5, 13 = 5 + 8,….
+Rest of the patterns have been shown on page 4 ,Table 2
+Page no. 5
+Section 1.3
+Figure it out
+Q.2. Why are 1, 3, 6, 10, 15, … called triangular numbers? Why are 1, 4, 9, 16, 25, … called square numbers or squares? Why are 1, 8, 27, 64, 125, … called cubes?
+Ans. Refer Table 2, page 4, and check for yourself.
+Q.3. You will have noticed that 36 is both a triangular number and a square number!
+That is, 36 dots can be arranged perfectly both in a triangle and in a square. Make pictures in your notebook illustrating this!
+Ans. Refer Table 2, page 4, and draw.
+Q.4. What would you call the following sequence of numbers?
+Ans. 61.
+Q.5. Can you think of pictorial ways to visualise the sequence of powers of 2? powers of
+Ans. Sequence of powers of 2—given on page 6
+Sequence of powers of 3- One of the ways could be –
+Page No. 7
+Section 1.4
+By drawing a similar picture, can you say what is the sum of the first 10 odd numbers?
+Ans. 100
+Now by imagining a similar picture, or by drawing it partially, as needed, can you say what is the sum of the first 100 odd numbers?
+Ans.10000
+Figure it out
+Q.1. Can you find a similar pictorial explanation for why adding counting numbers up and down, i.e., 1, 1 + 2 + 1, 1 + 2 + 3 + 2 + 1, …, gives square numbers?
+Ans. One of the ways is-
+1, 1 + 2 + 1, 1 + 2 + 3 + 2 + 1, …,
+Q.2. By imagining a large version of your picture, or drawing it partially, as needed, can you see what will be the value of 1 + 2 + 3 + ... + 99 + 100 + 99 + ... + 3 + 2 + 1?
+Ans. 10,000
+Q.3. Which sequence do you get when you start to add the All 1’s sequence up? What sequence do you get when you add the All 1’s sequence up and down?
+• 1 + (1 +1) + (1 +1 +1) + (1 + 1+1+1) …
+• 1, 1+(1+1) + 1, 1+(1+1) +(1+1+1) + (1+1) +1, 1+(1+1) +(1+1+1) + (1+1+1+1) + (1+1+1) + (1+1) +1, ……….
+Q.4. Which sequence do you get when you start to add the Counting numbers up? Can you give a smaller pictorial explanation?
+Ans. 1, 1+2, 1+2+3, 1+2+3+4, ………
+Which is triangular number sequence. For pictorial representation refer Table 2 on (Try it for isosceles right triangle also.)
+Q.5. What happens when you add up pairs of consecutive triangular numbers? That is, take 1 + 3, 3 + 6, 6 + 10, 10 + 15, … ? Which sequence do you get? Why? Can you explain it with a picture?
+Ans. We get: 4, 9, 16, 25, ……… (Square numbers).
+For the pictorial representation refer Table 2 on page 4
+Q.6. What happens when you start to add up powers of 2 starting with 1, i.e., take 1, 1 +
+2, 1 + 2 + 4, 1 + 2 + 4 + 8, …? Now add 1 to each of these numbers — what numbers do you get? Why does this happen?
+• We get, 1, 3, 7, 15, 31, …………
+• After adding 1 to each number, we get:2, 4, 8, 16, 32, ……
+Refer the picture on page 6.
+Q.7. What happens when you multiply the triangular numbers by 6 and add 1? Which sequence do you get? Can you explain it with a picture?
+Ans. (1×6) +1, (3×6) +1, (6×6) +1, (10×6) +1, (15×6) +1, …
+= 7, 19, 37, 61, 91, ….
+For picture refer picture in Q.4 page 5.
+Q.8. What happens when you start to add up hexagonal numbers, i.e., take 1, 1 + 7,
+1 + 7 + 19, 1 + 7 + 19 + 37, … ? Which sequence do you get? Can you explain it using a picture of a cube?
+Ans. 1, 8, 27, 64, ………We get cube numbers.
+For picture, refer Table 2, page 4
+Page no. 10
+Section 1.5
+Figure it out
+Q.1. Can you recognise the pattern in each of the sequences in Table 3?
+Ans. Yes.
+➢ 3, 4, 5, 6, 7, 8, 9, 10
+One of the ways to interpret this is that we get a sequence of number of sides of the pictures of the shapes
+➢ 1, 3, 6, 10, 15
+➢ 1, 4, 9, 16, 25
+➢ 3, 3×4, 3×4×4, 3×4×4×4, 3×4×4×4×4
+Page no. 11
+Section 1.6
+Figure it out
+Q.1. Count the number of sides in each shape in the sequence of Regular Polygons. Which number sequence do you get? What about the number of corners in each shape in the sequence of Regular Polygons? Do you get the same number sequence? Can you explain why this happens?
+• Number of sides = 3,4,5,6,7,8,9,10… We get counting number sequence, starting
+• Number of Corners = 3,4,5,6,7,8,9,10… Yes, we get the same number sequence
+• in any closed figure, number of sides = number of corners (vertices).
+Q.2. Count the number of lines in each shape in the sequence of Complete Graphs.
+Which number sequence do you get? Can you explain why?
+• 1, 3, 6, 10, 15. This is a Triangle number sequence
+Q.3. How many little squares are there in each shape of the sequence of Stacked
+Squares? Which number sequence does this give? Can you explain why?
+• 1, 4, 9, 16, 25. This is a Square number sequence.
+• Squares can be drawn using these number of dots.
+Q.4. How many little triangles are there in each shape of the sequence of Stacked
+Triangles? Which number sequence does this give? Can you explain why? (Hint: In each shape in the sequence, how many triangles are there in each row?)
+Ans. 1, 4, 9, 16, 25
+= 1, 1+2+1, 1+2+3+2+1, ……….
+Square number sequence (As adding up and down) gives us square number sequence.
+Q.5. To get from one shape to the next shape in the Koch Snowflake sequence, one replaces each line segment‘—’ by a ‘speed bump’ . As one does this more and more times, the changes become tinier and tinier with very very small line segments. How many total line segments are there in each shape of the Koch
+Snowflake? What is the corresponding number sequence? (The answer is 3, 12, 48,
+..., i.e. 3 times Powers of 4; this sequence is not shown in Table 1)
+• Total line segments in each shape: 3, 12, 48, 192, 768
+• Corresponding sequence: 3, 3×4, 3×4×4, 3×4×4×4×, 3×4×4×4×4,…
+Lines and angLes2
+In this chapter, we will explore some of the most basic ideas of geometry including points, lines, rays, line segments and angles.
+These ideas form the building blocks of ‘plane geometry’, and will help us in understanding more advanced topics in geometry such as the construction and analysis of different shapes.
+2.1 Point
+Mark a dot on the paper with a sharp tip of a pencil. The sharper the tip, the thinner will be the dot. This tiny dot will give you an idea of a point. A point determines a precise location, but it has no length, breadth or height. Some models for a point are given below.
+The tip of a
+The sharpened end of a pencil
+The pointed end of a needle
+If you mark three points on a piece of paper, you may be required to distinguish these three points. For this purpose, each of the three points may be denoted by a single capital letter such as
+Reprint 2026-27
+Ganita Prakash | Grade 6
+Z, P and T. These points are read as ‘Point Z’, ‘Point P’ and ‘Point T’. Of course, the dots represent precise locations and must be imagined to be invisibly thin.
+2.2 Line Segment
+Fold a piece of paper and unfold it. Do you see a crease? This gives the idea of a line segment. It has two end points, A and B.
+Mark any two points A and B on a sheet of paper. Try to connect A to B by various routes (Fig. 2.1).
+What is the shortest route from A to B?
+This shortest path from Point A to Point B (including A and B) as shown here is called the line segment from A to B. It is denoted by either AB or BA. The points A and B are called the end points of the line segment AB.
+2.3 Line
+Imagine that the line segment from A to B (i.e.,
+AB) is extended beyond A in one direction and beyond B in the other direction without any end (see Fig. 2.2). This is a model for a line. Do you think you can draw a complete picture of a line? No. Why?
+A line through two points A and B is written as AB . It extends forever in both directions. Sometimes a line is denoted by a letter like
+Observe that any two points determine a unique line that passes through both of them.
+Fig. 2.1
+Fig. 2.2
+Reprint 2026-27
+Lines and Angles
+A ray is a portion of a line that starts at one point (called the starting point or initial point of the ray) and goes on endlessly in a direction.
+The following are some models for a ray:
+Beam of light from a lighthouse
+Ray of light from a torch Sun rays
+Look at the diagram (Fig. 2.3) of a ray. Two points are marked on it. One is the starting point A and the other is a point P on the path of the ray. We then denote the ray by AP.
+Figure it Out
+Can you help Rihan and Sheetal find their answers?
+Fig. 2.3
+Rihan marked a point on a piece of paper.
+How many lines can he draw that pass through the point?
+Sheetal marked two points on a piece of paper. How many different lines can she draw that pass through both of the points?
+Reprint 2026-27
+Ganita Prakash | Grade 6
+2. Name the line segments in Fig. 2.4. Which of the five marked points are on exactly one of the line segments? Which are on two of the line segments?
+Fig. 2.4
+3. Name the rays shown in Fig. 2.5. Is T the starting point of each of these rays?
+Fig. 2.5
+4. Draw a rough figure and write labels appropriately to illustrate each of the following:
+a. OP and OQ meet at O.
+b. XY and PQ intersect at point M.
+c. Line l contains points E and F but not point D.
+d. Point P lies on AB.
+5. In Fig. 2.6, name:
+a. Five points b. A line c. Four rays d. Five line segments D
+Fig. 2.6
+Reprint 2026-27
+Lines and Angles
+6. Here is a ray OA (Fig. 2.7). It starts at O and passes through the point A. It also passes through the point B.
+a. Can you also name it as OB ? Why?
+b. Can we write OA as AO ? Why or why not?
+2.5 Angle
+An angle is formed by two rays having a common starting point. Here is an angle formed by rays BD and BE where B is the common starting point (Fig. 2.8).
+The point B is called the vertex of the angle, and the rays BD and BE are called the arms of the angle. How can we name this angle? We can simply use the vertex and say that it is the Angle B.
+To be clearer, we use a point on each of the arms together with the vertex to name the angle. In this case, we name the angle as Angle DBE or Angle EBD. The word angle can be replaced by the symbol ‘∠’, i.e.,
+∠DBE or ∠EBD. Note that in specifying the angle, the vertex is always written as the middle letter.
+To indicate an angle, we use a small curve at the vertex (refer to Fig. 2.9).
+Vidya has just opened her book. Let us observe her opening the cover of the book in different scenarios.
+Case 1 Case 2 Case 3 Case 4 Case 5 Case 6
+Fig. 2.7
+Fig. 2.8
+Reprint 2026-27
+Ganita Prakash | Grade 6
+Do you see angles being made in each of these cases? Can you mark their arms and vertex?
+Which angle is greater—the angle in Case 1 or the angle in Case 2?
+Just as we talk about the size of a line based on its length, we also talk about the size of an angle based on its amount of rotation.
+So, the angle in Case 2 is greater as in this case she needs to rotate the cover more. Similarly, the angle in Case 3 is even larger than that of Case 2, because there is even more rotation, and Cases 4, 5, and 6 are successively larger angles with more and more rotation.
+The size of an angle is the amount of rotation or turn that is needed about the vertex to move the first ray to the second ray.
+Fig. 2.9
+Final position of ray
+Amount of turn is the size of the angle
+Vertex Initial position of ray
+Let’s look at some other examples where angles arise in real life by rotation or turn:
+• In a compass or divider, we turn the arms to form an angle. The vertex is the point where the two arms are joined. Identify the arms and vertex of the angle.
+• A pair of scissors has two blades. When we open them (or ‘turn them’) to cut something, the blades form an angle. Identify the arms and the vertex of the angle.
+Reprint 2026-27
+Lines and Angles
+• Look at the pictures of spectacles, wallet and other common objects. Identify the angles in them by marking out their arms and vertices.
+Do you see how these angles are formed by turning one arm with respect to the other?
+Teacher needs to organise various activities with the students to recognise the size of an angle as a measure of rotation.
+Teacher’s Note
+Figure it Out
+1. Can you find the angles in the given pictures? Draw the rays forming any one of the angles and name the vertex of the angle.
+Reprint 2026-27
+Ganita Prakash | Grade 6
+2. Draw and label an angle with arms ST and SR.
+3. Explain why ∠APB cannot be labelled as ∠P.
+4. Name the angles marked in the given figure.
+5. Mark any three points on your paper that are not on one line. Label them A, B, C. Draw all possible lines going through pairs of these points. How many lines do you get? Name them. How many angles can you name using A, B, C? Write them down, and mark each of them with a curve as in Fig. 2.9.
+Reprint 2026-27
+Lines and Angles
+6. Now mark any four points on your paper so that no three of them are on one line. Label them A, B, C, D. Draw all possible lines going through pairs of these points. How many lines do you get? Name them. How many angles can you name using A, B, C, D? Write them all down, and mark each of them with a curve as in Fig. 2.9.
+2.6 Comparing Angles
+Look at these animals opening their mouths. Do you see any angles here? If yes, mark the arms and vertex of each one. Some mouths are open wider than others; the more the turning of the jaws, the larger the angle! Can you arrange the angles in this picture from smallest to largest?
+Is it always easy to compare two angles?
+Here are some angles. Label each of the angles. How will you compare them?
+Draw a few more angles; label them and compare.
+Reprint 2026-27
+Ganita Prakash | Grade 6
+Comparing angles by superimposition
+Any two angles can be compared by placing them one over the other, i.e., by superimposition. While superimposing, the vertices of the angles must overlap.
+After superimposition, it becomes clear which angle is smaller and which is larger.
+The picture shows the two angles superimposed. It is now clear that ∠PQR is larger than ∠ABC.
+Equal angles. Now consider ∠AOB and ∠XOY in the figure. Which is greater?
+The corners of both of these angles match and the arms overlap with each other, i.e., OA ↔ OX and OB ↔ OY. So, the angles are equal in size.
+The reason these angles are considered to be equal in size is because when we visualise each of these angles as being formed out of rotation, we can see that there is an equal amount of rotation needed to move OB to OA and OY to OX .
+From the point of view of superimposition, when two angles are superimposed, and the common vertex and the two rays of both angles lie on top of each other, then the sizes of the angles are equal.
+Reprint 2026-27
+Lines and Angles
+Where else do we use superimposition to compare?
+Figure it Out
+1. Fold a rectangular sheet of paper, then draw a line along the fold created. Name and compare the angles formed between the fold and the sides of the paper. Make different angles by folding a rectangular sheet of paper and compare the angles. Which is the largest and smallest angle you made?
+2. In each case, determine which angle is greater and why.
+a. ∠AOB or ∠XOY b. ∠AOB or ∠XOB c. ∠XOB or ∠XOC
+Discuss with your friends on how you decided which one is greater.
+3. Which angle is greater: ∠XOY or ∠AOB? Give reasons.
+Comparing angles without superimposition
+Two cranes are arguing about who can open their mouth wider, i.e., who is making a bigger angle.
+Let us first draw their angles. How do we know which one is bigger? As seen
+Fig. 2.10
+Reprint 2026-27
+Ganita Prakash | Grade 6 before, one could trace these angles, superimpose them and then check. But can we do it without superimposition?
+Suppose we have a transparent circle which can be moved and placed on figures. Can we use this for comparison?
+Let us place the circular paper on the angle made by the first crane. The circle is placed in such a way that its centre is on the vertex of the angle. Let us mark the points A and B on the edge circle at the points where the arms of the angle pass through the circle.
+Can we use this to find out if this angle is greater than, or equal to or smaller than the angle made by the second crane?
+Let us place it on the angle made by the second crane so that the vertex coincides with the centre of the circle and one of the arms passes through OA.
+Can you now tell which angle is bigger?
+Reprint 2026-27
+Lines and Angles
+Which crane was making the bigger angle?
+If you can make a circular piece of transparent paper, try this method to compare the angles in Fig. 2.10 with each other.
+Teacher’s Note
+A teacher needs to check the understanding of the students around the notion of an angle. Sometimes students might think that increasing the length of the arms of the angle increases the angle.
+For this, various situations should be posed to the students to check their understanding on the same.
+2.7 Making Rotating Arms
+Let us make ‘rotating arms’ using two paper straws and a paper clip by following these steps:
+1. Take two paper straws and a paper clip.
+2. Insert the straws into the arms of the paper
+3. Your rotating arm is ready!
+Make several ‘rotating arms’ with different angles between the arms. Arrange the angles you have made from smallest to largest by comparing and using superimposition.
+Passing through a slit: C

@@ -1,0 +1,274 @@
+Number Play
+Will this work with bigger numbers?
+You can see that this is true for any place value:
+1 = 0 + 1
+10 = 9 + 1
+100 = 99 + 1
+1000 = 999 + 1
+10000 = 9999 + 1, and so on. Each digit thus denotes the remainder when the corresponding place value is divided by 9.
+For example, to find the remainder of 7309 when divided by 9, we can just add all the digits — 7 + 3 + 0 + 9 — to get 19. This can be seen as follows:
+7 × 1000 + 3 × 100 + 0 × 10 + 9 × 1
+= 7 × (999 + 1) + 3 × (99 + 1) + 0 × (9 + 1) + 9 × (0+1)
+= (7 × 999 + 3 × 99 + 0 × 9 + 9 × 0) + (7 × 1 + 3 × 1 + 0 × 1 + 9 × 1)
+= (7 × 999 + 3 × 99 + 0 × 9 + 9 × 0) + (7 + 3 + 0 + 9).
+This means that the number 7309 is 19 more than some multiple of 9.
+The digits 1 and 9 can further be added to get 1 + 9 = 10. Now, we can say that 7309 is 10 more than a multiple of 9. And repeating this step for the number 10, we get the remainder to be 1 + 0 = 1, meaning 7309 is 1 more than a multiple of 9. Therefore, 7309 ÷ 9 gives a remainder of 1.
+A number is divisible by 9 if and only if the sum of its digits is divisible by 9. Also, we can add the digits of a number repeatedly till a single digit is obtained. This single digit is the remainder when the number is divided by 9.
+Look at each of the following statements. Which are correct and why?
+(i) If a number is divisible by 9, then the sum of its digits is divisible by 9.
+7 × 1000 3 × 100 9 × 1
+7 × 999 3 × 99 9 3 7
+This is a multiple of 9
+So, we need to just consider this part (i.e., 7 + 3 + 9 = 19)
+This is a multiple of 9 So, we need to just consider this part
+Reprint 2026-27
+Ganita Prakash | Grade 8 (ii) If the sum of the digits of a number is divisible by 9, then the number is divisible by 9.
+(iii) If a number is not divisible by 9, then the sum of its digits is not divisible by 9.
+(iv) If the sum of the digits of a number is not divisible by 9, then the number is not divisible by 9.
+Figure it Out
+1. Find, without dividing, whether the following numbers are divisible (i) 123 (ii) 405 (iii) 8888 (iv) 93547 (v) 358095
+2. Find the smallest multiple of 9 with no odd digits.
+3. Find the multiple of 9 that is closest to the number 6000.
+4. How many multiples of 9 are there between the numbers 4300 and
+A Shortcut for Divisibility by 3
+We know that all the multiples of 9 are also multiples of 3. That is, if a number is divisible by 9, it will also be divisible by 3. However, there are other multiples of 3 that are not multiples of 9 for example — 15, 33,
+The shortcut to find the divisibility by 3 is similar to the method for 9.
+A number is divisible by 3 if the sum of its digits is divisible by 3. Explore the remainders when powers of 10 are divided by 3. Explain why this method works.
+A Shortcut for Divisibility by 11
+Interestingly, the shortcut for 11 is also based on checking the remainders with place value. Let us see how.
+Learning maths is not just about knowing some shortcuts and following procedures but about understanding ‘why’ something
+Reprint 2026-27
+Number Play
+Units place
+11 × 0 = 0
+1 = 11 × 0 + 1
+1 is one more than a multiple
+Tens place
+11 × 1 = 11
+10 = 11×1 – 1
+10 is one less than a multiple of 11. 11
+Hundreds place (100)
+11 × 9 = 99
+100 = 11×9 + 1
+100 is one more than a multiple
+Thousands
+11 × 91 = 1001
+1000 = 11×91
+1000 is one less than a multiple
+This alternating pattern of one more than 11 and one less than 11 continues for higher place values.
+Since 400 contains 4 hundreds, 400 is 4 more than a multiple of
+11 (396 + 4). Since 60 contains 6 tens, 60 is 6 less than a multiple of
+11 (66 – 6). Since 2 contains 2 units, 2 is 2 more than a multiple of 11, i.e., 2 = (0 + 2).
+Using these observations, can you tell whether the number 462 is divisible by 11?
+What could be a general method or shortcut to check divisibility by
+Reprint 2026-27
+Ganita Prakash | Grade 8
+We saw that the place values alternate as 1 more and 1 less than a multiple of 11. Using this observation,
+Steps Purpose Example for the Number 320185
+1. Add the digits of place values which are 1 more (than a multiple of 11), i.e., place values corresponding to 1, 100,
+10000, and so on.
+how much in excess we are with respect to a multiple of 11 for these place values. 11
+2 × 10,000
+1 × 100 5 × 1
+Total excess, 2 + 1 + 5 = 8.
+2. Add the digits of place values which are 1 less (than a multiple of
+11), i.e., place values corresponding to 10,
+1000, 100000, and so on.
+To know how short we are with respect to a multiple of 11 for these place
+3 × 10,000 0 × 100 8 × 10
+Total short, 3 + 0 + 8 = 11.
+3. Compute the difference between these two sums, i.e., (number in excess) – (number
+To know the remainder obtained when divided
+8 – 11 = – 3.
+(3 short of a multiple of 11)
+The difference between these two sums 8 – 11 = – 3, indicating that the number 3,28,105 is 3 short of or 8 more than a multiple of 11.
+If this difference is 11 or a multiple of 11, what does that say about the remainder obtained when the number is divisible by 11?
+Using this shortcut, find out whether the following numbers are divisible by 11. Further, find the remainder if the number is not divisible by 11.
+(i) 158 (ii) 841 (iii) 481 (iv) 5529 (v) 90904 (vi) 857076
+Reprint 2026-27
+Number Play
+Look at the following procedure —
+Is this method similar to or different from the method we saw just
+Fill in the following table. Find a quick way to do this?
+Divisible by
+2 3 4 5 6 8 9 10 11
+128 Yes No No No No Yes No No No
+More on Divisibility Shortcuts
+Divisibility Shortcuts for Other Numbers
+How can we find out if a number is divisible by 6?
+Will checking its divisibility by its factors 2 and 3 work? Use the shortcuts for 2 and 3 on these numbers and divide each number by 6 to verify —
+38, 225, 186, 64.
+Steps to follow Example for the number 328105
+1. Place alternating ‘+’ and
+‘–’ signs before every digit starting from the unit’s digit.
+–3 + 2 – 8 + 1 – 0 + 5
+2. Evaluate the expression. –3 + 2 – 8 + 1 – 0 + 5 = – 3
+3. The result denotes the remainder obtained when the number is divided by 11.
+328105 is 3 less than or 8 more than a multiple of 11
+Reprint 2026-27
+Ganita Prakash | Grade 8
+How about checking divisibility by 24? Will checking the divisibility by its factors, 4 and 6, work? Why or why not?
+Determining divisibility by 24 by checking divisibility by 4 and by 6 does not work. For example, the number 12 is divisible by both 4 and 6, but not by 24.
+To check for the divisibility by 24, we can instead check for the divisibility by 3 and divisibility by 8.
+Explain using prime factorisation why checking divisibility by 3 and
+8 works for checking divisibility by 24, but checking divisibility by 4 and
+6 is not sufficient for checking divisibility by 24.
+There are such shortcuts to check divisibility by every number until
+100, and for some numbers beyond 100. You may try to understand how these work after learning certain concepts in higher grades.
+Digital Roots
+Take a number. Add its digits repeatedly till you get a single-digit number. This single-digit number is called the digital root of the number.
+For example, the digital root of the number 489710 will be
+2 (4 + 8 + 9 + 7 + 1 + 0 = 29, 2 + 9 = 11, 1 + 1 = 2).
+What property do you think this digital root will have? Recall that we did this while finding the divisibility shortcut for 9.
+Between the numbers 600 and 700, which numbers have the digital root: (i) 5, (ii) 7, (iii) 3?
+Write the digital roots of any 12 consecutive numbers. What do you observe?
+We saw that the digital root of multiples of 9 is always 9.
+Now, find the digital roots of some consecutive multiples of (i) 3, (ii) 4, and (iii) 6.
+What are the digital roots of numbers that are 1 more than a multiple of
+6? What do you notice?
+Try to explain the patterns noticed.
+I’m made of digits, each tiniest and odd,
+No shared ground with root #1 — how odd!
+My digits count, their sum, my root —
+All point to one bold number’s pursuit —
+The largest odd single-digit I proudly claim.
+What’s my number? What’s my name?
+Reprint 2026-27
+Number Play
+Aryabhata II’s (c. 950 CE) work Mahāsiddhānta, mentions the method of computing the digital root of a number by repeatedly adding the digits till a single-digit number is obtained. This method is known to have been used to perform checks on calculations of arithmetic operations.
+Figure it Out
+1. The digital root of an 8-digit number is 5. What will be the digital root of 10 more than that number?
+2. Write any number. Generate a sequence of numbers by repeatedly adding 11. What would be the digital roots of this sequence of numbers? Share your observations.
+3. What will be the digital root of the number 9a + 36b + 13?
+4. Make conjectures by examining if there are any patterns or relations between (i) the parity of a number and its digital root.
+(ii) the digital root of a number and the remainder obtained when the number is divided by 3 or 9.
+5.3 Digits in Disguise
+Last year, we saw cryptarithms — puzzles where each letter stands for a digit, each digit is represented by at most one letter, and the first digit of a number is never 0.
+Solve the cryptarithms given below.
+Let us now try solving some cryptarithms involving multiplication.
+(v) PQ × 8 = RS.
+Guna says, “Oh, this means a 2-digit number multiplied by 8 should give another 2-digit number.
+I know that 10 × 8 = 80. But the units digits of 10 and
+80 are the same, which we don’t want. For the same reason PQ cannot be 11 as P and Q correspond to different digits. 12 × 8 = 96 fits all the conditions”. Can
+PQ be 13? Think.
+It is not possible because 13 × 8 = 104. For all 2-digit numbers greater than 12, the product with 8 is a 3-digit number.
+Reprint 2026-27
+Ganita Prakash | Grade 8 (vi) Try this now: GH × H = 9K.
+This means a 2-digit number multiplied by a 1-digit number gives another 2-digit number in the 90s. Observe the letters corresponding to the units digits in this cryptarithm. Pick the solution to this question from the options given below:
+11 × 9 = 99, 12 × 8 = 96, 46 × 2 = 92, 24 × 4 = 96, 47 × 2 = 94, 31 × 3 = 93,
+16 × 6 = 96.
+(vii) Here is one more: BYE × 6 = RAY.
+Anshu says, “Since the product is a 3-digit number, B can’t be 2 or more. If B = 2, i.e., 2 hundreds, the product will be more than 1200. So, B = 1.”
+What can you say about ‘Y’? What digits are possible/not possible?
+“Y cannot be 7 or more because, if Y = 7, then 170 × 6 = 1020; but we want a 3-digit product. Also, Y will be even”, Anshu explains.
+We can solve cryptarithms using patterns, properties, and reasoning related to numbers and operations.
+Solve the following:
+(i) UT × 3 = PUT (ii) AB × 5 = BC (iii) L2N × 2 = 2NP (iv) XY × 4 = ZX (v) PP × QQ = PRP (vi) JK × 6 = KKK
+Figure it Out
+1. If 31z5 is a multiple of 9, where z is a digit, what is the value of z?
+Explain why there are two answers to this problem.
+2. “I take a number that leaves a remainder of 8 when divided by 12. I take another number which is 4 short of a multiple of 12. Their sum will always be a multiple of 8”, claims Snehal. Examine his claim and justify your conclusion.
+3. When is the sum of two multiples of 3, a multiple of 6 and when is it not? Explain the different possible cases, and generalise the pattern.
+4. Sreelatha says, “I have a number that is divisible by 9. If I reverse its digits, it will still be divisible by 9”.
+(i) Examine if her conjecture is true for any multiple of 9.
+(ii) Are any other digit shuffles possible such that the number formed is still a multiple of 9?
+5. If 48a23b is a multiple of 18, list all possible pairs of values for a
+Reprint 2026-27
+Number Play
+6. If 3p7q8 is divisible by 44, list all possible pairs of values for p
+7. Find three consecutive numbers such that the first number is a multiple of 2, the second number is a multiple of 3, and the third number is a multiple of 4.
+Are there more such numbers? How often do they occur?
+8. Write five multiples of 36 between 45,000 and 47,000.
+Share your approach with the class.
+9. The middle number in the sequence of 5 consecutive even numbers is 5p. Express the other four numbers in sequence in terms of p.
+10. Write a 6-digit number that it is divisible by 15, such that when the digits are reversed, it is divisible by 6.
+11. Deepak claims, “There are some multiples of 11 which, when doubled, are still multiples of 11. But other multiples of 11 don’t remain multiples of 11 when doubled”. Examine if his conjecture is true; explain your conclusion.
+12. Determine whether the statements below are ‘Always True’,
+‘Sometimes True’, or ‘Never True’. Explain your reasoning.
+(i) The product of a multiple of 6 and a multiple of 3 is a multiple (ii) The sum of three consecutive even numbers will be divisible (iii) If abcdef is a multiple of 6, then badcef will be a multiple of 6.
+(iv) 8 (7b – 3) – 4 (11b + 1) is a multiple of 12.
+13. Choose any 3 numbers. When is their sum divisible by 3? Explore all possible cases and generalise.
+14. Is the product of two consecutive integers always multiple of 2?
+Why? What about the product of these consecutive integers? Is it always a multiple of 6? Why or why not? What can you say about the product of 4 consecutive integers? What about the product of five consecutive integers?
+15. Solve the cryptarithms — (i) EF × E = GGG (ii) WOW × 5 = MEOW
+16. Which of the following Venn diagrams captures the relationship between the multiples of 4, 8, and 32?
+Reprint 2026-27
+Ganita Prakash | Grade 8
+Multiples of 8 Multiples
+Multiples of 4 Multiples
+Multiples
+ We explored and learnt various properties of divisibility—
+• If a is divisible by b, then all multiples of a are divisible by b.
+• If a is divisible by b, then a is divisible by all the factors of b.
+• If a divides m and a divides n, then a divides m + n and m – n.
+• If a is divisible by b and is also divisible by c, then a is divisible by the LCM of b and c.
+ We learnt shortcuts to check divisibility by 3, 9 and 11, and why they
+ Through all this we were exposed to the power of mathematical thinking and reasoning, using algebra, visualisation, examples and counterexamples.
+Multiples
+Reprint 2026-27
+Navakankari
+Navakankari, also known as Sālu Mane Āṭa, Chār-Pār, or Navkakri, is a traditional Indian board game that is the same as ‛Nine Men’s Morris’ or
+‛Mills in the West’. It is a strategy game for two players where the goal is to form lines of three pawns to eliminate the opponent’s pawns or block their movement.
+Gameplay
+1. Each player starts with 9 pawns. The players take turns in placing their pawns on the marked intersections. An intersection can have at most one pawn.
+2. Once all the pawns are placed, the players take turns to move one of their pawns to adjacent empty intersections to form lines of three.
+The line can be horizontal or vertical.
+3. Once a player makes a line with their pawns they can remove any one of the opponent’s pawns as long as it is not a part of one of their
+A player wins if the opponent has less than 3 pawns or is unable to make
+Reprint 2026-27
+Page No. 122
+Figure it Out
+1. The sum of four consecutive numbers is 34. What are these numbers?
+Ans. The required consecutive numbers are 7, 8, 9 and 10.
+2. Suppose p is the greatest of five consecutive numbers. Describe the other four numbers in terms of p.
+Ans. Given p is the greatest of five consecutive number, so other four are (p − 1), (p − 2), (p − 3) and (p − 4).
+3. For each statement below, determine whether it is always true, sometimes true, or never true. Explain your answer. Mention examples and non-examples as appropriate. Justify your claim using algebra.
+(i) The sum of two even numbers is a multiple of 3.
+(ii) If a number is not divisible by 18, then it is also not divisible (iii) If two numbers are not divisible by 6, then their sum is not divisible by 6.
+(iv) The sum of a multiple of 6 and a multiple of 9 is a multiple of (v) The sum of a multiple of 6 and a multiple of 3 is a multiple of 9.
+(i) Sometimes true.
+2 + 4 = 6, 4 + 8 = 12 are multiples of 3 but 2 + 6 = 8, 6 + 8 = 14 are not multiples of 3.
+(ii) Sometimes true.
+30 is not divisible by both 18 and 9.
+27 is not divisible by 18, but divisible by 9.
+5 NUMBER PLAY (iii) Sometimes true.
+9 and 11 are not divisible by 6, 20 is also not divisible by 6.
+8 and 10 are not divisible by 6 but 18 is divisible by 6.
+(iv) Always true.
+Multiple of 6 = 6x
+Multiple of 9 = 9y
+Sum = 6x + 9y = 3(2x + 3y). Hence multiple of 3.
+(v) Sometimes true.
+Multiple of 6 is 18 and multiple of 3 is 9
+Sum is 18 + 9 = 27 is a multiple of 9.
+But multiple of 6 is 12 and multiple of 3 is 9
+Sum 12 + 9 = 21 is not multiple of 9
+Try for more such examples and non-examples in each of the above cases.
+4. Find a few numbers that leave a remainder of 2 when divided by 3 and a remainder of 2 when divided by 4. Write an algebraic expression to describe all such numbers.
+Ans. Let 3a + 2 = x and 4b + 2 = x
+So, 3a = x – 2 and 4b = x – 2 x – 2 is multiple of 3 and 4.
+Take LCM of 3 and 4, which is 12
+The, first number is x – 2 = 12 or x = 14 = 12 × 1 + 2
+Other such numbers are 12 × 2 + 2 =26, 12 × 3 + 2 = 38, … or in general 12n + 2.
+5. “I hold some pebbles, not too many,
+When I group them in 3’s, one stays with me.
+Try pairing them up — it simply won’t do,
+A stubborn odd pebble remains in my view.
+Group them by 5, yet one’s still around,
+But grouping by seven, perfection is found.
+More than one hundred would be far too bold,
+Can you tell me the number of pebbles I hold?”
+Ans. When group pebbles in 3’s, remainder = 1.
+Group them by 5, again remainder 1
+But grouping by 7, remainder '0'
+Pebbles are less than 100.
+LCM of 3, 2, 5 = 30
+Remainder is 1 so p = 30k + 1
+Possible values are 31, 61, 91
+91 is divisible by 7.
+The number of pebbles is 91.
+6. Tathagat has written several numbers that leave a remainder of 2 when divided by 6. He claims, “If you add any three such numbers, the sum will always be a multiple of 6.” Is Tathagat’s claim true?
+Ans. Let three numbers be 6a + 2, 6b + 2, 6c + 2.
+Add them and check for yourself.
+Yes Tathagat’s claim is true.
+7. When divided by 7, the number 661

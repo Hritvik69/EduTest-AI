@@ -1,0 +1,152 @@
+Computer SCienCe - ClaSS Xii 194
+Figure 10.19: A hybrid topology
+10.6 IdentIfyIng nodes In a networked communIcatIon
+Each node in a network should be uniquely identified so that a network device can identify the sender and receiver and decide a routing path to transmit data.
+Let us explore further and know how each node is distinguished in a network.
+10.6.1 MAC Address
+MAC stands for Media Access Control. The MAC address, also known as the physical or hardware address, is a unique value associated with a network adapter called a NIC. The MAC address is engraved on NIC at the time of manufacturing and thus it is a permanent address and cannot be changed under any circumstances. The machine on which the NIC is attached, can be physically identified on the network using its MAC address.
+Each MAC address is a 12-digit hexadecimal numbers (48 bits in length), of which the first six digits (24 bits)
+contain the manufacturer’s ID called Organisational
+Unique Identifier (OUI) and the later six digits (24 bits)
+represents the serial number assigned to the card by the manufacturer. A sample MAC address looks like:
+10.6.2 IP Address
+IP address, also known as Internet Protocol address, is also a unique address that can be used to uniquely identify each node in a network. The IP addresses
+Activity 10.4
+Explore how can you find the MAC address of your computer
+Reprint 2026-27
+Computer networkS 195 are assigned to each node in a network that uses the
+Internet Protocol for communication. Thus, if we know a computer’s IP address, we can communicate with that computer from anywhere in the world. However, unlike MAC address, IP address can change if a node is removed from one network and connected to another network.
+The initial IP Address called version 4 (IPV4 in short), is a 32 bit numeric address, written as four numbers separated by periods, where each number is the decimal (base-10) representation for an 8-bit binary (base-2)
+number and each can take any value from 0 - 255. A sample IPV4 address looks like:
+192.168.0.178
+With more and more devices getting connected to the Internet, it was realised that the 32-bit IP address will not be sufficient as it offers just under 4.3 billion unique addresses. Thus, a 128 bits IP address, called IP version 6 (IPV6 in short) was proposed. An IPv6 address is represented by eight groups of hexadecimal (base-16)
+numbers separated by colons. A sample IPV6 address looks like:
+2001:CDBA:0000:0000:0000:0000:3257:9652
+10.7 Internet, Web and the Internet of thIngs
+The Internet is the global network of computing devices including desktop, laptop, servers, tablets, mobile phones, other handheld devices, printers, scanners, routers, switches, gateways, etc. Moreover, smart electronic appliances like TV, AC, refrigerator, fan, light, etc. can also communicate through a network. The list of such smart devices is always increasing e.g., drones, vehicles, door lock, security camera. We have already studied IoT and WoT in class 11.
+The Internet is evolving every day and it is difficult to visualise or describe each and every aspect of the architecture of the Internet. Computers are either connected to a modem through a cable or wirelessly (Wi-
+Fi). That modem, be it wired or wireless, is connected to a local Internet Service Provider (ISP) who then connects to a national network. Many such ISPs connect together forming a regional network and regional networks connect together forming a national network, and such country-wise networks form the Internet backbone.
+Do mobile phones have a MAC address?
+Is it different from the IMEI number of mobile phones?
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 196
+The Internet today is a widespread network, and its influence is no longer limited to the technical fields of computer communications. It is being used by everyone in the society as is evident from the increasing use of online tools for education, creativity, entertainment, socialisation, and e-commerce.
+10.7.1 The World Wide Web (WWW)
+The World Wide Web (WWW) or web in short, is an ocean of information, stored in the form of trillions of interlinked web pages and web resources. The resources on the web can be shared or accessed through the Internet.
+Earlier, to access files residing in different computers, one had to login individually to each computer through the Internet. Besides, files in different computers were sometimes in different formats, and it was difficult to understand each other’s files and documents. Sir Tim Berners-Lee — a British computer scientist invented the revolutionary World
+Wide Web in 1990 by defining three fundamental technologies that lead to creation of web:
+• HTML – HyperText Markup Language. It is a language which is used to design standardised Web Pages so that the Web contents can be read and understood from any computer. Basic structure of every webpage is designed using HTML.
+• URI – Uniform Resource Identifier. It is a unique address or path for each resource located on the web. It is also known as Uniform Resource Locator (URL). Every page on the web has a unique URL.
+Examples are: https://www.mhrd.gov.in,http:// www.ncert.nic.in,http://www.airindia.in, etc. URL is sometimes also called web address. However, a URL is not only the domain name. It contains other information that completes a web address, as depicted below:
+http://www.ncert.nic.in/textbook/textbook.htm
+Domain Name
+• HTTP – The HyperText Transfer Protocol is a set of rules which is used to retrieve linked web pages across the web. The more secure and advanced version is HTTPS.
+You are encouraged to take up any area of concern where you think IoT can be immensely beneficial and discuss it with your peers. An example for the same can be preventing road accidents.
+Reprint 2026-27
+Computer networkS 197
+Many people confuse the web with the Internet.
+The Internet as we know is the huge global network of interconnected computers, which may or may not have any file or webpage to share with the world. The web on the other hand is the interlinking of collection of Webpages on these computers which are accessible over the Internet. WWW today gives users access to a vast collection of information created and shared by people across the world. It is today the most popular information retrieval system
+10.8 domaIn name system
+The Internet is a vast ocean where information is available in the form of millions of websites. Each website is stored on a server which is connected to the Internet, which means each server has an IP address. Every device connected to the Internet has an IP address. To access a website, we need to enter its IP address on our web browser. But it is very difficult to remember the IP addresses of different websites as they are in terms of numbers or strings.
+However, it is easier to remember names, and therefore, each computer server hosting a website or web resource is given a name against its IP address.
+These names are called the Domain names or hostnames corresponding to unique IP addresses assigned to each server. For easy understanding, it can be considered as the phonebook where instead of remembering each person’s phone number, we assign names to their numbers. For example, IP addresses and domain names of some websites are as follows:
+Table 10.1 Examples of domain names and their mapped IP addresses
+Domain Name IP Address ncert.nic.in 164.100.60.233 cbse.nic.in 164.100.107.32 mhrd.gov.in 164.100.163.45 wikipedia.org 198.35.26.96
+10.8.1 DNS Server
+Instead of remembering IP addresses, we assign a domain name to each IP. But, to access a web resource, a browser needs to find out the IP address corresponding to the domain name entered. Conversion of the domain
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 198 name of each web server to its corresponding IP address is called domain name resolution. It is done through a server called DNS server. Thus, when we enter a
+URL on a web browser, the HTTP protocol approaches a computer server called DNS server to obtain the IP address corresponding to that domain name. After getting the IP address, the HTTP protocol retrieves the information and loads it in our browser.
+In Figure 10.20, an example is shown in which the
+HTTP requests a DNS server for corresponding IP addss, and the server sends back an IP address.
+www.ncert.nic.in DNS
+164.100.60.233
+Figure 10.20: Request of IP address corresponding to domain name
+A DNS server maintains a database of domain names and their corresponding IP addresses. To understand how the domain name resolution works, we have to understand how and where the DNS servers are kept.
+The DNS servers are placed in hierarchical order. At the top level, there are 13 servers called root servers.
+Then below the root servers there are other DNS servers at different levels. A DNS server may contain the IP address corresponding to a domain or it will contain the IP address of other DNS servers, where this domain entry can be searched.
+DNS root servers are named using alphabets A through
+M for the first
+13 letters of the alphabet. Ten of these servers are in the US, one in
+London, one in
+Stockholm, and one in Japan.
+The organisation
+Internet Assigned
+Numbers Authority (IANA) keeps this list of DNS root servers.
+• A computer network is an interconnection among two or more computers or computing devices.
+• A computer network allows computers to share data and resources among each other.
+• Networking devices are used to connect multiple computers in different settings.
+Reprint 2026-27
+Computer networkS 199
+• In a communication network, each device that is a part of a network and that can receive, create, store or send data to different network routes is called a node.
+• Based on the geographical area covered and data transfer rate, computer networks are broadly categorised into LAN (Local Area Network), MAN (Metropolitan Area Network) and WAN (Wide Area
+Network).
+• LAN is a network that connects a variety of nodes placed at a limited distance ranging from a single room, a floor, an office or a campus having one or more buildings in the same premises.
+• Ethernet is a set of rules that decides how computers and other devices connect with each other through cables in a LAN.
+• Metropolitan Area Network (MAN) is an extended form of LAN which covers a larger geographical area like a city or a town.
+• Cable TV network or cable based broadband internet services are examples of MAN.
+• Wide Area Network (WAN) connects computers and other LANs and MANs, which are spread across different geographical locations of a country or in different countries or continents.
+• The Internet is the largest WAN that connects billions of computers, smartphones and millions of LANs from different continents.
+• Modem stands for ‘MOdulator DEModulator’, is a device used for conversion between electric signals and digital bits.
+• Ethernet card, also known as Network Interface
+Card (NIC card in short) is a network adaptor used to set up a wired network.
+• Each NIC has a MAC address, which helps in uniquely identifying the computer on the network.
+• A repeater is an analog device that regenerate the signals on the cables to which it is connected.
+• A switch is a networking device used to connect multiple computers or communicating devices.
+• A router is a network device that can receive the data, analyse it and transmit it to other networks.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 200
+• Gateway serves as the entry and exit point of a network, as all data coming in or going out of a network must first pass through the gateway in order to use routing paths.
+• The arrangement of computers and other peripherals in a network is called its topology.
+• Common network topologies are Mesh, Ring, Bus,
+Star and Tree.
+• In mesh topology each communicating device is connected with every other device in the network.
+• In ring topology, each node is connected to two other devices, one each on either side.
+• In bus topology, a single backbone wire called bus is shared among the nodes, which makes it cheaper and easy to maintain.
+• In star topology, each communicating device is connected to a central networking device like a hub or a switch.
+• In tree or hybrid topology, there are multiple branches and each branch can have one or more basic topologies like star, ring and bus.
+• The MAC address, also known as the physical or hardware address, is a unique permanent value associated with a network adapter called a NIC.
+It is used to physically identify a machine on the network.
+• IP address, also known as Internet Protocol address, is a unique address that can be used to uniquely identify each node in a network.
+• Unlike MAC address, IP address can change if a node is removed from one network and connected to another network.
+• The Internet is the global network of computing devices.
+• The World Wide Web (WWW) or web in short, is an ocean of information, stored in the form of trillions of interlinked web pages and web resources.
+• Sir Tim Berners-Lee — a British computer scientist invented the revolutionary World Wide
+Web in 1990.
+• HTML (HyperText Markup Language) is a language which is used to design standardised
+Web Pages so that the Web contents can be read
+Reprint 2026-27
+Computer networkS 201 and understood from any computer.
+• URI (Uniform Resource Identifier) or URL (Uniform
+Resource Locator) is a unique address or path for each resource located on the web.
+• HTTP – The HyperText Transfer Protocol is a set of rules which is used to retrieve linked web pages across the web. The more secure and advanced version is HTTPS.
+• Each computer server hosting a website or web resource is given a name against its IP address.
+These names are called the Domain names or hostnames.
+• Conversion of the domain name of each web server to its corresponding IP address is called domain name resolution. It is done through a server called
+DNS server.
+1. Expand the following:
+a) ARPANET
+2. What do you understand by the term network?
+3. Mention any two main advantages of using a network of computing devices.
+4. Differentiate between LAN and WAN.
+5. Write down the names of few commonly used networking devices.
+6. Two universities in different States want to transfer information. Which type of network they need to use for
+7. Define the term topology. What are the popular network topologies?
+8. How is tree topology different from bus topology?
+9. Identify the type of topology from the following:
+a) Each node is connected with the help of a single cable.
+b) Each node is connected with central switching through independent cables.
+exercIse
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 202
+10. What do you mean by a modem? Why is it used?
+11. Explain the following devices:
+a) Switch b) Repeater c) Router d) Gateway
+12. Draw a network layout of star topology and bus topology connecting five computers.
+13. What is the significance of MAC address?
+14. How is IP address different from MAC address?
+Discuss briefly.
+15. What is DNS? What is a DNS server?
+16. Sahil, a class X student, has just started understanding the basics of Internet and web technologies. He is a bit confused in between the terms “World Wide Web” and
+“Internet”. Help him in understanding both the terms with the help of suitable examples of each.
+Reprint 2026-27

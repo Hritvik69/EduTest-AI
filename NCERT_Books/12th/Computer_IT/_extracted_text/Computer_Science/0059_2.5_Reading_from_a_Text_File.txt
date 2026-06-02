@@ -1,0 +1,56 @@
+S taCk 47 notation or postfix notation. To summarise, any arithmetic expression can be represented in any of the three notations viz. Infix, Prefix and Postfix and are listed in Table 3.1 with examples.
+Table 3.1 Infix, Prefix and Postfix Notations
+Expression Description Example
+Infix Operators are placed in between the operands x * y + z
+3 *(4 + 5)
+(x + y)/(z * 5)
+(Polish)
+Operators are placed before the corresponding operands (Reverse Polish)
+Operators are placed after the corresponding operands
+3.6 converSIon from InfIx to poStfIx notatIon
+It is easy for humans to evaluate an infix expression.
+Consider an infix expression x + y / z. While going from left to right we first encounter + operator, but we do not add x + y and rather evaluate y/z, followed by addition operation. This is because we know the order of precedence of operators that follows BODMAS rule.
+But, how do we pass this precedence knowledge to the computer through an expression?
+In contrast, prefix/postfix expressions do not have to deal with such precedence because the operators are already positioned according to their order of evaluation.
+Hence a single traversal from left to right is sufficient to evaluate the expression. In this section, we will learn about the conversion of an arithmetic expression written in infix notation to its equivalent expression in postfix notation using a stack.
+During such conversion, a stack is used to keep track of the operators encountered in the infix expression. A variable of string type is used to store the equivalent postfix expression. Algorithm 3.1 converts an expression in infix notation to postfix notation:
+Algorithm 3.1: Conversion of expression from infix to postfix notation
+Step 1: Create an empty string named postExp to store the converted postfix expression.
+Step 2: INPUT infix expression in a variable, say inExp
+Step 3: For each character in inExp, REPEAT Step 4
+Write an algorithm to convert an infix expression into equivalent prefix expression using
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 48
+Example 3.1
+Let us now use this algorithm to convert a given infix expression (x + y)/(z*8) into equivalent postfix expression using a stack. Figure 3.3 shows the steps to be followed on encountering an operator or an operand in the given infix expression. Note here that stack is used to track the operators and parentheses, and a string variable contains the equivalent postfix expression.
+Initially both are empty. Each character in the given infix expression is processed from left to right and the appropriate action is taken as detailed in the algorithm.
+When each character in the given infix expression has been processed, the string will contain the equivalent postfix expression.
+Step 4: IF character is a left parenthesis THEN PUSH on the Stack
+ELSE IF character is a right parenthesis
+THEN POP the elements from the Stack and append to string postExp until the corresponding left parenthesis is popped while discarding both left and right parentheses
+ELSE IF character is an operator
+THEN IF its precedence is lower than that of operator at the top of Stack
+THEN POP elements from the Stack till an operator with precedence less than the current operator is encountered and append to string postExp before pushing this operator on the postStack
+ELSE PUSH operator on the Stack
+ELSE Append the character to postExp
+Step 5: Pop elements from the Stack and append to postExp until Stack is empty
+Step 6: OUTPUT postExp
+SYMBOL :
+ACTION :
+PUSH PUSH
+STRING (postExp)
+empty x x x y to string to string
+Reprint 2026-27
+S taCk 49
+Figure 3.3: Conversion of infix expression (x + y)/(z*8) to postfix notation
+3.7 evaluatIon of poStfIx expreSSIon
+Stacks can be used to evaluate an expression in postfix notation. For simplification, we are assuming that operators used in expressions are binary operators.
+The detailed step by step procedure is given in
+Algorithm 3.2.
+Algorithm 3.2: Evaluation of postfix expression
+Step 1: INPUT postfix expression in a variable, say postExp
+Step 2: For each character in postExp, REPEAT Step 3
+Step 3: IF character is an operand
+THEN PUSH character on the Stack
+ELSE POP two elements from the Stack, apply the operator on
+Reprint 2026-27

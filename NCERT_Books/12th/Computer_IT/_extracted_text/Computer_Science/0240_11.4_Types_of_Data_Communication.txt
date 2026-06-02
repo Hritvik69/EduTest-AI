@@ -1,0 +1,35 @@
+Computer SCienCe - ClaSS Xii 228
+Figure 12.4: Online virtual keyboard
+12.2.8 Modes of Malware distribution
+A malware once designed, can take many routes to reach your computer. Some of the common distribution channels for malware are:
+• Downloaded from the Internet: Most of the time, malware is unintentionally downloaded into the hard drive of a computer by the user. Of course, the malware designers are smart enough to disguise their malware, but we should be very careful while downloading files from the Internet (especially those highlighted as free stuff).
+• Spam Email: We often receive an unsolicited email with embedded hyperlinks or attachment files. These links or attached files can be malware.
+• Removable Storage Devices: Often, the replicating malware targets the removable storage media like pen drives, SSD cards, music players, mobile phones, etc. and infect them with malware that gets transferred to other systems that they are plugged into.
+• Network Propagation: Some malware like Worms have the ability to propagate from one computer to another through a network connection.
+12.2.9 Combating Malware
+Common signs of some malware infection include the following:
+Reprint 2026-27
+S eCurity aSpeCtS 229
+• frequent pop-up windows prompting you to visit some website and/or download some software;
+• changes to the default homepage of your web browser;
+• mass emails being sent from your email account;
+• unusually slow computer with frequent crashes;
+• unknown programs startup as you turn on your computer;
+• programs opening and closing automatically;
+• sudden lack of storage space, random messages, sounds, or music start to appear;
+• programs or files appear or disappear without your knowledge.
+Malware exists and continues to evolve, and so is the mechanism to combat them. As the saying goes that prevention is better than cure, we list some preventive measures against the malware discussed earlier.
+9 Using antivirus, anti-malware, and other related software and updating them on a regular basis.
+9 Configure your browser security settings
+9 Always check for a lock button in the address bar while making payments.
+9 Never use pirated on unlicensed software. Instead go for Free and Open Source Software (FOSS).
+9 Applying software updates and patches released by its manufacturers.
+9 Taking a regular backup of important data.
+9 Enforcing firewall protection in the network.
+9 Avoid entering sensitive (passwords, pins) or personal information on unknown or public computers.
+9 Avoid entering sensitive data on an unknown network (like Wi-Fi in a public place) using your own computer also.
+9 Avoid clicking on links or downloading attachments from unsolicited emails.
+9 Scan any removable storage device with an antivirus software before transferring data to and from it.
+9 Never share your online account or banking password/pins with anyone.
+9 Remove all the programs that you don’t recognise from your system.
+Reprint 2026-27

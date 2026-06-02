@@ -1,0 +1,83 @@
+solenoid is made longer it appears like a long cylindrical metal sheet.
+Figure 4.16 represents this idealised picture. The field outside the solenoid approaches zero. We shall assume that the field outside is zero. The field inside becomes everywhere parallel to the axis.
+Consider a rectangular Amperian loop abcd. Along cd the field is zero as argued above. Along transverse sections bc and ad, the field component is zero. Thus, these two sections make no contribution. Let the field along ab be B. Thus, the relevant length of the Amperian loop is, L = h.
+Let n be the number of turns per unit length, then the total number of turns is nh. The enclosed current is,
+), where I is the current in the solenoid. From Ampere’s circuital law [Eq. 4.13 (b)]
+μ0 n I (4.16)
+The direction of the field is given by the right-hand rule. The solenoid is commonly used to obtain a uniform magnetic field. We shall see in the next chapter that a large field is possible by inserting a soft iron core inside the solenoid.
+Example 4.8 A solenoid of length 0.5 m has a radius of 1 cm and is made up of 500 turns. It carries a current of 5 A. What is the magnitude of the magnetic field inside the solenoid?
+Solution The number of turns per unit length is,
+500 1000 n = = turns/m
+The length l = 0.5 m and radius r = 0.01 m. Thus, l/ a = 50 i.e., l >>
+Hence, we can use the long solenoid formula, namely, Eq. (4.20)
+= 4π × 10–7 × 103 × 5
+= 6.28 × 10–3 T
+FIGURE 4.17 Two long straight parallel conductors carrying steady currents
+Ib and separated by a distance d. Ba is the magnetic field set up by conductor ‘a’ at conductor ‘b’.
+4.8 FORCE BETWEEN TWO PARALLEL
+CURRENTS, THE AMPERE
+We have learnt that there exists a magnetic field due to a conductor carrying a current which obeys the Biot-Savart law. Further, we have learnt that an external magnetic field will exert a force on a current-carrying conductor. This follows from the Lorentz force formula. Thus, it is logical to expect that two current-carrying conductors placed near each other will exert (magnetic) forces on each other. In the period 1820-25, Ampere studied the nature of this magnetic force and its dependence on the magnitude of the current, on the shape and size of the conductors, as well as, the distances between the conductors. In this section, we shall take the simple example of two parallel current- carrying conductors, which will perhaps help us to appreciate Ampere’s painstaking work.
+Reprint 2026-27
+Moving Charges and
+Magnetism
+Figure 4.17 shows two long parallel conductors a and b separated by a distance d and carrying (parallel) currents Ia and Ib, respectively.
+The conductor ‘a’ produces, the same magnetic field Ba at all points along the conductor ‘b’. The right-hand rule tells us that the direction of this field is downwards (when the conductors are placed horizontally).
+Its magnitude is given by Eq. [4.15(a)] or from Ampere’s circuital law,
+The conductor ‘b’ carrying a current Ib will experience a sideways force due to the field Ba. The direction of this force is towards the conductor ‘a’ (Verify this). We label this force as Fba, the force on a segment L of ‘b’ due to ‘a’. The magnitude of this force is given by
+Eq. (4.4),
+= ba b a F I LB a b I I L d (4.17)
+It is of course possible to compute the force on ‘a’ due to ‘b’. From considerations similar to above we can find the force Fab, on a segment of length L of ‘a’ due to the current in ‘b’. It is equal in magnitude to Fba, and directed towards ‘b’. Thus,
+Fba = –Fab (4.18)
+Note that this is consistent with Newton’s third Law. Thus, at least for parallel conductors and steady currents, we have shown that the
+Biot-Savart law and the Lorentz force yield results in accordance with
+Newton’s third Law*.
+We have seen from above that currents flowing in the same direction attract each other. One can show that oppositely directed currents repel each other. Thus,
+Parallel currents attract, and antiparallel currents repel.
+This rule is the opposite of what we find in electrostatics. Like (same sign) charges repel each other, but like (parallel) currents attract each other.
+Let fba represent the magnitude of the force Fba per unit length. Then, from Eq. (4.17),
+= (4.19)
+The above expression is used to define the ampere (A), which is one of the seven SI base units.
+* It turns out that when we have time-dependent currents and/or charges in motion, Newton’s third law may not hold for forces between charges and/or conductors. An essential consequence of the Newton’s third law in mechanics is conservation of momentum of an isolated system. This, however, holds even for the case of time-dependent situations with electromagnetic fields, provided the momentum carried by fields is also taken into account.
+Reprint 2026-27
+The ampere is the value of that steady current which, when maintained in each of the two very long, straight, parallel conductors of negligible cross-section, and placed one metre apart in vacuum, would produce on each of these conductors a force equal to 2 × 10–7 newtons per metre of length.
+This definition of the ampere was adopted in 1946. It is a theoretical definition. In practice, one must eliminate the effect of the earth’s magnetic field and substitute very long wires by multiturn coils of appropriate geometries. An instrument called the current balance is used to measure this mechanical force.
+The SI unit of charge, namely, the coulomb, can now be defined in terms of the ampere.
+When a steady current of 1A is set up in a conductor, the quantity of charge that flows through its cross-section in 1s is one coulomb (1C).
+Example 4.9 The horizontal component of the earth’s magnetic field at a certain place is 3.0 ×10–5 T and the direction of the field is from the geographic south to the geographic north. A very long straight conductor is carrying a steady current of 1A. What is the force per unit length on it when it is placed on a horizontal table and the direction of the current is (a) east to west; (b) south to north?
+Solution F = Il × B
+F = IlB sin
+The force per unit length is f = F/l = I B sin (a) When the current is flowing from east to west,
+= 1 × 3 × 10–5 = 3 × 10–5 N m–1
+This is larger than the value 2×10–7 Nm–1 quoted in the definition of the ampere. Hence it is important to eliminate the effect of the earth’s magnetic field and other stray fields while standardising the ampere.
+The direction of the force is downwards. This direction may be obtained by the directional property of cross product of vectors.
+(b) When the current is flowing from south to north,
+Hence there is no force on the conductor.
+4.9 TORQUE ON CURRENT LOOP, MAGNETIC DIPOLE
+4.9.1 Torque on a rectangular current loop in a uniform magnetic field
+We now show that a rectangular loop carrying a steady current I and placed in a uniform magnetic field experiences a torque. It does not experience a net force. This behaviour is analogous to that of electric dipole in a uniform electric field (Section 1.11).
+Reprint 2026-27
+Moving Charges and
+Magnetism
+We first consider the simple case when the rectangular loop is placed such that the uniform magnetic field B is in the plane of the loop. This is illustrated in Fig. 4.18(a).
+The field exerts no force on the two arms AD and BC of the loop. It is perpendicular to the arm AB of the loop and exerts a force F1 on it which is directed into the plane of the loop. Its magnitude is,
+F1 = I b B
+Similarly, it exerts a force F2 on the arm CD and F2 is directed out of the plane of the paper.
+F2 = I b B = F1
+Thus, the net force on the loop is zero. There is a torque on the loop due to the pair of forces F1 and F2.
+Figure 4.18(b) shows a view of the loop from the AD end. It shows that the torque on the loop tends to rotate it anticlockwise. This torque is (in magnitude),
+IbB IbB I ab B = + =
+= I A B (4.20)
+where A = ab is the area of the rectangle.
+We next consider the case when the plane of the loop, is not along the magnetic field, but makes an angle with it. We take the angle between the field and the normal to the coil to be angle
+θ (The previous case corresponds to
+θ = π/2). Figure 4.19 illustrates this general case.
+The forces on the arms BC and DA are equal, opposite, and act along the axis of the coil, which connects the centres of mass of BC and DA.
+Being collinear along the axis they cancel each other, resulting in no net force or torque. The forces on arms AB and CD are F1 and F2. They too are equal and opposite, with magnitude,
+F1 = F2 = I b B
+But they are not collinear! This results in a couple as before. The torque is, however, less than the earlier case when plane of loop was along the magnetic field. This is because the perpendicular distance between the forces of the couple has decreased. Figure 4.19(b) is a view of the arrangement from the AD end and it illustrates these two forces constituting a couple. The magnitude of the torque on the loop is,
+1 2 sin sin
+= I ab B sin
+= I A B sin
+θ (4.21)
+FIGURE 4.18 (a) A rectangular current-carrying coil in uniform magnetic field. The magnetic moment m points downwards. The torque τττττ is along the axis and tends to rotate the coil anticlockwise. (b) The couple acting on the coil.
+Reprint 2026-27

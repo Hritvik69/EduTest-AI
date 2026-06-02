@@ -1,0 +1,37 @@
+27 Theory of Consumer
+Behaviour good, there are many consumers. It is important to find out the market demand for the good. The market demand for a good at a particular price is the total demand of all consumers taken together. The market demand for a good can be derived from the individual demand curves. Suppose there are only two consumers in the market for a good. Suppose at price p′, the demand of consumer
+1 is q′1 and that of consumer 2 is q′2. Then, the market demand of the good at p′ is q′1 + q′2. Similarly, at price ˆp , if the demand of consumer 1 is 1
+ˆq and that of consumer 2 is 2
+ˆq , the market demand of the good at ˆp is 1 2
+ˆ ˆ q q + . Thus, the market demand for the good at each price can be derived by adding up the demands of the two consumers at that price. If there are more than two consumers in the market for a good, the market demand can be derived similarly.
+The market demand curve of a good can also be derived from the individual demand curves graphically by adding up the individual demand curves horizontally as shown in Figure 2.18. This method of adding two curves is called horizontal summation.
+Adding up Two Linear Demand Curves
+Consider, for example, a market where there are two consumers and the demand curves of the two consumers are given as d1(p) = 10 – p (2.14)
+and d2(p) = 15 – p (2.15)
+Furthermore, at any price greater than 10, the consumer 1 demands 0 unit of the good, and similarly, at any price greater than 15, the consumer 2 demands 0 unit of the good. The market demand can be derived by adding equations (2.14)
+and (2.15). At any price less than or equal to 10, the market demand is given by
+25 – 2p, for any price greater than 10, and less than or equal to 15, market demand is 15 – p, and at any price greater than 15, the market demand is 0.
+2.6 ELASTICITY OF DEMAND
+The demand for a good moves in the opposite direction of its price. But the impact of the price change is always not the same. Sometimes, the demand for a good changes considerably even for small price changes. On the other hand, there are some goods for which the demand is not affected much by price changes.
+Derivation of the Market Demand Curve. The market demand curve can be derived as a horizontal summation of the individual demand curves.
+Reprint 2026-27
+Introductory
+Microeconomics
+Demands for some goods are very responsive to price changes while demands for certain others are not so responsive to price changes. Price elasticity of demand is a measure of the responsiveness of the demand for a good to changes in its price. Price elasticity of demand for a good is defined as the percentage change in demand for the good divided by the percentage change in its price. Price- elasticity of demand for a good eD = percentage change in demand for the good percentage change in the price of the good (2.16a)
+∆    
+= ×     ∆    
+Where, P ∆ is the change in price of the good and Q ∆ is the change in quantity of the good.
+EXAMPLE 2.2
+Suppose an individual buy 15 bananas when its price is Rs. 5 per banana. when the price increases to Rs. 7 per banana, she reduces his demand to 12 bananas.
+In order to find her elasticity demand for bananas, we find the percentage change in quantity demanded and its price, using the information summarized in table.
+Note that the price elasticity of demand is a negative number since the demand for a good is negatively related to the price of a good. However, for simplicity, we will always refer to the absolute value of the elasticity.
+Percentage change in quantity demanded = 1
+  − ×  
+12 15 100 20
+Percentage change in Market price = 1
+  − ×  
+7 5 100 40
+Price Per banana (Rs.) : P Quantity of bananas demanded : Q
+Old Price : P1 = 5 Old quantity : Q1 = 15
+New Price : P2 = 7 New quantity: Q2 = 12
+Reprint 2026-27

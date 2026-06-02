@@ -1,0 +1,14 @@
+IntroductIon to Problem SolvIng 69
+Example 4.4: Write an algorithm to calculate area and perimeter of a rectangle, using both pseudocode and flowchart.
+Pseudocode for calculating area and perimeter of a rectangle.
+INPUT length
+INPUT breadth
+COMPUTE Area = length * breadth
+PRINT Area
+COMPUTE Perim = 2 * (length + breadth)
+PRINT Perim
+The flowchart for this algorithm is given in Figure 4.5.
+(A) Benefits of Pseudocode
+Before writing codes in a high level language, a pseudocode of a program helps in representing the basic functionality of the intended program. By writing the code first in a human readable language, the programmer safeguards against leaving out any important step. Besides, for non-programmers, actual programs are difficult to read and understand, but pseudocode helps them to review the steps to confirm that the proposed implementation is going to achieve the desire output.
+Figure 4.5: Flowchart to calculate area and perimeter of a rectangle
+Reprint 2026-27

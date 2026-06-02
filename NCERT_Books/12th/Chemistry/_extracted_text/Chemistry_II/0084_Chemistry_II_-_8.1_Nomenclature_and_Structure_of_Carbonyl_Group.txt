@@ -1,0 +1,30 @@
+228 Chemistry
+Aldehydes, ketones and carboxylic acids are widespread in plants and animal kingdom. They play an important role in biochemical processes of life. They add fragrance and flavour to nature, for example, vanillin (from vanilla beans), salicylaldehyde (from meadow sweet) and cinnamaldehyde (from cinnamon) have very pleasant fragrances.
+Nomenclature
+I. Aldehydes and ketones
+Aldehydes and ketones are the simplest and most important carbonyl compounds.
+There are two systems of nomenclature of aldehydes and ketones.
+(a) Common names
+Aldehydes and ketones are often called by their common names instead of IUPAC names. The common names of most aldehydes are derived from the common names of the corresponding carboxylic acids [Section 8.6.1] by replacing the ending –ic of acid with aldehyde.
+At the same time, the names reflect the Latin or Greek term for the original source of the acid or aldehyde. The location of the substituent in the carbon chain is indicated by Greek letters a, b, g, d, etc. The a-carbon being the one directly linked to the aldehyde group, b- carbon the next, and so on. For example
+8.1 8.1 8.1 8.1 8.1 Nomenclature and Structure of Carbonyl Group Nomenclature and Structure of Carbonyl Group Nomenclature and Structure of Carbonyl Group Nomenclature and Structure of Carbonyl Group Nomenclature and Structure of Carbonyl Group
+They are used in many food products and pharmaceuticals to add flavours. Some of these families are manufactured for use as solvents (i.e., acetone) and for preparing materials like adhesives, paints, resins, perfumes, plastics, fabrics, etc.
+Reprint 2026-27
+229 Aldehydes, Ketones and Carboxylic Acids
+The common names of ketones are derived by naming two alkyl or aryl groups bonded to the carbonyl group. The locations of substituents are indicated by Greek letters, a a¢, b b¢ and so on beginning with the carbon atoms next to the carbonyl group, indicated as aa¢. Some ketones have historical common names, the simplest dimethyl ketone is called acetone. Alkyl phenyl ketones are usually named by adding the name of acyl group as prefix to the word phenone. For example (b) IUPAC names
+The IUPAC names of open chain aliphatic aldehydes and ketones are derived from the names of the corresponding alkanes by replacing the ending –e with –al and –one respectively. In case of aldehydes the longest carbon chain is numbered starting from the carbon of the aldehyde group while in case of ketones the numbering begins from the end nearer to the carbonyl group. The substituents are prefixed in alphabetical order along with numerals indicating their positions in the carbon chain. The same applies to cyclic ketones, where the carbonyl carbon is numbered one. When the aldehyde group is attached to a ring, the suffix carbaldehyde is added after the full name of the cycloalkane. The numbering of the ring carbon atoms start from the carbon atom attached to the aldehyde group. The name of the simplest aromatic aldehyde carrying the aldehyde group on a benzene ring is benzenecarbaldehyde. However, the common name benzaldehyde is also accepted by IUPAC. Other aromatic aldehydes are hence named as substituted benzaldehydes.
+Reprint 2026-27
+230 Chemistry
+Aldehydes
+HCHO Formaldehyde Methanal
+CH3CHO Acetaldehyde Ethanal (CH3)2CHCHO Isobutyraldehyde 2-Methylpropanal g-Methylcyclohexanecarbaldehyde 3-Methylcyclohexanecarbaldehyde
+CH3CH(OCH3)CHO a-Methoxypropionaldehyde 2-Methoxypropanal
+CH3CH2CH2CH2CHO Valeraldehyde Pentanal
+CH2=CHCHO Acrolein Prop-2-enal
+Phthaldehyde Benzene-1,2-dicarbaldehyde m-Bromobenzaldehyde 3-Bromobenzaldehyde
+CH3COCH2CH2CH3 Methyl n-propyl ketone Pentan-2-one (CH3)2CHCOCH(CH3)2 Diisopropyl ketone 2,4-Dimethylpentan-3-one a-Methylcyclohexanone 2-Methylcyclohexanone (CH3)2C=CHCOCH3 Mesityl oxide 4-Methylpent-3-en-2-one
+Table 8.1: Common and IUPAC Names of Some Aldehydes and Ketones
+Structure Common name IUPAC name
+The common and IUPAC names of some aldehydes and ketones are given in Table 8.1.
+3-Bromobenzenecarbaldehyde
+Reprint 2026-27

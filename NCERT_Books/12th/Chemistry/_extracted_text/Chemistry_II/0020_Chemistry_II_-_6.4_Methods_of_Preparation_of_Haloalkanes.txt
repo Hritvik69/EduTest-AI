@@ -1,0 +1,36 @@
+164 Chemistry
+6.4.2 From
+Hydrocarbons
+Bond Bond length/pm C-X Bond enthalpies/ kJmol-1 Dipole moment/Debye
+CH3–F 139 452 1.847
+CH3– Cl 178 351 1.860
+CH3–Br 193 293 1.830
+CH3–I 214 234 1.636
+Table 6.2: Carbon-Halogen (C—X) Bond Lengths, Bond
+Enthalpies and Dipole Moments
+The preparation of alkyl chloride is carried out either by passing dry hydrogen chloride gas through a solution of alcohol or by heating a mixture of alcohol and concentrated aqueous halogen acid.
+The above methods are not applicable for the preparation of aryl halides because the carbon-oxygen bond in phenols has a partial double bond character and is difficult to break being stronger than a single (I) From alkanes by free radical halogenation
+Free radical chlorination or bromination of alkanes gives a complex mixture of isomeric mono- and polyhaloalkanes, which is difficult to
+The hydroxyl group of an alcohol is replaced by halogen on reaction with concentrated halogen acids, phosphorus halides or thionyl chloride.
+Thionyl chloride is preferred because in this reaction alkyl halide is formed along with gases SO2 and HCl. The two gaseous products are escapable, hence, the reaction gives pure alkyl halides. The reactions of primary and secondary alcohols with HCl require the presence of a catalyst, ZnCl2.
+With tertiary alcohols, the reaction is conducted by simply shaking the alcohol with concentrated HCl at room temperature. Constant boiling with HBr (48%) is used for preparing alkyl bromide. Good yields of
+R—I may be obtained by heating alcohols with sodium or potassium iodide in 95% orthophosphoric acid. The order of reactivity of alcohols with a given haloacid is 3°>2°>1°. Phosphorus tribromide and triiodide are usually generated in situ (produced in the reaction mixture) by the reaction of red phosphorus with bromine and iodine respectively.
+6.4.1 From Alcohols
+6 . 4 6 . 4 6 . 4 6 . 4 6 . 4 Methods of Methods of Methods of Methods of Methods of
+Preparation Preparation Preparation Preparation Preparation of Haloalkanes of Haloalkanes of Haloalkanes of Haloalkanes of Haloalkanes
+Reprint 2026-27
+165 Haloalkanes and Haloarenes separate as pure compounds. Consequently, the yield of any single compound is low.
+Identify all the possible monochloro structural isomers expected to be formed on free radical monochlorination of (CH3)2CHCH2CH3.
+In the given molecule, there are four different types of hydrogen atoms.
+Replacement of these hydrogen atoms will give the following (CH3)2CHCH2CH2Cl (CH3)2CHCH(Cl)CH3 (CH3)2C(Cl)CH2CH3 CH3CH(CH2Cl)CH2CH3
+Example 6.3 Example 6.3 Example 6.3 Example 6.3 Example 6.3
+Solution Solution Solution Solution Solution (II) From alkenes (i) Addition of hydrogen halides: An alkene is converted to corresponding alkyl halide by reaction with hydrogen chloride, hydrogen bromide or hydrogen iodide.
+Propene yields two products, however only one predominates as per Markovnikov’s rule. (Unit 13, Class XI)
+(ii) Addition of halogens: In the laboratory, addition of bromine in
+CCl4 to an alkene resulting in discharge of reddish brown colour of bromine constitutes an important method for the detection of double bond in a molecule. The addition results in the synthesis of vic-dibromides, which are colourless (Unit 9, Class XI).
+Alkyl iodides are often prepared by the reaction of alkyl chlorides/ bromides with NaI in dry acetone. This reaction is known as Finkelstein reaction.
+NaCl or NaBr thus formed is precipitated in dry acetone. It facilitates the forward reaction according to Le Chatelier’s Principle.
+The synthesis of alkyl fluorides is best accomplished by heating an alkyl chloride/bromide in the presence of a metallic fluoride such as
+6.4.3 Halogen
+Exchange
+Reprint 2026-27

@@ -1,0 +1,34 @@
+T uples and dicTionaries 221 (h) Delete the item from the dictionary corresponding to the key 9
+>>> del ODD[9]
+{1: 'One', 3: 'Three', 5: 'Five', 7: 'Seven'}
+Program 10-6 Write a program to enter names of employees and their salaries as input and store them in a dictionary.
+#Program 10-6
+#Program to create a dictionary which stores names of the employee
+#and their salary num = int(input("Enter the number of employees whose data to be stored: "))
+count = 1 employee = dict() #create an empty dictionary while count <= num:
+name = input("Enter the name of the Employee: ")
+salary = int(input("Enter the salary: "))
+employee[name] = salary count += 1 print("\n\nEMPLOYEE_NAME\tSALARY")
+for k in employee:
+print(k,'\t\t',employee[k])
+Enter the number of employees to be stored: 5
+Enter the name of the Employee: 'Tarun'
+Enter the salary: 12000
+Enter the name of the Employee: 'Amina'
+Enter the salary: 34000
+Enter the name of the Employee: 'Joseph'
+Enter the salary: 24000
+Enter the name of the Employee: 'Rahul'
+Enter the salary: 30000
+Enter the name of the Employee: 'Zoya'
+Enter the salary: 25000
+EMPLOYEE_NAME SALARY
+'Tarun' 12000
+'Amina' 34000
+'Joseph' 24000
+'Rahul' 30000
+'Zoya' 25000
+Program 10-7 Write a program to count the number of times a character appears in a given
+#Program 10-7
+#Count the number of times a character appears in a given string
+Reprint 2026-27

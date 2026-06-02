@@ -1,0 +1,35 @@
+30 CHEMISTRY
+2.1 Discovery of sUb-atomic
+Particles
+An insight into the structure of atom was obtained from the experiments on electrical discharge through gases. Before we discuss these results we need to keep in mind a basic rule regarding the behaviour of charged particles : “Like charges repel each other and unlike charges attract each other”.
+2.1.1 Discovery of electron
+In 1830, Michael Faraday showed that if electricity is passed through a solution of an electrolyte, chemical reactions occurred at the electrodes, which resulted in the liberation and deposition of matter at the electrodes.
+He formulated certain laws which you will study in Class XII. These results suggested the particulate nature of electricity.
+In mid 1850s many scientists mainly
+Faraday began to study electrical discharge in partially evacuated tubes, known as cathode ray discharge tubes. It is depicted in Fig. 2.1. A cathode ray tube is made of glass containing two thin pieces of metal, called electrodes, sealed in it. The electrical discharge through the gases could be observed only at very low pressures and at very high voltages. The pressure of different gases could be adjusted by evacuation of the glass tubes. When sufficiently high voltage is applied across the electrodes, current starts flowing through a stream of particles moving in the tube from the negative electrode (cathode) to the positive electrode (anode). These were called cathode rays or cathode ray particles. The flow of current from cathode to anode was further checked by making a hole in the anode and coating the tube behind anode with phosphorescent material zinc sulphide. When these rays, after passing through anode, strike the zinc sulphide coating, a bright spot is developed on the coating [Fig. 2.1(b)].
+Fig. 2.1(a) A cathode ray discharge tube
+Fig. 2.1(b) A cathode ray discharge tube with perforated anode
+The results of these experiments are summarised below.
+(i) The cathode rays start from cathode and move towards the anode.
+(ii) These rays themselves are not visible but their behaviour can be observed with the help of certain kind of materials (fluorescent or phosphorescent) which glow when hit by them. Television picture tubes are cathode ray tubes and television pictures result due to fluorescence on the television screen coated with certain fluorescent or phosphorescent materials.
+(iii) In the absence of electrical or magnetic field, these rays travel in straight lines (Fig. 2.2).
+(iv) In the presence of electrical or magnetic field, the behaviour of cathode rays are similar to that expected from negatively charged particles, suggesting that the cathode rays consist of negatively charged particles, called electrons.
+(v) The characteristics of cathode rays (electrons) do not depend upon the
+Reprint 2026-27
+31 STRUCTURE OF ATOM material of electrodes and the nature of the gas present in the cathode ray tube.
+Thus, we can conclude that electrons are basic constituent of all the atoms.
+2.1.2 charge to mass ratio of electron
+In 1897, British physicist J.J. Thomson measured the ratio of electrical charge (e) to the mass of electron (me ) by using cathode ray tube and applying electrical and magnetic field perpendicular to each other as well as to the path of electrons (Fig. 2.2). When only electric field is applied, the electrons deviate from their path and hit the cathode ray tube at point A (Fig. 2.2). Similarly when only magnetic field is applied, electron strikes the cathode ray tube at point C. By carefully balancing the electrical and magnetic field strength, it is possible to bring back the electron to the path which is followed in the absence of electric or magnetic field and they hit the screen at point B. Thomson argued that the amount of deviation of the particles from their path in the presence of electrical or magnetic field depends upon:
+(i) the magnitude of the negative charge on the particle, greater the magnitude of the charge on the particle, greater is the interaction with the electric or magnetic field and thus greater is the deflection.
+(ii) the mass of the particle — lighter the particle, greater the deflection.
+(iii) the strength of the electrical or magnetic field — the deflection of electrons from its original path increases with the increase in the voltage across the electrodes, or the strength of the magnetic field.
+By carrying out accurate measurements on the amount of deflections observed by the electrons on the electric field strength or magnetic field strength, Thomson was able to determine the value of e/me as:
+= 1.758820 × 10 11 C kg–1 (2.1)
+Where me is the mass of the electron in kg and e is the magnitude of the charge on the electron in coulomb (C). Since electrons are negatively charged, the charge on electron
+2.1.3 charge on the electron
+R.A. Millikan (1868-1953) devised a method known as oil drop experiment (1906-14), to determine the charge on the electrons.
+He found the charge on the electron to be
+– 1.6 × 10–19 C. The present accepted value of electrical charge is – 1.602176 × 10 –19 C. The mass of the electron (me ) was determined by combining these results with Thomson’s value of e/me ratio.
+= 9.1094×10 –31 kg (2.2)
+Fig. 2.2 The apparatus to determine the charge to the mass ratio of electron
+Reprint 2026-27

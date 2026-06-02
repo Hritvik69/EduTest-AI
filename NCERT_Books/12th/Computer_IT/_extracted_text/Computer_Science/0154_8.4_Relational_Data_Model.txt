@@ -1,0 +1,107 @@
+Computer SCienCe - ClaSS Xii 142
+Table 9.6 GUARDIAN Table
+GUID GName GPhone GAddress
+444444444444 Amit Ahuja 5711492685 G-35, Ashok Vihar, Delhi
+111111111111 Baichung Bhutia 3612967082 Flat no. 5, Darjeeling Appt., Shimla
+101010101010 Himanshu Shah 4726309212 26/77, West Patel Nagar, Ahmedabad
+333333333333 Danny Dsouza S -13, Ashok Village, Daman
+466444444666 Sujata P. 3801923168 HNO-13, B- block, Preet Vihar, Madurai
+The following insert statement adds the first record in the table:
+mysql> INSERT INTO GUARDIAN
+-> VALUES (444444444444, 'Amit Ahuja',
+-> 5711492685, 'G-35,Ashok vihar, Delhi' );
+Query OK, 1 row affected (0.01 sec)
+We can use the SQL statement SELECT * from table_name to view the inserted records. The SELECT statement will be explained in the next section.
+Activity 9.6
+Write SQL statements to insert the remaining
+3 rows of table
+9.6 in table
+GUARDIAN.
+Let us insert some records in the StudentAttendance database. We shall insert records in the GUARDIAN table first as it does not have any foreign key. A set of sample records for GUARDIAN table is shown in the given table (Table 9.6).
+mysql> SELECT * from GUARDIAN;
++--------------+---------------+------------+---------------------------+
+| GUID | GName | Gphone | GAddress |
++--------------+---------------+------------+---------------------------+
+| 444444444444 | Amit Ahuja | 5711492685 | G-35, Ashok vihar, Delhi |
++--------------+---------------+------------+---------------------------+
+1 row in set (0.00 sec)
+If we want to insert values only for some of the attributes in a table (supposing other attributes having
+NULL or any other default value), then we shall specify the attribute names in which the values are to be inserted using the following syntax of INSERT INTO statement.
+INSERT INTO tablename (column1, column2, ...)
+VALUES (value1, value2, ...);
+To insert the fourth record of Table 9.6 where GPhone is not given, we need to insert values in the other three fields (GPhone was set to NULL by default at the time of table creation). In this case, we have to specify the names of attributes in which we want to insert values.
+The values must be given in the same order in which attributes are written in INSERT statement.
+Reprint 2026-27
+S tructured Query Language (SQL) 143 mysql> INSERT INTO GUARDIAN(GUID, GName, GAddress)
+-> VALUES (333333333333, 'Danny Dsouza',
+-> 'S -13, Ashok Village, Daman' );
+Query OK, 1 row affected (0.03 sec)
+Note: Text and date values must be enclosed in ‘ ’ (single quotes).
+mysql> SELECT * from GUARDIAN;
++--------------+--------------+-----------+---------------------------+
+| GUID | GName | Gphone | GAddress |
++--------------+--------------+-----------+---------------------------+
+| 333333333333 | Danny Dsouza | NULL | S -13, Ashok Village,Daman|
+| 444444444444 | Amit Ahuja | 5711492685| G-35, Ashok vihar, Delhi |
++--------------+--------------+-----------+---------------------------+
+2 rows in set (0.00 sec)
+Table 9.7 STUDENT Table
+RollNumber SName SDateofBirth GUID
+1 Atharv Ahuja 2003-05-15 444444444444
+2 Daizy Bhutia 2002-02-28 111111111111
+3 Taleem Shah 2002-02-28
+4 John Dsouza 2003-08-18 333333333333
+5 Ali Shah 2003-07-05 101010101010
+6 Manika P. 2002-03-10 466444444666
+To insert the first record of Table 9.7, we write the following MySQL statement mysql> INSERT INTO STUDENT
+-> VALUES(1,'Atharv Ahuja','2003-05-15',
+444444444444);
+Query OK, 1 row affected (0.11 sec)
+mysql> INSERT INTO STUDENT (RollNumber, SName,
+SDateofBirth, GUID)
+-> VALUES (1,'Atharv Ahuja','2003-05-15',
+444444444444);
+Query OK, 1 row affected (0.02 sec)
+Recall that Date is stored in ‘YYYY-MM-DD’ format.
+mysql> SELECT * from STUDENT;
++------------+--------------+--------------+--------------+
+| RollNumber | SName | SDateofBirth | GUID |
++------------+--------------+--------------+--------------+
+| 1 | Atharv Ahuja | 2003-05-15 | 444444444444 |
++------------+--------------+--------------+--------------+
+1 row in set (0.00 sec)
+Let us now insert the third record of Table 9.7 where
+GUID is NULL. Recall that GUID is foreign key of this table and thus can take NULL value. Hence, we can put
+NULL value for GUID and insert the record by using the following statement:
+Activity 9.7
+Write SQL statements to insert the remaining 4 rows of table 9.7 in table STUDENT.
+Let us now insert the records given in Table 9.7 into the STUDENT table.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 144 mysql> SELECT * from STUDENT;
++------------+--------------+--------------+--------------+
+| RollNumber | SName | SDateofBirth | GUID |
++------------+--------------+--------------+--------------+
+| 1 | Atharv Ahuja | 2003-05-15 | 444444444444 |
+| 3 | Taleem Shah | 2002-02-28 | NULL |
++------------+--------------+--------------+--------------+
+2 rows in set (0.00 sec)
+We had to write NULL in the above insert statement because we are not mentioning the column names.
+Otherwise, we should mention the names of attributes along with the values if we need to insert data only for certain attributes, as shown in the following query:
+mysql> INSERT INTO STUDENT (RollNumber, SName,
+-> SDateofBirth) VALUES (3, 'Taleem Shah','2002-02-
+Query OK, 1 row affected (0.05 sec)
+9.6 SQL for data Query
+So far we have learnt how to create a database and how to store and manipulate data in them. We are interested in storing data in a database as it is easier to retrieve data in future from databases in whatever way we want.
+SQL provides efficient mechanisms to retrieve data stored in multiple tables in MySQL database (or any other RDBMS). The SQL statement SELECT is used to retrieve data from the tables in a database and is also called a query statement.
+9.6.1 SELECT Statement
+The SQL statement SELECT is used to retrieve data from the tables in a database and the output is also displayed in tabular form.
+SELECT attribute1, attribute2, ...
+FROM table_name
+WHERE condition;
+Here, attribute1, attribute2, ... are the column names of the table table_name from which we want to retrieve data. The FROM clause is always written with SELECT clause as it specifies the name of the table from which data is to be retrieved. The WHERE clause is optional and is used to retrieve data that meet specified condition(s).
+• Which of the two insert statement should be used when the order of data to be inserted are not known?
+• Can we insert two records with the same roll number?
+mysql> INSERT INTO STUDENT
+-> VALUES(3, 'Taleem Shah','2002-02-28', NULL);
+Query OK, 1 row affected (0.05 sec)
+Reprint 2026-27

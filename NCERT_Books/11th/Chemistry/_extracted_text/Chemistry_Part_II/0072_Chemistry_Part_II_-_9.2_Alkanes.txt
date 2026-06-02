@@ -1,0 +1,245 @@
+296 CHEMISTRY ( i i ) u n s a t u r a t e d a n d ( i i i ) a r o m a t i c hydrocarbons. Saturated hydrocarbons contain carbon-carbon and carbon-hydrogen single bonds. If different carbon atoms are joined together to form open chain of carbon atoms with single bonds, they are termed as alkanes as you have already studied in
+Unit 8. On the other hand, if carbon atoms form a closed chain or a ring, they are termed as cycloalkanes. Unsaturated hydrocarbons contain carboncarbon multiSle bonds – double bonds, triple bonds or both. Aromatic hydrocarbons are a special type of cyclic compounds. You can construct a large number of models of such molecules of both types (open chain and close chain) keeping in mind that carbon is tetravalent and hydrogen is monovalent. For making models of alkanes, you can use toothpicks for bonds and plasticine balls for atoms. For alkenes, alkynes and aromatic hydrocarbons, spring models can be constructed.
+9.2 ALKANES
+As already mentioned, alkanes are saturated open chain hydr ocarbons containing carbon - carbon single bonds. Methane (CH4)
+is the first member of this family. Methane is a gas found in coal mines and marshy places.
+If you replace one hydrogen atom of methane by carbon and join the required number of hydrogens to satisfy the tetravalence of the other carbon atom, what do you get? You get C2H6. This hydrocarbon with molecular formula C 2H6 is known as ethane. Thus you can consider C 2 H 6 as derived from CH 4 by replacing one hydrogen atom by -CH3 group.
+Go on constructing alkanes by doing this theoretical exercise i.e., replacing hydrogen atom b\ –CH3 group. The next molecules will be C 3H8, C4H10 … of the general formula for alkane family or homologous series? If we examine the formula of different alkanes we find that the general formula for alkanes is CnH2n+2. It represents any particular homologue when n is given appropriate value. Can you recall the structure of methane? According to VSEPR theory (Unit 4), methane has a tetrahedral structure (Fig. 9.1), in which carbon atom lies at the centre and the four hydrogen atoms lie at the four corners of a regular tetrahedron.
+All H-C-H bond angles are of 109.5°.
+In alkanes, tetrahedra are joined together in which C-C and C-H bond lengths are
+154 pm and 112 pm respectively (Unit 8).
+<ou haYe alread\ read that C–C and C–H V bonds are formed by head-on overlapping of sp3 hybrid orbitals of carbon and 1s orbitals of hydrogen atoms.
+9.2.1 Nomenclature and Isomerism
+You have already read about nomenclature of different classes of organic compounds in Unit 8. Nomenclature and isomerism in alkanes can further be understood with the help of a few more examples. Common names are given in parenthesis. First three alkanes – methane ethane and SroSane haYe only one structure but higher alkanes can have more than one structure. Let us write structures for C4H10. Four carbon atoms of
+C 4H10 can be joined either in a continuous chain or with a branched chain in the following two ways :
+Fig. 9.1 Structure of methane
+Butane (n- butane), (b.p. 273 K)
+H—C—H replace any H by - CH3
+H—C—C—H or C 2H6
+These hydrocarbons are inert under normal conditions as they do not react with acids, bases and other reagents. Hence, they were earlier known as paraffins (latin :
+parum, little; affinis, affinity). Can you think
+Reprint 2026-27
+297 HYDROCARBONS
+In how many ways, you can join five carbon atoms and twelve hydrogen atoms of
+C5H12? They can be arranged in three ways as shown in structures ,,,–9 isomers. It is also clear that structures I and
+III have continuous chain of carbon atoms but structures II, IV and V have a branched chain. Such structural isomers which differ in chain of carbon atoms are known as chain isomers. Thus, you have seen that C 4 H 10 and C 5H12 have two and three chain isomers respectively.
+Problem 9.1
+Write structures of different chain isomers of alkanes corresponding to the molecular formula C6H14. Also write their
+IUPAC names.
+Solution (i) CH 3 – CH2 – CH2 – CH2– CH2– CH3 n-Hexane
+2-Methylpentane
+3-Methylpentane
+2,3-Dimethylbutane
+2,2 - Dimethylbutane
+Based upon the number of carbon atoms attached to a carbon atom, the carbon atom is termed as Srimar\ (Ĉ  secondar\ (Ĉ  tertiar\ (Ĉ or Tuaternar\ (Ĉ . Carbon atom attached to no other carbon atom as in methane or to only one carbon atom as in ethane is called primary carbon atom. Terminal carbon atoms are always primary. Carbon atom attached to two carbon atoms is known as secondary. Tertiary carbon is attached to three carbon atoms and neo or quaternary carbon is attached to four carbon atoms. Can
+\ou identif\ Ĉ Ĉ Ĉ and Ĉ carbon atoms in
+2-Methylpropane (isobutane)
+(b.p.261 K)
+Structures I and II possess same molecular formula but differ in their boiling points and other properties. Similarly structures III, IV and V possess the same molecular formula but have different properties. Structures I and
+II are isomers of butane, whereas structures
+III, IV and V are isomers of pentane. Since difference in properties is due to difference in their structures, they are known as structural
+Pentane (n-pentane)
+(b.p. 309 K)
+2-Methylbutane (isopentane)
+(b.p. 301 K)
+2,2-Dimethylpropane (neopentane)
+(b.p. 282.5 K)
+Reprint 2026-27
+298 CHEMISTRY structures I to V ? If you go on constructing structures for higher alkanes, you will be getting still larger number of isomers. C6H14 has got five isomers and C 7H16 has nine. As many as 75 isomers are possible for C10 H22.
+In structures II, IV and V, you observed that –CH3 group is attached to carbon atom numbered as 2. You will come across groups like –CH3 –C2 H 5 –C3 H 7 etc. attached to carbon atoms in alkanes or other classes of compounds. These groups or substituents are known as alkyl groups as they are derived from alkanes by removal of one hydrogen atom. General formula for alkyl groups is
+CnH2n+1 (Unit 8).
+Let us recall the general rules for nomenclature already discussed in Unit 8.
+Nomenclature of substituted alkanes can further be understood by considering the following problem:
+Problem 9.2
+Write structures of different isomeric alkyl groups corresponding to the molecular formula
+C 5H11. :rite ,83AC names of alcohols obtained b\ attachment of –2H grouSs at different carbons of the chain.
+Solution
+6WUXFWXUHVRI–&5H11JURXS &RUUHVSRnGLnJDOFRKROV 1DPHRIDOFRKRO (i) CH 3 – CH2 – CH2 – CH2– CH2 – CH 3 – CH2 – CH2 – CH2– CH2 – 2H 3entanol (ii) CH3 – CH – CH2 – CH2 – CH3 CH 3 – CH – CH2 – CH2– CH3 3entanol (iii) CH 3 – CH2 – CH – CH2 – CH3 CH3 – CH2 – CH – CH2– CH3 3entanol
+CH 3 CH3 0eth\l
+| | butanol (iv) CH3 – CH – CH2 – CH2 – CH 3 – CH – CH2 – CH2– 2H
+CH 3 CH 3 0eth\l
+| | butanol (v) CH 3 – CH2 – CH – CH2 – CH 3 – CH2 – CH – CH2– 2H
+CH 3 CH3 0eth\l
+| | butanol (vi) CH 3 – C – CH2 – CH3 CH3 – C – CH2 – CH3
+CH 3 CH 3  'imeth\l
+| | SroSanol (vii) CH3 – C – CH2 – CH3 – C – CH22H
+CH3 CH 3
+CH3 CH 3 2H 0eth\l
+| | | | butanol (viii) CH3 – CH – CH –CH3 CH3 – CH – CH –CH3
+Reprint 2026-27
+299 HYDROCARBONS
+Lowest sum and alphabetical arrangement
+Lowest sum and alphabetical arrangement sec is not considered while arranging alphabetically;
+isopropyl is taken as one word
+Further numbering to the substituents of the side chain
+Alphabetical priority order
+Table 9.1 Nomenclature of a Few Organic Compounds important to write the correct structure from the given IUPAC name. To do this, first of all, the longest chain of carbon atoms corresponding to the parent alkane is written.
+Then after numbering it, the substituents are attached to the correct carbon atoms and finally valence of each carbon atom is satisfied by putting the correct number of hydrogen atoms. This can be clarified by writing the structure of eth\l –dimeth\lSentane in the following steps :
+i) Draw the chain of five carbon atoms:
+C – C – C – C – C ii) Give number to carbon atoms:
+C 1– C2– C3– C4– C5
+Structure and IUPAC Name ( – (th\l –  – meth\lhe[ane (b) 8CH3 – 7
+CH2 – 5CH – 4CH – 3C – 2 (3,3-Diethyl-5-isopropyl-4-methyloctane)
+(c) 1CH3–2CH2–3
+CH2–4CH–5CH–6
+CH2–8CH2–9CH2–10
+5-sec– %ut\lisoSroS\ldecane (d) 1CH3–2CH2–3
+CH2–5CH–6 CH2–7CH2–8
+(– 'imeth\lSroS\l nonane (e) 1CH3 – 2
+CH2 – 3CH – 4
+CH2 – 5CH – 6
+–(th\l––meth\lheStane
+Problem 9.3
+Write IUPAC names of the following compounds :
+(i) (CH 3)3 C CH2C(CH3)3 (ii) (CH 3)2 C(C2H5)2 (iii tetra – tert-butylmethane
+Solution (i) 2, 2, 4, 4-Tetramethylpentane (ii) 3, 3-Dimethylpentane (iii) 3,3-Di-tert-butyl -2, 2, 4, 4 - tetramethylpentane
+If it is important to write the correct
+IUPAC name for a given structure, it is equally
+Reprint 2026-27
+300 CHEMISTRY iii) Attach ethyl group at carbon 3 and two methyl groups at carbon 2
+C1 – 2C – 3C – 4C – 5C iv) Satisfy the valence of each carbon atom by putting requisite number of hydrogen
+CH3 – C – CH – CH2 – CH3
+Thus we arrive at the correct structure.
+If you have understood writing of structure from the given name, attempt the following problems.
+Problem 9.4
+Write structural formulas of the following compounds :
+(i) 3, 4, 4, 5–Tetramethylheptane (ii) 2,5-Dimethyhexane
+Solution (i) CH3 – CH2 – CH – C – CH – CH2 – CH3 (ii) CH3 – CH – CH2 – CH2 – CH – CH3
+Problem 9.5
+Write structur es for each of the following compounds. Why are the given names incorrect? Write correct IUPAC (i) 2-Ethylpentane (ii) 5-Ethyl – 3-methylheptane
+Solution (i) CH3 – CH – CH2– CH2 – CH3
+Longest chain is of six carbon atoms and not that of five. Hence, correct name is
+3-Methylhexane.
+7 6 5 4 3 2 1 (ii) CH3 – CH2 – CH – CH2 – CH – CH2 – CH3
+Numbering is to be started from the end which gives lower number to ethyl group. Hence, correct name is 3-ethyl-5- methylheptane.
+9.2.2 Preparation
+Petroleum and natural gas are the main sources of alkanes. However, alkanes can be prepared by following methods :
+1. From unsaturated hydrocarbons
+Dihydrogen gas adds to alkenes and alkynes in the presence of finely divided catalysts like platinum, palladium or nickel to form alkanes.
+This process is called hydrogenation. These metals adsorb dihydrogen gas on their surfaces and activate the hydrogen – hydrogen bond. Platinum and palladium catalyse the reaction at room temperature but relatively higher temperature and pressure are required with nickel catalysts.
+CH 2 =CH 2 + H 2
+Pt/Pd/Ni CH 3−CH 3
+Ethene Propane (9.1)
+CH 3–CH=CH2 + H 2
+Pt/Pd/Ni CH 3−CH 2 CH 3
+Propane Propane
+CH 3–C≡ C–H + H2
+Pt/Pd/Ni CH 3−CH 2 CH 3
+Propyne Propane
+2. From alkyl halides i) Alkyl halides (except fluorides) on reduction with zinc and dilute hydrochloric acid give alkanes.
+CH3 – C1 + H2
+CH4 + HC1 (9.4)
+Chloromethane Methane
+Reprint 2026-27
+301 HYDROCARBONS
+C2H5–CH2 Zn,H
+C2H6HC1
+Chloroethane Ethane (9.5)
+CH 3CH2CH2C  H2 Zn,H
+CH 3CH2CH3HCl
+1-Chloropropane Propane ii) Alkyl halides on treatment with sodium metal in dry ethereal (free from moisture)
+solution give higher alkanes. This reaction is known as Wurtz reaction and is used for the preparation of higher alkanes containing even number of carbon
+CH3%r1a%rCH3 dry ether CH3 –CH31a%r
+Bromomenthane Ethane
+C 2 H 5%r1a%rC2 H 5 dry ether CH 3–CH2–
+CH 2–CH3 1a%r
+%romoethane n–%utane
+What will happen if two different alkyl halides are taken?
+3. From carboxylic acids i) Sodium salts of carboxylic acids on heating with soda lime (mixture of sodium hydroxide and calcium oxide) give alkanes containing one carbon atom less than the carboxylic acid. This process of elimination of carbon dioxide from a carboxylic acid is known as decarboxylation.
+CH 3COO– 1a
+1a2H '
+CaO CH41a2CO3
+Sodium ethanoate
+Problem 9.6
+Sodium salt of which acid will be needed for the preparation of propane ? Write chemical equation for the reaction.
+Solution
+Butanoic acid,
+CH3CH2CH2COO–1a
+ 1a2H CaO
+CH3CH2CH31a2CO3 ii) Kolbe’s electrolytic method: An aqueous solution of sodium or potassium salt of a carboxylic acid on electrolysis gives alkane containing even number of carbon atoms at the anode.
+Electrolysis
+2CH COO Na 2H O
+Sodium acetate
+CH CH 2CO H 2NaOH
+    (9.9)
+The reaction is supposed to follow the following path : O i) 2CH 3COO–1a
+ 2CH3 – C – 2 – ii) At anode:
+2CH3 –C–2
+2CH3 –C– 2C
+. H3C22
+Acetate ion Acetate Methyl free free radical radical iii) H 3C  CH3 H3C–CH3 iv) At cathode :
+H 22  e
+Methane cannot be prepared by this method. Why?
+9.2.3 Properties
+Physical properties
+Alkanes are almost non-polar molecules because of the covalent nature of C-C and
+C-H bonds and due to very little difference of electronegativity between carbon and hydrogen atoms. They possess weak van der
+Waals forces. Due to the weak forces, the first four members, C 1 to C 4 are gases, C 5 to C 17 are liquids and those containing 18 carbon atoms or more are solids at 298 K. They are colourless and odourless. What do you think about solubility of alkanes in water based upon non-polar nature of alkanes? Petrol is a mixture of hydrocarbons and is used as a fuel for automobiles. Petrol and lower fractions of petroleum are also used for dry cleaning of clothes to remove grease stains.
+On the basis of this observation, what do you think about the nature of the greasy substance? You are correct if you say that grease (mixture of higher alkanes) is non-
+Reprint 2026-27
+302 CHEMISTRY polar and, hence, hydrophobic in nature. It is generally observed that in relation to solubility of substances in solvents, polar substances are soluble in polar solvents, whereas the non-polar ones in non-polar solvents i.e., like dissolves like.
+Boiling point (b.p.) of different alkanes are given in Table 9.2 from which it is clear that there is a steady increase in boiling point with increase in molecular mass. This is due to the fact that the intermolecular van der Waals forces increase with increase of the molecular size or the surface area of the molecule.
+You can make an interesting observation by having a look on the boiling points of three isomeric pentanes viz., (pentane,
+2-methylbutane and 2,2-dimethylpropane). It is observed (Table 9.2) that pentane having a continuous chain of five carbon atoms has the highest boiling point (309.1K) whereas
+ – dimeth\lSroSane boils at ... :ith increase in number of branched chains, the molecule attains the shape of a sphere.
+This results in smaller area of contact and therefore weak intermolecular forces between spherical molecules, which are overcome at relatively lower temperatures.
+Chemical properties
+As already mentioned, alkanes are generally inert towards acids, bases, oxidising and reducing agents. However, they undergo the following reactions under certain conditions.
+1. Substitution reactions
+One or more hydrogen atoms of alkanes can be replaced by halogens, nitro group and sulphonic acid group. Halogenation takes place either at higher temperature ( . or in the Sresence of diffused sunlight or ultraviolet light. Lower alkanes do not undergo nitration and sulphonation reactions. These reactions in which hydrogen atoms of alkanes are substituted are known as substitution reactions. As an example, chlorination of methane is given below:
+Halogenation
+CH4 + Cl2 hv CH3C1 + HC1
+Chloromethane (9.10)
+CH 3C1 + Cl2 hv CH2 C12 + HCl
+Dichloromethane (9.11)
+CH 2C12 + Cl2 hv CHC13 + HC1
+Trichloromethane (9.12)
+CHC13 + C12 hv CC14 + HC1
+Tetrachloromethane (9.13)
+Table 9.2 Variation of Melting Point and Boiling Point in Alkanes
+Molecular Name Molecular b.p./(K) m.p./(K)
+formula mass/u
+CH4 0ethane  . .
+C 2H6 (thane  . .
+C 3H 3roSane  . .
+C 4H10 %utane  . .
+C 4H10 0eth\lSroSane  . .
+CH12 3entane  . .
+CH12 0eth\lbutane  . .
+CH12 'imeth\lSroSane  . .
+C 6H14 He[ane  . .
+CH16 HeStane  . .
+CH 2ctane  . .
+C 9H20 1onane  . .
+C 10H22 'ecane  . .
+C 20H42 (icosane  . .
+Reprint 2026-27
+303 HYDROCARBONS
+CH3–CH3 + C12 hv CH3–CH2C1 + HC1
+Chloroethane (9.14)
+It is found that the rate of reaction of alkanes with halogens is F 2 > Cl 2 > Br 2 > I 2 .
+Rate of replacement of hydrogens of alkanes is :
+Ĉ ! Ĉ ! Ĉ. )luorination is too Yiolent to be controlled. ,odination is Yer\ slow and a reYersible reaction. ,t can be carried out in the presence of oxidizing agents like HIO3 or HNO3.
+CH 4 + I2 CH3I + HI (9.15)
+HIO 3 + 5HIo312 + 3H2O (9.16)
+Halogenation is suSSosed to Sroceed Yia free radical chain mechanism inYolYing three steps namely initiation, propagation and termination as giYen below
+Mechanism (i) Initiation : The reaction is initiated by homolysis of chlorine molecule in the
+Sresence of light or heat. 7he Cl–Cl bond is weaker than the C–C and C–H bond and hence, is easiest to break.
+C–C hv homolysis + 2C
+Chlorine free radicals (ii) Propagation : Chlorine free radical attacks the methane molecule and takes the reaction in the forward direction by breaking the C-H bond to generate methyl free radical with the formation of H-Cl.
+(a) CH4 + C
+. l hv C
+. H3  H–C
+The methyl radical thus obtained attacks the second molecule of chlorine to form
+CH3 – Cl with the liberation of another chlorine free radical by homolysis of chlorine molecule.
+. H3  C–C hv CH3 – C  C
+The chlorine and methyl free radicals generated aboYe reSeat steSs (a and (b resSectiYel\ and thereb\ setuS a chain of reactions. The propagation steps (a) and (b are those which directl\ giYe SrinciSal products, but many other propagation steps are possible and may occur. Two such steSs giYen below e[Slain how more highl\ haloginated products are formed.
+CH 3C1 + C
+. H2C1 + HC1
+. H2C  C– C o CH2C12 + C (iii) Termination: The reaction stops after some time due to consumption of reactants and / or due to the following side reactions :
+The possible chain terminating steps are:
+. 1 o C–C (b) H 3C
+. H3 o H3C– CH3
+. H3 + C
+. 1 o H3C–C
+Though in (c), CH 3 – Cl the one of the products is formed but free radicals are consumed and the chain is terminated. The aboYe mechanism helSs us to understand the re

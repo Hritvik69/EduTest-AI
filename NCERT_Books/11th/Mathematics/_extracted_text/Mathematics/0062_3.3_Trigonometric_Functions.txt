@@ -1,0 +1,135 @@
+50 MATHEMATICS
+∠AOC = π and ∠AOD = 3π
+2 . All angles which are integral multiples of π
+2 are called quadrantal angles. The coordinates of the points A, B, C and D are, respectively, (1, 0), (0, 1), (–1, 0) and (0, –1). Therefore, for quadrantal angles, we have cos 0° = 1 sin 0° = 0,
+2 = 0 sin π cosπ = − 1 sinπ = 0
+2 = 0 sin 3π cos 2π = 1 sin 2π = 0
+Now, if we take one complete revolution from the point P, we again come back to same point P. Thus, we also observe that if x increases (or decreases) by any integral multiple of 2π, the values of sine and cosine functions do not change. Thus, sin (2nπ + x) = sin x , n ∈ Z , cos (2nπ + x) = cos x , n ∈ Z
+Further, sin x = 0, if x = 0, ± π, ± 2π , ± 3π, ..., i.e., when x is an integral multiple of π and cos x = 0, if x = ± π
+2 , ± 3π
+2 , ± 5π
+2 , ... i.e., cos x vanishes when x is an odd multiple of π
+2 . Thus sin x = 0 implies x = nπ, π, π, π, π, where n is any integer cos x = 0 implies x = (2n + 1) π
+2 , where n is any integer.
+We now define other trigonometric functions in terms of sine and cosine functions:
+cosec x = 1 sin x , x ≠ nπ, where n is any integer.
+sec x = 1 cos x , x ≠ (2n + 1) π
+2 , where n is any integer.
+tan x = sin x , x ≠ (2n +1) π
+2 , where n is any integer.
+cot x = cos x , x ≠ n π, where n is any integer.
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 51
+We have shown that for all real x, sin2 x + cos2 x = 1
+It follows that
+1 + tan2 x = sec2 x (why?)
+1 + cot2 x = cosec2 x (why?)
+In earlier classes, we have discussed the values of trigonometric ratios for 0°,
+30°, 45°, 60° and 90°. The values of trigonometric functions for these angles are same as that of trigonometric ratios studied in earlier classes. Thus, we have the following
+2 1 0 – 1 0
+2 0 – 1 0 1
+3 1 3 0 0
+The values of cosec x, sec x and cot x are the reciprocal of the values of sin x, cos x and tan x, respectively.
+3.3.1 Sign of trigonometric functions
+Let P (a, b) be a point on the unit circle with centre at the origin such that
+∠AOP = x. If ∠AOQ = – x, then the coordinates of the point Q will be (a, –b)
+(Fig 3.7). Therefore cos (– x) = cos x and sin (– x) = – sin x
+Since for every point P (a, b) on the unit circle, – 1 ≤ a ≤ 1 and Fig 3.7
+Reprint 2026-27
+52 MATHEMATICS
+– 1 ≤ b ≤ 1, we have – 1 ≤ cos x ≤ 1 and –1 ≤ sin x ≤ 1 for all x. We have learnt in previous classes that in the first quadrant (0 < x < π
+2 ) a and b are both positive, in the second quadrant ( π
+2 < x <π) a is negative and b is positive, in the third quadrant (π < x < 3π
+2 ) a and b are both negative and in the fourth quadrant ( 3π
+2 < x < 2π) a is positive and b is negative. Therefore, sin x is positive for 0 < x < π, and negative for
+π < x < 2π. Similarly, cos x is positive for 0 < x < π
+2 , negative for π
+2 < x < 3π
+2 and also positive for 3π
+2 < x < 2π. Likewise, we can find the signs of other trigonometric functions in different quadrants. In fact, we have the following table.
+I II III IV sin x + + – – cos x + – – + tan x + – + – cosec x + + – – sec x + – – + cot x + – + –
+3.3.2 Domain and range of trigonometric functions From the definition of sine and cosine functions, we observe that they are defined for all real numbers. Further, we observe that for each real number x,
+– 1 ≤ sin x ≤ 1 and – 1 ≤ cos x ≤ 1
+Thus, domain of y = sin x and y = cos x is the set of all real numbers and range is the interval [–1, 1], i.e., – 1 ≤ y ≤ 1.
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 53
+Since cosec x = 1 sin x , the domain of y = cosec x is the set { x : x ∈ R and
+≠ n π, n ∈ Z} and range is the set {y : y ∈ R, y ≥ 1 or y ≤ – 1}. Similarly, the domain of y = sec x is the set {x : x ∈ R and x ≠ (2n + 1) π
+2 , n ∈ Z} and range is the set
+{y : y ∈ R, y ≤ – 1or y ≥ 1}. The domain of y = tan x is the set {x : x ∈ R and x ≠ (2n + 1) π
+2 , n ∈ Z} and range is the set of all real numbers. The domain of y = cot x is the set {x : x ∈ R and x ≠ n π, n ∈ Z} and the range is the set of all real numbers.
+We further observe that in the first quadrant, as x increases from 0 to π
+2 , sin x increases from 0 to 1, as x increases from π
+2 to π, sin x decreases from 1 to 0. In the third quadrant, as x increases from π to 3π
+2 , sin x decreases from 0 to –1and finally, in the fourth quadrant, sin x increases from –1 to 0 as x increases from 3π
+2 to 2π.
+Similarly, we can discuss the behaviour of other trigonometric functions. In fact, we have the following table:
+Remark In the above table, the statement tan x increases from 0 to ∞ (infinity) for
+0 < x < π
+2 simply means that tan x increases as x increases for 0 < x < π
+I quadrant II quadrant III quadrant IV quadrant sin increases from 0 to 1 decreases from 1 to 0 decreases from 0 to –1 increases from –1 to 0 cos decreases from 1 to 0 decreases from 0 to – 1 increases from –1 to 0 increases from 0 to 1 tan increases from 0 to ∞ increases from –∞to 0 increases from 0 to ∞ increases from –∞to 0 cot decreases from ∞ to 0 decreases from 0 to–∞ decreases from ∞ to 0 decreases from 0to –∞ sec increases from 1 to ∞ increases from –∞to–1 decreases from –1to–∞ decreases from ∞ to 1 cosec decreases from ∞ to 1 increases from 1 to ∞ increases from –∞to–1 decreases from–1to–∞
+Reprint 2026-27
+54 MATHEMATICS
+Fig 3.10 Fig 3.11 assumes arbitraily large positive values as x approaches to π
+2 . Similarly, to say that cosec x decreases from –1 to – ∞ (minus infinity) in the fourth quadrant means that cosec x decreases for x ∈ ( 3π
+2 , 2π) and assumes arbitrarily large negative values as x approaches to 2π. The symbols ∞ and – ∞ simply specify certain types of behaviour of functions and variables.
+We have already seen that values of sin x and cos x repeats after an interval of
+2π. Hence, values of cosec x and sec x will also repeat after an interval of 2π. We
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 55 shall see in the next section that tan (π + x) = tan x. Hence, values of tan x will repeat after an interval of π. Since cot x is reciprocal of tan x, its values will also repeat after an interval of π. Using this knowledge and behaviour of trigonometic functions, we can sketch the graph of these functions. The graph of these functions are given above:
+Example 6 If cos x = – 3
+5 , x lies in the third quadrant, find the values of other five trigonometric functions.
+Solution Since cos x = 3
+− , we have sec x = 5
+Now sin2 x + cos2 x = 1, i.e., sin2 x = 1 – cos2 x or sin2 x = 1 – 9
+Hence sin x = ± 4
+Since x lies in third quadrant, sin x is negative. Therefore sin x = – 4 which also gives cosec x = – 5
+Fig 3.12 Fig 3.13
+Reprint 2026-27
+56 MATHEMATICS
+Further, we have tan x = sin
+3 and cot x = cos
+Example 7 If cot x = – 5
+12 , x lies in second quadrant, find the values of other five trigonometric functions.
+Solution Since cot x = – 5
+12 , we have tan x = – 12
+Now sec2 x = 1 + tan2 x = 1 + 144
+25 = 169
+Hence sec x = ± 13
+Since x lies in second quadrant, sec x will be negative. Therefore sec x = – 13 which also gives
+Further, we have sin x = tan x cos x = (– 12
+5 ) × (– 5
+13 ) = 12 and cosec x = 1 sin x = 13
+Example 8 Find the value of sin 31π
+Solution We know that values of sin x repeats after an interval of 2π. Therefore
+3 = sin (10π + π
+3 ) = sin π
+Reprint 2026-27
+TRIGONOMETRIC FUNCTIONS 57
+Example 9 Find the value of cos (–1710°).
+Solution We know that values of cos x repeats after an interval of 2π or 360°.
+Therefore, cos (–1710°) = cos (–1710° + 5 × 360°)
+= cos (–1710° + 1800°) = cos 90° = 0.
+EXERCISE 3.2
+Find the values of other five trigonometric functions in Exercises 1 to 5.
+1. cos x = – 1
+2 , x lies in third quadrant.
+2. sin x = 3
+5 , x lies in second quadrant.
+3. cot x = 4
+3 , x lies in third quadrant.
+4. sec x = 13
+5 , x lies in fourth quadrant.
+5. tan x = – 5
+12 , x lies in second quadrant.
+Find the values of the trigonometric functions in Exercises 6 to 10.
+6. sin 765° 7. cosec (– 1410°)
+8. tan 19π
+3 9. sin (– 11π
+10. cot (– 15π
+3.4 Trigonometric Functions of Sum and Difference of Two Angles
+In this Section, we shall derive expressions for trigonometric functions of the sum and difference of two numbers (angles) and related expressions. The basic results in this connection are called trigonometric identities. We have seen that
+1. sin (– x) = – sin x
+2. cos (– x) = cos x
+We shall now prove some more results:
+Reprint 2026-27

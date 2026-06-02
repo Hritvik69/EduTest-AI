@@ -1,0 +1,33 @@
+Introductory
+Microeconomics
+Consider the different combination of bananas and mangoes, A, B and C depicted in table 2.4 and figure 2.7. Combinations A, B and C consist of same quantity of mangoes but different quantities of bananas. Since combination B has more bananas than A, B will provide the individual a higher level of satisfaction than A.
+Therefore, B will lie on a higher indifference curve than A, depicting higher satisfaction.
+Likewise, C has more bananas than B (quantity of mangoes is the same in both B and C). Therefore,
+C will provide higher level of satisfaction than B, and also lie on a higher indifference curve than B.
+A higher indifference curve consisting of combinations with more of mangoes, or more of
+Table 2.4: Representation of different level of utilities from different combination of goods
+Combination Quantity of bananas Quantity of Mangoes
+2.Higher indifference curve gives greater level of utility:
+As long as marginal utility of a commodity is positive, an individual will always prefer more of that commodity, as more of the commodity will increase the level of satisfaction.
+bananas, or more of both, will represent combinations that give higher level of satisfaction.
+3.Two indifference curves never intersect each other:
+Two indifference curves intersecting each other will lead to conflicting results. To explain this, let us allow two indifference curves to intersect each other as shown in the figure
+2.8. As points A and B lie on the same indifference curve IC1, utilities derived from combination A and combination B will give the same level of satisfaction. Similarly, as points A and C lie on the same indifference curve IC2, utility derived from combination A and from combination C will give the same level of satisfaction.
+Higher indifference curves give greater level of utility.
+Two indifference curves never intersect each other
+A (7,10)
+Reprint 2026-27
+15 Theory of Consumer
+Behaviour
+From this, it follows that utility from point B and from point C will also be the same. But this is clearly an absurd result, as on point B, the consumer gets a greater number of mangoes with the same quantity of bananas. So consumer is better off at point B than at point C. Thus, it is clear that intersecting indifference curves will lead to conflicting results. Thus, two indifference curves cannot intersect each other.
+2.2 THE CONSUMER’S BUDGET
+Let us consider a consumer who has only a fixed amount of money (income) to spend on two goods. The prices of the goods are given in the market. The consumer cannot buy any and every combination of the two goods that she may want to consume. The consumption bundles that are available to the consumer depend on the prices of the two goods and the income of the consumer. Given her fixed income and the prices of the two goods, the consumer can afford to buy only those bundles which cost her less than or equal to her income.
+2.2.1 Budget Set and Budget Line
+Suppose the income of the consumer is M and the prices of bananas and mangoes are p1 and p2 respectively5. If the consumer wants to buy x1 quantities of bananas, she will have to spend p1x1 amount of money. Similarly, if the consumer wants to buy x2 quantities of mangoes, she will have to spend p2x2 amount of money.
+Therefore, if the consumer wants to buy the bundle consisting of x1 quantities of bananas and x2 quantities of mangoes, she will have to spend p1x1 + p2x2 amount of money. She can buy this bundle only if she has at least p1x1 + p2x2 amount of money. Given the prices of the goods and the income of a consumer, she can choose any bundle as long as it costs less than or equal to the income she has.
+In other words, the consumer can buy any bundle (x1, x2) such that p1x1 + p2x2 ≤ M (2.1)
+The inequality (2.1) is called the consumer’s budget constraint. The set of bundles available to the consumer is called the budget set. The budget set is thus the collection of all bundles that the consumer can buy with her income at the prevailing market prices.
+EXAMPLE 2.1
+Consider, for example, a consumer who has Rs 20, and suppose, both the goods are priced at Rs 5 and are available only in integral units. The bundles that this consumer can afford to buy are: (0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 0), (1, 1), (1, 2), (1, 3), (2, 0), (2, 1), (2, 2), (3, 0), (3, 1) and (4, 0). Among these bundles, (0, 4), (1,3), (2, 2), (3, 1) and (4, 0) cost exactly Rs 20 and all the other bundles cost less than Rs 20. The consumer cannot afford to buy bundles like (3, 3) and (4, 5) because they cost more than Rs 20 at the prevailing prices.
+5 Price of a good is the amount of money that the consumer has to pay per unit of the good she wants to buy. If rupee is the unit of money and quantity of the good is measured in kilograms, the price of banana being p1 means the consumer has to pay p1 rupees per kilograms of banana that she wants to buy.
+Reprint 2026-27

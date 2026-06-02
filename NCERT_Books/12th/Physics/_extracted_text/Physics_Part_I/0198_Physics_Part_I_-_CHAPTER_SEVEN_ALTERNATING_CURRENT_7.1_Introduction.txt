@@ -1,0 +1,19 @@
+the inductor. The negative sign follows from Lenz’s law (Chapter 6).
+Combining Eqs. (7.1) and (7.10), we have m v i v t
+ω = = (7.11)
+Equation (7.11) implies that the equation for i(t), the current as a function of time, must be such that its slope di/dt is a sinusoidally varying quantity, with the same phase as the source voltage and an amplitude given by vm/L. To obtain the current, we integrate di/dt with respect to
+∫ ∫ = sin( )
+and get, cos( ) constant m v
+The integration constant has the dimension of current and is time- independent. Since the source has an emf which oscillates symmetrically about zero, the current it sustains also oscillates symmetrically about zero, so that no constant or time-independent component of the current exists. Therefore, the integration constant is zero.
+ cos( ) sin
+ω ω t t π
+2 , we have i i t m = −
+2 (7.12)
+= ω is the amplitude of the current. The quantity analogous to the resistance and is called inductive reactance, denoted w L (7.13)
+The amplitude of the current is, then
+= (7.14)
+The dimension of inductive reactance is the same as that of resistance and its SI unit is ohm (W). The inductive reactance limits the current in a purely inductive circuit in the same way as the resistance limits the current in a purely resistive circuit. The inductive reactance is directly proportional to the inductance and to the frequency of the current.
+A comparison of Eqs. (7.1) and (7.12) for the source voltage and the current in an inductor shows that the current lags the voltage by p/2 or one-quarter (1/4) cycle. Figure 7.6 (a) shows the voltage and the current phasors in the present case at instant t1. The current phasor I is p/2 behind the voltage phasor V. When rotated with frequency w counter- clockwise, they generate the voltage and current given by Eqs. (7.1) and (7.12), respectively and as shown in Fig. 7.6(b).
+Interactive animation on Phasor diagrams of ac circuits containing, R, L, C and RLC series circuits:
+http://www.animations.physics.unsw.edu.au//jw/AC.html
+Reprint 2026-27

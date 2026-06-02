@@ -1,0 +1,118 @@
+18 MATHEMATICS (iv) The number of zeroes is 1. (Why?)
+(v) The number of zeroes is 1. (Why?)
+(vi) The number of zeroes is 4. (Why?)
+EXERCISE 2.1
+1. The graphs of y = p(x) are given in Fig. 2.10 below, for some polynomials p(x). Find the number of zeroes of p(x), in each case.
+Fig. 2.10
+2.3 Relationship between Zeroes and Coefficients of a Polynomial
+You have already seen that zero of a linear polynomial ax + b is b
+ . We will now try to answer the question raised in Section 2.1 regarding the relationship between zeroes and coefficients of a quadratic polynomial. For this, let us take a quadratic polynomial, say p(x) = 2x2 – 8x + 6. In Class IX, you have learnt how to factorise quadratic polynomials by splitting the middle term. So, here we need to split the middle term
+‘– 8x’ as a sum of two terms, whose product is 6 × 2x2 = 12x2
+. So, we write
+2x2 – 8x + 6 = 2x2 – 6x – 2x + 6 = 2x(x – 3) – 2(x – 3)
+= (2x – 2)(x – 3) = 2(x – 1)(x – 3)
+Reprint 2026-27
+POLYNOMIALS 19
+So, the value of p(x) = 2x2 – 8x + 6 is zero when x – 1 = 0 or x – 3 = 0, i.e., when x = 1 or x = 3. So, the zeroes of 2x2 – 8x + 6 are 1 and 3. Observe that :
+Sum of its zeroes = 2 ( 8) (Coefficient of )
+1 3 4 2 Coefficient of
+Product of its zeroes = 2
+6 Constant term
+1 3 3 2 Coefficient of x
+Let us take one more quadratic polynomial, say, p(x) = 3x2 + 5x – 2. By the method of splitting the middle term,
+3x2 + 5x – 2 = 3x2 + 6x – x – 2 = 3x(x + 2) –1(x + 2)
+= (3x – 1)(x + 2)
+Hence, the value of 3x2 + 5x – 2 is zero when either 3x – 1 = 0 or x + 2 = 0, i.e., when x = 1
+3 or x = –2. So, the zeroes of 3x2 + 5x – 2 are 1
+3 and – 2. Observe that :
+Sum of its zeroes = 2
+1 5 (Coefficient of )
+3 3 Coefficient of
+Product of its zeroes = 2
+1 2 Constant term
+3 3 Coefficient of x
+In general, if * and * are the zeroes of the quadratic polynomial p(x) = ax2 + bx + c, a  0, then you know that x –  and x –  are the factors of p(x). Therefore, ax2 + bx + c = k(x – ) (x – ), where k is a constant
+= k[x2 – ( + )x + ]
+= kx2 – k( + )x + k 
+Comparing the coefficients of x2
+, x and constant terms on both the sides, we get a = k, b = – k( + ) and c = k
+This gives    +  = –b
+     = c
+* , are Greek letters pronounced as ‘alpha’ and ‘beta’ respectively. We will use later one more letter ‘’ pronounced as ‘gamma’.
+Reprint 2026-27
+20 MATHEMATICS i.e., sum of zeroes =  +  = 2 (Coefficient of )
+Coefficient of product of zeroes =  = 2
+Constant term
+Coefficient of
+Let us consider some examples.
+Example 2 : Find the zeroes of the quadratic polynomial x2 + 7x + 10, and verify the relationship between the zeroes and the coefficients.
+Solution : We have x2 + 7x + 10 = (x + 2)(x + 5)
+So, the value of x2 + 7x + 10 is zero when x + 2 = 0 or x + 5 = 0, i.e., when x = – 2 or x = –5. Therefore, the zeroes of x2 + 7x + 10 are – 2 and – 5. Now, sum of zeroes = 2 (7) – (Coefficient of ) , – 2 (– 5) – (7) 1 Coefficient of product of zeroes = 2
+10 Constant term ( 2) ( 5) 10 1 Coefficient of x
+      
+Example 3 : Find the zeroes of the polynomial x2 – 3 and verify the relationship between the zeroes and the coefficients.
+Solution : Recall the identity a2 – b2 = (a – b)(a + b). Using it, we can write:
+x2 – 3 =    3 3 x x  
+So, the value of x2 – 3 is zero when x = 3 or x = – 3
+Therefore, the zeroes of x2 – 3 are 3 and 3   sum of zeroes = 2 (Coefficient of ) , 3 3 0 Coefficient of product of zeroes =    2
+3 Constant term
+3 3 – 3 1 Coefficient of x
+    
+Reprint 2026-27
+POLYNOMIALS 21
+Example 4 : Find a quadratic polynomial, the sum and product of whose zeroes are
+– 3 and 2, respectively.
+Solution : Let the quadratic polynomial be ax2 + bx + c, and its zeroes be  and .
+ +  = – 3 = b and  = 2 = c
+If a = 1, then b = 3 and c = 2.
+So, one quadratic polynomial which fits the given conditions is x2 + 3x + 2.
+You can check that any other quadratic polynomial that fits these conditions will be of the form k(x2 + 3x + 2), where k is real.
+Let us now look at cubic polynomials. Do you think a similar relation holds between the zeroes of a cubic polynomial and its coefficients?
+Let us consider p(x) = 2x3 – 5x2 – 14x + 8.
+You can check that p(x) = 0 for x = 4, – 2, 1
+2  Since p(x) can have atmost three zeroes, these are the zeores of 2x3 – 5x2 – 14x + 8. Now, sum of the zeroes =
+1 5 ( 5) (Coefficient of )
+4 ( 2) 2 2 2 Coefficient of
+      , product of the zeroes = 3
+1 8 – Constant term
+4 ( 2) 4
+2 2 Coefficient of x
+       .
+However, there is one more relationship here. Consider the sum of the products of the zeroes taken two at a time. We have
+4 ( 2) ( 2) 4
+          
+– 8 1 2 7 2
+     = 3
+Coefficient of
+In general, it can be proved that if , ,  are the zeroes of the cubic polynomial ax3 + bx2 + cx + d, then
+Reprint 2026-27
+22 MATHEMATICS
+   +  +  = –b
+     +      +      = c
+               = – d
+Let us consider an example.
+Example 5* : Verify that 3, –1, 1
+ are the zeroes of the cubic polynomial p(x) = 3x3 – 5x2 – 11x – 3, and then verify the relationship between the zeroes and the coefficients.
+Solution : Comparing the given polynomial with ax3 + bx2 + cx + d, we get a = 3, b = – 5, c = –11, d = – 3. Further p(3) = 3 × 3 3 – (5 × 32 ) – (11 × 3) – 3 = 81 – 45 – 33 – 3 = 0, p(–1) = 3 × (–1)3 – 5 × (–1)2 – 11 × (–1) – 3 = –3 – 5 + 11 – 3 = 0,
+3 5 11 3 p        
+                  
+        ,
+= 1 5 11 2 2
+9 9 3 3 3
+     
+Therefore, 3, –1 and 1
+ are the zeroes of 3x3 – 5x2 – 11x – 3.
+So, we take  = 3,  = –1 and  = 1
+1 1 5 ( 5)
+3 ( 1) 2
+    
+                
+1 1 1 11
+3 ( 1) ( 1) 3 3 1
+    
+                          
+3 ( 1) 1
+    
+          
+* Not from the examination point of view.
+Reprint 2026-27

@@ -1,0 +1,19 @@
+47 Production and Costs
+Let us now look at the SMC curve. Marginal cost is the additional cost that a firm incurs to produce one extra unit of output. According to the law of variable proportions, initially, the marginal product of a factor increases as employment increases, and then after a certain point, it decreases. This means initially to produce every extra unit of output, the requirement of the factor becomes less and less, and then after a certain point, it becomes greater and greater. As a result, with the factor price given, initially the
+SMC falls, and then after a certain point, it rises. SMC curve is, therefore, ‘U’-shaped.
+At zero level of output, SMC is undefined. The TVC at a particular level of output is given by the area under the SMC curve up to that level.
+Now, what does the AVC curve look like? For the first unit of output, it is easy to check that SMC and AVC are the same. So both SMC and AVC curves start from the same point. Then, as output increases, SMC falls. AVC being the average of marginal costs, also falls, but falls less than SMC. Then, after a point,
+SMC starts rising. AVC, however, continues to fall as long as the value of SMC remains less than the prevailing value of AVC. Once the SMC has risen sufficiently, its value becomes greater than the value of AVC. The AVC then starts rising. The
+AVC curve is therefore ‘U’-shaped.
+As long as AVC is falling, SMC must be less than the AVC. As AVC rises,
+SMC must be greater than the AVC. So the SMC curve cuts the AVC curve from below at the minimum point of AVC.
+The Average Variable Cost Curve. The area of the rectangle OVBq0 gives us the total variable cost at q0.
+Fig. 3.6 q0 O Output
+The Total Variable Cost Curve. The slope of the angle ∠EOqo gives us the average variable cost at qo.
+O Output
+Fig. 3.7
+In Figure 3.7, we measure output along the horizontal axis and TVC along the vertical axis. At q0 level of output, OV is the total variable cost. Let the angle ∠E0q0 be equal to
+θ. Then, at q0, the AVC can be calculated
+AV C = TVC
+Oq = tan
+Reprint 2026-27

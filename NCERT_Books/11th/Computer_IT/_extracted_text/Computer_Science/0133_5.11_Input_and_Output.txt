@@ -1,0 +1,20 @@
+6.1 IntroductIon
+In Figure 6.1, we see a bus carrying the children to school. There is only one way to reach the school. The driver has no choice, but to follow the road one milestone after another to reach the school. We learnt in Chapter
+5 that this is the concept of sequence, where Python executes one statement after another from beginning to the end of the program. These are the kind of programs we have been writing till now.
+Figure 6.1: Bus carrying students to school
+Let us consider a program 6-1 that executes in sequence, that is, statements are executed in an order in which they are written.
+The order of execution of the statements in a program is known as flow of control. The flow of control can be implemented using control structures. Python supports two types of control structures—selection and repetition.
+“ Don't you hate code that's not properly indented?
+Making it [indenting] part of the syntax guarantees that all code is properly indented.”
+– G. van Rossum
+Chapter 6
+Flow of Control
+In this chapter
+» Introduction to Flow of Control
+» Selection
+» Indentation
+» Repetition
+» Break and Continue
+Statements
+» Nested Loops
+Reprint 2026-27

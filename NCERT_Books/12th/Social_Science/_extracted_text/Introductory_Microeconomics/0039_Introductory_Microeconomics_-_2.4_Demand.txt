@@ -1,0 +1,15 @@
+29 Theory of Consumer
+Behaviour
+Therefore, in our example, as price of bananas increases by 40 percent, demand for bananas drops by 20 percent. Price elasticity of demand = =
+Clearly, the demand for bananas is not very responsive to a change in price of bananas. When the percentage change in quantity demanded is less than the percentage change in market price, D e is estimated to be less than one and the demand for the good is said to be inelastic at that price. Demand for essential goods is often found to be inelastic.
+When the percentage change in quantity demanded is more than the percentage change in market price, the demand is said to be highly responsive to changes in market price and the estimated D e is more than one. The demand for the good is said to be elastic at that price. Demand for luxury goods is seen to be highly responsive to changes in their market prices and D e >1.
+When the percentage change in quantity demanded equals the percentage change in its market price, D e is estimated to be equal to one and the demand for the good is said to be Unitary-elastic at that price. Note that the demand for certain goods may be elastic, unitary elastic and inelastic at different prices. In fact, in the next section, elasticity along a linear demand curve is estimated at different prices and shown to vary at each point on a downward sloping demand
+2.6.1 Elasticity along a Linear Demand Curve
+Let us consider a linear demand curve q = a – bp. Note that at any point on the demand curve, the change in demand per unit change in the price q
+Substituting the value of q
+∆ in (2.16b), we obtain, eD = – b p puting the value of q, eD = – – a bp (2.17)
+From (2.17), it is clear that the elasticity of demand is different at different points on a linear demand curve. At p = 0, the elasticity is 0, at q =
+0, elasticity is ∞. At p = 2 b , the elasticity is 1, at any price greater than 0 and less b , elasticity is less than 1, and at any price greater than 2 b , elasticity is greater than 1. The price elasticities of demand along the linear demand curve given by equation (2.17) are depicted in Figure 2.19.
+Elasticity along a Linear Demand
+Curve. Price elasticity of demand is different at different points on the linear demand
+Reprint 2026-27

@@ -1,0 +1,117 @@
+Physical Quantity Symbol Nature Dimensions Units Remarks
+Permeability of free
+μ0 Scalar [MLT –2A–2] T m A–1 4π × 10–7 T m A–1
+Magnetic Field B Vector [M T –2A–1] T (telsa)
+Magnetic Moment m Vector [L2A] A m2 or J/T
+Torsion Constant k Scalar [M L2T –2] N m rad–1 Appears in MCG
+POINTS TO PONDER
+1. Electrostatic field lines originate at a positive charge and terminate at a negative charge or fade at infinity. Magnetic field lines always form closed loops.
+2. The discussion in this Chapter holds only for steady currents which do not vary with time.
+When currents vary with time Newton’s third law is valid only if momentum carried by the electromagnetic field is taken into account.
+3. Recall the expression for the Lorentz force,
+F = q (v × B + E)
+This velocity dependent force has occupied the attention of some of the greatest scientific thinkers. If one switches to a frame with instantaneous velocity v, the magnetic part of the force vanishes. The motion of the charged particle is then explained by arguing that there exists an appropriate electric field in the new frame. We shall not discuss the details of this mechanism. However, we stress that the resolution of this paradox implies that electricity and magnetism are linked phenomena (electromagnetism) and that the Lorentz force expression does not imply a universal preferred frame of reference in nature.
+4. Ampere’s Circuital law is not independent of the Biot-Savart law. It can be derived from the Biot-Savart law. Its relationship to the
+Biot-Savart law is similar to the relationship between Gauss’s law and
+Coulomb’s law.
+EXERCISES
+4.1 A circular coil of wire consisting of 100 turns, each of radius 8.0 cm carries a current of 0.40 A. What is the magnitude of the magnetic field B at the centre of the coil?
+4.2 A long straight wire carries a current of 35 A. What is the magnitude of the field B at a point 20 cm from the wire?
+4.3 A long straight wire in the horizontal plane carries a current of 50 A in north to south direction. Give the magnitude and direction of B at a point 2.5 m east of the wire.
+Reprint 2026-27
+Moving Charges and
+Magnetism
+4.4 A horizontal overhead power line carries a current of 90 A in east to west direction. What is the magnitude and direction of the magnetic field due to the current 1.5 m below the line?
+4.5 What is the magnitude of magnetic force per unit length on a wire carrying a current of 8 A and making an angle of 30º with the direction of a uniform magnetic field of 0.15 T ?
+4.6 A 3.0 cm wire carrying a current of 10 A is placed inside a solenoid perpendicular to its axis. The magnetic field inside the solenoid is given to be 0.27 T. What is the magnetic force on the wire?
+4.7 Two long and parallel straight wires A and B carrying currents of
+8.0 A and 5.0 A in the same direction are separated by a distance of
+4.0 cm. Estimate the force on a 10 cm section of wire A.
+4.8 A closely wound solenoid 80 cm long has 5 layers of windings of 400 turns each. The diameter of the solenoid is 1.8 cm. If the current carried is 8.0 A, estimate the magnitude of B inside the solenoid near its centre.
+4.9 A square coil of side 10 cm consists of 20 turns and carries a current of 12 A. The coil is suspended vertically and the normal to the plane of the coil makes an angle of 30º with the direction of a uniform horizontal magnetic field of magnitude 0.80 T. What is the magnitude of torque experienced by the coil?
+4.10 Two moving coil meters, M1 and M2 have the following particulars:
+R1 = 10 Ω, N1 = 30,
+A1 = 3.6 × 10–3 m2, B1 = 0.25 T
+R2 = 14 Ω, N2 = 42,
+A2 = 1.8 × 10–3 m2, B2 = 0.50 T (The spring constants are identical for the two meters).
+Determine the ratio of (a) current sensitivity and (b) voltage sensitivity of M2 and M1.
+4.11 In a chamber, a uniform magnetic field of 6.5 G (1 G = 10–4 T ) is maintained. An electron is shot into the field with a speed of
+4.8 × 106 m s–1 normal to the field. Explain why the path of the electron is a circle. Determine the radius of the circular orbit.
+(e = 1.5 × 10–19 C, me = 9.1×10–31 kg )
+4.12 In Exercise 4.11 obtain the frequency of revolution of the electron in its circular orbit. Does the answer depend on the speed of the electron? Explain.
+4.13 (a) A circular coil of 30 turns and radius 8.0 cm carrying a current of 6.0 A is suspended vertically in a uniform horizontal magnetic field of magnitude 1.0 T. The field lines make an angle of 60° with the normal of the coil. Calculate the magnitude of the counter torque that must be applied to prevent the coil from turning.
+(b) Would your answer change, if the circular coil in (a) were replaced by a planar coil of some irregular shape that encloses the same area? (All other particulars are also unaltered.)
+Reprint 2026-27
+5.1 INTRODUCTION
+Magnetic phenomena are universal in nature. Vast, distant galaxies, the tiny invisible atoms, humans and beasts all are permeated through and through with a host of magnetic fields from a variety of sources. The earth’s magnetism predates human evolution. The word magnet is derived from the name of an island in Greece called magnesia where magnetic ore deposits were found, as early as 600 BC.
+In the previous chapter we have learned that moving charges or electric currents produce magnetic fields. This discovery, which was made in the early part of the nineteenth century is credited to Oersted, Ampere, Biot and Savart, among others.
+In the present chapter, we take a look at magnetism as a subject in its own right.
+Some of the commonly known ideas regarding magnetism are:
+(i) The earth behaves as a magnet with the magnetic field pointing approximately from the geographic south to the north.
+(ii) When a bar magnet is freely suspended, it points in the north-south direction. The tip which points to the geographic north is called the north pole and the tip which points to the geographic south is called the south pole of the magnet.
+Chapter Five
+MAGNETISM AND
+Reprint 2026-27
+Magnetism and (iii) There is a repulsive force when north poles ( or south poles ) of two magnets are brought close together. Conversely, there is an attractive force between the north pole of one magnet and the south pole of the other.
+(iv) We cannot isolate the north, or south pole of a magnet. If a bar magnet is broken into two halves, we get two similar bar magnets with somewhat weaker properties. Unlike electric charges, isolated magnetic north and south poles known as magnetic monopoles do not exist.
+(v) It is possible to make magnets out of iron and its alloys.
+We begin with a description of a bar magnet and its behaviour in an external magnetic field. We describe Gauss’s law of magnetism. We next describe how materials can be classified on the basis of their magnetic properties. We describe para-, dia-, and ferromagnetism.
+5.2 T 5.2 T 5.2 T 5.2 T 5.2 THE HE HE HE HE B B B B BAR AR AR AR AR M M M M MAGNET AGNET AGNET AGNET AGNET
+We begin our study by examining iron filings sprinkled on a sheet of glass placed over a short bar magnet. The arrangement of iron filings is shown in Fig. 5.1.
+The pattern of iron filings suggests that the magnet has two poles similar to the positive and negative charge of an electric dipole. As mentioned in the introductory section, one pole is designated the
+North pole and the other,
+South pole. When suspended freely, these poles point approximately towards the geographic north and south poles, respectively. A similar pattern of iron filings is observed around a current carrying solenoid.
+5.2.1 The magnetic field lines 5.2.1 The magnetic field lines 5.2.1 The magnetic field lines 5.2.1 The magnetic field lines 5.2.1 The magnetic field lines
+The pattern of iron filings permits us to plot the magnetic field lines*****. This is shown both for the bar-magnet and the current- carrying solenoid in Fig. 5.2. For comparison refer to the Chapter 1, Figure 1.14(d). Electric field lines of an electric dipole are also displayed in Fig. 5.2(c). The magnetic field lines are a visual and intuitive realisation of the magnetic field. Their properties are:
+(i) The magnetic field lines of a magnet (or a solenoid) form continuous closed loops. This is unlike the electric dipole where these field lines begin from a positive charge and end on the negative charge or escape to infinity.
+***** In some textbooks the magnetic field lines are called magnetic lines of force.
+This nomenclature is avoided since it can be confusing. Unlike electrostatics the field lines in magnetism do not indicate the direction of the force on a (moving) charge.
+FIGURE FIGURE FIGURE FIGURE FIGURE 5.1 5.1 5.1 5.1 5.1 The arrangement of iron filings surrounding a bar magnet. The pattern mimics magnetic field lines. The pattern suggests that the bar magnet is a magnetic dipole.
+Reprint 2026-27 (ii) The tangent to the field line at a given point represents the direction of the net magnetic field B at that point.
+(iii) The larger the number of field lines crossing per unit area, the stronger is the magnitude of the magnetic field B.
+In Fig. 5.2(a), B is larger around region ii than in region i .
+(iv) The magnetic field lines do not intersect, for if they did, the direction of the magnetic field would not be unique at the point of intersection.
+One can plot the magnetic field lines in a variety of ways. One way is to place a small magnetic compass needle at various positions and note its orientation. This gives us an idea of the magnetic field direction at various points in space.
+5.2.2 Bar magnet as an equivalent solenoid
+In the previous chapter, we have explained how a current loop acts as a magnetic dipole (Section 4.9). We mentioned Ampere’s hypothesis that all magnetic phenomena can be explained in terms of circulating currents.
+FIGURE 5.3 Calculation of (a) The axial field of a finite solenoid in order to demonstrate its similarity to that of a bar magnet. (b) A magnetic needle in a uniform magnetic field B. The arrangement may be used to determine either B or the magnetic moment m of the needle.
+FIGURE 5.2 The field lines of (a) a bar magnet, (b) a current-carrying finite solenoid and (c) electric dipole. At large distances, the field lines are very similar. The curves labelled i and ii are closed Gaussian surfaces.
+Reprint 2026-27
+Magnetism and
+The resemblance of magnetic field lines for a bar magnet and a solenoid suggest that a bar magnet may be thought of as a large number of circulating currents in analogy with a solenoid. Cutting a bar magnet in half is like cutting a solenoid. We get two smaller solenoids with weaker magnetic properties. The field lines remain continuous, emerging from one face of the solenoid and entering into the other face. One can test this analogy by moving a small compass needle in the neighbourhood of a bar magnet and a current-carrying finite solenoid and noting that the deflections of the needle are similar in both cases.
+To make this analogy more firm we may calculate the axial field of a finite solenoid depicted in Fig. 5.3 (a). We can demonstrate that at large distances this axial field resembles that of a bar magnet.
+The magnitude of the field at point P due to the solenoid is
+This is also the far axial magnetic field of a bar magnet which one may obtain experimentally. Thus, a bar magnet and a solenoid produce similar magnetic fields. The magnetic moment of a bar magnet is thus equal to the magnetic moment of an equivalent solenoid that produces the same magnetic field.
+5.2.3 The dipole in a uniform magnetic field
+Let’s place a small compass needle of known magnetic moment m allowing it to oscillate in the magnetic field. This arrangement is shown in
+Fig. 5.3(b).
+The torque on the needle is [see Eq. (4.23)],
+τττττ = m × B (5.2)
+In magnitude
+τ = mB sin
+τττττ is restoring torque and
+θ is the angle between m and B.
+An expression for magnetic potential energy can be obtained on lines similar to electrostatic potential energy.
+The magnetic potential energy Um is given by
+U d m = ∫
+τ θ θ ( )
+= = − ∫mB d mB sin cos
+= –m.B (5.3)
+We have emphasised in Chapter 2 that the zero of potential energy can be fixed at one’s convenience. Taking the constant of integration to be zero means fixing the zero of potential energy at
+θ = 90°, i.e., when the needle is perpendicular to the field. Equation (5.3) shows that potential energy is minimum (= –mB) at
+θ = 0° (most stable position) and maximum (= +mB) at
+θ = 180° (most unstable position).
+Example 5.1 (a) What happens if a bar magnet is cut into two pieces: (i) transverse to its length, (ii) along its length?
+(b) A magnetised needle in a uniform magnetic field experiences a torque but no net force. An iron nail near a bar magnet, however, experiences a force of attraction in addition to a torque. Why?
+Reprint 2026-27 (c) Must every magnetic configuration have a north pole and a south pole? What about the field due to a toroid?
+(d) Two identical looking iron bars A and B are given, one of which is definitely known to be magnetised. (We do not know which one.) How would one ascertain whether or not both are magnetised? If only one is magnetised, how does one ascertain which one? [Use nothing else but the bars A and B.]
+Solution (a) In either case, one gets two magnets, each with a north and south pole.
+(b) No force if the field is uniform. The iron nail experiences a non- uniform field due to the bar magnet. There is induced magnetic moment in the nail, therefore, it experiences both force and torque. The net force is attractive because the induced south pole (say) in the nail is closer to the north pole of magnet than induced north pole.
+(c) Not necessarily. True only if the source of the field has a net non-zero magnetic moment. This is not so for a toroid or even for a straight infinite conductor.
+(d) Try to bring different ends of the bars closer. A repulsive force in some situation establishes that both are magnetised. If it is always attractive, then one of them is not magnetised. In a bar magnet the intensity of the magnetic field is the strongest at the two ends (poles) and weakest at the central region. This fact may be used to determine whether A or B is the magnet. In this case, to see which one of the two bars is a magnet, pick up one, (say, A) and lower one of its ends; first on one of the ends of the other (say, B), and then on the middle of B. If you notice that in the middle of B, A experiences no force, then B is magnetised. If you do not notice any change from the end to the middle of B, then A is magnetised.
+5.2.4 The electrostatic analog
+Comparison of Eqs. (5.1), (5.2) and (5.3) with the corresponding equations for electric dipole (Chapter 1), suggests that magnetic field at large distances due to a bar magnet of magnetic moment m can be obtained from the equation for electric field due to an electric dipole of dipole moment p, by making the following replacements:
+→ E B , → p m , 0
+In particular, we can write down the equatorial field (BE) of a bar magnet at a distance r, for r >> l, where l is the size of the magnet:
+Likewise, the axial field (BA) of a bar magnet for r >> l is:
+Reprint 2026-27

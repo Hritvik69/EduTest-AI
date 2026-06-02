@@ -1,0 +1,132 @@
+CELL CYCLE AND CELL DIVISION 125
+10.3 Significance of Mitosis
+Mitosis or the equational division is usually restricted to the diploid cells only. However, in some lower plants and in some social insects haploid cells also divide by mitosis. It is very essential to understand the significance of this division in the life of an organism. Are you aware of some examples where you have studied about haploid and diploid insects?
+Mitosis usually results in the production of diploid daughter cells with identical genetic complement. The growth of multicellular organisms is due to mitosis. Cell growth results in disturbing the ratio between the nucleus and the cytoplasm. It therefore becomes essential for the cell to divide to restore the nucleo-cytoplasmic ratio. A very significant contribution of mitosis is cell repair. The cells of the upper layer of the epidermis, cells of the lining of the gut, and blood cells are being constantly replaced. Mitotic divisions in the meristematic tissues – the apical and the lateral cambium, result in a continuous growth of plants throughout their life.
+10.4 MEIOSIS
+The production of offspring by sexual reproduction includes the fusion of two gametes, each with a complete haploid set of chromosomes. Gametes are formed from specialised diploid cells. This specialised kind of cell division that reduces the chromosome number by half results in the production of haploid daughter cells. This kind of division is called meiosis. Meiosis ensures the production of haploid phase in the life cycle of sexually reproducing organisms whereas fertilisation restores the diploid phase. We come across meiosis during gametogenesis in plants and animals. This leads to the formation of haploid gametes. The key features of meiosis are as follows:
+lllll Meiosis involves two sequential cycles of nuclear and cell division called meiosis I and meiosis II but only a single cycle of DNA replication.
+lllll Meiosis I is initiated after the parental chromosomes have replicated to produce identical sister chromatids at the S phase.
+lllll Meiosis involves pairing of homologous chromosomes and recombination between non-sister chromatids of homologous chromosomes.
+lllll Four haploid cells are formed at the end of meiosis II.
+Meiotic events can be grouped under the following phases:
+Meiosis I Meiosis II
+Prophase I Prophase II
+Metaphase I Metaphase II
+Anaphase I Anaphase II
+Telophase I Telophase II
+Reprint 2026-27
+126 126 126 126 126 BIOLOGY
+10.4.1 10.4.1 10.4.1 10.4.1 10.4.1 Meiosis I Meiosis I Meiosis I Meiosis I Meiosis I
+Prophase I: Prophase I: Prophase I: Prophase I: Prophase I: Prophase of the first meiotic division is typically longer and more complex when compared to prophase of mitosis. It has been further subdivided into the following five phases based on chromosomal behaviour, i.e., Leptotene, Zygotene, Pachytene, Diplotene and Diakinesis.
+During leptotene leptotene leptotene leptotene leptotene stage the chromosomes become gradually visible under the light microscope. The compaction of chromosomes continues throughout leptotene. This is followed by the second stage of prophase
+I called zygotene zygotene zygotene zygotene zygotene. During this stage, chromosomes start pairing together and this process of association is called synapsis. Such paired chromosomes are called homologous chromosomes. Electron micrographs of this stage, indicate that chromosome synapsis is accompanied by the formation of complex structure called synaptonemal complex. synaptonemal complex. synaptonemal complex. synaptonemal complex. synaptonemal complex. The complex formed by a pair of synapsed homologous chromosomes is called a bivalent bivalent bivalent bivalent bivalent or a tetrad. However, these are more clearly visible at the next stage. The first two stages of prophase I are relatively short-lived compared to the next stage that is pachytene pachytene pachytene pachytene pachytene. During this stage, the four chromatids of each bivalent chromosomes becomes distinct and clearly appear as tetrads. This stage is characterised by the appearance of recombination nodules, the sites at which crossing over occurs between non-sister chromatids of the homologous chromosomes. Crossing over is the exchange of genetic material between two homologous chromosomes. Crossing over is also an enzyme-mediated process and the enzyme involved is called recombinase. Crossing over leads to recombination of genetic material on the two chromosomes. Recombination between homologous chromosomes is completed by the end of pachytene, leaving the chromosomes linked at the sites of crossing over.
+The beginning of diplotene diplotene diplotene diplotene diplotene is recognised by the dissolution of the synaptonemal complex and the tendency of the recombined homologous chromosomes of the bivalents to separate from each other except at the sites of crossovers. These X-shaped structures, are called chiasmata. chiasmata. chiasmata. chiasmata. chiasmata. In oocytes of some vertebrates, diplotene can last for months or years.
+The final stage of meiotic prophase I is diakinesis. diakinesis. diakinesis. diakinesis. diakinesis. This is marked by terminalisation of chiasmata. During this phase the chromosomes are fully condensed and the meiotic spindle is assembled to prepare the homologous chromosomes for separation. By the end of diakinesis, the nucleolus disappears and the nuclear envelope also breaks down.
+Diakinesis represents transition to metaphase.
+Metaphase I: Metaphase I: Metaphase I: Metaphase I: Metaphase I: The bivalent chromosomes align on the equatorial plate (Figure 10.3). The microtubules from the opposite poles of the spindle attach to the kinetochore of homologous chromosomes.
+Reprint 2026-27
+CELL CYCLE AND CELL DIVISION 127
+Anaphase I: The homologous chromosomes separate, while sister chromatids remain associated at their centromeres (Figure 10.3).
+Telophase I: The nuclear membrane and nucleolus reappear, cytokinesis follows and this is called as dyad of cells (Figure 10.3).
+Although in many cases the chromosomes do undergo some dispersion, they do not reach the extremely extended state of the interphase nucleus.
+The stage between the two meiotic divisions is called interkinesis and is generally short lived. There is no replication of DNA during interkinesis.
+Interkinesis is followed by prophase II, a much simpler prophase than prophase I.
+10.4.2 Meiosis II
+Prophase II: Meiosis II is initiated immediately after cytokinesis, usually before the chromosomes have fully elongated. In contrast to meiosis I, meiosis II resembles a normal mitosis. The nuclear membrane disappears by the end of prophase II (Figure 10.4). The chromosomes again become compact.
+Metaphase II: At this stage, the chromosomes align at the equator and the microtubules from opposite poles of the spindle get attached to the kinetochores (Figure 10.4) of sister chromatids.
+Anaphase II: It begins with the simultaneous splitting of the centromere of each chromosome (which was holding the sister chromatids together), allowing them to move toward opposite poles of the cell (Figure 10.4) by shortening of microtubules attached to kinetochores.
+Figure 10.3 Stages of Meiosis I
+Reprint 2026-27
+128 BIOLOGY
+Telophase II: Meiosis ends with telophase II, in which the two groups of chromosomes once again get enclosed by a nuclear envelope; cytokinesis follows resulting in the formation of tetrad of cells i.e., four haploid daughter cells (Figure 10.4).
+10.5 SIGNIFICANCE OF MEIOSIS
+Meiosis is the mechanism by which conservation of specific chromosome number of each species is achieved across generations in sexually reproducing organisms, even though the process, per se, paradoxically, results in reduction of chromosome number by half. It also increases the genetic variability in the population of organisms from one generation to the next. Variations are very important for the process of evolution.
+Figure 10.4 Stages of Meiosis II
+According to the cell theory, cells arise from preexisting cells. The process by which this occurs is called cell division. Any sexually reproducing organism starts its life cycle from a single-celled zygote. Cell division does not stop with the formation of the mature organism but continues throughout its life cycle.
+Reprint 2026-27
+CELL CYCLE AND CELL DIVISION 129
+The stages through which a cell passes from one division to the next is called the cell cycle. Cell cycle is divided into two phases called (i) Interphase – a period of preparation for cell division, and (ii) Mitosis (M phase) – the actual period of cell division. Interphase is further subdivided into G1, S and G2. G1 phase is the period when the cell grows and carries out normal metabolism.
+Most of the organelle duplication also occurs during this phase. S phase marks the phase of DNA replication and chromosome duplication. G2 phase is the period of cytoplasmic growth. Mitosis is also divided into four stages namely prophase, metaphase, anaphase and telophase. Chromosome condensation occurs during prophase. Simultaneously, the centrioles move to the opposite poles. The nuclear envelope and the nucleolus disappear and the spindle fibres start appearing. Metaphase is marked by the alignment of chromosomes at the equatorial plate. During anaphase the centromeres divide and the chromatids start moving towards the two opposite poles. Once the chromatids reach the two poles, the chromosomal elongation starts, nucleolus and the nuclear membrane reappear. This stage is called the telophase. Nuclear division is then followed by the cytoplasmic division and is called cytokinesis.
+Mitosis thus, is the equational division in which the chromosome number of the parent is conserved in the daughter cell.
+In contrast to mitosis, meiosis occurs in the diploid cells, which are destined to form gametes. It is called the reduction division since it reduces the chromosome number by half while making the gametes. In sexual reproduction when the two gametes fuse the chromosome number is restored to the value in the parent.
+Meiosis is divided into two phases – meiosis I and meiosis II. In the first meiotic division the homologous chromosomes pair to form bivalents, and undergo crossing over. Meiosis I has a long prophase, which is divided further into five phases.
+These are leptotene, zygotene, pachytene, diplotene and diakinesis. During metaphase I the bivalents arrange on the equatorial plate. This is followed by anaphase I in which homologous chromosomes move to the opposite poles with both their chromatids. Each pole receives half the chromosome number of the parent cell. In telophase I, the nuclear membrane and nucleolus reappear. Meiosis
+II is similar to mitosis. During anaphase II the sister chromatids separate. Thus at the end of meiosis four haploid cells are formed.
+EXERCISES
+1. What is the average cell cycle span for a mammalian cell?
+2. Distinguish cytokinesis from karyokinesis.
+3. Describe the events taking place during interphase.
+4. What is Go (quiescent phase) of cell cycle?
+Reprint 2026-27
+130 BIOLOGY
+5. Why is mitosis called equational division?
+6. Name the stage of cell cycle at which one of the following events occur:
+(i) Chromosomes are moved to spindle equator.
+(ii) Centromere splits and chromatids separate.
+(iii) Pairing between homologous chromosomes takes place.
+(iv) Crossing over between homologous chromosomes takes place.
+7. Describe the following:
+(a) synapsis (b) bivalent (c) chiasmata
+Draw a diagram to illustrate your answer.
+8. How does cytokinesis in plant cells differ from that in animal cells?
+9. Find examples where the four daughter cells from meiosis are equal in size and where they are found unequal in size.
+10. Distinguish anaphase of mitosis from anaphase I of meiosis.
+11. List the main differences between mitosis and meiosis.
+12. What is the significance of meiosis?
+13. Discuss with your teacher about (i) haploid insects and lower plants where cell-division occurs, and (ii) some haploid cells in higher plants where cell-division does not occur.
+14. Can there be mitosis without DNA replication in ‘S’ phase?
+15. Can there be DNA replication without cell division?
+16. Analyse the events during every stage of cell cycle and notice how the following two parameters change (i) number of chromosomes (N) per cell (ii) amount of DNA content (C) per cell
+Reprint 2026-27
+The description of structure and variation of living organisms over a period of time, ended up as two, apparently irreconcilable perspectives on biology. The two perspectives essentially rested on two levels of organisation of life forms and phenomena. One described at organismic and above level of organisation while the second described at cellular and molecular level of organisation. The first resulted in ecology and related disciplines. The second resulted in physiology and biochemistry.
+Description of physiological processes, in flowering plants as an example, is what is given in the chapters in this unit. The processes of photosynthesis, respiration and ultimately plant growth and development are described in molecular terms but in the context of cellular activities and even at organism level. Wherever appropriate, the relation of the physiological processes to environment is also discussed.
+PLANT PHYSIOLOGY
+Chapter 11
+Photosynthesis in Higher
+Chapter 12
+Respiration in Plants
+Chapter 13
+Plant Growth and
+Development
+Reprint 2026-27
+MELVIN CALVIN born in Minnesota in April, 1911, received his
+Ph.D. in Chemistry from the University of Minnesota. He served as Professor of Chemistry at the University of California,
+Berkeley.
+Just after world war II, when the world was under shock after the Hiroshima-Nagasaki bombings, and seeing the ill- effects of radio-activity, Calvin and co-workers put radio- activity to beneficial use. He along with J.A. Bassham studied reactions in green plants forming sugar and other substances from raw materials like carbon dioxide, water and minerals by labelling the carbon dioxide with C14. Calvin proposed that plants change light energy to chemical energy by transferring an electron in an organised array of pigment molecules and other substances. The mapping of the pathway of carbon assimilation in photosynthesis earned him Nobel Prize in 1961.
+The principles of photosynthesis as established by Calvin are, at present, being used in studies on renewable resource for energy and materials and basic studies in solar energy research. Melvin Calvin
+Reprint 2026-27
+PHOTOSYNTHESIS IN HIGHER PLANTS 133
+All animals including human beings depend on plants for their food. Have you ever wondered from where plants get their food? Green plants, in fact, have to make or rather synthesise the food they need and all other organisms depend on them for their needs. The green plants make or rather synthesise the food they need through photosynthesis and are therefore called autotrophs.
+You have already learnt that the autotrophic nutrition is found only in plants and all other organisms that depend on the green plants for food are heterotrophs. Green plants carry out ‘photosynthesis’, a physico-chemical process by which they use light energy to drive the synthesis of organic compounds. Ultimately, all living forms on earth depend on sunlight for energy. The use of energy from sunlight by plants doing photosynthesis is the basis of life on earth. Photosynthesis is important due to two reasons: it is the primary source of all food on earth. It is also responsible for the release of oxygen into the atmosphere by green plants. Have you ever thought what would happen if there were no oxygen to breath? This chapter focusses on the structure of the photosynthetic machinery and the various reactions that transform light energy into chemical energy.
+11.1 WHAT DO WE KNOW?
+Let us try to find out what we already know about photosynthesis. Some simple experiments you may have done in the earlier classes have shown that chlorophyll (green pigment of the leaf), light and CO2 are required for photosynthesis to occur.
+You may have carried out the experiment to look for starch formation in two leaves – a variegated leaf or a leaf that was partially covered with black paper, and exposed to light. On testing these leaves for the presence of starch it was clear that photosynthesis occurred only in the green parts of the leaves in the presence of light.
+PHOTOSYNTHESIS IN HIGHER PLANTS
+CHAPTER 11
+11.1 What do we
+11.2 Early
+Experiments
+11.3 Where does
+Photosynthesis take place?
+11.4 How many
+Pigments are involved in
+Photosynthesis?
+11.5 What is Light
+Reaction?
+11.6 The Electron
+Transport
+11.7 Where are the
+ATP and NADPH
+11.8 The C4 Pathway
+11.9 Photorespiration
+11.10 Factors affecting
+Photosynthesis
+Reprint 2026-27
+134 BIOLOGY
+Another experiment you may have carried out where a part of a leaf is enclosed in a test tube containing some KOH soaked cotton (which absorbs CO2), while the other half is exposed to air.
+The setup is then placed in light for some time. On testing for the presence of starch later in the two parts of the leaf, you must have found that the exposed part of the leaf tested positive for starch while the portion that was in the tube, tested negative. This showed that CO2 was required for photosynthesis. Can you explain how this conclusion could be drawn?
+11.2 EARLY EXPERIMENTS
+It is interesting to learn about those simple experiments that led to a gradual development in our understanding of photosynthesis.
+Joseph Priestley (1733-1804) in 1770 performed a series of experiments that revealed the essential role of air in the growth of green plants.
+Priestley, you may recall, discovered oxygen in
+1774. Priestley observed that a candle burning in a closed space – a bell jar, soon gets extinguished (Figure 11.1 a, b, c, d). Similarly, a mouse would soon suffocate in a closed space. He concluded that a burning candle or an animal that breathe the air, both somehow, damage the air. But when he

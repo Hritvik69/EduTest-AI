@@ -1,0 +1,92 @@
+PAIR OF LINEAR EQUATIONS IN TWO VARIABLES 25
+Let us try this approach.
+Denote the number of rides that Akhila had by x, and the number of times she played Hoopla by y. Now the situation can be represented by the two equations:
+3x + 4y = 20 (2)
+Can we find the solutions of this pair of equations? There are several ways of finding these, which we will study in this chapter.
+3.2 Graphical Method of Solution of a Pair of Linear Equations
+A pair of linear equations which has no solution, is called an inconsistent pair of linear equations. A pair of linear equations in two variables, which has a solution, is called a consistent pair of linear equations. A pair of linear equations which are equivalent has infinitely many distinct common solutions. Such a pair is called a dependent pair of linear equations in two variables. Note that a dependent pair of linear equations is always consistent.
+We can now summarise the behaviour of lines representing a pair of linear equations in two variables and the existence of solutions as follows:
+(i) the lines may intersect in a single point. In this case, the pair of equations has a unique solution (consistent pair of equations).
+(ii) the lines may be parallel. In this case, the equations have no solution (inconsistent pair of equations).
+(iii) the lines may be coincident. In this case, the equations have infinitely many solutions [dependent (consistent) pair of equations].
+Consider the following three pairs of equations.
+(i) x – 2y = 0 and 3x + 4y – 20 = 0 (The lines intersect)
+(ii) 2x + 3y – 9 = 0 and 4x + 6y – 18 = 0 (The lines coincide)
+(iii) x + 2y – 4 = 0 and 2x + 4y – 12 = 0 (The lines are parallel)
+Let us now write down, and compare, the values of 1 1 1 c a b in all the three examples. Here, a1
+, c1 and a2 , b2
+, c2 denote the coefficents of equations given in the general form in Section 3.2.
+Reprint 2026-27
+26 MATHEMATICS
+Table 3.1
+Sl Pair of lines 1 c Compare the Graphical Algebraic
+No. ratios representation interpretation
+1. x – 2y = 0 1
+≠ Intersecting Exactly one
+3x + 4y – 20 = 0 lines solution (unique)
+2. 2x + 3y – 9 = 0 2
+= = Coincident Infinitely
+4x + 6y – 18 = 0 lines many solutions
+3. x + 2y – 4 = 0 1
+= ≠ Parallel lines No solution
+2x + 4y – 12 = 0
+From the table above, you can observe that if the lines represented by the equation a1x + b1y + c1 = 0 and a2x + b2y + c2 = 0 are (i) intersecting, then 1 1 (ii) coincident, then 1 1 1 (iii) parallel, then 1 1 1
+In fact, the converse is also true for any pair of lines. You can verify them by considering some more examples by yourself.
+Let us now consider some more examples to illustrate it.
+Example 1 : Check graphically whether the pair of equations x + 3y = 6 (1)
+and 2x – 3y = 12 (2)
+is consistent. If so, solve them graphically.
+Solution : Let us draw the graphs of the Equations (1) and (2). For this, we find two solutions of each of the equations, which are given in Table 3.2
+Reprint 2026-27
+PAIR OF LINEAR EQUATIONS IN TWO VARIABLES 27
+Fig. 3.1
+Table 3.2 x 0 6 x 0 3 x − 2 0 y = 2 12 x − – 4 –2
+Plot the points A(0, 2), B(6, 0),
+P(0, – 4) and Q(3, – 2) on graph paper, and join the points to form the lines AB and PQ as shown in
+Fig. 3.1.
+We observe that there is a point
+B (6, 0) common to both the lines
+AB and PQ. So, the solution of the pair of linear equations is x = 6 and y = 0, i.e., the given pair of equations is consistent.
+Example 2 : Graphically, find whether the following pair of equations has no solution, unique solution or infinitely many solutions:
+5x – 8y + 1 = 0 (1)
+5 = 0 (2)
+Solution : Multiplying Equation (2) by 5 ,
+3 we get
+5x – 8y + 1 = 0
+But, this is the same as Equation (1). Hence the lines represented by Equations (1)
+and (2) are coincident. Therefore, Equations (1) and (2) have infinitely many solutions.
+Plot few points on the graph and verify it yourself.
+Example 3 : Champa went to a ‘Sale’ to purchase some pants and skirts. When her friends asked her how many of each she had bought, she answered, “The number of skirts is two less than twice the number of pants purchased. Also, the number of skirts is four less than four times the number of pants purchased”. Help her friends to find how many pants and skirts Champa bought.
+Reprint 2026-27
+28 MATHEMATICS
+Solution : Let us denote the number of pants by x and the number of skirts by y. Then the equations formed are :
+y = 2x – 2 (1)
+and y = 4x – 4 (2)
+Let us draw the graphs of
+Equations (1) and (2) by finding two solutions for each of the equations.
+They are given in Table 3.3.
+Table 3.3 y = 2x – 2 2 – 2 y = 4x – 4 – 4 0
+Plot the points and draw the lines passing through them to represent the equations, as shown in Fig. 3.2.
+The two lines intersect at the point (1, 0). So, x = 1, y = 0 is the required solution of the pair of linear equations, i.e., the number of pants she purchased is 1 and she did not buy any skirt.
+Verify the answer by checking whether it satisfies the conditions of the given problem.
+EXERCISE 3.1
+1. Form the pair of linear equations in the following problems, and find their solutions graphically.
+(i) 10 students of Class X took part in a Mathematics quiz. If the number of girls is 4 more than the number of boys, find the number of boys and girls who took part in the quiz.
+Fig. 3.2
+Reprint 2026-27
+PAIR OF LINEAR EQUATIONS IN TWO VARIABLES 29 (ii) 5 pencils and 7 pens together cost ` 50, whereas 7 pencils and 5 pens together cost ` 46. Find the cost of one pencil and that of one pen.
+2. On comparing the ratios 1 1 1 a b c , find out whether the lines representing the following pairs of linear equations intersect at a point, are parallel or coincident:
+(i) 5x – 4y + 8 = 0 (ii) 9x + 3y + 12 = 0
+7x + 6y – 9 = 0 18x + 6y + 24 = 0 (iii) 6x – 3y + 10 = 0
+2x – y + 9 = 0
+3. On comparing the ratios 1 1 a b and 1 c , find out whether the following pair of linear equations are consistent, or inconsistent.
+(i) 3x + 2y = 5 ; 2x – 3y = 7 (ii) 2x – 3y = 8 ; 4x – 6y = 9 (iii) 3 5 7 x y   ; 9x – 10y = 14 (iv) 5x – 3y = 11 ; – 10x + 6y = –22 (v) 4 2 8
+3 x y   ; 2x + 3y = 12
+4. Which of the following pairs of linear equations are consistent/inconsistent? If consistent, obtain the solution graphically:
+(i) x + y = 5, 2x + 2y = 10 (ii) x – y = 8, 3x – 3y = 16 (iii) 2x + y – 6 = 0, 4x – 2y – 4 = 0 (iv) 2x – 2y – 2 = 0, 4x – 4y – 5 = 0
+5. Half the perimeter of a rectangular garden, whose length is 4 m more than its width, is
+36 m. Find the dimensions of the garden.
+6. Given the linear equation 2x + 3y – 8 = 0, write another linear equation in two variables such that the geometrical representation of the pair so formed is:
+(i) intersecting lines (ii) parallel lines (iii) coincident lines
+7. Draw the graphs of the equations x – y + 1 = 0 and 3x + 2y – 12 = 0. Determine the coordinates of the vertices of the triangle formed by these lines and the x-axis, and shade the triangular region.
+Reprint 2026-27

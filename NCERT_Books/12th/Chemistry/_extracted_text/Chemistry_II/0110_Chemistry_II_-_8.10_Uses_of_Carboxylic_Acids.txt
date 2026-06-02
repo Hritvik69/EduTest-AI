@@ -1,0 +1,154 @@
+254 Chemistry
+8.10 8.10 8.10 8.10 8.10 Uses of Uses of Uses of Uses of Uses of
+Carboxylic Carboxylic Carboxylic Carboxylic Carboxylic
+Acids Acids Acids Acids Acids
+S u m m a r y S u m m a r y S u m m a r y S u m m a r y S u m m a r y
+Aldehydes, ketones and carboxylic acids are some of the important classes of organic compounds containing carbonyl group. These are highly polar molecules.
+Therefore, they boil at higher temperatures than the hydrocarbons and weakly polar compounds such as ethers of comparable molecular masses. The lower members are more soluble in water because they form hydrogen bonds with water.
+The higher members, because of large size of hydrophobic chain of carbon atoms, are insoluble in water but soluble in common organic solvents. Aldehydes are prepared by dehydrogenation or controlled oxidation of primary alcohols and controlled or selective reduction of acyl halides. Aromatic aldehydes may also be prepared by oxidation of (i) methylbenzene with chromyl chloride or CrO3 in the presence of acetic anhydride, (ii) formylation of arenes with carbon monoxide and hydrochloric acid in the presence of anhydrous aluminium chloride, and (iii) cuprous chloride or by hydrolysis of benzal chloride. Ketones are prepared by oxidation of secondary alcohols and hydration of alkynes. Ketones are also prepared by reaction of acyl chloride with dialkylcadmium. A good method for the preparation of aromatic ketones is the Friedel-Crafts acylation of aromatic hydrocarbons with acyl chlorides or anhydrides. Both aldehydes and ketones can be prepared by ozonolysis of alkenes.
+Aldehydes and ketones undergo nucleophilic addition reactions onto the carbonyl group with a number of nucleophiles such as, HCN, NaHSO3, alcohols (or diols),
+2. Ring substitution
+Aromatic carboxylic acids undergo electrophilic substitution reactions in which the carboxyl group acts as a deactivating and meta-directing group. They however, do not undergo Friedel-Crafts reaction (because the carboxyl group is deactivating and the catalyst aluminium chloride (Lewis acid) gets bonded to the carboxyl group).
+Intext Question Intext Question Intext Question Intext Question Intext Question
+8.8 Which acid of each pair shown here would you expect to be stronger?
+(i) CH3CO2H or CH2FCO2H (ii) CH2FCO2H or CH2ClCO2H (iii) CH2FCH2CH2CO2H or CH3CHFCH2CO2H
+Methanoic acid is used in rubber, textile, dyeing, leather and electroplating industries. Ethanoic acid is used as solvent and as vinegar in food industry.
+Hexanedioic acid is used in the manufacture of nylon-6, 6. Esters of benzoic acid are used in perfumery. Sodium benzoate is used as a food preservative.
+Higher fatty acids are used for the manufacture of soaps and detergents.
+Reprint 2026-27
+255 Aldehydes, Ketones and Carboxylic Acids ammonia derivatives, and Grignard reagents. The a-hydrogens in aldehydes and ketones are acidic. Therefore, aldehydes and ketones having at least one a-hydrogen, undergo Aldol condensation in the presence of a base to give a-hydroxyaldehydes (aldol) and a-hydroxyketones(ketol), respectively. Aldehydes having no a-hydrogen undergo Cannizzaro reaction in the presence of concentrated alkali. Aldehydes and ketones are reduced to alcohols with NaBH4, LiAlH4, or by catalytic hydrogenation.
+The carbonyl group of aldehydes and ketones can be reduced to a methylene group by Clemmensen reduction or Wolff-Kishner reduction. Aldehydes are easily oxidised to carboxylic acids by mild oxidising reagents such as Tollens’ reagent and
+Fehling’s reagent. These oxidation reactions are used to distinguish aldehydes from ketones. Carboxylic acids are prepared by the oxidation of primary alcohols, aldehydes and alkenes by hydrolysis of nitriles, and by treatment of Grignard reagents with carbon dioxide. Aromatic carboxylic acids are also prepared by side-chain oxidation of alkylbenzenes. Carboxylic acids are considerably more acidic than alcohols and most of simple phenols. Carboxylic acids are reduced to primary alcohols with LiAlH4, or better with diborane in ether solution and also undergo a-halogenation with Cl2 and Br2 in the presence of red phosphorus (Hell-Volhard Zelinsky reaction).
+Methanal, ethanal, propanone, benzaldehyde, formic acid, acetic acid and benzoic acid are highly useful compounds in industry.
+Exercises
+8.1 What is meant by the following terms ? Give an example of the reaction in each case.
+(i) Cyanohydrin (ii) Acetal (iii) Semicarbazone (iv) Aldol (v) Hemiacetal (vi) Oxime (vii) Ketal (vii) Imine (ix) 2,4-DNP-derivative (x) Schiff’s base
+8.2 Name the following compounds according to IUPAC system of nomenclature:
+(i) CH3CH(CH3)CH2CH2CHO (ii) CH3CH2COCH(C2H5)CH2CH2Cl (iii) CH3CH=CHCHO (iv) CH3COCH2COCH3 (v) CH3CH(CH3)CH2C(CH3)2COCH3 (vi) (CH3)3CCH2COOH (vii) OHCC6H4CHO-p
+8.3 Draw the structures of the following compounds.
+(i) 3-Methylbutanal (ii) p-Nitropropiophenone (iii) p-Methylbenzaldehyde (iv) 4-Methylpent-3-en-2-one (v) 4-Chloropentan-2-one (vi) 3-Bromo-4-phenylpentanoic acid (vii) p,p’-Dihydroxybenzophenone (viii) Hex-2-en-4-ynoic acid
+8.4 Write the IUPAC names of the following ketones and aldehydes. Wherever possible, give also common names.
+(i) CH3CO(CH2)4CH3 (ii) CH3CH2CHBrCH2CH(CH3)CHO (iii) CH3(CH2)5CHO (iv) Ph-CH=CH-CHO (vi) PhCOPh
+8.5 Draw structures of the following derivatives.
+(i) The 2,4-dinitrophenylhydrazone of benzaldehyde (ii) Cyclopropanone oxime (iii) Acetaldehydedimethylacetal (iv) The semicarbazone of cyclobutanone (v) The ethylene ketal of hexan-3-one (vi) The methyl hemiacetal of formaldehyde
+Reprint 2026-27
+256 Chemistry
+8.6 Predict the products formed when cyclohexanecarbaldehyde reacts with following reagents.
+(i) PhMgBr and then H3O+ (ii) Tollens’ reagent (iii) Semicarbazide and weak acid (iv) Excess ethanol and acid (v) Zinc amalgam and dilute hydrochloric acid
+8.7 Which of the following compounds would undergo aldol condensation, which the Cannizzaro reaction and which neither? Write the structures of the expected products of aldol condensation and Cannizzaro reaction.
+(i) Methanal (ii) 2-Methylpentanal (iii) Benzaldehyde (iv) Benzophenone (v) Cyclohexanone (vi) 1-Phenylpropanone (vii) Phenylacetaldehyde (viii) Butan-1-ol (ix) 2,2-Dimethylbutanal
+8.8 How will you convert ethanal into the following compounds?
+(i) Butane-1,3-diol (ii) But-2-enal (iii) But-2-enoic acid
+8.9 Write structural formulas and names of four possible aldol condensation products from propanal and butanal. In each case, indicate which aldehyde acts as nucleophile and which as electrophile.
+8.10 An organic compound with the molecular formula C9H10O forms 2,4-DNP derivative, reduces Tollens’ reagent and undergoes Cannizzaro reaction. On vigorous oxidation, it gives 1,2-benzenedicarboxylic acid. Identify the compound.
+8.11 An organic compound (A) (molecular formula C8H16O2) was hydrolysed with dilute sulphuric acid to give a carboxylic acid (B) and an alcohol (C). Oxidation of (C) with chromic acid produced (B). (C) on dehydration gives but-1-ene.
+Write equations for the reactions involved.
+8.12 Arrange the following compounds in increasing order of their property as indicated:
+(i) Acetaldehyde, Acetone, Di-tert-butyl ketone, Methyl tert-butyl ketone (reactivity towards HCN)
+(ii) CH3CH2CH(Br)COOH, CH3CH(Br)CH2COOH, (CH3)2CHCOOH,
+CH3CH2CH2COOH (acid strength)
+(iii) Benzoic acid, 4-Nitrobenzoic acid, 3,4-Dinitrobenzoic acid,
+4-Methoxybenzoic acid (acid strength)
+8.13 Give simple chemical tests to distinguish between the following pairs of compounds.
+(i) Propanal and Propanone (ii) Acetophenone and Benzophenone (iii) Phenol and Benzoic acid (iv) Benzoic acid and Ethyl benzoate (v) Pentan-2-one and Pentan-3-one (vi) Benzaldehyde and Acetophenone (vii) Ethanal and Propanal
+8.14 How will you prepare the following compounds from benzene? You may use any inorganic reagent and any organic reagent having not more than one carbon atom (i) Methyl benzoate (ii) m-Nitrobenzoic acid (iii) p-Nitrobenzoic acid (iv) Phenylacetic acid (v) p-Nitrobenzaldehyde.
+8.15 How will you bring about the following conversions in not more than two steps?
+(i) Propanone to Propene (ii) Benzoic acid to Benzaldehyde (iii) Ethanol to 3-Hydroxybutanal (iv) Benzene to m-Nitroacetophenone (v) Benzaldehyde to Benzophenone (vi) Bromobenzene to 1-Phenylethanol (vii) Benzaldehyde to 3-Phenylpropan-1-ol (viii) Benazaldehyde to a-Hydroxyphenylacetic acid (ix) Benzoic acid to m- Nitrobenzyl alcohol
+8.16 Describe the following:
+(i) Acetylation (ii) Cannizzaro reaction (iii) Cross aldol condensation (iv) Decarboxylation
+Reprint 2026-27
+257 Aldehydes, Ketones and Carboxylic Acids
+8.17 Complete each synthesis by giving missing starting material, reagent or products
+8.18 Give plausible explanation for each of the following:
+(i) Cyclohexanone forms cyanohydrin in good yield but 2,2,6-trimethylcyclo- hexanone does not.
+(ii) There are two –NH2 groups in semicarbazide. However, only one is involved in the formation of semicarbazones.
+(iii) During the preparation of esters from a carboxylic acid and an alcohol in the presence of an acid catalyst, the water or the ester should be removed as soon as it is formed.
+8.19 An organic compound contains 69.77% carbon, 11.63% hydrogen and rest oxygen.
+The molecular mass of the compound is 86. It does not reduce Tollens’ reagent but forms an addition compound with sodium hydrogensulphite and give positive iodoform test. On vigorous oxidation it gives ethanoic and propanoic acid. Write the possible structure of the compound.
+8.20 Although phenoxide ion has more number of resonating structures than carboxylate ion, carboxylic acid is a stronger acid than phenol. Why?
+Answers to Some Intext Questions (i) (iv)
+(ii) (v)
+(iii) (vi)
+Reprint 2026-27
+258 Chemistry (i) (iii) (ii) (iv)
+8.3 CH3CH2CH3 < CH3OCH3 < CH3CHO < CH3CH2OH
+8.4 (i) Butanone < Propanone < Propanal < Ethanal (ii) Acetophenone < p-Tolualdehyde , Benzaldehyde < p-Nitrobenzaldehyde.
+8.6 (i) 3-Phenylpropanoic acid (ii) 3-Methylbut-2-enoic acid (iii) 2-Methylcyclopentanecarboxylic acid. (iv) 2,4,6-Trinitrobenzoic acid
+Reprint 2026-27
+Amines constitute an important class of organic compounds derived by replacing one or more hydrogen atoms of ammonia molecule by alkyl/aryl group(s). In nature, they occur among proteins, vitamins, alkaloids and hormones. Synthetic examples include polymers, dye stuffs and drugs. Two biologically active compounds, namely adrenaline and ephedrine, both containing secondary amino group, are used to increase blood pressure. Novocain, a synthetic amino compound, is used as an anaesthetic in dentistry. Benadryl, a well known antihistaminic drug also contains tertiary amino group. Quaternary ammonium salts are used as surfactants. Diazonium salts are intermediates in the preparation of a variety of aromatic compounds including dyes. In this Unit, you will learn about amines and diazonium salts.
+I. AMINES
+Amines can be considered as derivatives of ammonia, obtained by replacement of one, two or all the three hydrogen atoms by alkyl and/or aryl groups.
+For example:
+Like ammonia, nitrogen atom of amines is trivalent and carries an unshared pair of electrons. Nitrogen orbitals in amines are therefore, sp3 hybridised and the geometry of amines is pyramidal. Each of the three sp3 hybridised orbitals of nitrogen overlap with orbitals of hydrogen or carbon depending upon the composition of the amines.
+The fourth orbital of nitrogen in all amines contains an unshared pair of electrons. Due to the presence of unshared pair of electrons, the angle C–N–E, (where E is
+After studying this Unit, you will be
+· describe amines as derivatives of ammonia having a pyramidal structure;
+· classify amines as primary, secondary and tertiary;
+· name amines by common names and IUPAC system;
+· describe some of the important methods of preparation of amines;
+· explain the properties of amines;
+· distinguish between primary, secondary and tertiary amines;
+· describe the method of prepara- tion of diazonium salts and their importance in the synthesis of a series of aromatic compounds including azo dyes.
+Objectives
+“The chief commercial use of amines is as intermediates in the synthesis of medicines and fibres” .
+Unit Unit Unit Unit Unit
+9A A A A A mines mines mines mines mines
+9.1 Structure of Amines 9.1 Structure of Amines 9.1 Structure of Amines 9.1 Structure of Amines 9.1 Structure of Amines
+Reprint 2026-27
+260 Chemistry
+C or H) is less than 109.5°; for instance, it is 108o in case of trimethylamine as shown in Fig. 9.1.
+Amines are classified as primary (1o), secondary (2o) and tertiary (3o)
+depending upon the number of hydrogen atoms replaced by alkyl or aryl groups in ammonia molecule. If one hydrogen atom of ammonia is replaced by R or Ar , we get RNH2 or ArNH2, a primary amine (1o).
+If two hydrogen atoms of ammonia or one hydrogen atom of R-NH2 are replaced by another alkyl/aryl(R’) group, what would you get? You get R-NHR’, secondary amine. The second alkyl/aryl group may be same or different. Replacement of another hydrogen atom by alkyl/aryl group leads to the formation of tertiary amine. Amines are said to be
+‘simple’ when all the alkyl or aryl groups are the same, and ‘mixed’ when they are different.
+In common system, an aliphatic amine is named by prefixing alkyl group to amine, i.e., alkylamine as one word (e.g., methylamine). In secondary and tertiary amines, when two or more groups are the same, the prefix di or tri is appended before the name of alkyl group. In
+IUPAC system, primary amines are named as alkanamines. The name is derived by replacement of ‘e’ of alkane by the word amine. For example, CH3NH2 is named as methanamine. In case, more than one amino group is present at different positions in the parent chain, their positions are specified by giving numbers to the carbon atoms bearing
+–NH2 groups and suitable prefix such as di, tri, etc. is attached to the amine. The letter ‘e’ of the suffix of the hydrocarbon part is retained. For example, H2N–CH2–CH2–NH2 is named as ethane-1, 2-diamine.
+To name secondary and tertiary amines, we use locant N to designate substituent attached to a nitrogen atom. For example, CH3 NHCH2CH3 is
+9.2 9.2 9.2 9.2 9.2 Classification Classification Classification Classification Classification
+Fig. 9.1 Pyramidal shape of trimethylamine
+9.3 9.3 9.3 9.3 9.3 Nomenclature Nomenclature Nomenclature Nomenclature Nomenclature
+Reprint 2026-27
+261 Amines named as N-methylethanamine and (CH3CH2)3N is named as N, N- diethylethanamine. More examples are given in Table 9.1.
+In arylamines, –NH2 group is directly attached to the benzene ring.
+C6H5NH2 is the simplest example of arylamine. In common system, it is known as aniline. It is also an accepted IUPAC name. While naming arylamines according to IUPAC system, suffix ‘e’ of arene is replaced by
+‘amine’. Thus in IUPAC system, C6H5–NH2 is named as benzenamine.
+Common and IUPAC names of some alkylamines and arylamines are given in Table 9.1.
+Amine Common name IUPAC name
+CH3-–CH2–NH2 Ethylamine Ethanamine
+CH3–CH2–CH2–NH2 n-Propylamine Propan-1-amine
+Isopropylamine Propan-2-amine
+Ethylmethylamine N-Methylethanamine
+Trimethylamine N,N-Dimethylmethanamine
+N,N-Diethylbutylamine N,N-Diethylbutan-1-amine
+Allylamine Prop-2-en-1-amine
+Hexamethylenediamine Hexane-1,6-diamine
+Aniline Aniline or Benzenamine o-Toluidine 2-Methylaniline p-Bromoaniline 4-Bromobenzenamine
+4-Bromoaniline
+N,N-Dimethylaniline N,N-Dimethylbenzenamine
+Table 9.1: Nomenclature of Some Alkylamines and Arylamines
+Reprint 2026-27
+262 Chemistry
+Amines are prepared by the following methods:
+1. Reduction of nitro compounds
+Nitro compounds are reduced to amines by passing hydrogen gas in the presence of finely divided nickel, palladium or platinum and also by reduction with metals in acidic medium. Nitroalkanes can also be similarly reduced to the corresponding alkanamines.
+Reduction with iron scrap and hydrochloric acid is preferred because
+FeCl2 formed gets hydrolysed to release hydrochloric acid during the reaction. Thus, only a small amount of hydrochloric acid is required to initiate the reaction.
+2. Ammonolysis of alkyl halides
+You have read (Unit 6, Class XII) that the carbon - halogen bond in alkyl or benzyl halides can be easily cleaved by a nucleophile. Hence, an alkyl or benzyl halide on reaction with an ethanolic solution of ammonia undergoes nucleophilic substitution reaction in which the halogen atom is replaced by an amino (–NH2) group. This process of cleavage of the C–X bond by ammonia molecule is known as ammonolysis. The reaction is carried out in a sealed tube at 373
+K. The primary amine thus obtained behaves as a nucleophile and can further react with alkyl halide to form secondary and tertiary amines, and finally quaternary ammonium salt.
+9 . 4 9 . 4 9 . 4 9 . 4 9 . 4 Preparation Preparation Preparation Preparation Preparation of Amines of Amines of Amines of Amines of Amines
+9.1 Classify the following amines as primary, secondary or tertiary:
+9.2 (i) Write structures of different isomeric amines corresponding to the molecular formula, C4H11N.
+(ii) Write IUPAC names of all the isomers.
+(iii) What type of isomerism is exhibited by different pairs of amines?
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+Reprint 2026-27
+263 Amines
+The free amine can be obtained from the ammonium salt by treatment with a strong base:
+Ammonolysis has the disadvantage of yielding a mixture of primary, secondary and tertiary amines and also a quaternary ammonium salt.
+However, primary amine is obtained as a major product by taking large excess of ammonia.
+The order of reactivity of halides with amines is RI > RBr >RCl.
+3. Reduction of nitriles
+Nitriles on reduction with lithium aluminium hydride (LiAlH4) or catalytic hydrogenation produce primary amines. This reaction is used for ascent of amine series, i.e., for preparation of amines containing one carbon atom more than the starting amine.
+4. Reduction of amide

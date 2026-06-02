@@ -1,0 +1,258 @@
+In the number line shown below, what decimal numbers do the boxes labelled ‘a’, ‘b’, and ‘c’ denote?
+Page No. 72
+Using similar reasoning find out the decimal numbers in the boxes
+Page No. 73
+Which decimal number is greater?
+(a) 1.23 or 1.32 (b) 3.81 or 13.800 (c) 1.009 or 1.090 (a) 1.32 is larger.
+(b) 13.800 is larger.
+(c) 1.090 is larger.
+Consider the decimal numbers 0.9, 1.1, 1.01 and 1.11
+Which of the above is closest to 1.09?
+Ans: 1.1 is closest to 1.09.
+Which among these is closest to 4: 3.56, 3.65, 3.099?
+Ans: 3.65 is closest to 4.
+Which among these is closest to 1: 0.8, 0.69, 1.08?
+Ans: 1.08 is closest to 1.
+In each case below use the digits 4, 1, 8, 2, and 5 exactly once and try to make a decimal number as close as possible to 25.
+Page No. 75
+Figure it Out
+1. Find the sums (a) 5.3 + 2.6 (b) 18 + 8.8 (c) 2.15 + 5.26 (d) 9.01 + 9.10 (e) 29.19 + 9.91 (f) 0.934 + 0.6 (g) 0.75 + 0.03 (h) 6.236 + 0.487 (a) 7.9 (b) 26.8 (c) 7.41 (d) 18.11 (e) 39.10 (f) 1.534 (g) 0.78 (h) 6.723
+2. Find the differences (a) 5.6 – 2.3 (b) 18 – 8.8 (c) 10.4 – 4.5 (d) 17 – 16.198 (e) 17 – 0.05 (f) 34.505 – 18.1 (g) 9.9 – 9.09 (h) 6.236 – 0.487 (a) 3.3 (b) 9.2 (c) 5.9 (d) 0.802 (e) 16.95 (f) 16.405 (g) 0.81 (h) 5.749
+Continue this sequence 4.4, 4.8. 5.2, 5.6, 6.0, … and write the next 3
+Ans: 4.4, 4.8. 5.2, 5.6, 6.0, 6.4, 6.8, 7.2
+Page No. 76
+Similarly, identify the change and write the next 3 terms for each sequence given below.
+Try to do this computation mentally.
+(a) 4.4, 4.45, 4.5, … (b) 25.75, 26.25, 26.75, … (c) 10.56, 10.67, 10.78, … (d) 13.5, 16, 18.5, … (e) 8.5, 9.4, 10.3, … (f) 5, 4.95, 4.90, … (g) 12.45, 11.95, 11.45, … (h) 36.5, 33, 29.5, … (a) 4.4, 4.45, 4.5,4.55, 4.6, 4.65 → increment of + 0.05 (b) 25.75, 26.25, 26.75, 27.25, 27.75, 28.25 → add 0.5 (c) 10.56, 10.67, 10.78, 10.89, 11.0, 11.11→ Add 0.11 (d) 13.5, 16, 18.5, 21.0, 23.5, 26.0 → Add 2.5 (e) 8.5, 9.4, 10.3, 11.2, 12.1, 13.0 → Add 0.9 (f) 5, 4.95, 4.90, 4.85, 4.80, 4.75 → Subtract 0.05 (g) 12.45, 11.95, 11.45, 10.95, 10.45, 9.95 → Subtract 0.50 (h) 36.5, 33, 29.5, 26.0, 22.5, 19.0 → Subtract 3.5
+Page No. 78
+Figure it out
+1. Convert the following fractions into decimals:
+𝟏𝟎𝟎 (b) 𝟏𝟔
+𝟏𝟎𝟎𝟎 (c) 𝟏𝟐
+𝟏𝟎 (d) 𝟐𝟓𝟒
+𝟏𝟎𝟎𝟎
+100 = 0.05 (b) 16
+1000 = 0.016 (c) 12
+10 = 1.2 (d) 254
+1000 = 0.254
+Page No. 79
+2. Convert the following decimals into a sum of tenths, hundredths and thousandths:
+(a) 0.34 (b) 1.02 (c) 0.8 (d) 0.362
+100 (b) 100
+100 = 1 + 2
+10 (d) 3
+3. What decimal number does each letter represent in the number line below?
+4. Arrange the following quantities in descending order:
+(a) 11.01, 1.011, 1.101, 11.10, 1.01
+→ Descending order: 11.10, 11.01, 1.101, 1.011, 1.01.
+(b) 2.567, 2.675, 2.768, 2.499, 2.698
+→ Descending order: 2.768, 2.698, 2.675, 2.567, 2.499.
+(c) 4.678 g, 4.595 g, 4.600 g, 4.656 g, 4.666 g
+→Descending order: 4.678, 4.666, 4.656, 4.600, 4.595.
+(d) 33.13 m, 33.31 m, 33.133 m, 33.331 m, 33.313 m
+→ Descending order: 33.331, 33.313, 33.31, 33.133, 33.13.
+5. Using the digits 1, 4, 0, 8, and 6 make: (a) the decimal number closest to 30 (b) the smallest possible decimal number between
+100 and 1000.
+Ans: Using the digits 1, 4, 0, 8, and 6, we can make:
+(a) 40.168 (b) 104.68
+6. Will a decimal number with more digits be greater than a decimal number with fewer digits?
+Ans: No. It is not necessary. For example, 2.05 (2 digits after decimal) vs
+2.5 (1 digit after decimal). 2.5 >2.05
+7. Mahi purchases 0.25 kg of beans, 0.3 kg of carrots, 0.5 kg of potatoes,
+0.2 kg of capsicums, and 0.05 kg of ginger. Calculate the total weight of the items she bought.
+Ans: 1.3 kg
+8. Pinto supplies 3.79 L, 4.2 L, and 4.25 L of milk to a milk dairy in the first three days. In 6 days, he supplies 25 liters of milk. Find the total quantity of milk supplied to the dairy in the last three days.
+Ans: 12.76 L
+9. Tinku weighed 35.75 kg in January and 34.50 kg in February. Has he gained or lost weight? How much is the change?
+Ans: He has lost weight. The change in the weight = 1.25 kg
+10. Extend the pattern: 5.5, 6.4, 6.39, 7.29, 7.28, 8.18, 8.17, ____, _____
+Ans: 9.07, 9.06
+11. How many millimeters make 1 kilometer?
+Ans: 1000000 mm
+12. Indian Railways offers optional travel insurance for passengers who book e-tickets. It costs 45 paise per passenger. If 1 lakh people opt for insurance in a day, what is the total insurance fee
+Ans: The total insurance fee paid for 1 lakh passengers is ₹45,000.
+13. Which is greater?
+(a) 𝟏𝟎
+𝟏𝟎𝟎𝟎 or 𝟏 (b) One-hundredth or 90 thousandths?
+(c) One-thousandth or 90 hundredths?
+(b) 90 thousandths > One-hundredth (c) 90 hundredths > One-thousandth
+Page No. 80
+14. Write the decimal forms of the quantities mentioned (an example is given):
+(a) 87 ones, 5 tenths and 60 hundredths (b) 12 tens and 12 tenths (c) 10 tens, 10 ones, 10 tenths, and 10 hundredths (d) 25 tens, 25 ones, 25 tenths, and 25 hundredths (a) 88.10 121.2 (b) 111.1 277.75
+15. Using each digit 0 – 9 not more than once, fill the boxes below so that the sum is closest to 10.5:
+16. Write the following fractions in decimal form:
+(a) 0.5 (b) 1.5 (c) 0.25 (d) 0.75 (e) 0.2 (f) 0.8
+4.1 The Notion of Letter-Numbers
+In this chapter we shall look at a concise way of expressing mathematical relations and patterns. We shall see how this helps us in thinking about these relationships and patterns, and in explaining why they may hold
+Example 1: Shabnam is 3 years older than Aftab. When Aftab’s age
+10 years, Shabnam’s age will be 13 years. Now Aftab’s age is 18 years, what will Shabnam’s age be? _______
+Given Aftab’s age, how will you find out Shabnam’s age?
+Easy: We add 3 to Aftab’s age to get Shabnam’s age.
+Can we write this as an expression?
+Shabnam’s age is 3 years more than Aftab’s. In short, this can be written as:
+Shabnam’s age = Aftab’s age + 3.
+Such mathematical relations are generally represented in a shorthand form. In the relation above, instead of writing the phrase ‘Aftab’s Age’, the convention is to use a convenient symbol. Usually, letters or short phrases are used for this purpose.
+Let us say we use the letter a to denote Aftab’s age (we could have used any other letter), and s to denote
+Shabnam’s age. Then the expression to find Shabnam’s age will be a + 3, which can be written as s = a + 3.
+If a is 23 (Aftab’s age in years), then what is Shabnam’s age?
+Expression for
+Shabnam’s age
+Fig. 4.1
+EXPRESSIONS
+USING LETTER-
+Reprint 2026-27
+Ganita Prakash | Grade 7
+Replacing a by 23 in the expression a + 3, we get, s = 23 + 3 = 26 years.
+Letters such as a and s that are used to represent numbers are called letter-numbers. Mathematical expressions containing letter-numbers, such as the expression a + 3, are called algebraic expressions.
+Given the age of Shabnam, write an expression to find Aftab’s age.
+We know that Aftab is 3 years younger than Shabnam. So, Aftab’s age will be 3 less than Shabnam’s. This can be described as
+Aftab’s age = Shabnam’s age – 3.
+If we again use the letter a to denote Aftab’s age and the letter s to denote Shabnam’s age, then the algebraic expression would be:
+a = s – 3, meaning 3 less than s.
+Use this expression to find Aftab’s age if Shabnam’s age is 20.
+Example 2: Parthiv is making matchstick patterns. He repeatedly places Ls next to each other. Each L has two matchsticks as shown in
+Figure 4.2.
+Fig. 4.2
+How many matchsticks are needed to make 5 Ls? It will be 5 × 2.
+How many matchsticks are needed to make 7 Ls? It will be 7 × 2.
+How many matchsticks are needed to make 45 Ls? It will be 45 × 2.
+Now, what is the relation between the number of Ls and the number of sticks?
+First, let us describe the relationship or the pattern here. Every L needs 2 matchsticks. So the number of matchsticks needed will be 2 times the number of L’s. This can be written as:
+Number of matchsticks = 2 × Number of L’s
+Now, we can use any letter to denote the number of L’s. Let’s use n.
+The algebraic expression for the number of matchsticks will be:
+This expression tells us how many matchsticks are needed to make n L’s. To find the number of matchsticks, we just replace n by the number of L.
+Example 3: Ketaki prepares and supplies coconut-jaggery laddus. The price of a coconut is ₹35 and the price of 1 kg jaggery is ₹60.
+Reprint 2026-27
+Expressions Using Letter-Numbers
+How much should she pay if she buys 10 coconuts and 5 kg jaggery?
+Cost of 10 coconuts = 10 × ₹35
+Cost of 5 kg jaggery = 5 × ₹60
+Total cost = 10 × ₹35 + 5 × ₹60 = ₹350 + ₹300 = ₹650.
+How much should she pay if she buys 8 coconuts and 9 kg jaggery?
+Write an algebraic expression to find the total amount to be paid for a given number of coconuts and quantity of jaggery.
+Let us identify the relationships and then write the expressions.
+Quantity needed Relationship Expression
+Cost of coconuts Number of coconuts × 35 c × 35
+Cost of jaggery Number of kgs of jaggery × 60 j × 60
+Here, ‘c’ represents the number of coconuts and ‘j’ represents the number of kgs of jaggery. The total amount to be paid will be:
+Cost of coconuts + Cost of jaggery.
+The corresponding algebraic expression can be written as:
+c × 35 + j × 60
+Use this expression (or formula) to find the total amount to be paid for
+7 coconuts and 4 kg jaggery.
+Notice that for different values of ‘c’ and ‘j’, the value of the expression also changes.
+Writing this expression as a sum of terms we get:
++ c × 35 j × 60
+Example 4: We are familiar with calculating the perimeters of simple shapes. Write expressions for perimeters.
+The perimeter of a square is 4 times the length of its side. This can be written as the expression: 4 × q, where q stands for the sidelength.
+What is the perimeter of a square with sidelength 7 cm? Use the expression to find out.
+You must have realised how the use of letter-numbers and algebraic expressions allows us to express general mathematical relations in
+Reprint 2026-27
+Ganita Prakash | Grade 7 a concise way. Mathematical relations expressed this way are often called formulas.
+Figure it Out
+1. Write formulas for the perimeter of:
+(a) triangle with all sides equal.
+(b) a regular pentagon (as we have learnt last year, we use the word ‘regular’ to say that all sidelengths and angle measures are equal)
+(c) a regular hexagon
+2. Munirathna has a 20 m long pipe. However, he wants a longer watering pipe for his garden. He joins another pipe of some length to this one. Give the expression for the combined length of the pipe. Use the letter-number ‘k’ to denote the length in meters of the other pipe.
+3. What is the total amount Krithika has, if she has the following numbers of notes of ₹100, ₹20 and ₹5? Complete the following table:
+₹100 notes
+₹20 notes
+₹5 notes
+Expression and total
+6 × 100 + 4 × 20 + 3 × 5
+4. Venkatalakshmi owns a flour mill. It takes 10 seconds for the roller mill to start running. Once it is running, each kg of grain takes
+8 seconds to grind into powder. Which of the expressions below describes the time taken to complete grind ‘y’ kg of grain, assuming the machine is off initially?
+(a) 10 + 8 + y (b) (10 + 8) × y (c) 10 × 8 × y (d) 10 + 8 × y (e) 10 × y + 8
+5. Write algebraic expressions using letters of your choice.
+(a) 5 more than a number (b) 4 less than a number
+Reprint 2026-27
+Expressions Using Letter-Numbers (c) 2 less than 13 times a number (d) 13 less than 2 times a number
+6. Describe situations corresponding to the following algebraic expressions:
+(a) 8 × x + 3 × y (b) 15 × j – 2 × k
+7. In a calendar month, if any 2 × 3 grid full of dates is chosen as shown in the picture, write expressions for the dates in the blank cells if the bottom middle cell has date ‘w’.
+4.2 Revisiting Arithmetic Expressions
+We learnt to write expressions as sums of terms and it became easy for us to read arithmetic expressions. Many times they could have been read in multiple ways and it was confusing. We used swapping (adding two numbers in any order) and grouping (adding numbers by grouping them conveniently) to find easy ways of evaluating expressions. Swapping and grouping terms does not change the value of the expression. We also learnt to use brackets in expressions, including brackets with a negative sign outside. We learnt the distributive property (multiple of a sum is the same as sum of multiples).
+Let us revise these concepts and find the values of the following expressions:
+1. 23 – 10 × 2 2. 83 + 28 – 13 + 32
+3. 34 – 14 + 20 4. 42 + 15 – (8 – 7)
+5. 68 – (18 + 13) 6. 7 × 4 + 9 × 6
+7. 20 + 8 × (16 – 6)
+Let us evaluate the first expression, 23 – 10 × 2. First we shall write the terms of the expression. Notice that one of the terms is a number, while the other one has to be converted to a number before adding the two terms.
+23 – 10 × 2 = 23 + –10 × 2 = 23 + –20 = 3
+Reprint 2026-27
+Ganita Prakash | Grade 7
+Let us now evaluate the second one. All the terms of this expression are numbers. If we notice the terms, we find that it will be easier to evaluate if we swap and group the terms.
+83 + 28 – 13 + 32 =
+Let us now look at the fifth expression. It has brackets with a negative sign outside. This can be evaluated in two ways — by solving the bracket first (like the solution on the left side) or by removing the brackets appropriately (as on the right side).
+Now, find the values of the other arithmetic expressions.
+Algebraic expressions also take number values when the letter- numbers they contain are replaced by numbers. In Example 1, for finding Shabnam’s age when Aftab is 23 years old, we replaced the letter-number a in the expression a + 3 by 23, and it took the value 26.
+4.3 Omission of the Multiplication Symbol in
+Algebraic Expressions
+Look at this number sequence:
+4, 8, 12, 16, 20, 24, 28, ...
+How can we describe this sequence or pattern? Easy: These are the numbers appearing in the multiplication table of 4 (multiples of 4 in an increasing order).
+What is the third term of this sequence? It is 4 × 3.
+What is the 29th term of this sequence? It is 4 × 29.
+Find an algebraic expression to get the nth term of this sequence.
+Note that here ‘n’ is a letter-number that denotes a position in the sequence.
+83 28 –13 32 + + +
+70 60 130 = + =
+68 –(18 + 13) = +
+68 –31 = +
+68 –(18 + 13) = +
+50 –13 37 = + =
+68 –18 –13 = + +
+Reprint 2026-27
+Expressions Using Letter-Numbers
+As it is the sequence of multiples of 4, it can be seen that the nth term will be 4 times n:
+As a standard practice, we shorten 4 × n to 4n by skipping the multiplication sign. We write the number first, followed by the letter(s).
+Find the value of the expression 7k when k = 4. The value is 7 × 4 = 28.
+Find the value that the expression 5m + 3 takes when m = 2.
+As 5m stands for 5 × m, the value of the expression when m = 2 is
+5 × 2 + 3 = 13.
+Mind the Mistake, Mend the Mistake
+Some simplifications are shown below where the letter-numbers are replaced by numbers and the value of the expression is obtained.
+1. Observe each of them and identify if there is a mistake.
+2. If you think there is a mistake, try to explain what might have gone
+3. Then, correct it and give the value of the expression.
+4.4 Simplification of Algebraic Expressions
+Earlier we found expressions to find perimeters of different regular figures in terms of their sides. Let us now find an expression to find the perimeter of a rectangle.
+If a = – 4, then 10 – a = 6.
+If d = 6, then 3d = 36.
+If s = 7, then 3s – 2 = 15.
+If r = 8, then 2r + 1 = 29.
+If j = 5, then 2j = 10.
+If m = –6, then 3 (m + 1) = 19.
+If f = 3, g = 1 then 2f – 2g = 2.
+If t = 4, b = 3 then 2t + b = 24.
+If h = 5, n = 6 then h – (3 – n) = 4.
+Reprint 2026-27
+Ganita Prakash | Grade 7
+As in the previous cases, we will first describe how to get the perimeter when the length and the breadth of the rectangle are known:
+Find the sum of length + breadth + length + breadth.
+Let us use the letter-numbers l and b in place of length and breadth respectively. Let p denote the perimeter of the rectangle. Then we have p = l + b + l + b
+As we know, these represent numbers, and so the terms of an expression can be added in any order. Hence the above expression can be written as:
+= l + l + b + b
+As l + l = 2 × l = 2l, and b + b = 2 × b = 2b, we have p = 2l + 2b.
+Notice that the initial expression (l + b + l + b) and the final expression (2l + 2b) that we got for the perimeter look different. However, they are equal since the expression was obtained from the initial one by applying the same rules and operations we do for numbers; they are equal in the sense that they both take the same values when letter- numbers are replaced by numbers.
+For example, if we assign l = 3, b = 4, we get l + b + l + b = 3 + 4 + 3 + 4 = 14, and
+2l + 2b = 2 × 3 + 2 × 4 = 14.
+We call the expression 2l + 2b the simplified form of l + b + l + b.
+Let us see some more examples of simplification.
+Example 5: Here is a table showing the number of pencils and erasers sold in a shop. The price per pencil is c, and the price per eraser is d. Find the total money earned by the shopkeeper during these three days.
+Day 1 Day 2 Day 3 (Price ‘c’) 5 3 10 (Price ‘d’) 4 6 1
+Let us first find the money earned by the sale of pencils.
+The money earned by selling pencils on Day 1 is 5c. Similarly, the money earned by selling pencils on Day 2 is _____, and Day 3 is ______.
+The total money earned by the sale of pencils is 5c + 3c + 10c. Can we simplify this expression further and reduce the number of terms?
+Reprint 2026-27
+Expressions Using Letter-Numbers
+The expression means 5 times c is added to 3 times c is added to 10 times c. So in total, the letter-number c is added (5 + 3 + 10) times. This is what we have seen as the distributive property of numbers. Thus,
+5 × c + 3 × c + 10 × c = (5 + 3 + 10) × c (5 + 3 + 10) × c can be simplified to 18 × c = 18c.
+If c = ₹50, find the total amount earned by the scale of pencils.
+Write the expression for the total money earned by selling erasers.
+Then, simplify the expression.
+The expression for the total money earned by selling pencils and erasers during these three days is 18c + 11d.
+Can the expression 18c + 11d be simplified further?
+Ther

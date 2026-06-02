@@ -1,0 +1,26 @@
+L ists 203
+Enter marks of student 2:
+Enter marks of student 3:
+Enter marks of student 4:
+Enter marks of student 5:
+Average marks of 5 students is: 68.8
+Program 9-5 Write a user-defined function to check if a number is present in the list or not. If the number is present, return the position of the number. Print an appropriate message if the number is not present in the list.
+#Program 9-5
+#Function to check if a number is present in the list or not def linearSearch(num,list1):
+for i in range(0,len(list1)):
+if list1[i] == num: #num is present return i #return the position return None #num is not present in the list
+#end of function list1 = [] #Create an empty list print("How many numbers do you want to enter in the list: ")
+maximum = int(input())
+print("Enter a list of numbers: ")
+for i in range(0,maximum):
+n = int(input())
+list1.append(n) #append numbers to the list num = int(input("Enter the number to be searched: "))
+result = linearSearch(num,list1)
+if result is None:
+print("Number",num,"is not present in the list")
+print("Number",num,"is present at",result + 1, "position")
+How many numbers do you want to enter in the list:
+Enter a list of numbers:
+Enter the number to be searched:12
+Number 12 is present at 3 position
+Reprint 2026-27

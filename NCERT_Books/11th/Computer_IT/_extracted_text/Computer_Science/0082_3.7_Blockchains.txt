@@ -1,0 +1,109 @@
+Computer SCienCe – ClaSS xi 70
+4.5 flow of control
+The flow of control depicts the flow of events as represented in the flow chart. The events can flow in a sequence, or on branch based on a decision or even repeat some part for a finite number of times.
+4.5.1 Sequence
+If we look at the examples 4.3 and 4.4, the statements are executed one after another, i.e., in a sequence.
+Such algorithms where all the steps are executed one after the other are said to execute in sequence. However, statements in an algorithm may not always execute in a sequence. We may sometimes require the algorithm to either do some routine tasks in a repeated manner or behave differently depending on the outcomes of previous steps. In this section, we are going to learn how to write algorithms for such situations.
+4.5.2 Selection
+Consider the map of a neighbourhood as shown in
+Figure 4.6. Let us assume that the pink building with the red roof is the school; the yellow painted house at the far end of the map is a house.
+Figure 4.6: Decision making in real life
+Can you list some of the routine activities in your daily life where decision making is involved?
+Think and Reflect
+Reprint 2026-27
+IntroductIon to Problem SolvIng 71
+With reference to Figure 4.6, let us answer the following questions :
+• Is there a predefined route for walking from home to school?
+• Can we have a different route while coming back?
+As seen from the map, there can be multiple routes between home and school. We might take the shortest route in the morning. But while coming back home in the afternoon, the shortest route might have heavy traffic. Therefore, we could take another route with less traffic. Hence, the above problem involves some decision-making based on certain conditions.
+Let us look at some other examples where decision making is dependent on certain conditions. For example, (i) Checking eligibility for voting.
+Depending on their age, a person will either be allowed to vote or not allowed to vote:
+• If age is greater than or equal to 18, the person is eligible to vote
+• If age is less than 18, the person is not eligible (ii) Let us consider another example
+If a student is 8 years old and the student likes Maths put the student in Group A
+Otherwise
+Put the student in Group B
+In which group will these students go as per the above condition?
+• 8-year-old Ravi who does not like Maths: Group B
+• 8-year-old Priti who likes Maths: Group A
+• 7-year-old Anish who likes Maths: Group B
+In these examples, any one of the alternatives is selected based on the outcome of a condition. Conditionals are used to check possibilities. The program checks one or more conditions and perform operations (sequence of actions) depending on true or false value of the condition.
+These true or false values are called binary values.
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 72
+Conditionals are written in the algorithm as follows:
+If <condition> then steps to be taken when the condition is true/fulfilled
+There are situations where we also need to take action when the condition is not fulfilled (Figure 4.7). To represent that, we can write:
+If <condition> is true then steps to be taken when the condition is true/fulfilled otherwise steps to be taken when the condition is false/not fulfilled
+In programming languages, 'otherwise' is represented using Else keyword. Hence, a true/false conditional is written using if-else block in actual programs.
+Example 4.5: Let us write an algorithm to check whether a number is odd or even.
+• Input: Any number
+• Process: Check whether the number is even or not
+• Output: Message “Even” or “Odd”
+Pseudocode of the algorithm can be written as follows:
+PRINT "Enter the Number"
+INPUT number
+IF number MOD 2 == 0 THEN
+PRINT "Number is Even"
+PRINT "Number is Odd"
+The flowchart representation of the algorithm in shown in Figure 4.8.
+Figure 4.8: Flowchart to check whether a number is even or odd
+Figure 4.7: Actions depending on true or false of a condition
+Reprint 2026-27
+IntroductIon to Problem SolvIng 73
+Example 4.6: Let us write a pseudocode and draw a flowchart where multiple conditions are checked to categorise a person as either child (<13), teenager (>=13 but <20) or adult (>=20),based on age specified:
+• Input: Age
+• Process: Check Age as per the given criteria
+• Output: Print either “Child”, “Teenager”, “Adult”
+Pseudocode is as follows:
+INPUT Age
+IF Age < 13 THEN
+PRINT "Child"
+ELSE IF Age < 20 THEN
+PRINT "Teenager"
+PRINT "Adult"
+The flowchart representation of the algorithm in shown in Figure 4.9
+Example 4.7: Algorithm for a card game called “Dragons and Wizards”.
+Make two teams DRAGONS and WIZARDS
+The rules for the game are as follows:
+• If the card drawn is a diamond or a club, Team
+DRAGONS gets a point
+• If the card drawn is a heart which is a number,
+Team WIZARDS gets a point
+Figure 4.9: Flowchart to check multiple conditions
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 74
+• If the card drawn is a heart that is not a number,
+Team DRAGONS gets a point
+• For any other card, Team WIZARDS gets a point
+• The team with highest point is the winner
+Let us identify the following for a card:
+Input: shape, value
+Process: Increment in respective team scores by one based on the outcome of the card drawn, as defined in the rules.
+Output: Winning team
+Now let us write the conditionals for this game:
+IF (shape is diamond) OR (shape is club)
+Team DRAGONS gets a point
+ELSE IF (shape is heart) AND (value is
+Team WIZARDS gets a point
+ELSE IF (shape is heart) AND (value is not a
+Team DRAGONS gets a point
+Team WIZARDS gets a point
+The pseudocode for the program can be as follows:
+Note: Dpoint (for Dragon) and Wpoint (for Wizard) store points scored by the respective teams.
+INPUT shape
+INPUT value
+SET Dpoint = 0, Wpoint = 0
+IF (shape is diamond) OR (shape is club) THEN
+INCREMENT Dpoint
+ELSE IF (shape is heart) AND (value is number)THEN
+INCREMENT Wpoint
+ELSE IF (shape is heart) AND (value is not a number)THEN
+INCREMENT Dpoint
+INCREMENT Wpoint
+IF Dpoint > Wpoint THEN
+PRINT "Dragon team is the winner"
+PRINT "Wizard team is the winner"
+4.5.3 Repetition
+When giving directions to go someplace, we say something like, “walk 50 steps then turn right”. Or “Walk till the next
+Reprint 2026-27

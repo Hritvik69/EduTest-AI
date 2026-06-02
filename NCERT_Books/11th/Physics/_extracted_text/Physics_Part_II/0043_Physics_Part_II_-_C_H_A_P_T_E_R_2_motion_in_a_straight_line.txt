@@ -1,0 +1,140 @@
+MECHANICAL PROPERTIES OF FLUIDS 193
+Fig. 9.14 Schematic picture of molecules in a liquid, at the surface and balance of forces. (a) Molecule inside a liquid. Forces on a molecule due to others are shown. Direction of arrows indicates attraction of repulsion. (b) Same, for a molecule at a surface. (c) Balance of attractive (AI and repulsive (R) forces.
+Let us consider a molecule near the surface
+Fig. 9.14(b). Only lower half side of it is surrounded by liquid molecules. There is some negative potential energy due to these, but obviously it is less than that of a molecule in bulk, i.e., the one fully inside. Approximately it is half of the latter. Thus, molecules on a liquid surface have some extra energy in comparison to molecules in the interior. A liquid, thus, tends to have the least surface area which external conditions permit.
+Increasing surface area requires energy. Most surface phenomenon can be understood in terms of this fact. What is the energy required for having a molecule at the surface? As mentioned above, roughly it is half the energy required to remove it entirely from the liquid i.e., half the heat of evaporation.
+Finally, what is a surface? Since a liquid consists of molecules moving about, there cannot be a perfectly sharp surface. The density of the liquid molecules drops rapidly to zero around z = 0 as we move along the direction indicated
+Fig 9.14 (c) in a distance of the order of a few molecular sizes.
+9.6.2 Surface Energy and Surface Tension
+As we have discussed that an extra energy is associated with surface of liquids, the creation of more surface (spreading of surface) keeping other things like volume fixed requires a
+Sap and water rise up to the top of the leaves of the tree, hair of a paint brush do not cling together when dry and even when dipped in water but form a fine tip when taken out of it.
+All these and many more such experiences are related with the free surfaces of liquids. As liquids have no definite shape but have a definite volume, they acquire a free surface when poured in a container. These surfaces possess some additional energy. This phenomenon is known as surface tension and it is concerned with only liquid as gases do not have free surfaces. Let us now understand this phenomena.
+9.6.1 Surface Energy
+A liquid stays together because of attraction between molecules. Consider a molecule well inside a liquid. The intermolecular distances are such that it is attracted to all the surrounding molecules [Fig. 9.14(a)]. This attraction results in a negative potential energy for the molecule, which depends on the number and distribution of molecules around the chosen one. But the average potential energy of all the molecules is the same. This is supported by the fact that to take a collection of such molecules (the liquid)
+and to disperse them far away from each other in order to evaporate or vaporise, the heat of evaporation required is quite large. For water it is of the order of 40 kJ/mol.
+Reprint 2026-27
+194 PHYSICS horizontal liquid film ending in bar free to slide over parallel guides Fig (9.15).
+Fig. 9.15 Stretching a film. (a) A film in equilibrium;
+(b) The film stretched an extra distance.
+Suppose that we move the bar by a small distance d as shown. Since the area of the surface increases, the system now has more energy, this means that some work has been done against an internal force. Let this internal force be F, the work done by the applied force is
+F.d = Fd. From conservation of energy, this is stored as additional energy in the film. If the surface energy of the film is S per unit area, the extra area is 2dl. A film has two sides and the liquid in between, so there are two surfaces and the extra energy is
+S (2dl) = Fd (9.19)
+Or, S=Fd/2dl = F/2l (9.20)
+This quantity S is the magnitude of surface tension. It is equal to the surface energy per unit area of the liquid interface and is also equal to the force per unit length exerted by the fluid on the movable bar.
+So far we have talked about the surface of one liquid. More generally, we need to consider fluid surface in contact with other fluids or solid surfaces. The surface energy in that case depends on the materials on both sides of the surface. For example, if the molecules of the materials attract each other, surface energy is reduced while if they repel each other the surface energy is increased. Thus, more appropriately, the surface energy is the energy of the interface between two materials and depends on both of them.
+We make the following observations from (i) Surface tension is a force per unit length (or surface energy per unit area) acting in the plane of the interface between the plane of the liquid and any other substance; it also is the extra energy that the molecules at the interface have as compared to molecules in the interior.
+(ii) At any point on the interface besides the boundary, we can draw a line and imagine equal and opposite surface tension forces
+S per unit length of the line acting perpendicular to the line, in the plane of the interface. The line is in equilibrium. To be more specific, imagine a line of atoms or molecules at the surface. The atoms to the left pull the line towards them; those to the right pull it towards them! This line of atoms is in equilibrium under tension. If the line really marks the end of the interface, as in Figure 9.14 (a) and (b) there is only the force S per unit length acting inwards.
+Table 9.3 gives the surface tension of various liquids. The value of surface tension depends on temperature. Like viscosity, the surface tension of a liquid usually falls with temperature.
+Table 9.3 Surface tension of some liquids at the temperatures indicated with the heats of the vaporisation
+Liquid Temp (oC) Surface Heat of
+Tension vaporisation (N/m) (kJ/mol)
+Helium –270 0.000239 0.115
+Oxygen –183 0.0132 7.1
+Ethanol 20 0.0227 40.6
+Water 20 0.0727 44.16
+Mercury 20 0.4355 63.2
+Reprint 2026-27
+MECHANICAL PROPERTIES OF FLUIDS 195
+A fluid will stick to a solid surface if the surface energy between fluid and the solid is smaller than the sum of surface energies between solid-air, and fluid-air. Now there is attraction between the solid surface and the liquid. It can be directly measured experimentally as schematically shown in Fig.
+9.16. A flat vertical glass plate, below which a vessel of some liquid is kept, forms one arm of the balance. The plate is balanced by weights on the other side, with its horizontal edge just over water. The vessel is raised slightly till the liquid just touches the glass plate and pulls it down a little because of surface tension. Weights are added till the plate just clears water.
+Fig. 9.16 Measuring Surface Tension.
+Suppose the additional weight required is W.
+Then from Eq. 9.20 and the discussion given there, the surface tension of the liquid-air interface is
+Sla = (W/2l) = (mg/2l ) (9.21)
+where m is the extra mass and l is the length of the plate edge. The subscript (la) emphasises the fact that the liquid-air interface tension is involved.
+9.6.3 Angle of Contact
+The surface of liquid near the plane of contact, with another medium is in general curved. The angle between tangent to the liquid surface at the point of contact and solid surface inside the liquid is termed as angle of contact. It is denoted q. It is different at interfaces of different pairs of liquids and solids. The value of q determines whether a liquid will spread on the surface of a solid or it will form droplets on it. For example, water forms droplets on lotus leaf as shown in
+Fig. 9.17 (a) while spreads over a clean plastic plate as shown in Fig. 9.17(b).
+Fig. 9.17 Different shapes of water drops with interfacial tensions (a) on a lotus leaf (b)
+on a clean plastic plate.
+We consider the three interfacial tensions at all the three interfaces, liquid-air, solid-air and solid-liquid denoted by Sla, Ssa and Ssl , respectively as given in Fig. 9.17 (a) and (b). At the line of contact, the surface forces between the three media must be in equilibrium. From the Fig. 9.17(b) the following relation is easily derived.
+q + Ssl = Ssa (9.22)
+The angle of contact is an obtuse angle if
+Ssl > Sla as in the case of water-leaf interface while it is an acute angle if Ssl < Sla as in the case of water-plastic interface. When obtuse angle then molecules of liquids are attracted strongly to themselves and weakly to those of solid, it costs a lot of energy to create a liquid-solid surface, and liquid then does not wet the solid. This is what happens with water on a waxy or oily surface, and with mercury on
+Reprint 2026-27
+196 PHYSICS any surface. On the other hand, if the molecules of the liquid are strongly attracted to those of the solid, this will reduce Ssl and therefore, q may increase or q may decrease. In this q is an acute angle. This is what happens for water on glass or on plastic and for kerosene oil on virtually anything (it just spreads). Soaps, detergents and dyeing substances are wetting agents. When they are added the angle of contact becomes small so that these may penetrate well and become effective. Water proofing agents on the other hand are added to create a large angle of contact between the water and fibres.
+9.6.4 Drops and Bubbles
+One consequence of surface tension is that free liquid drops and bubbles are spherical if effects of gravity can be neglected. You must have seen this especially clearly in small drops just formed in a high-speed spray or jet, and in soap bubbles blown by most of us in childhood. Why are drops and bubbles spherical? What keeps soap bubbles stable?
+As we have been saying repeatedly, a liquid- air interface has energy, so for a given volume the surface with minimum energy is the one with the least area. The sphere has this property.
+Though it is out of the scope of this book, but you can check that a sphere is better than at least a cube in this respect! So, if gravity and other forces (e.g. air resistance) were ineffective, liquid drops would be spherical.
+Another interesting consequence of surface tension is that the pressure inside a spherical drop Fig. 9.18(a) is more than the pressure outside. Suppose a spherical drop of radius r is in equilibrium. If its radius increase by Dr. The extra surface energy is
+[4p(r + Dr) 2- 4pr2] Sla = 8pr Dr Sla (9.23)
+If the drop is in equilibrium this energy cost is balanced by the energy gain due to expansion under the pressure difference (Pi – Po)
+between the inside of the bubble and the outside.
+The work done is
+W = (Pi – Po) 4pr2Dr (9.24)
+(Pi – Po) = (2 Sla/ r) (9.25)
+In general, for a liquid-gas interface, the concave side (inside) has a higher pressure than the convex side (outside). For example, an air bubble in a liquid, would have higher pressure inside it. See Fig 9.18 (b).
+Fig. 9.18 Drop, cavity and bubble of radius r.
+A bubble Fig 9.18 (c) differs from a drop and a cavity; in this it has two interfaces. Applying the above argument we have for a bubble (Pi – Po) = (4 Sla/ r) (9.26)
+This is probably why you have to blow hard, but not too hard, to form a soap bubble. A little extra air pressure is needed inside!
+9.6.5 Capillary Rise
+One consequence of the pressure difference across a curved liquid-air interface is the well- known effect that water rises up in a narrow tube in spite of gravity. The word capilla means hair in Latin; if the tube were hair thin, the rise would be very large. To see this, consider a vertical capillary tube of circular cross section (radius a) inserted into an open vessel of water (Fig. 9.19). The contact angle between water and
+Fig. 9.19 Capillary rise, (a) Schematic picture of a narrow tube immersed water.
+(b) Enlarged picture near interface.
+Reprint 2026-27
+MECHANICAL PROPERTIES OF FLUIDS 197
+⊳ glass is acute. Thus the surface of water in the capillary is concave. This means that there is a pressure difference between the two sides of the top surface. This is given by (Pi – Po) =(2S/r) = 2S/(a sec
+= (2S/a) cos
+θ (9.27)
+Thus the pressure of the water inside the tube, just at the meniscus (air-water interface)
+is less than the atmospheric pressure. Consider the two points A and B in Fig. 9.19(a). They must be at the same pressure, namely
+ρ g = Pi = PA (9.28)
+ρρρρρ is the density of water and h is called the capillary rise [Fig. 9.19(a)]. Using
+Eq. (9.27) and (9.28) we have
+ρ g = (Pi – P0) = (2S cos
+θ )/a (9.29)
+The discussion here, and the Eqs. (9.24) and (9.25) make it clear that the capillary rise is due to surface tension. It is larger, for a smaller a.
+Typically it is of the order of a few cm for fine capillaries. For example, if a = 0.05 cm, using the value of surface tension for water (Table 9.3), we find that h = 2S/(
+3 -3 -2 -4
+2 ×(0.073 N m )
+= (10 kg m ) (9.8 m s )(5 × 10 m)
+= 2.98 × 10–2 m = 2.98 cm
+Notice that if the liquid meniscus is convex, as for mercury, i.e., if cos
+θ is negative then from
+Eq. (9.28) for example, it is clear that the liquid will be lower in the capillary !
+Example 9.10 The lower end of a capillary tube of diameter 2.00 mm is dipped 8.00 cm below the surface of water in a beaker.
+What is the pressure required in the tube in order to blow a hemispherical bubble at its end in water? The surface tension of water at temperature of the experiments is
+7.30 × 10-2 Nm-1. 1 atmospheric pressure =
+1.01 × 105 Pa, density of water = 1000 kg/m3, g = 9.80 m s-2. Also calculate the excess pressure.
+Answer The excess pressure in a bubble of gas in a liquid is given by 2S/r, where S is the surface tension of the liquid-gas interface. You should note there is only one liquid surface in this case. (For a bubble of liquid in a gas, there are two liquid surfaces, so the formula for excess pressure in that case is 4S/r.) The radius of the bubble is r. Now the pressure outside the bubble Po equals atmospheric pressure plus the pressure due to 8.00 cm of water column. That is
+Po = (1.01 × 105 Pa + 0.08 m × 1000 kg m–3
+× 9.80 m s–2)
+= 1.01784 × 105 Pa
+Therefore, the pressure inside the bubble is
+Pi = Po + 2S/r
+= 1.01784 × 105 Pa + (2 × 7.3 × 10-2 Pa m/10-3 m)
+= (1.01784 + 0.00146) × 105 Pa
+= 1.02 × 105 Pa where the radius of the bubble is taken to be equal to the radius of the capillary tube, since the bubble is hemispherical ! (The answer has been rounded off to three significant figures.)
+The excess pressure in the bubble is 146 Pa.
+1. The basic property of a fluid is that it can flow. The fluid does not have any resistance to change of its shape. Thus, the shape of a fluid is governed by the shape of its container.
+2. A liquid is incompressible and has a free surface of its own. A gas is compressible and it expands to occupy all the space available to it.
+3. If F is the normal force exerted by a fluid on an area A then the average pressure Pav is defined as the ratio of the force to area
+Reprint 2026-27
+198 PHYSICS
+4. The unit of the pressure is the pascal (Pa). It is the same as N m-2. Other common units of pressure are
+1 atm = 1.01×105 Pa
+1 bar = 105 Pa
+1 torr = 133 Pa = 0.133 kPa
+1 mm of Hg = 1 torr = 133 Pa
+5. Pascal’s law states that: Pressure in a fluid at rest is same at all points which are at the same height. A change in pressure applied to an enclosed fluid is transmitted undiminished to every point of the fluid and the walls of the containing vessel.
+6. The pressure in a fluid varies with depth h according to the expression
+P = Pa + rgh where r is the density of the fluid, assumed uniform.
+7. The volume of an incompressible fluid passing any point every second in a pipe of non uniform crossection is the same in the steady flow.
+v A = constant ( v is the velocity and A is the area of crossection)
+The equation is due to mass conservation in incompressible fluid flow.
+8. Bernoulli’s principle states that as we move along a streamline, the sum of the pressure (P), the kinetic energy per unit volume (rv2/2) and the potential energy per unit volume (rgy) remains a constant.
+P + rv2/2 + rgy = constant
+The equation is basically the conservation of energy applied to non viscous fluid motion in steady state. There is no fluid which has zero viscosity, so the above statement is true only approximately. The viscosity is like friction and converts the kinetic energy to heat energy.
+9. Though shear strain in a fluid does not require shear stress, when a shear stress is applied to a fluid, the motion is generated which causes a shear strain growing with time. The ratio of the shear stress to the time rate of shearing strain is known as coefficient of viscosity, h.
+where symbols have their usual meaning and are defined in the text.
+10. Stokes’ law states that the viscous drag force F on a sphere of radius a moving with velocity v through a fluid of viscosity is, F = 6p
+11. Surface tension is a force per unit length (or surface energy per unit area) acting in the plane of interface between the liquid and the bounding surface. It is the extra energy that the molecules at the interface have as compared to the interior.
+POINTS TO PONDER
+1. Pressure is a scalar quantity. The definition of the pressure as “force per unit area” may give one false impression that pressure is a vector. The “force” in the numerator of the definition is the component of the force normal to the area upon which it is impressed. While describing fluids as a concept, shift from particle and rigid body mechanics is required. We are concerned with properties that vary from point to point in the fluid.
+2. One should not think of pressure of a fluid as being exerted only on a solid like the walls of a container or a piece of solid matter immersed in the fluid. Pressure exists at all points in a fluid. An element of a fluid (such as the one shown in Fig. 9.4) is in equilibrium because the pressures exerted on the various faces are equal.
+Reprint 2026-27
+MECHANICAL PROPERTIES OF FLUIDS 199
+3. The expression for pressure
+P = Pa + ρgh holds true if fluid is incompressible. Practically speaking it holds for liquids, which are largely incompressible

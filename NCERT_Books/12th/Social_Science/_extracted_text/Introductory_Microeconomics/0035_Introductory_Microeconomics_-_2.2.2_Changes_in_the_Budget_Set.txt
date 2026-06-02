@@ -1,0 +1,24 @@
+25 Theory of Consumer
+Behaviour good rises. Examples of inferior goods include low quality food items like coarse cereals.
+A good can be a normal good for the consumer at some levels of income and an inferior good for her at other levels of income. At very low levels of income, a consumer’s demand for low quality cereals can increase with income. But, beyond a level, any increase in income of the consumer is likely to reduce her consumption of such food items as she switches to better quality cereals.
+2.4.4 Substitutes and Complements
+We can also study the relation between the quantity of a good that a consumer chooses and the price of a related good. The quantity of a good that the consumer chooses can increase or decrease with the rise in the price of a related good depending on whether the two goods are substitutes or complementary to each other. Goods which are consumed together are called complementary goods. Examples of goods which are complement to each other include tea and sugar, shoes and socks, pen and ink, etc. Since tea and sugar are used together, an increase in the price of sugar is likely to decrease the demand for tea and a decrease in the price of sugar is likely to increase the demand for tea. Similar is the case with other complements. In general, the demand for a good moves in the opposite direction of the price of its complementary goods.
+In contrast to complements, goods like tea and coffee are not consumed together. In fact, they are substitutes for each other. Since tea is a substitute for coffee, if the price of coffee increases, the consumers can shift to tea, and hence, the consumption of tea is likely to go up. On the other hand, if the price of coffee decreases, the consumption of tea is likely to go down. The demand for a good usually moves in the direction of the price of its substitutes.
+2.4.5 Shifts in the Demand Curve
+The demand curve was drawn under the assumption that the consumer’s income, the prices of other goods and the preferences of the consumer are given.
+What happens to the demand curve when any of these things changes?
+Given the prices of other goods and the preferences of a consumer, if the income increases, the demand for the good at each price changes, and hence, there is a shift in the demand curve. For normal goods, the demand curve shifts rightward and for inferior goods, the demand curve shifts leftward.
+Given the consumer’s income and her preferences, if the price of a related good changes, the demand for a good at each level of its price changes, and hence, there is a shift in the demand curve. If there is an increase in the price of a substitute good, the demand curve shifts rightward. On the other hand, if there is an increase in the price of a complementary good, the demand curve shifts leftward.
+The demand curve can also shift due to a change in the tastes and preferences of the consumer. If the consumer’s preferences change in favour of a good, the demand curve for such a good shifts rightward. On the other hand, the demand curve shifts leftward due to an unfavourable change in the preferences of the consumer. The demand curve for ice-creams, for example, is likely to shift rightward in the summer because of preference for ice-creams goes up in summer. Revelation of the fact that cold-drinks might be injurious to health can adversely affect preferences for cold-drinks. This is likely to result in a leftward shift in the demand curve for cold-drinks.
+Reprint 2026-27
+Introductory
+Microeconomics
+2.5 MARKET DEMAND
+In the last section, we studied the choice problem of the individual consumer and derived the demand curve of the consumer. However, in the market for a
+Shifts in the demand curve are depicted in Figure 2.16. It may be mentioned that shift in demand curve takes place when there is a change in some factor, other than the price of the commodity.
+2.4.6 Movements along the Demand Curve and Shifts in the
+Demand Curve
+As it has been noted earlier, the amount of a good that the consumer chooses depends on the price of the good, the prices of other goods, income of the consumer and her tastes and preferences. The demand function is a relation between the amount of the good and its price when other things remain unchanged. The demand curve is a graphical representation of the demand function. At higher prices, the demand is less, and at lower prices, the demand is more. Thus, any change in the price leads to movements along the demand curve. On the other hand, changes in any of the other things lead to a shift in the demand curve. Figure 2.17 illustrates a movement along the demand curve and a shift in the demand curve.
+Shifts in Demand. The demand curve in panel (a) shifts leftward and that in panel (b) shifts rightward.
+Movement along a Demand Curve and Shift of a Demand Curve. Panel (a) depicts a movement along the demand curve and panel (b) depicts a shift of the demand curve.
+Reprint 2026-27

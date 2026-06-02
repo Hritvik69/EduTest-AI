@@ -1,0 +1,110 @@
+Introduction To Remote Sensing
+STAGES IN REMOTE SENSING
+Figure 6.2 illustrates the processes used in remote sensing data acquisition. These basic processes that help in the collection of information about the properties of the objects and phenomena of the earth surface are as follows :
+(a) Source of Energy (sun/self-emission);
+(b) Transmission of energy from the source to the surface of the earth;
+(c) Interaction of energy with the earth’s surface;
+(d) Propagation of reflected/emitted energy through atmosphere;
+(e) Detection of the reflected/emitted energy by the sensor;
+(f) Conversion of energy received into photographic/digital form of (g) Extraction of the information contents from the data products; and (h) Conversion of information into Map/Tabular forms.
+Figure 6.2 Stages in Remote Sensing Data Acquisition a. Source of Energy: Sun is the most important source of energy used in remote sensing. The energy may also be artificially generated and used to collect information about the objects and phenomena such as flashguns or energy beams used in radar (radio detection and ranging).
+b. Transmission of Energy from the Source to the Surface of the Earth: The energy that emanates from a source propagates between the source and the object surface in the form of the waves of
+Practical Work in Geography energy at a speed of light (300,000 km per second). Such energy propagation is called the Electromagnetic Radiation (EMR). The energy waves vary in size and frequency. The plotting of such variations is known as the Electromagnetic Spectrum (Fig. 6.3). On the basis of the size of the waves and frequency, the energy waves are grouped into Gamma, X– rays, Ultraviolet rays, Visible rays, Infrared rays , Microwaves and Radio waves. Each one of these broad regions of spectrum is used in different applications. However, the visible, infrared and microwave regions of energy are used in remote sensing.
+c. Interaction of Energy with the Earth’s Surface: The propagating energy finally interacts with the objects of the surface of the earth. This leads to absorption, transmission, reflection or emission of energy from the objects. We all know that all objects vary in their composition, appearance forms and other properties. Hence, the objects’ responses to the energy they receive are also not uniform. Besides, one particular object also responds differently to the energy it receives in different regions of the spectrum (Fig. 6.5). For example, a fresh water body absorbs more energy in the red and infrared regions of the spectrum and appears dark/black in a satellite image whereas turbid water body reflects more in blue and green regions of spectrum and appears in light tone (Fig. 6.4).
+Figure 6.3 Electromagnetic Spectrum
+Introduction To Remote Sensing d. Propagation of Reflected/Emitted Energy through
+Atmosphere: When energy is reflected from objects of the earth’s surface, it re–enters into the atmosphere. You may be aware of the fact that atmosphere comprises of gases, water molecules and dust particles.
+The energy reflected from the objects comes in contact with the atmospheric constituents and the properties of the original energy get modified. Whereas the Carbon dioxide (CO2), the Hydrogen (H), and the water molecules absorb energy in the middle infrared region, the dust particles scatter the blue energy. Hence, the energy that is either absorbed or scattered by the atmospheric constituents never reaches to sensor placed onboard a satellite and the properties of the objects carried by such energy waves are left unrecorded.
+Figure 6.5 IRS 1 C Band 1 Green (Left) and Band 4 IR Images of
+Sambhar Lake, Rajasthan
+Figure 6.4 Spectral Signature of Soil, Vegetation and Water
+Practical Work in Geography e. Detection of Reflected/Emitted Energy by the Sensor:
+The sensors recording the energy that they receive are placed in a near– polar sun synchronous orbit at an altitude of 700 – 900 km. These satellites are known as remote sensing satellites (e.g. Indian Remote
+Sensing Series). As against these satellites, the weather monitoring and telecommunication satellites are placed in a Geostationary position (the satellite is always positioned over its orbit that synchronises with the direction of the rotation of the earth) and revolves around the earth (coinciding with the direction of the movement of the earth over its axis) at an altitude of nearly 36,000 km (e.g. INSAT series of satellites). A comparison between the remote sensing and weather monitoring satellites is given in Box (6.1). Figure 6.6 shows the orbits of Sun Synchronous and Geostationary satellites respectively.
+Remote sensing satellites are deployed with sensors which are capable of collecting the EMR reflected by the objects. Photographic camera obtains
+Box. 6.1 Comparison between Sun-Synchronous and Geostationary Satellites
+Orbital Sun Synchronous Geostationary
+Characteristics Satellites Satellites
+Altitude 700 – 900 km @ 36,000 km
+Coverage 810 N to 810 S 1/3rd of the Globe
+Orbital period @ 14 orbits per day 24 hours
+Resolution Fine Coarse (182 metre to 1 metre) (1 km x 1 km)
+Uses Earth Resources Telecommunication
+Applications and Weather monitoring
+Figure 6.6 Orbit of Sun Synchronous (Left) and Geostationary (Right) Satellites
+Introduction To Remote Sensing photographs at an instance of exposure. However, the sensors used in remote sensing satellites possess a mechanism that is different from photographic camera in collecting and recording the information. The images so acquired by space-borne sensors are in digital format as against the photographic format obtained through a camera-based system.
+f. Conversion of Energy Received into Photographic/
+Digital Form of Data: The radiations received by the sensor are electronically converted into a digital image. It comprises digital numbers that are arranged in rows and columns. These numbers may also be converted into an analogue (picture) form of data product. The sensor onboard an earth-orbiting satellite electronically transmits the collected image data to an Earth Receiving Station located in different parts of the world. In India, one such station is located at Shadnagar near Hyderabad.
+g. Extraction of Information Contents from Data
+Products: After the image data is received at the earth station, it is processed for elimination of errors caused during image data collection.
+Once the image is corrected, information extraction is carried out from digital images using digital image processing techniques and from analogue form of data products by applying visual interpretation methods.
+h. Conversion of Information into Map/Tabular Forms:
+The interpreted information is finally delineated and converted into different layers of thematic maps. Besides, quantitative measures are also taken to generate a tabular data.
+A sensor is a device that gathers electromagnetic radiations, converts it into a signal and presents it in a form suitable for obtaining information about the objects under investigation. Based upon the form of the data output, the sensors are classified into photographic (analogue) and non–photographic (digital) sensors.
+A photographic sensor (camera) records the images of the objects at an instance of exposure. On the other hand, a non–photographic sensor obtains the images of the objects in bit-by-bit form. These sensors are known as scanners. In the present chapter, we will confine ourselves to describe the non–photographic sensors that are used in satellite remote sensing.
+Practical Work in Geography
+Multispectral Scanners: In satellite remote sensing, the Multi
+Spectral Scanners (MSS) are used as sensors. These sensors are designed to obtain images of the objects while sweeping across the field of view. A scanner is usually made up of a reception system consisting of a mirror and detectors. A scanning sensor constructs the scene by recording a series of scan lines. While doing so, the motor device oscillates the scanning mirror through the angular field of view of the sensor, which determines the length of scan lines and is called swath. It is because of such reasons that the mode of collection of images by scanners is referred bit–by–bit. Each scene is composed of cells that determine the spatial resolution of an image. The oscillation of the scanning mirror across the scene directs the received energy to the detectors, where it is converted into electrical signals. These signals are further converted into numerical values called Digital Number (DN Values) for recording on a magnetic
+The Multi-Spectral Scanners are divided into the following types:
+(i) Whiskbroom Scanners (ii) Pushbroom Scanners (i) Whiskbroom Scanners : The whiskbroom scanners are made up of a rotating mirror and a single detector. The mirror is so oriented that when it completes a rotation, the detector sweeps across the field of view
+6.7 Whiskbroom Scanners 6.8 Pushbroom Scanners
+Introduction To Remote Sensing between 90° and 120° to obtain images in a large number of narrow spectral bands ranging from visible to middle infrared regions of the spectrum. The total extent of the oscillating sensor is known as the Total
+Field of View (TFOV) of the scanner. While scanning the entire field, the sensor’s optical head is always placed at a particular dimension called the Instantaneous Field of View (IFOV). Figure 6.7 depicts the scanning mechanism of whiskbroom scanners.
+(i) Pushbroom Scanners: The pushbroom scanners consist of a number of detectors which are equivalent to the number obtained by dividing the swath of the sensor by the size of the spatial resolution (Fig. 6.8). For example, the swath of High Resolution Visible Radiometer – 1 (HRVR – 1)
+of the French remote sensing satellite SPOT is 60 km and the spatial resolution is 20 metres. If we divide 60 km x 1000 metres/20 metres, we get a number of 3000 detectors that are deployed in SPOT HRV – 1 sensor.
+In pushbroom scanner, all detectors are linearly arrayed and each detector collects the energy reflected by the ground cell (pixel) dimensions of 20 metres at a nadir’s view.
+RESOLVING POWERS OF THE SATELLITES
+In satellite remote sensing, the sun-synchronous polar orbit enables the collection of images after a pre-determined periodical interval referred to as the temporal resolution or the revisit time of the satellite over the same area of the earth surface. Fig. 6.9 illustrates the two images acquired over two different periods in time for the same area enabling to study and record the changes that take place with respect to the types of vegetation in Himalayas. In another example, Fig. 6.10 (a and b) shows the images acquired before and after the tsunami in the Indian Ocean. The image acquired in June 2004 clearly shows the undisturbed topography of
+Banda Aceh in Indonesia, whereas the post tsunami image acquired immediately after tsunami reveals the damages that were caused by the tsunami.
+Practical Work in Geography
+Figure 6. 9 Images of Himalayas and Northern Indian Plain by IRS Satellite taken in
+May (Left) and November (Right) show differences in the types of vegetation.
+The red patches in May image refer to Coniferous vegetation. In November image the additional red patches refer to Deciduous plants and the light red colour is related to the crops.
+Introduction To Remote Sensing
+Figure 6.10 (a) Pre-tsunami Image acquired in June 2004
+Figure 6.10 (b) Post-tsunami image acquired in December, 2004
+Practical Work in Geography
+SENSOR RESOLUTIONS
+Remote sensors are characterised by spatial, spectral and radiometric resolutions that enable the extraction of useful information pertaining to different terrain conditions.
+(i) Spatial Resolution: You must have seen some people using spectacles while reading a book or newspaper. Have you ever thought as to why they do so. It is simply because of the fact that resolving power of their eyes to differentiate two closed spaced letters in a word is unable to identify them as two different letters. By using positive spectacles they try to improve their vision as well as the resolving power. In remote sensing, the spatial resolution of the sensors refers to the same phenomena. It is the capability of the sensor to distinguish two closed spaced object surfaces as two different object surfaces. As a rule, with an increasing resolution the identification of even smaller object surfaces become possible.
+(ii) Spectral Resolution: It refers to the sensing and recording power of the sensor in different bands of EMR (Electromagnetic radiation).
+Multispectral images are acquired by using a device that disperses the radiation received by the sensor and recording it by deploying detectors sensitive to specific spectral ranges. The principles in obtaining such images is the extension of the dispersion of light in nature resulting in the appearance of the ‘rainbow” and the use of prism in the lab (Box 6.2).
+The images obtained in different bands show objects response differently as discussed in Para 3 of the stages in remote sensing data acquisition. Fig. 6.11 illustrates images acquired in different spectral regions by IRS P - 6 (Resource sat - 1) showing strong absorption properties of fresh water in band 4 (Infrared) and mixed strong reflectance in band 2 (green) by dry surfaces (Fig. 6.11).
+(iii) Radiometric Resolution: It is the capability of the sensor to discriminate between two targets. Higher the radiometric resolution, smaller the radiance differences that can be detected between two targets.
+The spatial, spectral, and radiometric resolutions of some of the remote sensing satellites of the world are shown in Table 6.1.
+Introduction To Remote Sensing
+Table 6.1 Spatial, Spectral and Radiometric Resolution of Landsat, IRS and SPOT Sensors
+Satellite/Sensor Spatial Resolution Number of Radiometric Range (in metres) Bands (Number of Grey
+Level Variations)
+Landsat MSS (USA) 80.0 × 80.0 4 0 - 64
+IRS LISS – I (India) 72.5 × 72.5 4 0 - 127
+IRS LISS – II (India) 36.25 × 36.25 4 0 - 127
+Landsat TM (USA) 30.00 × 30.00 4 0 - 255
+IRS LISS III (India) 23.00 × 23.00 4 0 - 127
+SPOT HRV - I (France) 20.00 × 20.00 3 0 - 255
+SPOT HRV – II (France) 10.00 × 10.00 1 0 - 255
+IRS PAN (India) 5.80 × 5.80 1 0 - 127
+Dispersion of Light (The principle that is utilised in obtaining Multispectral Images)
+The overall mechanism of obtaining images in a number of bands derives strength from the principle of the dispersion of light. You must have seen the rainbow. It is formed through a natural process of dispersion of light rays through water molecules present in the atmosphere. The same phenomena may be experimented by putting a beam of light at one side of a prism.
+At the other side of the prism you may notice the dispersion of energy into seven colours that form white (Natural Dispersion of Light)
+(Artificial Dispersion of Light)
+Box : 6.2
+Practical Work in Geography
+Figure 6. 11 IRS P - 6 (Resourcesat - 1) Images of Parts of Najafgarh, Delhi,
+03 June 2005
+Introduction To Remote Sensing
+DATA PRODUCTS
+We have seen that the electromagnetic energy may be detected either photographically or electronically. The photographic process uses light sensitive film to detect and record energy variations. On the other hand, a scanning device obtains images in digital mode. It is important to distinguish between the terms – images and photographs. An image refers to pictorial representation, regardless of what regions of energy have been used to detect and record it. A photograph refers specifically to images that have been recorded on photographic film. Hence, it can be said that all photographs are images, but all images are not photographs.
+Based upon the mechanism used in detecting and recording, the remotely sensed data products may be broadly classified into two types :
+° Photographic Images
+° Digital Images
+Photographic Images: Photographs are acquired in the optical regions of electromagnetic spectrum, i.e. 0.3 – 0.9 μm. Four different types of light sensitive film emulsion bases are used to obtain photographs.
+These are black and white, colour, black and white infrared and colour infrared. However, in aerial photography black and white film is normally used. Photographs may be enlarged to any extent without loosing information contents or the contrast.
+Digital Images: A digital image consists of discrete picture elements called pixels. Each one of the pixels in an image has an intensity value and an address in two-dimensional image space. A digital number (DN)
+represents the average intensity value of a pixel. It is dependent upon the electromagnetic energy received by the sensor and the intensity levels used to describe its range.
+In a digital image, the reproduction of the details pertaining to the images of the objects is affected by the size of the pixel. A smaller size pixel is generally useful in the preservation of the scene details and digital representation. However, zooming of the digital image beyond certain extent produces loss of information and the appearance of pixels only.
+Using a digital image processing algorithms, the digital numbers representing their intensity level in an image may be displayed (Fig. 6.12).
+Practical Work in Geography
+INTERPRETATION OF SATELLITE IMAGERIES
+The data obtained from the sensors is used for information extraction related to the forms, and patterns of the objects and phenomena of the earth’s surface. We have seen that different sensors obtain photographic and digital data products. Hence, the extraction of both qualitative and quantitative properties of such features could be carried out using either visual interpretation methods or digital image processing techniques.
+The visual interpretation is a manual exercise. It involves reading of the images of objects for the purpose of their identification. On the other hand, digital images require a combination of hardware and software to extract the desired information. It would not be possible to deliberate upon the digital image proce

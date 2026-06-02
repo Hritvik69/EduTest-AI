@@ -1,0 +1,32 @@
+17 Theory of Consumer
+Behaviour conditions, the consumer can substitute bananas for mangoes at the rate 1
+The absolute value8 of the slope of the budget line measures the rate at which the consumer is able to substitute bananas for mangoes when she spends her entire budget.
+2.2.2 Changes in the Budget Set
+The set of available bundles depends on the prices of the two goods and the income of the consumer. When the price of either of the goods or the consumer’s income changes, the set of available bundles is also likely to change. Suppose the consumer’s income changes from M to M ′ but the prices of the two goods remain unchanged. With the new income, the consumer can afford to buy all bundles (x1, x2) such that p1x1 + p2x2 ≤ M′. Now the equation of the budget line is p1x1 + p2x2 = M′ (2.8)
+Equation (2.8) can also be written as
+– p M'x x
+Note that the slope of the new budget line is the same as the slope of the budget line prior to the change in the consumer’s income. However, the vertical intercept has changed after the change in income. If there is an increase in the
+8The absolute value of a number x is equal to x if x ≥ 0 and is equal to – x if x < 0. The absolute value of x is usually denoted by |x|.
+Derivation of the Slope of the
+Budget Line
+The slope of the budget line measures the amount of change in mangoes required per unit of change in bananas along the budget line. Consider any two points (x1, x2) and (x1 + ∆x1, x2 + ∆x2)
+on the budget line.a
+It must be the case that p1x1 + p2x2 = M (2.4)
+and, p1(x1 + ∆x1) + p2(x2 + ∆x2) = M (2.5)
+Subtracting (2.4) from (2.5), we obtain p1∆x1 + p2∆x2 = 0 (2.6)
+By rearranging terms in (2.6), we obtain x p (2.7)
+a∆ (delta) is a Greek letter. In mathematics, ∆ is sometimes used to denote ‘a change’.
+Thus, ∆x1 stands for a change in x1 and ∆x2 stands for a change in x2.
+Reprint 2026-27
+Introductory
+Microeconomics income, i.e. if M' > M, the vertical as well as horizontal intercepts increase, there is a parallel outward shift of the budget line. If the income increases, the consumer can buy more of the goods at the prevailing market prices. Similarly, if the income goes down, i.e. if M' < M, both intercepts decrease, and hence, there is a parallel inward shift of the budget line. If income goes down, the availability of goods goes down. Changes in the set of available bundles resulting from changes in consumer’s income when the prices of the two goods remain unchanged are shown in Figure 2.10.
+Now suppose the price of bananas change from p1 to p'1 but the price of mangoes and the consumer’s income remain unchanged. At the new price of bananas, the consumer can afford to buy all bundles (x1,x2) such that p'1x1 + p2x2 ≤ M. The equation of the budget line is p'1x1 + p2x2 = M (2.10)
+Equation (2.10) can also be written as
+= (2.11)
+Note that the vertical intercept of the new budget line is the same as the vertical intercept of the budget line prior to the change in the price of bananas.
+However, the slope of the budget line and horizontal intercept have changed after the price change. If the price of bananas increases, ie if p'1> p1, the absolute value of the slope of the budget line increases, and the budget line becomes steeper (it pivots inwards around the vertical intercept and horizontal intercept decreases). If the price of bananas decreases, i.e., p'1< p1, the absolute value of the slope of the budget line decreases and hence, the budget line becomes flatter (it pivots outwards around the vertical intercept and horizontal intercept increases). Figure 2.11 shows change in the budget set when the price of only one commodity changes while the price of the other commodity as well as income of the consumer are constant.
+A change in price of mangoes, when price of bananas and the consumer’s income remain unchanged, will bring about similar changes in the budget set of the consumer.
+Changes in the Set of Available Bundles of Goods Resulting from Changes in the
+Consumer’s Income. A decrease in income causes a parallel inward shift of the budget line as in panel (a). An increase in income causes a parallel outward shift of the budget line as in panel (b).
+M'<M M'>M
+Reprint 2026-27

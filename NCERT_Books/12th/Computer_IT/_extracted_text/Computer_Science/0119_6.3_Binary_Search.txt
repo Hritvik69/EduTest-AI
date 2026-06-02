@@ -1,0 +1,81 @@
+underStanding data 107
+85 -16.33 266.67
+90 -11.33 128.37
+100 -1.33 1.77
+110 8.67 75.17
+_ =101.33
+_) = 0.03 ∑(x-x
+_)2 = 938.00
+Let us look at the following problems and select the suitable statistical technique to be applied (Mean/
+Median/Mode/Range/Standard Deviation):
+Problem Statement Choose suitable statistical method
+The management of a company wants to know about disparity in salaries of all employees.
+Teacher wants to know about the average performance of the whole class in
+Compare height of residents of two cities
+Find the dominant value from a set of values
+Compare income of residents of two cities
+Find the popular color for car after surveying the car owners of a small city.
+It is important to understand statistical techniques so that one can decide which statistical technique to use to arrive at a decision. Different programming tools are available for efficient analysis of large volumes of data. These tools make use of statistical techniques for data analysis. One such programming tool is Python and it has libraries specially built for data processing and analysis. We will be covering some of them in the following chapters.
+• Data refer to unorganised facts that can be processed to generate meaningful result or information.
+• Data can be structured or unstructured.
+• Hard Disk, SSD, CD/DVD, Pen Drive, Memory
+Card, etc. are some of the commonly used storage devices.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 108
+1. Identify data required to be maintained to perform the following services:
+a) Declare exam results and print e-certificates b) Register participants in an exhibition and issue biometric ID cards c) To search for an image by a search engine d) To book an OPD appointment with a hospital in a specific department
+2. A school having 500 students wants to identify beneficiaries of the merit-cum means scholarship, achieving more than 75% for two consecutive years and having family income less than 5 lakh per annum.
+Briefly describe data processing steps to be taken by the to beneficial prepare the list of school.
+3. A bank ‘xyz’ wants to know about its popularity among the residents of a city ‘ABC’ on the basis of number of bank accounts each family has and the average monthly account balance of each person. Briefly describe the steps to be taken for collecting data and what results can be checked through processing of the collected data.
+exercIse
+• Data Processing cycle involves input and storage of data, its processing and generating output.
+• Summarising data using statistical techniques aids in revealing data characteristics.
+• Mean, Median, Mode, Range, and Standard
+Deviation are some of the statistical techniques used for data summarisation.
+• Mean is the average of given values.
+• Median is the mid value when data are sorted in ascending/descending order.
+• Mode is the data value that appears most number of times.
+• Range is the difference between the maximum and minimum values.
+• Standard deviation is the positive square root of the average of squared difference of each value from the mean.
+Reprint 2026-27 underStanding data 109
+4. Identify type of data being collected/generated in the following scenarios:
+a) Recording a video b) Marking attendance by teacher c) Writing tweets d) Filling an application form online
+5. Consider the temperature (in Celsius) of 7 days of a week as 34, 34, 27, 28, 27, 34, 34. Identify the appropriate statistical technique to be used to calculate the following:
+a) Find the average temperature.
+b) Find the temperature Range of that week.
+c) Find the standard deviation temperature.
+6. A school teacher wants to analyse results. Identify the appropriate statistical technique to be used along with its justification for the following cases:
+a) Teacher wants to compare performance in terms of division secured by students in Class XII A and Class
+XII B where each class strength is same.
+b) Teacher has conducted five unit tests for that class in months July to November and wants to compare the class performance in these five months.
+7. Suppose annual day of your school is to be celebrated.
+The school has decided to felicitate those parents of the students studying in classes XI and XII, who are the alumni of the same school. In this context, answer the following questions:
+a) Which statistical technique should be used to find out the number of students whose both parents are alumni of this school?
+b) How varied are the age of parents of the students of that school?
+8. For the annual day celebrations, the teacher is looking for an anchor in a class of 42 students. The teacher would make selection of an anchor on the basis of singing skill, writing skill, as well as monitoring skill.
+a) Which mode of data collection should be used?
+b) How would you represent the skill of students as
+9. Differentiate between structured and unstructured data giving one example.
+The principal of a school wants to do following analysis on the basis of food items procured and sold in the canteen:
+a) Compare the purchase and sale price of fruit juice and biscuits.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 110 b) Compare sales of fruit juice, biscuits and samosa.
+c) Variation in sale price of fruit juices of different companies for same quantity (in ml).
+Create an appropriate dataset for these items (fruit juice, biscuits, samosa) by listing their purchase price and sale price. Apply basic statistical techniques to make the comparisons.
+Reprint 2026-27
+In this Chapter
+» Introduction
+» File System
+» Database Management
+» Rational Data Model
+» Keys in a Relational
+Database
+“Inconsistency of your mind… Can damage your memory… Remove the inconsistent data… And keep the original one !!!”
+— Nisarga Jain
+8.1 IntroductIon
+After learning about importance of data in the previous chapter, we need to explore the methods to store and manage data electronically. Let us take an example of a school that maintains data about its students, along with their attendance record and guardian details.
+The class teacher marks daily attendance of the students in the attendance register. The teacher records ‘P’ for present or ‘A’ for absent against each student’s roll number on each working day.
+If class strength is 50 and total working days in a month are 26, the teacher needs to record
+50 × 26 records manually in the register every month. As the volume of data increases, manual data entry becomes tedious. Following are some of the limitations of manual record keeping in this example:
+8 Database Concepts
+Reprint 2026-27

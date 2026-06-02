@@ -1,0 +1,90 @@
+F low oF Control 141
+7. Write a program to find the sum of digits of an integer number, input by the user.
+8. Write a function that checks whether an input number is a palindrome or not.
+[Note: A number or a string is called palindrome if it appears same when written in reverse order also. For example, 12321 is a palindrome while 123421 is not a palindrome]
+9. Write a program to print the following patterns:
+* * * * *
+3 2 1 2 3
+4 3 2 1 2 3 4
+5 4 3 2 1 2 3 4 5 iii) 1 2 3 4 5
+10. Write a program to find the grade of a student when grades are allocated as given in the table below.
+Percentage of Marks Grade
+Above 90% A
+80% to 90% B
+70% to 80% C
+60% to 70% D
+Below 60% E
+Percentage of the marks obtained by the student is input to the program.
+caSe Study -BaSed QueStIonS
+Let us add more functionality to our SMIS developed in
+Chapter 5.
+6.1 Write a menu driven program that has options to
+• accept the marks of the student in five major subjects in Class X and display the same.
+• calculate the sum of the marks of all subjects.
+Divide the total marks by number of subjects (i.e. 5), calculate percentage = total marks/5 and display the percentage.
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 142
+• Find the grade of the student as per the following criteria:
+Criteria Grade percentage > 85 A percentage < 85 && percentage >= 75 B percentage < 75 && percentage >= 50 C percentage > 30 && percentage <= 50 D percentage <30 Reappear
+Let’s peer review the case studies of others based on the parameters given under “DOCUMENTATION TIPS” at the end of Chapter 5 and provide a feedback to them.
+Reprint 2026-27
+7.1 IntroductIon
+Till now we have written some programs and might have realised that as the problem gets complex, the number of lines in a program increase, which makes the program look bulky and difficult to manage. Consider the following problem statement:
+There is a company that manufactures tents as per user’s requirements. The shape of the tent is cylindrical surmounted by a conical top.
+“Once you succeed in writing the programs for [these] complicated algorithms, they usually run extremely fast.
+The computer doesn’t need to understand the algorithm, its task is only to run the programs.”
+– R. Tarjan
+Chapter 7
+Functions
+In this chapter
+» Introduction to
+Functions
+» User Defined
+Functions
+» Scope of a Variable
+» Python Standard
+Figure 7.1: Shape of a tent
+The company performs the following tasks to fix the selling price of each tent.
+1. Accept user requirements for the tent, such as a) height b) radius c) slant height of the conical part
+2. Calculate the area of the canvas used
+3. Calculate the cost of the canvas used for making the tent
+4. Calculate the net payable amount by the customer that is inclusive of the 18% tax
+The company has created a computer program for quick and accurate calculation for the payable amount as shown in program 7-1.
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 144
+Program 7-1 Program to calculate the payable amount for the tent.
+#Program 7-1
+#Program to calculate the payable amount for the tent without
+#functions print( "Enter values for the cylindrical part of the tent in meters\n")
+h = float(input("Enter height of the cylindrical part: "))
+r = float(input("Enter radius: "))
+l = float(input("Enter the slant height of the conical part in meters: "))
+csa_conical = 3.14*r*l #Area of conical part csa_cylindrical = 2*3.14*r*h #Area of cylindrical part
+# Calculate area of the canvas used for making the tent canvas_area = csa_conical + csa_cylindrical print("The area of the canvas is",canvas_area,"m^2")
+#Calculate cost of the canvas unit_price = float(input("Enter the cost of 1 m^2 canvas: "))
+total_cost= unit_price * canvas_area print("The total cost of canvas = ",total_cost)
+#Add tax to the total cost to calculate net amount payable by the
+#customer tax = 0.18 * total_cost;
+net_price = total_cost + tax print("Net amount payable = ",net_price)
+Another approach to solve the above problem is to divide the program into different blocks of code as shown in Figure 7.2.
+Figure 7.2: Calculation of the cost of the tent
+Reprint 2026-27
+F unctions 145
+The process of dividing a computer program into separate independent blocks of code or separate sub-problems with different names and specific functionalities is known as modular programming.
+In this chapter, we will learn about the benefits of this approach.
+7.2 F unctIons
+In programming, the use of function is one of the means to achieve modularity and reusability. Function can be defined as a named group of instructions that accomplish a specific task when it is invoked. Once defined, a function can be called repeatedly from different places of the program without writing all the codes of that function everytime, or it can be called from inside another function, by simply writing the name of the function and passing the required parameters, if any (Section 7.3). The programmer can define as many functions as desired while writing the code. The program
+7-1 is rewritten using user defined functions as shown in program 7-2.
+Program 7-2 Program to calculate the payable amount for the tent using user defined functions.
+#Program 7-2
+#Program to calculate the cost of tent
+#function definition def cyl(h,r):
+area_cyl = 2*3.14*r*h #Area of cylindrical part return(area_cyl)
+#function definition def con(l,r):
+area_con = 3.14*r*l #Area of conical part return(area_con)
+#function definition def post_tax_price(cost): #compute payable amount for the tent tax = 0.18 * cost;
+net_price = cost + tax return(net_price)
+print("Enter values of cylindrical part of the tent in meters:")
+h = float(input("Height: "))
+r = float(input("Radius: "))
+Reprint 2026-27

@@ -1,0 +1,8 @@
+SOME APPLICATIONS OF T RIGONOMETRY 143 tower with a uniform speed. Six seconds later, the angle of depression of the car is found to be 60°. Find the time taken by the car to reach the foot of the tower from this point.
+9.2 Summary
+In this chapter, you have studied the following points :
+1. (i) The line of sight is the line drawn from the eye of an observer to the point in the object viewed by the observer.
+(ii) The angle of elevation of an object viewed, is the angle formed by the line of sight with the horizontal when it is above the horizontal level, i.e., the case when we raise our head to look at the object.
+(iii) The angle of depression of an object viewed, is the angle formed by the line of sight with the horizontal when it is below the horizontal level, i.e., the case when we lower our head to look at the object.
+2. The height or length of an object or the distance between two distant objects can be determined with the help of trigonometric ratios.
+Reprint 2026-27

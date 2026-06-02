@@ -1,0 +1,66 @@
+In an external electric field, the positive and negative charges of a non- polar molecule are displaced in opposite directions. The displacement stops when the external force on the constituent charges of the molecule is balanced by the restoring force (due to internal fields in the molecule). The non-polar molecule thus develops an induced dipole moment.
+The dielectric is said to be polarised by the external field. We consider only the simple situation when the induced dipole moment is in the direction of the field and is proportional to the field strength.
+(Substances for which this assumption is true are called linear isotropic dielectrics.) The induced dipole moments of different molecules add up giving a net dipole moment of the dielectric in the presence of the external field.
+A dielectric with polar molecules also develops a net dipole moment in an external field, but for a different reason.
+In the absence of any external field, the different permanent dipoles are oriented randomly due to thermal agitation; so the total dipole moment is zero. When an external field is applied, the individual dipole moments tend to align with the field. When summed overall the molecules, there is then a net dipole moment in the direction of the external field, i.e., the dielectric is polarised. The extent of polarisation depends on the relative strength of two mutually opposite factors: the dipole potential energy in the external field tending to align the dipoles with the field and thermal energy tending to disrupt the alignment. There may be, in addition, the ‘induced dipole moment’ effect as for non-polar molecules, but generally the alignment effect is more important for polar molecules.
+Thus in either case, whether polar or non-polar, a dielectric develops a net dipole moment in the presence of an external field. The dipole moment per unit volume is called polarisation and is denoted by P. For linear isotropic dielectrics,
+ε χ = P E e (2.37)
+ce is a constant characteristic of the dielectric and is known as the electric susceptibility of the dielectric medium.
+It is possible to relate ce to the molecular properties of the substance, but we shall not pursue that here.
+The question is: how does the polarised dielectric modify the original external field inside it? Let us consider, for simplicity, a rectangular dielectric slab placed in a uniform external field E0 parallel to two of its faces. The field causes a uniform polarisation P of the dielectric. Thus
+FIGURE 2.22 A dielectric develops a net dipole moment in an external electric field. (a) Non-polar molecules, (b) Polar molecules.
+Reprint 2026-27
+Electrostatic Potential and Capacitance every volume element Dv of the slab has a dipole moment
+P Dv in the direction of the field. The volume element Dv is macroscopically small but contains a very large number of molecular dipoles. Anywhere inside the dielectric, the volume element Dv has no net charge (though it has net dipole moment). This is, because, the positive charge of one dipole sits close to the negative charge of the adjacent dipole.
+However, at the surfaces of the dielectric normal to the electric field, there is evidently a net charge density. As seen in Fig 2.23, the positive ends of the dipoles remain unneutralised at the right surface and the negative ends at the left surface. The unbalanced charges are the induced charges due to the external field.
+Thus, the polarised dielectric is equivalent to two charged surfaces with induced surface charge densities, say sp. Clearly, the field produced by these surface charges opposes the external field. The total field in the dielectric is, thereby, reduced from the case when no dielectric is present. We should note that the surface charge density sp arises from bound (not free charges) in the dielectric.
+2.11 CAPACITORS AND CAPACITANCE
+A capacitor is a system of two conductors separated by an insulator (Fig. 2.24). The conductors have charges, say Q1 and Q2, and potentials
+V1 and V2. Usually, in practice, the two conductors have charges Q and – Q, with potential difference V = V1 – V2 between them. We shall consider only this kind of charge configuration of the capacitor. (Even a single conductor can be used as a capacitor by assuming the other at infinity.) The conductors may be so charged by connecting them to the two terminals of a battery. Q is called the charge of the capacitor, though this, in fact, is the charge on one of the conductors – the total charge of the capacitor is zero.
+The electric field in the region between the conductors is proportional to the charge Q. That is, if the charge on the capacitor is, say doubled, the electric field will also be doubled at every point.
+(This follows from the direct proportionality between field and charge implied by Coulomb’s law and the superposition principle.) Now, potential difference V is the work done per unit positive charge in taking a small test charge from the conductor 2 to 1 against the field.
+Consequently, V is also proportional to Q, and the ratio Q/V is a constant:
+= (2.38)
+The constant C is called the capacitance of the capacitor. C is independent of Q or V, as stated above. The capacitance C depends only on the
+FIGURE 2.23 A uniformly polarised dielectric amounts to induced surface charge density, but no volume charge density.
+FIGURE 2.24 A system of two conductors separated by an insulator forms a capacitor.
+Reprint 2026-27 geometrical configuration (shape, size, separation) of the system of two conductors. [As we shall see later, it also depends on the nature of the insulator (dielectric) separating the two conductors.] The SI unit of capacitance is 1 farad (=1 coulomb volt-1) or 1 F = 1 C V–1. A capacitor with fixed capacitance is symbolically shown as ---||---, while the one with variable capacitance is shown as .
+Equation (2.38) shows that for large C, V is small for a given Q. This means a capacitor with large capacitance can hold large amount of charge
+Q at a relatively small V. This is of practical importance. High potential difference implies strong electric field around the conductors. A strong electric field can ionise the surrounding air and accelerate the charges so produced to the oppositely charged plates, thereby neutralising the charge on the capacitor plates, at least partly. In other words, the charge of the capacitor leaks away due to the reduction in insulating power of the intervening medium.
+The maximum electric field that a dielectric medium can withstand without break-down (of its insulating property) is called its dielectric strength; for air it is about 3 × 106 Vm–1. For a separation between conductors of the order of 1 cm or so, this field corresponds to a potential difference of 3 × 104 V between the conductors. Thus, for a capacitor to store a large amount of charge without leaking, its capacitance should be high enough so that the potential difference and hence the electric field do not exceed the break-down limits. Put differently, there is a limit to the amount of charge that can be stored on a given capacitor without significant leaking. In practice, a farad is a very big unit; the most common units are its sub-multiples 1 mF = 10–6 F, 1 nF = 10–9 F, 1 pF = 10–12 F, etc. Besides its use in storing charge, a capacitor is a key element of most ac circuits with important functions, as described in Chapter 7.
+2.12 THE PARALLEL PLATE CAPACITOR
+A parallel plate capacitor consists of two large plane parallel conducting plates separated by a small distance (Fig. 2.25). We first take the intervening medium between the plates to be vacuum. The effect of a dielectric medium between the plates is discussed in the next section. Let A be the area of each plate and d the separation between them. The two plates have charges Q and –Q. Since d is much smaller than the linear dimension of the plates (d2 << A), we can use the result on electric field by an infinite plane sheet of uniform surface charge density (Section 1.15). Plate 1 has surface charge density s = Q/A and plate 2 has a surface charge density – s. Using Eq. (1.33), the electric field in different regions is:
+Outer region I (region above the plate 1),
+= − = (2.39)
+FIGURE 2.25 The parallel plate capacitor.
+Reprint 2026-27
+Electrostatic Potential and Capacitance
+Outer region II (region below the plate 2),
+= − = (2.40)
+In the inner region between the plates 1 and 2, the electric fields due to the two charged plates add up, giving
+0 0 0 0 2 2
+= + = = (2.41)
+The direction of electric field is from the positive to the negative plate.
+Thus, the electric field is localised between the two plates and is uniform throughout. For plates with finite area, this will not be true near the outer boundaries of the plates. The field lines bend outward at the edges — an effect called ‘fringing of the field’. By the same token, not be strictly uniform on the entire plate. [E and s are related by Eq.
+(2.35).] However, for d2 << A, these effects can be ignored in the regions sufficiently far from the edges, and the field there is given by Eq. (2.41).
+Now for uniform electric field, potential difference is simply the electric field times the distance between the plates, that is,
+= = (2.42)
+The capacitance C of the parallel plate capacitor is then
+= (2.43)
+which, as expected, depends only on the geometry of the system. For typical values like A = 1 m2, d = 1 mm, we get
+12 2 –1 –2 2
+8.85 10 C N m 1m 8.85 10 F
+= = × (2.44)
+(You can check that if 1F= 1C V–1 = 1C (NC–1m)–1 = 1 C2 N–1m–1.)
+This shows that 1F is too big a unit in practice, as remarked earlier.
+Another way of seeing the ‘bigness’ of 1F is to calculate the area of the plates needed to have C = 1F for a separation of, say 1 cm:
+12 2 –1 –2
+1F 10 m 10 m
+8.85 10 C N m
+× (2.45)
+which is a plate about 30 km in length and breadth!
+2.13 EFFECT OF DIELECTRIC ON CAPACITANCE
+With the understanding of the behaviour of dielectrics in an external field developed in Section 2.10, let us see how the capacitance of a parallel plate capacitor is modified when a dielectric is present. As before, we have two large plates, each of area A, separated by a distance d. The charge on the plates is ±Q, corresponding to the charge density ± s = Q/A). When there is vacuum between the plates,
+Factors affecting capacitance, capacitors in action
+Interactive Java tutorial http://micro.magnet.fsu.edu/electromag/java/capacitance/
+Reprint 2026-27

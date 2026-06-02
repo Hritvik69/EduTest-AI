@@ -1,0 +1,233 @@
+Domestic Data entry operator – class X 24
+Step 4. Click on Image option, opens Insert Image browsing window to select an image. Select desired image as shown in Fig. 2.2.
+Step 5. Click Open button. The image appears at desired place as shown in Fig. 2.3.
+Fig. 2.2: Insert image browsing window
+Fig. 2.3: Image inserted in noise.odt document
+Digital Documentation (aDvanceD) using libreoffice Writer 25
+Inserting Image using Drag and Drop option
+Another option to insert images in the document is by using Drag and Drop option. The standard procedure is just drag the image from its source and drop it at desired position in the document. A general procedure to insert an image using drag and drop option, is as follows.
+Step 1. Open the document to insert an image in
+LibreOffice Writer.
+Step 2. Open a file browser window (Win+E) and select the image file to be inserted.
+Step 3. Drag the image into the document
+Step 4. Drop it, where you want it to appear in the document.
+Inserting image using Copy and Paste method
+As stated above, another way to insert an image in the document is by using copy and paste method. In this method instead of dragging the image, copy the image and then paste into the desired location of the document.
+Inserting an image using any of the above described method saves a copy of image file in the document wherever image is inserted, that means, the image gets embedded in the document.
+Practical Activity 2.2
+Insert an image from one document (source) to another document (target) using Clipboard. Source file is “typewriter.odt” having different images of typewriter, and target file is “documentation.
+odt” created in the previous chapter.
+Step 1. Open source file
+“typewriter.odt” and target file
+“documentation.
+Step 2. In the source document, select the image to be copied, as shown in Fig. 2.4. Fig. 2.4: Selected image in typewriter.odt
+Domestic Data entry operator – class X 26
+Step 3. Move the mouse pointer over the selected image and copy the image by using keyboard shortcut (Ctrl+C)
+or right-click and select Copy option from the context menu to copy the image to the clipboard.
+Step 4. Switch to the target file, “documentation.odt”.
+Step 5. Place the cursor on the location where you want to insert the image as shown in Fig. 2.5.
+Step 6. Paste the image by using the keyboard shortcut (Ctrl+V)
+or right-click and select Paste option from the context menu to paste the image as shown in Fig. 2.6.
+Fig. 2.5: Placing cursor to insert image in documentation.odt
+Fig. 2.6: documentation.odt after inserting image from typewriter.odt
+Digital Documentation (aDvanceD) using libreoffice Writer 27
+Inserting an image by linking
+If multiple copies of the same image are required to be inserted in the document, it is beneficial to save the link of image instead of inserting the image. Inserting a link, stores its reference instead of the image itself, thereby reduces the size of the document, because actual image is saved only once as a separate file along with the document.
+Whenever a document containing the link is opened, the image file gets merged, at the place(s) where reference was stored, and displayed on screen to the user. A general procedure to link the image file is as follows.
+In Insert Image dialog box, check the Link option as shown in Fig. 2.7
+Keyboard shortcut to link an image – drag and drop the image while holding the Ctrl+Shift keys.
+Fig. 2.7: Link check box in Insert image dialog window
+Assignment 1
+Explore how to insert an image from Writer’s Gallery or from any other device?
+Modifying an Image
+Sometimes we may have to modify the image inserted in the document to suit its requirement. The Image toolbar is used to resize, crop, delete and rotate the image.
+Using the Image toolbar
+The image toolbar automatically appears when an image is inserted or selected in the document. If you want to keep it always on screen, click on View > Toolbars >
+Image from the menu bar. The Image toolbar will be
+Domestic Data entry operator – class X 28 displayed as shown in Fig. 2.8. Table 2.1 describes various tools that are made available through this image toolbar.
+Table 2.1: Description of Image Toolbar
+Tool Effect on image
+Image Filter
+There are 11 types of filters available for improving an image. Details given in
+Table 2.2
+Image Mode Image can be changed to black and white, gray-scale or a watermark
+Crop Cuts off non-desirable part of the image
+Flip Horizontally Flips the image Horizontally by 180o
+Flip Vertically Flips the image Vertically by 180o
+Rotate 90o left Rotates the image by 90o
+Rotate 90o right Rotates the image by 90o
+Rotate Image can be rotated by any angle using this tool
+Transparency Makes an image transparent by using the value provided in percentage
+Using Drop Down list (as shown in
+Fig. 2.9), Red, Blue or Green colour can be modified or adjustment for brightness, contrast and gamma can be made
+To apply any of the tools from image toolbar, select the image on which tool is to be applied and then click on the tool. Clicking on the colour button will display the colour drop down list as shown in Fig. 2.9. It consists of six components in the drop down list. One can increase or decrease the percentage of these components. The first components represent the three primary colours
+Red, Green and Blue, respectively. The fourth component represent the Brightness, fifth component represent the Contrast and last sixth component represent the Gamma.
+Fig. 2.8: Image Toolbar
+Fig. 2.9: Color dropdown list
+Digital Documentation (aDvanceD) using libreoffice Writer 29
+Clicking on Image Filter opens up a window with
+11 filters, as shown in Fig. 2.10. Table 2.2 gives the brief description of various tools available in the Image
+Filter window.
+Table 2.2: Description of Image Filter
+Tool Effect on Image
+Inverts the colour values of coloured image. In case image is gray-scale then its brightness is inverted.
+Smooth Softens the contrast of image. Another dialogue box appears to adjust parameter
+Sharpen Increases the contrast of image
+Remove Noise Removes single pixels from the image
+Solarisation
+Used in Photographs to reverse the tone.
+Dark appears light and light appears dark.
+Another dialogue box appears to adjust parameter.
+Simulates the effect of time on picture. On clicking it, another dialogue box appears to adjust parameter.
+Posterise
+Makes a picture appear like painting by reducing colours in the image. Another dialogue box appears to adjust parameter, when this icon is clicked.
+Charcoal Sketch Changes image as charcoal sketch
+Relief Adjusts light source to create shadow using dialogue box to adjust parameter
+Joins group of pixels into a single area of one colour. Another dialogue box appears to adjust parameter.
+Fig. 2.10: Image Filter window
+Practical Acitivity 2.3
+Insert an image in a document and rotate the image.
+Step 1. Open a new document in LibreOffice Writer.
+Step 2. Go to Insert menu and
+Select Image >> From
+Step 3. Insert an image from library as shown in
+Fig. 2.11. Fig. 2.11: Image inserted in a new document
+Domestic Data entry operator – class X 30
+Step 4. Select image and then click on rotate tool. Observe that four dots known as handles, appeared on four corners of the image.
+Step 5. Move the mouse on any corner and observe that the
+‘rotate’ symbol is activated.
+Step 6. Click on rotate symbol on the top right corner of the image and drag it to downward direction, as shown in Fig. 2.12.
+Step 7. The image rotated is shown in the Fig. 2.13.
+Fig. 2.12: Rotating image Fig. 2.13: Image after rotation
+Practical Acitivity 2.4
+Crop an image in a new file.
+Step 1. Open a new document in LibreOffice Writer.
+Step 2. Insert an image in the document as shown in Fig. 2.14 using Insert >> Image >> From File option as demonstrated above.
+Step 3. Select the image by clicking on the image. Observe that the selected image is surrounded by eight small squares as shown in Fig. 2.14.
+Step 4. Click on crop tool from Image toolbar. Now observe that the eight small squares surrounding the image will be changed into the blue coloured handles as shown in
+Fig. 2.15. These are the handles used to crop the image.
+Fig. 2.15: Changed handles for cropping the image
+Fig. 2.14: Document after inserting
+Digital Documentation (aDvanceD) using libreoffice Writer 31
+Step 5. Click any of these edges of the image and drag the cursor towards the center of image as shown in
+Fig. 2.16. Observe that the image is being cropped up to the dotted lines. It is possible to crop the image by clicking on dragging any of the edge as per the requirement.
+Step 6. Click anywhere on the page or press Esc key to leave the crop tool and observe the cropped image as shown in Fig. 2.17.
+Fig. 2.17: Image after cropping from upper right edge
+Fig. 2.16: Cropping the image
+Resizing an Image
+Sometimes you may want to resize the image to fit an image at the desired place in a document. Resizing is the process of reducing or enlarging the size of the image. This can be done in various ways. Quick and easy way to resize an image is by dragging the image’s sizing handles. Use the following steps to resize image:
+Step 1. Click on the image inserted in the previous activity. Observe that there are eight sizing handles surrounding the image as shown in Fig. 2.14.
+Step 2. Position the pointer over one of the sizing handles. The pointer changes shape indicating the direction of resizing.
+Step 3. Click and drag to resize the image as shown in Fig. 2.18.
+Step 4. Release the mouse button when satisfied with the new size and observe the size of the image is reduced.
+Fig. 2.18: Resizing the image
+Domestic Data entry operator – class X 32
+By dragging the corner handles, one can resize both the width and the height of the image simultaneously, while the other four handles only resize one dimension at a time.
+Note that while resizing the image its size gets changed, but while cropping the image cuts it.
+Deleting an Image
+It is possible to delete the image from the document just like we delete the text. To delete the image, just select the image by clicking on the image and press the Delete key.
+Drawing Objects
+If you need to draw a flowchart or a callout box in your document, LibreOffice Writer provides the feature of drawing tools for such work. The set of drawing tools available in Writer are easy to use, and helps in creating good quality designs, diagrams and drawings. Once you create the drawings, you can directly place it in the document. These diagrams can also be copied or imported in other packages.
+Using Drawing Tools
+To display Drawing Toolbar in the Writer window, click on
+View > Toolbars > Drawing as shown in Fig. 2.19. This will display the Drawing
+Toolbar in the Writer window as shown in Fig. 2.20. The toolbar contains various basic drawing objects of different types to create any design of your choice.
+There are many default drawing objects used to create designs in document. To use them –
+Step 1. Place the cursor in the document where you want the drawing to be placed (anchored). You can change the anchor later, if required.
+Fig. 2.19: Enabling Drawing tools
+Digital Documentation (aDvanceD) using libreoffice Writer 33
+Step 2. Select the tool from the Drawing toolbar as shown in Fig. 2.20. The mouse pointer changes to a drawing-functions pointer.
+Note – One more toolbar appears on the screen, the
+Drawing Object Properties. It is shown in Fig. 2.23 and explained later.
+Step 3. Move the pointer to the place in the document where you want the image to appear and then click-and-drag to create the drawing object.
+Step 4. Release the mouse button to finish drawing.
+The selected drawing function remains active, so that you can draw another object of the same type.
+Step 5. To cancel the selected drawing function, press the Esc key or click the Select icon (the arrow)
+on the Drawing toolbar.
+Insert Line
+Curve (list)
+Circle Symbol (list)
+Star (list)
+Flowchart (list)
+Fontwork
+Right angle triangle
+Rectangle rounded
+Rectangle
+Curve Oval
+Lines & Arrows (list)
+Isosceles triangle
+Arrow (list)
+Call Out (list)
+Call outs
+Text Box
+Toggle Extrusion
+Basic shapes (list)
+Fig. 2.20: Drawing Toolbar
+Domestic Data entry operator – class X 34
+Draw a family tree with 3 family members, Mr R K Sharma (Grandfather), Mr B Sharma (Father), Mrs Sunita Sharma (Mother).
+Step 1. Open a new document in LibreOffice Writer. Enable the
+Drawing toolbar and ensure that it is displayed on the bottom of the document window as shown in
+Fig. 2.21.
+Step 2. Select Rectangle Round tool from the toolbar. Place the cursor on the location where you want to draw the family tree, and drag it to create a rectangle. In the same manner, create other two rectangles as shown in
+Fig. 2.21.
+Step 3. Enter the text in all three rectangular boxes as shown in Fig. 2.22. To enter text, select the rectangle and then type the text.
+Step 4. Select the type of line (simple line and line with arrow)
+from Line tool to draw lines showing hierarchical relation as shown in Fig. 2.22.
+Step 5. Save the diagram in file “family.odt”.
+Fig. 2.21: Rectangles created using drawing tool for family tree
+Practical Activity 2.5notes
+It is also possible to change the properties of the object on which you are working. Writer provides tools in Drawing Object Properties toolbar for changing properties, i.e. customising an object. Using these tools the object can be moved, resized, rotated, edited and conFig.d on various aspects.
+Properties of the object can be modified or edited, either at the time of its creation, i.e. before you start drawing them or after its creation. When properties are
+Digital Documentation (aDvanceD) using libreoffice Writer 35
+Setting or Changing Properties of Drawing
+On selecting the drawing object, in the document,
+Drawing Object Properties
+Toolbar is displayed as shown in Fig. 2.23. It is a floating toolbar, and can be placed anywhere on the screen.
+To set the properties before drawing the object, follow the given steps.
+Step 1. From the Drawing Toolbar, select the object you want to draw.
+Step 2. From Drawing Object Properties Toolbar, click on the icon of property to be modified.
+Step 3. Change the value of parameter.
+Step 4. Repeat steps 2 and 3 to change all desired properties.
+Fig. 2.23: Drawing Object Properties Toolbar modified before creation, it is known as setting default value(s). To work on properties, you can use tools from the toolbar and change the desired aspect of the object.
+Properties can also be modified by right clicking on the object.
+Fig. 2.22: Drawing of family tree using rectangles
+Domestic Data entry operator – class X 36
+Step 5. Draw the desired figure by following the steps given in the previous section.
+Changes done in properties of an object, before creating it, are available only for current session.
+Follow the steps for changing properties of the object after drawing it.
+Step 1. Select the object whose properties are to be modified.
+Step 2. Follow steps 2 to 5 of the previous process of setting Properties before drawing an object.
+In the file “family.odt” created in Activity 2.5, add two more members, a son Master Rohit Sharma and a daughter Baby
+Deepika Sharma. Make a copy of the file. Then change the properties of Rectangle as (Fill color – lime yellow, border line
+– Orange having 0.08” width) and Line (color – black, Style – ultrafine dashed) used in Family Tree.
+Step 1. Open file “family.odt” in LibreOffice Writer.
+Step 2. Add two rounded rectangle and add text in them to reflect two more members in the diagram.
+Step 3. Save a copy as “family1.odt”. Keep on working in
+“family.odt”
+Step 4. Select a rectangle using selection tool.
+Step 5. Click on Fill Color tool in Drawing Object Properties toolbar, and change the color selected rectangle as shown in Fig. 2.24.
+Fig. 2.24: Using Fill Color tool for rectangle
+Practical Activity 2.6
+Digital Documentation (aDvanceD) using libreoffice Writer 37
+Step 6. In the same way change color of all the rectangles.
+Step 7. Select a line in the drawing. Click on Line Color tool and select Black color to change the line color from blue to black. In the same way, change the color of all the lines to black as shown in Fig. 2.25.
+Step 8. You can also change the border color of rectangle using
+Line color tool and width of the border by specifying the value in line width option.
+Step 9. Alternately you can change the line color and width by right clicking on the object and then selecting the “Line” option from the context menu as shown in Fig. 2.26.
+Fig. 2.25: Using Line Color tool for changing the line color
+Fig. 2.26: Right clicking on object to select Line option from context menu
+Domestic Data entry operator – class X 38
+Step 10. To change the line color and width of all the rectangles, select all the rectangles by holding shift key and clicking on each rectangle. This will open the Line dialog window as shown in Fig. 2.27. Change the line color to “Orange” and specify the line width as “0.08” as shown in
+Fig. 2.27 and click on the OK button.
+Observe in Fig. 2.28, the line color and width changed as specified
+Fig. 2.27: Specifying line color and line width for selected objects in the
+Line dialog window
+Fig. 2.28: Family Tree with desired object properties
+Digital Documentation (aDvanceD) using libreoffice Writer 39
+Resizing and Grouping objects
+Sometimes you may want to change the size of drawing to accommodate it at a particular place in the document.
+This can be done either by changing its size only or by changing its shape and size both. Follow the given steps to resize a drawing.
+Step 1. Select the object to be resized. All eight handles on the corners and edges will be visible.
+Step 2. Click on any of the handles and drag it to its new place. The object will be scaled up or down, depending on your action. Also whether object’s shape will be retained or not, will depend on the handle you choose for resizing.
+Step 3. For resizing and maintaining original shape of drawing, use corner handles.
+Step 4. Usi

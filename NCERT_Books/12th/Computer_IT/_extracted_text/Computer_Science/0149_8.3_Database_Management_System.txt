@@ -1,0 +1,163 @@
+S tructured Query Language (SQL) 137
+Once data types and constraints are identified, let us create tables without specifying constraints along with the attribute name for simplification. We will learn to incorporate constraints on attributes in Section 9.4.4.
+Example 9.1 Create table STUDENT.
+mysql> CREATE TABLE STUDENT(
+-> RollNumber INT,
+-> SName VARCHAR(20),
+-> SDateofBirth DATE,
+-> GUID CHAR (12),
+-> PRIMARY KEY (RollNumber));
+Query OK, 0 rows affected (0.91 sec)
+Note: “,” is used to separate two attributes and each statement terminates with a semi-colon (;). The arrow (->) is an interactive continuation prompt. If we enter an unfinished statement, the SQL shell will wait for us to enter the rest of the statement.
+9.4.3 Describe Table
+We can view the structure of an already created table using the DESCRIBE statement or DESC statement.
+Which datatype out of Char and Varchar will you prefer for storing contact number(mobile number)? Discuss.
+DESCRIBE tablename;
+mysql> DESCRIBE STUDENT;
++--------------+-------------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| RollNumber | int | NO | PRI | NULL | |
+| SName | varchar(20) | YES | | NULL | |
+| SDateofBirth | date | YES | | NULL | |
+| GUID | char(12) | YES | | NULL | |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.06 sec)
+We can use the SHOW TABLES statement to see the tables in the StudentAttendance database. So far, we have only the STUDENT table.
+mysql> SHOW TABLES;
++------------------------------+
+| Tables_in_studentattendance |
++------------------------------+
+| student |
++------------------------------+
+1 row in set (0.00 sec)
+9.4.4 ALTER Table
+After creating a table, we may realise that we need to add/remove an attribute or to modify the datatype of an existing attribute or to add constraint in attribute. In
+Activity 9.4
+Create the other two relations GUARDIAN and ATTENDANCE as per data types given in Table 9.4 and 9.5 respectively, and view their structures.
+Do not add any constraint in these two
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 138 all such cases, we need to change or alter the structure (schema) of the table by using the alter statement.
+(A) Add primary key to a relation
+Let us now alter the tables created in Activity 9.4. The following MySQL statement adds a primary key to the
+GUARDIAN relation:
+mysql> ALTER TABLE GUARDIAN ADD PRIMARY KEY (GUID);
+Query OK, 0 rows affected (1.14 sec)
+Records: 0 Duplicates: 0 Warnings: 0
+Now let us add the primary key to the ATTENDANCE relation. The primary key of this relation is a composite key made up of two attributes - AttendanceDate and
+RollNumber.
+mysql> ALTER TABLE ATTENDANCE
+-> ADD PRIMARY KEY(AttendanceDate,
+RollNumber);
+Query OK, 0 rows affected (0.52 sec)
+Records: 0 Duplicates: 0 Warnings: 0 (B) Add foreign key to a relation
+Once primary keys are added, the next step is to add foreign keys to the relation (if any). Following points need to be observed while adding foreign key to a relation:
+• The referenced relation must be already created.
+• The referenced attribute(s) must be part of the primary key of the referenced relation.
+• Data types and size of referenced and referencing attributes must be the same.
+ALTER TABLE table_name ADD FOREIGN KEY(attribute name) REFERENCES referenced_table_name (attribute name);
+Let us now add foreign key to the table STUDENT.
+Table 9.3 shows that attribute GUID (the referencing attribute) is a foreign key and it refers to attribute GUID (the referenced attribute) of table GUARDIAN. Hence,
+STUDENT is the referencing table and GUARDIAN is the referenced table as shown in Figure 8.4 in the previous chapter.
+mysql> ALTER TABLE STUDENT
+-> ADD FOREIGN KEY(GUID) REFERENCES
+-> GUARDIAN(GUID);
+Query OK, 0 rows affected (0.75 sec)
+Records: 0 Duplicates: 0 Warnings: 0 (C) Add constraint UNIQUE to an existing attribute
+In GUARDIAN table, the attribute GPhone has a constraint UNIQUE which means no two values in that column should be the same.
+Activity 9.5
+Add foreign key in the
+ATTENDANCE table (use Figure 9.1) to identify referencing and referenced tables).
+Name foreign keys in table ATTENDANCE and STUDENT. Is there any foreign key in table GUARDIAN.
+Reprint 2026-27
+S tructured Query Language (SQL) 139
+ALTER TABLE table_name ADD UNIQUE (attribute
+Let us now add the constraint UNIQUE with the attribute GPhone of the table GUARDIAN as shown at table 9.4.
+mysql> ALTER TABLE GUARDIAN
+-> ADD UNIQUE(GPhone);
+Query OK, 0 rows affected (0.44 sec)
+Records: 0 Duplicates: 0 Warnings: 0 (D) Add an attribute to an existing table
+Sometimes, we may need to add an additional attribute in a table. It can be done using the ADD attribute statement as shown in the following Syntax:
+ALTER TABLE table_name ADD attribute name DATATYPE;
+Suppose, the principal of the school has decided to award scholarship to some needy students for which income of the guardian must be known. But, the school has not maintained the income attribute with table
+GUARDIAN so far. Therefore, the database designer now needs to add a new attribute Income of data type
+INT in the table GUARDIAN.
+mysql> ALTER TABLE GUARDIAN
+-> ADD income INT;
+Query OK, 0 rows affected (0.47 sec)
+Records: 0 Duplicates: 0 Warnings: 0 (E) Modify datatype of an attribute
+We can change data types of the existing attributes of a table using the following ALTER statement.
+ALTER TABLE table_name MODIFY attribute DATATYPE;
+Suppose we need to change the size of the attribute
+GAddress from VARCHAR(30) to VARCHAR(40) of the
+GUARDIAN table. The MySQL statement will be:
+mysql> ALTER TABLE GUARDIAN
+-> MODIFY GAddress VARCHAR(40);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0 Duplicates: 0 Warnings: 0 (F) Modify constraint of an attribute
+When we create a table, by default each attribute takes
+NULL value except for the attribute defined as primary key. We can change an attribute’s constraint from NULL to NOT NULL using an alter statement.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 140
+ALTER TABLE table_name MODIFY attribute DATATYPE
+NOT NULL;
+Note: We have to specify the data type of the attribute along with constraint NOT NULL while using MODIFY.
+To associate NOT NULL constraint with attribute
+SName of table STUDENT (table 9.3), we write the following MySQL statement:
+mysql> ALTER TABLE STUDENT
+-> MODIFY SName VARCHAR(20) NOT NULL;
+Query OK, 0 rows affected (0.47 sec)
+Records: 0 Duplicates: 0 Warnings: 0 (G) Add default value to an attribute
+If we want to specify default value for an attribute, then use the following syntax:
+ALTER TABLE table_name MODIFY attribute DATATYPE
+DEFAULT default_value;
+To set default value of SDateofBirth of STUDENT to
+15th May 2000, write the following statement:
+mysql> ALTER TABLE STUDENT
+-> MODIFY SDateofBirth DATE DEFAULT ‘2000-05-
+Query OK, 0 rows affected (0.08 sec)
+Records: 0 Duplicates: 0 Warnings: 0
+Note: We have to specify the data type of the attribute along with
+DEFAULT while using MODIFY.
+(H) Remove an attribute
+Using ALTER, we can remove attributes from a table, as shown in the following syntax:
+ALTER TABLE table_name DROP attribute;
+To remove the attribute income from table
+GUARDIAN (Table 9.4), write the following MySQL statement:
+mysql> ALTER TABLE GUARDIAN DROP income;
+Query OK, 0 rows affected (0.42 sec)
+Records: 0 Duplicates: 0 Warnings: 0 (I) Remove primary key from the table
+Sometime there may be a requirement to remove primary key constraint from the table. In that case, Alter table command can be used in the following way:
+ALTER TABLE table_name DROP PRIMARY KEY;
+To remove primary key of table GUARDIAN (Figure
+9.4), write the following MySQL statement:
+mysql> ALTER TABLE GUARDIAN DROP PRIMARY KEY;
+Query OK, 0 rows affected (0.72 sec)
+Records: 0 Duplicates: 0 Warnings: 0
+What are the minimum and maximum income values that can be entered in the income attribute given the data type is INT?
+Reprint 2026-27
+S tructured Query Language (SQL) 141
+Note: We have dropped the primary key from the GUARDIAN table, but each table should have a primary key to maintain uniqueness.
+Hence, we have to use the ADD statement with the Alter Table command to specify the primary key for the GUARDIAN table as shown in earlier examples.
+9.4.5 DROP Statement
+Sometimes a table in a database or the database itself needs to be removed. We can use a DROP statement to remove a database or a table permanently from the system. However, one should be very cautious while using this statement as it cannot be undone.
+Syntax to drop a table:
+DROP TABLE table_name;
+Syntax to drop a database:
+DROP DATABASE database_name;
+Note: Using the DROP statement to remove a database will ultimately remove all the tables within it.
+9.5 SQL for data ManIpuLatIon
+In the previous section, we created the database
+StudentAttendance having three relations STUDENT,
+GUARDIAN and ATTENDANCE. When we create a table, only its structure is created but the table has no data.
+To populate records in the table, INSERT statement is used. Also, table records can be deleted or updated using
+DELETE and UPDATE statements. These SQL statements are part of Data Manipulation Language (DML).
+Data Manipulation using a database means either insertion of new data, removal of existing data or modification of existing data in the database
+9.5.1 INSERTION of Records
+INSERT INTO statement is used to insert new records in a table. Its syntax is:
+INSERT INTO tablename
+VALUES(value 1, value 2,....);
+Here, value 1 corresponds to attribute 1, value 2 corresponds to attribute 2 and so on. Note that we need not to specify attribute names in the insert statement if there are exactly the same numbers of values in the
+INSERT statement as the total number of attributes in the table.
+Caution: While populating records in a table with foreign key, ensure that records in referenced tables are already populated.
+Reprint 2026-27

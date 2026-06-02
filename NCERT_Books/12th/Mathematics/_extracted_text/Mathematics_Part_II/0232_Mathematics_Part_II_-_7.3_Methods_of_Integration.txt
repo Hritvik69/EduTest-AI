@@ -1,0 +1,167 @@
+MATHEMATICS 442
+2 4 5 x x x
+− + − + 4. –1 1 5
+5. 1 2 3 tan 2 C
+2 2 x− + 6.
+1 log 1 C x x x − − + − + 8. 3 6 6 1 log C
+3 x x a + + + log tan + tan + 4 C x x + 10. 2 log 1 2 2 C x x x + + + + + log – 3 2 C x x x + − + + 14.
+log – ( )( ) C x x a x b + − − +
+2 2 + 3 C x x − + 17. 2 2
+1 2log 1 C x x x − + + − +
+19. 2 2 9
+6 – 9 + 20 34 log 9 20 C x x x x x + − + − + +
+2 +3 log 1 2 3 C x x x x x + + + + + + +
+22. 2 1 2 1 6 log 2 5 log C
+Reprint 2026-27
+ANSWERS 443
+5 4 +10 7 log 2 4 10 C x x x x x + − + + + + +
+24. B 25. B
+EXERCISE 7.5
++ 2. 1 3
+3. log 1 5log 2 4log 3 C x x x − − − + − + log 1 2log 2 log 3 C x x x − − − + − +
+5. 4log +2 2log 1 C x x − + + 6. 3 log log 1 2 C x x x + − − +
+7. 2 1 1 1 1 log 1 log ( 1) tan C
+− − + + +
+8. 2 1 1
+9 2 3( 1)
++ − 9. 1 1 4
+10. 5 1 12 log 1 log 1 log 2 3 C x x x + − − − + +
+11. 5 5 5 log 1 log 2 log 2 C x x x + − + + − + log 1 log 1 C x x x + + + − +
+13. – log 1 x − + 1
+2 log (1 + x2) + tan–1x + C
+3log 2 C x x 15. 1 1 1 1 log tan C
+16. 1 log C
++ 17. 2 – sin
+18. 1 1 2
++ tan 3tan C
+Reprint 2026-27
+MATHEMATICS 444
+− + 21. – 1
+  +  
+22. B 23. A
+EXERCISE 7.6
+1. – x cos x + sin x + C 2. 1 cos3 sin 3 C x x x − + +
+3. ex (x2 – 2x + 2) + C 4.
+x − + 6.
+(2 1) sin C
+− + + 8.
+tan tan C (2 1) 1 C x x − − − +
+10. ( )2 –1 2 1 sin 2 1 sin 2 C x x x x x−
+11. 2 –1
+– 1– cos C x x x + + 12. x tan x + log cos x + C
+13. 1 2 1 tan log (1 ) C x x x− − + + 14.
+(log ) log C x x − + +
+15. 16. ex sin x + C x + 18. tan C x + 20. 2 C (2sin cos ) C e x x − + 22. 2x tan–1x – log (1 + x2) + C
+23. A 24. B
+Reprint 2026-27
+ANSWERS 445
+EXERCISE 7.7
+1. 2 1 1 4 2sin C
+− + + 2. 1 2 1 1 sin 2 1 4 C x x x− + − +
+3. 2 2 ( +2) 4 6 log 2 4 6 C x x x x x x + + + + + + + +
+4. 2 2 ( +2) 3
+4 1 log 2 4 1 C x x x x x x + + − + + + + +
+6. 2 2 ( +2) 9
+4 5 log 2 4 5 C x x x x x x + − − + + + − +
+8. 2 2 2 +3 9 3
+3 log 3 C x x x x x x + − + + + +
+9. 2 2 3
+9 log 9 C x x x x + + + + +
+10. A 11. D
+EXERCISE 7.8
+1. 2 2. 3 log 2 3. 64
+2 5. 0 6. e4 (e – 1)
+2 log 2 8. 9. π
+4 11. 1 3
+2 2 12. π
+Reprint 2026-27
+MATHEMATICS 446
+2 log 2 14. 1 1 3 log 6 tan 5
+2 (e – 1) 16.
++ + 18. 0 19. 3
+3log 2 8
+20. 1 + 4 2 2
+− 21. D 22. C
+EXERCISE 7.9
+1. 1 log 2
+231 3. π
+2 – log 2
+4. 16 2 ( 2 1)
+15 + 5. π
+4 6. 1 21 5 17 log 4 17 e e − 9. D
+EXERCISE 7.10
+5. 29 6. 9 7. 1 ( 1)( 2) n n + +
+8. π log 2
+8 9. 16 2
+15 10. π 1
+2 2 11. π
+12. π 13. 0 14. 0 15. 0
+16. – π log 2 17. 2 a 18. 5 20. C
+Reprint 2026-27
+ANSWERS 447
+MISCELLANEOUS EXERCISE ON CHAPTER 7
+3. ( ) 2
+3 6 6 2 3 6 6log (1 ) C x x x x − + − + +
+6. 2 1 1 1 3 log 1 log ( 9) tan C
+− + + + + +
+7. sin log sin ( ) cos C a x a x a − + + 8.
+9. 10. 1 sin 2 C
+11. cos ( ) 1 log C sin ( – ) cos( )
++ 12. 1 4 1 sin ( ) C
+13. 14. 1 1 1 1 tan tan C
+15. 4 1 cos C
+4 x − + 16. 4 1 log ( 1) C
+[ ( + )] C a n + 18. sin ( ) –2 C
+–2 1– cos C x x x x−
+20. ex tan x + C 21. 1
+2log +1 3log 2 C
+− − + + +
+Reprint 2026-27
+MATHEMATICS 448
+π 27. 1 ( 3 1)
+3 29. 1 log 9
+2 − 31. 19
+38. A 39. B
+EXERCISE 8.1
+1. 12π 2. 6π 3. A 4. B
+Miscellaneous Exercise on Chapter 8
+1. (i) 7
+3 (ii) 624.8
+2. 9 3. 4 4. D 5. C
+EXERCISE 9.1
+1. Order 4; Degree not defined 2. Order 1; Degree 1
+3. Order 2; Degree 1 4. Order 2; Degree not defined
+5. Order 2; Degree 1 6. Order 3; Degree 2
+7. Order 3; Degree 1 8. Order 1; Degree 1
+9. Order 2; Degree 1 10. Order 2; Degree 1
+11. D 12. A
+EXERCISE 9.2
+11. D 12. D
+Reprint 2026-27
+ANSWERS 449
+EXERCISE 9.3
+1. 2 tan C y x = − + 2. y = 2 sin (x + C)
+3. y = 1 + Ae–x 4. tan tan C x y =
+5. y = log (ex + e–x) + C 6.
+tan = + C
+7. y = ecx 8. x – 4 + y –4 = C
+9. y = x sin–1x + 2
+1– x + C 10. tan y = C ( 1 – ex)
+14. y = sec x 15. 2y – 1 = ex ( sin x – cos x)
+16. y – x + 2 = log (x2 (y + 2)2) 17. y2 – x2 = 4
+18. (x + 4)2 = y + 3 19.
+3 (63 27) t +
+20. 6.93% 21. Rs 1648
+22. 23. A
+EXERCISE 9.4 x x y x e
+− = 2. log C y x x x = +
+3. –1 2 2 1 tan log ( ) C
+  = + +  
+  4. x2 + y2 = Cx log log C
+− 6. 2 2 2
++ + C y x y x =
+7. xy cos y x = C 8. 1 cos Csin
+     
+− =      
+     
+Reprint 2026-27

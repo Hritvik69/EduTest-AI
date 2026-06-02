@@ -1,0 +1,61 @@
+10 MATHEMATICS (i) The set Q of rational numbers is a subset of the set R of real numbes, and we write Q ⊂ R.
+(ii) If A is the set of all divisors of 56 and B the set of all prime divisors of 56, then B is a subset of A and we write B ⊂ A.
+(iii) Let A = {1, 3, 5} and B = {x : x is an odd natural number less than 6}. Then
+A ⊂ B and B ⊂ A and hence A = B.
+(iv) Let A = { a, e, i, o, u} and B = { a, b, c, d}. Then A is not a subset of B, also B is not a subset of A.
+Let A and B be two sets. If A ⊂ B and A ≠ B , then A is called a proper subset of B and B is called superset of A. For example,
+A = {1, 2, 3} is a proper subset of B = {1, 2, 3, 4}.
+If a set A has only one element, we call it a singleton set. Thus,{ a } is a singleton set.
+Example 9 Consider the sets
+φ, A = { 1, 3 }, B = {1, 5, 9}, C = {1, 3, 5, 7, 9}.
+Insert the symbol ⊂ or ⊄ between each of the following pair of sets:
+(i) φ . . . B (ii) A . . . B (iii) A . . . C (iv) B . . . C
+Solution (i) φ ⊂ B as φ is a subset of every set.
+(ii) A ⊄ B as 3 ∈ A and 3 ∉ B (iii) A ⊂ C as 1, 3 ∈ A also belongs to C (iv) B ⊂ C as each element of B is also an element of C.
+Example 10 Let A = { a, e, i, o, u} and B = { a, b, c, d}. Is A a subset of B ? No.
+(Why?). Is B a subset of A? No. (Why?)
+Example 11 Let A, B and C be three sets. If A ∈ B and B ⊂ C, is it true that
+A ⊂ C?. If not, give an example.
+Solution No. Let A = {1}, B = {{1}, 2} and C = {{1}, 2, 3}. Here A ∈ B as A = {1} and B ⊂ C. But A ⊄ C as 1 ∈ A and 1 ∉ C.
+Note that an element of a set can never be a subset of itself.
+1.6.1 Subsets of set of real numbers
+As noted in Section 1.6, there are many important subsets of R. We give below the names of some of these subsets.
+The set of natural numbers N = {1, 2, 3, 4, 5, . . .}
+The set of integers Z = {. . ., –3, –2, –1, 0, 1, 2, 3, . . .}
+The set of rational numbers Q = { x : x = p q , p, q ∈ Z and q ≠ 0}
+Reprint 2026-27 which is read “ Q is the set of all numbers x such that x equals the quotient p q , where p and q are integers and q is not zero”. Members of Q include –5 (which can be expressed as 5
+3 2 (which can be expressed as 7
+2 ) and 11
+The set of irrational numbers, denoted by T, is composed of all other real numbers.
+Thus T = {x : x ∈ R and x ∉ Q}, i.e., all real numbers that are not rational.
+Members of T include 2 , 5 and π .
+Some of the obvious relations among these subsets are:
+N ⊂ Z ⊂ Q, Q ⊂ R, T ⊂ R, N ⊄ T.
+1.6.2 Intervals as subsets of R Let a, b ∈ R and a < b. Then the set of real numbers
+{ y : a < y < b} is called an open interval and is denoted by (a, b). All the points between a and b belong to the open interval (a, b) but a, b themselves do not belong to this interval.
+The interval which contains the end points also is called closed interval and is denoted by [ a, b ]. Thus
+[ a, b ] = {x : a ≤ x ≤ b}
+We can also have intervals closed at one end and open at the other, i.e.,
+[ a, b ) = {x : a ≤ x < b} is an open interval from a to b, including a but excluding b.
+( a, b ] = { x : a < x ≤ b } is an open interval from a to b including b but excluding a.
+These notations provide an alternative way of designating the subsets of set of real numbers. For example , if A = (–3, 5) and B = [–7, 9], then A ⊂ B. The set [ 0, ∞)
+defines the set of non-negative real numbers, while set ( – ∞, 0 ) defines the set of negative real numbers. The set ( – ∞, ∞ ) describes the set of real numbers in relation to a line extending from – ∞ to ∞.
+On real number line, various types of intervals described above as subsets of R, are shown in the Fig 1.1.
+Here, we note that an interval contains infinitely many points.
+For example, the set {x : x ∈ R, –5 < x ≤ 7}, written in set-builder form, can be written in the form of interval as (–5, 7] and the interval [–3, 5) can be written in set- builder form as {x : –3 ≤ x < 5}.
+Reprint 2026-27
+12 MATHEMATICS
+The number (b – a) is called the length of any of the intervals (a, b), [a, b],
+[a, b) or (a, b].
+1.7 Universal Set
+Usually, in a particular context, we have to deal with the elements and subsets of a basic set which is relevant to that particular context. For example, while studying the system of numbers, we are interested in the set of natural numbers and its subsets such as the set of all prime numbers, the set of all even numbers, and so forth. This basic set is called the “Universal Set”. The universal set is usually denoted by U, and all its subsets by the letters A, B, C, etc.
+For example, for the set of all integers, the universal set can be the set of rational numbers or, for that matter, the set R of real numbers. For another example, in human population studies, the universal set consists of all the people in the world.
+EXERCISE 1.3
+1. Make correct statements by filling in the symbols ⊂ or ⊄ in the blank spaces :
+(i) { 2, 3, 4 } . . . { 1, 2, 3, 4,5 } (ii) { a, b, c } . . . { b, c, d } (iii) {x : x is a student of Class XI of your school}. . .{x : x student of your school} (iv) {x : x is a circle in the plane} . . .{x : x is a circle in the same plane with radius 1 unit} (v) {x : x is a triangle in a plane} . . . {x : x is a rectangle in the plane} (vi) {x : x is an equilateral triangle in a plane} . . . {x : x is a triangle in the same plane} (vii) {x : x is an even natural number} . . . {x : x is an integer}
+2. Examine whether the following statements are true or false:
+(i) { a, b } ⊄ { b, c, a } (ii) { a, e } ⊂ { x : x is a vowel in the English alphabet} (iii) { 1, 2, 3 } ⊂ { 1, 3, 5 } (iv) { a } ⊂ { a, b, c } (v) { a } ∈ { a, b, c } (vi) { x : x is an even natural number less than 6} ⊂ { x : x is a natural number which divides 36}
+3. Let A = { 1, 2, { 3, 4 }, 5 }. Which of the following statements are incorrect and why?
+(i) {3, 4} ⊂ A (ii) {3, 4} ∈ A (iii) {{3, 4}} ⊂ A (iv) 1 ∈ A (v) 1 ⊂ A (vi) {1, 2, 5} ⊂ A (vii) {1, 2, 5} ∈ A (viii) {1, 2, 3} ⊂ A (ix) φ ∈ A (x) φ ⊂ A (xi) {φ} ⊂ A
+4. Write down all the subsets of the following sets (i) {a} (ii) {a, b} (iii) {1, 2, 3} (iv) φ
+Reprint 2026-27

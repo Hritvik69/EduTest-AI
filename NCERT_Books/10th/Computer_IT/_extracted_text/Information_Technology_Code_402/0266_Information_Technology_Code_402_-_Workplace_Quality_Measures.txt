@@ -1,0 +1,315 @@
+Domestic Data entry operator – class X 256
+High voltage rescue
+• Special training is required for rescues if high voltage is present.
+• Protective equipment, such as gloves and shoes must be worn.
+First Aid
+• A victim may require Cardio-Pulmonary
+Resuscitation (CPR). Steps to perform in CPR are shown in the Fig. 15.6 and 15.7.
+Fig. 15.7: Open the mouth for airway Fig. 15.8: Rescue breathing
+• If the victim is breathing and has a heartbeat, give first aid for injuries and treat for shock.
+• Ensure the victim gets medical care as soon as possible.
+• Physician attending the victim must have detailed information to properly diagnose and care for the
+Fig. 15.5: Beware of high voltage
+Fig. 15.6: Gloves and shoes for safety
+Identify and name the steps mentioned in the following figures.
+Practical Exercises
+Maintain HealtHy, Safe and Secure Working environMent 257
+Check Your Progress
+A. Multiple choice questions
+1. What are the steps necessary for operating a fire extinguisher?
+(a) Identify the safety pin of the fire extinguisher which is generally present in its handle (b) Break the seal and pull the safety pin from the handle (c) Use the fire extinguisher by squeezing the lever (d) All of the above
+2. Which of the following is an examples of ignition sources of open flames?
+(a) Gas ovens (b) Lighters in smoking areas (c) Welding torches (d) All of the above
+3. In fire classification, all liquid, grease, and gas material comes under __________________.
+(a) Class A material (b) Class B material (c) Class C material (d) Class A material
+4. In fire classification, material magnesium, potassium, and sodium comes under _______________.
+(a) Class A material (b) Class B material (c) Class C material (d) Class D material
+5. In fire classification, material wood, cloth, and paper comes under ________________.
+(a) Class A material (b) Class B material (c) Class C material (d) Class D material
+6. In fire classification, electrical material and equipment comes under ____________________.
+(a) Class A material (b) Class B material (c) Class C material (d) Class D material
+7. When do we use a fire extinguisher?
+(a) In case of flood (b) In case of electric shock (c) In case of fire (d) In case of burn injury
+8. What is the primary fire emergency telephone number is?
+Domestic Data entry operator – class X 258
+9. Which of the following contains everything you need to know about evacuating your facility safely?
+(a) Evacuation Diagram (b) Emergency Action Plan (c) Employee Directory (d) Both (a) and (b)
+10. The best course of action to take during a medical emergency is to ________________.
+(a) Begin first aid immediately (b) Activate the emergency plan for reporting injuries (c) Notify the person's family about the situation (d) Both (a) and (b)
+B. Fill in the blanks
+1. Emergency is a serious or crisis situation that needs__________attention and ________.
+2. A ___________ sign will warn people to walk carefully on freshly mopped floors.
+3. ____________ signs can prevent accidents on a staircase with a sharp bent or warn against a loose floor tile.
+4. The ___________ should be responsible to handle evacuation process.
+5. Workplace fires are commonly caused by improper storage of ______________ material or _________ dust.
+6. There should always be an _________________ plan for scheduled electrical maintenance or work.
+7. If the victim is breathing and has a heartbeat, give ________ for injuries and treat for shock.
+8. A fire extinguisher is a _________________ containing an agent which can be discharged to extinguish a fire.
+C. State whether the following statements are True or False
+1. The organisation’s policies and guidelines is the best guide to handle emergency.
+2. If someone is injured, act as per your impulse or gut feeling.
+3. Keep water and food items away from electrical equipment.
+4. Always switch off the electrical circuits.
+5. Always wear protective equipment, such as gloves and
+6. A fire extinguisher is a protection device used to extinguish fires.
+7. Flammable materials can be placed around an door exit.
+8. You can determine possible evacuation routes from floor plan diagrams posted in your facility.
+Maintain HealtHy, Safe and Secure Working environMent 259
+D. Short answer questions
+1. What is a workplace emergency?
+2. How do you protect yourself, your employees, and your business?
+3. What is an emergency action plan?
+4. What should your emergency action plan include?
+5. How do you develop an evacuation policy and procedures?
+6. How do you establish evacuation routes and exits?
+7. What are the various types of fire extinguisher and their extinguishing material?
+8. What are the steps for operating a fire extinguisher in case of a fire emergency.
+9. Compare the different type of fire extinguisher.
+10. List the different class of fire.
+11. List out electrical rescue techniques.
+12. What is the first aid for electrical emergencies?
+Answer Key
+Unit 1. Digital Documentation (Advance) using
+LibreOffice Writer
+Chapter 1. Introduction to Styles-Paragraph, Page, Character and List
+A. Multiple choice questions
+1. (b) 2. (d) 3. (b) 4. (a) 5. (d)
+B. Fill in the blanks
+1. style
+2. LibreOffice
+3. consistency
+4. styles
+5. Heading Style
+6. Default
+7. objects
+8. Paragraph
+9. Fill format
+10. cannot
+Chapter 2. Working with Images
+A. Multiple choice questions
+1. (a) 2. (a) 3. (d) 4. (c) 5. (c)
+B. Fill in the blanks
+2. gamma correction
+3. ageing
+4. Send Back
+5. selecting
+7. reference
+8. three
+9. corner
+10. before its
+Chapter 3. Advanced Features of Writer
+A. Multiple choice questions
+1. (a) 2. (d) 3. (c)
+4. (c) 5. (c) 6. (b)
+7. (b) 8. (b) 9. (b)
+10. (d) 11. (b) 12. (a)
+Answer Key 261 notes B. Fill in the blanks
+2. Default
+3. Protected Against Manual Changes
+4. Update Index
+5. Columns
+6. Template
+7. Blank Document template
+8. Properties
+9. Browse Online Templates
+10. Track Changes
+11. Ctrl+Shift+C
+12. coloured
+C. State whether the following statements are True or False
+1. True 2. False 3. False 4. False 5. False 6. True
+7. False 8. True 9. False 10. True 11. False
+Unit 2. Electronic Spreadsheet (Advance) using
+LibreOffice Calc
+Chapter 4. Analyse Data using Scenarios and Goal Seek
+A. Multiple choice questions
+1. (d) 2. (b) 3. (d) 4. (d) 5. (b)
+6. (d) 7. (b) 8. (b) 9. (b)
+B. State whether the following statements are True or False
+1. True 2. False 3. True 4. False 5. False
+6. False 7. False 8. False 9. False
+C. Fill in the blanks
+1. summarize
+2. consolidate
+3. Subtotal
+4. Subtotal
+5. What-if
+6. What-if tool
+7. two, formula and display output 8. Goal seek
+Chapter 5. Use Macros in Spreadsheet
+A. Multiple choice questions
+1. (c) 2. (d) 3. (b) 4. (b) 5. (c) 6. (b)
+B. Fill in the blanks
+1. Standard
+2. Integrated Development Environment
+3. arguments/values, result/value
+Domestic Data entry operator – class X 262 notes 4. Organizer
+5. Sub, End Sub
+6. Standard Library
+C. State whether the following statements are True or False
+1. False 2. True 3. False
+4. False 5. True 6. True
+Chapter 6. Link Spreadsheet data
+A. Multiple choice questions
+1. (a) 2. (c) 3. (b) 4. (b)
+B. Fill in the blanks
+1. current
+2. HTML_all
+3. .odb.
+4. Single quotes (‘ ’)
+5. Insert Sheet
+C. State whether the following statements are True or False
+1. False 2. True 3. False 4. True 5. False
+Chapter 7. Share and Review a Spreadsheet
+A. Multiple choice questions
+1. (b) 2. (a) 3. (d) 4. (d) 5. (c)
+B. State whether the following statements are True or False
+1. False 2. True 3. False
+4. False 5. False 6. True
+C. Fill in the blanks
+1. shared
+3. turn off
+4. record
+6. Comment
+7. cell contents
+Unit 3. Database Management System using
+LibreOffice Base
+Chapter 8. Introduction to Database Management System
+A. Multiple choice questions
+1. (d) 2. (c) 3. (b) 4. (a) 5. (b)
+6. (d) 7. (d) 8. (a) 9. (c) 10. (a)
+Answer Key 263 notes B. State whether the following statements are True or False
+1. False 2. True 3. False 4. False 5. False
+C. Fill in the blanks
+2. Entity
+3. Report
+4. Record
+5. Candidate
+Chapter 9. Starting with LibreOffice Base
+A. Multiple choice questions
+1. (c) 2. (b) 3. (c) 4. (b) 5. (c)
+6. (a) 7. (b) 8. (a) 9. (a) 10. (d)
+B. State whether the following statements are True or False
+1. True 2. True 3. False 4. False 5. True
+6. True 7. False 8. True 9. False 10. False
+C. Fill in the blanks
+1. Data type
+4. Binary
+5. Ctrl+S
+6. Tasks Pane
+8. Datasheet
+9. Record pointer
+10. Sorting
+Chapter 10. Working With Multiple Tables
+A. Multiple choice questions
+1. (d) 2. (c) 3. (b) 4. (b) 5. (b)
+6. (b) 7. (c) 8. (a) 9. (c) 10. (d)
+B. State whether the following statements are True or False
+1. False 2. True 3. False 4. False 5. True
+6. True 7. False 8. False 9. True 10. False
+C. Fill in the blanks
+1. Design
+2. common field
+3. one-to-one
+4. one-to-many
+5. transaction, master
+Domestic Data entry operator – class X 264
+6. referential integrity
+7. relationship
+9. Many-to-many
+Chapter 11. Queries in Base
+A. Multiple choice questions
+1. (c) 2. (d) 3. (b)
+4. (b) 5. (d) 6. (c)
+7. (d) 8. (a) 9. (d)
+10. (c) 11. (c)
+B. State whether the following statements are True or False
+1. False 2. False 3. True
+4. False 5. False 6. True
+7. True 8. False 9. True
+10. True 11. True
+C. Fill in the blanks
+1. Query
+2. Report
+3. Three
+6. Criterion
+7. Available fields
+8. ascending, descending
+9. three
+10. Overview
+11. Design
+12. Query
+13. Alias
+Chapter 12. Forms and Reports
+A. Multiple choice questions
+1. (b) 2. (d) 3. (b) 4. (c) 5. (b)
+6. (c) 7. (b) 8. (a) 9. (c) 10. (c)
+B. State whether the following statements are True or False
+1. False 2. True 3. False
+4. True 5. True 6. False
+7. True 8. False 9. False
+10. True 11. False 12. True 13. False
+Answer Key 265
+C. Fill in the blanks
+1. Enter, view data
+2. label, field value
+3. label
+5. tool tip
+6. landscape
+7. Layout
+8. Insert
+10. dynamic
+Unit 4. Maintain Healthy, Safe and Secure Working
+Environment
+Chapter 13. Health, Safety and Security at Work Place
+A. Multiple choice questions
+1. (d) 2. (b) 3. (d) 4. (c)
+5. (d) 6. (a) 7. (c) 8. (d)
+B. Fill in the blanks
+1. mental, social
+2. morning
+3. air conditioning
+4. health
+5. safe, hazards, risk
+6. business revenue, operational charges
+7. Occupational Health and Safety
+8. physical work environment
+9. live wires, conductor
+10. poor sitting postures, one position
+C. State True or False
+1. True 2. True 3. True 4. True 5. True
+6. False 7. True 8. True 9. False 10. True
+Chapter 14. Workplace Quality Measures
+A. Multiple choice questions
+1. (b) 2. (d) 3. (b) 4. (c) 5. (b)
+6. (c) 7. (b) 8. (a) 9. (c) 10. (c)
+B. Fill in the blanks
+1. chemical, biological
+2. chemical
+3. microbial
+Domestic Data entry operator – class X 266
+4. designing
+5. arching wrists
+6. innocuous
+7. hazard tape
+8. electrical hazards
+9. reflections
+10. reflective
+C. State whether the following statements are True or False
+1. True 2. True 3. True 4. False 5. True
+6. False 7. True 8. True 9.True 10. False
+Chapter 15. Prevent Accidents and Emergencies
+A. Multiple choice questions
+1. (d) 2. (d) 3. (b) 4. (d) 5. (a)
+6. (c) 7. (c) 8. (b) 9. (d) 10. (d)
+B. Fill in the blanks
+1. immediate, action
+2. wet floor
+3. watch your steps
+4. coordinator
+5. flammable, combustible
+6. emergency response
+7. first aid
+8. cylindrical pressure vessel
+C. State True or False
+1. True 2. False 3. True 4. False
+5. False 6. True 7. False 8. True

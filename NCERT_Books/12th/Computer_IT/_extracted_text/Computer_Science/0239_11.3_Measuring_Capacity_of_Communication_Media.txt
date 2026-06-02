@@ -1,0 +1,10 @@
+S eCurity aSpeCtS 227 is usually annoying, but harmless. However, it often paves way for other malware by displaying unsafe links as advertisements.
+12.2.7 Keyloggers
+A keylogger can either be malware or hardware. The main purpose of this malware is to record the keys pressed by a user on the keyboard. A keylogger makes logs of daily keyboard usage and may send it to an external entity as well. In this way, very sensitive and personal information like passwords, emails, private conversations, etc. can be revealed to an external entity without the knowledge of the user. One strategy to avoid the threat of password leaks by keyloggers is to use a virtual keyboard while signing into your online accounts from an unknown computer.
+(A) Online Virtual Keyboard Vs On-Screen Keyboard
+The names “on-screen” and “virtual” keyboard refer to any software-based keyboard and are sometimes used interchangeably. But, there exists a notable difference between “on-screen” and “online virtual” keyboards.
+Both types of keyboards may look the same, but the difference is in terms of the layout or ordering of the keys. The on-screen keyboard of an operating system uses a fixed QWERTY key layout (Figure 12.3), which can be exploited by sophisticated keylogger software.
+However, an online virtual keyboard randomises the key layout every time it is used (Figure 12.4), thereby making it very difficult for a keylogger software to know or record the key(s) pressed by the user.
+To implement a keylogger in hardware, a thin transparent keyboard is placed atop the actual keyboard or input pad of the intended machine, which then records the keystrokes pressed by the user.
+Figure 12.3: A QWERTY keyboard layout
+Reprint 2026-27

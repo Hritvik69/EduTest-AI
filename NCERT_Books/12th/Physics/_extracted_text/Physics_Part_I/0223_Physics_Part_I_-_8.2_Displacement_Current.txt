@@ -1,0 +1,54 @@
+Electromagnetic
+ω is the angular frequency. k is the magnitude of the wave vector (or propagation vector) k and its direction describes the direction of propagation of the wave. The speed of propagation of the wave is (
+Using Eqs. [8.7(a) and (b)] for Ex and By and Maxwell’s equations, one finds that
+ω = ck, where, c = 1/ 0 0
+μ ε [8.9(a)]
+The relation ω = ck is the standard one for waves (see for example,
+Section 14.4 of class XI Physics textbook). This relation is often written in terms of frequency,
+ω/2π) and wavelength,
+λ (=2π/k) as
+νλ = c [8.9(b)]
+It is also seen from Maxwell’s equations that the magnitude of the electric and the magnetic fields in an electromagnetic wave are related as
+B0 = (E0/c) (8.10)
+We here make remarks on some features of electromagnetic waves.
+They are self-sustaining oscillations of electric and magnetic fields in free space, or vacuum. They differ from all the other waves we have studied so far, in respect that no material medium is involved in the vibrations of the electric and magnetic fields.
+But what if a material medium is actually there? We know that light, an electromagnetic wave, does propagate through glass, for example. We have seen earlier that the total electric and magnetic fields inside a medium are described in terms of a permittivity
+ε and a magnetic permeability
+μ (these describe the factors by which the total fields differ from the external fields). These replace
+μ0 in the description to electric and magnetic fields in Maxwell’s equations with the result that in a material medium of permittivity
+ε and magnetic permeability velocity of light becomes,
+= (8.11)
+Thus, the velocity of light depends on electric and magnetic properties of the medium. We shall see in the next chapter that the refractive index of one medium with respect to the other is equal to the ratio of velocities of light in the two media.
+The velocity of electromagnetic waves in free space or vacuum is an important fundamental constant. It has been shown by experiments on electromagnetic waves of different wavelengths that this velocity is the same (independent of wavelength) to within a few metres per second, out of a value of 3×108 m/s. The constancy of the velocity of em waves in vacuum is so strongly supported by experiments and the actual value is so well known now that this is used to define a standard of length.
+The great technological importance of electromagnetic waves stems from their capability to carry energy from one place to another. The radio and TV signals from broadcasting stations carry energy. Light carries energy from the sun to the earth, thus making life possible on the earth.
+Reprint 2026-27
+Example 8.1 A plane electromagnetic wave of frequency
+25 MHz travels in free space along the x-direction. At a particular point in space and time, E = 6.3 ˆj V/m. What is B at this point?
+Solution Using Eq. (8.10), the magnitude of B is
+6.3 V/m 2.1 10 T
+3 10 m/s
+To find the direction, we note that E is along y-direction and the wave propagates along x-axis. Therefore, B should be in a direction perpendicular to both x- and y-axes. Using vector algebra, E × B should be along x-direction. Since, (+ ˆj ) × (+ ˆk ) = ˆi , B is along the z-direction.
+Thus, B = 2.1 × 10–8 ˆk T
+Example 8.2 The magnetic field in a plane electromagnetic wave is given by By = (2 × 10–7) T sin (0.5×103x+1.5×1011t).
+(a) What is the wavelength and frequency of the wave?
+(b) Write an expression for the electric field.
+Solution (a) Comparing the given equation with
+ By=B0 Sin
+We get, 3
+λ = × m = 1.26 cm, and ( )11 1 1.5 10 /2 23.9 GHz
+ν = = × π = (b) E0 = B0c = 2×10–7 T × 3 × 108 m/s = 6 × 101 V/m
+The electric field component is perpendicular to the direction of propagation and the direction of magnetic field. Therefore, the electric field component along the z-axis is obtained as
+Ez = 60 sin (0.5 × 103x + 1.5 × 1011
+8.4 ELECTROMAGNETIC SPECTRUM
+At the time Maxwell predicted the existence of electromagnetic waves, the only familiar electromagnetic waves were the visible light waves. The existence of ultraviolet and infrared waves was barely established. By the end of the nineteenth century, X-rays and gamma rays had also been discovered. We now know that, electromagnetic waves include visible light waves, X-rays, gamma rays, radio waves, microwaves, ultraviolet and infrared waves. The classification of em waves according to frequency is the electromagnetic spectrum (Fig. 8.4). There is no sharp division between one kind of wave and the next. The classification is based roughly on how the waves are produced and/or detected.
+We briefly describe these different types of electromagnetic waves, in order of decreasing wavelengths.
+Electromagnetic spectrum http://www.fnal.gov/pub/inquiring/more/light http://imagine.gsfc.nasa.gov/docs/science/
+Reprint 2026-27
+Electromagnetic
+FIGURE 8.4 The electromagnetic spectrum, with common names for various part of it. The various regions do not have sharply defined boundaries.
+8.4.1 Radio waves
+Radio waves are produced by the accelerated motion of charges in conducting wires. They are used in radio and television communication systems. They are generally in the frequency range from 500 kHz to about 1000 MHz.
+The AM (amplitude modulated) band is from 530 kHz to 1710 kHz. Higher frequencies upto 54 MHz are used for short wave bands. TV waves range from 54 MHz to 890 MHz. The FM (frequency modulated) radio band extends from 88 MHz to 108 MHz. Cellular phones use radio waves to transmit voice communication in the ultrahigh frequency (UHF) band. How these waves are transmitted and received is described in Chapter 15.
+8.4.2 Microwaves
+Microwaves (short-wavelength radio waves), with frequencies in the gigahertz (GHz) range, are produced by special vacuum tubes (called klystrons, magnetrons and Gunn diodes). Due to their short wavelengths, they are suitable for the radar systems used in aircraft navigation. Radar also provides the basis for the speed guns used to time fast balls, tennis- serves, and automobiles. Microwave ovens are an interesting domestic application of these waves. In such ovens, the frequency of the microwaves is selected to match the resonant frequency of water molecules so that energy from the waves is transferred efficiently to the kinetic energy of the molecules. This raises the temperature of any food containing water.
+Reprint 2026-27

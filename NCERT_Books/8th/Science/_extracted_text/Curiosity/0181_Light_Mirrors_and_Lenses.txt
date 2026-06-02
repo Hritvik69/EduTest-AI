@@ -1,0 +1,220 @@
+Chapter 10 — Light: Mirrors and Lenses 161
+So, the concave mirror converges a light beam while the convex mirror diverges it. This is indeed interesting!
+Since the concave mirror converges the light beam, wouldn’t light get concentrated in a small area?
+Activity 10.7: Let us explore
+Safety First Safety first
+Always perform this activity under the supervision of a teacher or an adult. Do not look towards the Sun or into the mirror reflecting the Sun. Focus the reflected light only on a piece of paper, not towards anyone’s face or eyes.
+z Take a concave mirror and a sheet of thin paper or newspaper.
+z Hold the concave mirror with its reflecting surface facing the Sun. Direct the light of the Sun reflected by the mirror on the sheet of paper.
+z Adjust the distance of the paper until you get a sharp bright spot on it as shown in Fig. 10.12.
+z Hold the mirror and the sheet of paper steady for a few minutes. Does the paper start to burn producing smoke?
+The bright spot is formed on the paper because light from the
+Sun, after reflection from the mirror, gets concentrated on this point. This produces sufficient heat at this point which can ignite the paper.
+A step further
+Devices which concentrate sunlight into a small area, using mirrors and lenses, are called solar concentrators. The concentrated sunlight is used to heat a liquid to produce steam which can be used to generate electricity or for providing heat for various purposes, such as large scale cooking or for solar furnaces. Solar furnaces are even used for melting steel! Do you remember learning in an earlier chapter, about electric furnaces for melting steel?
+Fig. 10.12: Converging sunlight on paper using a concave mirror
+Reprint 2026-27
+Curiosity — T extbook of S cience f or G rade 8
+We explored the images of an object formed by curved mirrors.
+But how do objects look when viewed through transparent materials with curved surfaces?
+10.4 What Is a Lens?
+Imagine looking through a flat transparent glass window pane — all objects look the same size and shape.
+But would those objects continue to look the same if the surface of the transparent material is curved?
+Activity 10.8: Let us explore z Collect a flat strip of glass or clear plastic, such as a flat scale, few drops of oil, dropper, water, and a paper or book with some text printed on it.
+z Spread a few drops of oil on the surface of glass or plastic strip and rub it to leave a very thin coating. You can also use wax instead of oil.
+z Using a dropper or your finger, place a small drop of water on the oiled/waxed spot. (The oil/wax helps the water form a nice round drop.)
+z Examine the water drop. What is the shape of its surface? Is it flat or curved inward or curved outward?
+z Place the paper underneath the glass/plastic strip such that the text is directly under the water drop (see Fig. 10.13).
+z Now, look down through the water drop at the text below.
+Do you find some change in the size of the letters just below the water drop? Do they look enlarged or smaller?
+The surface of the water drop is curved outside. The letters under the water drop look different — they might appear larger than the letters nearby! The curved surface of the water drop made the size of the text look different. This curved drop of water is acting like a simple lens. Have you seen a magnifying glass as shown in Fig. 10.14? It is also a lens that helps in reading small print by making the letters appear bigger.
+A lens is a piece of transparent material, usually made of glass or plastic, which has curved surfaces. Like mirrors, lenses can also be convex or concave.
+A lens which is thicker at the middle as compared to the edges is called a convex lens (Fig. 10.15).
+Fig. 10.13: View of text beneath the water drop
+Fig. 10.15: (a) A convex lens;
+(b) Its representation
+Fig. 10.14: A magnifying glass
+Reprint 2026-27
+Chapter 10 — Light: Mirrors and Lenses 163
+A lens which is thicker at the edges as compared to the middle is called a concave lens (Fig. 10.16).
+Unlike mirrors, lenses allow light to pass through them, and we see things through a lens rather than in a lens.
+What changes can be seen in the objects when viewed through lenses?
+Activity 10.9: Let us experiment z Collect a convex lens, a concave lens, a lens holder, and a small object.
+z Take the convex lens and place it upright using its holder.
+z Place the object behind the convex lens (it may also be placed on something to bring it up to the level of the lens).
+z Look at the object through the lens from the other side of the lens (Fig. 10.17a) and note your observations in your notebook.
+z Now slowly move the object farther from the lens and keep observing how the image changes (Fig. 10.17b). How does the distance of the object from the convex lens affect how it z Now repeat the steps using a concave lens (Fig. 10.17c).
+z Analyse your observations recorded in your notebook and compare the images seen through both lenses.
+What conclusions do you draw?
+When an object is placed behind a convex lens at a small distance from it and seen through the lens, the object appears erect and enlarged in size. As the distance between the object and the convex lens increases, the object appears inverted. It is initially enlarged in size and then diminishes in size. An object placed behind a concave lens and seen through the lens, always appears erect and diminished in size. Its size changes, as its distance from the lens increases.
+Do lenses also converge or diverge the light beam?
+Fig. 10.17: An object as seen through a (a) Convex lens placed at small distance; (b) Convex lens placed at large distance;
+(c) Concave lens
+Fig. 10.16: (a) A concave lens;
+(b) Its representation
+Reprint 2026-27
+Curiosity — T extbook of Science for G rade 8
+Since convex lens converges a light beam, can it also burn a paper?
+Activity 10.10: Let us investigate z Collect a thin transparent glass plate, a convex lens, a concave lens, a torch and a comb to obtain multiple parallel beams of light, a paper clip to hold the comb upright, two identical books, and sheets of white paper.
+z Using two books placed adjacent to each other, fix the glass plate or lens upright in between them as shown in Fig. 10.18.
+Spread paper sheets on both books.
+z Now let the multiple parallel beams of light fall upon the thin glass plate, convex lens, and concave lens one by one as shown in Fig. 10.18. Does the parallel beam of light pass through as it is in all three cases?
+z Record and analyse your observations.
+The light beam passes through the thin glass plate as it is.
+The convex lens converges the light falling on it while the concave lens diverges the light. A convex lens is also called a converging lens while a concave lens is called a diverging lens.
+Fig. 10.18: Multiple parallel beams of light fall upon the (a) Thin glass plate;
+(b) Convex lens; (c) Concave lens (c) (b) (a)
+Thin transparent glass plate Convex lens Concave lens
+A step further
+If we draw what we observed in Activity 10.10, we get the figures like those shown below.
+Reprint 2026-27
+Chapter 10 — Light: Mirrors and Lenses 165
+Activity 10.11: Let us investigate z Repeat Activity 10.7 by putting a convex lens in the path of sunrays in place of a concave mirror (Fig. 10.19).
+Could you burn the paper?
+Where all are the lenses used?
+Lenses are important and are used everywhere around us. The eyeglasses that people wear to help them see clearly are lenses (Fig. 10.20a). Cameras (Fig. 10.20b), telescopes, and microscopes all use lenses to work.
+Even our eye has a convex lens inside it. It is quite an amazing lens that can change its shape, which is what allows us to read a book or see something far away.
+ Image formed by a concave mirror can be enlarged, diminished or of the same size as the object, and it may be erect or inverted, depending upon the distance of the object from the mirror.
+ Image formed by a convex mirror is always erect and diminished in size.
+ Two laws of reflection are:
+{ The angle of incidence is equal to the angle of reflection.
+{ The incident ray, the normal to the mirror at the point of incidence, and the reflected ray, all lie in the same plane.
+ The laws of reflection are valid for all kinds of mirrors — plane, concave, and convex.
+ A concave mirror converges the light beams while a convex mirror diverges it.
+ Image formed by a convex lens can be enlarged, diminished or of the same size as the object, and it may be erect or inverted, depending upon the distance of the object from the lens.
+ Image formed by a concave lens is always erect and diminished in size.
+ A convex lens converges the light beams while a concave lens diverges it.
+Snapshots
+Fig. 10.20: (a) Eyeglasses; (b) Smartphone camera lenses
+Fig. 10.19: Converging sunlight on paper using a convex lens
+Safety first
+Do not look at the Sun directly or through the lens as it may damage your eyes.
+Reprint 2026-27
+Curiosity — T extbook of Science for G rade 8
+Keep the curiosity alive
+1. A light ray is incident on a mirror and gets reflected by it (Fig. 10.21). The angle made by the incident ray with the normal to the mirror is 40°. What is the angle made by the reflected ray with the mirror?
+(i) 40° (ii) 50° (iii) 45° (iv) 60°
+2. Fig. 10.22 shows three different situations where a light ray falls on a mirror:
+(i) The light ray falls along the normal.
+Fig. 10.21
+Fig. 10.23 (i) (ii) (iii)
+Incident ray
+Fig. 10.22
+Incident ray
+Match each image with the correct mirror.
+Image Mirror (i) Plane mirror (ii) Convex mirror (iii) Concave mirror (ii) The mirror is tilted, but the light ray still falls along the normal to the tilted surface.
+(iii) The mirror is tilted, and the light ray falls at an angle of
+20° from the normal.
+Draw the reflected ray in each case (Use a ruler and protractor for accurate drawing). What is the angle of reflection in each case?
+3. In Fig. 10.23, the cap of a sketch pen is placed in front of three types of mirrors.
+Reprint 2026-27
+Chapter 10 — Light: Mirrors and Lenses 167
+4. In Fig. 10.24, the cap of a sketch pen is placed behind a convex lens, a concave lens, and a flat transparent glass piece — all at the same distance.
+Match each image with the correct type of lens or glass.
+Image Lens/glass type (i) Flat transparent glass piece (ii) Convex lens (iii) Concave lens
+5. When the light is incident along the normal on the mirror, which of the following statements is true:
+(i) Angle of incidence is 90° (ii) Angle of incidence is 0° (iii) Angle of reflection is 90° (iv) No reflection of light takes place in this case
+6. Three mirrors — plane, concave and convex are placed in
+Fig. 10.25. On the basis of the images of the graph sheet formed in the mirrors, identify the mirrors and write their names above the mirrors.
+7. In a museum, a woman walks towards a large concave mirror (Fig. 10.26). She will see that:
+(i) her erect image keeps decreasing in size.
+(ii) her inverted image keeps decreasing in size.
+(iii) her inverted image keeps increasing in size and eventually it becomes erect and magnified.
+(iv) her erect image keeps increasing in size.
+8. Hold a magnifying glass over text and identify the distance where you can see the text bigger than they are written. Now move it away from the text. What do you notice? Which type of lens is a magnifying glass?
+(i) (ii) (iii)
+Fig. 10.24
+Fig. 10.25
+Fig. 10.26
+Reprint 2026-27
+Curiosity — T extbook of Science for G rade 8
+9. Match the entries in Column I with those in Column II.
+Column I Column II (i) Concave mirror (a) Spherical mirror with a reflecting surface that curves inwards.
+(ii) Convex mirror (b) It forms an image which is always erect and diminished in size.
+(iii) Convex lens (c) Object placed behind it may appear inverted at some distance.
+(iv) Concave lens (d) Object placed behind it always appears diminished in size.
+10. The following question is based on Assertion/Reason.
+Assertion: Convex mirrors are preferred for observing the traffic behind us.
+Reason: Convex mirrors provide a significantly larger view area than plane mirrors.
+Choose the correct option:
+(i) Both Assertion and Reason are correct and Reason is the correct explanation for Assertion.
+(ii) Both Assertion and Reason are correct but Reason is not the correct explanation for Assertion.
+(iii) Assertion is correct but Reason is incorrect.
+(iv) Both Assertion and Reason are incorrect.
+11. In Fig. 10.27, note that O stands for object, M for mirror, and
+I for image.
+Which of the following statements is true?
+(i) Figure (a) indicates a plane mirror and Figure (b)
+indicates a concave mirror.
+(ii) Figure (a) indicates a convex mirror and Figure (b)
+indicates a concave mirror.
+(iii) Figure (a) indicates a concave mirror and Figure (b)
+indicates a convex mirror.
+(iv) Figure (a) indicates a plane mirror and Figure (b)
+indicates a convex mirror.
+Fig. 10.27
+How long?
+Where? Why not?
+Prepare some questions based on your learnings so far ...
+.....................................................................................
+.....................................................................................Reprint 2026-27
+Chapter 10 — Light: Mirrors and Lenses 169
+12. Place a pencil behind a transparent glass tumbler (Fig. 10.28a). Now fill the tumbler halfway with water (Fig. 10.28b). How does the pencil appear when viewed through the water? Explain why its shape appears changed.
+Discover, design, and debate z Visit a nearby hospital or the clinic of an ENT specialist, or a dentist, with your teacher or parents. Request the doctor to show you the mirrors used for examining ear, nose, throat, and teeth. Identify the kind of mirror used in these instruments.
+z Harnessing sunlight is key to solving future energy challenges.
+In devices like solar cookers (Fig. 10.29), mirrors are used to converge sunlight and generate heat. In India, such designs are used in villages, thus saving electricity and reducing fossil fuel use. Think of a design for a solar cooker for your school or home and prepare a detailed proposal for it including the budget required.
+z Use online tools or animation to do virtual experiments with spherical mirrors and lenses. Move objects in the simulation and observe how the image changes.
+Our scientific heritage
+More than 800 years ago, during the time of the great Indian mathematician Bhāskara II, astronomers used shallow bowls of water to observe the stars and planets. By carefully looking at their reflected images through tubes placed at appropriate angles, they could measure the positions of stars and planets in the sky. Even though the laws of reflection are not mentioned in literature, their instruments and methods indicate that they might have understood it in practice!
+Fig. 10.28
+Reflect on the questions framed by your friends and try to answer ...
+.....................................................................................
+think ...
+thought ... Maybe ...
+Shouldn’t it
+Science Society disciplinary
+Projects
+Fig. 10.29
+Reprint 2026-27
+Curiosity— Textbook of Science for G rade 8
+Keeping Time with the Skies 11
+Probe and ponder z Have you ever seen the Moon during the day? Why do you think it is sometimes visible when the Sun is up?
+z Imagine you lived on the Moon instead of Earth. What would you mean by a day, a month or a year?
+z What would happen if Earth had two moons instead of one?
+How would that change the night sky?
+z If we didn’t have clocks or calendars, how else could we measure time?
+z Share your questions
+Reprint 2026-27
+Chapter 11 — Keeping Time with the Skies 171
+It was Makar Sankranti, and Meera was in Ahmedabad for the
+Patang Mahotsav, the International Kite Festival. As she looked up at the sky filled with colourful kites, she noticed the Moon shining during the daytime. She was surprised as she had always thought the Moon appeared only at night. Also, the Moon did not appear like a full circle, but that didn’t surprise her as much.
+She knew its shape changed every night. Still, it got her thinking.
+She remembered learning that the Moon is spherical and shines by reflecting sunlight. Then why isn’t the whole Moon visible every night? For a moment, she wondered if it was due to a lunar eclipse. But eclipses are rare and brief. So, what causes the
+Moon’s changing shape?
+11.1 How Does the Moon’s Appearance
+Change and Why?
+Let us carefully watch the Moon to understand how its appearance changes over a month. You may have done a similar activity earlier, but let us now do it in more detail. Begin this activity from the sunrise after a full Moon day, that is when it is easiest to spot the Moon in the sky.
+Activity 11.1: Let us explore* z Spot the Moon at sunrise in the western direction on the first day after the full Moon.
+z Make a table similar to Table 11.1 in your notebook. Document the following:
+{ When you saw the Moon (at sunrise or sunset)?
+{ Shade the corresponding Circle with pencil to show the bright portion of the Moon as shown in Fig. 11.1.
+z From the second day onwards also document the following.
+{ Is the size of bright portion of the Moon increasing or decreasing from the previous day.
+{ Whether the Moon appears closer to or farther from the
+Sun in the sky than the day before.
+z After about 15 days, you may not be able to see the Moon at sunrise or sunset. For the next 15 days, carry out this activity at sunset.
+Fig. 11.1: Shading the dark portion of the Moon
+* It is best to begin this activity a month or more before this chapter is scheduled to be learnt.
+Reprint 2026-27
+Curiosity— Textbook of Science for G rade 8
+Day Date Moon seen
+Appearance of the Moon in the sky
+Size of the bright portion compared to the previous day
+Moon and Sun separation in the sky compared to the previous day
+1. Sunrise/Sunset — —
+2. Sunrise/Sunset Increased/
+Decreased Closer/Farther
+3. Sunrise/Sunset Increased/
+Decreased Closer/Farther
+Table 11.1: Documenting changes in the Moon’s appearance
+Analyse the data recorded by you in Table 11.1. Did the Moon appear different each day? Was the Moon vis

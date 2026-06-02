@@ -1,0 +1,183 @@
+37 Electrochemistry
+F2(g) + 2e– Æ 2F– 2.87
+Co3+ + e– Æ Co2+ 1.81
+H2O2 + 2H+ + 2e– Æ 2H2O 1.78
+– + 8H+ + 5e– Æ Mn2+ + 4H2O 1.51
+Au3+ + 3e– Æ Au(s) 1.40
+Cl2(g) + 2e– Æ 2Cl– 1.36
+Cr2O72– + 14H+ + 6e– Æ 2Cr3+ + 7H2O 1.33
+O2(g) + 4H+ + 4e– Æ 2H2O 1.23
+MnO2(s) + 4H+ + 2e– Æ Mn2+ + 2H2O 1.23
+Br2 + 2e– Æ 2Br– 1.09
+– + 4H+ + 3e– Æ NO(g) + 2H2O 0.97
+2Hg2+ + 2e– Æ Hg2
+Ag+ + e– Æ Ag(s) 0.80
+Fe3+ + e– Æ Fe2+ 0.77
+O2(g) + 2H+ + 2e– Æ H2O2 0.68
+I2 + 2e– Æ 2I– 0.54
+Cu+ + e– Æ Cu(s) 0.52
+Cu2+ + 2e– Æ Cu(s) 0.34
+AgCl(s) + e– Æ Ag(s) + Cl– 0.22
+AgBr(s) + e– Æ Ag(s) + Br– 0.10
+2H+ + 2e– Æ H2(g) 0.00
+Pb2+ + 2e– Æ Pb(s) –0.13
+Sn2+ + 2e– Æ Sn(s) –0.14
+Ni2+ + 2e– Æ Ni(s) –0.25
+Fe2+ + 2e– Æ Fe(s) –0.44
+Cr3+ + 3e– Æ Cr(s) –0.74
+Zn2+ + 2e– Æ Zn(s) –0.76
+2H2O + 2e– Æ H2(g) + 2OH–(aq) –0.83
+Al3+ + 3e– Æ Al(s) –1.66
+Mg2+ + 2e– Æ Mg(s) –2.36
+Na+ + e– Æ Na(s) –2.71
+Ca2+ + 2e– Æ Ca(s) –2.87
+K+ + e– Æ K(s) –2.93
+Li+ + e– Æ Li(s) –3.05
+Table 2.1: Standard Electrode Potentials at 298 K
+Ions are present as aqueous species and H2O as liquid; gases and solids are shown by g and s.
+Reaction (Oxidised form + ne– Æ Æ Æ Æ Æ Reduced form) E o/V
+Increasing strength of oxidising agent
+Increasing strength of reducing agent
+1. A negative E o means that the redox couple is a stronger reducing agent than the H+/H2 couple.
+2. A positive E o means that the redox couple is a weaker reducing agent than the H+/H2 couple.
+Reprint 2026-27
+38 Chemistry
+In Daniell cell, the electrode potential for any given concentration of
+Cu2+ and Zn2+ ions, we write
+For Cathode:
+  2 Cu / Cu
+E  = ( ) + 2
+F 2 ln  2
+For Anode:
+  2 Zn / Zn
+E  = ( ) + 2
+F 2 ln  2
+The cell potential, E(cell) =   2 Cu / Cu
+E  –   2 Zn / Zn
+= ( ) + 2
+F 2 ln 2+
+Cu (aq)    
+– ( ) + 2
+F 2 ln 2+
+Zn (aq)    
+= ( ) + 2
+E – ( ) + 2
+F 2    2+ 2+
+Cu aq Zn aq        
+E(cell) = ( )
+cell E – RT
+F 2 ln [ ]
+It can be seen that E(cell) depends on the concentration of both Cu2+ and Zn2+ ions. It increases with increase in the concentration of Cu2+ ions and decrease in the concentration of Zn2+ ions.
+By converting the natural logarithm in Eq. (2.11) to the base 10 and substituting the values of R, F and T = 298 K, it reduces to
+E(cell) = ( )
+cell E – 0 059
++ (2.12)
+We should use the same number of electrons (n) for both the electrodes and thus for the following cell
+Ni(s)ú Ni2+(aq) úú Ag+(aq)ú Ag
+The cell reaction is Ni(s) + 2Ag+(aq) ® Ni2+(aq) + 2Ag(s)
+The Nernst equation can be written as
+E(cell) = ( )
+cell E – RT
+F 2 ln [Ni ] and for a general electrochemical reaction of the type:
+a A + bB ne– cC + dD
+Nernst equation can be written as:
+E(cell) = ( )
+cell E – RT nF ln [C] [D] a b (2.13)
+Reprint 2026-27
+39 Electrochemistry
+If the circuit in Daniell cell (Fig. 2.1) is closed then we note that the reaction
+Zn(s) + Cu2+(aq) ® Zn2+(aq) + Cu(s) (2.1)
+takes place and as time passes, the concentration of Zn2+ keeps on increasing while the concentration of Cu2+ keeps on decreasing.
+At the same time voltage of the cell as read on the voltmeter keeps on decreasing. After some time, we shall note that there is no change in the concentration of Cu2+ and Zn2+ ions and at the same time, voltmeter gives zero reading. This indicates that equilibrium has been attained. In this situation the Nernst equation may be written as:
+E(cell) = 0 = ( )
+cell E – 2.303
+2 log [Zn ] cell E =
+2.303 [Zn ]
+But at equilibrium,
++ = Kc for the reaction 2.1 and at T = 298K the above equation can be written as cell E = 0 059
+. V log KC = 1.1 V ( ( )
+cell E = 1.1V)
+log KC = (1.1V × 2) 37.288
+0.059 V 
+KC = 2 × 1037 at 298K.
+In general, cell E = 2.303RT nF log KC (2.14)
+Thus, Eq. (2.14) gives a relationship between equilibrium constant of the reaction and standard potential of the cell in which that reaction takes place. Thus, equilibrium constants of the reaction, difficult to measure otherwise, can be calculated from the corresponding Eo value of the cell.
+2.3.1 Equilibrium
+Constant from Nernst
+Equation
+Example 2.1 Example 2.1 Example 2.1 Example 2.1 Example 2.1 Represent the cell in which the following reaction takes place
+Mg(s) + 2Ag+(0.0001M) ® Mg2+(0.130M) + 2Ag(s)
+Calculate its E(cell) if ( )
+cell E = 3.17 V.
+The cell can be written as Mgú Mg2+(0.130M)úú Ag+(0.0001M)ú Ag
+  cell
+= 3.17 V – 0 059
+2 0 0001 2
+. log ( . )
+V 0.130 = 3.17 V – 0.21V = 2.96 V.
+Solution Solution Solution Solution Solution
+Reprint 2026-27
+40 Chemistry
+The standard electrode potential for Daniell cell is 1.1V. Calculate the standard Gibbs energy for the reaction:
+Zn(s) + Cu2+(aq) æÆ Zn2+(aq) + Cu(s)
+DrGo = – nF o (cell) E n in the above equation is 2, F = 96487 C mol–1 and ( )
+cell E = 1.1 V
+Therefore, DrGo = – 2 × 1.1V × 96487 C mol–1
+= – 21227 J mol–1
+= – 212.27 kJ mol–1
+Example 2.3 Example 2.3 Example 2.3 Example 2.3 Example 2.3
+Solution Solution Solution Solution Solution
+Electrical work done in one second is equal to electrical potential multiplied by total charge passed. If we want to obtain maximum work from a galvanic cell then charge has to be passed reversibly. The reversible work done by a galvanic cell is equal to decrease in its Gibbs energy and therefore, if the emf of the cell is E and nF is the amount of charge passed and DrG is the Gibbs energy of the reaction, then
+DrG = – nFE(cell) (2.15)
+It may be remembered that E(cell) is an intensive parameter but DrG is an extensive thermodynamic property and the value depends on n.
+Thus, if we write the reaction
+Zn(s) + Cu2+(aq) æÆ Zn2+(aq) + Cu(s) (2.1)
+DrG = – 2FE(cell)
+but when we write the reaction
+2 Zn (s) + 2 Cu2+(aq) æÆ2 Zn2+(aq) + 2Cu(s)
+DrG = – 4FE(cell)
+If the concentration of all the reacting species is unity, then
+E(cell) = ( )
+cell E and we have
+DrGo = – nF o (cell) E (2.16)
+Thus, from the measurement of ( )
+cell E we can obtain an important thermodynamic quantity, DrGo, standard Gibbs energy of the reaction.
+From the latter we can calculate equilibrium constant by the equation:
+DrGo = –RT ln K.
+2.3.2 Electro- chemical
+Cell and
+Energy of the Reaction
+Calculate the equilibrium constant of the reaction:
+Cu(s) + 2Ag+(aq) Æ Cu2+(aq) + 2Ag(s)
+cell E = 0.46 V cell E = 0 059
+. V log KC = 0.46 V or log KC = 0 46 2
+× = 15.6
+KC = 3.92 × 1015
+Example 2.2 Example 2.2 Example 2.2 Example 2.2 Example 2.2
+Solution Solution Solution Solution Solution
+Reprint 2026-27
+41 Electrochemistry
+It is necessary to define a few terms before we consider the subject of conductance of electricity through electrolytic solutions. The electrical resistance is represented by the symbol ‘R’ and it is measured in ohm (W)
+which in terms of SI base units is equal to (kg m2)/(S3 A2). It can be measured with the help of a Wheatstone bridge with which you are familiar from your study of physics. The electrical resistance of any object is directly proportional to its length, l, and inversely proportional to its area of cross section, A. That is,
+A or R = r l
+A (2.17)
+The constant of proportionality, r (Greek, rho), is called resistivity (specific resistance). Its SI units are ohm metre (W m) and quite often its submultiple, ohm centimetre (W cm) is also used. IUPAC recommends the use of the term resistivity over specific resistance and hence in the rest of the book we shall use the term resistivity. Physically, the resistivity for a substance is its resistance when it is one metre long and its area of cross section is one m2. It can be seen that:
+1 W m = 100 W cm or 1 W cm = 0.01 W m
+The inverse of resistance, R, is called conductance, G, and we have the relation:
+l l (2.18)
+The SI unit of conductance is siemens, represented by the symbol
+‘S’ and is equal to ohm–1 (also known as mho) or W–1. The inverse of resistivity, called conductivity (specific conductance) is represented by the symbol, k (Greek, kappa). IUPAC has recommended the use of term conductivity over specific conductance and hence we shall use the term conductivity in the rest of the book. The SI units of conductivity are
+S m–1 but quite often, k is expressed in S cm–1. Conductivity of a material in S m–1 is its conductance when it is 1 m long and its area of cross section is 1 m2. It may be noted that 1 S cm–1 = 100 S m–1.
+2.4 2.4 2.4 2.4 2.4 Conductance Conductance Conductance Conductance Conductance of Electrolytic of Electrolytic of Electrolytic of Electrolytic of Electrolytic
+Solutions Solutions Solutions Solutions Solutions
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+2.4 Calculate the potential of hydrogen electrode in contact with a solution whose pH is 10.
+2.5 Calculate the emf of the cell in which the following reaction takes place:
+Ni(s) + 2Ag+ (0.002 M) Æ Ni2+ (0.160 M) + 2Ag(s)
+Given that o cell E = 1.05 V
+2.6 The cell in which the following reaction occurs:
+( ) ( ) ( ) ( )+ − +
++ → +3 2
+2 aq aq aq 2Fe 2I 2Fe I s has o cell E = 0.236 V at 298 K.
+Calculate the standard Gibbs energy and the equilibrium constant of the cell reaction.
+Reprint 2026-27

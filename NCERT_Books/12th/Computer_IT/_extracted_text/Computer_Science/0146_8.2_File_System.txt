@@ -1,0 +1,78 @@
+Computer SCienCe - ClaSS Xii 134
+9.3.2 Constraints
+Constraints are the certain types of restrictions on the data values that an attribute can have. Table 9.2 lists some of the commonly used constraints in SQL. They are used to ensure correctness of data. However, it is not mandatory to define constraints for each attribute of a table.
+Table 9.2 Commonly used SQL Constraints
+Constraint Description
+NOT NULL Ensures that a column cannot have NULL values where NULL means missing/ unknown/not applicable value.
+UNIQUE Ensures that all the values in a column are distinct/unique
+DEFAULT A default value specified for the column if no value is provided
+PRIMARY KEY The column which can uniquely identify each row/record in a table.
+FOREIGN KEY The column which refers to value of an attribute defined as primary key in another
+9.4 SQL for data defInItIon
+In order to be able to store data we need to first define the relation schema. Defining a schema includes creating a relation and giving name to a relation, identifying the attributes in a relation, deciding upon the datatype for each attribute and also specify the constraints as per the requirements. Sometimes, we may require to make changes to the relation schema also. SQL allows us to write statements for defining, modifying and deleting relation schemas. These are part of Data Definition
+Language (DDL).
+We have already learned that the data are stored in relations or tables in a database. Hence, we can say that a database is a collection of tables. The Create statement is used to create a database and its tables (relations). Before creating a database, we should be clear about the number of tables the database will have, the columns (attributes) in each table along with the data type of each column, and its constraint, if any.
+9.4.1 CREATE Database
+To create a database, we use the CREATE DATABASE statement as shown in the following syntax:
+CREATE DATABASE databasename;
+To create a database called StudentAttendance, we will type following command at mysql prompt.
+Which two constraints when applied together will produce a Primary
+Key constraint?
+Reprint 2026-27
+S tructured Query Language (SQL) 135
+Activity 9.3
+Type the statement show database; Does it show the name of
+StudentAttendance database?
+mysql> CREATE DATABASE StudentAttendance;
+Query OK, 1 row affected (0.02 sec)
+Note: In LINUX environment, names for database and tables are case-sensitive whereas in WINDOWS, there is no such differentiation. However, as a good practice, it is suggested to write database/table name in the same letter cases that were used at the time of their creation.
+A DBMS can manage multiple databases on one computer. Therefore, we need to select the database that we want to use. To know the names of existing databases, we use the statement SHOW DATABASES.
+From the listed databases, we can select the database to be used. Once the database is selected, we can proceed with creating tables or querying data.
+In order to use the StudentAttendance database, the following SQL statement is required.
+mysql> USE StudentAttendance;
+Database changed
+Initially, the created database is empty. It can be checked by using the show tables statement that lists names of all the tables within a database.
+mysql> SHOW TABLES;
+Empty set (0.06 sec)
+9.4.2 CREATE Table
+After creating a database StudentAttendance, we need to define relations in this database and specify attributes for each relation along with data type and constraint (if any) for each attribute. This is done using the CREATE
+TABLE statement.
+CREATE TABLE tablename( attributename1 datatype constraint, attributename2 datatype constraint, attributenameN datatype constraint);
+It is important to observe the following points with respect to the CREATE TABLE statement:
+• The number of columns in a table defines the degree of that relation, which is denoted by N.
+• Attribute name specifies the name of the column in the table.
+• Datatype specifies the type of data that an attribute can hold.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 136
+• Constraint indicates the restrictions imposed on the values of an attribute. By default, each attribute can take NULL values except for the primary key.
+Let us identify data types of the attributes of table
+STUDENT along with their constraints (if any). Assuming maximum students in a class to be 100 and values of roll number in a sequence from 1 to 100, we know that
+3 digits are sufficient to store values for the attribute
+RollNumber. Hence, data type INT is appropriate for this attribute. Total number of characters in a student name (SName) can differ. Assuming maximum characters in a name as 20, we use VARCHAR(20) for the SName column. Data type for the attribute SDateofBirth is
+DATE and supposing the school uses guardian’s 12 digit Aadhaar number as GUID, we can declare GUID as
+CHAR (12) since Aadhaar number is of fixed length and we are not going to perform any mathematical operation on GUID.
+Table 9.3, 9.4 and 9.5 shows the chosen data type and constraint for each attribute of the relations STUDENT,
+GUARDIAN and ATTENDANCE, respectively.
+Table 9.3 Data types and constraints for the attributes of relation STUDENT
+Attribute Name Data expected to be stored Data type Constraint
+RollNumber Numeric value consisting of maximum 3 digits INT PRIMARY KEY
+SName Variant length string of maximum 20 characters VARCHAR(20) NOT NULL
+SDateofBirth Date value DATE NOT NULL
+GUID Numeric value consisting of 12 digits CHAR (12) FOREIGN KEY
+Table 9.4 Data types and constraints for the attributes of relation GUARDIAN
+Attribute Name Data expected to be stored Data type Constraint
+GUID Numeric value consisting of 12 digit Aadhaar
+CHAR (12) PRIMARY KEY
+GName Variant length string of maximum 20 characters
+VARCHAR(20) NOT NULL
+GPhone Numeric value consisting of 10 digits CHAR(10) NULL UNIQUE
+GAddress Variant length String of size 30 characters VARCHAR(30) NOT NULL
+Table 9.5 Data types and constraints for the attributes of relation ATTENDANCE.
+Attribute Name Data expected to be stored Data type Constraint
+AttendanceDate Date value DATE PRIMARY KEY*
+RollNumber Numeric value consisting of maximum 3
+INT PRIMARY KEY*
+FOREIGN KEY
+AttendanceStatus ‘P’ for present and ‘A’ for absent CHAR(1) NOT NULL
+*means part of composite primary key.
+Reprint 2026-27

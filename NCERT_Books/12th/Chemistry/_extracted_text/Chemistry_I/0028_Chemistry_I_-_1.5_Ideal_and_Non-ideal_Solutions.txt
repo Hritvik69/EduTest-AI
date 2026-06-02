@@ -1,0 +1,40 @@
+14 Chemistry pressure and result in positive deviation. Mixtures of ethanol and acetone behave in this manner. In pure ethanol, molecules are hydrogen bonded.
+On adding acetone, its molecules get in between the host molecules and break some of the hydrogen bonds between them. Due to weakening of interactions, the solution shows positive deviation from Raoult’s law
+[Fig. 1.6 (a)]. In a solution formed by adding carbon disulphide to acetone, the dipolar interactions between solute-solvent molecules are weaker than the respective interactions among the solute-solute and solvent-solvent molecules. This solution also shows positive deviation.
+In case of negative deviations from Raoult’s law, the intermolecular attractive forces between A-A and B-B are weaker than those between
+A-B and leads to decrease in vapour pressure resulting in negative deviations. An example of this type is a mixture of phenol and aniline.
+In this case the intermolecular hydrogen bonding between phenolic proton and lone pair on nitrogen atom of aniline is stronger than the respective intermolecular hydrogen bonding between similar molecules. Similarly, a mixture of chloroform and acetone forms a solution with negative deviation from Raoult’s law.
+This is because chloroform molecule is able to form hydrogen bond with acetone molecule as shown.
+This decreases the escaping tendency of molecules for each component and consequently the vapour pressure decreases resulting in negative deviation from Raoult’s law [Fig. 1.6. (b)].
+Some liquids on mixing, form azeotropes which are binary mixtures having the same composition in liquid and vapour phase and boil at a constant temperature. In such cases, it is not possible to separate the components by fractional distillation. There are two types of azeotropes called minimum boiling azeotrope and maximum boiling azeotrope. The solutions which show a large positive deviation from
+Raoult’s law form minimum boiling azeotrope at a specific composition.
+The vapour pressures of two component systems as a function of composition (a) a solution that shows positive deviation from Raoult's law and (b) a solution that shows negative deviation from
+Raoult's law.
+Reprint 2026-27
+15 Solutions
+For example, ethanol-water mixture (obtained by fermentation of sugars)
+on fractional distillation gives a solution containing approximately 95% by volume of ethanol. Once this composition, known as azeotrope composition, has been achieved, the liquid and vapour have the same composition, and no further separation occurs.
+The solutions that show large negative deviation from Raoult’s law form maximum boiling azeotrope at a specific composition. Nitric acid and water is an example of this class of azeotrope. This azeotrope has the approximate composition, 68% nitric acid and 32% water by mass, with a boiling point of 393.5 K.
+1.6 1.6 1.6 1.6 1.6 Colligative Colligative Colligative Colligative Colligative
+Properties and Properties and Properties and Properties and Properties and
+Determination Determination Determination Determination Determination of Molar Mass of Molar Mass of Molar Mass of Molar Mass of Molar Mass
+We have learnt in Section 1.4.3 that the vapour pressure of solution decreases when a non-volatile solute is added to a volatile solvent.
+There are many properties of solutions which are connected with this decrease of vapour pressure. These are: (1) relative lowering of vapour pressure of the solvent (2) depression of freezing point of the solvent (3) elevation of boiling point of the solvent and (4) osmotic pressure of the solution. All these properties depend on the number of solute particles irrespective of their nature relative to the total number of particles present in the solution. Such properties are called colligative properties (colligative: from Latin: co means together, ligare means to bind). In the following Sections we will discuss these properties one by one.
+We have learnt in Section 1.4.3 that the vapour pressure of a solvent in solution is less than that of the pure solvent. Raoult established that the lowering of vapour pressure depends only on the concentration of the solute particles and it is independent of their identity. The equation (1.20)
+given in Section 1.4.3 establishes a relation between vapour pressure of the solution, mole fraction and vapour pressure of the solvent, i.e., p1 = x1 p1
+0 (1.22)
+The reduction in the vapour pressure of solvent (Dp1) is given as:
+Dp1 = p1
+0 – p1 = p1
+0 (1 – x1) (1.23)
+Knowing that x2 = 1 – x1, equation (1.23) reduces to
+Dp1 = x2 p1
+0 (1.24)
+In a solution containing several non-volatile solutes, the lowering of the vapour pressure depends on the sum of the mole fraction of different solutes.
+Equation (1.24) can be written as p = x2 (1.25)
+Intext Question Intext Question Intext Question Intext Question Intext Question
+1.8 The vapour pressure of pure liquids A and B are 450 and 700 mm Hg respectively, at 350 K . Find out the composition of the liquid mixture if total vapour pressure is 600 mm Hg. Also find the composition of the vapour phase.
+1.6.1 Relative
+Lowering of
+Pressure
+Reprint 2026-27

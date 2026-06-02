@@ -1,0 +1,41 @@
+the field falls off, at large distance, not as
+1/r 2 (typical of field due to a single charge)
+but as 1/r3. We, now, determine the electric potential due to a dipole and contrast it with the potential due to a single charge.
+As before, we take the origin at the centre of the dipole. Now we know that the electric field obeys the superposition principle. Since potential is related to the work done by the field, electrostatic potential also follows the superposition principle. Thus, the potential due to the dipole is the sum of potentials due to the charges q and –q
+4 0 1 2 π where r1 and r2 are the distances of the point P from q and –q, respectively.
+Now, by geometry,
+1 2 r r a ar = + − cos
+2 2 r r a ar = + + cos q (2.10)
+We take r much greater than a ( a r  ) and retain terms only upto the first order in a/r
+2 1 2 cos
+θ (2.11)
+Similarly,
+θ (2.12)
+Using the Binomial theorem and retaining terms upto the first order in a/r ; we obtain,
+1 1 1 2 1 1
+θ [2.13(a)]
+1 1 1 2 1 1
+θ [2.13(b)]
+Using Eqs. (2.9) and (2.13) and p = 2qa, we get
+2 cos cos (2.14)
+Now, p cos q = p.rˆ
+FIGURE 2.5 Quantities involved in the calculation of potential due to a dipole.
+Reprint 2026-27
+Electrostatic Potential and Capacitance where ˆr is the unit vector along the position vector OP.
+The electric potential of a dipole is then given by p.rˆ ; (r >> a) (2.15)
+Equation (2.15) is, as indicated, approximately true only for distances large compared to the size of the dipole, so that higher order terms in a/r are negligible. For a point dipole p at the origin, Eq. (2.15) is, however,
+From Eq. (2.15), potential on the dipole axis ( q = 0, p ) is given by
+= ± π (2.16)
+(Positive sign for q = 0, negative sign for q = p.) The potential in the equatorial plane ( q = p/2) is zero.
+The important contrasting features of electric potential of a dipole from that due to a single charge are clear from Eqs. (2.8) and (2.15):
+(i) The potential due to a dipole depends not just on r but also on the angle between the position vector r and the dipole moment vector p.
+(It is, however, axially symmetric about p. That is, if you rotate the position vector r about p, keeping q fixed, the points corresponding to P on the cone so generated will have the same potential as at P.)
+(ii) The electric dipole potential falls off, at large distance, as 1/r 2, not as
+1/r, characteristic of the potential due to a single charge. (You can refer to the Fig. 2.5 for graphs of 1/r 2 versus r and 1/r versus r, drawn there in another context.)
+2.5 POTENTIAL DUE TO A SYSTEM OF CHARGES
+Consider a system of charges q1, q2,…, qn with position vectors r1, r2,…, rn relative to some origin (Fig. 2.6). The potential V1 at P due to the charge where r1P is the distance between q1 and P.
+Similarly, the potential V2 at P due to q2 and
+V3 due to q3 are given by where r2P and r3P are the distances of P from charges q2 and q3, respectively; and so on for the potential due to other charges. By the superposition principle, the potential V at P due to the total charge configuration is the algebraic sum of the potentials due to the individual
+V = V1 + V2 + ... + Vn (2.17)
+FIGURE 2.6 Potential at a point due to a system of charges is the sum of potentials due to individual charges.
+Reprint 2026-27

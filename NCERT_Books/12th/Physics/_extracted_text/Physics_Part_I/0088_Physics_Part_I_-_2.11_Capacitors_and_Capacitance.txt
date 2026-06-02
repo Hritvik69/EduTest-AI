@@ -1,0 +1,33 @@
+potential drop V across the combination is the sum of the potential drops
+V1 and V2 across C1 and C2, respectively.
+V = V1 + V2 = 1 2
++ (2.55)
+i.e., 1 2
+= + , (2.56)
+Now we can regard the combination as an effective capacitor with charge Q and potential difference V. The effective capacitance of the combination is
+= (2.57)
+We compare Eq. (2.57) with Eq. (2.56), and obtain
+= + (2.58)
+The proof clearly goes through for any number of capacitors arranged in a similar way. Equation (2.55), for n capacitors arranged in series, generalises to
+V V V V C C C
+= + + + = + + + (2.59)
+Following the same steps as for the case of two capacitors, we get the general formula for effective capacitance of a series combination of n capacitors:
+1 1 1 1 1
+C C C C C
+= + + + + (2.60)
+2.14.2 Capacitors in parallel
+Figure 2.28 (a) shows two capacitors arranged in parallel. In this case, the same potential difference is applied across both the capacitors. But the plate charges (±Q1) on capacitor 1 and the plate charges (±Q2) on the capacitor 2 are not necessarily the same:
+Q1 = C1V, Q2 = C2V (2.61)
+The equivalent capacitor is one with charge
+Q = Q1 + Q2 (2.62)
+and potential difference V.
+Q = CV = C1V + C2V (2.63)
+The effective capacitance C is, from Eq. (2.63),
+C = C1 + C2 (2.64)
+The general formula for effective capacitance C for parallel combination of n capacitors [Fig. 2.28 (b)] follows similarly,
+Q = Q1 + Q2 + ... + Qn (2.65)
+i.e., CV = C1V + C2V + ... CnV(2.66)
+which gives
+C = C1 + C2 + ... Cn (2.67)
+FIGURE 2.28 Parallel combination of (a) two capacitors, (b) n capacitors.
+Reprint 2026-27

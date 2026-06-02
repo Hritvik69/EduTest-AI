@@ -1,0 +1,44 @@
+Computer networkS 191 pass the data packet to the gateway, which then routes it to the destination using the best possible route.
+Server GATEWAY Server
+PC 3 PC 2 PC 1
+PC 4 PC 5 PC 4
+PC 3 PC 2 PC 1
+10.0.0.0/8
+IP ADDRESS
+20.0.0.0/8
+IP ADDRESS
+Figure 10.14: A network gateway
+For simple Internet connectivity at homes, the gateway is usually the Internet Service Provider that provides access to the entire Internet. Generally, a router is configured to work as a gateway device in computer networks. But a gateway can be implemented completely in software, hardware, or a combination of both. Because a network gateway is placed at the edge of a network, the firewall is usually integrated with it.
+10.5 networkIng topologIes
+We have already discussed that a number of computing devices are connected together to form a Local Area
+Network (LAN), and interconnections among millions of
+LANs forms the Internet. The arrangement of computers and other peripherals in a network is called its topology.
+Common network topologies are Mesh, Ring, Bus, Star and Tree.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 192
+10.5.1 Mesh Topology
+In this networking topology, each communicating device is connected with every other device in the network as shown in Figure 10.15. Such a network can handle large amounts of traffic since multiple nodes can transmit data simultaneously. Also, such networks are more reliable in the sense that even if a node gets down, it does not cause any break in the transmission of data between other nodes. This topology is also more secure as compared to other topologies because each cable between two nodes carries different data.
+However, wiring is complex and cabling cost is high in creating such networks and there are many redundant or unutilised connections.
+Figure 10.15: A mesh topology
+10.5.2 Ring Topology
+In ring topology (Figure 10.16), each node is connected to two other devices, one each on either side, as shown in Figure 10.16. The nodes connected with each other thus forms a ring. The link in a ring topology is unidirectional. Thus, data can be transmitted in one direction only (clockwise or counterclockwise).
+Figure 10.16: A ring topology
+10.5.3 Bus Topology
+In bus topology (Figure 10.17), each communicating device connects to a transmission medium, known as bus. Data sent from a node are passed on to the bus and hence are transmitted to the length of the bus in both directions. That means, data can be received by any of the nodes connected to the bus.
+To build a fully- connected mesh topology of n nodes, it requires n(n-1)/2
+Reprint 2026-27
+Computer networkS 193
+Figure 10.17: A bus topology
+In this topology, a single backbone wire called bus is shared among the nodes, which makes it cheaper and easier to maintain. Both ring and bus topologies are considered to be less secure and less reliable.
+10.5.4 Star Topology
+In star topology (Figure 10.18), each communicating device is connected to a central node, which is a networking device like a hub or a switch, as shown in
+Figure 10.18.
+Star topology is considered very effective, efficient and fast as each device is directly connected with the central device. Although disturbance in one device will not affect the rest of the network, any failure in a central networking device may lead to the failure of complete network.
+Figure 10.18: A star topology
+The central node can be either a broadcasting device means data will be transmitted to all the nodes in the network, or a unicast device means the node can identify the destination and forward data to that node only.
+10.5.5 Tree or Hybrid Topology
+It is a hierarchical topology, in which there are multiple branches and each branch can have one or more basic topologies like star, ring and bus. Such topologies are usually realised in WANs where multiple LANs are connected. Those LANs may be in the form of a ring, bus or star. In figure 10.19, a hybrid topology is shown connecting 4-star topologies in a bus.
+In this type of network, data transmitted from source first reaches the centralised device and from there the data passes through every branch where each branch can have links for more nodes.
+How will a Bus and
+Ring topology behave in case a Node is
+Reprint 2026-27

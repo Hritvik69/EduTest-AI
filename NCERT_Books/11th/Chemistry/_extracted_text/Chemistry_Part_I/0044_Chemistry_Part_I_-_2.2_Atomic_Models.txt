@@ -1,0 +1,125 @@
+32 CHEMISTRY
+2.1.4 Discovery of Protons and neutrons
+Electrical discharge carried out in the modified cathode ray tube led to the discovery of canal rays carrying positively charged particles. The characteristics of these positively charged particles are listed below.
+(i) Unlike cathode rays, mass of positively charged particles depends upon the nature of gas present in the cathode ray tube. These are simply the positively charged gaseous ions.
+(ii) The charge to mass ratio of the particles depends on the gas from which these originate.
+(iii) Some of the positively charged particles carry a multiple of the fundamental unit of electrical charge.
+(iv) The behaviour of these particles in the magnetic or electrical field is opposite to that observed for electron or cathode
+The smallest and lightest positive ion was obtained from hydrogen and was called proton. This positively charged particle was characterised in 1919. Later, a need was felt for the presence of electrically neutral particle as one of the constituent of atom. These particles were discovered by Chadwick (1932)
+by bombarding a thin sheet of beryllium by α-particles. When electrically neutral particles having a mass slightly greater than that of protons were emitted. He named these particles as neutrons. The important properties of all these fundamental particles are given in Table 2.1.
+2.2 atomic moDels
+Observations obtained from the experiments mentioned in the previous sections have suggested that Dalton’s indivisible atom is composed of sub-atomic particles carrying positive and negative charges. The major problems before the scientists after the discovery of sub-atomic particles were:
+• to account for the stability of atom,
+• to compare the behaviour of elements in terms of both physical and chemical properties, millikan’s oil Drop method
+In this method, oil droplets in the form of mist, produced by the atomiser, were allowed to enter through a tiny hole in the upper plate of electrical condenser. The downward motion of these droplets was viewed through the telescope, equipped with a micrometer eye piece. By measuring the rate of fall of these droplets, Millikan was able to measure the mass of oil droplets. The air inside the chamber was ionized by passing a beam of
+X-rays through it. The electrical charge on these oil droplets was acquired by collisions with gaseous ions. The fall of these charged oil droplets can be retarded, accelerated or made stationary depending upon the charge on the droplets and the polarity and strength of the voltage applied to the plate. By carefully measuring the effects of electrical field strength on the motion of oil droplets,
+Millikan concluded that the magnitude of electrical charge, q, on the droplets is always an integral multiple of the electrical charge, e, that is, q = n e, where n = 1, 2, 3... .
+• to explain the formation of different kinds of molecules by the combination of different atoms and,
+• to understand the origin and nature of the characteristics of electromagnetic radiation absorbed or emitted by atoms.
+Fig. 2.3 The Millikan oil drop apparatus for measuring charge ‘e’. In chamber, the forces acting on oil drop are:
+gravitational, electrostatic due to electrical field and a viscous drag force when the oil drop is moving.
+Reprint 2026-27
+33 STRUCTURE OF ATOM
+Different atomic models were proposed to explain the distributions of these charged particles in an atom. Although some of these models were not able to explain the stability of atoms, two of these models, one proposed by J.J. Thomson and the other proposed by
+Ernest Rutherford are discussed below.
+2.2.1 thomson model of atom
+J. J. Thomson, in 1898, proposed that an atom possesses a spherical shape (radius approximately 10–10 m) in which the positive charge is uniformly distributed. The electrons are embedded into it in such a manner as to give the most stable electrostatic arrangement (Fig. 2.4). Many different names are given to this model, for example, plum pudding, raisin pudding or watermelon. This model
+In the later half of the nineteenth century different kinds of rays were discovered, besides those mentioned earlier. Wilhalm
+Röentgen (1845-1923) in 1895 showed that when electrons strike a material in the cathode ray tubes, produce rays which can cause fluorescence in the fluorescent materials placed outside the cathode ray tubes. Since Röentgen did not know the nature of the radiation, he named them
+X-rays and the name is still carried on. It was noticed that X-rays are produced effectively when electrons strike the dense metal anode, called targets. These are not deflected by the electric and magnetic fields and have a very high penetrating power through the matter and that is the reason that these rays are used to study the interior of the objects.
+These rays are of very short wavelengths (∼0.1 nm) and possess electro-magnetic character (Section 2.3.1).
+Henri Becqueral (1852-1908) observed that there are certain elements which emit radiation on their own and named this phenomenon as radioactivity and the elements known as radioactive elements.
+This field was developed by Marie Curie,
+Piere Curie, Rutherford and Fredrick Soddy.
+It was observed that three kinds of rays i.e.,
+α, β- and γ-rays are emitted. Rutherford found that α-rays consists of high energy particles carrying two units of positive charge and four unit of atomic mass. He concluded that α- particles are helium nuclei as when α- particles combined with two electrons yielded helium gas. β-rays are negatively charged
+Fig.2.4 Thomson model of atom can be visualised as a pudding or watermelon of positive charge with plums or seeds (electrons) embedded into it. An important feature of this model is that the mass of the atom is assumed to be uniformly distributed over the atom. Although this model was able to explain the overall neutrality of the atom, but was not consistent with the results of later experiments. Thomson was awarded Nobel
+Prize for physics in 1906, for his theoretical and experimental investigations on the conduction of electricity by gases.
+table 2.1 Properties of fundamental Particles name symbol absolute charge/c relative mass/kg mass/u approx.
+Electron
+– 1.602176×10–19
++ 1.602176×10 –19
+9.109382×10 –31
+1.6726216×10 –27
+1.674927×10 –27
+Reprint 2026-27
+34 CHEMISTRY represented in Fig. 2.5. A stream of high energy α–particles from a radioactive source was directed at a thin foil (thickness ∼ 100 nm)
+of gold metal. The thin gold foil had a circular fluorescent zinc sulphide screen around it.
+Whenever α–particles struck the screen, a tiny flash of light was produced at that point.
+The results of scattering experiment were quite unexpected. According to Thomson model of atom, the mass of each gold atom in the foil should have been spread evenly over the entire atom, and α–particles had enough energy to pass directly through such a uniform distribution of mass. It was expected that the particles would slow down and change directions only by a small angles as they passed through the foil. It was observed (i) most of the α–particles passed through the gold foil undeflected.
+(ii) a small fraction of the α–particles was deflected by small angles.
+(iii) a very few α–particles (∼1 in 20,000)
+bounced back, that is, were deflected by nearly 180°
+On the basis of the observations,
+Rutherford drew the following conclusions regarding the structure of atom:
+(i) Most of the space in the atom is empty as most of the α–particles passed through the foil undeflected.
+(ii) A few positively charged α–particles were deflected. The deflection must be due to enormous repulsive force showing that the positive charge of the atom is not spread throughout the atom as
+Thomson had presumed. The positive charge has to be concentrated in a very small volume that repelled and deflected the positively charged α–particles.
+(iii) Calculations by Rutherford showed that the volume occupied by the nucleus is negligibly small as compared to the total volume of the atom. The radius of the atom is about 10 –10 m, while that of nucleus is 10 –15 m. One can appreciate this difference in size by realising that if
+Fig. 2.5 Schematic view of Rutherford’s scattering experiment. When a beam of alpha () particles is “shot” at a thin gold foil, most of them pass through without much effect. Some, however, are deflected.
+A. Rutherford’s scattering experiment
+B. Schematic molecular view of the gold foil
+2.2.2 rutherford’s nuclear model of atom
+Rutherford and his students (Hans Geiger and Ernest Marsden) bombarded very thin gold foil with α–particles. Rutherford’s famous
+–particle scattering experiment is particles similar to electrons. The γ-rays are high energy radiations like X-rays, are neutral in nature and do not consist of particles. As regards penetrating power,
+α-particles are the least, followed by β-rays (100 times that of α–particles) and γ-rays (1000 times of that α-particles).
+Reprint 2026-27
+35 STRUCTURE OF ATOM a cricket ball represents a nucleus, then the radius of atom would be about 5 km.
+On the basis of above observations and conclusions, Rutherford proposed the nuclear model of atom. According to this model:
+(i) The positive charge and most of the mass of the atom was densely concentrated in extremely small region. This very small portion of the atom was called nucleus by Rutherford.
+(ii) The nucleus is surrounded by electrons that move around the nucleus with a very high speed in circular paths called orbits. Thus, Rutherford’s model of atom resembles the solar system in which the nucleus plays the role of sun and the electrons that of revolving planets.
+(iii) Electrons and the nucleus are held together by electrostatic forces of attraction.
+2.2.3 atomic number and mass number
+The presence of positive charge on the nucleus is due to the protons in the nucleus. As established earlier, the charge on the proton is equal but opposite to that of electron. The number of protons present in the nucleus is equal to atomic number (Z ). For example, the number of protons in the hydrogen nucleus is 1, in sodium atom it is 11, therefore their atomic numbers are 1 and 11 respectively.
+In order to keep the electrical neutrality, the number of electrons in an atom is equal to the number of protons (atomic number,
+Z ). For example, number of electrons in hydrogen atom and sodium atom are 1 and
+11 respectively.
+atomic number (Z) = number of protons in the nucleus of an atom
+= number of electrons in a nuetral atom (2.3)
+While the positive charge of the nucleus is due to protons, the mass of the nucleus, due to protons and neutrons. As discussed earlier protons and neutrons present in the nucleus are collectively known as nucleons.
+The total number of nucleons is termed as mass number (a) of the atom.
+mass number (a) = number of protons (Z )
++ number of neutrons (n) (2.4)
+2.2.4 isobars and isotopes
+The composition of any atom can be represented by using the normal element symbol (X) with super-script on the left hand side as the atomic mass number (A) and subscript (Z ) on the left hand side as the atomic number (i.e., A
+Isobars are the atoms with same mass number but different atomic number for example, 6
+14 C and 7
+14 N. On the other hand, atoms with identical atomic number but different atomic mass number are known as isotopes. In other words (according to equation 2.4), it is evident that difference between the isotopes is due to the presence of different number of neutrons present in the nucleus. For example, considering of hydrogen atom again, 99.985% of hydrogen atoms contain only one proton. This isotope is called protium ( 1
+1 H). Rest of the percentage of hydrogen atom contains two other isotopes, the one containing 1 proton and 1 neutron is called deuterium (1
+2 D, 0.015%) and the other one possessing 1 proton and 2 neutrons is called tritium ( 1
+3t ). The latter isotope is found in trace amounts on the earth. Other examples of commonly occuring isotopes are:
+carbon atoms containing 6, 7 and 8 neutrons besides 6 protons ( 6
+C, C, C ); chlorine atoms containing 18 and 20 neutrons besides
+17 protons (17
+Cl, Cl ).
+Lastly an important point to mention regarding isotopes is that chemical properties of atoms are controlled by the number of electrons, which are determined by the number of protons in the nucleus. Number of neutrons present in the nucleus have very little effect on the chemical properties of an element.
+Therefore, all the isotopes of a given element show same chemical behaviour.
+Reprint 2026-27
+36 CHEMISTRY
+Problem 2.1
+Calculate the number of protons, neutrons and electrons in 80 solution
+In this case, 80
+35 Br , Z = 35, A = 80, species is neutral
+Number of protons = number of electrons
+= Z = 35
+Number of neutrons = 80 – 35 = 45, (equation 2.4)
+Problem 2.2
+The number of electrons, protons and neutrons in a species are equal to 18, 16 and 16 respectively. Assign the proper symbol to the species.
+solution
+T h e a t o m i c n u m b e r i s e q u a l t o number of protons = 16. The element is sulphur (S).
+Atomic mass number = number of protons + number of neutrons
+= 16 + 16 = 32
+Species is not neutral as the number of protons is not equal to electrons. It is anion (negatively charged) with charge equal to excess electrons = 18 – 16 = 2.
+Symbol is .
+note : Before using the notation A find out whether the species is a neutral atom, a cation or an anion. If it is a neutral atom, equation (2.3) is valid, i.e., number of protons = number of electrons
+= atomic number. If the species is an ion, determine whether the number of protons are larger (cation, positive ion)
+or smaller (anion, negative ion) than the number of electrons. Number of neutrons is always given by A–Z, whether the species is neutral or ion.
+2.2.5 Drawbacks of rutherford model
+As you have learnt above, Rutherford nuclear model of an atom is like a small scale solar system with the nucleus playing the role
+* Classical mechanics is a theoretical science based on Newton’s laws of motion. It specifies the laws of motion of macroscopic objects.
+of the massive sun and the electrons being similar to the lighter planets. When classical mechanics* is applied to the solar system, it shows that the planets describe well-defined orbits around the sun. The gravitational force between the planets is given by the expression
+ where m1 and m2 are the masses, r is the distance of separation of the masses and G is the gravitational constant. The theory can also calculate precisely the planetary orbits and these are in agreement with the experimental measurements.
+The similarity between the solar system and nuclear model suggests that electrons should move around the nucleus in well defined orbits. Further, the coulomb force (kq1q2 /r2 where q1 and q2 are the charges, r is the distance of separation of the charges and k is the proportionality constant) between electron and the nucleus is mathematically similar to the gravitational force. However, when a body is moving in an orbit, it undergoes acceleration even if it is moving with a constant speed in an orbit because of changing direction. So an electron in the nuclear model describing planet like orbits is under acceleration. According to the electromagnetic theory of Maxwell, charged particles when accelerated should emit electromagnetic radiation (This feature does not exist for planets since they are uncharged).
+Therefore, an electron in an orbit will emit radiation, the energy carried by radiation comes from electronic motion. The orbit will thus continue to shrink. Calculations show that it should take an electron only 10 –8 s to spiral into the nucleus. But this does not happen. Thus, the Rutherford model cannot explain the stability of an atom.
+If the motion of an electron is described on the basis of the classical mechanics and electromagnetic theory, you may ask that since the motion of electrons in orbits is leading to the instability of the atom, then why not consider electrons as stationary
+Reprint 2026-27

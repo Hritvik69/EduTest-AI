@@ -1,0 +1,38 @@
+Electrostatic Potential and Capacitance electric field normal to the surface exists; this means potential will be different for the surface and a point just outside the surface.
+In a system of conductors of arbitrary size, shape and charge configuration, each conductor is characterised by a constant value of potential, but this constant may differ from one conductor to the other.
+5. Electric field at the surface of a charged conductor
+= E n (2.35)
+where s is the surface charge density and ˆn is a unit vector normal to the surface in the outward direction.
+To derive the result, choose a pill box (a short cylinder) as the Gaussian surface about any point P on the surface, as shown in Fig. 2.17. The pill box is partly inside and partly outside the surface of the conductor. It has a small area of cross section d S and negligible height.
+Just inside the surface, the electrostatic field is zero; just outside, the field is normal to the surface with magnitude E. Thus, the contribution to the total flux through the pill box comes only from the outside (circular) cross-section of the pill box. This equals ± E dS (positive for negative for s < 0), since over the small area may be considered constant and E and dS are parallel or antiparallel. The charge enclosed by the pill box
+By Gauss’s law
+ε (2.36)
+Including the fact that electric field is normal to the surface, we get the vector relation, Eq. (2.35), which is true for both signs of s > 0, electric field is normal to the surface outward; for s < 0, electric field is normal to the surface inward.
+6. Electrostatic shielding
+Consider a conductor with a cavity, with no charges inside the cavity. A remarkable result is that the electric field inside the cavity is zero, whatever be the size and shape of the cavity and whatever be the charge on the conductor and the external fields in which it might be placed. We have proved a simple case of this result already: the electric field inside a charged spherical shell is zero. The proof of the result for the shell makes use of the spherical symmetry of the shell (see Chapter 1). But the vanishing of electric field in the (charge-free) cavity of a conductor is, as mentioned above, a very general result. A related result is that even if the conductor
+FIGURE 2.17 The Gaussian surface (a pill box) chosen to derive Eq. (2.35)
+for electric field at the surface of a charged conductor.
+Reprint 2026-27
+FIGURE 2.18 The electric field inside a cavity of any conductor is zero. All charges reside only on the outer surface of a conductor with cavity. (There are no charges placed in the cavity.)
+is charged or charges are induced on a neutral conductor by an external field, all charges reside only on the outer surface of a conductor with cavity.
+The proofs of the results noted in Fig. 2.18 are omitted here, but we note their important implication. Whatever be the charge and field configuration outside, any cavity in a conductor remains shielded from outside electric influence: the field inside the cavity is always zero. This is known as electrostatic shielding. The effect can be made use of in protecting sensitive instruments from outside electrical influence. Figure 2.19 gives a summary of the important electrostatic properties of a conductor.
+Example 2.7 (a) A comb run through one’s dry hair attracts small bits of paper.
+What happens if the hair is wet or if it is a rainy day? (Remember, a paper does not conduct electricity.)
+(b) Ordinary rubber is an insulator. But special rubber tyres of aircraft are made slightly conducting. Why is this necessary?
+(c) Vehicles carrying inflammable materials usually have metallic ropes touching the ground during motion. Why?
+(d) A bird perches on a bare high power line, and nothing happens to the bird. A man standing on the ground touches the same line and gets a fatal shock. Why?
+Solution (a) This is because the comb gets charged by friction. The molecules in the paper gets polarised by the charged comb, resulting in a net force of attraction. If the hair is wet, or if it is rainy day, friction between hair and the comb reduces. The comb does not get charged and thus it will not attract small bits of paper.
+FIGURE 2.19 Some important electrostatic properties of a conductor.
+Reprint 2026-27
+Electrostatic Potential and Capacitance (b) To enable them to conduct charge (produced by friction) to the ground; as too much of static electricity accumulated may result in spark and result in fire.
+(c) Reason similar to (b).
+(d) Current passes only when there is difference in potential.
+2.10 DIELECTRICS AND POLARISATION
+Dielectrics are non-conducting substances. In contrast to conductors, they have no (or negligible number of ) charge carriers. Recall from Section
+2.9 what happens when a conductor is placed in an external electric field. The free charge carriers move and charge distribution in the conductor adjusts itself in such a way that the electric field due to induced charges opposes the external field within the conductor. This happens until, in the static situation, the two fields cancel each other and the net electrostatic field in the conductor is zero. In a dielectric, this free movement of charges is not possible. It turns out that the external field induces dipole moment by stretching or re-orienting molecules of the dielectric. The collective effect of all the molecular dipole moments is net charges on the surface of the dielectric which produce a field that opposes the external field. Unlike in a conductor, however, the opposing field so induced does not exactly cancel the external field. It only reduces it.
+The extent of the effect depends on the nature of the dielectric. To understand the effect, we need to look at the charge distribution of a dielectric at the molecular level.
+The molecules of a substance may be polar or non-polar. In a non-polar molecule, the centres of positive and negative charges coincide. The molecule then has no permanent (or intrinsic) dipole moment. Examples of non-polar molecules are oxygen (O2) and hydrogen (H2 )
+molecules which, because of their symmetry, have no dipole moment. On the other hand, a polar molecule is one in which the centres of positive and negative charges are separated (even when there is no external field). Such molecules have a permanent dipole moment. An ionic molecule such as HCl or a molecule of water (H2O) are examples of polar molecules.
+FIGURE 2.20 Difference in behaviour of a conductor and a dielectric in an external electric field.
+FIGURE 2.21 Some examples of polar and non-polar molecules.
+Reprint 2026-27

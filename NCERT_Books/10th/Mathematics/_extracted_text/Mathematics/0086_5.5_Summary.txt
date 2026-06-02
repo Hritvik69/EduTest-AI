@@ -1,0 +1,18 @@
+72 MATHEMATICS
+5.5 Summary
+In this chapter, you have studied the following points :
+1. An arithmetic progression (AP) is a list of numbers in which each term is obtained by adding a fixed number d to the preceding term, except the first term. The fixed number d is called the common difference.
+The general form of an AP is a, a + d, a + 2d, a + 3d, . . .
+2. A given list of numbers a1
+, a2 , a3
+, . . . is an AP, if the differences a2 – a1
+, a3 – a2 ,
+, . . ., give the same value, i.e., if a k + 1 – a k is the same for different values of k.
+3. In an AP with first term a and common difference d, the nth term (or the general term) is given by a n = a + (n – 1) d.
+4. The sum of the first n terms of an AP is given by :
+S =   2 ( 1)
+n a n d  
+5. If l is the last term of the finite AP, say the nth term, then the sum of all terms of the AP is given by :
+A NOTE TO THE READER
+If a, b, c are in AP, then b = 2 a c  and b is called the arithmetic mean of a and c.
+Reprint 2026-27

@@ -1,0 +1,102 @@
+PRINCIPLES OF INHERITANCE AND VARIATION
+4.2 INHERITANCE OF ONE GENE
+Let us take the example of one such hybridisation experiment carried out by
+Mendel where he crossed tall and dwarf pea plants to study the inheritance of one gene (Figure 4.2). He collected the seeds produced as a result of this cross and grew them to generate plants of the first hybrid generation.
+This generation is also called the Filial1 progeny or the F1. Mendel observed that all the F1 progeny plants were tall, like one of its parents; none were dwarf (Figure 4.3). He made similar observations for the other pairs of traits – he found that the F1 always resembled either one of the parents, and that the trait of the other parent was not seen in
+Mendel then self-pollinated the tall F1 plants and to his surprise found that in the
+Filial2 generation some of the offspring were
+‘dwarf ’; the character that was not seen in the F1 generation was now expressed. The proportion of plants that were dwarf were
+1/4th of the F2 plants while 3/4th of the F2 plants were tall. The tall and dwarf traits were identical to their parental type and did not show any blending, that is all the offspring were either tall or dwarf, none were of in- between height (Figure 4.3).
+Similar results were obtained with the other traits that he studied:
+only one of the parental traits was expressed in the F1 generation while at the F2 stage both the traits were expressed in the proportion 3:1. The contrasting traits did not show any blending at either F1 or F2 stage.
+Figure 4.2 Steps in making a cross in pea
+Table 4.1: Contrasting Traits Studied by
+Mendel in Pea
+S.No. Characters Contrasting Traits
+1. Stem height Tall/dwarf
+2. Flower colour Violet/white
+3. Flower position Axial/terminal
+4. Pod shape Inflated/constricted
+5. Pod colour Green/yellow
+6. Seed shape Round/wrinkled
+7. Seed colour Yellow/green
+Reprint 2026-27
+Based on these observations,
+Mendel proposed that something was being stably passed down, unchanged, from parent to offspring through the gametes, over successive generations. He called these things as ‘factors’. Now we call them as genes. Genes, therefore, are the units of inheritance. They contain the information that is required to express a particular trait in an organism. Genes which code for a pair of contrasting traits are known as alleles, i.e., they are slightly different forms of the same
+If we use alphabetical symbols for each gene, then the capital letter is used for the trait expressed at the
+F1 stage and the small alphabet for the other trait. For example, in case of the character of height, T is used for the Tall trait and t for the ‘dwarf’, and T and t are alleles of each other.
+Hence, in plants the pair of alleles for height would be TT, Tt or tt.
+Mendel also proposed that in a true breeding, tall or dwarf pea variety the allelic pair of genes for height are identical or homozygous, TT and tt, respectively. TT and tt are called the genotype of the plant while the descriptive terms tall and dwarf are the phenotype. What then would be the phenotype of a plant that had a genotype Tt?
+As Mendel found the phenotype of the F1 heterozygote Tt to be exactly like the TT parent in appearance, he proposed that in a pair of dissimilar factors, one dominates the other (as in the F1 ) and hence is called the dominant factor while the other factor is recessive . In this case T (for tallness) is dominant over t (for dwarfness), that is recessive. He observed identical behaviour for all the other characters/trait-pairs that he studied.
+It is convenient (and logical) to use the capital and lower case of an alphabetical symbol to remember this concept of dominance and recessiveness. (Do not use T for tall and d for dwarf because you will find it difficult to remember whether T and d are alleles of the same gene/character or not). Alleles can be similar as in the case of homozygotes
+TT and tt or can be dissimilar as in the case of the heterozygote Tt. Since
+Figure 4.3 Diagrammatic representation of monohybrid cross
+Reprint 2026-27
+PRINCIPLES OF INHERITANCE AND VARIATION the Tt plant is heterozygous for genes controlling one character (height), it is a monohybrid and the cross between TT and tt is a monohybrid cross.
+From the observation that the recessive parental trait is expressed without any blending in the F2 generation, we can infer that, when the tall and dwarf plant produce gametes, by the process of meiosis, the alleles of the parental pair separate or segregate from each other and only one allele is transmitted to a gamete. This segregation of alleles is a random process and so there is a 50 per cent chance of a gamete containing either allele, as has been verified by the results of the crossings. In this way the gametes of the tall TT plants have the allele
+T and the gametes of the dwarf tt plants have the allele t. During fertilisation the two alleles, T from one parent say, through the pollen, and t from the other parent, then through the egg, are united to produce zygotes that have one T allele and one t allele. In other words the hybrids have Tt. Since these hybrids contain alleles which express contrasting traits, the plants are heterozygous. The production of gametes by the parents, the formation of the zygotes, the F1 and F2 plants can be understood from a diagram called Punnett Square as shown in Figure 4.4. It was developed by a British geneticist, Reginald C. Punnett. It is a graphical representation to calculate the probability of all possible genotypes of offspring in a genetic cross.
+The possible gametes are written on two sides, usually the top row and left columns. All possible combinations are represented in boxes below in the squares, which generates a square output form.
+The Punnett Square shows the parental tall TT (male) and dwarf tt (female) plants, the gametes produced by them and, the F1 Tt progeny. The F1 plants of genotype Tt are self-pollinated. The symbols & & & & & and % % % % % are used to denote the female (eggs) and male (pollen) of the F1 generation, respectively. The F1 plant of the genotype Tt when self-pollinated, produces gametes of the genotype
+T and t in equal proportion. When fertilisation takes place, the pollen grains of genotype T have a 50 per cent chance to pollinate eggs of the genotype T, as well as of genotype t. Also pollen grains of genotype t have a 50 per cent chance of pollinating eggs of genotype T, as well as of
+Figure 4.4 A Punnett square used to understand a typical monohybrid cross conducted by Mendel between true-breeding tall plants and true-breeding dwarf plants
+Reprint 2026-27 genotype t. As a result of random fertilisation, the resultant zygotes can be of the genotypes TT, Tt or tt.
+From the Punnett square it is easily seen that 1/4th of the random fertilisations lead to TT, 1/2 lead to Tt and 1/4th to tt. Though the F1 have a genotype of Tt, but the phenotypic character seen is ‘tall’. At F2,
+3/4th of the plants are tall, where some of them are TT while others are
+Tt. Externally it is not possible to distinguish between the plants with the genotypes TT and Tt. Hence, within the genopytic pair Tt only one character ‘T ’ tall is expressed. Hence the character T or ‘tall’ is said to dominate over the other allele t or ‘dwarf’ character. It is thus due to this dominance of one character over the other that all the F1 are tall (though the genotype is Tt) and in the F2 3/4th of the plants are tall (though genotypically 1/2 are Tt and only 1/4th are TT). This leads to a phenotypic ratio of 3/4th tall : (1/4 TT + 1/2 Tt) and 1/4th tt, i.e., a 3:1 ratio, but a genotypic ratio of 1:2:1.
+The 1/4 : 1/2 : 1/4 ratio of TT: Tt: tt is mathematically condensable to the form of the binomial expression (ax +by)2, that has the gametes bearing genes T or t in equal frequency of ½. The expression is expanded as given below :
+(1/2T + 1/2 t)2 = (1/2T + 1/2t) X (1/2T + 1/2t) = 1/4 TT + 1/2Tt + 1/4 tt
+Mendel self-pollinated the F2 plants and found that dwarf F2 plants continued to generate dwarf plants in F3 and F4 generations. He concluded that the genotype of the dwarfs was homozygous – tt. What do you think he would have got had he self-pollinated a tall F2 plant?
+From the preceeding paragraphs it is clear that though the genotypic ratios can be calculated using mathematical probability, by simply looking at the phenotype of a dominant trait, it is not possible to know the genotypic composition. That is, for example, whether a tall plant from F1 or F2 has TT or Tt composition, cannot be predicted. Therefore, to determine the genotype of a tall plant at F2, Mendel crossed the tall plant from F2 with a dwarf plant. This he called a test cross. In a typical test cross an organism (pea plants here) showing a dominant phenotype (and whose genotype is to be determined) is crossed with the recessive parent instead of self-crossing. The progenies of such a cross can easily be analysed to predict the genotype of the test organism. Figure 4.5 shows the results of typical test cross where violet colour flower (V) is dominant over white colour flower (v).
+Using Punnett square, try to find out the nature of offspring of a test cross.
+What ratio did you get?
+Using the genotypes of this cross, can you give a general definition for a test cross?
+Reprint 2026-27
+PRINCIPLES OF INHERITANCE AND VARIATION
+Figure 4.5 Diagrammatic representation of a test cross
+Based on his observations on monohybrid crosses Mendel proposed two general rules to consolidate his understanding of inheritance in monohybrid crosses. Today these rules are called the Principles or
+Laws of Inheritance: the First Law or Law of Dominance and the
+Second Law or Law of Segregation.
+4.2.1 Law of Dominance (i) Characters are controlled by discrete units called factors.
+(ii) Factors occur in pairs.
+(iii) In a dissimilar pair of factors one member of the pair dominates (dominant) the other (recessive).
+The law of dominance is used to explain the expression of only one of the parental characters in a monohybrid cross in the F1 and the expression of both in the F2. It also explains the proportion of 3:1 obtained at the F2.
+4.2.2 Law of Segregation
+This law is based on the fact that the alleles do not show any blending and that both the characters are recovered as such in the F2 generation though one of these is not seen at the F1 stage. Though the parents contain two alleles during gamete formation, the factors or alleles of a pair segregate from each other such that a gamete receives only one of the two factors.
+Of course, a homozygous parent produces all gametes that are similar while a heterozygous one produces two kinds of gametes each having one allele with equal proportion.
+Reprint 2026-27
+4.2.2.1 Incomplete Dominance
+When experiments on peas were repeated using other traits in other plants, it was found that sometimes the F1 had a phenotype that did not resemble either of the two parents and was in between the two. The inheritance of flower colour in the dog flower (snapdragon or Antirrhinum sp.) is a good example to understand incomplete dominance. In a cross between true-breeding red-flowered (RR) and true- breeding white-flowered plants (rr), the F1 (Rr) was pink (Figure 4.6). When the F1 was self-pollinated the F2 resulted in the following ratio 1 (RR) Red : 2 (Rr) Pink : 1 (rr) White. Here the genotype ratios were exactly as we would expect in any mendelian monohybrid cross, but the phenotype ratios had changed from the 3:1 dominant : recessive ratio.
+What happened was that R was not completely dominant over r and this made it possible to distinguish Rr as pink from RR (red) and rr (white) .
+Explanation of the concept of dominance:
+What exactly is dominance? Why are some alleles dominant and some recessive? To tackle these questions, we must understand what a gene does.
+Every gene, as you know by now, contains the information to express a particular trait. In a diploid organism, there are two copies of each gene, i.e., as a pair of alleles. Now, these two alleles need not always be identical, as in a heterozygote.
+One of them may be different due to some changes that it has undergone (about which you will read further on, and in the next chapter) which modifies the information that particular allele contains.
+Let’s take an example of a gene that contains the information for producing an enzyme. Now there are two copies of this gene, the two allelic forms. Let us assume (as is more common) that the normal allele produces the normal enzyme that is needed for the transformation of a substrate S. Theoretically, the modified allele could be responsible for production of – (i) the normal/less efficient enzyme, or (ii) a non-functional enzyme, or (iii) no enzyme at all
+Figure 4.6 Results of monohybrid cross in the plant Snapdragon, where one allele is incompletely dominant over the other allele
+Reprint 2026-27
+PRINCIPLES OF INHERITANCE AND VARIATION
+In the first case, the modified allele is equivalent to the unmodified allele, i.e., it will produce the same phenotype/trait, i.e., result in the transformation of substrate S. Such equivalent allele pairs are very common. But, if the allele produces a non-functional enzyme or no enzyme, the phenotype may be effected. The phenotype/trait will only be dependent on the functioning of the unmodified allele. The unmodified (functioning) allele, which represents the original phenotype is the dominant allele and the modified allele is generally the recessive allele. Hence, in the example above the recessive trait is seen due to non-functional enzyme or because no enzyme is produced.
+4.2.2.2 Co-dominance
+Till now we were discussing crosses where the F1 resembled either of the two parents (dominance) or was in-between (incomplete dominance). But, in the case of co-dominance the F1 generation resembles both parents. A good example is different types of red blood cells that determine ABO blood grouping in human beings. ABO blood groups are controlled by the gene I. The plasma membrane of the red blood cells has sugar polymers that protrude from its surface and the kind of sugar is controlled by the gene. The gene (I) has three alleles IA, IB and i. The alleles IA and IB produce a slightly different form of the sugar while allele i does not produce any sugar. Because humans are diploid organisms, each person possesses any two of the three I gene alleles. IA and IB are completely dominant over i, in other words when IA and i are present only IA expresses (because i does not produce any sugar), and when IB and i are present IB expresses.
+But when IA and IB are present together they both express their own types of sugars: this is because of co-dominance. Hence red blood cells have both A and B types of sugars. Since there are three different alleles, there are six different combinations of these three alleles that are possible, and therefore, a total of six different genotypes of the human ABO blood types (Table 4.2). How many phenotypes are possible?
+Table 4.2: Table Showing the Genetic Basis of Blood Groups in Human Population
+Allele from Allele from Genotype of Blood
+Parent 1 Parent 2 offspring types of offspring
+I A I A I A I A A
+I A I B I A I B AB
+I A i I A i A
+I B I A I A I B AB
+I B I B I B I B B
+I B i I B i B i i i i O
+Reprint 2026-27
+Do you realise that the example of ABO blood grouping also provides a good example of multiple alleles? Here you can see that there are more than two, i.e., three alleles, governing the same character. Since in an individual only two alleles can be present, multiple alleles can be found only when population studies are made.
+Occasionally, a single gene product may produce more than one effect.
+For example, starch synthesis in pea seeds is controlled by one gene. It has two alleles (B and b). Starch is synthesised effectively by BB homozygotes and therefore, large starch grains are produced. In contrast, bb homozygotes have lesser efficiency in starch synthesis and produce smaller starch grains. After maturation of the seeds, BB seeds are round and the bb seeds are wrinkled. Heterozygotes produce round seeds, and so B seems to be the dominant allele. But, the starch grains produced are of intermediate size in Bb seeds. So if starch grain size is considered as the phenotype, then from this angle, the alleles show incomplete dominance.
+Therefore, dominance is not an autonomous feature of a gene or the product that it has information for. It depends as much on the gene product and the production of a particular phenotype from this product as it does on the particular phenotype that we choose to examine, in case more than one phenotype is influenced by the same gene.
+4.3 INHERITANCE OF TWO GENES
+Mendel also worked with and crossed pea plants that differed in two characters, as is seen in the cross between a pea plant that has seeds with yellow colour and round shape and one that had seeds of green colour and wrinkled shape (Figure 4.7). Mendel found that the seeds resulting from the crossing of the parents, had yellow coloured and round shaped seeds. Here can you tell which of the characters in the pairs yellow/ green colour and round/wrinkled shape was dominant?
+Thus, yellow colour was dominant over green and round shape dominant over wrinkled. These results were identical to those that he got when he made separate monohybrid crosses between yellow and green seeded plants and between round and wrinkled seeded plants.
+Let us use the genotypic symbols Y for dominant yellow seed colour and y for recessive green seed colour, R for round shaped seeds and r for wrinkled seed shape. The genotype of the parents can then be written as
+RRYY and rryy. The cross between the two plants can be written down as in Figure 4.7 showing the genotypes of the parent plants. The gametes
+RY and ry unite on fertilisation to produce the F1 hybrid RrYy. When
+Mendel self hybridised the F1 plants he found that 3/4th of F2 plants had yellow seeds and 1/4th had green. The yell

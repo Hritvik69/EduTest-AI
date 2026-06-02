@@ -1,0 +1,105 @@
+81 CLASSIFI CATION OF EL EMENTS AND PERIODICITY IN PROPERTIES
+Thus, the new element first gets a temporary name, with symbol consisting of three letters. Later permanent name and symbol are given by a vote of IUPAC representatives from each country. The permanent name might reflect the country (or state of the country) in which the element was discovered, or pay tribute to a notable scientist. As of now, elements with atomic numbers up to 118 have been discovered.
+Official names of all elements have been announced by IUPAC.
+Problem 3.1
+What would be the IUPAC name and symbol for the element with atomic number 120?
+solution
+From Table 3.4, the roots for 1, 2 and 0 are un, bi and nil, respectively. Hence, the symbol and the name respectively are Ubn and unbinilium.
+3.5 ElECtroniC ConfiGUrations of ElEmEnts and tHE PEriodiC
+In the preceding unit we have learnt that an electron in an atom is characterised by a set of four quantum numbers, and the principal quantum number (n ) defines the main energy level known as shell. We have also studied about the filling of electrons into different subshells, also referred to as orbitals (s, p, d, f ) in an atom. The distribution of electrons into orbitals of an atom is called its electronic configuration. An element’s location in the
+Periodic Table reflects the quantum numbers of the last orbital filled. In this section we will observe a direct connection between the electronic configurations of the elements and the long form of the Periodic Table.
+(a) Electronic Configurations in Periods
+The period indicates the value of n for the outermost or valence shell. In other words, successive period in the Periodic Table is associated with the filling of the next higher principal energy level (n = 1, n = 2, etc.). It can be readily seen that the number of elements in each period is twice the number of atomic orbitals available in the energy level that is being filled. The first period (n = 1) starts with the filling of the lowest level (1s) and therefore has two elements — hydrogen (ls1
+) and helium (ls2) when the first shell (K) is completed. The second period (n = 2) starts with lithium and the third electron enters the 2s orbital. The next element, beryllium has four electrons and has the electronic configuration 1s2 2s2 . Starting from the next element boron, the 2p orbitals are filled with electrons when the L shell is completed at neon (2s2 2p6 ). Thus there are
+8 elements in the second period. The third period (n = 3) begins at sodium, and the added electron enters a 3s orbital. Successive filling of 3s and 3p orbitals gives rise to the third period of 8 elements from sodium to argon. The fourth period (n = 4) starts at potassium, and the added electrons fill up the 4s orbital. Now you may note that before the 4p orbital is filled, filling up of 3d orbitals becomes energetically favourable and we come across the so called 3d transition series of elements. This starts from scandium (Z = 21) which has the electronic configuration 3d1 4s2
+. The 3d orbitals are filled at zinc (Z=30) with electronic configuration
+3d10 4s2 . The fourth period ends at krypton with the filling up of the 4p orbitals. Altogether we have 18 elements in this fourth period. The fifth period (n = 5) beginning with rubidium is similar to the fourth period and contains the 4d transition series starting at yttrium (Z = 39). This period ends at xenon with the filling up of the 5p orbitals. The sixth period (n = 6) contains 32 elements and successive electrons enter 6s, 4f, 5d and 6p orbitals, in the order — filling up of the 4f orbitals begins with cerium (Z = 58) and ends at lutetium (Z = 71) to give the 4f-inner transition series which is called the lanthanoid series. The seventh period (n = 7) is similar to the sixth period with the successive filling up of the
+7s, 5f, 6d and 7p orbitals and includes most of the man-made radioactive elements. This period will end at the element with atomic number 118 which would belong to the noble gas family. Filling up of the 5f orbitals after
+Reprint 2026-27
+82 CHEMISTRY actinium (Z = 89) gives the 5f-inner transition series known as the actinoid series. The 4f- and 5f-inner transition series of elements are placed separately in the Periodic Table to maintain its structure and to preserve the principle of classification by keeping elements with similar properties in a single column.
+Problem 3.2
+How would you justify the presence of 18 elements in the 5 th period of the
+Periodic Table?
+solution
+When n = 5, l = 0, 1, 2, 3. The order in which the energy of the available orbitals 4d, 5s and 5p increases is 5s
+< 4d < 5p. The total number of orbitals available are 9. The maximum number of electrons that can be accommodated is 18; and therefore 18 elements are there in the 5th period.
+(b) Groupwise Electronic Configurations
+Elements in the same vertical column or group have similar valence shell electronic configurations, the same number of electrons in the outer orbitals, and similar properties.
+For example, the Group 1 elements (alkali metals) all have ns1 valence shell electronic configuration as shown below.
+a theoretical foundation for the periodic classification. The elements in a vertical column of the Periodic Table constitute a group or family and exhibit similar chemical behaviour.
+This similarity arises because these elements have the same number and same distribution of electrons in their outermost orbitals. We can classify the elements into four blocks viz., s-block, p-block, d-block and f-block depending on the type of atomic orbitals that are being filled with electrons. This is illustrated in Fig. 3.3. We notice two exceptions to this categorisation. Strictly, helium belongs to the s-block but its positioning in the p-block along with other group 18 elements is justified because it has a completely filled valence shell (1s2 ) and as a result, exhibits properties characteristic of other noble gases.
+The other exception is hydrogen. It has only one s-electron and hence can be placed in g r o u p 1 ( a l k a l i m e t a l s ) . I t c a n a l s o gain an electron to achieve a noble gas arrangement and hence it can behave similar to a group 17 (halogen family)
+elements. Because it is a special case, we shall place hydrogen separately at the top of the Periodic Table as shown in Fig. 3.2 and
+Fig. 3.3. We will briefly discuss the salient features of the four types of elements marked in the Periodic Table. More about these elements
+Thus it can be seen that the properties of an element have periodic dependence upon its atomic number and not on relative atomic
+3.6 ElECtroniC ConfiGUrations a n d t y P E s o f E l E m E n t s :
+S-, P-, d-, F- BloCKs
+The aufbau (build up) principle and the electronic configuration of atoms provide will be discussed later. During the description of their features certain terminology has been used which has been classified in section 3.7.
+3.6.1 the s-Block Elements
+The elements of Group 1 (alkali metals) and
+Group 2 (alkaline earth metals) which have ns1 and ns2 outermost electronic configuration belong to the s-Block Elements. They are all atomic number symbol Electronic configuration
+1s2 2s1 (or) [He]2s1
+1s2 2s2 2p6 3s1 (or) [Ne]3s1
+1s2 2s2 2p6 3s2 3p6 4s1 (or) [Ar]4s1
+1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 5s1 (or) [Kr]5s1
+1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 5s2 5p6 6s1 (or) [Xe]6s1
+Reprint 2026-27
+83 CLASSIFI CATION O F E L E ME N TS AND P E R IODI CITY IN PRO PE R TI E S
+Fig. 3.3
+The types of elements in the Periodic Table based on the orbitals that are being filled. Also shown is the broad division of elements into METALS
+), NON-METALS (
+) and METALLOIDS (
+Reprint 2026-27
+84 CHEMISTRY reactive metals with low ionization enthalpies.
+They lose the outermost electron(s) readily to form 1+ ion (in the case of alkali metals) or 2+ ion (in the case of alkaline earth metals). The metallic character and the reactivity increase as we go down the group. Because of high reactivity they are never found pure in nature.
+The compounds of the s-block elements, with the exception of those of lithium and beryllium are predominantly ionic.
+3.6.2 The p-Block Elements
+The p-Block Elements comprise those belonging to Group 13 to 18 and these together with the s-Block Elements are called the Representative Elements or Main
+Group Elements. The outermost electronic configuration varies from ns2np1 to ns2np6 in each period. At the end of each period is a noble gas element with a closed valence shell ns2np6 configuration. All the orbitals in the valence shell of the noble gases are completely filled by electrons and it is very difficult to alter this stable arrangement by the addition or removal of electrons. The noble gases thus exhibit very low chemical reactivity. Preceding the noble gas family are two chemically important groups of non- metals. They are the halogens (Group 17) and the chalcogens (Group 16). These two groups of elements have highly negative electron gain enthalpies and readily add one or two electrons respectively to attain the stable noble gas configuration. The non-metallic character increases as we move from left to right across a period and metallic character increases as we go down the group.
+3.6.3 The d-Block Elements (Transition
+Elements)
+These are the elements of Group 3 to 12 in the centre of the Periodic Table. These are characterised by the filling of inner d orbitals by electrons and are therefore referred to as d-Block Elements. These elements have the general outer electronic configuration (n-1)d1-10ns0-2 except for Pd where its electronic configuration is 4d10
+. They are all metals.
+They mostly form coloured ions, exhibit variable valence (oxidation states), paramagnetism and oftenly used as catalysts. However, Zn, Cd and
+Hg which have the electronic configuration, (n-1) d10ns2 do not show most of the properties of transition elements. In a way, transition metals form a bridge between the chemically active metals of s-block elements and the less active elements of Groups 13 and 14 and thus take their familiar name “Transition
+Elements”.
+3.6.4 The f-Block Elements (Inner-Transition Elements)
+The two rows of elements at the bottom of the Periodic Table, called the Lanthanoids,
+Ce(Z = 58) – Lu(Z = 71) and Actinoids,
+Th(Z = 90) – Lr (Z = 103) are characterised by the outer electronic configuration (n-2)f1-14 (n-1)d0–1ns2 . The last electron added to each element is filled in f- orbital. These two series of elements are hence called the Inner-
+Transition Elements (f-Block Elements).
+They are all metals. Within each series, the properties of the elements are quite similar.
+The chemistry of the early actinoids is more complicated than the corresponding lanthanoids, due to the large number of oxidation states possible for these actinoid elements. Actinoid elements are radioactive.
+Many of the actinoid elements have been made only in nanogram quantities or even less by nuclear reactions and their chemistry is not fully studied. The elements after uranium are called Transuranium Elements.
+Problem 3.3
+The elements Z = 117 and 120 have not yet been discovered. In which family/group would you place these elements and also give the electronic configuration in each case.
+Solution
+We see from Fig. 3.2, that element with Z = 117, would belong to the halogen family (Group 17) and the electronic configuration would be [Rn]
+. The element with Z = 120, will be placed in Group 2 (alkaline earth metals), and will have the electronic configuration [Uuo]8s2 .
+Reprint 2026-27
+85 CLASSIFI CATION OF EL EMENTS AND PERIODICITY IN PROPERTIES
+3.6.5 metals, non-metals and metalloids
+In addition to displaying the classification of elements into s-, p-, d-, and f-blocks,
+Fig. 3.3 shows another broad classification of elements based on their properties. The elements can be divided into metals and non-metals. Metals comprise more than
+78% of all known elements and appear on the left side of the Periodic table. Metals are usually solids at room temperature [mercury is an exception; gallium and caesium also have very low melting points (303K and
+302K, respectively)]. Metals usually have high melting and boiling points. They are good conductors of heat and electricity. They are malleable (can be flattened into thin sheets by hammering) and ductile (can be drawn into wires). In contrast, non-metals are located at the top right hand side of the Periodic table.
+In fact, in a horizontal row, the property of elements change from metallic on the left to non-metallic on the right. Non-metals are usually solids or gases at room temperature with low melting and boiling points (boron and carbon are exceptions). They are poor conductors of heat and electricity. Most non- metallic solids are brittle and are neither malleable nor ductile. The elements become more metallic as we go down a group; the non-metallic character increases as one goes from left to right across the Periodic table.
+The change from metallic to non-metallic character is not abrupt as shown by the thick zig-zag line in Fig. 3.3. The elements (e.g., silicon, germanium, arsenic, antimony and tellurium) bordering this line and running diagonally across the Periodic table show properties that are characteristic of both metals and non-metals. These elements are called semi-metals or metalloids.
+Problem 3.4
+Considering the atomic number and position in the periodic table, arrange the following elements in the increasing order of metallic character : Si, Be, Mg, solution
+Metallic character increases down a group and decreases along a period as we move from left to right. Hence the order of increasing metallic character is: P < Si < Be < Mg < Na.
+3.7 PEriodiC trEnds in ProPErtiEs of ElEmEnts
+There are many observable patterns in the physical and chemical properties of elements as we descend in a group or move across a period in the Periodic Table. For example, within a period, chemical reactivity tends to be high in Group 1 metals, lower in elements towards the middle of the table, and increases to a maximum in the Group 17 non-metals.
+Likewise within a group of representative metals (say alkali metals) reactivity increases on moving down the group, whereas within a group of non-metals (say halogens), reactivity decreases down the group. But why do the properties of elements follow these trends?
+And how can we explain periodicity? To answer these questions, we must look into the theories of atomic structure and properties of the atom. In this section we shall discuss the periodic trends in certain physical and chemical properties and try to explain them in terms of number of electrons and energy
+3.7.1 trends in Physical Properties
+There are numerous physical properties of elements such as melting and boiling points, heats of fusion and vaporization, energy of atomization, etc. which show periodic variations. However, we shall discuss the periodic trends with respect to atomic and ionic radii, ionization enthalpy, electron gain enthalpy and electronegativity.
+(a) Atomic Radius
+You can very well imagine that finding the size of an atom is a lot more complicated than measuring the radius of a ball. Do you know why? Firstly, because the size of an atom (~ 1.2 Å i.e., 1.2 × 10 –10 m in radius) is very
+Reprint 2026-27
+86 CHEMISTRY small. Secondly, since the electron cloud surrounding the atom does not have a sharp boundary, the determination of the atomic size cannot be precise. In other words, there is no practical way by which the size of an individual atom can be measured. However, an estimate of the atomic size can be made by knowing the distance between the atoms in the combined state. One practical approach to estimate the size of an atom of a non-metallic element is to measure the distance between two atoms when they are bound together by a single bond in a covalent molecule and from this value, the “Covalent radius” of the element can be calculated. For example, the bond distance in the chlorine molecule (Cl 2 )
+is 198 pm and half this distance (99 pm), is taken as the atomic radius of chlorine. For metals, we define the term “metallic radius” which is taken as half the internuclear distance separating the metal cores in the metallic crystal. For example, the distance between two adjacent copper atoms in solid copper is 256 pm; hence the metallic radius of copper is assigned a value of 128 pm. For simplicity, in this book, we use the term atomic radius to refer to both covalent or metallic radius depending on whether the element is a non-metal or a metal. Atomic radii can be measured by X-ray or other spectroscopic methods.
+The atomic radii of a few elements are listed in Table 3.6. Two trends are obvious. We can explain these trends in terms of nuclear charge and energy level. The atomic size generally decreases across a period as illustrated in
+Fig. 3.4(a) for the elements of the second period. It is because within the period the outer electrons are in the same valence shell and the effective nuclear charge increases as the atomic number increases resulting in the increased attraction of electrons to the nucleus. Within a family or vertical column of the periodic table, the atomic radius increases regularly with atomic number as illustrated in Fig. 3.4(b). For alkali metals and halogens, as we descend the groups, the principal quantum number (n) increases and the valence electrons are farther from the nucleus. This happens because the inner energy levels are filled with electrons, which serve to shield the outer electrons from the pull of the nucleus. Consequently the size of the atom increases as reflected in the atomic
+Note that the atomic radii of noble gases are not considered here. Being monoatomic, their (non-bonded radii) values are very large. In fact radii of noble gases should be compared not with the covalent radii but with the van der Waals radii of other elements.
+table 3.6(a) atomic radii/pm across the Periods atom (Period ii) li Be B C n o f ato

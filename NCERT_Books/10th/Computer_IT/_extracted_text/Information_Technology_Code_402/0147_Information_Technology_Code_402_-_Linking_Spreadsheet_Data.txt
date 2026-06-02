@@ -1,0 +1,193 @@
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 137
+Step 2. This is used to plan what all changes are to be displayed while reviewing the spreadsheet.
+Step 3. Click on Edit > Track Changes
+> Manage to accept or reject the changes. It will display the
+Manage Changes dialog window as shown in Fig. 7.18.
+Step 3. In this dialog window, click on the line and click on Accept or
+Accept All or Reject All button to review the changes.
+Step 4. Click on Close button once the review is done.
+Let’s Practice — As the changes done by other team members in the Practical Exercise 7.4 has been recorded by the feature in
+Calc, now you just review those changes and accept or reject the necessary changes done by other team members.
+Merge two files
+To work on our earlier created spreadsheet Test.ods, save the file Test.ods with another name say Test1.ods and make some changes in the spreadsheet Test1.ods. Now, we have two files that are to be merged.
+Step 1. Open the spreadsheet file Test.ods. Note the contents of spreadsheet Test.ods in Fig. 7.19. Also note the contents of spreadsheet Test1.ods before merging in Fig. 7.20.
+Fig. 7.18: Manage Changes dialog window to accept or reject changes
+Merging and Comparing
+If the same spreadsheet is reviewed by different team members and you have two different versions of the same spreadsheet file. Follow the following steps to merge document.
+Practical Activity 7.3
+Fig. 7.19: Contents of Test.
+ods before merging
+Fig. 7.20: Contents of
+Test1.ods before merging
+Domestic Data entry operator – class X 138
+Step 2. Click on Edit > Track Changes > Merge Document as shown in Fig. 7.21.
+Fig. 7.21: Selecting Merge Document option
+Step 3. Select the spreadsheet file Test1.ods from the Merge
+0With dialog window to open the spreadsheet Test1.
+ods to merge with Test.ods and Click on Open button as shown in Fig. 7.22.
+Fig. 7.22: Open the Test1.ods from Merge With dialog window
+Step 4. This will open Manage Changes dialog window as shown in Fig. 7.23.
+Fig. 7.23: Manage Changes dialog window
+Step 5. Click on Accept All as shown in Fig. 7.23. to accept all the changes which is done in the Test1.ods spreadsheet to the Test.ods.
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 139
+Step 6. Now open the first spreadsheet Test.ods after merging and observe its contents as shown in Fig. 7.24. Observe that Fig. 7.24 shows the contents of Test.ods and
+Test1.ods merged.
+Comparing Documents
+Instead of merging two spreadsheets, one can compare the two spreadsheets by comparing the documents. Follow the following steps to compare the documents. Let us compare the two earlier created spreadsheets Test.ods and Test1.ods
+Step 1. Open the spreadsheet file Test.ods. Click on Edit > Track Changes > Compare
+Document as shown in Fig. 7.25.
+Step 2. This will open the Compare to dialog window, which will allow to open the spreadsheet to be compared. Select the spreadsheet file Test1.ods and click on
+Open button as shown in Fig. 7.26.
+Step 3. This will open the Manage Changes dialog window to accept/reject the changes. Click on Accept as shown in
+Fig. 7.27.
+Step 4. Finally click on Close button to close the
+Manage Changes dialog window as shown in Fig. 7.28.
+Fig. 7.25: Selecting Compare
+Document option
+Fig. 7.26: Open Test1.ods from
+Compare to dialog window
+Fig. 7.27: Accepting Manage Changes Fig. 7.28: Closing Manage Changes dialog window
+Fig. 7.24: Contents of Test.
+ods after merging
+Domestic Data entry operator – class X 140
+Check Your Progress
+A. Multiple choice questions
+1. Sharing allows to edit the spredshheet by (a) single user (b) different users simultaneously (c) one by one users (d) one after other users
+2. Sharing spredsheet feature allows to save the changes in (a) multiple sheets (b) user’s sheet (c) in a same sheet (d) in different sheet
+3. The Recording Changes feature of LibreOffice Calc provides different ways to record the changes made by ____________ in the spreadsheet.
+(a) one user (b) other user (c) the user (d) one or other users
+4. In Calc, the comments are added (a) automatically (b) by author (c) by reviewer (d) all of above
+5. The changes by team members in the spreadsheet can be accepted or rejected by (a) the team members (b) any of the user (c) owner (d) other users
+B. State whether the following statements are True or False
+1. Spreadsheet cannot be shared to work with more than one
+2. Some of the features becomes unavailable when the spreadsheet is in shared mode.
+3. You can record changes in the spreadsheet when the spreadsheet is opened in shared mode.
+4. File menu is used to Record changes for the spreadsheet.
+5. You can add a note or suggestion in the spreadsheet using
+Insert Comment.
+6. Formatting comment can be used to change the font colour of the comment.
+ElEctronic SprEadShEEt (advancEd) uSing librEofficE calc 141 notes C. Fill in the blanks
+1. The title bar of the document shows __________________ along with the filename for the shared mode of the spreadsheet.
+2. The shared mode spreadsheet allows __________ users to access and edit the spreadsheet at the same time.
+3. Recording changes automatically ____________ the shared mode of a spreadsheet.
+4. Click on Edit menu, Track Changes and then select
+____________ to record the changes in the spreadsheet.
+5. The border color of the changed cell will be ______________.
+6. ____________ is used to add notes or suggestions to a cell in a spreadsheet.
+7. The comment box can be formatted just like formatting the __________ (cell contents).
+D. Answer the following questions
+1. Define the terms (a) Sharing Spreadsheet (b) Record changes
+2. Write the commands to perform (a) Sharing Spreadsheet (b) Record changes
+3. Which menu is used to perform the functions (a) Track Changes (b) Saving Spreadsheet
+4. What do you understand by reviewing the changes in the spreadsheet?
+5. Differentiate between Merging and Comparing Spreadsheet.
+Lab Exercise
+Anushka and Niyaz have been made the class representative.
+Anushka has been asked to collect the class assignments for the various subjects. Create a spreadsheet to store the roll number, name of the students and subject names. Perform the following operations so that Niyaz can access the file:
+1. Enable Track changes
+2. Add comment to show the date on which the assignment has been submitted.
+3. Share the document with the class teacher.
+Database
+Management System using LibreOffice Base
+IntroductIon
+Management of data is of prime importance for any organisation. The ease of entering data, its efficient storage, accurate and fast retrieval is the primary objective of any database management system. In this unit you will learn about various methodologies of data management using LibreOffice Base, which is an open source application.
+The first chapter starts with the general concepts of database management system, different database model with the focus on relational database. It explains the concept of primary key and foreign key and the various database objects of RDBMS.
+In the second chapter you will learn about LibreOffice
+Base application interface, how to start and use it, how to create database and tables, enter and edit the data in the table. Different data types used by LibreOffice Base have also been discussed.
+After creating a table, you can edit or delete the table and set up relations between the tables to control data redundancy and inconsistency for proper maintenance of a database. In the third chapter, you will learn how
+Database ManageMent systeM Using LibreOffice Writer 143 the changes are reflected in the related tables after setting up relations.
+In the fourth chapter, you will learn to retrieve the data from the database as per your requirement by providing the desired specifications, which is called as Query. Depending upon given specifications, the specific records are searched form the database and then displayed in the desired manner.
+In the last chapter, you will learn to create Forms and Reports using LibreOffice Base. Form is the user friendly data entry screen that allows to enter the data in the table easily by any user. The Report feature helps to present the retrieved data in a user friendly, understandable and formatted manner.
+8 Introduction to Database
+Management System
+IntroductIon
+Databases and database systems are essential parts of our life. We have been interacting with databases since a time. Recall the process of looking for a word in a dictionary or finding the telephone number of a friend from the telephone directory. With the advancement in ever changing technology, computerized databases are being used to store, manipulate, and manage the database. Today, we use databases in almost all spheres of life. When we go to book railway tickets, to search for a book in a library, to get the salary details, to get the balance amount after withdrawal of money from the
+ATM and so on, this list can run into several pages. Data being stored in databases can be of varied types like text, images, audio and video. This data is then stored and/or processed so as to get meaningful information.
+Data and Information
+The raw facts constitutes data. The facts may be related to any person, place, activity or things. It may be stored in the form of text, graphics, audio or video. This data must be processed by any computing machine in a proper way to generate the useful and meaningful information. The examples of data are marks scored by the students, weights, prices, costs, numbers of items sold, employee names, product names, addresses, tax codes, registration, marks etc.
+Information is the processed or organized form of data. If data is not correct or accurate, the information obtained by processing such data may not be correct.
+For example, marks obtained by students and their roll numbers is the data, while the report card/sheet is the
+Database ManageMent systeM Using LibreOffice Writer 145 information. Other forms of information are pay-slips, schedules, worksheet, bar charts, invoices, account returns etc. Similarly the temperature recorded is data which can be processed to find out the maximum or minimum temperature of day and night. Also this data is generally organised in tabular form as shown in the
+Table 8.1.
+Table 8.1: Data Stored in Tabular Form
+Day Day Temperature Night Temperature
+Sunday 35 15
+Monday 37 17
+Tuesday 36 16
+Wednesday 34 15
+Thursday 35 17
+Friday 35 16
+Saturday 33 14
+Databases and DBMS
+A database is a collection of logically related data items stored in an organised manner. The information being stored in a database can be added, modified, deleted or displayed according to the requirements of the user.
+The software that is used to create, update and retrieve data is known as database management system (DBMS). It facilitates planning and maintenance of the database for the user. Some of the common examples of DBMS are MS Access, Open Office or LibreOffice
+Base, Oracle, Ingress, MySQL. In this book, we will use
+LibreOffice Base version 6.4 to learn various aspects of DBMS.
+We all know that it is easy to remember names of our friends, but it is difficult to retain their phone numbers in our memory. If details like names and phone numbers are stored in a diary or mobile phone in an orderly manner, then it becomes easy to retrieve the phone number of a required person. Thus, the phone book can be considered a simple database and to manage this database electronically, we will require a database management system or a DBMS.
+Domestic Data entry operator – class X 146
+Let us discuss some of the advantages of DBMS:
+• Organised Storage – The data in the database is stored in an organised manner, so that retrieval of the required data is fast and accurate.
+• Data Analysis – A database helps in analysis of data based on certain criteria. It is easy to find out maximum or minimum value, average or mean using a database.
+• Data Sharing – If the same data set is required for different applications then the database can be shared with other applications. Hence using a database means making once and using it repeatedly for multiple applications.
+• Minimal Data Redundancy – In the event of requiring the same data field in several tables the data field might get repeated in number of tables.
+This is called as data redundancy. This can be reduced by using DBMS tools.
+• Data Consistency – By minimising data redundancy, chances of inconsistent data being stored is reduced. For example, it should not happen that the name of the student is changed in one table and not in another. Such inconsistency is reduced by using a DBMS.
+Let us consider a situation where, for example,
+Murugan looks after the data management of ABC
+School. There are two tables in his database– Admission table and Library table. ‘Ram Lal Kumar’ wants to change his name to ‘Ram Kumar’ has recently shifted his house. So, he hands over the application for the same to Murugan. In the absence of a DBMS, Murugan has to change the name of the student separately in the admission table and also in the library table. But as we can set a relation between the two tables using a DBMS, any change in one table is automatically reflected in all the related tables. There is no need to add another record with the changed name. The same record will be updated. Hence, this reduces the chances of data redundancy and inconsistency.
+Admission Table
+Roll Number Student Name Class Date of Birth Date of Admission
+913 Dipak Kumar 10 06/04/2004 25/06/2018
+914 Ram Lal Kumar 10 01/03/2004 24/06/2018
+Database ManageMent systeM Using LibreOffice Writer 147
+• Increases Efficiency – Since database tables are properly organised, saving, reading and searching data can be carried out efficiently.
+• Increases Accuracy – Since data redundancy and inconsistency can be minimised in a database, the data is retrieved accurately from the database.
+• Increases Validity – Properties of different data fields can be assigned when a database is planned.
+So whether or not valid data is being entered can be checked at the data entry stage. This increases the validity of the database. For instance, we may set up a restriction while creating the table that the amount of fees being entered should be more than 1000.
+• Security – Unauthorised access can be controlled by assigning passwords to the users. The data might be translated in such a manner that unauthorised users are not able to read it. This is known as encryption. Both these measures increase the security of the database.
+Data Models
+A database can be designed in different ways depending on the data being stored. This structure of database is known as data model that describes the manner in which data will be stored and retrieved.
+A data model consists of components for describing the data, relationships among them and the constraints that hold data. There are different data models such as hierarchical data model, network data model and relational data model.
+Hierarchical Data Model
+In this model the data is organized into a tree like structure. The data is stored in the form of records.
+A record is a collection of fields and its data values.
+Library Table
+Student Name Name of the Book Date of Borrow Date of Return
+Dipak Kumar IT 10/12/2018 25/12/2018
+Ram Lal Kumar Science 11/11/2018 24/11/2018
+Sham Lal Mathematics 12/11/2018 30/12/2018
+Domestic Data entry operator – class X 148
+All these records are linked to each other at various levels, thereby forming a hierarchy. For example, in
+Fig. 8.1 the data of a company is stored using a hierarchical data model.
+Fig. 8.1: Hierarchical Data Model
+Network Data Model
+In this model, multiple records are linked to same master file. It is also considered as an inverted tree where master is present in the bottom of the tree and the branches contain information linked to the master.
+In Fig. 8.2, the data of the company is represented using the network data model.
+Likes Ltd.
+Project Information
+Project Number
+Project Deadline
+Employee Incharge
+Personal Information
+Emp Name
+Designation
+Likes Ltd.
+Deadline
+Designation Salary
+Personal
+Information
+Fig. 8.2: Network model
+Relational Data Model
+This data model is based on the principle of setting relationships between two or more tables of the same database. It is the most commonly used database model.
+Let us study about this model in detail.
+Database ManageMent systeM Using LibreOffice Writer 149
+Relational Database Model
+The Relational Database Model was proposed in 1970 by E. F. Codd. Relational database model is the most common type of database model. The data elements are stored in different tables made up of rows and columns.
+The data in different tables are related through the use of common fields. So relations are set between tables based on common fields. That is why this model is termed as relational database model.
+Relational Database Terminology
+Let us get familiar with some of the common terms used in RDBMS.
+• Entity – It is a real world object about which information is to be stored in a database. For example, if we want to store information about an entity Student in a school, then we need to have his admission number, roll number, name, father’s name, date of birth, etc. These details associated with the entity are called attributes. Each entity is a collection of these attributes associated with it. So roll number, name, admission number, etc., are attributes associated with the entity student. These attributes are represented in the form of columns.
+• Table – A table is a collection of logically related records. It is organised as a set of columns, and can have any number of rows. For example, the
+Employee table can have columns, namely name, designation, department and have records or rows having data of 100 employees.
+• Field or Columns or attributes – A field is the smallest entity in the database. A collection of fields make a record, a collection of records make a table and a collection of tables make a database.
+Fields are individual record

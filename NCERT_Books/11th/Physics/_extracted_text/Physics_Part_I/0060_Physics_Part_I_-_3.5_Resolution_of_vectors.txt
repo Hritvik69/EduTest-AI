@@ -1,0 +1,34 @@
+PHYSICS 44 d . It can be written in unit vector notation as :
+v i j k = + + v v v x y z
+ɵ ɵ ɵ where t v z y x d
+When position of an object is plotted on a coordinate system, v is always tangent to the curve representing the path of the object.
+14. If the velocity of an object changes from v to v′in time ∆t, then its average acceleration is given by: a v v' v
+The acceleration a at any time t is the limiting value of a as ∆t é0 :
+∆ t t t 0
+In component form, we have : a i j k = + + a a a x y z where, a dv dt , a dv dt , a dv dt x x y
+15. If an object is moving in a plane with constant acceleration 2 2
+= x y a a a = + a and its position vector at time t = 0 is ro, then at any other time t, it will be at a point given t t = + + o o r r v a and its velocity is given by :
+v = vo + a t where vo is the velocity at time t = 0
+In component form :
+o ox x x x v t a t = + + o oy y y y v t a t = + + v v a t x ox x = + v v a t y oy y = +
+Motion in a plane can be treated as superposition of two separate simultaneous one- dimensional motions along two perpendicular directions
+16. An object that is in flight after being projected is called a projectile. If an object is projected with initial velocity vo making an angle
+θo with x-axis and if we assume its initial position to coincide with the origin of the coordinate system, then the position and velocity of the projectile at time t are given by :
+x = (vo cos y = (vo sin
+θo) t − (1/2) g t2 vx = vox = vo cos vy = vo sin
+θo − g t
+The path of a projectile is parabolic and is given by :
+tan cos o o y x – 2 v
+The maximum height that a projectile attains is :
+Reprint 2026-27
+MOTION IN A PLANE 45
+= ( ) sin 2
+The time taken to reach this height is :
+The horizontal distance travelled by a projectile from its initial position to the position it passes y = 0 during its fall is called the range, R of the projectile. It is :
+17. When an object follows a circular path at constant speed, the motion of the object is called uniform circular motion. The magnitude of its acceleration is ac = v2 /R. The direction of ac is always towards the centre of the circle.
+The angular speed
+ω, is the rate of change of angular distance. It is related to velocity v by v =
+ω R. The acceleration is ac =
+If T is the time period of revolution of the object in circular motion and ν is its frequency, we have
+ω = 2π ν, v = 2πνR, ac = 4π2ν2R
+Reprint 2026-27

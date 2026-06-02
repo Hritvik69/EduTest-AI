@@ -1,0 +1,31 @@
+IntroductIon to Problem SolvIng 67
+The algorithm to find square of a number can be represented pictorially using flowchart as shown in
+Figure 4.2.
+Activity 4.2
+Draw a flowchart that represents the attainment of your career goal.
+What will happen if an algorithm does not stop after a finite number of steps?
+Think and Reflect
+Figure 4.2: Flowchart to calculate square of a
+Example 4.2: Draw a flowchart to solve the problem of a non-functioning light bulb
+Figure 4.3: Flowchart to solve the problem of a non-functioning light bulb
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 68
+4.4.2 Pseudocode
+A pseudocode (pronounced Soo-doh-kohd) is another way of representing an algorithm. It is considered as a non-formal language that helps programmers to write algorithm. It is a detailed description of instructions that a computer must follow in a particular order. It is intended for human reading and cannot be executed directly by the computer. No specific standard for writing a pseudocode exists. The word “pseudo” means “not real,” so “pseudocode” means “not real code”. Following are some of the frequently used keywords while writing pseudocode:
+• COMPUTE
+• INCREMENT
+• DECREMENT
+• IF/ELSE
+• TRUE/FALSE
+Example 4.3: Write an algorithm to display the sum of two numbers entered by user, using both pseudocode and flowchart.
+Pseudocode for the sum of two numbers will be:
+INPUT num1
+INPUT num2
+COMPUTE Result = num1 + num2
+PRINT Result
+The flowchart for this algorithms is given in Figure 4.4.
+Print Result
+Figure 4.4: Flowchart to display sum of two numbers
+Activity 4.3
+Write a pseudocode for creating a scoreboard for a hockey match.
+Reprint 2026-27

@@ -1,0 +1,139 @@
+187 BREATHING AND EXCHANGE OF GASES
+Residual Volume (RV): Volume of air remaining in the lungs even after a forcible expiration. This averages 1100 mL to 1200 mL.
+By adding up a few respiratory volumes described above, one can derive various pulmonary capacities, which can be used in clinical diagnosis.
+Inspiratory Capacity (IC): Total volume of air a person can inspire after a normal expiration. This includes tidal volume and inspiratory reserve volume ( TV+IRV).
+Expiratory Capacity (EC): Total volume of air a person can expire after a normal inspiration. This includes tidal volume and expiratory reserve volume (TV+ERV).
+Functional Residual Capacity (FRC): Volume of air that will remain in the lungs after a normal expiration. This includes ERV+RV.
+Vital Capacity (VC): The maximum volume of air a person can breathe in after a forced expiration. This includes ERV, TV and IRV or the maximum volume of air a person can breathe out after a forced inspiration.
+Total Lung Capacity (TLC): Total volume of air accommodated in the lungs at the end of a forced inspiration. This includes RV, ERV, TV and
+IRV or vital capacity + residual volume.
+14.3 EXCHANGE OF GASES
+Alveoli are the primary sites of exchange of gases. Exchange of gases also occur between blood and tissues. O2 and CO2 are exchanged in these sites by simple diffusion mainly based on pressure/concentration gradient. Solubility of the gases as well as the thickness of the membranes involved in diffusion are also some important factors that can affect the rate of diffusion.
+Pressure contributed by an individual gas in a mixture of gases is called partial pressure and is represented as pO2 for oxygen and pCO2 for carbon dioxide. Partial pressures of these two gases in the atmospheric air and the two sites of diffusion are given in Table 14.1 and in
+Figure 14.3. The data given in the table clearly indicates a concentration gradient for oxygen from alveoli to blood and blood to tissues. Similarly,
+TABLE 14.1 Partial Pressures (in mm Hg) of Oxygen and Carbon dioxide at Different
+Parts Involved in Diffusion in Comparison to those in Atmosphere
+Respiratory Atmospheric Alveoli Blood Blood Tissues
+Gas Air (Deoxygenated) (Oxygenated)
+O2 159 104 40 95 40
+CO2 0.3 40 45 40 45
+Reprint 2026-27
+188 BIOLOGY a gradient is present for CO2 in the opposite direction, i.e., from tissues to blood and blood to alveoli. As the solubility of CO2 is 20-25 times higher than that of O2, the amount of CO2 that can diffuse through the diffusion membrane per unit difference in partial pressure is much higher compared to that of O2. The diffusion membrane is made up of three major layers (Figure 14.4) namely, the thin squamous epithelium of alveoli, the endothelium of alveolar capillaries and the basement substance (composed of a thin basement membrane supporting the squamous epithelium and the basement membrane surrounding the single layer endothelial cells of capillaries) in between them.
+However, its total thickness is much less than a millimetre. Therefore, all the factors in our body are favourable for diffusion of
+O2 from alveoli to tissues and that of CO2 from tissues to alveoli.
+Figure 14.4 A Diagram of a section of an alveolus with a pulmonary capillary.
+Figure 14.3 Diagrammatic representation of exchange of gases at the alveolus and the body tissues with blood and transport of oxygen and carbon dioxide
+Reprint 2026-27
+189 BREATHING AND EXCHANGE OF GASES
+14.4 TRANSPORT OF GASES
+Blood is the medium of transport for O2 and CO2. About 97 per cent of O2 is transported by RBCs in the blood. The remaining 3 per cent of O2 is carried in a dissolved state through the plasma. Nearly 20-25 per cent of CO2 is transported by RBCs whereas 70 per cent of it is carried as bicarbonate.
+About 7 per cent of CO2 is carried in a dissolved state through plasma.
+14.4.1 Transport of Oxygen
+Haemoglobin is a red coloured iron containing pigment present in the
+RBCs. O2 can bind with haemoglobin in a reversible manner to form oxyhaemoglobin. Each haemoglobin molecule can carry a maximum of four molecules of O2. Binding of oxygen with haemoglobin is primarily related to partial pressure of O2. Partial pressure of CO2, hydrogen ion concentration and temperature are the other factors which can interfere with this binding. A sigmoid curve is obtained when percentage saturation of haemoglobin with O2 is plotted against the pO2. This curve is called the Oxygen dissociation curve (Figure 14.5) and is highly useful in studying the effect of factors like pCO2, H+ concentration, etc., on binding of O2 with haemoglobin. In the alveoli, where there is high pO2, low pCO2, lesser H+ concentration and lower temperature, the factors are all favourable for the formation of oxyhaemoglobin, whereas in the tissues, where low pO2, high pCO2, high H+ concentration and higher temperature exist, the conditions are favourable for dissociation of oxygen from the oxyhaemoglobin. This clearly indicates that O2 gets bound to haemoglobin in the lung surface and gets dissociated at the tissues. Every 100 ml of oxygenated blood can deliver around 5 ml of
+O2 to the tissues under normal physiological conditions.
+14.4.2 Transport of Carbon dioxide
+CO2 is carried by haemoglobin as carbamino-haemoglobin (about
+20-25 per cent). This binding is related to the partial pressure of CO2.
+pO2 is a major factor which could affect this binding. When pCO2 is high and pO2 is low as in the tissues, more binding of carbon dioxide occurs whereas, when the pCO2 is low and pO2 is high as in the alveoli, dissociation
+Partial pressure of oxygen (mm Hg)
+Percentage saturation of haemoglobin with oxygen
+Figure 14.5 Oxygen dissociation curve
+Reprint 2026-27
+190 BIOLOGY of CO2 from carbamino-haemoglobin takes place, i.e., CO2 which is bound to haemoglobin from the tissues is delivered at the alveoli. RBCs contain a very high concentration of the enzyme, carbonic anhydrase and minute quantities of the same is present in the plasma too. This enzyme facilitates the following reaction in both directions.
+CO H O H CO
+Carbonic anhydrase Carbonic
+2 2 2 3 +  →  ←   sse HCO H  →  ←   +− +
+At the tissue site where partial pressure of CO2 is high due to catabolism, CO2 diffuses into blood (RBCs and plasma) and forms HCO3 and H+,. At the alveolar site where pCO2 is low, the reaction proceeds in the opposite direction leading to the formation of CO2 and H2O. Thus,
+CO2 trapped as bicarbonate at the tissue level and transported to the alveoli is released out as CO2 (Figure 14.4). Every 100 ml of deoxygenated blood delivers approximately 4 ml of CO2 to the alveoli.
+14.5 REGULATION OF RESPIRATION
+Human beings have a significant ability to maintain and moderate the respiratory rhythm to suit the demands of the body tissues. This is done by the neural system. A specialised centre present in the medulla region of the brain called respiratory rhythm centre is primarily responsible for this regulation. Another centre present in the pons region of the brain called pneumotaxic centre can moderate the functions of the respiratory rhythm centre. Neural signal from this centre can reduce the duration of inspiration and thereby alter the respiratory rate. A chemosensitive area is situated adjacent to the rhythm centre which is highly sensitive to CO2 and hydrogen ions. Increase in these substances can activate this centre, which in turn can signal the rhythm centre to make necessary adjustments in the respiratory process by which these substances can be eliminated.
+Receptors associated with aortic arch and carotid artery also can recognise changes in CO2 and H+ concentration and send necessary signals to the rhythm centre for remedial actions. The role of oxygen in the regulation of respiratory rhythm is quite insignificant.
+14.6 DISORDERS OF RESPIRATORY SYSTEM
+Asthma is a difficulty in breathing causing wheezing due to inflammation of bronchi and bronchioles.
+Emphysema is a chronic disorder in which alveolar walls are damaged due to which respiratory surface is decreased. One of the major causes of this is cigarette smoking.
+Reprint 2026-27
+191 BREATHING AND EXCHANGE OF GASES
+Cells utilise oxygen for metabolism and produce energy along with substances like carbon dioxide which is harmful. Animals have evolved different mechanisms for the transport of oxygen to the cells and for the removal of carbon dioxide from there. We have a well developed respiratory system comprising two lungs and associated air passages to perform this function.
+The first step in respiration is breathing by which atmospheric air is taken in (inspiration) and the alveolar air is released out (expiration). Exchange of O2 and
+CO2 between deoxygenated blood and alveoli, transport of these gases throughout the body by blood, exchange of O2 and CO2 between the oxygenated blood and tissues and utilisation of O2 by the cells (cellular respiration) are the other steps involved.
+Inspiration and expiration are carried out by creating pressure gradients between the atmosphere and the alveoli with the help of specialised muscles – intercostals and diaphragm. Volumes of air involved in these activities can be estimated with the help of spirometer and are of clinical significance.
+Exchange of O2 and CO2 at the alveoli and tissues occur by diffusion. Rate of diffusion is dependent on the partial pressure gradients of O2 (pO2) and CO2 (pCO2), their solubility as well as the thickness of the diffusion surface. These factors in our body facilitate diffusion of O2 from the alveoli to the deoxygenated blood as well as from the oxygenated blood to the tissues. The factors are favourable for the diffusion of CO2 in the opposite direction, i.e., from tissues to alveoli.
+Oxygen is transported mainly as oxyhaemoglobin. In the alveoli where pO2 is higher, O2 gets bound to haemoglobin which is easily dissociated at the tissues where pO2 is low and pCO2 and H+ concentration are high. Nearly 70 per cent of carbon dioxide is transported as bicarbonate (HCO3
+–) with the help of the enzyme carbonic anhydrase. 20-25 per cent of carbon dioxide is carried by haemoglobin as carbamino-haemoglobin. In the tissues where pCO2 is high, it gets bound to blood whereas in the alveoli where pCO2 is low and pO2 is high, it gets removed from the blood.
+Respiratory rhythm is maintained by the respiratory centre in the medulla region of brain. A pneumotaxic centre in the pons region of the brain and a chemosensitive area in the medulla can alter respiratory mechanism.
+Occupational Respiratory Disorders: In certain industries, especially those involving grinding or stone-breaking, so much dust is produced that the defense mechanism of the body cannot fully cope with the situation. Long exposure can give rise to inflammation leading to fibrosis (proliferation of fibrous tissues) and thus causing serious lung damage.
+Workers in such industries should wear protective masks.
+Reprint 2026-27
+192 BIOLOGY
+EXERCISES
+1. Define vital capacity. What is its significance?
+2. State the volume of air remaining in the lungs after a normal breathing.
+3. Diffusion of gases occurs in the alveolar region only and not in the other parts of respiratory system. Why?
+4. What are the major transport mechanisms for CO2? Explain.
+5. What will be the pO2 and pCO2 in the atmospheric air compared to those in the alveolar air ?
+(i) pO2 lesser, pCO2 higher (ii) pO2 higher, pCO2 lesser (iii) pO2 higher, pCO2 higher (iv) pO2 lesser, pCO2 lesser
+6. Explain the process of inspiration under normal conditions.
+7. How is respiration regulated?
+8. What is the effect of pCO2 on oxygen transport?
+9. What happens to the respiratory process in a man going up a hill?
+10. What is the site of gaseous exchange in an insect?
+11. Define oxygen dissociation curve. Can you suggest any reason for its sigmoidal pattern?
+12. Have you heard about hypoxia? Try to gather information about it, and discuss with your friends.
+13. Distinguish between (a) IRV and ERV (b) Inspiratory capacity and Expiratory capacity.
+(c) Vital capacity and Total lung capacity.
+14. What is Tidal volume? Find out the Tidal volume (approximate value) for a healthy human in an hour.
+Reprint 2026-27
+BODY FLUIDS AND CIRCULATION 193
+You have learnt that all living cells have to be provided with nutrients, O2 and other essential substances. Also, the waste or harmful substances produced, have to be removed continuously for healthy functioning of tissues. It is therefore, essential to have efficient mechanisms for the movement of these substances to the cells and from the cells. Different groups of animals have evolved different methods for this transport. Simple organisms like sponges and coelenterates circulate water from their surroundings through their body cavities to facilitate the cells to exchange these substances. More complex organisms use special fluids within their bodies to transport such materials. Blood is the most commonly used body fluid by most of the higher organisms, including humans, for this purpose. Another body fluid, lymph, also helps in the transport of certain substances. In this chapter, you will learn about the composition and properties of blood and lymph (tissue fluid) and the mechanism of circulation of blood is also explained herein.
+15.1 BLOOD
+Blood is a special connective tissue consisting of a fluid matrix, plasma, and formed elements.
+15.1.1 Plasma
+Plasma is a straw coloured, viscous fluid constituting nearly 55 per cent of the blood. 90-92 per cent of plasma is water and proteins contribute 6-8 per cent of it. Fibrinogen, globulins and albumins are the major proteins.
+BODY FLUIDS AND CIRCULATION
+CHAPTER 15
+15.1 Blood
+15.2 Lymph (Tissue
+15.3 Circulatory
+Pathways
+15.4 Double
+Circulation
+15.5 Regulation of
+Activity
+15.6 Disorders of
+Circulatory
+Reprint 2026-27
+194 BIOLOGY
+Fibrinogens are needed for clotting or coagulation of blood. Globulins primarly are involved in defense mechanisms of the body and the albumins help in osmotic balance. Plasma also contains small amounts of minerals like Na+, Ca++, Mg++, HCO3
+–, Cl–, etc. Glucose, amino acids, lipids, etc., are also present in the plasma as they are always in transit in the body. Factors for coagulation or clotting of blood are also present in the plasma in an inactive form. Plasma without the clotting factors is called serum.
+15.1.2 Formed Elements
+Erythrocytes, leucocytes and platelets are collectively called formed elements (Figure 15.1) and they constitute nearly 45 per cent of the blood.
+Erythrocytes or red blood cells (RBC) are the most abundant of all the cells in blood. A healthy adult man has, on an average, 5 millions to
+5.5 millions of RBCs mm–3 of blood. RBCs are formed in the red bone marrow in the adults. RBCs are devoid of nucleus in most of the mammals and are biconcave in shape. They have a red coloured, iron containing complex protein called haemoglobin, hence the colour and name of these cells. A healthy individual has 12-16 gms of haemoglobin in every
+100 ml of blood. These molecules play a significant role in transport of respiratory gases. RBCs have an average life span of 120 days after which they are destroyed in the spleen (graveyard of RBCs).
+Leucocytes are also known as white blood cells (WBC) as they are colourless due to the lack of haemoglobin. They are nucleated and are relatively lesser in number which averages 6000-8000 mm–3 of blood.
+Leucocytes are generally short lived. We have two main categories of WBCs
+– granulocytes and agranulocytes. Neutrophils, eosinophils and basophils are different types of granulocytes, while lymphocytes and monocytes are the agranulocytes. Neutrophils are the most abundant cells (60-65 per cent) of the total WBCs and basophils are the least (0.5-1 per cent)
+among them. Neutrophils and monocytes (6-8 per cent) are phagocytic cells which destroy foreign organisms entering the body. Basophils secrete histamine, serotonin, heparin, etc., and are involved in inflammatory reactions. Eosinophils (2-3 per cent) resist infections and are also
+Platelets
+Eosinophil
+Basophil
+Neutrophil
+Monocyte
+T lymphocyte
+B lymphocyte
+Figure 15.1 Diagrammatic representation of formed elements in blood
+Reprint 2026-27
+BODY FLUIDS AND CIRCULATION 195 associated with allergic reactions. Lymphocytes (20-25 per cent) are of two major types – ‘B’ and ‘T’ forms. Both B and T lymphocytes are responsible for immune responses of the body.
+Platelets also called thrombocytes, are cell fragments produced from megakaryocytes (special cells in the bone marrow). Blood normally contains 1,500,00-3,500,00 platelets mm–3. Platelets can release a variety of substances most of which are involved in the coagulation or clotting of blood. A reduction in their number can lead to clotting disorders which will lead to excessive loss of blood from the body.
+15.1.3 Blood Groups
+As you know, blood of human beings differ in certain aspects though it appears to be similar. Various types of grouping of blood has been done.
+Two such groupings – the ABO and Rh – are widely used all over the
+15.1.3.1 ABO grouping 15.1.3.1 ABO grouping 15.1.3.1 ABO grouping 15.1.3.1 ABO grouping 15.1.3.1 ABO grouping
+ABO grouping is based on the presence or absence of two surface antigens (chemicals that can induce immune response) on the RBCs namely A and B. Similarly, the plasma of different individuals contain two natural antibodies (proteins produced in response to antigens). The distribution of antigens and antibodies in the four groups of blood, A, B, AB and O are given in Table 15.1. You probably know that during blood transfusion, any blood cannot be used; the blood of a donor has to be carefully matched with the blood of a recipient before any blood transfusion to avoid severe problems of clumping (destruction of RBC). The donor’s compatibility is also shown in the Table 15.1.
+Blood Group Antigens on Antibodies Donor’s Group
+RBCs in Plasma
+A A anti-B A, O
+B B anti-A B, O
+AB A, B nil AB, A, B, O
+O nil an

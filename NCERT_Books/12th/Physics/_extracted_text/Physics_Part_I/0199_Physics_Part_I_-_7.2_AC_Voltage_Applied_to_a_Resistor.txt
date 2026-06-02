@@ -1,0 +1,57 @@
+Alternating Current
+We see that the current reaches its maximum value later than the voltage by one-fourth of a period T
+ω . You have seen that an inductor has reactance that limits current similar to resistance in a dc circuit. Does it also consume power like a resistance? Let us try to find out.
+The instantaneous power supplied to the inductor is p i v i t v t L m m = = −
+ ( ) sin sin ( ) ( ) cos sin m m i v t t ( ) sin 2 m m i v t
+So, the average power over a complete cycle is ( ) L sin 2 ( ) sin 2 m m i v t
+ω = − = 0, since the average of sin (2 wt) over a complete cycle is zero.
+Thus, the average power supplied to an inductor over one complete cycle is zero.
+Example 7.2 A pure inductor of 25.0 mH is connected to a source of
+220 V. Find the inductive reactance and rms current in the circuit if the frequency of the source is 50 Hz.
+Solution The inductive reactance,
+2 2 3 14 50 25 10
+ν π × × × × Ω L X L =
+The rms current in the circuit is
+FIGURE 7.6 (a) A Phasor diagram for the circuit in Fig. 7.5.
+(b) Graph of v and i versus
+Reprint 2026-27
+7.5 AC VOLTAGE APPLIED TO A CAPACITOR
+Figure 7.7 shows an ac source e generating ac voltage v = vm sin connected to a capacitor only, a purely capacitive ac circuit.
+When a capacitor is connected to a voltage source in a dc circuit, current will flow for the short time required to charge the capacitor. As charge accumulates on the capacitor plates, the voltage across them increases, opposing the current. That is, a capacitor in a dc circuit will limit or oppose the current as it charges. When the capacitor is fully charged, the current in the circuit falls to zero.
+When the capacitor is connected to an ac source, as in Fig. 7.7, it limits or regulates the current, but does not completely prevent the flow of charge. The capacitor is alternately charged and discharged as the current reverses each half cycle. Let q be the charge on the capacitor at any time t. The instantaneous voltage v across the capacitor is
+= (7.15)
+From the Kirchhoff’s loop rule, the voltage across the source and the capacitor are equal,
+To find the current, we use the relation d d sin cos( ) m m i v C t C v t
+Using the relation, cos( ) sin
+ω ω t t = +
+2 , we have i i t m = +
+2 (7.16)
+where the amplitude of the oscillating current is im = wCvm. We can rewrite
+Comparing it to im= vm/R for a purely resistive circuit, we find that wC) plays the role of resistance. It is called capacitive reactance and is denoted by Xc, wC (7.17)
+so that the amplitude of the current is
+= (7.18)
+FIGURE 7.7 An ac source connected to a capacitor.
+Reprint 2026-27
+Alternating Current
+FIGURE 7.8 (a) A Phasor diagram for the circuit in Fig. 7.7. (b) Graph of v and i versus
+The dimension of capacitive reactance is the same as that of resistance and its SI unit is ohm (Ω). The capacitive reactance limits the amplitude of the current in a purely capacitive circuit in the same way as the resistance limits the current in a purely resistive circuit. But it is inversely proportional to the frequency and the capacitance.
+A comparison of Eq. (7.16) with the equation of source voltage, Eq. (7.1) shows that the current is π/2 ahead of voltage.
+Figure 7.8(a) shows the phasor diagram at an instant t1. Here the current phasor I is π/2 ahead of the voltage phasor V as they rotate counterclockwise. Figure 7.8(b) shows the variation of voltage and current with time. We see that the current reaches its maximum value earlier than the voltage by one-fourth of a period.
+The instantaneous power supplied to the capacitor is pc = i v = im cos(
+ωt)vm sin(
+= imvm cos(
+ωt) sin( m m i v t
+ω = (7.19)
+So, as in the case of an inductor, the average power sin(2 ) sin(2 ) 0 since <sin (2
+ωt)> = 0 over a complete cycle.
+Thus, we see that in the case of an inductor, the current lags the voltage by π/2 and in the case of a capacitor, the current leads the voltage by π/2.
+Example 7.3 A lamp is connected in series with a capacitor. Predict your observations for dc and ac connections. What happens in each case if the capacitance of the capacitor is reduced?
+Solution When a dc source is connected to a capacitor, the capacitor gets charged and after charging no current flows in the circuit and the lamp will not glow. There will be no change even if C is reduced.
+With ac source, the capacitor offers capacitative reactance (1/ and the current flows in the circuit. Consequently, the lamp will shine.
+Reducing C will increase reactance and the lamp will shine less brightly than before.
+Example 7.4 A 15.0 μF capacitor is connected to a 220 V, 50 Hz source.
+Find the capacitive reactance and the current (rms and peak) in the circuit. If the frequency is doubled, what happens to the capacitive reactance and the current?
+Solution The capacitive reactance is
+2 2 (50Hz)(15.0 10 )
+The rms current is
+Reprint 2026-27

@@ -1,0 +1,18 @@
+220 1.04
+The peak current is
+2 (1.41)(1.04 ) 1.47 m i I A A = = =
+This current oscillates between +1.47A and –1.47 A, and is ahead of the voltage by p/2.
+If the frequency is doubled, the capacitive reactance is halved and consequently, the current is doubled.
+Example 7.5 A light bulb and an open coil inductor are connected to an ac source through a key as shown in Fig. 7.9.
+FIGURE 7.9
+The switch is closed and after sometime, an iron rod is inserted into the interior of the inductor. The glow of the light bulb (a) increases; (b)
+decreases; (c) is unchanged, as the iron rod is inserted. Give your answer with reasons.
+Solution As the iron rod is inserted, the magnetic field inside the coil magnetizes the iron increasing the magnetic field inside it. Hence, the inductance of the coil increases. Consequently, the inductive reactance of the coil increases. As a result, a larger fraction of the applied ac voltage appears across the inductor, leaving less voltage across the bulb. Therefore, the glow of the light bulb decreases.
+7.6 AC VOLTAGE APPLIED TO A SERIES LCR CIRCUIT
+Figure 7.10 shows a series LCR circuit connected to an ac source usual, we take the voltage of the source to be v = vm sin
+If q is the charge on the capacitor and i the current, at time t, we have, from Kirchhoff’s loop
++ + = (7.20)
+We want to determine the instantaneous current i and its phase relationship to the applied alternating voltage v. We shall solve this problem by two methods. First, we use the technique of phasors and in the second method, we solve
+Eq. (7.20) analytically to obtain the time– dependence of i .
+FIGURE 7.10 A series LCR circuit connected to an ac source.
+Reprint 2026-27

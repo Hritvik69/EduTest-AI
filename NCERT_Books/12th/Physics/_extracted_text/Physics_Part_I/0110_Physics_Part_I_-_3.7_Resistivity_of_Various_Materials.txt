@@ -1,0 +1,21 @@
+Fig. 3.12. They are immersed in an electrolytic solution. Dipped in the solution, the electrodes exchange charges with the electrolyte.
+The positive electrode has a potential difference V+ (V+ > 0) between itself and the electrolyte solution immediately adjacent to it marked
+A in the figure. Similarly, the negative electrode develops a negative potential – (V– ) (V– ≥ 0) relative to the electrolyte adjacent to it, marked as B in the figure. When there is no current, the electrolyte has the same potential throughout, so that the potential difference between P and N is V+ – (–V–) = V+ + V– . This difference is called the electromotive force (emf) of the cell and is denoted by e = V++V– > 0 (3.36)
+Note that e is, actually, a potential difference and not a force. The name emf, however, is used because of historical reasons, and was given at a time when the phenomenon was not understood properly.
+To understand the significance of e, consider a resistor R connected across the cell (Fig. 3.12). A current I flows across R from C to D. As explained before, a steady current is maintained because current flows from N to P through the electrolyte. Clearly, across the electrolyte the same current flows through the electrolyte but from N to P, whereas through R, it flows from P to N.
+The electrolyte through which a current flows has a finite resistance r, called the internal resistance. Consider first the situation when R is infinite so that I = V/R = 0, where V is the potential difference between P and N. Now,
+V = Potential difference between P and A
++ Potential difference between A and B
++ Potential difference between B and N e (3.37)
+Thus, emf e is the potential difference between the positive and negative electrodes in an open circuit, i.e., when no current is flowing through the cell.
+If however R is finite, I is not zero. In that case the potential difference between P and N is
+V = V++ V– – I r e – I r (3.38)
+Note the negative sign in the expression (I r ) for the potential difference between A and B. This is because the current I flows from B to A in the electrolyte.
+In practical calculations, internal resistances of cells in the circuit may be neglected when the current I is such that e >> I r. The actual values of the internal resistances of cells vary from cell to cell. The internal resistance of dry cells, however, is much higher than the common electrolytic cells.
+We also observe that since V is the potential difference across R, we have from Ohm’s law
+V = I R (3.39)
+Combining Eqs. (3.38) and (3.39), we get
+FIGURE 3.12 (a) Sketch of an electrolyte cell with positive terminal P and negative terminal N. The gap between the electrodes is exaggerated for clarity. A and B are points in the electrolyte typically close to
+P and N. (b) the symbol for a cell, + referring to P and
+– referring to the N electrode. Electrical connections to the cell are made at P and N.
+Reprint 2026-27

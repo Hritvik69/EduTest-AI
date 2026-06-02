@@ -1,0 +1,207 @@
+The World of Numbers
+3.1. The Dawn of Mathematics: The Human Need to
+Long before humanity built cities, formulated laws, or studied the stars, there existed a fundamental, practical necessity: the need to keep count.
+Mathematics did not begin in a classroom with equations on a board; it began in the dirt, on the bark of trees, and on bones.
+Imagine you are living thousands of years ago in a small agricultural settlement along the banks of the Saraswati river. You have a herd of cattle. Every morning, they go out into the dense forests to graze, and every evening, they return. How do you ensure that a calf has not wandered off? Without words for numbers, and without written symbols, early humans solved this through a concept called one-to-one correspondence.
+For every cow that left the settlement, the herder might place one pebble in a clay pot. In the evening, for every cow that returned, one pebble was removed. If the pot was empty at the end of the day, the herd was safe. If pebbles remained, cows were missing. This simple act of matching one object to another was the birth of the Natural Numbers ( = {1, 2, 3, 4, … }).
+3.1.1 A History Written in Bone
+While the decimal place-value system we use today was perfected in the Indian subcontinent, the earliest physical evidence of humanity recording natural numbers takes us deep into the heart of Africa. The first mathematicians did not use paper; they used tally marks carved into bone.
+The Lebombo Bone, discovered in the Lebombo Mountains between South Africa and Swaziland, dates back approximately
+35,000 years. It is a bone featuring 29 distinct, deliberately-carved uniformly-sized notches. Anthropologists and mathematicians believe this was not just random scratching, but a tool used as a lunar phase counter or a menstrual calendar, indicating that early humans were tracking time through natural numbers.
+42 Ganita Manjari | Grade 9 | Part I
+Even more fascinating is the Ishango bone, found near the headwaters of the Nile River in the Democratic Republic of Congo, dating to around 20,000 BCE. This bone contains three columns of asymmetrical notches. What makes the Ishango bone a mathematical marvel is the specific grouping of the tallies. One of the columns groups notches into 11, 13, 17, and 19 — the prime numbers between 10 and
+20. Another column seems to demonstrate the concept of multiplication by 2 (doubling). These artefacts indicate that the abstract concept of a
+‘number’ is indeed tens of thousands of years old.
+Fig. 3.1: Representation of the prime number tally groupings found on the Ishango bone.
+3.1.2 The Indian Context: Trade and Astronomy
+As civilisations advanced, so did the need for larger numbers. In the ancient urban centers of the Indus Valley Civilisation, such as Lothal and Harappa, standardised weights and measures were crucial for trade. A merchant trading terracotta pottery, lapis lazuli, or cotton with Mesopotamia needed a robust system of accounting.
+During Vedic times, Indian philosophers were fascinated by and deeply pondered large numbers. In the Vedas, which go back thousands of years, names were given to all powers of 10 up to 1012 (which was called parārdha). In the Lalitavistara in the 4th century BCE, Buddha describes names up to 1053
+, which is called tallakṣhaṇa.
+Expressing quantities in terms of powers of 10 was explicitly used in the Ṛigveda, thus setting the stage for the number system based on powers of 10 to be developed in India in the ensuing years, and which we now use around the world today. The development of the Indian numeral system in terms of place values and powers of 10 also helped pave the way for what is perhaps the most important mathematical invention in human history: the concept of zero.
+43 The World of Numbers
+ExErcisE sEt 3.1
+1. A merchant in the port city of Lothal is exchanging bags of spices for copper ingots. He receives 15 ingots for every 2 bags of spices. If he brings 12 bags of spices to the market, how many copper ingots will he leave with?
+2. Look at the sequence of numbers on one column of the Ishango bone: 11, 13, 17, 19. What do these numbers have in common? List the next three numbers that fit this pattern.
+3. We know that Natural Numbers are closed under addition (the sum of any two natural numbers is always a natural number). Are they closed under subtraction? Provide a couple of examples to justify your answer.
+*4. Ancient Indians used the joints of their fingers to count, a practice still seen today. Each finger has 3 joints, and the thumb is used to count them. How many can you count on one hand? How does this relate to the ancient base-12 counting systems?
+3.2 The Revolution of Śhūnya: When Nothing
+Became Something
+For millennia, the number line started at 1. If you had five apples and gave all five away, you did not have a number to represent your state;
+you simply had a void, a lack of apples. Civilisations like the Babylonians and Mayans used placeholders — symbols to indicate an empty column in a number — but they did not treat ‘nothing’ as a number that you could add, subtract, and multiply.
+It was in the work of Brahmagupta (628 CE) that the void was formally transformed into a number, which truly transformed mathematics.
+This monumental leap was in turn inspired by Indian philosophical traditions.
+3.2.1 From Philosophy to Mathematics: The Concept of
+Śhūnyatā
+In the Upanishads and in the vast Buddhist literature starting well before the 7th century BCE, the concept of Śhūnyatā (emptiness or nothingness)
+44 Ganita Manjari | Grade 9 | Part I was a profound state that was the goal of yoga and meditation. The word śhūnya means zero, and the word śhūnyatā (zeroness) was used extensively in these works to describe the state that one is trying to reach during meditation — that of emptying one’s mind of all vṛttis (fluctuations of the mind) to achieve the state of perfect stillness and tranquility. Patanjali in the Yoga Sutras around the 3rd century BCE also describes how śhūnyatā can help lead to control over one’s mind, body, and senses.
+Because Indian thinkers revered this state of ‘emptiness’, they possessed the conceptual framework necessary to welcome ‘nothingness’ as a concept in philosophy. This concept of zeroness then found its way into many fields, such as architecture, literature, linguistics, and eventually made its way into mathematics in the works of Āryabhaṭa and finally Brahmagupta.
+Thus, the philosophical concept of emptiness crystallised into the mathematical zero.
+3.2.2 The Bakhśhālī Manuscript and Brahmagupta’s Rules
+In the Hindu Number System that we use today, the physical transition from a blank space to a symbol can be seen in the Bakhśhālī
+Manuscript. Dated to the early centuries CE, it features a bold dot (bindu) used to represent zero.
+However, a symbol is just a mark on a page until it has rules.
+The transformation of zero into a fully operational number occurred in the work of Brahmagupta. In his seminal work, the
+Brāhmasphuṭasiddhānta (628 CE), he explicitly defined zero as the result of subtracting a number from itself (a – a = 0).
+Brahmagupta then laid down the fundamental laws of arithmetic with śhūnya:
+Brahmagupta’s Rules for Zero
+• When zero is added to a number, the number remains unchanged:
+a + 0 = a.
+• When zero is subtracted from a number, the number remains unchanged: a – 0 = a.
+• When any number is multiplied by zero, the result is zero: a × 0 = 0.
+45 The World of Numbers
+3.3 Integers: Expanding the Horizon
+Brahmagupta did not stop at zero. He realised that if subtraction of a number from itself can result in zero (5 – 5 = 0), then what would happen if we subtracted a larger number from a smaller one (3 – 5 = )?
+To answer this, Brahmagupta grounded his mathematics in the reality of commerce and life.
+He recognised two states:
+• Fortunes (Dhana): Positive numbers, representing wealth or assets.
+• Debts (Ṛiṇa): Negative numbers, representing debts.
+By moving to the left of zero on the number line, Brahmagupta formally introduced Negative Numbers to the world. The combination of positive natural numbers, their negative counterparts, and zero creates the set of Integers, denoted by the symbol Z (from the German word Zahlen, meaning numbers).
+–5 –4 –3 –2 –1 0 1 2 3 4 5
+Negative Integers ← Debt (Ṛiṇa) Fortunes (Dhana) → Positive Integers
+Zero (Śhūnya)
+Fig. 3.2
+3.3.1 The Arithmetic of Integers
+Brahmagupta gave explicit rules for adding and multiplying these integers, which we still use exactly as he wrote them over 1,300 years ago:
+1. A fortune plus a fortune is a fortune: 5 + 4 = 9.
+2. A debt plus a debt is a debt: (– 5) + (– 4) = – 9. (If you owe `5 and borrow `4 more, you owe ` 9.)
+3. A fortune minus zero is a fortune, a debt minus zero is a debt:
+7 – 0 = 7, and – 6 – 0 = – 6.
+4. The product of a debt and a fortune is a debt: (– 3) × 4 = – 12.
+(If you take on 4 debts of `3, your total debt is `12.)
+5. The product of two debts is a fortune: (– 3) × (– 4) = 12.
+46 Ganita Manjari | Grade 9 | Part I
+Think and Reflect
+Why does a negative times a negative equal a positive? Think of it in terms of action and debt. If a negative number represents a debt, then multiplying by a negative number represents the removal of that debt.
+(Hint: If someone takes away (–) four of your debts that are each worth `3 (that is, –3), you are effectively `12 richer! Therefore, (–3) × (– 4) = +12.)
+ExErcisE sEt 3.2
+1. The temperature in the high-altitude desert of Ladakh is recorded as 4 °C at noon. By midnight, it drops by 15 °C. What is the midnight temperature?
+2. A spice trader takes a loan (debt) of `850. The next day, he makes a profit (fortune) of `1,200. The following week, he incurs a loss of `450. Write this sequence as an equation using integers and calculate his final financial standing.
+3. Calculate the following using Brahmagupta’s laws:
+(i) (–12) × 5 (ii) (– 8) × (–7)
+(iii) 0 – (–14) (iv) (–20) ÷ 4
+4. Explain, using a real-world example of debt, why subtracting a negative number is the same as adding a positive number (e.g., 10 – (–5) = 15).
+3.4 Filling the Spaces: Fractions and Rational
+As society grew more complex, measuring became just as important as counting. If a farmer divides a field of wheat among his three children, how much does each get? If a recipe calls for half a cup of ghee, how do we represent that mathematically?
+Numbers that represent parts of a whole are called fractions. Just as every natural number has an additive inverse (3 has –3, 19 has –19, etc.), we can conceive of additive inverses for every positive fraction: – 3
+4 , – 19
+7 for 19
+7 , etc. Let us refer to such additive inverses of positive
+47 The World of Numbers fractions as negative fractions. Note that in a negative fraction, the ‘–’ sign can also be placed with either the numerator or denominator, as follows: – 1
+When we combine all integers and all fractions (both positive and negative), we get the set of Rational Numbers, denoted by ℚ (for quotient).
+A rational number is defined as any number that can be expressed in the form p q , where p and q are integers and q ≠ 0.
+Think and Reflect
+Can you explain why we need q ≠ 0 in the definition of a rational number?
+We must make some important observations at this stage.
+• All rational numbers can be written in the form p q , where p and q are integers and q ≠ 0. For example, 5 and –10 can be written
+1 and –10
+1 , respectively. What this means is that the rational numbers also include the natural numbers, whole numbers and integers.
+• Rational numbers do not have a unique representation in the q , where p and q are integers and q ≠ 0. For example, we have
+9 = – 10
+30 = – 2026
+6078 and so on. These are equivalent rational numbers (or equivalent fractions). This fact allows us to freely divide any common factor between the numerator and the denominator of a given fraction. The resulting fraction is then equivalent to the original one. For example, 12
+30 is equivalent
+5 . Here, we have divided both the numerator and the denominator by 6.
+• The common understanding is that when we say that p q is a rational number, or when we represent p q on the number line, we assume that q ≠ 0 and that p and q have no common factors other than
+48 Ganita Manjari | Grade 9 | Part I
+1 (that is, p and q are co-prime). So, on the number line, among the infinitely many fractions equivalent to 1
+2 (i.e., the fractions 1
+12 , … , 1013
+2026 , …), we choose 1
+2 to represent all of them.
+As you will remember from Grades 6 and 7, Brahmagupta also gave rules for addition, subtraction, multiplication, and division of fractions.
+He noted that these rules also apply to both positive and negative fractions which together constitute the rational numbers.
+Here are the various laws:
+1. Equality: Two rational numbers a d are said to be equal if ad = bc.
+2. Addition and subtraction of two rational numbers: We first express the two rational numbers as fractions a b with the same denominator, b. Then we use the rules a b = a + c b = a – c
+3. Multiplication and division of two rational numbers:
+We use the rules a
+× = provided that (b ≠ 0, d ≠ 0) and a
+÷ = × = provided that (b ≠ 0, d ≠ 0, c ≠ 0).
+4. With the arithmetic laws defined as above, addition and multiplication are both commutative (i.e., a
++ = + and
+× = × , and they follow the law of distributivity: if p, q and r are rational numbers, then p (q + r) = pq + pr.
+Rational numbers are closed under addition, subtraction, and multiplication; that is, if one adds two rational numbers, or subtracts two rational numbers, or multiplies two rational numbers, a rational number is again obtained. Rational numbers are also closed under division, provided that one does not divide by zero. That is, the quotient of two rational numbers is again a rational number, as long as one does not divide by zero.
+49 The World of Numbers
+Think and Reflect
+1. While adding or subtracting two rational numbers having different denominators, how will you make the denominators equal?
+2. Verify the distributive law for rational numbers.
+ExErcisE sEt 3.3
+1. Prove that the following rational numbers are equal:
+and (ii) 5 (iii) − − and (iv) 9
+3  and 3
+2. Find the sum:
++ (ii) 7 (iii) − +
+3. Find the difference:
+− (ii) 11 (iii) − − −
+4. Find the product:
+× (ii) 7 (iii) − ×
+5. Find the quotient:
+10 (ii) 7
+50 Ganita Manjari | Grade 9 | Part I (iii) − ÷
+6. Show that: 1
+ × = × + × .
+7. Simplify the following using the distributive property:
+8. Find the rational number x such that: 5
+3.4.1 Representation of Rational Numbers on the
+Number Line
+We already know that integers can be represented on a number line.
+To do this, we first choose a point and mark it as 0, called the origin.
+Moving one unit to the right gives the point representing 1, two units to the right gives 2, and so on. Similarly, moving one unit to the left of the origin gives –1, two units to the left gives –2, and so on. Each integer lies at an equal distance from the next one. This is represented in Fig. 3.3.
+–7 –6 –4 –5 –3 –2 –1 0 1 2 3 4 5 6 7
+Fig. 3.3
+Rational numbers can also be represented on the number line. Unlike integers, they may lie between two integers. For example, 1
+2 lies exactly halfway between 0 and 1, and – 3
+4 lies between –1 and 0 as shown in
+Fig. 3.4.
+–2 –1 0 1 2 1
+Fig. 3.4
+To represent a rational number p q , q ≠ 0, on the number line, divide the unit interval (the distance between two consecutive integers) into q equal parts. Then move p parts from 0 to the right if the number is positive, and to the left if it is negative.
+51 The World of Numbers
+For example, to represent 3
+4 , divide the interval between 0 and
+1 into four equal parts and move three parts to the right from 0.
+Fig. 3.5
+Even fractions greater than 1 can be located on the number line in this way. For example, 9
+4 so it lies between 2 and 3. We divide the interval between 2 and 3 into four equal parts and move one part to the right of 2. See Fig. 3.6.
+0 1 2 3 1
+Fig. 3.6
+Think and Reflect
+Try and represent 8
+5 and – 7
+4 on a number line.
+0 –5 –4 –3 –2 –1 1 2 3 4 5
+Fig. 3.7: Some integers and rational numbers on a number line
+Absolute value of a rational number
+The absolute value of a rational number x, written as |x|, represents its distance from 0 on the number line.
+Example 1: |5
+3 , |– 5
+3 |is also equal to 5
+3 and |0|= 0.
+Thus, the absolute value of a positive number is the number itself.
+The absolute value of a negative number is its positive value. Therefore, the absolute value of any rational number is always non-negative, that is, |x| ≥ 0.
+52 Ganita Manjari | Grade 9 | Part I
+For two rational numbers a and b, the distance between them on the number line is given by |a – b|. Fig. 3.8 represents the distance between the integers – 4 and 3.
+–5 –4 –3 –2 –1 0 1 2 3 4
+|a – b|= 7
+Fig. 3.8
+3.4.2 The Density of Rational Numbers
+One of the most magical properties of rational numbers is that they are dense. Between any two integers, say 1 and 2, there is a rational number
+2 . Between 1 and 3
+2 , there is another rational number 5
+No matter how close two rational numbers are on the number line, you can always find another rational number between them by taking their average. For example, a rational number between 1 and
+2 can be found by taking their average:
+4 . Try to explain why the average of two rational numbers a and b, which equals (a + b)
+always a rational number between a and b.
+Fig. 3.9
+This means that there are infinitely many rational numbers between any two points. It feels as though the rational numbers must completely fill the number line, leaving no gaps whatsoever. But do they?
+ExErcisE sEt 3.4
+1. Represent the rational numbers 2
+4 and 1 1
+2 on a single number
+2. Find three distinct rational numbers that lie strictly between
+53 The World of Numbers
+3. Simplify the expression: −
+4. A tailor has 15 3
+4 metres of fine silk. If making one kurta requires
+4 metres of silk, exactly how many kurtas can he make?
+5. Find three rational numbers between

@@ -1,0 +1,206 @@
+LAWS OF MOTION 69
+4.4 One end of a string of length l is connected to a particle of mass m and the other to a small peg on a smooth horizontal table. If the particle moves in a circle with speed v the net force on the particle (directed towards the centre)
+(i) T, (ii) l
+− , (iii) l
+, (iv) 0
+T is the tension in the string. [Choose the correct alternative].
+4.5 A constant retarding force of 50 N is applied to a body of mass 20 kg moving initially with a speed of 15 m s-1. How long does the body take to stop ?
+4.6 A constant force acting on a body of mass 3.0 kg changes its speed from 2.0 m s-1 to 3.5 m s-1 in 25 s. The direction of the motion of the body remains unchanged. What is the magnitude and direction of the force ?
+4.7 A body of mass 5 kg is acted upon by two perpendicular forces 8 N and 6 N.
+Give the magnitude and direction of the acceleration of the body.
+4.8 The driver of a three-wheeler moving with a speed of 36 km/h sees a child standing in the middle of the road and brings his vehicle to rest in 4.0 s just in time to save the child. What is the average retarding force on the vehicle ?
+The mass of the three-wheeler is 400 kg and the mass of the driver is 65 kg.
+4.9 A rocket with a lift-off mass 20,000 kg is blasted upwards with an initial acceleration of 5.0 m s-2. Calculate the initial thrust (force) of the blast.
+4.10 A body of mass 0.40 kg moving initially with a constant speed of 10 m s-1 to the north is subject to a constant force of 8.0 N directed towards the south for 30 s. Take the instant the force is applied to be t = 0, the position of the body at that time to be x = 0, and predict its position at t = –5 s, 25 s, 100 s.
+4.11 A truck starts from rest and accelerates uniformly at 2.0 m s-2. At t = 10 s, a stone is dropped by a person standing on the top of the truck (6 m high from the ground). What are the (a) velocity, and (b) acceleration of the stone at t =
+11s ? (Neglect air resistance.)
+4.12 A bob of mass 0.1 kg hung from the ceiling of a room by a string 2 m long is set into oscillation. The speed of the bob at its mean position is 1 m s-1.
+What is the trajectory of the bob if the string is cut when the bob is (a) at one of its extreme positions, (b) at its mean position.
+4.13 A man of mass 70 kg stands on a weighing scale in a lift which is moving (a) upwards with a uniform speed of 10 m s-1, (b) downwards with a uniform acceleration of 5 m s-2, (c) upwards with a uniform acceleration of 5 m s-2.
+What would be the readings on the scale in each case?
+(d) What would be the reading if the lift mechanism failed and it hurtled down freely under gravity ?
+4.14 Figure 4.16 shows the position-time graph of a particle of mass 4 kg. What is the (a) force on the particle for t < 0, t > 4 s, 0 < t < 4 s? (b) impulse at t = 0 and t = 4 s ? (Consider one-dimensional motion only).
+Fig. 4.16
+4.15 Two bodies of masses 10 kg and 20 kg respectively kept on a smooth, horizontal surface are tied to the ends of a light string. A horizontal force F = 600 N is applied to (i) A, (ii) B along the direction of string. What is the tension in the string in each case?
+Reprint 2026-27
+PHYSICS 70
+4.16 Two masses 8 kg and 12 kg are connected at the two ends of a light inextensible string that goes over a frictionless pulley. Find the acceleration of the masses, and the tension in the string when the masses are released.
+4.17 A nucleus is at rest in the laboratory frame of reference. Show that if it disintegrates into two smaller nuclei the products must move in opposite directions.
+4.18 Two billiard balls each of mass 0.05 kg moving in opposite directions with speed 6 m s-1 collide and rebound with the same speed. What is the impulse imparted to each ball due to the other ?
+4.19 A shell of mass 0.020 kg is fired by a gun of mass 100 kg. If the muzzle speed of the shell is 80 m s-1, what is the recoil speed of the gun ?
+4.20 A batsman deflects a ball by an angle of 45° without changing its initial speed which is equal to 54 km/h. What is the impulse imparted to the ball ? (Mass of the ball is 0.15 kg.)
+4.21 A stone of mass 0.25 kg tied to the end of a string is whirled round in a circle of radius
+1.5 m with a speed of 40 rev./min in a horizontal plane. What is the tension in the string ? What is the maximum speed with which the stone can be whirled around if the string can withstand a maximum tension of 200 N ?
+4.22 If, in Exercise 4.21, the speed of the stone is increased beyond the maximum permissible value, and the string breaks suddenly, which of the following correctly describes the trajectory of the stone after the string breaks :
+(a) the stone moves radially outwards, (b) the stone flies off tangentially from the instant the string breaks, (c) the stone flies off at an angle with the tangent whose magnitude depends on the speed of the particle ?
+4.23 Explain why (a) a horse cannot pull a cart and run in empty space, (b) passengers are thrown forward from their seats when a speeding bus stops suddenly, (c) it is easier to pull a lawn mower than to push it, (d) a cricketer moves his hands backwards while holding a catch.
+Reprint 2026-27
+CHAPTER FIVE
+WORK, ENERGY AND POWER
+5.1 INTRODUCTION
+The terms ‘work’, ‘energy’ and ‘power’ are frequently used in everyday language. A farmer ploughing the field, a construction worker carrying bricks, a student studying for a competitive examination, an artist painting a beautiful landscape, all are said to be working. In physics, however, the word ‘Work’ covers a definite and precise meaning.
+Somebody who has the capacity to work for 14-16 hours a day is said to have a large stamina or energy. We admire a long distance runner for her stamina or energy. Energy is thus our capacity to do work. In Physics too, the term ‘energy’ is related to work in this sense, but as said above the term
+‘work’ itself is defined much more precisely. The word ‘power’ is used in everyday life with different shades of meaning. In karate or boxing we talk of ‘powerful’ punches. These are delivered at a great speed. This shade of meaning is close to the meaning of the word ‘power’ used in physics. We shall find that there is at best a loose correlation between the physical definitions and the physiological pictures these terms generate in our minds. The aim of this chapter is to develop an understanding of these three physical quantities.
+Before we proceed to this task, we need to develop a mathematical prerequisite, namely the scalar product of two vectors.
+5.1.1 The Scalar Product
+We have learnt about vectors and their use in Chapter 3.
+Physical quantities like displacement, velocity, acceleration, force etc. are vectors. We have also learnt how vectors are added or subtracted. We now need to know how vectors are multiplied. There are two ways of multiplying vectors which we shall come across : one way known as the scalar product gives a scalar from two vectors and the other known as the vector product produces a new vector from two vectors. We shall look at the vector product in Chapter 6. Here we take up the scalar product of two vectors. The scalar product or dot product of any two vectors A and B, denoted as A.B (read
+5.1 Introduction
+5.2 Notions of work and kinetic energy : The work-energy
+5.3 Work
+5.4 Kinetic energy
+5.5 Work done by a variable force
+5.6 The work-energy theorem for a variable force
+5.7 The concept of potential
+5.8 The conservation of mechanical energy
+5.9 The potential energy of a
+5.10 Power
+5.11 Collisions
+Points to ponder
+Exercises
+Reprint 2026-27
+PHYSICS 72
+A dot B) is defined as
+A.B = A B cos
+θ (5.1a)
+θ is the angle between the two vectors as shown in Fig. 5.1(a). Since A, B and cos scalars, the dot product of A and B is a scalar quantity. Each vector, A and B, has a direction but their scalar product does not have a direction.
+From Eq. (5.1a), we have
+A.B = A (B cos
+= B (A cos
+Geometrically, B cos
+θ is the projection of B onto
+A in Fig.5.1 (b) and A cos
+θ is the projection of A onto B in Fig. 5.1 (c). So, A.B is the product of the magnitude of A and the component of B along
+A. Alternatively, it is the product of the magnitude of B and the component of A along B.
+Equation (5.1a) shows that the scalar product follows the commutative law :
+A.B = B.A
+Scalar product obeys the distributive
+A. (B + C) = A.B + A.C
+Further, A. (λ B) = λ (A.B)
+where λ is a real number.
+The proofs of the above equations are left to you as an exercise.
+For unit vectors ɵ ɵ ɵ i, j, k we have
+ɵ ɵ ɵ ɵ ɵ ɵ i i j j k k ⋅ = ⋅ = ⋅ = 1
+ɵ ɵ ɵ ɵ ɵ ɵ i j j k k i ⋅ = ⋅ = ⋅ = 0
+Given two vectors
+A i j k = + + A A A x y z
+B i j k = + + B B B x y z their scalar product is ( ) ( ) ˆ ˆ ˆ ˆ ˆ ˆ . . x y z x y z A A A B B B = + + + + A B i j k i j k
+= + + A B A B A B x x y y z z (5.1b)
+From the definition of scalar product and (Eq. 5.1b) we have :
+( i ) x x y y z z A A A A A A = + + A A .
+Or, A A A A
+= + + (5.1c)
+since A.A = |A ||A| cos 0 = A2.
+(ii) A.B = 0, if A and B are perpendicular.
+Example 5.1 Find the angle between force
+F = (3 + 4 - 5 ) ˆ ˆ ˆ i j k unit and displacement d = (5 + 4 + 3 ) ˆ ˆ ˆ i j k unit. Also find the projection of F on d.
+Answer F.d = x x y y z z F d F d F d + +
+= 3 (5) + 4 (4) + (– 5) (3)
+= 16 unit
+Hence F.d = cos F d
+θ = 16 unit
+Now F.F = 2 2 2 2 x y z F F F F = + +
+= 9 + 16 + 25
+= 50 unit and d.d = d2 = 2 2 2 x y z d d d + +
+= 25 + 16 + 9
+= 50 unit
+θ = 16 16
+= = 0.32
+50 50 50 ,
+θ = cos–1 0.32
+Fig. 5.1 (a) The scalar product of two vectors A and B is a scalar : A.B = A B cos
+θ. (b) B cos
+θ is the projection of B onto A. (c) A cos
+θ is the projection of A onto B.
+Reprint 2026-27
+WORK, ENERGY AND POWER 73 to be proportional to the speed of the drop but is otherwise undetermined. Consider a drop of mass 1.00 g falling from a height
+1.00 km. It hits the ground with a speed of
+50.0 m s-1. (a) What is the work done by the gravitational force ? What is the work done by the unknown resistive force?
+Answer (a) The change in kinetic energy of the
+K m v ∆ = −
+2 10 50 50 -3
+= 1.25 J where we have assumed that the drop is initially at rest.
+Assuming that g is a constant with a value
+10 m/s2, the work done by the gravitational force
+Wg = mgh
+= 10-3 ×10 ×103
+= 10.0 J (b) From the work-energy theorem g r K W W ∆ = + where Wr is the work done by the resistive force on the raindrop. Thus
+Wr = ∆K − Wg
+= 1.25 −10
+= − 8.75 J is negative. ⊳
+5.3 WORK
+As seen earlier, work is related to force and the displacement over which it acts. Consider a constant force F acting on an object of mass m.
+The object undergoes a displacement d in the positive x-direction as shown in Fig. 5.2.
+Fig. 5.2 An object undergoes a displacement d under the influence of the force F.
+5.2 NOTIONS OF WORK AND KINETIC
+ENERGY: THE WORK-ENERGY THEOREM
+The following relation for rectilinear motion under constant acceleration a has been encountered in Chapter 3, v2 − u2 = 2 as (5.2)
+where u and v are the initial and final speeds and s the distance traversed. Multiplying both sides by m/2, we have mv mu mas Fs − = = (5.2a)
+where the last step follows from Newton’s Second
+Law. We can generalise Eq. (5.2) to three dimensions by employing vectors v2 − u2 = 2 a.d
+Here a and d are acceleration and displacement vectors of the object respectively.
+Once again multiplying both sides by m/2 , we obtain mv mu m − = = a.d F.d (5.2b)
+The above equation provides a motivation for the definitions of work and kinetic energy. The left side of the equation is the difference in the quantity ‘half the mass times the square of the speed’ from its initial value to its final value. We call each of these quantities the ‘kinetic energy’, denoted by K. The right side is a product of the displacement and the component of the force along the displacement. This quantity is called
+‘work’ and is denoted by W. Eq. (5.2b) is then
+− Ki = W (5.3)
+where Ki and Kf are respectively the initial and final kinetic energies of the object. Work refers to the force and the displacement over which it acts. Work is done by a force on the body over a certain displacement.
+Equation (5.2) is also a special case of the work-energy (WE) theorem : The change in kinetic energy of a particle is equal to the work done on it by the net force. We shall generalise the above derivation to a varying force in a later section.
+Example 5.2 It is well known that a raindrop falls under the influence of the downward gravitational force and the opposing resistive force. The latter is known
+Reprint 2026-27
+PHYSICS 74
+Table 5.1 Alternative Units of Work/Energy in J
+Example 5.3 A cyclist comes to a skidding stop in 10 m. During this process, the force on the cycle due to the road is 200 N and is directly opposed to the motion. (a) How much work does the road do on the cycle ?
+(b) How much work does the cycle do on the road ?
+Answer Work done on the cycle by the road is the work done by the stopping (frictional) force on the cycle due to the road.
+(a) The stopping force and the displacement make an angle of 180o (p rad) with each other.
+Thus, work done by the road,
+Wr = Fd cos
+= 200 ´ 10 ´ cos p
+= – 2000 J
+It is this negative work that brings the cycle to a halt in accordance with WE theorem.
+(b) From Newton’s Third Law an equal and opposite force acts on the road due to the cycle. Its magnitude is 200 N. However, the road undergoes no displacement. Thus, work done by cycle on the road is zero. ⊳
+The lesson of Example 5.3 is that though the force on a body A exerted by the body B is always equal and opposite to that on B by A (Newton’s
+Third Law); the work done on A by B is not necessarily equal and opposite to the work done on B by A.
+5.4 KINETIC ENERGY
+As noted earlier, if an object of mass m has velocity v, its kinetic energy K is v v . (5.5)
+Kinetic energy is a scalar quantity. The kinetic energy of an object is a measure of the work an
+The work done by the force is defined to be the product of component of the force in the direction of the displacement and the magnitude of this displacement. Thus
+W = (F cos q )d = F.d (5.4)
+We see that if there is no displacement, there is no work done even if the force is large. Thus, when you push hard against a rigid brick wall, the force you exert on the wall does no work. Yet your muscles are alternatively contracting and relaxing and internal energy is being used up and you do get tired. Thus, the meaning of work in physics is different from its usage in everyday language.
+No work is done if :
+(i) the displacement is zero as seen in the example above. A weightlifter holding a 150 kg mass steadily on his shoulder for 30 s does no work on the load during this time.
+(ii) the force is zero. A block moving on a smooth horizontal table is not acted upon by a horizontal force (since there is no friction), but may undergo a large displacement.
+(iii) the force and displacement are mutually perpendicular. This is so since, for rad (= 90o), cos (p/2) = 0. For the block moving on a smooth horizontal table, the gravitational force mg does no work since it acts at right angles to the displacement.
+If we assume that the moon’s orbit around the earth is perfectly circular then the earth’s gravitational force does no work.
+The moon’s instantaneous displacement is tangential while the earth’s force is radially inwards and q = p/2.
+Work can be both positive and negative. If between 0o and 90o, cos q in Eq. (5.4) is positive.
+q is between 90o and 180o, cos q is negative.
+In many examples the frictional force opposes displacement and q = 180o. Then the work done by friction is negative (cos 180o = –1).
+From Eq. (5.4) it is clear that work and energy have the same dimensions, [ML2T–2]. The SI unit of these is joule (J), named after the famous British physicist James Prescott Joule (1811-1869). Since work and energy are so widely used as physical concepts, alternative units abound and some of these are listed in Table 5.1.
+Reprint 2026-27
+WORK, ENERGY AND POWER 75 object can do by the virtue of its motion. This notion has been intuitively known for a long time.
+The kinetic energy of a fast flowing stream has been used to grind corn. Sailing ships employ the kinetic energy of the wind. Table
+5.2 lists the kinetic energies for various objects.
+Example 5.4 In a ballistics demonstration a police officer fires a bullet of mass 50.0 g with speed 200 m s-1 (see Table 5.2) on soft plywood of thickness 2.00 cm. The bullet emerges with only 10% of its initial kinetic energy. What is the emergent speed of the bullet ?
+Answer The initial kinetic energy of the bullet is mv2/2 = 1000 J. It has a final kinetic energy of 0.1×1000 = 100 J. If vf is the emergent speed of the bullet, kg 05 . 0
+J 100 2 ×
+= 63.2 m s–1
+The speed is reduced by approximately 68% (not 90%). ⊳
+5.5 WORK DONE BY A VARIABLE FORCE
+A constant force is rare. It is the variable force, which is more commonly encountered. Fig. 5.3 is a plot of a varying force in one dimension.
+If the displacement ∆x is small, we can take the force F (x) as approximately constant and the work done is then
+∆W =F (x) ∆x
+Table 5.2 Typical kinetic energies (K)
+This is illustrated in Fig. 5.3(a). Adding successive rectangular areas in Fig. 5.3(a) we get the total work done as ( ) ∑ ∆ ≅ x x F W (5.6)
+where the summation is from the initial position xi to the final position xf.
+If the displacements are allowed to approach zero, then the number of terms in the sum increases without limit, but the sum approaches a definite value equal to the area under the curve in Fig. 5.3(b). Then the work done is
+= ( ) ∫ F x x where ‘lim’ stands for the limit of the sum when
+∆x tends to zero. Thus, for a varying force the work done can be expressed as a definite integral of force over displacement (see also
+Appendix 3.1).
+x ∆ → ( ) ∑ ∆
+Fig. 5.3(a)
+Reprint 2026-27
+PHYSICS 76
+Fig. 5.3 (a) The shaded rectangle represents the work done by the varying force F(x), over the small displacement ∆x, ∆W = F(x) ∆x.
+(b) adding the areas of all the rectangles we find that for ∆x
+→ 0, the area under the curve is exactly equal to the work done by F(

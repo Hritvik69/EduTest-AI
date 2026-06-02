@@ -1,0 +1,114 @@
+FIGURE 10.13 Computer generated fringe pattern produced by two point source S1 and S2 on the screen GG¢ (Fig. 10.12); d = 0.025 mm, D = 5 cm and l = 5 × 10–5 cm.) (Adopted from OPTICS by A. Ghatak, Tata McGraw
+Hill Publishing Co. Ltd., New Delhi, 2000.)
+Thomas Young (1773 – 1829) English physicist, physician and
+Egyptologist. Young worked on a wide variety of scientific problems, ranging from the structure of the eye and the mechanism of vision to the decipherment of the Rosetta stone. He revived the wave theory of light and recognised that interference phenomena provide proof of the wave properties of light.
+THOMAS YOUNG (1773 – 1829)
+We will have constructive interference resulting in a bright region when xd l. That is, x = xn = n D
+λ ; n = 0, ± 1, ± 2, ... (10.13)
+On the other hand, we will have destructive interference resulting in a dark region when xd
+D = (n+ 1 x = xn = (n+ 1
+2 ) ; 0, 1, 2
+    (10.14)
+Thus dark and bright bands appear on the screen, as shown in Fig. 10.13. Such bands are called fringes.
+Equations (10.13) and (10.14) show that dark and bright fringes are equally spaced.
+10.6 DIFFRACTION
+If we look clearly at the shadow cast by an opaque object, close to the region of geometrical shadow, there are alternate dark and bright regions just like in interference. This happens due to the phenomenon of diffraction. Diffraction is a general characteristic exhibited by all types of waves, be it sound waves, light waves, water waves or matter waves. Since the wavelength of light is much smaller than the dimensions of most obstacles; we do not encounter diffraction effects of light in everyday
+Reprint 2026-27
+Wave Optics observations. However, the finite resolution of our eye or of optical instruments such as telescopes or microscopes is limited due to the phenomenon of diffraction. Indeed the colours that you see when a CD is viewed is due to diffraction effects. We will now discuss the phenomenon of diffraction.
+10.6.1 The single slit
+In the discussion of Young’s experiment, we stated that a single narrow slit acts as a new source from which light spreads out. Even before Young, early experimenters – including Newton – had noticed that light spreads out from narrow holes and slits. It seems to turn around corners and enter regions where we would expect a shadow. These effects, known as diffraction, can only be properly understood using wave ideas. After all, you are hardly surprised to hear sound waves from someone talking around a corner!
+When the double slit in Young’s experiment is replaced by a single narrow slit (illuminated by a monochromatic source), a broad pattern with a central bright region is seen. On both sides, there are alternate dark and bright regions, the intensity becoming weaker away from the centre (Fig. 10.15). To understand this, go to Fig. 10.14, which shows a parallel beam of light falling normally on a single slit LN of width a. The diffracted light goes on to meet a screen. The midpoint of the slit is M.
+A straight line through M perpendicular to the slit plane meets the screen at C. We want the intensity at any point P on the screen. As before, straight lines joining P to the different points L,M,N, etc., can be treated as parallel, making an angle q with the normal MC.
+The basic idea is to divide the slit into much smaller parts, and add their contributions at P with the proper phase differences. We are treating different parts of the wavefront at the slit as secondary sources. Because the incoming wavefront is parallel to the plane of the slit, these sources are in phase.
+It is observed that the intensity has a central maximum at q = 0 and other secondary maxima at l/a, which go on becoming weaker and weaker with increasing n. The minima (zero intensity) are at l/a, n = ±1, ±2, ±3, ....
+The photograph and intensity pattern corresponding to it is shown in Fig. 10.15.
+There has been prolonged discussion about difference between intereference and diffraction among
+FIGURE 10.14 The geometry of path differences for diffraction by a single slit.
+FIGURE 10.15 Intensity distribution and photograph of fringes due to diffraction at single slit.
+Reprint 2026-27
+FIGURE FIGURE FIGURE FIGURE FIGURE 10.16 10.16 10.16 10.16 10.16
+Holding two blades to form a single slit. A bulb filament viewed through this shows clear diffraction scientists since the discovery of these phenomena. In this context, it is interesting to note what Richard Feynman***** has said in his famous
+Feynman Lectures on Physics:
+No one has ever been able to define the difference between interference and diffraction satisfactorily. It is just a question of usage, and there is no specific, important physical difference between them. The best we can do is, roughly speaking, is to say that when there are only a few sources, say two interfering sources, then the result is usually called interference, but if there is a large number of them, it seems that the word diffraction is more often used.
+In the double-slit experiment, we must note that the pattern on the screen is actually a superposition of single-slit diffraction from each slit or hole, and the double-slit interference pattern.
+10.6.2 Seeing the single slit diffraction pattern 10.6.2 Seeing the single slit diffraction pattern 10.6.2 Seeing the single slit diffraction pattern 10.6.2 Seeing the single slit diffraction pattern 10.6.2 Seeing the single slit diffraction pattern
+It is surprisingly easy to see the single-slit diffraction pattern for oneself.
+The equipment needed can be found in most homes –– two razor blades and one clear glass electric bulb preferably with a straight filament. One has to hold the two blades so that the edges are parallel and have a narrow slit in between. This is easily done with the thumb and forefingers (Fig. 10.16).
+Keep the slit parallel to the filament, right in front of the eye. Use spectacles if you normally do. With slight adjustment of the width of the slit and the parallelism of the edges, the pattern should be seen with its bright and dark bands. Since the position of all the bands (except the central one) depends on wavelength, they will show some colours. Using a filter for red or blue will make the fringes clearer.
+With both filters available, the wider fringes for red compared to blue can be seen.
+In this experiment, the filament plays the role of the first slit S in
+Fig. 10.15. The lens of the eye focuses the pattern on the screen (the retina of the eye).
+With some effort, one can cut a double slit in an aluminium foil with a blade. The bulb filament can be viewed as before to repeat Young’s experiment. In daytime, there is another suitable bright source subtending a small angle at the eye. This is the reflection of the Sun in any shiny convex surface (e.g., a cycle bell). Do not try direct sunlight – it can damage the eye and will not give fringes anyway as the Sun subtends an angle of (1/2)°.
+In interference and diffraction, light energy is redistributed. If it reduces in one region, producing a dark fringe, it increases in another region, producing a bright fringe. There is no gain or loss of energy, which is consistent with the principle of conservation of energy.
+***** Richard Feynman was one of the recipients of the 1965 Nobel Prize in Physics for his fundamental work in quantum electrodynamics.
+Reprint 2026-27
+Wave Optics
+10.7 POLARISATION
+Consider holding a long string that is held horizontally, the other end of which is assumed to be fixed. If we move the end of the string up and down in a periodic manner, we will generate a wave propagating in the
++x direction (Fig. 10.17). Such a wave could be described by the following equation
+FIGURE 10.17 (a) The curves represent the displacement of a string at t = 0 and at t = Dt, respectively when a sinusoidal wave is propagating in the +x-direction. (b) The curve represents the time variation of the displacement at x = 0 when a sinusoidal wave is propagating in the +x-direction. At x = Dx, the time variation of the displacement will be slightly displaced to the right.
+y (x,t ) = a sin (kx – wt) (10.15)
+where a and n) represent the amplitude and the angular frequency of the wave, respectively; further,
+= (10.16)
+represents the wavelength associated with the wave. We had discussed propagation of such waves in Chapter 14 of Class XI textbook. Since the displacement (which is along the y direction) is at right angles to the direction of propagation of the wave, we have what is known as a transverse wave. Also, since the displacement is in the y direction, it is often referred to as a y-polarised wave. Since each point on the string moves on a straight line, the wave is also referred to as a linearly polarised
+Reprint 2026-27 wave. Further, the string always remains confined to the x-y plane and therefore it is also referred to as a plane polarised wave.
+In a similar manner we can consider the vibration of the string in the x-z plane generating a z-polarised wave whose displacement will be given z (x,t ) = a sin (kx – wt ) (10.17)
+It should be mentioned that the linearly polarised waves [described by Eqs. (10.15) and (10.17)] are all transverse waves; i.e., the displacement of each point of the string is always at right angles to the direction of propagation of the wave. Finally, if the plane of vibration of the string is changed randomly in very short intervals of time, then we have what is known as an unpolarised wave. Thus, for an unpolarised wave the displacement will be randomly changing with time though it will always be perpendicular to the direction of propagation.
+Light waves are transverse in nature; i.e., the electric field associated with a propagating light wave is always at right angles to the direction of propagation of the wave. This can be easily demonstrated using a simple polaroid. You must have seen thin plastic like sheets, which are called polaroids. A polaroid consists of long chain molecules aligned in a particular direction. The electric vectors (associated with the propagating light wave) along the direction of the aligned molecules get absorbed.
+Thus, if an unpolarised light wave is incident on such a polaroid then the light wave will get linearly polarised with the electric vector oscillating along a direction perpendicular to the aligned molecules; this direction is known as the pass-axis of the polaroid.
+Thus, if the light from an ordinary source (like a sodium lamp) passes through a polaroid sheet P1, it is observed that its intensity is reduced by half. Rotating P1 has no effect on the transmitted beam and transmitted intensity remains constant. Now, let an identical piece of polaroid P2 be placed before P1. As expected, the light from the lamp is reduced in intensity on passing through P2 alone. But now rotating P1 has a dramatic effect on the light coming from P2. In one position, the intensity transmitted by P2 followed by P1 is nearly zero. When turned by 90° from this position,
+P1 transmits nearly the full intensity emerging from P2 (Fig. 10.18).
+The experiment at figure 10.18 can be easily understood by assuming that light passing through the polaroid P2 gets polarised along the pass- axis of P2. If the pass-axis of P2 makes an angle q with the pass-axis of
+P1, then when the polarised beam passes through the polaroid P2, the component E cos q (along the pass-axis of P2) will pass through P2.
+Thus, as we rotate the polaroid P1 (or P2), the intensity will vary as:
+I = I0 cos2 q (10.18)
+where I0 is the intensity of the polarized light after passing through
+P1. This is known as Malus’ law. The above discussion shows that the
+Reprint 2026-27
+Wave Optics
+FIGURE 10.18 (a) Passage of light through two polaroids P2 and P1. The transmitted fraction falls from 1 to 0 as the angle between them varies from 0° to 90°. Notice that the light seen through a single polaroid
+P1 does not vary with angle. (b) Behaviour of the electric vector when light passes through two polaroids. The transmitted polarisation is the component parallel to the polaroid axis.
+The double arrows show the oscillations of the electric vector.
+intensity coming out of a single polaroid is half of the incident intensity.
+By putting a second polaroid, the intensity can be further controlled from 50% to zero of the incident intensity by adjusting the angle between the pass-axes of two polaroids.
+Polaroids can be used to control the intensity, in sunglasses, windowpanes, etc. Polaroids are also used in photographic cameras and
+3D movie cameras.
+Example 10.2 Discuss the intensity of transmitted light when a polaroid sheet is rotated between two crossed polaroids?
+Solution Let I0 be the intensity of polarised light after passing through the first polariser P1. Then the intensity of light after passing through second polariser P2 will be
+0cos I I q is the angle between pass axes of P1 and P2. Since P1 and P3 are crossed the angle between the pass axes of P2 and P3 will be q ). Hence the intensity of light emerging from P3 will be
+= I0 cos2 q =(I0/4) sin22
+Therefore, the transmitted intensity will be maximum when q = p/4.
+Reprint 2026-27
+POINTS TO PONDER
+1. Waves from a point source spread out in all directions, while light was seen to travel along narrow rays. It required the insight and experiment of Huygens, Young and Fresnel to understand how a wave theory could explain all aspects of the behaviour of light.
+2. The crucial new feature of waves is interference of amplitudes from different sources which can be both constructive and destructive, as shown in
+Young’s experiment.
+3. Diffraction phenomena define the limits of ray optics. The limit of the ability of microscopes and telescopes to distinguish very close objects is set by the wavelength of light.
+4. Most interference and diffraction effects exist even for longitudinal waves like sound in air. But polarisation phenomena are special to transverse waves like light waves.
+1. Huygens’ principle tells us that each point on a wavefront is a source of secondary waves, which add up to give the wavefront at a later time.
+2. Huygens’ construction tells us that the new wavefront is the forward envelope of the secondary waves. When the speed of light is independent of direction, the secondary waves are spherical. The rays are then perpendicular to both the wavefronts and the time of travel is the same measured along any ray. This principle leads to the well known laws of reflection and refraction.
+3. The principle of superposition of waves applies whenever two or more sources of light illuminate the same point. When we consider the intensity of light due to these sources at the given point, there is an interference term in addition to the sum of the individual intensities.
+But this term is important only if it has a non-zero average, which occurs only if the sources have the same frequency and a stable phase difference.
+4. Young’s double slit of separation d gives equally spaced interference fringes.
+5. A single slit of width a gives a diffraction pattern with a central maximum. The intensity falls to zero at angles of 2
+± ± etc., with successively weaker secondary maxima in between.
+6. Natural light, e.g., from the sun is unpolarised. This means the electric vector takes all possible directions in the transverse plane, rapidly and randomly, during a measurement. A polaroid transmits only one component (parallel to a special axis). The resulting light is called linearly polarised or plane polarised. When this kind of light is viewed through a second polaroid whose axis turns through 2p, two maxima and minima of intensity are seen.
+Reprint 2026-27
+Wave Optics
+EXERCISES
+10.1 Monochromatic light of wavelength 589 nm is incident from air on a water surface. What are the wavelength, frequency and speed of (a) reflected, and (b) refracted light? Refractive index of water is
+10.2 What is the shape of the wavefront in each of the following cases:
+(a) Light diverging from a point source.
+(b) Light emerging out of a convex lens when a point source is placed at its focus.
+(c) The portion of the wavefront of light from a distant star intercepted by the Earth.
+10.3 (a) The refractive index of glass is 1.5. What is the speed of light in glass? (Speed of light in vacuum is 3.0 × 108 m s–1)
+(b) Is the speed of light in glass independent of the colour of light? If not, which of the two colours red and violet travels slower in a glass prism?
+10.4 In a Young’s double-slit experiment, the slits are separated by
+0.28 mm and the screen is placed 1.4 m away. The distance between the central bright fringe and the fourth bright fringe is measured to be 1.2 cm. Determine the wavelength of light used in the experiment.
+10.5 In Young’s double-slit experiment using monochromatic light of wavelength l, the intensity of light at a point on the screen where path difference is l, is K units. What is the intensity of light at a point where path difference is
+10.6 A beam of light consisting of two wavelengths, 650 nm and 520 nm, is used to obtain interference fringes in a Young’s double-slit experiment.
+(a) Find the distance of the third bright fringe on the screen from the central maximum for wavelength 650 nm.
+(b) What is the least distance from the central maximum where the bright fringes due to both the wavelengths coincide?
+Reprint 2026-27
+11.1 INTRODUCTION
+The Maxwell’s equations of electromagnetism and Hertz experiments on the generation and detection of electromagnetic waves in 1887 strongly established the wave nature of light. Towards the same period at the end of 19th century, experimental investigations on conduction of electricity (electric discharge) through gases at low pressure in a discharge tube led to many historic discoveries. The discovery of X-rays by Roentgen in 1895, and of electron by J. J. Thomson in 1897, were important milestones in the understanding of atomic structure. It was found that at sufficiently low pressure of about 0.001 mm of mercury column, a discharge took place between the

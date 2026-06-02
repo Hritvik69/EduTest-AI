@@ -1,0 +1,111 @@
+Practical Work in Geography
+Figure 3.1 Parallels of Latitudes
+Figure 3.2 Drawing of Parallels of
+Latitudes degree of longitude at the equator. But to be precise, a degree of latitude changes slightly in length from the equator to the poles. While at the equator, it is
+110.6 km at the poles, it is 111.7 km. Latitude of a place may be determined with the help of the altitude of the sun or the Pole Star.
+DRAWING THE PARALLELS OF LATITUDES
+How to draw the parallels of latitudes? Draw a circle and divide it into two equal halves by drawing a horizontal line in the centre. This represents the equator. Place a protractor on this circle in a way that 0° and 180° line on the protractor coincide with the equator on the paper. Now to draw 20°S, mark two points at an angle of 20° from the equator, east and west in the lower half of the circle, as shown in
+Fig. 3.2. The arms of the angle cut the circle at two points. Join these two points by a line parallel to the equator. It will be 200S.
+MERIDIANS OF LONGITUDE
+Unlike the parallels of latitude which are circles, the meridians of longitude are semi-circles that converge at the poles. If opposite meridians are taken together, they complete a circle, but, they are valued separately as two meridians.
+The meridians intersect the equator at right angles.
+Unlike the parallels of latitude, they are all equal in length. For convenience of numbering, the meridian of longitude passing through the Greenwich observatory (near London) has been adopted as the
+Prime Meridian by an international agreement and has been given the value of 0°.
+The longitude of a place is its angular distance east or west of the Prime Meridian. It is also measured in degrees. The longitudes vary from 0° to 180°
+Latitude, Longitude and Time
+Figure 3.3 Meridians of Longitude
+Figure 3.4 Meridians of 00 and 1800 join at the North Pole
+Figure 3.5 Drawing of Meridians of
+Longitude eastward and westward of the Prime Meridian (Fig.
+3.3). The part of the earth east of the Prime
+Meridian is called the eastern hemisphere and in its west referred to as the western hemisphere.
+Drawing the Meridians of Longitude
+How to draw the lines of longitude? Draw a circle whose centre represents the North Pole. The circumference will represent the equator. Draw a vertical line through the centre of the circle, i.e. crossing the North Pole. This represents the
+0° and 180° meridians, which meet at the North
+Pole (Fig. 3.4).
+When you look at a map, the east is towards your right and the west is towards your left.
+However, to draw a longitude, imagine that you are on the North Pole, i.e. at the centre of the circle as shown in Fig. 3.4. Observe now that the relative directions of east and west would reverse in this case and east would be towards your left while west would be towards your right.
+Now, draw 45° E and W as shown in Fig. 3.5
+For this, place your protractor along the vertical line, coinciding with the 0° and 180° meridians and then measure 45° on both the sides, which will denote 45° E meridian and 45° W meridian on your left and right, respectively. The diagram will represent the appearance of the earth if we look at it from directly above the North Pole.
+LONGITUDE AND TIME
+We all know that the earth rotates from west to east over its axis. It makes the sun rise in the east and set in the west. The rotation of the earth over its axis takes 24 hours to complete one circle or 360° of longitudes. As 180° of longitudes fall both east and west of the Prime Meridian, the sun, thus takes 12 hours’ time to traverse the
+Practical Work in Geography
+Table 3.1 A Comparison between the Parallels of Latitudes and t he Meridians of Longitudes
+S. No. Parallels of Latitude Meridians of Longitude
+1. Latitude is the angular Longitude is the angular distance of a point north or distance along the south of the equator as equator measured in measured in degrees. degrees. It is measured east or west of
+Greenwich (0°), from 0° to 180°.
+2. All latitudes are parallel All meridians of to the equator. longitude converge at the poles.
+3. On a globe, parallels of All meridians of latitudes appear as circles. longitude appear as circles running through the poles.
+4. The distance between two The distance between latitudes is approximately two longitudes is
+111 km. maximum at the equator (111.3 km) and minimum at the poles (0 km). Midway, at 450 of latitude, it is 79 km.
+5. The 00 latitude is referred to There are 360° of as the equator and the 90° longitude, 180° each in as the poles. the east and west of the
+Prime Meridian.
+6. The latitudes from the The longitudes are used equator to the poles are to determine the local used to demarcate time with reference to temperature zones, i.e. 0° to the time at Prime
+23 ½° north and south as the Meridian.
+torrid zone, 23 ½° to 66 ½° as the temperate zone and
+66 ½° to 90° as the frigid
+Latitude, Longitude and Time eastern and western hemispheres. In other words, the sun traverses 150 of longitudes per hour or one degree of longitude in every four minutes of time. It may further be noted that the time decreases when we move from west to east and increases with our westward movement.
+The rate of the time at which the sun traverses over certain degrees of longitudes is used to determine the local time of an area with respect to the time at the Prime Meridian (0°Longitude). Let us try to understand the question of the determination of time with respect to the Prime Meridian with the following set of examples :
+Example 1 : Determine the local time of Thimpu (Bhutan) located at 90° east longitude when the time at Greenwich (0°) is 12.00 noon.
+Statement : The time increases at a rate of 4 minutes per one degree of longitude, east of the Prime Meridian.
+Solution :
+Difference between Greenwich and Thimpu = 90° of longitudes
+Total Time difference = 90 × 4 = 360 minutes
+= 360/60 hours
+= 6 hours\Local time of Thimpu is 6 hours more than that at Greenwich, i.e. 6.00 p.m.
+Example 2 : Determine the local time of New Orleans (the place, which was worst affected by Katrina Hurricane in October 2005), located at 900
+West longitude when the time at Greenwich (00) is 12.00 noon.
+Statement : The time decrease, at a rate of 4 minutes per one degree of longitude, west of the prime meridian.
+Solution :
+Difference between Greenwich and New Orleans = 90° of longitudes
+Total Time difference = 90 × 4 = 360 minutes
+= 360/60 hours
+= 6 hours\Local time of New Orleans is 6 hours less than that at
+Greenwich, i.e. 6.00 a. m.
+In the same way, the time may be determined for any place in the world. However, in order to maintain uniformity of time as far as possible within the territorial limits of a country, the time at the central meridian of the country is taken as the Standard Meridian and its local time is taken as the standard time for the whole country. The Standard Meridian is selected in a manner that it is divisible by 150° or 7° 30’ so that the difference
+Practical Work in Geography between its standard time and the Greenwich Mean Time may be expressed as multiples of an hour or half an hour.
+The Indian Standard Time is calculated from 82°30’E meridian passing through Mirzapur. Therefore, IST is plus 5.30 hours from the GMT ((82°30’ x 4) (60 minutes=5 hours 30 minutes). Similarly, all countries of the world choose the standard meridian within their territory to determine the time within their administrative boundaries. The countries with large east- west span may choose more than one standard meridian to get more than one time zone such as Russia, Canada and the United States of America.
+The world is divided into 24 major time zones (Fig. 3.6).
+Figure 3.6 Major Time Zones of the World
+INTERNATIONAL DATE LINE
+While the world is divided into 24 time zones, there has to be a place where there is a difference in days, somewhere the day truly “starts” on the planet. The 180° line of longitude is approximately where the
+International Date Line passes. The time at this longitude is exactly 12 hours from the 00 longitude, irrespective of one travels westward or eastward from the Prime Meridian. We know that time increases east of
+Latitude, Longitude and Time the Prime Meridian and decreases to its west. Hence, for a person moving east of the Prime Meridian, the time would be 12 hours less than the time at 0° longitude. For another person moving westward, the time would be
+12 hours more than the Prime Meridian. For example, a person moving eastward on Tuesday will count the day as Monday once the International
+Date Line is crossed. Similarly, another person starting his journey on the same day, but moving westward will count the day as Wednesday after crossing the line.
+EXERCISE
+1. Answer the following questions in about 30 words:
+Which are the two natural points of references on the earth?
+What is a great circle?
+What are coordinates?
+Why does the sun appear to be moving from east to west?
+What is meant by local time?
+2. Distinguish between latitudes and longitudes.
+ACTIVITY
+1. Find out the locations of the following places with the help of your atlas and write their latitudes and longitudes.
+Place Latitude Longitude
+Vladivostok
+New York
+Johannesburg
+Practical Work in Geography
+2. What would be the time of the following cities if the time at Prime
+Meridian is 10 a.m.
+Map Projections
+Chapter 4
+Map Projections
+What is map projection? Why are map projections drawn? What are the different types of projections? Which projection is most suitably used for which area? In this chapter, we will seek the answers of such essential questions.
+MAP PROJECTION
+Map projection is the method of transferring the graticule of latitude and longitude on a plane surface. It can also be defined as the transformation of spherical network of parallels and meridians on a plane surface. As you know that, the earth on which we live in is not flat. It is geoid in shape like a sphere. A globe is the best model of the earth. Due to this property of the globe, the shape and sizes of the continents and oceans are accurately shown on it. It also shows the directions and distances very accurately. The globe is divided into various segments by the lines of latitude and longitude.
+The horizontal lines represent the parallels of latitude and the vertical lines represent the meridians of the longitude. The network of parallels and meridians is called graticule. This network facilitates drawing of maps. Drawing of the graticule on a flat surface is called projection.
+But a globe has many limitations. It is expensive. It can neither be carried everywhere easily nor can a minor detail be shown on it.
+Besides, on the globe the meridians are semi-circles and the parallels are circles. When they are transferred on a plane surface, they become intersecting straight lines or curved lines.
+Practical Work in Geography
+Glossary
+Map projection: It is the system of transformation of the spherical surface onto a plane surface. It is carried out by an orderly and systematic representation of the parallels of latitude and the meridians of longitude of the spherical earth or part of it on a plane surface on a conveniently chosen scale.
+Lexodrome or Rhumb Line: It is a straight line drawn on Mercator’s projection joining any two points having a constant bearing. It is very useful in determining the directions during navigation.
+The Great Circle: It represents the shortest route between two points, which is often used both in air and ocean navigation.
+Homolograhic Projection: A projection in which the network of latitudes and longitudes is developed in such a way that every graticule on the map is equal in area to the corresponding graticule on the globe. It is also known as the equal-area projection.
+Orthomorphic Projection: A projection in which the correct shape of a given area of the earth’s surface is preserved.
+NEED FOR MAP PROJECTION
+The need for a map projection mainly arises to have a detailed study of a region, which is not possible to do from a globe. Similarly, it is not easy to compare two natural regions on a globe. Therefore, drawing accurate large-scale maps on a flat paper is required. Now, the problem is how to transfer these lines of latitude and longitude on a flat sheet. If we stick a flat paper over the globe, it will not coincide with it over a large surface without being distorted. If we throw light from the centre of the globe, we get a distorted picture of the globe in those parts of paper away from the line or point over which it touches the globe. The distortion increases with increase in distance from the tangential point. So, tracing all the properties like shape, size and directions, etc. from a globe is nearly impossible because the globe is not a developable surface.
+In map projection we try to represent a good model of any part of the earth in its true shape and dimension. But distortion in some form or the other is inevitable. To avoid this distortion, various methods have been devised and many types of projections are drawn. Due to this reason, map projection is also defined as the study of different methods which have been tried for transferring the lines of graticule from the globe to a flat sheet of paper.

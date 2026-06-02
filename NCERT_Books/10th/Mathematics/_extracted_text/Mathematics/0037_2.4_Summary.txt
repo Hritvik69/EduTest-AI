@@ -1,0 +1,22 @@
+POLYNOMIALS 23
+EXERCISE 2.2
+1. Find the zeroes of the following quadratic polynomials and verify the relationship between the zeroes and the coefficients.
+(i) x2 – 2x – 8 (ii) 4s2 – 4s + 1 (iii) 6x2 – 3 – 7x (iv) 4u2 + 8u (v) t2 – 15 (vi) 3x2 – x – 4
+2. Find a quadratic polynomial each with the given numbers as the sum and product of its zeroes respectively.
+(i) 1 , 1
+4  (ii) 1
+2 , 3 (iii) 0, 5 (iv) 1, 1 (v) 1 1 ,
+ (vi) 4, 1
+2.4 Summary
+In this chapter, you have studied the following points:
+1. Polynomials of degrees 1, 2 and 3 are called linear, quadratic and cubic polynomials respectively.
+2. A quadratic polynomial in x with real coefficients is of the form ax2 + bx + c, where a, b, c are real numbers with a  0.
+3. The zeroes of a polynomial p(x) are precisely the x-coordinates of the points, where the graph of y = p(x) intersects the x -axis.
+4. A quadratic polynomial can have at most 2 zeroes and a cubic polynomial can have at most 3 zeroes.
+5. If  and  are the zeroes of the quadratic polynomial ax2 + bx + c, then
+     , c
+6. If , ,  are the zeroes of the cubic polynomial ax3 + bx2 + cx + d, then
+      ,
+         ,
+    .
+Reprint 2026-27

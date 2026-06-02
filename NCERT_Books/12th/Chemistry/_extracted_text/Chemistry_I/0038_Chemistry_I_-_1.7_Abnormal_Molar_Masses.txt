@@ -1,0 +1,184 @@
+24 Chemistry
+2 CH3COOH ⇌ (CH3COOH)2 dissociation, we could be led to conclude that the mass of 2 mol particles is 74.5 g and the mass of one mole of KCl would be 37.25 g. This brings into light the rule that, when there is dissociation of solute into ions, the experimentally determined molar mass is always lower than the true value.
+Molecules of ethanoic acid (acetic acid) dimerise in benzene due to hydrogen bonding. This normally happens in solvents of low dielectric constant. In this case the number of particles is reduced due to dimerisation. Association of molecules is depicted as follows:
+It can be undoubtedly stated here that if all the molecules of ethanoic acid associate in benzene, then DTb or DTf for ethanoic acid will be half of the normal value. The molar mass calculated on the basis of this DTb or DTf will, therefore, be twice the expected value. Such a molar mass that is either lower or higher than the expected or normal value is called as abnormal molar mass.
+In 1880 van’t Hoff introduced a factor i, known as the van’t Hoff factor, to account for the extent of dissociation or association. This factor i is defined as:
+Normal molar mass
+Abnormal molar mass
+Observed colligative property
+Calculated colligative property
+Total number of moles of particles after association/dissociation
+Number of moles of particles before association/dissociation
+Here abnormal molar mass is the experimentally determined molar mass and calculated colligative properties are obtained by assuming that the non-volatile solute is neither associated nor dissociated. In case of association, value of i is less than unity while for dissociation it is greater than unity. For example, the value of i for aqueous KCl solution is close to 2, while the value for ethanoic acid in benzene is nearly 0.5.
+Inclusion of van’t Hoff factor modifies the equations for colligative properties as follows:
+Relative lowering of vapour pressure of solvent,
+Elevation of Boiling point, DTb = i Kb m
+Depression of Freezing point, DTf = i Kf m
+Osmotic pressure of solution, P = i n2 R T / V
+Reprint 2026-27
+25 Solutions
+2 g of benzoic acid (C6H5COOH) dissolved in 25 g of benzene shows a depression in freezing point equal to 1.62 K. Molal depression constant for benzene is 4.9 K kg mol–1. What is the percentage association of acid if it forms dimer in solution?
+The given quantities are: w2 = 2 g; Kf = 4.9 K kg mol–1; w1 = 25 g,
+DTf = 1.62 K
+Substituting these values in equation (1.36) we get:
+4.9 K kg mol × 2 g × 1000 g kg
+25 g × 1.62 K = 241.98 g mol–1
+Thus, experimental molar mass of benzoic acid in benzene is
+= 241.98 g mol–1
+Now consider the following equilibrium for the acid:
+2 C6H5COOH ⇌ (C6H5COOH)2
+If x represents the degree of association of the solute then we would have (1 – x ) mol of benzoic acid left in unassociated form and correspondingly 2 x as associated moles of benzoic acid at equilibrium.
+Therefore, total number of moles of particles at equilibrium is:
+Thus, total number of moles of particles at equilibrium equals van’t Hoff factor i.
+But Normal molar mass
+Abnormal molar mass
+Example 1.12 Example 1.12 Example 1.12 Example 1.12 Example 1.12
+Solution Solution Solution Solution Solution
+Table 1.4 depicts values of the factor, i for several strong electrolytes.
+For KCl, NaCl and MgSO4, i values approach 2 as the solution becomes very dilute. As expected, the value of i gets close to 3 for K2SO4.
+*Values of i van’t Hoff Factor i for complete
+0.1 m 0.01 m 0.001 m dissociation of solute
+NaCl 1.87 1.94 1.97 2.00
+KCl 1.85 1.94 1.98 2.00
+MgSO4 1.21 1.53 1.82 2.00
+K2SO4 2.32 2.70 2.84 3.00
+* represent i values for incomplete dissociation.
+Table 1.4: Values of van’t Hoff factor, i, at Various Concentrations for NaCl, KCl, MgSO4 and K2SO4.
+Reprint 2026-27
+26 Chemistry
+Example 1.13 Example 1.13 Example 1.13 Example 1.13 Example 1.13
+122 g mol
+241.98 g mol
+1 1 0.504 0.496 or x = 2 × 0 .496 = 0.992
+Therefore, degree of association of benzoic acid in benzene is 99.2 %.
+0.6 mL of acetic acid (CH3COOH), having density 1.06 g mL–1, is dissolved in 1 litre of water. The depression in freezing point observed for this strength of acid was 0.0205°C. Calculate the van’t
+Hoff factor and the dissociation constant of acid.
+Number of moles of acetic acid =
+0.6 mL 1.06 g mL
+60 g mol
+= 0.0106 mol = n
+Molality = 1
+0.0106 mol
+1000 mL 1 g mL
+ = 0.0106 mol kg–1
+Using equation (1.35)
+DTf = 1.86 K kg mol–1 × 0.0106 mol kg–1 = 0.0197 K van’t Hoff Factor (i) = Observed freezing point
+Calculated freezing point = 0.0205 K
+0.0197 K = 1.041
+Acetic acid is a weak electrolyte and will dissociate into two ions:
+acetate and hydrogen ions per molecule of acetic acid. If x is the degree of dissociation of acetic acid, then we would have n (1 – x)
+moles of undissociated acetic acid, nx moles of CH3COO– and nx moles of H+ ions,
+⇌ 3 3 CH COOH H CH COO mol mol 1 n nx nx x
+Thus total moles of particles are: n(1 – x + x + x) = n(1 + x )
+  1 1 1.041
+Thus degree of dissociation of acetic acid = x = 1.041– 1.000 = 0.041
+Then [CH3COOH] = n(1 – x) = 0.0106 (1 – 0.041),
+[CH3COO–] = nx = 0.0106 × 0.041, [H+] = nx = 0.0106 × 0.041.
+CH COO H
+CH COOH = 0.0106 × 0.041 × 0.0106 × 0.041
+0.0106 (1.00 0.041) 
+= 1.86 × 10–5
+Solution Solution Solution Solution Solution
+Reprint 2026-27
+27 Solutions
+Summary Summary Summary Summary Summary
+A solution is a homogeneous mixture of two or more substances. Solutions are classified as solid, liquid and gaseous solutions. The concentration of a solution is expressed in terms of mole fraction, molarity, molality and in percentages. The dissolution of a gas in a liquid is governed by Henry’s law, according to which, at a given temperature, the solubility of a gas in a liquid is directly proportional to the partial pressure of the gas. The vapour pressure of the solvent is lowered by the presence of a non-volatile solute in the solution and this lowering of vapour pressure of the solvent is governed by Raoult’s law, according to which the relative lowering of vapour pressure of the solvent over a solution is equal to the mole fraction of a non-volatile solute present in the solution. However, in a binary liquid solution, if both the components of the solution are volatile then another form of Raoult’s law is used. Mathematically, this form of the Raoult’s law is stated total 1 2 2 1
+  p p x p x . Solutions which obey Raoult’s law over the entire range of concentration are called ideal solutions. Two types of deviations from Raoult’s law, called positive and negative deviations are observed. Azeotropes arise due to very large deviations from Raoult’s law.
+The properties of solutions which depend on the number of solute particles and are independent of their chemical identity are called colligative properties. These are lowering of vapour pressure, elevation of boiling point, depression of freezing point and osmotic pressure. The process of osmosis can be reversed if a pressure higher than the osmotic pressure is applied to the solution. Colligative properties have been used to determine the molar mass of solutes. Solutes which dissociate in solution exhibit molar mass lower than the actual molar mass and those which associate show higher molar mass than their actual values.
+Quantitatively, the extent to which a solute is dissociated or associated can be expressed by van’t Hoff factor i. This factor has been defined as ratio of normal molar mass to experimentally determined molar mass or as the ratio of observed colligative property to the calculated colligative property.
+1.1 Define the term solution. How many types of solutions are formed? Write briefly about each type with an example.
+1.2 Give an example of a solid solution in which the solute is a gas.
+1.3 Define the following terms:
+(i) Mole fraction (ii) Molality (iii) Molarity (iv) Mass percentage.
+1.4 Concentrated nitric acid used in laboratory work is 68% nitric acid by mass in aqueous solution. What should be the molarity of such a sample of the acid if the density of the solution is 1.504 g mL–1?
+Exercises Exercises Exercises Exercises Exercises
+Reprint 2026-27
+28 Chemistry
+1.5 A solution of glucose in water is labelled as 10% w/w, what would be the molality and mole fraction of each component in the solution? If the density of solution is 1.2 g mL–1, then what shall be the molarity of the solution?
+1.6 How many mL of 0.1 M HCl are required to react completely with 1 g mixture of Na2CO3 and NaHCO3 containing equimolar amounts of both?
+1.7 A solution is obtained by mixing 300 g of 25% solution and 400 g of 40% solution by mass. Calculate the mass percentage of the resulting solution.
+1.8 An antifreeze solution is prepared from 222.6 g of ethylene glycol (C2H6O2) and
+200 g of water. Calculate the molality of the solution. If the density of the solution is 1.072 g mL–1, then what shall be the molarity of the solution?
+1.9 A sample of drinking water was found to be severely contaminated with chloroform (CHCl3) supposed to be a carcinogen. The level of contamination was 15 ppm (by mass):
+(i) express this in percent by mass (ii) determine the molality of chloroform in the water sample.
+1.10 What role does the molecular interaction play in a solution of alcohol and water?
+1. 1 1 Why do gases always tend to be less soluble in liquids as the temperature is raised?
+1.12 State Henry’s law and mention some important applications.
+1.13 The partial pressure of ethane over a solution containing 6.56 × 10–3 g of ethane is 1 bar. If the solution contains 5.00 × 10–2 g of ethane, then what shall be the partial pressure of the gas?
+1.14 What is meant by positive and negative deviations from Raoult's law and how is the sign of DmixH related to positive and negative deviations from Raoult's law?
+1.15 An aqueous solution of 2% non-volatile solute exerts a pressure of 1.004 bar at the normal boiling point of the solvent. What is the molar mass of the solute?
+1.16 Heptane and octane form an ideal solution. At 373 K, the vapour pressures of the two liquid components are 105.2 kPa and 46.8 kPa respectively. What will be the vapour pressure of a mixture of 26.0 g of heptane and 35 g of octane?
+1.17 The vapour pressure of water is 12.3 kPa at 300 K. Calculate vapour pressure of 1 molal solution of a non-volatile solute in it.
+1.18 Calculate the mass of a non-volatile solute (molar mass 40 g mol–1) which should be dissolved in 114 g octane to reduce its vapour pressure to 80%.
+1.19 A solution containing 30 g of non-volatile solute exactly in 90 g of water has a vapour pressure of 2.8 kPa at 298 K. Further, 18 g of water is then added to the solution and the new vapour pressure becomes 2.9 kPa at 298 K. Calculate:
+(i) molar mass of the solute (ii) vapour pressure of water at 298 K.
+1.20 A 5% solution (by mass) of cane sugar in water has freezing point of 271K.
+Calculate the freezing point of 5% glucose in water if freezing point of pure water is 273.15 K.
+1.21 Two elements A and B form compounds having formula AB2 and AB4. When dissolved in 20 g of benzene (C6H6), 1 g of AB2 lowers the freezing point by
+2.3 K whereas 1.0 g of AB4 lowers it by 1.3 K. The molar depression constant for benzene is 5.1 K kg mol–1. Calculate atomic masses of A and B.
+Reprint 2026-27
+29 Solutions
+1.22 At 300 K, 36 g of glucose present in a litre of its solution has an osmotic pressure of 4.98 bar. If the osmotic pressure of the solution is 1.52 bars at the same temperature, what would be its concentration?
+1.23 Suggest the most important type of intermolecular attractive interaction in the following pairs.
+(i) n-hexane and n-octane (ii) I2 and CCl4 (iii) NaClO4 and water (iv) methanol and acetone (v) acetonitrile (CH3CN) and acetone (C3H6O).
+1.24 Based on solute-solvent interactions, arrange the following in order of increasing solubility in n-octane and explain. Cyclohexane, KCl, CH3OH, CH3CN.
+1.25 Amongst the following compounds, identify which are insoluble, partially soluble and highly soluble in water?
+(i) phenol (ii) toluene (iii) formic acid (iv) ethylene glycol (v) chloroform (vi) pentanol.
+1.26 If the density of some lake water is 1.25g mL–1 and contains 92 g of Na+ ions per kg of water, calculate the molarity of Na+ ions in the lake.
+1.27 If the solubility product of CuS is 6 × 10–16, calculate the maximum molarity of
+CuS in aqueous solution.
+1.28 Calculate the mass percentage of aspirin (C9H8O4) in acetonitrile (CH3CN) when
+6.5 g of C9H8O4 is dissolved in 450 g of CH3CN.
+1.29 Nalorphene (C19H21NO3), similar to morphine, is used to combat withdrawal symptoms in narcotic users. Dose of nalorphene generally given is 1.5 mg.
+Calculate the mass of 1.5 ´ 10–3 m aqueous solution required for the above dose.
+1.30 Calculate the amount of benzoic acid (C6H5COOH) required for preparing 250 mL of 0.15 M solution in methanol.
+1.31 The depression in freezing point of water observed for the same amount of acetic acid, trichloroacetic acid and trifluoroacetic acid increases in the order given above. Explain briefly.
+1.32 Calculate the depression in the freezing point of water when 10 g of
+CH3CH2CHClCOOH is added to 250 g of water. Ka = 1.4 × 10–3, Kf = 1.86
+K kg mol–1.
+1.33 19.5 g of CH2FCOOH is dissolved in 500 g of water. The depression in the freezing point of water observed is 1.00 C. Calculate the van’t Hoff factor and dissociation constant of fluoroacetic acid.
+1.34 Vapour pressure of water at 293 K is 17.535 mm Hg. Calculate the vapour pressure of water at 293 K when 25 g of glucose is dissolved in 450 g of water.
+1.35 Henry’s law constant for the molality of methane in benzene at 298 K is
+4.27 × 105 mm Hg. Calculate the solubility of methane in benzene at 298 K under 760 mm Hg.
+1.36 100 g of liquid A (molar mass 140 g mol–1) was dissolved in 1000 g of liquid B (molar mass 180 g mol–1). The vapour pressure of pure liquid B was found to be
+500 torr. Calculate the vapour pressure of pure liquid A and its vapour pressure in the solution if the total vapour pressure of the solution is 475 Torr.
+Reprint 2026-27
+30 Chemistry
+1. 3 7 Vapour pressures of pure acetone and chloroform at 328 K are 741.8 mm
+Hg and 632.8 mm Hg respectively. Assuming that they form ideal solution over the entire range of composition, plot ptotal, pchloroform, and pacetone as a function of xacetone. The experimental data observed for different compositions of mixture is:
+100 x xacetone 0 11.8 23.4 36.0 50.8 58.2 64.5 72.1 pacetone /mm Hg 0 54.9 110.1 202.4 322.7 405.9 454.1 521.1 pchloroform /mm Hg 632.8 548.1 469.4 359.7 257.7 193.6 161.2 120.7
+Plot this data also on the same graph paper. Indicate whether it has positive deviation or negative deviation from the ideal solution.
+1.38 Benzene and toluene form ideal solution over the entire range of composition.
+The vapour pressure of pure benzene and toluene at 300 K are 50.71 mm Hg and 32.06 mm Hg respectively. Calculate the mole fraction of benzene in vapour phase if 80 g of benzene is mixed with 100 g of toluene.
+1.39 The air is a mixture of a number of gases. The major components are oxygen and nitrogen with approximate proportion of 20% is to 79% by volume at 298
+K. The water is in equilibrium with air at a pressure of 10 atm. At 298 K if the
+Henry’s law constants for oxygen and nitrogen at 298 K are 3.30 × 107 mm and
+6.51 × 107 mm respectively, calculate the composition of these gases in water.
+1.40 Determine the amount of CaCl2 (i = 2.47) dissolved in 2.5 litre of water such that its osmotic pressure is 0.75 atm at 27° C.
+1.41 Determine the osmotic pressure of a solution prepared by dissolving 25 mg of
+K2SO4 in 2 litre of water at 25° C, assuming that it is completely dissociated.
+Answers to Some Intext Questions
+1.1 C6H6 = 15.28%, CCl4 = 84.72%
+1.2 0.459, 0.541
+1.3 0.024 M, 0.03 M
+1.4 36.946 g
+1.5 1.5 mol kg–1 , 1.45 mol L–1 0.0263
+1.9 23.4 mm Hg
+1.10 121.67 g
+1.11 5.077 g
+1.12 30.96 Pa
+Reprint 2026-27
+Electrochemistry is the study of production of electricity from energy released during spontaneous chemical reactions and the use of electrical energy to bring about non-spontaneous chemical transformations. The subject is of importance both for theoretical and practical considerations. A large number of metals, sodium hydroxide, chlorine, fluorine and many other chemicals are produced by electrochemical methods. Batteries and fuel cells convert chemical energy into electrical energy and are used on a large scale in various instruments and devices. The reactions carried out electrochemically can be energy efficient and less polluting. Therefore, study of electrochemistry is important for creating new technologies that are ecofriendly. The transmission of sensory signals through cells to brain and vice versa and communication between the cells are known to have electrochemical origin. Electrochemistry, is therefore, a very vast and interdisciplinary subject. In this Unit, we will cover only some of its important elementary aspects.
+After studying this Unit, you will be
+· describe an electrochemical cell and differentiate between galvanic and electrolytic cells;
+· apply Nernst equation for calculating the emf of galvanic cell and define standard potential of the cell;
+· derive relation between standard potential of the cell, Gibbs energy of cell reaction and its equilibrium constant;
+· define resistivity (r), conductivity (k) and molar conductivity ( ionic solutions;
+· differentiate between ionic (electrolytic) and electronic conductivity;
+· describe the method for measurement of conductivity of electrolytic solutions and calculation of their molar conductivity;
+· justify the variation of conductivity and molar conductivity of solutions with change in their concentration and define m
+ (molar conductivity at zero concentration or infinite dilution);
+· enunciate Kohlrausch law and learn its applications;
+· understand quantitative aspects of electrolysis;
+· describe the construction of some primary and secondary batteries and fuel cells;
+· explain corrosion as an electrochemical pro

@@ -1,0 +1,24 @@
+Electricity eq r r r
+= + (3.56)
+eq r r r
+= + (3.57)
+In Fig. (3.14), we had joined the positive terminals together and similarly the two negative ones, so that the currents I1, I2 flow out of positive terminals. If the negative terminal of the second is connected to positive terminal of the first, Eqs. (3.56) and (3.57) would still be valid with
+Equations (3.56) and (3.57) can be extended easily.
+If there are n cells of emf e1, . . .
+en and of internal resistances r1,... rn respectively, connected in parallel, the combination is equivalent to a single cell of emf internal resistance req, such that
+1 r r r eq n
+= + + ... (3.58)
+ε ε ε eq
+... (3.59)
+3.12 KIRCHHOFF’S RULES
+Electric circuits generally consist of a number of resistors and cells interconnected sometimes in a complicated way.
+The formulae we have derived earlier for series and parallel combinations of resistors are not always sufficient to determine all the currents and potential differences in the circuit. Two rules, called Kirchhoff’s rules, are very useful for analysis of electric circuits.
+Given a circuit, we start by labelling currents in each resistor by a symbol, say I, and a directed arrow to indicate that a current I flows along the resistor in the direction indicated. If ultimately I is determined to be positive, the actual current in the resistor is in the direction of the arrow. If I turns out to be negative, the current actually flows in a direction opposite to the arrow. Similarly, for each source (i.e., cell or some other source of electrical power) the positive and negative electrodes are labelled, as well as, a directed arrow with a symbol for the current flowing through the cell. This will tell us the potential difference, V = V (P) – V (N) =
+[Eq. (3.38) between the positive terminal P and the negative terminal N; I here is the current flowing from N to P through the cell]. If, while labelling the current I through the cell one goes from P to N, then of course e + I r (3.60)
+Having clarified labelling, we now state the rules and the proof:
+(a) Junction rule: At any junction, the sum of the currents entering the junction is equal to the sum of currents leaving the junction (Fig. 3.15).
+Gustav Robert Kirchhoff (1824 – 1887) German physicist, professor at
+Heidelberg and at
+Berlin. Mainly known for his development of spectroscopy, he also made many important contributions to mathe- matical physics, among them, his first and second rules for circuits.
+GUSTAV ROBERT KIRCHHOFF (1824 –
+Reprint 2026-27

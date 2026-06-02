@@ -1,0 +1,38 @@
+Computer SCienCe – ClaSS xi 172
+4. Take a look at the series below:
+1, 1, 2, 3, 5, 8, 13, 21, 34, 55…
+To form the pattern, start by writing 1 and 1.
+Add them together to get 2. Add the last two numbers: 1+2 = 3.Continue adding the previous two numbers to find the next number in the series.
+These numbers make up the famed Fibonacci sequence: previous two numbers are added to get the immediate new number.
+5. Create a menu driven program using user defined functions to implement a calculator that performs the following:
+a) Basic arithmetic operations(+,-,*,/)
+b) log10(x),sin(x),cos(x)
+SuggeSted Lab. exerciSeS
+1. Write a program to check the divisibility of a number by 7 that is passed as a parameter to the user defined function.
+2. Write a program that uses a user defined function that accepts name and gender (as M for Male,
+F for Female) and prefixes Mr/Ms on the basis of the gender.
+3. Write a program that has a user defined function to accept the coefficients of a quadratic equation in variables and calculates its determinant. For example : if the coefficients are stored in the variables a,b,c then calculate determinant as b2-4ac. Write the appropriate condition to check determinants on positive, zero and negative and output appropriate result.
+4. ABC School has allotted unique token IDs from (1 to
+600) to all the parents for facilitating a lucky draw on the day of their Annual day function. The winner would receive a special prize. Write a program using
+Python that helps to automate the task.(Hint: use random module)
+5. Write a program that implements a user defined function that accepts Principal Amount, Rate,
+Time, Number of Times the interest is compounded to calculate and displays compound interest.
+(Hint: CI=P*(1+r/n)nt)
+Reprint 2026-27
+F unctions 173
+6. Write a program that has a user defined function to accept 2 numbers as parameters, if number 1 is less than number 2 then numbers are swapped and returned, i.e., number 2 is returned in place of number1 and number 1 is reformed in place of number 2, otherwise the same order is returned.
+7. Write a program that contains user defined functions to calculate area, perimeter or surface area whichever is applicable for various shapes like square, rectangle, triangle, circle and cylinder.
+The user defined functions should accept the values for calculation as parameters and the calculated value should be returned. Import the module and use the appropriate functions.
+8. Write a program that creates a GK quiz consisting of any five questions of your choice. The questions should be displayed randomly. Create a user defined function score() to calculate the score of the quiz and another user defined function remark (scorevalue)
+that accepts the final score to display remarks as follows:
+Marks Remarks
+5 Outstanding
+4 Excellent
+2 Read more to score more
+1 Needs to take interest
+0 General knowledge will always help you. Take it seriously.
+case study -based QuestIon
+For the SMIS system extended in Chapter 6 let us do the following:
+1. 7.1 Convert all the functionality in Chapter 5 and 6 using user defined functions.
+2. 7.2 Add another user defined function to the above menu to check if the student has short attendance or not. The function should accept total number of working days in a month and check if the student is a defaulter by calculating his or her attendance using the formula: Count of days the student was
+Reprint 2026-27

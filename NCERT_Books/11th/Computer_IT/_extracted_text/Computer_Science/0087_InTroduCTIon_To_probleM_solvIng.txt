@@ -1,0 +1,23 @@
+IntroductIon to Problem SolvIng 75 crossing then take a right turn”. Consider some other examples like:
+• Clap your hands five times
+• Walk 10 steps ahead
+• Jump on the spot till you get tired
+These are the kind of statements we use, when we want something to be done repeatedly, for a given number of times. Likewise, suppose 10 cards need to be withdrawn in the previous card game (example 4.7), then the pseudocode needs to be repeated 10 times to decide the winner. All these are examples of repetitions.
+In programming, repetition is also known as iteration or loop. A loop in an algorithm means execution of some program statements repeatedly till some specified condition is satisfied.
+Example 4.8: Write pseudocode and draw a flowchart to accept 5 numbers and find their average.
+The flowchart representation is shown in Figure 4.10.
+Pseudocode will be as follows:
+Step 1: SET count = 0, sum = 0
+Step 2: WHILE count < 5 , REPEAT steps 3 to 5
+Step 3: INPUT a number to num
+Step 4: sum = sum + num
+Step 5: count = count + 1
+Step 6: COMPUTE average = sum/5
+Step 7: PRINT average
+In example 4.8, a counter called “count” keeps track of number of times the loop has been repeated.
+After every iterationof the loop, the value of count is incremented by 1 until it performs the set number of repetitions, given in the iteration condition.
+There are situations when we are not aware beforehand about the number of times a set
+Can you list some of the routine activities in your daily life where repetition or iteration is involved?
+Think and Reflect
+Figure 4.10: Flowchart to Calculate the Average of 5 Numbers
+Reprint 2026-27

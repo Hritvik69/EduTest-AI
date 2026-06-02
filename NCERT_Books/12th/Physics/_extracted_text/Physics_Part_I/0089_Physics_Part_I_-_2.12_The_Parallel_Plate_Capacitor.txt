@@ -1,0 +1,21 @@
+Electrostatic Potential and Capacitance
+FIGURE 2.29
+Example 2.9 A network of four 10 mF capacitors is connected to a 500 V supply, as shown in Fig. 2.29. Determine (a) the equivalent capacitance of the network and (b) the charge on each capacitor. (Note, the charge on a capacitor is the charge on the plate with higher potential, equal and opposite to the charge on the plate with lower potential.)
+Solution (a) In the given network, C1, C2 and C3 are connected in series. The effective capacitance C¢ of these three capacitors is given by
+For C1 = C2 = C3 = 10 mF, C
+¢ = (10/3) mF. The network has C
+¢ and C4 connected in parallel. Thus, the equivalent capacitance C of the network is
+¢ + C4 = 10
+ mF =13.3mF (b) Clearly, from the figure, the charge on each of the capacitors, C1,
+C2 and C3 is the same, say Q. Let the charge on C4 be Q
+¢. Now, since the potential difference across AB is Q/C1, across BC is Q/C2, across
+CD is Q/C3 , we have
+¢/C4 = 500 V.
+This gives for the given value of the capacitances,
+500 F 1.7 10 C
+= × μ = × and
+500 10 F 5.0 10 C Q V −
+= × μ = × ′
+2.15 ENERGY STORED IN A CAPACITOR
+A capacitor, as we have seen above, is a system of two conductors with charge Q and –Q. To determine the energy stored in this configuration, consider initially two uncharged conductors 1 and 2. Imagine next a process of transferring charge from conductor 2 to conductor 1 bit by
+Reprint 2026-27

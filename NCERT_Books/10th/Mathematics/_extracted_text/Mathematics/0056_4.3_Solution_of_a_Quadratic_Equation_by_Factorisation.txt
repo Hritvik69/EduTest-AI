@@ -1,0 +1,54 @@
+42 MATHEMATICS (ii) The product of two consecutive positive integers is 306. We need to find the integers.
+(iii) Rohan’s mother is 26 years older than him. The product of their ages (in years)
+3 years from now will be 360. We would like to find Rohan’s present age.
+(iv) A train travels a distance of 480 km at a uniform speed. If the speed had been
+8 km/h less, then it would have taken 3 hours more to cover the same distance. We need to find the speed of the train.
+4.3 Solution of a Quadratic Equation by Factorisation
+Consider the quadratic equation 2x2 – 3x + 1 = 0. If we replace x by 1 on the
+LHS of this equation, we get (2 × 12
+) – (3 × 1) + 1 = 0 = RHS of the equation.
+We say that 1 is a root of the quadratic equation 2x2 – 3x + 1 = 0. This also means that
+1 is a zero of the quadratic polynomial 2x2 – 3x + 1.
+In general, a real number  is called a root of the quadratic equation ax2 + bx + c = 0, a  0 if a 2 + b + c = 0. We also say that x =    is a solution of the quadratic equation, or that    satisfies the quadratic equation. Note that the zeroes of the quadratic polynomial ax2 + bx + c and the roots of the quadratic equation ax2 + bx + c = 0 are the same.
+You have observed, in Chapter 2, that a quadratic polynomial can have at most two zeroes. So, any quadratic equation can have atmost two roots.
+You have learnt in Class IX, how to factorise quadratic polynomials by splitting their middle terms. We shall use this knowledge for finding the roots of a quadratic equation. Let us see how.
+Example 3 : Find the roots of the equation 2x2 – 5x + 3 = 0, by factorisation.
+Solution : Let us first split the middle term – 5x as –2x –3x [because (–2x) × (–3x) =
+6x2 = (2x2
+So, 2x2 – 5x + 3 = 2x2 – 2x – 3x + 3 = 2x (x – 1) –3(x – 1) = (2x – 3)(x – 1)
+Now, 2x2 – 5x + 3 = 0 can be rewritten as (2x – 3)(x – 1) = 0.
+So, the values of x for which 2x2 – 5x + 3 = 0 are the same for which (2x – 3)(x – 1) = 0, i.e., either 2x – 3 = 0 or x – 1 = 0.
+Now, 2x – 3 = 0 gives 3 x  and x – 1 = 0 gives x = 1.
+x  and x = 1 are the solutions of the equation.
+In other words, 1 and 3
+2 are the roots of the equation 2x2 – 5x + 3 = 0.
+Verify that these are the roots of the given equation.
+Reprint 2026-27
+QUADRATIC EQUATIONS 43
+Note that we have found the roots of 2x2 – 5x + 3 = 0 by factorising
+2x2 – 5x + 3 into two linear factors and equating each factor to zero.
+Example 4 : Find the roots of the quadratic equation 6x2 – x – 2 = 0.
+Solution : We have
+6x2 – x – 2 = 6x2 + 3x – 4x – 2
+= 3x (2x + 1) – 2 (2x + 1)
+= (3x – 2)(2x + 1)
+The roots of 6x2 – x – 2 = 0 are the values of x for which (3x – 2)(2x + 1) = 0
+Therefore, 3x – 2 = 0 or 2x + 1 = 0, i.e., x = 2
+3 or x = 1
+Therefore, the roots of 6x2 – x – 2 = 0 are 2 1 . and –
+We verify the roots, by checking that 2 1
+ satisfy 6x2 – x – 2 = 0.
+Example 5 : Find the roots of the quadratic equation 2
+3 2 6 2 0 x x    .
+Solution : 2
+3 2 6 2 x x   = 2
+3 6 6 2 x x x   
+=     3 3 2 2 3 2 x x x   
+=    3 2 3 2 x x  
+So, the roots of the equation are the values of x for which
+   3 2 3 2 0 x x   
+Now, 3 2 0 x   for 2
+So, this root is repeated twice, one for each repeated factor 3 2 x  .
+Therefore, the roots of 2
+3 2 6 2 0 x x    are 2
+Reprint 2026-27

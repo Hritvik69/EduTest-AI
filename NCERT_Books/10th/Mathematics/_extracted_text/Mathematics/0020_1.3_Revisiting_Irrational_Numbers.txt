@@ -1,0 +1,73 @@
+6 MATHEMATICS
+* Not from the examination point of view.
+same point and at the same time, and go in the same direction. After how many minutes will they meet again at the starting point?
+1.3 Revisiting Irrational Numbers
+In Class IX, you were introduced to irrational numbers and many of their properties.
+You studied about their existence and how the rationals and the irrationals together made up the real numbers. You even studied how to locate irrationals on the number line. However, we did not prove that they were irrationals. In this section, we will prove that 2 , 3 , 5 and, in general, p is irrational, where p is a prime. One of the theorems, we use in our proof, is the Fundamental Theorem of Arithmetic.
+Recall, a number ‘s’ is called irrational if it cannot be written in the form ,p where p and q are integers and q ¹ 0. Some examples of irrational numbers, with which you are already familiar, are :
+2 , 2, 3 , 15 , , 0.10110111011110 . . .
+  , etc.
+Before we prove that 2 is irrational, we need the following theorem, whose proof is based on the Fundamental Theorem of Arithmetic.
+Theorem 1.2 : Let p be a prime number. If p divides a2, then p divides a, where a is a positive integer.
+*Proof : Let the prime factorisation of a be as follows :
+a = p1p2 . . . pn, where p1,p2, . . ., pn are primes, not necessarily distinct.
+Therefore, a2 = ( p1 p2 . . . pn)( p1 p2 . . . pn) = p2
+2 . . . p2
+Now, we are given that p divides a2. Therefore, from the Fundamental Theorem of
+Arithmetic, it follows that p is one of the prime factors of a2. However, using the uniqueness part of the Fundamental Theorem of Arithmetic, we realise that the only prime factors of a2 are p1, p2, . . ., pn. So p is one of p1, p2, . . ., pn.
+Now, since a = p1 p2 . . . pn, p divides a.
+We are now ready to give a proof that 2 is irrational.
+The proof is based on a technique called ‘proof by contradiction’. (This technique is discussed in some detail in Appendix 1).
+Theorem 1.3 : 2 is irrational.
+Proof : Let us assume, to the contrary, that 2 is rational.
+Reprint 2026-27
+REAL NUMBERS 7
+So, we can find integers r and s (¹ 0) such that 2 = r
+Suppose r and s have a common factor other than 1. Then, we divide by the common factor to get , 2 a
+ where a and b are coprime.
+So, b 2 = a.
+Squaring on both sides and rearranging, we get 2b2 = a2. Therefore, 2 divides a2.
+Now, by Theorem 1.2, it follows that 2 divides a.
+So, we can write a = 2c for some integer c.
+Substituting for a, we get 2b2 = 4c2, that is, b2 = 2c2.
+This means that 2 divides b2, and so 2 divides b (again using Theorem 1.2 with p = 2).
+Therefore, a and b have at least 2 as a common factor.
+But this contradicts the fact that a and b have no common factors other than 1.
+This contradiction has arisen because of our incorrect assumption that 2 is rational.
+So, we conclude that 2 is irrational.
+Example 5 : Prove that 3 is irrational.
+Solution : Let us assume, to the contrary, that 3 is rational.
+That is, we can find integers a and b (¹ 0) such that 3 = a
+Suppose a and b have a common factor other than 1, then we can divide by the common factor, and assume that a and b are coprime.
+So, 3 b a  
+Squaring on both sides, and rearranging, we get 3b2 = a2.
+Therefore, a2 is divisible by 3, and by Theorem 1.2, it follows that a is also divisible
+So, we can write a = 3c for some integer c.
+Substituting for a, we get 3b2 = 9c2, that is, b2 = 3c2.
+This means that b2 is divisible by 3, and so b is also divisible by 3 (using Theorem 1.2 with p = 3).
+Reprint 2026-27
+8 MATHEMATICS
+Therefore, a and b have at least 3 as a common factor.
+But this contradicts the fact that a and b are coprime.
+This contradiction has arisen because of our incorrect assumption that 3 is rational.
+So, we conclude that 3 is irrational.
+In Class IX, we mentioned that :
+ the sum or difference of a rational and an irrational number is irrational and
+ the product and quotient of a non-zero rational and irrational number is irrational.
+We prove some particular cases here.
+Example 6 : Show that 5 – 3 is irrational.
+Solution : Let us assume, to the contrary, that 5 – 3 is rational.
+That is, we can find coprime a and b (b  0) such that 5 3 a
+Therefore, 5 3
+Rearranging this equation, we get 5
+3 5 – a b a
+Since a and b are integers, we get 5 – a b is rational, and so 3 is rational.
+But this contradicts the fact that 3 is irrational.
+This contradiction has arisen because of our incorrect assumption that 5 – 3 is rational.
+So, we conclude that 5 3  is irrational.
+Example 7 : Show that 3 2 is irrational.
+Solution : Let us assume, to the contrary, that 3 2 is rational.
+That is, we can find coprime a and b (b  0) such that 3 2 a
+Rearranging, we get 2 3
+Since 3, a and b are integers, 3 b is rational, and so 2 is rational.
+Reprint 2026-27

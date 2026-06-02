@@ -1,0 +1,113 @@
+Computer SCienCe - ClaSS Xii 238 noTes example, in eavesdropping, imagine someone listening to your private conversation with the help of a hidden microphone in your room or by physically standing near the window of your room. However, in snooping, that person may make a copy of a letter that is addressed to your friend and keep the copy with himself and send the original letter to the intended address.
+• Malware is a software developed with an intention to damage computer hardware, software, steal data, or cause any other trouble to a user.
+• A virus is a piece of software code created to perform malicious activities and hamper resources of a computer system.
+• The Worm is also a malware that incurs unexpected or damaging behaviour on an infected computer system.
+• Worms are standalone programs that are capable of working on its own.
+• Ransomware is a type of malware that targets user data.
+• Ransomware either blocks the user from accessing their own data or threatens to publish their personal data online and demands ransom payment against the same.
+• Trojan is a malware, that looks like a legitimate software and once it tricks a user into installing it, it acts pretty much like a virus or a worm.
+• Spyware records and sends the collected information to an external entity without the consent or knowledge of a user.
+• An adware displays unwanted online advertisements using pop-ups, web pages, or installation screens.
+• A keylogger makes logs of daily keyboard usage and may send it to an external entity as well.
+• The on-screen keyboard is an application software that uses a fixed QWERTY key layout.
+• Online virtual keyboard is a web-based or a standalone software with a randomised key layout every time it is used.
+• A malware can take many routes to reach your computer, which include: Downloaded from the
+Reprint 2026-27
+S eCurity aSpeCtS 239
+Internet, Spam Email, using infected Removable
+Storage Devices, and network propagation.
+• An antivirus software is used to detect and remove viruses and hence the name anti-virus.
+• Antiviruses now come bundled with the prevention, detection, and removal of a wide range of malware.
+• Some of the prominent methods of malware identification used by an antivirus include:
+Signature-based detection, Sandbox detection,
+Heuristics.
+• Any unwanted data, information, email, advertisement, etc. is called Spam.
+• HTTP (Hyper Text Transfer Protocol) and HTTPS (Hyper Text Transfer Protocol Secure) are a set of rules or protocol that govern how data can be transmitted over the World Wide Web.
+• Firewall is a network security system designed to protect a trusted private network from unauthorised access or traffic originating from an untrusted external network.
+• There are two basic types of firewalls — Network
+Firewall and Host-based Firewall.
+• A computer cookie is a small file or data packet, which is stored by a website on the client’s computer.
+• Cookies are used by the websites to store browsing information of the user.
+• Hackers/Crackers find loopholes and vulnerabilities in computer systems or computer networks and gain access to unauthorised information.
+• If a hacker uses its knowledge to find and help in fixing the security flaws in the system, its termed as White Hat hacker.
+• If hackers use their knowledge unethically to break the law and disrupt security by exploiting the flaws and loopholes in a system, then they are called black hat hackers.
+• The grey hats take system security as a challenge and just hack systems for the fun of it.
+• The Denial of Service (DoS) attack floods the victim resource with traffic, making the resource appear busy.
+• Distributed Denial of Service (DDoS) is an attack, where the flooded requests come from
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 240 exerCise
+1. Why is a computer considered to be safe if it is not connected to a network or Internet?
+2. What is a computer virus? Name some computer viruses that were popular in recent years.
+3. How is a computer worm different from a virus?
+4. How is Ransomware used to extract money from users?
+5. How did a Trojan get its name?
+6. How does an adware generate revenue for its creator?
+7. Briefly explain two threats that may arise due to a keylogger installed on a computer.
+8. How is a Virtual Keyboard safer than On Screen
+Keyboard?
+9. List and briefly explain different modes of malware distribution.
+10. List some common signs of malware infection.
+11. List some preventive measures against malware infection.
+12. Write a short note on different methods of malware identification used by antivirus software.
+13. What are the risks associated with HTTP? How can we resolve these risks by using HTTPS?
+14. List one advantage and disadvantage of using Cookies.
+15. Write a short note on White, Black, and Grey Hat
+Hackers.
+16. Differentiate between DoS and DDoS attack.
+17. How is Snooping different from Eavesdropping?
+noTes compromised computer (Zombies) systems distributed across the globe or over a very large area.
+• Network Intrusion refers to any unauthorised activity on a computer network.
+• Snooping is the process of secret capture and analysis of network traffic by malicious users.
+• Eavesdropping is an unauthorised real- time interception or monitoring of private communication between two entities over a network.
+Reprint 2026-27
+In this Chapter
+» Introduction
+» Approaches for Solving
+Projects
+» Teamwork
+» Project Descriptions
+“An idea that is developed and put into action is more important than idea that exists only as an idea.”
+— Gautam Buddha
+13.1 IntroductIon
+Project based learning gives a thorough practical exposure to students regarding a problem upon which the project is based. Through project based learning, students learn to organise their project and use their time effectively for successful completion of the project. Projects are developed generally in groups where students can learn various skills such as working together, problem solving, decision making, and investigating activities. Project based learning involves the steps such as analysing the problem, formulating the problem into small modules, applying the mechanism or method to solve each module and then integrating the solution of all the modules to arrive at the complete solution of the problem.
+To solve a problem, it is required that those who work on it gather the relevant data and process it by applying a particular method. Data may
+Project Based
+Learning13
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 242 be collected as per the requirement of the project in a particular format. All the team members should be associated to accomplish the task. After collecting data, it should be processed to solve the problem. The results should be reported in a predetermined format.
+13.2 ApproAches for solvIng projects
+The approach followed for the development and completion of a project plays a pivotal role in project based learning. There are several approaches to execute a project such as modular approach, top down approach and bottom up approach. A structured or a modular approach to a project means that a project is divided into various manageable modules and each of the modules has a well-defined task to be performed with a set of inputs. This would lead to a set of outputs which when integrated leads to the desired outcome.
+Different steps involved in project based learning (Figure 13.1) are :
+(1) Identification of a project: The project idea may come through any real-life situation. For example, one could think of doing a project for organising a seminar. One needs to understand the usefulness of the project and its impact. Students must be encouraged to undertake interdisciplinary projects.
+(2) Defining a plan: Normally for any kind of project, there are several project members involved in it. One project leader has to be identified. The roles of project leader and each project member have to be clearly defined. Students who are performing a project must be assigned with specific activities. The various tools for executing these activities must be known. To obtain a better solution, one should always think of the extreme situations.
+(3) Fixing of a time frame and processing: Every project is a time relevance project. A student must understand the importance of time frame for completion of the project. All the activities which are performed in the projects require a certain amount of time. Every project must be well structured and at the same time it must be flexible in its time frame.
+Reprint 2026-27 projeCt BaSed learning 243
+Identification of
+Defining a
+Fixing time frame and processing Guidance and
+Monitoring of project
+Figure 13.1: Steps in project based learning (4) Providing guidance and monitoring a project:
+Many times, the participants in the project get stuck up with a particular process and it becomes impossible to proceed further. In such a case, they need guidance, which can be obtained from various resources such as books, websites and experts in the field. While it is essential that the project leader should ensure monitoring of the project, the guide teacher also helps in monitoring the project.
+(5) Outcome of a project: One needs to understand thoroughly the outcome of a project. The outcome can be single, or it can be multiple. The output of a project can be peer reviewed and can be modified as per the feedback from the guide teacher or other users.
+13.3 teAmwork
+Many real-life tasks are very complex and require a lot of individuals to contribute in achieving them. Efforts made by individuals collectively to accomplish a task is called teamwork.
+For example, in many sports, there is a team of players. These players play together to win a match.
+Take an example of a cricket team. We find that even if a bowler bowls a good ball but if the fielder cannot take
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 244 a catch then the wicket cannot be taken. So, in order to take a catch, efforts of a bowler as well as of fielders are needed. To win a cricket match, contributions from all the team members in all the three areas batting, bowling and fielding are required.
+13.3.1 Components of Teamwork
+Apart from technical proficiency, a wide variety of other components make a successful teamwork. It comprises skilled team members with specific roles to achieve the goal.
+(A) Communicate with Others
+When a group of individuals perform one job, it is necessary to have effective communication between the members of the team. Such communication can be done via e-mails, telephones or by arranging group meetings. This helps the team members to understand each other and sort out their problems to achieve the goal effectively.
+(B) Listen to Others
+It is necessary to understand the ideas of others while executing a job together. This can be achieved when the team members listen to each other in group meetings and follow steps that are agreed upon.
+(C) Share with Others
+Ideas, images and tools need to be shared with each other in order to perform a job. Sharing is an important component of teamwork. Any member of the team who is well versed in a certain area should share the expertise and experience with others to effectively achieve the goal within the time frame.
+(D) Respect for Others
+Every member of the team must be treated respectfully.
+All the thoughts and ideas that are put forth in the group meetings may be respected and duly considered.
+Not respecting the views of a particular member may cause problems and that particular team member may not give his best.
+(E) Help Others
+A helping hand from every member is a key to success.
+Sometimes help from people who are not a part of the team is also obtained in order to accomplish a job.
+Reprint 2026-27

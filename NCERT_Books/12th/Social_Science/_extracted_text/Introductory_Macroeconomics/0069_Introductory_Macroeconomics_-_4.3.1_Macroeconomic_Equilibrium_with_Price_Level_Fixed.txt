@@ -1,0 +1,63 @@
+59 59 59 59 59
+Determination of Income and Employment
+Aggregate Demand: Graphical Representation
+The Aggregate Demand function shows the total demand (made up of consumption + investment) at each level of income. Graphically it means the aggregate demand function can be obtained by vertically adding the consumption and investment function.
+Here, OM = C
+OL = C I +
+The aggregate demand function is parallel to the consumption function i.e., they have the same slope c.
+It may be noted that this function shows ex ante demand.
+Supply Side of Macroeconomic Equilibrium
+In microeconomic theory, we show the supply curve on a diagram with price on the vertical axis and quantity supplied on horizontal axis.
+I n t h e f i r s t s t a g e o f macroeconomic theory, we are taking the price level as fixed.
+Here, aggregate supply or the
+GDP is assumed to smoothly move up or down since they are unused resources of all types available. Whatever is the level of GDP, that much will be supplied and price level has no role to play. This kind of supply situation is shown by a 45° line. Now, the 45° line has the feature that every point on it has the same horizontal and vertical coordinates.
+Suppose, GDP is Rs.1,000 at point A. How much will be supplied? The answer is Rs.1000 worth of goods. How can that point be shown? The answer is that supply corresponding to point A is at point B which is obtained at the intersection of the 45° line and the vertical line at A.
+Equilibrium
+Equilibrium is shown graphically by putting ex ante aggregate demand and supply together in a diagram (Fig. 4.6). The point where ex ante aggregate demand is equal to ex ante aggregate supply will be equilibrium.
+Aggregate supply curve with 45° line.
+Fig. 4.5
+Aggregate Supply
+Aggregate demand is obtained by vertically adding the consumption and investment functions.
+Fig. 4.4
+Aggregate Demand=C+I+cY
+Reprint 2026-27
+60 60 60 60 60
+Introductory
+Macroeconomics
+4.3.2 Effect of an Autonomous Change in Aggregate Demand on Income and Output
+We have seen that the equilibrium level of income depends on aggregate demand.
+Thus, if aggregate demand changes, the equilibrium level of income changes.
+This can happen in any one or combination of the following situations:
+1. Change in consumption: this can happen due to (i) change in C (ii) change
+2. Change in investment: we have assumed that investment is autonomous. However, it just means that it does not depend on income. There are a number of variables other than income which can affect investment. One important factor is availability of credit:
+easy availability of credit encourages investment. Another factor is interest rate: interest rate is the cost of investible funds, and at higher interest rates, firms tend to lower investment. Let us now concentrate on change in investment with the help of the following example.
+Let 40 0.8 C Y = + , 10 I = . In this case, the equilibrium income (obtained by equation Y to AD ) comes out to be 2501.
+Now, let investment rise to 20. It can be seen that the new equilibrium will be
+300. This can be seen by looking at the graph. This increase in income is due to rise in investment, which is a component of autonomous expenditure here.
+When autonomous investment increases, the AD1 line shifts in parallel upwards and assumes the position AD2. The value of aggregate demand at
+1 40 0.8 10 Y C I Y = + = + + , so that 50 0.8 Y Y = + , or
+1 50 2 50 e q u i l i b r i u m p o i n t i s E a n d equilibrium level of income is (B) Algebraic Method
+Ex ante aggregate demand =
+I C cY + +
+Ex ante aggregate supply = Y
+Equilibrium requires that the plans of suppliers are matched by plans of those who provide final demands in the economy. Thus, in this situation, ex ante aggregate demand = ex ante aggregate
+C I cY Y
+Equilibrium of ex ante aggregate demand and supply
+Fig. 4.6
+Ex ante Aggregate Demand and Supply
+Reprint 2026-27
+61 61 61 61 61
+Determination of Income and Employment output Y *
+1 is Y *
+1 F, which is greater than the value of output 0Y *
+1 E1 by an amount E1F. E1F measures the amount of excess demand that emerges in the economy as a result of the increase in autonomous expenditure. Thus, E1 no longer represents the equilibrium. To find the new equilibrium in the final goods market we must look for the point where the new aggregate demand line, AD2, intersects the 45o line. That occurs at point E2, which is, therefore, the new equilibrium point. The new equilibrium values of output and aggregate demand are Y *
+2, respectively.
+Note that in the new equilibrium, output and aggregate demand have increased by an amount E1G = E2G, which is greater than the initial increment in autonomous expenditure, D I
+= E1F = E2 J. Thus an initial increment in the autonomous expenditure seems to have a multiplier on the equilibrium values of aggregate demand and output. What causes aggregate demand and output to increase by an amount larger than the size of the initial increment in autonomous expenditure? We discuss it in section 4.3.3.
+4.3.3 4.3.3 4.3.3 4.3.3 4.3.3 The Multiplier Mechanism The Multiplier Mechanism The Multiplier Mechanism The Multiplier Mechanism The Multiplier Mechanism
+It was seen in the previous section that with a change in the autonomous expenditure of 10 units, the change in equilibrium income is equal to 50 units (from 250 to 300). We can understand this by looking at the multiplier mechanism, which is explained below:
+The production of final goods employs factors such as labour, capital, land and entrepreneurship. In the absence of indirect taxes or subsidies, the total value of the final goods output is distributed among different factors of production – wages to labour, interest to capital, rent to land etc. Whatever is left over is appropriated by the entrepreneur and is called profit. Thus the sum total of aggregate factor payments in the economy, National Income, is equal to the aggregate value of the output of final goods, GDP. In the above example the value of the extra output, 10, is distributed among various factors as factor payments and hence the income of the economy goes up by 10.
+When income increases by 10, consumption expenditure goes up by (0.8)10, since people spend 0.8 (= mpc) fraction of their additional income on consumption. Hence, in the next round, aggregate demand in the economy goes up by (0.8)10 and there again emerges an excess demand equal to (0.8)10. Therefore, in the next production cycle, producers increase their planned output further by (0.8)10 to restore equilibrium. When this extra output is distributed among factors, the income of the economy goes up by (0.8)10 and consumption demand increases further by (0.8)210, once again creating excess demand of the same amount. This process goes on, round after round, with producers increasing their output to clear the excess demand in each round and consumers spending a part of their additional
+Equilibrium Output and Aggregate Demand in the Fixed Price Model
+Fig. 4.7
+Reprint 2026-27

@@ -1,0 +1,182 @@
+Exploring Mixtures and their Separation 77
+Activity 5.2: Let us represent solubility graphically
+Consider water as the solvent, and compounds ‘A’ and ‘B’ as the solutes. Each substance has a different solubility. A graph of solubility versus temperature is called a solubility curve. The solubility curves for ‘A’ and ‘B’ as solutes are shown in Fig. 5.6. The x-axis shows temperature (°C), whereas the y-axis indicates the solubility of the solute in grams per 100 g of water.
+Fig. 5.6: Solubility curves of compounds ‘A’ and ‘B’ in water
+10 20 30 40 50 60 70 80
+Temperature (°C)
+Solubility (g per 100 g water)
+Compound ‘A’
+Compound ‘B’
+Based on the information from the above graph, predict which of the two compounds, ‘A’ or ‘B’, will dissolve more in a given amount of water at a given temperature?
+Observe Fig. 5.6 and fill in the blanks of the following statements:
+(i) The solubility of compound ‘A’ in water at 20 °C is ______________ (less than/more than/similar to) its solubility at 60 °C.
+(ii) The solubility of compound ‘B’ at 20 °C is ____________ (less than/ more than/similar to) its solubility at 60 °C.
+(iii) The solubility of _____________ increases more than that of ______________ with an increase in the temperature.
+What do you think will happen if you make a saturated solution at a higher temperature and cool it slowly? Let us find out!
+5.3 Methods of Separation of Homogeneous Mixtures
+5.3.1 Crystallization
+You have learnt to prepare a saturated solution. If you take a saturated solution of compound ‘B’ in water at 60 °C, prepared by dissolving 287 g of compound ‘B’ in 100 g of water, what will happen if you gradually cool it to 40 °C? As per Fig. 5.6, the solubility of compound ‘B’ is 241 g per 100 g of water at 40 °C. It implies that only 241 g of compound ‘B’ can remain in the solution and the rest of it will separate out as a pure solid, often as crystals. A crystal is a solid that is made up of particles arranged in a regular geometric pattern.
+Curiosity
+Chapter 9
+Exploration|Grade 9 78
+You might have observed many types of crystals in everyday life, such as rock salt crystals (Fig. 5.7a) or sugar crystals (Fig. 5.7b) that grow while making candy sugar (called mishri in Hindi). Snowflakes are also crystals, formed when water vapour freezes in the air. Even frost on windows is formed when water vapour turns into ice crystals (Fig. 5.7c). This is how crystals form naturally.
+In laboratories, the process of forming crystals from a saturated solution is called crystallization. This method can be used for the separation of two solids, in which one of the compounds is present in small quantity and both are soluble in the same solvent. This method can also be used for purification of solids. The principle of purification by crystallization is based on the differences in the solubility of a substance at different temperatures.
+Try creating your own crystals.
+Activity 5.3: Let us prepare
+1. Collect a sample of copper sulfate (blue vitriol). If copper sulfate is unavailable, you can use common salt as an alternative.
+Safety first: Copper sulfate is toxic. Perform the experiment under adult supervision and do not touch it with your bare hands.
+2. Take 1 g of copper sulfate and place it in a 100 mL beaker. Add 25 mL of water to the beaker and add a drop of dilute sulfuric acid. Gently heat the mixture in a water bath while stirring constantly. Sulfuric acid helps in making pure crystals by preventing unwanted reactions.
+Safety first: It is advised that the teacher should add a drop of sulfuric acid. Handle sulfuric acid very carefully!
+3. Gradually, add more copper sulfate until the solution becomes saturated (Fig. 5.8a).
+4. Filter the hot solution to remove insoluble impurities (Fig. 5.8b).
+Collect it in a clean beaker and cover it with a watch glass.
+5. Allow the solution to cool slowly without disturbing it (Fig. 5.8c). It gives enough time to the particles in the solution to come together, resulting in the formation of larger, shiny, well-shaped and blue-coloured crystals.
+6. Filter the crystals, rinse them with cold water and allow them to dry on a watch glass (Fig. 5.8d).
+Sulfuric acid is required for the crystallization of only some salts.
+(a) Preparing the saturated solution (b) Filtering the hot saturated solution (c) Cooling down the filtrate (d) Crystals of copper sulfate
+Fig. 5.8: Steps involved in the process of crystallization
+Glass rod bath Conical
+Laboratory crystals
+Filtrate solution
+Fig. 5.7: Crystals of (a) rock salt, (b) candy sugar, and (c) frost
+Exploring Mixtures and their Separation 79
+You may also try:
+1. Place 1 – 2 mL of the saturated copper sulfate solution on a small glass plate or a lamination sheet.
+2. Leave it for some time. What do you observe?
+Did you get crystals? If yes, is this a good way to experiment? Explain.
+Crystallization is a common technique for separating pure substances (crystals) from homogeneous mixtures. When new compounds are prepared, they are often accompanied by unwanted impurities. Crystallization helps to separate the desired pure substance from the undesired impurities.
+If a hot, saturated solution of copper sulfate is cooled rapidly in ice-cold water, smaller and less well-formed crystals will form than if it is cooled slowly at room temperature. How would you design and perform an experiment to test this hypothesis?
+Hint: Prepare a hot saturated solution of copper sulfate and divide it into two equal parts.
+Think as a Scientist
+4. Refer to the solubility curves given in Activity 5.2. If equal masses of hot, saturated solutions of compounds ‘A’ and ‘B’ are cooled from 80 °C to 60 °C, which solution is likely to deposit more solid?
+5. Will there be any change in the size of common salt crystals if the rate of evaporation is increased or decreased? Explain.
+Pause and Ponder
+Activity 5.4: Let us describe a process
+Observe Fig. 5.9, it shows how salt crystals are obtained from seawater.
+Can you describe the process in your own words?
+Seawater Saturated solution Salt crystals
+Fig. 5.9: Steps followed in the salt manufacturing process
+Ready to Go Beyond
+Have you visited a place where large crystal deposits can be observed in nature?
+Such crystals can be found in various locations, including mines, caves and even within the Earth’s crust. One such example is the Mawsmai Cave (Fig. 5.10a) in Sohra (Cherrapunji), known for its fascinating natural formations. Quartz (Fig. 5.10b) is also one of the beautiful crystals found in
+Fig. 5.10: Naturally occurring crystals (a) in caves and (b) quartz
+Exploration|Grade 9 80
+When we allow a solvent to evaporate to get a solute, such as salt from a salt solution, the solvent disappears.
+However, we may also want to recover the solvent. What should we do then?
+While experimenting in the laboratory, a student accidentally mixed acetone and water, two miscible liquids. How can we separate the two miscible liquids? Is it possible to separate the mixture of two miscible liquids by evaporation and obtain both the liquids?
+5.3.2 Distillation
+A homogeneous mixture of two miscible liquids can be separated by heating the mixture until the liquid with the lower boiling point vaporises. The vapour is then cooled, turning back into liquid (Fig. 5.11). This process is known as distillation. It allows the recovery of the solvent or the separation of liquids that differ in boiling point by at least about 25 °C. This method can also be used to separate a liquid from a solution containing dissolved solids.
+During the process, vapours of the lower-boiling liquid are passed through a condenser where they are cooled, usually by circulating water or air and condensed as a pure liquid. The pure liquid is collected in a separate vessel, while the solid or other liquid from the mixture remains in the distillation flask. A distillation set-up is shown in Fig. 5.12.
+Fig. 5.12: Distillation set-up
+Thermometer
+Water outlet condenser
+Water inlet
+Conical flask
+Distillation flask
+Mixture of acetone and water
+Tripod stand
+Wire gauze
+Laboratory (Distillate)
+Fig. 5.11: Distillation process
+India’s Scientific
+Contributions
+Crystallization of salt was an ancient process used by the local communities of the coastal areas in
+India. The panga salt was obtained by boiling concentrated sea brines, while the evaporation of sea water produced the karkatch salt. Salt crystals of different sizes were produced by these methods.
+Exploring Mixtures and their Separation 81
+A mixture of acetone and water can be separated by distillation because their boiling points differ sufficiently. Acetone boils at about 56 °C and water boils at 100 °C. A large difference in boiling points allows one liquid to vaporise before the vapours of the other liquid are formed in significant
+The process of distillation has been used for a long time for various purposes, including extraction of fragrances from flowers to make perfumes.
+You must have noticed the pleasant earthy smell that rises from the ground after the first rain. In Kannauj, a town in Uttar Pradesh known as the perfume capital of
+India, this beautiful fragrance is captured and turned into a natural perfume called Mitti ka Ittar (earthy fragrance).
+This perfume is made using a traditional distillation method known as the Deg-Bhapka method (Fig. 5.13), which has been passed down through generations in Kannauj. It is in great demand, both in India and around the world. The
+Fragrance and Flavour Development Centre in Kannauj has facilities for separating flavour and fragrance components from flowers, leaves and other parts of plants. It also supports farmers in cultivating fragrance-producing plants and offers expertise to those looking to establish their own perfume businesses.
+India’s Scientific Contributions
+Fig. 5.13: Deg-Bhapka method
+Ready to Go Beyond
+Fig. 5.14: (a) Petroleum refinery, and (b) products of fractional distillation of crude petroleum
+A petroleum refinery (Fig. 5.14a) is an industrial unit where crude oil is processed to obtain various useful petroleum products. Petroleum products are mixtures of useful gases and liquids, such as petroleum gas, petrol, kerosene, diesel, etc. Crude petroleum is extracted from the Earth’s crust and separated into these different fractions using the process of fractional distillation (Fig. 5.14b). Fractional distillation is the process of separating components of a mixture with relatively small differences (less than 25 °C) in their boiling points.
+The gaseous fraction is filled in steel cylinders under high pressure, where it gets liquefied. It is used as domestic fuel in the form of Liquefied Petroleum Gas (LPG).
+Petroleum gas
+Lubricating oil
+Aviation fuel (Kerosene)
+Exploration|Grade 9 82
+5.3.3 Paper Chromatography
+Have you ever observed what happens when a drop of water falls on something written with a sketch pen on a paper? You may have noticed that the colour spreads. If the sketch pen is black, different colours might spread out. If you have not noticed this before, try it now!
+Activity 5.5: Let us investigate
+1. Take a 3 cm wide strip of chromatographic paper and draw a straight, horizontal line, 2 cm from the bottom of the paper with a pencil (Fig. 5.15a). Alternatively, you can use a strip of filter paper.
+2. Mark a spot with a black sketch pen at the centre of the line (Fig. 5.15b).
+3. Take enough water to make a thin layer at the bottom of a gas jar, a measuring cylinder, or a beaker.
+4. Place the paper strip with the ink spot vertically into the container, so that its lower end dips into the water. The water level should be below the spot, as shown in
+Fig. 5.15c.
+5. Observe the paper as the water rises through the paper. What do you
+6. As the water rises, the ink starts to separate into different colour spots.
+What can you infer from this?
+This method of separating the components of a mixture is known as paper chromatography. It uses differences in the interactions of the components with the solvent and the paper to separate them. The liquid carries the substances up the paper, separating them based on how fast they move. You can also try this with green food colour instead of black ink and use a 2 % m/v salt solution as the solvent.
+Similarly, you can separate different pigments present in the green extract of spinach leaves or coloured pigments from the flower petals. Will water work as a solvent in every case? In some cases, you may need to use a different solvent, such as alcohol or a mixture of solvents.
+6. State whether the following statements are True or False. Also, correct the False statements.
+(i) Salt can be separated from a salt solution by evaporation or distillation.
+(ii) Distillation can be used for separation of two liquids even when these have the same boiling point.
+(iii) In paper chromatography, the solvent level should be above the sample spot at the beginning of the experiment.
+(iv) Evaporation and crystallization are the same processes.
+Pause and Ponder
+Threads of
+Curiosity
+The word ‘chromatography’ comes from the Greek words chroma, meaning
+‘colour’ and graphein, meaning ‘to write’. It actually means ‘writing with colour’ because it was first used to separate coloured substances like dyes and inks.
+Fig. 5.15: Paper chromatography
+Chromatographic
+Line drawn with pencil
+Exploring Mixtures and their Separation 83
+5.4 How Can We Separate the Components of
+Heterogeneous Mixtures?
+5.4.1 Separation of two immiscible liquids
+You have learnt about non-uniform mixtures. Have you noticed what happens when water falls into a container that has oil? The oil and water form separate layers. They do not mix and are called immiscible liquids.
+Similarly, sand and water do not mix, nor do iron filings and sulfur. These are examples of heterogeneous mixtures.
+How can you separate the components of a mixture of two immiscible liquids?
+Let us try to separate mustard oil from water.
+Activity 5.6: Let us separate
+1. Pour a mixture of 5 mL mustard oil and
+20 mL water into a 50 mL separating
+2. Let it stand undisturbed. What do you observe?
+3. You will see the formation of two separate layers of mustard oil and water (Fig. 5.16).
+The yellow-coloured mustard oil forms the upper layer and water forms the lower layer. Can you explain why?
+4. Open the stopcock of the separating funnel slowly to collect the lower layer of water carefully into a container.
+5. Close the stopcock when the water is almost fully drained.
+6. Collect the next small portion that may contain both liquids and discard it.
+7. Collect the layer of oil separately by opening the stopcock again.
+You now have two separate liquids.
+Can you think of any heterogeneous mixtures with a gas as one of the components?
+Gas particles are free to move in all directions, so they mix easily and uniformly with other gases. Hence, most mixtures of gases are homogeneous, such as a mixture of hydrogen and oxygen, which is used as a rocket fuel. On the other hand, smoke (solid particles suspended in air), fog (tiny liquid water droplets present in air) and dust in the air are some heterogeneous mixtures with gas as one of the components.
+Most of the solid-solid mixtures are heterogeneous. You can use a property of one of the solids to separate the mixture.
+You have learnt how to separate iron nails from sawdust using a magnet. Now, let us explore another technique to separate solid-solid mixtures.
+Curiosity
+Chapter 9
+Curiosity
+Chapter 9
+Separating funnel
+Conical flask
+Mustard oil
+Fig. 5.16: Separation of immiscible liquids
+Laboratory stand
+Glass stopper
+Stopcock
+What if … two immiscible liquids of the same density are mixed in a separating funnel, how will the layers form?
+Exploration|Grade 9 84
+5.4.2 Sublimation
+Activity 5.7: Let us explore
+1. Take a spatula full of the mixture containing crushed camphor and sand. Put it into a clean and dry china dish. Place it on the tripod stand using a wire gauze.
+2. Take a clean and dry glass funnel. Plug its nozzle with cotton.
+3. Keep this funnel inverted on the china dish and set up the apparatus as shown in Fig. 5.17.
+4. Light the burner and place it under the wire
+5. Heat the china dish gently for a few minutes.
+6. Observe the inner wall of the funnel carefully.
+Do you notice any solid deposits?
+7. You may find white, solid camphor deposits on the inner wall of the funnel while sand remains in the china dish.
+Camphor, on heating (below its melting point), changes directly from the solid state to the vapour state without passing through the liquid state, this process is called sublimation. On cooling, vapours condense back into a solid without becoming a liquid, this is called deposition. Hence, camphor sublimes and separates from sand because sand does not sublime on heating.
+You can also perform this activity using any other sublimable substance, such as naphthalene, in place of camphor.
+Similarly, solid carbon dioxide, known as dry ice which is used for ice cream storage, also undergoes sublimation. Can you think of any other mixtures where sublimation can be used to separate the components?
+Is it possible to dissolve one metal in another?
+Metals do not dissolve into each other at room temperature. However, when metals are melted at high temperatures, they can be mixed to form a solution. When such a hot mixture of two or more metals cools, it solidifies into a new material that appears to be a single metal. A homogeneous mixture of two or more metals, or a metal and a non-metal, is called an alloy. Physical methods cannot separate the components of an alloy. Alloys are generally prepared to produce materials that are stronger, more rigid, or more corrosion-resistant. Common examples of alloys include brass — a mixture of approximately 80% copper and 20% zinc; bronze — a mixture of approximately
+80% copper and 20% tin; stainless steel — usually a mixture of iron and other elements, such as carbon (about 0.03 – 0.8%), chromium (16 – 18%), nickel (10.0 –14.0%) and molybdenum (2.0 – 3.0%).
+Cotton plug
+Glass funnel
+China dish cont

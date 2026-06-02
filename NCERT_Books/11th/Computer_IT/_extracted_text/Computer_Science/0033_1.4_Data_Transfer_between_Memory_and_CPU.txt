@@ -1,0 +1,17 @@
+Computer SyStem 21 opening, editing or deleting a file, etc. The user has to remember the names of all such programs or specific commands which the operating system supports.
+The primary input device used by the user for command based interface is the keyboard. Command based interface is often less interactive and usually allows a user to run a single program at a time.
+Examples of operating systems with command-based interface include MS-DOS and Unix.
+(B) Graphical User Interface
+Graphical User Interface (GUI) lets users run programs or give instructions to the computer in the form of icons, menus and other visual options. Icons usually represent files and programs stored on the computer and windows represent running programs that the user has launched through the operating system.
+The input devices used to interact with the GUI commonly include the mouse and the keyboard.
+Examples of operating systems with GUI interfaces include Microsoft Windows, Ubuntu, Fedora and
+Macintosh, among others.
+(C) Touch-based Interface
+Today smartphones, tablets and PCs allow users to interact with the system simply using the touch input.
+Using the touchscreen, a user provides inputs to the operating system, which are interpreted by the OS as commands like opening an app, closing an app, dialing a number, scrolling across apps, etc.
+Examples of popular operating systems with touch- based interfaces are Android and iOS. Windows
+8.1 and 10 also support touch-based interfaces on touchscreen devices.
+(D) Voice-based Interface
+Modern computers have been designed to address the needs of all types of users including people with special needs and people who want to interact with computers or smartphones while doing some other task. For users who cannot use the input devices like the mouse, keyboard, and touchscreens, modern operating systems provide other means of human-computer interaction.
+Users today can use voice-based commands to make a computer work in the desired way. Some operating
+Reprint 2026-27

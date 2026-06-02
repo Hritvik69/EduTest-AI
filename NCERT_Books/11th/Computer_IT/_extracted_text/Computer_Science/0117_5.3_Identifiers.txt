@@ -1,0 +1,28 @@
+GettinG Started with Python 105
+5.9.1 Precedence of Operators
+Evaluation of the expression is based on precedence of operators. When an expression contains different kinds of operators, precedence determines which operator should be applied first. Higher precedence operator is evaluated before the lower precedence operator. Most of the operators studied till now are binary operators.
+Binary operators are operators with two operands.
+The unary operators need only one operand, and they have a higher precedence than the binary operators.
+The minus (-) as well as + (plus) operators can act as both unary and binary operators, but not is a unary logical operator.
+#Depth is using - (minus) as unary operator
+Value = -Depth
+#not is a unary operator, negates True print(not(True))
+The following table lists precedence of all operators from highest to lowest.
+Table 5.9 Precedence of all operators in Python
+Order of
+Precedence
+Operators Description
+1 ** Exponentiation (raise to the power)
+2 ~ ,+, - Complement, unary plus and unary minus
+3 * ,/, %, // Multiply, divide, modulo and floor division
+4 +, - Addition and subtraction
+5 <= , < , > , >=, == , != Relational and Comparison operators
+6 =, %=, /=, //=, -=, +=,
+Assignment operators
+7 is, is not Identity operators
+8 in, not in Membership operators
+Logical operators 10 and a) Parenthesis can be used to override the precedence of operators. The expression within () is evaluated first.
+b) For operators with equal precedence, the expression is evaluated from left to right.
+Example 5.9 How will Python evaluate the following expression?
+20 + 30 * 40
+Reprint 2026-27

@@ -1,0 +1,19 @@
+23 Theory of Consumer
+Behaviour gives the amount of the good that the consumer chooses at different levels of its price when the other things remain unchanged. The consumer’s demand for a good as a function of its price can be written as
+X = f (P) (2.12)
+where X denotes the quantity and P denotes the price of the good.
+The demand function can also be represented graphically as in Figure 2.13.
+The graphical representation of the demand function is called the demand curve.
+The relation between the consumer’s demand for a good and the price of the good is likely to be negative in general. In other words, the amount of a good that a consumer would optimally choose is likely to increase when the price of the good falls and it is likely to decrease with a rise in the price of the good.
+2.4.2 Deriving a Demand Curve from Indifference Curves and Budget
+Constraints
+Consider an individual consuming bananas (X1)and mangoes (X2), whose income is M and market prices of X1 and X2 are 1 P ' and 2 P ' respectively. Figure (a) depicts her consumption equilibrium at point C, where she buys 1 X ' and 2 X ' quantities of bananas and mangoes respectively. In panel (b) of figure 2.14, we plot 1 P ' against 1 X ' which is the first point on the demand curve for X1.
+Suppose the price of X1 drops to 1 P with 2 P ' and M remaining constant. The budget set in panel (a), expands and new consumption equilibrium is on a higher indifference curve at point D, where she buys more of bananas ( > 1 1 X X ' ).
+Thus, demand for bananas increases as its price drops. We plot 1 P against 1 X in panel (b) of figure 2.14 to get the second point on the demand curve for X1.
+Likewise the price of bananas can be dropped further to ∧
+1 P , resulting in further increase in consumption of bananas to ∧
+1 P plotted against ∧
+1 X gives us the third point on the demand curve. Therefore, we observe that a drop in price of bananas results in an increase in quality of bananas purchased by an individual who maximises his utility. The demand curve for bananas is thus negatively
+The negative slope of the demand curve can also be explained in terms of the two effects namely, substitution effect and income effect that come into play when price of a commodity changes. When bananas become cheaper, the consumer maximises his utility by substituting bananas for mangoes in order to derive the same level of satisfaction of a price change, resulting in an increase in demand for bananas.
+Deriving a demand curve from indifference curves and budget constraints
+Reprint 2026-27

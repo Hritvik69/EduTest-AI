@@ -1,0 +1,13 @@
+Computer SCienCe – ClaSS xi 230 game online? Whenever we surf the Internet using smartphones, tablets, computers, etc., we leave a trail of data reflecting the activities performed by us online, which is our digital footprint.
+Our digital footprint can be created and used with or without our knowledge. It includes websites we visit, emails we send, and any information we submit online, etc., along with the computer’s IP address, location, and other device specific details. Such data could be used for targeted advertisement or could also be misused or exploited. Thus, it is good to be aware of the data trail we might be leaving behind. This awareness should make us cautious about what we write, upload or download or even browse online.
+There are two kinds of digital footprints we leave behind. Active digital footprints which includes data that we intentionally submit online.
+This would include emails we write, or responses or posts we make on different websites or mobile
+Apps, etc. The digital data trail we leave online unintentionally is called passive digital footprints.
+This includes the data generated when we visit a website, use a mobile App, browse Internet, etc., as shown in Figure 11.1.
+Everyone who is connected to the Internet may have a digital footprint. With more usage, the trail grows. On examining the browser settings, we can find out how it stores our browsing history, cookies, passwords, auto fills, and many other types of data.
+Besides browser, most of our digital footprints are stored in servers where the applications are hosted. We may not have access to remove or erase that data, neither do we have any control on how that data will be used. Therefore, once a data trail is generated, even if we later try to erase data about our online activities, the digital footprints still remain. There is no guarantee that digital footprints will be fully eliminated from the
+Internet. Therefore, we need to be more cautious while being online! All our online activities leave a data trace on the Internet as well as on the computing device that we use. This can be used to trace the user, his/her location, device and other usage details.
+Figure 11.1: Exemplar web applications that result in digital footprints
+Can your digital footprints be used to judge your attitude and work ethics?
+Think and Reflect
+Reprint 2026-27

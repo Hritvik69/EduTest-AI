@@ -1,0 +1,268 @@
+296 MATHEMATICS
+In earlier classes, we have studied some methods of assigning probability to an event associated with an experiment having known the number of total outcomes.
+Axiomatic approach is another way of describing probability of an event. In this approach some axioms or rules are depicted to assign probabilities.
+Let S be the sample space of a random experiment. The probability P is a real valued function whose domain is the power set of S and range is the interval [0,1] satisfying the following axioms (i) For any event E, P (E) ≥ 0 (ii) P (S) = 1 (iii) If E and F are mutually exclusive events, then P(E ∪ F) = P(E) + P(F).
+It follows from (iii) that P(φ) = 0. To prove this, we take F = φ and note that E and φ are disjoint events. Therefore, from axiom (iii), we get
+P (E ∪ φ) = P (E) + P (φ) or P(E) = P(E) + P (φ) i.e. P (φ) = 0.
+Let S be a sample space containing outcomes 1 2 , ,..., n ω ω ω , i.e.,
+S = {ω1, ω2, ..., ωn}
+It follows from the axiomatic definition of probability that (i) 0 ≤ P (ωi) ≤ 1 for each ωi ∈ S (ii) P (ω1) + P (ω2) + ... + P (ωn) = 1 (iii) For any event A, P(A) = ∑ P(ωi ), ωi ∈ A.
+ANote It may be noted that the singleton {ωi} is called elementary event and for notational convenience, we write P(ωi ) for P({ωi }).
+For example, in ‘a coin tossing’ experiment we can assign the number 1
+2 to each of the outcomes H and T.
+i.e. P(H) = 1
+2 and P(T) = 1
+Clearly this assignment satisfies both the conditions i.e., each number is neither less than zero nor greater than 1 and
+P(H) + P(T) = 2
+Therefore, in this case we can say that probability of H = 2
+1 , and probability of T = 2
+If we take P(H) = 4
+1 and P(T) = 4
+3 ... (2)
+Reprint 2026-27
+PROBABILITY 297
+Does this assignment satisfy the conditions of axiomatic approach?
+Yes, in this case, probability of H = 1
+4 and probability of T = 4
+We find that both the assignments (1) and (2) are valid for probability of
+H and T.
+In fact, we can assign the numbers p and (1 – p) to both the outcomes such that
+0 ≤ p ≤ 1 and P(H) + P(T) = p + (1 – p) = 1
+This assignment, too, satisfies both conditions of the axiomatic approach of probability. Hence, we can say that there are many ways (rather infinite) to assign probabilities to outcomes of an experiment. We now consider some examples.
+Example 4 Let a sample space be S = {ω1, ω2,..., ω6}.Which of the following assignments of probabilities to each outcome are valid?
+Outcomes ω 1 ω 2 ω 3 ω 4 ω 5 ω 6 (b) 1 0 0 0 0 0 (e) 0.1 0.2 0.3 0.4 0.5 0.6
+Solution (a) Condition (i): Each of the number p(ωi) is positive and less than one.
+Condition (ii): Sum of probabilities
+1 = + + + + +
+Therefore, the assignment is valid (b) Condition (i): Each of the number p(ωi) is either 0 or 1.
+Condition (ii) Sum of the probabilities = 1 + 0 + 0 + 0 + 0 + 0 = 1
+Therefore, the assignment is valid (c) Condition (i) Two of the probabilities p(ω5) and p(ω6) are negative, the assignment is not valid (d) Since p(ω6) = 3
+2 > 1, the assignment is not valid
+Reprint 2026-27
+298 MATHEMATICS (e) Since, sum of probabilities = 0.1 + 0.2 + 0.3 + 0.4 + 0.5 + 0.6 = 2.1, the assignment is not valid.
+14.2.1 Probability of an event Let S be a sample space associated with the experiment
+‘examining three consecutive pens produced by a machine and classified as Good (non-defective) and bad (defective)’. We may get 0, 1, 2 or 3 defective pens as result of this examination.
+A sample space associated with this experiment is
+S = {BBB, BBG, BGB, GBB, BGG, GBG, GGB, GGG}, where B stands for a defective or bad pen and G for a non – defective or good pen.
+Let the probabilities assigned to the outcomes be as follows
+Sample point: BBB BBG BGB GBB BGG GBG GGB GGG
+Probability: 8
+Let event A: there is exactly one defective pen and event B: there are atleast two defective pens.
+Hence A = {BGG, GBG, GGB} and B = {BBG, BGB, GBB, BBB}
+Now P(A) = P(ω ), ω A i i ∑ ∀ ∈
+= P(BGG) + P(GBG) + P(GGB) = 8 and P(B) = P(ω ), ω B i i ∑ ∀ ∈
+= P(BBG) + P(BGB) + P(GBB) + P(BBB) = 2
+1 = = + + +
+Let us consider another experiment of ‘tossing a coin “twice”
+The sample space of this experiment is S = {HH, HT, TH, TT}
+Let the following probabilities be assigned to the outcomes
+P(HH) = 4
+1 , P(HT) = 7
+1 , P(TH) = 7
+2 , P(TT) = 28
+Clearly this assignment satisfies the conditions of axiomatic approach. Now, let us find the probability of the event E: ‘Both the tosses yield the same result’.
+Here E = {HH, TT}
+Now P(E) = Σ P(wi), for all wi ∈ E
+Reprint 2026-27
+PROBABILITY 299
+= P(HH) + P(TT) = 7
+For the event F: ‘exactly two heads’, we have F = {HH} and P(F) = P(HH) = 1
+14.2.2 Probabilities of equally likely outcomes Let a sample space of an experiment be
+S = {ω1, ω2,..., ωn}.
+Let all the outcomes are equally likely to occur, i.e., the chance of occurrence of each simple event must be same.
+i.e. P(ωi) = p, for all ωi ∈ S where 0 ≤ p ≤ 1
+= ∑ i.e., p + p + ... + p (n times) = 1 or np = 1 i.e., p = 1
+Let S be a sample space and E be an event, such that n(S) = n and n(E) = m. If each out come is equally likely, then it follows that
+Number of outcomes favourable to E
+Total possible outcomes
+14.2.3 Probability of the event ‘A or B’ Let us now find the probability of event
+‘A or B’, i.e., P (A ∪ B)
+Let A = {HHT, HTH, THH} and B = {HTH, THH, HHH} be two events associated with ‘tossing of a coin thrice’
+Clearly A ∪ B = {HHT, HTH, THH, HHH}
+Now P (A ∪ B) = P(HHT) + P(HTH) + P(THH) + P(HHH)
+If all the outcomes are equally likely, then ( ) 1 1 1 1 4 1
+P A B 8 8 8 8 8 2
+∪ = + + + = =
+Also P(A) = P(HHT) + P(HTH) + P(THH) = 3
+Reprint 2026-27
+300 MATHEMATICS and P(B) = P(HTH) + P(THH) + P(HHH) = 3
+Therefore P(A) + P(B) = 3 3 6
+It is clear that P(A ∪ B) ≠ P(A) + P(B)
+The points HTH and THH are common to both A and B. In the computation of
+P(A) + P(B) the probabilities of points HTH and THH, i.e., the elements of A ∩B are included twice. Thus to get the probability P(A ∪ B) we have to subtract the probabilities of the sample points in A ∩ B from P(A) + P(B)
+i.e. P(A B) ∪ = P(A) P(B) P(ω ) ω A B i i , + − ∑ ∀ ∈ ∩
+= P A P B P A B ( ) ( ) ( ) + − ∩
+Thus we observe that, ) B A ( P ) B ( P ) A ( P ) B A ( P ∩ − + = ∪
+In general, if A and B are any two events associated with a random experiment, then by the definition of probability of an event, we have ( ) ( ) P A B ω ω A B i i p , ∪ = ∑ ∀ ∈ ∪ .
+Since A B = (A–B) (A B) (B–A) ∪ ∪ ∩ ∪ ,
+P(A ∪ B) = [ ] [ ] P(ω ) ω (A–B) P(ω ) ω A B + i i i i
+∑ ∀ ∈ + ∑ ∀ ∈ ∩ [ ] P(ω ) ω B – A i i ∑ ∀ ∈ (because A–B, A ∩ B and B – A are mutually exclusive) ... (1)
+Also [ ] [ ] P(A) P(B) (ω ) A + (ω ) ω B i i i i p p
+ω + = ∑ ∀ ∈ ∑ ∀ ∈
+= [ ] P(ω ) ω (A–B) (A B) + i i ∑ ∀ ∈ ∪ ∩ [ ] P(ω ) ω (B – A) (A B) i i ∑ ∀ ∈ ∪ ∩
+= [ ] [ ] P(ω ) ω (A – B) + P(ω ) ω (A B) i i i i ∑ ∀ ∈ ∑ ∀ ∈ ∩ + [ ] P(ω ) ω (B–A) i i ∑ ∀ ∈ +
+[ ] P(ω ) ω (A B) i i ∑ ∀ ∈ ∩
+= [ ] P(A B) P(ω ) ω A B i i ∪ + ∑ ∀ ∈ ∩ [using (1)]
+= P(A B) + P(A B) ∪ ∩ .
+Hence P(A B) P (A) +P(B) – P(A B) ∪ = ∩ .
+Alternatively, it can also be proved as follows:
+A ∪ B = A ∪ (B – A), where A and B – A are mutually exclusive, and B = (A ∩ B) ∪ (B – A), where A ∩ B and B – A are mutually exclusive.
+Using Axiom (iii) of probability, we get
+Reprint 2026-27
+PROBABILITY 301
+P (A ∪B) = P (A) + P (B – A) ... (2)
+and P(B) = P ( A ∩ B) + P (B – A) ... (3)
+Subtracting (3) from (2) gives
+P (A ∪ B) – P(B) = P(A) – P (A ∩ B)
+or P(A ∪ B) = P(A) + P (B) – P (A ∩ B)
+The above result can further be verified by observing the Venn Diagram (Fig 14.1)
+If A and B are disjoint sets, i.e., they are mutually exclusive events, then A ∩ B = φ
+Therefore P(A B) = P ( ) = 0 ∩ φ
+Thus, for mutually exclusive events A and B, we have
+) B ( P ) A ( P ) B A ( P + = ∪ , which is Axiom (iii) of probability.
+14.2.4 Probability of event ‘not A’ Consider the event A = {2, 4, 6, 8} associated with the experiment of drawing a card from a deck of ten cards numbered from
+1 to 10. Clearly the sample space is S = {1, 2, 3, ...,10}
+If all the outcomes 1, 2, ...,10 are considered to be equally likely, then the probability of each outcome is 10
+Now P(A) = P(2) + P(4) + P(6) + P(8)
+= 1 1 1 1 4 2
+10 10 10 10 10 5
++ + + = =
+Also event ‘not A’ = A′ = {1, 3, 5, 7, 9, 10}
+Now P(A′) = P(1) + P(3) + P(5) + P(7) + P(9) + P(10)
+Fig 14.1
+Reprint 2026-27
+302 MATHEMATICS
+Thus, P(A′) = 3
+5 = ) A ( P 1
+Also, we know that A′ and A are mutually exclusive and exhaustive events i.e.,
+A ∩ A′ = φ and A ∪ A′ = S or P(A ∪ A′) = P(S)
+Now P(A) + P(A′) = 1, by using axioms (ii) and (iii).
+or P( A′ ) = P(not A) = 1 – P(A)
+We now consider some examples and exercises having equally likely outcomes unless stated otherwise.
+Example 5 One card is drawn from a well shuffled deck of 52 cards. If each outcome is equally likely, calculate the probability that the card will be (i) a diamond (ii) not an ace (iii) a black card (i.e., a club or, a spade) (iv) not a diamond (v) not a black card.
+Solution When a card is drawn from a well shuffled deck of 52 cards, the number of possible outcomes is 52.
+(i) Let A be the event 'the card drawn is a diamond'
+Clearly the number of elements in set A is 13.
+Therefore, P(A) = 13 1 i.e. probability of a diamond card = 1 (ii) We assume that the event ‘Card drawn is an ace’ is B
+Therefore ‘Card drawn is not an ace’ should be B′.
+We know that P(B′) = 1 – P(B) = 13
+1 = − = − (iii) Let C denote the event ‘card drawn is black card’
+Therefore, number of elements in the set C = 26 i.e. P(C) = 2
+Reprint 2026-27
+PROBABILITY 303
+Thus, probability of a black card = 2 (iv) We assumed in (i) above that A is the event ‘card drawn is a diamond’, so the event ‘card drawn is not a diamond’ may be denoted as A' or ‘not A’
+Now P(not A) = 1 – P(A) = 4 (v) The event ‘card drawn is not a black card’ may be denoted as C′ or ‘not C’.
+We know that P(not C) = 1 – P(C) = 2
+Therefore, probability of not a black card = 2
+Example 6 A bag contains 9 discs of which 4 are red, 3 are blue and 2 are yellow. The discs are similar in shape and size. A disc is drawn at random from the bag. Calculate the probability that it will be (i) red, (ii) yellow, (iii) blue, (iv) not blue, (v) either red or blue.
+Solution There are 9 discs in all so the total number of possible outcomes is 9.
+Let the events A, B, C be defined as
+A: ‘the disc drawn is red’
+B: ‘the disc drawn is yellow’
+C: ‘the disc drawn is blue’.
+(i) The number of red discs = 4, i.e., n (A) = 4
+Hence P(A) = 9 (ii) The number of yellow discs = 2, i.e., n (B) = 2
+Therefore, P(B) = 9 (iii) The number of blue discs = 3, i.e., n(C) = 3
+Therefore, P(C) = 3 (iv) Clearly the event ‘not blue’ is ‘not C’. We know that P(not C) = 1 – P(C)
+Reprint 2026-27
+304 MATHEMATICS
+Therefore P(not C) = 3 (v) The event ‘either red or blue’ may be described by the set ‘A or C’
+Since, A and C are mutually exclusive events, we have
+P(A or C) = P (A ∪ C) = P(A) + P(C) = 9
+Example 7 Two students Anil and Ashima appeared in an examination. The probability that Anil will qualify the examination is 0.05 and that Ashima will qualify the examination is 0.10. The probability that both will qualify the examination is 0.02. Find the probability that (a) Both Anil and Ashima will not qualify the examination.
+(b) Atleast one of them will not qualify the examination and (c) Only one of them will qualify the examination.
+Solution Let E and F denote the events that Anil and Ashima will qualify the examination, respectively. Given that
+P(E) = 0.05, P(F) = 0.10 and P(E ∩ F) = 0.02.
+(a) The event ‘both Anil and Ashima will not qualify the examination’ may be expressed as E´ ∩ F´.
+Since, E´ is ‘not E’, i.e., Anil will not qualify the examination and F´ is ‘not F’, i.e.,
+Ashima will not qualify the examination.
+Also E´ ∩ F´ = (E ∪ F)´ (by Demorgan's Law)
+Now P(E ∪ F) = P(E) + P(F) – P(E ∩ F)
+or P(E ∪ F) = 0.05 + 0.10 – 0.02 = 0.13
+Therefore P(E´ ∩ F´) = P(E ∪ F)´ = 1 – P(E ∪ F) = 1 – 0.13 = 0.87 (b) P (atleast one of them will not qualify)
+= 1 – P(both of them will qualify)
+= 1 – 0.02 = 0.98 (c) The event only one of them will qualify the examination is same as the event either (Anil will qualify, and Ashima will not qualify) or (Anil will not qualify and Ashima
+Reprint 2026-27
+PROBABILITY 305 will qualify) i.e., E ∩ F´ or E´ ∩ F, where E ∩ F´ and E´ ∩ F are mutually exclusive.
+Therefore, P(only one of them will qualify) = P(E ∩ F´ or E´ ∩ F)
+= P(E ∩ F´) + P(E´ ∩ F) = P (E) – P(E ∩ F) + P(F) – P (E ∩ F)
+= 0.05 – 0.02 + 0.10 – 0.02 = 0.11
+Example 8 A committee of two persons is selected from two men and two women.
+What is the probability that the committee will have (a) no man? (b) one man? (c) two
+Solution The total number of persons = 2 + 2 = 4. Out of these four person, two can be selected in 4
+2 C ways.
+(a) No men in the committee of two means there will be two women in the committee.
+Out of two women, two can be selected in 2
+2 C 1 = way.
+Therefore ( ) 2
+C 1 2 1 1
+P no man 4 3 6 C (b) One man in the committee means that there is one woman. One man out of 2 can be selected in 2
+1 C ways and one woman out of 2 can be selected in 2
+1 C ways.
+Together they can be selected in 2 2
+1 1 C C × ways.
+Therefore ( ) 2 2
+C C 2 2 2
+P One man 2 3 3 C (c) Two men can be selected in 2
+2 C way.
+Hence ( ) 2
+P Two men 6 C C
+EXERCISE 14.2
+1. Which of the following can not be valid assignment of probabilities for outcomes of sample Space S = { } 1 2 3 4 5 6 7 , , , , , , ω ω ω ω ω ω ω
+Reprint 2026-27
+306 MATHEMATICS
+Assignment ω 1 ω 2 ω 3 ω 4 ω 5 ω 6 ω 7 (a) 0.1 0.01 0.05 0.03 0.01 0.2 0.6 (c) 0.1 0.2 0.3 0.4 0.5 0.6 0.7 (d) – 0.1 0.2 0.3 0.4 – 0.2 0.1 0.3
+2. A coin is tossed twice, what is the probability that atleast one tail occurs?
+3. A die is thrown, find the probability of following events:
+(i) A prime number will appear, (ii) A number greater than or equal to 3 will appear, (iii) A number less than or equal to one will appear, (iv) A number more than 6 will appear, (v) A number less than 6 will appear.
+4. A card is selected from a pack of 52 cards.
+(a) How many points are there in the sample space?
+(b) Calculate the probability that the card is an ace of spades.
+(c) Calculate the probability that the card is (i) an ace (ii) black card.
+5. A fair coin with 1 marked on one face and 6 on the other and a fair die are both tossed. find the probability that the sum of numbers that turn up is (i) 3 (ii) 12
+6. There are four men and six women on the city council. If one council member is selected for a committee at random, how likely is it that it is a woman?
+7. A fair coin is tossed four times, and a person win Re 1 for each head and lose
+Rs 1.50 for each tail that turns up.
+From the sample space calculate how many different amounts of money you can have after four tosses and the probability of having each of these amounts.
+8. Three coins are tossed once. Find the probability of getting (i) 3 heads (ii) 2 heads (iii) atleast 2 heads (iv) atmost 2 heads (v) no head (vi) 3 tails (vii) exactly two tails (viii) no tail (ix) atmost two tails
+9. If 11
+2 is the probability of an event, what is the probability of the event ‘not A’.
+10. A letter is chosen at random from the word ‘ASSASSINATION’. Find the probability that letter is (i) a vowel (ii) a consonant
+Reprint 2026-27
+PROBABILITY 307
+11. In a lottery, a person choses six different natural numbers at random from 1 to 20, and if these six numbers match with the six numbers already fixed by the lottery committee, he wins the prize. What is the probability of winning the prize in the game? [Hint order of the numbers is not important.]
+12. Check whether the following probabilities P(A) and P(B) are consistently defined (i) P(A) = 0.5, P(B) = 0.7, P(A ∩ B) = 0.6 (ii) P(A) = 0.5, P(B) = 0.4, P(A ∪ B) = 0.8
+13. Fill in the blanks in following table:
+P(A) P(B) P(A ∩ B) P(A ∪ B)
+15 . . .
+(ii) 0.35 . . . 0.25 0.6 (iii) 0.5 0.35 . . . 0.7
+14. Given P(A) = 5
+3 and P(B) = 5
+1 . Find P(A or B), if A and B are mutually exclusive
+15. If E and F are events such that P(E) = 4
+1 , P(F) = 2
+1 and P(E and F) = 8
+1 , find (i) P(E or F), (ii) P(not E and not F).
+16. Events E and F are such that P(not E or not F) = 0.25, State whether E and F are mutually exclusive.
+17. A and B are events such that P(A) = 0.42, P(B) = 0.48 and P(A and B) = 0.16.
+Determine (i) P(not A), (ii) P(not B) and (iii) P(A or B)
+18. In Class XI of a school 40% of the students study Mathematics and 30% study
+Biology. 10% of the class study both Mathematics and Biology. If a student is selected at random from the class, find the probability that he will be studying
+Mathematics or Biology.
+19. In an entrance test that is graded on the basis of two examinations, the probability of a randomly chosen student passing the first examination is 0.8 and the probability of passing the second examination is 0.7. The probability of passing atleast one of them is 0.95. What is the probability of passing both?
+20. The probability that a student will pass the final examination in both English and
+Hindi is 0.5 and the probability of passing neither is 0.1. If the probability of passing the English examination is 0.75, what is the probability of passing the
+Hindi examination?
+Reprint 2026-27
+308 MATHEMATICS
+21. In a class of 60 students, 30 opted for NCC, 32 opted for NSS and 24 opted for both NCC and NSS. If one of these students is selected at random, find the probability that (i) The student opted for NCC or NSS.
+(ii) The student has opted neither NCC nor NSS.
+(iii) The student has opted NSS but not NCC.
+Miscellaneous Examples
+Example 9 On her vacations Veena visits four cities (A, B, C and D) in a random order. What is the probability that she visits (i) A before B? (ii) A before B and B before C?
+(iii) A first and B last? (iv) A either first or second?
+(v) A just before B?
+Solution The number of arrangements (orders) in which Veena can visit four cities A,
+B, C, or D is 4! i.e., 24.Therefore, n (S) = 24.
+Since the number of elements in the sample space of the experiment is 24 all of these outcomes are considered to be equally likely. A sample space for the experiment is
+S = {ABCD, ABDC, ACBD, ACDB, ADBC, A

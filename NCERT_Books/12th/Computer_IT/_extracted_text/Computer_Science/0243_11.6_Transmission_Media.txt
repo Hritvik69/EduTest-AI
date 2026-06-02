@@ -1,0 +1,93 @@
+S eCurity aSpeCtS 231 (D) Heuristics
+Often, a malware infection follows a certain pattern.
+Here, the source code of a suspected program is compared to viruses that are already known and are in the heuristic database. If the majority of the source code matches with any code in the heuristic database, the code is flagged as a possible threat.
+(E) Real-time protection
+Some malware remains dormant or gets activated after some time. Such malware needs to be checked on a real-time basis. In this technique, the anti-malware software keeps running in the background and observes the behavior of an application or file for any suspicious activity while it is being executed i.e. when it resides in the active (main) memory of the computer system.
+12.4 sPaM
+Spam is a broad term and applies to various digital platforms like messaging, forums, chatting, emailing, advertisement, etc. However, the widely recognised form is email spam. Depending on their requirements, organisations or individuals buy or create a mailing list (list of email addresses) and repeatedly send advertisement links and invitation emails to a large number of users. This creates unnecessary junk in the inbox of the receiver’s email and often tricks a user into buying something or downloading a paid software or malware.
+Nowadays, email services like Gmail, Hotmail, etc.
+have an automatic spam detection algorithm that filters emails and makes things easier for the end users. A user can also mark an undetected unsolicited email as
+“spam”, thereby ensuring that such type of email is not delivered into the inbox as normal email in future.
+12.5 hTTP vs hTTPs
+Both the HTTP (Hyper Text Transfer Protocol) and its variant HTTPS (Hyper Text Transfer Protocol Secure)
+are a set of rules (protocol) that govern how data can be transmitted over the WWW (World Wide Web). In other words, they provide rules for the client web browser and servers to communicate.
+HTTP sends information over the network as it is. It does not scramble the data to be transmitted, leaving
+Always look for the “https://” at the beginning of the address (URL)
+of the websites while entering your banking, personal, or other sensitive information.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 232
+Activity 12.1
+Ask your teacher to show you how to enable and disable firewall on your computer.
+it vulnerable to attacks from hackers. Hence, HTTP is sufficient for websites with public information sharing like news portals, blogs, etc. However, when it comes to dealing with personal information, banking credentials and passwords, we need to communicate data more securely over the network using HTTPS. HTTPS encrypts the data before transmission. At the receiver end, it decrypts to recover the original data. The HTTPS based websites require SSL Digital Certificate.
+12.6 Firewall
+Computer firewall is a network security system designed to protect a trusted private network from unauthorised access or traffic originating from an untrusted outside network (e.g., the Internet or different sections of the same network) to which it is connected (Figure 12.5).
+Firewall can be implemented in software, hardware or both. As discussed earlier, a malware like worm has the capability to move across the networks and infect other computers. The firewall acts as the first barrier against malware.
+Firewall
+Figure 12.5: A firewall between two networks
+A firewall acts as a network filter and based on the predefined security rules, it continuously monitors and controls the incoming and outgoing traffic. As an example, a rule can be set in the firewall of a school
+LAN, that a student cannot access data from the finance
+Reprint 2026-27
+S eCurity aSpeCtS 233 server, while the school accountant can access the finance server.
+12.6.1 Types of Firewall
+• Network Firewall: If the firewall is placed between two or more networks and monitors the network traffic between different networks, it is termed as
+Network Firewall.
+• Host-based Firewall: If the firewall is placed on a computer and monitors the network traffic to and from that computer, it is called a host-based firewall.
+12.7 Cookies
+The term "cookie" was derived from the term "magic cookie" used by Unix programmers to indicate a packet of data that a program receives and sends it back unchanged. A computer cookie is a small file or data packet, which is stored by a website on the client’s computer. A cookie is edited only by the website that created it, the client’s computer acts as a host to store the cookie. Cookies are used by the websites to store browsing information of the user. For example, while going through an e-commerce website, when a user adds items to cart, the website usually uses cookies to record the items in the cart. A cookie can also be used to store other user-centric information like login credentials, language preference, search queries, recently viewed web pages, music choice, favorite cuisine, etc., that helps in enhancing the user experience and making browsing time more productive.
+Depending upon their task, there are different types of cookies. Session cookies keep track of the current session and even terminate the session when there is a time-out (banking website). So, if you accidentally left your e-banking page open, it will automatically close after the time-out. Similarly, authentication cookies are used by a website to check if the user is previously logged in (authenticated) or not. This way, you don’t need to login again and again while visiting different web pages or links of the same website. You might have also noticed that certain information like your Name,
+Address, Contact, D.O.B, etc. automatically fills up while filling an online form. This auto-fill feature is also implemented by websites using cookies.
+Assume students in a class are to finish their project. For this, the access to the Internet has also been given. To ensure maximum output i.e timely completion, can you utilise Firewall to prevent distraction while surfing the net?
+Activity 12.2
+Open your internet browser and check the settings for cookies.
+Also, try to locate some cookie files on your computer
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 234
+A hacktivist is a hacker with an aim to bring about political and social change.
+12.7.1 Threats due to Cookies
+Usually, cookies are used for enhancing the user’s browsing experience and do not infect your computer with malware. However, some malware might disguise as cookies e.g. “supercookies”. There is another type of cookie known as “Zombie cookie” that gets recreated after being deleted. Some third-party cookies might share user data without the consent of the user for advertising or tracking purposes. As a common example, if you search for a particular item using your search engine, a third-party cookie will display advertisements showing similar items on other websites that you visit later. So, one should be careful while granting permission to any websites to create and store cookies on the user computer.
+12.8 haCkers and CraCkers
+Hackers and crackers are people having a thorough knowledge of the computer systems, system software (operating system), computer networks, and programming. They use this knowledge to find loopholes and vulnerabilities in computer systems or computer networks and gain access to unauthorised information.
+In simple terms, a hacker is a person that is skilled enough to hack or take control of a computer system.
+Depending on the intent, there are different types of hackers.
+12.8.1 White Hats: Ethical Hacker
+If a hacker uses its knowledge to find and help in fixing the security flaws in the system, its termed as White
+Hat hacker. These are the hackers with good intentions.
+They are actually security experts. Organisations hire ethical or white hat hackers to check and fix their systems for potential security threats and loopholes.
+Technically, white hats work against black hats.
+12.8.2 Black Hats: Crackers
+If hackers use their knowledge unethically to break the law and disrupt security by exploiting the flaws and loopholes in a system, then they are called black hat hackers.
+12.8.3 Grey Hats
+The distinction between different hackers is not always clear. There exists a grey area in between, which
+Reprint 2026-27
+S eCurity aSpeCtS 235 represents the class of hackers that are neutral, they hack systems by exploiting its vulnerabilities, but they don’t do so for monetary or political gains. The grey hats take system security as a challenge and just hack systems for the fun of it.
+12.9 neTwork seCuriTy ThreaTs
+12.9.1 Denial of Service
+Denial of Service (DoS) is a scenario, wherein an attacker (Hacker) limits or stops an authorised user to access a service, device, or any such resource by overloading that resource with illegitimate requests. The DoS attack floods the victim resource with traffic, making the resource appear busy. If attackers carry out a DoS attack on a website, they will flood it with a very large number of network packets by using different IP addresses.
+This way, the web server would be overloaded and will not be able to provide service to a legitimate user. The users will think that the website is not working, causing damage to the victim’s organisation. Same way, DoS attacks can be done on resources like email servers, network storage, disrupting connection between two machines or disrupting the state of information (resetting of sessions).
+If a DoS attack makes a server crash, the server or resource can be restarted to recover from the attack.
+However, a flooding attack is difficult to recover from, as there can be some genuine legitimate requests in it as well.
+A variant of DoS, known as Distributed Denial of
+Service (DDoS) is an attack, where the flooded requests come from compromised computer (Zombies) systems distributed across the globe or over a very large area.
+The attacker installs a malicious software known as Bot on the Zombie machines, which gives it control over these machines. Depending upon the requirement and availability, the attacker activates a network of these
+Zombie computers known as Bot-Net to carry out the
+DDoS attack. While as a simple DoS attack may be countered by blocking requests or network packets from a single source, DDoS is very difficult to resolve, as the attack is carried from multiple distributed locations.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 236
+URL Snooping
+It is a software package that downloads and stores a web stream as a file, that can be viewed or used later. The common online video downloaders use the same techniques to download videos from the Web.
+12.9.2 Intrusion Problems
+Network Intrusion refers to any unauthorised activity on a computer network. These activities may involve unauthorised use of network resources (DoS) or threatening the security of the network and the data.
+Network intrusion is a very serious problem and the network administrator needs to devise strategy and implement various security measures to protect the network. We have already discussed some of the intrusion attacks such as DoS, Trojans, and Worms.
+The remaining attacks are briefly discussed below.
+(A) Asymmetric Routing
+The attacker tends to avoid detection by sending the intrusion packets through multiple paths, thereby bypassing the network intrusion sensors.
+(B) Buffer Overflow Attacks
+In this attack, the attacker overwrites certain memory areas of the computers within the network with code (set of commands) that will be executed later when the buffer overflow (programming error) occurs. Once the malicious code is executed, an attacker can initiate a
+DoS attack or gain access to the network.
+(C) Traffic Flooding
+It is one of the most trivial methods of network intrusion.
+It involves flooding the network intrusion detection system with message packets. This huge load leaves the network detection system incapable of monitoring the packets adequately. The hacker takes advantage of this congested and chaotic network environment to sneak into the system undetected.
+12.9.3 Snooping
+Snooping means secretly listening to a conversation.
+In the context of networking, it refers to the process of secret capture and analysis of network traffic. It is a computer program or utility that has a network traffic monitoring capability. In this attack, the hacker taps or listens to a channel of communication by picking all of the traffic passing through it. Once the network packets are analysed by the snooping device or software, it reproduces the exact traffic packets and places them back in the channel, as if nothing has happened. So, if the data that is being sent over the network is not encrypted, it is vulnerable to snooping and eventually
+Reprint 2026-27

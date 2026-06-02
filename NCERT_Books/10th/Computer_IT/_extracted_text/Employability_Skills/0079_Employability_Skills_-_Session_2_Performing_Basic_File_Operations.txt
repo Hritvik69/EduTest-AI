@@ -1,0 +1,67 @@
+InformatIon and CommunICatIon teChnology SkIllS 69
+• After you have performed all the activities, another student shuts down the computer.
+• Other students watch and give feedback on what was done right and which tasks can be improved.
+Activity 2
+Group Practice: Using the Keyboard
+Material required
+Computer
+Procedure
+• Form groups depending on the number of computers available.
+• Open a text editor in
+Ubuntu by typing ‘editor’ in the search bar and then selecting the Text Editor. You can also open Notepad in
+Windows by typing Notepad on the Windows Search bar and then selecting Notepad from the search result.
+• One student positions his or her hands on the keyboard as shown in Figure 3.12 and types the following paragraph in the text editor.
+“People use computers at work, at school and at home every day.
+In factories computers are used to control the manufacturing process and in offices to make documents, such as reports. We also use computers for sending e-mails and playing games.”
+Now, another student in the group will check the paragraph and correct the grammar and spelling mistakes.
+Check Your Progress
+A. Multiple choice questions
+Read the questions carefully and circle the letter (a), (b), (c) or (d) that best answers the question.
+1. Which of the following functions is not performed using a mouse?
+(a) Turn on (b) Hover (c) Right click (d) Drag and Drop
+2. What is the term used when you press and hold the left mouse key and move the mouse around?
+(a) Highlighting (b) Dragging (c) Selecting (d) Moving
+Figure 3.12 Typing
+E mployability SkillS – ClaSS X 70
+3. Here are the steps that take place when starting a computer. Rearrange the steps in the correct order.
+(a) Desktop appears after login (b) Login screen appears (c) Power on Self-Test (POST) starts (d) Operating system starts (e) Welcome screen appears
+B. Subjective questions
+1. What is the function of the ENTER key?
+2. How will you prevent others from using your computer?
+What Have You Learnt?
+After completing this session, you will be able to
+• demonstrate the process of starting a computer.
+• identify the various keys on a keyboard and their associated functions.
+• perform various mouse functions.
+S eSSion 2: performing B aSic file operationS
+Basic File Operations
+In any school (or office), each teacher has a separate cabinet as shown in Figure 3.13 where they keep the files of different students or classes on separate shelves.
+Similarly, information on a computer is stored in electronic files, which can be put into separate folders.
+It is easier to manage the electronic files as they can be simply copied, moved, renamed or even deleted.
+Files and Folders
+All information stored in a computer is kept in files. Different types of files store different types of information. Each file is given a file name and has a file name extension that identifies the file type. The file name and file name extension are separated by a period or a ‘dot’. For example, a document (e.g., Neha) created using Notepad (a type of computer application to create simple text files) will have the extension .txt. There are other types like .doc, .xls, etc. An image file usually has an extension .jpg while a sound file usually has .mp3.
+A folder is a location where a group of files can be stored.
+Figure 3.13 File Cabinet
+InformatIon and CommunICatIon teChnology SkIllS 71
+Creating a File (Using a Text Editor in Ubuntu)
+When a student, Neha, joins a class, the teacher creates a file on the computer to store Neha’s information, such as name, address, phone number, etc. Let us create a new file using a text editor in Ubuntu.
+• To open a text editor, type ‘editor’ in the search dialog box. Then double-click the text editor option as shown in Figures 3.14 and 3.15. This will open a blank document. In Windows, you can open Notepad and type in the text.
+• Here you can add text, such as ‘Neha Tiwari
+Shakti Nagar, New Delhi, 7856453451’
+• To save the file click Save. In the Save As dialog box, browse to the Desktop folder, type the name as ‘Neha’ and click Save as shown in Figure 3.16.
+Figure 3.14 Opening Text Editor
+Figure 3.15 Text Editor Figure 3.16 Saving a File
+E mployability SkillS – ClaSS X 72
+Creating a Folder (in Ubuntu)
+Folder is a location where a group of files can be stored.
+For example, we can create a folder where all the files for all the students can be stored.
+Let us create a new folder in Ubuntu.
+• To open file explorer in Ubuntu, click Files option on the left as shown in Figure 3.7.
+• File explorer opens up as shown in Figure 3.18.
+• To create a folder:
+(a) Choose a location where the folder has to be created for example ‘Desktop’.
+(b) Right-click and then choose the ‘New Folder’.
+(c) Type the name of the folder as ‘Demo’.
+Figure 3.17: Choose the File Option Figure 3.18: File Explorer
+Figure 3.19: Right-click on Desktop and click New Folder
+Figure 3.20: Type Demo as the name of the new folder

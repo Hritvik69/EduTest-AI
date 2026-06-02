@@ -1,0 +1,57 @@
+S taCk 51
+• Stack is a data structure in which insertion and deletion is done from one end only, usually referred to as TOP.
+• Stack follows LIFO principle using which an element inserted in the last will be the first one to be out.
+• PUSH and POP are two basic operations performed on a stack for insertion and deletion of elements, respectively.
+• Trying to pop an element from an empty stack results into a special condition underflow.
+• In Python, list is used for implementing a stack and its built-in-functions append and pop are used for insertion and deletion, respectively.
+Hence, no explicit declaration of TOP is needed.
+• Any arithmetic expression can be represented in any of the three notations viz. Infix, Prefix and Postfix.
+• While programming, Infix notation is used for writing an expression in which binary operators are written in between the operands.
+• A single traversal from left to right of Prefix/
+Postfix expression is sufficient to evaluate the expression as operators are correctly placed as per their order of precedence.
+• Stack is commonly used data structure to convert an Infix expression into equivalent Prefix/Postfix notation.
+• While conversion of an Infix notation to its equivalent Prefix/Postfix notation, only operators are PUSHed onto the Stack.
+• When evaluating any Postfix expression using
+Stack, only operands are PUSHed onto it.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 52
+1. State TRUE or FALSE for the following cases:
+a) Stack is a linear data structure b) Stack does not follow LIFO rule c) PUSH operation may result into underflow condition d) In POSTFIX notation for expression, operators are placed after operands
+2. Find the output of the following code:
+a) result=0 numberList=[10,20,30] numberList.append(40)
+result=result+numberList.pop()
+print(“Result=”,result)
+b) answer=[]; output='' answer.append('T')
+answer.append('A')
+answer.append('M')
+ch=answer.pop()
+output=output+ch ch=answer.pop()
+output=output+ch print(“Result=”,output)
+3. Write a program to reverse a string using stack.
+4. For the following arithmetic expression:
+((2+3)*(4/2))+2
+Show step-by-step process for matching parentheses using stack data structure.
+5. Evaluate following postfix expressions while showing status of stack after each operation given A=3, B=5,
+C=1, D=4 a) A B + C * b) A B * C / D *
+6. Convert the following infix notations to postfix notations, showing stack and string contents at each step.
+a) A + B - C * D b) A * (( C + D)/E)
+7. Write a program to create a Stack for storing only odd numbers out of all the numbers entered by the user.
+Display the content of the Stack along with the largest odd number in the Stack. (Hint. Keep popping out the elements from stack and maintain the largest element retrieved so far in a variable. Repeat till Stack is empty)
+exercise
+Reprint 2026-27
+In this Chapter
+» Introduction to Queue
+» Operations on Queue
+» Implementation of Queue using Python
+» Introduction to Deque
+» Implementation of Deque using Python
+“We could say we want the Web to reflect a vision of the world where everything is done democratically. To do that, we get computers to talk with each other in such a way as to promote that ideal.”
+— Tim Berners-Lee
+4.1 IntroductIon to Queue
+In the previous chapter we learned about a data structure called Stack, which works on Last-In-
+First-Out (LIFO) principle. In this chapter, we will learn about another data structure called Queue which works on First-In-First-Out (FIFO) principle.
+Queue is an ordered linear list of elements, having different ends for adding and removing elements
+Examples of queue in our everyday life include students standing in a queue for morning assembly, customers forming a queue at the cash counter in a bank (Figure 4.1), vehicles queued at fuel pumps (Figure 4.2), etc.
+Figure 4.1: Queue of people at a bank
+Next Cashier
+Reprint 2026-27

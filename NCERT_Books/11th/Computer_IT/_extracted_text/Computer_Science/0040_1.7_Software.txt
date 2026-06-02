@@ -1,0 +1,123 @@
+Computer SCienCe – ClaSS xi 28 called encoding. It is important to understand why code value 65 is used for the key “A” and not any other value? Is it same for all the keyboards irrespective of their make?
+Yes, it is same for all the keyboards. This has been possible because of standard encoding schemes where each letter, numeral and symbol is encoded or assigned a unique code. Some of the well-known encoding schemes are described in the following sections.
+2.1.1 American Standard Code for Information
+Interchange (ASCII)
+In the early 1960s, computers had no way of communicating with each other due to different ways of representing keys of the keyboard. Hence, the need for a common standard was realised to overcome this shortcoming. Thus, encoding scheme
+ASCII was developed for standardising the character representation. ASCII is still the most commonly used coding scheme.
+Initially ASCII used 7 bits to represent characters.
+Recall that there are only 2 binary digits (0 or 1).
+Therefore, total number of different characters on the
+English keyboard that can be encoded by 7-bit ASCII code is 27 = 128. Table 2.1 shows some printable characters for ASCII code. But ASCII is able to encode character set of English language only.
+Example 2.2 Encode the word DATA and convert the encoded value into binary values which can be understood by a computer.
+Table 2.1 ASCII code for some printable characters
+Character Decimal Value Character Decimal Value Character Decimal Value
+Space 32 @ 64 ` 96
+! 33 A 65 a 97
+” 34 B 66 b 98
+# 35 C 67 c 99
+$ 36 D 68 d 100
+% 37 E 69 e 101
+& 38 F 70 f 102
+‘ 39 G 71 g 103 ( 40 H 72 h 104
+) 41 I 73 i 105
+Cipher means something converted to a coded form to hide/conceal it from others. It is also called encryption (converted to cipher) and sent to the receiver who in turn can decrypt it to get back the actual content.
+Reprint 2026-27
+E ncoding SchEmES and numbEr SyStEm 29
+• ASCII value of D is 68 and its equivalent 7-bit binary code = 1000100
+• ASCII value of A is 65 and its equivalent 7-bit binary code = 1000001
+• ASCII value of T is 84 and its equivalent 7-bit binary code = 1010100
+• ASCII value of A is 65 and its equivalent 7-bit binary code = 1000001
+Replace each alphabet in DATA with its ASCII code value to get its equivalent ASCII code and with 7-bit binary code to get its equivalent binary number as shown in
+Table 2.2.
+Activity 2.1
+Explore and list down two font names for typing in any three
+Indian languages in
+UNICODE.
+Do we need to install some additional tool or font to type in an
+Indian language using
+UNICODE?
+Think and Reflect
+Why a character in
+UTF 32 takes more space than in UTF 16 or UTF 8?
+Think and Reflect
+Table 2.2 ASCII and Binary values for word DATA
+ASCII Code 68 65 84 65
+Binary Code 1000100 1000001 1010100 1000001
+2.1.2 Indian Script Code for Information Interchange
+In order to facilitate the use of Indian languages on computers, a common standard for coding Indian scripts called ISCII was developed in India during mid 1980s.
+It is an 8-bit code representation for Indian languages which means it can represent 2 8 =256 characters. It retains all 128 ASCII codes and uses rest of the codes (128) for additional Indian language character set.
+Additional codes have been assigned in the upper region (160– 255) for the ‘aksharas’ of the language.
+2.1.3 UNICODE
+There were many encoding schemes, for character sets of different languages. But they were not able to communicate with each other, as each of them represented characters in their own ways. Hence, text created using one encoding scheme was not recognised by another machine using different encoding scheme.
+Therefore, a standard called UNICODE has been developed to incorporate all the characters of every written language of the world. UNICODE provides a unique number for every character, irrespective of device (server, desktop, mobile), operating system (Linux, Windows, iOS) or software application (different
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 30 browsers, text editors, etc.). Commonly used UNICODE encodings are UTF-8, UTF-16 and UTF-32. It is a superset of ASCII, and the values 0–128 have the same character as in ASCII. Unicode characters for Devanagari script is shown in Table 2.3. Each cell of the table contains a character along with its equivalent hexadecimal value.
+Table 2.3 Unicode table for the Devanagari script
+2.2 number SyStem
+Till now, we have learnt that each key (representing character, special symbol, function keys, etc.) of the keyboard is internally mapped to an ASCII code following an encoding scheme. This encoded value is further converted to its equivalent binary representation so that the computer can understand it. In Figure 2.1, the code for character “A” belongs to the decimal number system and its equivalent binary value belongs to the binary number system. A number system is a method to represent (write) numbers.
+Every number system has a set of unique characters or literals. The count of these literals is called the radix or base of the number system. The four different number systems used in the context of computer are shown in
+Figure 2.2. These number systems are explained in subsequent sections.
+Reprint 2026-27
+E ncoding SchEmES and numbEr SyStEm 31
+Number systems are also called positional number system because the value of each symbol (i.e., digit and alphabet) in a number depends upon its position within the number. Number may also have a fractional part similar to decimal numbers used by us. The symbol at the right most position in the integer part in a given number has position 0. The value of position (also called position value) in the integer part increases from right to left by 1. On the other hand, the first symbol in the fraction part of the number has position number –1, which decreases by 1 while reading fraction part from left to right. Each symbol in a number has a positional value, which is computed using its position value and the base value of the number system. The symbol at position number 3 in a decimal system with base 10 has positional value 103 . Adding the product of positional value and the symbol value results in the given number.
+Figure 2.3 shows the computation of decimal number
+123.45 using its positional value.
+2.2.1 Decimal Number System
+The decimal number system is used in our day-to-day life. It is known as base-10 system since 10 digits (0 to
+9) are used. A number is presented by its two values
+— symbol value (any digit from 0 to 9) and positional value (in terms of base value). Figure 2.4 shows the integer and fractional part of decimal number 237.25 alongwith computation of the decimal number using positional values.
+Digit 1 2 3 . 4 5
+Position Number 2 1 0 –1 –2
+Positional Value (10)2 (10)1 (10)0 (10)-1 (10)-2
+Add the product of positional value and corresponding digit to get decimal number.
+1 × 102 + 2 × 101 + 3 × 100 + 4 × 10-1 + 5 × 10-2 = (123.45)10
+Figure 2.3: Computation of decimal number using its positional value
+Figure 2.2: Four different number systems
+0–9 and A–F
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 32
+2.2.2 Binary Number System
+The ICs (Integrated Circuits) in a computer are made up of a large number of transistors which are activated by the electronic signals (low/high) they receive. The ON/ high and OFF/low state of a transistor is represented using the two digits 1 and 0, respectively. These two digits 1 and 0 form the binary number system. This system is also referred as base-2 system as it has two digits only. Some examples of binary numbers are
+1001011, 1011.101, 111111.01. A binary number can be mapped to an equivalent decimal number that can be easily understood by the human.
+2.2.3 Octal Number System
+With increase in the value of a decimal number, the number of bits (0/1) in its binary representation also increases. Sometimes, a binary number is so large that it becomes difficult to manage. Octal number system was devised for compact representation of the binary numbers. Octal number system is called base-8 system
+Table 2.4 Binary value for (0–9) digits of decimal number system
+Decimal Binary
+Figure 2.4: Positional value for digits of decimal number represented as power of base 10
+= (237.25)10
+2×10 2 + 3×10 1 + 7×10 0 2×10 -1 + 5×10 -2
+200 + 30 + 7 + .2 .05
+Integer part Fraction Part
+Positive powers of 10 (Integer part) Negative powers of 10 (Fractional part)
+2 3 7 2 5 .
+Base value of a number system is used to distinguish a number in one number system from another number system.
+Base value is written as the subscript of the given number. For example, (70)8 represents 70 as octal number and (70)10 denotes 70 as decimal
+Reprint 2026-27
+E ncoding SchEmES and numbEr SyStEm 33 as it has total eight digits (0-7), and positional value is expressed in powers of 8. Three binary digits (8=23) are sufficient to represent any octal digit.
+Table 2.5 shows the decimal and binary equivalent of 8 octal digits. Examples of octal numbers are (237.05)8 , (13)8 , and (617.24) 8 .
+2.2.4 Hexadecimal Number System
+Hexadecimal numbers are also used for compact representation of binary numbers. It consists of 16 unique symbols (0 – 9, A–F), and is called base-
+16 system. In hexadecimal system, each alphanumeric digit is represented as a group of 4 binary digits because 4 bits (24=16) are sufficient to represent 16 alphanumeric symbols. Note here that the decimal numbers 10 through 15 are represented by the letters
+A through F. Examples of Hexadecimal numbers are (23A.05) 16 , (1C3)16 , (619B.A)16 . Table 2.6 shows decimal and binary equivalent of 16 alphanumeric symbols used in hexadecimal number system.
+Table 2.6 Decimal and binary equivalent of hexadecimal numbers 0–9, A–F
+Hexadecimal Symbol Decimal Value 4-bit Binary Number
+0 0 0000
+1 1 0001
+2 2 0010
+3 3 0011
+4 4 0100
+5 5 0101
+6 6 0110
+7 7 0111
+8 8 1000
+9 9 1001
+A 10 1010
+B 11 1011
+C 12 1100
+D 13 1101
+E 14 1110
+F 15 1111
+Table 2.5 Decimal and binary equivalent of octal numbers 0 – 7
+Octal Digit Decimal
+3 -bit Binary
+Reprint 2026-27

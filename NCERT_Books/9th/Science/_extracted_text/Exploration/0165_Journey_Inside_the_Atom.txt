@@ -1,0 +1,206 @@
+145 Journey Inside the Atom
+Rutherford’s atomic model was better than Thomson’s atomic model in explaining the results of the gold foil experiment.
+However, it had a limitation. It could not explain the stability of the atom.
+B. Limitations of Rutherford’s model
+While the idea of a central nucleus was a major step forward,
+Rutherford’s model could not explain why atoms are stable.
+As you have learnt in Chapter 4, Describing Motion Around Us, a particle moving in a circular path is constantly changing direction, which means it is accelerating. If a negatively charged electron keeps accelerating around the nucleus, it should lose energy. Losing energy would make it spiral inward and eventually fall into the positively charged nucleus (Fig. 8.6). If that really happened, atoms would collapse and would not exist! But in reality, atoms are stable that is why matter around us stays intact. This meant that Rutherford’s model was not completely correct, and a new explanation was needed to describe how electrons remain in motion without collapsing into the nucleus.
+But before we come to that, you need to know about another subatomic particle, the proton, discovered and named by Rutherford.
+C. Discovery of the proton
+Rutherford showed that the nucleus carries positive charge which comes from the particles called protons. Protons are much heavier than electrons and possess a charge equal and opposite to that of electrons.
+For an atom to be electrically neutral, the number of protons must be equal to the number of electrons. For example, a helium atom has 2 protons and 2 electrons, while a sodium atom has 11 protons and 11 electrons. Since the total positive charge equals the total negative charge, the helium or the sodium atoms are also electrically neutral. Similarly, all the atoms are electrically neutral.
+7. Assertion (A): Rutherford concluded that most of the mass of an atom is concentrated in a small region at the centre called the nucleus.
+Reason (R): According to Thomson’s model, electrons are embedded in a uniformly distributed positive charge sphere.
+Choose the correct option:
+(i) Both A and R are true, and R is the correct explanation of A.
+(ii) Both A and R are true, but R is not the correct explanation of A.
+(iii) A is true, but R is false.
+(iv) A is false, but R is true.
+Pause and Ponder
+Fig. 8.6: Spiral path followed by a charged particle on losing energy
+Zealand,
+Rutherford moved to
+Cambridge to work with J. J. Thomson and later became known as the Father of Nuclear
+Physics. He discovered the atomic nucleus and explained how some elements naturally break down, for which he won the 1908 Nobel Prize in
+Chemistry. In 1911, he proposed the nuclear model of the atom. His portrait now appears on New Zealand’s $100 banknote.
+Meet a Scientist
+Exploration|Grade 9 146
+8.2.3 Bohr’s model of the atom
+To explain why atoms are stable, Niels Bohr proposed a new model of the atom in 1913.
+According to Bohr:
+y Electrons do not move randomly around the nucleus but follow fixed circular paths called stationary states, orbits, or shells. In each shell, an electron has a definite amount of energy, so these shells are also called energy levels.
+y These shells are represented by the letters K, L,
+M, N, ... or by the numbers n = 1, 2, 3, 4, ... (Fig. 8.7).
+y Electrons can revolve only in these allowed shells, and not in between them. While moving in a fixed shell, an electron does not lose energy.
+y The first energy level K (n = 1) is the one closest to the nucleus (Fig. 8.7)
+and has the least energy.
+y The energy of these levels increases as we move away from the nucleus. That is, the energy of an electron in the L-shell (n = 2) is more than that of an electron in the K-shell (n = 1). The farther away a shell is from the nucleus, the higher is its energy.
+y An electron can move to another shell by absorbing or releasing a fixed amount of energy equal to the difference between the energies of the two levels.
+y Each shell can hold only a certain number of electrons.
+You may be wondering, how does Bohr’s model explain stability?
+In Bohr’s model, electrons also move in circular paths around the positively charged nucleus, as in Rutherford’s model. But why don’t they lose energy while doing so? Bohr addressed this by introducing the concept of stationary states as a postulate. In a stationary state, the energy of an electron remains constant, even though it is in motion around the nucleus. Bohr’s model could explain many experimental observations and marked a major step in understanding the atomic structure.
+Why are Bohr’s shells called K, L, M, N... and not, A, B, C, D?
+The naming came from early X-ray experiments by the physicist, Charles
+Barkla, who called the first observed X-ray line K. He didn’t start naming from A to leave room for possible discovery of a series earlier than the
+K series, although none were ever found. Bohr adopted the same notation for atomic shells.
+Threads of Curiosity
+Later, even Bohr’s model was found to have limitations, and yet another model, the quantum mechanical model, was proposed.
+You will learn about it in higher grades.
+Fig. 8.7: Energy levels in an
+K-shell (n=1)
+L-shell (n=2)
+M-shell (n=3)
+N-shell (n=4)
+Meet a Scientist
+Niels Bohr was a professor of physics at
+Copenhagen
+University,
+Denmark. He was curious about how atoms exist because the old models could not explain why electrons stay around the nucleus without collapsing. His explanation of the atomic structure provided more clarity. Niels Bohr received the Nobel
+Prize in 1922, for his work on the structure of the
+147 Journey Inside the Atom
+8.3 What Components Contribute to the
+Mass of an Atom?
+Rutherford’s model showed that most of the mass of an atom is concentrated in its nucleus. Electrons that revolve around the nucleus are so light that their mass can be ignored.
+However, something puzzling appeared early in the 20th century. For instance, a hydrogen atom has one proton, whereas a helium atom has two protons, yet the mass of a helium atom is about four times that of a hydrogen atom, not double. This led scientists to wonder whether besides protons, is there something else in the nucleus adding mass without affecting its charge?
+8.3.1 Discovery of the Neutron
+In 1932, this problem was solved by James Chadwick (a student of Ernest Rutherford). He discovered a new subatomic particle with a mass nearly equal to that of a proton but no electrical charge. This neutral particle was named as neutron and is usually represented by the symbol ‘n’. The neutrons are found in the nucleus of all atoms except hydrogen. Thus, the mass of an atom comes mainly from its protons and neutrons packed tightly in the nucleus. This also explains why atoms are heavier than the mass of their total number of protons. Table 8.1 shows the symbols and relative charges of subatomic particles.
+Table 8.1: Symbols and relative charges of subatomic particles
+S.No. Subatomic particle Symbol Relative charge
+1. Electron e – –1
+2. Proton p+ +1
+3. Neutron n0 0
+Lighter atoms often have an equal number of protons and neutrons (like carbon with six each or oxygen with eight each). However, as atoms get heavier, their nuclei have many more neutrons than protons. Iron has 26 protons and 30 neutrons, and by the time we reach uranium, the nucleus has 92 protons and 146 neutrons.
+You may wonder that since all the protons with like charges are squished together in a nucleus why do they not push each other away?
+Think of it this way — every proton inside the nucleus repels every other proton because they all carry positive charge.
+Neutrons being neutral help reduce this repulsion by intervening and increasing the distance between protons, and also by strengthening the force, called the nuclear force, that binds all particles together. So, heavier atoms need many more neutrons to hold everything in the nucleus tightly bound.
+Threads of Curiosity
+Meet a Scientist
+Chadwick,
+Rutherford
+Cavendish
+Laboratory at the University of Cambridge, solved a key puzzle in 1932, when he discovered the neutron. This breakthrough explained atomic mass and earned him the Nobel
+Prize in Physics in 1935.
+The neutron immediately transformed research, enabling scientists to probe nuclear secrets, and sparked a chain of discoveries in understanding and harnessing atomic energy.
+Ready to Go Beyond
+The discovery of the neutron opened a new era in atomic physics.
+Neutrons, being uncharged, can easily penetrate nuclei, leading to breakthroughs, such as the creation of artificial radioactive elements and the splitting of uranium atoms. This gave birth to the ʻatomic ageʼ, allowing the development of both nuclear power and nuclear weapons.
+What if ...
+an atom had no empty space? How would this have affected the size of various objects?
+Exploration|Grade 9 148
+The Bhabha Atomic Research
+Centre (BARC, Fig. 8.8), Mumbai, leads advanced neutron-scattering experiments using reactors, such as Dhruva. This has revealed key insights into materials like superconductors, battery electrodes, and drug molecules, helping develop better medicines, energy storage, and industrial alloys right here in India.
+Research and explore more about Dhruva!
+India's Scientific Contributions
+Fig. 8.8: Bhabha Atomic Research Centre
+By 1869, scientists knew about 69 elements, most of which were found naturally on the Earth. Today, we know about 118 unique chemical elements.
+Some of these are artificially made, and the search for even more continues.
+Now, let us explore how elements began to be represented for the sake of simplicity.
+8.4 Symbols of Elements
+John Dalton realised the need for a standard way to represent elements and compounds to make the study of chemistry easier. In 1803, he introduced the first pictorial symbols to represent the known elements. The Fig. 8.9 shows some of the symbols.
+Fig. 8.9: Symbols of some elements given by Dalton
+Hydrogen Phosphorus Carbon Oxygen
+Copper Sulphur Lead Iron
+Gold Platina Silver Mercury
+In 1813, Berzelius suggested that the symbols of elements should be derived from their Latin names. Thus, came alphabetic chemical symbols.
+Nowadays, the International Union of Pure and Applied Chemistry (IUPAC), an international scientific organisation, approves the names and symbols of elements. Some of the norms of writing these symbols are:
+y Many symbols are the first letter or the first two letters of the name of the element.
+y The first letter of a symbol is always written as a capital letter (uppercase) while the second letter (if there is one) is written as a small letter (lowercase). For example, hydrogen, H; aluminium, Al (not AL);
+cobalt, Co (not CO), etc.
+y Symbols of some elements are formed from the first letter of the name and a letter other than the second letter in the name. For example, chlorine, Cl; zinc, Zn, etc.
+149 Journey Inside the Atom y Symbols of some elements come from their Latin, Greek, or German names rather than English. For example, the symbol for iron is Fe (from
+Latin ferrum), for mercury is Hg (from Greek hydrargyros), and for tungsten is W (from German wolfram).
+y Names and symbols of some commonly used elements are given in
+Table 8.2.
+Table 8.2: Names of some common elements and their symbols
+Name of the element Symbol Name of the element Symbol Name of the element Symbol
+Aluminium Al Copper (Cuprum) Cu Nitrogen N
+Argon Ar Fluorine F Oxygen O
+Barium Ba Gold (Aurum) Au Potassium (Kalium) K
+Boron B Hydrogen H Silicon Si
+Bromine Br Iodine I Silver (Argentum) Ag
+Calcium Ca Iron (Ferrum) Fe Sodium (Natrium) Na
+Carbon C Lead (Plumbum) Pb Sulfur S
+Chlorine Cl Magnesium Mg Uranium U
+Cobalt Co Neon Ne Zinc Zn
+Scientists use these symbols instead of full names because they are internationally recognised and allow scientists worldwide to communicate clearly, regardless of language barriers.
+8. Imagine you are a scientist who has discovered a new element. Name this element after yourself and justify that the symbol you have chosen follows the IUPAC rules.
+9. What problems could arise if every scientist used different symbols for the same element?
+Pause and Ponder
+8.5 Atomic Number
+You have learnt that the atoms of an element are all alike but different from the atoms of other elements. They differ in the number of electrons and protons in them. The number of protons in the nucleus of an atom of an element is known as its atomic number. It is designated by the symbol Z, this number determines the identity of an element and its chemical behaviour.
+Exploration|Grade 9 150
+Since the atom as a whole is neutral, the number of protons in it equals the number of electrons orbiting the nucleus. For example, hydrogen has one proton and one electron, so its atomic number is 1. Helium, with atomic number 2, has 2 protons and 2 electrons.
+Can you now say that elements with different atomic numbers are distinct from each other, and the atomic number uniquely identifies an element? Observe Fig. 8.10.
+How many neutrons and protons are present in a lithium atom, and what is its atomic number?
+8.6 Mass Number
+As stated earlier, helium has two protons, but its mass is about four times that of a proton. The total number of protons and neutrons present in the nucleus of an atom is called its mass number, and is denoted by A. The protons and neutrons present in the nucleus are called nucleons.
+Mass number = Number of protons + Number of neutrons
+Since, the mass of a neutron is roughly equal to that of a proton, the mass of a helium atom can be accounted by two protons and two neutrons. A few examples are given in
+Table 8.3.
+Table 8.3: Mass number of different elements
+Element Protons (p+) Neutrons (n0) Mass number (A)
+Hydrogen 1 0 1
+Helium 2 2 4
+Lithium 3 4 7
+The electron, in comparison, has almost negligible mass, and hence, can be ignored in calculations.
+In the standard notation for an atom, the symbol, the atomic number (Z) and mass number (A) of the element are written as —
+Symbol of element
+Mass Number
+Atomic Number
+For example, the symbol for carbon is C, its atomic number is 6, and its mass number is 12. In notation, it would be written as —
+So far, you know that protons and neutrons are located in the nucleus of an atom, while electrons move around the nucleus. Now, let us explore how electrons are arranged around the nucleus.
+Fig. 8.10: Neutrons and protons in the nucleus
+Electron
+A piece of
+Neutrons and protons
+Pause and Ponder
+10. An atom with an atomic number of 26 has 56 nucleons. Find out its number of electrons, protons and neutrons.
+11. The nucleus of an atom contains 20 protons. If its mass number is 41, find the number of neutrons
+12. An atom has 18 neutrons and an atomic number of 17. What is its mass
+13. An atom 23A has 11 electrons. Find the number of neutrons in it.
+151 Journey I nside the Atom
+8.7 How Are Electrons Distributed in Different
+Energy Levels?
+Bohr and Bury suggested the following rules:
+y The maximum number of electrons present in a shell is given by the formula 2n², where ‘n’ is the number of the shell (Fig. 8.7). Hence, K-shell (n = 1) 2×1² = 2, can accommodate 2 electrons, L-shell (n = 2) 2×2² = 8 electrons, and M-shell (n = 3) 2×3² = 18 electrons.
+y The maximum number of electrons that can be accommodated in the outermost shell is 8 (the first shell can accommodate a maximum of two electrons).
+y Electrons are filled in these shells in a stepwise manner, starting from the one closest to the nucleus and moving outward, i.e., in the order K,
+L, M, N, … The L-shell will be filled only after the K-shell is complete, and
+To understand the placement of electrons in atoms, let us begin with hydrogen (atomic number 1). The only electron in it has to be in the K-shell.
+The electron distribution for hydrogen (H) is depicted in Fig. 8.11. Helium contains two protons in its nucleus and two electrons. In which way will the two electrons be arranged in its atomic shell?
+8.7.1 Building up atoms
+Let us create two-dimensional (2-D) atomic structures for various elements by adding one electron to the appropriate energy level each time atomic number is increased by 1. The distribution of electrons among various shells is known as the electronic configuration of the atom (Fig. 8.11).
+Table 8.4 lists the symbols, atomic numbers, number of protons, number of neutrons, number of electrons, and the electron distribution in the shells of the first eighteen elements.
+Na Mg Al Si P S Cl Ar
+Fig. 8.11: Schematic atomic structure of the first eighteen elements showing how the electrons are filled in the K, L and M shells
+Exploration|Grade 9 152
+Table 8.4: Symbols, atomic numbers, number of protons, number of neutrons, number of electrons, and the electronic distribution of atoms of the first eighteen elements the element Symbol Atomic of protons
+Number of neutrons of electrons
+Distribution
+Hydrogen H 1 1 - 1 1 - - -
+Helium He 2 2 2 2 2 - - -
+Lithium Li 3 3 4 3 2 1 - -
+Beryllium Be 4 4 5 4 2 2 - -
+Boron B 5 5 6 5 2 3 - -
+Carbon C 6 6 6 6 2 4 - -
+Nitrogen N 7 7 7 7 2 5 - -
+Oxygen O 8 8 8 8 2 6 - -
+Fluorine F 9 9 10 9 2 7 - -
+Neon Ne 10 10 10 10 2 8 - -
+Sodium Na 11 11 12 11 2 8 1 -
+Magnesium Mg 12 12 12 12 2 8 2 -
+Aluminium Al 13 13 14 13 2 8 3 -
+Silicon Si 14 14 14 14 2 8 4 -
+Phosphorus P 15 15 16 15 2 8 5 -
+Sulfur S 16 16 16 16 2 8 6 -
+Chlorine Cl 17 17 18 17 2 8 7 -
+Argon Ar 18 18 22 18 2 8 8 -
+14. Identify the number of electrons in the outermost shell of the following elements:
+(iii) 28
+15. Write the electronic configuration of the elements having atomic numbers 12,
+16 and 18.
+16. Solve this riddle: I am an atom with a mass number of 23 and 11 protons. I am a soft metal and react vigorously with water. Who am I and how many neutrons do I have? You can also create one such riddle.
+Pause and Ponder
+153 Journey Inside the Atom
+8.8 Combining Capacity of an Atom: Valency
+You have learnt that atoms of the same or different elements can combine to form molecules. The number of atoms of hydrogen or chlorine with which one atom of an element can combi

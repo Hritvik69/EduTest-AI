@@ -1,0 +1,140 @@
+Indian Constitution at Work instance, reducing air or sound pollution or investigating cases of corruption or bringing about electoral reform is not exactly the duty of the Judiciary. These are matters to be handled by the administration under the supervision of the legislatures. Therefore, some people feel that judicial activism has made the balance among the three organs of government very delicate. Democratic government is based on each organ of government respecting the powers and jurisdiction of the others. Judicial activism may be creating strains on this democratic principle.
+JUDICIARY AND RIGHTS
+We have already seen that the judiciary is entrusted with the task of protecting rights of individuals. The Constitution provides two ways in which the Supreme Court can remedy the violation of rights.
+± First it can restore fundamental rights by issuing writs of Habeas
+Corpus; mandamus etc. (article 32). The High Courts also have the power to issue such writs (article 226).
+± Secondly, the Supreme Court can declare the concerned law as unconstitutional and therefore non-operational (article 13).
+YOU ARE THE JUDGE
+A group of citizens from a city have approached the court through a PIL asking for an order to the city municipal authorities to remove slums and beautify the city in order to attract investors to the city. They argue that this is in the ‘public interest.’ The residents of the slum localities have responded by saying that this will encroach on their right to life. They argue that right to life is more central to ‘public interest’ than the right to a clean city.
+Imagine that you are the judge.
+Write a judgement deciding if the PIL involves ‘public interest’.
+Reprint 2026-27
+Chapter 6: Judiciary
+Together these two provisions of the Constitution establish the Supreme Court as the protector of fundamental rights of the citizen on the one hand and interpreter of Constitution on the other. The second of the two ways mentioned above involves judicial review.
+Perhaps the most important power of the Supreme
+Court is the power of judicial review. Judicial Review means the power of the Supreme Court (or High Courts)
+to examine the constitutionality of any law if the Court arrives at the conclusion that the law is inconsistent with the provisions of the Constitution, such a law is declared as unconstitutional and inapplicable. The term judicial review is nowhere mentioned in the Constitution. However, the fact that India has a written constitution and the
+Supreme Court can strike down a law that goes against fundamental rights, implicitly gives the Supreme Court the power of judicial review.
+Besides, as we saw in the section on jurisdiction of the
+Supreme Court, in the case of federal relations too, the
+Supreme Court can use the review powers if a law is inconsistent with the distribution of powers laid down by the Constitution. Suppose, the central government makes a law, which according to some States, concerns a subject from the State list. Then the States can go to the Supreme
+Court and if the court agrees with them, it would declare that the law is unconstitutional. In this sense, the review power of the Supreme Court includes power to review legislations on the ground that they violate fundamental rights or on the ground that they violate the federal distribution of powers. The review power extends to the laws passed by State legislatures also.
+Together, the writ powers and the review power of the
+Court make judiciary very powerful. In particular, the review power means that the judiciary can interpret the
+Constitution and the laws passed by the legislature. Many people think that this feature enables the judiciary to protect the Constitution effectively and also to protect the rights of citizens. The practice of entertaining PILs has further added to the powers of the judiciary in protecting rights of citizens.
+I think I’d rather become a judge! Then, I won’t have to worry about elections and public support, and can still have really lots of power.
+Reprint 2026-27
+Indian Constitution at Work
+Do you remember that in the chapter on rights we mentioned the right against exploitation? This right prohibits forced labour, trade in human flesh and prohibits employment of children in hazardous jobs. But the question is: how could those, whose rights were violated, approach the court? PIL and judicial activism made it possible for courts to consider these violations. Thus, the court considered a whole set of cases: the blinding of the jail inmates by the police, inhuman working conditions in stone quarries, sexual exploitation of children, and so on. This trend has made rights really meaningful for the poor and disadvantaged sections.
+Did you know that the practice of public interest litigation is now becoming more and more acceptable in many other countries?
+While many courts across the world, particularly in South Asia and Africa practice some form of judicial activism comparable to that of the Indian judiciary, the constitution of South Africa has incorporated public interest litigation in its bill of rights. Thus, in South Africa, it is a fundamental right of the citizen to bring before the Constitutional Court, cases of violation of other persons’
+Check your progress
+± When does the Court use the review powers?
+± What is the difference between judicial review and writ?
+JUDICIARY AND PARLIAMENT
+Apart from taking a very active stand on the matter of rights, the court has been active in seeking to prevent subversion of the
+Constitution through political practice. Thus, areas that were considered beyond the scope of judicial review such as powers of the
+President and Governor were brought under the purview of the
+Reprint 2026-27
+Chapter 6: Judiciary
+There are many other instances in which the Supreme Court actively involved itself in the administration of justice by giving directions to executive agencies. Thus, it gave directions to CBI to initiate investigations against politicians and bureaucrats in the hawala case, the Narasimha Rao case, illegal allotment of petrol pumps case etc. You may have heard about some of these cases.
+Many of these instances are the products of judicial activism.
+The Indian Constitution is based on a delicate principle of limited separation of powers and checks and balances. This means that each organ of the government has a clear area of functioning. Thus, the
+Parliament is supreme in making laws and amending the
+Constitution, the executive is supreme in implementing them while the judiciary is supreme in settling disputes and deciding whether the laws that have been made are in accordance with the provisions of the Constitution. Despite such clear cut division of power the conflict between the Parliament and judiciary, and executive and the judiciary has remained a recurrent theme in Indian politics.
+We have already mentioned the differences that emerged between the Parliament and the judiciary over right to property and the
+Parliament’s power to amend the Constitution. Let us recapitulate that briefly:
+Immediately after the implementation of the Constitution began, a controversy arose over the Parliament’s power to restrict right to property. The Parliament wanted to put some restrictions on the right to hold property so that land reforms could be implemented.
+The Court held that the Parliament cannot thus restrict fundamental rights. The Parliament then tried to amend the Constitution. But the
+Court said that even through an amendment, a fundamental right cannot be abridged.
+The following issues were at the centre of the controversy between the Parliament and the judiciary.
+± What is the scope of right to private property?
+± What is the scope of the Parliament’s power to curtail, abridge or abrogate fundamental rights?
+± What is the scope of the Parliament’s power to amend the constitution?
+± Can the Parliament make laws that abridge fundamental rights while enforcing directive principles?
+Reprint 2026-27
+Indian Constitution at Work
+During the period 1967 and 1973, this controversy became very serious. Apart from land reform laws, laws enforcing preventive detention, laws governing reservations in jobs, regulations acquiring private property for public purposes, and laws deciding the compensation for such acquisition of private property were some instances of the conflict between the legislature and the judiciary.
+In 1973, the Supreme Court gave a decision that has become very important in regulating the relations between the Parliament and the Judiciary since then. This case is famous as the Kesavananda
+Bharati case. In this case, the Court ruled that there is a basic structure of the Constitution and nobody—not even the Parliament (through amendment)—can violate the basic structure. The Court did two more things. First, it said that right to property (the disputed issue) was not part of basic structure and therefore could be suitably abridged. Secondly, the Court reserved to itself the right to decide whether various matters are part of the basic structure of the
+Constitution. This case is perhaps the best example of how judiciary uses its power to interpret the Constitution.
+This ruling has changed the nature of conflicts between the legislature and the judiciary. As we studied earlier, the right to property was taken away from the list of fundamental rights in 1979
+“While there can be no two opinions on the need for the maintenance of judicial independence, ...it is also necessary to keep in view one important principle. The doctrine of independence is not to be raised to the level of a dogma so as to enable the judiciary to function as a kind of super -legislature or super - executive. The judiciary is there to interpret the Constitution or adjudicate upon the rights...”
+Alladi Krishnaswami Ayyar, CAD, Vol. XI, p. 837, 23 November 1949
+Reprint 2026-27
+Chapter 6: Judiciary and this also helped in changing the nature of the relationship between these two organs of government.
+Some issues still remain a bone of contention between the two — can the judiciary intervene in and regulate the functioning of the legislatures? In the parliamentary system, the legislature has the power to govern itself and regulate the behaviour of its members. Thus, the legislature can punish a person who the legislature holds guilty of breaching privileges of the legislature. Can a person who is held guilty for breach of parliamentary privileges seek protection of the courts? Can a member of the legislature against whom the legislature has taken disciplinary action get protection from the court? These issues are unresolved and are matters of potential conflict between the two. Similarly, the Constitution provides that the conduct of judges cannot be discussed in the
+Parliament. There have been several instances where the
+Parliament and State legislatures have cast aspersions on the functioning of the judiciary. Similarly, the judiciary too has criticised the legislatures and issued instructions to the legislatures about the conduct of legislative business. The legislatures see this as violating the principle of parliamentary sovereignty.
+These issues indicate how delicate the balance between any two organs of the government is and how important it is for each organ of the government in a democracy to respect the authority of others.
+Check your progress
+The main issues in the conflict between the judiciary and the Parliament have
+± Appointment of judges
+± Salaries and allowances of judges
+± Scope of Parliament’s power to amend the Constitution
+± Interference by the Parliament in the functioning of the judiciary
+Why can’t the Court tell us once and for all what are those aspects that are ‘basic structure’ of the Constitution?
+Reprint 2026-27
+Indian Constitution at Work
+Conclusion
+In this chapter, we have studied the role of the judiciary in our democratic structure. In spite of the tensions that arose from time to time between the judiciary and the executive and the legislature, the prestige of the judiciary has increased considerably. At the same time, there are many more expectations from the judiciary.
+Ordinary citizens also wonder how it is possible for many people to get easy acquittals and how witnesses change their testimonies to suit the wealthy and the mighty. These are some issues about which our judiciary is concerned too.
+You have seen in this chapter that judiciary in India is a very powerful institution. This power has generated much awe and many hopes from it. Judiciary in
+India is also known for its independence. Through various decisions, the judiciary has given new interpretations to the
+Constitution and protected the rights of citizens. As we saw in this chapter, democracy hinges on the delicate balance of power between the judiciary and the
+Parliament and both institutions have to function within the limitations set by the
+Constitution.
+How active is the judiciary in trying to curb corruption in public life?
+READ A CARTOON
+R K Laxman in The Times of India.
+Reprint 2026-27
+Chapter 6: Judiciary
+Reprint 2026-27
+Indian Constitution at Work
+Exercises
+1. What are the different ways in which the independence of the judiciary is ensured? Choose the odd ones out.
+Chief Justice of the Supreme Court is consulted in the appointment of other judges of Supreme Court.
+Judges are generally not removed before the age of retirement.
+Judge of a High Court cannot be transferred to another High
+Parliament has no say in the appointment of judges.
+2. Does independence of the judiciary mean that the judiciary is not accountable to any one? Write your answer in not more than 100
+3. What are the different provisions in the constitution in order to maintain the independence of judiciary?
+4. Read the news report below and identify the following aspects:
+√ What is the case about?
+√ Who has been the beneficiary in the case?
+√ Who is the petitioner in the case?
+√ Visualise what would have been the different arguments put forward by the company.
+√ What arguments would the farmers have put forward?
+Supreme Court orders REL to pay Rs 300 crore to Dahanu
+Our Corporate Bureau 24 March 2005
+Mumbai: The Supreme Court has ordered Reliance Energy to pay
+Rs. 300 crore to farmers who grow the chikoo fruit in the Dahanu area outside Mumbai. The order comes after the chikoo growers petitioned the court against the pollution caused by Reliance’s thermal power plant.
+Dahanu, which is 150 km from Mumbai, was a self-sustaining agricultural and horticultural economy known for its fisheries and forests just over a decade ago, but was devastated in 1989 when a thermal power plant came into operation in the region.
+The next year, this fertile belt saw its first crop failure. Now, 70
+Reprint 2026-27
+Chapter 6: Judiciary per cent of the crop of what was once the fruit bowl of Maharashtra is gone. The fisheries have shut and the forest cover has thinned.
+Farmers and environmentalists say that fly ash from the power plant entered ground water and polluted the entire eco-system.
+The Dahanu Taluka Environment Protection Authority ordered the thermal station to set up a pollution control unit to reduce sulphur emissions, and in spite of a Supreme Court order backing the order the pollution control plant was not set up even by 2002.
+In 2003, Reliance acquired the thermal station and re-submitted a schedule for installation process in 2004. As the pollution control plant is still not set up, the Dahanu Taluka Environmental
+Protection Authority asked Reliance for a bank guarantee of Rs.
+300 crores.
+5. Read the following news report and,
+√ Identify the governments at different levels
+√ Identify the role of Supreme Court
+√ What elements of the working of judiciary and executive can you identify in it?
+√ Identify the policy issues, matters related to legislation, implementation and interpretation of the law involved in this
+Centre, Delhi join hands on CNG issue
+By Our Staff Reporter, The Hindu 23 September 2001
+NEW DELHI, SEPT. 22. The Centre and the Delhi Government today agreed to jointly approach the Supreme Court this coming week… for phasing out of all non-CNG commercial vehicles in the Capital. They also decided to seek a dual fuel policy for the city instead of putting the entire transportation system on the single-fuel mode “which was full of dangers and would result in disaster.’’
+It was also decided to discourage the use of CNG by private vehicle owners in the Capital. Both governments would press for allowing the use of 0.05 per cent low sulphur diesel for running of buses in the Capital. In addition, it would be pleaded before the
+Court that all commercial vehicles, which fulfil the Euro-II standards, should be allowed to ply in the city. Though both the
+Centre and the State would file separate affidavits, these would contain common points. The Centre would also go out and support the Delhi Government’s stand on the issues concerning CNG.
+Reprint 2026-27
+Indian Constitution at Work
+These decisions were taken at a meeting between the Delhi Chief
+Minister, Ms. Sheila Dikshit, and the Union Petroleum and Natural
+Gas Minister, Mr. Ram Naik.
+Ms. Dikshit said the Central Government would request the court that in view of the high powered Committee appointed under
+Dr. R.A. Mashelkar to suggest an “Auto Fuel Policy”’ for the entire country, it would be appropriate to extend the deadline as it was not possible to convert the entire 10,000-odd bus fleet into CNG during the prescribed time frame. The Mashelkar Committee is expected to submit its report within a period of six months.
+The Chief Minister said time was required to implement the court directives. Referring to the coordinated approach on the issue, Ms. Dikshit said this would take into account the details about the number of vehicles to be run on CNG, eliminating long queues outside CNG filling stations, the CNG fuel requirements of Delhi and the ways and means to implement the directive of the court.
+The Supreme Court had …refu

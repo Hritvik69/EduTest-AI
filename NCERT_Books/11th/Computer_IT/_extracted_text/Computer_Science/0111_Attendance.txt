@@ -1,0 +1,62 @@
+GettinG Started with Python 99
+In this manner
+P y t h o n makes the a s s i g n m e n t effective by copying only the reference, and not the
+>>> num1
+= num2 +
+This statement 1 num1 = num2 + 100 links the variable num1 to a new object stored at memory location number say 2200 having a value 400. As num1 is an integer, which is an immutable type, it is rebuilt, as shown in Figure 5.10.
+5.7.7 Deciding Usage of Python Data Types
+It is preferred to use lists when we need a simple iterable collection of data that may go for frequent modifications.
+For example, if we store the names of students of a class in a list, then it is easy to update the list when some new students join or some leave the course. Tuples are used when we do not need any change in the data. For example, names of months in a year. When we need uniqueness of elements and to avoid duplicacy it is preferable to use sets, for example, list of artefacts in a museum. If our data is being constantly modified or we need a fast lookup based on a custom key or we need a logical association between the key : value pair, it is advised to use dictionaries. A mobile phone book is a good application of dictionary.
+5.8 oPerators
+An operator is used to perform specific mathematical or logical operation on values. The values that the operators work on are called operands. For example, in the expression 10 + num, the value 10, and the variable num are operands and the + (plus) sign is an operator. Python supports several kinds of operators whose categorisation is briefly explained in this section.
+compares strings lexicographically, using
+ASCII value of the characters. If the first character of both the strings are same, the second character is compared, and so on.
+Figure 5.10: Variables with different values have different identifiers
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 100
+5.8.2 Relational Operators
+Relational operator compares the values of the operands on its either side and determines the relationship among
+5.8.1 Arithmetic Operators
+Python supports arithmetic operators that are used to perform the four basic arithmetic operations as well as modular division, floor division and exponentiation.
+Table 5.3 Arithmetic Operators in Python
+Operator Operation Description Example (Try in Lab)
++ Addition Adds the two numeric values on either side of the operator
+This operator can also be used to concatenate two strings on either side of the operator
+>>> num1 = 5
+>>> num2 = 6
+>>> num1 + num2
+>>> str1 = "Hello"
+>>> str2 = "India"
+>>> str1 + str2
+'HelloIndia'
+- Subtraction Subtracts the operand on the right from the operand on the left
+>>> num1 = 5
+>>> num2 = 6
+>>> num1 - num2
+* Multiplication Multiplies the two values on both side of the operator
+>>> num1 = 5
+>>> num2 = 6
+>>> num1 * num2
+Repeats the item on left of the operator if first operand is a string and second operand is an integer value
+>>> str1 = 'India'
+>>> str1 * 2
+'IndiaIndia'
+/ Division Divides the operand on the left by the operand on the right and returns the quotient
+>>> num1 = 8
+>>> num2 = 4
+>>> num2 / num1
+% Modulus Divides the operand on the left by the operand on the right and returns the remainder
+>>> num1 = 13
+>>> num2 = 5
+>>> num1 % num2
+// Floor Division Divides the operand on the left by the operand on the right and returns the quotient by removing the decimal part. It is sometimes also called integer division.
+>>> num1 = 13
+>>> num2 = 4
+>>> num1 // num2
+>>> num2 // num1
+** Exponent Performs exponential (power)
+calculation on operands. That is, raise the operand on the left to the power of the operand on the right
+>>> num1 = 3
+>>> num2 = 4
+>>> num1 ** num2
+Reprint 2026-27

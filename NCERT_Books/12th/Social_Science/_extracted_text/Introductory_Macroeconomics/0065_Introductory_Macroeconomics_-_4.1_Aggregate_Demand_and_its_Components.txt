@@ -1,0 +1,14 @@
+55 55 55 55 55
+Determination of Income and Employment the consumers does not increase consumption at all (MPC = 0) or use entire change in income on consumption (MPC = 1) or use part of the change in income for changing consumption (0< MPC<1).
+Imagine a country Imagenia which has a consumption function described by C=100+0.8Y .
+This indicates that even when Imagenia does not have any income, its citizens still consume Rs. 100 worth of goods. Imagenia’s autonomous consumption is 100. Its marginal propensity to consume is 0.8. This means that if income goes up by Rs. 100 in Imagenia, consumption will go up by Rs. 80.
+Let us also look at another dimension of this, savings. Savings is that part of income that is not consumed. In other words,
+S Y C  
+We define the marginal propensity to save (MPS) as the rate of change in savings as income increases.
+Since, S Y C   ,
+Some Definitions Some Definitions Some Definitions Some Definitions Some Definitions
+Marginal propensity to consume (MPC): Marginal propensity to consume (MPC): Marginal propensity to consume (MPC): Marginal propensity to consume (MPC): Marginal propensity to consume (MPC): it is the change in consumption per unit change in income. It is denoted by c and is equal to C
+Marginal propensity to save (MPS): Marginal propensity to save (MPS): Marginal propensity to save (MPS): Marginal propensity to save (MPS): Marginal propensity to save (MPS): it is the change in savings per unit change in income. It is denoted by s and is equal to 1 c  . It implies that 1 s c   .....
+Average propensity to consume (APC): Average propensity to consume (APC): Average propensity to consume (APC): Average propensity to consume (APC): Average propensity to consume (APC): it is the consumption per unit of income i.e., C
+Average propensity to save (APS): Average propensity to save (APS): Average propensity to save (APS): Average propensity to save (APS): Average propensity to save (APS): it is the savings per unit of income
+Reprint 2026-27

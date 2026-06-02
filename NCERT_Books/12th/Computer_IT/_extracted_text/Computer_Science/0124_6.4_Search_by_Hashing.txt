@@ -1,0 +1,173 @@
+Computer SCienCe - ClaSS Xii 112
+1) Entry of student details (Roll number and name)
+in the new attendance register when the student is promoted to the next class.
+2) Writing student details on each month’s attendance page where inconsistency may happen due to incorrectly written names, skipped student records, etc.
+3) Loss of data in case attendance register is lost or damaged.
+4) Erroneous calculation while consolidating attendance record manually.
+The office staff also manually maintain student details viz. Roll Number, Name and Date of Birth with respective guardian details viz. Guardian name, Contact Number and Address. This is required for correspondence with guardian regarding student attendance and result.
+Finding information from a huge volume of papers or deleting/modifying an entry is a difficult task in pen and paper based approach. To overcome the hassles faced in manual record keeping, it is desirable to store attendance record and student details on separate data files on a computerised system, so that office staff and teachers can:
+1) Simply copy the student details to the new attendance file from the old attendance file when students are promoted to next class.
+2) Find any data about student or guardian.
+3) Add more details to existing data whenever a new student joins the school.
+4) Modify stored data like details of student or guardian whenever required.
+5) Remove/delete data whenever a student leaves the school.
+8.2 FIle SyStem
+A file can be understood as a container to store data in a computer. Files can be stored on the storage device of a computer system. Contents of a file can be texts, computer program code, comma separated values (CSV), etc. Likewise, pictures, audios/videos, web pages are also files.
+Files stored on a computer can be accessed directly and searched for desired data. But to access data of a
+Activity 8.1
+Visit a few shops where records are maintained manually and identify a few limitations of manual record keeping faced by
+Reprint 2026-27
+DatabaSe ConCeptS 113 file through software, for example, to display monthly attendance report on school website, one has to write computer programs to access data from files.
+Continuing the example of attendance at school, we need to store data about students and attendance in two separate files. Table 8.1 shows the contents of
+STUDENT file which has six columns, as detailed below:
+RollNumber – Roll number of the student
+SName – Name of the student
+SDateofBirth – Date of birth of the student
+GName – Name of the guardian
+GPhone – Phone number of the student guardian
+GAddress – Address of the guardian of the student
+Table 8.1 STUDENT file maintained by office staff
+Number SName SDateof
+Birth GName GPhone GAddress
+1 Atharv Ahuja 2003-05-15 Amit Ahuja 5711492685 G-35, Ashok Vihar,
+2 Daizy Bhutia 2002-02-28 Baichung
+7110047139 Flat no. 5, Darjeeling
+Appt., Shimla
+3 Taleem Shah 2002-02-28 Himanshu Shah 9818184855 26/77, West Patel
+Nagar, Ahmedabad
+4 John Dsouza 2003-08-18 Danny Dsouza S -13, Ashok Village,
+5 Ali Shah 2003-07-05 Himanshu Shah 9818184855 26/77, West Patel
+Nagar, Ahmedabad
+6 Manika P. 2002-03-10 Sujata P. 7802983674 HNO-13, B- block, Preet
+Vihar, Madurai
+Table 8.2 shows another file called ATTENDANCE which has four columns, as detailed below:
+AttendanceDate – Date for which attendance was marked
+RollNumber – Roll number of the student
+SName – Name of the student
+AttendanceStatus – Marked as P (present) or A (absent)
+Table 8.2 ATTENDANCE file maintained by class teacher
+AttendanceDate RollNumber SName AttendanceStatus
+2018-09-01 1 Atharv Ahuja P
+2018-09-01 2 Daizy Bhutia P
+2018-09-01 3 Taleem Shah A
+2018-09-01 4 John Dsouza P
+2018-09-01 5 Ali Shah A
+2018-09-01 6 Manika P. P
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 114
+2018-09-02 1 Atharv Ahuja P
+2018-09-02 2 Daizy Bhutia P
+2018-09-02 3 Taleem Shah A
+2018-09-02 4 John Dsouza A
+2018-09-02 5 Ali Shah P
+2018-09-02 6 Manika P. P
+8.2.1 Limitations of a File System
+File system becomes difficult to handle when number of files increases and volume of data also grows. Following are some of the limitations of file system:
+(A) Difficulty in Access
+Files themselves do not provide any mechanism to retrieve data. Data maintained in a file system are accessed through application programs. While writing such programs, the developer may not anticipate all the possible ways in which data may be accessed. So, sometimes it is difficult to access data in the required format and one has to write application program to access data.
+(B) Data Redundancy
+Redundancy means same data are duplicated in different places (files). In our example, student names are maintained in both the files. Besides, in Table
+8.1, students with roll numbers 3 and 5 have same guardian name and therefore same guardian name is maintained twice. Both these are examples of redundancy which is difficult to avoid in a file system.
+Redundancy leads to excess storage use and may cause data inconsistency also.
+(C) Data Inconsistency
+Data inconsistency occurs when same data maintained in different places do not match. If a student wants to get changed the spelling of her name, it needs to be changed in SName column in both the files. Likewise, if a student leaves school, the details need to be deleted from both the files. As the files are being maintained by different people, the changes may not happen in one of the files. In that case, the student name will be different (inconsistent) in both the files.
+(D) Data Isolation
+Both the files presented at Table 8.1 (STUDENT) and at
+Table 8.2 (ATTENDANCE) are related to students. But
+Reprint 2026-27
+DatabaSe ConCeptS 115 there is no link or mapping between them. The school will have to write separate programs to access these two files. This is because data mapping is not supported in file system. In a more complex system where data files are generated by different person at different times, files being created in isolation may be of different formats.
+In such case, it is difficult to write new application programs to retrieve data from different files maintained at multiple places, as one has to understand the underlying structure of each file as well.
+(E) Data Dependence
+Data are stored in a specific format or structure in a file.
+If the structure or format itself is changed, all the existing application programs accessing that file also need to be changed. Otherwise, the programs may not work correctly. This is data dependency. Hence, updating the structure of a data file requires modification in all the application programs accessing that file.
+(F) Controlled Data Sharing
+There can be different category of users like teacher, office staff and parents. Ideally, not every user should be able to access all the data. As an example, guardians and office staff can only see the student attendance data but should not be able to modify/delete it. It means these users should be given limited access (read only)
+to the ATTENDANCE file. Only the teacher should be able to update the attendance data. It is very difficult to enforce this kind of access control in a file system while accessing files through application programs.
+8.3 databaSe management SyStem
+Limitations faced in file system can be overcome by storing the data in a database where data are logically related. We can organise related data in a database so that it can be managed in an efficient and easy way.
+A database management system (DBMS) or database system in short, is a software that can be used to create and manage databases. DBMS lets users to create a database, store, manage, update/modify and retrieve data from that database by users or application programs. Some examples of open source and commercial DBMS include MySQL, Oracle, PostgreSQL,
+SQL Server, Microsoft Access, MongoDB.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 116
+A database system hides certain details about how data are actually stored and maintained. Thus, it provides users with an abstract view of the data. A database system has a set of programs through which users or other programs can access, modify and retrieve the stored data.
+The DBMS serves as an interface between the database and end users or application programs.
+Retrieving data from a database through special type of commands is called querying the database. In addition, users can modify the structure of the database itself through a DBMS.
+Databases are widely used in various fields. Some applications are given in Table 8.3.
+Table 8.3 Use of Database in Real-life Applications
+Application Database to maintain data about
+Banking customer information, account details, loan details, transaction details, etc.
+Crop Loan kisan credit card data, farmer’s personal data, land area and cultivation data, loan history, repayment data, etc.
+Inventory
+Management product details, customer information, order details, delivery data, etc.
+Organisation
+Resource
+Management employee records, salary details, department information, branch locations, etc.
+Shopping items description, user login details, users preferences details, etc.
+8.3.1 File System to DBMS
+Let us revisit our school example where two data files were maintained (Table 8.1 by office and Table 8.2 by teacher). Let us now design a database to store data of those two files. We know that tables in a database are linked or related through one or more common columns or fields. In our example, the STUDENT (Table 8.1) file and ATTENDANCE (Table 8.2) file have RollNumber and SName as common field names. In order to convert these two files into a database, we need to incorporate the following changes:
+a) SName need not be maintained in ATTENDANCE file as it is already there in STUDENT. Details for a student can be retrieved through the common field
+RollNumber in both the files.
+Some database management systems include a graphical user interface for users to create and manage databases. Other database systems use a command line interface that requires users to use programming commands to create and manage databases.
+Reprint 2026-27
+DatabaSe ConCeptS 117 b) If two siblings are in the same class, then same guardian details (GName, GPhone and GAddress)
+are maintained for both the siblings. We know this is a redundancy and by using a database we can avoid this. So let us split the STUDENT file into two file (STUDENT file and GUARDIAN) file so that each guardian data are maintained only once.
+c) One and more guardians can have the same name.
+So it will not be possible to identify which guardian is related to which student. In such case, we need to create an additional column, say GUID (Guardian
+ID) that will take unique value for each record in the GUARDIAN file. The column GUID will also be kept with STUDENT file for relating these two files.
+Note: We could distinguish guardians by their phone numbers also. But, phone number can change, and therefore may not truly distinguish guardian.
+Figure 8.1 shows the related data files for the
+STUDENT, GUARDIAN and ATTENDANCE details. Note that this is not the complete database schema since it does not show any relationship among tables.
+STUDENT GUARDIAN ATTENDANCE
+RollNumber
+SDateofBirth
+GAddress
+AttendanceDate
+RollNumber
+AttendanceStatus
+Figure 8.1: Record structure of three files in
+STUDENTATTENDANCE database
+The tables shown at Figure 8.1 are empty, which are to be populated with actual data as shown in Table 8.4,
+8.5 and 8.6.
+High Cost is incurred while shifting from file system to DBMS:
+• Purchasing sophisticated hardware and software.
+• Training users for querying.
+• Recurrent cost to take regular backup and perform recovery operations.
+Table 8.4 Snapshot of STUDENT table
+RollNumber SName SDateofBirth GUID
+1 Atharv Ahuja 2003-05-15 444444444444
+2 Daizy Bhutia 2002-02-28 111111111111
+3 Taleem Shah 2002-02-28
+4 John Dsouza 2003-08-18 333333333333
+5 Ali Shah 2003-07-05 101010101010
+6 Manika P. 2002-03-10 466444444666
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 118
+Table 8.5 Snapshot of GUARDIAN table
+GUID GName GPhone GAddress
+444444444444 Amit Ahuja 5711492685 G-35, Ashok Vihar, Delhi
+111111111111 Baichung Bhutia 3612967082 Flat no. 5, Darjeeling Appt., Shimla
+101010101010 Himanshu Shah 4726309212 26/77, West Patel Nagar, Ahmedabad
+333333333333 Danny Dsouza S -13, Ashok Village, Daman
+466444444666 Sujata P. 3801923168 HNO-13, B- block, Preet Vihar, Madurai
+Table 8.6 Snapshot of ATTENDANCE table
+Date RollNumber Status
+2018-09-01 1 P
+2018-09-01 2 P
+2018-09-01 3 A
+2018-09-01 4 P
+2018-09-01 5 A
+2018-09-01 6 P
+2018-09-02 1 P
+2018-09-02 2 P
+2018-09-02 3 A
+2018-09-02 4 A
+2018-09-02 5 P
+2018-09-02 6 P
+Figure 8.2 shows a simplified database called
+STUDENTATTENDANCE, which is used to maintain data about the student, guardian and attendance. As shown here, the DBMS maintains a single repository of data at a centralised location and can be used by multiple users (office staff, teacher) at the same time.
+8.3.2 Key Concepts in DBMS
+In order to efficiently manage data using a DBMS, let us understand certain key terms:
+(A) Database Schema
+Database Schema is the design of a database. It is the skeleton of the database that represents the structure (table names and their fields/columns), the type of data each column can hold, constraints on the data to be stored (if any), and the relationships among the tables.
+Database schema is also called the visual or logical architecture as it tells us how the data are organised in a database.
+Reprint 2026-27

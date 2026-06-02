@@ -1,0 +1,20 @@
+Computer SCienCe – ClaSS xi 94
+Example 5.2
+>>> num1 = 20
+>>> id(num1)
+1433920576 #identity of num1
+>>> num2 = 30 - 10
+>>> id(num2)
+1433920576 #identity of num2 and num1
+#are same as both refers to #object 20
+5.7 Data types
+Every value belongs to a specific data type in Python.
+Data type identifies the type of data values a variable can hold and the operations that can be performed on that data. Figure 5.6 enlists the data types available in Python.
+5.7.1 Number
+Number data type stores numerical values only. It is further classified into three different types: int, float and complex.
+Table 5.2 Numeric data types
+Type/ Class Description Examples int integer numbers –12, –3, 0, 125, 2 float real or floating point numbers –2.04, 4.0, 14.23 complex complex numbers 3 + 4j, 2 – 2j
+Boolean data type (bool) is a subtype of integer. It is a unique data type, consisting of two constants, True and False. Boolean True value is non-zero, non-null and non-empty. Boolean False is the value zero.
+Figure 5.6: Different data types in Python
+Dictionaries
+Reprint 2026-27

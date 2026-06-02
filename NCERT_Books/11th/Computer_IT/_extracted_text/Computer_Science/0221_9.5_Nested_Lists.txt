@@ -1,0 +1,36 @@
+T uples and dicTionaries 209
+>>> tuple1[4] = 10
+TypeError: 'tuple' object does not support item assignment
+However an element of a tuple may be of mutable type, e.g., a list.
+#4th element of the tuple2 is a list
+>>> tuple2 = (1,2,3,[8,9])
+#modify the list element of the tuple tuple2
+>>> tuple2[3][1] = 10
+#modification is reflected in tuple2
+>>> tuple2 (1, 2, 3, [8, 10])
+10.2 tuple operatIons
+10.2.1 Concatenation
+Python allows us to join tuples using concatenation operator depicted by symbol +. We can also create a new tuple which contains the result of this concatenation operation.
+>>> tuple1 = (1,3,5,7,9)
+>>> tuple2 = (2,4,6,8,10)
+>>> tuple1 + tuple2
+#concatenates two tuples (1, 3, 5, 7, 9, 2, 4, 6, 8, 10)
+>>> tuple3 = ('Red','Green','Blue')
+>>> tuple4 = ('Cyan', 'Magenta', 'Yellow'
+,'Black')
+#tuple5 stores elements of tuple3 and tuple4
+>>> tuple5 = tuple3 + tuple4
+>>> tuple5 ('Red','Green','Blue','Cyan','Magenta',
+'Yellow','Black')
+Concatenation operator can also be used for extending an existing tuple. When we extend a tuple using concatenation a new tuple is created.
+>>> tuple6 = (1,2,3,4,5)
+#single element is appended to tuple6
+>>> tuple6 = tuple6 + (6,)
+>>> tuple6 (1, 2, 3, 4, 5, 6)
+#more than one elements are appended
+>>> tuple6 = tuple6 + (7,8,9)
+>>> tuple6 (1, 2, 3, 4, 5, 6, 7, 8, 9)
+√ List is mutable but tuple is immutable.
+So iterating through a tuple is faster as compared to a list.
+√ If we have data that does not change then storing this data in a tuple will make sure that it is not changed accidentally.
+Reprint 2026-27

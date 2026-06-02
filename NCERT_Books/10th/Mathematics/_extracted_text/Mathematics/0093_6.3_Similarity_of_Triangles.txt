@@ -1,0 +1,140 @@
+T RIANGLES 79
+6.3 Similarity of Triangles
+What can you say about the similarity of two triangles?
+You may recall that triangle is also a polygon. So, we can state the same conditions for the similarity of two triangles. That is:
+Two triangles are similiar, if (i) their corresponding angles are equal and (ii) their corresponding sides are in the same ratio (or proportion).
+Note that if corresponding angles of two triangles are equal, then they are known as equiangular triangles. A famous Greek mathematician Thales gave an important truth relating to two equiangular triangles which is as follows:
+The ratio of any two corresponding sides in two equiangular triangles is always the same.
+It is believed that he had used a result called the Basic Proportionality Theorem (now known as the Thales Theorem) for the same.
+To understand the Basic Proportionality
+Theorem, let us perform the following activity:
+Activity 2 : Draw any angle XAY and on its one arm AX, mark points (say five points) P, Q, D, R and
+B such that AP = PQ = QD = DR = RB.
+Now, through B, draw any line intersecting arm
+AY at C (see Fig. 6.9).
+Also, through the point D, draw a line parallel to BC to intersect AC at E. Do you observe from your constructions that AD 3
+ ? Measure AE and
+EC. What about AE
+EC ? Observe that AE
+EC is also equal to 3
+2 . Thus, you can see that in  ABC, DE || BC and AD AE
+ . Is it a coincidence? No, it is due to the following theorem (known as the Basic Proportionality Theorem):
+(640 – 546 B.C.)
+Fig. 6.9
+Reprint 2026-27
+80 MATHEMATICS
+Theorem 6.1 : If a line is drawn parallel to one side of a triangle to intersect the other two sides in distinct points, the other two sides are divided in the same
+Proof : We are given a triangle ABC in which a line parallel to side BC intersects other two sides AB and
+AC at D and E respectively (see Fig. 6.10).
+We need to prove that AD AE
+Let us join BE and CD and then draw DM  AC and
+EN  AB.
+Now, area of  ADE (= 1
+2 base × height) = 1
+2 AD × EN.
+Recall from Class IX, that area of  ADE is denoted as ar(ADE).
+So, ar(ADE) = 1
+2 AD × EN
+Similarly, ar(BDE) = 1
+2 DB × EN, ar(ADE) = 1
+2 AE × DM and ar(DEC) = 1
+2 EC × DM.
+Therefore, ar(ADE)
+ar(BDE) =
+1 AD × EN AD 2
+1 DBDB × EN and ar(ADE)
+ar(DEC) =
+1 AE × DM AE 2
+1 ECEC × DM
+Note that  BDE and DEC are on the same base DE and between the same parallels
+BC and DE.
+So, ar(BDE) = ar(DEC) (3)
+Fig. 6.10
+Reprint 2026-27
+T RIANGLES 81
+Therefore, from (1), (2) and (3), we have :
+Is the converse of this theorem also true (For the meaning of converse, see
+Appendix 1)? To examine this, let us perform the following activity:
+Activity 3 : Draw an angle XAY on your notebook and on ray AX, mark points B1
+, B4 and B such that AB1 = B1 B 2 = B 2
+B 4 = B 4
+Similarly, on ray AY, mark points
+, C3 , C4 and C such that AC1 = C 1
+C 3 = C3
+C 4 = C4
+C. Then join B1
+C 1 and BC (see Fig. 6.11).
+Note that 1
+C C (Each equal to 1
+You can also see that lines B1
+C 1 and BC are parallel to each other, i.e.,
+B1 C 1 || BC (1)
+Similarly, by joining B2 C 2
+C 3 and B 4 C 4
+, you can see that:
+  and B 2
+C 2 || BC (2)
+  and B 3
+C 3 || BC (3)
+  and B 4
+C 4 || BC (4)
+From (1), (2), (3) and (4), it can be observed that if a line divides two sides of a triangle in the same ratio, then the line is parallel to the third side.
+You can repeat this activity by drawing any angle XAY of different measure and taking any number of equal parts on arms AX and AY . Each time, you will arrive at the same result. Thus, we obtain the following theorem, which is the converse of
+Theorem 6.1:
+Fig. 6.11
+Reprint 2026-27
+82 MATHEMATICS
+Fig. 6.13
+Theorem 6.2 : If a line divides any two sides of a triangle in the same ratio, then the line is parallel to the third side.
+This theorem can be proved by taking a line DE such that AD AE
+ and assuming that DE is not parallel to BC (see Fig. 6.12).
+If DE is not parallel to BC, draw a line DE parallel to BC.
+ (Why ?)
+Therefore, AE
+ (Why ?)
+Adding 1 to both sides of above, you can see that E and E must coincide.
+Let us take some examples to illustrate the use of the above theorems.
+Example 1 : If a line intersects sides AB and AC of a  ABC at D and E respectively and is parallel to BC, prove that AD
+AC (see Fig. 6.13).
+Solution : DE || BC (Given)
+EC (Theorem 6.1)
+or, DB 1
+AD  = EC 1
+Fig. 6.12
+Reprint 2026-27
+T RIANGLES 83
+Example 2 : ABCD is a trapezium with AB || DC. E and F are points on non-parallel sides AD and BC respectively such that EF is parallel to AB (see Fig. 6.14). Show that AE BF
+Solution : Let us join AC to intersect EF at G (see Fig. 6.15).
+AB || DC and EF || AB (Given)
+So, EF || DC (Lines parallel to the same line are parallel to each other)
+Now, in  ADC,
+EG || DC (As EF || DC)
+GC (Theorem 6.1) (1)
+Similarly, from  CAB, i.e., AG
+Therefore, from (1) and (2),
+Example 3 : In Fig. 6.16, PS
+TR and  PST =
+ PRQ. Prove that PQR is an isosceles triangle.
+Solution : It is given that PS PT
+So, ST || QR (Theorem 6.2)
+Therefore,  PST =  PQR (Corresponding angles) (1)
+Fig. 6.14
+Fig. 6.15
+Fig. 6.16
+Reprint 2026-27
+84 MATHEMATICS
+Also, it is given that
+ PST =  PRQ (2)
+So,  PRQ =  PQR [From (1) and (2)]
+Therefore, PQ = PR (Sides opposite the equal angles)
+i.e., PQR is an isosceles triangle.
+EXERCISE 6.2
+1. In Fig. 6.17, (i) and (ii), DE || BC. Find EC in (i) and AD in (ii).
+Fig. 6.17
+2. E and F are points on the sides PQ and PR respectively of a  PQR. For each of the following cases, state whether EF || QR :
+(i) PE = 3.9 cm, EQ = 3 cm, PF = 3.6 cm and FR = 2.4 cm (ii) PE = 4 cm, QE = 4.5 cm, PF = 8 cm and RF = 9 cm (iii) PQ = 1.28 cm, PR = 2.56 cm, PE = 0.18 cm and PF = 0.36 cm
+3. In Fig. 6.18, if LM || CB and LN || CD, prove that
+4. In Fig. 6.19, DE || AC and DF || AE. Prove that
+Fig. 6.18
+Fig. 6.19
+Reprint 2026-27

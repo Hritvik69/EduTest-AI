@@ -1,0 +1,124 @@
+108 BIOLOGY
+9.2 PRIMARY AND SECONDARY METABOLITES
+The most exciting aspect of chemistry deals with isolating thousands of compounds, small and big, from living organisms, determining their structure and if possible synthesising them.
+If one were to make a list of biomolecules, such a list would have thousands of organic compounds including amino acids, sugars, etc.
+For reasons that are given in section 9.10, we can call these biomolecules as ‘metabolites’. In animal tissues, one notices the presence of all such categories of compounds shown in Figure 9.1. These are primary metabolites. However, when one analyses plant, fungal and microbial cells, one would see thousands of compounds other than these primary metabolites, e.g. alkaloids, flavonoids, rubber, essential oils, antibiotics, coloured pigments, scents, gums, spices. These are called secondary metabolites (Table 9.3).
+While primary metabolites have identifiable functions and play known roles in normal physiologial processes, we do not at the moment, understand the role or functions of all the
+‘secondary metabolites’ in host organisms.
+However, many of them are useful to ‘human welfare’ (e.g., rubber, drugs, spices, scents and pigments). Some secondary metabolites have ecological importance. In the later chapters and years you will learn more about this.
+9.3 BIOMACROMOLECULES
+There is one feature common to all those compounds found in the acid soluble pool. They have molecular weights ranging from 18 to around
+800 daltons (Da) approximately.
+The acid insoluble fraction, has only four types of organic compounds i.e., proteins, nucleic acids, polysaccharides and lipids. These classes of compounds with the exception of lipids, have molecular weights in the range of ten thousand daltons and above. For this very reason, biomolecules, i.e., chemical compounds found in living organisms are of two types. One, those which have molecular weights less than one thousand dalton and are usually referred to as micromolecules or simply biomolecules while those which are found in the acid insoluble fraction are called macromolecules or biomacromolecules.
+The molecules in the insoluble fraction with the exception of lipids are polymeric substances. Then why do lipids, whose molecular weights do not exceed 800 Da, come under acid insoluble fraction, i.e., macromolecular fraction? Lipids are indeed small molecular weight
+Pigments Carotenoids, Anthocyanins,
+Alkaloids Morphine, Codeine, etc.
+Terpenoides Monoterpenes, Diterpenes etc.
+Essential oils Lemon grass oil, etc.
+Toxins Abrin, Ricin
+Lectins Concanavalin A
+Drugs Vinblastin, curcumin, etc.
+Polymeric Rubber, gums, cellulose substances
+TABLE 9.3 Some Secondary Metabolites
+Reprint 2026-27
+BIOMOLECULES 109
+Component % of the total cellular mass
+Water 70-90
+Proteins 10-15
+Carbohydrates 3
+Lipids 2
+Nucleic acids 5-7
+TABLE 9.4 Average Composition of Cells compounds and are present not only as such but also arranged into structures like cell membrane and other membranes. When we grind a tissue, we are disrupting the cell structure. Cell membrane and other membranes are broken into pieces, and form vesicles which are not water soluble. Therefore, these membrane fragments in the form of vesicles get separated along with the acid insoluble pool and hence in the macromolecular fraction. Lipids are not strictly macromolecules.
+The acid soluble pool represents roughly the cytoplasmic composition. The macromolecules from cytoplasm and organelles become the acid insoluble fraction. Together they represent the entire chemical composition of living tissues or organisms.
+In summary if we represent the chemical composition of living tissue from abundance point of view and arrange them class-wise, we observe that water is the most abundant chemical in living organisms (Table 9.4).
+9.4 PROTEINS
+Proteins are polypeptides. They are linear chains of amino acids linked by peptide bonds as shown in
+Figure 9.3.
+Each protein is a polymer of amino acids. As there are 20 types of amino acids (e.g., alanine, cysteine, proline, tryptophan, lysine, etc.), a protein is a heteropolymer and not a homopolymer. A homopolymer has only one type of monomer repeating
+‘n’ number of times. This information about the amino acid content is important as later in your nutrition lessons, you will learn that certain amino acids are essential for our health and they have to be supplied through our diet. Hence, dietary proteins are the source of essential amino acids. Therefore, amino acids can be essential or non-essential. The latter are those which our body can make, while we get essential amino acids through our diet/food. Proteins carry out many functions in living organisms, some transport nutrients across cell membrane, some fight infectious organisms, some are hormones, some are enzymes,
+TABLE 9.5 Some Proteins and their
+Functions
+Protein Functions
+Collagen Intercellular ground substance
+Trypsin Enzyme
+Insulin Hormone
+Antibody Fights infectious agents
+Receptor Sensory reception (smell, taste, hormone,
+GLUT-4 Enables glucose transport into cells
+Reprint 2026-27
+110 BIOLOGY
+CH OH 2 CH OH 2
+Figure 9.2 Diagrammatic representation of a portion of glycogen etc. (Table 9.5). Collagen is the most abundant protein in animal world and Ribulose bisphosphate Carboxylase-Oxygenase (RuBisCO) is the most abundant protein in the whole of the biosphere.
+9.5 POLYSACCHARIDES
+The acid insoluble pellet also has polysaccharides (carbohydrates) as another class of macromolecules. Polysaccharides are long chains of sugars. They are threads (literally a cotton thread) containing different monosaccharides as building blocks. For example, cellulose is a polymeric polysaccharide consisting of only one type of monosaccharide i.e., glucose. Cellulose is a homopolymer. Starch is a variant of this but present as a store house of energy in plant tissues. Animals have another variant called glycogen. Inulin is a polymer of fructose. In a polysaccharide chain (say glycogen), the right end is called the reducing end and the left end is called the non-reducing end. It has branches as shown in the form of a cartoon (Figure 9.2). Starch forms helical secondary structures. In fact, starch can hold I2 molecules in the helical portion. The starch-I2 is blue in colour. Cellulose does not contain complex helices and hence cannot hold I2.
+Reprint 2026-27
+BIOMOLECULES 111
+Plant cell walls are made of cellulose. Paper made from plant pulp and cotton fibre is cellulosic. There are more complex polysaccharides in nature. They have as building blocks, amino-sugars and chemically modified sugars (e.g., glucosamine, N-acetyl galactosamine, etc.).
+Exoskeletons of arthropods, for example, have a complex polysaccharide called chitin. These complex polysaccharides are mostly homopolymers.
+9.6 NUCLEIC ACIDS
+The other type of macromolecule that one would find in the acid insoluble fraction of any living tissue is the nucleic acid. These are polynucleotides. Together with polysaccharides and polypeptides these comprise the true macromolecular fraction of any living tissue or cell.
+For nucleic acids, the building block is a nucleotide. A nucleotide has three chemically distinct components. One is a heterocyclic compound, the second is a monosaccharide and the third a phosphoric acid or phosphate.
+As you notice in Figure 9.1, the heterocyclic compounds in nucleic acids are the nitrogenous bases named adenine, guanine, uracil, cytosine, and thymine. Adenine and Guanine are substituted purines while the rest are substituted pyrimidines. The skeletal heterocyclic ring is called as purine and pyrimidine respectively. The sugar found in polynucleotides is either ribose (a monosaccharide pentose) or 2’ deoxyribose. A nucleic acid containing deoxyribose is called deoxyribonucleic acid (DNA) while that which contains ribose is called ribonucleic acid (RNA).
+9.7 STRUCTURE OF PROTEINS
+Proteins, as mentioned earlier, are heteropolymers containing strings of amino acids. Structure of molecules means different things in different contexts. In inorganic chemistry, the structure invariably refers to the molecular formulae (e.g., NaCl, MgCl2, etc.). Organic chemists always write a two dimensional view of the molecules while representing the structure of the molecules (e.g., benzene, naphthalene, etc.). Physicists conjure up the three dimensional views of molecular structures while biologists describe the protein structure at four levels. The sequence of amino acids i.e., the positional information in a protein – which is the first amino acid, which is second, and so on – is called the primary structure (Figure 9.3 a) of a protein. A protein is imagined as a line, the left end represented by the first amino acid and the right end represented by the last amino
+Reprint 2026-27
+112 BIOLOGY acid. The first amino acid is also called as N-terminal amino acid. The last amino acid is called the C- terminal amino acid. A protein thread does not exist throughout as an extended rigid rod. The thread is folded in the form of a helix (similar to a revolving staircase). Of course, only some portions of the protein thread are arranged in the form of a helix. In proteins, only right handed helices are observed. Other regions of the protein thread are folded into other forms in what is called the secondary structure (Fig. 9.3 b). In addition, the long protein chain is also folded upon itself like a hollow woolen ball, giving rise to the tertiary structure (Fig. 9.3 c). This gives us a 3-dimensional view of a p r o t e i n . T e r t i a r y s t r u c t u r e i s absolutely necessary for the many biological activities of proteins.
+Some proteins are an assembly of more than one polypeptide or subunits. The manner in which these individual folded polypeptides or subunits are arranged with respect to each other (e.g. linear string of spheres, spheres arranged one upon each other in the form of a cube or plate etc.) is the architecture of a protein otherwise called the quaternary structure of a protein (Fig. 9.3 d). Adult human haemoglobin consists of 4 subunits.
+Two of these are identical to each other. Hence, two subunits of α type and two subunits of β type together constitute the human haemoglobin (H b).
+9.8 ENZYMES
+Almost all enzymes are proteins. There are some nucleic acids that behave like enzymes. These are called ribozymes. One can depict an enzyme by a line diagram. An enzyme like any protein has a primary structure, i.e., amino acid sequence of the protein. An enzyme like any protein has the secondary and the tertiary structure. When you look at a tertiary structure
+Figure 9.3 Various levels of Protein Structure (a) Primary (b) Secondary (d) Quaternary
+Hydrogen bond
+Disulphide bond
+Beta– pleated sheet
+Polypeptide
+Tertiary
+Alpha – Helix
+Reprint 2026-27
+BIOMOLECULES 113 upon itself, the chain criss-crosses itself and hence, many crevices or pockets are made. One such pocket is the ‘active site’. An active site of an enzyme is a crevice or pocket into which the substrate fits. Thus enzymes, through their active site, catalyse reactions at a high rate. Enzyme catalysts differ from inorganic catalysts in many ways, but one major difference needs mention. Inorganic catalysts work efficiently at high temperatures and high pressures, while enzymes get damaged at high temperatures (say above 40°C). However, enzymes isolated from organisms who normally live under extremely high temperatures (e.g., hot vents and sulphur springs), are stable and retain their catalytic power even at high temperatures (upto 80°-90°C). Thermal stability is thus an important quality of such enzymes isolated from thermophilic organisms.
+9.8.1 Chemical Reactions
+How do we understand these enzymes? Let us first understand a chemical reaction. Chemical compounds undergo two types of changes. A physical change simply refers to a change in shape without breaking of bonds.
+This is a physical process. Another physical process is a change in state of matter: when ice melts into water, or when water becomes a vapour.
+These are also physical processes. However, when bonds are broken and new bonds are formed during transformation, this will be called a chemical reaction. For example:
+Ba(OH)2 + H2SO4 → BaSO4 + 2H2O is an inorganic chemical reaction. Similarly, hydrolysis of starch into glucose is an organic chemical reaction. Rate of a physical or chemical process refers to the amount of product formed per unit time. It can be expressed as:
+Rate can also be called velocity if the direction is specified. Rates of physical and chemical processes are influenced by temperature among other factors. A general rule of thumb is that rate doubles or decreases by half for every 10°C change in either direction. Catalysed reactions proceed at rates vastly higher than that of uncatalysed ones. When enzyme catalysed reactions are observed, the rate would be vastly higher than the same but uncatalysed reaction. For example
+CO2 + H2O  →
+Carbonic anhydrase H2CO3 carbon dioxide water carbonic acid
+Reprint 2026-27
+114 BIOLOGY
+In the absence of any enzyme this reaction is very slow, with about
+200 molecules of H2CO3 being formed in an hour. However, by using the enzyme present within the cytoplasm called carbonic anhydrase, the reaction speeds dramatically with about 600,000 molecules being formed every second. The enzyme has accelerated the reaction rate by about 10 million times. The power of enzymes is incredible indeed!
+There are thousands of types of enzymes each catalysing a unique chemical or metabolic reaction. A multistep chemical reaction, when each of the steps is catalysed by the same enzyme complex or different enzymes, is called a metabolic pathway. For example,
+Glucose → 2 Pyruvic acid
+C6H12O6 + O2 → 2C3H4 O3 + 2H2O is actually a metabolic pathway in which glucose becomes pyruvic acid through ten different enzyme catalysed metabolic reactions. When you study respiration in Chapter 12, you will study these reactions. At this stage you should know that this very metabolic pathway with one or two additional reactions gives rise to a variety of metabolic end products. In our skeletal muscle, under anaerobic conditions, lactic acid is formed.
+Under normal aerobic conditions, pyruvic acid is formed. In yeast, during fermentation, the same pathway leads to the production of ethanol (alcohol). Hence, in different conditions different products are possible.
+9.8.2 How do Enzymes bring about such High Rates of
+Chemical Conversions?
+To understand this we should study enzymes a little more. We have already understood the idea of an ‘active site’. The chemical or metabolic conversion refers to a reaction. The chemical which is converted into a product is called a ‘substrate’. Hence enzymes, i.e. proteins with three dimensional structures including an ‘active site’, convert a substrate (S) into a product (P). Symbolically, this can be depicted as:
+It is now understood that the substrate ‘S’ has to bind the enzyme at its ‘active site’ within a given cleft or pocket. The substrate has to diffuse towards the ‘active site’. There is thus, an obligatory formation of an ‘ES’ complex. E stands for enzyme. This complex formation is a transient phenomenon. During the state where substrate is bound to the enzyme active site, a new structure of the substrate called transition state structure is formed. Very soon, after the expected bond breaking/making is completed, the product is released from the active site. In other words, the structure of substrate gets transformed into the structure of product(s).
+The pathway of this transformation must go through the so-called
+Reprint 2026-27
+BIOMOLECULES 115 transition state structure. There could be many more ‘altered structural states’ between the stable substrate and the product. Implicit in this statement is the fact that all other intermediate structural states are unstable. Stability is something related to energy status of the molecule or the structure. Hence, when we look at this pictorially through a graph it looks like something as in Figure 9.4.
+The y-axis represents the potential energy content. The x-axis represents the progression of the structural transformation or states through the ‘transition state’. You would notice two things. The energy level difference between
+S and P. If ‘P’ is at a lower level than ‘S’, the reaction is an exothermic reaction. One need not supply energy (by heating) in order to form the product.
+However, whether it is an exothermic or spontaneous reaction or an endothermic or energy requiring reaction, the ‘S’ has to go through a much higher energy state or transition state. The difference in average energy content of ‘S’ from that of this transition state is called ‘activation energy’.
+Enzymes eventually bring down this energy barrier making the transition of ‘S’ to ‘P’ more easy.
+9.8.3 Nature of Enzyme Action
+Each enzyme (E) has a substrate (S) binding site in its molecule so that a highly reactive enzyme-substrate complex (ES) is produced. This complex is short-lived and dissociates into its product(s) P and the unchanged enzyme with an intermediate formation of the enzyme-product complex (EP).
+The formation of the ES complex is essential for catalysis.
+E + S ES  →  EP  →  E + P
+The catalytic cycle of an enzyme action can be described in the following
+1. First, the substrate binds to the active site of the enzyme, fitting into the active site.
+2. The binding of the substrate induces the enzyme to alter its shape, fitting more tightly around the substrate.
+3. The active site of the enzyme, now in close proximity of the substrate breaks the chemical bonds of the substrate and the new enzyme- product complex is formed.
+Activation energy without enzyme
+Potential Energy
+Activation energy with enzyme
+Substrate (s)
+Product (P)
+Progress of reaction
+Transition state
+Figure 9.4 Concept of activation energy
+Reprint 2026-27
+116 BIOLOGY
+4. The enzyme releases the products of the reaction

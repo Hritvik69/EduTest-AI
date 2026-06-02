@@ -1,0 +1,55 @@
+where r12 is the distance between points 1 and 2.
+Since electrostatic force is conservative, this work gets stored in the form of potential energy of the system. Thus, the potential energy of a system of two charges q1 and q2 is
+ε (2.22)
+Obviously, if q2 was brought first to its present location and q1 brought later, the potential energy U would be the same.
+More generally, the potential energy expression,
+Eq. (2.22), is unaltered whatever way the charges are brought to the specified locations, because of path-independence of work for electrostatic force.
+Equation (2.22) is true for any sign of q1and q2. If q1q2 > 0, potential energy is positive. This is as expected, since for like charges (q1q2 > 0), electrostatic force is repulsive and a positive amount of work is needed to be done against this force to bring the charges from infinity to a finite distance apart. For unlike charges (q1 q2 < 0), the electrostatic force is attractive. In that case, a positive amount of work is needed against this force to take the charges from the given location to infinity. In other words, a negative amount of work is needed for the reverse path (from infinity to the present locations), so the potential energy is negative.
+Equation (2.22) is easily generalised for a system of any number of point charges. Let us calculate the potential energy of a system of three charges q1, q2 and q3 located at r1, r2, r3, respectively. To bring q1 first from infinity to r1, no work is required. Next we bring q2 from infinity to r2. As before, work done in this step is r (2.23)
+The charges q1 and q2 produce a potential, which at any point P is given by
+Work done next in bringing q3 from infinity to the point r3 is q3 times
+V1, 2 at r3
+, ( ) r = +
+ε (2.25)
+The total work done in assembling the charges at the given locations is obtained by adding the work done in different steps [Eq. (2.23) and Eq. (2.25)],
+ε (2.26)
+Again, because of the conservative nature of the electrostatic force (or equivalently, the path independence of work done), the final expression for
+U, Eq. (2.26), is independent of the manner in which the configuration is assembled. The potential energy
+FIGURE 2.13 Potential energy of a system of charges q1 and q2 is directly proportional to the product of charges and inversely to the distance between them.
+FIGURE 2.14 Potential energy of a system of three charges is given by
+Eq. (2.26), with the notation given in the figure.
+Reprint 2026-27
+Electrostatic Potential and Capacitance is characteristic of the present state of configuration, and not the way the state is achieved.
+Example 2.4 Four charges are arranged at the corners of a square
+ABCD of side d, as shown in Fig. 2.15.(a) Find the work required to put together this arrangement. (b) A charge q0 is brought to the centre
+E of the square, the four charges being held fixed at its corners. How much extra work is needed to do this?
+FIGURE 2.15
+Solution (a) Since the work done depends on the final arrangement of the charges, and not on how they are put together, we calculate work needed for one way of putting the charges at A, B, C and D. Suppose, first the charge +q is brought to A, and then the charges –q, +q, and
+–q are brought to B, C and D, respectively. The total work needed can be calculated in steps:
+(i) Work needed to bring charge +q to A when no charge is present elsewhere: this is zero.
+(ii) Work needed to bring –q to B when +q is at A. This is given by (charge at B) × (electrostatic potential at B due to charge +q at A)
+ = − q q (iii) Work needed to bring charge +q to C when +q is at A and –q is at
+B. This is given by (charge at C) × (potential at C due to charges at A and B)
+= + + + −  d 4 2 4 0 0 π π (iv) Work needed to bring –q to D when +q at A,–q at B, and +q at C.
+This is given by (charge at D) × (potential at D due to charges at A,
+B and C)
+= − + + − + d 4 4 2 4 0 0 0 π π π
+Reprint 2026-27
+Add the work done in steps (i), (ii), (iii) and (iv). The total work required is
+= − + + −
+0 4 0 1 1 1
+ε ( ) ( )
+= − − ( )q
+The work done depends only on the arrangement of the charges, and not how they are assembled. By definition, this is the total electrostatic energy of the charges.
+(Students may try calculating same work/energy by taking charges in any other order they desire and convince themselves that the energy will remain the same.)
+(b) The extra work necessary to bring a charge q0 to the point E when the four charges are at A, B, C and D is q0 × (electrostatic potential at
+E due to the charges at A, B, C and D). The electrostatic potential at
+E is clearly zero since potential due to A and C is cancelled by that due to B and D. Hence, no work is required to bring any charge to point E.
+2.8 POTENTIAL ENERGY IN AN EXTERNAL FIELD
+2.8.1 Potential energy of a single charge
+In Section 2.7, the source of the electric field was specified – the charges and their locations - and the potential energy of the system of those charges was determined. In this section, we ask a related but a distinct question.
+What is the potential energy of a charge q in a given field? This question was, in fact, the starting point that led us to the notion of the electrostatic potential (Sections 2.1 and 2.2). But here we address this question again to clarify in what way it is different from the discussion in Section 2.7.
+The main difference is that we are now concerned with the potential energy of a charge (or charges) in an external field. The external field E is not produced by the given charge(s) whose potential energy we wish to calculate. E is produced by sources external to the given charge(s).The external sources may be known, but often they are unknown or unspecified; what is specified is the electric field E or the electrostatic potential V due to the external sources. We assume that the charge q does not significantly affect the sources producing the external field. This is true if q is very small, or the external sources are held fixed by other unspecified forces. Even if q is finite, its influence on the external sources may still be ignored in the situation when very strong sources far away at infinity produce a finite field E in the region of interest. Note again that we are interested in determining the potential energy of a given charge q (and later, a system of charges) in the external field; we are not interested in the potential energy of the sources producing the external electric field.
+The external electric field E and the corresponding external potential
+V may vary from point to point. By definition, V at a point P is the work done in bringing a unit positive charge from infinity to the point P.
+Reprint 2026-27

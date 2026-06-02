@@ -1,0 +1,35 @@
+35 Theory of Consumer
+Behaviour
+13. Suppose your friend is indifferent to the bundles (5, 6) and (6, 6). Are the preferences of your friend monotonic?
+14. Suppose there are two consumers in the market for a good and their demand functions are as follows:
+d1(p) = 20 – p for any price less than or equal to 20, and d1(p) = 0 at any price greater than 20.
+d2(p) = 30 – 2p for any price less than or equal to 15 and d1(p) = 0 at any price greater than 15.
+Find out the market demand function.
+15. Suppose there are 20 consumers for a good and they have identical demand functions:
+d(p) = 10 – 3p for any price less than or equal to 10
+3 and d1(p) = 0 at any price greater than 10
+What is the market demand function?
+16. Consider a market where there are just two consumers and suppose their demands for the good are given as follows:
+Calculate the market demand for the good.
+17. What do you mean by a normal good?
+18. What do you mean by an ‘inferior good’? Give some examples.
+19. What do you mean by substitutes? Give examples of two goods which are substitutes of each other.
+20. What do you mean by complements? Give examples of two goods which are complements of each other.
+21. Explain price elasticity of demand.
+22. Consider the demand for a good. At price Rs 4, the demand for the good is 25 units. Suppose price of the good increases to Rs 5, and as a result, the demand for the good falls to 20 units. Calculate the price elasticity .
+23. Consider the demand curve D (p) = 10 – 3p. What is the elasticity at price 5
+24. Suppose the price elasticity of demand for a good is – 0.2. If there is a 5 % increase in the price of the good, by what percentage will the demand for the good go down?
+25. Suppose the price elasticity of demand for a good is – 0.2. How will the expenditure on the good be affected if there is a 10 % increase in the price of the good?
+26. Suppose there was a 4 % decrease in the price of a good, and as a result, the expenditure on the good increased by 2 %. What can you say about the elasticity of demand?
+Reprint 2026-27
+Chapter 3
+P P P P Production and Costs roduction and Costs roduction and Costs roduction and Costs roduction and Costs
+A Firm Effort
+In the previous chapter, we have discussed the behaviour of the consumers. In this chapter as well as in the next, we shall examine the behaviour of a producer. Production is the process by which inputs are transformed into ‘output’. Production is carried out by producers or firms. A firm acquires different inputs like labour, machines, land, raw materials etc. It uses these inputs to produce output. This output can be consumed by consumers, or used by other firms for further production. For example, a tailor uses a sewing machine, cloth, thread and his own labour to ‘produce’ shirts. A farmer uses his land, labour, a tractor, seed, fertilizer, water etc to produce wheat. A car manufacturer uses land for a factory, machinery, labour, and various other inputs (steel, aluminium, rubber etc) to produce cars. A rickshaw puller uses a rickshaw and his own labour to ‘produce’ rickshaw rides. A domestic helper uses her labour to produce ‘cleaning services’.
+We make certain simplifying assumptions to start with. Production is instantaneous: in our very simple model of production no time elapses between the combination of the inputs and the production of the output. We also tend to use the terms production and supply synonymously and often interchangeably.
+In order to acquire inputs a firm has to pay for them.
+This is called the cost of production. Once output has been produced, the firm sell it in the market and earns revenue. The difference between the revenue and cost is called the firm’s profit. We assume that the objective of a firm is to earn the maximum profit that it can.
+In this chapter, we discuss the relationship between inputs and output. Then we look at the cost structure of the firm. We do this to be able to identifiy the output at which firms profits are maximum.
+3.1 PRODUCTION FUNCTION
+The production function of a firm is a relationship between inputs used and output produced by the firm. For various quantities of inputs used, it gives the maximum quantity of output that can be produced.
+Reprint 2026-27

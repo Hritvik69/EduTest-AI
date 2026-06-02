@@ -1,0 +1,162 @@
+BINOMIAL THEOREM 127
+We now arrange the coefficients in these expansions as follows (Fig 7.1):
+Do we observe any pattern in this table that will help us to write the next row? Yes we do. It can be seen that the addition of 1’s in the row for index 1 gives rise to 2 in the row for index 2. The addition of 1, 2 and 2, 1 in the row for index 2, gives rise to 3 and 3 in the row for index 3 and so on. Also, 1 is present at the beginning and at the end of each row. This can be continued till any index of our interest.
+We can extend the pattern given in Fig 7.2 by writing a few more rows.
+Pascal’s Triangle
+The structure given in Fig 7.2 looks like a triangle with 1 at the top vertex and running down the two slanting sides. This array of numbers is known as Pascal’s triangle, after the name of French mathematician Blaise Pascal. It is also known as Meru
+Prastara by Pingla.
+Expansions for the higher powers of a binomial are also possible by using Pascal’s triangle. Let us expand (2x + 3y)5 by using Pascal’s triangle. The row for index 5 is
+1 5 10 10 5 1
+Using this row and our observations (i), (ii) and (iii), we get (2x + 3y)5 = (2x)5 + 5(2x)4 (3y) + 10(2x)3 (3y)2 +10 (2x)2 (3y)3 + 5(2x)(3y)4 +(3y)5
+= 32x5 + 240x4y + 720x3y2 + 1080x2y3 + 810xy4 + 243y5.
+Reprint 2026-27
+128 MATHEMATICS
+Now, if we want to find the expansion of (2x + 3y)12, we are first required to get the row for index 12. This can be done by writing all the rows of the Pascal’s triangle till index 12. This is a slightly lengthy process. The process, as you observe, will become more difficult, if we need the expansions involving still larger powers.
+We thus try to find a rule that will help us to find the expansion of the binomial for any power without writing all the rows of the Pascal’s triangle, that come before the row of the desired index.
+For this, we make use of the concept of combinations studied earlier to rewrite the numbers in the Pascal’s triangle. We know that !
+= , 0 ≤ r ≤ n and n is a non-negative integer. Also, nC0 = 1 = nCn
+The Pascal’s triangle can now be rewritten as (Fig 7.3)
+Observing this pattern, we can now write the row of the Pascal’s triangle for any index without writing the earlier rows. For example, for the index 7 the row would be
+Thus, using this row and the observations (i), (ii) and (iii), we have (a + b)7 = 7C0 a7 + 7C1a6b + 7C2a5b2 + 7C3a4b3 + 7C4a3b4 + 7C5a2b5 + 7C6ab6 + 7C7b7
+An expansion of a binomial to any positive integral index say n can now be visualised using these observations. We are now in a position to write the expansion of a binomial to any positive integral index.
+Fig 7.3 Pascal’s triangle
+Reprint 2026-27
+BINOMIAL THEOREM 129
+7.2.1 Binomial theorem for any positive integer n, (a + b)n = nC0an + nC1an–1b + nC2an–2 b2 + ...+ nCn – 1a.bn–1 + nCnbn
+Proof The proof is obtained by applying principle of mathematical induction.
+Let the given statement be
+P(n) : (a + b)n = nC0an + nC1an – 1b + nC2an – 2b2 + ...+ nCn–1a.bn – 1 + nCnbn
+For n = 1, we have
+P (1) : (a + b)1 = 1C0a1 + 1C1b1 = a + b
+Thus, P (1) is true.
+Suppose P (k) is true for some positive integer k, i.e.
+(a + b)k = kC0ak + kC1ak – 1b + kC2ak – 2b2 + ...+ kCkbk . . .
+We shall prove that P(k + 1) is also true, i.e., (a + b)k + 1 = k + 1C0 ak + 1 + k + 1C1 akb + k + 1C2 ak – 1b2 + ...+ k + 1Ck+1 bk + 1
+Now, (a + b)k + 1 = (a + b) (a + b)k
+= (a + b) (kC0 ak + kC1ak – 1 b + kC2 ak – 2 b2 +...+ kCk – 1 abk – 1 + kCk bk)
+[from (1)]
+= kC0 ak + 1 + kC1 akb + kC2ak – 1b2 +...+ kCk – 1 a2bk – 1 + kCk abk + kC0 akb
++ kC1ak – 1b2 + kC2ak – 2b3+...+ kCk-1abk + kCkbk + 1
+[by actual multiplication]
+= kC0ak + 1 + (kC1+ kC0) akb + (kC2 + kC1)ak – 1b2 + ...
++ (kCk+ kCk–1) abk + kCkbk + 1 [grouping like terms]
+= k + 1C0a k + 1 + k + 1C1akb + k + 1C2 ak – 1b2 +...+ k + 1Ckabk + k + 1Ck + 1 bk +1 (by using k + 1C0=1, kCr + kCr–1 = k + 1Cr and kCk = 1= k + 1Ck + 1)
+Thus, it has been proved that P (k + 1) is true whenever P(k) is true. Therefore, by principle of mathematical induction, P(n) is true for every positive integer n.
+We illustrate this theorem by expanding (x + 2)6:
+(x + 2)6 = 6C0x6 + 6C1x5.2 + 6C2x422 + 6C3x3.23 + 6C4x2.24 + 6C5x.25 + 6C6.26.
+= x6 + 12x5 + 60x4 + 160x3 + 240x2 + 192x + 64
+Thus (x + 2)6 = x6 + 12x5 + 60x4 + 160x3 + 240x2 + 192x + 64.
+Reprint 2026-27
+130 MATHEMATICS
+Observations
+1. The notation ∑=
+C stands for nC0anb0 + nC1an–1b1 + ...+ nCran–rbr + ...+nCnan–nbn, where b0 = 1 = an–n.
+Hence the theorem can also be stated as n n b a b a 0
+2. The coefficients nCr occuring in the binomial theorem are known as binomial coefficients.
+3. There are (n+1) terms in the expansion of (a+b)n, i.e., one more than the index.
+4. In the successive terms of the expansion the index of a goes on decreasing by unity. It is n in the first term, (n–1) in the second term, and so on ending with zero in the last term. At the same time the index of b increases by unity, starting with zero in the first term, 1 in the second and so on ending with n in the last term.
+5. In the expansion of (a+b)n, the sum of the indices of a and b is n + 0 = n in the first term, (n – 1) + 1 = n in the second term and so on 0 + n = n in the last term.
+Thus, it can be seen that the sum of the indices of a and b is n in every term of the expansion.
+7.2.2 Some special cases In the expansion of (a + b)n, (i) Taking a = x and b = – y, we obtain (x – y)n = [x + (–y)]n
+= nC0xn + nC1xn – 1(–y) + nC2xn–2(–y)2 + nC3xn–3(–y)3 + ... + nCn (–y)n
+= nC0xn – nC1xn – 1y + nC2xn – 2y2 – nC3xn – 3y3 + ... + (–1)n nCn yn
+Thus (x–y)n = nC0xn – nC1xn – 1 y + nC2xn – 2 y2 + ... + (–1)n nCn yn
+Using this, we have (x–2y)5 = 5C0x5 – 5C1x4 (2y) + 5C2x3 (2y)2 – 5C3x2 (2y)3 +
+5C4 x(2y)4 – 5C5(2y)5
+= x5 –10x4y + 40x3y2 – 80x2y3 + 80xy4 – 32y5.
+(ii) Taking a = 1, b = x, we obtain (1 + x)n = nC0(1)n + nC1(1)n – 1x + nC2(1)n – 2 x2 + ... + nCnxn
+= nC0 + nC1x + nC2x2 + nC3x3 + ... + nCnxn
+Thus (1 + x)n = nC0 + nC1x + nC2x2 + nC3x3 + ... + nCnxn
+Reprint 2026-27
+BINOMIAL THEOREM 131
+In particular, for x = 1, we have
+2n = nC0 + nC1 + nC2 + ... + nCn.
+(iii) Taking a = 1, b = – x, we obtain (1– x)n = nC0 – nC1x + nC2x2 – ... + (– 1)n nCnxn
+In particular, for x = 1, we get
+0 = nC0 – nC1 + nC2 – ... + (–1)n nCn
+Example 1 Expand
+  , x ≠ 0
+Solution By using binomial theorem, we have
++ = 4C0(x2)4 + 4C1(x2)3 
+3 + 4C2(x2)2 x + 4C3(x2)
+= x8 + 4.x6 . x
+3 + 6.x4 . 2 x + 4.x2. 3
+= x8 + 12x5 + 54x2 + 4
+Example 2 Compute (98)5.
+Solution We express 98 as the sum or difference of two numbers whose powers are easier to calculate, and then use Binomial Theorem.
+Write 98 = 100 – 2
+Therefore, (98)5 = (100 – 2)5
+= 5C0 (100)5 – 5C1 (100)4.2 + 5C2 (100)322
+– 5C3 (100)2 (2)3 + 5C4 (100) (2)4 – 5C5 (2)5
+= 10000000000 – 5 × 100000000 × 2 + 10 × 1000000 × 4 – 10 ×10000
+× 8 + 5 × 100 × 16 – 32
+= 10040008000 – 1000800032 = 9039207968.
+Example 3 Which is larger (1.01)1000000 or 10,000?
+Solution Splitting 1.01 and using binomial theorem to write the first few terms we
+Reprint 2026-27
+132 MATHEMATICS (1.01)1000000 = (1 + 0.01)1000000
+= 1000000C0 + 1000000C1(0.01) + other positive terms
+= 1 + 1000000 × 0.01 + other positive terms
+= 1 + 10000 + other positive terms
+Hence (1.01)1000000 > 10000
+Example 4 Using binomial theorem, prove that 6n–5n always leaves remainder
+1 when divided by 25.
+Solution For two numbers a and b if we can find numbers q and r such that a = bq + r, then we say that b divides a with q as quotient and r as remainder. Thus, in order to show that 6n – 5n leaves remainder 1 when divided by 25, we prove that
+6n – 5n = 25k + 1, where k is some natural number.
+(1 + a)n = nC0 + nC1a + nC2a2 + ... + nCnan
+For a = 5, we get (1 + 5)n = nC0 + nC15 + nC252 + ... + nCn5n i.e. (6)n = 1 + 5n + 52.nC2 + 53.nC3 + ... + 5n i.e. 6n – 5n = 1+52 (nC2 + nC35 + ... + 5n-2)
+or 6n – 5n = 1+ 25 (nC2 + 5 .nC3 + ... + 5n-2)
+or 6n – 5n = 25k+1 where k = nC2 + 5 .nC3 + ... + 5n–2.
+This shows that when divided by 25, 6n – 5n leaves remainder 1.
+EXERCISE 7.1
+Expand each of the expressions in Exercises 1 to 5.
+1. (1–2x)5 2.
+  3. (2x – 3)6
+Reprint 2026-27
+BINOMIAL THEOREM 133
+Using binomial theorem, evaluate each of the following:
+6. (96)3 7. (102)5 8. (101)4
+9. (99)5
+10. Using Binomial Theorem, indicate which number is larger (1.1)10000 or 1000.
+11. Find (a + b)4 – (a – b)4. Hence, evaluate 4
+) 2 3 ( + – 4
+) 2 – 3 ( .
+12. Find (x + 1)6 + (x – 1)6. Hence or otherwise evaluate ( 2 + 1)6 + ( 2 – 1)6.
+13. Show that 9n+1 – 8n – 9 is divisible by 64, whenever n is a positive integer.
+14. Prove that ∑=
+Miscellaneous Exercise on Chapter 7
+1. If a and b are distinct integers, prove that a – b is a factor of an – bn, whenever n is a positive integer.
+[Hint write an = (a – b + b)n and expand]
+2. Evaluate ( ) ( )
+3 2 3 2 + − − .
+3. Find the value of ( ) ( )
+1 1 a a a a + − + − − .
+4. Find an approximation of (0.99)5 using the first three terms of its expansion.
+5. Expand using Binomial Theorem
++ − ≠  
+6. Find the expansion of (3x2 – 2ax + 3a2)3 using binomial theorem.
+ÆThe expansion of a binomial for any positive integral n is given by Binomial
+Theorem, which is (a + b)n = nC0an + nC1an – 1b + nC2an – 2b2 + ...+ nCn – 1a.bn – 1 + nCnbn.
+ÆThe coefficients of the expansions are arranged in an array. This array is called Pascal’s triangle.
+Reprint 2026-27
+134 MATHEMATICS
+Historical Note
+The ancient Indian mathematicians knew about the coefficients in the expansions of (x + y)n, 0 ≤ n ≤ 7. The arrangement of these coefficients was in the form of a diagram called Meru-Prastara, provided by Pingla in his book
+Chhanda shastra (200B.C.). This triangular arrangement is also found in the work of Chinese mathematician Chu-shi-kie in 1303. The term binomial coefficients was first introduced by the German mathematician, Michael Stipel (1486-1567) in approximately 1544. Bombelli (1572) also gave the coefficients in the expansion of (a + b)n, for n = 1,2 ...,7 and Oughtred (1631) gave them for n = 1, 2,..., 10. The arithmetic triangle, popularly known as Pascal’s triangle and similar to the Meru-
+Prastara of Pingla was constructed by the French mathematician Blaise Pascal (1623-1662) in 1665.
+The present form of the binomial theorem for integral values of n appeared in
+Trate du triange arithmetic, written by Pascal and published posthumously in
+— v v v v v —
+Reprint 2026-27 vNatural numbers are the product of human spirit. – DEDEKIND v
+8.1 Introduction
+In mathematics, the word, “sequence” is used in much the same way as it is in ordinary English. When we say that a collection of objects is listed in a sequence, we usually mean that the collection is ordered in such a way that it has an identified first member, second member, third member and so on. For example, population of human beings or bacteria at different times form a sequence. The amount of money deposited in a bank, over a number of years form a sequence.
+Depreciated values of certain commodity occur in a sequence. Sequences have important applications in several spheres of human activities.
+Sequences, following specific patterns are called progressions. In previous class, we have studied about arithmetic progression (A.P). In this Chapter, besides discussing more about A.P.; arithmetic mean, geometric mean, relationship between A.M.
+and G.M., special series in forms of sum to n terms of consecutive natural numbers, sum to n terms of squares of natural numbers and sum to n terms of cubes of natural numbers will also be studied.
+8.2 Sequences
+Let us consider the following examples:
+Assume that there is a generation gap of 30 years, we are asked to find the number of ancestors, i.e., parents, grandparents, great grandparents, etc. that a person might have over 300 years.
+Here, the total number of generations = 300 10
+Fibonacci (1175-1250)
+SEQUENCES AND SERIES
+Reprint 2026-27

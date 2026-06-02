@@ -1,0 +1,110 @@
+E mployability SkillS – ClaSS X 78
+It is possible to set filters in the settings to prevent
+SPAM from entering our mail box. Most e-mail software have a SPAM folder as shown in Figure 3.28 and automatically put all such emails into this folder.
+Practical Exercise
+Activity 1
+Making a Chart
+Material required
+Pen, notebook, chart paper, pictures.
+Procedure
+• Form groups and make a chart to list down all the ways in which a device can be damaged and how it can be prevented.
+• Make sure all students in the group get a chance to participate.
+Check Your Progress
+A. Multiple choice questions
+Read the questions carefully and circle the letter (a), (b), (c) or (d) that best answers the question.
+1. What happens if you leave a device plugged in even after it is charged 100%?
+(a) It can break.
+(b) It can stop functioning.
+(c) It can over-heat.
+(d) Data can get corrupt.
+2. How can an anti-virus protect your device?
+(a) It can protect it from over-heating.
+(b) It can increase its performance.
+(c) It can prevent data from getting corrupt.
+(d) It can backup data.
+3. Which option is not required to keep a device cool?
+(a) Keep the device unplugged when in use.
+(b) Do not cover a laptop with a blanket.
+(c) Make sure computer’s CPU fan is working.
+(d) Avoid leaving the device in the sun.
+4. Which of the following is essential for maintaining keyboard?
+(a) Turn the keyboard upside down and shake it to remove foreign material.
+InformatIon and CommunICatIon teChnology SkIllS 79 (b) Blow dust and other particles with help of a blower.
+(c) Use a very dilute combination of soap and water applied with a non-abrasive cloth to remove stains from the keycaps.
+(d) All of the above.
+B. Subjective questions
+1. Explain how to clean a computer on a daily basis.
+2. How can you increase the performance of a computer?
+What Have You Learnt?
+After completing this session, you will be able to
+• identify the importance of taking care of computers.
+• list the various ways in which computers can be damaged.
+• demonstrate how to prevent damage and take care of computers.
+S eSSion 4: computer Security and privacy
+We store a lot of information on our computers and electronic devices. For example, we keep our photos on our mobiles, school computers store personal information regarding every student and their parents, computers used in banks store the financial information of their clients and computers in hospital have important information about patients. If any of this information gets lost or leaked and falls into the wrong hands, it can cause a lot of harm to the people.
+For example, if information stored in a bank’s computer gets leaked it can cause many people to lose a lot of money. Hence, it is essential to keep computers secure and our data safe.
+Computer Security Deals with Protecting
+Computers
+Computer security and privacy deals with the measures used to prevent loss of data.
+Reasons for Security Break
+Security break is leakage of information stored in a computer.
+Figure 3.29: Computer Security
+E mployability SkillS – ClaSS X 80
+Threats to Computer
+Threats are the ways in which personal information can be leaked from a computer without our knowing.
+(a) Theft: Theft means stealing of information or hardware. These maybe of three types:
+• Physical: Where a person may steal your desktop computer or
+• Identity: Where a hacker steals your personal information and assumes your identity. Using this false identity, the hacker can gain access to your account information or perform illegal activity.
+• Software Piracy: This is stealing of software and includes using or distributing unlicensed and unauthorised copies of a computer program or software.
+Personal information can be lost or leaked in two ways:
+1. We are not careful in giving out personal information over the Internet. For example, we share our account details and password on unsecure sites.
+2. A person gets unauthorised access to our computer. This can happen in the office if we leave are computer without logging out.
+Computer security and privacy is about measures we can take to restrict access to personal data stored in a computer.
+Figure 3.30: Security Breach
+Figure 3.31: Physical stealing
+Figure 3.32: Online stealing (b) Virus: Viruses are computer programs that can damage the data and software programs or steal the information stored on a computer. Major types of viruses are Worms and Trojan Horse.
+• Worms: These are viruses that replicate themselves and spread to all files once they Figure 3.33: Worm virus
+InformatIon and CommunICatIon teChnology SkIllS 81 attack a computer. This makes it very difficult to remove them.
+• Trojan Horse: A Trojan Horse disguises itself i.e., it appears to be a useful software program but once it reaches a computer it starts behaving like a virus and destroying data.
+• Online Predator: Online predators are people who trap you into inappropriate relationships.
+They may be older people posing to be your age, bullying you into doing illegal activities online and sometimes face to face.
+• Internet Scams: Sometimes you may receive very attractive offers saying you have won a huge money in a lottery and that you can claim the prize by depositing a certain amount of money. When you deposit the money using credit card or online banking, you not only lose the deposit money but your card / account information may be misused later.
+Protecting your Data
+To protect our data from theft and viruses we can take the following measures:
+(a) Use passwords to login to your computer: Use passwords that are difficult to guess. Passwords are difficult to hack if they are a mix of small (For example ‘a b c d’) and capital letters (For example, ‘H J E R’), numbers (For example ‘8 7 6 5’) and special characters (For example, ’% ^ # $’). This would prevent unauthorised people from using your computer.
+(b) Install Anti-virus and Firewall: Anti-viruses and Firewall monitor the data coming in and out of a computer and prevent and viruses from entering. Anti-viruses can also detect and clean viruses that may have entered a computer.
+(c) Encrypt Data: This is usually done by banks and companies in which important customer information is stored. They can encrypt their entire hard disk using encrypting feature in
+Figure 3.34: Antivirus
+Figure 3.35: Data encryption
+E mployability SkillS – ClaSS X 82
+Windows (Bitlocker). This would force users to use a decryption password (or key) before starting the computer thus preventing unauthorised usage.
+(d) Secure sites: Give details of your credit card or bank account only on secure sites. See in the address bar of the browser. If the site address starts with https://and a lock symbol, then it is safe to give your credit card and bank details.
+Practical Exercise
+The teacher will facilitate these activities by showing you the e-learning lesson athttp://www.psscive.ac.in/stud_text_book.
+html. This will include videos and e-content for the above topics as well as detailed instructions for some activities below.
+Initial Thinking Activity
+After watching the initial video write down the type of risk present to the data available in different places, for example in a school, hospital, bank, etc.
+Activity 1
+Group Chart Making
+Material required
+Pen, notebook, computer, Chart paper, colours
+Procedure
+• Form groups depending on the number of students available. Make a chart to show all the different threats faced by a computer and how you can protect a computer from such treats.
+Check Your Progress
+A. Multiple choice questions
+Read the questions carefully and circle the letter (a), (b), (c) or (d) that best answers the question
+1. What should you do to ensure secure online transactions?
+(a) Lock your computer (b) Give credit card or bank details only on safe websites (c) Use anti-virus (d) Do not use pirated software
+2. Which of the following trap small children into inappropriate relations?
+(a) Online predators (b) Worms (c) Trojan Horse (d) Anti-Virus
+InformatIon and CommunICatIon teChnology SkIllS 83
+3. What should a strong password consist of?
+(a) Only letters (b) Numbers and special characters (c) Name of a person (d) Letters, numbers and special characters
+B. Subjective questions
+1. Explain how Trojan Horse virus works.
+2. List the various ways you can use to protect your data.
+What Have You Learnt?
+After completing this session, you will be able to
+• identify the importance of securing our computers and data.
+• list the various threats to a computer and its data.
+• list the various ways to protect data.

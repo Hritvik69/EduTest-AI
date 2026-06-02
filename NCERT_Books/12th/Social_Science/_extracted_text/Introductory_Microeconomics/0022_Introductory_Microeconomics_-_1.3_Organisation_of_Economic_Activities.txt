@@ -1,0 +1,22 @@
+Introductory
+Microeconomics of bananas with the consumer increases, the MU derived from each additional banana falls. Similarly, with the fall in quantity of mangoes, the marginal utility derived from mangoes increases. So, with increase in the number of bananas, the consumer will feel the inclination to sacrifice small and smaller amounts of mangoes. This tendency for the MRS to fall with increase in quantity of bananas is known as Law of Diminishing Marginal Rate of Substitution. This can be seen from figure 2.3 also. Going from point A to point B, the consumer sacrifices
+3 mangoes for 1 banana, going from point B to point C, the consumer sacrifices
+2 mangoes for 1 banana, and going from point C to point D, the consumer sacrifices just 1 mango for 1 banana. Thus, it is clear that the consumer sacrifices smaller and smaller quantities of mangoes for each additional banana.
+Shape of an Indifference Curve
+It may be mentioned that the law of Diminishing Marginal Rate of Substitution causes an indifference curve to be convex to the origin. This is the most common shape of an indifference curve. But in case of goods being perfect substitutes4, the marginal rate of substitution does not diminish. It remains the same. Let’s take an example.
+Here, the consumer is indifferent for all these combinations as long as the total of five rupee coins and five rupee notes remains the same. For the consumer, it hardly matters whether she gets a five rupee coin or a five rupee note. So, irrespective of how many five rupee notes she has, the consumer will sacrifice only one five rupee coin for a five rupee note. So these two commodities are perfect substitutes for the consumer and indifference curve depicting these will be a straight line.
+In the figure.2.4, it can be seen that consumer sacrifices the same number of five-rupee coins each time he has an additional five-rupee note.
+Table 2.2: Representation of Law of Diminishing Marginal Rate of Substitution
+Combination Quantity of bananas (Qx) Quantity of Mangoes (Qy) MRS
+A 1 15 -
+B 2 12 3:1
+C 3 10 2:1
+D 4 9 1:1
+Table 2.3: Representation of Law of Diminishing Marginal Rate of Substitution
+Combination Quantity of five Quantity of five MRS
+Rupees notes (Qx) Rupees coins (Qy)
+B 2 7 1:1
+C 3 6 1:1
+D 4 5 1:1
+4 Perfect Substitutes are the goods which can be used in place of each other, and provide exactly the same level of utility to the consumer.
+Reprint 2026-27

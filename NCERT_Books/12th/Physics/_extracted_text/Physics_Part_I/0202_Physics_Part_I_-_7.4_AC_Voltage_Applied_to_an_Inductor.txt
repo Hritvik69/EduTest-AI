@@ -1,0 +1,65 @@
+220 1.04
+The peak current is
+2 (1.41)(1.04 ) 1.47 m i I A A = = =
+This current oscillates between +1.47A and –1.47 A, and is ahead of the voltage by p/2.
+If the frequency is doubled, the capacitive reactance is halved and consequently, the current is doubled.
+Example 7.5 A light bulb and an open coil inductor are connected to an ac source through a key as shown in Fig. 7.9.
+FIGURE 7.9
+The switch is closed and after sometime, an iron rod is inserted into the interior of the inductor. The glow of the light bulb (a) increases; (b)
+decreases; (c) is unchanged, as the iron rod is inserted. Give your answer with reasons.
+Solution As the iron rod is inserted, the magnetic field inside the coil magnetizes the iron increasing the magnetic field inside it. Hence, the inductance of the coil increases. Consequently, the inductive reactance of the coil increases. As a result, a larger fraction of the applied ac voltage appears across the inductor, leaving less voltage across the bulb. Therefore, the glow of the light bulb decreases.
+7.6 AC VOLTAGE APPLIED TO A SERIES LCR CIRCUIT
+Figure 7.10 shows a series LCR circuit connected to an ac source usual, we take the voltage of the source to be v = vm sin
+If q is the charge on the capacitor and i the current, at time t, we have, from Kirchhoff’s loop
++ + = (7.20)
+We want to determine the instantaneous current i and its phase relationship to the applied alternating voltage v. We shall solve this problem by two methods. First, we use the technique of phasors and in the second method, we solve
+Eq. (7.20) analytically to obtain the time– dependence of i .
+FIGURE 7.10 A series LCR circuit connected to an ac source.
+Reprint 2026-27
+Alternating Current
+7.6.1 Phasor-diagram solution
+From the circuit shown in Fig. 7.10, we see that the resistor, inductor and capacitor are in series. Therefore, the ac current in each element is the same at any time, having the same amplitude and phase. Let it be i = im sin( f ) (7.21)
+f is the phase difference between the voltage across the source and the current in the circuit. On the basis of what we have learnt in the previous sections, we shall construct a phasor diagram for the present case.
+Let I be the phasor representing the current in the circuit as given by
+Eq. (7.21). Further, let VL, VR, VC, and V represent the voltage across the inductor, resistor, capacitor and the source, respectively. From previous section, we know that VR is parallel to I, VC is p/2 behind I and VL is p/2 ahead of I. VL, VR, VC and I are shown in Fig. 7.11(a) with apppropriate phase- relations.
+The length of these phasors or the amplitude of VR, VC and VL are:
+vRm = im R, vCm = im XC, vLm = im XL (7.22)
+The voltage Equation (7.20) for the circuit can be written as vL + vR + vC = v (7.23)
+The phasor relation whose vertical component gives the above equation is
+VL + VR + VC = V (7.24)
+This relation is represented in Fig. 7.11(b). Since
+VC and VL are always along the same line and in opposite directions, they can be combined into a single phasor (VC + VL)
+which has a magnitude ΩvCm – vLmΩ. Since V is represented as the hypotenuse of a right-triangle whose sides are VR and (VC + VL), the pythagorean theorem gives:
+( )2 2 2 m Rm Cm Lm v v v v = + −
+Substituting the values of vRm, vCm, and vLm from Eq. (7.22) into the above equation, we have ( ) ( ) m m m C m L v i R i X i X = + −
+= + −   i R X X m C L
++ − [7.25(a)]
+By analogy to the resistance in a circuit, we introduce the impedance Z in an ac circuit:
+= [7.25(b)] where 2 2 ( ) C L Z R X X = + − (7.26)
+FIGURE 7.11 (a) Relation between the phasors VL, VR, VC, and I, (b) Relation between the phasors VL, VR, and (VL + VC)
+for the circuit in Fig. 7.10.
+Reprint 2026-27
+Since phasor I is always parallel to phasor VR, the phase angle is the angle between VR and V and can be determined from
+Fig. 7.12:
+tan Cm Lm
+Using Eq. (7.22), we have tan C L X X
+= (7.27)
+Equations (7.26) and (7.27) are graphically shown in Fig. (7.12).
+This is called Impedance diagram which is a right-triangle with
+Z as its hypotenuse.
+Equation 7.25(a) gives the amplitude of the current and Eq. (7.27)
+gives the phase angle. With these, Eq. (7.21) is completely specified.
+If XC > XL, f is positive and the circuit is predominantly capacitive.
+Consequently, the current in the circuit leads the source voltage. If
+XC < XL, f is negative and the circuit is predominantly inductive.
+Consequently, the current in the circuit lags the source voltage.
+Figure 7.13 shows the phasor diagram and variation of v and i with for the case XC > XL.
+Thus, we have obtained the amplitude and phase of current for an LCR series circuit using the technique of phasors. But this method of analysing ac circuits suffers from certain disadvantages. First, the phasor diagram say nothing about the initial condition. One can take any arbitrary value of t (say, t1, as done throughout this chapter)
+and draw different phasors which show the relative angle between different phasors.
+The solution so obtained is called the steady-state solution. This is not a general solution. Additionally, we do have a transient solution which exists even for v = 0. The general solution is the sum of the transient solution and the steady-state solution. After a sufficiently long time, the effects of the transient solution die out and the behaviour of the circuit is described by the steady-state solution.
+7.6.2 Resonance
+An interesting characteristic of the series RLC circuit is the phenomenon of resonance. The phenomenon of resonance is common among systems that have a tendency to oscillate at a particular frequency. This frequency is called the system’s natural frequency. If such a system is driven by an energy source at a frequency that is near the natural frequency, the amplitude of oscillation is found to be large. A familiar example of this phenomenon is a child on a swing. The swing has a natural frequency for swinging back and forth like a pendulum. If the child pulls on the
+FIGURE 7.12 Impedance diagram.
+FIGURE 7.13 (a) Phasor diagram of V and I.
+(b) Graphs of v and i versus w t for a series LCR circuit where XC > XL.
+Reprint 2026-27

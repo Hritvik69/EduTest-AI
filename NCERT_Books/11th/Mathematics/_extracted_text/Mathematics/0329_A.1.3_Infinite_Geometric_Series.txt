@@ -1,0 +1,45 @@
+INFINITE SERIES 317 n 1 5 10 20
+  0.6667 0.1316872428 0.01734152992 0.00030072866
+We observe that as n becomes larger and larger, 2
+  becomes closer and closer to zero. Mathematically, we say that as n becomes sufficiently large, 2
+  becomes sufficiently small. In other words, as 2
+→ ∞ →  
+  . Consequently, we find that the sum of infinitely many terms is given by S = 3.
+Thus, for infinite geometric progression a, ar, ar2, ..., if numerical value of common ratio r is less than 1, then n S = ( ) 1
+In this case, 0n r → as → ∞ n since | | 1 < r and then 0
+− . Therefore,
+→ − as n → ∞ .
+Symbolically, sum to infinity of infinite geometric series is denoted by S. Thus, we have S 1
+For example
+1 2 2 2 1 2
++ + + + = = (ii) 2 3
+1 1 1 1 1 2
+1 ... 1 1 2 3 2 2 1 1 2 2
+− + − + = = =
+  + − −  
+Reprint 2026-27
+318 MATHEMATICS
+Example 2 Find the sum to infinity of the G.P. ;
+, , ,....
+Solution Here 5 r = − . Also | | 1 r < .
+Hence, the sum to infinity is
+A.1.4 Exponential Series
+Leonhard Euler (1707 – 1783), the great Swiss mathematician introduced the number e in his calculus text in 1748. The number e is useful in calculus as π in the study of the
+Consider the following infinite series of numbers
+1! 2! 3! 4!
++ + + + + ... (1)
+The sum of the series given in (1) is denoted by the number e
+Let us estimate the value of the number e.
+Since every term of the series (1) is positive, it is clear that its sum is also positive.
+Consider the two sums
+3! 4! 5! ! n
++ + + + + ... (2)
+and 2 3 4 1
+.... ...
+2 2 2 2n−
++ + + + + ... (3)
+Observe that
+4 2 = , which gives 2
+8 2 = , which gives 3
+16 2 = , which gives 4
+Reprint 2026-27

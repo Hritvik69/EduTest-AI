@@ -1,0 +1,26 @@
+40 40 40 40 40
+Introductory Macroeconomics
+The accounting rule states that both sides of the account must balance. Hence if assets are greater than liabilities, they are recorded on the right hand side as
+Net Worth.
+Net Worth = Assets – Liabilities
+3.3.1 Balance Sheet of a Fictional Bank
+Let our fictional bank start with deposits (liabilities) equal to Rs 100. This could be because Ms Fernandes has deposited Rs 100 in the bank. Let this bank deposit the same amount with RBI as reserves. Table 3.1 represents its balance
+3.1 Balance Sheet of a Bank
+If we assume that there is no currency in circulation, then the total money supply in the economy will be equal to Rs 100.
+M1= Currency + Deposits = 0 +100 =100
+3.3.2 Limits to Credit Creation and Money Multiplier
+Suppose Mr. Mathew comes to this bank for a loan of Rs 500. Can our bank give this loan? If it gives the loan and Mr Mathew deposits the loan amount in the bank itself, the total bank deposits and therefore, the total money supply will rise. It seems as though the banks can go on creating as much money as they want.
+But is there a limit to money or credit creation by banks? Yes, and this is determined by the Central bank (RBI). The RBI decides a certain percentage of deposits which every bank must keep as reserves. This is done to ensure that no bank is ‘over lending’. This is a legal requirement and is binding on the banks.
+This is called the ‘Required Reserve Ratio’ or the ‘Reserve Ratio’ or ‘Cash Reserve
+Ratio’ (CRR).
+Cash Reserve Ratio (CRR) = Percentage of deposits which a bank must keep as cash reserves with the bank.
+Apart from the CRR, banks are also required to keep some reserves in liquid form in the short term. This ratio is called Statutory Liquidity
+Ratio or SLR.
+In our fictional example, suppose CRR = 20 per cent, then with deposits of Rs
+100, our bank will need to keep Rs 20 (20 per cent of 100) as cash reserves. Only the remaining amount of deposits, i.e., Rs 80 (100 – 20 = 80) can be used to give loans. The statutory requirement of the reserve ratio acts as a limit to the amount of credit that banks can create.
+We can understand this by going back to our fictional example of an economy with one bank. Let us assume that our bank starts with a deposit of Rs 100 made by Leela. The reserve ratio is 20 per cent. Thus our bank has Rs 80 (100 – 20)
+Assets Liabilities
+Reserves Rs 100 Deposits Rs 100
+Net Worth Rs 0
+Total Rs 100 Total Rs 100
+Reprint 2026-27

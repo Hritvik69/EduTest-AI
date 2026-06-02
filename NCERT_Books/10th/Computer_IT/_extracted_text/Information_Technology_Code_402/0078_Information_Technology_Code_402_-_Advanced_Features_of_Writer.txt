@@ -1,0 +1,220 @@
+Domestic Data entry operator – class X 68
+Editing a Template
+Once a template is created, desired changes can be made in it by following the steps given below.
+Step 1. Click File > Templates > Manage Templates.
+The Templates dialog box will be displayed.
+Step 2. Right click on the template file (say T1) that has to be edited.
+Step 3. Select the Edit option from the popup menu.
+The template file will be opened. Make the desired changes and save the file. Now if we apply this template for any document, the edited file will be used.
+Setting Up a Custom Default Template
+Any template can be set as a default template. Writer gives a blank document as a default template. At the same time, any template file can be set as a default template by following the steps given below.
+Step 1. Open the Templates dialog box by pressing
+Ctrl+Shift+N.
+Step 2. Right click on the template that you wish to set as the default template.
+Step 3. From the popup menu, select option Set as
+Default as shown in Fig. 3.29.
+The default icon will appear on the top left of the template file. The next time you create a new document by selecting File > New >
+Text Document, the new document will use the last edited template.
+Moving a Template
+When you place a mouse pointer on any of the templates in the Templates dialog box, a tool tip appears displaying the name of Fig. 3.29: Setting up a default template
+Digital Documentation (aDvanceD) using libreoffice Writer 69 the template and its respective category. You can move a template from one category to another by following the steps given below.
+Step 1. Open the Templates dialog box.
+Step 2. Click and select the template to be moved.
+Step 3. Click Move button.
+Step 4. Select the new category where the template has to be moved.
+Step 5. Click OK button.
+Exporting a Template
+Export template feature allows to store the template file in the desired folder on your computer. It is different from moving a template from one category folder to another. When a template is exported, it is saved as a template file at any desired location. Exporting the template is a useful feature for sharing the templates with multiple users.
+Follow the steps given below to export a template:
+Step 1. In the Templates dialog box, select the template to be exported.
+Step 2. Click on
+Export button located in the bottom right of the dialog box as shown in
+Fig. 3.30.
+Step 3. Then the
+Select Path dialog box appears as shown in Fig.
+3.31 to select the folder where you want to export the template.
+Fig. 3.30: Selecting Export Template button
+Fig. 3.31: Select Path dialog box
+Domestic Data entry operator – class X 70
+Step 5. Select the folder and press on OK button.
+The selected template will be exported in that folder and a confirmation dialog box, as shown in
+Fig. 3.32 will be displayed.
+Applying Templates to a
+Blank Document
+You can apply the template from the available template list to any blank document. Follow the steps given below to apply the template.
+Fig. 3.32: Confirmation after exporting a template
+Step 1. Open a new document in LibreOffice Writer by selecting File > New > Text Document.
+Step 2. Select File > New > Templates to display the
+Templates dialog box.
+Step 3. Select the desired template. The template will be opened in a new window.
+Step 4. Copy the entire content of the template by using keyboard shortcut key Ctrl+A for selection and
+Ctrl+C to copy.
+Step 6. Open the blank document and paste the copied content of the template by using keyboard shortcut key Ctrl+V.
+Step 7. Add or delete the content as desired and save it as a text file.
+Once a template is created, it can be applied to an existing document by selecting Insert >Text From
+File option. Browse and select the template file that has been saved on the computer. The selected template will be inserted in the document.
+Digital Documentation (aDvanceD) using libreoffice Writer 71
+Niaz wants to store the template created by him and another one that was imported by Balwinder in a folder named Company_
+Templates on the desktop.
+Follow the steps given below to complete this task.
+Step 1. Create a new document in LibreOffice Writer and press
+Ctrl+Shift+N to open the Templates dialog box.
+Step 2. Select the template (Niaz_template) to be exported.
+Step 3. Click Export button in the bottom right of the dialog box. The Save As dialog box appears.
+Step 4. Browse for the folder named Company_Templates stored on the desktop.
+Step 5. Click Select Folder button to export the selected template.
+Step 6. Repeat the steps 1 to 5 to import the template Employee
+ID Badge in the Company_Templates folder.
+Practical Activity 3.6
+Track Changes Feature
+Track Changes is a powerful tool that makes the process of commenting, editing and reviewing of a document easy between multiple users. A document created by one user need to be reviewed and edited by self or other users. If any modifications are made in the document directly, the original document might get lost. Instead, the Track Changes feature of Writer offers an alternative method to keep a record of all the changes made in the original document. All the changes that are recorded can be either accepted or rejected by the original author. Furthermore, the Track Changes feature also gives us the option to add comments while reviewing a document.
+The Track Changes toolbar contains various tools that help to track the changes made by different users.
+To view the Track Changes toolbar, from main menu bar, select View > Toolbars > Track Changes. The
+Track Changes toolbar will appear in the bottom left corner of the Writer window as shown in Fig. 3.33.
+Fig. 3.33: Track Changes Toolbar
+Domestic Data entry operator – class X 72
+The various buttons present on the Track
+Changes toolbar shown in the Fig. 3.33 are briefly explained below.
+(a) View Track Changes – Clicking on this button displays all the changes made in the document by different users.
+(b) Record Track Changes – Clicking on this button, turns on the Track Changes feature.
+After this, any sort of editing done will be marked.
+Any character added to the document will be displayed in a different color and any deletion done will be seen in strike-through style.
+(c) Previous Track Changes/Next Track Changes
+– Click on these buttons to navigate between the changes made.
+(d) Accept/Accept All Track Changes – Once the editing is done, the original author may accept the change made to the document by clicking
+Accept All Track Changes button will accept all the changes made to the document.
+(e) Reject/Reject All Track Changes – The original author of the document may reject a single change or all changes made to the document by clicking Reject Track Changes or Reject All
+Track Changes button, respectively.
+(f) Manage Track Changes – By clicking on this button the Manage Changes dialog box is displayed, which contains a detailed list of all changes made to the document along with the author’s name and date and time of modification.
+(g) Insert Comment – This button is used to add a comment in a document.
+Preparing a Document for Review
+Track Changes feature is used when a document is shared with one or more users for review or editing purposes. So, before the document is shared, one should make sure that the changes made should be recorded.
+This will ensure that after the review is done, the original author of the document has the option to accept or reject the changes made. Hence, before the document is
+Digital Documentation (aDvanceD) using libreoffice Writer 73 sent for review, the original author should prepare the document for review and start recording the changes being made. For that, select Edit > Track Changes
+>Record option. Alternatively, select the Record button from the Track Changes toolbar. To make sure that no user is able to disable the track changes option, we can protect the document with password. Follow the following steps for the same.
+Step 1. Create a new document in LibreOffice Writer.
+From the main menu, select Edit > Track
+Changes > Protect option. The
+Enter Password dialog box will appear as shown in Fig. 3.34.
+Alternately, you can click on Protect
+Track Changes button located on the
+Track Changes Toolbar to protect the document.
+Step 2. Enter the same password in
+Password and confirm text box and click on OK button. After protecting the document with password, if any user tries to disable the Track
+Changes feature, Writer will prompt to enter the password.
+Recording Changes
+Once the Track
+Changes features is
+ON, the reviewers can begin recording the changes in the document. For that, click Edit > Track
+C h a n g e s > R e c o r d option. Alternatively select Record button from the toolbar. The shortcut key to start recording the changes is Ctrl+Shift+C.
+Once the Record option is selected, the Track Changes
+Fig. 3.34: Enter Password dialog box allowing to enter password after clicking on Protect
+Track Changes button
+Fig. 3.35: Recording the changes
+Domestic Data entry operator – class X 74 feature is ON. Now, any character being deleted will be shown as strike through text and any character added will be shown in different colour as shown in Fig. 3.35. Also when you place the mouse pointer over any of the changes, a tool tip is displayed giving details of the author, change made, date and time of change done as shown in Fig. 3.36.
+To stop recording, deselect the record option by selecting Edit > Track Changes > Record or click the
+Record button on the toolbar.
+Accepting and Rejecting Changes
+Once the changes are made by all the reviewers, the original author may accept or reject them. Open the document and follow the steps given below.
+Step 1. To accept or reject a change, click on the change made and then select Accept Track Change /
+Reject Track Change button.
+Fig. 3.37: Manage Changes dialog box
+Fig. 3.36: Tool tip showing the details of changes made
+Step 2. To navigate between the changes made to the document click Previous
+Track Changes and Next
+Track Changes buttons.
+Step 3. To accept or reject all the changes made, select
+Accept All Tracked
+Changes / Reject All
+Tracked Changes button respectively.
+Step 4. If Manage Track Changes button is clicked, a Manage
+Changes dialog box appears as shown in Fig. 3.37. It contains the details of all the changes made in the document. The dialog box contains buttons to accept and reject changes as well.
+Digital Documentation (aDvanceD) using libreoffice Writer 75
+Adding Comments
+To add comments while reviewing, we can use the
+Track Changes toolbar as well. Click at the place in the document where the comment is to be placed.
+Thereafter, follow the steps given below to add comments in a document.
+Step 1. Click Insert Comment button on the Track
+Changes toolbar. A comment box will be inserted on the right side of the window. It will have the name of the author or reviewer and date and time of the comment being made, as shown in
+Fig. 3.38.
+Step 2. Type the comment.
+Step 3. Once done click anywhere on the document to activate it.
+If more than one or two of users add comments then the comments by different users will be shown in different coloured comment boxes in Fig. 3.38.
+Fig. 3.38: Inserting Comments using the option under Track Changes toolbar
+Domestic Data entry operator – class X 76
+Deleting Comments
+To delete any comment, click on the down arrow on the bottom right of the comment box. A popup menu will be displayed as shown in Fig. 3.39. It gives the option to delete only the current comment, all comments by a particular author and to delete all comments. Select the desired option.
+Comparing Documents
+Once the reviewers have made the changes and given their comments, Writer allows to compare the original document with the reviewed document and then choose the option(s) that suits the best. Follow the steps given below to compare the documents.
+Step 1. Open the edited document.
+Step 2. Select Edit > Track Changes > Compare
+Documents option. Alternatively, click
+Compare Non-Tracked Changed Document from the toolbar.
+Fig. 3.39: Deleting Comments from pop-up menu
+Digital Documentation (aDvanceD) using libreoffice Writer 77
+Step 3. The Compare To dialog box will appear. Browse and select the original file to be compared as shown in Fig. 3.40.
+Step 4. The Manage Changes dialog box is displayed as shown in Fig. 3.37. Accept or reject the desired changes.
+Step 5. Close the dialog box when done.
+Step 6. Save the edited file.
+Fig. 3.40: Selecting original file
+Practical Activity 3.7
+Pradeep has created a document on ‘Humans and Nature’.
+He wants his friends to review the document and give their comments wherever required. The following process will demonstrate how his friends add comments in the document.
+Step 1. Open the document created by Pradeep to review.
+Step 2. Click on Insert Comment button on the toolbar.
+Step 3. Type the comment in the comment box.
+Step 4. Once done click anywhere on the document to activate
+Step 5. Repeat the steps given above to add more comments in the document.
+Domestic Data entry operator – class X 78
+After incorporating the reviews, Pradeep mailed the document to his editor with the Track Changes ON. He made certain changes in the document. Pradeep wants to compare his original document with the reviewed document. The following process will demonstrate how Pradeep will compare the edited document with the original document.
+Step 1. Open the edited document.
+Step 2. Select Edit > Track Changes > Compare Documents
+Step 3. The Compare To dialog box will appear. Browse and select the original file to be compared as shown in Fig. 3.40.
+Step 4. The Manage Changes dialog box is displayed as shown in Fig. 3.37.
+Step 5. Accept or reject the desired changes.
+Step 6. Close the dialog box when done.
+Step 7. Save the edited file.
+Practical Activity 3.8
+• A Table of Contents (ToC) contains a list of topics and subtopics that have been covered in the book along with page numbers.
+• A ToC in Writer allows to insert an automated table of contents in a document.
+• The contents in the ToC are hyperlinked in the
+• LibreOffice Writer supports up to 10 levels of headings H1 to H10.
+• To insert a ToC, select Insert > Table of Contents and Index > Table of Contents, Index or
+Bibliography.
+• To add a graphic as a background of the ToC, select the Bitmap button in the Background tab of the Table of Contents, Index or Bibliography dialog box.
+• Once inserted, a ToC can be edited or deleted from the document.
+• A template is a preset layout that helps to create professional and/or formal documents easily.
+• In a template we can create and save defined headings, text formats, styles, page numbers, headers and footers.
+Digital Documentation (aDvanceD) using libreoffice Writer 79
+• The new documents created from these templates have the same content segregation, formatting features and appearance as that of the applied templates.
+• To create a new document with a template, select
+File > New > Templates …
+• To create and save your own template, select File
+> Templates > Save.
+• LibreOffice provides a wide range of online templates which can be downloaded from then
+Internet.
+• Once these templates are installed on your computer, they will appear in Templates window from where they can be viewed and selected.
+• Any template can be set as a default template.
+• Export template option allows to store the template file in the desired folder on your computer.
+• Exporting a template is a very useful feature to share the templates with multiple users.
+• Track Changes feature of Writer makes the process of commenting, editing and reviewing of a document easy between multiple users.
+• The Track Changes feature of Writer helps to record all the changes made in the original document. All the changes that are recorded can be either accepted or rejected by the original author.
+• The Track Changes feature also gives us the option to add comments while reviewing a document.
+• The Track Changes toolbar contains various tools that help to track the changes made by different
+• To view the Track Changes toolbar, from main menu bar, select View > Toolbars > Track Changes.
+1. Rajnikant has created a detailed report on Education in
+India using the LibreOffice Writer tool. He has styled the document well by inserting proper paragraph and section headings. His colleague Murugan advised him to insert a Table of Contents that will give a complete glimpse of his report. Help Rajnikant to insert a ToC with a green background.
+Practical Exercises
+Domestic Data entry operator – class X 80
+2. After the ToC was inserted, Rajnikant made some changes in the report but the changes were not reflected in the
+ToC. Will he have to again insert a new ToC? Suggest him a better way to update the ToC.
+3. Rukhsat has just downloaded a template from libreoffice.org. Now she wants to import it in My templates category of the Templates folder. How can she complete her task?
+4. Rimit loves to create cards on his computer. This time he decided to make his own Christmas cards and send them to his friends. He wants to do the task using the templates feature of Writer. He has already saved and imported the desired template(card.ott). Help him to create cards for at least five of his friends.
+5. Teena is a member of the editorial team of her school.
+She wants to set the newspaper template as her default template. Write the steps to help Teena complete the task.
+6. Venkat has created a document on India’s Trade Review.
+He wants two of his friends, Rinky and Sujoy to review his document and if required, add comments to it. But none of them know how to use the Track Changes feature of Writer. Help them to complete the task.
+7. Venkat has received the reviewed file with modifications and comments. What steps will he follow now to accept or reject the changes done by his friends.
+8. Write steps to compare the original document created by Venkat and the edited document sent by Rinky and
+Check Your Progress
+A. Multiple choice questions

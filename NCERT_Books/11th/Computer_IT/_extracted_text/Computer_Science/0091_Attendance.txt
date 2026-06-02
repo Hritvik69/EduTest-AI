@@ -1,0 +1,67 @@
+IntroductIon to Problem SolvIng 79
+Suppose we develop some software without verifying the underlying algorithm and if there are errors in the algorithm, then the software developed will not run. Hence, it is important to verify an algorithm since the effort required to catch and fix a mistake is minimal.
+4.7 compArISon of A lgorIthm
+There can be more than one approach to solve a problem using computer and hence we can have more than one algorithm. Then one may ask which algorithm should be used?
+Consider the problem of finding whether a given number is prime or not. Prime numbers are of great importance in computer science as they find application in databases, security, file compression or decompression, modulation or demodulation, etc. There can be four different ways to write algorithms to check whether a given number is prime or not as shown below:
+(i) Starting with divisor 2, divide the given number (dividend) and check if there are any factors. Increase the divisor in each iteration and repeat the previous steps as long as divisor < dividend. If there is a factor, then the given number is not prime (ii) In (i), instead of testing all the numbers till the dividend, only test up to half of the given value (dividend) because the divisor can not be more than half of the dividend (iii) In method (i), only test up to the square root of the dividend (numbers)
+(iv) Given a prior list of prime number till 100, divide the given number by each number in the list. If not divisible by any number, then the number is a prime else it is not prime
+All these four methods can check if a given number is prime or not. Now the question is which of these methods is better or efficient?
+Algorithm (i) requires large number of calculations (means more processing time) as it checks for all the numbers as long as the divisor is less than the number.
+If the given number is large, this method will take more time to give the output.
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 80
+Algorithm (ii) is more efficient than (i) as it checks for divisibility till half the number, and thus it reduces the time for computation of the prime number. Algorithm (iii) is even more efficient as it checks for divisibility till square root of the number, thereby further reducing the time taken.
+As algorithm (iv) uses only the prime numbers smaller than the given number for divisibility, it further reduces the calculations. But in this method we require to store the list of prime numbers first. Thus it takes additional memory even though it requires lesser calculations.
+Hence, algorithms can be compared and analysed on the basis of the amount of processing time they need to run and the amount of memory that is needed to execute the algorithm. These are termed as time complexity and space complexity, respectively. The choice of an algorithm over another is done depending on how efficient they are in terms of proecssing time required (time complexity) and the memory they utilise (space complexity).
+4.8 codIng
+Once an algorithm is finalised, it should be coded in a high-level programming language as selected by the programmer. The ordered set of instructions are written in that programming language by following its syntax.
+Syntax is the set of rules or grammar that governs the formulation of the statements in the language, such as spellings, order of words, punctuation, etc.
+The machine language or low level language consisting of 0s and 1s only is the ideal way to write a computer program. Programs written using binary digits are directly understood by the computer hardware, but they are difficult to deal with and comprehend by humans. This led to the invention of high-level languages which are close to natural languages and are easier to read, write, and maintain, but are not directly understood by the computer hardware. An advantage of using high-level languages is that they are portable, i.e., they can run on different types of computers with little
+The spirit of problem solving by decomposition is to
+‘divide and conquer’.
+In words of Howard
+Raffa, a famous mathematician:
+“Decompose a complex problem into simpler problems get one’s thinking straight in these simpler problems, put these analyses together with logical glue”
+Reprint 2026-27
+IntroductIon to Problem SolvIng 81 or no modifications. Low-level programs can run on only one kind of computer and have to be rewritten in order to run on another type of system. A wide variety of high-level languages, such as FORTRAN, C, C++, Java,
+Python, etc., exist.
+A program written in a high-level language is called source code. We need to translate the source code into machine language using a compiler or an interpreter, so that it can be understood by the computer. We have learnt about the compiler and interpreter in Chapter 1.
+There are multiple programming languages available and choosing the one suitable for our requirements requires us to consider many factors. It depends on the platform (OS) where the program will run. We need to decide whether the application would be a desktop application, a mobile application or a web application.
+Desktop and mobile applications are generally developed for a particular operating system and for certain hardware whereas the web applications are accessed in different devices using web browsers and may use resources available over cloud.
+Besides, programs are developed not only to work on a computer, mobile or a web browser, but it may also be written for embedded systems like digital watch, mp3 players, traffic signals or vehicles, medical equipments and other smart devices. In such cases, we have to look for other specialised programming tools or sometimes write programs in assembly languages.
+4.9 decompoSItIon
+Sometimes a problem may be complex, that is, its solution is not directly derivable. In such cases, we need to decompose it into simpler parts. Let us look at the
+Railway reservation system we talked about earlier. The complex task of designing a good railway reservation system is seen as designing the different components of the system and then making them work with each other effectively.
+The basic idea of solving a complex problem by decomposition is to 'decompose' or break down a complex problem into smaller sub problems as shown
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 82 in Figure 4.12. These sub problems are relatively easier to solve than the original problem. Finally, the sub- problems are combined in a logical way to obtain the solution for the bigger, main problem.
+Breaking down a complex problem into sub problems also means that each sub problem can be examined in detail. Each sub problem can be solved independently and by different persons (or teams). Having different teams working on different sub problems can also be advantageous because specific sub problems can be assigned to teams who are experts in solving such problems.
+There are many real life problems which can be solved using decomposition. Examples include solving problems in mathematics and science, events management in school, weather forecasting, delivery management system, etc.
+Once the individual sub problems are solved, it is necessary to test them for their correctness and integrate them to get the complete solution.
+S ummAry
+• An algorithm is defined as a step-by-step procedure designed to perform an operation which will lead to the desired result, if followed correctly.
+• Algorithms have a definite beginning and a definite end, and a finite number of steps.
+• A good algorithm, which is precise, unique and finite, receives input and produces an output.
+Figure 4.12: Railway reservation system
+Trains' information
+— days, timings, stations, classes and
+Reservation information
+— booking open or close, available or waiting List, cancellation and refund
+Information about staff, security, infrastructure
+Billing service Other details about railways Food service
+Reprint 2026-27
+IntroductIon to Problem SolvIng 83 exercISe
+1. Write pseudocode that reads two numbers and divide one by another and display the quotient.
+2. Two friends decide who gets the last slice of a cake by flipping a coin five times. The first person to win three flips wins the cake. An input of 1 means player 1 wins a flip, and a 2 means player 2 wins a flip. Design an algorithm to determine who takes the cake?
+3. Write the pseudocode to print all multiples of 5 between 10 and 25 (including both 10 and 25).
+4. Give an example of a loop that is to be executed a certain number of times.
+5. Suppose you are collecting money for something.
+You need ` 200 in all. You ask your parents, uncles and aunts as well as grandparents. Different people may give either ` 10, ` 20 or even ` 50. You will collect till the total becomes 200. Write the algorithm.
+6. Write the pseudocode to print the bill depending upon the price and quantity of an item. Also print noteS • In order to write effective algorithms we need to identify the input, the process to be followed and the desired output.
+• A flowchart is a type of diagram that represents the algorithm graphically using boxes of various kinds, in an order connected by arrows.
+• An algorithm where all the steps are executed one after the other is said to execute in sequence.
+• Decision making involves selection of one of the alternatives based on outcome of a condition.
+• An algorithm may have a certain set of steps, which are repeating for a finite number of times, such an algorithm is said to be iterative.
+• There can be more than one approach to solve a problem and hence we can have more than one algorithm for a particular problem.
+• The choice of algorithm should be made on the basis of time and space complexity.
+Reprint 2026-27

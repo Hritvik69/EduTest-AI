@@ -1,0 +1,17 @@
+13 Theory of Consumer
+Behaviour
+Indifference Map. A family of indifference curves. The arrow indicates that bundles on higher indifference curves are preferred by the consumer to the bundles on lower indifference curves.
+Slope of the Indifference Curve. The indifference curve slopes downward. An increase in the amount of bananas along the indifference curve is associated with a decrease in the amount of mangoes. If ∆ x1
+> 0 then ∆ x2 < 0.
+Indifference Map
+The consumer’s preferences over all the bundles can be represented by a family of indifference curves as shown in Figure
+2.5. This is called an indifference map of the consumer. All points on an indifference curve represent bundles which are considered indifferent by the consumer. Monotonicity of preferences imply that between any two indifference curves, the bundles on the one which lies above are preferred to the bundles on the one which lies below.
+Features of Indifference Curve
+1. Indifference curve slopes downwards from left to right:
+An indifference curve slopes downwards from left to right, which means that in order to have more of bananas, the consumer has to forego some mangoes.
+If the consumer does not forego some mangoes with an increase in number of bananas, it will mean consumer having more of bananas with same number of mangoes, taking her to a higher indifference curve. Thus, as long as the consumer is on the same indifference curve, an increase in bananas must be compensated by a fall in quantity of mangoes.
+Monotonic Preferences
+Consumer’s preferences are assumed to be such that between any two bundles (x1, x2) and (y1, y2), if (x1, x2) has more of at least one of the goods and no less of the other good compared to (y1, y2), then the consumer prefers (x1, x2) to (y1, y2).
+Preferences of this kind are called monotonic preferences. Thus, a consumer’s preferences are monotonic if and only if between any two bundles, the consumer prefers the bundle which has more of at least one of the goods and no less of the other good as compared to the other bundle.
+Indif ference Curve for per fect substitutes. Indifference curve depicting two commodities which are perfect substitutes is a straight line.
+Reprint 2026-27

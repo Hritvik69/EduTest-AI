@@ -1,0 +1,19 @@
+Computer SCienCe - ClaSS Xii 42 mismatched, the compiler needs to throw an error.
+To handle matching of parentheses, stack is used.
+3.3 operatIonS on Stack
+As explained in the previous section, a stack is a mechanism that implements LIFO arrangement hence elements are added and deleted from the stack at one end only. The end from which elements are added or deleted is called TOP of the stack. Two fundamental operations performed on the stack are PUSH and POP.
+In this section, we will learn about them and implement them using Python.
+3.3.1 PUSH and POP Operations
+• PUSH adds a new element at the TOP of the stack.
+It is an insertion operation. We can add elements to a stack until it is full. A stack is full when no more elements can be added to it. Trying to add an element to a full stack results in an exception called
+‘overflow’.
+• POP operation is used to remove the top most element of the stack, that is, the element at the TOP of the stack. It is a delete operation. We can delete elements from a stack until it is empty i.e. there is no element in it. Trying to delete an element from an empty stack results in an exception called ‘underflow’.
+A stack is used to insert and delete elements in LIFO order. Same principle is followed in adding and removing glasses from a pile of glasses.
+Let us create a stack of glasses assuming that each glass is numbered.
+Visual representations of PUSH and POP operations on a stack of glasses are shown in
+Figure 3.2.
+(i) Empty (ii) Push 1 (iii) Push 2 (iv) Pop (v) Push 3 (x) Empty (vi) Push 4 (vii) Pop (viii) Pop (2 will be removed)
+(4 will be removed) (3 will be removed)
+(ix) Pop (1 will be removed)
+Figure 3.2: PUSH and POP operations on the stack of glasses
+Reprint 2026-27

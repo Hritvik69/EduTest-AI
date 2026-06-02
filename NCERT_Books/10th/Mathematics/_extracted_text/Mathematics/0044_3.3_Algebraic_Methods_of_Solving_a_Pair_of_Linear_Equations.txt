@@ -1,0 +1,21 @@
+30 MATHEMATICS
+3.3 Algebraic Methods of Solving a Pair of Linear Equations
+In the previous section, we discussed how to solve a pair of linear equations graphically.
+The graphical method is not convenient in cases when the point representing the solution of the linear equations has non-integral coordinates like ( ) 3 , 2 7 , (–1.75, 3.3), 4 1 ,
+  , etc. There is every possibility of making mistakes while reading such coordinates. Is there any alternative method of finding the solution? There are several algebraic methods, which we shall now discuss.
+3.3.1 Substitution Method : We shall explain the method of substitution by taking some examples.
+Example 4 : Solve the following pair of equations by substitution method:
+7x – 15y = 2 (1)
+x + 2y = 3 (2)
+Solution :
+Step 1 : We pick either of the equations and write one variable in terms of the other.
+Let us consider the Equation (2) :
+x + 2y = 3 and write it as x = 3 – 2y (3)
+Step 2 : Substitute the value of x in Equation (1). We get
+7(3 – 2y) – 15y = 2 i.e., 21 – 14y – 15y = 2 i.e., – 29y = –19
+Therefore, y = 19
+Step 3 : Substituting this value of y in Equation (3), we get x = 3 – 19
+  = 49
+Therefore, the solution is x = 49
+29 , y = 19
+Reprint 2026-27

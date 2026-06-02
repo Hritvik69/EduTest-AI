@@ -1,0 +1,90 @@
+2 MATHEMATICS the sense that we can definitely decide whether a given particular object belongs to a given collection or not. For example, we can say that the river Nile does not belong to the collection of rivers of India. On the other hand, the river Ganga does belong to this colleciton.
+We give below a few more examples of sets used particularly in mathematics, viz.
+N : the set of all natural numbers
+Z : the set of all integers
+Q : the set of all rational numbers
+R : the set of real numbers
+Z+ : the set of positive integers
+Q+ : the set of positive rational numbers, and
+R+ : the set of positive real numbers.
+The symbols for the special sets given above will be referred to throughout this text.
+Again the collection of five most renowned mathematicians of the world is not well-defined, because the criterion for determining a mathematician as most renowned may vary from person to person. Thus, it is not a well-defined collection.
+We shall say that a set is a well-defined collection of objects.
+The following points may be noted :
+(i) Objects, elements and members of a set are synonymous terms.
+(ii) Sets are usually denoted by capital letters A, B, C, X, Y, Z, etc.
+(iii) The elements of a set are represented by small letters a, b, c, x, y, z, etc.
+If a is an element of a set A, we say that “ a belongs to A” the Greek symbol ∈ (epsilon) is used to denote the phrase ‘belongs to’. Thus, we write a ∈ A. If ‘b’ is not an element of a set A, we write b ∉ A and read “b does not belong to A”.
+Thus, in the set V of vowels in the English alphabet, a ∈ V but b ∉ V. In the set
+P of prime factors of 30, 3 ∈ P but 15 ∉ P.
+There are two methods of representing a set :
+(i) Roster or tabular form (ii) Set-builder form.
+(i) In roster form, all the elements of a set are listed, the elements are being separated by commas and are enclosed within braces { }. For example, the set of all even positive integers less than 7 is described in roster form as {2, 4, 6}. Some more examples of representing a set in roster form are given below :
+(a) The set of all natural numbers which divide 42 is {1, 2, 3, 6, 7, 14, 21, 42}.
+Reprint 2026-27
+ANote In roster form, the order in which the elements are listed is immaterial.
+Thus, the above set can also be represented as {1, 3, 7, 21, 2, 6, 14, 42}.
+(b) The set of all vowels in the English alphabet is {a, e, i, o, u}.
+(c) The set of odd natural numbers is represented by {1, 3, 5, . . .}. The dots tell us that the list of odd numbers continue indefinitely.
+ANote It may be noted that while writing the set in roster form an element is not generally repeated, i.e., all the elements are taken as distinct. For example, the set of letters forming the word ‘SCHOOL’ is { S, C, H, O, L} or {H, O, L, C, S}. Here, the order of listing elements has no relevance.
+(ii) In set-builder form, all the elements of a set possess a single common property which is not possessed by any element outside the set. For example, in the set
+{a, e, i, o, u}, all the elements possess a common property, namely, each of them is a vowel in the English alphabet, and no other letter possess this property. Denoting this set by V, we write
+V = {x : x is a vowel in English alphabet}
+It may be observed that we describe the element of the set by using a symbol x (any other symbol like the letters y, z, etc. could be used) which is followed by a colon
+“ : ”. After the sign of colon, we write the characteristic property possessed by the elements of the set and then enclose the whole description within braces. The above description of the set V is read as “the set of all x such that x is a vowel of the English alphabet”. In this description the braces stand for “the set of all”, the colon stands for
+“such that”. For example, the set
+A = {x : x is a natural number and 3 < x < 10} is read as “the set of all x such that x is a natural number and x lies between 3 and 10.” Hence, the numbers 4, 5, 6,
+7, 8 and 9 are the elements of the set A.
+If we denote the sets described in (a), (b) and (c) above in roster form by A, B,
+C, respectively, then A, B, C can also be represented in set-builder form as follows:
+A= {x : x is a natural number which divides 42}
+B= {y : y is a vowel in the English alphabet}
+C= {z : z is an odd natural number}
+Example 1 Write the solution set of the equation x2 + x – 2 = 0 in roster form.
+Solution The given equation can be written as (x – 1) (x + 2) = 0, i. e., x = 1, – 2
+Therefore, the solution set of the given equation can be written in roster form as {1, – 2}.
+Example 2 Write the set {x : x is a positive integer and x2 < 40} in the roster form.
+Reprint 2026-27
+4 MATHEMATICS
+Solution The required numbers are 1, 2, 3, 4, 5, 6. So, the given set in the roster form is {1, 2, 3, 4, 5, 6}.
+Example 3 Write the set A = {1, 4, 9, 16, 25, . . . }in set-builder form.
+Solution We may write the set A as
+A = {x : x is the square of a natural number}
+Alternatively, we can write
+A = {x : x = n2, where n ∈ N}
+Example 4 Write the set 1 2 3 4 5 6
+2 3 4 5 6 7
+, , , , , in the set-builder form.
+Solution We see that each member in the given set has the numerator one less than the denominator. Also, the numerator begin from 1 and do not exceed 6. Hence, in the set-builder form the given set is where is a natural number and 1 6 x : x , n n
+= ≤ ≤  
+Example 5 Match each of the set on the left described in the roster form with the same set on the right described in the set-builder form :
+(i) {P, R, I, N, C, A, L} (a) { x : x is a positive integer and is a divisor of 18} (ii) { 0 } (b) { x : x is an integer and x2 – 9 = 0} (iii) {1, 2, 3, 6, 9, 18} (c) {x : x is an integer and x + 1= 1} (iv) {3, –3} (d) {x : x is a letter of the word PRINCIPAL}
+Solution Since in (d), there are 9 letters in the word PRINCIPAL and two letters P and I are repeated, so (i) matches (d). Similarly, (ii) matches (c) as x + 1 = 1 implies x = 0. Also, 1, 2 ,3, 6, 9, 18 are all divisors of 18 and so (iii) matches (a). Finally, x2 – 9 = 0 implies x = 3, –3 and so (iv) matches (b).
+EXERCISE 1.1
+1. Which of the following are sets ? Justify your answer.
+(i) The collection of all the months of a year beginning with the letter J.
+(ii) The collection of ten most talented writers of India.
+(iii) A team of eleven best-cricket batsmen of the world.
+(iv) The collection of all boys in your class.
+(v) The collection of all natural numbers less than 100.
+(vi) A collection of novels written by the writer Munshi Prem Chand.
+(vii) The collection of all even integers.
+Reprint 2026-27 (viii) The collection of questions in this Chapter.
+(ix) A collection of most dangerous animals of the world.
+2. Let A = {1, 2, 3, 4, 5, 6}. Insert the appropriate symbol ∈ or ∉ in the blank (i) 5. . .A (ii) 8 . . . A (iii) 0. . .A (iv) 4. . . A (v) 2. . .A (vi) 10. . .A
+3. Write the following sets in roster form:
+(i) A = {x : x is an integer and –3 ≤ x < 7} (ii) B = {x : x is a natural number less than 6} (iii) C = {x : x is a two-digit natural number such that the sum of its digits is 8} (iv) D = {x : x is a prime number which is divisor of 60} (v) E = The set of all letters in the word TRIGONOMETRY (vi) F = The set of all letters in the word BETTER
+4. Write the following sets in the set-builder form :
+(i) (3, 6, 9, 12} (ii) {2,4,8,16,32} (iii) {5, 25, 125, 625} (iv) {2, 4, 6, . . .} (v) {1,4,9, . . .,100}
+5. List all the elements of the following sets :
+(i) A = {x : x is an odd natural number} (ii) B = {x : x is an integer, 1
+– < x < 9 (iii) C = {x : x is an integer, x2 ≤ 4} (iv) D = {x : x is a letter in the word “LOYAL”} (v) E = {x : x is a month of a year not having 31 days} (vi) F = {x : x is a consonant in the English alphabet which precedes k }.
+6. Match each of the set on the left in the roster form with the same set on the right described in set-builder form:
+(i) {1, 2, 3, 6} (a) {x : x is a prime number and a divisor of 6} (ii) {2, 3} (b) {x : x is an odd natural number less than 10} (iii) {M,A,T,H,E,I,C,S} (c) {x : x is natural number and divisor of 6} (iv) {1, 3, 5, 7, 9} (d) {x : x is a letter of the word MATHEMATICS}.
+1.3 The Empty Set
+Consider the set
+A = { x : x is a student of Class XI presently studying in a school }
+We can go to the school and count the number of students presently studying in
+Class XI in the school. Thus, the set A contains a finite number of elements.
+We now write another set B as follows:
+Reprint 2026-27

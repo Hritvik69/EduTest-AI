@@ -1,0 +1,51 @@
+Magnetism and
+Solution (a) The field H is dependent of the material of the core, and is
+H = nI = 1000 × 2.0 = 2 ×103 A/m.
+(b) The magnetic field B is given by
+= 400 × 4π ×10–7 (N/A2) × 2 × 103 (A/m)
+(c) Magnetisation is given by
+μ0 H )/μ0 = (
+μr – 1)H = 399 × H
+≅ 8 × 105 A/m (d) The magnetising current IM is the additional current that needs to be passed through the windings of the solenoid in the absence of the core which would give a B value as in the presence of the core. Thus B =
+μr n (I + IM). Using I = 2A, B = 1 T, we get IM = 794 A.
+5.5 MAGNETIC PROPERTIES OF MATERIALS
+The discussion in the previous section helps us to classify materials as diamagnetic, paramagnetic or ferromagnetic. In terms of the susceptibility
+χ, a material is diamagnetic if
+χ is negative, para- if
+χ is positive and small, and ferro- if
+χ is large and positive.
+A glance at Table 5.2 gives one a better feeling for these materials.
+ε is a small positive number introduced to quantify paramagnetic materials. Next, we describe these materials in some detail.
+TABLE 5.2
+Diamagnetic Paramagnetic Ferromagnetic
+χ < 0 0 <
+μr < 1 1<
+5.5.1 Diamagnetism
+Diamagnetic substances are those which have tendency to move from stronger to the weaker part of the external magnetic field. In other words, unlike the way a magnet attracts metals like iron, it would repel a diamagnetic substance.
+Figure 5.7(a) shows a bar of diamagnetic material placed in an external magnetic field. The field lines are repelled or expelled and the field inside the material is reduced. In most cases, this reduction is slight, being one part in 105. When placed in a non-uniform magnetic field, the bar will tend to move from high to low field.
+FIGURE 5.7
+Behaviour of magnetic field lines (a) diamagnetic, (b) paramagnetic substance.
+Reprint 2026-27
+The simplest explanation for diamagnetism is as follows. Electrons in an atom orbiting around nucleus possess orbital angular momentum.
+These orbiting electrons are equivalent to current-carrying loop and thus possess orbital magnetic moment. Diamagnetic substances are the ones in which resultant magnetic moment in an atom is zero. When magnetic field is applied, those electrons having orbital magnetic moment in the same direction slow down and those in the opposite direction speed up.
+This happens due to induced current in accordance with Lenz’s law which you will study in Chapter 6. Thus, the substance develops a net magnetic moment in direction opposite to that of the applied field and hence repulsion.
+Some diamagnetic materials are bismuth, copper, lead, silicon, nitrogen (at STP), water and sodium chloride. Diamagnetism is present in all the substances. However, the effect is so weak in most cases that it gets shifted by other effects like paramagnetism, ferromagnetism, etc.
+The most exotic diamagnetic materials are superconductors. These are metals, cooled to very low temperatures which exhibits both perfect conductivity and perfect diamagnetism. Here the field lines are completely expelled!
+χ = –1 and
+μr = 0. A superconductor repels a magnet and (by
+Newton’s third law) is repelled by the magnet. The phenomenon of perfect diamagnetism in superconductors is called the Meissner effect, after the name of its discoverer. Superconducting magnets can be gainfully exploited in variety of situations, for example, for running magnetically levitated superfast trains.
+5.5.2 Paramagnetism
+Paramagnetic substances are those which get weakly magnetised when placed in an external magnetic field. They have tendency to move from a region of weak magnetic field to strong magnetic field, i.e., they get weakly attracted to a magnet.
+The individual atoms (or ions or molecules) of a paramagnetic material possess a permanent magnetic dipole moment of their own. On account of the ceaseless random thermal motion of the atoms, no net magnetisation is seen. In the presence of an external field B0, which is strong enough, and at low temperatures, the individual atomic dipole moment can be made to align and point in the same direction as B0. Figure 5.7(b) shows a bar of paramagnetic material placed in an external field. The field lines gets concentrated inside the material, and the field inside is enhanced. In most cases, this enhancement is slight, being one part in 105. When placed in a non-uniform magnetic field, the bar will tend to move from weak field to strong.
+Some paramagnetic materials are aluminium, sodium, calcium, oxygen (at STP) and copper chloride. For a paramagnetic material both χ
+μr depend not only on the material, but also (in a simple fashion) on the sample temperature. As the field is increased or the temperature is lowered, the magnetisation increases until it reaches the saturation value at which point all the dipoles are perfectly aligned with the field.
+Reprint 2026-27
+Magnetism and
+5.5.3 Ferromagnetism
+Ferromagnetic substances are those which gets strongly magnetised when placed in an external magnetic field. They have strong tendency to move from a region of weak magnetic field to strong magnetic field, i.e., they get strongly attracted to a magnet.
+The individual atoms (or ions or molecules) in a ferromagnetic material possess a dipole moment as in a paramagnetic material. However, they interact with one another in such a way that they spontaneously align themselves in a common direction over a macroscopic volume called domain. The explanation of this cooperative effect requires quantum mechanics and is beyond the scope of this textbook. Each domain has a net magnetisation. Typical domain size is 1mm and the domain contains about 1011 atoms. In the first instant, the magnetisation varies randomly from domain to domain and there is no bulk magnetisation. This is shown in Fig. 5.8(a). When we apply an external magnetic field B0, the domains orient themselves in the direction of B0 and simultaneously the domain oriented in the direction of B0 grow in size. This existence of domains and their motion in B0 are not speculations. One may observe this under a microscope after sprinkling a liquid suspension of powdered ferromagnetic substance of samples. This motion of suspension can be observed. Fig. 5.8(b) shows the situation when the domains have aligned and amalgamated to form a single ‘giant’ domain.
+Thus, in a ferromagnetic material the field lines are highly concentrated. In non-uniform magnetic field, the sample tends to move towards the region of high field. We may wonder as to what happens when the external field is removed. In some ferromagnetic materials the magnetisation persists. Such materials are called hard magnetic materials or hard ferromagnets. Alnico, an alloy of iron, aluminium, nickel, cobalt and copper, is one such material. The naturally occurring lodestone is another. Such materials form permanent magnets to be used among other things as a compass needle. On the other hand, there is a class of ferromagnetic materials in which the magnetisation disappears on removal of the external field. Soft iron is one such material. Appropriately enough, such materials are called soft ferromagnetic materials. There are a number of elements, which are ferromagnetic: iron, cobalt, nickel, gadolinium, etc. The relative magnetic permeability is >1000!
+The ferromagnetic property depends on temperature. At high enough temperature, a ferromagnet becomes a paramagnet. The domain structure disintegrates with temperature. This disappearance of magnetisation with temperature is gradual.
+FIGURE 5.8 (a) Randomly oriented domains, (b) Aligned domains.
+1. The science of magnetism is old. It has been known since ancient times that magnetic materials tend to point in the north-south direction; like
+Reprint 2026-27

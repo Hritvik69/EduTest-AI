@@ -1,0 +1,442 @@
+62 MATHEMATICS
+Solution (i) We have
+3 3 2 3 3 2
+A 3 2 A A
+4 2 0 4 2 0
+      ′ ′ ′ ⇒ = ⇒ = =      
+     
+Thus (A′)′ = A (ii) We have
+A = 3 3 2 ,
+B = 2 1 2 5 3 1 4
+1 2 4 5 4 4
+  −   −
+⇒ + =    
+Therefore (A + B)′ =
+Now A′ =
+3 2 , B 1 2 ,
+    ′ = −    
+       
+So A′ + B′ =
+Thus (A + B)′ = A′ + B′ (iii) We have kB = k 2 1 2 2 2
+1 2 4 2 4
+− −    
+=    
+Then (kB)′ =
+    ′ − = − =   
+       
+Thus (kB)′ = kB′
+Reprint 2026-27
+MATRICES 63
+Example 21 If [ ]
+A 4 , B 1 3 6
+ = = − 
+, verify that (AB)′ = B′A′.
+Solution We have
+4 , B 1 3 6
+  = −  then AB = [ ]
+  − 
+  −  
+Now A′ = [–2 4 5] ,
+  ′ =  
+  −  
+B′A′ = [ ]
+3 2 4 5 6 12 15 (AB)
+6 12 24 30
+−    
+    ′ − = − =   
+    − − −    
+Clearly (AB)′ = B′A′
+3.6 Symmetric and Skew Symmetric Matrices
+Definition 4 A square matrix A = [aij] is said to be symmetric if A′ = A, that is,
+[aij] = [aji] for all possible values of i and j.
+For example
+A 2 1.5 1
+= − −  
+  −   is a symmetric matrix as A′ = A
+Definition 5 A square matrix A = [aij] is said to be skew symmetric matrix if
+A′ = – A, that is aji = – aij for all possible values of i and j. Now, if we put i = j, we have aii = – aii. Therefore 2aii = 0 or aii = 0 for all i’s.
+This means that all the diagonal elements of a skew symmetric matrix are zero.
+Reprint 2026-27
+64 MATHEMATICS
+For example, the matrix
+ = − 
+  − −   is a skew symmetric matrix as B′= –B
+Now, we are going to prove some results of symmetric and skew-symmetric matrices.
+Theorem 1 For any square matrix A with real number entries, A + A′ is a symmetric matrix and A – A′ is a skew symmetric matrix.
+Proof Let B = A + A′, then
+B′ = (A + A′)′
+= A′ + (A′)′ (as (A + B)′ = A′ + B′)
+= A′ + A (as (A′)′ = A)
+= A + A′ (as A + B = B + A)
+Therefore B = A + A′ is a symmetric matrix
+Now let C = A – A′
+C′ = (A – A′)′ = A′ – (A′)′ (Why?)
+= A′ – A (Why?)
+= – (A – A′) = – C
+Therefore C = A – A′ is a skew symmetric matrix.
+Theorem 2 Any square matrix can be expressed as the sum of a symmetric and a skew symmetric matrix.
+Proof Let A be a square matrix, then we can write
+A (A A ) (A A )
+′ ′ = + + −
+From the Theorem 1, we know that (A + A′) is a symmetric matrix and (A – A′) is a skew symmetric matrix. Since for any matrix A, (kA)′ = kA′, it follows that 1 (A A )
+Reprint 2026-27
+MATRICES 65 is symmetric matrix and 1 (A A )
+2 ′ − is skew symmetric matrix. Thus, any square matrix can be expressed as the sum of a symmetric and a skew symmetric matrix.
+Example 22 Express the matrix
+ = − 
+  − −   as the sum of a symmetric and a skew symmetric matrix.
+Solution Here
+ − − 
+  − −   (B + B ) 3 6 2
+2 2 3 2 6
+  ′ = − 
+  − −  
+Now P′ =
+Thus P = 1 (B + B )
+2 ′ is a symmetric matrix.
+Also, let Q =
+0 2 2 0 1 5 (B – B ) 1 0 6 0 3
+5 6 0 5 3 0
+− −    
+    ′ = =   
+  −       −
+Reprint 2026-27
+66 MATHEMATICS
+Then Q′ =
+−   − = −
+Thus Q = 1 (B – B )
+2 ′ is a skew symmetric matrix.
+2 2 2 2 2 2 4
+P + Q 3 1 0 3 1 3 4 B
+2 2 1 2 3
+− − − −    
+    − −      
+−       = + = − =        − −       −     − −
+       
+Thus, B is represented as the sum of a symmetric and a skew symmetric matrix.
+EXERCISE 3.3
+1. Find the transpose of each of the following matrices:
+  −   (ii) 1 1
+  (iii)
+  −  
+1 2 3 4 1 5
+A 5 7 9 and B 1 2 0
+2 1 1 1 3 1
+− − −    
+   = =   
+    −    
+, then verify that (i) (A + B)′ = A′ + B′, (ii) (A – B)′ = A′ – B′
+3 4 1 2 1
+A 1 2 and B 1 2 3
+  −     ′ = − =         
+, then verify that (i) (A + B)′ = A′ + B′ (ii) (A – B)′ = A′ – B′
+Reprint 2026-27
+MATRICES 67
+4. If 2 3 1 0
+− −    
+′ = =    
+    , then find (A + 2B)′
+5. For the matrices A and B, verify that (AB)′ = B′A′, where
+A 4 , B 1 2 1
+ = − = −  (ii) [ ]
+A 1 , B 1 5 7
+ = = 
+6. If (i) cos sin
+A sin cos
+=  − α α   , then verify that A′ A = I (ii) If sin cos
+A cos sin
+=  − α α   , then verify that A′ A = I
+7. (i) Show that the matrix
+ = −  is a symmetric matrix.
+(ii) Show that the matrix
+ = − 
+  −   is a skew symmetric matrix.
+8. For the matrix 1 5
+, verify that (i) (A + A′) is a symmetric matrix (ii) (A – A′) is a skew symmetric matrix
+9. Find ( )1 A A
+2 ′ + and ( )1 A A
+2 ′ − , when
+ = − 
+  − −  
+10. Express the following matrices as the sum of a symmetric and a skew symmetric
+Reprint 2026-27
+68 MATHEMATICS
+ −   (ii)
+ − − 
+  −  
+ − − 
+  − −   (iv) 1 5
+ −  
+Choose the correct answer in the Exercises 11 and 12.
+11. If A, B are symmetric matrices of same order, then AB – BA is a (A) Skew symmetric matrix (B) Symmetric matrix (C) Zero matrix (D) Identity matrix
+12. If cos sin
+α − α  
+=  α α   and A + A′ = I, then the value of α is (C) π (D) 3
+3.7 Invertible Matrices
+Definition 6 If A is a square matrix of order m, and if there exists another square matrix B of the same order m, such that AB = BA = I, then B is called the inverse matrix of A and it is denoted by A– 1. In that case A is said to be invertible.
+For example, let A = 2 3
+  and B = 2 3
+ −   be two matrices.
+Now AB = 2 3 2 3
+−    
+   −    
+= 4 3 6 6 1 0 I
+2 2 3 4 0 1
+− − +    
+= =    − − +    
+Also BA = 1 0 I
+  =  
+. Thus B is the inverse of A, in other words B = A– 1 and A is inverse of B, i.e., A = B–1
+Reprint 2026-27
+MATRICES 69
+1. A rectangular matrix does not possess inverse matrix, since for products BA and AB to be defined and to be equal, it is necessary that matrices A and B should be square matrices of the same order.
+2. If B is the inverse of A, then A is also the inverse of B.
+Theorem 3 (Uniqueness of inverse) Inverse of a square matrix, if it exists, is unique.
+Proof Let A = [aij] be a square matrix of order m. If possible, let B and C be two inverses of A. We shall show that B = C.
+Since B is the inverse of A
+AB = BA = I ... (1)
+Since C is also the inverse of A
+AC = CA = I ... (2)
+Thus B = BI = B (AC) = (BA) C = IC = C
+Theorem 4 If A and B are invertible matrices of the same order, then (AB)–1 = B–1 A–1.
+Proof From the definition of inverse of a matrix, we have (AB) (AB)–1 = 1 or A–1 (AB) (AB)–1 = A–1 I (Pre multiplying both sides by A–1)
+or (A–1A) B (AB)–1 = A–1 (Since A–1 I = A–1)
+or IB (AB)–1 = A–1 or B (AB)–1 = A–1 or B–1 B (AB)–1 = B–1 A–1 or I (AB)–1 = B–1 A–1
+Hence (AB)–1 = B–1 A–1
+1. Matrices A and B will be inverse of each other only if (A) AB = BA (B) AB = BA = 0 (C) AB = 0, BA = I (D) AB = BA = I
+EXERCISE 3.4
+Reprint 2026-27
+70 MATHEMATICS
+Miscellaneous Examples
+Example 23 If cos sin
+A sin cos
+=  − θ θ  
+, then prove that cos sin
+A sin cos
+=  − θ θ  
+, n ∈ N.
+Solution We shall prove the result by using principle of mathematical induction.
+We have P(n) : If cos sin
+A sin cos
+=  − θ θ  
+, then cos sin
+A sin cos
+=  − θ θ  
+P(1) : cos sin
+A sin cos
+=  − θ θ  
+, so 1 cos sin
+A sin cos
+=  − θ θ  
+Therefore, the result is true for n = 1.
+Let the result be true for n = k. So
+P(k) : cos sin
+A sin cos
+=  − θ θ  
+, then cos sin
+A sin cos
+=  − θ θ  
+Now, we prove that the result holds for n = k +1
+Now Ak + 1 = cos sin cos sin
+A A sin cos sin cos
+θ θ θ θ    
+⋅ =    − θ θ − θ θ    
+= cos cos – sin sin cos sin sin cos sin cos cos sin sin sin cos cos
+θ θ θ θ θ θ + θ θ  
+ − θ θ + θ θ − θ θ + θ θ  
+= cos ( ) sin ( ) cos( 1) sin ( 1)
+sin ( ) cos ( ) sin ( 1) cos ( 1)
+θ + θ θ + θ + θ + θ    
+=    − θ + θ θ + θ − + θ + θ    
+Therefore, the result is true for n = k + 1. Thus by principle of mathematical induction, we have cos sin
+A sin cos
+=  − θ θ   , holds for all natural numbers.
+Example 24 If A and B are symmetric matrices of the same order, then show that AB is symmetric if and only if A and B commute, that is AB = BA.
+Solution Since A and B are both symmetric matrices, therefore A′ = A and B′ = B.
+Reprint 2026-27
+MATRICES 71
+Let AB be symmetric, then (AB)′ = AB
+But (AB)′ = B′A′= BA (Why?)
+Therefore BA = AB
+Conversely, if AB = BA, then we shall show that AB is symmetric.
+Now (AB)′ = B′A′
+= B A (as A and B are symmetric)
+Hence AB is symmetric.
+Example 25 Let 2 1 5 2 2 5
+A , B , C
+3 4 7 4 3 8
+−      
+= = =      
+      . Find a matrix D such that
+CD – AB = O.
+Solution Since A, B, C are all square matrices of order 2, and CD – AB is well defined, D must be a square matrix of order 2.
+Let D = a b
+. Then CD – AB = 0 gives
+2 5 2 1 5 2
+3 8 3 4 7 4
+−        
+−        
+        = O or 2 5 2 5 3 0
+3 8 3 8 43 22
++ +    
+−    + +     = 0 0 or 2 5 3 2 5
+3 8 43 3 8 22
++ − +  
+ + − + −   = 0 0
+By equality of matrices, we get
+2a + 5c – 3 = 0 ... (1)
+3a + 8c – 43 = 0 ... (2)
+2b + 5d = 0 ... (3)
+and 3b + 8d – 22 = 0 ... (4)
+Solving (1) and (2), we get a = –191, c = 77. Solving (3) and (4), we get b = – 110,
+Reprint 2026-27
+72 MATHEMATICS
+Therefore D = 191 110
+− −    
+=    
+Miscellaneous Exercise on Chapter 3
+1. If A and B are symmetric matrices, prove that AB – BA is a skew symmetric
+2. Show that the matrix B′AB is symmetric or skew symmetric according as A is symmetric or skew symmetric.
+3. Find the values of x, y, z if the matrix
+ = − 
+  −   satisfy the equation
+A′A = I.
+4. For what values of x : [ ]
+1 2 1 2 0 1 2
+       
+5. If 3 1
+=  −  
+, show that A2 – 5A + 7I = 0.
+6. Find x, if [ ]
+5 1 0 2 1 4 O
+   − − =   
+       
+7. A manufacturer produces three products x, y, z which he sells in two markets.
+Annual sales are indicated below:
+Market Products
+I 10,000 2,000 18,000
+II 6,000 20,000 8,000
+Reprint 2026-27
+MATRICES 73 (a) If unit sale prices of x, y and z are ` 2.50, ` 1.50 and ` 1.00, respectively, find the total revenue in each market with the help of matrix algebra.
+(b) If the unit costs of the above three commodities are ` 2.00, ` 1.00 and
+50 paise respectively. Find the gross profit.
+8. Find the matrix X so that 1 2 3 7 8 9
+X 4 5 6 2 4 6
+− − −    
+=    
+Choose the correct answer in the following questions:
+9. If A = is such that A² = I, then (A) 1 + α² + βγ = 0 (B) 1 – α² + βγ = 0 (C) 1 – α² – βγ = 0 (D) 1 + α² – βγ = 0
+10. If the matrix A is both symmetric and skew symmetric, then (A) A is a diagonal matrix (B) A is a zero matrix (C) A is a square matrix (D) None of these
+11. If A is square matrix such that A2 = A, then (I + A)³ – 7 A is equal to (A) A (B) I – A (C) I (D) 3A
+Æ A matrix is an ordered rectangular array of numbers or functions.
+Æ A matrix having m rows and n columns is called a matrix of order m × n.
+Æ [aij]m × 1 is a column matrix.
+Æ [aij]1 × n is a row matrix.
+Æ An m × n matrix is a square matrix if m = n.
+Æ A = [aij]m × m is a diagonal matrix if aij = 0, when i ≠ j.
+Æ A = [aij]n × n is a scalar matrix if aij = 0, when i ≠ j, aij = k, (k is some constant), when i = j.
+Æ A = [aij]n × n is an identity matrix, if aij = 1, when i = j, aij = 0, when i ≠ j.
+Æ A zero matrix has all its elements as zero.
+Æ A = [aij] = [bij] = B if (i) A and B are of same order, (ii) aij = bij for all possible values of i and j.
+Reprint 2026-27
+74 MATHEMATICS
+Æ kA = k[aij]m × n = [k(aij)]m × n
+Æ – A = (–1)A
+Æ A – B = A + (–1) B
+Æ A + B = B + A
+Æ (A + B) + C = A + (B + C), where A, B and C are of same order.
+Æ k(A + B) = kA + kB, where A and B are of same order, k is constant.
+Æ (k + l ) A = kA + lA, where k and l are constant.
+Æ If A = [aij]m × n and B = [bjk]n × p , then AB = C = [cik]m × p, where =
+Æ (i) A(BC) = (AB)C, (ii) A(B + C) = AB + AC, (iii) (A + B)C = AC + BC
+Æ If A = [aij]m × n, then A′ or AT = [aji]n × m
+Æ (i) (A′)′ = A, (ii) (kA)′ = kA′, (iii) (A + B)′ = A′ + B′, (iv) (AB)′ = B′A′
+Æ A is a symmetric matrix if A′ = A.
+Æ A is a skew symmetric matrix if A′ = – A.
+Æ Any square matrix can be represented as the sum of a symmetric and a skew symmetric matrix.
+Æ If A and B are two square matrices such that AB = BA = I, then B is the inverse matrix of A and is denoted by A–1 and A is the inverse of B.
+Æ Inverse of a square matrix, if it exists, is unique.
+—v v v v v— ik ij jk
+Reprint 2026-27
+MATRICES 75
+Reprint 2026-27
+76 MATHEMATICS v All Mathematical truths are relative and conditional. — C.P. STEINMETZ v
+4.1 Introduction
+In the previous chapter, we have studied about matrices and algebra of matrices. We have also learnt that a system of algebraic equations can be expressed in the form of matrices. This means, a system of linear equations like a1 x + b1 y = c1 a2 x + b2 y = c2 can be represented as 1 1 1
+      =      
+     
+. Now, this system of equations has a unique solution or not, is determined by the number a1 b2 – a2 b1. (Recall that if
+≠ or, a1 b2 – a2 b1 ≠ 0, then the system of linear equations has a unique solution). The number a1 b2 – a2 b1 which determines uniqueness of solution is associated with the matrix 1 1 and is called the determinant of A or det A. Determinants have wide applications in
+Engineering, Science, Economics, Social Science, etc.
+In this chapter, we shall study determinants up to order three only with real entries.
+Also, we will study various properties of determinants, minors, cofactors and applications of determinants in finding the area of a triangle, adjoint and inverse of a square matrix, consistency and inconsistency of system of linear equations and solution of linear equations in two or three variables using inverse of a matrix.
+4.2 Determinant
+To every square matrix A = [aij] of order n, we can associate a number (real or complex) called determinant of the square matrix A, where aij = (i, j)th element of A.
+Chapter 4
+DETERMINANTS
+P.S. Laplace (1749-1827)
+Reprint 2026-27
+DETERMINANTS 77
+This may be thought of as a function which associates each square matrix with a unique number (real or complex). If M is the set of square matrices, K is the set of numbers (real or complex) and f : M → K is defined by f (A) = k, where A ∈ M and k ∈ K, then f (A) is called the determinant of A. It is also denoted by | A | or det A or ∆.
+If A = a b
+  , then determinant of A is written as | A| = a b c d = det (A)
+(i) For matrix A, | A | is read as determinant of A and not modulus of A.
+(ii) Only square matrices have determinants.
+4.2.1 Determinant of a matrix of order one
+Let A = [a ] be the matrix of order 1, then determinant of A is defined to be equal to a
+4.2.2 Determinant of a matrix of order two
+Let A = 11 12
+  be a matrix of order 2 × 2, then the determinant of A is defined as:
+det (A) = |A| = ∆ = = a11a22 – a21a12
+Example 1 Evaluate 2 4
+Solution We have 2 4
+–1 2 = 2 (2) – 4(–1) = 4 + 4 = 8.
+Example 2 Evaluate 1
+Solution We have
++ = x (x) – (x + 1) (x – 1) = x2 – (x2 – 1) = x2 – x2 + 1 = 1
+4.2.3 Determinant of a matrix of order 3 × 3
+Determinant of a matrix of order three can be determined by expressing it in terms of second order determinants. This is known as expansion of a determinant along a row (or a column). There are six ways of expanding a determinant of order
+Reprint 2026-27
+78 MATHEMATICS
+3 corresponding to each of three rows (R1, R2 and R3) and three columns (C1, C2 and
+C3) giving the same value as shown below.
+Consider the determinant of square matrix A = [aij]3 × 3 i.e., | A | = 21 22 23
+31 32 33
+11 12 13 a a a
+Expansion along first Row (R1)
+Step 1 Multiply first element a11 of R1 by (–1)(1 + 1) [(–1)sum of suffixes in a11] and with the second order determinant obtained by deleting the elements of first row (R1) and first column (C1) of | A | as a11 lies in R1 and C1, i.e., (–1)1 + 1 a11
+Step 2 Multiply 2nd element a12 of R1 by (–1)1 + 2 [(–1)sum of suffixes in a12] and the second order determinant obtained by deleting elements of first row (R1) and 2nd column (C2)
+of | A | as a12 lies in R1 and C2, i.e., (–1)1 + 2 a12
+Step 3 Multiply third element a13 of R1 by (–1)1 + 3 [(–1)sum of suffixes in a13] and the second order determinant obtained by deleting elements of first row (R1) and third column (C3)
+of | A | as a13 lies in R1 and C3, i.e., (–1)1 + 3 a13
+Step 4 Now the expansion of determinant of A, that is, | A | written as sum of all three terms obtained in steps 1, 2 and 3 above is given by det A = |A| = (–1)1 + 1 a11
+22 23 21 23 1 2
+32 33 31 33
++ 21 22 1 3 (–1) a a or |A| = a11 (a22 a33 – a32 a23) – a12 (a21 a33 – a31 a23)
++ a13 (a21 a32 – a31 a22)
+Reprint 2026-27
+DETERMINANTS 79
+= a11 a22 a33 – a11 a32 a23 – a12 a21 a33 + a12 a31 a23 + a13 a21 a32
+– a13 a31 a22 ... (1)
+ANote We shall apply all four steps together.
+Expansion along second row (R2)
+11 12 13
+31 32 33
+21 22 23 a a a
+Expanding along R2, we get
+| A | = 12 13 11 13 2 1 2 2
+32 33 31 33 (–1) (–1)
+11 12 2 3 (–1) a a
+= – a21 (a12 a33 – a32 a13) + a22 (a11 a33 – a31 a13)
+– a23 (a11 a32 – a31 a12)
+| A | = – a21 a12 a33 + a21 a32 a13 + a22 a11 a33 – a22 a31 a13 – a23 a11 a32
++ a23 a31 a12
+= a11 a22 a33 – a11 a23 a32 – a12 a21 a33 + a12 a23 a31 + a13 a21 a32
+– a13 a31 a22 ... (2)
+Expansion along first Column (C1)
+By expanding along C1, we get
+| A | = 22 23 12 13 1 1 2 1
+32 33 32 33 (–1) ( 1)
++ 12 13 3 1 (–1) a a
+= a11 (a22 a33 – a23 a32) – a21 (a12 a33 – a13 a32) + a31 (a12 a23 – a13 a22)
+Reprint 2026-27

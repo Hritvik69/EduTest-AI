@@ -1,0 +1,17 @@
+Computer SCienCe – ClaSS xi 112 price = int(icecream)+int(brownie)
+print("Total Price Rs." + str(price))
+Total Price Rs.2545
+Total Price Rs.70
+5.12.2 Implicit Conversion
+Implicit conversion, also known as coercion, happens when data type conversion is done automatically by
+Python and is not instructed by the programmer.
+Program 5-10 Program to show implicit conversion from int to float.
+#Program 5-10
+#Implicit type conversion from int to float num1 = 10 #num1 is an integer num2 = 20.0 #num2 is a float sum1 = num1 + num2 #sum1 is sum of a float and an integer print(sum1)
+print(type(sum1))
+<class 'float'>
+In the above example, an integer value stored in variable num1 is added to a float value stored in variable num2, and the result was automatically converted to a float value stored in variable sum1 without explicitly telling the interpreter. This is an example of implicit data conversion. One may wonder why was the float value not converted to an integer instead? This is due to type promotion that allows performing operations (whenever possible) by converting data into a wider-sized data type without any loss of information.
+5.13 debuggIng
+A programmer can make mistakes while writing a program, and hence, the program may not execute or may generate wrong output. The process of identifying and removing such mistakes, also known as bugs or errors, from a program is called debugging. Errors occurring in programs can be categorised as:
+i) Syntax errors ii) Logical errors iii) Runtime errors
+Reprint 2026-27

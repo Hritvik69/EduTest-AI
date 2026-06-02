@@ -1,0 +1,105 @@
+Electricity
+2. Refer to V-I curves of a resistor and a diode as drawn in the text. A resistor obeys Ohm’s law while a diode does not. The assertion that
+V = IR is a statement of Ohm’s law is not true. This equation defines resistance and it may be applied to all conducting devices whether they obey Ohm’s law or not. The Ohm’s law asserts that the plot of I versus V is linear i.e., R is independent of V.
+Equation E =
+ρ j leads to another statement of Ohm’s law, i.e., a conducting material obeys Ohm’s law when the resistivity of the material does not depend on the magnitude and direction of applied electric field.
+3. Homogeneous conductors like silver or semiconductors like pure germanium or germanium containing impurities obey Ohm’s law within some range of electric field values. If the field becomes too strong, there are departures from Ohm’s law in all cases.
+4. Motion of conduction electrons in electric field E is the sum of (i)
+motion due to random collisions and (ii) that due to E. The motion due to random collisions averages to zero and does not contribute to vd (Chapter 10, Textbook of Class XI). vd , thus is only due to applied electric field on the electron.
+5. The relation j =
+ρ v should be applied to each type of charge carriers separately. In a conducting wire, the total current and charge density arises from both positive and negative charges:
+Now in a neutral wire carrying electric current,
+ρρρρρ+ = –
+Further, v+ ~ 0 which gives
+ρρρρρ = 0
+Thus, the relation j =
+ρ v does not apply to the total current charge density.
+6. Kirchhoff’s junction rule is based on conservation of charge and the outgoing currents add up and are equal to incoming current at a junction. Bending or reorienting the wire does not change the validity of Kirchhoff’s junction rule.
+EXERCISES
+3.1 The storage battery of a car has an emf of 12 V. If the internal resistance of the battery is 0.4 Ω, what is the maximum current that can be drawn from the battery?
+3.2 A battery of emf 10 V and internal resistance 3 Ω is connected to a resistor. If the current in the circuit is 0.5 A, what is the resistance of the resistor? What is the terminal voltage of the battery when the circuit is closed?
+3.3 At room temperature (27.0 °C) the resistance of a heating element is 100 Ω. What is the temperature of the element if the resistance is found to be 117 Ω, given that the temperature coefficient of the material of the resistor is 1.70 × 10–4 °C–1.
+Reprint 2026-27
+3.4 A negligibly small current is passed through a wire of length 15 m and uniform cross-section 6.0 × 10–7 m2, and its resistance is measured to be 5.0 W. What is the resistivity of the material at the temperature of the experiment?
+3.5 A silver wire has a resistance of 2.1 W at 27.5 °C, and a resistance of 2.7 W at 100 °C. Determine the temperature coefficient of resistivity of silver.
+3.6 A heating element using nichrome connected to a 230 V supply draws an initial current of 3.2 A which settles after a few seconds to a steady value of 2.8 A. What is the steady temperature of the heating element if the room temperature is 27.0 °C? Temperature coefficient of resistance of nichrome averaged over the temperature range involved is 1.70 × 10–4 °C–1.
+3.7 Determine the current in each branch of the network shown in
+Fig. 3.20:
+FIGURE 3.20
+3.8 A storage battery of emf 8.0 V and internal resistance 0.5 W is being charged by a 120 V dc supply using a series resistor of 15.5 W. What is the terminal voltage of the battery during charging? What is the purpose of having a series resistor in the charging circuit?
+3.9 The number density of free electrons in a copper conductor estimated in Example 3.1 is 8.5 × 1028 m–3. How long does an electron take to drift from one end of a wire 3.0 m long to its other end? The area of cross-section of the wire is 2.0 × 10–6 m2 and it is carrying a current of 3.0 A.
+Reprint 2026-27
+4.1 INTRODUCTION
+Both Electricity and Magnetism have been known for more than 2000 years. However, it was only about 200 years ago, in 1820, that it was realised that they were intimately related. During a lecture demonstration in the summer of 1820, Danish physicist Hans Christian Oersted noticed that a current in a straight wire caused a noticeable deflection in a nearby magnetic compass needle. He investigated this phenomenon. He found that the alignment of the needle is tangential to an imaginary circle which has the straight wire as its centre and has its plane perpendicular to the wire. This situation is depicted in Fig.4.1(a). It is noticeable when the current is large and the needle sufficiently close to the wire so that the earth’s magnetic field may be ignored. Reversing the direction of the current reverses the orientation of the needle [Fig. 4.1(b)]. The deflection increases on increasing the current or bringing the needle closer to the wire. Iron filings sprinkled around the wire arrange themselves in concentric circles with the wire as the centre [Fig. 4.1(c)]. Oersted concluded that moving charges or currents produced a magnetic field in the surrounding space.
+Following this, there was intense experimentation. In 1864, the laws obeyed by electricity and magnetism were unified and formulated by
+Chapter Four
+MOVING CHARGES
+AND MAGNETISM
+Reprint 2026-27
+James Maxwell who then realised that light was electromagnetic waves.
+Radio waves were discovered by Hertz, and produced by J.C.Bose and
+G. Marconi by the end of the 19th century. A remarkable scientific and technological progress took place in the 20th century. This was due to our increased understanding of electromagnetism and the invention of devices for production, amplification, transmission and detection of electromagnetic waves.
+In this chapter, we will see how magnetic field exerts forces on moving charged particles, like electrons, protons, and current-carrying wires. We shall also learn how currents produce magnetic fields. We shall see how particles can be accelerated to very high energies in a cyclotron. We shall study how currents and voltages are detected by a galvanometer.
+In this and subsequent Chapter on magnetism, we adopt the following convention: A current or a field (electric or magnetic) emerging out of the plane of the paper is depicted by a dot (§). A current or a field going into the plane of the paper is depicted by a cross (  )*.
+Figures. 4.1(a) and 4.1(b) correspond to these two situations, respectively.
+4.2 MAGNETIC FORCE
+4.2.1 Sources and fields
+Before we introduce the concept of a magnetic field B, we shall recapitulate what we have learnt in Chapter 1 about the electric field E. We have seen that the interaction between two charges can be considered in two stages.
+The charge Q, the source of the field, produces an electric field E, where
+FIGURE 4.1 The magnetic field due to a straight long current-carrying wire. The wire is perpendicular to the plane of the paper. A ring of compass needles surrounds the wire. The orientation of the needles is shown when (a) the current emerges out of the plane of the paper, (b) the current moves into the plane of the paper. (c) The arrangement of iron filings around the wire. The darkened ends of the needle represent north poles. The effect of the earth’s magnetic field is neglected.
+* A dot appears like the tip of an arrow pointed at you, a cross is like the feathered tail of an arrow moving away from you.
+Hans Christian Oersted (1777–1851) Danish physicist and chemist, professor at Copenhagen.
+He observed that a compass needle suffers a deflection when placed near a wire carrying an electric current. This discovery gave the first empirical evidence of a connection between electric and magnetic phenomena.
+HANS CHRISTIAN OERSTED (1777–1851)
+Reprint 2026-27
+Moving Charges and
+Magnetism
+E = Q ˆr / (4p e0)r2 (4.1)
+where ˆr is unit vector along r, and the field E is a vector field. A charge q interacts with this field and experiences a force F given by
+F = q E = q Q ˆr / (4p e0) r 2 (4.2)
+As pointed out in the Chapter 1, the field E is not just an artefact but has a physical role. It can convey energy and momentum and is not established instantaneously but takes finite time to propagate. The concept of a field was specially stressed by Faraday and was incorporated by Maxwell in his unification of electricity and magnetism.
+In addition to depending on each point in space, it can also vary with time, i.e., be a function of time. In our discussions in this chapter, we will assume that the fields do not change with time.
+The field at a particular point can be due to one or more charges. If there are more charges the fields add vectorially. You have already learnt in Chapter 1 that this is called the principle of superposition. Once the field is known, the force on a test charge is given by Eq. (4.2).
+Just as static charges produce an electric field, the currents or moving charges produce (in addition) a magnetic field, denoted by B (r), again a vector field. It has several basic properties identical to the electric field.
+It is defined at each point in space (and can in addition depend on time). Experimentally, it is found to obey the principle of superposition: the magnetic field of several sources is the vector addition of magnetic field of each individual source.
+4.2.2 Magnetic Field, Lorentz Force
+Let us suppose that there is a point charge q (moving with a velocity v and, located at r at a given time t) in presence of both the electric field E (r) and the magnetic field B (r). The force on an electric charge q due to both of them can be written as
+F = q [ E (r) + v × B (r)] ∫ Felectric +Fmagnetic (4.3)
+This force was given first by H.A. Lorentz based on the extensive experiments of Ampere and others. It is called the Lorentz force. You have already studied in detail the force due to the electric field. If we look at the interaction with the magnetic field, we find the following features.
+(i) It depends on q, v and B (charge of the particle, the velocity and the magnetic field). Force on a negative charge is opposite to that on a positive charge.
+(ii) The magnetic force q [ v × B ] includes a vector product of velocity and magnetic field. The vector product makes the force due to magnetic
+HENDRIK ANTOON LORENTZ (1853 – 1928)
+Hendrik Antoon Lorentz (1853 – 1928) Dutch theoretical physicist, professor at Leiden. He investigated the relationship between electricity, magnetism, and mechanics. In order to explain the observed effect of magnetic fields on emitters of light (Zeeman effect), he postulated the existence of electric charges in the atom, for which he was awarded the Nobel Prize in 1902. He derived a set of transformation equations (known after him, as
+Lorentz transformation equations) by some tangled mathematical arguments, but he was not aware that these equations hinge on a new concept of space and
+Reprint 2026-27 field vanish (become zero) if velocity and magnetic field are parallel or anti-parallel. The force acts in a (sideways) direction perpendicular to both the velocity and the magnetic field. Its direction is given by the screw rule or right hand rule for vector (or cross) product as illustrated in Fig. 4.2.
+(iii) The magnetic force is zero if charge is not moving (as then |v|= 0). Only a moving charge feels the magnetic force.
+The expression for the magnetic force helps us to define the unit of the magnetic field, if one takes q, F and v, all to be unity in the force equation F = q [ v × B] =q v B sin q ˆn , where the angle between v and B [see Fig. 4.2 (a)]. The magnitude of magnetic field B is 1 SI unit, when the force acting on a unit charge (1 C), moving perpendicular to B with a speed 1m/s, is one
+Dimensionally, we have [B] = [F/qv] and the unit of B are Newton second / (coulomb metre). This unit is called tesla ( T )
+named after Nikola Tesla (1856 – 1943). Tesla is a rather large unit. A smaller unit (non-SI) called gauss (=10–4 tesla) is also often used. The earth’s magnetic field is about 3.6 × 10–5 T.
+4.2.3 Magnetic force on a current-carrying conductor
+We can extend the analysis for force due to magnetic field on a single moving charge to a straight rod carrying current. Consider a rod of a uniform cross-sectional area A and length l. We shall assume one kind of mobile carriers as in a conductor (here electrons). Let the number density of these mobile charge carriers in it be n. Then the total number of mobile charge carriers in it is nlA. For a steady current I in this conducting rod, we may assume that each mobile carrier has an average drift velocity vd (see Chapter 3). In the presence of an external magnetic field B, the force on these carriers is:
+F = (nlA)q vd ´´´´´ B where q is the value of the charge on a carrier. Now nq vd is the current density j and |(nq vd )|A is the current I (see Chapter 3 for the discussion of current and current density). Thus,
+F = [(nq vd )l A] × B = [ jAl ] ´´´´´ B
+= Il ´´´´´ B (4.4)
+where l is a vector of magnitude l, the length of the rod, and with a direction identical to the current I. Note that the current I is not a vector. In the last step leading to Eq. (4.4), we have transferred the vector sign from j to l.
+Equation (4.4) holds for a straight rod. In this equation, B is the external magnetic field. It is not the field produced by the current-carrying rod. If the wire has an arbitrary shape we can calculate the Lorentz force on it by considering it as a collection of linear strips dlj and summing
+Id ×   F B l
+This summation can be converted to an integral in most cases.
+FIGURE 4.2 The direction of the magnetic force acting on a charged particle. (a) The force on a positively charged particle with velocity v and making an angle q with the magnetic field B is given by the right-hand rule. (b) A moving charged particle q is deflected in an opposite sense to –q in the presence of magnetic field.
+Reprint 2026-27
+Moving Charges and
+Magnetism
+Example 4.1 A straight wire of mass 200 g and length 1.5 m carries a current of 2 A. It is suspended in mid-air by a uniform horizontal magnetic field B (Fig. 4.3). What is the magnitude of the magnetic
+FIGURE 4.3
+Solution From Eq. (4.4), we find that there is an upward force F, of magnitude IlB,. For mid-air suspension, this must be balanced by the force due to gravity:
+m g = I lB
+0.2 9.8 0.65 T
+Note that it would have been sufficient to specify m/l, the mass per unit length of the wire. The earth’s magnetic field is approximately
+4 × 10–5 T and we have ignored it.
+Example 4.2 If the magnetic field is parallel to the positive y-axis and the charged particle is moving along the positive x-axis (Fig. 4.4), which way would the Lorentz force be for (a) an electron (negative charge), (b) a proton (positive charge).
+FIGURE 4.4
+Solution The velocity v of particle is along the x-axis, while B, the magnetic field is along the y-axis, so v × B is along the z-axis (screw rule or right-hand thumb rule). So, (a) for electron it will be along –z axis. (b) for a positive charge (proton) the force is along +z axis.
+Charged particles moving in a magnetic field.
+Interactive demonstration:
+http://www.phys.hawaii.edu/~teb/optics/java/partmagn/index.html
+Reprint 2026-27

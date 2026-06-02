@@ -1,0 +1,154 @@
+114 MATHEMATICS
+3. Suppose a hot air balloon is flying in the air. A girl happens to spot the balloon in the sky and runs to her mother to tell her about it. Her mother rushes out of the house to look at the balloon.Now when the girl had spotted the balloon intially it was at point A.
+When both the mother and daughter came out to see it, it had already travelled to another point B. Can you find the altitude of B from the ground?
+In all the situations given above, the distances or heights can be found by using some mathematical techniques, which come under a branch of mathematics called
+‘trigonometry’. The word ‘trigonometry’ is derived from the Greek words ‘tri’ (meaning three), ‘gon’ (meaning sides) and ‘metron’ (meaning measure). In fact, trigonometry is the study of relationships between the sides and angles of a triangle.
+The earliest known work on trigonometry was recorded in Egypt and Babylon. Early astronomers used it to find out the distances of the stars and planets from the Earth.
+Even today, most of the technologically advanced methods used in Engineering and
+Physical Sciences are based on trigonometrical concepts.
+In this chapter, we will study some ratios of the sides of a right triangle with respect to its acute angles, called trigonometric ratios of the angle. We will restrict our discussion to acute angles only. However, these ratios can be extended to other angles also. We will also define the trigonometric ratios for angles of measure 0° and
+90°. We will calculate trigonometric ratios for some specific angles and establish some identities involving these ratios, called trigonometric identities.
+8.2 Trigonometric Ratios
+In Section 8.1, you have seen some right triangles imagined to be formed in different situations.
+Let us take a right triangle ABC as shown in Fig. 8.4.
+Here,  CAB (or, in brief, angle A) is an acute angle. Note the position of the side BC with respect to angle A. It faces  A. We call it the side opposite to angle A. AC is the hypotenuse of the right triangle and the side AB is a part of  A. So, we call it the side adjacent to angle A. Fig. 8.4
+Fig. 8.3
+Reprint 2026-27
+I NTRODUCTION TO TRIGONOMETRY 115
+Note that the position of sides change when you consider angle C in place of A (see Fig. 8.5).
+You have studied the concept of ‘ratio’ in your earlier classes. We now define certain ratios involving the sides of a right triangle, and call them trigonometric ratios.
+The trigonometric ratios of the angle A in right triangle ABC (see Fig. 8.4) are defined as follows :
+sine of  A = side opposite to angle A BC hypotenuse AC cosine of  A = side adjacent to angle A AB hypotenuse AC tangent of  A = side opposite to angle A BC side adjacent to angle A AB cosecant of  A = 1 hypotenuse AC sine of A side opposite to angle A BC secant of  A = 1 hypotenuse AC cosine of A side adjacent to angle A AB cotangent of  A = 1 side adjacent to angle A AB tangent of A side opposite to angle A BC
+The ratios defined above are abbreviated as sin A, cos A, tan A, cosec A, sec A and cot A respectively. Note that the ratios cosec A, sec A and cot A are respectively, the reciprocals of the ratios sin A, cos A and tan A.
+Also, observe that tan A =
+BC sin A AC
+AB AB cos A
+  and cot A = cos A
+So, the trigonometric ratios of an acute angle in a right triangle express the relationship between the angle and the length of its sides.
+Why don’t you try to define the trigonometric ratios for angle C in the right triangle? (See Fig. 8.5)
+Fig. 8.5
+Reprint 2026-27
+116 MATHEMATICS
+The first use of the idea of ‘sine’ in the way we use it today was in the work Aryabhatiyam by Aryabhata, in A.D. 500. Aryabhata used the word ardha-jya for the half-chord, which was shortened to jya or jiva in due course. When the Aryabhatiyam was translated into Arabic, the word jiva was retained as it is. The word jiva was translated into sinus, which means curve, when the Arabic version was translated into Latin. Soon the word sinus, also used as sine, became common in mathematical texts throughout
+Europe. An English Professor of astronomy Edmund
+Gunter (1581–1626), first used the abbreviated notation ‘sin’.
+The origin of the terms ‘cosine’ and ‘tangent’ was much later. The cosine function arose from the need to compute the sine of the complementary angle. Aryabhatta called it kotijya. The name cosinus originated with Edmund Gunter. In 1674, the
+English Mathematician Sir Jonas Moore first used the abbreviated notation ‘cos’.
+Remark : Note that the symbol sin A is used as an abbreviation for ‘the sine of the angle A’. sin A is not the product of ‘sin’ and A. ‘sin’ separated from A has no meaning. Similarly, cos A is not the product of
+‘cos’ and A. Similar interpretations follow for other trigonometric ratios also.
+Now, if we take a point P on the hypotenuse
+AC or a point Q on AC extended, of the right triangle
+ABC and draw PM perpendicular to AB and QN perpendicular to AB extended (see Fig. 8.6), how will the trigonometric ratios of  A in  PAM differ from those of  A in  CAB or from those of  A in
+To answer this, first look at these triangles. Is  PAM similar to  CAB? From
+Chapter 6, recall the AA similarity criterion. Using the criterion, you will see that the triangles PAM and CAB are similar. Therefore, by the property of similar triangles, the corresponding sides of the triangles are proportional.
+So, we have AM
+AB = AP MP
+Aryabhata
+C.E. 476 – 550
+Fig. 8.6
+Reprint 2026-27
+I NTRODUCTION TO TRIGONOMETRY 117
+From this, we find MP
+AP = BC sin A
+Similarly, AM AB
+ = cos A, MP BC tan A
+  and so on.
+This shows that the trigonometric ratios of angle A in  PAM not differ from those of angle A in  CAB.
+In the same way, you should check that the value of sin A (and also of other trigonometric ratios) remains the same in  QAN also.
+From our observations, it is now clear that the values of the trigonometric ratios of an angle do not vary with the lengths of the sides of the triangle, if the angle remains the same.
+Note : For the sake of convenience, we may write sin 2
+A, cos 2
+A, etc., in place of (sin A) 2 , (cos A) 2 , etc., respectively. But cosec A = (sin A) –1  sin –1 A (it is called sine inverse A). sin–1 A has a different meaning, which will be discussed in higher classes.
+Similar conventions hold for the other trigonometric ratios as well. Sometimes, the
+Greek letter  (theta) is also used to denote an angle.
+We have defined six trigonometric ratios of an acute angle. If we know any one of the ratios, can we obtain the other ratios? Let us see.
+If in a right triangle ABC, sin A = 1 , then this means that BC 1
+ , i.e., the lengths of the sides BC and AC of the triangle
+ABC are in the ratio 1 : 3 (see Fig. 8.7). So if
+BC is equal to k, then AC will be 3k, where k is any positive number. To determine other trigonometric ratios for the angle A, we need to find the length of the third side
+AB. Do you remember the Pythagoras theorem? Let us use it to determine the required length AB.
+AB 2 = AC 2 – BC2 = (3k)2 – (k)2 = 8k2 = (2 2 k)2
+Therefore, AB = 2 2 k 
+So, we get AB = 2 2 k (Why is AB not – 2 2 k ?)
+Now, cos A = AB 2 2 2 2
+Similarly, you can obtain the other trigonometric ratios of the angle A.
+Fig. 8.7
+Reprint 2026-27
+118 MATHEMATICS
+Remark : Since the hypotenuse is the longest side in a right triangle, the value of sin A or cos A is always less than 1 (or, in particular, equal to 1).
+Let us consider some examples.
+Example 1 : Given tan A = 4
+3 , find the other trigonometric ratios of the angle A.
+Solution : Let us first draw a right  ABC (see Fig 8.8).
+Now, we know that tan A = BC 4
+Therefore, if BC = 4k, then AB = 3k, where k is a positive number.
+Now, by using the Pythagoras Theorem, we have
+AC2 = AB 2 + BC 2 = (4k)2 + (3k) 2 = 25k2
+So, AC = 5k
+Now, we can write all the trigonometric ratios using their definitions.
+sin A = BC 4 4 cos A = AB 3 3
+Therefore, cot A = 1 3 1 5, cosec A = tan A 4 sin A 4
+  and sec A = 1 5
+Example 2 : If  B and  Q are acute angles such that sin B = sin Q, then prove that  B =  Q.
+Solution : Let us consider two right triangles ABC and PQR where sin B = sin Q (see Fig. 8.9).
+We have sin B = AC and sin Q = PR
+Fig. 8.8
+Fig. 8.9
+Reprint 2026-27
+I NTRODUCTION TO TRIGONOMETRY 119
+Therefore, AC
+PR = AB , say
+PQ k  (1)
+Now, using Pythagoras theorem,
+BC = 2 2 and QR = 2 2
+2 2 2 2 2 2 2 2
+2 2 2 2 2 2
+AB AC PQ PR PQ PR
+PQ PR PQ PR PQ PR
+   (2)
+From (1) and (2), we have
+PR = AB BC
+Then, by using Theorem 6.4,  ACB ~  PRQ and therefore,  B =  Q.
+Example 3 : Consider  ACB, right-angled at C, in which AB = 29 units, BC = 21 units and  ABC =  (see Fig. 8.10). Determine the values of (i) cos 2  + sin2 , (ii) cos 2  – sin2 
+Solution : In  ACB, we have
+AC = 2 2
+AB BC  = 2 2 (29) (21) 
+= (29 21) (29 21) (8) (50) 400 20 units     
+So, sin  = AC 20 BC 21, cos =
+AB 29 AB 29
+Now, (i) cos 2 + sin2 =
+20 21 20 21 400 441 1,
+29 29 841 29
+     
+        and (ii) cos2  – sin2  =
+21 20 (21 20) (21 20) 41
+29 29 841 29
+     
+      
+    .
+Fig. 8.10
+Reprint 2026-27
+120 MATHEMATICS
+Example 4 : In a right triangle ABC, right-angled at B, if tan A = 1, then verify that
+2 sin A cos A = 1.
+Solution : In  ABC, tan A = BC
+AB = 1 (see Fig 8.11)
+i.e., BC = AB
+Let AB = BC = k, where k is a positive number.
+Now, AC = 2 2 ( ) ( ) 2 k k k  
+Therefore, sin A = BC 1
+ and cos A = AB 1
+So, 2 sin A cos A = 1 1
+       which is the required value.
+Example 5 : In  OPQ, right-angled at P,
+OP = 7 cm and OQ – PQ = 1 cm (see Fig. 8.12).
+Determine the values of sin Q and cos Q.
+Solution : In  OPQ, we have
+OQ2 = OP2 + PQ 2 i.e., (1 + PQ) 2 = OP2 + PQ 2 (Why?)
+i.e., 1 + PQ2 + 2PQ = OP2 + PQ 2 i.e., 1 + 2PQ = 7 2 (Why?)
+i.e., PQ = 24 cm and OQ = 1 + PQ = 25 cm
+So, sin Q = 7
+25 and cos Q = 24
+Fig. 8.12
+Fig. 8.11
+Reprint 2026-27

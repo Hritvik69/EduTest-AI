@@ -1,0 +1,20 @@
+Computer SyStem 19
+1.7.4 Application Software
+The system software provides the core functionality of the computer system. However, different users need the computer system for different purposes depending upon their requirements. Hence, a new category of software is needed to cater to different requirements of the end- users. This specific software that works on top of the system software is termed as application software. There are again two broad categories of application software — general purpose and customised application software.
+(A) General Purpose Software
+The application software developed for generic applications, to cater to a bigger audience in general are called general purpose software. Such ready-made application software can be used by end users as per their requirements. For example, spreadsheet tool Calc of LibreOffice can be used by any computer user to do calculation or to create account sheet. Adobe Photoshop,
+GIMP, Mozilla web browser, iTunes, etc., fall in the category of general purpose software.
+(B) Customised Software
+These are custom or tailor-made application software, that are developed to meet the requirements of a specific organisation or an individual. They are better suited to the needs of an individual or an organisation, considering that they are designed as per special requirements. Some examples of user-defined software include websites, school management software, accounting software, etc. It is similar to buying a piece of cloth and getting a tailor-made garment with the fitting, colour, and fabric of our choice.
+1.7.5 Proprietary or Free and Open Source Software
+The developers of some application software provide their source code as well as the software freely to the public, with an aim to develop and improve further with each other’s help. Such software is known as Free and
+Open Source Software (FOSS). For example, the source code of operating system Ubuntu is freely accessible for anyone with the required knowledge to improve or add new functionality. More examples of FOSS include
+Python, Libreoffice, Openoffice, Mozilla Firefox, etc.
+Sometimes, software are freely available for use but
+A computer system can work without application software, but it cannot work without system software. For example, we can use a computer even if no word processing software is installed, but if no operating system is installed, we cannot work on the computer.
+In other words, the use of computer is possible in the absence of application software.
+Activity 1.8
+With the help of your teacher, install one free and open source application software on your computer.
+Activity 1.7
+With the help of your teacher, install one application software in your computer.
+Reprint 2026-27

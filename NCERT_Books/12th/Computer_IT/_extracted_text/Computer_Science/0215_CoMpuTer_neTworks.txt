@@ -1,0 +1,21 @@
+In this Chapter
+» Concept of Communication
+» Components of Data
+Communication
+» Measuring Capacity of
+Communication Media
+» Types of Data
+Communication
+» Switching Techniques
+» Transmission Media
+» Mobile Telecommunication
+Technologies
+» Protocol
+“People already have bionic arms and legs that work by the power of thought. And we increasingly outsource mental and communicative activities to computers. We are merging with our smartphones.
+Very soon, they will just be part of the body”
+— Yuval Noah Harari
+11.1 ConCept of CommuniCation
+The term “Data Communication” comprises two words: Data and Communication. Data can be any text, image, audio, video, and multimedia files. Communication is an act of sending or receiving data. Thus, data communication refers to the exchange of data between two or more networked or connected devices. These devices must be capable of sending and receiving data over a communication medium. Examples of such devices include personal computers, mobile phones, laptops, etc. As we can see in Figure
+11.1, four different types of devices — computer, printer, server and switch are connected to form the network. These devices are connected through a media to the network, which carry information from one end to other end.
+11 Data Communication
+Reprint 2026-27

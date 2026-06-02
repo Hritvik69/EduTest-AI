@@ -1,0 +1,152 @@
+Science 62
+4.2 VERSATILE NATURE OF CARBON
+We have seen the formation of covalent bonds by the sharing of electrons in various elements and compounds. We have also seen the structure of a simple carbon compound, methane. In the beginning of the Chapter, we saw how many things we use contain carbon. In fact, we ourselves are made up of carbon compounds. The numbers of carbon compounds whose formulae are known to chemists was recently estimated to be in millions! This outnumbers by a large margin the compounds formed by all the other elements put together.
+Why is it that this property is seen in carbon and no other element?
+The nature of the covalent bond enables carbon to form a large number of compounds. Two factors noticed in the case of carbon are – (i) Carbon has the unique ability to form bonds with other atoms of carbon, giving rise to large molecules. This property is called catenation. These compounds may have long chains of carbon, branched chains of carbon or even carbon atoms arranged in rings.
+In addition, carbon atoms may be linked by single, double or triple bonds. Compounds of carbon, which are linked by only single bonds between the carbon atoms are called saturated compounds.
+Compounds of carbon having double or triple bonds between their carbon atoms are called unsaturated compounds.
+No other element exhibits the property of catenation to the extent seen in carbon compounds. Silicon forms compounds with hydrogen which have chains of upto seven or eight atoms, but these compounds are very reactive. The carbon-carbon bond is very strong and hence stable. This gives us the large number of compounds with many carbon atoms linked to each other.
+(ii) Since carbon has a valency of four, it is capable of bonding with four other atoms of carbon or atoms of some other mono-valent element. Compounds of carbon are formed with oxygen, hydrogen, nitrogen, sulphur, chlorine and many other elements giving rise to compounds with specific properties which depend on the elements other than carbon present in the molecule.
+Again the bonds that carbon forms with most other elements are very strong making these compounds exceptionally stable. One reason for the formation of strong bonds by carbon is its small size.
+This enables the nucleus to hold on to the shared pairs of electrons strongly. The bonds formed by elements having bigger atoms are much weaker.
+Reprint 2026-27
+Carbon and its Compounds 63
+Organic compounds
+The two characteristic features seen in carbon, that is, tetravalency and catenation, put together give rise to a large number of compounds. Many have the same non-carbon atom or group of atoms attached to different carbon chains. These compounds were initially extracted from natural substances and it was thought that these carbon compounds or organic compounds could only be formed within a living system. That is, it was postulated that a ‘vital force’ was necessary for their synthesis. Friedrich Wöhler disproved this in 1828 by preparing urea from ammonium cyanate. But carbon compounds, except for carbides, oxides of carbon, carbonate and hydrogencarbonate salts continue to be studied under organic chemistry.
+4.2.1 Saturated and Unsaturated Carbon Compounds 4.2.1 Saturated and Unsaturated Carbon Compounds 4.2.1 Saturated and Unsaturated Carbon Compounds 4.2.1 Saturated and Unsaturated Carbon Compounds 4.2.1 Saturated and Unsaturated Carbon Compounds
+We have already seen the structure of methane. Another compound formed between carbon and hydrogen is ethane with a formula of C2H6.
+In order to arrive at the structure of simple carbon compounds, the first step is to link the carbon atoms together with a single bond (Fig. 4.6a) and then use the hydrogen atoms to satisfy the remaining valencies of carbon (Fig. 4.6b). For example, the structure of ethane is arrived in the following steps –
+C—C Step 1
+Figure 4.6 Figure 4.6 Figure 4.6 Figure 4.6 Figure 4.6 (a) Carbon atoms linked together with a single bond
+Three valencies of each carbon atom remain unsatisfied, so each is bonded to three hydrogen atoms giving:
+Figure 4.6 Figure 4.6 Figure 4.6 Figure 4.6 Figure 4.6 (b) Each carbon atom bonded to three hydrogen atoms
+The electron dot structure of ethane is shown in Fig. 4.6(c).
+Can you draw the structure of propane, which has the molecular formula C3H8 in a similar manner? You will see that the valencies of all the atoms are satisfied by single bonds between them. Such carbon compounds are called saturated compounds. These compounds are normally not very reactive.
+However, another compound of carbon and hydrogen has the formula
+C2H4 and is called ethene. How can this molecule be depicted? We follow the same step-wise approach as above.
+Carbon-carbon atoms linked together with a single bond (Step 1).
+We see that one valency per carbon atom remains unsatisfied (Step 2). This can be satisfied only if there is a double bond between the two carbons (Step 3).
+Figure 4.6 Figure 4.6 Figure 4.6 Figure 4.6 Figure 4.6 (c) Electron dot structure of
+More to Know!
+C—C Step 1
+Reprint 2026-27
+Science 64
+The electron dot structure for ethene is given in Fig. 4.7.
+Yet another compound of hydrogen and carbon has the formula
+C2H2 and is called ethyne. Can you draw the electron dot structure for ethyne? How many bonds are necessary between the two carbon atoms in order to satisfy their valencies? Such compounds of carbon having double or triple bonds between the carbon atoms are known as unsaturated carbon compounds and they are more reactive than the saturated carbon compounds.
+4.2.2 Chains, Branches and Rings
+In the earlier section, we mentioned the carbon compounds methane, ethane and propane, containing respectively 1, 2 and 3 carbon atoms.
+Such ‘chains’ of carbon atoms can contain many more carbon atoms.
+The names and structures of six of these are given in Table 4.2.
+Figure 4.7 Figure 4.7 Figure 4.7 Figure 4.7 Figure 4.7
+Structure of ethene
+Table 4.2 Formulae and structures of saturated compounds of carbon and hydrogen
+No. of C Name Formula Structure
+1 Methane CH4
+2 Ethane C2H6
+3 Propane C3H8
+4 Butane C4H10
+5 Pentane C5H12
+6 Hexane C6H14
+Reprint 2026-27
+Carbon and its Compounds 65
+But, let us take another look at butane. If we make the carbon
+‘skeleton’ with four carbon atoms, we see that two different possible
+‘skeletons’ are –
+Figure 4.8 Figure 4.8 Figure 4.8 Figure 4.8 Figure 4.8 (a) Two possible carbon-skeletons
+Filling the remaining valencies with hydrogen gives us –
+Figure 4.8 Figure 4.8 Figure 4.8 Figure 4.8 Figure 4.8 (b) Complete molecules for two structures with formula C4H10
+We see that both these structures have the same formula C4H10. Such compounds with identical molecular formula but different structures are called structural isomers.
+In addition to straight and branched carbon chains, some compounds have carbon atoms arranged in the form of a ring. For example, cyclohexane has the formula C6H12 and the following structure –
+Figure 4.9 Figure 4.9 Figure 4.9 Figure 4.9 Figure 4.9 Structure of cyclohexane (a) carbon skeleton (b) complete molecule
+Can you draw the electron dot structure for cyclohexane? Straight chain, branched chain and cyclic carbon compounds, all may be saturated or unsaturated. For example, benzene, C6H6, has the following structure –
+Benzene — C6H6
+Figure 4.10 Figure 4.10 Figure 4.10 Figure 4.10 Figure 4.10 Structure of benzene
+All these carbon compounds which contain only carbon and hydrogen are called hydrocarbons. Among these, the saturated hydrocarbons are called alkanes. The unsaturated hydrocarbons which contain one or more double bonds are called alkenes. Those containing one or more triple bonds are called alkynes.
+4.2.3 Will you be my Friend?
+Carbon seems to be a very friendly element. So far we have been looking at compounds containing carbon and hydrogen only. But carbon also forms
+Reprint 2026-27
+Science 66 bonds with other elements such as halogens, oxygen, nitrogen and sulphur.
+In a hydrocarbon chain, one or more hydrogens can be replaced by these elements, such that the valency of carbon remains satisfied. In such compounds, the element replacing hydrogen is referred to as a heteroatom.
+These heteroatoms are also present in some groups as given in Table 4.3.
+These heteroatoms and the group containing these confer specific properties to the compound, regardless of the length and nature of the carbon chain and hence are called functional groups. Some important functional groups are given in the
+Table 4.3. Free valency or valencies of the group are shown by the single line. The functional group is attached to the carbon chain through this valency by replacing one hydrogen atom or
+4.2.4 Homologous Series
+You have seen that carbon atoms can be linked together to form chains of varying lengths. These chains can be branched also. In addition, hydrogen atom or other atoms on these carbon chains can be replaced by any of the functional groups that we saw above. The presence of a functional group such as alcohol decides the properties of the carbon compound, regardless of the length of the carbon chain. For example, the chemical properties of CH3OH, C2H5OH, C3H7OH and C4H9OH are all very similar. Hence, such a series of compounds in which the same functional group substitutes for hydrogen in a carbon chain is called a homologous series.
+Let us look at the homologous series that we saw earlier in Table
+4.2. If we look at the formulae of successive compounds, say –
+CH4 and C2H6 — these differ by a –CH2- unit
+C2H6 and C3H8 — these differ by a –CH2- unit
+What is the difference between the next pair – propane and butane (C4H10)?
+Can you find out the difference in molecular masses between these pairs (the atomic mass of carbon is 12 u and the atomic mass of hydrogen is 1 u)?
+Similarly, take the homologous series for alkenes. The first member of the series is ethene which we have already come across in
+Section 4.2.1. What is the formula for ethene? The succeeding members have the formula C3H6, C4H8 and C5H10. Do these also differ by a –CH2–
+Table 4.3 Some functional groups in carbon compounds
+Hetero Hetero Hetero Hetero Hetero Class of Class of Class of Class of Class of Formula of Formula of Formula of Formula of Formula of atom atom atom atom atom compounds compounds compounds compounds compounds functional group functional group functional group functional group functional group
+Cl/Br Halo- (Chloro/bromo) —Cl, —Br alkane (substitutes for hydrogen atom)
+Oxygen 1. Alcohol —OH
+2. Aldehyde
+3. Ketone
+4. Carboxylic acid
+Reprint 2026-27
+Carbon and its Compounds 67 unit? Do you see any relation between the number of carbon and hydrogen atoms in these compounds? The general formula for alkenes can be written as CnH2n, where n = 2, 3, 4. Can you similarly generate the general formula for alkanes and alkynes?
+As the molecular mass increases in any homologous series, a gradation in physical properties is seen. This is because the melting and boiling points increase with increasing molecular mass. Other physical properties such as solubility in a particular solvent also show a similar gradation. But the chemical properties, which are determined solely by the functional group, remain similar in a homologous series.
+Activity 4.2 Activity 4.2 Activity 4.2 Activity 4.2 Activity 4.2
+4.2.5 Nomenclature of Carbon Compounds
+The names of compounds in a homologous series are based on the name of the basic carbon chain modified by a “prefix” “phrase before” or “suffix”
+“phrase after” indicating the nature of the functional group. For example, the names of the alcohols taken in Activity 4.2 are methanol, ethanol, propanol and butanol.
+Naming a carbon compound can be done by the following method – (i) Identify the number of carbon atoms in the compound. A compound having three carbon atoms would have the name propane.
+(ii) In case a functional group is present, it is indicated in the name of the compound with either a prefix or a suffix (as given in Table 4.4).
+(iii) If the name of the functional group is to be given as a suffix, and the suffix of the functional group begins with a vowel a, e, i, o, u, then the name of the carbon chain is modified by deleting the final ‘e’ and adding the appropriate suffix. For example, a three-carbon chain with a ketone group would be named in the following manner –
+Propane – ‘e’ = propan + ‘one’ = propanone.
+(iv) If the carbon chain is unsaturated, then the final ‘ane’ in the name of the carbon chain is substituted by ‘ene’ or ‘yne’ as given in
+Table 4.4. For example, a three-carbon chain with a double bond would be called propene and if it has a triple bond, it would be called propyne.
+n Calculate the difference in the formulae and molecular masses for (a) CH3OH and C2H5OH (b) C2H5OH and C3H7OH, and (c) C3H7OH and C4H9OH.
+n Is there any similarity in these three?
+n Arrange these alcohols in the order of increasing carbon atoms to get a family. Can we call this family a homologous series?
+n Generate the homologous series for compounds containing up to four carbons for the other functional groups given in Table 4.3.
+Reprint 2026-27
+Science 68 bromo, etc.
+Q U E S T I O N S
+1. How many structural isomers can you draw for pentane?
+2. What are the two properties of carbon which lead to the huge number of carbon compounds we see around us?
+3. What will be the formula and electron dot structure of cyclopentane?
+Table 4.4 Nomenclature of organic compounds
+Class of Prefix/Suffix Example compounds
+1. Halo alkane Prefix-chloro, Chloropropane
+Bromopropane
+2. Alcohol Suffix - ol Propanol
+3. Aldehyde Suffix - al Propanal
+4. Ketone Suffix - one Propanone
+5. Carboxylic acid Suffix - oic acid Propanoic acid
+6. Alkenes Suffix - ene Propene
+7. Alkynes Suffix - yne Propyne
+Reprint 2026-27
+Carbon and its Compounds 69
+4. Draw the structures for the following compounds.
+(i) Ethanoic acid (ii) Bromopentane* (iii) Butanone (iv) Hexanal.
+*Are structural isomers possible for bromopentane?
+5. How would you name the following compounds?
+(i) CH3—CH2—Br (ii)
+4.3 CHEMICAL PROPERTIES OF CARBON COMPOUNDS
+In this section we will be studying about some of the chemical properties of carbon compounds. Since most of the fuels we use are either carbon or its compounds, we shall first study combustion.
+4.3.1 Combustion 4.3.1 Combustion 4.3.1 Combustion 4.3.1 Combustion 4.3.1 Combustion
+Carbon, in all its allotropic forms, burns in oxygen to give carbon dioxide along with the release of heat and light. Most carbon compounds also release a large amount of heat and light on burning. These are the oxidation reactions that you learnt about in the first Chapter – (i) C + O2 → CO2 + heat and light (ii) CH4 + O2 → CO2 + H2O + heat and light (iii) CH3CH2OH + O2 → CO2 + H2O + heat and light
+Balance the latter two reactions like you learnt in the first Chapter.
+Activity 4.3 Activity 4.3 Activity 4.3 Activity 4.3 Activity 4.3
+CAUTION: This Activity needs the teacher’s assistance.
+n Take some carbon compounds (naphthalene, camphor, alcohol) one by one on a spatula and burn n Observe the nature of the flame and note whether smoke is produced.
+n Place a metal plate above the flame. Is there a deposition on the plate in case of any of the compounds?
+Activity 4.4 Activity 4.4 Activity 4.4 Activity 4.4 Activity 4.4 n Light a bunsen burner and adjust the air hole at the base to get different types of flames/presence of smoke.
+n When do you get a yellow, sooty flame?
+n When do you get a blue
+Saturated hydrocarbons will generally give a clean flame while unsaturated carbon compounds will give a yellow flame with lots of black smoke. This results in a sooty deposit on the metal plate in Activity
+4.3. However, limiting the supply of air results in incomplete combustion of even saturated hydrocarbons giving a sooty flame. The gas/kerosene stove used at home has inlets for air so that a sufficiently oxygen-rich
+Reprint 2026-27
+Science 70 mixture is burnt to give a clean blue flame. If you observe the bottoms of cooking vessels getting blackened, it means that the air holes are blocked and fuel is getting wasted. Fuels such as coal and petroleum have some amount of nitrogen and sulphur in them. Their combustion results in the formation of oxides of sulphur and nitrogen which are major pollutants in the environment.
+Do You Know?
+Why do substances burn with or without a flame?
+Have you ever observed either a coal or a wood fire? If not, the next time you get a chance, take close note of what happens when the wood or coal starts to burn. You have seen above that a candle or the LPG in the gas stove burns with a flame. However, you will observe the coal or charcoal in an ‘angithi’ sometimes just glows red and gives out heat without a flame. This is because a flame is only produced when gaseous substances burn. When wood or charcoal is ignited, the volatile substances present vapourise and burn with a flame in the beginning.
+A luminous flame is seen when the atoms of the gaseous substance are heated and start to glow. The colour produced by each element is a characteristic property of that element. Try and heat a copper wire in the flame of a gas stove and observe its colour. You have seen that incomplete combustion gives soot which is carbon. On this basis, what will you attribute the yellow colour of a candle flame to?
+Formation of coal and petroleum
+Coal and petroleum have been formed from biomass which has been subjected to various biological and geological processes. Coal is the remains of trees, ferns, and other plants that lived millions of years ago. These were crushed into the earth, perhaps by earthquakes or volcanic eruptions. They were pressed down by layers of earth and rock. They slowly decayed into coal. Oil and gas are the remains of millions of tiny plants and animals that lived in the sea. When they died, their bodies sank to the sea bed and were covered by silt. Bacteria attacked the dead remains, turning them into oil and gas under the high pressures they were being subjecte

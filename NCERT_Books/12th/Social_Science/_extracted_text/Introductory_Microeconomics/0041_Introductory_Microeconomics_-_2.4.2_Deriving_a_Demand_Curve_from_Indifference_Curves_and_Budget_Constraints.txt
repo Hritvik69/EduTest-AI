@@ -1,0 +1,13 @@
+31 Theory of Consumer
+Behaviour
+Figure 2.20(c) depicts a demand curve which has the shape of a rectangular hyperbola. This demand curve has a property that a percentage change in price along the demand curve always leads to equal percentage change in quantity.
+Therefore, |eD| = 1 at every point on this demand curve. This demand curve is called the unitary elastic demand curve.
+2.6.2 Factors Determining Price Elasticity of Demand for a Good
+The price elasticity of demand for a good depends on the nature of the good and the availability of close substitutes of the good. Consider, for example, necessities like food. Such goods are essential for life and the demands for such goods do not change much in response to changes in their prices. Demand for food does not change much even if food prices go up. On the other hand, demand for luxuries can be very responsive to price changes. In general, demand for a necessity is likely to be price inelastic while demand for a luxury good is likely to be price elastic.
+Though demand for food is inelastic, the demands for specific food items are likely to be more elastic. For example, think of a particular variety of pulses. If the price of this variety of pulses goes up, people can shift to some other variety of pulses which is a close substitute. The demand for a good is likely to be elastic if close substitutes are easily available. On the other hand, if close substitutes are not available easily, the demand for a good is likely to be inelastic.
+2.6.3 Elasticity and Expenditure
+The expenditure on a good is equal to the demand for the good times its price.
+Often it is important to know how the expenditure on a good changes as a result of a price change. The price of a good and the demand for the good are inversely related to each other. Whether the expenditure on the good goes up or down as a result of an increase in its price depends on how responsive the demand for the good is to the price change.
+Consider an increase in the price of a good. If the percentage decline in quantity is greater than the percentage increase in the price, the expenditure on the good will go down. For example, see row 2 in table 2.5 which shows that as price of a commodity increases by 10%, its demand drops by 12%, resulting in a decline in expenditure on the good. On the other hand, if the percentage decline in quantity is less than the percentage increase in the price, the expenditure on
+Constant Elasticity Demand Curves. Elasticity of demand at all points along the vertical demand curve, as shown in panel (a), is 0. Elasticity of demand at all point along the horizontal demand curve, as shown in panel (b) is ∞ . Elasticity at all points on the demand curve in panel (c) is 1.
+Reprint 2026-27

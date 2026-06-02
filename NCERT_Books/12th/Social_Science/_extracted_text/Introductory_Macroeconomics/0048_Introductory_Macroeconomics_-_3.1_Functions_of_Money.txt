@@ -1,0 +1,24 @@
+38 38 38 38 38
+Introductory
+Macroeconomics
+3.2.2. Supply of Money
+In a modern economy, money comprises cash and bank deposits.
+Depending on what types of bank deposits are being included, there are many measures of money1. These are created by a system comprising two types of institutions: central bank of the economy and the commercial banking system.
+Central bank
+Central Bank is a very important institution in a modern economy.
+Almost every country has one central bank. India got its central bank in
+1935. Its name is the ‘Reserve Bank of India’. Central bank has several important functions. It issues the currency of the country. It controls money supply of the country through various methods, like bank rate, open market operations and variations in reserve ratios. It acts as a banker to the government. It is the custodian of the foreign exchange reserves of the economy.
+It also acts as a bank to the banking system, which is discussed in detail later.
+From the point of view of money supply, we need to focus on its function of issuing currency. This currency issued by the central bank can be held by the public or by the commercial banks, and is called the ‘high-powered money’ or
+‘reserve money’ or ‘monetary base’ as it acts as a basis for credit creation.
+Commercial Banks
+Commercial banks are the other type of institutions which are a part of the money-creating system of the economy. In the following section we look at the commercial banking system in detail. They accept deposits from the public and lend out part of these funds to those who want to borrow. The interest rate paid by the banks to depositors is lower than the rate charged from the borrowers.
+This difference between these two types of interest rates, called the ‘spread’ is the profit appropriated by the bank.
+The process of deposit and loan (credit) creation by banks is explained below.
+In order to understand this process, let us discuss a story.
+Once there was a goldsmith named Lala in a village. In this village, people used gold and other precious metals in order to buy goods and services. In other words, these metals were acting as money. People in the village started keeping their gold with Lala for safe-keeping. In return for keeping their gold, Lala issued paper receipts to people of the village and charged a small fee from them. Slowly, over time, the paper receipts issued by Lala began to circulate as money. This means that instead of giving gold for purchasing wheat, someone would pay for wheat or shoes or any other good by giving the paper receipts issued by Lala. Thus, the paper receipts started acting as money since everyone in the village accepted these as a medium of exchange.
+Now, let us suppose that Lala had 100 Kgs of gold, deposited by different people and he had issued receipts corresponding to 100 kgs of gold. At this time Ramu comes to Lala and asks for a loan of 25 kgs of gold. Can
+Lala give the loan? The 100 kgs of gold with him already has claimants. However,
+Lala could decide that everyone with gold deposits will not come to withdraw their deposits at the same time and so he may as well give the loan to Ramu and charge him for it. If Lala gives the loan of 25 kgs of gold, Ramu could also pay Ali with these 25 kgs of gold and Ali could keep the 25 kgs of gold with Lala in return for a paper receipt. In effect, the paper receipts, acting as money, would
+1See the box on the measures of money supply at the end of the chapter.
+Reprint 2026-27

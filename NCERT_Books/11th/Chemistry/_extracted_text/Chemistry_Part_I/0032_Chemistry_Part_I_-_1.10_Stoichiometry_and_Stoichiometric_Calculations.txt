@@ -1,0 +1,222 @@
+20 CHEMISTRY equation of a given reaction. Let us consider the combustion of methane. A balanced equation for this reaction is as given below:
+CH4 (g) + 2O2 (g) → CO2 (g) + 2 H2 O (g)
+Here, methane and dioxygen are called reactants and carbon dioxide and water are called products. Note that all the reactants and the products are gases in the above reaction and this has been indicated by letter (g) in the brackets next to its formula.
+Similarly, in case of solids and liquids, (s) and (l) are written respectively.
+The coefficients 2 for O 2 and H 2 O are called stoichiometric coefficients. Similarly the coefficient for CH4 and CO 2 is one in each case. They represent the number of molecules (and moles as well) taking part in the reaction or formed in the reaction.
+Thus, according to the above chemical reaction,
+• One mole of CH4(g) reacts with two moles of O 2 (g) to give one mole of CO 2 (g) and two moles of H2 O(g)
+• One molecule of CH4(g) reacts with
+2 molecules of O2 (g) to give one molecule of CO2 (g) and 2 molecules of H2 O(g)
+• 22.7 L of CH4 (g) reacts with 45.4 L of O2 (g) to give 22.7 L of CO2 (g) and 45.4 L of
+• 16 g of CH4 (g) reacts with 2×32 g of O 2 (g) to give 44 g of CO2 (g) and 2×18 g of
+H2 O (g).
+From these relationships, the given data can be interconverted as follows:
+Volume Density =
+1.10.1 limiting reagent
+Many a time, reactions are carried out with the amounts of reactants that are different than the amounts as required by a balanced chemical reaction. In such situations, one reactant is in more amount than the amount required by balanced chemical reaction. The
+1.10 Stoichiometry anD
+Stoichiometric calcUlationS
+The word ‘stoichiometry’ is derived from two Greek words — stoicheion (meaning, element) and metron (meaning, measure).
+Stoichiometry, thus, deals with the calculation of masses (sometimes volumes also) of the reactants and the products involved in a chemical reaction. Before understanding how to calculate the amounts of reactants required or the products produced in a chemical reaction, let us study what information is available from the balanced chemical
+Step 3. Divide each of the mole values obtained above by the smallest number amongst them
+Since 2.021 is smallest value, division by it gives a ratio of 2:1:1 for H:C:Cl.
+In case the ratios are not whole numbers, then they may be converted into whole number by multiplying by the suitable coefficient.
+Step 4. Write down the empirical formula by mentioning the numbers after writing the symbols of respective elements
+CH2 Cl is, thus, the empirical formula of the above compound.
+Step 5. Writing molecular formula (a) Determine empirical formula mass by adding the atomic masses of various atoms present in the empirical formula.
+For CH2 Cl, empirical formula mass is
+12.01 + (2 ×1.008) + 35.453
+= 49.48 g (b) Divide Molar mass by empirical formula mass
+= 2 = (n)
+(c) Multiply empirical formula by n obtained above to get the molecular
+Empirical formula = CH 2
+Cl, n = 2. Hence molecular formula is C2 H4Cl2 .
+Reprint 2026-27
+21 SOME BASIC CONCEPTS OF CHEMISTRY reactant which is present in the least amount gets consumed after sometime and after that further reaction does not take place whatever be the amount of the other reactant. Hence, the reactant, which gets consumed first, limits the amount of product formed and is, therefore, called the limiting reagent.
+In performing stoichiometric calculations, this aspect is also to be kept in mind.
+1.10.2 reactions in Solutions
+A majority of reactions in the laboratories are carried out in solutions. Therefore, it is important to understand as how the amount of substance is expressed when it is present in the solution. The concentration of a solution or the amount of substance present in its given volume can be expressed in any of the following ways.
+1. Mass per cent or weight per cent (w/w %)
+2. Mole fraction
+3. Molarity
+4. Molality
+Let us now study each one of them in
+Balancing a chemical equation
+According to the law of conservation of mass, a balanced chemical equation has the same number of atoms of each element on both sides of the equation. Many chemical equations can be balanced by trial and error. Let us take the reactions of a few metals and non-metals with oxygen to give oxides
+4 Fe(s) + 3O2(g) → 2Fe2 O3 (s) (a) balanced equation
+2 Mg(s) + O2(g) → 2MgO(s) (b) balanced equation
+P4(s) + O2 (g) → P4O10 (s) (c) unbalanced equation
+Equations (a) and (b) are balanced, since there are same number of metal and oxygen atoms on each side of the equations. However equation (c) is not balanced. In this equation, phosphorus atoms are balanced but not the oxygen atoms. To balance it, we must place the coefficient 5 on the left of oxygen on the left side of the equation to balance the oxygen atoms appearing on the right side of the equation.
+P4(s) + 5O2(g) → P4O10 (s) balanced equation
+Now, let us take combustion of propane, C3 H8 . This equation can be balanced in steps.
+Step 1 Write down the correct formulas of reactants and products. Here, propane and oxygen are reactants, and carbon dioxide and water are products.
+C3 H8 (g) + O2(g) → CO2 (g) + H2 O(l) unbalanced equation
+Step 2 Balance the number of C atoms: Since 3 carbon atoms are in the reactant, therefore, three
+CO2 molecules are required on the right side.
+C 3 H8 (g) + O2 (g) → 3CO2 (g) + H2 O (l)
+Step 3 Balance the number of H atoms: on the left there are 8 hydrogen atoms in the reactants however, each molecule of water has two hydrogen atoms, so four molecules of water will be required for eight hydrogen atoms on the right side.
+C3 H8 (g) +O2 (g) → 3CO2 (g)+4H2 O (l)
+Step 4 Balance the number of O atoms: There are 10 oxygen atoms on the right side (3 × 2 = 6 in
+CO2 and 4×1= 4 in water). Therefore, five O2 molecules are needed to supply the required 10 CO2 and 4×1= 4 in water). Therefore, five O2 molecules are needed to supply the required 10 oxygen
+C3 H8 (g) +5O2 (g) → 3CO2 (g) + 4H2 O (l)
+Step 5 Verify that the number of atoms of each element is balanced in the final equation. The equation shows three carbon atoms, eight hydrogen atoms, and 10 oxygen atoms on each side.
+All equations that have correct formulas for all reactants and products can be balanced. Always remember that subscripts in formulas of reactants and products cannot be changed to balance an equation.
+Reprint 2026-27
+22 CHEMISTRY problem 1.3
+Calculate the amount of water (g)
+produced by the combustion of 16 g of methane.
+Solution
+T h e b a l a n c e d e q u a t i o n f o r t h e combustion of methane is :
+CH4 (g) + 2O2 (g) → CO2 (g) + 2H2 O (g)
+(i) 16 g of CH4 corresponds to one mole.
+(ii) From the above equation, 1 mol of
+CH4 (g) gives 2 mol of H2 O (g).
+2 mol of water (H2 O) = 2×(2+16)
+= 2×18 = 36 g
+1 mol H 2 O = 18 g H2 O ⇒ 18 g H O
+1mol H O
+Hence, 2 mol H2 O× 18 g H O
+1mol H O
+= 2×18 g H2 O = 36 g H2 O problem 1.4
+How many moles of methane are required to produce 22g CO 2 (g) after combustion?
+Solution
+According to the chemical equation,
+CH4 (g) + 2O2 (g) → CO2 (g) + 2H2 O (g)
+44g CO2 (g) is obtained from 16 g CH4 (g).
+[∴1 mol CO2 (g) is obtained from 1 mol of CH4(g)]
+Number of moles of CO2 (g)
+= 22 g CO2 (g) × 1 mol CO g
+= 0.5 mol CO2 (g)
+Hence, 0.5 mol CO 2 (g) would be obtained from 0.5 mol CH4 (g) or 0.5 mol of CH4 (g) would be required to produce
+22 g CO2 (g).
+problem 1.5
+50.0 kg of N 2 (g) and 10.0 kg of H2 (g)
+are mixed to produce NH3 (g). Calculate the amount of NH3 (g) formed. Identify the limiting reagent in the production of
+NH3 in this situation.
+Solution
+A balanced equation for the above reaction is written as follows :
+Calculation of moles :
+Number of moles of N2
+= 50 0 1000 kg N g N
+= 17.86×10 2 mol
+Number of moles of H2
+= 10 00 1000 kg H g H
+= 4.96 × 103 mol
+According to the above equation, 1 mol N2 (g) requires 3 mol H2 (g), for the reaction. Hence, for 17.86×102 mol of
+, the moles of H2 (g) required would be
+17 86 10 3
+.     mol N mol H g
+= 5.36 × 10 3 mol H2
+But we have only 4.96×103 mol H 2 .
+Hence, dihydrogen is the limiting reagent in this case. So, NH3 (g) would be formed only from that amount of available dihydrogen i.e., 4.96 × 103 mol
+Since 3 mol H2 (g) gives 2 mol NH3 (g)
+4.96 ×103 mol H2 (g) × 2 mol NH g
+= 3.30 × 10 3 mol NH3 (g)
+3.30 × 10 3 mol NH3 (g) is obtained.
+If they are to be converted to grams, it is done as follows :
+1 mol NH3 (g) = 17.0 g NH3 (g)
+3.30 ×10 3 mol NH3 (g) × 17 0
+. g NH g mol NH g
+Reprint 2026-27
+23 SOME BASIC CONCEPTS OF CHEMISTRY
+3. Molarity
+It is the most widely used unit and is denoted by M. It is defined as the number of moles of the solute in 1 litre of the solution. Thus,
+Molarity (M) = No. of moles of solute of solution in litres Volume
+Suppose, we have 1 M solution of a substance, say NaOH, and we want to prepare a 0.2 M solution from it.
+1 M NaOH means 1 mol of NaOH present in 1 litre of the solution. For 0.2 M solution, we require 0.2 moles of NaOH dissolved in
+1 litre solution.
+Hence, for making 0.2M solution from 1M solution, we have to take that volume of 1M
+NaOH solution, which contains 0.2 mol of NaOH and dilute the solution with water to 1 litre.
+Now, how much volume of concentrated (1M) NaOH solution be taken, which contains
+0.2 moles of NaOH can be calculated as follows:
+If 1 mol is present in 1L or 1000 mL solution then, 0.2 mol is present in mol mol solution × .
+= 200 mL solution
+Thus, 200 mL of 1M NaOH are taken and enough water is added to dilute it to make it 1 litre.
+In fact for such calculations, a general formula, M1
+×V1 = M2 × V2 where M and V are molarity and volume, respectively, can be used.
+In this case, M1 is equal to 0.2M; V1 = 1000 mL and, M2 = 1.0M; V2 is to be calculated.
+Substituting the values in the formula:
+0.2 M × 1000 mL = 1.0 M × V2
+Note that the number of moles of solute (NaOH) was 0.2 in 200 mL and it has remained the same, i.e., 0.2 even after dilution ( in 1000 mL) as we have changed just the amount of solvent (i.e., water) and have not done anything with respect to NaOH. But keep in mind the concentration.
+1. Mass per cent
+It is obtained by using the following relation:
+problem 1.6
+A solution is prepared by adding 2 g of a substance A to 18 g of water. Calculate the mass per cent of the solute.
+Solution
+2. Mole Fraction
+It is the ratio of number of moles of a particular component to the total number of moles of the solution. If a substance ‘A’ dissolves in substance ‘B’ and their number of moles are nA and nB
+, respectively, then the mole fractions of A and B are given as:
+= 3.30×10 3 ×17 g NH3 (g)
+= 56.1×10 3 g NH3
+= 56.1 kg NH3
+Reprint 2026-27
+24 CHEMISTRY
+Chemistry, as we understand it today is not a very old discipline. People in ancient India, already had the knowledge of many scientific phenomenon much before the advent of modern science. They applied the knowledge in various walks of life.
+The study of chemistry is very important as its domain encompasses every sphere of life. Chemists study the properties and structure of substances and the changes undergone by them. All substances contain matter, which can exist in three states – solid, liquid or gas. The constituent particles are held in different ways in these states of matter and they exhibit their characteristic properties. Matter can also be classified into elements, compounds or mixtures. An element contains particles of only one type, which may be atoms or molecules. The compounds are formed where atoms of two or more elements combine in a fixed ratio to each other. Mixtures occur widely and many of the substances present around us are mixtures.
+When the properties of a substance are studied, measurement is inherent. The quantification of properties requires a system of measurement and units in which the quantities are to be expressed. Many systems of measurement exist, of which the English
+Problem 1.8
+The density of 3 M solution of NaCl is
+1.25 g mL–1. Calculate the molality of the solution.
+Solution
+M = 3 mol L–1
+Mass of NaCl in 1 L solution = 3 × 58.5 = 175.5 g
+1L solution = 1000 × 1.25 = 1250 g (since density = 1.25 g mL–1)
+Mass of water in solution = 1250 –75.5
+= 1074.5 g
+Molality = No. of moles of solute of solvent in kg Mass
+1 0745 . kg = 2.79 m
+Often in a chemistry laboratory, a solution of a desired concentration is prepared by diluting a solution of known higher concentration. The solution of higher concentration is also known as stock solution. Note that the molality of a solution does not change with temperature since mass remains unaffected with temperature.
+Problem 1.7
+Calculate the molarity of NaOH in the solution prepared by dissolving its 4 g in enough water to form 250 mL of the solution.
+Solution
+Since molarity (M)
+Note that molarity of a solution depends upon temperature because volume of a solution is temperature dependent.
+4. Molality
+It is defined as the number of moles of solute present in 1 kg of solvent. It is denoted by m.
+Thus, Molality (m) = No. of moles of solute
+Mass of solvent in kg
+Reprint 2026-27
+25 SOME BASIC CONCEPTS OF CHEMISTRY and the Metric Systems are widely used. The scientific community, however, has agreed to have a uniform and common system throughout the world, which is abbreviated as SI units (International System of Units).
+Since measurements involve recording of data, which are always associated with a certain amount of uncertainty, the proper handling of data obtained by measuring the quantities is very important. The measurements of quantities in chemistry are spread over a wide range of 10–31 to 10+23 . Hence, a convenient system of expressing the numbers in scientific notation is used. The uncertainty is taken care of by specifying the number of significant figures, in which the observations are reported. The dimensional analysis helps to express the measured quantities in different systems of units. Hence, it is possible to interconvert the results from one system of units to another.
+The combination of different atoms is governed by basic laws of chemical combination
+— these being the law of conservation of mass, Law of Definite Proportions, Law of multiple proportions, Gay lussac’s law of Gaseous volumes and avogadro law. All these laws led to the Dalton’s atomic theory, which states that atoms are building blocks of matter. The atomic mass of an element is expressed relative to 12 C isotope of carbon, which has an exact value of 12u. Usually, the atomic mass used for an element is the average atomic mass obtained by taking into account the natural abundance of different isotopes of that element. The molecular mass of a molecule is obtained by taking sum of the atomic masses of different atoms present in a molecule. The molecular formula can be calculated by determining the mass per cent of different elements present in a compound and its molecular mass.
+The number of atoms, molecules or any other particles present in a given system are expressed in the terms of avogadro constant (6.022 × 10 23 ). This is known as 1 mol of the respective particles or entities.
+Chemical reactions represent the chemical changes undergone by different elements and compounds. A balanced chemical equation provides a lot of information. The coefficients indicate the molar ratios and the respective number of particles taking part in a particular reaction. The quantitative study of the reactants required or the products formed is called stoichiometry. Using stoichiometric calculations, the amount of one or more reactant(s)
+required to produce a particular amount of product can be determined and vice-versa. The amount of substance present in a given volume of a solution is expressed in number of ways, e.g., mass per cent, mole fraction, molarity and molality.
+exerciSeS
+1.1 Calculate the molar mass of the following:
+(i) H2 O (ii) CO2 (iii) CH4
+1.2 Calculate the mass per cent of different elements present in sodium sulphate (Na2 SO4).
+1.3 Determine the empirical formula of an oxide of iron, which has 69.9% iron and
+30.1% dioxygen by mass.
+1.4 Calculate the amount of carbon dioxide that could be produced when (i) 1 mole of carbon is burnt in air.
+(ii) 1 mole of carbon is burnt in 16 g of dioxygen.
+(iii) 2 moles of carbon are burnt in 16 g of dioxygen.
+1.5 Calculate the mass of sodium acetate (CH3 COONa) required to make 500 mL of
+0.375 molar aqueous solution. Molar mass of sodium acetate is 82.0245 g mol–1.
+Reprint 2026-27
+26 CHEMISTRY
+1.6 Calculate the concentration of nitric acid in moles per litre in a sample which has a density, 1.41 g mL–1 and the mass per cent of nitric acid in it being 69%.
+1.7 How much copper can be obtained from 100 g of copper sulphate (CuSO4)?
+1.8 Determine the molecular formula of an oxide of iron, in which the mass per cent of iron and oxygen are 69.9 and 30.1, respectively.
+1.9 Calculate the atomic mass (average) of chlorine using the following data:
+% natural abundance molar mass
+35Cl 75.77 34.9689
+37Cl 24.23 36.9659
+1.10 In three moles of ethane (C2 H6 ), calculate the following:
+(i) Number of moles of carbon atoms.
+(ii) Number of moles of hydrogen atoms.
+(iii) Number of molecules of ethane.
+1.11 What is the concentration of sugar (C 12 H22 O11 ) in mol L–1 if its 20 g are dissolved in enough water to make a final volume up to 2L?
+1.12 If the density of methanol is 0.793 kg L –1, what is its volume needed for making 2.5
+L of its 0.25 M solution?
+1.13 Pressure is determined as force per unit area of the surface. The SI unit of pressure, pascal is as shown below:
+1Pa = 1N m–2
+If mass of air at sea level is 1034 g cm–2, calculate the pressure in pascal.
+1.14 What is the SI unit of mass? How is it defined?
+1.15 Match the following prefixes with their multiples:
+Prefixes Multiples (i) micro 10 6 (ii) deca 109 (iii) mega 10–6 (iv) giga 10–15 (v) femto 10
+1.16 What do you mean by significant figures?
+1.17 A sample of drinking water was found to be severely contaminated with chloroform,
+CHCl3 , supposed to be carcinogenic in nature. The level of contamination was 15 ppm (by mass).
+(i) Express thi

@@ -1,0 +1,83 @@
+3 Solutions
+For example, 10% ethanol solution in water means that 10 mL of ethanol is dissolved in water such that the total volume of the solution is 100 mL. Solutions containing liquids are commonly expressed in this unit. For example, a 35% (v/v) solution of ethylene glycol, an antifreeze, is used in cars for cooling the engine. At this concentration the antifreeze lowers the freezing point of water to 255.4K (–17.6°C).
+(iii) Mass by volume percentage (w/V): Another unit which is commonly used in medicine and pharmacy is mass by volume percentage. It is the mass of solute dissolved in
+100 mL of the solution.
+(iv) Parts per million: When a solute is present in trace quantities, it is convenient to express concentration in parts per million (ppm)
+and is defined as:
+Parts per million =
+6 Number of parts of the component ×10
+Total number of parts of all components of the solution (1.3)
+As in the case of percentage, concentration in parts per million can also be expressed as mass to mass, volume to volume and mass to volume. A litre of sea water (which weighs 1030 g) contains about
+6 × 10–3 g of dissolved oxygen (O2). Such a small concentration is also expressed as 5.8 g per 106 g (5.8 ppm) of sea water. The concentration of pollutants in water or atmosphere is often expressed in terms of mg mL–1 or ppm.
+(v) Mole fraction: Commonly used symbol for mole fraction is x and subscript used on the right hand side of x denotes the component.
+It is defined as:
+Mole fraction of a component =
+Number of moles of the component
+Total number of moles of all the compone nts (1.4)
+For example, in a binary mixture, if the number of moles of A and B are nA and nB respectively, the mole fraction of A will be n n (1.5)
+For a solution containing i number of components, we have:
+xi =   
+1 2 i .......
+n n n =  i
+It can be shown that in a given solution sum of all the mole fractions is unity, i.e.
+x1 + x2 + .................. + xi = 1 (1.7)
+Mole fraction unit is very useful in relating some physical properties of solutions, say vapour pressure with the concentration of the solution and quite useful in describing the calculations involving gas mixtures.
+Reprint 2026-27
+4 Chemistry
+Calculate the mole fraction of ethylene glycol (C2H6O2) in a solution containing 20% of C2H6O2 by mass.
+Assume that we have 100 g of solution (one can start with any amount of solution because the results obtained will be the same). Solution will contain 20 g of ethylene glycol and 80 g of water.
+Molar mass of C2H6O2 = 12 × 2 + 1 × 6 + 16 × 2 = 62 g mol–1.
+Moles of C2H6O2 = 1
+62 g mol = 0.322 mol
+Moles of water = -1
+18 g mol = 4.444 mol moles of C H O x moles of C H O moles of H O
+0.322 mol
+0.322 mol 4.444 mol = 0.068
+Similarly,  
+4.444 mol 0.932
+0.322 mol 4.444 mol
+Mole fraction of water can also be calculated as: 1 – 0.068 = 0.932
+Example 1.1 Example 1.1 Example 1.1 Example 1.1 Example 1.1 (vi) Molarity: Molarity (M) is defined as number of moles of solute dissolved in one litre (or one cubic decimetre) of solution,
+ Moles of solute
+Molarity Volume of solution in litre (1.8)
+For example, 0.25 mol L–1 (or 0.25 M) solution of NaOH means that
+0.25 mol of NaOH has been dissolved in one litre (or one cubic decimetre).
+Example 1.2 Example 1.2 Example 1.2 Example 1.2 Example 1.2 Calculate the molarity of a solution containing 5 g of NaOH in 450 mL solution.
+Moles of NaOH = -1
+40 g mol = 0.125 mol
+Volume of the solution in litres = 450 mL / 1000 mL L-1
+Using equation (2.8),
+Molarity =
+0.125 mol × 1000 mL L
+450 mL = 0.278 M
+= 0.278 mol L–1
+= 0.278 mol dm–3
+Solution Solution Solution Solution Solution
+Reprint 2026-27
+5 Solutions
+Example 1.3 Example 1.3 Example 1.3 Example 1.3 Example 1.3
+Solution Solution Solution Solution Solution (vii) Molality: Molality (m) is defined as the number of moles of the solute per kilogram (kg) of the solvent and is expressed as:
+Molality (m) = Moles of solute
+Mass of solvent in kg (1.9)
+For example, 1.00 mol kg–1 (or 1.00 m) solution of KCl means that
+1 mol (74.5 g) of KCl is dissolved in 1 kg of water.
+Each method of expressing concentration of the solutions has its own merits and demerits. Mass %, ppm, mole fraction and molality are independent of temperature, whereas molarity is a function of temperature. This is because volume depends on temperature and the mass does not.
+Solubility of a substance is its maximum amount that can be dissolved in a specified amount of solvent at a specified temperature. It depends upon the nature of solute and solvent as well as temperature and pressure. Let us consider the effect of these factors in solution of a solid or a gas in a liquid.
+1.3 Solubility 1.3 Solubility 1.3 Solubility 1.3 Solubility 1.3 Solubility
+Calculate molality of 2.5 g of ethanoic acid (CH3COOH) in 75 g of benzene.
+Molar mass of C2H4O2: 12 × 2 + 1 × 4 + 16 × 2 = 60 g mol–1
+Moles of C2H4O2 = 1
+60 g mol− = 0.0417 mol
+Mass of benzene in kg = 75 g/1000 g kg–1 = 75 × 10–3 kg
+Molality of C2H4O2 = 2 4 2 Moles of C H O kg of benzene =
+0.0417 mol 1000 g kg
+= 0.556 mol kg–1
+Intext Questions Intext Questions Intext Questions Intext Questions Intext Questions
+1.1 Calculate the mass percentage of benzene (C6H6) and carbon tetrachloride (CCl4) if 22 g of benzene is dissolved in 122 g of carbon tetrachloride.
+1.2 Calculate the mole fraction of benzene in solution containing 30% by mass in carbon tetrachloride.
+1.3 Calculate the molarity of each of the following solutions: (a) 30 g of
+Co(NO3)2. 6H2O in 4.3 L of solution (b) 30 mL of 0.5 M H2SO4 diluted to
+1.4 Calculate the mass of urea (NH2CONH2) required in making 2.5 kg of
+0.25 molal aqueous solution.
+1.5 Calculate (a) molality (b) molarity and (c) mole fraction of KI if the density of 20% (mass/mass) aqueous KI is 1.202 g mL-1.
+Reprint 2026-27

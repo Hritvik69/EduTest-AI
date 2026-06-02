@@ -1,0 +1,80 @@
+10.1 I ntroductIon to tuples
+A tuple is an ordered sequence of elements of different data types, such as integer, float, string, list or even a tuple. Elements of a tuple are enclosed in parenthesis (round brackets) and are separated by commas. Like list and string, elements of a tuple can be accessed using index values, starting from 0.
+“Computers are to computing as instruments are to music.
+Software is the score whose interpretations amplifies our reach and lifts our spirits.
+Leonardo da Vinci called music the shaping of the invisible, and his phrase is even more apt as a description of software.”
+Chapter 10
+Tuples and Dictionaries
+In this chapter
+» Introduction to
+» Tuple Operations
+» Tuple Methods and
+Built-in Functions
+» Tuple Assignment
+» Nested Tuples
+» Tuple Handling
+» Introduction to
+Dictionaries
+» Dictionaries are
+» Dictionary
+Operations
+» Traversing a
+Dictionary
+» Dictionary Methods and Built-in
+Functions
+» Manipulating
+Dictionaries
+Example 10.1
+#tuple1 is the tuple of integers
+>>> tuple1 = (1,2,3,4,5)
+>>> tuple1 (1, 2, 3, 4, 5)
+#tuple2 is the tuple of mixed data types
+>>> tuple2 = ('Economics',87,'Accountancy',89.6)
+>>> tuple2 ('Economics', 87, 'Accountancy', 89.6)
+#tuple3 is the tuple with list as an element
+>>> tuple3 = (10,20,30,[40,50])
+>>> tuple3 (10, 20, 30, [40, 50])
+#tuple4 is the tuple with tuple as an element
+>>> tuple4 = (1,2,3,4,5,(10,20))
+>>> tuple4 (1, 2, 3, 4, 5, (10, 20))
+If there is only a single element in a tuple then the element should be followed by a comma. If we assign the value without comma it is treated as integer. It should be noted that a sequence without parenthesis is treated as tuple by default.
+#incorrect way of assigning single element to
+#tuple5 is assigned a single element
+>>> tuple5 = (20)
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 208
+>>> tuple5
+>>>type(tuple5) #tuple5 is not of type tuple
+<class 'int'> #it is treated as integer
+#Correct Way of assigning single element to
+#tuple5 is assigned a single element
+>>> tuple5 = (20,) #element followed by comma
+>>> tuple5
+>>>type(tuple5) #tuple5 is of type tuple
+<class 'tuple'>
+#a sequence without parentheses is treated as
+#tuple by default
+>>> seq = 1,2,3 #comma separated elements
+>>> type(seq) #treated as tuple
+<class 'tuple'>
+>>> print(seq) #seq is a tuple (1, 2, 3)
+10.1.1 Accessing Elements in a Tuple
+Elements of a tuple can be accessed in the same way as a list or string using indexing and slicing.
+>>> tuple1 = (2,4,6,8,10,12)
+#initializes a tuple tuple1
+#returns the first element of tuple1
+>>> tuple1[0]
+#returns fourth element of tuple1
+>>> tuple1[3]
+#returns error as index is out of range
+>>> tuple1[15]
+IndexError: tuple index out of range
+#an expression resulting in an integer index
+>>> tuple1[1+4]
+#returns first element from right
+>>> tuple1[-1]
+10.1.2 Tuple is Immutable
+Tuple is an immutable data type. It means that the elements of a tuple cannot be changed after it has been created. An attempt to do this would lead to an error.
+>>> tuple1 = (1,2,3,4,5)
+We generally use list to store elements of the same data types whereas we use tuples to store elements of different data types.
+Reprint 2026-27

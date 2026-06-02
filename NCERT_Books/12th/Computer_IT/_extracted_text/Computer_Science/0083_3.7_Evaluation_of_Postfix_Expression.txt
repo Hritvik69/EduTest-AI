@@ -1,0 +1,76 @@
+S orting 71 print (“The sorted list is :”)
+for i in range(len(numList)):
+print (numList[i], end=" ")
+The sorted list is :
+-9 1 4 7 8 13
+5.3 S election Sort
+Selection sort is another sorting technique. To sort a list having n elements, the selection sort makes (n-1)
+number of passes through the list. The list is considered to be divided into two lists -- the left list containing the sorted elements, and the right list containing the unsorted elements. Initially, the left list is empty, and the right list contains all the elements.
+For arranging elements in ascending order, in the first pass, all the elements in the unsorted list are traversed to find the smallest element. The smallest element is then swapped with the leftmost element of the unsorted list. This element occupies the first position in the sorted list, and it is not considered in further passes. In the second pass, the next smallest element is selected from the remaining elements in the unsorted list and swapped with the leftmost element of the unsorted list.
+This element occupies the second position in the sorted list, and the unsorted list reduces by one element for the third pass.
+This process continues until n-1 smallest elements are found and moved to their respective places. The nth element is the last, and it is already in place. Figure
+5.2 demonstrates the working of selection sort method to arrange a list in ascending order. In this Figure, elements being compared are shown using arrows and the smaller element in a comparison is highlighted with blue colour. The sorted elements are highlighted —
+Activity 5.2
+Apply bubble sort technique to sort a list of elements numList2
+= [8, 7, 6, 5, 4]. Show the positions of elements in the list after each pass.
+In which pass the last swap happens?
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 72
+Index 0 1 2 3 4 5
+8 7 13 1 -9 4
+Comparison in Pass 1
+8 7 13 1 -9 4
+1 7 13 8 -9 4
+Comparison in Pass 2
+1 7 13 8 -9 4
+1 4 13 8 -9 7
+1 4 8 -9 7 13
+Comparison in Pass 3 Comparison in Pass 4
+Reprint 2026-27
+S orting 73
+Indicates the smaller element in a comparisson
+Indicates the elements in the sorted list
+Sorted List
+Unsorted List
+Indicates elements being compared
+Comparison in Pass 5
+1 4 8 -9 7 13
+Figure 5.2: Comparisons done in different passes of Selection sort
+Algorithm 5.2: Selection Sort
+SELECTIONSORT( numList, n)
+Step 1: SET i=0
+Step 2: WHILE i< n REPEAT STEPS 3 to 11
+Step 3: SET min = i, flag = 0
+Step 4: SET j= i+1
+Step 5: WHILE j<n, REPEAT STEPS 6 to 10
+Step 6: IF numList[j] < numList[min] THEN
+Step 7: min = j
+Step 8: flag = 1
+Step 9: IF flag = 1 THEN
+Step 10: swap(numList[i],numList[min])
+Step 11: SET i=i+1
+The following is an algorithm for the selection sort that takes numList as a list consisting of n elements, and sorts the list in ascending order:
+Algorithm 5.2 shows the steps followed for the selection sort that takes numList as a list of n elements, and sorts the list in ascending order:
+Activity 5.3
+Consider a list of 10 elements:
+randList =
+[7,11,3,10,17,23,1,4,21,5].
+Determine the partially sorted list after four complete passes of selection sort.
+Reprint 2026-27
+Computer SCienCe - ClaSS Xii 74
+5.4 InsertIon sort
+Insertion sort is another sorting algorithm that can arrange elements of a given list in ascending or descending order. Like Selection sort, in Insertion sort also, the list is divided into two parts - one of sorted elements and another of unsorted elements. Each element in the unsorted list is considered one by one and is inserted into the sorted list at its appropriate position. In each pass, the sorted list is traversed from the backward direction to find the position where the unsorted element could be inserted. Hence the sorting method is called insertion sort.
+In pass 1, the unsorted list has n-1 elements and the sorted list has a single element (say element s). The first element of the unsorted list (say element e) is compared with the element s of sorted list. If element e is smaller than element s, then element s is shifted to the right making space for inserting element e. This shifting will now make sorted list of size 2 and unsorted list of size n-2.
+In pass 2, the first element (say element e) of unsorted list will be compared with each element of sorted list
+Program 5-2 Implementation of selection sort using Python.
+def selection_Sort(list2):
+flag = 0 #to decide when to swap n=len(list2)
+for i in range(n): # Traverse through all list elements for j in range(i + 1, len(list2)): #the left elements
+#are already sorted in previous passes if list2[j] < list2[min]: # element at j is smaller
+#than the current min element flag = 1 if flag == 1 : # next smallest element is found list2[min], list2[i] = list2[i], list2[min] numList = [8, 7, 13, 1, -9, 4] selection_Sort(numList)
+print ("The sorted list is :")
+for i in range(len(numList)):
+print (numList[i], end=" ")
+The sorted list is :
+-9 1 4 7 8 13
+Reprint 2026-27

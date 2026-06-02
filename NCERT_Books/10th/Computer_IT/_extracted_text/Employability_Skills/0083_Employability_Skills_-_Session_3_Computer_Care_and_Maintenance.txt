@@ -1,0 +1,83 @@
+InformatIon and CommunICatIon teChnology SkIllS 73
+Practical Exercise
+The teacher will facilitate these activities – by showing you the e-Learning lesson athttp://www.psscive.ac.in/stud_text_book.
+html ->Performing Basic File Operations. This will include videos and e-content for the above topics as well as detailed instructions for some activities below.
+Initial Thinking Activity
+After watching the initial video in the e-learning lesson for this topic why do you think it is important to know how files are stored in a computer?
+Activity 1
+Creating a folder
+Material required
+Pen, notebook, computer
+Procedure
+• Form groups depending on the number of computers available. Each member of the group creates a new folder.
+Others can watch and give feedback on what was done correctly and what can be improved.
+• Open a text editor in Ubuntu or Notepad in Windows
+• Create a 2 folders Demo1 and Test1
+• Now delete the folder Test1
+Each group can study the following shortcut commands together.
+CTRL+z — undo
+CTRL+y — redo
+CTRL+a — select all
+CTRL+x — cut
+CTRL+c — copy
+CTRL+v — paste
+CTRL+p — print
+CTRL+s — save
+• The first group asks the other groups a question (e.g.
+what does CRTL+z do? (Answer is Undo) or what is the shortcut for Copy (CTRL+c). Whichever group answers correctly gets one point otherwise the next group answers and so on. Whichever group gets most points, wins.
+Check Your Progress
+A. Multiple choice questions
+Read the questions carefully and circle the letter (a), (b), (c) or (d) that best answers the question.
+1. Which one of the following shortcut keys is used to paste (a) Ctrl + c (b) Ctrl + p (c) Ctrl + v (d) Ctrl + x
+E mployability SkillS – ClaSS X 74
+2. Which of the following is a valid file extension for Notepad (a) .jpg (b) .doc (c) .text (d) .txt
+3. What keys do you use to copy something?
+(a) Ctrl+x (b) Ctrl+c (c) Ctrl+z (d) Ctrl+y
+B. Subjective questions
+1. How is a computer file system similar to our physical file system in a school?
+2. What are the steps you will perform to save a text file in
+What have you learnt?
+After completing this session, you will be able to
+• describe what computer files and folders are.
+• open a new file in a text editor, type in your details and save the file.
+S eSSion 3: computer care and maintenance
+Importance of Care and Maintenance of Computers
+Taking care of our things whether it’s our books, clothes, furniture or gadgets is important. Taking care of electronic devices, such as computer and mobiles helps them to work properly. Just as we take care of our body by taking bath, brushing our teeth and eating food every day we need to take care of our machines. A computer is a delicate machine with a lot of moving electronic parts. We need to protect it from dust and damage. If we are careless, it will not work efficiently.
+Computers and mobiles are very expensive. When we take good care of them on a regular basis, we can use them for a longer time. This will help us save money as we do not need to buy new devices too often.
+InformatIon and CommunICatIon teChnology SkIllS 75
+Basic Tips for Taking Care of Devices
+Here are some simple ways that you can follow to take care of your computer.
+Keeping a Device Clean
+Cleaning a device, such as a computer or mobile means to keep the screen, keyboard and mouse clean.
+(i) Keyboard: First we should not eat anything over a keyboard. Crumbs can damage the internal parts of a keyboard. You can clean a keyboard with a soft brush as shown in Figure 3.21 to remove crumbs and dust particles.
+(ii) Screen: You can wipe the screen with a soft cloth to remove any finger marks.
+(iii) Be careful with food and drinks: Avoid eating and keeping glasses of water or cups of coffee near a computer as shown in Figure 3.22. Any liquid spilt over an electronic device can spoil it beyond repair.
+(iv) Handle devices carefully: Handle and move your laptop carefully and avoid dropping or banging it against a hard surface. Even a short fall can damage the screen or the hard disk and make the device useless. Using a cover for your mobile and a padded case for moving your laptop as shown in Figure 3.23 protects the device from damage.
+(v) Keep the computer cool: If a computer, laptop or mobile device gets overheated, the internal parts can be damaged. The CPU has an internal fan to keep it cool. We should make sure the fan is functioning. You can also use an external fan as shown in Figure 3.24. Avoid leaving a device in the sun or in a closed car. We should be careful when using a laptop while sitting in bed and make sure that the fan in not covered.
+(vi) Do not overcharge your battery: Sometimes we keep a device plugged in for charging even after it is fully charged. If we leave the device plugged in for a long time as shown in Figure
+3.25, it can overheat the battery. This reduces
+Figure 3.21: Cleaning keyboard with soft brush
+Figure 3.22: Avoid keeping food near a computer
+Figure 3.23: Avoid dropping bag containing laptop
+Figure 3.24: Keep device cool
+Figure 3.25: Do not over charge your battery
+E mployability SkillS – ClaSS X 76 the battery life. Always unplug the device once it is charged 100%.
+(vii) Always plug in devices carefully: Any device being connected to a laptop or computer such as a USB drive or headphones, should be done gently. It should not be forced into the port. If you find it difficult to plug in a device, change the direction and try instead of trying to force it in.
+(viii) Do not run too many programs at a time: When too many programs are running at the same time as shown in Figure 3.26, the computer can become slow and even crash. If a program/app is not being used, it should be closed so that other programs can work smoothly.
+Prepare a Maintenance Schedule
+We need to prepare a plan or a schedule for maintenance to keep the computer running in perfect condition for a long time. This can include:
+(a) Daily Maintenance i. Clean up your e-mail inbox ii. Download e-mail attachments and save in proper folders (b) Weekly Maintenance i. Clean your keyboard ii. Clean your monitor iii. Dust CPU and printer iv. Backup your data to an external drive (c) Monthly Maintenance i. Transfer photographs to computer and delete from drive ii. Organise photos into folders or albums iii. Clean up ‘Download’ folder iv. Uninstall unused programs and apps v. Run disk-cleaner software vi. Run full system virus scan (d) Yearly/Annual Maintenance (a) Clean up contacts list on social media accounts
+Figure 3.26: Too many programs running at a time
+InformatIon and CommunICatIon teChnology SkIllS 77 (b) Clean up e-mail contact list (c) Update your operating system (d) Check for expiry of anti-virus software and renew
+Backup Your Data
+Backing up data means to save the information present on your computer on another device, such as CD/DVD drives as shown in Figure 3.28 or hard disk. Data can recovered from here in case the computer stops working completely. Computers can crash, humans can make mistakes and natural disasters, such as floods can happen. So, it is important for companies, hospitals, banks, etc., to keep their information safe — so that their business can continue to function smoothly and their customers do not face problems.
+Scanning and Cleaning Viruses
+Sometimes computer viruses can enter a computer from such attacks we can install anti-virus software.
+This will prevent any viruses from entering and will also clean any viruses that may enter our system before they affect the data.
+Increasing Computer Performance
+If we have been using a computer for a long time we have a lot of unnecessary files and data, such as temporary files and images. When they use too much hard-disk space, the performance of the computer goes down. It is important that we keep cleaning by removing any extra files. We can use some disk cleaner software, which help us clean up the unnecessary files.
+Removing SPAM from your Computer
+Sometimes we get mails from companies who are advertising a product or trying to attract you to their website. Such mails are called SPAM.
+We should never respond to SPAM and delete it on a regular basis.
+Figure 3.27: Backup Data on CD/DVD
+Figure 3.28: SPAM folder

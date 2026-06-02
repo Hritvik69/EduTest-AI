@@ -1,0 +1,159 @@
+213 Reproduction: How Life Continues
+11.2.1 How does meiosis help create variations in sexual reproduction?
+Each species has a fixed number of chromosomes in their cells.
+Chromosomes are thread-like structures present in the nucleus of a cell and they carry genetic information. Humans have 23 pairs of chromosomes, that means, each pair consists of one chromosome each from two different individuals — with a total of 46 chromosomes.
+Meiosis is a special type of cell division that forms gametes. In meiosis, the chromosome number of a parent cell (diploid) is reduced to half (haploid) in daughter cells. The resulting haploid cells are used only for reproduction and are called gametes. In animals, male gametes are called sperm and female gametes are called eggs. You have learnt about them already. In plants, the pollen grain contains male gametes and delivers them to an ovule which contains the female gametes (eggs). During meiosis, the chromosomes of each pair separate so that each gamete receives only one chromosome from each pair. This means that every human gamete has
+23 chromosomes, each carrying genetic information for many characters.
+How many combinations of characters can gametes carry?
+Activity 11.4: Let us explore
+1. Take three pairs of beads of different colours (Fig. 11.9), each pair representing two contrasting characters on different chromatids of different chromosomes, such as:
+y Pair 1 (green): One light green bead and one dark green bead representing blonde and black hair colour, respectively on different chromatids of chromosome 1.
+y Pair 2 (blue): One light blue bead and one dark blue bead representing straight and curly hair, respectively on different chromatids of chromosome 2.
+y Pair 3 (red): One light red bead and one dark red bead representing brown and black eye colour, respectively on different chromatids of chromosome 3.
+2. Make a combination from it by randomly picking one bead from each
+3. Write your combination as ‘light green, light blue, light red’.
+4. How many combinations can you make with just these three pairs of characters?
+Each time you make a combination using beads, you will get either the same combination or a different one.
+With just three pairs of characters, eight combinations are possible.
+5. Imagine how many combinations are possible with 23 pairs of chromosomes, each carrying genetic information for many characters.
+This random mixing provides many combinations, making children genetically different from their parents and also from their siblings. Each of us receives a unique combination of
+Fig. 11.9: Understanding the segregation of characters during the formation of gamete by meiosis
+Blonde and straight hair with brown eyes
+Pair 1 (Green) Pair 2 (Blue) Pair 3 (Red)
+Curiosity
+Chapter 13
+Exploration|Grade 9 214 chromosomes. This creates variation among individuals, which is important for the survival of a species. Variation helps some individuals adapt better to changing environments and over time, this process contributes to evolution.
+For example, some people can tolerate low oxygen levels at high altitudes, or digest milk in their adulthood.
+11.2.2 Sexual reproduction in flowering plants
+Flowering plants, also called angiosperms, are the most diverse group of plants on the Earth. Flowers serve as reproductive organs in angiosperms, however, non-flowering plants like pines also reproduce sexually. You will study them in the next chapter.
+Look at the herbs, shrubs and trees in your surroundings. Their leaves perform photosynthesis, their roots absorb water and nutrients from the soil, and their stems provide strength to the plant, these are some of the functions of a plant. Flowers also enhance the aesthetics of the plants as they are coloured and/or fragrant. How are these features of flowers useful for reproduction?
+Explore flowers and their buds on some plants. Record your observations in your notebook. Do you observe thin, flat, green covering, and coloured projections present in both?
+In flower buds, the coloured projections are often covered by a green covering. In the bud stage, green covering around all the parts is the outermost whorl of the flower. This structure is called a sepal. Do you think that sepals protect flowers in the bud stage, along with other parts of the flower when it blooms?
+The coloured projections of flowers are called petals (Fig. 11.10). Do all flowers have these two parts? What are the other parts of a flower?
+Activity 11.5: Let us explore
+1. Collect different types of flowers from your surroundings.
+2. Carefully observe each part of the flowers you have collected, starting from the outer whorl to the inner one.
+3. Record the presence of various floral parts in the different flowers that you collected in Table 11.1.
+Table 11.1: Observation table to study the parts of a flower
+S. No. Flower parts
+Presence of floral parts in different flowers Other feature(s)
+Guess the function of flower part
+1. Sepal Yes
+2. Petal Yes
+3. Stamen No
+4. Pistil Yes
+Fig. 11.10: Longitudinal section of a flower showing its different parts
+Petal Pistil
+Filament Stigma
+215 Reproduction: How Life Continues
+4. Analyse the function of each part of the flower based on visible characters.
+5. Cut a transverse and a longitudinal section of the ovary (swollen base of the pistil) and observe it under a dissecting microscope.
+6. Record any other feature(s) in Table 11.1.
+7. Draw a diagram of the structure you observed under the microscope.
+A complete flower has four parts — sepals, petals, stamens and pistil. You might have noticed that in some flowers both sepals and petals are fused.
+Can you guess the function of the most attractive part of a flower — the coloured petals? The stamen is the male part (Fig. 11.10). It consists of a filament and an anther, which produces pollen grains containing male gametes. The pistil is the female part that has three subparts — stigma, style and ovary (Fig. 11.11). The stigma is located at the tip, and may be flat and/ or sticky. The style is a thin long tube which connects the stigma to the ovary. The ovary contains ovules and each ovule has an egg cell (female gamete). You have learnt that the transfer of pollen from stamen to stigma is essential for the formation of fruits. How can you investigate it?
+Activity 11.6: Let us investigate
+1. Identify sweet pea (matar) or garden pea plants in a garden or a nearby field.
+2. Select two juvenile (less developed) flower bud and three freshly blossomed flowers on the same pea plant.
+3. Carefully remove the stamens from one of the two selected flowers buds and one of the three selected flowers.
+4. Take muslin cloth bags and loosely wrap them around the flower bud, the flower bud of which stamens are removed, the flower of which stamens are removed and a freshly blossomed flower (Fig. 11.12).
+5. Leave one freshly blossomed flower uncovered (without muslin cloth bag).
+6. Observe them regularly and notice the development of fruits in place of the flowers that were not covered with muslin cloth. Allow them to grow for a few more days.
+7. Once the pods are fully developed in the flowers without muslin cloth, remove the muslin cloth from all the wrapped flowers and observe them.
+8. Note your observations in Table 11.2.
+Table 11.2: Observation table to study pollination in a pea plant
+Treatments
+Flower bud (wrapped with muslin cloth bag)
+Flower bud with removed stamens (wrapped with muslin cloth bag)
+Flower with removed stamens (wrapped with muslin cloth bag)
+(wrapped with muslin cloth bag)
+(without cloth bag)
+Fruit formation (Yes/No)
+In which treatment(s) do you find the flowers are replaced by fruits?
+What can we infer from this activity? You will notice that fruits are formed in place of flowers in all treatments except the one in which the stamens were removed from the flower bud. We can infer that the transfer of pollen
+Fig. 11.11: Structure of a pistil
+Ovule Ovary
+Fig. 11.12: Experimental set-up for pollination
+Curiosity
+Chapter 12
+Exploration|Grade 9 216 grains from the anther to the stigma is necessary for fruit formation.
+The transfer of pollen grains from the anther to the stigma of a flower is called pollination.
+11.2.3 How does the process of pollination occur in flowers?
+In the Activity 11.6, we stated that the process of pollination is the transfer of pollen to the stigma of a flower. The transfer of pollen occurs to the stigma of the same flower or another flower of the same plant, is called self-pollination (Fig. 11.13).
+If the pollen is transferred from the anther of a flower of one plant to the stigma of a flower of another plant of the same type, the pollination is called cross-pollination (Fig. 11.13).
+The transfer of the pollen grains to the stigma is important for the formation of fruits and seeds. Nature has provided plants with various strategies for pollination to occur. What do you think will happen if pollination does not occur?
+11.2.4 Pollination strategies and reproductive success
+Pollination depends on external agents called pollinators, such as wind, water, insects (bees, butterflies), or birds. Pollination by wind is seen in plants like wheat, maize and rice, where pollen grains are light and small, produced in large numbers, and the stigma is long and feathery to trap them. In aquatic plants, such as Vallisneria and
+Hydrilla, pollination occurs through water, with currents carrying the pollen from one flower to another. Many plants, including sunflower, hibiscus and marigold are pollinated by insects, such as bees and butterflies. Their flowers are often brightly coloured, produce nectar, and give off fragrance to attract pollinators. The pollen grains are large, sticky or spiny, so they can attach to the insect’s body and the stigma is also sticky to receive them. Some flowers like those of the coral tree and hibiscus plant, are pollinated by birds, such as Indian white-eye and sunbirds. Let us see how fruits and seeds are formed.
+11.2.5 Fertilisation and seed formation
+Once the pollen reaches a compatible stigma, a remarkable process begins. Pollen grains produce pollen tubes that grow down through the style into the ovary. The male gamete moves through this tube and arrives at the ovule, where it fuses with the egg cell (Fig. 11.14).
+This fusion of gametes is referred to as fertilisation and it marks the beginning of a new life. The fertilised egg is called a zygote, which later develops into an embryo. In the meantime, the ovary surrounding the ovules enlarges and develops into a fruit, while the ovules develop into seeds inside it (Fig. 11.15).
+Seed dispersal takes place by wind or water and animals.
+When conditions like water, air and temperature are favourable, the seed germinates and grows into a new plant.
+Thus, sexual reproduction not only produces new plants but also creates variation, helping plant species survive and adapt to their environment.
+Fig. 11.13: Self and
+Cross-pollination
+Self-pollination
+Cross-pollination
+Stigma Anther germ cell
+Egg cell
+Pollen tube
+Fig. 11.14: Germination of pollen on stigma
+Pollen grain
+Fig. 11.15: Transformation of an ovary to a fruit
+217 Reproduction: How Life Continues
+What is the approximate success rate of the common strategies — wind pollination and insect pollination — with respect to the seed formation?
+Activity 11.7: Let us find out
+Studies of pollen production and seed formation by two different pollination strategies in different flowers show the following approximate trends (Table 11.3) —
+Table 11.3: Pollen production and seed formation data
+Pollination strategy Approximate pollen grains released per flower
+Estimated average number of seeds formed
+Wind-pollinated grasses (e.g., maize, wheat) 5,00,000 –10,00,000 50 –200
+Insect-pollinated plants (e.g., sunflower) 20,000 – 40,000 800 –1,000
+1. Compare and analyse the two strategies in terms of (Table 11.3) — y Pollen to seed ratio y Efficiency of pollination and seed formation
+2. Explain why producing a very large number of pollen grains can still be an effective pollination strategy.
+Pause and Ponder
+1. In a china-rose (hibiscus or gudhal) plant, a pollen tube grows and continues through the style after pollen lands on the stigma.
+Which process is about to happen next?
+2. Look at the pictures (Fig. 11.16) of calotropis (madar) seeds and dandelion seeds given below. Can you guess what kind of seed dispersal these seeds are adapted for?
+3. A farmer plants two varieties of maize side by side, but notices that seeds form only when pollen from one variety reaches the stigma of the other. What type of pollination is this? Fig. 11.16 (a) Madar seeds (b) Dandelion
+Meet a Scientist
+P. Maheshwari, known as the
+‘Father of Indian
+Embryology’, was a leading scientist in the field of embryology which is the study of plant reproductive organs. He developed the technique of in-vitro fertilisation in flowering plants by successfully fusing an egg and male gamete in a test tube to create new hybrid plants. He was also one of the first scientists to grow plant embryos on artificial nutrient media. His book, An
+Introduction to the Embryology of Angiosperms (1950), became a classic and is still widely used by scientists around the
+Sexual reproduction in plants has an applied importance in plant breeding. There are several methods of plant breeding, such as selective breeding, artificial hybridisation, genetically engineered crops, and more. In selective breeding, farmers select plants of desirable characters for reproduction. Process of artificial hybridisation involves removal of the stamens from the flowers, covering it with a bagging to prevent self-pollination, and manual transfer of the pollens with desired characters. Genetic engineering is also applied by inserting the genetic material of desired characters into the DNA of the selected varieties. This leads to the development of new varieties, such as high yielding varieties, disease resistant varieties, and so on. This has revolutionised crop production in agriculture.
+Bridging Science and Society
+Exploration|Grade 9 218
+Fig. 11.17: Life cycle of a butterfly emergence
+4. Why do animals with external fertilisation generally more eggs than animals with internal fertilisation?
+5. In animals, which fertilisation method the gametes are more protected?
+Pause and
+11.3 Sexual Reproduction in Animals
+Reproduction in animals takes place through asexual and/or sexual method(s). We have studied different methods of asexual reproduction in different organisms, such as budding and spore formation, earlier in this chapter.
+In many aquatic animals exhibiting sexual reproduction, such as frogs and most fish, fertilisation occurs outside the body.
+The female releases eggs into the water, and the male releases sperm over eggs for fertilisation to take place. This method of fertilisation is called external fertilisation. Although a large number of eggs are laid, many are destroyed by water currents or eaten by other animals.
+In reptiles, birds and mammals, fertilisation takes place inside the body of the female. This is called internal fertilisation. Here, the chances of survival of the young ones are generally higher because the fertilised egg or embryo is protected more in internal fertilisation (Table 11.4).
+11.4 Variations in Reproduction in Animals
+Animals show a wide variety of methods of sexual reproduction. However, all animals face the basic challenge of ensuring that the male and the female gametes meet, and that the young ones survive long enough to grow and reproduce. Study the information given in Table 11.4 for four categories of animals.
+Table 11.4: Variation in reproductive strategies among animals
+Animal Habitat Mode of fertilisation Number of eggs produced
+Estimated survival of young ones
+Fish Water External 100s – 1000s at a time Low
+Frog Water/land External 5,000 – 50,000 at a time Low
+Lizard Land Internal 2 – 20 at a time Moderate
+Bird Water/land Internal 1 – 15 at a time Moderate to High
+Fish, amphibians, and insects produce several hundred to several thousand eggs at a time with yolk, which contains nutritive substances to nourish the developing embryos. The mother’s body cannot provide such large quantities of yolk for so many eggs. The strategy these species adopt is that the yolk in the egg is just enough to produce a larva, which hatches from the egg.
+The larva, then gets nutrition by eating organic wastes like rotten food, manures and so on, and grows. This stage is an intermediate stage in its development, which is essentially a feeding stage.
+Once enough nutrition is accumulated, a transformation takes place and the adult body is formed — as seen in organisms, such as butterfly (Fig. 11.17) and frogs.
+In contrast, reptiles and birds lay eggs, and each egg contains enough yolk to nourish the developing embryo until it hatches into a young one. In mammals, the zygote grows and develops inside the female body.
+Curiosity
+Chapter 10
+219 Reproduction: How Life Continues
+In some species, when the young ones are born, they are ready to find their own food, whereas in others an extended period of post-hatching or post-birth feeding and care is necessary. This broadly depends on how long the embryo develops inside an egg or inside the mother’s body. Mammals typically feed their young ones via breast milk for some duration after birth.
+11.5 Reproduction in Human Beings
+11.5.1 Reproductive maturity
+You have learnt about the physical and emotional changes that take place as a child grows into an adult, when reproductive organs mature and begin producing gametes (sperm in male and egg in female).
+The human reproductive system consists of special organs (Fig. 11.18 and Fig. 11.19). When a sperm meets an egg inside the female body, they form a zygote that develops into an embryo and eventually into a foetus in the uterus. In this section, we will study how gametes form and meet, and how new life develops in human beings.
+11.5.2 What are the parts of the male reproductive
+The m

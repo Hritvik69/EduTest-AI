@@ -1,0 +1,24 @@
+Introductory
+Microeconomics produces, this cost remains fixed for the firm. To produce any required level of output, the firm, in the short run, can adjust only variable inputs.
+Accordingly, the cost that a firm incurs to employ these variable inputs is called the total variable cost (TVC). Adding the fixed and the variable costs, we get the total cost (TC) of a firm
+TC = TVC + TFC (3.6)
+In order to increase the production of output, the firm must employ more of the variable inputs. As a result, total variable cost and total cost will increase.
+Therefore, as output increases, total variable cost and total cost increase.
+In Table 3.3, we have an example of cost function of a typical firm. The first column shows different levels of output. For all levels of output, the total fixed cost is Rs 20. Total variable cost increases as output increases. With output zero, TVC is zero. For 1 unit of output, TVC is Rs 10; for 2 units of output, TVC is Rs 18 and so on. In the fourth column, we obtain the total cost (TC) as the sum of the corresponding values in second column (TFC) and third column (TVC). At zero level of output, TC is just the fixed cost, and hence, equal to Rs
+20. For 1 unit of output, total cost is Rs 30; for 2 units of output, the TC is Rs 38 and so on.
+The short run average cost (SAC) incurred by the firm is defined as the total cost per unit of output. We calculate it as
+SAC = TC
+In Table 3.3, we get the SAC-column by dividing the values of the fourth column by the corresponding values of the first column. At zero output, SAC is undefined. For the first unit, SAC is Rs 30; for 2 units of output, SAC is Rs 19 and so on.
+Similarly, the average variable cost (AVC) is defined as the total variable cost per unit of output. We calculate it as
+AVC = TVC
+Also, average fixed cost (AFC) is
+AFC = TFC
+Clearly,
+SAC = AVC + AFC (3.10)
+In Table 3.3, we get the AFC-column by dividing the values of the second column by the corresponding values of the first column. Similarly, we get the
+AVC-column by dividing the values of the third column by the corresponding values of the first column. At zero level of output, both AFC and AVC are undefined. For the first unit of output, AFC is Rs 20 and AVC is Rs 10. Adding them, we get the SAC equal to Rs 30.
+The short run marginal cost (SMC) is defined as the change in total cost per unit of change in output
+SMC = cos change in total t change in output = TC
+∆ (3.11)
+where ∆ represents the change in the value of the variable.
+Reprint 2026-27

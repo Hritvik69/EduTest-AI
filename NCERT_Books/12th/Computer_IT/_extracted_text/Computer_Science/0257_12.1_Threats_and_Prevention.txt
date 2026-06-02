@@ -1,0 +1,20 @@
+projeCt BaSed learning 245 (F) Participate
+All the team members must be encouraged by each other to participate in completing the project and also in discussions in group meetings. Also, every member should take an active participation so that they feel their importance in the team.
+13.4 project descrIptIons
+In this section, some examples of project works are given, which can be taken up in groups under project based learning. However, a group may choose any other project in consultation with the guide teacher.
+Project Title 1: Automation of Order Processing in a
+Restaurant
+Description
+A new restaurant “Stay Healthy” is coming up in your locality. The owner/management of the restaurant wants to use a computer to generate bills and maintain other records of the restaurant. Your team is asked to develop an application software to automate the order placing and associated processes.
+Specifications
+Make a group of students to undertake a project on automating the order processing of the restaurant
+‘Stay Healthy’. The owner of the restaurant wants the following specific functionalities to be made available in the developed application:
+• There should be two types of Login options — one for the manager of the joint and other for the customer.
+• Kiosk(s) running the software for customers will be placed at reception for placing the order. On the opening screen, menu for placing orders will be displayed.
+• To place orders, customers will enter Item Code(s)
+and quantity desired.
+• After placing an order, a soft copy of the bill will be displayed on the kiosk, having an Order Number.
+• Every bill will have a unique identification (such as combination of date, and order number of the day)
+and should be saved in the data file/database.
+• Order Number starts from 1 every day.
+Reprint 2026-27

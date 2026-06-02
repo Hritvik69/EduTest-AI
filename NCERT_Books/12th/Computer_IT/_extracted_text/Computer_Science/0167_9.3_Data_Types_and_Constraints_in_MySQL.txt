@@ -1,0 +1,41 @@
+S tructured Query Language (SQL) 155
+Caution : If we miss the where clause in the UPDATE statement then the GUID of all the records will be changed to 101010101010.
+We can also update values for more than one column using the UPDATE statement. Suppose, the guardian with GUID 466444444666 has requested to change
+Address to 'WZ - 68, Azad Avenue, Bijnour, MP' and
+Phone number to '4817362092'.
+mysql> UPDATE GUARDIAN
+-> SET GAddress = 'WZ - 68, Azad Avenue,
+-> Bijnour, MP', GPhone = 9010810547
+-> WHERE GUID = 466444444666;
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1 Changed: 1 Warnings: 0 mysql> SELECT * FROM GUARDIAN ;
++------------+---------------+------------+--------------------------------------+
+|GUID |GName |Gphone |GAddress |
++------------+---------------+------------+--------------------------------------+
+|444444444444|Amit Ahuja |5711492685 |G-35, Ashok vihar, Delhi |
+|111111111111|Baichung Bhutia|3612967082 |Flat no. 5, Darjeeling Appt., Shimla |
+|101010101010|Himanshu Shah |4726309212 |26/77, West Patel Nagar, Ahmedabad |
+|333333333333|Danny Dsouza |NULL |S -13, Ashok Village, Daman |
+|466444444666|Sujata P. |3801923168 |WZ - 68, Azad Avenue, Bijnour, MP |
++------------+---------------+------------+--------------------------------------+
+5 rows in set (0.00 sec)
+9.7.2 Data Deletion
+DELETE statement is used to delete/remove one or more records from a table.
+DELETE FROM table_name
+WHERE condition;
+Suppose the student with roll number 2 has left the school. We can use the following MySQL statement to delete that record from the STUDENT table.
+mysql> DELETE FROM STUDENT WHERE RollNumber = 2;
+Query OK, 1 row affected (0.06 sec)
+mysql> SELECT * FROM STUDENT ;
++------------+--------------+--------------+--------------+
+| RollNumber | SName | SDateofBirth | GUID |
++------------+--------------+--------------+--------------+
+| 1 | Atharv Ahuja | 2003-05-15 | 444444444444 |
+| 3 | Taleem Shah | 2002-02-28 | 101010101010 |
+| 4 | John Dsouza | 2003-08-18 | 333333333333 |
+| 5 | Ali Shah | 2003-07-05 | 101010101010 |
+| 6 | Manika P. | 2002-03-10 | 466444444666 |
++------------+--------------+--------------+--------------+
+5 rows in set (0.00 sec)
+Caution: Like UPDATE statement, we need to be careful to include the WHERE clause while using a DELETE statement to delete records in a table. Otherwise, all the records in the table will get deleted.
+Reprint 2026-27

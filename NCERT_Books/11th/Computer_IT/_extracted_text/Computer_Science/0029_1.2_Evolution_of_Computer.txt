@@ -1,0 +1,30 @@
+Computer SyStem 17
+It is important to understand here that computers and humans understand completely different languages.
+While humans are able to write programs in high-level language, computers understand machine language.
+There is a continuous need for conversion from high level to machine level language, for which translators are needed. Also, to write the instruction, code editors (e.g., IDLE in Python) are needed. We will briefly describe here the programming languages, language translators and program development tools.
+(A) Classification of Programming Languages
+It is very difficult for a human being to write instructions in the form of 1s and 0s. So different types of computer programming languages are developed to simplify the coding. Two major categories of computer programming languages are low-level languages and high-level languages.
+Low-level languages are machine dependent languages and include machine language and assembly language.
+Machine language uses 1s and 0s to write instructions which are directly understood and executed by the computer. But writing a code in machine language is difficult as one has to remember all operation codes and machine addresses. Also finding errors in the code written in machine language is difficult.
+To simplify the writing of code, assembly language was developed that allowed usage of English-like words and symbols instead of 1s and 0s. But one major drawback of writing a code in this language is that the code is computer specific, i.e., the code written for one type of CPU cannot be used for another type of CPU.
+High level languages are machine independent and are simpler to write code into. Instructions are using
+English like sentences and each high level language follows a set of rules, similar to natural languages.
+However, these languages are not directly understood by the computer. Hence, translators are needed to translate high-level language codes into machine language. Examples of high level language include C++,
+Java, Python, etc.
+(B) Language Translators
+As the computer can understand only machine language, a translator is needed to convert program written in assembly or high level language to machine
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 18 language. The program code written in assembly or high-level language is called source code. The source code is converted by a translator into the machine understandable form called object (machine) code as depicted in Figure 1.14.
+As we have different types of computer languages, different translators are needed to convert the source code to machine code. The three types of translators used in computing systems are assembler, compiler and interpreter.
+The translator used to convert the code written in assembly language to machine language is called assembler. Each assembler can understand a specific microprocessor instruction set only and hence, the machine code is not portable.
+We also need translators to convert codes written in high level language (source code) to machine understandable form (machine code) for execution by the computer. Compiler converts the source code into machine code. If the code follows all syntactic rules of the language, then it is executed by the computer. Once translated, the compiler is not needed.
+An interpreter translates one line at a time instead of the whole program at one go. Interpreter takes one line, converts it into executable code if the line is syntactically correct, and then it repeats these steps for all lines in the source code. Hence, interpreter is always needed whenever a source code is to be executed.
+(C) Program Development Tools
+Whenever we decide to write a program, we need a text editor. An editor is a software that allows us to create a text file where we type instructions and store the file as the source code. Then an appropriate translator is used to get the object code for execution. In order to simplify the program development, there are software called
+Integrated Development Environment (IDE) consisting of text editor, building tools and debugger. A program can be typed, compiled and debugged from the IDE directly. Besides Python IDLE, Netbeans, Eclipse, Atom,
+Lazarus are few other examples of IDEs. Debugger, as the name implies, is the software to detect and correct errors in the source code.
+Code in machine language (Object Code)
+Figure 1.14: Translator to convert source code into object code
+Language translater
+Code in high level language (Source Code)
+Reprint 2026-27

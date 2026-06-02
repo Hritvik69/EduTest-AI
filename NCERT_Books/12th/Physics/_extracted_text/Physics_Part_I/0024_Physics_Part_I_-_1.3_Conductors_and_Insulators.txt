@@ -1,0 +1,23 @@
+9 × 109 N. One coulomb is evidently too big a unit to be used. In practice, in electrostatics, one uses smaller units like 1 mC or 1 mC.
+The constant k in Eq. (1.1) is usually put as pe0 for later convenience, so that Coulomb’s law is written as
+= π (1.2)
+e0 is called the permittivity of free space . The value e0 in SI units is
+ = 8.854 × 10–12 C2 N–1m–2
+Since force is a vector, it is better to write
+Coulomb’s law in the vector notation. Let the position vectors of charges q1 and q2 be r1 and r2 respectively
+[see Fig.1.3(a)]. We denote force on q1 due to q2 by
+F12 and force on q2 due to q1 by F21. The two point charges q1 and q2 have been numbered 1 and 2 for convenience and the vector leading from 1 to 2 is denoted by r21:
+r21 = r2 – r1
+In the same way, the vector leading from 2 to 1 is denoted by r12:
+r12 = r1 – r2 = – r21
+The magnitude of the vectors r21 and r12 is denoted by r21 and r12 , respectively (r12 = r21). The direction of a vector is specified by a unit vector along the vector. To denote the direction from 1 to 2 (or from 2 to
+1), we define the unit vectors:
+r r , ɵ ɵ ɵ = = − 12
+12 21 12
+Coulomb’s force law between two point charges q1 and q2 located at r1 and r2, respectively is then expressed as
+1 2 21 21 2
+F r (1.3)
+Some remarks on Eq. (1.3) are relevant:
+· Equation (1.3) is valid for any sign of q1 and q2 whether positive or negative. If q1 and q2 are of the same sign (either both positive or both negative), F21 is along ˆr 21, which denotes repulsion, as it should be for like charges. If q1 and q2 are of opposite signs, F21 is along – ɵr 21(= ɵr 12), which denotes attraction, as expected for unlike charges. Thus, we do not have to write separate equations for the cases of like and unlike charges. Equation (1.3) takes care of both cases correctly [Fig. 1.3(b)].
+FIGURE 1.3 (a) Geometry and (b) Forces between charges.
+Reprint 2026-27

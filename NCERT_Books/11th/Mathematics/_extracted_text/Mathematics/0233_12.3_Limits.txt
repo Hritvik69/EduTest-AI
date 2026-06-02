@@ -1,0 +1,212 @@
+LIMITS AND DERIVATIVES 221
+In all these illustrations the value which the function should assume at a given point x = a did not really depend on how is x tending to a. Note that there are essentially two ways x could approach a number a either from left or from right, i.e., all the values of x near a could be less than a or could be greater than a. This naturally leads to two limits – the right hand limit and the left hand limit. Right hand limit of a function f(x) is that value of f(x) which is dictated by the values of f(x) when x tends to a from the right. Similarly, the left hand limit. To illustrate this, consider the function ( ) 1, 0
+Graph of this function is shown in the Fig 12.3. It is clear that the value of f at 0 dictated by values of f(x) with x ≤ 0 equals 1, i.e., the left hand limit of f (x) at 0 is lim ( ) 1
+Similarly, the value of f at 0 dictated by values of f (x) with x > 0 equals 2, i.e., the right hand limit of f (x)
+lim ( ) 2
+In this case the right and left hand limits are different, and hence we say that the limit of f (x) as x tends to zero does not exist (even though the function is defined at 0).
+We say lim x a → – f(x) is the expected value of f at x = a given the values of f near x to the left of a. This value is called the left hand limit of f at a.
+We say lim ( )
+→ is the expected value of f at x = a given the values of f near x to the right of a. This value is called the right hand limit of f(x) at a.
+If the right and left hand limits coincide, we call that common value as the limit of f(x) at x = a and denote it by lim x a → f(x).
+Illustration 1 Consider the function f(x) = x + 10. We want to find the limit of this function at x = 5. Let us compute the value of the function f(x) for x very near to 5.
+Some of the points near and to the left of 5 are 4.9, 4.95, 4.99, 4.995. . ., etc. Values of the function at these points are tabulated below. Similarly, the real number 5.001,
+Fig 12.3
+Reprint 2026-27
+222 MATHEMATICS
+5.01, 5.1 are also points near and to the right of 5. Values of the function at these points are also given in the Table 12.4.
+Table 12.4
+From the Table 12.4, we deduce that value of f(x) at x = 5 should be greater than
+14.995 and less than 15.001 assuming nothing dramatic happens between x = 4.995 and 5.001. It is reasonable to assume that the value of the f(x) at x = 5 as dictated by the numbers to the left of 5 is 15, i.e.,
+Similarly, when x approaches 5 from the right, f(x) should be taking value 15, i.e.,
+Hence, it is likely that the left hand limit of f(x) and the right hand limit of f(x) are both equal to 15. Thus, ( ) ( ) ( )5 5 5 lim lim lim 15 f x f x f x − + → → →
+This conclusion about the limit being equal to 15 is somewhat strengthened by seeing the graph of this function which is given in Fig 2.16, Chapter 2. In this figure, we note that as x approaches 5 from either right or left, the graph of the function f(x) = x +10 approaches the point (5, 15).
+We observe that the value of the function at x = 5 also happens to be equal to 15.
+Illustration 2 Consider the function f(x) = x3. Let us try to find the limit of this function at x = 1. Proceeding as in the previous case, we tabulate the value of f(x) at x near 1. This is given in the Table 12.5.
+Table 12.5
+From this table, we deduce that value of f(x) at x = 1 should be greater than
+0.997002999 and less than 1.003003001 assuming nothing dramatic happens between x 0.9 0.99 0.999 1.001 1.01 1.1 f(x) 0.729 0.970299 0.997002999 1.003003001 1.030301 1.331 x 4.9 4.95 4.99 4.995 5.001 5.01 5.1 f(x) 14.9 14.95 14.99 14.995 15.001 15.01 15.1
+Reprint 2026-27
+LIMITS AND DERIVATIVES 223 x = 0.999 and 1.001. It is reasonable to assume that the value of the f(x) at x = 1 as dictated by the numbers to the left of 1 is 1, i.e.,
+Similarly, when x approaches 1 from the right, f(x) should be taking value 1, i.e.,
+Hence, it is likely that the left hand limit of f(x) and the right hand limit of f(x) are both equal to 1. Thus, ( ) ( ) ( )1 1 1 lim lim lim 1 f x f x f x − + → → →
+This conclusion about the limit being equal to 1 is somewhat strengthened by seeing the graph of this function which is given in Fig 2.11, Chapter 2. In this figure, we note that as x approaches 1 from either right or left, the graph of the function f(x) = x3 approaches the point (1, 1).
+We observe, again, that the value of the function at x = 1 also happens to be equal to 1.
+Illustration 3 Consider the function f(x) = 3x. Let us try to find the limit of this function at x = 2. The following Table 12.6 is now self-explanatory.
+Table 12.6 x 1.9 1.95 1.99 1.999 2.001 2.01 2.1 f(x) 5.7 5.85 5.97 5.997 6.003 6.03 6.3
+As before we observe that as x approaches 2 from either left or right, the value of f(x) seem to approach 6. We record this as ( ) ( ) ( )2 2 2 lim lim lim 6 f x f x f x − + → → →
+Its graph shown in Fig 12.4 strengthens this
+Here again we note that the value of the function at x = 2 coincides with the limit at x = 2.
+Illustration 4 Consider the constant function f(x) = 3. Let us try to find its limit at x = 2. This function being the constant function takes the same Fig 12.4
+Reprint 2026-27
+224 MATHEMATICS value (3, in this case) everywhere, i.e., its value at points close to 2 is 3. Hence ( ) ( ) ( )2 2 2 lim lim lim 3 f x f x f x +
+Graph of f(x) = 3 is anyway the line parallel to x-axis passing through (0, 3) and is shown in Fig 2.9, Chapter 2. From this also it is clear that the required limit is 3. In fact, it is easily observed that ( ) lim 3
+= for any real number a.
+Illustration 5 Consider the function f(x) = x2 + x. We want to find ( )1 tabulate the values of f(x) near x = 1 in Table 12.7.
+Table 12.7 x 0.9 0.99 0.999 1.01 1.1 1.2 f(x) 1.71 1.9701 1.997001 2.0301 2.31 2.64
+From this it is reasonable to deduce that ( ) ( ) ( )1 1 1 lim lim lim 2 f x f x f x − + → → →
+From the graph of f(x) = x2 + x shown in the Fig 12.5, it is clear that as x approaches 1, the graph approaches (1, 2).
+Here, again we observe that the x→ f (x) = f (1)
+Now, convince yourself of the following three facts:
+lim 1, lim 1 and lim 1 2
+Then 2 2 lim lim 1 1 2 lim
+  + = + = = +  .
+Also ( ) ( ) 2 lim . lim 1 1.2 2 lim 1 lim x x x x x x
+    + = = = + = +     .
+Fig 12.5
+Reprint 2026-27
+LIMITS AND DERIVATIVES 225
+Illustration 6 Consider the function f(x) = sin x. We are interested in where the angle is measured in radians.
+Here, we tabulate the (approximate) value of f(x) near 2
+π (Table 12.8). From this, we may deduce that ( ) ( ) ( )
+lim lim lim 1 f x f x f x − + π π π → → →
+Further, this is supported by the graph of f(x) = sin x which is given in the Fig 3.8 (Chapter 3). In this case too, we observe that sin x = 1.
+Table 12.8
+π − 0.01 f(x) 0.9950 0.9999 0.9999 0.9950
+Illustration 7 Consider the function f(x) = x + cos x. We want to find the 0
+Here we tabulate the (approximate) value of f(x) near 0 (Table 12.9).
+Table 12.9
+From the Table 13.9, we may deduce that ( ) ( ) ( )0 0 0 lim lim lim 1 f x f x f x − + → → →
+In this case too, we observe that 0 x→ f (x) = f (0) = 1.
+Now, can you convince yourself that
+[ ]0 0 0 lim cos lim lim cos
++ = + is indeed true?
+x – 0.1 – 0.01 – 0.001 0.001 0.01 0.1 f(x) 0.9850 0.98995 0.9989995 1.0009995 1.00995 1.0950
+Reprint 2026-27
+226 MATHEMATICS
+Illustration 8 Consider the function ( ) 2
+= for 0 x > . We want to know 0 x→ f (x).
+Here, observe that the domain of the function is given to be all positive real numbers. Hence, when we tabulate the values of f(x), it does not make sense to talk of x approaching 0 from the left. Below we tabulate the values of the function for positive x close to 0 (in this table n denotes any positive integer).
+From the Table 12.10 given below, we see that as x tends to 0, f(x) becomes larger and larger. What we mean here is that the value of f(x) may be made larger than any given number.
+Table 12.10 x 1 0.1 0.01 10–n f(x) 1 100 10000 102n
+Mathematically, we say
+We also remark that we will not come across such limits in this course.
+Illustration 9 We want to find ( )0
+→ , where
+As usual we make a table of x near 0 with f(x). Observe that for negative values of x we need to evaluate x – 2 and for positive values, we need to evaluate x + 2.
+Table 12.11
+From the first three entries of the Table 12.11, we deduce that the value of the function is decreasing to –2 and hence.
+x – 0.1 – 0.01 – 0.001 0.001 0.01 0.1 f(x) – 2.1 – 2.01 – 2.001 2.001 2.01 2.1
+Reprint 2026-27
+LIMITS AND DERIVATIVES 227
+From the last three entires of the table we deduce that the value of the function is increasing from 2 and hence
+Since the left and right hand limits at 0 do not coincide, we say that the limit of the function at 0 does not exist.
+Graph of this function is given in the Fig12.6. Here, we remark that the value of the function at x = 0 is well defined and is, indeed, equal to 0, but the limit of the function at x = 0 is not even defined.
+Illustration 10 As a final illustration, we find ( )1
+Table 12.12 x 0.9 0.99 0.999 1.001 1.01 1.1 f(x) 2.9 2.99 2.999 3.001 3.01 3.1
+As usual we tabulate the values of f(x) for x near 1. From the values of f(x) for x less than 1, it seems that the function should take value 3 at x = 1., i.e.,
+Similarly, the value of f(x) should be 3 as dic- tated by values of f(x) at x greater than 1. i.e.
+But then the left and right hand limits coin- cide and hence ( ) ( ) ( )1 1 1 lim lim lim 3 f x f x f x − + → → →
+Graph of function given in Fig 12.7 strength- ens our deduction about the limit. Here, we
+Fig 12.6
+Fig 12.7
+Reprint 2026-27
+228 MATHEMATICS note that in general, at a given point the value of the function and its limit may be different (even when both are defined).
+12.3.1 Algebra of limits In the above illustrations, we have observed that the limiting process respects addition, subtraction, multiplication and division as long as the limits and functions under consideration are well defined. This is not a coincidence. In fact, below we formalise these as a theorem without proof.
+Theorem 1 Let f and g be two functions such that both lim x a → f (x) and lim x a → g(x) exist.
+(i) Limit of sum of two functions is sum of the limits of the functions, i.e., x a → [f(x) + g (x)] = lim x a → f(x) + lim x a → g(x).
+(ii) Limit of difference of two functions is difference of the limits of the functions, i.e., x a → [f(x) – g(x)] = lim x a → f(x) – lim x a → g(x).
+(iii) Limit of product of two functions is product of the limits of the functions, i.e., x a → [f(x) . g(x)] = lim x a → f(x). lim x a → g(x).
+(iv) Limit of quotient of two functions is quotient of the limits of the functions (whenever the denominator is non zero), i.e.,
+ANote In particular as a special case of (iii), when g is the constant function such that g(x) =
+λ , for some real number
+λ , we have ( ) ( ) ( ) lim . .lim
+  λ = λ   .
+In the next two subsections, we illustrate how to exploit this theorem to evaluate limits of special types of functions.
+12.3.2 Limits of polynomials and rational functions A function f is said to be a polynomial function of degree n f(x) = a0 + a1x + a2x2 +. . . + anxn, where ais are real numbers such that an ≠ 0 for some natural number n.
+We know that lim x a → x = a. Hence
+Reprint 2026-27
+LIMITS AND DERIVATIVES 229 lim lim . lim .lim .
+x a x a x a x a x x x x x a a a
+An easy exercise in induction on n tells us that
+Now, let ( ) 2
+0 1 2 ... n n f x a a x a x a x = + + + + be a polynomial function. Thinking of each of 2
+0 1 2 , , ,..., n n a a x a x a x as a function, we have
+0 1 2 lim ... n a a x a x a x
+  + + + + 
+0 1 2 lim lim lim ... lim n x a x a x a x a a a x a x a x
+0 1 2 lim lim ... lim n x a x a x a a a x a x a x
+0 1 2 ... n n a a a a a a a + + + +
+= ( ) f a (Make sure that you understand the justification for each step in the above!)
+A function f is said to be a rational function, if f(x) = ( )
+h x , where g(x) and h(x)
+are polynomials such that h(x) ≠ 0. Then lim lim lim g x g x g a f x h x h x h a
+However, if h(a) = 0, there are two scenarios – (i) when g(a) ≠ 0 and (ii) when g(a) = 0. In the former case we say that the limit does not exist. In the latter case we can write g(x) = (x – a)k g1 (x), where k is the maximum of powers of (x – a) in g(x)
+Similarly, h(x) = (x – a)l h1 (x) as h (a) = 0. Now, if k > l, we have lim lim lim g x x a g x f x h x x a h x
+Reprint 2026-27
+230 MATHEMATICS ( )( ) ( )
+lim 0. 0 x a g x g a
+If k < l, the limit is not defined.
+Example 1 Find the limits: (i) 3 2
+  − +  (ii) ( )3
+  +   (iii) 2 10 lim 1 ...
+  + + + +  .
+Solution The required limits are all limits of some polynomial functions. Hence the limits are the values of the function at the prescribed points. We have x→ [x3 – x2 + 1] = 13 – 12 + 1 = 1 (ii) ( ) ( ) ( )3 lim 1 3 3 1 3 4 12
+  + = + = =   (iii) 2 10 lim 1 ...
+  + + + +  ( ) ( ) ( )2 10
+1 1 1 ... 1 = + − + − + + −
+1 1 1... 1 1 = − + + = .
+Example 2 Find the limits:
+lim 100 x
++   (ii)
+lim 4 4 x
+− +   (iv)
+lim 5 6 x (v) 2 3 2 1 lim 3 2 x x x x x x →
+−  − − +   .
+Solution All the functions under consideration are rational functions. Hence, we first evaluate these functions at the prescribed points. If this is of the form 0
+0 , we try to rewrite the function cancelling the factors which are causing the limit to be of the form 0
+Reprint 2026-27
+LIMITS AND DERIVATIVES 231 (i) We have lim 100 1 100 101 x (ii) Evaluating the function at 2, it is of the form 0 lim 2 2 x lim as 2
+= ( ) 2 2 2 0 0 (iii) Evaluating the function at 2, we get it of the form 0 lim 4 4 x ( ) ( ) 2 lim 2 2 2 2 0 x which is not defined.
+(iv) Evaluating the function at 2, we get it of the form 0 lim 5 6 x
+− + = ( )
+lim 2 3 x
+3 2 3 1 x
+Reprint 2026-27
+232 MATHEMATICS (v) First, we rewrite the function as a rational function.
+x x x x x
+−  − − +   = ( ) ( )2 x x x x x
+  − − +
+= ( ) ( )( )
+x x x x x
+  − −  
+− − −    
+= ( )( )
+  − + −
+− −    
+= ( )( )
+Evaluating the function at 1, we get it of the form 0 lim 3 2 x x x x x x →
+  − −  
+− − +   = ( )( )
+lim 1 2 x
+= ( )( )
+( )( ) 1 lim 1 2 x
+We remark that we could cancel the term (x – 1) in the above evaluation because
+Evaluation of an important limit which will be used in the sequel is given as a theorem below.
+Theorem 2 For any positive integer n,
+Remark The expression in the above theorem for the limit is true even if n is any rational number and a is positive.
+Reprint 2026-27
+LIMITS AND DERIVATIVES 233
+Proof Dividing (xn – an) by (x – a), we see that xn – an = (x–a) (xn–1 + xn–2 a + xn–3 a2 + ... + x an–2 + an–1)
+Thus, lim lim
+− (xn–1 + xn–2 a + xn–3 a2 + ... + x an–2 + an–1)
+= an – l + a an–2 +. . . + an–2 (a) +an–l
+= an–1 + an – 1 +...+an–1 + an–1 (n terms)
+Example 3 Evaluate:
+− (ii) 0
+Solution (i) We have lim 1 1 x
+    − −
+÷    
+− −    
+= 15 (1)14 ÷ 10(1)9 (by the theorem above)
+= 15 ÷ 10 3 (ii) Put y = 1 + x, so that 1 y → as 0. x → lim – 1 y (by the remark above) = 1
+Reprint 2026-27
+234 MATHEMATICS
+12.4 Limits of Trigonometric Functions
+The following facts (stated as theorems) about functions in general come in handy in calculating limits of some trigonometric functions.
+Theorem 3 Let f and g be two real valued functions with the same domain such that f (x) ≤ g( x) for all x in the domain of definition, For some a, if both lim x a → f(x) and x a → g(x) exist, then lim x a → f(x) ≤ lim x a → g(x). This is illustrated in Fig 12.8.
+Theorem 4 (Sandwich Theorem) Let f, g and h be real functions such that f (x) ≤ g( x) ≤ h(x) for all x in the common domain of definition. For some real number a, if lim x a → f(x) = l = lim x a → h(x), then lim x a → g(x) = l. This is illustrated in Fig 12.9.
+Given below is a beautiful geometric proof of the following important inequality relating trigonometric functions.
+< < for π x < < (*)
+Fig 12.8
+Fig 12.9
+Reprint 2026-27

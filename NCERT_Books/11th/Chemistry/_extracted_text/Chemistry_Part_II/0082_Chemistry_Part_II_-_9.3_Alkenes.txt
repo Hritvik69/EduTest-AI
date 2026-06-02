@@ -1,0 +1,169 @@
+306 CHEMISTRY
+Fig. 9.4 Orbital picture of ethene depicting
+V bonds only
+Relative stability of conformations: As mentioned earlier, in staggered form of ethane, the electron clouds of carbon-hydrogen bonds are as far apart as possible. Thus, there are minimum repulsive forces, minimum energy and maximum stability of the molecule. On the other hand, when the staggered form changes into the eclipsed form, the electron clouds of the carbon – h\drogen bonds come closer to each other resulting in increase in electron cloud repulsions. To check the increased repulsive forces, molecule will have to possess more energy and thus has lesser stability. As already mentioned, the repulsive interaction between the electron clouds, which affects stability of a conformation, is called torsional strain.
+Magnitude of torsional strain depends upon the angle of rotation about C–C bond. 7his angle is also called dihedral angle or torsional angle. Of all the conformations of ethane, the staggered form has the least torsional strain and the eclipsed form, the maximum torsional strain. Therefore, staggered conformation is more stable than the eclipsed conformation.
+Hence, molecule largely remains in staggered conformation or we can say that it is preferred conformation. Thus it may be inferred that rotation around C–C bond in ethane is not completely free. The energy difference between the two extreme forms is of the order of 12.5 kJ mol–, which is very small. Even at ordinary temperatures, the ethane molecule gains thermal or kinetic energy sufficient enough to overcome this energy barrier of 12.5 kJ mol– through intermolecular collisions. Thus, it can be said that rotation about carbon-carbon single bond in ethane is almost free for all practical purposes. It has not been possible to separate and isolate different conformational isomers of ethane.
+9.3 ALKENES
+Alkenes are unsaturated hydrocarbons containing at least one double bond. What should be the general formula of alkenes? If there is one double bond between two carbon atoms in alkenes, they must possess two hydrogen atoms less than alkanes. Hence, general formula for alkenes is C nH2n. Alkenes are also known as olefins (oil forming) since the first member, ethylene or ethene (C 2H4)
+was found to form an oily liquid on reaction with chlorine.
+9.3.1 Structure of Double Bond
+Carbon-carbon double bond in alkenes consists of one strong sigma (V) bond (bond enthalpy about 397 kJ mol–) due to head-on overlapping of sp2 hybridised orbitals and one weak pi (π) bond (bond enthalpy about
+284 kJ mol–) obtained by lateral or sideways overlapping of the two 2p orbitals of the two carbon atoms. The double bond is shorter in bond length ( Sm than the C–C single bond (154 pm). You have already read that the pi (π) bond is a weaker bond due to poor sideways overlapping between the two 2p orbitals. Thus, the presence of the pi (π) bond makes alkenes behave as sources of loosely held mobile electrons. Therefore, alkenes are easily attacked by reagents or compounds which are in search of electrons. Such reagents are called electrophilic reagents.
+The presence of weaker π-bond makes alkenes unstable molecules in comparison to alkanes and thus, alkenes can be changed into single bond compounds by combining with the electrophilic reagents. Strength of the double bond (bond enthalpy, 681 kJ mol–) is greater than that of a carbon-carbon single bond in ethane (bond enthalpy, 348 kJ mol–). Orbital diagrams of ethene molecule are shown in
+Figs. 9.4 and 9.5.
+9.3.2 Nomenclature
+For nomenclature of alkenes in IUPAC system, the longest chain of carbon atoms containing the double bond is selected. Numbering of the chain is done from the end which is nearer to
+Reprint 2026-27
+307 HYDROCARBONS the double bond. The suffix ‘ene’ replaces ‘ane’ of alkanes. It may be remembered that first member of alkene series is: CH2 (replacing n by 1 in CnH2n) known as methene but has a very short life. As already mentioned, first stable member of alkene series is C2H4 known as ethylene (common) or ethene (IUPAC).
+IUPAC names of a few members of alkenes are given below :
+Structure IUPAC name
+CH3 – CH = CH2 Propene
+CH 3 – CH2 – CH = CH2 %ut – l  ene
+CH3 – CH = CH–CH3 But-2-ene
+CH 2 = CH – CH = CH2 %uta –   diene
+CH2 = C – CH3 2-Methylprop-1-ene
+CH2 = CH – CH – CH3 3-Methylbut-1-ene
+Problem 9.7
+Write IUPAC names of the following compounds:
+(i) (CH3)2CH – CH = CH – CH2 – CH
+CH 3 – CH – CH (iii) CH 2 = C (CH2CH2CH3)2 (iv) CH 3 CH2 CH2 CH2 CH 2CH3
+CH3 – CHCH = C – CH2 – CHCH3
+Solution (i) 2,8-Dimethyl-3, 6-decadiene;
+(ii) 1,3,5,7 Octatetraene;
+(iii) 2-n-Propylpent-1-ene;
+(iv) 4-Ethyl-2,6-dimethyl-dec-4-ene;
+Problem 9.8
+Calculate number of sigma (V) and pi (π)
+bonds in the above structures (i-iv).
+Solution
+V bonds : 33, π bonds : 2
+V bonds : 17, π bonds : 4
+Vbonds : 23, π bond : 1
+V bonds : 41, π bond : 1
+9.3.3 Isomerism
+Alkenes show both structural isomerism and geometrical isomerism.
+Structural isomerism : As in alkanes, ethene (C 2 H4 ) and propene (C3H6) can have only one structure but alkenes higher than propene have different structures. Alkenes possessing
+C4 H8 as molecular formula can be written in the following three ways:
+I. 1 2 3 4
+CH2 = CH – CH2 – CH3
+But-1-ene (C4 H8 )
+II. 1 2 3 4
+CH 3 – CH = CH – CH3
+But-2-ene (C 4 H8 )
+Fig. 9.5 Orbital picture of ethene showing formation of (a) π-bond, (b) π-cloud and (c) bond angles and bond lengths
+Reprint 2026-27
+308 CHEMISTRY
+III. 1 2 3
+CH 2 = C – CH3
+2-Methylprop-1-ene
+Structures I and III, and II and III are the examples of chain isomerism whereas structures I and II are position isomers.
+Problem 9.9
+Write structures and IUPAC names of different structural isomers of alkenes corresponding to C 5H10.
+Solution (a) CH 2 = CH – CH2 – CH2 – CH3
+Pent-1-ene (b) CH 3 – CH=CH – CH2 – CH3
+Pent-2-ene (c) CH 3 – C = CH – CH3
+2-Methylbut-2-ene (d) CH3 – CH – CH = CH2
+3-Methylbut-1-ene (e) CH 2 = C – CH2 – CH3
+2-Methylbut-1-ene
+Geometrical isomerism: Doubly bonded carbon atoms have to satisfy the remaining two valences by joining with two atoms or groups. If the two atoms or groups attached to each carbon atom are different, they can be represented by YX C = C XY like structure.
+YX C = C XY can be represented in space in the following two ways :
+In (a), the two identical atoms i.e., both the X or both the Y lie on the same side of the double bond but in (b) the two X or two Y lie across the double bond or on the opposite sides of the double bond. This results in different geometry of (a) and (b) i.e.
+disposition of atoms or groups in space in the two arrangements is different. Therefore, they are stereoisomers. They would have the same geometry if atoms or groups around
+C=C bond can be rotated but rotation around
+C=C bond is not free. It is restricted. For understanding this concept, take two pieces of strong cardboards and join them with the help of two nails. Hold one cardboard in your one hand and try to rotate the other. Can you really rotate the other cardboard ? The answer is no. The rotation is restricted. This illustrates that the restricted rotation of atoms or groups around the doubly bonded carbon atoms gives rise to different geometries of such compounds. The stereoisomers of this type are called geometrical isomers. The isomer of the type (a), in which two identical atoms or groups lie on the same side of the double bond is called cis isomer and the other isomer of the type (b), in which identical atoms or groups lie on the opposite sides of the double bond is called trans isomer . Thus cis and trans isomers have the same structure but have different configuration (arrangement of atoms or groups in space). Due to different arrangement of atoms or groups in space, these isomers differ in their properties like melting point, boiling point, dipole moment, solubility etc. Geometrical or cis-trans isomers of but-2-ene are represented below :
+Cis form of alkene is found to be more polar than the trans form. For example, dipole moment of cis-but-2-ene is 0.33 Debye, whereas, dipole moment of the trans form is almost zero or it can be said that
+Reprint 2026-27
+309 HYDROCARBONS trans-but-2-ene is non-polar. This can be understood by drawing geometries of the two forms as given below from which it is clear that in the trans-but-2-ene, the two methyl groups are in opposite directions, Threfore, dipole moments of C-CH3 bonds cancel, thus making the trans form non-polar.
+(ii) CH 2 = CBr2 (iii) C6H5CH = CH – CH3 (iv) CH 3CH = CCl CH3
+Solution (iii) and (iv). In structures (i) and (ii), two identical groups are attached to one of the doubly bonded carbon atom.
+9.3.4 Preparation
+1. From alkynes: Alkynes on partial reduction with calculated amount of dihydrogen in the presence of palladised charcoal partially deactivated with poisons like sulphur compounds or quinoline give alkenes. Partially deactivated palladised charcoal is known as Lindlar’s catalyst.
+Alkenes thus obtained are having cis geometry. However, alkynes on reduction with sodium in liquid ammonia form trans alkenes.
+iii) CH≡CH+H 2
+Pd/C CH2 =CH2 (9.32)
+Ethyne Ethene iv) CH 3–C≡CH+H2
+Pd/C CH3–CH =CH2
+Propyne Propene
+Wi l l p r o p e n e t h u s o b t a i n e d s h o w geometrical isomerism? Think for the reason in support of your answer.
+2. From alkyl halides: Alkyl halides (R-X) on heating with alcoholic potash (potassium hydroxide dissolved in alcohol, say,
+In the case of solids, it is observed that the trans isomer has higher melting point than the cis form.
+Geometrical or cis-trans isomerism is also shown by alkenes of the types
+XYC = CXZ and XYC = CZW
+Problem 9.10
+Draw cis and trans isomers of the following compounds. Also write their
+IUPAC names :
+(i) CHCl = CHCl (ii) C 2H5CCH3 = CCH3C2H5
+Solution
+Problem 9.11
+Which of the following compounds will show cis-trans isomerism?
+(i) (CH 3)2C = CH – C2H5 cis-But-2-ene (P = 0.33D)
+trans-But-2-ene
+Reprint 2026-27
+310 CHEMISTRY ethanol) eliminate one molecule of halogen acid to form alkenes. This reaction is known as dehydrohalogenation i.e., removal of halogen acid. This is example of E-elimination reaction, since hydrogen atom is eliminated from the E carbon atom (carbon atom next to the carbon to which halogen is attached).
+Nature of halogen atom and the alkyl group determine rate of the reaction. It is observed that for halogens, the rate is: iodine > bromine > chlorine, while for alkyl groups it is : tertiary > secondary > primary.
+3. From vicinal dihalides: Dihalides in which two halogen atoms are attached to two adjacent carbon atoms are known as vicinal dihalides. Vicinal dihalides on treatment with zinc metal lose a molecule of ZnX 2 to form an alkene. This reaction is known as dehalogenation.
+CH2%r–CH2Br + Zn CH2=CH2+ ZnBr2
+CH 3CH%r–CH2Br + Zn CH3CH=CH2
+4. From alcohols by acidic dehydration:
+You have read during nomenclature of different homologous series in Unit 12 that alcohols are the hydroxy derivatives of alkanes. 7he\ are reSresented b\ 5–2H where, R is C nH2n+1. Alcohols on heating with concentrated sulphuric acid form alkenes with the elimination of one water molecule. Since a water molecule is eliminated from the alcohol molecule in the presence of an acid, this reaction is known as acidic dehydration of alcohols.
+This reaction is also the example of
+Eelimination reaction since –2H grouS takes out one hydrogen atom from the
+E-carbon atom.
+9.3.5 Properties
+Physical properties
+Alkenes as a class resemble alkanes in physical properties, except in types of isomerism and difference in polar nature.
+The first three members are gases, the next fourteen are liquids and the higher ones are solids. Ethene is a colourless gas with a faint sweet smell. All other alkenes are colourless and odourless, insoluble in water but fairly soluble in non-polar solvents like benzene, petroleum ether. They show a regular increase in boiling point with increase in size i.e., every
+– CH2 group added increases boiling point by
+– .. /ike alkanes straight chain alkenes have higher boiling point than isomeric branched chain compounds.
+Chemical properties
+Alkenes are the rich source of loosely held pi (π) electrons, due to which they show addition reactions in which the electrophiles add on to the carbon-carbon double bond to form the addition products. Some reagents also add by free radical mechanism. There are cases when under special conditions, alkenes also undergo free radical substitution reactions. 2[idation and o]onol\sis reactions are also quite prominent in alkenes. A brief description of different reactions of alkenes is given below:
+1. Addition of dihydrogen: Alkenes add up one molecule of dihydrogen gas in the presence of finely divided nickel, palladium or platinum to form alkanes (Section 9.2.2)
+2. Addition of halogens : Halogens like bromine or chlorine add up to alkene to form vicinal dihalides. However, iodine does not show addition reaction under
+Reprint 2026-27
+311 HYDROCARBONS normal conditions. The reddish orange colour of bromine solution in carbon tetrachloride is discharged when bromine adds up to an unsaturation site. This reaction is used as a test for unsaturation.
+Addition of halogens to alkenes is an example of electrophilic addition reaction involving cyclic halonium ion formation which you will study in higher classes.
+3. Addition of hydrogen halides: Hydrogen halides (HCl, HBr,HI) add up to alkenes to form alkyl halides. The order of reactivity of the hydrogen halides is
+HI > HBr > HCl. Like addition of halogens to alkenes, addition of hydrogen halides is also an example of electrophilic addition reaction. Let us illustrate this by taking addition of HBr to symmetrical and unsymmetrical alkenes
+Addition reaction of HBr to symmetrical
+Addition reactions of HBr to symmetrical alkenes (similar groups attached to double bond) take place by electrophilic addition mechanism.
+CH 2=CH2H–%r CH3–CH2–%r (.
+CH3–CH=CH–CH3+HBr CH3–CH2–CHCH3
+Addition reaction of HBr to unsymmetrical alkenes (Markovnikov Rule)
+How will H – %r add to SroSene " 7he two possible products are I and II.
+Markovnikov, a Russian chemist made a generalisation in 1869 after studying such reactions in detail. These generalisations led Markovnikov to frame a rule called
+Markovnikov rule. The rule states that negative part of the addendum (adding molecule) gets attached to that carbon atom which possesses lesser number of hydrogen atoms. Thus according to this rule, product
+I i.e., 2-bromopropane is expected. In actual practice, this is the principal product of the reaction. This generalisation of Markovnikov rule can be better understood in terms of mechanism of the reaction.
+Mechanism
+Hydrogen bromide provides an electrophile,
+, which attacks the double bond to form carbocation as shown below :
+(i) The secondary carbocation (b) is more stable than the primary carbocation (a), therefore, the former predominates because it is formed at a faster rate.
+(ii) The carbocation (b) is attacked by Br– ion to form the product as follows :
+2-Bromopropane (major product)
+(a) less stable primary carbocation (b) more stable secondary carbocation
+Reprint 2026-27
+312 CHEMISTRY
+Anti Markovnikov addition or peroxide effect or Kharash effect
+In the presence of peroxide, addition of HBr to unsymmetrical alkenes like propene takes place contrary to the Markovnikov rule. This happens only with HBr but not with HCl and Hl. This addition reaction was observed by M.S. Kharash and F.R. Mayo in 1933 at the University of Chicago. This reaction is known as peroxide or Kharash effect or addition reaction anti to Markovnikov
+CH3 – CH=CH2+HBr (C6 H5 CO)2 O2
+1–Bromopropane
+Mechanism : Peroxide effect proceeds via free radical chain mechanism as given below:
+. 6H5H–%r Homolysis C6H6+ B
+The secondary free radical obtained in the above mechanism (step iii) is more stable than the primary. This explains the formation of
+1-bromopropane as the major product. It may be noted that the peroxide effect is not observed in addition of HCl and HI. This may be due to the fact that the H–Cl bond being stronger (430.5 kJ mol– than H–%r bond (363.7 kJ mol–), is not cleaved by the free radical whereas the H–, bond is weaker (296.8 kJ mol–) and iodine free radicals combine to form iodine molecules instead of adding to the double bond.
+Problem 9.12
+Write IUPAC names of the products obtained by addition reactions of HBr to hex-1-ene (i) in the absence of peroxide and (ii) in the presence of peroxide.
+Solution
+4. Addition of sulphuric acid : Cold concentrated sulphuric acid adds to alkenes in accordance with Markovnikov rule to form alkyl hydrogen sulphate by the electrophilic addition reaction.
+Reprint 2026-27
+313 HYDROCARBONS
+5. Addition of water : In the presence of a few drops of concentrated sulphuric acid alkenes react with water to form alcohols, in accordance with the Markovnikov rule.
+6. Oxidation: Alkenes on reaction with cold, dilute, aqueous solution of potassium permanganate (Baeyer’s reagent) produce vicinal glycols. Decolorisation of KMnO 4 solution is used as a test for unsaturation.
+b) Acidic potassium permanganate or acidic potassium dichromate oxidises alkenes to ketones and/or acids depending upon the nature of the alkene and the experimental conditions
+CH 3 – CH=CH–CH3
+KMnO 4 /H
+2CH3 COOH
+But-2-ene Ethanoic acid
+7. Ozonolysis : Ozonolysis of alkenes involves the addition of ozone molecule to alkene to form ozonide, and then cleavage of the ozonide by Zn-H 2 O to smaller molecules. This reaction is highly useful in detecting the position of the double bond in alkenes or other unsaturated compounds.
+8. Polymerisation: You are familiar with polythene bags and polythene sheets.
+Polythene is obtained by the combination of large number of ethene molecules at high temperature, high pressure and in the presence of a catalyst. The large molecules thus obtained are called polymers. This reaction is known as polymerisation. The simple compounds from which polymers are

@@ -1,0 +1,39 @@
+each other normally give an impression of a continuous line, many small charges taken together appear as a continuous charge distribution.
+At the macroscopic level, one deals with charges that are enormous compared to the magnitude of charge e. Since e = 1.6 × 10–19 C, a charge of magnituOde, say 1 mC, contains something like 1013 times the electronic charge. At this scale, the fact that charge can increase or decrease only in units of e is not very different from saying that charge can take continuous values. Thus, at the macroscopic level, the quantisation of charge has no practical consequence and can be ignored. However, at the microscopic level, where the charges involved are of the order of a few tens or hundreds of e, i.e., they can be counted, they appear in discrete lumps and quantisation of charge cannot be ignored. It is the magnitude of scale involved that is very important.
+Example 1.1 If 109 electrons move out of a body to another body every second, how much time is required to get a total charge of 1 C on the other body?
+Solution In one second 109 electrons move out of the body. Therefore the charge given out in one second is 1.6 × 10–19 × 109 C = 1.6 × 10–10 C.
+The time required to accumulate a charge of 1 C can then be estimated to be 1 C ÷ (1.6 × 10–10 C/s) = 6.25 × 109 s = 6.25 × 109 ÷ (365 × 24 ×
+3600) years = 198 years. Thus to collect a charge of one coulomb, from a body from which 109 electrons move out every second, we will need approximately 200 years. One coulomb is, therefore, a very large unit for many practical purposes.
+It is, however, also important to know what is roughly the number of electrons contained in a piece of one cubic centimetre of a material.
+A cubic piece of copper of side 1 cm contains about 2.5 × 1024 electrons.
+Example 1.2 How much positive and negative charge is there in a cup of water?
+Solution Let us assume that the mass of one cup of water is
+250 g. The molecular mass of water is 18g. Thus, one mole (= 6.02 × 1023 molecules) of water is 18 g. Therefore the number of molecules in one cup of water is (250/18) × 6.02 × 1023.
+Each molecule of water contains two hydrogen atoms and one oxygen atom, i.e., 10 electrons and 10 protons. Hence the total positive and total negative charge has the same magnitude. It is equal to (250/18) × 6.02 × 1023 × 10 × 1.6 × 10–19 C = 1.34 × 107 C.
+1.5 COULOMB’S LAW
+Coulomb’s law is a quantitative statement about the force between two point charges. When the linear size of charged bodies are much smaller than the distance separating them, the size may be ignored and the charged bodies are treated as point charges. Coulomb measured the force between two point charges and found that it varied inversely as the square of the distance between the charges and was directly proportional to the product of the magnitude of the two charges and
+Reprint 2026-27
+Electric Charges and Fields acted along the line joining the two charges. Thus, if two point charges q1, q2 are separated by a distance r in vacuum, the magnitude of the force (F) between them is given by
+How did Coulomb arrive at this law from his experiments?
+Coulomb used a torsion balance* for measuring the force between two charged metallic spheres. When the separation between two spheres is much larger than the radius of each sphere, the charged spheres may be regarded as point charges.
+However, the charges on the spheres were unknown, to begin with. How then could he discover a relation like Eq. (1.1)?
+Coulomb thought of the following simple way: Suppose the charge on a metallic sphere is q. If the sphere is put in contact with an identical uncharged sphere, the charge will spread over the two spheres. By symmetry, the charge on each sphere will be q/2*. Repeating this process, we can get charges q/2, q/4, etc. Coulomb varied the distance for a fixed pair of charges and measured the force for different separations. He then varied the charges in pairs, keeping the distance fixed for each pair.
+Comparing forces for different pairs of charges at different distances, Coulomb arrived at the relation, Eq. (1.1).
+Coulomb’s law, a simple mathematical statement, was initially experimentally arrived at in the manner described above. While the original experiments established it at a macroscopic scale, it has also been established down to subatomic level (r ~ 10–10 m).
+Coulomb discovered his law without knowing the explicit magnitude of the charge. In fact, it is the other way round:
+Coulomb’s law can now be employed to furnish a definition for a unit of charge. In the relation, Eq. (1.1), k is so far arbitrary. We can choose any positive value of k. The choice of k determines the size of the unit of charge. In SI units, the value of k is about 9 × 109
+C . The unit of charge that results from this choice is called a coulomb which we defined earlier in Section 1.4. Putting this value of k in Eq. (1.1), we see that for q1 = q2 = 1 C, r = 1 m
+F = 9 × 109 N
+That is, 1 C is the charge that when placed at a distance of 1 m from another charge of the same magnitude in vacuum experiences an electrical force of repulsion of magnitude
+* A torsion balance is a sensitive device to measure force. It was also used later by Cavendish to measure the very feeble gravitational force between two objects, to verify Newton’s Law of Gravitation.
+* Implicit in this is the assumption of additivity of charges and conservation:
+two charges (q/2 each) add up to make a total charge q.
+Charles Augustin de
+Coulomb (1736 – 1806)
+Coulomb, a French physicist, began his career as a military engineer in the West
+Indies. In 1776, he returned to Paris and retired to a small estate to do his scientific research. He invented a torsion balance to measure the quantity of a force and used it for determination of forces of electric attraction or repulsion between small charged spheres. He thus arrived in 1785 at the inverse square law relation, now known as
+Coulomb’s law. The law had been anticipated by
+Priestley and also by
+Cavendish earlier, though Cavendish never published his results. Coulomb also found the inverse square law of force between unlike and like magnetic poles.
+CHARLES AUGUSTIN DE COULOMB (1736 –1806)
+Reprint 2026-27

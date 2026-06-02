@@ -15,5 +15,9 @@ pnpm-debug.log*
 .cursor
 test-results
 artifacts
-NCERT_Books
+NCERT_Books/**
+!NCERT_Books/**/
+!NCERT_Books/**/_extracted_text/**
+!NCERT_Books/**/_extracted_text/**/*.txt
+NCERT_Books/**/*.pdf
 -

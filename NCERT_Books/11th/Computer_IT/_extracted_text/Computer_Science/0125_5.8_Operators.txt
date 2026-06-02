@@ -1,0 +1,87 @@
+GettinG Started with Python 113
+5.13.1 Syntax Errors
+Like other programming languages, Python has its own rules that determine its syntax. The interpreter interprets the statements only if it is syntactically (as per the rules of Python) correct. If any syntax error is present, the interpreter shows error message(s) and stops the execution there. For example, parentheses must be in pairs, so the expression (10 + 12) is syntactically correct, whereas (7 + 11 is not due to absence of right parenthesis. Such errors need to be removed before the execution of the program
+5.13.2 Logical Errors
+A logical error is a bug in the program that causes it to behave incorrectly. A logical error produces an undesired output but without abrupt termination of the execution of the program. Since the program interprets successfully even when logical errors are present in it, it is sometimes difficult to identify these errors. The only evidence to the existence of logical errors is the wrong output. While working backwards from the output of the program, one can identify what went wrong.
+For example, if we wish to find the average of two numbers 10 and 12 and we write the code as 10 + 12/2, it would run successfully and produce the result 16.
+Surely, 16 is not the average of 10 and 12. The correct code to find the average should have been (10 + 12)/2 to give the correct output as 11.
+Logical errors are also called semantic errors as they occur when the meaning of the program (its semantics)
+is not correct.
+5.13.3 Runtime Error
+A runtime error causes abnormal termination of program while it is executing. Runtime error is when the statement is correct syntactically, but the interpreter cannot execute it. Runtime errors do not appear until after the program starts running or executing.
+For example, we have a statement having division operation in the program. By mistake, if the denominator entered is zero then it will give a runtime error like
+“division by zero”.
+Let us look at the program 5-11 showing two types of runtime errors when a user enters non-integer value
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 114 or value ‘0’. The program generates correct output when the user inputs an integer value for num2.
+Program 5-11 Example of a program which generates runtime error.
+#Program 5-11
+#Runtime Errors Example num1 = 10.0 num2 = int(input("num2 = "))
+#if user inputs a string or a zero, it leads to runtime error print(num1/num2)
+Figure 5.11: Output of program 5-11
+• Python is an open-source, high level, interpreter- based language that can be used for a multitude of scientific and non-scientific computing purposes.
+• Comments are non-executable statements in a program.
+• An identifier is a user defined name given to a variable or a constant in a program.
+• The process of identifying and removing errors from a computer program is called debugging.
+• Trying to use a variable that has not been assigned a value gives an error.
+• There are several data types in Python — integer, boolean, float, complex, string, list, tuple, sets,
+None and dictionary.
+Reprint 2026-27
+GettinG Started with Python 115 exercIse
+1. Which of the following identifier names are invalid and why?
+i Serial_no. v Total_Marks ii 1st_Room vi total-Marks iii Hundred$ vii _Percentage iv Total Marks viii True
+2. Write the corresponding Python assignment statements:
+a) Assign 10 to variable length and 20 to variable breadth.
+b) Assign the average of values of variables length and breadth to a variable sum.
+c) Assign a list containing strings ‘Paper’, ‘Gel Pen’, and ‘Eraser’ to a variable stationery.
+d) Assign the strings ‘Mohandas’, ‘Karamchand’, and
+‘Gandhi’ to variables first, middle and last.
+e) Assign the concatenated value of string variables first, middle and last to variable fullname. Make sure to incorporate blank spaces appropriately between different parts of names.
+3. Write logical expressions corresponding to the following statements in Python and evaluate the expressions (assuming variables num1, num2, num3, first, middle, last are already having meaningful values):
+a) The sum of 20 and –10 is less than 12.
+b) num3 is not more than 24.
+notes • Datatype conversion can happen either explicitly or implicitly.
+• Operators are constructs that manipulate the value of operands. Operators may be unary or binary.
+• An expression is a combination of values, variables and operators.
+• Python has input() function for taking user
+• Python has print() function to output data to a standard output device.
+Reprint 2026-27
+Computer SCienCe – ClaSS xi 116 c) 6.75 is between the values of integers num1 and d) The string ‘middle’ is larger than the string ‘first’ and smaller than the string ‘last’.
+e) List Stationery is empty.
+4. Add a pair of parentheses to each expression so that it evaluates to True.
+a) 0 == 1 == 2 b) 2 + 3 == 4 + 5 == 7 c) 1 < -1 == 3 > 4
+5. Write the output of the following:
+a) num1 = 4 num2 = num1 + 1 num1 = 2 print (num1, num2)
+b) num1, num2 = 2, 6 num1, num2 = num2, num1 + 2 print (num1, num2)
+c) num1, num2 = 2, 3 num3, num2 = num1, num3 + 1 print (num1, num2, num3)
+6. Which data type will be used to represent the following data values and why?
+a) Number of months in a year b) Resident of Delhi or not c) Mobile number d) Pocket money e) Volume of a sphere f) Perimeter of a square g) Name of the student h) Address of the student
+7. Give the output of the following when num1 = 4, num2 = 3, num3 = 2 a) num1 += num2 + num3 print (num1)
+b) num1 = num1 ** (num2 + num3)
+print (num1)
+c) num1 **= num2 + num3 d) num1 = '5' + '5' print(num1)
+Reprint 2026-27
+GettinG Started with Python 117 e) print(4.00/(2.0+2.0))
+f) num1 = 2+9*((3*12)-8)/10 print(num1)
+g) num1 = 24 // 4 // 2 print(num1)
+h) num1 = float(10)
+print (num1)
+i) num1 = int('3.14')
+print (num1)
+j) print('Bye' == 'BYE')
+k) print(10 != 9 and 20 >= 20)
+l) print(10 + 6 * 2 ** 2 != 9//4 -3 and 29
+>= 29/9)
+m) print(5 % 10 + 10 < 50 and 29 <= 29)
+n) print((0 < 6) or (not(10 == 6) and (10<0)))
+8. Categorise the following as syntax error, logical error or runtime error:
+a) 25 / 0 b) num1 = 25; num2 = 0; num1/num2
+9. A dartboard of radius 10 units and the wall it is hanging on are represented using a two-dimensional coordinate system, with the board’s center at coordinate (0,0). Variables x and y store the x-coordinate and the y-coordinate of a dart that hits the dartboard. Write a Python expression using variables x and y that evaluates to True if the dart hits (is within) the dartboard, and then evaluate the expression for these dart coordinates:
+a) (0,0)
+b) (10,10)
+c) (6, 6)
+d) (7,8)
+10. Write a Python program to convert temperature in degree Celsius to degree Fahrenheit. If water boils at 100 degree C and freezes as 0 degree C, use the program to find out what is the boiling point and freezing point of water on the Fahrenheit scale.
+(Hint: T(°F) = T(°C) × 9/5 + 32)
+11. Write a Python program to calculate the amount payable if money has been lent on simple interest.
+Reprint 2026-27
