@@ -285,9 +285,19 @@ export async function POST(request: NextRequest) {
         if (resumePaperId) {
           const resumablePaper = await getPaper(resumePaperId, auth.user.id);
           if (!resumablePaper) {
-            throw new Error("The generation you tried to continue was not found.");
-          }
-          if (resumablePaper.status === "READY") {
+            console.warn("[generate-paper] resume paper not found; starting fresh", {
+              resumePaperId,
+              generationJobId,
+              idempotencyKey,
+            });
+            send({
+              step: 3,
+              pct: 25,
+              progress: 25,
+              msg: "Saved generation progress was no longer available, so a fresh durable generation is starting.",
+              status: "GENERATING",
+            });
+          } else if (resumablePaper.status === "READY") {
             send(
               {
                 error: true,
@@ -300,23 +310,30 @@ export async function POST(request: NextRequest) {
             );
             close();
             return;
-          }
-
-          const storedState = await getPaperGenerationState(
-            resumablePaper.id,
-            auth.user.id,
-          );
-          if (storedState && storedState.sourceContextHash === sourceContextHash) {
-            resumeState = storedState;
-            paperId = resumablePaper.id;
-            await updatePaperDefinition(paperId, effectiveConfig, blueprint);
           } else {
-            console.warn("[generate-paper] resume state unavailable or stale", {
-              resumePaperId,
-              hasStoredState: Boolean(storedState),
-              expectedSourceContextHash: sourceContextHash,
-              storedSourceContextHash: storedState?.sourceContextHash,
-            });
+            const storedState = await getPaperGenerationState(
+              resumablePaper.id,
+              auth.user.id,
+            );
+            if (storedState && storedState.sourceContextHash === sourceContextHash) {
+              resumeState = storedState;
+              paperId = resumablePaper.id;
+              await updatePaperDefinition(paperId, effectiveConfig, blueprint);
+            } else {
+              console.warn("[generate-paper] resume state unavailable or stale", {
+                resumePaperId,
+                hasStoredState: Boolean(storedState),
+                expectedSourceContextHash: sourceContextHash,
+                storedSourceContextHash: storedState?.sourceContextHash,
+              });
+              send({
+                step: 3,
+                pct: 25,
+                progress: 25,
+                msg: "Saved generation progress did not match this request, so a fresh durable generation is starting.",
+                status: "GENERATING",
+              });
+            }
           }
         }
 

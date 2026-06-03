@@ -23,6 +23,8 @@ describe("resumable paper generation wiring", () => {
     expect(route).toMatch(/readyQuestionCount/);
     expect(route).toMatch(/targetQuestionCount/);
     expect(route).toMatch(/missingQuestionCount/);
+    expect(route).toMatch(/resume paper not found; starting fresh/);
+    expect(route).toMatch(/Saved generation progress was no longer available/);
     expect(store).toMatch(/generationState/);
     expect(store).toMatch(/error_metadata/);
     expect(bank).toMatch(/candidateQuestions/);
