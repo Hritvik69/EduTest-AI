@@ -45,6 +45,40 @@ type QuestionLike = {
   answerPath?: string;
 };
 
+type DuplicateReasonKind = "hard" | "soft";
+
+export type DuplicateQuestionDecision = {
+  duplicate: boolean;
+  reason: string | null;
+  kind?: DuplicateReasonKind;
+  allowedSoftSimilarity?: string;
+  distinctnessProof?: SourceBackedDistinctnessProof;
+};
+
+export type SourceBackedCompletionMetadata = {
+  marker: "SOURCE_BACKED_COMPLETION";
+  type: string;
+  angleId: string;
+  atomId: string;
+  sequence: string;
+};
+
+export type SourceBackedDistinctnessProof = {
+  sourceBackedInvolved: boolean;
+  bothSourceBacked: boolean;
+  sourceBackedMetadataComplete: boolean;
+  differentAtom: boolean;
+  differentAngle: boolean;
+  differentSourceChunkFocus: boolean;
+  differentAnswerPath: boolean;
+  differentScenario: boolean;
+  differentOptionSignature: boolean;
+  differentSubQuestionSignature: boolean;
+  repeatedAnswerPath: boolean;
+  score: number;
+  allowSoftSimilarity: boolean;
+};
+
 export interface DuplicateQuestionMatch<T extends QuestionLike> {
   question: T;
   duplicateOf: QuestionLike;
@@ -67,15 +101,114 @@ export function isDuplicateQuestion(left: QuestionLike, right: QuestionLike) {
 }
 
 export function duplicateQuestionReason(left: QuestionLike, right: QuestionLike) {
-  const distinctSourceBackedPair = isDistinctSourceBackedCompletionPair(left, right);
+  return duplicateQuestionDecision(left, right).reason;
+}
 
-  if (isDuplicateQuestionText(left.text, right.text)) {
-    return distinctSourceBackedPair ? null : "near-duplicate question stem";
+export function duplicateQuestionDecision(
+  left: QuestionLike,
+  right: QuestionLike,
+): DuplicateQuestionDecision {
+  const hardReason = hardDuplicateReason(left, right);
+  if (hardReason) {
+    return { duplicate: true, reason: hardReason, kind: "hard" };
   }
 
-  const sameType = normalizeSmall(left.type) === normalizeSmall(right.type);
-  const sameTopic = normalizeSmall(left.topic) === normalizeSmall(right.topic);
-  const comparableScope = sameType && (!left.topic || !right.topic || sameTopic);
+  const softReason = softSimilarityReason(left, right);
+  if (!softReason) {
+    return { duplicate: false, reason: null };
+  }
+
+  const distinctnessProof = sourceBackedDistinctnessProof(left, right);
+  if (distinctnessProof.allowSoftSimilarity) {
+    return {
+      duplicate: false,
+      reason: null,
+      allowedSoftSimilarity: softReason,
+      distinctnessProof,
+    };
+  }
+
+  return {
+    duplicate: true,
+    reason: softReason,
+    kind: "soft",
+    distinctnessProof: distinctnessProof.sourceBackedInvolved
+      ? distinctnessProof
+      : undefined,
+  };
+}
+
+export function hardDuplicateReason(left: QuestionLike, right: QuestionLike) {
+  const leftText = normalizeQuestionText(left.text);
+  const rightText = normalizeQuestionText(right.text);
+  if (leftText && rightText && leftText === rightText) {
+    return "exact question stem";
+  }
+
+  const leftScenario = normalizeQuestionText(left.scenario ?? "");
+  const rightScenario = normalizeQuestionText(right.scenario ?? "");
+  if (leftScenario && rightScenario && leftScenario === rightScenario) {
+    return "exact scenario";
+  }
+
+  const leftOptions = optionSignature(left.options);
+  const rightOptions = optionSignature(right.options);
+  if (
+    leftOptions &&
+    rightOptions &&
+    isMeaningfulOptionSignature(leftOptions) &&
+    leftOptions === rightOptions
+  ) {
+    return "repeated option pattern";
+  }
+
+  const leftSubQuestions = subQuestionSignature(left);
+  const rightSubQuestions = subQuestionSignature(right);
+  if (
+    leftSubQuestions &&
+    rightSubQuestions &&
+    leftSubQuestions === rightSubQuestions
+  ) {
+    return "repeated sub-question pattern";
+  }
+
+  const leftNovelty = normalizeQuestionText(left.noveltyAngle ?? "");
+  const rightNovelty = normalizeQuestionText(right.noveltyAngle ?? "");
+  if (leftNovelty && rightNovelty && leftNovelty === rightNovelty) {
+    return "repeated novelty angle";
+  }
+
+  const leftMetadata = parseSourceBackedCompletionMetadata(left.noveltyAngle);
+  const rightMetadata = parseSourceBackedCompletionMetadata(right.noveltyAngle);
+  if (
+    leftMetadata &&
+    rightMetadata &&
+    normalizeSmall(leftMetadata.angleId) === normalizeSmall(rightMetadata.angleId) &&
+    normalizeSmall(leftMetadata.atomId) === normalizeSmall(rightMetadata.atomId)
+  ) {
+    return "repeated source-backed angle";
+  }
+
+  const leftAnswerPath = normalizeQuestionText(left.answerPath ?? "");
+  const rightAnswerPath = normalizeQuestionText(right.answerPath ?? "");
+  if (
+    leftAnswerPath &&
+    rightAnswerPath &&
+    isMeaningfulAnswerSignature(leftAnswerPath) &&
+    leftAnswerPath === rightAnswerPath
+  ) {
+    return "repeated answer path metadata";
+  }
+
+  return null;
+}
+
+export function softSimilarityReason(left: QuestionLike, right: QuestionLike) {
+  if (isDuplicateQuestionText(left.text, right.text)) {
+    return "near-duplicate question stem";
+  }
+
+  const comparableScope = comparableQuestionScope(left, right);
 
   if (
     comparableScope &&
@@ -83,7 +216,7 @@ export function duplicateQuestionReason(left: QuestionLike, right: QuestionLike)
     right.scenario &&
     isDuplicateQuestionText(left.scenario, right.scenario)
   ) {
-    return distinctSourceBackedPair ? null : "near-duplicate scenario";
+    return "near-duplicate scenario";
   }
 
   const leftAnswer = answerSignature(left);
@@ -95,7 +228,7 @@ export function duplicateQuestionReason(left: QuestionLike, right: QuestionLike)
     isMeaningfulAnswerSignature(leftAnswer) &&
     isDuplicateQuestionText(leftAnswer, rightAnswer)
   ) {
-    return distinctSourceBackedPair ? null : "repeated answer path";
+    return "similar answer content";
   }
 
   const leftAnswerPath = normalizeQuestionText(left.answerPath ?? "");
@@ -107,30 +240,7 @@ export function duplicateQuestionReason(left: QuestionLike, right: QuestionLike)
     isMeaningfulAnswerSignature(leftAnswerPath) &&
     isDuplicateQuestionText(leftAnswerPath, rightAnswerPath)
   ) {
-    return distinctSourceBackedPair ? null : "repeated answer path metadata";
-  }
-
-  const leftNovelty = normalizeQuestionText(left.noveltyAngle ?? "");
-  const rightNovelty = normalizeQuestionText(right.noveltyAngle ?? "");
-  if (
-    comparableScope &&
-    leftNovelty &&
-    rightNovelty &&
-    leftNovelty === rightNovelty
-  ) {
-    return "repeated novelty angle";
-  }
-
-  const leftOptions = optionSignature(left.options);
-  const rightOptions = optionSignature(right.options);
-  if (
-    comparableScope &&
-    leftOptions &&
-    rightOptions &&
-    isMeaningfulOptionSignature(leftOptions) &&
-    leftOptions === rightOptions
-  ) {
-    return distinctSourceBackedPair ? null : "repeated option pattern";
+    return "similar answer path metadata";
   }
 
   const leftSubQuestions = subQuestionSignature(left);
@@ -141,32 +251,120 @@ export function duplicateQuestionReason(left: QuestionLike, right: QuestionLike)
     rightSubQuestions &&
     isDuplicateQuestionText(leftSubQuestions, rightSubQuestions)
   ) {
-    return distinctSourceBackedPair ? null : "near-duplicate sub-question pattern";
+    return "near-duplicate sub-question pattern";
   }
 
   return null;
 }
 
-function isDistinctSourceBackedCompletionPair(left: QuestionLike, right: QuestionLike) {
-  const leftNovelty = left.noveltyAngle ?? "";
-  const rightNovelty = right.noveltyAngle ?? "";
-  if (
-    !leftNovelty.includes("SOURCE_BACKED_COMPLETION") ||
-    !rightNovelty.includes("SOURCE_BACKED_COMPLETION") ||
-    leftNovelty === rightNovelty
-  ) {
-    return false;
-  }
+export function sourceBackedDistinctnessProof(
+  left: QuestionLike,
+  right: QuestionLike,
+): SourceBackedDistinctnessProof {
+  const leftMetadata = parseSourceBackedCompletionMetadata(left.noveltyAngle);
+  const rightMetadata = parseSourceBackedCompletionMetadata(right.noveltyAngle);
+  const sourceBackedInvolved = Boolean(leftMetadata || rightMetadata);
+  const bothSourceBacked = Boolean(leftMetadata && rightMetadata);
+  const sourceBackedMetadataComplete = Boolean(
+    (leftMetadata?.atomId && leftMetadata.angleId) ||
+      (rightMetadata?.atomId && rightMetadata.angleId),
+  );
+
+  const differentAtom = Boolean(
+    leftMetadata?.atomId &&
+      rightMetadata?.atomId &&
+      normalizeSmall(leftMetadata.atomId) !== normalizeSmall(rightMetadata.atomId),
+  );
+  const differentAngle = Boolean(
+    leftMetadata?.angleId &&
+      rightMetadata?.angleId &&
+      normalizeSmall(leftMetadata.angleId) !== normalizeSmall(rightMetadata.angleId),
+  );
 
   const leftFocus = normalizeQuestionText(left.sourceChunkFocus ?? "");
   const rightFocus = normalizeQuestionText(right.sourceChunkFocus ?? "");
   const leftPath = normalizeQuestionText(left.answerPath ?? "");
   const rightPath = normalizeQuestionText(right.answerPath ?? "");
+  const leftScenario = normalizeQuestionText(left.scenario ?? "");
+  const rightScenario = normalizeQuestionText(right.scenario ?? "");
+  const leftOptions = optionSignature(left.options);
+  const rightOptions = optionSignature(right.options);
+  const leftSubQuestions = subQuestionSignature(left);
+  const rightSubQuestions = subQuestionSignature(right);
 
-  return Boolean(
-    (leftFocus && rightFocus && leftFocus !== rightFocus) ||
-      (leftPath && rightPath && leftPath !== rightPath),
+  const differentSourceChunkFocus = distinctMeaningfulText(leftFocus, rightFocus);
+  const differentAnswerPath = distinctMeaningfulText(leftPath, rightPath);
+  const differentScenario = distinctMeaningfulText(leftScenario, rightScenario);
+  const differentOptionSignature = distinctMeaningfulText(leftOptions, rightOptions);
+  const differentSubQuestionSignature = distinctMeaningfulText(
+    leftSubQuestions,
+    rightSubQuestions,
   );
+
+  const repeatedAnswerPath = Boolean(
+    leftPath &&
+      rightPath &&
+      isMeaningfulAnswerSignature(leftPath) &&
+      isDuplicateQuestionText(leftPath, rightPath),
+  );
+
+  const score = [
+    differentAtom,
+    differentAngle,
+    differentSourceChunkFocus,
+    differentAnswerPath,
+    differentScenario,
+    differentOptionSignature,
+    differentSubQuestionSignature,
+  ].filter(Boolean).length;
+
+  const allowSoftSimilarity =
+    sourceBackedInvolved &&
+    sourceBackedMetadataComplete &&
+    (bothSourceBacked
+      ? (differentAtom || differentAngle) && score >= 3
+      : !repeatedAnswerPath &&
+        score >= 4 &&
+        differentAnswerPath &&
+        differentSourceChunkFocus);
+
+  return {
+    sourceBackedInvolved,
+    bothSourceBacked,
+    sourceBackedMetadataComplete,
+    differentAtom,
+    differentAngle,
+    differentSourceChunkFocus,
+    differentAnswerPath,
+    differentScenario,
+    differentOptionSignature,
+    differentSubQuestionSignature,
+    repeatedAnswerPath,
+    score,
+    allowSoftSimilarity,
+  };
+}
+
+export function parseSourceBackedCompletionMetadata(
+  value: string | undefined,
+): SourceBackedCompletionMetadata | null {
+  if (!value) return null;
+
+  const parts = value.trim().split(":");
+  if (parts[0] !== "SOURCE_BACKED_COMPLETION" || parts.length < 5) {
+    return null;
+  }
+
+  const [, type, angleId, atomId, sequence] = parts;
+  if (!type || !angleId || !atomId || !sequence) return null;
+
+  return {
+    marker: "SOURCE_BACKED_COMPLETION",
+    type,
+    angleId,
+    atomId,
+    sequence,
+  };
 }
 
 export function uniqueQuestionsByText<T extends QuestionLike>(
@@ -286,6 +484,16 @@ function subQuestionSignature(question: QuestionLike) {
       ),
     )
     .join(" | ");
+}
+
+function comparableQuestionScope(left: QuestionLike, right: QuestionLike) {
+  const sameType = normalizeSmall(left.type) === normalizeSmall(right.type);
+  const sameTopic = normalizeSmall(left.topic) === normalizeSmall(right.topic);
+  return sameType && (!left.topic || !right.topic || sameTopic);
+}
+
+function distinctMeaningfulText(left: string, right: string) {
+  return Boolean(left && right && left !== right);
 }
 
 function isMeaningfulAnswerSignature(value: string) {

@@ -950,7 +950,7 @@ function normalizeConceptPool(
         excerpt: atom.excerpt,
         topic,
         chapter,
-        atomId: `${conceptIndex + 1}.${atomIndex + 1}`,
+        atomId: sourceAtomId(concept, config, atom, conceptIndex, atomIndex),
         atomLabel: atom.label,
         atomNumericId: conceptIndex * 100 + atomIndex,
         chapterId: concept.chapterId,
@@ -965,6 +965,22 @@ function normalizeConceptPool(
   });
 
   return pool;
+}
+
+function sourceAtomId(
+  concept: ConceptData,
+  config: PaperConfig,
+  atom: { summary: string },
+  conceptIndex: number,
+  atomIndex: number,
+) {
+  const subject = slugPart(concept.subject ?? config.subject ?? "subject");
+  const chapter = slugPart(String(concept.chapterId ?? conceptIndex + 1));
+  const topic = slugPart(String(concept.topicId ?? "all"));
+  const source = concept.source === "pdf" ? "pdf" : "txt";
+  const suffix = stableAtomSuffix(atom.summary);
+
+  return `${subject}-c${chapter}-t${topic}-${source}-a${atomIndex + 1}-${suffix}`;
 }
 
 function sourceBackedConcepts(concepts: ConceptData[]) {
@@ -1036,6 +1052,25 @@ function normalizeAtomKey(value: string) {
     .replace(/[^a-z0-9]+/g, " ")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function slugPart(value: string) {
+  return (
+    value
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 32) || "x"
+  );
+}
+
+function stableAtomSuffix(value: string) {
+  const normalized = normalizeAtomKey(value);
+  let hash = 0;
+  for (let index = 0; index < normalized.length; index += 1) {
+    hash = (hash * 31 + normalized.charCodeAt(index)) >>> 0;
+  }
+  return hash.toString(36).slice(0, 8) || "0";
 }
 
 const sourceAtomStopWords = new Set([
