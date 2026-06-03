@@ -115,6 +115,34 @@ describe("question duplicate decisions", () => {
     );
   });
 
+  it("allows same atom with different source-backed lenses when proof fields differ", () => {
+    const first = sourceBackedMcq({
+      text: "Which evidence detail best explains the litmus colour change for the acid sample in the selected chapter?",
+      noveltyAngle: "SOURCE_BACKED_COMPLETION:MCQ:evidence-detail:atom-1:1",
+      sourceChunkFocus:
+        "Evidence detail focus atom-1: litmus gives the exact selected-source colour clue.",
+      answerPath:
+        "Read atom-1, isolate the detail lens, and identify the litmus colour clue.",
+      options: uniqueOptions("evidence-detail", "atom-1"),
+    });
+    const second = sourceBackedMcq({
+      text: "Which evidence support best explains the litmus colour change for the acid sample in the selected chapter?",
+      noveltyAngle: "SOURCE_BACKED_COMPLETION:MCQ:evidence-support:atom-1:2",
+      sourceChunkFocus:
+        "Evidence support focus atom-1: litmus supports the acidic solution conclusion.",
+      answerPath:
+        "Read atom-1, use the support lens, and connect litmus to the acid conclusion.",
+      options: uniqueOptions("evidence-support", "atom-1"),
+    });
+
+    expect(duplicateQuestionReason(first, second)).toBeNull();
+    expect(sourceBackedDistinctnessProof(first, second)).toMatchObject({
+      differentAngle: true,
+      differentAtom: false,
+      allowSoftSimilarity: true,
+    });
+  });
+
   it("allows different atom and angle pairs despite shared chapter vocabulary", () => {
     const first = sourceBackedMcq({
       text: "Which evidence statement best explains the litmus colour change for the acid sample in the selected chapter?",
@@ -182,6 +210,35 @@ describe("question duplicate decisions", () => {
       duplicate: false,
       reason: null,
       allowedSoftSimilarity: "near-duplicate question stem",
+    });
+  });
+
+  it("rejects AI-vs-source-backed similarity without a structural proof difference", () => {
+    const aiQuestion = aiMcq({
+      sourceChunkFocus:
+        "AI focus: a broad acid-base indicator activity from the selected chapter.",
+      answerPath:
+        "Use the broad indicator activity, identify the acid result, and explain the colour change.",
+    });
+    const sourceQuestion = sourceBackedMcq({
+      text: "Which evidence choice explains the litmus colour change for the acid sample in the selected chapter?",
+      noveltyAngle: "SOURCE_BACKED_COMPLETION:MCQ:evidence-detail:atom-3:3",
+      sourceChunkFocus:
+        "Evidence detail focus atom-3: methyl orange gives a separate selected-source clue.",
+      answerPath:
+        "Read atom-3, use the detail lens, and support the source-specific conclusion.",
+      options: undefined,
+    });
+
+    const decision = duplicateQuestionDecision(aiQuestion, sourceQuestion);
+
+    expect(decision).toMatchObject({
+      duplicate: true,
+      reason: "near-duplicate question stem",
+    });
+    expect(decision.distinctnessProof).toMatchObject({
+      hasStructuralDifference: false,
+      allowSoftSimilarity: false,
     });
   });
 

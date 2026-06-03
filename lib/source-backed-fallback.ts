@@ -39,7 +39,7 @@ export function completeQuestionBankWithSourceBackedFallback({
   if (!conceptPool.length) return [] satisfies GeneratedQuestion[];
 
   const accepted: GeneratedQuestion[] = [];
-  const candidateSpace = Math.max(1, conceptPool.length * variantRecipes.length);
+  const candidateSpace = sourceBackedCandidateSpaceSize(conceptPool);
   const maxAttempts = Math.min(
     candidateSpace,
     Math.max(missingBefore * Math.max(1, Math.floor(maxCandidatesPerMissing)), candidateSpace),
@@ -94,7 +94,7 @@ export function generateSourceBackedFallbackQuestions(
   for (const section of sections) {
     let acceptedInSection = 0;
     let attempts = 0;
-    const maxAttempts = Math.max(1, conceptPool.length * variantRecipes.length);
+    const maxAttempts = sourceBackedCandidateSpaceSize(conceptPool);
 
     while (
       acceptedInSection < section.count &&
@@ -139,8 +139,8 @@ function createSourceBackedQuestion(
 ): GeneratedQuestion {
   const variant = variantRecipeFor(index);
   const base = baseQuestion(type, concept, index, section.marksPerQuestion, variant);
-  const sourceFocus = `${variant.sourceFocus} ${concept.atomId}: ${trimToSentence(concept.summary, 150)}`;
-  const answerPath = `${variant.answerPath} ${topicSentence(concept.topic)} Use source detail ${concept.atomId} (${concept.atomLabel}) to ${variant.answerVerb} the selected ${concept.source === "pdf" ? "PDF" : "NCERT TXT"} idea.`;
+  const sourceFocus = `${variant.sourceFocus} ${concept.atomId}: ${trimToSentence(concept.summary, 150)} Lens: ${variant.label}.`;
+  const answerPath = `${variant.answerPath} ${topicSentence(concept.topic)} Use source detail ${concept.atomId} (${concept.atomLabel}) through the ${variant.label} lens to ${variant.answerVerb} the selected ${concept.source === "pdf" ? "PDF" : "NCERT TXT"} idea.`;
 
   const question: GeneratedQuestion = {
     ...base,
@@ -184,9 +184,10 @@ function sourceBackedQuestionForSequence(
   sequence: number,
 ) {
   const normalizedSequence = Math.max(0, Math.floor(sequence));
+  const slotCount = variantSlotCount();
   const concept =
     conceptPool[
-      Math.floor(normalizedSequence / variantRecipes.length) % conceptPool.length
+      Math.floor(normalizedSequence / slotCount) % conceptPool.length
     ];
 
   return createSourceBackedQuestion(
@@ -196,6 +197,10 @@ function sourceBackedQuestionForSequence(
     concept,
     normalizedSequence + 1,
   );
+}
+
+function sourceBackedCandidateSpaceSize(conceptPool: NormalizedConcept[]) {
+  return Math.max(1, conceptPool.length * variantSlotCount());
 }
 
 function baseQuestion(
@@ -458,6 +463,109 @@ type VariantRecipe = {
   firstCount: number;
   secondCount: number;
 };
+
+type VariantLens = {
+  id: string;
+  label: string;
+  stemFocus: string;
+  optionLead: string;
+  sourceFocus: string;
+  contextLead: string;
+  answerPath: string;
+  keyPoint: string;
+  answerVerb: string;
+};
+
+const variantLenses: VariantLens[] = [
+  {
+    id: "detail",
+    label: "detail",
+    stemFocus: "focus on one precise source detail",
+    optionLead: "precise detail",
+    sourceFocus: "Detail lens",
+    contextLead: "Focus on the exact source detail before generalising.",
+    answerPath: "isolate the precise detail, quote its role, and",
+    keyPoint: "Name the exact source detail.",
+    answerVerb: "identify",
+  },
+  {
+    id: "support",
+    label: "support",
+    stemFocus: "show how the source supports the answer",
+    optionLead: "supporting clue",
+    sourceFocus: "Support lens",
+    contextLead: "Use the source clue as support for the answer.",
+    answerPath: "locate the supporting clue, link it to the answer, and",
+    keyPoint: "Use a supporting clue from the source.",
+    answerVerb: "support",
+  },
+  {
+    id: "consequence",
+    label: "consequence",
+    stemFocus: "trace the consequence of the source idea",
+    optionLead: "consequence",
+    sourceFocus: "Consequence lens",
+    contextLead: "Follow what the source idea leads to.",
+    answerPath: "find the source idea, trace its consequence, and",
+    keyPoint: "State the consequence of the source idea.",
+    answerVerb: "trace",
+  },
+  {
+    id: "example",
+    label: "example",
+    stemFocus: "connect the source idea to a grounded example",
+    optionLead: "grounded example",
+    sourceFocus: "Example lens",
+    contextLead: "Use a concrete example that remains inside the selected source.",
+    answerPath: "choose the source idea, build the example, and",
+    keyPoint: "Give a source-grounded example.",
+    answerVerb: "apply",
+  },
+  {
+    id: "misconception",
+    label: "misconception",
+    stemFocus: "separate the source idea from a likely misconception",
+    optionLead: "misconception check",
+    sourceFocus: "Misconception lens",
+    contextLead: "Avoid the tempting but unsupported reading.",
+    answerPath: "spot the misconception, compare it with the source, and",
+    keyPoint: "Correct a likely misconception.",
+    answerVerb: "correct",
+  },
+  {
+    id: "boundary",
+    label: "boundary",
+    stemFocus: "define the boundary of the source idea",
+    optionLead: "boundary condition",
+    sourceFocus: "Boundary lens",
+    contextLead: "Show what the source idea includes and excludes.",
+    answerPath: "define the boundary, separate included and excluded points, and",
+    keyPoint: "Explain the boundary of the idea.",
+    answerVerb: "define",
+  },
+  {
+    id: "process-step",
+    label: "process step",
+    stemFocus: "identify the step or order in the source idea",
+    optionLead: "process step",
+    sourceFocus: "Process-step lens",
+    contextLead: "Read the source idea as an ordered step.",
+    answerPath: "identify the step, place it in order, and",
+    keyPoint: "Use the relevant process step.",
+    answerVerb: "sequence",
+  },
+  {
+    id: "contrast",
+    label: "contrast",
+    stemFocus: "contrast the source idea with a nearby alternative",
+    optionLead: "contrast clue",
+    sourceFocus: "Contrast lens",
+    contextLead: "Contrast the selected source idea with a nearby alternative.",
+    answerPath: "find the source contrast, separate the alternatives, and",
+    keyPoint: "Show the contrast in the source.",
+    answerVerb: "contrast",
+  },
+];
 
 const variantRecipes: VariantRecipe[] = [
   {
@@ -1002,27 +1110,57 @@ function trimToSentence(value: string, maxLength: number) {
 }
 
 function sourceAtomsForConcept(concept: ConceptData) {
-  const text = concept.text.replace(/\s+/g, " ").trim();
-  const sentences = text
-    .split(/(?<=[.!?])\s+/)
-    .map((sentence) => sentence.trim())
-    .filter((sentence) => sentence.length >= 36);
+  const rawText = concept.text.replace(/\r\n/g, "\n").replace(/\r/g, "\n").trim();
+  const text = normalizeSourceFragment(rawText);
+  const paragraphs = rawText
+    .split(/\n\s*\n+/)
+    .map(normalizeSourceFragment)
+    .filter((paragraph) => paragraph.length >= 60);
+  const sentences = sourceSentences(text);
+  const clauses = sourceClauses(text);
   const atoms: Array<{ summary: string; excerpt: string; label: string }> = [];
-  const addAtom = (value: string) => {
-    const summary = trimToSentence(value, 240);
+  const addAtom = (value: string, labelHint = "") => {
+    const fragment = normalizeSourceFragment(value);
+    const summary = trimToSentence(fragment, 240);
     if (!summary || summary.length < 36) return;
     atoms.push({
       summary,
-      excerpt: trimToSentence(value, 560),
-      label: keyPhrase(summary),
+      excerpt: trimToSentence(fragment, 560),
+      label: keyPhrase(`${labelHint} ${summary}`),
     });
   };
 
-  sentences.slice(0, 18).forEach(addAtom);
+  paragraphs.slice(0, 10).forEach((paragraph, index) =>
+    addAtom(paragraph, `paragraph ${index + 1}`),
+  );
+  sentences.slice(0, 24).forEach((sentence, index) =>
+    addAtom(sentence, `sentence ${index + 1}`),
+  );
   for (let index = 0; index < Math.min(sentences.length - 1, 12); index += 1) {
-    addAtom(`${sentences[index]} ${sentences[index + 1]}`);
+    addAtom(
+      `${sentences[index]} ${sentences[index + 1]}`,
+      `sentence-window ${index + 1}`,
+    );
   }
-  addAtom(text);
+  for (let index = 0; index < Math.min(sentences.length - 2, 8); index += 1) {
+    addAtom(
+      `${sentences[index]} ${sentences[index + 1]} ${sentences[index + 2]}`,
+      `paragraph-window ${index + 1}`,
+    );
+  }
+  clauses.slice(0, 28).forEach((clause, index) =>
+    addAtom(clause, `clause ${index + 1}`),
+  );
+  for (let index = 0; index < Math.min(clauses.length - 1, 24); index += 1) {
+    addAtom(`${clauses[index]} ${clauses[index + 1]}`, `clause-window ${index + 1}`);
+  }
+  for (let index = 0; index < Math.min(clauses.length - 2, 16); index += 1) {
+    addAtom(
+      `${clauses[index]} ${clauses[index + 1]} ${clauses[index + 2]}`,
+      `clause-window ${index + 1}`,
+    );
+  }
+  addAtom(text, "full-source");
 
   const seen = new Set<string>();
   return atoms
@@ -1032,7 +1170,30 @@ function sourceAtomsForConcept(concept: ConceptData) {
       seen.add(key);
       return true;
     })
-    .slice(0, 32);
+    .slice(0, 96);
+}
+
+function normalizeSourceFragment(value: string) {
+  return value.replace(/\s+/g, " ").trim();
+}
+
+function sourceSentences(text: string) {
+  const sentenceParts = text
+    .split(/(?<=[.!?])\s+/)
+    .map(normalizeSourceFragment)
+    .filter((sentence) => sentence.length >= 36);
+
+  if (sentenceParts.length > 1) return sentenceParts;
+  return text ? [text] : [];
+}
+
+function sourceClauses(text: string) {
+  return text
+    .split(
+      /[,;:]|\s+-\s+|\s+(?:and|but|because|when|where|while|which|that|therefore|however)\s+/i,
+    )
+    .map(normalizeSourceFragment)
+    .filter((clause) => clause.length >= 24);
 }
 
 function keyPhrase(value: string) {
@@ -1098,7 +1259,50 @@ function oneWordAnswer(topic: string) {
 }
 
 function variantRecipeFor(index: number) {
-  return variantRecipes[Math.abs(index - 1) % variantRecipes.length];
+  const normalizedIndex = Math.abs(index - 1);
+  const recipe = variantRecipes[normalizedIndex % variantRecipes.length];
+  const lens =
+    variantLenses[
+      Math.floor(normalizedIndex / variantRecipes.length) % variantLenses.length
+    ];
+
+  return applyVariantLens(recipe, lens);
+}
+
+function variantSlotCount() {
+  return variantRecipes.length * variantLenses.length;
+}
+
+function applyVariantLens(
+  recipe: VariantRecipe,
+  lens: VariantLens,
+): VariantRecipe {
+  return {
+    ...recipe,
+    id: `${recipe.id}-${lens.id}`,
+    label: `${recipe.label} ${lens.label}`,
+    mcqStem: `${recipe.mcqStem} with a ${lens.label} lens that ${lens.stemFocus}`,
+    optionLead: `${recipe.optionLead}; ${lens.optionLead}`,
+    sourceFocus: `${recipe.sourceFocus}; ${lens.sourceFocus}`,
+    sourceLead: `${recipe.sourceLead} ${lens.contextLead}`,
+    caseLead: `${recipe.caseLead} ${lens.contextLead}`,
+    trueFalseLead: `${recipe.trueFalseLead}, with a ${lens.label} check,`,
+    shortStem: `${recipe.shortStem} with a ${lens.label} lens`,
+    shortAnswer: `${recipe.shortAnswer} ${lens.keyPoint}`,
+    paragraphLead: `${recipe.paragraphLead} ${lens.contextLead}`,
+    paragraphQuestion: `${recipe.paragraphQuestion} with a ${lens.label} focus`,
+    hotsStem: `${recipe.hotsStem} through a ${lens.label} lens`,
+    hotsAnswer: `${recipe.hotsAnswer} ${lens.keyPoint}`,
+    competencyStem: `${recipe.competencyStem} with a ${lens.label} focus`,
+    diagramStem: `${recipe.diagramStem} using a ${lens.label} lens`,
+    practicalStem: `${recipe.practicalStem} with a ${lens.label} focus`,
+    longStem: `${recipe.longStem} with a ${lens.label} lens`,
+    ncertStem: `${recipe.ncertStem} with a ${lens.label} focus`,
+    keyPoint: `${recipe.keyPoint} ${lens.keyPoint}`,
+    explanationLead: `${recipe.explanationLead} using the ${lens.label} lens`,
+    answerPath: `${recipe.answerPath} ${lens.answerPath}`,
+    answerVerb: lens.answerVerb,
+  };
 }
 
 function topicSentence(topic: string) {

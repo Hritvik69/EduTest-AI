@@ -206,6 +206,39 @@ describe("source-backed completion", () => {
     );
   });
 
+  it("completes the 16-question 14-valid source-shortage screenshot case", () => {
+    const totalQuestions = 16;
+    const paperConfig = {
+      ...config,
+      totalQuestions,
+      totalMarks: totalQuestions,
+      typeDistribution: { MCQ: totalQuestions },
+    };
+    const blueprint = blueprintForCount(totalQuestions);
+    const aiCandidates = [
+      ...Array.from({ length: 14 }, (_, index) => mcq(index + 1)),
+      mcq(1),
+      mcq(2),
+    ];
+    const bank = new QuestionCandidateBank(aiCandidates, blueprint, paperConfig);
+
+    expect(bank.readyCount()).toBe(14);
+    expect(bank.missingCount()).toBe(2);
+
+    const completed = completeQuestionBankWithSourceBackedFallback({
+      bank,
+      concepts: [longParagraphConcept()],
+      config: paperConfig,
+    });
+
+    expect(completed).toHaveLength(2);
+    expect(bank.readyCount()).toBe(16);
+    expect(bank.missingCount()).toBe(0);
+    expect(completed.every((question) =>
+      question.noveltyAngle?.startsWith(sourceBackedCompletionMarker),
+    )).toBe(true);
+  });
+
   it("survives duplicate pressure across stems, options, and answer metadata", () => {
     const totalQuestions = 28;
     const paperConfig = {
@@ -278,6 +311,32 @@ describe("source-backed completion", () => {
     expect(completed.every((question) => question.source === "pdf")).toBe(true);
   });
 
+  it("uses one long paragraph as clause and lens atoms for large completion", () => {
+    const totalQuestions = 24;
+    const paperConfig = {
+      ...config,
+      totalQuestions,
+      totalMarks: totalQuestions,
+      typeDistribution: { MCQ: totalQuestions },
+    };
+    const blueprint = blueprintForCount(totalQuestions);
+    const bank = new QuestionCandidateBank([], blueprint, paperConfig);
+
+    const completed = completeQuestionBankWithSourceBackedFallback({
+      bank,
+      concepts: [longParagraphConcept()],
+      config: paperConfig,
+    });
+
+    expect(completed).toHaveLength(24);
+    expect(bank.readyCount()).toBe(24);
+    expect(bank.missingCount()).toBe(0);
+    expect(new Set(completed.map((question) => question.noveltyAngle))).toHaveProperty(
+      "size",
+      24,
+    );
+  });
+
   it("does not use outline-only curriculum concepts", () => {
     const blueprint = blueprintForCount(3);
     const paperConfig = {
@@ -295,6 +354,32 @@ describe("source-backed completion", () => {
           text: "Dialogue inference",
           type: "CURRICULUM_TOPIC",
           source: "curriculum",
+        },
+      ],
+      config: paperConfig,
+    });
+
+    expect(completed).toEqual([]);
+    expect(bank.readyCount()).toBe(1);
+    expect(bank.missingCount()).toBe(2);
+  });
+
+  it("does not use too-short selected TXT as deterministic source material", () => {
+    const blueprint = blueprintForCount(3);
+    const paperConfig = {
+      ...config,
+      totalQuestions: 3,
+      totalMarks: 3,
+      typeDistribution: { MCQ: 3 },
+    };
+    const bank = new QuestionCandidateBank([mcq(1)], blueprint, paperConfig);
+    const completed = completeQuestionBankWithSourceBackedFallback({
+      bank,
+      concepts: [
+        {
+          ...concepts[0],
+          text: "Brief source note only.",
+          source: "ncert_txt",
         },
       ],
       config: paperConfig,
@@ -336,6 +421,16 @@ function concept(topicId: number, topicName: string, text: string): ConceptData 
     topicId,
     source: "ncert_txt",
   };
+}
+
+function longParagraphConcept(): ConceptData {
+  return concept(
+    20,
+    "Dialogue evidence",
+    [
+      "The selected NCERT passage presents a conversation where the speaker chooses careful words to avoid open conflict, the listener notices the polite pause, the setting creates pressure, the reply uses wit instead of anger, the surrounding action shows hesitation, the final sentence changes the tone, the chapter links this response to social intelligence, the evidence asks students to connect word choice with intention, the passage also contrasts direct accusation with thoughtful explanation, the learner must separate a supported inference from a guess, the vocabulary clue depends on context, the conclusion should mention the exact dialogue detail, and the answer should remain grounded in the selected text.",
+    ].join(" "),
+  );
 }
 
 function mcq(index: number): GeneratedQuestion {

@@ -75,6 +75,7 @@ export type SourceBackedDistinctnessProof = {
   differentOptionSignature: boolean;
   differentSubQuestionSignature: boolean;
   repeatedAnswerPath: boolean;
+  hasStructuralDifference: boolean;
   score: number;
   allowSoftSimilarity: boolean;
 };
@@ -317,6 +318,11 @@ export function sourceBackedDistinctnessProof(
     differentOptionSignature,
     differentSubQuestionSignature,
   ].filter(Boolean).length;
+  const hasStructuralDifference = Boolean(
+    differentScenario ||
+      differentOptionSignature ||
+      differentSubQuestionSignature,
+  );
 
   const allowSoftSimilarity =
     sourceBackedInvolved &&
@@ -325,6 +331,7 @@ export function sourceBackedDistinctnessProof(
       ? (differentAtom || differentAngle) && score >= 3
       : !repeatedAnswerPath &&
         score >= 4 &&
+        hasStructuralDifference &&
         differentAnswerPath &&
         differentSourceChunkFocus);
 
@@ -340,6 +347,7 @@ export function sourceBackedDistinctnessProof(
     differentOptionSignature,
     differentSubQuestionSignature,
     repeatedAnswerPath,
+    hasStructuralDifference,
     score,
     allowSoftSimilarity,
   };
