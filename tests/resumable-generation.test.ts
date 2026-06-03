@@ -20,6 +20,9 @@ describe("resumable paper generation wiring", () => {
     expect(route).toMatch(/setPaperGenerationState/);
     expect(route).toMatch(/GENERATION_CONTINUE_AVAILABLE/);
     expect(route).toMatch(/sourceContextHash/);
+    expect(route).toMatch(/readyQuestionCount/);
+    expect(route).toMatch(/targetQuestionCount/);
+    expect(route).toMatch(/missingQuestionCount/);
     expect(store).toMatch(/generationState/);
     expect(store).toMatch(/error_metadata/);
     expect(bank).toMatch(/candidateQuestions/);
@@ -38,6 +41,8 @@ describe("resumable paper generation wiring", () => {
     expect(overlay).toMatch(/resumePaperId/);
     expect(overlay).toMatch(/GENERATION_CONTINUE_AVAILABLE/);
     expect(overlay).toMatch(/Continuing saved generation/);
-    expect(overlay).toMatch(/retry continues it/);
+    expect(overlay).toMatch(/autoContinueAttempts/);
+    expect(overlay).toMatch(/maxAutoContinueAttempts/);
+    expect(overlay).toMatch(/setRetryNonce/);
   });
 });

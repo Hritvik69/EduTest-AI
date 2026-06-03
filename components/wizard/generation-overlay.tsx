@@ -72,10 +72,15 @@ export function GenerationOverlay({
     auth?: boolean;
     paperId?: number;
     recoverable?: boolean;
+    readyQuestionCount?: number;
+    targetQuestionCount?: number;
+    missingQuestionCount?: number;
   } | null>(null);
   const [resumePaperId, setResumePaperId] = React.useState<number | null>(null);
   const [retryNonce, setRetryNonce] = React.useState(0);
   const started = React.useRef(false);
+  const autoContinueAttempts = React.useRef(0);
+  const autoContinueTimer = React.useRef<number | null>(null);
   const requestConfig = React.useMemo(
     () =>
       providerOverride
@@ -98,6 +103,8 @@ export function GenerationOverlay({
     if (open) return;
     let cancelled = false;
     started.current = false;
+    clearAutoContinueTimer(autoContinueTimer);
+    autoContinueAttempts.current = 0;
     queueMicrotask(() => {
       if (cancelled) return;
       setActiveIndex(0);
@@ -265,7 +272,12 @@ export function GenerationOverlay({
                 stringValue(data.msg) ?? "Paper generation failed.",
                 stringValue(data.code) ?? numberValue(data.code),
                 streamedPaperId ?? undefined,
-                status === "CONTINUING",
+                {
+                  recoverable: status === "CONTINUING",
+                  readyQuestionCount: numberValue(data.readyQuestionCount),
+                  targetQuestionCount: numberValue(data.targetQuestionCount),
+                  missingQuestionCount: numberValue(data.missingQuestionCount),
+                },
               );
             }
 
@@ -320,6 +332,8 @@ export function GenerationOverlay({
               }
               safeSessionRemove(inFlightKey);
               setResumePaperId(null);
+              autoContinueAttempts.current = 0;
+              clearAutoContinueTimer(autoContinueTimer);
               router.push(`/papers/${paperId}/preview`);
             }
           });
@@ -353,12 +367,38 @@ export function GenerationOverlay({
         const code = getErrorCode(error);
         const recoverable = isRecoverableGenerationError(error);
         const recoverablePaperId = getErrorPaperId(error) ?? savedPaperId ?? null;
+        const continuation = continuationProgressFromError(error);
+        if (
+          recoverable &&
+          recoverablePaperId &&
+          autoContinueAttempts.current < maxAutoContinueAttempts()
+        ) {
+          autoContinueAttempts.current += 1;
+          setResumePaperId(recoverablePaperId);
+          setError(null);
+          setActiveIndex(5);
+          setProgress((value) => Math.max(value, 92));
+          setCurrentMessage(
+            continuationMessage(
+              continuation,
+              autoContinueAttempts.current,
+              recoverablePaperId,
+            ),
+          );
+          autoContinueTimer.current = window.setTimeout(() => {
+            if (cancelled) return;
+            started.current = false;
+            setRetryNonce((value) => value + 1);
+          }, autoContinueDelayMs());
+          return;
+        }
         setResumePaperId(recoverable ? recoverablePaperId : null);
         setError({
           message,
           code,
-          paperId: getErrorPaperId(error),
+          paperId: recoverablePaperId ?? undefined,
           recoverable,
+          ...continuation,
         });
         toast.error(message);
       } finally {
@@ -373,6 +413,7 @@ export function GenerationOverlay({
       controller.abort();
       window.clearTimeout(slowTimer);
       window.clearTimeout(hardTimer);
+      clearAutoContinueTimer(autoContinueTimer);
       safeSessionRemove(inFlightKey);
     };
   }, [
@@ -395,6 +436,8 @@ export function GenerationOverlay({
   function retry() {
     safeSessionRemove(`edutest:generation:${idempotencyKey}`);
     setSalvageInvalidQuestions(true);
+    autoContinueAttempts.current = 0;
+    clearAutoContinueTimer(autoContinueTimer);
     setResumePaperId(error?.recoverable ? error.paperId ?? resumePaperId : null);
     started.current = false;
     setRetryNonce((value) => value + 1);
@@ -403,6 +446,8 @@ export function GenerationOverlay({
   function retryWithAutoFallback() {
     safeSessionRemove(`edutest:generation:${idempotencyKey}`);
     setSalvageInvalidQuestions(true);
+    autoContinueAttempts.current = 0;
+    clearAutoContinueTimer(autoContinueTimer);
     setResumePaperId(error?.recoverable ? error.paperId ?? resumePaperId : null);
     setProviderOverride("AUTO");
     started.current = false;
@@ -412,6 +457,8 @@ export function GenerationOverlay({
   function skipAndReplaceQuestions() {
     safeSessionRemove(`edutest:generation:${idempotencyKey}`);
     setSalvageInvalidQuestions(true);
+    autoContinueAttempts.current = 0;
+    clearAutoContinueTimer(autoContinueTimer);
     setResumePaperId(error?.recoverable ? error.paperId ?? resumePaperId : null);
     setCurrentMessage("Skipping broken questions and replacing what can be rebuilt...");
     started.current = false;
@@ -581,13 +628,45 @@ function generationError(
   message: string,
   code?: string | number,
   paperId?: number,
-  recoverable?: boolean,
+  options: {
+    recoverable?: boolean;
+    readyQuestionCount?: number;
+    targetQuestionCount?: number;
+    missingQuestionCount?: number;
+  } = {},
 ) {
   const error = new Error(message);
   (error as Error & { code?: string | number }).code = code;
   (error as Error & { paperId?: number }).paperId = paperId;
-  (error as Error & { recoverable?: boolean }).recoverable =
-    recoverable || code === "GENERATION_CONTINUE_AVAILABLE";
+  (
+    error as Error & {
+      recoverable?: boolean;
+      readyQuestionCount?: number;
+      targetQuestionCount?: number;
+      missingQuestionCount?: number;
+    }
+  ).recoverable = options.recoverable || code === "GENERATION_CONTINUE_AVAILABLE";
+  (
+    error as Error & {
+      readyQuestionCount?: number;
+      targetQuestionCount?: number;
+      missingQuestionCount?: number;
+    }
+  ).readyQuestionCount = options.readyQuestionCount;
+  (
+    error as Error & {
+      readyQuestionCount?: number;
+      targetQuestionCount?: number;
+      missingQuestionCount?: number;
+    }
+  ).targetQuestionCount = options.targetQuestionCount;
+  (
+    error as Error & {
+      readyQuestionCount?: number;
+      targetQuestionCount?: number;
+      missingQuestionCount?: number;
+    }
+  ).missingQuestionCount = options.missingQuestionCount;
   return error;
 }
 
@@ -683,6 +762,56 @@ function isRecoverableGenerationError(error: unknown) {
     return Boolean((error as { recoverable?: unknown }).recoverable);
   }
   return getErrorCode(error) === "GENERATION_CONTINUE_AVAILABLE";
+}
+
+function continuationProgressFromError(error: unknown) {
+  if (!error || typeof error !== "object") return {};
+  const record = error as {
+    readyQuestionCount?: unknown;
+    targetQuestionCount?: unknown;
+    missingQuestionCount?: unknown;
+  };
+  return {
+    readyQuestionCount: numberValue(record.readyQuestionCount),
+    targetQuestionCount: numberValue(record.targetQuestionCount),
+    missingQuestionCount: numberValue(record.missingQuestionCount),
+  };
+}
+
+function continuationMessage(
+  progress: {
+    readyQuestionCount?: number;
+    targetQuestionCount?: number;
+    missingQuestionCount?: number;
+  },
+  attempt: number,
+  paperId: number,
+) {
+  const countLabel =
+    progress.readyQuestionCount && progress.targetQuestionCount
+      ? `${progress.readyQuestionCount}/${progress.targetQuestionCount}`
+      : "saved";
+  const missingLabel = progress.missingQuestionCount
+    ? ` ${progress.missingQuestionCount} missing question${
+        progress.missingQuestionCount === 1 ? "" : "s"
+      } remain.`
+    : "";
+
+  return `Continuing from ${countLabel} valid questions in paper #${paperId}.${missingLabel} Auto-continue ${attempt}/${maxAutoContinueAttempts()}...`;
+}
+
+function maxAutoContinueAttempts() {
+  return 6;
+}
+
+function autoContinueDelayMs() {
+  return 900;
+}
+
+function clearAutoContinueTimer(timerRef: React.MutableRefObject<number | null>) {
+  if (timerRef.current === null) return;
+  window.clearTimeout(timerRef.current);
+  timerRef.current = null;
 }
 
 function isQuestionOutputError(

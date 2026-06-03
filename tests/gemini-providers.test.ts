@@ -214,10 +214,21 @@ describe("multi-provider JSON generation", () => {
   it("uses task-specific Auto fallback order for question generation", async () => {
     process.env.MISTRAL_API_KEY = "mistral-test-key";
     process.env.CEREBRAS_API_KEY = "csk-test-key";
+    process.env.XAI_API_KEY = "xai-test-key";
     process.env.DEEPSEEK_API_KEY = "deepseek-test-key";
     process.env.OPENROUTER_API_KEY = "sk-or-test-key";
     const fetchMock = vi
       .fn()
+      .mockResolvedValueOnce(
+        new Response("busy", {
+          status: 503,
+        }),
+      )
+      .mockResolvedValueOnce(
+        new Response("busy", {
+          status: 503,
+        }),
+      )
       .mockResolvedValueOnce(
         new Response("busy", {
           status: 503,
@@ -233,9 +244,23 @@ describe("multi-provider JSON generation", () => {
     });
 
     expect(result.fallback).toBe("cerebras");
-    expect(fetchMock).toHaveBeenCalledTimes(2);
-    expect(fetchMock.mock.calls[0][0]).toBe("https://api.deepseek.com/chat/completions");
-    expect(fetchMock.mock.calls[1][0]).toBe("https://api.mistral.ai/v1/chat/completions");
+    expect(fetchMock).toHaveBeenCalledTimes(4);
+    expect(fetchMock.mock.calls[0][0]).toBe("https://api.x.ai/v1/chat/completions");
+    expect(fetchMock.mock.calls[1][0]).toBe("https://api.deepseek.com/chat/completions");
+    expect(fetchMock.mock.calls[2][0]).toBe("https://api.mistral.ai/v1/chat/completions");
+    expect(fetchMock.mock.calls[3][0]).toBe(
+      "https://api.cerebras.ai/v1/chat/completions",
+    );
+  });
+
+  it("reports Grok as configured when XAI_API_KEY exists", async () => {
+    process.env.XAI_API_KEY = "xai-test-key";
+    const { getAIProviderStatus } = await import("@/lib/gemini");
+
+    expect(getAIProviderStatus()).toMatchObject({
+      grok: true,
+      grokModel: "grok-4.3",
+    });
   });
 
   it("records safe AI usage metadata without storing prompts", async () => {

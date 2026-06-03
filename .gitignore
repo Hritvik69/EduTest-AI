@@ -21,3 +21,5 @@ NCERT_Books/**
 !NCERT_Books/**/_extracted_text/**/*.txt
 NCERT_Books/**/*.pdf
 -
+
+.vercel

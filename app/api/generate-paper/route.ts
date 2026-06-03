@@ -660,6 +660,10 @@ export async function POST(request: NextRequest) {
         }
 
         if (!request.signal.aborted && !streamClosed) {
+          const continuationState =
+            canContinueGeneration && paperId
+              ? await getPaperGenerationState(paperId, auth.user.id).catch(() => null)
+              : null;
           send(
             {
               error: true,
@@ -667,6 +671,9 @@ export async function POST(request: NextRequest) {
               msg: generationErrorMessage(error),
               generationJobId,
               paperId,
+              readyQuestionCount: continuationState?.readyQuestionCount,
+              targetQuestionCount: continuationState?.targetQuestionCount,
+              missingQuestionCount: continuationState?.missingQuestionCount,
               status: canContinueGeneration
                 ? "CONTINUING"
                 : paperStatusSaved
