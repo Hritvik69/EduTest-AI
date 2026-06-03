@@ -265,14 +265,12 @@ describe("multi-provider JSON generation", () => {
 
   it("reports Grok as configured but unusable when xAI rejects the key", async () => {
     process.env.XAI_API_KEY = "xai-test-key";
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
-        new Response("invalid api key", {
-          status: 401,
-        }),
-      ),
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response("invalid api key", {
+        status: 401,
+      }),
     );
+    vi.stubGlobal("fetch", fetchMock);
     const { checkAIProviderHealth } = await import("@/lib/gemini");
 
     const health = await checkAIProviderHealth({
@@ -288,6 +286,10 @@ describe("multi-provider JSON generation", () => {
       lastFailureClass: "auth",
     });
     expect(health.grokUsable).toBe(false);
+    const body = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
+    expect(body.temperature).toBe(0.1);
+    expect(body.top_p).toBe(1);
+    expect(body.max_tokens).toBe(128);
   });
 
   it("tries Grok model aliases when the configured xAI model is unavailable", async () => {
