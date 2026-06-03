@@ -330,6 +330,25 @@ export function allocateDifficultyTargetsForSections(
     }
   });
 
+  if (selectedDifficulty === "ABSURD") {
+    while (remainingBySection.some((count) => count > 0)) {
+      const sectionIndex = bestRemainingSectionIndex(remainingBySection);
+      const difficulty = chooseFlexibleAbsurdDifficulty(allowedBySection[sectionIndex]);
+
+      if (!difficulty) {
+        throw new Error(
+          `Selected formats cannot provide advanced questions for ${selectedDifficulty}.`,
+        );
+      }
+
+      allocations[sectionIndex][difficulty] += 1;
+      actualTotals[difficulty] += 1;
+      remainingBySection[sectionIndex] -= 1;
+    }
+
+    return Object.fromEntries(allocations.map((allocation, index) => [index, allocation]));
+  }
+
   const selectedMinimum = Math.ceil((protocol.mix[selectedDifficulty] / 100) * total);
   const selectedCapacity = capacityForDifficulty(
     selectedDifficulty,
@@ -521,6 +540,10 @@ export function validateFinalDifficultyDistribution(
     return acc;
   }, emptyDifficultyCounts());
   const total = questions.length;
+
+  if (selectedDifficulty === "ABSURD") {
+    return { actual, targets };
+  }
 
   for (const difficulty of difficultyOrder) {
     if (difficulty === selectedDifficulty) {
@@ -738,6 +761,12 @@ function bestRemainingSectionIndex(remainingBySection: number[]) {
   });
 
   return bestIndex;
+}
+
+function chooseFlexibleAbsurdDifficulty(allowed: Difficulty[]) {
+  if (allowed.includes("ABSURD")) return "ABSURD";
+  if (allowed.includes("HARD")) return "HARD";
+  return null;
 }
 
 function chooseDifficultyForSectionRemainder(

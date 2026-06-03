@@ -1257,6 +1257,7 @@ function applyDifficultyGovernance(
     sectionDifficultyTargets,
     acceptedQuestions,
   );
+  const enforceDifficultyBuckets = config.difficulty !== "ABSURD";
   const accepted: GeneratedQuestion[] = [];
   const rejected: Array<{ question: GeneratedQuestion; reason: string }> = [];
 
@@ -1275,7 +1276,10 @@ function applyDifficultyGovernance(
       return;
     }
 
-    if (remainingTargets[result.validatedDifficulty] <= 0) {
+    if (
+      enforceDifficultyBuckets &&
+      remainingTargets[result.validatedDifficulty] <= 0
+    ) {
       rejected.push({
         question,
         reason: `${result.validatedDifficulty} target already satisfied`,
@@ -1283,7 +1287,9 @@ function applyDifficultyGovernance(
       return;
     }
 
-    remainingTargets[result.validatedDifficulty] -= 1;
+    if (enforceDifficultyBuckets) {
+      remainingTargets[result.validatedDifficulty] -= 1;
+    }
     accepted.push(result.question);
   });
 

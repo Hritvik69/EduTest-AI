@@ -93,6 +93,16 @@ describe("difficulty protocol", () => {
     ).toThrow(/cannot be generated|requires at least/);
   });
 
+  it("lets absurd papers use advanced formats without an exact absurd minimum", () => {
+    const allocation = allocateDifficultyTargetsForSections("ABSURD", [
+      { questionType: "MCQ", count: 19 },
+      { questionType: "ASSERTION_REASON", count: 6 },
+    ]);
+
+    expect(allocation[0]).toMatchObject({ HARD: 0, ABSURD: 19 });
+    expect(allocation[1]).toMatchObject({ HARD: 6, ABSURD: 0 });
+  });
+
   it("replaces medium-ceiling one-mark formats before absurd generation", () => {
     const config: PaperConfig = {
       classNum: 9,
@@ -162,6 +172,19 @@ describe("difficulty protocol", () => {
     expect(() => validateFinalDifficultyDistribution(questions, "HARD")).toThrow(
       /violates/,
     );
+  });
+
+  it("does not fail absurd final papers only because valid advanced questions are hard", () => {
+    const questions: GeneratedQuestion[] = Array.from({ length: 25 }, (_, index) => ({
+      ...questionBase(),
+      text: `Advanced question ${index} requires reasoning from the selected source.`,
+      difficulty: index < 19 ? ("ABSURD" as const) : ("HARD" as const),
+      validatedDifficulty: index < 19 ? ("ABSURD" as const) : ("HARD" as const),
+      bloomLevel: index < 19 ? ("EVALUATE" as const) : ("ANALYZE" as const),
+      reasoningSteps: index < 19 ? 5 : 4,
+    }));
+
+    expect(() => validateFinalDifficultyDistribution(questions, "ABSURD")).not.toThrow();
   });
 });
 
