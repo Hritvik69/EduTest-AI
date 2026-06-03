@@ -476,6 +476,7 @@ export function GenerationOverlay({
   const provider = requestConfig.aiProvider ?? "AUTO";
   const providerModel = modelForProvider(provider, providerStatus);
   const canSkipAndReplace = isQuestionOutputError(error);
+  const canRetry = !isSourceTextShortageError(error);
   const timing = generationTimingSnapshot(progress, generationStartedAt, generationNow);
 
   return (
@@ -579,7 +580,7 @@ export function GenerationOverlay({
                 Open Dashboard
               </Button>
             ) : null}
-            {provider !== "AUTO" ? (
+            {provider !== "AUTO" && canRetry ? (
               <Button
                 type="button"
                 className="flex-1 sm:col-span-2"
@@ -600,10 +601,12 @@ export function GenerationOverlay({
                 Skip & Replace
               </Button>
             ) : null}
-            <Button type="button" className="flex-1" onClick={retry}>
-              <RefreshCw className="h-4 w-4" />
-              Retry
-            </Button>
+            {canRetry ? (
+              <Button type="button" className="flex-1" onClick={retry}>
+                <RefreshCw className="h-4 w-4" />
+                Retry
+              </Button>
+            ) : null}
           </div>
         ) : onClose ? (
           <div className="mt-4 flex justify-center">
@@ -766,10 +769,26 @@ function getErrorPaperId(error: unknown) {
 }
 
 function isRecoverableGenerationError(error: unknown) {
+  if (isSourceTextShortageError(error)) return false;
   if (error && typeof error === "object" && "recoverable" in error) {
     return Boolean((error as { recoverable?: unknown }).recoverable);
   }
   return getErrorCode(error) === "GENERATION_CONTINUE_AVAILABLE";
+}
+
+function isSourceTextShortageError(
+  error: { message?: string; code?: string | number } | unknown,
+) {
+  if (!error || typeof error !== "object") return false;
+  const code = "code" in error ? (error as { code?: unknown }).code : undefined;
+  const message = "message" in error ? (error as { message?: unknown }).message : undefined;
+  return (
+    code === "SOURCE_TEXT_NOT_ENOUGH" ||
+    (typeof message === "string" &&
+      /Selected source text (?:is not enough|did not provide enough distinct material)/i.test(
+        message,
+      ))
+  );
 }
 
 function continuationProgressFromError(error: unknown) {

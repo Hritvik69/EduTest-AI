@@ -67,8 +67,12 @@ describe("fresh question generation invariant", () => {
     expect(route).toMatch(/QuestionCandidateBank/);
     expect(route).toMatch(/candidateReserveCount/);
     expect(route).toMatch(/stripGenerationMetadataFromQuestions/);
+    expect(route).toMatch(/completeQuestionBankWithSourceBackedFallback/);
+    expect(route).toMatch(/generateSourceBackedProviderOutageQuestions/);
+    expect(route).toMatch(/hasSourceBackedFallbackConcepts/);
+    expect(route).toMatch(/providers unavailable; generating from selected TXT\/PDF/);
+    expect(route).toMatch(/sourceBackedCompletionMarker/);
     expect(route).not.toMatch(/completeWithSourceBackedGenerationFallback/);
-    expect(route).not.toMatch(/sourceBackedFallback/);
     expect(generator).toMatch(/NCERT_BOOKS_TXT/);
     expect(generator).toMatch(/Do not copy source lines verbatim/);
     expect(generator).toMatch(/candidate_count/);

@@ -67,8 +67,10 @@ export function isDuplicateQuestion(left: QuestionLike, right: QuestionLike) {
 }
 
 export function duplicateQuestionReason(left: QuestionLike, right: QuestionLike) {
+  const distinctSourceBackedPair = isDistinctSourceBackedCompletionPair(left, right);
+
   if (isDuplicateQuestionText(left.text, right.text)) {
-    return "near-duplicate question stem";
+    return distinctSourceBackedPair ? null : "near-duplicate question stem";
   }
 
   const sameType = normalizeSmall(left.type) === normalizeSmall(right.type);
@@ -81,7 +83,7 @@ export function duplicateQuestionReason(left: QuestionLike, right: QuestionLike)
     right.scenario &&
     isDuplicateQuestionText(left.scenario, right.scenario)
   ) {
-    return "near-duplicate scenario";
+    return distinctSourceBackedPair ? null : "near-duplicate scenario";
   }
 
   const leftAnswer = answerSignature(left);
@@ -93,7 +95,7 @@ export function duplicateQuestionReason(left: QuestionLike, right: QuestionLike)
     isMeaningfulAnswerSignature(leftAnswer) &&
     isDuplicateQuestionText(leftAnswer, rightAnswer)
   ) {
-    return "repeated answer path";
+    return distinctSourceBackedPair ? null : "repeated answer path";
   }
 
   const leftAnswerPath = normalizeQuestionText(left.answerPath ?? "");
@@ -105,7 +107,7 @@ export function duplicateQuestionReason(left: QuestionLike, right: QuestionLike)
     isMeaningfulAnswerSignature(leftAnswerPath) &&
     isDuplicateQuestionText(leftAnswerPath, rightAnswerPath)
   ) {
-    return "repeated answer path metadata";
+    return distinctSourceBackedPair ? null : "repeated answer path metadata";
   }
 
   const leftNovelty = normalizeQuestionText(left.noveltyAngle ?? "");
@@ -128,7 +130,7 @@ export function duplicateQuestionReason(left: QuestionLike, right: QuestionLike)
     isMeaningfulOptionSignature(leftOptions) &&
     leftOptions === rightOptions
   ) {
-    return "repeated option pattern";
+    return distinctSourceBackedPair ? null : "repeated option pattern";
   }
 
   const leftSubQuestions = subQuestionSignature(left);
@@ -139,10 +141,32 @@ export function duplicateQuestionReason(left: QuestionLike, right: QuestionLike)
     rightSubQuestions &&
     isDuplicateQuestionText(leftSubQuestions, rightSubQuestions)
   ) {
-    return "near-duplicate sub-question pattern";
+    return distinctSourceBackedPair ? null : "near-duplicate sub-question pattern";
   }
 
   return null;
+}
+
+function isDistinctSourceBackedCompletionPair(left: QuestionLike, right: QuestionLike) {
+  const leftNovelty = left.noveltyAngle ?? "";
+  const rightNovelty = right.noveltyAngle ?? "";
+  if (
+    !leftNovelty.includes("SOURCE_BACKED_COMPLETION") ||
+    !rightNovelty.includes("SOURCE_BACKED_COMPLETION") ||
+    leftNovelty === rightNovelty
+  ) {
+    return false;
+  }
+
+  const leftFocus = normalizeQuestionText(left.sourceChunkFocus ?? "");
+  const rightFocus = normalizeQuestionText(right.sourceChunkFocus ?? "");
+  const leftPath = normalizeQuestionText(left.answerPath ?? "");
+  const rightPath = normalizeQuestionText(right.answerPath ?? "");
+
+  return Boolean(
+    (leftFocus && rightFocus && leftFocus !== rightFocus) ||
+      (leftPath && rightPath && leftPath !== rightPath),
+  );
 }
 
 export function uniqueQuestionsByText<T extends QuestionLike>(

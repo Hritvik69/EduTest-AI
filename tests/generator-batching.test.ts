@@ -638,7 +638,7 @@ describe("generateQuestionsForSection batching", () => {
     expect(promptConfig.total_candidate_questions).toBeGreaterThan(16);
     expect(promptConfig.sections?.[0]).toMatchObject({
       required_count: 16,
-      candidate_count: 22,
+      candidate_count: 24,
     });
   });
 

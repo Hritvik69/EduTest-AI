@@ -99,6 +99,33 @@ export interface GenerationManifest {
     replacedQuestions: number;
     warnings: string[];
   };
+  coverage?: {
+    strict: boolean;
+    generated: Array<{
+      subject: string;
+      chapterId?: number;
+      chapterName?: string;
+      topicId?: number;
+      topicName?: string;
+      questionType: string;
+      requestedQuestions: number;
+      generatedQuestions: number;
+      generationMode: "ai" | "source_backed_provider_outage";
+      sourceConcepts: number;
+      sourceTextChunks: number;
+      sourceQuality: "strong" | "weak" | "outline_only" | "missing";
+    }>;
+    planned: Array<{
+      subject: string;
+      chapterId?: number;
+      chapterName?: string;
+      topicId?: number;
+      topicName?: string;
+      questionType: string;
+      requestedQuestions: number;
+      finalQuestions: number;
+    }>;
+  };
   warnings: string[];
 }
 

@@ -1,5 +1,5 @@
 import { isDuplicateQuestion } from "@/lib/question-duplicates";
-import { isSourceTextConcept } from "@/lib/source-types";
+import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
 import type {
   BloomLevel,
   BlueprintSection,
@@ -17,6 +17,67 @@ type FallbackOptions = {
   startIndex?: number;
 };
 
+export const sourceBackedCompletionMarker = "SOURCE_BACKED_COMPLETION";
+
+export function completeQuestionBankWithSourceBackedFallback({
+  bank,
+  concepts,
+  config,
+  startIndex,
+  maxCandidatesPerMissing = 96,
+}: {
+  bank: QuestionCandidateBank;
+  concepts: ConceptData[];
+  config: PaperConfig;
+  startIndex?: number;
+  maxCandidatesPerMissing?: number;
+}) {
+  const missingBefore = bank.missingCount();
+  if (missingBefore <= 0) return [] satisfies GeneratedQuestion[];
+
+  const conceptPool = normalizeConceptPool(concepts, config);
+  if (!conceptPool.length) return [] satisfies GeneratedQuestion[];
+
+  const accepted: GeneratedQuestion[] = [];
+  const candidateSpace = Math.max(1, conceptPool.length * variantRecipes.length);
+  const maxAttempts = Math.min(
+    candidateSpace,
+    Math.max(missingBefore * Math.max(1, Math.floor(maxCandidatesPerMissing)), candidateSpace),
+  );
+  const startSequence = startIndex ?? bank.allCandidates().length + 101;
+  const comparisonQuestions = bank.allCandidates();
+  let attempts = 0;
+
+  while (bank.missingCount() > 0 && attempts < maxAttempts) {
+    const missingSections = bank.missingSections();
+    const section = missingSections[attempts % Math.max(1, missingSections.length)];
+    if (!section) break;
+    const candidate = sourceBackedQuestionForSequence(
+      section,
+      config,
+      conceptPool,
+      startSequence + attempts,
+    );
+
+    attempts += 1;
+    if (
+      comparisonQuestions.some((item) =>
+        isDuplicateQuestion(item, candidate),
+      )
+    ) {
+      continue;
+    }
+
+    if (bank.tryAdd(candidate)) {
+      comparisonQuestions.push(candidate);
+      accepted.push(candidate);
+      continue;
+    }
+  }
+
+  return accepted;
+}
+
 export function generateSourceBackedFallbackQuestions(
   sections: BlueprintSection[],
   concepts: ConceptData[],
@@ -27,23 +88,23 @@ export function generateSourceBackedFallbackQuestions(
   const conceptPool = normalizeConceptPool(concepts, config);
   if (!conceptPool.length) return [];
 
-  let globalIndex = options.startIndex ?? existing.length;
+  let globalIndex = options.startIndex ?? existing.length + 1;
   const generated: GeneratedQuestion[] = [];
 
   for (const section of sections) {
+    let acceptedInSection = 0;
     let attempts = 0;
+    const maxAttempts = Math.max(1, conceptPool.length * variantRecipes.length);
+
     while (
-      generated.filter((question) => question.type === section.questionType).length <
-        section.count &&
-      attempts < section.count * Math.max(8, conceptPool.length)
+      acceptedInSection < section.count &&
+      attempts < maxAttempts
     ) {
-      const concept = conceptPool[globalIndex % conceptPool.length];
-      const question = createSourceBackedQuestion(
-        section.questionType,
+      const question = sourceBackedQuestionForSequence(
         section,
         config,
-        concept,
-        globalIndex + 1,
+        conceptPool,
+        globalIndex,
       );
 
       attempts += 1;
@@ -54,10 +115,11 @@ export function generateSourceBackedFallbackQuestions(
           isDuplicateQuestion(item, question),
         )
       ) {
-        question.text = `${question.text} Use the ${variantFor(globalIndex)} perspective from ${concept.chapter}: ${trimToSentence(concept.summary, 90)}`;
+        continue;
       }
 
       generated.push(question);
+      acceptedInSection += 1;
     }
   }
 
@@ -75,7 +137,10 @@ function createSourceBackedQuestion(
   concept: NormalizedConcept,
   index: number,
 ): GeneratedQuestion {
-  const base = baseQuestion(type, concept, index, section.marksPerQuestion);
+  const variant = variantRecipeFor(index);
+  const base = baseQuestion(type, concept, index, section.marksPerQuestion, variant);
+  const sourceFocus = `${variant.sourceFocus} ${concept.atomId}: ${trimToSentence(concept.summary, 150)}`;
+  const answerPath = `${variant.answerPath} ${topicSentence(concept.topic)} Use source detail ${concept.atomId} (${concept.atomLabel}) to ${variant.answerVerb} the selected ${concept.source === "pdf" ? "PDF" : "NCERT TXT"} idea.`;
 
   const question: GeneratedQuestion = {
     ...base,
@@ -100,13 +165,37 @@ function createSourceBackedQuestion(
     subject: concept.subject,
     classNum: concept.classNum,
     source: concept.source,
+    noveltyAngle: `${sourceBackedCompletionMarker}:${type}:${variant.id}:${concept.atomId}:${index}`,
+    sourceChunkFocus: sourceFocus,
+    answerPath,
     explanation:
       base.explanation ||
-      `The answer is grounded in the selected chapter concept: ${concept.summary}.`,
+      `${variant.explanationLead}: ${concept.summary}`,
   };
 
   if (concept.topicId !== undefined) question.topicId = concept.topicId;
   return question;
+}
+
+function sourceBackedQuestionForSequence(
+  section: BlueprintSection,
+  config: PaperConfig,
+  conceptPool: NormalizedConcept[],
+  sequence: number,
+) {
+  const normalizedSequence = Math.max(0, Math.floor(sequence));
+  const concept =
+    conceptPool[
+      Math.floor(normalizedSequence / variantRecipes.length) % conceptPool.length
+    ];
+
+  return createSourceBackedQuestion(
+    section.questionType,
+    section,
+    config,
+    concept,
+    normalizedSequence + 1,
+  );
 }
 
 function baseQuestion(
@@ -114,124 +203,133 @@ function baseQuestion(
   concept: NormalizedConcept,
   index: number,
   marks: number,
+  variant: VariantRecipe,
 ): Partial<GeneratedQuestion> {
   const topic = concept.topic;
   const summary = concept.summary;
   const excerpt = concept.excerpt;
-  const options = conceptOptions(concept, index);
-  const variant = variantFor(index);
+  const options = conceptOptions(concept, index, variant);
+  const stemTopic = `${topic} in ${concept.chapter}`;
+  const atomPrompt = `source detail ${concept.atomId} on ${concept.atomLabel}`;
 
   switch (type) {
     case "MCQ":
       return {
-        text: `According to the selected chapter, which ${variant} statement best explains ${topic}?`,
+        text: `${variant.mcqStem} the selected detail "${concept.atomLabel}" for ${stemTopic}? Focus: ${variant.keyPoint}`,
         options,
         correctAnswer: "B",
       };
     case "ASSERTION_REASON":
       return {
-        text: `Assertion (A): ${topic} is important in the selected chapter.\nReason (R): ${summary}`,
-        assertion: `${topic} is important in the selected chapter.`,
-        reason: summary,
+        text: `Assertion (A): ${variant.assertion(topic)}\nReason (R): ${variant.reason(summary)}`,
+        assertion: variant.assertion(topic),
+        reason: variant.reason(summary),
         correctAnswer: "A",
       };
     case "TRUE_FALSE":
       return {
-        text: `In the selected chapter, the ${variant} idea shows that ${summary}`,
+        text: `${variant.trueFalseLead} ${summary}`,
         correctAnswer: "True",
       };
     case "ONE_WORD":
       return {
-        text: `Which key term from the selected chapter is connected with this ${variant} idea: ${summary}?`,
+        text: `Which key term names the ${variant.label} idea in ${atomPrompt}?`,
         correctAnswer: oneWordAnswer(topic),
       };
     case "FILL_BLANK":
       return {
-        text: `In the selected chapter, ________ is connected with this ${variant} idea: ${summary}`,
+        text: `In ${atomPrompt}, ________ is the topic connected with this ${variant.label} clue: ${summary}`,
         correctAnswer: topic,
       };
     case "VERY_SHORT":
       return {
-        text: `State one ${variant} point about ${topic} from the selected chapter.`,
+        text: `State one ${variant.label} point about ${topic} from ${atomPrompt}; focus on ${variant.keyPoint}`,
         correctAnswer: summary,
         keyPoints: [summary],
       };
     case "MATCH_FOLLOWING":
-      return matchQuestion(concept);
+      return matchQuestion(concept, variant);
     case "SHORT":
       return {
-        text: `Explain ${topic} using ${variant} evidence from the selected chapter.`,
-        correctAnswer: `${summary} This point is important because it supports the chapter's main idea and helps answer related NCERT-style questions.`,
-        keyPoints: [summary, `Connect the answer to ${topic}.`, "Use selected chapter evidence."],
+        text: `${variant.shortStem} ${topic} using ${atomPrompt}; focus on ${variant.keyPoint}`,
+        correctAnswer: `${summary} ${variant.shortAnswer}`,
+        keyPoints: [summary, variant.keyPoint, `Connect the answer to ${topic}.`],
       };
     case "NUMERICAL":
       return {
-        text: `A learner identifies 3 examples of ${topic} from the selected chapter and then adds 2 more related examples. How many examples are there in total?`,
-        correctAnswer: "5 examples",
-        keyPoints: ["Add the two counts.", "3 + 2 = 5.", "Final answer: 5 examples."],
+        text: `A learner lists ${variant.firstCount} ${variant.label} points about ${topic} from the source and then adds ${variant.secondCount} more linked points. How many points are listed in total?`,
+        correctAnswer: `${variant.firstCount + variant.secondCount} points`,
+        keyPoints: [
+          "Add the two counts.",
+          `${variant.firstCount} + ${variant.secondCount} = ${variant.firstCount + variant.secondCount}.`,
+          `Final answer: ${variant.firstCount + variant.secondCount} points.`,
+        ],
       };
     case "SOURCE_BASED":
-      return sourceBasedQuestion(concept);
+      return sourceBasedQuestion(concept, variant);
     case "CASE_BASED":
-      return caseBasedQuestion(concept);
+      return caseBasedQuestion(concept, variant);
     case "PARAGRAPH":
       return {
-        scenario: excerpt,
-        text: `Based on the selected chapter extract, explain the role of ${topic}.`,
+        scenario: `${variant.paragraphLead} ${excerpt}`,
+        text: `${variant.paragraphQuestion} ${topic} using ${atomPrompt}.`,
         correctAnswer: `${summary} The answer should refer to the selected extract and explain the idea in the student's own words.`,
-        keyPoints: [summary, "Refer to the extract.", "Explain the idea clearly."],
+        keyPoints: [summary, "Refer to the extract.", variant.keyPoint],
       };
     case "HOTS":
       return {
-        text: `How would the meaning of the selected chapter change if ${topic} were removed or misunderstood? Justify your answer.`,
-        correctAnswer: `${topic} is needed because ${summary} Without it, the explanation or interpretation would become incomplete.`,
-        keyPoints: [summary, "Explain the effect.", "Justify with selected chapter context."],
+        text: `${variant.hotsStem} ${topic} were misunderstood in ${atomPrompt}? Justify your answer using the selected source.`,
+        correctAnswer: `${topic} is needed because ${summary} ${variant.hotsAnswer}`,
+        keyPoints: [summary, "Explain the effect.", variant.keyPoint],
       };
     case "COMPETENCY":
       return {
-        text: `Apply the selected chapter idea of ${topic} to a new classroom example and explain your reasoning.`,
-        correctAnswer: `A correct answer applies this idea: ${summary} The example should stay connected to the selected chapter and include a clear reason.`,
-        keyPoints: [summary, "Give a relevant example.", "Explain the reason."],
+        text: `${variant.competencyStem} ${topic} from ${atomPrompt} and explain your reasoning.`,
+        correctAnswer: `A correct answer applies this idea: ${summary} The example should stay connected to the selected source and include a clear reason.`,
+        keyPoints: [summary, variant.keyPoint, "Explain the reason."],
       };
     case "DIAGRAM":
       return {
-        text: `Draw or label a simple concept map for ${topic} from the selected chapter.`,
-        diagramDescription: `A concept map with ${topic} at the centre and connected points from the selected chapter.`,
+        text: `${variant.diagramStem} ${topic} from ${atomPrompt}.`,
+        diagramDescription: `A concept map with ${topic} at the centre and ${variant.label} points from ${concept.atomLabel}.`,
         correctAnswer: `The diagram should show ${topic} and include this key idea: ${summary}`,
-        keyPoints: [topic, summary],
+        keyPoints: [topic, summary, variant.keyPoint],
       };
     case "PRACTICAL":
       return {
-        text: `Design a short classroom activity to demonstrate ${topic} from the selected chapter.`,
+        text: `${variant.practicalStem} ${topic} from ${atomPrompt}.`,
         correctAnswer: `Use a simple activity or observation related to ${topic}. The conclusion should show: ${summary}`,
-        keyPoints: ["Aim", "Procedure", "Observation", "Conclusion"],
+        keyPoints: ["Aim", "Procedure", variant.keyPoint, "Conclusion"],
       };
     case "LONG":
       return {
-        text: `Write a detailed answer on ${topic} using only the selected chapter context.`,
-        correctAnswer: `Introduction: ${topic} is a key idea in the selected chapter. Explanation: ${summary} Add supporting points from the chapter, connect them logically, and conclude with why this idea matters.`,
-        keyPoints: ["Introduce the topic.", summary, "Add supporting selected-chapter points.", "Conclude clearly."],
+        text: `${variant.longStem} ${topic} using only ${atomPrompt}.`,
+        correctAnswer: `Introduction: ${topic} is a key idea in the selected source. Explanation: ${summary} Add supporting points, connect them logically, and conclude with why this idea matters.`,
+        keyPoints: ["Introduce the topic.", summary, variant.keyPoint, "Conclude clearly."],
       };
     case "NCERT_FORMAT":
       return {
-        text: `Explain ${topic} in NCERT style using the selected chapter context.`,
+        text: `${variant.ncertStem} ${topic} using ${atomPrompt}.`,
         correctAnswer: summary,
-        keyPoints: [summary],
+        keyPoints: [summary, variant.keyPoint],
       };
   }
 }
 
-function sourceBasedQuestion(concept: NormalizedConcept): Partial<GeneratedQuestion> {
+function sourceBasedQuestion(
+  concept: NormalizedConcept,
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
   const subQuestions: SubQuestion[] = [
-    shortSubQuestion(`Identify the main idea in the extract.`, concept.topic, 1),
-    shortSubQuestion(`What does the extract suggest about ${concept.topic}?`, concept.summary, 1),
-    shortSubQuestion(`Give one supporting point from the extract.`, concept.excerpt, 1),
-    shortSubQuestion(`Why is this idea important in the chapter?`, concept.summary, 1),
+    shortSubQuestion(`Identify the ${variant.label} idea in source detail ${concept.atomId}.`, concept.topic, 1),
+    shortSubQuestion(`What does ${concept.atomLabel} suggest about ${concept.topic}?`, concept.summary, 1),
+    shortSubQuestion(`Give one ${variant.label} supporting point from source detail ${concept.atomId}.`, concept.excerpt, 1),
+    shortSubQuestion(`Why is ${concept.atomLabel} important in the selected source?`, concept.summary, 1),
   ];
 
   return {
-    scenario: concept.excerpt,
-    text: "Read the selected chapter extract and answer the questions.",
+    scenario: `${variant.sourceLead} Source detail ${concept.atomId}: ${concept.excerpt}`,
+    text: `Read source detail ${concept.atomId} and answer the ${variant.label} questions about ${concept.atomLabel}.`,
     subQuestions,
     correctAnswer: subQuestions
       .map((question, index) => `(${index + 1}) ${question.correctAnswer}`)
@@ -239,18 +337,21 @@ function sourceBasedQuestion(concept: NormalizedConcept): Partial<GeneratedQuest
   };
 }
 
-function caseBasedQuestion(concept: NormalizedConcept): Partial<GeneratedQuestion> {
-  const options = conceptOptions(concept, 1);
+function caseBasedQuestion(
+  concept: NormalizedConcept,
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const options = conceptOptions(concept, concept.atomNumericId + 1, variant);
   const subQuestions: SubQuestion[] = [
     {
-      text: `Which option best explains the case using ${concept.topic}?`,
+      text: `Which option best explains the ${variant.label} case using source detail ${concept.atomId}?`,
       type: "MCQ",
       options,
       correctAnswer: "B",
       marks: 2,
     },
     {
-      text: `Explain the reason using the selected chapter context.`,
+      text: `Explain the reason using ${concept.atomLabel} from the selected source.`,
       type: "SHORT",
       correctAnswer: concept.summary,
       marks: 2,
@@ -258,23 +359,26 @@ function caseBasedQuestion(concept: NormalizedConcept): Partial<GeneratedQuestio
   ];
 
   return {
-    scenario: `A student studies this selected chapter idea: ${concept.summary} The student now has to apply it to explain ${concept.topic}.`,
-    text: "Read the case and answer the questions.",
+    scenario: `${variant.caseLead} Source detail ${concept.atomId} says: ${concept.summary} The learner now has to explain ${concept.topic}.`,
+    text: `Read the ${variant.label} case for ${concept.atomLabel} and answer the questions.`,
     subQuestions,
     correctAnswer: `(1) B; (2) ${concept.summary}`,
   };
 }
 
-function matchQuestion(concept: NormalizedConcept): Partial<GeneratedQuestion> {
+function matchQuestion(
+  concept: NormalizedConcept,
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
   const pairs = [
-    { left: concept.topic, right: "Main selected concept" },
-    { left: "Chapter evidence", right: concept.summary },
-    { left: "Application", right: "Use the idea in a new answer" },
-    { left: "Conclusion", right: "Connect back to the chapter" },
+    { left: concept.topic, right: `${variant.label} source concept ${concept.atomId}` },
+    { left: "Source evidence", right: concept.summary },
+    { left: variant.label, right: variant.keyPoint },
+    { left: "Conclusion", right: `Connect back to ${concept.atomLabel}` },
   ];
 
   return {
-    text: `Match Column A with Column B for ${concept.topic}.`,
+    text: `Match Column A with Column B for the ${variant.label} view of ${concept.topic} in source detail ${concept.atomId}.`,
     matchPairs: pairs,
     correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
   };
@@ -289,12 +393,24 @@ function shortSubQuestion(text: string, correctAnswer: string, marks: number): S
   };
 }
 
-function conceptOptions(concept: NormalizedConcept, index: number): MCQOption[] {
+function conceptOptions(
+  concept: NormalizedConcept,
+  index: number,
+  variant: VariantRecipe,
+): MCQOption[] {
+  const distractors = [
+    `A point from another source that ignores ${concept.atomLabel}`,
+    `Only naming ${concept.topic} without explaining the ${variant.label} link in detail ${concept.atomId}`,
+    `A general claim with no selected-source support ${index}`,
+    `A partial detail that misses the ${variant.label} reasoning for ${concept.atomLabel}`,
+    `An unrelated definition not supported by ${concept.chapter}`,
+  ];
+
   return [
-    { id: "A", text: "An unrelated idea from another chapter", isCorrect: false },
-    { id: "B", text: trimToSentence(concept.summary, 140), isCorrect: true },
-    { id: "C", text: `Only the title ${concept.topic} without explanation`, isCorrect: false },
-    { id: "D", text: `A general answer not grounded in the selected source ${index}`, isCorrect: false },
+    { id: "A", text: distractors[index % distractors.length], isCorrect: false },
+    { id: "B", text: trimToSentence(`${variant.optionLead} ${concept.atomId}: ${concept.summary}`, 140), isCorrect: true },
+    { id: "C", text: distractors[(index + 1) % distractors.length], isCorrect: false },
+    { id: "D", text: distractors[(index + 2) % distractors.length], isCorrect: false },
   ];
 }
 
@@ -303,40 +419,550 @@ type NormalizedConcept = {
   excerpt: string;
   topic: string;
   chapter: string;
+  atomId: string;
+  atomLabel: string;
+  atomNumericId: number;
   topicId?: number;
   chapterId: number;
   subject?: string;
   classNum?: number;
-  source: Exclude<ConceptData["source"], "unknown">;
+  source: "ncert_txt" | "pdf";
 };
+
+type VariantRecipe = {
+  id: string;
+  label: string;
+  mcqStem: string;
+  optionLead: string;
+  sourceFocus: string;
+  sourceLead: string;
+  caseLead: string;
+  assertion: (topic: string) => string;
+  reason: (summary: string) => string;
+  trueFalseLead: string;
+  shortStem: string;
+  shortAnswer: string;
+  paragraphLead: string;
+  paragraphQuestion: string;
+  hotsStem: string;
+  hotsAnswer: string;
+  competencyStem: string;
+  diagramStem: string;
+  practicalStem: string;
+  longStem: string;
+  ncertStem: string;
+  keyPoint: string;
+  explanationLead: string;
+  answerPath: string;
+  answerVerb: string;
+  firstCount: number;
+  secondCount: number;
+};
+
+const variantRecipes: VariantRecipe[] = [
+  {
+    id: "evidence",
+    label: "evidence",
+    mcqStem: "Which evidence-based statement best explains",
+    optionLead: "Evidence from the selected source",
+    sourceFocus: "Evidence focus",
+    sourceLead: "This extract gives evidence from the selected source.",
+    caseLead: "A learner uses source evidence to interpret this idea:",
+    assertion: (topic) => `${topic} can be explained through evidence in the selected source.`,
+    reason: (summary) => `The source states that ${summary}`,
+    trueFalseLead: "The evidence in the selected source shows that",
+    shortStem: "Explain the evidence for",
+    shortAnswer: "This evidence supports the answer because it is directly tied to the selected source.",
+    paragraphLead: "The paragraph highlights source evidence.",
+    paragraphQuestion: "Using the evidence in the paragraph, explain",
+    hotsStem: "What conclusion would become weak if the evidence for",
+    hotsAnswer: "Without the evidence, the explanation would be unsupported.",
+    competencyStem: "Use a classroom evidence example to apply",
+    diagramStem: "Draw an evidence map for",
+    practicalStem: "Design an evidence-gathering activity for",
+    longStem: "Write a detailed evidence-based answer on",
+    ncertStem: "Give an NCERT-style evidence answer on",
+    keyPoint: "Use evidence from the selected source.",
+    explanationLead: "The answer is supported by source evidence",
+    answerPath: "Identify source evidence, connect it to the concept, and",
+    answerVerb: "support",
+    firstCount: 3,
+    secondCount: 2,
+  },
+  {
+    id: "inference",
+    label: "inference",
+    mcqStem: "Which inference most accurately follows from",
+    optionLead: "Inference from the selected source",
+    sourceFocus: "Inference focus",
+    sourceLead: "This extract supports an inference from the selected source.",
+    caseLead: "A learner infers meaning from this selected-source idea:",
+    assertion: (topic) => `${topic} requires inference from the selected source.`,
+    reason: (summary) => `The idea implies that ${summary}`,
+    trueFalseLead: "A reasonable inference from the selected source is that",
+    shortStem: "Infer the meaning of",
+    shortAnswer: "This inference follows when the source detail is connected to the topic.",
+    paragraphLead: "The paragraph invites an inference.",
+    paragraphQuestion: "Using the paragraph, infer the role of",
+    hotsStem: "How would an incorrect inference about",
+    hotsAnswer: "A wrong inference would distort the selected-source meaning.",
+    competencyStem: "Apply an inference from the selected source to",
+    diagramStem: "Draw an inference chain for",
+    practicalStem: "Plan an activity that helps learners infer",
+    longStem: "Write a detailed inferential answer on",
+    ncertStem: "Give an NCERT-style inference answer on",
+    keyPoint: "Explain the inference, not only the fact.",
+    explanationLead: "The answer follows by inference",
+    answerPath: "Read the source detail, infer the relationship, and",
+    answerVerb: "explain",
+    firstCount: 4,
+    secondCount: 3,
+  },
+  {
+    id: "application",
+    label: "application",
+    mcqStem: "Which application best uses",
+    optionLead: "Application of the selected source",
+    sourceFocus: "Application focus",
+    sourceLead: "This extract can be applied to a new situation.",
+    caseLead: "A learner applies this selected-source idea:",
+    assertion: (topic) => `${topic} can be applied beyond direct recall.`,
+    reason: (summary) => `Application is possible because ${summary}`,
+    trueFalseLead: "The selected source can be applied to show that",
+    shortStem: "Apply the idea of",
+    shortAnswer: "The application should stay within the selected-source meaning.",
+    paragraphLead: "The paragraph shows how the idea may be applied.",
+    paragraphQuestion: "Using the application in the paragraph, explain",
+    hotsStem: "What would happen if the application of",
+    hotsAnswer: "The application would fail unless the source idea is used correctly.",
+    competencyStem: "Use a practical example to apply",
+    diagramStem: "Draw an application flow for",
+    practicalStem: "Design a short application activity for",
+    longStem: "Write a detailed application-based answer on",
+    ncertStem: "Give an NCERT-style application answer on",
+    keyPoint: "Apply the source idea to a new but relevant situation.",
+    explanationLead: "The answer applies the selected source",
+    answerPath: "Choose the source idea, transfer it to the example, and",
+    answerVerb: "apply",
+    firstCount: 2,
+    secondCount: 5,
+  },
+  {
+    id: "comparison",
+    label: "comparison",
+    mcqStem: "Which comparison best clarifies",
+    optionLead: "Comparison using the selected source",
+    sourceFocus: "Comparison focus",
+    sourceLead: "This extract helps compare related ideas.",
+    caseLead: "A learner compares this source idea with a related point:",
+    assertion: (topic) => `${topic} becomes clearer when compared with related source details.`,
+    reason: (summary) => `The comparison is meaningful because ${summary}`,
+    trueFalseLead: "A comparison from the selected source shows that",
+    shortStem: "Compare the selected-source role of",
+    shortAnswer: "The comparison should show both the shared idea and the difference.",
+    paragraphLead: "The paragraph sets up a comparison.",
+    paragraphQuestion: "Using the comparison in the paragraph, explain",
+    hotsStem: "How would the comparison change if",
+    hotsAnswer: "The comparison would become incomplete without the source distinction.",
+    competencyStem: "Use a comparison example to explain",
+    diagramStem: "Draw a comparison chart for",
+    practicalStem: "Design a comparison activity for",
+    longStem: "Write a detailed comparative answer on",
+    ncertStem: "Give an NCERT-style comparison answer on",
+    keyPoint: "Show a clear comparison using source details.",
+    explanationLead: "The answer uses comparison",
+    answerPath: "Identify the two linked ideas, compare them, and",
+    answerVerb: "clarify",
+    firstCount: 5,
+    secondCount: 2,
+  },
+  {
+    id: "cause-effect",
+    label: "cause-effect",
+    mcqStem: "Which cause-effect statement best explains",
+    optionLead: "Cause-effect link from the selected source",
+    sourceFocus: "Cause-effect focus",
+    sourceLead: "This extract shows a cause-effect relationship.",
+    caseLead: "A learner traces a cause-effect link in this source idea:",
+    assertion: (topic) => `${topic} can be understood through a cause-effect link.`,
+    reason: (summary) => `The effect follows because ${summary}`,
+    trueFalseLead: "The selected source shows the cause-effect idea that",
+    shortStem: "Explain the cause-effect link in",
+    shortAnswer: "The answer should connect the cause to its effect in the selected source.",
+    paragraphLead: "The paragraph describes a cause-effect link.",
+    paragraphQuestion: "Using the cause-effect relation, explain",
+    hotsStem: "What effect would follow if",
+    hotsAnswer: "The effect must be justified through the selected-source relationship.",
+    competencyStem: "Use a cause-effect example to explain",
+    diagramStem: "Draw a cause-effect chain for",
+    practicalStem: "Design a cause-effect activity for",
+    longStem: "Write a detailed cause-effect answer on",
+    ncertStem: "Give an NCERT-style cause-effect answer on",
+    keyPoint: "Connect cause and effect clearly.",
+    explanationLead: "The answer explains cause and effect",
+    answerPath: "Find the cause, link the effect, and",
+    answerVerb: "justify",
+    firstCount: 6,
+    secondCount: 3,
+  },
+  {
+    id: "example",
+    label: "example",
+    mcqStem: "Which example best represents",
+    optionLead: "Example grounded in the selected source",
+    sourceFocus: "Example focus",
+    sourceLead: "This extract can be represented through an example.",
+    caseLead: "A learner builds an example from this source idea:",
+    assertion: (topic) => `${topic} can be represented through a selected-source example.`,
+    reason: (summary) => `The example is valid because ${summary}`,
+    trueFalseLead: "An example based on the selected source shows that",
+    shortStem: "Give and explain an example of",
+    shortAnswer: "The example should remain grounded in the selected-source idea.",
+    paragraphLead: "The paragraph develops an example.",
+    paragraphQuestion: "Using the example in the paragraph, explain",
+    hotsStem: "Why would a weak example of",
+    hotsAnswer: "A weak example would miss the selected-source point.",
+    competencyStem: "Use a real-life example to explain",
+    diagramStem: "Draw an example-based concept map for",
+    practicalStem: "Design an example-based activity for",
+    longStem: "Write a detailed example-based answer on",
+    ncertStem: "Give an NCERT-style example answer on",
+    keyPoint: "Use a relevant example from the source idea.",
+    explanationLead: "The answer uses a grounded example",
+    answerPath: "Choose a relevant example, connect it to the topic, and",
+    answerVerb: "demonstrate",
+    firstCount: 2,
+    secondCount: 4,
+  },
+  {
+    id: "reasoning",
+    label: "reasoning",
+    mcqStem: "Which reasoning statement best explains",
+    optionLead: "Reasoning from the selected source",
+    sourceFocus: "Reasoning focus",
+    sourceLead: "This extract requires reasoning from the selected source.",
+    caseLead: "A learner reasons through this selected-source idea:",
+    assertion: (topic) => `${topic} should be explained through reasoning, not memorisation alone.`,
+    reason: (summary) => `The reasoning is valid because ${summary}`,
+    trueFalseLead: "Reasoning from the selected source shows that",
+    shortStem: "Explain the reasoning behind",
+    shortAnswer: "The answer should show the reasoning path, not just the final point.",
+    paragraphLead: "The paragraph presents a reasoning path.",
+    paragraphQuestion: "Using this reasoning path, explain",
+    hotsStem: "How would the reasoning fail if",
+    hotsAnswer: "The reasoning would fail if the selected-source link is broken.",
+    competencyStem: "Use stepwise reasoning to apply",
+    diagramStem: "Draw a reasoning chain for",
+    practicalStem: "Design a reasoning activity for",
+    longStem: "Write a detailed reasoning-based answer on",
+    ncertStem: "Give an NCERT-style reasoning answer on",
+    keyPoint: "Show the reasoning steps clearly.",
+    explanationLead: "The answer follows a reasoning path",
+    answerPath: "Trace the source idea, state the reasoning, and",
+    answerVerb: "conclude",
+    firstCount: 4,
+    secondCount: 4,
+  },
+  {
+    id: "conclusion",
+    label: "conclusion",
+    mcqStem: "Which conclusion is best supported by",
+    optionLead: "Conclusion supported by the selected source",
+    sourceFocus: "Conclusion focus",
+    sourceLead: "This extract supports a conclusion.",
+    caseLead: "A learner draws a conclusion from this source idea:",
+    assertion: (topic) => `${topic} supports a conclusion from the selected source.`,
+    reason: (summary) => `The conclusion is supported because ${summary}`,
+    trueFalseLead: "The conclusion supported by the selected source is that",
+    shortStem: "Draw a conclusion about",
+    shortAnswer: "The conclusion should follow directly from the selected-source detail.",
+    paragraphLead: "The paragraph leads to a conclusion.",
+    paragraphQuestion: "Using the paragraph, conclude the role of",
+    hotsStem: "What conclusion would change if",
+    hotsAnswer: "The conclusion should change only when the source reasoning changes.",
+    competencyStem: "Draw a practical conclusion about",
+    diagramStem: "Draw a conclusion map for",
+    practicalStem: "Design an activity to reach a conclusion about",
+    longStem: "Write a detailed conclusion-based answer on",
+    ncertStem: "Give an NCERT-style conclusion answer on",
+    keyPoint: "End with a source-supported conclusion.",
+    explanationLead: "The answer draws a conclusion",
+    answerPath: "Read the source idea, identify support, and",
+    answerVerb: "conclude",
+    firstCount: 5,
+    secondCount: 4,
+  },
+  {
+    id: "definition",
+    label: "definition",
+    mcqStem: "Which definition-focused statement best captures",
+    optionLead: "Definition grounded in the selected source",
+    sourceFocus: "Definition focus",
+    sourceLead: "This extract defines or clarifies a source idea.",
+    caseLead: "A learner defines a key source idea:",
+    assertion: (topic) => `${topic} can be defined using selected-source clues.`,
+    reason: (summary) => `The definition is supported because ${summary}`,
+    trueFalseLead: "The selected source defines the idea by showing that",
+    shortStem: "Define the source-supported meaning of",
+    shortAnswer: "The definition should use the selected-source clue and not a generic memory answer.",
+    paragraphLead: "The paragraph clarifies a definition.",
+    paragraphQuestion: "Using this definition clue, explain",
+    hotsStem: "Why would a generic definition of",
+    hotsAnswer: "A generic definition would miss the selected-source clue.",
+    competencyStem: "Use a precise definition to explain",
+    diagramStem: "Draw a definition map for",
+    practicalStem: "Design a definition-check activity for",
+    longStem: "Write a detailed definition-focused answer on",
+    ncertStem: "Give an NCERT-style definition answer on",
+    keyPoint: "Define the idea using source wording and context.",
+    explanationLead: "The answer defines the idea from the source",
+    answerPath: "Locate the defining clue, state the meaning, and",
+    answerVerb: "define",
+    firstCount: 3,
+    secondCount: 4,
+  },
+  {
+    id: "process",
+    label: "process",
+    mcqStem: "Which process-based statement best explains",
+    optionLead: "Process shown by the selected source",
+    sourceFocus: "Process focus",
+    sourceLead: "This extract shows a process or sequence.",
+    caseLead: "A learner traces a source process:",
+    assertion: (topic) => `${topic} can be understood as a process in the selected source.`,
+    reason: (summary) => `The sequence is clear because ${summary}`,
+    trueFalseLead: "The selected source shows the process idea that",
+    shortStem: "Explain the process connected with",
+    shortAnswer: "The answer should show ordered steps or linked movement in the source idea.",
+    paragraphLead: "The paragraph presents a process.",
+    paragraphQuestion: "Using this process, explain",
+    hotsStem: "What step would fail if",
+    hotsAnswer: "The process would become incomplete if the source link is skipped.",
+    competencyStem: "Apply the process of",
+    diagramStem: "Draw a process flow for",
+    practicalStem: "Design a process activity for",
+    longStem: "Write a detailed process-based answer on",
+    ncertStem: "Give an NCERT-style process answer on",
+    keyPoint: "Show the ordered source process.",
+    explanationLead: "The answer follows the source process",
+    answerPath: "Identify the first idea, connect the next step, and",
+    answerVerb: "sequence",
+    firstCount: 4,
+    secondCount: 5,
+  },
+  {
+    id: "exception",
+    label: "exception",
+    mcqStem: "Which exception-aware statement best explains",
+    optionLead: "Exception handled by the selected source",
+    sourceFocus: "Exception focus",
+    sourceLead: "This extract helps separate the main idea from an exception.",
+    caseLead: "A learner checks whether a source idea has an exception:",
+    assertion: (topic) => `${topic} should be understood with its limits in mind.`,
+    reason: (summary) => `The limit is visible because ${summary}`,
+    trueFalseLead: "The selected source limits the idea by showing that",
+    shortStem: "Explain one limit or exception related to",
+    shortAnswer: "The answer should state the source idea and the condition where it changes.",
+    paragraphLead: "The paragraph highlights a limit.",
+    paragraphQuestion: "Using this limit, explain",
+    hotsStem: "How would the answer change if the exception to",
+    hotsAnswer: "The answer changes only when the source condition changes.",
+    competencyStem: "Use an exception-aware example to explain",
+    diagramStem: "Draw a limit-and-exception chart for",
+    practicalStem: "Design an activity to test the exception in",
+    longStem: "Write a detailed answer on the limits of",
+    ncertStem: "Give an NCERT-style exception answer on",
+    keyPoint: "Mention the condition, limit, or exception.",
+    explanationLead: "The answer recognises the source limit",
+    answerPath: "State the main idea, identify the limit, and",
+    answerVerb: "qualify",
+    firstCount: 5,
+    secondCount: 3,
+  },
+  {
+    id: "misconception",
+    label: "misconception",
+    mcqStem: "Which correction best removes a misconception about",
+    optionLead: "Misconception corrected by the selected source",
+    sourceFocus: "Misconception focus",
+    sourceLead: "This extract corrects a possible misunderstanding.",
+    caseLead: "A learner corrects a misunderstanding using the source:",
+    assertion: (topic) => `${topic} can be misunderstood without the selected-source clue.`,
+    reason: (summary) => `The correction is needed because ${summary}`,
+    trueFalseLead: "A misconception corrected by the selected source is that",
+    shortStem: "Correct a misconception about",
+    shortAnswer: "The answer should name the mistaken idea and correct it with source support.",
+    paragraphLead: "The paragraph corrects a misunderstanding.",
+    paragraphQuestion: "Using this correction, explain",
+    hotsStem: "What wrong conclusion would appear if",
+    hotsAnswer: "The wrong conclusion is avoided by using the selected-source clue.",
+    competencyStem: "Use a misconception-correction example to explain",
+    diagramStem: "Draw a misconception-correction map for",
+    practicalStem: "Design a misconception-check activity for",
+    longStem: "Write a detailed misconception-correction answer on",
+    ncertStem: "Give an NCERT-style misconception answer on",
+    keyPoint: "Correct the mistaken idea with source evidence.",
+    explanationLead: "The answer corrects a misconception",
+    answerPath: "Name the misconception, cite the source clue, and",
+    answerVerb: "correct",
+    firstCount: 6,
+    secondCount: 2,
+  },
+  {
+    id: "diagram-angle",
+    label: "diagram",
+    mcqStem: "Which diagram-based interpretation best represents",
+    optionLead: "Diagram interpretation from the selected source",
+    sourceFocus: "Diagram focus",
+    sourceLead: "This extract can be organised visually.",
+    caseLead: "A learner turns a source idea into a visual organiser:",
+    assertion: (topic) => `${topic} can be represented visually from the selected source.`,
+    reason: (summary) => `The visual link is possible because ${summary}`,
+    trueFalseLead: "A diagram of the selected source would show that",
+    shortStem: "Describe a diagrammatic representation of",
+    shortAnswer: "The answer should identify what the diagram must show and why.",
+    paragraphLead: "The paragraph can be converted into a visual organiser.",
+    paragraphQuestion: "Using this visual organiser, explain",
+    hotsStem: "Which part of the diagram would be wrong if",
+    hotsAnswer: "The diagram would be wrong if the source relationship is misplaced.",
+    competencyStem: "Use a diagram-based explanation for",
+    diagramStem: "Draw a labelled visual organiser for",
+    practicalStem: "Design a visual sorting activity for",
+    longStem: "Write a detailed diagram-supported answer on",
+    ncertStem: "Give an NCERT-style diagram answer on",
+    keyPoint: "Represent the source relationship visually.",
+    explanationLead: "The answer organises the source visually",
+    answerPath: "Identify the visual relation, label it, and",
+    answerVerb: "map",
+    firstCount: 3,
+    secondCount: 6,
+  },
+  {
+    id: "numerical-angle",
+    label: "quantitative",
+    mcqStem: "Which quantity-based interpretation best explains",
+    optionLead: "Quantitative interpretation from the selected source",
+    sourceFocus: "Quantitative focus",
+    sourceLead: "This extract can be checked through counted or ordered points.",
+    caseLead: "A learner counts linked source points:",
+    assertion: (topic) => `${topic} can be checked by counting linked source points.`,
+    reason: (summary) => `The counted points matter because ${summary}`,
+    trueFalseLead: "A quantity-based reading of the selected source shows that",
+    shortStem: "Explain the counted or ordered points in",
+    shortAnswer: "The answer should connect the count or order back to the source idea.",
+    paragraphLead: "The paragraph contains points that can be counted or ordered.",
+    paragraphQuestion: "Using this counted structure, explain",
+    hotsStem: "What would be miscounted if",
+    hotsAnswer: "The count would be wrong if the source links are grouped incorrectly.",
+    competencyStem: "Use a count-based example to explain",
+    diagramStem: "Draw a numbered flow for",
+    practicalStem: "Design a counting or sorting activity for",
+    longStem: "Write a detailed quantity-supported answer on",
+    ncertStem: "Give an NCERT-style quantitative answer on",
+    keyPoint: "Use a counted or ordered source structure.",
+    explanationLead: "The answer uses a quantitative source check",
+    answerPath: "Count the linked points, compare the order, and",
+    answerVerb: "calculate",
+    firstCount: 7,
+    secondCount: 2,
+  },
+  {
+    id: "case-angle",
+    label: "case",
+    mcqStem: "Which case-based judgement best explains",
+    optionLead: "Case judgement from the selected source",
+    sourceFocus: "Case focus",
+    sourceLead: "This extract can be used as a case for judgement.",
+    caseLead: "A learner studies this source case:",
+    assertion: (topic) => `${topic} can be judged through a selected-source case.`,
+    reason: (summary) => `The case is valid because ${summary}`,
+    trueFalseLead: "The selected-source case shows that",
+    shortStem: "Explain the case-based meaning of",
+    shortAnswer: "The answer should connect the case detail to the source idea.",
+    paragraphLead: "The paragraph gives a case for judgement.",
+    paragraphQuestion: "Using this case, explain",
+    hotsStem: "How would the judgement change if the case of",
+    hotsAnswer: "The judgement changes when the source case is interpreted differently.",
+    competencyStem: "Use a case-based situation to explain",
+    diagramStem: "Draw a case-analysis map for",
+    practicalStem: "Design a case-analysis activity for",
+    longStem: "Write a detailed case-based answer on",
+    ncertStem: "Give an NCERT-style case answer on",
+    keyPoint: "Judge the case using selected-source evidence.",
+    explanationLead: "The answer uses a source case",
+    answerPath: "Read the case, judge the source detail, and",
+    answerVerb: "evaluate",
+    firstCount: 4,
+    secondCount: 6,
+  },
+  {
+    id: "source-extract",
+    label: "source-extract",
+    mcqStem: "Which extract-based reading best explains",
+    optionLead: "Extract-based reading from the selected source",
+    sourceFocus: "Extract focus",
+    sourceLead: "This extract must be read closely.",
+    caseLead: "A learner reads a selected extract closely:",
+    assertion: (topic) => `${topic} depends on close reading of the selected extract.`,
+    reason: (summary) => `Close reading matters because ${summary}`,
+    trueFalseLead: "Close reading of the selected extract shows that",
+    shortStem: "Explain the extract-based clue for",
+    shortAnswer: "The answer should stay close to the extract and avoid outside knowledge.",
+    paragraphLead: "The paragraph is an extract for close reading.",
+    paragraphQuestion: "Using this extract, explain",
+    hotsStem: "What would be missed if the extract for",
+    hotsAnswer: "The key clue would be missed without close reading of the selected extract.",
+    competencyStem: "Use an extract-based response to explain",
+    diagramStem: "Draw an extract-clue map for",
+    practicalStem: "Design a close-reading activity for",
+    longStem: "Write a detailed extract-based answer on",
+    ncertStem: "Give an NCERT-style extract answer on",
+    keyPoint: "Use only the selected extract clue.",
+    explanationLead: "The answer comes from close source reading",
+    answerPath: "Read the extract, isolate the clue, and",
+    answerVerb: "interpret",
+    firstCount: 5,
+    secondCount: 5,
+  },
+];
 
 function normalizeConceptPool(
   concepts: ConceptData[],
   config: PaperConfig,
 ): NormalizedConcept[] {
-  const pool = sourceBackedConcepts(concepts)
-    .map((concept): NormalizedConcept | null => {
-      const summary = trimToSentence(concept.text, 220);
-      if (!summary) return null;
+  const pool: NormalizedConcept[] = [];
+  const seenAtoms = new Set<string>();
+
+  sourceBackedConcepts(concepts).forEach((concept, conceptIndex) => {
+    const topic = concept.topicName?.trim() || concept.chapterName || config.subject;
+    const chapter = concept.chapterName || `Chapter ${concept.chapterId}`;
+    const atoms = sourceAtomsForConcept(concept);
+
+    atoms.forEach((atom, atomIndex) => {
+      const atomKey = normalizeAtomKey(
+        `${concept.subject ?? config.subject}:${concept.chapterId}:${concept.topicId ?? ""}:${atom.summary}`,
+      );
+      if (seenAtoms.has(atomKey)) return;
+      seenAtoms.add(atomKey);
 
       const normalized: NormalizedConcept = {
-        summary,
-        excerpt: trimToSentence(concept.text, 520),
-        topic: concept.topicName?.trim() || concept.chapterName || config.subject,
-        chapter: concept.chapterName || `Chapter ${concept.chapterId}`,
+        summary: atom.summary,
+        excerpt: atom.excerpt,
+        topic,
+        chapter,
+        atomId: `${conceptIndex + 1}.${atomIndex + 1}`,
+        atomLabel: atom.label,
+        atomNumericId: conceptIndex * 100 + atomIndex,
         chapterId: concept.chapterId,
         subject: concept.subject ?? config.subject,
         classNum: concept.classNum ?? config.classNum,
-        source:
-          concept.source === "pdf" || concept.source === "ncert_txt"
-            ? concept.source
-            : "curriculum",
+        source: concept.source === "pdf" ? "pdf" : "ncert_txt",
       };
 
       if (concept.topicId !== undefined) normalized.topicId = concept.topicId;
-      return normalized;
-    })
-    .filter((concept): concept is NormalizedConcept => Boolean(concept));
+      pool.push(normalized);
+    });
+  });
 
   return pool;
 }
@@ -344,7 +970,10 @@ function normalizeConceptPool(
 function sourceBackedConcepts(concepts: ConceptData[]) {
   return concepts.filter((concept) => {
     const text = concept.text.replace(/\s+/g, " ").trim();
-    return isSourceTextConcept(concept) && text.length >= 80;
+    return (
+      (concept.source === "ncert_txt" || concept.source === "pdf") &&
+      text.length >= 80
+    );
   });
 }
 
@@ -356,23 +985,89 @@ function trimToSentence(value: string, maxLength: number) {
   return `${sliced.replace(/[,.!?;:]+$/, "")}.`;
 }
 
+function sourceAtomsForConcept(concept: ConceptData) {
+  const text = concept.text.replace(/\s+/g, " ").trim();
+  const sentences = text
+    .split(/(?<=[.!?])\s+/)
+    .map((sentence) => sentence.trim())
+    .filter((sentence) => sentence.length >= 36);
+  const atoms: Array<{ summary: string; excerpt: string; label: string }> = [];
+  const addAtom = (value: string) => {
+    const summary = trimToSentence(value, 240);
+    if (!summary || summary.length < 36) return;
+    atoms.push({
+      summary,
+      excerpt: trimToSentence(value, 560),
+      label: keyPhrase(summary),
+    });
+  };
+
+  sentences.slice(0, 18).forEach(addAtom);
+  for (let index = 0; index < Math.min(sentences.length - 1, 12); index += 1) {
+    addAtom(`${sentences[index]} ${sentences[index + 1]}`);
+  }
+  addAtom(text);
+
+  const seen = new Set<string>();
+  return atoms
+    .filter((atom) => {
+      const key = normalizeAtomKey(atom.summary);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .slice(0, 32);
+}
+
+function keyPhrase(value: string) {
+  const words = value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter((word) => word.length > 3 && !sourceAtomStopWords.has(word))
+    .slice(0, 7);
+
+  return words.length ? words.join(" ") : trimToSentence(value, 70);
+}
+
+function normalizeAtomKey(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const sourceAtomStopWords = new Set([
+  "about",
+  "after",
+  "before",
+  "because",
+  "chapter",
+  "concept",
+  "context",
+  "detail",
+  "explains",
+  "learners",
+  "selected",
+  "source",
+  "students",
+  "through",
+  "using",
+  "which",
+  "would",
+]);
+
 function oneWordAnswer(topic: string) {
   return topic.split(/\s+/).filter(Boolean).slice(0, 2).join(" ") || "Concept";
 }
 
-function variantFor(index: number) {
-  const variants = [
-    "evidence",
-    "application",
-    "inference",
-    "contrast",
-    "context",
-    "reasoning",
-    "theme",
-    "example",
-  ];
+function variantRecipeFor(index: number) {
+  return variantRecipes[Math.abs(index - 1) % variantRecipes.length];
+}
 
-  return variants[index % variants.length];
+function topicSentence(topic: string) {
+  return topic.endsWith(".") ? topic : `${topic}.`;
 }
 
 function bloomFor(type: QuestionType, difficulty: Difficulty): BloomLevel {

@@ -11,14 +11,18 @@ import {
   normalizeQuestionComposition,
 } from "@/lib/composition";
 import {
+  coverageDiagnosticsForFinalQuestions,
+  generateCoveragePlannedQuestions,
+  type CoverageGenerationDiagnostic,
+} from "@/lib/coverage-generation";
+import {
   normalizeBloomDistributionForDifficulty,
 } from "@/lib/difficulty-protocol";
 import { assertDemoModeAllowed, demoMetadata } from "@/lib/demo-mode";
-import { compactAiProviderFailureMessage } from "@/lib/error-classification";
 import {
-  emergencyTxtRepairFillMarker,
-  generateEmergencyTxtRepairFill,
-} from "@/lib/emergency-txt-repair-fill";
+  compactAiProviderFailureMessage,
+  isAIProviderUnavailableError,
+} from "@/lib/error-classification";
 import { summarizeAIUsage } from "@/lib/ai-usage-log";
 import { getChapterContent } from "@/lib/extractor";
 import { buildGenerationManifest } from "@/lib/generation-manifest";
@@ -57,6 +61,12 @@ import {
   stripGenerationMetadataFromQuestions,
   type PaperGenerationState,
 } from "@/lib/question-candidate-bank";
+import {
+  completeQuestionBankWithSourceBackedFallback,
+  generateSourceBackedFallbackQuestions,
+  hasSourceBackedFallbackConcepts,
+  sourceBackedCompletionMarker,
+} from "@/lib/source-backed-fallback";
 import { analyzeConceptSourceQuality, retrieveConcepts } from "@/lib/retriever";
 import { generationRequestSchema } from "@/lib/schemas";
 import {
@@ -458,11 +468,17 @@ export async function POST(request: NextRequest) {
             progress: 39,
             msg: healthyProviders.length
               ? `AI provider health ready: ${healthyProviders.join(", ")} usable.`
-              : "No AI provider passed health preflight; continuing only if saved progress can be completed from NCERT TXT.",
+              : "No AI provider passed health preflight; continuing from selected TXT/PDF source text without demo fallback.",
           });
         }
 
         let allQuestions = resumeState?.candidateQuestions ?? [];
+        let coverageDiagnostics: CoverageGenerationDiagnostic[] = [];
+        let stoppedDuringCoverageGeneration = false;
+        const resumeNeedsFinalCompletion =
+          Boolean(resumeState) &&
+          (resumeState?.phase === "VALIDATION" || resumeState?.phase === "REPAIR") &&
+          (resumeState?.missingQuestionCount ?? 0) > 0;
         if (resumeState) {
           send({
             step: 5,
@@ -472,48 +488,146 @@ export async function POST(request: NextRequest) {
             paperId,
             status: "CONTINUING",
           });
+        }
+
+        if (resumeNeedsFinalCompletion) {
+          send({
+            step: 6,
+            pct: 88,
+            progress: 88,
+            msg: `Phase 6 - Validation Engine: resolving ${resumeState?.missingQuestionCount} saved duplicate/missing question${resumeState?.missingQuestionCount === 1 ? "" : "s"} from selected source text before retrying AI.`,
+            paperId,
+            status: "CONTINUING",
+          });
+        } else if (allowExplicitDemoFallback || !composition.length) {
+          if (!resumeState) {
+            send({
+              step: 5,
+              pct: 40,
+              progress: 40,
+              msg: `Phase 5 - Question Generation: generating ${blueprint.totalQuestions} questions from selected NCERT_Books TXT source...`,
+            });
+            const providersUnavailableBeforeCall =
+              !allowExplicitDemoFallback &&
+              Array.isArray(healthyProviders) &&
+              healthyProviders.length === 0;
+            if (providersUnavailableBeforeCall) {
+              send({
+                step: 5,
+                pct: 42,
+                progress: 42,
+                msg: "Phase 5 - Question Generation: providers unavailable; generating from selected TXT/PDF source text.",
+              });
+              allQuestions = generateSourceBackedProviderOutageQuestions({
+                blueprint,
+                concepts: scopedConcepts,
+                config: effectiveConfig,
+                existingQuestions: [],
+              });
+            } else {
+              try {
+                allQuestions = await generateBlueprintQuestions(
+                  blueprint,
+                  conceptContext,
+                  effectiveConfig,
+                  {
+                    allowPartial: salvageMode,
+                    availableTopics,
+                    existingQuestions: [],
+                    generationPlan,
+                    generationNonce: generationJobId,
+                    cooldownScope: providerCooldownScope,
+                    healthyProviders,
+                    signal: generationSignal,
+                    onBatchComplete: (details) => {
+                      send({
+                        step: 5,
+                        pct: 82,
+                        progress: 82,
+                        msg: `Phase 5 - Question Generation: ${details.generated}/${details.total} TXT-grounded AI questions ready...`,
+                      });
+                    },
+                  },
+                );
+              } catch (error) {
+                if (!allowExplicitDemoFallback && isAIProviderUnavailableError(error)) {
+                  send({
+                    step: 5,
+                    pct: 42,
+                    progress: 42,
+                    msg: "Phase 5 - Question Generation: providers unavailable; generating from selected TXT/PDF source text.",
+                  });
+                  allQuestions = generateSourceBackedProviderOutageQuestions({
+                    blueprint,
+                    concepts: scopedConcepts,
+                    config: effectiveConfig,
+                    existingQuestions: [],
+                  });
+                } else {
+                  throw error;
+                }
+              }
+            }
+          }
         } else {
           send({
             step: 5,
             pct: 40,
             progress: 40,
-            msg: `Phase 5 - Question Generation: generating ${blueprint.totalQuestions} questions from selected NCERT_Books TXT source...`,
+            msg: resumeState
+              ? "Phase 5 - Question Generation: continuing strict subject/chapter TXT coverage batches..."
+              : `Phase 5 - Question Generation: generating ${blueprint.totalQuestions} questions in strict subject/chapter TXT batches...`,
           });
-          allQuestions = await generateBlueprintQuestions(
+          const coverageGeneration = await generateCoveragePlannedQuestions({
             blueprint,
-            conceptContext,
-            effectiveConfig,
-            {
-              allowPartial: salvageMode,
-              availableTopics,
-              existingQuestions: [],
-              generationPlan,
-              generationNonce: generationJobId,
-              cooldownScope: providerCooldownScope,
-              healthyProviders,
-              signal: generationSignal,
-              onBatchComplete: (details) => {
-                send({
-                  step: 5,
-                  pct: 82,
-                  progress: 82,
-                  msg: `Phase 5 - Question Generation: ${details.generated}/${details.total} TXT-grounded AI questions ready...`,
-                });
-              },
+            concepts: scopedConcepts,
+            config: effectiveConfig,
+            generationPlan,
+            existingQuestions: allQuestions,
+            acceptedQuestions: resumeState?.acceptedQuestions ?? [],
+            allowPartial: salvageMode,
+            generationNonce: generationJobId,
+            cooldownScope: providerCooldownScope,
+            healthyProviders,
+            signal: generationSignal,
+            shouldStop: (generatedCount) =>
+              shouldStopForFinalization(generationDeadlineAt, generatedCount),
+            onProgress: (details) => {
+              const providerOutageRecovered =
+                details.diagnostic.generationMode === "source_backed_provider_outage";
+              send({
+                step: 5,
+                pct: 82,
+                progress: 82,
+                msg: providerOutageRecovered
+                  ? `Phase 5 - Question Generation: providers unavailable; generated ${details.label} from selected TXT/PDF (${details.diagnostic.generatedQuestions}/${details.diagnostic.requestedQuestions} question${details.diagnostic.requestedQuestions === 1 ? "" : "s"}).`
+                  : `Phase 5 - Question Generation: ${details.label} - ${details.diagnostic.generatedQuestions}/${details.diagnostic.requestedQuestions} focused question${details.diagnostic.requestedQuestions === 1 ? "" : "s"} ready.`,
+              });
             },
-          );
+            onBatchComplete: (details) => {
+              send({
+                step: 5,
+                pct: 82,
+                progress: 82,
+                msg: `Phase 5 - Question Generation: focused batch ${details.generated}/${details.total} TXT-grounded AI questions ready...`,
+              });
+            },
+          });
+          allQuestions = [...allQuestions, ...coverageGeneration.questions];
+          coverageDiagnostics = coverageGeneration.diagnostics;
+          stoppedDuringCoverageGeneration = coverageGeneration.stoppedForBudget;
         }
 
         const stoppedForServerBudget = shouldStopForFinalization(
           generationDeadlineAt,
           allQuestions.length,
-        );
+        ) || stoppedDuringCoverageGeneration;
         if (!stoppedForServerBudget) {
           send({
             step: 5,
             pct: 85,
             progress: 85,
-            msg: `Phase 5 - Question Generation: source-text AI batch done (${allQuestions.length} questions).`,
+            msg: `Phase 5 - Question Generation: source-text generation batch done (${allQuestions.length} questions).`,
           });
         }
 
@@ -538,9 +652,7 @@ export async function POST(request: NextRequest) {
           generationNonce: generationJobId,
           cooldownScope: providerCooldownScope,
           healthyProviders,
-          allowEmergencyTxtRepairFill:
-            !allowExplicitDemoFallback && effectiveConfig.sourceMode !== "pdf_upload",
-          emergencyFillLimit: 2,
+          allowSourceBackedCompletion: !allowExplicitDemoFallback,
           deadlineAt: generationDeadlineAt,
           paperId,
           idempotencyKey,
@@ -555,12 +667,12 @@ export async function POST(request: NextRequest) {
         const validated = stripGenerationMetadataFromQuestions(validation.questions);
         effectiveConfig = validation.config;
 
-        if (validation.emergencyFilledQuestions) {
+        if (validation.sourceBackedCompletedQuestions) {
           send({
             step: 6,
             pct: 94,
             progress: 94,
-            msg: `Phase 6 - Validation Engine: completed ${validation.emergencyFilledQuestions} final replacement question${validation.emergencyFilledQuestions === 1 ? "" : "s"} from selected NCERT TXT after AI repair providers failed.`,
+            msg: `Phase 6 - Validation Engine: completed ${validation.sourceBackedCompletedQuestions} final source-backed replacement question${validation.sourceBackedCompletedQuestions === 1 ? "" : "s"} from selected text.`,
           });
         }
 
@@ -606,6 +718,15 @@ export async function POST(request: NextRequest) {
           idempotencyKey,
           taskProviderOrder: configuredTaskProviderOrder(),
           usageSummary: summarizeAIUsage(generationJobId),
+          coverage:
+            !allowExplicitDemoFallback && composition.length
+              ? coverageDiagnosticsForFinalQuestions(
+                  effectiveConfig,
+                  validation.blueprint,
+                  storedQuestions,
+                  coverageDiagnostics,
+                )
+              : undefined,
         });
         await setPaperGenerationManifest(paperId, manifest, effectiveConfig);
         const readyPaper = buildReadyPaperPayload({
@@ -775,6 +896,38 @@ export async function POST(request: NextRequest) {
       Connection: "keep-alive",
     },
   });
+}
+
+function generateSourceBackedProviderOutageQuestions({
+  blueprint,
+  concepts,
+  config,
+  existingQuestions,
+}: {
+  blueprint: Blueprint;
+  concepts: ConceptData[];
+  config: PaperConfig;
+  existingQuestions: GeneratedQuestion[];
+}) {
+  if (!hasSourceBackedFallbackConcepts(concepts)) {
+    throw selectedSourceTextNotEnoughError("this paper");
+  }
+
+  const questions = generateSourceBackedFallbackQuestions(
+    blueprint.sections,
+    concepts,
+    config,
+    {
+      existingQuestions,
+      startIndex: existingQuestions.length + 101,
+    },
+  );
+
+  if (!questions.length) {
+    throw selectedSourceTextNotEnoughError("this paper");
+  }
+
+  return questions;
 }
 
 async function completeWithLocalGenerationFallback({
@@ -1220,6 +1373,10 @@ function generationErrorMessage(error: unknown) {
   const message =
     error instanceof Error ? error.message : "Generation failed. Please try again.";
 
+  if (/SOURCE_TEXT_NOT_ENOUGH|Selected source text (?:is not enough|did not provide enough distinct material)/i.test(message)) {
+    return stripSourceTextNotEnoughPrefix(message);
+  }
+
   if (/SOURCE_NOT_TEXT_BACKED/i.test(message)) {
     return stripSourceGroundingPrefix(message);
   }
@@ -1307,6 +1464,10 @@ function generationErrorCode(error: unknown) {
   const message =
     error instanceof Error ? error.message : "Generation failed. Please try again.";
 
+  if (/SOURCE_TEXT_NOT_ENOUGH|Selected source text (?:is not enough|did not provide enough distinct material)/i.test(message)) {
+    return "SOURCE_TEXT_NOT_ENOUGH";
+  }
+
   if (/SOURCE_NOT_TEXT_BACKED/i.test(message)) {
     return "SOURCE_NOT_TEXT_BACKED";
   }
@@ -1348,6 +1509,10 @@ function generationErrorCode(error: unknown) {
 
 function stripSourceGroundingPrefix(message: string) {
   return message.replace(/^SOURCE_NOT_TEXT_BACKED:\s*/i, "");
+}
+
+function stripSourceTextNotEnoughPrefix(message: string) {
+  return message.replace(/^SOURCE_TEXT_NOT_ENOUGH:\s*/i, "");
 }
 
 function generationContinuationError(message: string) {
@@ -1461,9 +1626,12 @@ function isServerTimeBudgetError(error: unknown) {
 }
 
 function isAIProviderRepairUnavailable(error: unknown) {
-  const message = error instanceof Error ? error.message : String(error);
-  return /No configured AI provider is currently usable|All configured AI providers failed|Set .*API_?KEY|Set at least one AI provider key|402|credit|quota|billing|can only afford|max_tokens|401|403|unauthorized|api[_\s-]?key|invalid key|not allowed|permission|429|rate.?limit|503|service unavailable|temporarily|busy|overloaded|timeout|timed out|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(
-    message,
+  return isAIProviderUnavailableError(error);
+}
+
+function selectedSourceTextNotEnoughError(scope: string) {
+  return new Error(
+    `SOURCE_TEXT_NOT_ENOUGH: Selected source text is not enough for ${scope}. Select more chapters/topics, upload stronger source text, or lower the question count.`,
   );
 }
 
@@ -1479,8 +1647,7 @@ async function validateGeneratedPaperSkippingInvalid({
   generationNonce,
   cooldownScope,
   healthyProviders,
-  allowEmergencyTxtRepairFill,
-  emergencyFillLimit,
+  allowSourceBackedCompletion,
   deadlineAt,
   paperId,
   idempotencyKey,
@@ -1501,8 +1668,7 @@ async function validateGeneratedPaperSkippingInvalid({
   generationNonce: string;
   cooldownScope: string;
   healthyProviders?: DirectAIProvider[];
-  allowEmergencyTxtRepairFill: boolean;
-  emergencyFillLimit: number;
+  allowSourceBackedCompletion: boolean;
   deadlineAt: number;
   paperId: number;
   idempotencyKey: string;
@@ -1518,7 +1684,7 @@ async function validateGeneratedPaperSkippingInvalid({
   const targetQuestionCount = blueprint.totalQuestions;
   let stoppedForServerBudget = Boolean(partialFinalizationReason);
   let lastRepairError: string | undefined;
-  let emergencyFilledQuestions = 0;
+  let sourceBackedCompletedQuestions = 0;
   const stateCreatedAt = resumeState?.createdAt ?? new Date().toISOString();
   const persistBank = async (
     status: PaperGenerationState["status"],
@@ -1622,13 +1788,13 @@ async function validateGeneratedPaperSkippingInvalid({
         break;
       }
 
-      if (bank.readyCount() && isAIProviderRepairUnavailable(error)) {
+      if (isAIProviderRepairUnavailable(error)) {
         lastRepairError = error instanceof Error ? error.message : String(error);
         await persistBank(
           "IN_PROGRESS",
           "REPAIR",
           (resumeState?.attemptCount ?? 0) + repairAttempt,
-          "AI repair providers were unavailable; attempting final NCERT TXT emergency fill.",
+          "AI repair providers were unavailable; attempting selected-source completion.",
           lastRepairError,
         );
         break;
@@ -1649,64 +1815,72 @@ async function validateGeneratedPaperSkippingInvalid({
   }
 
   if (
-    allowEmergencyTxtRepairFill &&
-    bank.missingCount() > 0 &&
-    bank.missingCount() <= emergencyFillLimit &&
-    bank.readyCount() > 0
+    allowSourceBackedCompletion &&
+    bank.missingCount() > 0
   ) {
     send({
       step: 6,
       pct: 94,
       progress: 94,
-      msg: "Completing final source-backed replacement from NCERT TXT...",
+      msg: "Completing remaining questions from selected source text...",
     });
-    const beforeEmergencyReady = bank.readyCount();
-    const emergencyQuestions = generateEmergencyTxtRepairFill({
-      missingSections: bank.missingSections(),
+    const beforeCompletionReady = bank.readyCount();
+    const completionQuestions = completeQuestionBankWithSourceBackedFallback({
+      bank,
       concepts: scopedConcepts,
       config,
-      existingQuestions: bank.allCandidates(),
-      limit: emergencyFillLimit,
+      startIndex: bank.allCandidates().length + 101,
     });
 
-    if (emergencyQuestions.length) {
-      bank.add(emergencyQuestions);
-      emergencyFilledQuestions = Math.max(
-        0,
-        bank.readyCount() - beforeEmergencyReady,
-      );
-      await persistBank(
-        bank.missingCount() > 0 ? "IN_PROGRESS" : "READY",
-        "REPAIR",
-        (resumeState?.attemptCount ?? 0) + 4,
-        emergencyFilledQuestions
-          ? `Accepted ${emergencyFilledQuestions} final NCERT TXT emergency replacement question${emergencyFilledQuestions === 1 ? "" : "s"}.`
-          : "NCERT TXT emergency replacements were generated but did not pass validation.",
-        lastRepairError,
-      );
-    }
+    sourceBackedCompletedQuestions = Math.max(
+      0,
+      bank.readyCount() - beforeCompletionReady,
+    );
+    await persistBank(
+      bank.missingCount() > 0 ? "IN_PROGRESS" : "READY",
+      "REPAIR",
+      (resumeState?.attemptCount ?? 0) + 4,
+      sourceBackedCompletedQuestions
+        ? `Accepted ${sourceBackedCompletedQuestions} selected-source completion question${sourceBackedCompletedQuestions === 1 ? "" : "s"}.`
+        : completionQuestions.length
+          ? "Selected-source completion candidates were generated but did not pass validation."
+          : "Selected source text did not provide enough distinct completion candidates.",
+      lastRepairError,
+    );
   }
 
   const validation = bank.result();
   const remainingMissingQuestions = bank.missingCount();
   const readyCount = bank.readyCount();
   const replacedQuestions = bank.replacedQuestions();
-  const emergencyWarnings = emergencyFilledQuestions
+  const sourceBackedCompletionWarnings = sourceBackedCompletedQuestions
     ? [
         {
-          type: "ncert-txt-emergency-fill",
-          reason: `${emergencyTxtRepairFillMarker}: completed ${emergencyFilledQuestions} final source-backed replacement question${emergencyFilledQuestions === 1 ? "" : "s"} after AI repair providers were unavailable.`,
+          type: "source-backed-completion",
+          reason: `${sourceBackedCompletionMarker}: completed ${sourceBackedCompletedQuestions} final source-backed replacement question${sourceBackedCompletedQuestions === 1 ? "" : "s"} from selected source text.`,
         },
       ]
     : [];
 
   if (remainingMissingQuestions > 0) {
+    if (!allowDemoFallback) {
+      const reason = `Selected source text did not provide enough distinct material to replace ${remainingMissingQuestions} invalid or duplicate question${remainingMissingQuestions === 1 ? "" : "s"}.`;
+      await persistBank(
+        "FAILED",
+        "REPAIR",
+        (resumeState?.attemptCount ?? 0) + 4,
+        undefined,
+        `${reason} Generated ${readyCount}/${targetQuestionCount} valid questions.`,
+      );
+      throw new Error(
+        `SOURCE_TEXT_NOT_ENOUGH: ${reason} Generated ${readyCount}/${targetQuestionCount} valid questions. Select more chapters/topics, upload more source text, or lower the question count.`,
+      );
+    }
+
     if (readyCount > 0) {
       const reason =
         partialFinalizationReason ??
-        (stoppedForServerBudget
-          ? "Generation reached the deployment time limit during replacement."
-          : "Generation needs one more continuation pass to replace invalid or duplicate questions.");
+        "Generation reached the deployment time limit during replacement.";
       await persistBank(
         "NEEDS_CONTINUATION",
         "REPAIR",
@@ -1723,7 +1897,7 @@ async function validateGeneratedPaperSkippingInvalid({
         ...validation,
         skipped: [
           ...validation.skipped,
-          ...emergencyWarnings,
+          ...sourceBackedCompletionWarnings,
           {
             type: "server-time-budget",
             reason: `${reason} Saved ${readyCount}/${targetQuestionCount} valid question${readyCount === 1 ? "" : "s"}; ${remainingMissingQuestions} requested question${remainingMissingQuestions === 1 ? "" : "s"} could not be generated in time.`,
@@ -1731,7 +1905,7 @@ async function validateGeneratedPaperSkippingInvalid({
         ],
         replacedQuestions,
         remainingMissingQuestions,
-        emergencyFilledQuestions,
+        sourceBackedCompletedQuestions,
       };
     }
 
@@ -1756,10 +1930,10 @@ async function validateGeneratedPaperSkippingInvalid({
 
   return {
     ...validation,
-    skipped: [...validation.skipped, ...emergencyWarnings],
+    skipped: [...validation.skipped, ...sourceBackedCompletionWarnings],
     replacedQuestions,
     remainingMissingQuestions,
-    emergencyFilledQuestions,
+    sourceBackedCompletedQuestions,
   };
 }
 

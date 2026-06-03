@@ -84,6 +84,33 @@ export class QuestionCandidateBank {
     );
   }
 
+  tryAdd(candidate: GeneratedQuestion) {
+    const previousReady = this.readyCount();
+    const previousMissing = this.missingCount();
+    const nextCandidates = [...this.candidates, candidate];
+    const nextValidation = validatePaperKeepingValidOrEmpty(
+      nextCandidates,
+      this.blueprint,
+      this.config,
+    );
+    const nextReady = countQuestionsForBlueprint(
+      nextValidation.questions,
+      this.blueprint,
+    );
+    const nextMissing = missingSectionsForBlueprint(
+      nextValidation.questions,
+      this.blueprint,
+    ).reduce((sum, section) => sum + section.count, 0);
+
+    if (nextReady <= previousReady && nextMissing >= previousMissing) {
+      return false;
+    }
+
+    this.candidates = nextCandidates;
+    this.validation = nextValidation;
+    return true;
+  }
+
   result() {
     return this.validation;
   }

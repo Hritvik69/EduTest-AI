@@ -14,6 +14,7 @@ import {
   getConfiguredProviders,
   type DirectAIProvider,
 } from "@/lib/gemini";
+import { isAIProviderUnavailableError } from "@/lib/error-classification";
 import { questionGenerationSystemInstruction } from "@/lib/gemini-prompts";
 import {
   intelligenceCountsForTotal,
@@ -338,6 +339,11 @@ function defaultCandidateReserve(section: BlueprintSection) {
     "LONG",
     "DIAGRAM",
   ]);
+  if (section.count >= 8) {
+    const maximumReserve = heavyQuestionTypes.has(section.questionType) ? 4 : 12;
+    return Math.min(maximumReserve, Math.ceil(section.count * 0.5));
+  }
+
   const maximumReserve = heavyQuestionTypes.has(section.questionType) ? 2 : 6;
   const minimumReserve = section.count === 1 ? 1 : 2;
 
@@ -1184,14 +1190,7 @@ function generationJobIdFromNonce(nonce?: string) {
 }
 
 function isProviderQuotaOrAuthError(error: unknown) {
-  if (!(error instanceof Error)) return false;
-  return isAIProviderUnavailableMessage(error.message);
-}
-
-function isAIProviderUnavailableMessage(message: string) {
-  return /All configured AI providers failed|Set .*API_?KEY|Set at least one AI provider key|402|credit|quota|billing|can only afford|max_tokens|401|403|unauthorized|api[_\s-]?key|invalid key|not allowed|permission|429|rate.?limit|503|service unavailable|temporarily|busy|overloaded|timeout|timed out|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(
-    message,
-  );
+  return isAIProviderUnavailableError(error);
 }
 
 function normalizeGeneratedQuestions(

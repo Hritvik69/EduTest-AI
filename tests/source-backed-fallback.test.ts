@@ -13,15 +13,15 @@ const config: PaperConfig = {
   subjects: ["English"],
   subjectSelections: [{ subject: "English", chapterIds: [1], topicIds: [] }],
   chapterIds: [1],
-  totalMarks: 9,
+  totalMarks: 18,
   duration: 90,
   examType: "School Test",
   difficulty: "MEDIUM",
   aiProvider: "AUTO",
-  questionTypes: ["MCQ", "CASE_BASED", "SHORT"],
-  typeDistribution: { MCQ: 2, CASE_BASED: 1, SHORT: 1 },
+  questionTypes: ["MCQ", "CASE_BASED", "SHORT", "SOURCE_BASED", "LONG"],
+  typeDistribution: { MCQ: 2, CASE_BASED: 1, SHORT: 1, SOURCE_BASED: 1, LONG: 1 },
   bloomDistribution: defaultBloomDistribution,
-  totalQuestions: 4,
+  totalQuestions: 6,
 };
 
 const concepts: ConceptData[] = [
@@ -87,9 +87,29 @@ describe("generateSourceBackedFallbackQuestions", () => {
           difficultyBreakdown: { MEDIUM: 100 },
           bloomBreakdown: defaultBloomDistribution,
         },
+        {
+          name: "Section E",
+          questionType: "SOURCE_BASED",
+          count: 1,
+          marksPerQuestion: 4,
+          totalMarks: 4,
+          difficulty: "MEDIUM",
+          difficultyBreakdown: { MEDIUM: 100 },
+          bloomBreakdown: defaultBloomDistribution,
+        },
+        {
+          name: "Section F",
+          questionType: "LONG",
+          count: 1,
+          marksPerQuestion: 5,
+          totalMarks: 5,
+          difficulty: "MEDIUM",
+          difficultyBreakdown: { MEDIUM: 100 },
+          bloomBreakdown: defaultBloomDistribution,
+        },
       ],
-      totalQuestions: 4,
-      totalMarks: 9,
+      totalQuestions: 6,
+      totalMarks: 18,
       estimatedTime: 30,
       competencyPercentage: 60,
     };
@@ -101,11 +121,19 @@ describe("generateSourceBackedFallbackQuestions", () => {
     );
     const validation = validatePaperKeepingValidQuestions(questions, blueprint, config);
 
-    expect(validation.questions).toHaveLength(4);
-    expect(validation.blueprint.totalQuestions).toBe(4);
-    expect(validation.blueprint.totalMarks).toBe(9);
+    expect(validation.questions).toHaveLength(6);
+    expect(validation.blueprint.totalQuestions).toBe(6);
+    expect(validation.blueprint.totalMarks).toBe(18);
     expect(validation.skipped).toEqual([]);
     expect(validation.questions.every((question) => question.chapterId === 1)).toBe(true);
+    expect(
+      validation.questions.find((question) => question.type === "SOURCE_BASED")
+        ?.subQuestions,
+    ).toHaveLength(4);
+    expect(
+      validation.questions.find((question) => question.type === "LONG")
+        ?.correctAnswer,
+    ).toContain("Introduction:");
   });
 
   it("does not generate fallback questions from outline-only concepts", () => {

@@ -21,6 +21,7 @@ export function buildGenerationManifest({
   idempotencyKey,
   taskProviderOrder,
   usageSummary,
+  coverage,
 }: {
   config: PaperConfig;
   blueprint: Blueprint;
@@ -33,6 +34,7 @@ export function buildGenerationManifest({
   idempotencyKey?: string;
   taskProviderOrder: Partial<Record<AITask, AIProvider[]>>;
   usageSummary?: GenerationManifest["ai"]["usageSummary"];
+  coverage?: GenerationManifest["coverage"];
 }): GenerationManifest {
   const conceptSource = dominantConceptSource(config, concepts);
   const sourceQuality = analyzeConceptSourceQuality(concepts);
@@ -79,6 +81,7 @@ export function buildGenerationManifest({
       replacedQuestions,
       warnings: warningTexts,
     },
+    ...(coverage ? { coverage } : {}),
     warnings: unique([...sourceWarnings, ...warningTexts]).slice(0, 12),
   };
 }

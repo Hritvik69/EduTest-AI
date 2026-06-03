@@ -29,6 +29,16 @@ export function compactAiProviderFailureMessage(message: string) {
   return limitMessage(clean);
 }
 
+export function isAIProviderUnavailableError(error: unknown) {
+  return isAIProviderUnavailableMessage(errorMessage(error));
+}
+
+export function isAIProviderUnavailableMessage(message: string) {
+  return /No configured AI provider is currently usable|All configured AI providers failed|Set .*API_?KEY|Set at least one AI provider key|402|credit|quota|billing|can only afford|max_tokens|401|403|unauthorized|api[_\s-]?key|invalid key|not allowed|permission|429|rate.?limit|503|service unavailable|temporarily|busy|overloaded|timeout|timed out|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(
+    message,
+  );
+}
+
 export function friendlyPdfProcessingError(error: unknown) {
   const message = sanitizeErrorText(errorMessage(error));
 

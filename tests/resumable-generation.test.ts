@@ -23,6 +23,8 @@ describe("resumable paper generation wiring", () => {
     expect(route).toMatch(/readyQuestionCount/);
     expect(route).toMatch(/targetQuestionCount/);
     expect(route).toMatch(/missingQuestionCount/);
+    expect(route).toMatch(/resumeNeedsFinalCompletion/);
+    expect(route).toMatch(/resolving .* saved duplicate\/missing question/);
     expect(route).toMatch(/resume paper not found; starting fresh/);
     expect(route).toMatch(/Saved generation progress was no longer available/);
     expect(store).toMatch(/generationState/);
@@ -46,5 +48,22 @@ describe("resumable paper generation wiring", () => {
     expect(overlay).toMatch(/autoContinueAttempts/);
     expect(overlay).toMatch(/maxAutoContinueAttempts/);
     expect(overlay).toMatch(/setRetryNonce/);
+  });
+
+  it("does not auto-continue deterministic source-shortage finalization failures", () => {
+    const route = readFileSync(
+      join(root, "app", "api", "generate-paper", "route.ts"),
+      "utf8",
+    );
+    const overlay = readFileSync(
+      join(root, "components", "wizard", "generation-overlay.tsx"),
+      "utf8",
+    );
+
+    expect(route).toMatch(/SOURCE_TEXT_NOT_ENOUGH/);
+    expect(route).toMatch(/Selected source text did not provide enough distinct material/);
+    expect(overlay).toMatch(/isSourceTextShortageError/);
+    expect(overlay).toMatch(/SOURCE_TEXT_NOT_ENOUGH/);
+    expect(overlay).toMatch(/if \(isSourceTextShortageError\(error\)\) return false/);
   });
 });

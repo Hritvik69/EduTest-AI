@@ -3,6 +3,7 @@ import {
   compactAiProviderFailureMessage,
   friendlyExportError,
   friendlyPdfProcessingError,
+  isAIProviderUnavailableError,
 } from "@/lib/error-classification";
 
 describe("error classification", () => {
@@ -31,6 +32,19 @@ describe("error classification", () => {
 
     expect(message).toContain("[redacted-key]");
     expect(message).not.toContain("xai-secretkey");
+  });
+
+  it("classifies provider outages through the shared detector", () => {
+    expect(
+      isAIProviderUnavailableError(
+        new Error(
+          "All configured AI providers failed. GroqCloud: no credits. Gemini: provider timed out.",
+        ),
+      ),
+    ).toBe(true);
+    expect(isAIProviderUnavailableError(new Error("Duplicate question skipped"))).toBe(
+      false,
+    );
   });
 
   it("turns PDF and export failures into actionable messages", () => {
