@@ -642,6 +642,53 @@ describe("generateQuestionsForSection batching", () => {
     });
   });
 
+  it("fills an 18-question request when one required candidate is duplicate and a reserve candidate is unique", async () => {
+    const uniqueCandidates = Array.from({ length: 18 }, (_, index) =>
+      leveledMcq(index + 1, "EASY"),
+    );
+    mocks.generateJSON.mockResolvedValue({
+      questions: [
+        ...uniqueCandidates.slice(0, 17),
+        { ...uniqueCandidates[0] },
+        uniqueCandidates[17],
+      ],
+    });
+    const { generateBlueprintQuestions } = await import("@/lib/generator");
+
+    const questions = await generateBlueprintQuestions(
+      {
+        totalQuestions: 18,
+        totalMarks: 18,
+        estimatedTime: 36,
+        competencyPercentage: 60,
+        sections: [
+          {
+            ...section,
+            difficulty: "EASY",
+            count: 18,
+            totalMarks: 18,
+          },
+        ],
+      },
+      "[Source: ncert_txt] [Chapter: 1] [Topic: Acids] The selected TXT explains acid indicators, colour changes, and observations.",
+      {
+        ...config,
+        difficulty: "EASY",
+        totalQuestions: 18,
+        totalMarks: 18,
+        typeDistribution: { MCQ: 18 },
+      },
+      { availableTopics: ["Acids"] },
+    );
+
+    expect(questions).toHaveLength(18);
+    expect(new Set(questions.map((question) => question.text))).toHaveProperty(
+      "size",
+      18,
+    );
+    expect(questions[17].text).toBe(uniqueCandidates[17].text);
+  });
+
   it("includes repair feedback and TXT scope in replacement blueprint prompts", async () => {
     mocks.generateJSON.mockResolvedValue({
       questions: [mcq(21)],
@@ -697,7 +744,12 @@ describe("generateQuestionsForSection batching", () => {
     expect(prompt).toContain("DUPLICATE");
     expect(prompt).toContain("Duplicate pairs rejected by validation");
     expect(prompt).toContain("TXT excerpt explains indicator colour changes");
-    expect(prompt).toContain("different concept angle, scenario/example, answer path");
+    expect(prompt).toContain(
+      "different noveltyAngle, sourceChunkFocus, scenario/example, answerPath",
+    );
+    expect(prompt).toContain(
+      "noveltyAngle, sourceChunkFocus, answerPath",
+    );
   });
 });
 

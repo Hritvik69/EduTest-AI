@@ -280,6 +280,39 @@ describe("validatePaper", () => {
     expect(result.rejectionReasons).toMatchObject({ DUPLICATE: 1 });
   });
 
+  it("rejects repeated answer-path metadata even when stems are different", () => {
+    const result = validatePaperKeepingValidQuestions(
+      [
+        {
+          ...mcq(21),
+          text: "Which observation shows that the first sample behaves as an acid?",
+          topic: "Acids",
+          answerPath:
+            "Identify the acid by linking litmus colour change to the selected indicator activity.",
+        },
+        {
+          ...mcq(22),
+          text: "What result helps classify the second sample during the activity?",
+          topic: "Acids",
+          answerPath:
+            "Identify the acid by linking litmus colour change to the selected indicator activity.",
+        },
+      ],
+      {
+        ...blueprintFor("MCQ", 1),
+        sections: [{ ...blueprintFor("MCQ", 1).sections[0], count: 2, totalMarks: 2 }],
+        totalQuestions: 2,
+        totalMarks: 2,
+      },
+      config,
+    );
+
+    expect(result.questions).toHaveLength(1);
+    expect(result.rejectedQuestions.map((item) => item.reason)).toContain(
+      "DUPLICATE",
+    );
+  });
+
   it("skips malformed NCERT Books/PDF questions instead of failing the paper", () => {
     const blueprint = {
       ...blueprintFor("NCERT_FORMAT", 2),

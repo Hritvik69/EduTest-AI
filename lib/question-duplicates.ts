@@ -40,6 +40,9 @@ type QuestionLike = {
     correctAnswer?: string;
     options?: Array<{ id?: string; text?: string; isCorrect?: boolean }>;
   }>;
+  noveltyAngle?: string;
+  sourceChunkFocus?: string;
+  answerPath?: string;
 };
 
 export interface DuplicateQuestionMatch<T extends QuestionLike> {
@@ -91,6 +94,29 @@ export function duplicateQuestionReason(left: QuestionLike, right: QuestionLike)
     isDuplicateQuestionText(leftAnswer, rightAnswer)
   ) {
     return "repeated answer path";
+  }
+
+  const leftAnswerPath = normalizeQuestionText(left.answerPath ?? "");
+  const rightAnswerPath = normalizeQuestionText(right.answerPath ?? "");
+  if (
+    comparableScope &&
+    leftAnswerPath &&
+    rightAnswerPath &&
+    isMeaningfulAnswerSignature(leftAnswerPath) &&
+    isDuplicateQuestionText(leftAnswerPath, rightAnswerPath)
+  ) {
+    return "repeated answer path metadata";
+  }
+
+  const leftNovelty = normalizeQuestionText(left.noveltyAngle ?? "");
+  const rightNovelty = normalizeQuestionText(right.noveltyAngle ?? "");
+  if (
+    comparableScope &&
+    leftNovelty &&
+    rightNovelty &&
+    leftNovelty === rightNovelty
+  ) {
+    return "repeated novelty angle";
   }
 
   const leftOptions = optionSignature(left.options);
@@ -165,6 +191,9 @@ export function questionNoveltyFingerprint(question: QuestionLike) {
     question.text,
     question.scenario,
     question.correctAnswer,
+    question.noveltyAngle,
+    question.sourceChunkFocus,
+    question.answerPath,
     question.options?.map((option) => option.text).join(" | "),
     question.subQuestions
       ?.map((item) => `${item.text ?? ""} ${item.correctAnswer ?? ""}`)

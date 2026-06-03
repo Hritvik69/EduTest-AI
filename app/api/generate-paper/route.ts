@@ -392,7 +392,7 @@ export async function POST(request: NextRequest) {
           signal: generationSignal,
           send,
         });
-        const validated = validation.questions;
+        const validated = stripGenerationMetadataFromQuestions(validation.questions);
         effectiveConfig = validation.config;
 
         if (validation.replacedQuestions) {
@@ -647,7 +647,7 @@ async function completeWithLocalGenerationFallback({
   await updatePaperDefinition(paperId, validation.config, validation.blueprint);
   await markPaperDemoMode(paperId);
   const storedQuestions = await saveQuestionsAndLink(
-    validation.questions,
+    stripGenerationMetadataFromQuestions(validation.questions),
     paperId,
     "demo",
   );
@@ -1237,30 +1237,17 @@ async function validateGeneratedPaperSkippingInvalid({
   signal: AbortSignal;
   send: (data: object, event?: string) => void;
 }) {
-  const candidates = [...questions];
-  const initialValidation = validatePaperKeepingValidOrEmpty(
-    candidates,
-    blueprint,
-    config,
-  );
-  let validation = initialValidation;
+  const bank = new QuestionCandidateBank(questions, blueprint, config);
   const targetQuestionCount = blueprint.totalQuestions;
-  const initialValidCount = countQuestionsForBlueprint(
-    initialValidation.questions,
-    blueprint,
-  );
   let stoppedForServerBudget = Boolean(partialFinalizationReason);
 
-  for (let repairAttempt = 1; repairAttempt <= 2; repairAttempt += 1) {
-    const missingSections = missingSectionsForBlueprint(validation.questions, blueprint);
-    const missingCount = missingSections.reduce(
-      (sum, section) => sum + section.count,
-      0,
-    );
+  for (let repairAttempt = 1; repairAttempt <= 3; repairAttempt += 1) {
+    const missingSections = bank.missingSections();
+    const missingCount = bank.missingCount();
 
     if (missingCount <= 0) break;
 
-    if (shouldStopForFinalization(deadlineAt, validation.questions.length)) {
+    if (shouldStopForFinalization(deadlineAt, bank.readyCount())) {
       stoppedForServerBudget = true;
       break;
     }
@@ -1270,7 +1257,7 @@ async function validateGeneratedPaperSkippingInvalid({
       step: 6,
       pct: 88 + repairAttempt,
       progress: 88 + repairAttempt,
-      msg: `Phase 6 - Validation Engine: repair attempt ${repairAttempt}/2 for ${missingCount} missing/invalid TXT-grounded question${missingCount === 1 ? "" : "s"}.`,
+      msg: `Phase 6 - Validation Engine: repair attempt ${repairAttempt}/3 for ${missingCount} missing/invalid TXT-grounded question${missingCount === 1 ? "" : "s"}.`,
     });
 
     let replacements: GeneratedQuestion[] = [];
@@ -1283,10 +1270,10 @@ async function validateGeneratedPaperSkippingInvalid({
           availableTopics,
           allowPartial: true,
           candidateReserveCount: repairCandidateReserveCount(missingCount),
-          existingQuestions: candidates,
+          existingQuestions: bank.allCandidates(),
           generationPlan,
           generationNonce: `${generationNonce}:repair:${repairAttempt}`,
-          repairFeedback: repairFeedbackForValidation(validation, repairAttempt),
+          repairFeedback: bank.repairFeedback(repairAttempt),
           cooldownScope,
           signal,
           onBatchComplete: (details) => {
@@ -1294,13 +1281,13 @@ async function validateGeneratedPaperSkippingInvalid({
               step: 6,
               pct: 90 + repairAttempt,
               progress: 90 + repairAttempt,
-              msg: `Phase 6 - Validation Engine: repair attempt ${repairAttempt}/2 produced ${details.generated}/${details.total} valid TXT-grounded AI question${details.generated === 1 ? "" : "s"}...`,
+              msg: `Phase 6 - Validation Engine: repair attempt ${repairAttempt}/3 produced ${details.generated}/${details.total} valid TXT-grounded AI question${details.generated === 1 ? "" : "s"}...`,
             });
           },
         },
       );
     } catch (error) {
-      if (isServerTimeBudgetError(error) && validation.questions.length) {
+      if (isServerTimeBudgetError(error) && bank.readyCount()) {
         stoppedForServerBudget = true;
         break;
       }
@@ -1309,17 +1296,14 @@ async function validateGeneratedPaperSkippingInvalid({
     }
 
     if (replacements.length) {
-      candidates.push(...replacements);
-      validation = validatePaperKeepingValidOrEmpty(candidates, blueprint, config);
+      bank.add(replacements);
     }
   }
 
-  const remainingMissingQuestions = missingSectionsForBlueprint(
-    validation.questions,
-    blueprint,
-  ).reduce((sum, section) => sum + section.count, 0);
-  const readyCount = countQuestionsForBlueprint(validation.questions, blueprint);
-  const replacedQuestions = Math.max(0, readyCount - initialValidCount);
+  const validation = bank.result();
+  const remainingMissingQuestions = bank.missingCount();
+  const readyCount = bank.readyCount();
+  const replacedQuestions = bank.replacedQuestions();
 
   if (remainingMissingQuestions > 0) {
     if (stoppedForServerBudget && readyCount > 0) {
@@ -1356,6 +1340,82 @@ async function validateGeneratedPaperSkippingInvalid({
     replacedQuestions,
     remainingMissingQuestions,
   };
+}
+
+class QuestionCandidateBank {
+  private candidates: GeneratedQuestion[];
+  private validation: ReturnType<typeof validatePaperKeepingValidOrEmpty>;
+  private readonly initialReadyCount: number;
+
+  constructor(
+    initialCandidates: GeneratedQuestion[],
+    private readonly blueprint: Blueprint,
+    private readonly config: PaperConfig,
+  ) {
+    this.candidates = [...initialCandidates];
+    this.validation = validatePaperKeepingValidOrEmpty(
+      this.candidates,
+      this.blueprint,
+      this.config,
+    );
+    this.initialReadyCount = this.readyCount();
+  }
+
+  add(candidates: GeneratedQuestion[]) {
+    if (!candidates.length) return;
+    this.candidates.push(...candidates);
+    this.validation = validatePaperKeepingValidOrEmpty(
+      this.candidates,
+      this.blueprint,
+      this.config,
+    );
+  }
+
+  result() {
+    return this.validation;
+  }
+
+  allCandidates() {
+    return [...this.candidates];
+  }
+
+  missingSections() {
+    return missingSectionsForBlueprint(this.validation.questions, this.blueprint);
+  }
+
+  missingCount() {
+    return this.missingSections().reduce((sum, section) => sum + section.count, 0);
+  }
+
+  readyCount() {
+    return countQuestionsForBlueprint(this.validation.questions, this.blueprint);
+  }
+
+  replacedQuestions() {
+    return Math.max(0, this.readyCount() - this.initialReadyCount);
+  }
+
+  repairFeedback(attempt: number) {
+    const missingSections = this.missingSections();
+
+    return {
+      attempt,
+      missingSections: missingSections.map((section) => ({
+        type: section.questionType,
+        count: section.count,
+        marks: section.marksPerQuestion,
+      })),
+      rejectedQuestions: this.validation.rejectedQuestions
+        .slice(-16)
+        .map((item) => ({
+          type: item.type,
+          reason: item.reason,
+          question: item.question,
+          text: item.question?.text,
+        })),
+      duplicateGroups: this.validation.duplicateGroups.slice(-10),
+    };
+  }
 }
 
 function validatePaperKeepingValidOrEmpty(
@@ -1409,23 +1469,20 @@ function validatePaperKeepingValidOrEmpty(
 }
 
 function repairCandidateReserveCount(missingCount: number) {
-  return Math.min(8, Math.max(3, Math.ceil(missingCount * 1.25)));
+  if (missingCount <= 1) return 5;
+  return Math.min(8, Math.max(4, Math.ceil(missingCount * 1.5)));
 }
 
-function repairFeedbackForValidation(
-  validation: ReturnType<typeof validatePaperKeepingValidOrEmpty>,
-  attempt: number,
-) {
-  return {
-    attempt,
-    rejectedQuestions: validation.rejectedQuestions.slice(-12).map((item) => ({
-      type: item.type,
-      reason: item.reason,
-      question: item.question,
-      text: item.question?.text,
-    })),
-    duplicateGroups: validation.duplicateGroups.slice(-8),
-  };
+function stripGenerationMetadataFromQuestions(questions: GeneratedQuestion[]) {
+  return questions.map((question) => {
+    const {
+      noveltyAngle: _noveltyAngle,
+      sourceChunkFocus: _sourceChunkFocus,
+      answerPath: _answerPath,
+      ...rest
+    } = question;
+    return rest;
+  });
 }
 
 function blueprintForSections(blueprint: Blueprint, sections: BlueprintSection[]): Blueprint {

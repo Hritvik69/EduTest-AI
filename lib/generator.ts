@@ -73,6 +73,11 @@ interface GenerateBlueprintOptions {
 
 interface GenerationRepairFeedback {
   attempt?: number;
+  missingSections?: Array<{
+    type?: string;
+    count?: number;
+    marks?: number;
+  }>;
   rejectedQuestions?: Array<{
     type?: string;
     reason?: string;
@@ -166,17 +171,24 @@ export async function generateBlueprintQuestions(
   }
 
   const availableTopics = options.availableTopics ?? extractAvailableTopics(conceptContext);
-  const sectionDifficultyAllocation = allocateDifficultyTargetsForSections(
+  const requiredDifficultyAllocation = allocateDifficultyTargetsForSections(
     config.difficulty,
     blueprint.sections,
   );
   const sectionDifficultyTargets = blueprint.sections.map(
-    (_section, index) => sectionDifficultyAllocation[index],
+    (_section, index) => requiredDifficultyAllocation[index],
   );
   const candidateSections = blueprint.sections.map((section) =>
     sectionWithCandidateReserve(section, options.candidateReserveCount),
   );
   const candidateBlueprint = blueprintForCandidateSections(blueprint, candidateSections);
+  const candidateDifficultyAllocation = allocateDifficultyTargetsForSections(
+    config.difficulty,
+    candidateSections,
+  );
+  const sectionCandidateDifficultyTargets = candidateSections.map(
+    (_section, index) => candidateDifficultyAllocation[index],
+  );
   const prompt = buildBlueprintPrompt(
     blueprint,
     conceptContext,
@@ -187,6 +199,7 @@ export async function generateBlueprintQuestions(
     sectionDifficultyTargets,
     options.generationNonce,
     candidateSections,
+    sectionCandidateDifficultyTargets,
     options.repairFeedback,
   );
 
@@ -247,7 +260,7 @@ export async function generateBlueprintQuestions(
         unique,
         section,
         config,
-        sectionDifficultyTargets[sectionIndex],
+        sectionCandidateDifficultyTargets[sectionIndex],
         acceptedQuestions.filter((question) => question.type === section.questionType),
       );
 
@@ -262,7 +275,12 @@ export async function generateBlueprintQuestions(
         );
       }
 
-      acceptedQuestions.push(...governed.accepted.slice(0, section.count));
+      acceptedQuestions.push(
+        ...governed.accepted.slice(
+          0,
+          candidateSections[sectionIndex]?.count ?? section.count,
+        ),
+      );
     } catch (error) {
       lastError = error;
     }
@@ -798,6 +816,7 @@ function buildBlueprintPrompt(
   sectionDifficultyTargets: DifficultyTargets[] = [],
   generationNonce?: string,
   candidateSections: BlueprintSection[] = blueprint.sections,
+  candidateDifficultyTargets: DifficultyTargets[] = sectionDifficultyTargets,
   repairFeedback?: GenerationRepairFeedback,
 ) {
   const subjectWorkflow = buildSubjectWorkflowPrompt(config);
@@ -818,6 +837,10 @@ function buildBlueprintPrompt(
     total_marks: section.totalMarks,
     difficulty_targets: normalizeDifficultyTargets(
       sectionDifficultyTargets[index] ?? { [config.difficulty]: section.count },
+    ),
+    candidate_difficulty_targets: normalizeDifficultyTargets(
+      candidateDifficultyTargets[index] ??
+        { [config.difficulty]: candidateSections[index]?.count ?? section.count },
     ),
   }));
   const antiRepeatRules = existingQuestions.length
@@ -875,11 +898,12 @@ Rules:
 - Use ONLY the selected NCERT_Books TXT chunks above in normal NCERT mode.
 - Do not use the whole PDF/book, neighboring chapters, previous/next chapters, contents pages, transcripts, or outside/web knowledge.
 - Do not copy source lines verbatim as question text; read the source and create fresh exam questions from its meaning.
-- Every returned question must include type, text, correctAnswer, explanation, topic, difficulty, bloomLevel, marks, reasoningSteps, difficultyConfidence, cognitiveComplexity{conceptIntegration,abstractionLevel,inferenceLevel,ambiguityLevel,cognitiveLoad}.
+- Every returned question must include type, text, correctAnswer, explanation, topic, difficulty, bloomLevel, marks, reasoningSteps, difficultyConfidence, noveltyAngle, sourceChunkFocus, answerPath, cognitiveComplexity{conceptIntegration,abstractionLevel,inferenceLevel,ambiguityLevel,cognitiveLoad}.
 - The type/marks must exactly match CONFIG_JSON.sections, and section candidate_count must be satisfied whenever possible.
 - Topic must exactly match one allowed topic.
 - Include proper structure for MCQ options, assertion/reason, match pairs, case/source/paragraph scenarios, subQuestions, diagrams, and keyPoints where the type requires them.
 - Avoid duplicates and avoid repeated concept angles, answer paths, examples, option patterns, case/source scenarios, and sub-question structures.
+- noveltyAngle must name the distinct concept angle being tested; sourceChunkFocus must name the exact selected TXT idea used; answerPath must summarize the reasoning/answer path and must differ across candidates.
 
 Return ONLY valid JSON:
 { "questions": [ ...all questions... ] }`;
@@ -888,12 +912,23 @@ Return ONLY valid JSON:
 function buildRepairFeedbackBlock(repairFeedback?: GenerationRepairFeedback) {
   if (
     !repairFeedback ||
-    (!repairFeedback.rejectedQuestions?.length &&
+    (!repairFeedback.missingSections?.length &&
+      !repairFeedback.rejectedQuestions?.length &&
       !repairFeedback.duplicateGroups?.length)
   ) {
     return "";
   }
 
+  const missing = repairFeedback.missingSections?.length
+    ? `
+Missing slots to fill:
+${repairFeedback.missingSections
+  .map(
+    (item, index) =>
+      `${index + 1}. ${item.count ?? 0} ${item.type ?? "UNKNOWN"} question(s), ${item.marks ?? "?"} mark(s) each`,
+  )
+  .join("\n")}`
+    : "";
   const rejected = repairFeedback.rejectedQuestions?.length
     ? `
 Rejected questions from validation:
@@ -920,11 +955,12 @@ ${repairFeedback.duplicateGroups
 
   return `
 Validator repair feedback${repairFeedback.attempt ? ` (attempt ${repairFeedback.attempt})` : ""}:
+${missing}
 ${rejected}
 ${duplicateGroups}
 Repair requirements:
 - Replace the rejected/duplicate items with genuinely new source-grounded questions.
-- Use a different concept angle, scenario/example, answer path, and option pattern from every rejected item.
+- Use a different noveltyAngle, sourceChunkFocus, scenario/example, answerPath, and option pattern from every rejected item.
 - Do not copy a failed question and change only wording.
 `;
 }

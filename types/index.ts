@@ -157,6 +157,9 @@ export interface GeneratedQuestion {
   classNum?: number;
   class_num?: number;
   source?: Exclude<ContentSource, "unknown">;
+  noveltyAngle?: string;
+  sourceChunkFocus?: string;
+  answerPath?: string;
 }
 
 export interface QuestionCompositionItem {
