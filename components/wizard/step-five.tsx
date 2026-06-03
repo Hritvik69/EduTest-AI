@@ -10,19 +10,27 @@ import { usePaperConfig } from "./paper-config-context";
 
 type ProviderStatus = {
   gemini: boolean;
+  groq: boolean;
   grok: boolean;
   mistral: boolean;
   deepseek: boolean;
   openrouter: boolean;
+  githubModels: boolean;
+  cohere: boolean;
+  cloudflare: boolean;
   openai: boolean;
   cerebras: boolean;
   defaultProvider: string;
   geminiModel: string;
+  groqModel: string;
   grokModel: string;
   mistralModel: string;
   cerebrasModel: string;
   deepseekModel: string;
   openRouterModel: string;
+  githubModelsModel: string;
+  cohereModel: string;
+  cloudflareModel: string;
   openAIModel: string;
 };
 
@@ -37,9 +45,16 @@ const providerCards: {
     provider: "AUTO",
     title: "Auto Fallback",
     description:
-      "Try Gemini first for paper quality, then Mistral, Cerebras, OpenRouter, Grok, DeepSeek, and OpenAI.",
+      "Try healthy free/fast providers first, then continue through the configured fallback chain.",
     detail: "Skips recently failed providers to reduce wasted API calls.",
     icon: RefreshCw,
+  },
+  {
+    provider: "GROQ",
+    title: "GroqCloud Only",
+    description: "Use GroqCloud for every generated question.",
+    detail: "Best free-speed choice for quick repair and final replacement calls.",
+    icon: Zap,
   },
   {
     provider: "GEMINI",
@@ -76,6 +91,27 @@ const providerCards: {
     detail: "Good when you want model routing flexibility.",
     icon: Globe2,
   },
+  {
+    provider: "GITHUB_MODELS",
+    title: "GitHub Models",
+    description: "Use GitHub Models for every generated question.",
+    detail: "Good as another free API bucket when your token has models:read.",
+    icon: Globe2,
+  },
+  {
+    provider: "COHERE",
+    title: "Cohere Only",
+    description: "Use Cohere Chat V2 for every generated question.",
+    detail: "Needs a real Cohere trial or production API key.",
+    icon: Sparkles,
+  },
+  {
+    provider: "CLOUDFLARE",
+    title: "Cloudflare AI",
+    description: "Use Cloudflare Workers AI for every generated question.",
+    detail: "Needs both account ID and Workers AI token.",
+    icon: Cpu,
+  },
 ];
 
 export function StepFive() {
@@ -108,31 +144,50 @@ export function StepFive() {
   function isUnavailable(provider: AIProvider) {
     if (!status) return false;
     if (provider === "GEMINI") return !status.gemini;
+    if (provider === "GROQ") return !status.groq;
     if (provider === "MISTRAL") return !status.mistral;
     if (provider === "CEREBRAS") return !status.cerebras;
     if (provider === "GROK") return !status.grok;
     if (provider === "OPENROUTER") return !status.openrouter;
+    if (provider === "GITHUB_MODELS") return !status.githubModels;
+    if (provider === "COHERE") return !status.cohere;
+    if (provider === "CLOUDFLARE") return !status.cloudflare;
+    if (provider === "OPENAI") return !status.openai;
     return (
       !status.gemini &&
+      !status.groq &&
       !status.mistral &&
       !status.cerebras &&
       !status.grok &&
-      !status.openrouter
+      !status.openrouter &&
+      !status.githubModels &&
+      !status.cohere &&
+      !status.cloudflare &&
+      !status.openai
     );
   }
 
   function selectedModelLabel() {
     if (!status) return null;
     if (selectedProvider === "GEMINI") return status.geminiModel;
+    if (selectedProvider === "GROQ") return status.groqModel;
     if (selectedProvider === "MISTRAL") return status.mistralModel;
     if (selectedProvider === "CEREBRAS") return status.cerebrasModel;
     if (selectedProvider === "GROK") return status.grokModel;
     if (selectedProvider === "OPENROUTER") return status.openRouterModel;
+    if (selectedProvider === "GITHUB_MODELS") return status.githubModelsModel;
+    if (selectedProvider === "COHERE") return status.cohereModel;
+    if (selectedProvider === "CLOUDFLARE") return status.cloudflareModel;
+    if (selectedProvider === "OPENAI") return status.openAIModel;
     return [
       status.gemini ? `Gemini: ${status.geminiModel}` : null,
+      status.groq ? `GroqCloud: ${status.groqModel}` : null,
       status.mistral ? `Mistral: ${status.mistralModel}` : null,
       status.cerebras ? `Cerebras: ${status.cerebrasModel}` : null,
       status.openrouter ? `OpenRouter: ${status.openRouterModel}` : null,
+      status.githubModels ? `GitHub Models: ${status.githubModelsModel}` : null,
+      status.cohere ? `Cohere: ${status.cohereModel}` : null,
+      status.cloudflare ? `Cloudflare: ${status.cloudflareModel}` : null,
       status.grok ? `xAI Grok: ${status.grokModel}` : null,
       status.deepseek ? `DeepSeek: ${status.deepseekModel}` : null,
       status.openai ? `OpenAI: ${status.openAIModel}` : null,

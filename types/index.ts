@@ -23,11 +23,15 @@ export type Difficulty = "EASY" | "MEDIUM" | "HARD" | "ABSURD";
 export type AIProvider =
   | "AUTO"
   | "GEMINI"
+  | "GROQ"
   | "GROK"
   | "MISTRAL"
   | "CEREBRAS"
   | "DEEPSEEK"
   | "OPENROUTER"
+  | "GITHUB_MODELS"
+  | "COHERE"
+  | "CLOUDFLARE"
   | "OPENAI";
 
 export type BloomLevel =

@@ -1,8 +1,12 @@
 const providerNames = [
+  "GroqCloud",
   "Mistral",
   "Cerebras",
   "Gemini",
   "OpenRouter",
+  "GitHub Models",
+  "Cohere",
+  "Cloudflare Workers AI",
   "Grok",
   "DeepSeek",
   "OpenAI",

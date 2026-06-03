@@ -9,6 +9,7 @@ describe("multi-provider JSON generation", () => {
     process.env = { ...originalEnv };
     delete process.env.GEMINI_API_KEY;
     delete process.env.GROQ_API_KEY;
+    delete process.env.GROQ_MODEL;
     delete process.env.XAI_API_KEY;
     delete process.env.MISTRAL_API_KEY;
     delete process.env.MISTRAL_MODEL;
@@ -17,6 +18,13 @@ describe("multi-provider JSON generation", () => {
     delete process.env.DEEPSEEK_API_KEY;
     delete process.env.DEEPSEEK_MODEL;
     delete process.env.OPENROUTER_API_KEY;
+    delete process.env.GITHUB_MODELS_TOKEN;
+    delete process.env.GITHUB_MODELS_MODEL;
+    delete process.env.COHERE_API_KEY;
+    delete process.env.COHERE_MODEL;
+    delete process.env.CLOUDFLARE_API_TOKEN;
+    delete process.env.CLOUDFLARE_ACCOUNT_ID;
+    delete process.env.CLOUDFLARE_WORKERS_AI_MODEL;
     delete process.env.OPENAI_API_KEY;
     delete process.env.AI_PROVIDER;
     delete (globalThis as typeof globalThis & {
@@ -57,6 +65,28 @@ describe("multi-provider JSON generation", () => {
     expect(body.max_tokens).toBe(1234);
     expect(body.messages[0].content).toContain("System rules");
     expect(body.messages[1].content).toBe("Return { ok: true }");
+  });
+
+  it("sends GroqCloud requests through the Groq OpenAI-compatible endpoint", async () => {
+    process.env.GROQ_API_KEY = "gsk-test-key";
+    process.env.GROQ_MODEL = "llama-3.3-70b-versatile";
+    const fetchMock = mockJSONFetch({ ok: true });
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ ok: boolean }>("Return JSON", {
+      provider: "GROQ",
+      maxOutputTokens: 456,
+    });
+
+    expect(result.ok).toBe(true);
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("https://api.groq.com/openai/v1/chat/completions");
+    expect((init?.headers as Record<string, string>).Authorization).toBe(
+      "Bearer gsk-test-key",
+    );
+    const body = JSON.parse(String(init?.body));
+    expect(body.model).toBe("llama-3.3-70b-versatile");
+    expect(body.max_tokens).toBe(456);
   });
 
   it("sends OpenRouter requests through the OpenRouter chat-completions endpoint", async () => {
@@ -160,6 +190,86 @@ describe("multi-provider JSON generation", () => {
     expect(body.messages[1].content).toBe("Return JSON");
   });
 
+  it("sends GitHub Models requests through the GitHub inference endpoint", async () => {
+    process.env.GITHUB_MODELS_TOKEN = "github-token-test";
+    process.env.GITHUB_MODELS_MODEL = "openai/gpt-4.1";
+    const fetchMock = mockJSONFetch({ ok: true });
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ ok: boolean }>("Return JSON", {
+      provider: "GITHUB_MODELS",
+    });
+
+    expect(result.ok).toBe(true);
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("https://models.github.ai/inference/chat/completions");
+    expect((init?.headers as Record<string, string>).Authorization).toBe(
+      "Bearer github-token-test",
+    );
+    expect((init?.headers as Record<string, string>)["X-GitHub-Api-Version"]).toBe(
+      "2026-03-10",
+    );
+    expect(JSON.parse(String(init?.body)).model).toBe("openai/gpt-4.1");
+  });
+
+  it("sends Cloudflare Workers AI requests through the OpenAI-compatible endpoint", async () => {
+    process.env.CLOUDFLARE_API_TOKEN = "cf-test-token";
+    process.env.CLOUDFLARE_ACCOUNT_ID = "account123";
+    process.env.CLOUDFLARE_WORKERS_AI_MODEL = "@cf/meta/llama-3.1-8b-instruct";
+    const fetchMock = mockJSONFetch({ ok: true });
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ ok: boolean }>("Return JSON", {
+      provider: "CLOUDFLARE",
+    });
+
+    expect(result.ok).toBe(true);
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe(
+      "https://api.cloudflare.com/client/v4/accounts/account123/ai/v1/chat/completions",
+    );
+    expect((init?.headers as Record<string, string>).Authorization).toBe(
+      "Bearer cf-test-token",
+    );
+    expect(JSON.parse(String(init?.body)).model).toBe(
+      "@cf/meta/llama-3.1-8b-instruct",
+    );
+  });
+
+  it("sends Cohere requests through Chat V2 and parses JSON content", async () => {
+    process.env.COHERE_API_KEY = "cohere-test-key";
+    process.env.COHERE_MODEL = "command-a-03-2025";
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          message: {
+            content: [{ text: JSON.stringify({ ok: true }) }],
+          },
+        }),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        },
+      ),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ ok: boolean }>("Return JSON", {
+      provider: "COHERE",
+    });
+
+    expect(result.ok).toBe(true);
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("https://api.cohere.com/v2/chat");
+    expect((init?.headers as Record<string, string>).Authorization).toBe(
+      "Bearer cohere-test-key",
+    );
+    const body = JSON.parse(String(init?.body));
+    expect(body.model).toBe("command-a-03-2025");
+    expect(body.response_format).toEqual({ type: "json_object" });
+  });
+
   it("caps OpenRouter max_tokens to a low-cost default", async () => {
     process.env.OPENROUTER_API_KEY = "sk-or-test-key";
     const fetchMock = mockJSONFetch({ routed: true });
@@ -212,6 +322,7 @@ describe("multi-provider JSON generation", () => {
   });
 
   it("uses task-specific Auto fallback order for question generation", async () => {
+    process.env.GROQ_API_KEY = "gsk-test-key";
     process.env.MISTRAL_API_KEY = "mistral-test-key";
     process.env.CEREBRAS_API_KEY = "csk-test-key";
     process.env.XAI_API_KEY = "xai-test-key";
@@ -219,11 +330,6 @@ describe("multi-provider JSON generation", () => {
     process.env.OPENROUTER_API_KEY = "sk-or-test-key";
     const fetchMock = vi
       .fn()
-      .mockResolvedValueOnce(
-        new Response("busy", {
-          status: 503,
-        }),
-      )
       .mockResolvedValueOnce(
         new Response("busy", {
           status: 503,
@@ -244,13 +350,12 @@ describe("multi-provider JSON generation", () => {
     });
 
     expect(result.fallback).toBe("cerebras");
-    expect(fetchMock).toHaveBeenCalledTimes(4);
-    expect(fetchMock.mock.calls[0][0]).toBe("https://api.x.ai/v1/chat/completions");
-    expect(fetchMock.mock.calls[1][0]).toBe("https://api.deepseek.com/chat/completions");
-    expect(fetchMock.mock.calls[2][0]).toBe("https://api.mistral.ai/v1/chat/completions");
-    expect(fetchMock.mock.calls[3][0]).toBe(
-      "https://api.cerebras.ai/v1/chat/completions",
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(fetchMock.mock.calls[0][0]).toBe(
+      "https://api.groq.com/openai/v1/chat/completions",
     );
+    expect(fetchMock.mock.calls[1][0]).toBe("https://api.mistral.ai/v1/chat/completions");
+    expect(fetchMock.mock.calls[2][0]).toBe("https://api.cerebras.ai/v1/chat/completions");
   });
 
   it("reports Grok as configured when XAI_API_KEY exists", async () => {
@@ -508,10 +613,15 @@ describe("multi-provider JSON generation", () => {
 
   it("reports provider status without exposing API keys", async () => {
     process.env.XAI_API_KEY = "xai-test-key";
+    process.env.GROQ_API_KEY = "gsk-test-key";
     process.env.MISTRAL_API_KEY = "mistral-test-key";
     process.env.CEREBRAS_API_KEY = "csk-test-key";
     process.env.DEEPSEEK_API_KEY = "deepseek-test-key";
     process.env.OPENROUTER_API_KEY = "sk-or-test-key";
+    process.env.GITHUB_MODELS_TOKEN = "github-token-test";
+    process.env.COHERE_API_KEY = "cohere-test-key";
+    process.env.CLOUDFLARE_API_TOKEN = "cf-test-token";
+    process.env.CLOUDFLARE_ACCOUNT_ID = "account123";
     process.env.AI_PROVIDER = "openrouter";
     const { GET } = await import("@/app/api/ai/providers/route");
 
@@ -519,13 +629,20 @@ describe("multi-provider JSON generation", () => {
     const payload = await response.json();
 
     expect(payload.data.grok).toBe(true);
-    expect(payload.data.groq).toBeUndefined();
+    expect(payload.data.groq).toBe(true);
     expect(payload.data.mistral).toBe(true);
     expect(payload.data.cerebras).toBe(true);
     expect(payload.data.deepseek).toBe(true);
     expect(payload.data.openrouter).toBe(true);
+    expect(payload.data.githubModels).toBe(true);
+    expect(payload.data.cohere).toBe(true);
+    expect(payload.data.cloudflare).toBe(true);
     expect(payload.data.defaultProvider).toBe("OPENROUTER");
     expect(JSON.stringify(payload)).not.toContain("gsk-test-key");
+    expect(JSON.stringify(payload)).not.toContain("github-token-test");
+    expect(JSON.stringify(payload)).not.toContain("cohere-test-key");
+    expect(JSON.stringify(payload)).not.toContain("cf-test-token");
+    expect(JSON.stringify(payload)).not.toContain("account123");
     expect(JSON.stringify(payload)).not.toContain("mistral-test-key");
     expect(JSON.stringify(payload)).not.toContain("csk-test-key");
     expect(JSON.stringify(payload)).not.toContain("deepseek-test-key");

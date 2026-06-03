@@ -236,11 +236,15 @@ function normalizeConfigQuestionCounts(config: PaperConfig): PaperConfig {
 function normalizeAIProvider(value: unknown): AIProvider {
   if (
     value === "GEMINI" ||
+    value === "GROQ" ||
     value === "GROK" ||
     value === "MISTRAL" ||
     value === "CEREBRAS" ||
     value === "DEEPSEEK" ||
     value === "OPENROUTER" ||
+    value === "GITHUB_MODELS" ||
+    value === "COHERE" ||
+    value === "CLOUDFLARE" ||
     value === "OPENAI"
   ) {
     return value;

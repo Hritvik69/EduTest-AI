@@ -210,6 +210,8 @@ function ConfirmationScreen({
   const aiProviderLabel =
     config.aiProvider === "GEMINI"
       ? "Gemini Only"
+      : config.aiProvider === "GROQ"
+        ? "GroqCloud Only"
       : config.aiProvider === "GROK"
         ? "xAI Grok Only"
         : config.aiProvider === "MISTRAL"
@@ -220,6 +222,12 @@ function ConfirmationScreen({
             ? "DeepSeek Only"
         : config.aiProvider === "OPENROUTER"
           ? "OpenRouter Only"
+      : config.aiProvider === "GITHUB_MODELS"
+        ? "GitHub Models"
+      : config.aiProvider === "COHERE"
+        ? "Cohere Only"
+      : config.aiProvider === "CLOUDFLARE"
+        ? "Cloudflare AI"
       : config.aiProvider === "OPENAI"
         ? "OpenAI Only"
         : "Auto Fallback";

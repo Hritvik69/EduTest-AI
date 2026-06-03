@@ -35,7 +35,14 @@ describe("request schemas", () => {
     expect(generationRequestSchema.parse(validGeneration).chapterIds).toEqual([1]);
   });
 
-  it("accepts configured generation providers and rejects removed Groq", () => {
+  it("accepts configured generation providers", () => {
+    expect(
+      generationRequestSchema.parse({
+        ...validGeneration,
+        aiProvider: "GROQ",
+      }).aiProvider,
+    ).toBe("GROQ");
+
     expect(
       generationRequestSchema.parse({
         ...validGeneration,
@@ -71,12 +78,26 @@ describe("request schemas", () => {
       }).aiProvider,
     ).toBe("OPENROUTER");
 
-    expect(() =>
+    expect(
       generationRequestSchema.parse({
         ...validGeneration,
-        aiProvider: "GROQ",
-      }),
-    ).toThrow();
+        aiProvider: "GITHUB_MODELS",
+      }).aiProvider,
+    ).toBe("GITHUB_MODELS");
+
+    expect(
+      generationRequestSchema.parse({
+        ...validGeneration,
+        aiProvider: "COHERE",
+      }).aiProvider,
+    ).toBe("COHERE");
+
+    expect(
+      generationRequestSchema.parse({
+        ...validGeneration,
+        aiProvider: "CLOUDFLARE",
+      }).aiProvider,
+    ).toBe("CLOUDFLARE");
   });
 
   it("accepts uploaded-PDF generation without class chapter selection", () => {

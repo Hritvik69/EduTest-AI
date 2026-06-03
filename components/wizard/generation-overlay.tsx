@@ -23,19 +23,27 @@ const progressSteps = generationPhaseLabels;
 
 type ProviderStatus = {
   gemini: boolean;
+  groq: boolean;
   grok: boolean;
   mistral: boolean;
   deepseek: boolean;
   openrouter: boolean;
+  githubModels: boolean;
+  cohere: boolean;
+  cloudflare: boolean;
   openai: boolean;
   cerebras: boolean;
   defaultProvider: string;
   geminiModel: string;
+  groqModel: string;
   grokModel: string;
   mistralModel: string;
   cerebrasModel: string;
   deepseekModel: string;
   openRouterModel: string;
+  githubModelsModel: string;
+  cohereModel: string;
+  cloudflareModel: string;
   openAIModel: string;
 };
 
@@ -898,11 +906,15 @@ function safeSessionRemove(key: string) {
 
 function providerLabel(provider: AIProvider) {
   if (provider === "GEMINI") return "Gemini";
+  if (provider === "GROQ") return "GroqCloud";
   if (provider === "GROK") return "xAI Grok";
   if (provider === "MISTRAL") return "Mistral";
   if (provider === "CEREBRAS") return "Cerebras";
   if (provider === "DEEPSEEK") return "DeepSeek";
   if (provider === "OPENROUTER") return "OpenRouter";
+  if (provider === "GITHUB_MODELS") return "GitHub Models";
+  if (provider === "COHERE") return "Cohere";
+  if (provider === "CLOUDFLARE") return "Cloudflare AI";
   if (provider === "OPENAI") return "OpenAI";
   return "Auto Fallback";
 }
@@ -910,18 +922,26 @@ function providerLabel(provider: AIProvider) {
 function modelForProvider(provider: AIProvider, status: ProviderStatus | null) {
   if (!status) return null;
   if (provider === "GEMINI") return status.geminiModel;
+  if (provider === "GROQ") return status.groqModel;
   if (provider === "GROK") return status.grokModel;
   if (provider === "MISTRAL") return status.mistralModel;
   if (provider === "CEREBRAS") return status.cerebrasModel;
   if (provider === "DEEPSEEK") return status.deepseekModel;
   if (provider === "OPENROUTER") return status.openRouterModel;
+  if (provider === "GITHUB_MODELS") return status.githubModelsModel;
+  if (provider === "COHERE") return status.cohereModel;
+  if (provider === "CLOUDFLARE") return status.cloudflareModel;
   if (provider === "OPENAI") return status.openAIModel;
 
   return [
     status.gemini ? `Gemini ${status.geminiModel}` : null,
+    status.groq ? `GroqCloud ${status.groqModel}` : null,
     status.mistral ? `Mistral ${status.mistralModel}` : null,
     status.cerebras ? `Cerebras ${status.cerebrasModel}` : null,
     status.openrouter ? `OpenRouter ${status.openRouterModel}` : null,
+    status.githubModels ? `GitHub Models ${status.githubModelsModel}` : null,
+    status.cohere ? `Cohere ${status.cohereModel}` : null,
+    status.cloudflare ? `Cloudflare ${status.cloudflareModel}` : null,
     status.grok ? `xAI Grok ${status.grokModel}` : null,
     status.deepseek ? `DeepSeek ${status.deepseekModel}` : null,
     status.openai ? `OpenAI ${status.openAIModel}` : null,

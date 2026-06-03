@@ -11,6 +11,12 @@ type ProviderCooldown = {
   reason: string;
   errorClass: string;
 };
+type ChatCompletionProviderConfig = {
+  url: string;
+  apiKey: string;
+  model: string;
+  headers: Record<string, string>;
+};
 
 export type AIProviderHealthStatus = {
   provider: DirectAIProvider;
@@ -35,10 +41,14 @@ export type AIProviderHealthSnapshot = {
 };
 
 const autoFallbackOrder: DirectAIProvider[] = [
+  "GROQ",
   "MISTRAL",
   "CEREBRAS",
   "GEMINI",
   "OPENROUTER",
+  "GITHUB_MODELS",
+  "COHERE",
+  "CLOUDFLARE",
   "GROK",
   "DEEPSEEK",
   "OPENAI",
@@ -50,45 +60,65 @@ const taskFallbackOrders: Record<AITask, DirectAIProvider[]> = {
     "CEREBRAS",
     "DEEPSEEK",
     "OPENROUTER",
+    "GITHUB_MODELS",
+    "COHERE",
+    "CLOUDFLARE",
+    "GROQ",
     "GROK",
     "OPENAI",
   ],
   QUESTION_GENERATION: [
     "GEMINI",
-    "GROK",
-    "DEEPSEEK",
+    "GROQ",
     "MISTRAL",
     "CEREBRAS",
     "OPENROUTER",
+    "GITHUB_MODELS",
+    "COHERE",
+    "CLOUDFLARE",
+    "GROK",
+    "DEEPSEEK",
     "OPENAI",
   ],
   QUESTION_REPLACEMENT: [
+    "GROQ",
     "CEREBRAS",
     "MISTRAL",
     "GEMINI",
+    "OPENROUTER",
+    "GITHUB_MODELS",
+    "COHERE",
+    "CLOUDFLARE",
     "DEEPSEEK",
     "GROK",
-    "OPENROUTER",
     "OPENAI",
   ],
   ANSWER_EVALUATION: [
     "GEMINI",
+    "GROQ",
     "MISTRAL",
     "CEREBRAS",
     "DEEPSEEK",
-    "GROK",
     "OPENROUTER",
+    "GITHUB_MODELS",
+    "COHERE",
+    "CLOUDFLARE",
+    "GROK",
     "OPENAI",
   ],
 };
 
 const providerLabels: Record<DirectAIProvider, string> = {
   GEMINI: "Gemini",
+  GROQ: "GroqCloud",
   GROK: "Grok",
   MISTRAL: "Mistral",
   CEREBRAS: "Cerebras",
   DEEPSEEK: "DeepSeek",
   OPENROUTER: "OpenRouter",
+  GITHUB_MODELS: "GitHub Models",
+  COHERE: "Cohere",
+  CLOUDFLARE: "Cloudflare Workers AI",
   OPENAI: "OpenAI",
 };
 
@@ -518,7 +548,7 @@ async function generateChatCompletionJSONWithModel<T = unknown>(
   provider: DirectAIProvider,
   prompt: string,
   options: GenerateJSONOptions,
-  config: ReturnType<typeof chatCompletionProviderConfig>,
+  config: ChatCompletionProviderConfig,
 ): Promise<T> {
   const controller = new AbortController();
   const requestTimeoutMs = aiRequestTimeoutMs(provider);
@@ -596,6 +626,87 @@ return an object in this shape instead: { "questions": [...] }.`,
   return parseJSONResponse<T>(text);
 }
 
+async function generateCohereJSON<T = unknown>(
+  prompt: string,
+  options: GenerateJSONOptions,
+): Promise<T> {
+  const provider: DirectAIProvider = "COHERE";
+  const controller = new AbortController();
+  const requestTimeoutMs = aiRequestTimeoutMs(provider);
+  const timeout = setTimeout(() => controller.abort(), requestTimeoutMs);
+  const abortFromCaller = () => controller.abort();
+
+  if (options.signal?.aborted) {
+    controller.abort();
+  } else {
+    options.signal?.addEventListener("abort", abortFromCaller, { once: true });
+  }
+
+  let response: Response;
+  try {
+    response = await fetch("https://api.cohere.com/v2/chat", {
+      method: "POST",
+      signal: controller.signal,
+      headers: {
+        Authorization: `Bearer ${requiredKey("COHERE_API_KEY", provider)}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: process.env.COHERE_MODEL ?? "command-a-03-2025",
+        temperature: options.temperature ?? 0.4,
+        p: options.topP ?? 0.85,
+        max_tokens: options.maxOutputTokens,
+        response_format: { type: "json_object" },
+        messages: [
+          {
+            role: "system",
+            content: `${options.systemInstruction ?? "You are a strict JSON generator."}
+
+Return ONLY valid JSON. If the requested output is a JSON array of questions,
+return an object in this shape instead: { "questions": [...] }.`,
+          },
+          {
+            role: "user",
+            content: prompt,
+          },
+        ],
+      }),
+    });
+  } catch (error) {
+    if (error instanceof Error && error.name === "AbortError") {
+      if (options.signal?.aborted) {
+        throw abortSignalError(options.signal);
+      }
+
+      throw new Error(
+        `Cohere request timed out after ${Math.round(
+          requestTimeoutMs / 1000,
+        )} seconds.`,
+      );
+    }
+
+    throw error;
+  } finally {
+    clearTimeout(timeout);
+    options.signal?.removeEventListener("abort", abortFromCaller);
+  }
+
+  if (!response.ok) {
+    const body = await response.text().catch(() => "");
+    throw new Error(
+      `Cohere generation failed (${response.status}): ${friendlyAIError(body)}`,
+    );
+  }
+
+  const payload = (await response.json()) as {
+    message?: { content?: Array<{ text?: string }> };
+  };
+  const text = payload.message?.content?.find((item) => item.text)?.text;
+
+  if (!text) throw new Error("Cohere returned an empty response.");
+  return parseJSONResponse<T>(text);
+}
+
 async function generateProviderJSON<T = unknown>(
   provider: DirectAIProvider,
   prompt: string,
@@ -607,26 +718,40 @@ async function generateProviderJSON<T = unknown>(
     return generateGeminiJSON<T>(prompt, options, new GoogleGenerativeAI(key));
   }
 
+  if (provider === "COHERE") {
+    return generateCohereJSON<T>(prompt, options);
+  }
+
   return generateChatCompletionJSON<T>(provider, prompt, options);
 }
 
 export function getAIProviderStatus() {
   return {
     gemini: isConfigured("GEMINI"),
+    groq: isConfigured("GROQ"),
     grok: isConfigured("GROK"),
     mistral: isConfigured("MISTRAL"),
     cerebras: isConfigured("CEREBRAS"),
     deepseek: isConfigured("DEEPSEEK"),
     openrouter: isConfigured("OPENROUTER"),
+    githubModels: isConfigured("GITHUB_MODELS"),
+    cohere: isConfigured("COHERE"),
+    cloudflare: isConfigured("CLOUDFLARE"),
     openai: isConfigured("OPENAI"),
     defaultProvider: normalizeProvider(process.env.AI_PROVIDER ?? "AUTO"),
     geminiModel: candidateGeminiModels()[0],
+    groqModel: process.env.GROQ_MODEL ?? "llama-3.3-70b-versatile",
     grokModel: candidateGrokModels()[0],
     grokUsable: null,
     mistralModel: process.env.MISTRAL_MODEL ?? "mistral-small-latest",
     cerebrasModel: process.env.CEREBRAS_MODEL ?? "gpt-oss-120b",
     deepseekModel: process.env.DEEPSEEK_MODEL ?? "deepseek-v4-flash",
     openRouterModel: process.env.OPENROUTER_MODEL ?? "openrouter/auto",
+    githubModelsModel: process.env.GITHUB_MODELS_MODEL ?? "openai/gpt-4.1",
+    cohereModel: process.env.COHERE_MODEL ?? "command-a-03-2025",
+    cloudflareModel:
+      process.env.CLOUDFLARE_WORKERS_AI_MODEL ??
+      "@cf/meta/llama-3.1-8b-instruct",
     openAIModel: process.env.OPENAI_MODEL ?? "gpt-4o-mini",
     tasks: providerHealthByTask(),
   };
@@ -1073,12 +1198,20 @@ function openRouterMaxOutputTokens() {
 function normalizeProvider(value: string | AIProvider | undefined): AIProvider {
   const normalized = String(value ?? "AUTO").toUpperCase();
   if (normalized === "GEMINI") return "GEMINI";
+  if (normalized === "GROQ" || normalized === "GROQCLOUD") return "GROQ";
   if (normalized === "GROK" || normalized === "XAI") return "GROK";
   if (normalized === "MISTRAL") return "MISTRAL";
   if (normalized === "CEREBRAS") return "CEREBRAS";
   if (normalized === "DEEPSEEK" || normalized === "DEEP_SEEK") return "DEEPSEEK";
   if (normalized === "OPENROUTER" || normalized === "OPEN_ROUTER") {
     return "OPENROUTER";
+  }
+  if (normalized === "GITHUB_MODELS" || normalized === "GITHUB") {
+    return "GITHUB_MODELS";
+  }
+  if (normalized === "COHERE") return "COHERE";
+  if (normalized === "CLOUDFLARE" || normalized === "WORKERS_AI") {
+    return "CLOUDFLARE";
   }
   if (normalized === "OPENAI") return "OPENAI";
   return "AUTO";
@@ -1097,7 +1230,18 @@ function candidateGeminiModels() {
   );
 }
 
-function chatCompletionProviderConfig(provider: DirectAIProvider) {
+function chatCompletionProviderConfig(
+  provider: DirectAIProvider,
+): ChatCompletionProviderConfig {
+  if (provider === "GROQ") {
+    return {
+      url: "https://api.groq.com/openai/v1/chat/completions",
+      apiKey: requiredKey("GROQ_API_KEY", provider),
+      model: process.env.GROQ_MODEL ?? "llama-3.3-70b-versatile",
+      headers: {},
+    };
+  }
+
   if (provider === "GROK") {
     return {
       url: "https://api.x.ai/v1/chat/completions",
@@ -1143,6 +1287,30 @@ function chatCompletionProviderConfig(provider: DirectAIProvider) {
     };
   }
 
+  if (provider === "GITHUB_MODELS") {
+    return {
+      url: "https://models.github.ai/inference/chat/completions",
+      apiKey: requiredKey("GITHUB_MODELS_TOKEN", provider),
+      model: process.env.GITHUB_MODELS_MODEL ?? "openai/gpt-4.1",
+      headers: {
+        Accept: "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2026-03-10",
+      },
+    };
+  }
+
+  if (provider === "CLOUDFLARE") {
+    const accountId = requiredEnvValue("CLOUDFLARE_ACCOUNT_ID", provider);
+    return {
+      url: `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/v1/chat/completions`,
+      apiKey: requiredKey("CLOUDFLARE_API_TOKEN", provider),
+      model:
+        process.env.CLOUDFLARE_WORKERS_AI_MODEL ??
+        "@cf/meta/llama-3.1-8b-instruct",
+      headers: {},
+    };
+  }
+
   return {
     url: "https://api.openai.com/v1/chat/completions",
     apiKey: requiredKey("OPENAI_API_KEY", provider),
@@ -1166,6 +1334,7 @@ function isConfigured(provider: AIProvider) {
 
 function providerKey(provider: DirectAIProvider) {
   if (provider === "GEMINI") return normalizedKey(process.env.GEMINI_API_KEY);
+  if (provider === "GROQ") return normalizedKey(process.env.GROQ_API_KEY);
   if (provider === "GROK") return normalizedKey(process.env.XAI_API_KEY);
   if (provider === "MISTRAL") return normalizedKey(process.env.MISTRAL_API_KEY);
   if (provider === "CEREBRAS") {
@@ -1177,6 +1346,16 @@ function providerKey(provider: DirectAIProvider) {
   if (provider === "OPENROUTER") {
     return normalizedKey(process.env.OPENROUTER_API_KEY);
   }
+  if (provider === "GITHUB_MODELS") {
+    return normalizedKey(process.env.GITHUB_MODELS_TOKEN);
+  }
+  if (provider === "COHERE") return normalizedKey(process.env.COHERE_API_KEY);
+  if (provider === "CLOUDFLARE") {
+    return normalizedKey(process.env.CLOUDFLARE_API_TOKEN) &&
+      process.env.CLOUDFLARE_ACCOUNT_ID?.trim()
+      ? normalizedKey(process.env.CLOUDFLARE_API_TOKEN)
+      : null;
+  }
   return normalizedKey(process.env.OPENAI_API_KEY);
 }
 
@@ -1184,6 +1363,12 @@ function requiredKey(envName: string, provider: DirectAIProvider) {
   const key = normalizedKey(process.env[envName]);
   if (!key) throw new Error(missingProviderKeyMessage(provider));
   return key;
+}
+
+function requiredEnvValue(envName: string, provider: DirectAIProvider) {
+  const value = process.env[envName]?.trim();
+  if (!value) throw new Error(missingProviderKeyMessage(provider));
+  return value;
 }
 
 function normalizedKey(value: string | undefined) {
@@ -1207,7 +1392,16 @@ function aiRequestTimeoutMs(provider?: DirectAIProvider | "GEMINI") {
   if (Number.isFinite(configured) && configured >= 5_000) return configured;
 
   if (provider === "MISTRAL" || provider === "CEREBRAS") return 14_000;
-  if (provider === "OPENROUTER" || provider === "OPENAI") return 12_000;
+  if (
+    provider === "OPENROUTER" ||
+    provider === "OPENAI" ||
+    provider === "GITHUB_MODELS" ||
+    provider === "COHERE" ||
+    provider === "CLOUDFLARE"
+  ) {
+    return 12_000;
+  }
+  if (provider === "GROQ") return 10_000;
   if (provider === "DEEPSEEK") return 10_000;
 
   return 10_000;
@@ -1356,11 +1550,15 @@ function missingProviderKeyMessage(provider: AIProvider) {
 
   const envNames: Record<DirectAIProvider, string> = {
     GEMINI: "GEMINI_API_KEY",
+    GROQ: "GROQ_API_KEY",
     GROK: "XAI_API_KEY",
     MISTRAL: "MISTRAL_API_KEY",
     CEREBRAS: "CEREBRAS_API_KEY",
     DEEPSEEK: "DEEPSEEK_API_KEY",
     OPENROUTER: "OPENROUTER_API_KEY",
+    GITHUB_MODELS: "GITHUB_MODELS_TOKEN",
+    COHERE: "COHERE_API_KEY",
+    CLOUDFLARE: "CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID",
     OPENAI: "OPENAI_API_KEY",
   };
 
@@ -1419,6 +1617,9 @@ function providerHealthByTask() {
 
 function modelNameForProvider(provider: DirectAIProvider) {
   if (provider === "GEMINI") return candidateGeminiModels()[0];
+  if (provider === "GROQ") {
+    return process.env.GROQ_MODEL ?? "llama-3.3-70b-versatile";
+  }
   if (provider === "GROK") return candidateGrokModels()[0];
   if (provider === "MISTRAL") {
     return process.env.MISTRAL_MODEL ?? "mistral-small-latest";
@@ -1431,6 +1632,16 @@ function modelNameForProvider(provider: DirectAIProvider) {
   }
   if (provider === "OPENROUTER") {
     return process.env.OPENROUTER_MODEL ?? "openrouter/auto";
+  }
+  if (provider === "GITHUB_MODELS") {
+    return process.env.GITHUB_MODELS_MODEL ?? "openai/gpt-4.1";
+  }
+  if (provider === "COHERE") return process.env.COHERE_MODEL ?? "command-a-03-2025";
+  if (provider === "CLOUDFLARE") {
+    return (
+      process.env.CLOUDFLARE_WORKERS_AI_MODEL ??
+      "@cf/meta/llama-3.1-8b-instruct"
+    );
   }
   return process.env.OPENAI_MODEL ?? "gpt-4o-mini";
 }

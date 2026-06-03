@@ -30,11 +30,15 @@ export const difficultyValues = ["EASY", "MEDIUM", "HARD", "ABSURD"] as const;
 export const aiProviderValues = [
   "AUTO",
   "GEMINI",
+  "GROQ",
   "GROK",
   "MISTRAL",
   "CEREBRAS",
   "DEEPSEEK",
   "OPENROUTER",
+  "GITHUB_MODELS",
+  "COHERE",
+  "CLOUDFLARE",
   "OPENAI",
 ] as const;
 export const sourceModeValues = ["curriculum", "pdf_upload"] as const;

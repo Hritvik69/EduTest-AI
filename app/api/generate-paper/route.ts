@@ -1256,7 +1256,7 @@ function generationErrorMessage(error: unknown) {
     return "The AI returned text where a numeric chapter or topic ID was expected. Please retry; invalid IDs are cleaned before saving now.";
   }
 
-  if (/OpenRouter|Mistral|402|credit|quota|billing|can only afford|max_tokens/i.test(message)) {
+  if (/OpenRouter|Mistral|GroqCloud|GitHub Models|Cohere|Cloudflare|402|credit|quota|billing|can only afford|max_tokens/i.test(message)) {
     return "The selected AI provider does not have enough credits or quota for that request. Try Retry Auto, choose another AI engine, lower the question count, or add provider credits.";
   }
 
@@ -1293,7 +1293,7 @@ function shouldUseLocalGenerationFallback(isExplicitDemoMode: boolean, error: un
 
   const message =
     error instanceof Error ? error.message : "Generation failed. Please try again.";
-  return /AI provider|Auto Fallback|Gemini|Mistral|Cerebras|OpenRouter|Grok|DeepSeek|OpenAI|question generation|No valid generated questions|Could not replace/i.test(
+  return /AI provider|Auto Fallback|Gemini|GroqCloud|Mistral|Cerebras|OpenRouter|GitHub Models|Cohere|Cloudflare|Grok|DeepSeek|OpenAI|question generation|No valid generated questions|Could not replace/i.test(
     message,
   );
 }
