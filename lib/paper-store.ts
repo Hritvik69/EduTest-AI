@@ -2,6 +2,7 @@ import sql from "@/lib/db";
 import { isGuestUserId } from "@/lib/api-security";
 import { generationManifestFromMetadata } from "@/lib/generation-manifest";
 import { withNormalizedQuestionOptions } from "@/lib/question-options";
+import type { PaperGenerationState } from "@/lib/question-candidate-bank";
 import type {
   AnalyticsReport,
   Blueprint,
@@ -228,6 +229,7 @@ export async function saveQuestionsAndLink(
       ...existing,
       questions: withIds,
       status: "READY",
+      errorMetadata: null,
     });
 
     return withIds;
@@ -331,6 +333,7 @@ export async function markPaperReady(paperId: number) {
       memoryPapers.set(paperId, {
         ...existing,
         status: "READY",
+        errorMetadata: null,
       });
     }
     return;
@@ -409,6 +412,75 @@ export async function setPaperGenerationManifest(
           ...(normalizedConfig ? { normalizedConfig } : {}),
         })}::jsonb
       ),
+          updated_at = NOW()
+      WHERE id = ${paperId}
+    `;
+  }
+}
+
+export async function setPaperGenerationState(
+  paperId: number,
+  state: PaperGenerationState,
+  normalizedConfig?: PaperConfig,
+) {
+  const existing = memoryPapers.get(paperId);
+  const errorMetadata = {
+    ...(existing?.errorMetadata ?? {}),
+    generationState: state,
+    ...(normalizedConfig ? { normalizedConfig } : {}),
+  };
+
+  if (existing) {
+    memoryPapers.set(paperId, {
+      ...existing,
+      status: state.status === "FAILED" ? "FAILED" : "GENERATING",
+      errorMetadata,
+      generationJobId: state.generationJobId,
+      idempotencyKey: state.idempotencyKey,
+    });
+    return;
+  }
+
+  if (sql) {
+    await sql`
+      UPDATE papers
+      SET
+        status = ${state.status === "FAILED" ? "FAILED" : "GENERATING"},
+        generation_job_id = ${state.generationJobId},
+        idempotency_key = COALESCE(idempotency_key, ${state.idempotencyKey}),
+        error_metadata = jsonb_strip_nulls(
+          COALESCE(error_metadata, '{}'::jsonb) ||
+          ${json(errorMetadata)}::jsonb
+        ),
+        updated_at = NOW()
+      WHERE id = ${paperId}
+    `;
+  }
+}
+
+export async function getPaperGenerationState(paperId: number, userId?: number) {
+  const paper = await getPaper(paperId, userId);
+  const state = paper?.errorMetadata?.generationState;
+  return isPaperGenerationState(state) ? state : null;
+}
+
+export async function clearPaperGenerationState(paperId: number) {
+  const existing = memoryPapers.get(paperId);
+  if (existing) {
+    const { generationState: _generationState, ...rest } =
+      existing.errorMetadata ?? {};
+    const nextMetadata = Object.keys(rest).length ? rest : null;
+    memoryPapers.set(paperId, {
+      ...existing,
+      errorMetadata: nextMetadata,
+    });
+    return;
+  }
+
+  if (sql) {
+    await sql`
+      UPDATE papers
+      SET error_metadata = NULLIF(error_metadata - 'generationState', '{}'::jsonb),
           updated_at = NOW()
       WHERE id = ${paperId}
     `;
@@ -1013,6 +1085,20 @@ function paperFromRows(rows: any[]): StoredPaper {
       }),
     ),
   };
+}
+
+function isPaperGenerationState(value: unknown): value is PaperGenerationState {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const record = value as Partial<PaperGenerationState>;
+  return (
+    record.version === 1 &&
+    typeof record.sourceContextHash === "string" &&
+    Array.isArray(record.candidateQuestions) &&
+    Array.isArray(record.acceptedQuestions) &&
+    Array.isArray(record.missingSections) &&
+    typeof record.readyQuestionCount === "number" &&
+    typeof record.targetQuestionCount === "number"
+  );
 }
 
 function displaySubject(config: PaperConfig) {

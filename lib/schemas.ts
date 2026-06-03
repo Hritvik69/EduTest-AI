@@ -243,6 +243,7 @@ export const paperConfigSchema = z
 
 export const generationRequestSchema = paperConfigSchema.extend({
   idempotencyKey: z.string().trim().min(8).max(128).optional(),
+  resumePaperId: z.coerce.number().int().positive().optional(),
   demoMode: z.boolean().optional(),
   salvageInvalidQuestions: z.boolean().optional(),
 });

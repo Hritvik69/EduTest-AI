@@ -71,7 +71,9 @@ export function GenerationOverlay({
     code?: string | number;
     auth?: boolean;
     paperId?: number;
+    recoverable?: boolean;
   } | null>(null);
+  const [resumePaperId, setResumePaperId] = React.useState<number | null>(null);
   const [retryNonce, setRetryNonce] = React.useState(0);
   const started = React.useRef(false);
   const requestConfig = React.useMemo(
@@ -105,6 +107,7 @@ export function GenerationOverlay({
       setCurrentMessage("Preparing generation...");
       setProviderOverride(null);
       setSalvageInvalidQuestions(true);
+      setResumePaperId(null);
       setError(null);
     });
 
@@ -146,7 +149,11 @@ export function GenerationOverlay({
       const startedAt = Date.now();
       setGenerationStartedAt(startedAt);
       setGenerationNow(startedAt);
-      setCurrentMessage("Preparing generation...");
+      setCurrentMessage(
+        resumePaperId
+          ? `Continuing saved generation from paper #${resumePaperId}...`
+          : "Preparing generation...",
+      );
     });
 
     const inFlightKey = `edutest:generation:${idempotencyKey}`;
@@ -200,6 +207,7 @@ export function GenerationOverlay({
           body: JSON.stringify({
             ...requestConfig,
             idempotencyKey,
+            resumePaperId: resumePaperId ?? undefined,
             salvageInvalidQuestions,
           }),
         });
@@ -252,10 +260,12 @@ export function GenerationOverlay({
             }
 
             if (event === "error") {
+              const status = stringValue(data.status);
               throw generationError(
                 stringValue(data.msg) ?? "Paper generation failed.",
                 stringValue(data.code) ?? numberValue(data.code),
                 streamedPaperId ?? undefined,
+                status === "CONTINUING",
               );
             }
 
@@ -309,6 +319,7 @@ export function GenerationOverlay({
                 );
               }
               safeSessionRemove(inFlightKey);
+              setResumePaperId(null);
               router.push(`/papers/${paperId}/preview`);
             }
           });
@@ -340,10 +351,14 @@ export function GenerationOverlay({
             ? error.message
             : "Paper generation failed. Please try again.";
         const code = getErrorCode(error);
+        const recoverable = isRecoverableGenerationError(error);
+        const recoverablePaperId = getErrorPaperId(error) ?? savedPaperId ?? null;
+        setResumePaperId(recoverable ? recoverablePaperId : null);
         setError({
           message,
           code,
           paperId: getErrorPaperId(error),
+          recoverable,
         });
         toast.error(message);
       } finally {
@@ -380,6 +395,7 @@ export function GenerationOverlay({
   function retry() {
     safeSessionRemove(`edutest:generation:${idempotencyKey}`);
     setSalvageInvalidQuestions(true);
+    setResumePaperId(error?.recoverable ? error.paperId ?? resumePaperId : null);
     started.current = false;
     setRetryNonce((value) => value + 1);
   }
@@ -387,6 +403,7 @@ export function GenerationOverlay({
   function retryWithAutoFallback() {
     safeSessionRemove(`edutest:generation:${idempotencyKey}`);
     setSalvageInvalidQuestions(true);
+    setResumePaperId(error?.recoverable ? error.paperId ?? resumePaperId : null);
     setProviderOverride("AUTO");
     started.current = false;
     setRetryNonce((value) => value + 1);
@@ -395,6 +412,7 @@ export function GenerationOverlay({
   function skipAndReplaceQuestions() {
     safeSessionRemove(`edutest:generation:${idempotencyKey}`);
     setSalvageInvalidQuestions(true);
+    setResumePaperId(error?.recoverable ? error.paperId ?? resumePaperId : null);
     setCurrentMessage("Skipping broken questions and replacing what can be rebuilt...");
     started.current = false;
     setRetryNonce((value) => value + 1);
@@ -427,7 +445,9 @@ export function GenerationOverlay({
           </p>
           {error?.paperId ? (
             <p className="mt-2 text-center text-xs text-blue-100">
-              Paper #{error.paperId} is in your dashboard.
+              {error.recoverable
+                ? `Saved progress in paper #${error.paperId}; retry continues it.`
+                : `Paper #${error.paperId} is in your dashboard.`}
             </p>
           ) : null}
 
@@ -561,10 +581,13 @@ function generationError(
   message: string,
   code?: string | number,
   paperId?: number,
+  recoverable?: boolean,
 ) {
   const error = new Error(message);
   (error as Error & { code?: string | number }).code = code;
   (error as Error & { paperId?: number }).paperId = paperId;
+  (error as Error & { recoverable?: boolean }).recoverable =
+    recoverable || code === "GENERATION_CONTINUE_AVAILABLE";
   return error;
 }
 
@@ -653,6 +676,13 @@ function getErrorPaperId(error: unknown) {
   return typeof paperId === "number" && Number.isFinite(paperId)
     ? paperId
     : undefined;
+}
+
+function isRecoverableGenerationError(error: unknown) {
+  if (error && typeof error === "object" && "recoverable" in error) {
+    return Boolean((error as { recoverable?: unknown }).recoverable);
+  }
+  return getErrorCode(error) === "GENERATION_CONTINUE_AVAILABLE";
 }
 
 function isQuestionOutputError(

@@ -27,9 +27,12 @@ import {
 import {
   createPaperInDB,
   deletePaperForUser,
+  getPaper,
+  getPaperGenerationState,
   markPaperDemoMode,
   markPaperReady,
   saveQuestionsAndLink,
+  setPaperGenerationState,
   setPaperGenerationManifest,
   updatePaperDefinition,
   updatePaperStatus,
@@ -39,6 +42,13 @@ import {
   buildGenerationArchitecturePlan,
   type GenerationArchitecturePlan,
 } from "@/lib/question-planning";
+import {
+  blueprintForSections,
+  QuestionCandidateBank,
+  repairCandidateReserveCount,
+  stripGenerationMetadataFromQuestions,
+  type PaperGenerationState,
+} from "@/lib/question-candidate-bank";
 import { analyzeConceptSourceQuality, retrieveConcepts } from "@/lib/retriever";
 import { generationRequestSchema } from "@/lib/schemas";
 import {
@@ -49,13 +59,11 @@ import { validatePaperKeepingValidQuestions } from "@/lib/validator";
 import type { LocalNcertSourceDiagnostics } from "@/lib/local-ncert-source";
 import type {
   Blueprint,
-  BlueprintSection,
   ConceptData,
   GeneratedQuestion,
   AITask,
   PaperConfig,
   QuestionCompositionItem,
-  QuestionType,
   StoredPaper,
 } from "@/types";
 
@@ -77,6 +85,7 @@ export async function POST(request: NextRequest) {
 
   const {
     idempotencyKey: requestedKey,
+    resumePaperId,
     demoMode,
     salvageInvalidQuestions,
     ...config
@@ -266,21 +275,25 @@ export async function POST(request: NextRequest) {
           blueprint,
           scopedConcepts,
         };
-        const created = await createPaperInDB(effectiveConfig, blueprint, isDemoMode, {
-          userId: auth.user.id,
-          generationJobId,
-          idempotencyKey,
+        const sourceContextHash = generationSourceContextHash({
+          config: effectiveConfig,
+          blueprint,
+          conceptContext,
+          concepts: scopedConcepts,
         });
-        paperId = created.paperId;
-
-        if (created.reused) {
-          if (created.status === "READY") {
+        let resumeState: PaperGenerationState | null = null;
+        if (resumePaperId) {
+          const resumablePaper = await getPaper(resumePaperId, auth.user.id);
+          if (!resumablePaper) {
+            throw new Error("The generation you tried to continue was not found.");
+          }
+          if (resumablePaper.status === "READY") {
             send(
               {
                 error: true,
                 code: "GENERATION_ALREADY_COMPLETED",
                 msg: "This generation already completed. Start a new generation to create a fresh paper.",
-                paperId: created.paperId,
+                paperId: resumablePaper.id,
                 idempotencyKey,
               },
               "error",
@@ -289,27 +302,90 @@ export async function POST(request: NextRequest) {
             return;
           }
 
-          send(
+          const storedState = await getPaperGenerationState(
+            resumablePaper.id,
+            auth.user.id,
+          );
+          if (storedState && storedState.sourceContextHash === sourceContextHash) {
+            resumeState = storedState;
+            paperId = resumablePaper.id;
+            await updatePaperDefinition(paperId, effectiveConfig, blueprint);
+          } else {
+            console.warn("[generate-paper] resume state unavailable or stale", {
+              resumePaperId,
+              hasStoredState: Boolean(storedState),
+              expectedSourceContextHash: sourceContextHash,
+              storedSourceContextHash: storedState?.sourceContextHash,
+            });
+          }
+        }
+
+        if (!paperId) {
+          const created = await createPaperInDB(
+            effectiveConfig,
+            blueprint,
+            isDemoMode,
             {
-              error: true,
-              code: "GENERATION_IN_PROGRESS",
-              msg: "A generation job for this configuration is already running.",
-              paperId: created.paperId,
+              userId: auth.user.id,
+              generationJobId,
               idempotencyKey,
             },
-            "error",
           );
-          close();
-          return;
+          paperId = created.paperId;
+
+          if (created.reused) {
+            const storedState = await getPaperGenerationState(
+              created.paperId,
+              auth.user.id,
+            );
+            if (
+              created.status !== "READY" &&
+              storedState?.sourceContextHash === sourceContextHash
+            ) {
+              resumeState = storedState;
+            } else if (created.status === "READY") {
+              send(
+                {
+                  error: true,
+                  code: "GENERATION_ALREADY_COMPLETED",
+                  msg: "This generation already completed. Start a new generation to create a fresh paper.",
+                  paperId: created.paperId,
+                  idempotencyKey,
+                },
+                "error",
+              );
+              close();
+              return;
+            } else {
+              send(
+                {
+                  error: true,
+                  code: "GENERATION_IN_PROGRESS",
+                  msg: "A generation job for this configuration is already running.",
+                  paperId: created.paperId,
+                  idempotencyKey,
+                },
+                "error",
+              );
+              close();
+              return;
+            }
+          }
+        }
+
+        if (!paperId) {
+          throw new Error("Paper shell could not be created.");
         }
 
         send({
           step: 3,
           pct: 30,
           progress: 30,
-          msg: "Phase 3 - Question Planning: paper shell saved; starting AI question generation.",
+          msg: resumeState
+            ? `Phase 3 - Question Planning: continuing saved generation from ${resumeState.readyQuestionCount}/${resumeState.targetQuestionCount} valid questions.`
+            : "Phase 3 - Question Planning: paper shell saved; starting AI question generation.",
           paperId,
-          status: "GENERATING",
+          status: resumeState ? "CONTINUING" : "GENERATING",
           idempotencyKey,
           generationJobId,
         });
@@ -323,34 +399,46 @@ export async function POST(request: NextRequest) {
         });
 
         assertActive();
-        send({
-          step: 5,
-          pct: 40,
-          progress: 40,
-          msg: `Phase 5 - Question Generation: generating ${blueprint.totalQuestions} questions from selected NCERT_Books TXT source...`,
-        });
-        const allQuestions = await generateBlueprintQuestions(
-          blueprint,
-          conceptContext,
-          effectiveConfig,
-          {
-            allowPartial: salvageMode,
-            availableTopics,
-            existingQuestions: [],
-            generationPlan,
-            generationNonce: generationJobId,
-            cooldownScope: providerCooldownScope,
-            signal: generationSignal,
-            onBatchComplete: (details) => {
-              send({
-                step: 5,
-                pct: 82,
-                progress: 82,
-                msg: `Phase 5 - Question Generation: ${details.generated}/${details.total} TXT-grounded AI questions ready...`,
-              });
+        let allQuestions = resumeState?.candidateQuestions ?? [];
+        if (resumeState) {
+          send({
+            step: 5,
+            pct: 82,
+            progress: 82,
+            msg: `Phase 5 - Question Generation: continuing from ${resumeState.readyQuestionCount}/${resumeState.targetQuestionCount} valid saved TXT-grounded questions.`,
+            paperId,
+            status: "CONTINUING",
+          });
+        } else {
+          send({
+            step: 5,
+            pct: 40,
+            progress: 40,
+            msg: `Phase 5 - Question Generation: generating ${blueprint.totalQuestions} questions from selected NCERT_Books TXT source...`,
+          });
+          allQuestions = await generateBlueprintQuestions(
+            blueprint,
+            conceptContext,
+            effectiveConfig,
+            {
+              allowPartial: salvageMode,
+              availableTopics,
+              existingQuestions: [],
+              generationPlan,
+              generationNonce: generationJobId,
+              cooldownScope: providerCooldownScope,
+              signal: generationSignal,
+              onBatchComplete: (details) => {
+                send({
+                  step: 5,
+                  pct: 82,
+                  progress: 82,
+                  msg: `Phase 5 - Question Generation: ${details.generated}/${details.total} TXT-grounded AI questions ready...`,
+                });
+              },
             },
-          },
-        );
+          );
+        }
 
         const stoppedForServerBudget = shouldStopForFinalization(
           generationDeadlineAt,
@@ -386,6 +474,10 @@ export async function POST(request: NextRequest) {
           generationNonce: generationJobId,
           cooldownScope: providerCooldownScope,
           deadlineAt: generationDeadlineAt,
+          paperId,
+          idempotencyKey,
+          sourceContextHash,
+          resumeState,
           partialFinalizationReason: stoppedForServerBudget
             ? "Generation reached the deployment time limit before every requested question could be generated."
             : undefined,
@@ -539,7 +631,11 @@ export async function POST(request: NextRequest) {
         }
 
         let paperStatusSaved = false;
-        if (paperId) {
+        const canContinueGeneration =
+          Boolean(paperId) &&
+          !request.signal.aborted &&
+          isGenerationContinuationError(error);
+        if (paperId && !canContinueGeneration) {
           try {
             await updatePaperStatus(paperId, "FAILED", {
               message,
@@ -558,7 +654,7 @@ export async function POST(request: NextRequest) {
               message:
                 statusError instanceof Error
                   ? statusError.message
-                  : String(statusError),
+              : String(statusError),
             });
           }
         }
@@ -570,7 +666,12 @@ export async function POST(request: NextRequest) {
               code,
               msg: generationErrorMessage(error),
               generationJobId,
-              status: paperStatusSaved ? "FAILED" : undefined,
+              paperId,
+              status: canContinueGeneration
+                ? "CONTINUING"
+                : paperStatusSaved
+                  ? "FAILED"
+                  : undefined,
             },
             "error",
           );
@@ -1039,6 +1140,10 @@ function generationErrorMessage(error: unknown) {
     return stripSourceGroundingPrefix(message);
   }
 
+  if (/GENERATION_CONTINUE_AVAILABLE/i.test(message)) {
+    return stripGenerationContinuationPrefix(message);
+  }
+
   if (/SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(message)) {
     return "Real AI generation reached the deployment time limit before enough valid questions were ready. Try a lower question count, fewer question types, or a faster configured provider.";
   }
@@ -1091,6 +1196,7 @@ function shouldUseLocalGenerationFallback(isExplicitDemoMode: boolean, error: un
   if (!isExplicitDemoMode) return false;
 
   const code = generationErrorCode(error);
+  if (code === "GENERATION_CONTINUE_AVAILABLE") return false;
   if (
     code === "PROVIDER_AUTO_FAILED" ||
     code === "PROVIDER_AUTH_ERROR" ||
@@ -1119,6 +1225,10 @@ function generationErrorCode(error: unknown) {
 
   if (/SOURCE_NOT_TEXT_BACKED/i.test(message)) {
     return "SOURCE_NOT_TEXT_BACKED";
+  }
+
+  if (/GENERATION_CONTINUE_AVAILABLE/i.test(message)) {
+    return "GENERATION_CONTINUE_AVAILABLE";
   }
 
   if (/SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(message)) {
@@ -1154,6 +1264,66 @@ function generationErrorCode(error: unknown) {
 
 function stripSourceGroundingPrefix(message: string) {
   return message.replace(/^SOURCE_NOT_TEXT_BACKED:\s*/i, "");
+}
+
+function generationContinuationError(message: string) {
+  return new Error(`GENERATION_CONTINUE_AVAILABLE: ${message}`);
+}
+
+function isGenerationContinuationError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  return /GENERATION_CONTINUE_AVAILABLE/i.test(message);
+}
+
+function stripGenerationContinuationPrefix(message: string) {
+  return message.replace(/^GENERATION_CONTINUE_AVAILABLE:\s*/i, "");
+}
+
+function generationSourceContextHash({
+  config,
+  blueprint,
+  conceptContext,
+  concepts,
+}: {
+  config: PaperConfig;
+  blueprint: Blueprint;
+  conceptContext: string;
+  concepts: ConceptData[];
+}) {
+  return stableHash(
+    JSON.stringify({
+      classNum: config.classNum,
+      subject: config.subject,
+      subjects: config.subjects ?? [],
+      chapterIds: config.chapterIds,
+      topicIds: config.topicIds ?? [],
+      questionComposition: config.questionComposition ?? [],
+      questionTypes: config.questionTypes,
+      typeDistribution: config.typeDistribution,
+      totalQuestions: blueprint.totalQuestions,
+      totalMarks: blueprint.totalMarks,
+      sourceMode: config.sourceMode ?? "curriculum",
+      pdfSourceId: config.pdfSourceId ?? null,
+      conceptSources: conceptSourceCounts(concepts),
+      conceptIds: concepts.map((concept) => [
+        concept.subject ?? "",
+        concept.chapterId,
+        concept.topicId ?? "",
+        concept.topicName,
+        concept.source ?? "unknown",
+      ]),
+      contextHash: stableHash(conceptContext),
+    }),
+  );
+}
+
+function stableHash(input: string) {
+  let hash = 2166136261;
+  for (let index = 0; index < input.length; index += 1) {
+    hash ^= input.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0).toString(16).padStart(8, "0");
 }
 
 function generationServerBudgetMs() {
@@ -1218,6 +1388,10 @@ async function validateGeneratedPaperSkippingInvalid({
   generationNonce,
   cooldownScope,
   deadlineAt,
+  paperId,
+  idempotencyKey,
+  sourceContextHash,
+  resumeState,
   partialFinalizationReason,
   signal,
   send,
@@ -1233,13 +1407,50 @@ async function validateGeneratedPaperSkippingInvalid({
   generationNonce: string;
   cooldownScope: string;
   deadlineAt: number;
+  paperId: number;
+  idempotencyKey: string;
+  sourceContextHash: string;
+  resumeState?: PaperGenerationState | null;
   partialFinalizationReason?: string;
   signal: AbortSignal;
   send: (data: object, event?: string) => void;
 }) {
-  const bank = new QuestionCandidateBank(questions, blueprint, config);
+  const bank = resumeState
+    ? QuestionCandidateBank.fromGenerationState(resumeState, blueprint, config)
+    : new QuestionCandidateBank(questions, blueprint, config);
   const targetQuestionCount = blueprint.totalQuestions;
   let stoppedForServerBudget = Boolean(partialFinalizationReason);
+  const stateCreatedAt = resumeState?.createdAt ?? new Date().toISOString();
+  const persistBank = async (
+    status: PaperGenerationState["status"],
+    phase: PaperGenerationState["phase"],
+    attemptCount: number,
+    lastMessage?: string,
+    lastError?: string,
+  ) => {
+    await setPaperGenerationState(
+      paperId,
+      bank.toGenerationState({
+        status,
+        phase,
+        generationJobId: generationNonce,
+        idempotencyKey,
+        sourceContextHash,
+        attemptCount,
+        createdAt: stateCreatedAt,
+        lastMessage,
+        lastError,
+      }),
+      config,
+    );
+  };
+
+  await persistBank(
+    bank.missingCount() > 0 ? "IN_PROGRESS" : "READY",
+    "VALIDATION",
+    resumeState?.attemptCount ?? 0,
+    `Validated ${bank.readyCount()}/${targetQuestionCount} TXT-grounded candidates.`,
+  );
 
   for (let repairAttempt = 1; repairAttempt <= 3; repairAttempt += 1) {
     const missingSections = bank.missingSections();
@@ -1249,10 +1460,22 @@ async function validateGeneratedPaperSkippingInvalid({
 
     if (shouldStopForFinalization(deadlineAt, bank.readyCount())) {
       stoppedForServerBudget = true;
+      await persistBank(
+        "NEEDS_CONTINUATION",
+        "REPAIR",
+        (resumeState?.attemptCount ?? 0) + repairAttempt - 1,
+        "Server time budget is low; saved valid candidates for continuation.",
+      );
       break;
     }
 
     const repairBlueprint = blueprintForSections(blueprint, missingSections);
+    await persistBank(
+      "IN_PROGRESS",
+      "REPAIR",
+      (resumeState?.attemptCount ?? 0) + repairAttempt,
+      `Repairing ${missingCount} missing TXT-grounded question${missingCount === 1 ? "" : "s"}.`,
+    );
     send({
       step: 6,
       pct: 88 + repairAttempt,
@@ -1289,6 +1512,13 @@ async function validateGeneratedPaperSkippingInvalid({
     } catch (error) {
       if (isServerTimeBudgetError(error) && bank.readyCount()) {
         stoppedForServerBudget = true;
+        await persistBank(
+          "NEEDS_CONTINUATION",
+          "REPAIR",
+          (resumeState?.attemptCount ?? 0) + repairAttempt,
+          "AI repair hit the server time budget; saved valid candidates for continuation.",
+          error instanceof Error ? error.message : String(error),
+        );
         break;
       }
 
@@ -1297,6 +1527,12 @@ async function validateGeneratedPaperSkippingInvalid({
 
     if (replacements.length) {
       bank.add(replacements);
+      await persistBank(
+        bank.missingCount() > 0 ? "IN_PROGRESS" : "READY",
+        "REPAIR",
+        (resumeState?.attemptCount ?? 0) + repairAttempt,
+        `Accepted ${bank.readyCount()}/${targetQuestionCount} TXT-grounded candidates after repair.`,
+      );
     }
   }
 
@@ -1306,13 +1542,21 @@ async function validateGeneratedPaperSkippingInvalid({
   const replacedQuestions = bank.replacedQuestions();
 
   if (remainingMissingQuestions > 0) {
-    if (stoppedForServerBudget && readyCount > 0) {
+    if (readyCount > 0) {
       const reason =
         partialFinalizationReason ??
-        "Generation reached the deployment time limit during replacement.";
+        (stoppedForServerBudget
+          ? "Generation reached the deployment time limit during replacement."
+          : "Generation needs one more continuation pass to replace invalid or duplicate questions.");
+      await persistBank(
+        "NEEDS_CONTINUATION",
+        "REPAIR",
+        (resumeState?.attemptCount ?? 0) + 3,
+        `${reason} Saved ${readyCount}/${targetQuestionCount} valid candidates for continuation.`,
+      );
       if (!allowDemoFallback) {
-        throw new Error(
-          `${reason} Generated ${readyCount}/${targetQuestionCount} valid AI question${readyCount === 1 ? "" : "s"} from the selected source text. No local template paper was saved. Try Retry Auto, choose a faster configured provider, lower the question count, or use fewer question types.`,
+        throw generationContinuationError(
+          `${reason} Generated ${readyCount}/${targetQuestionCount} valid AI question${readyCount === 1 ? "" : "s"} from the selected source text. Saved progress. No local template paper was saved. Click Retry Auto to continue this same paper instead of starting over.`,
         );
       }
 
@@ -1330,212 +1574,30 @@ async function validateGeneratedPaperSkippingInvalid({
       };
     }
 
+    await persistBank(
+      "FAILED",
+      "REPAIR",
+      (resumeState?.attemptCount ?? 0) + 3,
+      undefined,
+      `Could not produce any valid TXT-grounded candidates for ${remainingMissingQuestions} missing question${remainingMissingQuestions === 1 ? "" : "s"}.`,
+    );
     throw new Error(
       `Could not replace ${remainingMissingQuestions} invalid or duplicate question${remainingMissingQuestions === 1 ? "" : "s"}. Generated ${readyCount}/${targetQuestionCount} valid questions. Use Retry Auto, choose another provider, or lower the question count.`,
     );
   }
+
+  await persistBank(
+    "READY",
+    "FINALIZING",
+    (resumeState?.attemptCount ?? 0) + 3,
+    `Generation candidate bank complete with ${readyCount}/${targetQuestionCount} valid questions.`,
+  );
 
   return {
     ...validation,
     replacedQuestions,
     remainingMissingQuestions,
   };
-}
-
-class QuestionCandidateBank {
-  private candidates: GeneratedQuestion[];
-  private validation: ReturnType<typeof validatePaperKeepingValidOrEmpty>;
-  private readonly initialReadyCount: number;
-
-  constructor(
-    initialCandidates: GeneratedQuestion[],
-    private readonly blueprint: Blueprint,
-    private readonly config: PaperConfig,
-  ) {
-    this.candidates = [...initialCandidates];
-    this.validation = validatePaperKeepingValidOrEmpty(
-      this.candidates,
-      this.blueprint,
-      this.config,
-    );
-    this.initialReadyCount = this.readyCount();
-  }
-
-  add(candidates: GeneratedQuestion[]) {
-    if (!candidates.length) return;
-    this.candidates.push(...candidates);
-    this.validation = validatePaperKeepingValidOrEmpty(
-      this.candidates,
-      this.blueprint,
-      this.config,
-    );
-  }
-
-  result() {
-    return this.validation;
-  }
-
-  allCandidates() {
-    return [...this.candidates];
-  }
-
-  missingSections() {
-    return missingSectionsForBlueprint(this.validation.questions, this.blueprint);
-  }
-
-  missingCount() {
-    return this.missingSections().reduce((sum, section) => sum + section.count, 0);
-  }
-
-  readyCount() {
-    return countQuestionsForBlueprint(this.validation.questions, this.blueprint);
-  }
-
-  replacedQuestions() {
-    return Math.max(0, this.readyCount() - this.initialReadyCount);
-  }
-
-  repairFeedback(attempt: number) {
-    const missingSections = this.missingSections();
-
-    return {
-      attempt,
-      missingSections: missingSections.map((section) => ({
-        type: section.questionType,
-        count: section.count,
-        marks: section.marksPerQuestion,
-      })),
-      rejectedQuestions: this.validation.rejectedQuestions
-        .slice(-16)
-        .map((item) => ({
-          type: item.type,
-          reason: item.reason,
-          question: item.question,
-          text: item.question?.text,
-        })),
-      duplicateGroups: this.validation.duplicateGroups.slice(-10),
-    };
-  }
-}
-
-function validatePaperKeepingValidOrEmpty(
-  questions: GeneratedQuestion[],
-  blueprint: Blueprint,
-  config: PaperConfig,
-) {
-  try {
-    return validatePaperKeepingValidQuestions(questions, blueprint, config);
-  } catch (error) {
-    if (
-      error instanceof Error &&
-      /No valid generated questions were available/i.test(error.message)
-    ) {
-      return {
-        questions: [],
-        validQuestions: [],
-        blueprint: {
-          ...blueprint,
-          sections: [],
-          totalQuestions: 0,
-          totalMarks: 0,
-        },
-        config: {
-          ...config,
-          questionTypes: [],
-          typeDistribution: {},
-          totalQuestions: 0,
-          totalMarks: 0,
-        },
-        skipped: questions.map((question, index) => ({
-          type: question.type,
-          position: index + 1,
-          reason: "invalid-structure",
-        })),
-        rejectedQuestions: questions.map((question, index) => ({
-          question,
-          type: question.type,
-          position: index + 1,
-          reason: "WRONG_FORMAT" as const,
-        })),
-        missingSections: blueprint.sections,
-        rejectionReasons: { WRONG_FORMAT: questions.length },
-        duplicateGroups: [],
-        sourceMismatchWarnings: [],
-      };
-    }
-
-    throw error;
-  }
-}
-
-function repairCandidateReserveCount(missingCount: number) {
-  if (missingCount <= 1) return 5;
-  return Math.min(8, Math.max(4, Math.ceil(missingCount * 1.5)));
-}
-
-function stripGenerationMetadataFromQuestions(questions: GeneratedQuestion[]) {
-  return questions.map((question) => {
-    const {
-      noveltyAngle: _noveltyAngle,
-      sourceChunkFocus: _sourceChunkFocus,
-      answerPath: _answerPath,
-      ...rest
-    } = question;
-    return rest;
-  });
-}
-
-function blueprintForSections(blueprint: Blueprint, sections: BlueprintSection[]): Blueprint {
-  return {
-    ...blueprint,
-    sections,
-    totalQuestions: sections.reduce((sum, section) => sum + section.count, 0),
-    totalMarks: sections.reduce((sum, section) => sum + section.totalMarks, 0),
-  };
-}
-
-function missingSectionsForBlueprint(
-  questions: GeneratedQuestion[],
-  blueprint: Blueprint,
-) {
-  const counts = questionCountsByType(questions);
-
-  return blueprint.sections
-    .map((section) => {
-      const missing = Math.max(
-        0,
-        section.count - (counts.get(section.questionType) ?? 0),
-      );
-
-      if (!missing) return null;
-
-      return {
-        ...section,
-        count: missing,
-        totalMarks: missing * section.marksPerQuestion,
-      };
-    })
-    .filter((section): section is BlueprintSection => Boolean(section));
-}
-
-function countQuestionsForBlueprint(
-  questions: GeneratedQuestion[],
-  blueprint: Blueprint,
-) {
-  const counts = questionCountsByType(questions);
-
-  return blueprint.sections.reduce(
-    (sum, section) =>
-      sum + Math.min(section.count, counts.get(section.questionType) ?? 0),
-    0,
-  );
-}
-
-function questionCountsByType(questions: GeneratedQuestion[]) {
-  return questions.reduce((counts, question) => {
-    counts.set(question.type, (counts.get(question.type) ?? 0) + 1);
-    return counts;
-  }, new Map<QuestionType, number>());
 }
 
 function configuredTaskProviderOrder() {
