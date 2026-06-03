@@ -15,10 +15,18 @@ import {
 } from "@/lib/difficulty-protocol";
 import { assertDemoModeAllowed, demoMetadata } from "@/lib/demo-mode";
 import { compactAiProviderFailureMessage } from "@/lib/error-classification";
+import {
+  emergencyTxtRepairFillMarker,
+  generateEmergencyTxtRepairFill,
+} from "@/lib/emergency-txt-repair-fill";
 import { summarizeAIUsage } from "@/lib/ai-usage-log";
 import { getChapterContent } from "@/lib/extractor";
 import { buildGenerationManifest } from "@/lib/generation-manifest";
-import { getConfiguredProviders } from "@/lib/gemini";
+import {
+  checkAIProviderHealth,
+  getConfiguredProviders,
+  type DirectAIProvider,
+} from "@/lib/gemini";
 import { signGuestPaperSnapshot } from "@/lib/guest-paper-snapshot";
 import {
   generateBlueprintQuestions,
@@ -416,6 +424,44 @@ export async function POST(request: NextRequest) {
         });
 
         assertActive();
+        let healthyProviders: DirectAIProvider[] | undefined;
+        if (!allowExplicitDemoFallback) {
+          send({
+            step: 5,
+            pct: 38,
+            progress: 38,
+            msg: "Checking AI provider health...",
+          });
+          const providerHealth = await checkAIProviderHealth({
+            task: "QUESTION_GENERATION",
+            signal: generationSignal,
+            cooldownScope: providerCooldownScope,
+          });
+          healthyProviders = providerHealth.usableProviders;
+          console.info("[generate-paper] provider health", {
+            generationJobId,
+            paperId,
+            usableProviders: providerHealth.usableProviders,
+            configuredProviders: providerHealth.configuredProviders,
+            providers: providerHealth.providers.map((provider) => ({
+              provider: provider.provider,
+              configured: provider.configured,
+              usable: provider.usable,
+              model: provider.model,
+              lastFailureClass: provider.lastFailureClass,
+              cooldownErrorClass: provider.cooldownErrorClass,
+            })),
+          });
+          send({
+            step: 5,
+            pct: 39,
+            progress: 39,
+            msg: healthyProviders.length
+              ? `AI provider health ready: ${healthyProviders.join(", ")} usable.`
+              : "No AI provider passed health preflight; continuing only if saved progress can be completed from NCERT TXT.",
+          });
+        }
+
         let allQuestions = resumeState?.candidateQuestions ?? [];
         if (resumeState) {
           send({
@@ -444,6 +490,7 @@ export async function POST(request: NextRequest) {
               generationPlan,
               generationNonce: generationJobId,
               cooldownScope: providerCooldownScope,
+              healthyProviders,
               signal: generationSignal,
               onBatchComplete: (details) => {
                 send({
@@ -490,6 +537,10 @@ export async function POST(request: NextRequest) {
           allowDemoFallback: allowExplicitDemoFallback,
           generationNonce: generationJobId,
           cooldownScope: providerCooldownScope,
+          healthyProviders,
+          allowEmergencyTxtRepairFill:
+            !allowExplicitDemoFallback && effectiveConfig.sourceMode !== "pdf_upload",
+          emergencyFillLimit: 2,
           deadlineAt: generationDeadlineAt,
           paperId,
           idempotencyKey,
@@ -503,6 +554,15 @@ export async function POST(request: NextRequest) {
         });
         const validated = stripGenerationMetadataFromQuestions(validation.questions);
         effectiveConfig = validation.config;
+
+        if (validation.emergencyFilledQuestions) {
+          send({
+            step: 6,
+            pct: 94,
+            progress: 94,
+            msg: `Phase 6 - Validation Engine: completed ${validation.emergencyFilledQuestions} final replacement question${validation.emergencyFilledQuestions === 1 ? "" : "s"} from selected NCERT TXT after AI repair providers failed.`,
+          });
+        }
 
         if (validation.replacedQuestions) {
           send({
@@ -1400,6 +1460,13 @@ function isServerTimeBudgetError(error: unknown) {
   );
 }
 
+function isAIProviderRepairUnavailable(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  return /No configured AI provider is currently usable|All configured AI providers failed|Set .*API_?KEY|Set at least one AI provider key|402|credit|quota|billing|can only afford|max_tokens|401|403|unauthorized|api[_\s-]?key|invalid key|not allowed|permission|429|rate.?limit|503|service unavailable|temporarily|busy|overloaded|timeout|timed out|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(
+    message,
+  );
+}
+
 async function validateGeneratedPaperSkippingInvalid({
   questions,
   blueprint,
@@ -1411,6 +1478,9 @@ async function validateGeneratedPaperSkippingInvalid({
   allowDemoFallback,
   generationNonce,
   cooldownScope,
+  healthyProviders,
+  allowEmergencyTxtRepairFill,
+  emergencyFillLimit,
   deadlineAt,
   paperId,
   idempotencyKey,
@@ -1430,6 +1500,9 @@ async function validateGeneratedPaperSkippingInvalid({
   allowDemoFallback: boolean;
   generationNonce: string;
   cooldownScope: string;
+  healthyProviders?: DirectAIProvider[];
+  allowEmergencyTxtRepairFill: boolean;
+  emergencyFillLimit: number;
   deadlineAt: number;
   paperId: number;
   idempotencyKey: string;
@@ -1444,6 +1517,8 @@ async function validateGeneratedPaperSkippingInvalid({
     : new QuestionCandidateBank(questions, blueprint, config);
   const targetQuestionCount = blueprint.totalQuestions;
   let stoppedForServerBudget = Boolean(partialFinalizationReason);
+  let lastRepairError: string | undefined;
+  let emergencyFilledQuestions = 0;
   const stateCreatedAt = resumeState?.createdAt ?? new Date().toISOString();
   const persistBank = async (
     status: PaperGenerationState["status"],
@@ -1522,6 +1597,7 @@ async function validateGeneratedPaperSkippingInvalid({
           generationNonce: `${generationNonce}:repair:${repairAttempt}`,
           repairFeedback: bank.repairFeedback(repairAttempt),
           cooldownScope,
+          healthyProviders,
           signal,
           onBatchComplete: (details) => {
             send({
@@ -1546,6 +1622,18 @@ async function validateGeneratedPaperSkippingInvalid({
         break;
       }
 
+      if (bank.readyCount() && isAIProviderRepairUnavailable(error)) {
+        lastRepairError = error instanceof Error ? error.message : String(error);
+        await persistBank(
+          "IN_PROGRESS",
+          "REPAIR",
+          (resumeState?.attemptCount ?? 0) + repairAttempt,
+          "AI repair providers were unavailable; attempting final NCERT TXT emergency fill.",
+          lastRepairError,
+        );
+        break;
+      }
+
       throw error;
     }
 
@@ -1560,10 +1648,57 @@ async function validateGeneratedPaperSkippingInvalid({
     }
   }
 
+  if (
+    allowEmergencyTxtRepairFill &&
+    bank.missingCount() > 0 &&
+    bank.missingCount() <= emergencyFillLimit &&
+    bank.readyCount() > 0
+  ) {
+    send({
+      step: 6,
+      pct: 94,
+      progress: 94,
+      msg: "Completing final source-backed replacement from NCERT TXT...",
+    });
+    const beforeEmergencyReady = bank.readyCount();
+    const emergencyQuestions = generateEmergencyTxtRepairFill({
+      missingSections: bank.missingSections(),
+      concepts: scopedConcepts,
+      config,
+      existingQuestions: bank.allCandidates(),
+      limit: emergencyFillLimit,
+    });
+
+    if (emergencyQuestions.length) {
+      bank.add(emergencyQuestions);
+      emergencyFilledQuestions = Math.max(
+        0,
+        bank.readyCount() - beforeEmergencyReady,
+      );
+      await persistBank(
+        bank.missingCount() > 0 ? "IN_PROGRESS" : "READY",
+        "REPAIR",
+        (resumeState?.attemptCount ?? 0) + 4,
+        emergencyFilledQuestions
+          ? `Accepted ${emergencyFilledQuestions} final NCERT TXT emergency replacement question${emergencyFilledQuestions === 1 ? "" : "s"}.`
+          : "NCERT TXT emergency replacements were generated but did not pass validation.",
+        lastRepairError,
+      );
+    }
+  }
+
   const validation = bank.result();
   const remainingMissingQuestions = bank.missingCount();
   const readyCount = bank.readyCount();
   const replacedQuestions = bank.replacedQuestions();
+  const emergencyWarnings = emergencyFilledQuestions
+    ? [
+        {
+          type: "ncert-txt-emergency-fill",
+          reason: `${emergencyTxtRepairFillMarker}: completed ${emergencyFilledQuestions} final source-backed replacement question${emergencyFilledQuestions === 1 ? "" : "s"} after AI repair providers were unavailable.`,
+        },
+      ]
+    : [];
 
   if (remainingMissingQuestions > 0) {
     if (readyCount > 0) {
@@ -1588,6 +1723,7 @@ async function validateGeneratedPaperSkippingInvalid({
         ...validation,
         skipped: [
           ...validation.skipped,
+          ...emergencyWarnings,
           {
             type: "server-time-budget",
             reason: `${reason} Saved ${readyCount}/${targetQuestionCount} valid question${readyCount === 1 ? "" : "s"}; ${remainingMissingQuestions} requested question${remainingMissingQuestions === 1 ? "" : "s"} could not be generated in time.`,
@@ -1595,6 +1731,7 @@ async function validateGeneratedPaperSkippingInvalid({
         ],
         replacedQuestions,
         remainingMissingQuestions,
+        emergencyFilledQuestions,
       };
     }
 
@@ -1619,8 +1756,10 @@ async function validateGeneratedPaperSkippingInvalid({
 
   return {
     ...validation,
+    skipped: [...validation.skipped, ...emergencyWarnings],
     replacedQuestions,
     remainingMissingQuestions,
+    emergencyFilledQuestions,
   };
 }
 

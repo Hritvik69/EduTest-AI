@@ -5,11 +5,33 @@ import {
 } from "@/lib/ai-usage-log";
 import type { AIProvider, AITask } from "@/types";
 
-type DirectAIProvider = Exclude<AIProvider, "AUTO">;
+export type DirectAIProvider = Exclude<AIProvider, "AUTO">;
 type ProviderCooldown = {
   until: number;
   reason: string;
   errorClass: string;
+};
+
+export type AIProviderHealthStatus = {
+  provider: DirectAIProvider;
+  configured: boolean;
+  usable: boolean;
+  model: string;
+  triedModels?: string[];
+  cooldownUntil: string | null;
+  cooldownReason: string | null;
+  cooldownErrorClass: string | null;
+  lastFailureClass: string | null;
+  lastFailure: string | null;
+};
+
+export type AIProviderHealthSnapshot = {
+  checkedAt: string;
+  task: AITask;
+  providers: AIProviderHealthStatus[];
+  configuredProviders: DirectAIProvider[];
+  usableProviders: DirectAIProvider[];
+  grokUsable: boolean;
 };
 
 const autoFallbackOrder: DirectAIProvider[] = [
@@ -91,6 +113,7 @@ interface GenerateJSONOptions {
   generationJobId?: string;
   paperId?: number;
   cacheHit?: boolean;
+  healthyProviders?: DirectAIProvider[];
   signal?: AbortSignal;
 }
 
@@ -121,11 +144,29 @@ export async function generateJSON<T = unknown>(
   const requestedProvider = normalizeProvider(
     options.provider ?? process.env.AI_PROVIDER,
   );
-  const configuredProviders = getConfiguredProviders(options.task);
+  const hasHealthFilter = Array.isArray(options.healthyProviders);
+  const healthyProviderSet = new Set(options.healthyProviders ?? []);
+  const configuredProviders = getConfiguredProviders(options.task).filter(
+    (provider) => !hasHealthFilter || healthyProviderSet.has(provider),
+  );
 
   if (requestedProvider === "AUTO" && !configuredProviders.length) {
     throw new Error(
-      "Set at least one AI provider key before generating papers.",
+      hasHealthFilter
+        ? healthPreflightFailureMessage(options.task)
+        : "Set at least one AI provider key before generating papers.",
+    );
+  }
+
+  if (
+    requestedProvider !== "AUTO" &&
+    hasHealthFilter &&
+    !healthyProviderSet.has(requestedProvider)
+  ) {
+    throw new Error(
+      `${providerLabels[requestedProvider]} is not currently usable for ${taskLabel(
+        options.task,
+      )}. Try Retry Auto, choose another provider, or check provider credits/key access.`,
     );
   }
 
@@ -444,6 +485,41 @@ async function generateChatCompletionJSON<T = unknown>(
   options: GenerateJSONOptions,
 ): Promise<T> {
   const config = chatCompletionProviderConfig(provider);
+  const models =
+    provider === "GROK" ? candidateGrokModels() : [config.model];
+  let lastError: unknown;
+
+  for (const model of models) {
+    try {
+      return await generateChatCompletionJSONWithModel<T>(
+        provider,
+        prompt,
+        options,
+        { ...config, model },
+      );
+    } catch (error) {
+      lastError = error;
+      if (provider !== "GROK" || !isRetryableGrokModelError(error)) {
+        throw error;
+      }
+    }
+  }
+
+  if (lastError instanceof Error) {
+    throw new Error(
+      `Grok generation failed for models: ${models.join(", ")}. Last error: ${lastError.message}`,
+    );
+  }
+
+  throw new Error("Grok generation failed before any model could respond.");
+}
+
+async function generateChatCompletionJSONWithModel<T = unknown>(
+  provider: DirectAIProvider,
+  prompt: string,
+  options: GenerateJSONOptions,
+  config: ReturnType<typeof chatCompletionProviderConfig>,
+): Promise<T> {
   const controller = new AbortController();
   const requestTimeoutMs = aiRequestTimeoutMs(provider);
   const timeout = setTimeout(() => controller.abort(), requestTimeoutMs);
@@ -545,7 +621,8 @@ export function getAIProviderStatus() {
     openai: isConfigured("OPENAI"),
     defaultProvider: normalizeProvider(process.env.AI_PROVIDER ?? "AUTO"),
     geminiModel: candidateGeminiModels()[0],
-    grokModel: process.env.XAI_MODEL ?? "grok-4.3",
+    grokModel: candidateGrokModels()[0],
+    grokUsable: null,
     mistralModel: process.env.MISTRAL_MODEL ?? "mistral-small-latest",
     cerebrasModel: process.env.CEREBRAS_MODEL ?? "gpt-oss-120b",
     deepseekModel: process.env.DEEPSEEK_MODEL ?? "deepseek-v4-flash",
@@ -555,12 +632,163 @@ export function getAIProviderStatus() {
   };
 }
 
+export async function checkAIProviderHealth({
+  task = "QUESTION_GENERATION",
+  providers,
+  signal,
+  cooldownScope,
+  timeoutMs = providerHealthTimeoutMs(),
+}: {
+  task?: AITask;
+  providers?: DirectAIProvider[];
+  signal?: AbortSignal;
+  cooldownScope?: string;
+  timeoutMs?: number;
+} = {}): Promise<AIProviderHealthSnapshot> {
+  const ordered = providers?.length ? providers : fallbackOrderForTask(task);
+  const statuses = await Promise.all(
+    ordered.map((provider) =>
+      checkSingleProviderHealth(provider, {
+        task,
+        signal,
+        cooldownScope,
+        timeoutMs,
+      }),
+    ),
+  );
+  const usableSet = new Set(
+    statuses
+      .filter((status) => status.usable)
+      .map((status) => status.provider),
+  );
+  const configuredSet = new Set(
+    statuses
+      .filter((status) => status.configured)
+      .map((status) => status.provider),
+  );
+
+  return {
+    checkedAt: new Date().toISOString(),
+    task,
+    providers: statuses,
+    configuredProviders: fallbackOrderForTask(task).filter((provider) =>
+      configuredSet.has(provider),
+    ),
+    usableProviders: fallbackOrderForTask(task).filter((provider) =>
+      usableSet.has(provider),
+    ),
+    grokUsable: Boolean(statuses.find((status) => status.provider === "GROK")?.usable),
+  };
+}
+
 export function getConfiguredProviders(task?: AITask): DirectAIProvider[] {
   return fallbackOrderForTask(task).filter(isConfigured);
 }
 
+async function checkSingleProviderHealth(
+  provider: DirectAIProvider,
+  {
+    task,
+    signal,
+    cooldownScope,
+    timeoutMs,
+  }: {
+    task: AITask;
+    signal?: AbortSignal;
+    cooldownScope?: string;
+    timeoutMs: number;
+  },
+): Promise<AIProviderHealthStatus> {
+  const cooldown = activeProviderCooldown(provider, task, cooldownScope);
+  const base = (): Omit<AIProviderHealthStatus, "usable" | "lastFailureClass" | "lastFailure"> => ({
+    provider,
+    configured: isConfigured(provider),
+    model: modelNameForProvider(provider),
+    triedModels: provider === "GROK" ? candidateGrokModels() : undefined,
+    cooldownUntil: cooldown ? new Date(cooldown.until).toISOString() : null,
+    cooldownReason: cooldown?.reason ?? null,
+    cooldownErrorClass: cooldown?.errorClass ?? null,
+  });
+
+  if (!isConfigured(provider)) {
+    return {
+      ...base(),
+      usable: false,
+      lastFailureClass: "missing_key",
+      lastFailure: missingProviderKeyMessage(provider),
+    };
+  }
+
+  if (cooldown) {
+    return {
+      ...base(),
+      usable: false,
+      lastFailureClass: cooldown.errorClass,
+      lastFailure: cooldown.reason,
+    };
+  }
+
+  try {
+    const probe = await withProviderHealthTimeout(
+      provider,
+      task,
+      signal,
+      timeoutMs,
+      (probeSignal) =>
+        generateProviderJSON<{ ok?: boolean }>(
+          provider,
+          "Return exactly this JSON object and nothing else: {\"ok\":true}",
+          {
+            provider,
+            task,
+            systemInstruction: "You are a provider health probe. Return only valid JSON.",
+            temperature: 0,
+            topP: 0.1,
+            maxOutputTokens: 40,
+            cooldownScope,
+            signal: probeSignal,
+          },
+        ),
+    );
+
+    if (probe?.ok !== true) {
+      throw new Error(`${providerLabels[provider]} health probe returned invalid JSON.`);
+    }
+
+    clearProviderCooldown(provider, task, cooldownScope);
+    return {
+      ...base(),
+      usable: true,
+      lastFailureClass: null,
+      lastFailure: null,
+    };
+  } catch (error) {
+    const failure =
+      error instanceof Error ? error : new Error(String(error));
+    rememberProviderFailure(provider, failure, task, cooldownScope);
+    return {
+      ...base(),
+      usable: false,
+      lastFailureClass: providerFailureClass(failure.message),
+      lastFailure: friendlyAIError(failure.message),
+    };
+  }
+}
+
 function fallbackOrderForTask(task?: AITask) {
   return task ? taskFallbackOrders[task] : autoFallbackOrder;
+}
+
+function candidateGrokModels() {
+  return [
+    process.env.XAI_MODEL,
+    "grok-4.3",
+    "grok-latest",
+    "grok",
+  ].filter(
+    (value, index, array): value is string =>
+      Boolean(value) && array.indexOf(value) === index,
+  );
 }
 
 function orderedCandidateModels(requestedProvider: AIProvider) {
@@ -587,6 +815,21 @@ function orderedCandidateModels(requestedProvider: AIProvider) {
 function isRetryableGeminiError(error: unknown) {
   if (!(error instanceof Error)) return false;
   return /404|not found|not supported|503|service unavailable|temporarily|high demand|overloaded|rate.?limit|429/i.test(
+    error.message,
+  );
+}
+
+function isRetryableGrokModelError(error: unknown) {
+  if (!(error instanceof Error)) return false;
+  if (
+    /401|403|unauthorized|permission|api key|invalid key|not allowed|402|credit|quota|billing/i.test(
+      error.message,
+    )
+  ) {
+    return false;
+  }
+
+  return /400|404|model|not found|not available|does not exist|unsupported/i.test(
     error.message,
   );
 }
@@ -1039,6 +1282,73 @@ function withTimeoutAndSignal<T>(
   });
 }
 
+function withProviderHealthTimeout<T>(
+  provider: DirectAIProvider,
+  task: AITask,
+  signal: AbortSignal | undefined,
+  timeoutMs: number,
+  run: (signal: AbortSignal) => Promise<T>,
+) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => {
+    controller.abort(
+      new Error(
+        `${providerLabels[provider]} health preflight timed out after ${Math.round(
+          timeoutMs / 1000,
+        )} seconds.`,
+      ),
+    );
+  }, timeoutMs);
+  const abortFromCaller = () => controller.abort(abortSignalError(signal));
+
+  if (signal?.aborted) {
+    controller.abort(abortSignalError(signal));
+  } else {
+    signal?.addEventListener("abort", abortFromCaller, { once: true });
+  }
+
+  return run(controller.signal).finally(() => {
+    clearTimeout(timeout);
+    signal?.removeEventListener("abort", abortFromCaller);
+  }).catch((error) => {
+    if (
+      error instanceof Error &&
+      /Generation cancelled by client|SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget/i.test(
+        error.message,
+      )
+    ) {
+      throw error;
+    }
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(
+      `${providerLabels[provider]} ${taskLabel(task)} health preflight failed: ${message}`,
+    );
+  });
+}
+
+function providerHealthTimeoutMs() {
+  const configured = Number(process.env.AI_PROVIDER_HEALTH_TIMEOUT_MS);
+  if (Number.isInteger(configured) && configured >= 1_500 && configured <= 15_000) {
+    return configured;
+  }
+
+  return 4_500;
+}
+
+function healthPreflightFailureMessage(task?: AITask) {
+  return `No configured AI provider is currently usable for ${taskLabel(
+    task,
+  )}. Check provider keys/credits, wait for timeout cooldowns, or choose a provider with available quota.`;
+}
+
+function taskLabel(task?: AITask) {
+  if (task === "QUESTION_REPLACEMENT") return "question repair";
+  if (task === "QUESTION_GENERATION") return "question generation";
+  if (task === "PDF_EXTRACTION") return "PDF extraction";
+  if (task === "ANSWER_EVALUATION") return "answer evaluation";
+  return "this task";
+}
+
 function missingProviderKeyMessage(provider: AIProvider) {
   if (provider === "AUTO") {
     return "Set at least one AI provider key before generating papers.";
@@ -1109,7 +1419,7 @@ function providerHealthByTask() {
 
 function modelNameForProvider(provider: DirectAIProvider) {
   if (provider === "GEMINI") return candidateGeminiModels()[0];
-  if (provider === "GROK") return process.env.XAI_MODEL ?? "grok-4.3";
+  if (provider === "GROK") return candidateGrokModels()[0];
   if (provider === "MISTRAL") {
     return process.env.MISTRAL_MODEL ?? "mistral-small-latest";
   }

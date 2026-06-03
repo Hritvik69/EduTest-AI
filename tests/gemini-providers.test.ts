@@ -263,6 +263,78 @@ describe("multi-provider JSON generation", () => {
     });
   });
 
+  it("reports Grok as configured but unusable when xAI rejects the key", async () => {
+    process.env.XAI_API_KEY = "xai-test-key";
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        new Response("invalid api key", {
+          status: 401,
+        }),
+      ),
+    );
+    const { checkAIProviderHealth } = await import("@/lib/gemini");
+
+    const health = await checkAIProviderHealth({
+      task: "QUESTION_GENERATION",
+      providers: ["GROK"],
+      timeoutMs: 2_000,
+    });
+
+    expect(health.providers[0]).toMatchObject({
+      provider: "GROK",
+      configured: true,
+      usable: false,
+      lastFailureClass: "auth",
+    });
+    expect(health.grokUsable).toBe(false);
+  });
+
+  it("tries Grok model aliases when the configured xAI model is unavailable", async () => {
+    process.env.XAI_API_KEY = "xai-test-key";
+    process.env.XAI_MODEL = "unavailable-grok-model";
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response("model not found", {
+          status: 404,
+        }),
+      )
+      .mockResolvedValueOnce(chatResponse({ ok: true }));
+    vi.stubGlobal("fetch", fetchMock);
+    const { generateJSON } = await import("@/lib/gemini");
+
+    await expect(
+      generateJSON<{ ok: boolean }>("Return JSON", {
+        provider: "GROK",
+      }),
+    ).resolves.toEqual({ ok: true });
+
+    const firstBody = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
+    const secondBody = JSON.parse(String(fetchMock.mock.calls[1][1]?.body));
+    expect(firstBody.model).toBe("unavailable-grok-model");
+    expect(secondBody.model).toBe("grok-4.3");
+  });
+
+  it("uses only healthy providers supplied to Auto fallback", async () => {
+    process.env.MISTRAL_API_KEY = "mistral-test-key";
+    process.env.CEREBRAS_API_KEY = "csk-test-key";
+    const fetchMock = mockJSONFetch({ fallback: "cerebras" });
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ fallback: string }>("Return JSON", {
+      provider: "AUTO",
+      task: "QUESTION_REPLACEMENT",
+      healthyProviders: ["CEREBRAS"],
+    });
+
+    expect(result.fallback).toBe("cerebras");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock.mock.calls[0][0]).toBe(
+      "https://api.cerebras.ai/v1/chat/completions",
+    );
+  });
+
   it("records safe AI usage metadata without storing prompts", async () => {
     process.env.MISTRAL_API_KEY = "mistral-test-key";
     const fetchMock = mockJSONFetch({ ok: true });

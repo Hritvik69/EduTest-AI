@@ -9,7 +9,11 @@ import {
   type DifficultyTargets,
 } from "@/lib/difficulty-protocol";
 import { questionTypeMeta } from "@/lib/edutest-data";
-import { generateJSON, getConfiguredProviders } from "@/lib/gemini";
+import {
+  generateJSON,
+  getConfiguredProviders,
+  type DirectAIProvider,
+} from "@/lib/gemini";
 import { questionGenerationSystemInstruction } from "@/lib/gemini-prompts";
 import {
   intelligenceCountsForTotal,
@@ -43,6 +47,7 @@ interface GenerateSectionOptions {
   difficultyTargets?: DifficultyTargets;
   generationNonce?: string;
   cooldownScope?: string;
+  healthyProviders?: DirectAIProvider[];
   partialMaxExtraAttempts?: number;
   signal?: AbortSignal;
   onBatchComplete?: (details: {
@@ -62,6 +67,7 @@ interface GenerateBlueprintOptions {
   generationNonce?: string;
   repairFeedback?: GenerationRepairFeedback;
   cooldownScope?: string;
+  healthyProviders?: DirectAIProvider[];
   signal?: AbortSignal;
   onBatchComplete?: (details: {
     generated: number;
@@ -141,6 +147,7 @@ export async function generateQuestionsForSection(
       options.difficultyTargets,
       options.generationNonce,
       options.cooldownScope,
+      options.healthyProviders,
       options.allowPartial,
       options.partialMaxExtraAttempts,
       options.signal,
@@ -219,6 +226,7 @@ export async function generateBlueprintQuestions(
       : "QUESTION_GENERATION",
     cooldownScope: options.cooldownScope,
     generationJobId: generationJobIdFromNonce(options.generationNonce),
+    healthyProviders: options.healthyProviders,
     signal: options.signal,
   });
 
@@ -368,6 +376,7 @@ async function generateQuestionBatches(
   difficultyTargets?: DifficultyTargets,
   generationNonce?: string,
   cooldownScope?: string,
+  healthyProviders?: DirectAIProvider[],
   allowPartial = false,
   partialMaxExtraAttempts = 0,
   signal?: AbortSignal,
@@ -426,6 +435,7 @@ async function generateQuestionBatches(
           : "QUESTION_GENERATION",
         cooldownScope,
         generationJobId: generationJobIdFromNonce(generationNonce),
+        healthyProviders,
         signal,
       });
       const raw = Array.isArray(result) ? result : result.questions;
