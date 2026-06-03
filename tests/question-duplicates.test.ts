@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   duplicateQuestionDecision,
   duplicateQuestionReason,
+  numericDistinctnessProof,
   parseSourceBackedCompletionMetadata,
   sourceBackedDistinctnessProof,
 } from "@/lib/question-duplicates";
@@ -9,6 +10,7 @@ import {
 type DuplicateTestQuestion = {
   text: string;
   type?: string;
+  subject?: string;
   topic?: string;
   scenario?: string;
   correctAnswer?: string;
@@ -83,7 +85,7 @@ describe("question duplicate decisions", () => {
     );
   });
 
-  it("allows same-atom source-backed similarity only when the angle and proof fields differ", () => {
+  it("rejects same-atom source-backed questions even when the angle and proof fields differ", () => {
     const first = sourceBackedMcq({
       text: "Which evidence statement best explains the litmus colour change for the acid sample in the selected chapter?",
       noveltyAngle: "SOURCE_BACKED_COMPLETION:MCQ:evidence:atom-1:1",
@@ -104,18 +106,18 @@ describe("question duplicate decisions", () => {
       answerPath: first.answerPath,
     };
 
-    expect(duplicateQuestionReason(first, second)).toBeNull();
+    expect(duplicateQuestionReason(first, second)).toBe("repeated source-backed atom");
     expect(sourceBackedDistinctnessProof(first, second)).toMatchObject({
       bothSourceBacked: true,
       differentAngle: true,
-      allowSoftSimilarity: true,
+      allowSoftSimilarity: false,
     });
     expect(duplicateQuestionReason(first, weakSecond)).toBe(
-      "repeated answer path metadata",
+      "repeated source-backed atom",
     );
   });
 
-  it("allows same atom with different source-backed lenses when proof fields differ", () => {
+  it("rejects same atom with different source-backed lenses", () => {
     const first = sourceBackedMcq({
       text: "Which evidence detail best explains the litmus colour change for the acid sample in the selected chapter?",
       noveltyAngle: "SOURCE_BACKED_COMPLETION:MCQ:evidence-detail:atom-1:1",
@@ -135,15 +137,15 @@ describe("question duplicate decisions", () => {
       options: uniqueOptions("evidence-support", "atom-1"),
     });
 
-    expect(duplicateQuestionReason(first, second)).toBeNull();
+    expect(duplicateQuestionReason(first, second)).toBe("repeated source-backed atom");
     expect(sourceBackedDistinctnessProof(first, second)).toMatchObject({
       differentAngle: true,
       differentAtom: false,
-      allowSoftSimilarity: true,
+      allowSoftSimilarity: false,
     });
   });
 
-  it("allows different atom and angle pairs despite shared chapter vocabulary", () => {
+  it("rejects different atom and angle pairs when they remain near-paraphrased conceptual stems", () => {
     const first = sourceBackedMcq({
       text: "Which evidence statement best explains the litmus colour change for the acid sample in the selected chapter?",
       noveltyAngle: "SOURCE_BACKED_COMPLETION:MCQ:evidence:atom-1:1",
@@ -160,9 +162,9 @@ describe("question duplicate decisions", () => {
     });
 
     expect(duplicateQuestionDecision(first, second)).toMatchObject({
-      duplicate: false,
-      reason: null,
-      allowedSoftSimilarity: "near-duplicate question stem",
+      duplicate: true,
+      reason: "near-duplicate question stem",
+      kind: "soft",
     });
   });
 
@@ -184,7 +186,7 @@ describe("question duplicate decisions", () => {
     );
   });
 
-  it("allows AI-vs-source-backed similarity only with stronger distinct source proof", () => {
+  it("rejects AI-vs-source-backed similarity even with distinct source proof", () => {
     const aiQuestion = aiMcq({
       scenario:
         "A student observes litmus during an acid-base test and records one colour change.",
@@ -207,9 +209,118 @@ describe("question duplicate decisions", () => {
     });
 
     expect(duplicateQuestionDecision(aiQuestion, sourceQuestion)).toMatchObject({
+      duplicate: true,
+      reason: "near-duplicate question stem",
+      kind: "soft",
+    });
+  });
+
+  it("allows similar numerical wording only when values, answer, and path differ", () => {
+    const first = numericalQuestion({
+      text: "A rectangle has length 12 cm and breadth 8 cm. Calculate the area in square centimetres from these measurements.",
+      correctAnswer: "96 square centimetres",
+      answerPath: "Multiply 12 by 8 to get 96 square centimetres.",
+    });
+    const second = numericalQuestion({
+      text: "A rectangle has length 15 cm and breadth 6 cm. Calculate the area in square centimetres from these measurements.",
+      correctAnswer: "90 square centimetres",
+      answerPath: "Multiply 15 by 6 to get 90 square centimetres.",
+    });
+
+    const decision = duplicateQuestionDecision(first, second);
+
+    expect(decision).toMatchObject({
       duplicate: false,
       reason: null,
       allowedSoftSimilarity: "near-duplicate question stem",
+    });
+    expect(decision.numericDistinctnessProof).toMatchObject({
+      leftNumerical: true,
+      rightNumerical: true,
+      numericTupleDiffers: true,
+      finalAnswerDiffers: true,
+      answerPathDiffers: true,
+      allowSoftSimilarity: true,
+    });
+  });
+
+  it("rejects similar numerical questions with the same final answer", () => {
+    const first = numericalQuestion({
+      text: "A rectangle has length 12 cm and breadth 8 cm. Calculate the area in square centimetres from these measurements.",
+      correctAnswer: "96 square centimetres",
+      answerPath: "Multiply 12 by 8 to get 96 square centimetres.",
+    });
+    const second = numericalQuestion({
+      text: "A rectangle has length 16 cm and breadth 6 cm. Calculate the area in square centimetres from these measurements.",
+      correctAnswer: "96 square centimetres",
+      answerPath: "Multiply 16 by 6 to get 96 square centimetres.",
+    });
+
+    expect(duplicateQuestionReason(first, second)).toBe(
+      "repeated numerical answer",
+    );
+  });
+
+  it("rejects similar numerical questions with the same value tuple", () => {
+    const first = numericalQuestion({
+      text: "A rectangle has length 12 cm and breadth 8 cm. Calculate the area in square centimetres from these measurements.",
+      correctAnswer: "96 square centimetres",
+      answerPath: "Multiply 12 by 8 to get 96 square centimetres.",
+    });
+    const second = numericalQuestion({
+      text: "A garden plot has length 12 cm and breadth 8 cm. Calculate the area in square centimetres from these measurements.",
+      correctAnswer: "96 square centimetres",
+      answerPath: "Use the same 12 and 8 measurements to calculate the area.",
+    });
+
+    expect(duplicateQuestionReason(first, second)).toBe(
+      "repeated numerical values",
+    );
+  });
+
+  it("does not apply the numerical exception to non-numerical source-backed paraphrases", () => {
+    const first = sourceBackedMcq({
+      text: "Which evidence statement best explains the litmus colour change for the acid sample in the selected chapter?",
+      noveltyAngle: "SOURCE_BACKED_COMPLETION:MCQ:evidence-detail:atom-4:1",
+      options: uniqueOptions("evidence-detail", "atom-4"),
+    });
+    const second = sourceBackedMcq({
+      text: "Which evidence statement best explains the litmus colour change for the acid sample in this selected chapter?",
+      noveltyAngle: "SOURCE_BACKED_COMPLETION:MCQ:evidence-support:atom-5:2",
+      sourceChunkFocus:
+        "Evidence support focus atom-5: the source gives a separate clue.",
+      answerPath:
+        "Read atom-5, use the support lens, and connect the clue to the conclusion.",
+      options: uniqueOptions("evidence-support", "atom-5"),
+    });
+
+    const decision = duplicateQuestionDecision(first, second);
+
+    expect(decision).toMatchObject({
+      duplicate: true,
+      reason: "near-duplicate question stem",
+    });
+    expect(decision.numericDistinctnessProof?.allowSoftSimilarity).not.toBe(true);
+  });
+
+  it("exposes numerical distinctness proof for diagnostics", () => {
+    const first = numericalQuestion({
+      text: "Find the total of 12 and 8 using the given values.",
+      correctAnswer: "20",
+      answerPath: "Add 12 and 8 to get 20.",
+    });
+    const second = numericalQuestion({
+      text: "Find the total of 15 and 6 using the given values.",
+      correctAnswer: "21",
+      answerPath: "Add 15 and 6 to get 21.",
+    });
+
+    expect(numericDistinctnessProof(first, second)).toMatchObject({
+      allowSoftSimilarity: true,
+      leftNumbers: ["12", "8"],
+      rightNumbers: ["15", "6"],
+      leftFinalAnswer: "20",
+      rightFinalAnswer: "21",
     });
   });
 
@@ -286,6 +397,20 @@ function sourceBackedMcq(
       "Evidence focus atom-1: litmus changes colour in acidic solution.",
     answerPath:
       "Read atom-1, identify the litmus evidence, and support the acidic solution conclusion.",
+    ...overrides,
+  };
+}
+
+function numericalQuestion(
+  overrides: Partial<DuplicateTestQuestion> = {},
+): DuplicateTestQuestion {
+  return {
+    text: "A rectangle has length 12 cm and breadth 8 cm. Calculate the area in square centimetres from these measurements.",
+    type: "NUMERICAL",
+    subject: "Mathematics",
+    topic: "Area",
+    correctAnswer: "96 square centimetres",
+    answerPath: "Multiply 12 by 8 to get 96 square centimetres.",
     ...overrides,
   };
 }

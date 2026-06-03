@@ -239,6 +239,35 @@ describe("source-backed completion", () => {
     )).toBe(true);
   });
 
+  it("fails strict completion instead of filling weak 10/16 source-shortage cases", () => {
+    const totalQuestions = 16;
+    const paperConfig = {
+      ...config,
+      totalQuestions,
+      totalMarks: totalQuestions,
+      typeDistribution: { MCQ: totalQuestions },
+    };
+    const blueprint = blueprintForCount(totalQuestions);
+    const aiCandidates = [
+      ...Array.from({ length: 10 }, (_, index) => mcq(index + 1)),
+      ...Array.from({ length: 6 }, () => mcq(1)),
+    ];
+    const bank = new QuestionCandidateBank(aiCandidates, blueprint, paperConfig);
+
+    expect(bank.readyCount()).toBe(10);
+    expect(bank.missingCount()).toBe(6);
+
+    const completed = completeQuestionBankWithSourceBackedFallback({
+      bank,
+      concepts: [singleAtomConcept()],
+      config: paperConfig,
+    });
+
+    expect(completed.length).toBeLessThan(6);
+    expect(bank.readyCount()).toBeLessThan(16);
+    expect(bank.missingCount()).toBeGreaterThan(0);
+  });
+
   it("survives duplicate pressure across stems, options, and answer metadata", () => {
     const totalQuestions = 28;
     const paperConfig = {
@@ -430,6 +459,14 @@ function longParagraphConcept(): ConceptData {
     [
       "The selected NCERT passage presents a conversation where the speaker chooses careful words to avoid open conflict, the listener notices the polite pause, the setting creates pressure, the reply uses wit instead of anger, the surrounding action shows hesitation, the final sentence changes the tone, the chapter links this response to social intelligence, the evidence asks students to connect word choice with intention, the passage also contrasts direct accusation with thoughtful explanation, the learner must separate a supported inference from a guess, the vocabulary clue depends on context, the conclusion should mention the exact dialogue detail, and the answer should remain grounded in the selected text.",
     ].join(" "),
+  );
+}
+
+function singleAtomConcept(): ConceptData {
+  return concept(
+    21,
+    "Single dialogue clue",
+    "The selected source gives one precise dialogue tone clue about a speaker choosing polite words to avoid conflict during a difficult classroom conversation.",
   );
 }
 

@@ -368,15 +368,29 @@ function conceptsFor(items: QuestionCompositionItem[]): ConceptData[] {
 }
 
 function conceptFor(item: QuestionCompositionItem): ConceptData {
+  const subject = item.subject;
+  const chapter = item.chapterName;
+  const topic = item.topicName ?? "General";
+  const sourceSentences = [
+    `${subject} source text for ${chapter} explains ${topic} with selected NCERT details for this exact chapter.`,
+    `The foundation detail defines ${topic} by naming the key relationship students must recognise before answering.`,
+    `The process detail shows the ordered step that connects the first condition with the later result in ${topic}.`,
+    `The evidence detail gives a concrete textbook clue that supports the correct conclusion about ${topic}.`,
+    `The comparison detail separates ${topic} from a nearby but different idea in the same chapter.`,
+    `The application detail places ${topic} inside a classroom example where the learner chooses the correct method.`,
+    `The misconception detail warns that a tempting shortcut gives the wrong interpretation of ${topic}.`,
+    `The conclusion detail links the selected source evidence back to the final answer expected for ${topic}.`,
+  ];
+
   return {
-    text: `${item.subject} source text for ${item.chapterName} explains ${item.topicName} with enough selected NCERT details, examples, reasoning, and classroom context to produce source grounded questions from this exact chapter.`,
+    text: sourceSentences.join(" "),
     type: "NCERT_TXT_SOURCE",
     bloomLevel: "UNDERSTAND",
     hotsPotential: true,
-    subject: item.subject,
+    subject,
     classNum: 12,
-    chapterName: item.chapterName,
-    topicName: item.topicName ?? "General",
+    chapterName: chapter,
+    topicName: topic,
     chapterId: item.chapterId ?? 1,
     topicId: item.topicId,
     source: "ncert_txt",

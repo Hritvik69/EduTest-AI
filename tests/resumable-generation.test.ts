@@ -61,7 +61,7 @@ describe("resumable paper generation wiring", () => {
     );
 
     expect(route).toMatch(/SOURCE_TEXT_NOT_ENOUGH/);
-    expect(route).toMatch(/Selected source text did not provide enough distinct material/);
+    expect(route).toMatch(/Selected source text cannot produce enough 100% distinct questions/);
     expect(overlay).toMatch(/isSourceTextShortageError/);
     expect(overlay).toMatch(/SOURCE_TEXT_NOT_ENOUGH/);
     expect(overlay).toMatch(/if \(isSourceTextShortageError\(error\)\) return false/);

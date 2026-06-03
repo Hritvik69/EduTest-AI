@@ -1373,7 +1373,7 @@ function generationErrorMessage(error: unknown) {
   const message =
     error instanceof Error ? error.message : "Generation failed. Please try again.";
 
-  if (/SOURCE_TEXT_NOT_ENOUGH|Selected source text (?:is not enough|did not provide enough distinct material)/i.test(message)) {
+  if (/SOURCE_TEXT_NOT_ENOUGH|Selected source text (?:is not enough|did not provide enough distinct material|cannot produce enough 100% distinct questions)/i.test(message)) {
     return stripSourceTextNotEnoughPrefix(message);
   }
 
@@ -1464,7 +1464,7 @@ function generationErrorCode(error: unknown) {
   const message =
     error instanceof Error ? error.message : "Generation failed. Please try again.";
 
-  if (/SOURCE_TEXT_NOT_ENOUGH|Selected source text (?:is not enough|did not provide enough distinct material)/i.test(message)) {
+  if (/SOURCE_TEXT_NOT_ENOUGH|Selected source text (?:is not enough|did not provide enough distinct material|cannot produce enough 100% distinct questions)/i.test(message)) {
     return "SOURCE_TEXT_NOT_ENOUGH";
   }
 
@@ -1844,7 +1844,7 @@ async function validateGeneratedPaperSkippingInvalid({
         ? `Accepted ${sourceBackedCompletedQuestions} selected-source completion question${sourceBackedCompletedQuestions === 1 ? "" : "s"}.`
         : completionQuestions.length
           ? "Selected-source completion candidates were generated but did not pass validation."
-          : "Selected source text did not provide enough distinct completion candidates.",
+          : "Selected source text cannot produce enough 100% distinct completion candidates.",
       lastRepairError,
     );
   }
@@ -1864,16 +1864,30 @@ async function validateGeneratedPaperSkippingInvalid({
 
   if (remainingMissingQuestions > 0) {
     if (!allowDemoFallback) {
-      const reason = `Selected source text did not provide enough distinct material to replace ${remainingMissingQuestions} invalid or duplicate question${remainingMissingQuestions === 1 ? "" : "s"}.`;
+      const reason = `Selected source text cannot produce enough 100% distinct questions to replace ${remainingMissingQuestions} invalid or duplicate question${remainingMissingQuestions === 1 ? "" : "s"}.`;
+      const sourceConceptCount = scopedConcepts.filter((concept) => {
+        const source = concept.source;
+        const textLength = concept.text?.replace(/\s+/g, " ").trim().length ?? 0;
+        return (source === "ncert_txt" || source === "pdf") && textLength >= 80;
+      }).length;
+      const topRejectionReasons = Object.entries(validation.rejectionReasons ?? {})
+        .map(([key, count]) => [key, Number(count) || 0] as const)
+        .filter(([, count]) => count > 0)
+        .sort((left, right) => right[1] - left[1])
+        .slice(0, 3)
+        .map(([key, count]) => `${key}:${count}`)
+        .join(", ");
+      const guidance = `Generated ${readyCount}/${targetQuestionCount} valid questions. Missing ${remainingMissingQuestions}. Select more chapters/topics, upload more source text, or lower the question count.`;
+      const diagnostics = `Source concepts: ${sourceConceptCount}. Top rejection reasons: ${topRejectionReasons || "none"}.`;
       await persistBank(
         "FAILED",
         "REPAIR",
         (resumeState?.attemptCount ?? 0) + 4,
         undefined,
-        `${reason} Generated ${readyCount}/${targetQuestionCount} valid questions.`,
+        `${reason} ${guidance} ${diagnostics}`,
       );
       throw new Error(
-        `SOURCE_TEXT_NOT_ENOUGH: ${reason} Generated ${readyCount}/${targetQuestionCount} valid questions. Select more chapters/topics, upload more source text, or lower the question count.`,
+        `SOURCE_TEXT_NOT_ENOUGH: ${reason} ${guidance}`,
       );
     }
 

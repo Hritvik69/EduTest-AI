@@ -785,7 +785,7 @@ function isSourceTextShortageError(
   return (
     code === "SOURCE_TEXT_NOT_ENOUGH" ||
     (typeof message === "string" &&
-      /Selected source text (?:is not enough|did not provide enough distinct material)/i.test(
+      /Selected source text (?:is not enough|did not provide enough distinct material|cannot produce enough 100% distinct questions)/i.test(
         message,
       ))
   );

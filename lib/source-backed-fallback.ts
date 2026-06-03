@@ -184,18 +184,15 @@ function sourceBackedQuestionForSequence(
   sequence: number,
 ) {
   const normalizedSequence = Math.max(0, Math.floor(sequence));
-  const slotCount = variantSlotCount();
-  const concept =
-    conceptPool[
-      Math.floor(normalizedSequence / slotCount) % conceptPool.length
-    ];
+  const concept = conceptPool[normalizedSequence % conceptPool.length];
+  const variantSequence = Math.floor(normalizedSequence / conceptPool.length) + 1;
 
   return createSourceBackedQuestion(
     section.questionType,
     section,
     config,
     concept,
-    normalizedSequence + 1,
+    variantSequence,
   );
 }
 

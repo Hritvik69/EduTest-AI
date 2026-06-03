@@ -31,9 +31,12 @@ const stopWords = new Set([
 type QuestionLike = {
   text: string;
   type?: string;
+  subject?: string;
   topic?: string;
   scenario?: string;
   correctAnswer?: string;
+  explanation?: string;
+  keyPoints?: string[];
   options?: Array<{ id?: string; text?: string; isCorrect?: boolean }>;
   subQuestions?: Array<{
     text?: string;
@@ -53,6 +56,7 @@ export type DuplicateQuestionDecision = {
   kind?: DuplicateReasonKind;
   allowedSoftSimilarity?: string;
   distinctnessProof?: SourceBackedDistinctnessProof;
+  numericDistinctnessProof?: NumericDistinctnessProof;
 };
 
 export type SourceBackedCompletionMetadata = {
@@ -77,6 +81,21 @@ export type SourceBackedDistinctnessProof = {
   repeatedAnswerPath: boolean;
   hasStructuralDifference: boolean;
   score: number;
+  allowSoftSimilarity: boolean;
+};
+
+export type NumericDistinctnessProof = {
+  numericalInvolved: boolean;
+  leftNumerical: boolean;
+  rightNumerical: boolean;
+  leftNumbers: string[];
+  rightNumbers: string[];
+  leftFinalAnswer?: string;
+  rightFinalAnswer?: string;
+  numericTupleDiffers: boolean;
+  finalAnswerDiffers: boolean;
+  answerPathDiffers: boolean;
+  hasCalculationSignal: boolean;
   allowSoftSimilarity: boolean;
 };
 
@@ -119,6 +138,16 @@ export function duplicateQuestionDecision(
     return { duplicate: false, reason: null };
   }
 
+  const numericProof = numericDistinctnessProof(left, right);
+  if (numericProof.allowSoftSimilarity) {
+    return {
+      duplicate: false,
+      reason: null,
+      allowedSoftSimilarity: softReason,
+      numericDistinctnessProof: numericProof,
+    };
+  }
+
   const distinctnessProof = sourceBackedDistinctnessProof(left, right);
   if (distinctnessProof.allowSoftSimilarity) {
     return {
@@ -135,6 +164,9 @@ export function duplicateQuestionDecision(
     kind: "soft",
     distinctnessProof: distinctnessProof.sourceBackedInvolved
       ? distinctnessProof
+      : undefined,
+    numericDistinctnessProof: numericProof.numericalInvolved
+      ? numericProof
       : undefined,
   };
 }
@@ -190,6 +222,15 @@ export function hardDuplicateReason(left: QuestionLike, right: QuestionLike) {
     return "repeated source-backed angle";
   }
 
+  if (
+    leftMetadata &&
+    rightMetadata &&
+    normalizeSmall(leftMetadata.atomId) === normalizeSmall(rightMetadata.atomId) &&
+    !numericDistinctnessProof(left, right).allowSoftSimilarity
+  ) {
+    return "repeated source-backed atom";
+  }
+
   const leftAnswerPath = normalizeQuestionText(left.answerPath ?? "");
   const rightAnswerPath = normalizeQuestionText(right.answerPath ?? "");
   if (
@@ -200,6 +241,9 @@ export function hardDuplicateReason(left: QuestionLike, right: QuestionLike) {
   ) {
     return "repeated answer path metadata";
   }
+
+  const numericalDuplicate = hardNumericalDuplicateReason(left, right);
+  if (numericalDuplicate) return numericalDuplicate;
 
   return null;
 }
@@ -324,16 +368,7 @@ export function sourceBackedDistinctnessProof(
       differentSubQuestionSignature,
   );
 
-  const allowSoftSimilarity =
-    sourceBackedInvolved &&
-    sourceBackedMetadataComplete &&
-    (bothSourceBacked
-      ? (differentAtom || differentAngle) && score >= 3
-      : !repeatedAnswerPath &&
-        score >= 4 &&
-        hasStructuralDifference &&
-        differentAnswerPath &&
-        differentSourceChunkFocus);
+  const allowSoftSimilarity = false;
 
   return {
     sourceBackedInvolved,
@@ -350,6 +385,56 @@ export function sourceBackedDistinctnessProof(
     hasStructuralDifference,
     score,
     allowSoftSimilarity,
+  };
+}
+
+export function numericDistinctnessProof(
+  left: QuestionLike,
+  right: QuestionLike,
+): NumericDistinctnessProof {
+  const leftNumbers = numericTuple(left);
+  const rightNumbers = numericTuple(right);
+  const leftFinalAnswer = finalNumericAnswer(left);
+  const rightFinalAnswer = finalNumericAnswer(right);
+  const leftNumerical = isNumericalQuestion(left, leftNumbers);
+  const rightNumerical = isNumericalQuestion(right, rightNumbers);
+  const numericalInvolved = leftNumerical || rightNumerical;
+  const answerPathDiffers = distinctMeaningfulText(
+    normalizeQuestionText(left.answerPath ?? ""),
+    normalizeQuestionText(right.answerPath ?? ""),
+  );
+  const numericTupleDiffers = Boolean(
+    leftNumbers.length >= 2 &&
+      rightNumbers.length >= 2 &&
+      leftNumbers.join("|") !== rightNumbers.join("|"),
+  );
+  const finalAnswerDiffers = Boolean(
+    leftFinalAnswer &&
+      rightFinalAnswer &&
+      leftFinalAnswer !== rightFinalAnswer,
+  );
+  const hasCalculationSignal =
+    hasNumericCalculationSignal(left) && hasNumericCalculationSignal(right);
+
+  return {
+    numericalInvolved,
+    leftNumerical,
+    rightNumerical,
+    leftNumbers,
+    rightNumbers,
+    leftFinalAnswer,
+    rightFinalAnswer,
+    numericTupleDiffers,
+    finalAnswerDiffers,
+    answerPathDiffers,
+    hasCalculationSignal,
+    allowSoftSimilarity:
+      leftNumerical &&
+      rightNumerical &&
+      numericTupleDiffers &&
+      finalAnswerDiffers &&
+      answerPathDiffers &&
+      hasCalculationSignal,
   };
 }
 
@@ -468,6 +553,30 @@ function answerSignature(question: QuestionLike) {
   return normalizeQuestionText([question.correctAnswer, subAnswers].filter(Boolean).join(" | "));
 }
 
+function hardNumericalDuplicateReason(left: QuestionLike, right: QuestionLike) {
+  const leftNumbers = numericTuple(left);
+  const rightNumbers = numericTuple(right);
+  const leftNumerical = isNumericalQuestion(left, leftNumbers);
+  const rightNumerical = isNumericalQuestion(right, rightNumbers);
+  if (!leftNumerical || !rightNumerical) return null;
+
+  if (
+    leftNumbers.length >= 2 &&
+    rightNumbers.length >= 2 &&
+    leftNumbers.join("|") === rightNumbers.join("|")
+  ) {
+    return "repeated numerical values";
+  }
+
+  const leftFinalAnswer = finalNumericAnswer(left);
+  const rightFinalAnswer = finalNumericAnswer(right);
+  if (leftFinalAnswer && rightFinalAnswer && leftFinalAnswer === rightFinalAnswer) {
+    return "repeated numerical answer";
+  }
+
+  return null;
+}
+
 function optionSignature(options: QuestionLike["options"]) {
   if (!options?.length) return "";
   return options
@@ -498,6 +607,97 @@ function comparableQuestionScope(left: QuestionLike, right: QuestionLike) {
   const sameType = normalizeSmall(left.type) === normalizeSmall(right.type);
   const sameTopic = normalizeSmall(left.topic) === normalizeSmall(right.topic);
   return sameType && (!left.topic || !right.topic || sameTopic);
+}
+
+function numericTuple(question: QuestionLike) {
+  return uniqueNumberTokens(
+    numberTokensFromText(
+      questionNonAnswerText(question)
+        .map((value) => value.trim())
+        .filter(Boolean)
+        .join(" "),
+    ),
+  );
+}
+
+function finalNumericAnswer(question: QuestionLike) {
+  const answers = [
+    question.correctAnswer,
+    ...(question.subQuestions?.map((item) => item.correctAnswer) ?? []),
+  ]
+    .filter((value): value is string => Boolean(value?.trim()))
+    .join(" ");
+  const numbers = numberTokensFromText(answers);
+  return numbers[numbers.length - 1];
+}
+
+function isNumericalQuestion(question: QuestionLike, numbers: string[]) {
+  const type = normalizeSmall(question.type).replace(/[\s_-]+/g, "");
+  if (type === "numerical" || type === "numeric") return true;
+
+  const text = questionAllText(question).join(" ").toLowerCase();
+  const mathLike =
+    /\b(math|mathematics|arithmetic|algebra|geometry|mensuration|percentage|percent|ratio|proportion|equation|linear|quadratic|coordinate|probability|statistics|area|perimeter|volume|speed|distance|time|interest|profit|loss|average)\b/.test(
+      text,
+    );
+
+  return numbers.length >= 2 && mathLike && hasNumericCalculationSignal(question);
+}
+
+function hasNumericCalculationSignal(question: QuestionLike) {
+  const text = questionAllText(question).join(" ").toLowerCase();
+  if (/[+\-*/=×÷]/.test(text)) return true;
+  return /\b(calculate|compute|solve|find|evaluate|simplify|total|sum|add|subtract|multiply|divide|product|difference|quotient|ratio|percentage|percent|interest|speed|distance|time|area|perimeter|volume|equation|value|result|answer|more|less|remaining|altogether)\b/.test(
+    text,
+  );
+}
+
+function questionNonAnswerText(question: QuestionLike) {
+  return [
+    question.text,
+    question.scenario,
+    question.topic,
+    question.subject,
+    question.sourceChunkFocus,
+    question.options?.map((option) => option.text).join(" "),
+    question.subQuestions?.map((item) => item.text).join(" "),
+  ].filter((value): value is string => Boolean(value?.trim()));
+}
+
+function questionAllText(question: QuestionLike) {
+  return [
+    ...questionNonAnswerText(question),
+    question.correctAnswer,
+    question.answerPath,
+    question.explanation,
+    question.keyPoints?.join(" "),
+    question.subQuestions
+      ?.map((item) => item.correctAnswer)
+      .filter(Boolean)
+      .join(" "),
+  ].filter((value): value is string => Boolean(value?.trim()));
+}
+
+function numberTokensFromText(value: string) {
+  const matches =
+    value.match(/[-+]?(?:\d+(?:\.\d+)?|\.\d+)(?:\s*\/\s*(?:\d+(?:\.\d+)?|\.\d+))?\s*%?/g) ??
+    [];
+  return matches.map(normalizeNumberToken).filter(Boolean);
+}
+
+function normalizeNumberToken(value: string) {
+  return value.replace(/\s+/g, "").toLowerCase();
+}
+
+function uniqueNumberTokens(values: string[]) {
+  const seen = new Set<string>();
+  const unique: string[] = [];
+  values.forEach((value) => {
+    if (!value || seen.has(value)) return;
+    seen.add(value);
+    unique.push(value);
+  });
+  return unique;
 }
 
 function distinctMeaningfulText(left: string, right: string) {
