@@ -1,7 +1,12 @@
 import { describe, expect, it } from "vitest";
+import { NextRequest } from "next/server";
 import { createGuestUser } from "@/lib/api-security";
 import { generateBlueprint } from "@/lib/blueprint";
 import { defaultBloomDistribution } from "@/lib/edutest-data";
+import {
+  createSignedGuestSessionCookieValue,
+  guestSessionCookieName,
+} from "@/lib/guest-session";
 import {
   createPaperInDB,
   getPaper,
@@ -54,7 +59,7 @@ describe("guest-mode paper storage", () => {
     expect(await getPaper(expiredGuestId, guest.id)).toBeNull();
   });
 
-  it("isolates in-memory papers and idempotency by guest session", async () => {
+  it("shares dashboard paper listings while keeping ownership scoped", async () => {
     const firstGuest = createGuestUser("guest-session-aaaaaaaa");
     const secondGuest = createGuestUser("guest-session-bbbbbbbb");
     const blueprint = generateBlueprint(config);
@@ -80,9 +85,56 @@ describe("guest-mode paper storage", () => {
     expect(await getPaperOwnerId(first.paperId)).toBe(firstGuest.id);
     expect(await getPaper(first.paperId, firstGuest.id)).not.toBeNull();
     expect(await getPaper(first.paperId, secondGuest.id)).toBeNull();
-    expect((await listPapersForUser(secondGuest.id)).map((paper) => paper.id)).not.toContain(
-      first.paperId,
-    );
+    expect(await getPaper(first.paperId)).not.toBeNull();
+
+    const secondDashboard = await listPapersForUser(secondGuest.id);
+    expect(secondDashboard.map((paper) => paper.id)).toContain(first.paperId);
+    expect(secondDashboard.find((paper) => paper.id === first.paperId)).toMatchObject({
+      isOwner: false,
+    });
+    expect(secondDashboard.find((paper) => paper.id === second.paperId)).toMatchObject({
+      isOwner: true,
+    });
+  });
+
+  it("lets another guest open a ready shared paper but not delete it", async () => {
+    const firstGuest = createGuestUser("guest-session-sharedaa");
+    const secondSessionId = "guest-session-sharedbb";
+    const secondGuest = createGuestUser(secondSessionId);
+    const blueprint = generateBlueprint(config);
+    const created = await createPaperInDB(config, blueprint, false, {
+      userId: firstGuest.id,
+      idempotencyKey: "shared-ready-paper",
+    });
+    await saveQuestionsAndLink([question], created.paperId, "curriculum");
+
+    const { GET, DELETE } = await import("@/app/api/papers/[id]/route");
+    const cookieValue = await createSignedGuestSessionCookieValue(secondSessionId);
+    const request = new NextRequest(`http://localhost/api/papers/${created.paperId}`, {
+      headers: {
+        cookie: `${guestSessionCookieName}=${cookieValue}`,
+      },
+    });
+
+    const getResponse = await GET(request, {
+      params: Promise.resolve({ id: String(created.paperId) }),
+    });
+    const getPayload = await getResponse.json();
+
+    expect(getResponse.status).toBe(200);
+    expect(getPayload.data.id).toBe(created.paperId);
+    expect(getPayload.data.isOwner).toBe(false);
+    expect(getPayload.data.questions).toHaveLength(1);
+
+    const deleteResponse = await DELETE(request, {
+      params: Promise.resolve({ id: String(created.paperId) }),
+    });
+    const deletePayload = await deleteResponse.json();
+
+    expect(secondGuest.id).not.toBe(firstGuest.id);
+    expect(deleteResponse.status).toBe(403);
+    expect(deletePayload.error).toContain("Paper access denied");
+    expect(await getPaper(created.paperId, firstGuest.id)).not.toBeNull();
   });
 
   it("does not allow an empty generated paper to become ready", async () => {

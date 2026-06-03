@@ -30,14 +30,10 @@ export async function POST(request: NextRequest) {
 
   const body = parsed.data;
   const ownerId = await getPaperOwnerId(body.paperId);
-  if (ownerId && ownerId !== auth.user.id) {
-    return jsonError(
-      "Paper access denied. This paper belongs to another user or guest session.",
-      403,
-    );
-  }
-
-  let paper: StoredPaper | null = ownerId ? await getPaper(body.paperId, auth.user.id) : null;
+  const isOwner = ownerId === auth.user.id;
+  let paper: StoredPaper | null = ownerId
+    ? await getPaper(body.paperId, isOwner ? auth.user.id : undefined)
+    : null;
   let snapshotOnly = false;
 
   if (!paper && auth.user.isGuest) {

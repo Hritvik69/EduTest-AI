@@ -632,7 +632,6 @@ export async function listPapersForUser(userId: number) {
   pruneGuestMemory();
   if (isGuestUserId(userId) && !sql) {
     return Array.from(memoryPapers.values())
-      .filter((paper) => memoryPaperOwners.get(paper.id) === userId)
       .sort((left, right) => Date.parse(right.createdAt) - Date.parse(left.createdAt))
       .slice(0, 100)
       .map((paper) => ({
@@ -646,6 +645,7 @@ export async function listPapersForUser(userId: number) {
         latestAttemptId: null,
         latestPercentage: null,
         isDemoMode: paper.isDemoMode,
+        isOwner: memoryPaperOwners.get(paper.id) === userId,
         errorMetadata: paper.errorMetadata ?? null,
         createdAt: paper.createdAt,
       }));
@@ -656,6 +656,7 @@ export async function listPapersForUser(userId: number) {
   const rows = await sql`
     SELECT p.id, p.title, p.subject, p.class_num, p.total_marks, p.duration,
            p.status, p.is_demo_mode, p.error_metadata, p.created_at,
+           p.user_id,
            latest_attempt.id AS latest_attempt_id,
            latest_attempt.percentage AS latest_percentage
     FROM papers p
@@ -668,7 +669,6 @@ export async function listPapersForUser(userId: number) {
       ORDER BY completed_at DESC
       LIMIT 1
     ) latest_attempt ON TRUE
-    WHERE p.user_id = ${userId}
     ORDER BY p.created_at DESC
     LIMIT 100
   `;
@@ -687,6 +687,7 @@ export async function listPapersForUser(userId: number) {
         ? null
         : Math.round(Number(row.latest_percentage)),
     isDemoMode: Boolean(row.is_demo_mode),
+    isOwner: Number(row.user_id) === userId,
     errorMetadata: row.error_metadata ?? null,
     createdAt: row.created_at,
   }));

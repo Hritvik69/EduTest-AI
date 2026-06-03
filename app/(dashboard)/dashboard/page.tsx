@@ -68,6 +68,7 @@ interface PaperRow {
   status: "READY" | "ATTEMPTED" | "GENERATING" | "FAILED";
   latestAttemptId?: number | null;
   latestPercentage?: number | null;
+  isOwner?: boolean;
   createdAt: string;
 }
 
@@ -231,7 +232,7 @@ export default function DashboardPage() {
         <section className="mt-5 grid gap-5 xl:grid-cols-[minmax(0,1.25fr)_minmax(360px,0.75fr)]">
           <Card className="overflow-hidden">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 p-5">
-              <h2 className="text-lg font-extrabold text-white">Stored Papers</h2>
+              <h2 className="text-lg font-extrabold text-white">Shared Papers</h2>
               <Badge>{papers.length} stored</Badge>
             </div>
             <div className="overflow-x-auto">
@@ -282,15 +283,17 @@ export default function DashboardPage() {
                               Preview
                             </Link>
                           </Button>
-                          <Button
-                            size="sm"
-                            variant="danger"
-                            disabled={deletingPaperId === paper.id}
-                            onClick={() => void deletePaper(paper)}
-                          >
-                            <Trash2 className="h-3.5 w-3.5" />
-                            {deletingPaperId === paper.id ? "Deleting" : "Delete"}
-                          </Button>
+                          {paper.isOwner !== false ? (
+                            <Button
+                              size="sm"
+                              variant="danger"
+                              disabled={deletingPaperId === paper.id}
+                              onClick={() => void deletePaper(paper)}
+                            >
+                              <Trash2 className="h-3.5 w-3.5" />
+                              {deletingPaperId === paper.id ? "Deleting" : "Delete"}
+                            </Button>
+                          ) : null}
                         </div>
                       </td>
                     </tr>
@@ -298,7 +301,7 @@ export default function DashboardPage() {
                   {!papers.length ? (
                     <tr>
                       <td className="px-5 py-10 text-center text-slate-400" colSpan={5}>
-                        No stored papers yet. Create a paper and it will appear here.
+                        No shared papers yet. Create a paper and it will appear here.
                       </td>
                     </tr>
                   ) : null}
