@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import { generateBlueprint } from "@/lib/blueprint";
 import { defaultBloomDistribution } from "@/lib/edutest-data";
 import {
@@ -40,6 +40,10 @@ const baseConfig: PaperConfig = {
 };
 
 describe("GenerationContract", () => {
+  afterEach(() => {
+    delete process.env.EDUTEST_COVERAGE_SECTIONS_PER_AI_CALL;
+  });
+
   it("summarizes selected paper settings for prompt and UI", () => {
     const blueprint = generateBlueprint(baseConfig);
     const contract = buildGenerationContract(baseConfig, blueprint, {
@@ -177,5 +181,45 @@ describe("GenerationContract", () => {
 
     expect(contract.apiEstimate.plannedCalls).toBe(3);
     expect(contract.apiEstimate.riskReasons.join(" ")).toMatch(/chunked focused batches/);
+  });
+
+  it("uses the same coverage section chunk size as focused generation", () => {
+    process.env.EDUTEST_COVERAGE_SECTIONS_PER_AI_CALL = "8";
+    const config: PaperConfig = {
+      ...baseConfig,
+      totalQuestions: 9,
+      totalMarks: 25,
+      questionTypes: [
+        "MCQ",
+        "TRUE_FALSE",
+        "ONE_WORD",
+        "FILL_BLANK",
+        "VERY_SHORT",
+        "SHORT",
+        "NUMERICAL",
+        "HOTS",
+        "LONG",
+      ],
+      typeDistribution: {
+        MCQ: 1,
+        TRUE_FALSE: 1,
+        ONE_WORD: 1,
+        FILL_BLANK: 1,
+        VERY_SHORT: 1,
+        SHORT: 1,
+        NUMERICAL: 1,
+        HOTS: 1,
+        LONG: 1,
+      },
+      questionComposition: [
+        {
+          ...baseConfig.questionComposition![0],
+          questionCount: 9,
+        },
+      ],
+    };
+    const contract = buildGenerationContract(config, generateBlueprint(config));
+
+    expect(contract.apiEstimate.plannedCalls).toBe(2);
   });
 });

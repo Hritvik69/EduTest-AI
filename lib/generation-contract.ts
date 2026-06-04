@@ -1,4 +1,8 @@
 import { questionTypeMeta } from "@/lib/edutest-data";
+import {
+  buildQuestionCompositionPlan,
+  compositionKey,
+} from "@/lib/composition";
 import type {
   AIProvider,
   Blueprint,
@@ -144,9 +148,7 @@ function estimateApiUse(
 ): GenerationContract["apiEstimate"] {
   const compositionRows =
     config.questionComposition?.filter((item) => item.questionCount > 0).length ?? 0;
-  const generationCalls = compositionRows
-    ? compositionRows * Math.max(1, Math.ceil(blueprint.sections.length / coverageSectionsPerAiCall()))
-    : 1;
+  const generationCalls = estimateCoverageGenerationCalls(config, blueprint);
   const repairAllowance = Math.min(3, Math.max(1, Math.ceil(blueprint.totalQuestions / 20)));
   const candidateQuestions = options.candidateQuestions ?? blueprint.totalQuestions;
   const baseInput = 1200 + blueprint.totalQuestions * 180 + blueprint.sections.length * 320;
@@ -254,7 +256,34 @@ function estimateRiskLevel(
   return "low";
 }
 
+function estimateCoverageGenerationCalls(config: PaperConfig, blueprint: Blueprint) {
+  const composition = config.questionComposition ?? [];
+  if (!composition.some((item) => item.questionCount > 0)) return 1;
+
+  const groupedSectionCounts = new Map<string, number>();
+  buildQuestionCompositionPlan(blueprint, composition).forEach((sectionPlan) => {
+    sectionPlan.allocations.forEach((allocation) => {
+      if (allocation.count <= 0) return;
+      const key = compositionKey(allocation.item);
+      groupedSectionCounts.set(key, (groupedSectionCounts.get(key) ?? 0) + 1);
+    });
+  });
+
+  const perCall = coverageSectionsPerAiCall();
+  const calls = Array.from(groupedSectionCounts.values()).reduce(
+    (sum, sectionCount) => sum + Math.ceil(sectionCount / perCall),
+    0,
+  );
+
+  return Math.max(1, calls);
+}
+
 function coverageSectionsPerAiCall() {
+  const configured = Number(process.env.EDUTEST_COVERAGE_SECTIONS_PER_AI_CALL);
+  if (Number.isFinite(configured) && configured >= 1 && configured <= 8) {
+    return Math.floor(configured);
+  }
+
   return 4;
 }
 

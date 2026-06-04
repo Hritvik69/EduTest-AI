@@ -370,6 +370,11 @@ export async function POST(request: NextRequest) {
           scopedConcepts,
           availableTopics,
         );
+        const generationAiBudget = {
+          deadlineAt: generationDeadlineAt,
+          finalizationReserveMs: generationFinalizationReserveMs(),
+          ...providerAttemptLimitForGeneration(streamContractSummary),
+        };
         const isDemoMode =
           effectiveConfig.sourceMode !== "pdf_upload" &&
           scopedConcepts.some((concept) => concept.source === "demo");
@@ -668,7 +673,7 @@ export async function POST(request: NextRequest) {
             status: "CONTINUING",
           });
         } else if (allowExplicitDemoFallback || !composition.length) {
-          if (!resumeState) {
+          if (!resumeState || !resumeState.candidateQuestions.length) {
             setHeartbeatContext(
               5,
               40,
@@ -724,6 +729,7 @@ export async function POST(request: NextRequest) {
                     generationNonce: generationJobId,
                     cooldownScope: providerCooldownScope,
                     healthyProviders,
+                    ...generationAiBudget,
                     signal: generationSignal,
                     onBatchComplete: (details) => {
                       send({
@@ -808,6 +814,7 @@ export async function POST(request: NextRequest) {
             generationNonce: generationJobId,
             cooldownScope: providerCooldownScope,
             healthyProviders,
+            ...generationAiBudget,
             signal: generationSignal,
             shouldStop: (context) =>
               shouldStopBeforeNextGenerationCall(generationDeadlineAt, context),
@@ -856,11 +863,11 @@ export async function POST(request: NextRequest) {
         if (stoppedDuringCoverageGeneration && !allQuestions.length) {
           await persistQuestionGenerationState(
             allQuestions,
-            "Phase 5 paused before the first AI chunk because the server time budget was too low. Lower the question count/format variety or retry Auto Fallback.",
+            "Phase 5 paused before the first AI chunk because the server time budget was too low. Retry continues the same saved paper setup.",
             "NEEDS_CONTINUATION",
           );
           throw generationContinuationError(
-            "Server time budget was too low before the next AI chunk. Lower question formats/count, switch to source-backed mode, or retry with Auto Fallback.",
+            "Server time budget was too low before the next AI chunk. Saved setup is intact; retry continues this same paper.",
           );
         }
 
@@ -907,6 +914,8 @@ export async function POST(request: NextRequest) {
           healthyProviders,
           allowSourceBackedCompletion: !allowExplicitDemoFallback,
           deadlineAt: generationDeadlineAt,
+          finalizationReserveMs: generationAiBudget.finalizationReserveMs,
+          maxProviderAttempts: generationAiBudget.maxProviderAttempts,
           paperId,
           idempotencyKey,
           sourceContextHash,
@@ -1663,7 +1672,7 @@ function generationErrorMessage(error: unknown) {
   }
 
   if (/SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(message)) {
-    return "Real AI generation reached the deployment time limit before enough valid questions were ready. Try a lower question count, fewer question types, or a faster configured provider.";
+    return "Real AI generation reached the deployment time limit before enough valid questions were ready. Saved progress can continue on retry; if this repeats, use fewer question formats or a faster configured provider.";
   }
 
   if (
@@ -1764,6 +1773,16 @@ function generationStreamContractSummary(
   };
 }
 
+function providerAttemptLimitForGeneration(
+  summary: GenerationStreamContractSummary,
+): { maxProviderAttempts?: number } {
+  if (summary.plannedCalls >= 12) return { maxProviderAttempts: 1 };
+  if (summary.riskLevel === "high" || summary.plannedCalls >= 6) {
+    return { maxProviderAttempts: 2 };
+  }
+  return {};
+}
+
 function generationErrorCode(error: unknown) {
   const message =
     error instanceof Error ? error.message : "Generation failed. Please try again.";
@@ -1832,7 +1851,12 @@ function isRecoverableGenerationRuntimeError(
   error: unknown,
   state: PaperGenerationState | null,
 ) {
-  if (!state || state.phase !== "QUESTION_GENERATION") return false;
+  if (
+    !state ||
+    (state.phase !== "QUESTION_GENERATION" && state.phase !== "INITIAL_GENERATION")
+  ) {
+    return false;
+  }
 
   const code = generationErrorCode(error);
   if (
@@ -1846,7 +1870,10 @@ function isRecoverableGenerationRuntimeError(
   const hasSavedProgress =
     state.readyQuestionCount > 0 || state.candidateQuestions.length > 0;
   if (!hasSavedProgress) {
-    return code === "PROVIDER_NETWORK_ERROR" || isServerTimeBudgetError(error);
+    return (
+      state.phase === "INITIAL_GENERATION" &&
+      (code === "PROVIDER_NETWORK_ERROR" || isServerTimeBudgetError(error))
+    );
   }
 
   return (
@@ -1961,7 +1988,7 @@ function shouldStopBeforeNextGenerationCall(
   );
 
   if (context.generatedQuestionCount > 0) {
-    return remainingMs <= reserveForFinalization + 2_000;
+    return remainingMs <= reserveForFinalization + Math.min(8_000, reserveForNextAiCall);
   }
 
   return remainingMs <= reserveForFinalization + reserveForNextAiCall;
@@ -2018,6 +2045,8 @@ async function validateGeneratedPaperSkippingInvalid({
   healthyProviders,
   allowSourceBackedCompletion,
   deadlineAt,
+  finalizationReserveMs,
+  maxProviderAttempts,
   paperId,
   idempotencyKey,
   sourceContextHash,
@@ -2040,6 +2069,8 @@ async function validateGeneratedPaperSkippingInvalid({
   healthyProviders?: DirectAIProvider[];
   allowSourceBackedCompletion: boolean;
   deadlineAt: number;
+  finalizationReserveMs?: number;
+  maxProviderAttempts?: number;
   paperId: number;
   idempotencyKey: string;
   sourceContextHash: string;
@@ -2086,7 +2117,8 @@ async function validateGeneratedPaperSkippingInvalid({
     `Validated ${bank.readyCount()}/${targetQuestionCount} TXT-grounded candidates.`,
   );
 
-  for (let repairAttempt = 1; repairAttempt <= 3; repairAttempt += 1) {
+  if (!stoppedForServerBudget) {
+    for (let repairAttempt = 1; repairAttempt <= 3; repairAttempt += 1) {
     const missingSections = bank.missingSections();
     const missingCount = bank.missingCount();
 
@@ -2133,6 +2165,9 @@ async function validateGeneratedPaperSkippingInvalid({
           repairFeedback: bank.repairFeedback(repairAttempt),
           cooldownScope,
           healthyProviders,
+          deadlineAt,
+          finalizationReserveMs,
+          maxProviderAttempts,
           signal,
           onBatchComplete: (details) => {
             send({
@@ -2145,11 +2180,11 @@ async function validateGeneratedPaperSkippingInvalid({
         },
       );
     } catch (error) {
-      if (isServerTimeBudgetError(error) && bank.readyCount()) {
+      if (isServerTimeBudgetError(error)) {
         stoppedForServerBudget = true;
         await persistBank(
           "NEEDS_CONTINUATION",
-          "REPAIR",
+          bank.readyCount() > 0 ? "REPAIR" : "QUESTION_GENERATION",
           (resumeState?.attemptCount ?? 0) + repairAttempt,
           "AI repair hit the server time budget; saved valid candidates for continuation.",
           error instanceof Error ? error.message : String(error),
@@ -2181,10 +2216,12 @@ async function validateGeneratedPaperSkippingInvalid({
         `Accepted ${bank.readyCount()}/${targetQuestionCount} TXT-grounded candidates after repair.`,
       );
     }
+    }
   }
 
   if (
     allowSourceBackedCompletion &&
+    !stoppedForServerBudget &&
     bank.missingCount() > 0
   ) {
     send({
@@ -2232,6 +2269,21 @@ async function validateGeneratedPaperSkippingInvalid({
     : [];
 
   if (remainingMissingQuestions > 0) {
+    if (stoppedForServerBudget) {
+      const reason =
+        partialFinalizationReason ??
+        "Generation reached the deployment time limit during replacement.";
+      await persistBank(
+        "NEEDS_CONTINUATION",
+        readyCount > 0 ? "REPAIR" : "QUESTION_GENERATION",
+        (resumeState?.attemptCount ?? 0) + 3,
+        `${reason} Saved ${readyCount}/${targetQuestionCount} valid candidate${readyCount === 1 ? "" : "s"} for continuation.`,
+      );
+      throw generationContinuationError(
+        `${reason} Generated ${readyCount}/${targetQuestionCount} valid AI question${readyCount === 1 ? "" : "s"} from the selected source text. Saved progress. Retry continues this same paper instead of starting over.`,
+      );
+    }
+
     if (!allowDemoFallback) {
       const reason = `Selected source text cannot produce enough 100% distinct questions to replace ${remainingMissingQuestions} invalid or duplicate question${remainingMissingQuestions === 1 ? "" : "s"}.`;
       const sourceConceptCount = scopedConcepts.filter((concept) => {

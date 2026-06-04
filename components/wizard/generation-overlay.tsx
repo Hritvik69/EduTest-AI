@@ -110,6 +110,7 @@ export function GenerationOverlay({
   const [retryNonce, setRetryNonce] = React.useState(0);
   const started = React.useRef(false);
   const autoContinueAttempts = React.useRef(0);
+  const zeroProgressAutoContinueAttempts = React.useRef(0);
   const autoContinueTimer = React.useRef<number | null>(null);
   const resumePaperIdRef = React.useRef<number | null>(null);
   const requestConfig = React.useMemo(
@@ -164,6 +165,7 @@ export function GenerationOverlay({
     started.current = false;
     clearAutoContinueTimer(autoContinueTimer);
     autoContinueAttempts.current = 0;
+    zeroProgressAutoContinueAttempts.current = 0;
     queueMicrotask(() => {
       if (cancelled) return;
       setActiveIndex(0);
@@ -398,6 +400,7 @@ export function GenerationOverlay({
               safeSessionRemove(inFlightKey);
               setResumePaperId(null);
               autoContinueAttempts.current = 0;
+              zeroProgressAutoContinueAttempts.current = 0;
               clearAutoContinueTimer(autoContinueTimer);
               router.push(`/papers/${paperId}/preview`);
             }
@@ -447,13 +450,23 @@ export function GenerationOverlay({
         const explicitPaperId = getErrorPaperId(error);
         const recoverablePaperId = explicitPaperId ?? (recoverable ? savedPaperId : null);
         const continuation = continuationProgressFromError(error);
+        const hasSavedQuestionProgress =
+          (continuation.readyQuestionCount ?? 0) > 0;
         if (
           recoverable &&
           recoverablePaperId &&
-          canAutoContinueGenerationError(error) &&
+          canAutoContinueGenerationError(
+            error,
+            zeroProgressAutoContinueAttempts.current,
+          ) &&
           autoContinueAttempts.current < maxAutoContinueAttempts()
         ) {
           autoContinueAttempts.current += 1;
+          if (hasSavedQuestionProgress) {
+            zeroProgressAutoContinueAttempts.current = 0;
+          } else {
+            zeroProgressAutoContinueAttempts.current += 1;
+          }
           setResumePaperId(recoverablePaperId);
           setError(null);
           setActiveIndex(5);
@@ -517,6 +530,7 @@ export function GenerationOverlay({
     safeSessionRemove(`edutest:generation:${idempotencyKey}`);
     setSalvageInvalidQuestions(true);
     autoContinueAttempts.current = 0;
+    zeroProgressAutoContinueAttempts.current = 0;
     clearAutoContinueTimer(autoContinueTimer);
     setResumePaperId(error?.recoverable ? error.paperId ?? resumePaperId : null);
     started.current = false;
@@ -527,6 +541,7 @@ export function GenerationOverlay({
     safeSessionRemove(`edutest:generation:${idempotencyKey}`);
     setSalvageInvalidQuestions(true);
     autoContinueAttempts.current = 0;
+    zeroProgressAutoContinueAttempts.current = 0;
     clearAutoContinueTimer(autoContinueTimer);
     setResumePaperId(error?.recoverable ? error.paperId ?? resumePaperId : null);
     setProviderOverride("AUTO");
@@ -538,6 +553,7 @@ export function GenerationOverlay({
     safeSessionRemove(`edutest:generation:${idempotencyKey}`);
     setSalvageInvalidQuestions(true);
     autoContinueAttempts.current = 0;
+    zeroProgressAutoContinueAttempts.current = 0;
     clearAutoContinueTimer(autoContinueTimer);
     setResumePaperId(error?.recoverable ? error.paperId ?? resumePaperId : null);
     setCurrentMessage("Skipping broken questions and replacing what can be rebuilt...");
@@ -918,10 +934,14 @@ function isRecoverableGenerationError(error: unknown) {
   return getErrorCode(error) === "GENERATION_CONTINUE_AVAILABLE";
 }
 
-function canAutoContinueGenerationError(error: unknown) {
+function canAutoContinueGenerationError(
+  error: unknown,
+  zeroProgressAttempts = 0,
+) {
   if (!isRecoverableGenerationError(error)) return false;
   const progress = continuationProgressFromError(error);
-  return (progress.readyQuestionCount ?? 0) > 0;
+  if ((progress.readyQuestionCount ?? 0) > 0) return true;
+  return zeroProgressAttempts < maxZeroProgressAutoContinueAttempts();
 }
 
 function isSourceTextShortageError(
@@ -987,6 +1007,10 @@ function questionProgressLabel(progress: {
 
 function maxAutoContinueAttempts() {
   return 6;
+}
+
+function maxZeroProgressAutoContinueAttempts() {
+  return 2;
 }
 
 function autoContinueDelayMs() {

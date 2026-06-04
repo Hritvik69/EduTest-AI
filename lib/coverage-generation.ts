@@ -63,6 +63,9 @@ export async function generateCoveragePlannedQuestions({
   cooldownScope,
   healthyProviders,
   allowPartial = true,
+  deadlineAt,
+  finalizationReserveMs,
+  maxProviderAttempts,
   signal,
   shouldStop,
   onProgress,
@@ -79,6 +82,9 @@ export async function generateCoveragePlannedQuestions({
   cooldownScope?: string;
   healthyProviders?: DirectAIProvider[];
   allowPartial?: boolean;
+  deadlineAt?: number;
+  finalizationReserveMs?: number;
+  maxProviderAttempts?: number;
   signal?: AbortSignal;
   shouldStop?: (context: CoverageGenerationStopContext) => boolean;
   onProgress?: (details: {
@@ -167,6 +173,9 @@ export async function generateCoveragePlannedQuestions({
             generationNonce: `${generationNonce ?? "coverage"}:coverage:${batchIndex + 1}`,
             cooldownScope,
             healthyProviders,
+            deadlineAt,
+            finalizationReserveMs,
+            maxProviderAttempts,
             signal,
             onBatchComplete,
           },

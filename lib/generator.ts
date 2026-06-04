@@ -73,6 +73,9 @@ interface GenerateBlueprintOptions {
   repairFeedback?: GenerationRepairFeedback;
   cooldownScope?: string;
   healthyProviders?: DirectAIProvider[];
+  deadlineAt?: number;
+  finalizationReserveMs?: number;
+  maxProviderAttempts?: number;
   signal?: AbortSignal;
   onBatchComplete?: (details: {
     generated: number;
@@ -232,6 +235,9 @@ export async function generateBlueprintQuestions(
     cooldownScope: options.cooldownScope,
     generationJobId: generationJobIdFromNonce(options.generationNonce),
     healthyProviders: options.healthyProviders,
+    deadlineAt: options.deadlineAt,
+    finalizationReserveMs: options.finalizationReserveMs,
+    maxProviderAttempts: options.maxProviderAttempts,
     signal: options.signal,
   });
 

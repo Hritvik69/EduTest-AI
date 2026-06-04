@@ -358,6 +358,49 @@ describe("multi-provider JSON generation", () => {
     expect(fetchMock.mock.calls[2][0]).toBe("https://api.cerebras.ai/v1/chat/completions");
   });
 
+  it("caps Auto provider attempts when a generation batch is high risk", async () => {
+    process.env.GROQ_API_KEY = "gsk-test-key";
+    process.env.MISTRAL_API_KEY = "mistral-test-key";
+    process.env.CEREBRAS_API_KEY = "csk-test-key";
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response("busy", {
+        status: 503,
+      }),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    const { generateJSON } = await import("@/lib/gemini");
+
+    await expect(
+      generateJSON("Return JSON", {
+        provider: "AUTO",
+        task: "QUESTION_GENERATION",
+        maxProviderAttempts: 1,
+      }),
+    ).rejects.toThrow(/GroqCloud/);
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock.mock.calls[0][0]).toBe(
+      "https://api.groq.com/openai/v1/chat/completions",
+    );
+  });
+
+  it("skips provider calls when the server deadline cannot fit an AI attempt", async () => {
+    process.env.GROQ_API_KEY = "gsk-test-key";
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    const { generateJSON } = await import("@/lib/gemini");
+
+    await expect(
+      generateJSON("Return JSON", {
+        provider: "GROQ",
+        deadlineAt: Date.now() + 4_000,
+        finalizationReserveMs: 2_500,
+      }),
+    ).rejects.toThrow(/SERVER_GENERATION_TIME_BUDGET_EXCEEDED/);
+
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it("reports Grok as configured when XAI_API_KEY exists", async () => {
     process.env.XAI_API_KEY = "xai-test-key";
     const { getAIProviderStatus } = await import("@/lib/gemini");

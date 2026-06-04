@@ -144,6 +144,9 @@ interface GenerateJSONOptions {
   paperId?: number;
   cacheHit?: boolean;
   healthyProviders?: DirectAIProvider[];
+  deadlineAt?: number;
+  finalizationReserveMs?: number;
+  maxProviderAttempts?: number;
   signal?: AbortSignal;
 }
 
@@ -228,10 +231,16 @@ export async function generateJSON<T = unknown>(
   const failures: Partial<Record<DirectAIProvider, Error>> = {
     ...cooldownFailures,
   };
+  const attemptLimit = providerAttemptLimit(
+    requestedProvider,
+    providersToTry.length,
+    options.maxProviderAttempts,
+  );
 
-  for (const provider of providersToTry) {
+  for (const provider of providersToTry.slice(0, attemptLimit)) {
     const startedAt = Date.now();
     try {
+      assertProviderAttemptBudget(provider, options);
       const result = await generateProviderJSON<T>(provider, prompt, options);
       await recordAIUsage({
         generationJobId: options.generationJobId,
@@ -249,6 +258,10 @@ export async function generateJSON<T = unknown>(
       clearProviderCooldown(provider, options.task, options.cooldownScope);
       return result;
     } catch (error) {
+      if (isGenerationBudgetError(error)) {
+        throw error instanceof Error ? error : new Error(String(error));
+      }
+
       const failureMessage = error instanceof Error ? error.message : String(error);
       await recordAIUsage({
         generationJobId: options.generationJobId,
@@ -465,6 +478,7 @@ async function generateGeminiJSON<T = unknown>(
     for (let attempt = 0; attempt < attemptsForModel(modelName); attempt += 1) {
       try {
         throwIfAborted(options.signal);
+        assertProviderAttemptBudget("GEMINI", options);
         if (attempt > 0) {
           await sleep(900 * attempt, options.signal);
         }
@@ -481,7 +495,7 @@ async function generateGeminiJSON<T = unknown>(
         });
         const result = await withTimeoutAndSignal(
           model.generateContent(prompt),
-          aiRequestTimeoutMs("GEMINI"),
+          aiRequestTimeoutMsForBudget("GEMINI", options),
           options.signal,
           "Gemini",
         );
@@ -521,6 +535,7 @@ async function generateChatCompletionJSON<T = unknown>(
 
   for (const model of models) {
     try {
+      assertProviderAttemptBudget(provider, options);
       return await generateChatCompletionJSONWithModel<T>(
         provider,
         prompt,
@@ -551,7 +566,7 @@ async function generateChatCompletionJSONWithModel<T = unknown>(
   config: ChatCompletionProviderConfig,
 ): Promise<T> {
   const controller = new AbortController();
-  const requestTimeoutMs = aiRequestTimeoutMs(provider);
+  const requestTimeoutMs = aiRequestTimeoutMsForBudget(provider, options);
   const timeout = setTimeout(() => controller.abort(), requestTimeoutMs);
   const abortFromCaller = () => controller.abort();
 
@@ -632,7 +647,7 @@ async function generateCohereJSON<T = unknown>(
 ): Promise<T> {
   const provider: DirectAIProvider = "COHERE";
   const controller = new AbortController();
-  const requestTimeoutMs = aiRequestTimeoutMs(provider);
+  const requestTimeoutMs = aiRequestTimeoutMsForBudget(provider, options);
   const timeout = setTimeout(() => controller.abort(), requestTimeoutMs);
   const abortFromCaller = () => controller.abort();
 
@@ -1405,6 +1420,78 @@ function aiRequestTimeoutMs(provider?: DirectAIProvider | "GEMINI") {
   if (provider === "DEEPSEEK") return 10_000;
 
   return 10_000;
+}
+
+function aiRequestTimeoutMsForBudget(
+  provider: DirectAIProvider | "GEMINI",
+  options: Pick<GenerateJSONOptions, "deadlineAt" | "finalizationReserveMs">,
+) {
+  const baseTimeout = aiRequestTimeoutMs(provider);
+  const remainingForProvider = remainingProviderAttemptMs(options);
+  if (remainingForProvider === undefined) return baseTimeout;
+
+  return Math.max(2_000, Math.min(baseTimeout, remainingForProvider));
+}
+
+function assertProviderAttemptBudget(
+  provider: DirectAIProvider | "GEMINI",
+  options: Pick<GenerateJSONOptions, "deadlineAt" | "finalizationReserveMs">,
+) {
+  const remainingForProvider = remainingProviderAttemptMs(options);
+  if (remainingForProvider === undefined) return;
+
+  const requiredMs = Math.min(
+    aiRequestTimeoutMs(provider),
+    providerAttemptReserveMs(),
+  );
+  if (remainingForProvider < requiredMs) {
+    throw generationBudgetError(
+      `only ${Math.max(0, Math.round(remainingForProvider / 1000))}s remain for AI work`,
+    );
+  }
+}
+
+function remainingProviderAttemptMs({
+  deadlineAt,
+  finalizationReserveMs,
+}: Pick<GenerateJSONOptions, "deadlineAt" | "finalizationReserveMs">) {
+  if (!deadlineAt || !Number.isFinite(deadlineAt)) return undefined;
+  const reserve = Math.max(0, finalizationReserveMs ?? 0);
+  return deadlineAt - Date.now() - reserve - 1_000;
+}
+
+function providerAttemptReserveMs() {
+  const configured = Number(process.env.EDUTEST_PROVIDER_ATTEMPT_RESERVE_MS);
+  if (Number.isFinite(configured) && configured >= 3_000 && configured <= 14_000) {
+    return configured;
+  }
+
+  return 6_500;
+}
+
+function providerAttemptLimit(
+  requestedProvider: AIProvider,
+  providerCount: number,
+  configured?: number,
+) {
+  if (requestedProvider !== "AUTO") return providerCount;
+  if (typeof configured !== "number" || !Number.isFinite(configured)) {
+    return providerCount;
+  }
+  return Math.max(1, Math.min(providerCount, Math.floor(configured)));
+}
+
+function generationBudgetError(detail?: string) {
+  return new Error(
+    `SERVER_GENERATION_TIME_BUDGET_EXCEEDED: Server time budget is too low to start another AI provider attempt${detail ? ` (${detail})` : ""}.`,
+  );
+}
+
+function isGenerationBudgetError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  return /SERVER_GENERATION_TIME_BUDGET_EXCEEDED|server time budget is too low/i.test(
+    message,
+  );
 }
 
 function isCallerAbort(error: unknown, signal?: AbortSignal) {

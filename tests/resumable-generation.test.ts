@@ -30,6 +30,9 @@ describe("resumable paper generation wiring", () => {
     expect(route).toMatch(/apiRiskLevel/);
     expect(route).toMatch(/onAcceptedBatch/);
     expect(route).toMatch(/shouldStopBeforeNextGenerationCall/);
+    expect(route).toMatch(/providerAttemptLimitForGeneration/);
+    expect(route).toMatch(/maxProviderAttempts/);
+    expect(route).toMatch(/deadlineAt: generationDeadlineAt/);
     expect(route).toMatch(/isRecoverableGenerationRuntimeError/);
     expect(route).toMatch(/onStatePersisted/);
     expect(route).toMatch(/sourceContextHash/);
@@ -38,6 +41,8 @@ describe("resumable paper generation wiring", () => {
     expect(route).toMatch(/missingQuestionCount/);
     expect(route).toMatch(/resumeNeedsFinalCompletion/);
     expect(route).toMatch(/resolving .* saved duplicate\/missing question/);
+    expect(route).toMatch(/Saved .* valid candidate.* for continuation/);
+    expect(route).toMatch(/!stoppedForServerBudget/);
     expect(route).toMatch(/resume paper not found; starting fresh/);
     expect(route).toMatch(/Saved generation progress was no longer available/);
     expect(store).toMatch(/generationState/);
@@ -64,7 +69,9 @@ describe("resumable paper generation wiring", () => {
     expect(overlay).toMatch(/server confirmed/);
     expect(overlay).toMatch(/clearStaleGenerationSessionKeys/);
     expect(overlay).toMatch(/canAutoContinueGenerationError/);
-    expect(overlay).toMatch(/progress\.readyQuestionCount \?\? 0\) > 0/);
+    expect(overlay).toMatch(/zeroProgressAutoContinueAttempts/);
+    expect(overlay).toMatch(/maxZeroProgressAutoContinueAttempts/);
+    expect(overlay).toMatch(/zeroProgressAttempts < maxZeroProgressAutoContinueAttempts/);
     expect(overlay).not.toMatch(/is in your dashboard/);
     expect(overlay).toMatch(/Continuing saved generation/);
     expect(overlay).toMatch(/autoContinueAttempts/);
