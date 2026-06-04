@@ -84,6 +84,7 @@ import type {
   ConceptData,
   GeneratedQuestion,
   AITask,
+  AIProvider,
   GenerationRiskLevel,
   PaperConfig,
   QuestionCompositionItem,
@@ -179,6 +180,7 @@ export async function POST(request: NextRequest) {
       let heartbeatTimer: ReturnType<typeof setInterval> | null = null;
       let streamContractSummary: GenerationStreamContractSummary | null = null;
       let latestProviderHealth: AIProviderHealthSnapshot | null = null;
+      let healthyProviders: DirectAIProvider[] | undefined;
       const send = (data: object, event = "progress") => {
         if (streamClosed || request.signal.aborted) return false;
 
@@ -388,6 +390,54 @@ export async function POST(request: NextRequest) {
           effectiveConfig.sourceMode !== "pdf_upload" &&
           scopedConcepts.some((concept) => concept.source === "demo");
 
+        if (!allowExplicitDemoFallback) {
+          assertActive();
+          setHeartbeatContext(3, 23, "Checking deployed AI provider health...");
+          send({
+            step: 3,
+            pct: 23,
+            progress: 23,
+            msg: "Checking deployed AI provider health before paper generation...",
+            ...contractPayload(),
+          });
+          const providerHealth = await checkAIProviderHealth({
+            task: "QUESTION_GENERATION",
+            providers: providersForHealthPreflight(
+              effectiveConfig.aiProvider ?? "AUTO",
+            ),
+            signal: generationSignal,
+            cooldownScope: providerCooldownScope,
+          });
+          latestProviderHealth = providerHealth;
+          healthyProviders = providerHealth.usableProviders;
+          console.info("[generate-paper] provider health", {
+            generationJobId,
+            usableProviders: providerHealth.usableProviders,
+            configuredProviders: providerHealth.configuredProviders,
+            providers: providerHealth.providers.map((provider) => ({
+              provider: provider.provider,
+              configured: provider.configured,
+              usable: provider.usable,
+              model: provider.model,
+              lastFailureClass: provider.lastFailureClass,
+              cooldownErrorClass: provider.cooldownErrorClass,
+            })),
+          });
+          send({
+            step: 3,
+            pct: 24,
+            progress: 24,
+            msg: healthyProviders.length
+              ? `AI provider health ready: ${healthyProviders.join(", ")} usable.`
+              : "No AI provider passed health preflight.",
+            ...providerHealthPayload(),
+            ...contractPayload(),
+          });
+          if (!healthyProviders.length) {
+            throw new Error(providerHealthFailureMessage(providerHealth));
+          }
+        }
+
         assertActive();
         send({
           step: 3,
@@ -579,50 +629,6 @@ export async function POST(request: NextRequest) {
         });
 
         assertActive();
-        let healthyProviders: DirectAIProvider[] | undefined;
-        if (!allowExplicitDemoFallback) {
-          setHeartbeatContext(5, 38, "Checking AI provider health...");
-          send({
-            step: 5,
-            pct: 38,
-            progress: 38,
-            msg: "Checking AI provider health...",
-          });
-          const providerHealth = await checkAIProviderHealth({
-            task: "QUESTION_GENERATION",
-            signal: generationSignal,
-            cooldownScope: providerCooldownScope,
-          });
-          latestProviderHealth = providerHealth;
-          healthyProviders = providerHealth.usableProviders;
-          console.info("[generate-paper] provider health", {
-            generationJobId,
-            paperId,
-            usableProviders: providerHealth.usableProviders,
-            configuredProviders: providerHealth.configuredProviders,
-            providers: providerHealth.providers.map((provider) => ({
-              provider: provider.provider,
-              configured: provider.configured,
-              usable: provider.usable,
-              model: provider.model,
-              lastFailureClass: provider.lastFailureClass,
-              cooldownErrorClass: provider.cooldownErrorClass,
-            })),
-          });
-          send({
-            step: 5,
-            pct: 39,
-            progress: 39,
-            msg: healthyProviders.length
-              ? `AI provider health ready: ${healthyProviders.join(", ")} usable.`
-              : "No AI provider passed health preflight.",
-            ...providerHealthPayload(),
-          });
-          if (!healthyProviders.length) {
-            throw new Error(providerHealthFailureMessage(providerHealth));
-          }
-        }
-
         let allQuestions = resumeState?.candidateQuestions ?? [];
         let coverageDiagnostics: CoverageGenerationDiagnostic[] = [];
         let stoppedDuringCoverageGeneration = false;
@@ -1152,7 +1158,9 @@ export async function POST(request: NextRequest) {
             {
               error: true,
               code,
-              msg: generationErrorMessage(error),
+              msg: generationErrorMessage(error, {
+                providerHealth: latestProviderHealth,
+              }),
               generationJobId,
               paperId,
               generationPhase: continuationState?.phase ?? recoverySnapshot.phase,
@@ -1667,9 +1675,14 @@ function chapterLabel(config: PaperConfig, concept: ConceptData) {
     : config.pdfSource?.title ?? `Chapter ${concept.chapterId}`;
 }
 
-function generationErrorMessage(error: unknown) {
+function generationErrorMessage(
+  error: unknown,
+  context: { providerHealth?: AIProviderHealthSnapshot | null } = {},
+) {
   const message =
     error instanceof Error ? error.message : "Generation failed. Please try again.";
+  const providerHealth = context.providerHealth ?? null;
+  const hasProviderDiagnostics = Boolean(providerHealth);
 
   if (/SOURCE_TEXT_NOT_ENOUGH|Selected source text (?:is not enough|did not provide enough distinct material|cannot produce enough 100% distinct questions)/i.test(message)) {
     return stripSourceTextNotEnoughPrefix(message);
@@ -1700,6 +1713,9 @@ function generationErrorMessage(error: unknown) {
   }
 
   if (/All configured AI providers failed/i.test(message)) {
+    if (providerHealth && !providerHealth.usableProviders.length) {
+      return providerHealthFailureMessage(providerHealth);
+    }
     return compactAiProviderFailureMessage(message);
   }
 
@@ -1716,7 +1732,10 @@ function generationErrorMessage(error: unknown) {
   }
 
   if (/timeout|timed out|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(message)) {
-    return "The deployed server could not reach the AI provider or the provider timed out. Check Vercel API keys/credits, try Auto Fallback, lower the question count, or retry in a minute.";
+    if (hasProviderDiagnostics) {
+      return "An AI provider request timed out after provider health preflight. Retry with Auto Fallback, reduce question count/format variety, or check the provider health details below.";
+    }
+    return "Generation stopped before provider diagnostics were available. Retry once; if this repeats, open deployment health and provider health, then check the first Vercel runtime log error.";
   }
 
   if (/empty response|text instead of valid JSON|malformed JSON/i.test(message)) {
@@ -1793,6 +1812,12 @@ function providerAttemptLimitForGeneration(
     return { maxProviderAttempts: 2 };
   }
   return {};
+}
+
+function providersForHealthPreflight(
+  provider: AIProvider,
+): DirectAIProvider[] | undefined {
+  return provider === "AUTO" ? undefined : [provider];
 }
 
 function generationErrorCode(error: unknown) {

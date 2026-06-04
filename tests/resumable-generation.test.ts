@@ -39,7 +39,14 @@ describe("resumable paper generation wiring", () => {
     expect(route).toMatch(/providerHealthPayload/);
     expect(route).toMatch(/providerHealthFailureMessage/);
     expect(route).toMatch(/publicAIProviderHealthSnapshot/);
+    expect(route).toMatch(/Checking deployed AI provider health before paper generation/);
+    expect(route).toMatch(/providersForHealthPreflight/);
     expect(route).toMatch(/No AI provider passed health preflight/);
+    expect(route.indexOf("Checking deployed AI provider health before paper generation")).toBeLessThan(
+      route.indexOf("paper shell saved; starting AI question generation"),
+    );
+    expect(route).toMatch(/providerHealth: latestProviderHealth/);
+    expect(route).not.toMatch(/The deployed server could not reach the AI provider/);
     expect(route).not.toMatch(/continuing from selected TXT\/PDF source text without demo fallback/);
     expect(providerHealthRoute).toMatch(/publicAIProviderHealthSnapshot/);
     expect(route).toMatch(/maxProviderAttempts/);
@@ -85,6 +92,10 @@ describe("resumable paper generation wiring", () => {
     expect(overlay).toMatch(/getErrorProviderHealth/);
     expect(overlay).toMatch(/providerHealthSummary/);
     expect(overlay).toMatch(/providerHealthAction/);
+    expect(overlay).toMatch(/provider diagnostics were available/);
+    expect(overlay).toMatch(/\/api\/deployment-health/);
+    expect(overlay).toMatch(/\/api\/ai\/provider-health/);
+    expect(overlay).not.toMatch(/The deployed server could not reach the AI provider/);
     expect(overlay).toMatch(/lastRecoverySnapshot/);
     expect(overlay).toMatch(/recoverableStreamEndedErrorFromSnapshot/);
     expect(overlay).toMatch(/paperIdFromStreamRecoverySnapshot/);

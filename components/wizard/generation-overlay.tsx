@@ -1246,6 +1246,9 @@ function generationErrorGuidance(
   if (error.providerHealth && !error.providerHealth.usableProviders.length) {
     return providerHealthAction(error.providerHealth);
   }
+  if (/provider diagnostics were available|deployment health|Vercel runtime log/i.test(error.message)) {
+    return "The server stopped before AI provider health could be checked. Verify /api/deployment-health, then /api/ai/provider-health; if deployment health still returns 500, the first Vercel runtime log is the blocker.";
+  }
   if (isSourceTextShortageError(error)) {
     return "Retry is disabled for this source shortage. Select more chapters/topics, upload clearer source text, or lower the question count before generating again.";
   }
@@ -1255,7 +1258,9 @@ function generationErrorGuidance(
       : "Provider quota blocked the request. Use Retry Auto Fallback, lower the question count, or add credits to that provider.";
   }
   if (/timeout|timed out|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(error.message)) {
-    return "The AI provider or deployed server timed out. Retry once, use Auto Fallback, or reduce question count/format variety for a faster run.";
+    return error.providerHealth
+      ? "The AI provider timed out after health preflight. Retry once, use Auto Fallback, or reduce question count/format variety for a faster run."
+      : "A deployment or source-loading request timed out before provider diagnostics were available. Retry once, then check deployment health and Vercel runtime logs.";
   }
   if (isQuestionOutputError(error)) {
     return "The AI returned invalid or duplicate output. Skip & Replace keeps valid questions and rebuilds the broken parts where possible.";
