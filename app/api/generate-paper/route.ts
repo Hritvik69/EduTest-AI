@@ -148,6 +148,22 @@ export async function POST(request: NextRequest) {
         once: true,
       });
       const generationSignal = generationSignalController.signal;
+      let recoverySnapshot: Partial<
+        Pick<
+          PaperGenerationState,
+          | "status"
+          | "phase"
+          | "readyQuestionCount"
+          | "targetQuestionCount"
+          | "missingQuestionCount"
+          | "lastMessage"
+        >
+      > = {};
+      let heartbeatStep = 5;
+      let heartbeatPct = 40;
+      let heartbeatMessage =
+        "Phase 5 - Question Generation: still working with the selected AI/source contract.";
+      let heartbeatTimer: ReturnType<typeof setInterval> | null = null;
       const send = (data: object, event = "progress") => {
         if (streamClosed || request.signal.aborted) return false;
 
@@ -161,7 +177,54 @@ export async function POST(request: NextRequest) {
           return false;
         }
       };
+      const updateRecoverySnapshot = (state: PaperGenerationState | null) => {
+        if (!state) return;
+        recoverySnapshot = {
+          status: state.status,
+          phase: state.phase,
+          readyQuestionCount: state.readyQuestionCount,
+          targetQuestionCount: state.targetQuestionCount,
+          missingQuestionCount: state.missingQuestionCount,
+          lastMessage: state.lastMessage,
+        };
+      };
+      const recoveryPayload = () => ({
+        paperId: paperId ?? undefined,
+        status: streamStatusForGenerationState(recoverySnapshot.status),
+        generationPhase: recoverySnapshot.phase,
+        readyQuestionCount: recoverySnapshot.readyQuestionCount,
+        targetQuestionCount: recoverySnapshot.targetQuestionCount,
+        missingQuestionCount: recoverySnapshot.missingQuestionCount,
+        recoveryReason: recoverySnapshot.lastMessage,
+      });
+      const setHeartbeatContext = (step: number, pct: number, msg: string) => {
+        heartbeatStep = step;
+        heartbeatPct = pct;
+        heartbeatMessage = msg;
+      };
+      const startHeartbeat = () => {
+        if (heartbeatTimer) return;
+        heartbeatTimer = setInterval(() => {
+          if (!paperId) return;
+          send(
+            {
+              step: heartbeatStep,
+              pct: heartbeatPct,
+              progress: heartbeatPct,
+              msg: heartbeatMessage,
+              ...recoveryPayload(),
+            },
+            "progress",
+          );
+        }, generationHeartbeatMs());
+      };
+      const stopHeartbeat = () => {
+        if (!heartbeatTimer) return;
+        clearInterval(heartbeatTimer);
+        heartbeatTimer = null;
+      };
       const close = () => {
+        stopHeartbeat();
         if (streamClosed) return;
         streamClosed = true;
         try {
@@ -412,6 +475,32 @@ export async function POST(request: NextRequest) {
           throw new Error("Paper shell could not be created.");
         }
 
+        if (resumeState) {
+          updateRecoverySnapshot(resumeState);
+        } else {
+          const initialGenerationState = new QuestionCandidateBank(
+            [],
+            blueprint,
+            effectiveConfig,
+          ).toGenerationState({
+            status: "IN_PROGRESS",
+            phase: "INITIAL_GENERATION",
+            generationJobId,
+            idempotencyKey,
+            sourceContextHash,
+            attemptCount: 0,
+            lastMessage:
+              "Paper shell saved; waiting for the first valid AI questions.",
+          });
+          await setPaperGenerationState(
+            paperId,
+            initialGenerationState,
+            effectiveConfig,
+          );
+          updateRecoverySnapshot(initialGenerationState);
+        }
+        startHeartbeat();
+
         send({
           step: 3,
           pct: 30,
@@ -421,11 +510,20 @@ export async function POST(request: NextRequest) {
             : "Phase 3 - Question Planning: paper shell saved; starting AI question generation.",
           paperId,
           status: resumeState ? "CONTINUING" : "GENERATING",
+          generationPhase: recoverySnapshot.phase,
+          readyQuestionCount: recoverySnapshot.readyQuestionCount,
+          targetQuestionCount: recoverySnapshot.targetQuestionCount,
+          missingQuestionCount: recoverySnapshot.missingQuestionCount,
           idempotencyKey,
           generationJobId,
         });
 
         assertActive();
+        setHeartbeatContext(
+          4,
+          35,
+          "Phase 4 - Cognitive Distribution: applying Bloom levels from difficulty.",
+        );
         send({
           step: 4,
           pct: 35,
@@ -436,6 +534,7 @@ export async function POST(request: NextRequest) {
         assertActive();
         let healthyProviders: DirectAIProvider[] | undefined;
         if (!allowExplicitDemoFallback) {
+          setHeartbeatContext(5, 38, "Checking AI provider health...");
           send({
             step: 5,
             pct: 38,
@@ -480,6 +579,11 @@ export async function POST(request: NextRequest) {
           (resumeState?.phase === "VALIDATION" || resumeState?.phase === "REPAIR") &&
           (resumeState?.missingQuestionCount ?? 0) > 0;
         if (resumeState) {
+          setHeartbeatContext(
+            5,
+            82,
+            `Phase 5 - Question Generation: continuing from ${resumeState.readyQuestionCount}/${resumeState.targetQuestionCount} valid saved TXT-grounded questions.`,
+          );
           send({
             step: 5,
             pct: 82,
@@ -491,6 +595,11 @@ export async function POST(request: NextRequest) {
         }
 
         if (resumeNeedsFinalCompletion) {
+          setHeartbeatContext(
+            6,
+            88,
+            `Phase 6 - Validation Engine: resolving ${resumeState?.missingQuestionCount} saved duplicate/missing questions before retrying AI.`,
+          );
           send({
             step: 6,
             pct: 88,
@@ -501,6 +610,11 @@ export async function POST(request: NextRequest) {
           });
         } else if (allowExplicitDemoFallback || !composition.length) {
           if (!resumeState) {
+            setHeartbeatContext(
+              5,
+              40,
+              `Phase 5 - Question Generation: generating ${blueprint.totalQuestions} questions from selected NCERT_Books TXT source...`,
+            );
             send({
               step: 5,
               pct: 40,
@@ -570,6 +684,13 @@ export async function POST(request: NextRequest) {
             }
           }
         } else {
+          setHeartbeatContext(
+            5,
+            40,
+            resumeState
+              ? "Phase 5 - Question Generation: continuing strict subject/chapter TXT coverage batches..."
+              : `Phase 5 - Question Generation: generating ${blueprint.totalQuestions} questions in strict subject/chapter TXT batches...`,
+          );
           send({
             step: 5,
             pct: 40,
@@ -632,6 +753,13 @@ export async function POST(request: NextRequest) {
         }
 
         assertActive();
+        setHeartbeatContext(
+          6,
+          88,
+          stoppedForServerBudget
+            ? "Phase 6 - Validation Engine: deployment time is low, saving valid real AI questions already generated."
+            : "Phase 6 - Validation Engine: checking duplicates, marks, structure, and answers.",
+        );
         send({
           step: 6,
           pct: 88,
@@ -663,6 +791,7 @@ export async function POST(request: NextRequest) {
             : undefined,
           signal: generationSignal,
           send,
+          onStatePersisted: updateRecoverySnapshot,
         });
         const validated = stripGenerationMetadataFromQuestions(validation.questions);
         effectiveConfig = validation.config;
@@ -693,6 +822,11 @@ export async function POST(request: NextRequest) {
         }
 
         assertActive();
+        setHeartbeatContext(
+          7,
+          95,
+          "Phase 7 - Final Paper Composition: numbering sections and preparing layout.",
+        );
         send({
           step: 7,
           pct: 95,
@@ -869,20 +1003,30 @@ export async function POST(request: NextRequest) {
               msg: generationErrorMessage(error),
               generationJobId,
               paperId,
-              readyQuestionCount: continuationState?.readyQuestionCount,
-              targetQuestionCount: continuationState?.targetQuestionCount,
-              missingQuestionCount: continuationState?.missingQuestionCount,
+              generationPhase: continuationState?.phase ?? recoverySnapshot.phase,
+              readyQuestionCount:
+                continuationState?.readyQuestionCount ??
+                recoverySnapshot.readyQuestionCount,
+              targetQuestionCount:
+                continuationState?.targetQuestionCount ??
+                recoverySnapshot.targetQuestionCount,
+              missingQuestionCount:
+                continuationState?.missingQuestionCount ??
+                recoverySnapshot.missingQuestionCount,
+              recoveryReason:
+                continuationState?.lastMessage ?? recoverySnapshot.lastMessage,
               status: canContinueGeneration
                 ? "CONTINUING"
                 : paperStatusSaved
                   ? "FAILED"
-                  : undefined,
+                  : streamStatusForGenerationState(recoverySnapshot.status),
             },
             "error",
           );
         }
         close();
       } finally {
+        stopHeartbeat();
         clearTimeout(generationDeadlineTimer);
         request.signal.removeEventListener("abort", abortGenerationFromClient);
       }
@@ -1549,6 +1693,7 @@ function generationSourceContextHash({
       questionComposition: config.questionComposition ?? [],
       questionTypes: config.questionTypes,
       typeDistribution: config.typeDistribution,
+      integrationPrompt: config.integrationPrompt?.trim() ?? "",
       totalQuestions: blueprint.totalQuestions,
       totalMarks: blueprint.totalMarks,
       sourceMode: config.sourceMode ?? "curriculum",
@@ -1582,6 +1727,22 @@ function generationServerBudgetMs() {
   }
 
   return 45_000;
+}
+
+function generationHeartbeatMs() {
+  const configured = Number(process.env.EDUTEST_GENERATION_HEARTBEAT_MS);
+  if (Number.isFinite(configured) && configured >= 3_000 && configured <= 20_000) {
+    return configured;
+  }
+
+  return 8_000;
+}
+
+function streamStatusForGenerationState(status?: PaperGenerationState["status"]) {
+  if (status === "NEEDS_CONTINUATION") return "CONTINUING";
+  if (status === "FAILED") return "FAILED";
+  if (status === "READY") return "READY";
+  return "GENERATING";
 }
 
 function generationFinalizationReserveMs() {
@@ -1656,6 +1817,7 @@ async function validateGeneratedPaperSkippingInvalid({
   partialFinalizationReason,
   signal,
   send,
+  onStatePersisted,
 }: {
   questions: GeneratedQuestion[];
   blueprint: Blueprint;
@@ -1677,6 +1839,7 @@ async function validateGeneratedPaperSkippingInvalid({
   partialFinalizationReason?: string;
   signal: AbortSignal;
   send: (data: object, event?: string) => void;
+  onStatePersisted?: (state: PaperGenerationState) => void;
 }) {
   const bank = resumeState
     ? QuestionCandidateBank.fromGenerationState(resumeState, blueprint, config)
@@ -1693,21 +1856,19 @@ async function validateGeneratedPaperSkippingInvalid({
     lastMessage?: string,
     lastError?: string,
   ) => {
-    await setPaperGenerationState(
-      paperId,
-      bank.toGenerationState({
-        status,
-        phase,
-        generationJobId: generationNonce,
-        idempotencyKey,
-        sourceContextHash,
-        attemptCount,
-        createdAt: stateCreatedAt,
-        lastMessage,
-        lastError,
-      }),
-      config,
-    );
+    const state = bank.toGenerationState({
+      status,
+      phase,
+      generationJobId: generationNonce,
+      idempotencyKey,
+      sourceContextHash,
+      attemptCount,
+      createdAt: stateCreatedAt,
+      lastMessage,
+      lastError,
+    });
+    await setPaperGenerationState(paperId, state, config);
+    onStatePersisted?.(state);
   };
 
   await persistBank(

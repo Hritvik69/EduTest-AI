@@ -17,6 +17,10 @@ import { Progress } from "@/components/ui/progress";
 import { fetchApiData } from "@/lib/api-client";
 import { generateBlueprint } from "@/lib/blueprint";
 import { buildGenerationContract } from "@/lib/generation-contract";
+import {
+  classifyRecoveredPaper,
+  type GenerationRecoveryDecision,
+} from "@/lib/generation-recovery";
 import { generationPhaseLabels } from "@/lib/question-planning";
 import { cn } from "@/lib/utils";
 import type { AIProvider, PaperConfig, StoredPaper } from "@/types";
@@ -91,6 +95,7 @@ export function GenerationOverlay({
   const started = React.useRef(false);
   const autoContinueAttempts = React.useRef(0);
   const autoContinueTimer = React.useRef<number | null>(null);
+  const resumePaperIdRef = React.useRef<number | null>(null);
   const requestConfig = React.useMemo(
     () =>
       providerOverride
@@ -115,6 +120,10 @@ export function GenerationOverlay({
       ),
     [open, requestConfig, retryNonce, salvageInvalidQuestions],
   );
+
+  React.useEffect(() => {
+    resumePaperIdRef.current = resumePaperId;
+  }, [resumePaperId]);
 
   React.useEffect(() => {
     if (open) return;
@@ -164,6 +173,7 @@ export function GenerationOverlay({
   React.useEffect(() => {
     if (!open || started.current) return;
     let cancelled = false;
+    const requestedResumePaperId = resumePaperIdRef.current;
     started.current = true;
     queueMicrotask(() => {
       if (cancelled) return;
@@ -174,8 +184,8 @@ export function GenerationOverlay({
       setGenerationStartedAt(startedAt);
       setGenerationNow(startedAt);
       setCurrentMessage(
-        resumePaperId
-          ? `Continuing saved generation from paper #${resumePaperId}...`
+        requestedResumePaperId
+          ? `Continuing saved generation from paper #${requestedResumePaperId}...`
           : "Preparing generation...",
       );
     });
@@ -231,7 +241,7 @@ export function GenerationOverlay({
           body: JSON.stringify({
             ...requestConfig,
             idempotencyKey,
-            resumePaperId: resumePaperId ?? undefined,
+            resumePaperId: requestedResumePaperId ?? undefined,
             salvageInvalidQuestions,
           }),
         });
@@ -358,18 +368,31 @@ export function GenerationOverlay({
 
         if (!completed) {
           if (savedPaperId) {
-            const recovered = await recoverSavedPaper(savedPaperId, requestConfig);
-            if (recovered) {
+            const recovery = await recoverSavedPaper(savedPaperId, requestConfig);
+            if (recovery.kind === "ready") {
               safeSessionRemove(inFlightKey);
               router.push(`/papers/${savedPaperId}/preview`);
               return;
             }
+            if (recovery.kind === "recoverable") {
+              throw generationError(
+                recovery.message,
+                "GENERATION_STREAM_RECOVERABLE",
+                recovery.paperId,
+                {
+                  recoverable: true,
+                  readyQuestionCount: recovery.readyQuestionCount,
+                  targetQuestionCount: recovery.targetQuestionCount,
+                  missingQuestionCount: recovery.missingQuestionCount,
+                },
+              );
+            }
+
+            throw generationError(recovery.message, "GENERATION_STREAM_ENDED");
           }
 
           throw generationError(
-            savedPaperId
-              ? "Generation stopped before a complete paper was saved. The incomplete paper shell was ignored."
-              : "Generation stopped before the paper was saved.",
+            "Generation stopped before the paper was saved.",
             "GENERATION_STREAM_ENDED",
           );
         }
@@ -383,11 +406,13 @@ export function GenerationOverlay({
             : "Paper generation failed. Please try again.";
         const code = getErrorCode(error);
         const recoverable = isRecoverableGenerationError(error);
-        const recoverablePaperId = getErrorPaperId(error) ?? savedPaperId ?? null;
+        const explicitPaperId = getErrorPaperId(error);
+        const recoverablePaperId = explicitPaperId ?? (recoverable ? savedPaperId : null);
         const continuation = continuationProgressFromError(error);
         if (
           recoverable &&
           recoverablePaperId &&
+          canAutoContinueGenerationError(error) &&
           autoContinueAttempts.current < maxAutoContinueAttempts()
         ) {
           autoContinueAttempts.current += 1;
@@ -509,11 +534,11 @@ export function GenerationOverlay({
               ? error.message
               : "Progress and ETA are based on live generation events."}
           </p>
-          {error?.paperId ? (
+          {error?.paperId && error.recoverable ? (
             <p className="mt-2 text-center text-xs text-blue-100">
-              {error.recoverable
-                ? `Saved progress in paper #${error.paperId}; retry continues it.`
-                : `Paper #${error.paperId} is in your dashboard.`}
+              {questionProgressLabel(error)
+                ? `Saved progress in paper #${error.paperId}; ${questionProgressLabel(error)}.`
+                : `Paper #${error.paperId} setup was saved; retry continues it.`}
             </p>
           ) : null}
 
@@ -594,7 +619,7 @@ export function GenerationOverlay({
             </div>
           ) : null}
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            {error.paperId ? (
+            {error.paperId && error.recoverable ? (
               <Button
                 type="button"
                 variant="outline"
@@ -742,9 +767,13 @@ function paperConfigFromStream(value: unknown, fallback: PaperConfig): PaperConf
   } as PaperConfig;
 }
 
-async function recoverSavedPaper(paperId: number, fallbackConfig: PaperConfig) {
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    if (attempt > 0) await wait(900);
+async function recoverSavedPaper(
+  paperId: number,
+  fallbackConfig: PaperConfig,
+): Promise<GenerationRecoveryDecision> {
+  let lastDecision: GenerationRecoveryDecision | null = null;
+  for (let attempt = 0; attempt < 5; attempt += 1) {
+    if (attempt > 0) await wait(1000);
 
     try {
       const paper = await fetchApiData<StoredPaper>(
@@ -752,27 +781,37 @@ async function recoverSavedPaper(paperId: number, fallbackConfig: PaperConfig) {
         undefined,
         "Could not verify saved paper.",
       );
-      if (paper.status === "FAILED") return false;
-      if (paper.questions?.length) {
+      const decision = classifyRecoveredPaper(paper, paperId);
+      lastDecision = decision;
+      if (decision.kind === "ready") {
         safeSessionSet(
           `edutest:paper:${paperId}`,
           JSON.stringify({
-            ...paper,
+            ...decision.paper,
             id: paperId,
             paperId,
-            config: paper.config ?? fallbackConfig,
-            status: paper.status ?? "READY",
+            config: decision.paper.config ?? fallbackConfig,
+            status: decision.paper.status ?? "READY",
             sessionOnly: true,
           }),
         );
-        return true;
+        return decision;
+      }
+      if (decision.kind === "recoverable") {
+        return decision;
       }
     } catch {
       // A just-finished serverless write can take a moment to become visible.
     }
   }
 
-  return false;
+  return (
+    lastDecision ?? {
+      kind: "ignored",
+      message:
+        "Generation stopped before a complete paper was saved. No finished paper was added to your dashboard.",
+    }
+  );
 }
 
 function wait(ms: number) {
@@ -805,6 +844,16 @@ function isSourceTextShortageError(
   error: { message?: string; code?: string | number } | unknown,
 ) {
   if (!error || typeof error !== "object") return false;
+function canAutoContinueGenerationError(error: unknown) {
+  if (!isRecoverableGenerationError(error)) return false;
+  const code = getErrorCode(error);
+  const progress = continuationProgressFromError(error);
+  if (code === "GENERATION_STREAM_RECOVERABLE") {
+    return (progress.readyQuestionCount ?? 0) > 0;
+  }
+  return code === "GENERATION_CONTINUE_AVAILABLE" || (progress.readyQuestionCount ?? 0) > 0;
+}
+
   const code = "code" in error ? (error as { code?: unknown }).code : undefined;
   const message = "message" in error ? (error as { message?: unknown }).message : undefined;
   return (
@@ -856,6 +905,16 @@ function maxAutoContinueAttempts() {
   return 6;
 }
 
+function questionProgressLabel(progress: {
+  readyQuestionCount?: number;
+  targetQuestionCount?: number;
+}) {
+  if (!progress.readyQuestionCount || progress.readyQuestionCount <= 0) return "";
+  return progress.targetQuestionCount
+    ? `${progress.readyQuestionCount}/${progress.targetQuestionCount} valid questions saved`
+    : `${progress.readyQuestionCount} valid questions saved`;
+}
+
 function autoContinueDelayMs() {
   return 900;
 }
@@ -878,7 +937,14 @@ function isQuestionOutputError(
 }
 
 function generationErrorGuidance(
-  error: { message: string; code?: string | number; paperId?: number; recoverable?: boolean } | null,
+  error: {
+    message: string;
+    code?: string | number;
+    paperId?: number;
+    recoverable?: boolean;
+    readyQuestionCount?: number;
+    targetQuestionCount?: number;
+  } | null,
   provider: AIProvider,
 ) {
   if (!error) return "";
@@ -896,8 +962,11 @@ function generationErrorGuidance(
   if (isQuestionOutputError(error)) {
     return "The AI returned invalid or duplicate output. Skip & Replace keeps valid questions and rebuilds the broken parts where possible.";
   }
-  if (error.recoverable || error.paperId) {
-    return "Valid progress was saved. Retry continues the same paper instead of starting from zero.";
+  if (error.recoverable) {
+    const progress = questionProgressLabel(error);
+    return progress
+      ? `Valid progress was saved (${progress}). Retry continues the same paper instead of starting from zero.`
+      : "The generation setup was saved, but no complete questions were saved yet. Retry continues the same paper setup without opening an incomplete paper.";
   }
   return "Check the selected provider, source coverage, and question count before retrying.";
 }
