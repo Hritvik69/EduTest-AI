@@ -81,6 +81,7 @@ type GenerationStreamRecoverySnapshot = {
   missingQuestionCount?: number;
   recoveryReason?: string;
 };
+type ProviderRecoveryMode = "source_backed_provider_outage";
 
 export function GenerationOverlay({
   config,
@@ -109,6 +110,8 @@ export function GenerationOverlay({
   );
   const [streamContract, setStreamContract] =
     React.useState<GenerationStreamContractSummary | null>(null);
+  const [providerRecoveryMode, setProviderRecoveryMode] =
+    React.useState<ProviderRecoveryMode | null>(null);
   const [salvageInvalidQuestions, setSalvageInvalidQuestions] =
     React.useState(true);
   const [error, setError] = React.useState<{
@@ -191,6 +194,7 @@ export function GenerationOverlay({
       setCurrentMessage("Preparing generation...");
       setProviderOverride(null);
       setStreamContract(null);
+      setProviderRecoveryMode(null);
       setSalvageInvalidQuestions(true);
       setResumePaperId(null);
       setError(null);
@@ -236,6 +240,7 @@ export function GenerationOverlay({
       setGenerationStartedAt(startedAt);
       setGenerationNow(startedAt);
       setStreamContract(null);
+      setProviderRecoveryMode(null);
       setCurrentMessage(
         requestedResumePaperId
           ? `Continuing saved generation from paper #${requestedResumePaperId}...`
@@ -337,6 +342,8 @@ export function GenerationOverlay({
             const data = parseStreamData(dataLine.replace("data:", "").trim());
             const contractFromStream = streamContractFromData(data);
             if (contractFromStream) setStreamContract(contractFromStream);
+            const recoveryMode = providerRecoveryModeFromData(data);
+            if (recoveryMode) setProviderRecoveryMode(recoveryMode);
             const streamedPaperId = numberValue(data.paperId);
             if (streamedPaperId) savedPaperId = streamedPaperId;
             const recoverySnapshot = streamRecoverySnapshotFromData(
@@ -499,6 +506,9 @@ export function GenerationOverlay({
           autoContinueAttempts.current < maxAutoContinueAttempts()
         ) {
           autoContinueAttempts.current += 1;
+          if (isProviderRecoverableError(error)) {
+            setProviderOverride("AUTO");
+          }
           if (hasSavedQuestionProgress) {
             zeroProgressAutoContinueAttempts.current = 0;
           } else {
@@ -645,6 +655,11 @@ export function GenerationOverlay({
             ) : null}
           </div>
           <p className="mt-2 text-slate-300">{error ? error.message : currentMessage}</p>
+          {!error && providerRecoveryMode === "source_backed_provider_outage" ? (
+            <p className="mt-2 text-xs font-semibold text-emerald-200">
+              Using selected source text while provider fallback recovers.
+            </p>
+          ) : null}
           {displayedContract ? (
             <div className="mt-3 rounded-lg border border-white/10 bg-slate-950/45 px-3 py-2 text-xs leading-5 text-slate-300">
               Contract {displayedContract.contractHash} |{" "}
@@ -970,6 +985,14 @@ function providerHealthFromStreamData(
   };
 }
 
+function providerRecoveryModeFromData(
+  data: Record<string, unknown>,
+): ProviderRecoveryMode | null {
+  return data.providerRecoveryMode === "source_backed_provider_outage"
+    ? "source_backed_provider_outage"
+    : null;
+}
+
 function recoverableStreamEndedErrorFromSnapshot(
   snapshot: GenerationStreamRecoverySnapshot,
   fallbackMessage?: string,
@@ -1138,6 +1161,19 @@ function canAutoContinueGenerationError(
   const progress = continuationProgressFromError(error);
   if ((progress.readyQuestionCount ?? 0) > 0) return true;
   return zeroProgressAttempts < maxZeroProgressAutoContinueAttempts();
+}
+
+function isProviderRecoverableError(error: unknown) {
+  const code = getErrorCode(error);
+  const message = error instanceof Error ? error.message : String(error ?? "");
+  return (
+    code === "PROVIDER_NETWORK_ERROR" ||
+    code === "PROVIDER_AUTO_FAILED" ||
+    code === "PROVIDER_QUOTA_ERROR" ||
+    /AI provider|Auto Fallback|provider health|quota|credit|billing|402|429|rate.?limit|timeout|timed out|network|fetch failed|temporarily busy|high traffic|try again soon/i.test(
+      message,
+    )
+  );
 }
 
 function isSourceTextShortageError(

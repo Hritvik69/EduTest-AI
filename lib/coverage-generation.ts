@@ -71,6 +71,7 @@ export async function generateCoveragePlannedQuestions({
   onProgress,
   onAcceptedBatch,
   onBatchComplete,
+  onProviderUnavailable,
 }: {
   blueprint: Blueprint;
   concepts: ConceptData[];
@@ -102,6 +103,12 @@ export async function generateCoveragePlannedQuestions({
     batch: number;
     batches: number;
   }) => void;
+  onProviderUnavailable?: (details: {
+    error: unknown;
+    label: string;
+    batch: number;
+    batches: number;
+  }) => void | Promise<void>;
 }) {
   const remainingPlan = buildRemainingCoveragePlan(
     blueprint,
@@ -194,6 +201,12 @@ export async function generateCoveragePlannedQuestions({
         });
       } catch (error) {
         if (!isAIProviderUnavailableError(error)) throw error;
+        await onProviderUnavailable?.({
+          error,
+          label,
+          batch: batchIndex + 1,
+          batches: batchPlans.length,
+        });
         generationMode = "source_backed_provider_outage";
         acceptedBatch = sourceBackedCoverageBatch({
           allocation: batchPlan.item,

@@ -91,6 +91,24 @@ describe("error classification", () => {
     );
   });
 
+  it("classifies screenshot-style provider health failures as recoverable outages", () => {
+    const message = [
+      "Cerebras: Cerebras question generation health preflight failed:",
+      "Cerebras generation failed (429): We're experiencing high traffic right now! Please try again soon.",
+      "OpenRouter: openrouter/auto: not enough provider credits for the requested output.",
+      "Cohere: command-a-03-2025: API key is missing, invalid, or not allowed.",
+    ].join(" ");
+
+    expect(isAIProviderUnavailableError(new Error(message))).toBe(true);
+    const compact = compactAiProviderFailureMessage(
+      `All configured AI providers failed. ${message}`,
+    );
+
+    expect(compact).toContain("Cerebras: rate-limited");
+    expect(compact).toContain("OpenRouter: no credits or quota");
+    expect(compact).toContain("Cohere: key missing, invalid, or not allowed");
+  });
+
   it("turns PDF and export failures into actionable messages", () => {
     expect(
       friendlyPdfProcessingError(new Error("Unexpected end of JSON input")),

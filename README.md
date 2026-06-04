@@ -117,6 +117,23 @@ Recommended free deployment stack:
 
 Add the same environment variables in Vercel Project Settings before deploying.
 
+### Production AI provider recovery
+
+For reliable Auto Fallback in Vercel Production, configure at least two funded
+question-generation providers:
+
+- Required primary: `GEMINI_API_KEY`
+- Recommended backup: one or more of `GROQ_API_KEY`, `MISTRAL_API_KEY`,
+  `GITHUB_MODELS_TOKEN`, or `OPENROUTER_API_KEY`
+- Optional providers to fix or remove until funded: `CEREBRAS_API_KEY`,
+  `COHERE_API_KEY`, `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`,
+  `XAI_API_KEY`, `DEEPSEEK_API_KEY`, and `OPENAI_API_KEY`
+
+After deploy, open `/api/ai/provider-health` in production. Large paper runs
+should show at least two usable providers before generation starts. If all
+providers are unavailable, the app can continue from selected NCERT/PDF source
+text when enough imported source text exists.
+
 ## Security Notes
 
 - Do not commit `.env.local` or real API keys.

@@ -46,6 +46,13 @@ describe("resumable paper generation wiring", () => {
       route.indexOf("paper shell saved; starting AI question generation"),
     );
     expect(route).toMatch(/providerHealth: latestProviderHealth/);
+    expect(route).toMatch(/providerRecoveryMode/);
+    expect(route).toMatch(/source_backed_provider_outage/);
+    expect(route).toMatch(/hasSourceBackedFallbackConcepts\(scopedConcepts\)/);
+    expect(route).toMatch(/refreshProviderHealthAfterRuntimeFailure/);
+    expect(route).toMatch(/runtimeProviderHealthTimeoutMs/);
+    expect(route).toMatch(/onProviderUnavailable/);
+    expect(route).toMatch(/provider-recovery/);
     expect(route).not.toMatch(/The deployed server could not reach the AI provider/);
     expect(route).not.toMatch(/continuing from selected TXT\/PDF source text without demo fallback/);
     expect(providerHealthRoute).toMatch(/publicAIProviderHealthSnapshot/);
@@ -89,6 +96,11 @@ describe("resumable paper generation wiring", () => {
     expect(overlay).toMatch(/streamContractFromData/);
     expect(overlay).toMatch(/streamRecoverySnapshotFromData/);
     expect(overlay).toMatch(/providerHealthFromStreamData/);
+    expect(overlay).toMatch(/providerRecoveryModeFromData/);
+    expect(overlay).toMatch(/isProviderRecoverableError/);
+    expect(overlay).toMatch(/setProviderOverride\("AUTO"\)/);
+    expect(overlay).toMatch(/source_backed_provider_outage/);
+    expect(overlay).toMatch(/Using selected source text while provider fallback recovers/);
     expect(overlay).toMatch(/getErrorProviderHealth/);
     expect(overlay).toMatch(/providerHealthSummary/);
     expect(overlay).toMatch(/providerHealthAction/);
@@ -104,6 +116,7 @@ describe("resumable paper generation wiring", () => {
     expect(overlay).toMatch(/server confirmed/);
     expect(overlay).toMatch(/clearStaleGenerationSessionKeys/);
     expect(overlay).toMatch(/canAutoContinueGenerationError/);
+    expect(overlay).toMatch(/if \(isProviderRecoverableError\(error\)\)/);
     expect(overlay).toMatch(/zeroProgressAutoContinueAttempts/);
     expect(overlay).toMatch(/maxZeroProgressAutoContinueAttempts/);
     expect(overlay).toMatch(/zeroProgressAttempts < maxZeroProgressAutoContinueAttempts/);

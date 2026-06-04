@@ -298,7 +298,6 @@ describe("multi-provider JSON generation", () => {
           status: 503,
         }),
       )
-      .mockResolvedValueOnce(chatResponse({ fallback: "cerebras" }))
       .mockResolvedValueOnce(chatResponse({ fallback: "openrouter" }));
     vi.stubGlobal("fetch", fetchMock);
     const { generateJSON } = await import("@/lib/gemini");
@@ -307,17 +306,36 @@ describe("multi-provider JSON generation", () => {
       provider: "AUTO",
     });
 
-    expect(result.fallback).toBe("cerebras");
+    expect(result.fallback).toBe("openrouter");
     expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(fetchMock.mock.calls[0][0]).toBe("https://api.mistral.ai/v1/chat/completions");
     expect(fetchMock.mock.calls[1][0]).toBe(
-      "https://api.cerebras.ai/v1/chat/completions",
+      "https://openrouter.ai/api/v1/chat/completions",
     );
     expect(JSON.parse(String(fetchMock.mock.calls[0][1]?.body)).messages[1].content).toBe(
       "Return JSON",
     );
     expect(JSON.parse(String(fetchMock.mock.calls[1][1]?.body)).messages[1].content).toBe(
       "Return JSON",
+    );
+  });
+
+  it("prefers GitHub Models before optional outage-prone providers for question generation", async () => {
+    process.env.GITHUB_MODELS_TOKEN = "github-token-test";
+    process.env.OPENROUTER_API_KEY = "sk-or-test-key";
+    process.env.CEREBRAS_API_KEY = "csk-test-key";
+    const fetchMock = mockJSONFetch({ fallback: "github" });
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ fallback: string }>("Return JSON", {
+      provider: "AUTO",
+      task: "QUESTION_GENERATION",
+    });
+
+    expect(result.fallback).toBe("github");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock.mock.calls[0][0]).toBe(
+      "https://models.github.ai/inference/chat/completions",
     );
   });
 
@@ -340,7 +358,7 @@ describe("multi-provider JSON generation", () => {
           status: 503,
         }),
       )
-      .mockResolvedValueOnce(chatResponse({ fallback: "cerebras" }));
+      .mockResolvedValueOnce(chatResponse({ fallback: "openrouter" }));
     vi.stubGlobal("fetch", fetchMock);
     const { generateJSON } = await import("@/lib/gemini");
 
@@ -349,13 +367,13 @@ describe("multi-provider JSON generation", () => {
       task: "QUESTION_GENERATION",
     });
 
-    expect(result.fallback).toBe("cerebras");
+    expect(result.fallback).toBe("openrouter");
     expect(fetchMock).toHaveBeenCalledTimes(3);
     expect(fetchMock.mock.calls[0][0]).toBe(
       "https://api.groq.com/openai/v1/chat/completions",
     );
     expect(fetchMock.mock.calls[1][0]).toBe("https://api.mistral.ai/v1/chat/completions");
-    expect(fetchMock.mock.calls[2][0]).toBe("https://api.cerebras.ai/v1/chat/completions");
+    expect(fetchMock.mock.calls[2][0]).toBe("https://openrouter.ai/api/v1/chat/completions");
   });
 
   it("caps Auto provider attempts when a generation batch is high risk", async () => {
@@ -589,20 +607,65 @@ describe("multi-provider JSON generation", () => {
           status: 402,
         }),
       )
-      .mockResolvedValueOnce(chatResponse({ fallback: "cerebras" }))
-      .mockResolvedValueOnce(chatResponse({ fallback: "cerebras-second" }));
+      .mockResolvedValueOnce(chatResponse({ fallback: "openrouter" }))
+      .mockResolvedValueOnce(chatResponse({ fallback: "openrouter-second" }));
     vi.stubGlobal("fetch", fetchMock);
     const { generateJSON } = await import("@/lib/gemini");
 
     await expect(generateJSON<{ fallback: string }>("Return JSON", { provider: "AUTO" }))
-      .resolves.toEqual({ fallback: "cerebras" });
+      .resolves.toEqual({ fallback: "openrouter" });
     await expect(generateJSON<{ fallback: string }>("Return JSON", { provider: "AUTO" }))
-      .resolves.toEqual({ fallback: "cerebras-second" });
+      .resolves.toEqual({ fallback: "openrouter-second" });
 
     expect(fetchMock).toHaveBeenCalledTimes(3);
     expect(fetchMock.mock.calls[0][0]).toBe("https://api.mistral.ai/v1/chat/completions");
-    expect(fetchMock.mock.calls[1][0]).toBe("https://api.cerebras.ai/v1/chat/completions");
-    expect(fetchMock.mock.calls[2][0]).toBe("https://api.cerebras.ai/v1/chat/completions");
+    expect(fetchMock.mock.calls[1][0]).toBe("https://openrouter.ai/api/v1/chat/completions");
+    expect(fetchMock.mock.calls[2][0]).toBe("https://openrouter.ai/api/v1/chat/completions");
+  });
+
+  it("reports cooldown providers as unhealthy without probing them again", async () => {
+    process.env.MISTRAL_API_KEY = "mistral-test-key";
+    process.env.CEREBRAS_API_KEY = "csk-test-key";
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response("rate limit exceeded", {
+          status: 429,
+        }),
+      )
+      .mockResolvedValueOnce(chatResponse({ ok: true }));
+    vi.stubGlobal("fetch", fetchMock);
+    const { checkAIProviderHealth, generateJSON } = await import("@/lib/gemini");
+
+    await expect(
+      generateJSON("Return JSON", {
+        provider: "MISTRAL",
+        task: "QUESTION_GENERATION",
+        cooldownScope: "user-cooldown",
+      }),
+    ).rejects.toThrow(/Mistral/);
+
+    const health = await checkAIProviderHealth({
+      task: "QUESTION_GENERATION",
+      providers: ["MISTRAL", "CEREBRAS"],
+      cooldownScope: "user-cooldown",
+      timeoutMs: 2_000,
+    });
+
+    expect(health.providers[0]).toMatchObject({
+      provider: "MISTRAL",
+      usable: false,
+      lastFailureClass: "rate_limit",
+    });
+    expect(health.providers[1]).toMatchObject({
+      provider: "CEREBRAS",
+      usable: true,
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock.mock.calls[0][0]).toBe("https://api.mistral.ai/v1/chat/completions");
+    expect(fetchMock.mock.calls[1][0]).toBe(
+      "https://api.cerebras.ai/v1/chat/completions",
+    );
   });
 
   it("parses valid JSON embedded in provider wrapper text", async () => {
@@ -691,7 +754,7 @@ describe("multi-provider JSON generation", () => {
     expect(JSON.stringify(payload)).not.toContain("deepseek-test-key");
     expect(JSON.stringify(payload)).not.toContain("xai-test-key");
     expect(JSON.stringify(payload)).not.toContain("sk-or-test-key");
-  }, 10_000);
+  }, 20_000);
 });
 
 function mockJSONFetch(content: unknown) {

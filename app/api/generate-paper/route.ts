@@ -107,6 +107,7 @@ type LocalFallbackContext = {
   blueprint: Blueprint;
   scopedConcepts: ConceptData[];
 };
+type ProviderRecoveryMode = "source_backed_provider_outage";
 
 export async function POST(request: NextRequest) {
   const auth = await requireAuthenticatedUser(request);
@@ -182,6 +183,7 @@ export async function POST(request: NextRequest) {
       let streamContractSummary: GenerationStreamContractSummary | null = null;
       let latestProviderHealth: AIProviderHealthSnapshot | null = null;
       let healthyProviders: DirectAIProvider[] | undefined;
+      let providerRecoveryMode: ProviderRecoveryMode | undefined;
       const send = (data: object, event = "progress") => {
         if (streamClosed || request.signal.aborted) return false;
 
@@ -226,6 +228,7 @@ export async function POST(request: NextRequest) {
         missingQuestionCount: recoverySnapshot.missingQuestionCount,
         recoveryReason: recoverySnapshot.lastMessage,
         ...contractPayload(),
+        ...providerRecoveryPayload(),
       });
       const providerHealthPayload = () =>
         latestProviderHealth
@@ -233,6 +236,37 @@ export async function POST(request: NextRequest) {
               providerHealth: publicAIProviderHealthSnapshot(latestProviderHealth),
             }
           : {};
+      const providerRecoveryPayload = () =>
+        providerRecoveryMode ? { providerRecoveryMode } : {};
+      const refreshProviderHealthAfterRuntimeFailure = async (error: unknown) => {
+        if (
+          request.signal.aborted ||
+          generationSignal.aborted ||
+          !isAIProviderUnavailableError(error)
+        ) {
+          return;
+        }
+
+        try {
+          latestProviderHealth = await checkAIProviderHealth({
+            task: "QUESTION_GENERATION",
+            providers: healthyProviders?.length
+              ? healthyProviders
+              : providersForHealthPreflight(config.aiProvider ?? "AUTO"),
+            signal: generationSignal,
+            cooldownScope: providerCooldownScope,
+            timeoutMs: runtimeProviderHealthTimeoutMs(),
+          });
+        } catch (healthError) {
+          console.warn("[generate-paper] runtime provider health refresh failed", {
+            generationJobId,
+            message:
+              healthError instanceof Error
+                ? healthError.message
+                : String(healthError),
+          });
+        }
+      };
       const setHeartbeatContext = (step: number, pct: number, msg: string) => {
         heartbeatStep = step;
         heartbeatPct = pct;
@@ -424,20 +458,33 @@ export async function POST(request: NextRequest) {
               cooldownErrorClass: provider.cooldownErrorClass,
             })),
           });
+          if (
+            !healthyProviders.length &&
+            !allowExplicitDemoFallback &&
+            hasSourceBackedFallbackConcepts(scopedConcepts)
+          ) {
+            providerRecoveryMode = "source_backed_provider_outage";
+          }
           send({
             step: 3,
             pct: 24,
             progress: 24,
             msg: healthyProviders.length
               ? `AI provider health ready: ${healthyProviders.join(", ")} usable.`
-              : "No AI provider passed health preflight.",
+              : hasSourceBackedFallbackConcepts(scopedConcepts)
+                ? "No AI provider passed health preflight; continuing from selected TXT/PDF source text."
+                : "No AI provider passed health preflight.",
             ...providerHealthPayload(),
             ...contractPayload(),
+            ...providerRecoveryPayload(),
           });
           if (!healthyProviders.length) {
-            throw new Error(providerHealthFailureMessage(providerHealth));
+            if (!providerRecoveryMode) {
+              throw new Error(providerHealthFailureMessage(providerHealth));
+            }
+          } else {
+            preflightPassed = true;
           }
-          preflightPassed = true;
         }
 
         assertActive();
@@ -712,11 +759,14 @@ export async function POST(request: NextRequest) {
               Array.isArray(healthyProviders) &&
               healthyProviders.length === 0;
             if (providersUnavailableBeforeCall) {
+              providerRecoveryMode = "source_backed_provider_outage";
               send({
                 step: 5,
                 pct: 42,
                 progress: 42,
                 msg: "Phase 5 - Question Generation: providers unavailable; generating from selected TXT/PDF source text.",
+                ...providerHealthPayload(),
+                ...providerRecoveryPayload(),
               });
               allQuestions = generateSourceBackedProviderOutageQuestions({
                 blueprint,
@@ -735,6 +785,7 @@ export async function POST(request: NextRequest) {
                   progress: 84,
                   msg: `Phase 5 - Question Generation: saved ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid source-backed questions.`,
                   ...recoveryPayload(),
+                  ...providerHealthPayload(),
                 });
               }
             } else {
@@ -778,11 +829,15 @@ export async function POST(request: NextRequest) {
                 }
               } catch (error) {
                 if (!allowExplicitDemoFallback && isAIProviderUnavailableError(error)) {
+                  providerRecoveryMode = "source_backed_provider_outage";
+                  await refreshProviderHealthAfterRuntimeFailure(error);
                   send({
                     step: 5,
                     pct: 42,
                     progress: 42,
                     msg: "Phase 5 - Question Generation: providers unavailable; generating from selected TXT/PDF source text.",
+                    ...providerHealthPayload(),
+                    ...providerRecoveryPayload(),
                   });
                   allQuestions = generateSourceBackedProviderOutageQuestions({
                     blueprint,
@@ -801,6 +856,7 @@ export async function POST(request: NextRequest) {
                       progress: 84,
                       msg: `Phase 5 - Question Generation: saved ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid source-backed questions.`,
                       ...recoveryPayload(),
+                      ...providerHealthPayload(),
                     });
                   }
                 } else {
@@ -840,6 +896,10 @@ export async function POST(request: NextRequest) {
             signal: generationSignal,
             shouldStop: (context) =>
               shouldStopBeforeNextGenerationCall(generationDeadlineAt, context),
+            onProviderUnavailable: async ({ error }) => {
+              providerRecoveryMode = "source_backed_provider_outage";
+              await refreshProviderHealthAfterRuntimeFailure(error);
+            },
             onAcceptedBatch: async (details) => {
               const savedCandidates = [...allQuestions, ...details.generatedQuestions];
               const savedState = await persistQuestionGenerationState(
@@ -853,12 +913,16 @@ export async function POST(request: NextRequest) {
                   progress: 82,
                   msg: `Phase 5 - Question Generation: saved ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid questions (${details.batch}/${details.batches} chunked AI batch${details.batches === 1 ? "" : "es"}).`,
                   ...recoveryPayload(),
+                  ...providerHealthPayload(),
                 });
               }
             },
             onProgress: (details) => {
               const providerOutageRecovered =
                 details.diagnostic.generationMode === "source_backed_provider_outage";
+              if (providerOutageRecovered) {
+                providerRecoveryMode = "source_backed_provider_outage";
+              }
               send({
                 step: 5,
                 pct: 82,
@@ -866,6 +930,8 @@ export async function POST(request: NextRequest) {
                 msg: providerOutageRecovered
                   ? `Phase 5 - Question Generation: providers unavailable; generated ${details.label} from selected TXT/PDF (${details.diagnostic.generatedQuestions}/${details.diagnostic.requestedQuestions} question${details.diagnostic.requestedQuestions === 1 ? "" : "s"}).`
                   : `Phase 5 - Question Generation: ${details.label} - ${details.diagnostic.generatedQuestions}/${details.diagnostic.requestedQuestions} focused question${details.diagnostic.requestedQuestions === 1 ? "" : "s"} ready.`,
+                ...providerHealthPayload(),
+                ...providerRecoveryPayload(),
               });
             },
             onBatchComplete: (details) => {
@@ -948,6 +1014,10 @@ export async function POST(request: NextRequest) {
           signal: generationSignal,
           send,
           onStatePersisted: updateRecoverySnapshot,
+          onProviderUnavailable: async (error) => {
+            providerRecoveryMode = "source_backed_provider_outage";
+            await refreshProviderHealthAfterRuntimeFailure(error);
+          },
         });
         const validated = stripGenerationMetadataFromQuestions(validation.questions);
         effectiveConfig = validation.config;
@@ -955,30 +1025,32 @@ export async function POST(request: NextRequest) {
         if (validation.sourceBackedCompletedQuestions) {
           send({
             step: 6,
-          pct: 94,
-          progress: 94,
-          msg: `Phase 6 - Validation Engine: completed ${validation.sourceBackedCompletedQuestions} final source-backed replacement question${validation.sourceBackedCompletedQuestions === 1 ? "" : "s"} from selected text.`,
-          ...contractPayload(),
-        });
-      }
+            pct: 94,
+            progress: 94,
+            msg: `Phase 6 - Validation Engine: completed ${validation.sourceBackedCompletedQuestions} final source-backed replacement question${validation.sourceBackedCompletedQuestions === 1 ? "" : "s"} from selected text.`,
+            ...contractPayload(),
+            ...providerHealthPayload(),
+            ...providerRecoveryPayload(),
+          });
+        }
 
         if (validation.replacedQuestions) {
           send({
             step: 6,
-          pct: 92,
-          progress: 92,
-          msg: `Phase 6 - Validation Engine: replaced ${validation.replacedQuestions} invalid or duplicate question${validation.replacedQuestions === 1 ? "" : "s"} with valid alternatives.`,
-          ...contractPayload(),
-        });
-      } else if (validation.skipped.length) {
-        send({
-          step: 6,
-          pct: 92,
-          progress: 92,
-          msg: `Phase 6 - Validation Engine: found ${validation.skipped.length} invalid or duplicate question${validation.skipped.length === 1 ? "" : "s"}.`,
-          ...contractPayload(),
-        });
-      }
+            pct: 92,
+            progress: 92,
+            msg: `Phase 6 - Validation Engine: replaced ${validation.replacedQuestions} invalid or duplicate question${validation.replacedQuestions === 1 ? "" : "s"} with valid alternatives.`,
+            ...contractPayload(),
+          });
+        } else if (validation.skipped.length) {
+          send({
+            step: 6,
+            pct: 92,
+            progress: 92,
+            msg: `Phase 6 - Validation Engine: found ${validation.skipped.length} invalid or duplicate question${validation.skipped.length === 1 ? "" : "s"}.`,
+            ...contractPayload(),
+          });
+        }
 
         assertActive();
         setHeartbeatContext(
@@ -992,6 +1064,8 @@ export async function POST(request: NextRequest) {
           progress: 95,
           msg: "Phase 7 - Final Paper Composition: numbering sections and preparing layout.",
           ...contractPayload(),
+          ...providerHealthPayload(),
+          ...providerRecoveryPayload(),
         });
         await updatePaperDefinition(paperId, effectiveConfig, validation.blueprint);
         const storedQuestions = await saveQuestionsAndLink(
@@ -1000,6 +1074,19 @@ export async function POST(request: NextRequest) {
           isDemoMode ? "demo" : paperQuestionSource,
         );
         await markPaperReady(paperId);
+        const providerRecoveryWarnings = providerRecoveryMode
+          ? [
+              {
+                type: "provider-recovery",
+                reason:
+                  "source_backed_provider_outage: AI providers were unavailable during generation, so remaining questions were completed from selected source text.",
+              },
+            ]
+          : [];
+        const finalValidationWarnings = [
+          ...validation.skipped,
+          ...providerRecoveryWarnings,
+        ];
         const manifest = buildGenerationManifest({
           config: effectiveConfig,
           blueprint: validation.blueprint,
@@ -1007,7 +1094,7 @@ export async function POST(request: NextRequest) {
           finalQuestions: storedQuestions,
           skippedQuestions: validation.remainingMissingQuestions,
           replacedQuestions: validation.replacedQuestions,
-          validationWarnings: validation.skipped,
+          validationWarnings: finalValidationWarnings,
           generationJobId,
           idempotencyKey,
           taskProviderOrder: configuredTaskProviderOrder(),
@@ -1052,7 +1139,7 @@ export async function POST(request: NextRequest) {
             questions: storedQuestions,
             skippedQuestions: validation.remainingMissingQuestions,
             replacedQuestions: validation.replacedQuestions,
-            validationWarnings: validation.skipped,
+            validationWarnings: finalValidationWarnings,
             manifest,
             status: "READY",
             isDemoMode,
@@ -1060,6 +1147,8 @@ export async function POST(request: NextRequest) {
             sessionOnly: Boolean(auth.user.isGuest),
             config: effectiveConfig,
             guestPaperToken,
+            ...providerHealthPayload(),
+            ...providerRecoveryPayload(),
             ...contractPayload(),
             ...(isDemoMode ? demoMetadata() : {}),
           },
@@ -1132,6 +1221,9 @@ export async function POST(request: NextRequest) {
           !request.signal.aborted &&
           (isGenerationContinuationError(error) ||
             isRecoverableGenerationRuntimeError(error, savedFailureState));
+        if (!request.signal.aborted && isAIProviderUnavailableError(error)) {
+          await refreshProviderHealthAfterRuntimeFailure(error);
+        }
         if (paperId && !canContinueGeneration) {
           try {
             await updatePaperStatus(paperId, "FAILED", {
@@ -1178,6 +1270,7 @@ export async function POST(request: NextRequest) {
               recoveryReason:
                 continuationState?.lastMessage ?? recoverySnapshot.lastMessage,
               ...providerHealthPayload(),
+              ...providerRecoveryPayload(),
               ...contractPayload(),
               status: canContinueGeneration
                 ? "CONTINUING"
@@ -1998,6 +2091,15 @@ function generationHeartbeatMs() {
   return 8_000;
 }
 
+function runtimeProviderHealthTimeoutMs() {
+  const configured = Number(process.env.EDUTEST_RUNTIME_PROVIDER_HEALTH_TIMEOUT_MS);
+  if (Number.isFinite(configured) && configured >= 1_500 && configured <= 6_000) {
+    return Math.floor(configured);
+  }
+
+  return 2_500;
+}
+
 function streamStatusForGenerationState(status?: PaperGenerationState["status"]) {
   if (status === "NEEDS_CONTINUATION") return "CONTINUING";
   if (status === "FAILED") return "FAILED";
@@ -2098,6 +2200,7 @@ async function validateGeneratedPaperSkippingInvalid({
   signal,
   send,
   onStatePersisted,
+  onProviderUnavailable,
 }: {
   questions: GeneratedQuestion[];
   blueprint: Blueprint;
@@ -2122,6 +2225,7 @@ async function validateGeneratedPaperSkippingInvalid({
   signal: AbortSignal;
   send: (data: object, event?: string) => void;
   onStatePersisted?: (state: PaperGenerationState) => void;
+  onProviderUnavailable?: (error: unknown) => void | Promise<void>;
 }) {
   const bank = resumeState
     ? QuestionCandidateBank.fromGenerationState(resumeState, blueprint, config)
@@ -2236,6 +2340,7 @@ async function validateGeneratedPaperSkippingInvalid({
       }
 
       if (isAIProviderRepairUnavailable(error)) {
+        await onProviderUnavailable?.(error);
         lastRepairError = error instanceof Error ? error.message : String(error);
         await persistBank(
           "IN_PROGRESS",

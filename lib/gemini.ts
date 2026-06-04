@@ -41,12 +41,12 @@ export type AIProviderHealthSnapshot = {
 };
 
 const autoFallbackOrder: DirectAIProvider[] = [
+  "GEMINI",
   "GROQ",
   "MISTRAL",
-  "CEREBRAS",
-  "GEMINI",
-  "OPENROUTER",
   "GITHUB_MODELS",
+  "OPENROUTER",
+  "CEREBRAS",
   "COHERE",
   "CLOUDFLARE",
   "GROK",
@@ -71,9 +71,9 @@ const taskFallbackOrders: Record<AITask, DirectAIProvider[]> = {
     "GEMINI",
     "GROQ",
     "MISTRAL",
-    "CEREBRAS",
-    "OPENROUTER",
     "GITHUB_MODELS",
+    "OPENROUTER",
+    "CEREBRAS",
     "COHERE",
     "CLOUDFLARE",
     "GROK",
@@ -1088,11 +1088,11 @@ function extractFirstJSONValue(text: string) {
 }
 
 function friendlyAIError(message: string) {
-  if (/abort|timeout|timed out/i.test(message)) {
+  if (/abort|timeout|timed out|ETIMEDOUT/i.test(message)) {
     return "provider timed out.";
   }
 
-  if (/503|service unavailable|high demand|overloaded/i.test(message)) {
+  if (/503|service unavailable|high demand|high traffic|overloaded|busy|try again soon|temporarily/i.test(message)) {
     return "provider is temporarily busy.";
   }
 
@@ -1169,7 +1169,7 @@ function providerCooldownMs(message: string) {
     return 5 * 60 * 1000;
   }
 
-  if (/abort|timeout|timed out|503|service unavailable|high demand|overloaded|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(message)) {
+  if (/abort|timeout|timed out|503|service unavailable|high demand|high traffic|overloaded|busy|try again soon|temporarily|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(message)) {
     return 2 * 60 * 1000;
   }
 
@@ -1184,8 +1184,8 @@ function providerFailureClass(message: string) {
     return "quota";
   }
   if (/429|rate.?limit/i.test(message)) return "rate_limit";
-  if (/abort|timeout|timed out/i.test(message)) return "timeout";
-  if (/503|service unavailable|high demand|overloaded/i.test(message)) {
+  if (/abort|timeout|timed out|ETIMEDOUT/i.test(message)) return "timeout";
+  if (/503|service unavailable|high demand|high traffic|overloaded|busy|try again soon|temporarily/i.test(message)) {
     return "provider_busy";
   }
   if (/network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(message)) {

@@ -199,7 +199,7 @@ export function isAIProviderUnavailableError(error: unknown) {
 }
 
 export function isAIProviderUnavailableMessage(message: string) {
-  return /No configured AI provider is currently usable|All configured AI providers failed|Set .*API_?KEY|Set at least one AI provider key|402|credit|quota|billing|can only afford|max_tokens|401|403|unauthorized|api[_\s-]?key|invalid key|not allowed|permission|429|rate.?limit|503|service unavailable|temporarily|busy|overloaded|timeout|timed out|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(
+  return /No configured AI provider is currently usable|No AI provider passed health preflight|question generation health preflight failed|All configured AI providers failed|Set .*API_?KEY|Set at least one AI provider key|402|credit|quota|billing|can only afford|max_tokens|401|403|unauthorized|api[_\s-]?key|invalid key|not allowed|permission|429|rate.?limit|503|service unavailable|temporarily|busy|high demand|high traffic|try again soon|overloaded|timeout|timed out|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(
     message,
   );
 }
@@ -326,7 +326,7 @@ function classifyProviderFailure(chunk: string) {
   if (/api[_\s-]?key|unauthorized|invalid key|not allowed|permission|401|403/i.test(chunk)) {
     return "key missing, invalid, or not allowed";
   }
-  if (/503|service unavailable|temporarily|busy|overloaded/i.test(chunk)) {
+  if (/503|service unavailable|temporarily|busy|high demand|high traffic|try again soon|overloaded/i.test(chunk)) {
     return "temporarily busy";
   }
   if (/empty response|invalid JSON|malformed JSON|Unexpected end/i.test(chunk)) {
