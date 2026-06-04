@@ -1,4 +1,5 @@
 import sql from "@/lib/db";
+import { subjectIconForName } from "@/lib/curriculum-data";
 import type { ChapterOption, ChapterTopic } from "@/types";
 
 export interface SubjectOption {
@@ -12,7 +13,7 @@ export async function getImportedSubjectOptions(): Promise<SubjectOption[]> {
 
   try {
     const rows = await sql`
-      SELECT s.name, s.icon, array_agg(DISTINCT s.class_num ORDER BY s.class_num) AS classes
+      SELECT s.name, array_agg(DISTINCT s.class_num ORDER BY s.class_num) AS classes
       FROM subjects s
       WHERE s.active = TRUE
       AND EXISTS (
@@ -23,13 +24,13 @@ export async function getImportedSubjectOptions(): Promise<SubjectOption[]> {
         AND c.import_source = 'ncert_books'
         AND c.name NOT ILIKE '%Full Book Source%'
       )
-      GROUP BY s.name, s.icon
+      GROUP BY s.name
       ORDER BY MIN(s.class_num), s.name
     `;
 
     return rows.map((row) => ({
       name: String(row.name),
-      icon: row.icon ? String(row.icon) : shortSubjectIcon(String(row.name)),
+      icon: subjectIconForName(String(row.name)),
       classes: normalizeClasses(row.classes),
     }));
   } catch {
@@ -134,9 +135,4 @@ function normalizeChapterStatus(value: unknown): ChapterOption["status"] {
     value === "EXTRACTED"
     ? value
     : "READY";
-}
-
-function shortSubjectIcon(subject: string) {
-  const normalized = subject.trim();
-  return normalized ? normalized.slice(0, 1).toUpperCase() : "S";
 }

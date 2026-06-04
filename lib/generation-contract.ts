@@ -57,6 +57,7 @@ export function buildGenerationContract(
       durationMin: config.duration,
       examType: config.examType,
       difficulty: config.difficulty,
+      generationMode: normalizeGenerationMode(config.generationMode),
       bloomDistribution: config.bloomDistribution,
       aiProvider: config.aiProvider ?? "AUTO",
       integrationPrompt: normalizeIntegrationPrompt(config.integrationPrompt),
@@ -87,6 +88,11 @@ export function generationContractPromptPayload(contract: GenerationContract) {
     duration_min: contract.paper.durationMin,
     exam_type: contract.paper.examType,
     difficulty: contract.paper.difficulty,
+    generation_mode: contract.paper.generationMode,
+    generation_mode_label:
+      contract.paper.generationMode === "source_exact"
+        ? "NCERT/PDF Source"
+        : "Fresh Questions",
     blooms: contract.paper.bloomDistribution,
     ai_provider: contract.paper.aiProvider,
     integration_prompt: contract.paper.integrationPrompt ?? "",
@@ -273,4 +279,10 @@ function unique(values: string[]) {
 function normalizeIntegrationPrompt(value: string | undefined) {
   const trimmed = value?.trim();
   return trimmed ? trimmed.slice(0, 1200) : undefined;
+}
+
+function normalizeGenerationMode(
+  value: PaperConfig["generationMode"],
+): NonNullable<PaperConfig["generationMode"]> {
+  return value === "source_exact" ? "source_exact" : "fresh";
 }

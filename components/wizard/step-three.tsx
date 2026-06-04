@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import {
-  BookOpenCheck,
   Check,
   ClipboardList,
   Flame,
@@ -42,7 +41,6 @@ const presetLabels = [
   { label: "Objective Mix", key: "Objective Mix", icon: ListChecks },
   { label: "Subjective", key: "Subjective", icon: PenLine },
   { label: "Full Mix", key: "Full Mix", icon: Flame },
-  { label: "NCERT Books/PDF", key: "NCERT Books/PDF", icon: BookOpenCheck },
 ];
 
 export function StepThree() {

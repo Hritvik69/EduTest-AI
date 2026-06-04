@@ -26,6 +26,7 @@ export const defaultPaperConfig: PaperConfig = {
   examType: "School Test",
   difficulty: "MEDIUM",
   aiProvider: "AUTO",
+  generationMode: "fresh",
   integrationPrompt: "",
   questionTypes: ["MCQ", "CASE_BASED", "SHORT", "LONG", "HOTS"],
   typeDistribution: {
@@ -75,7 +76,7 @@ export function PaperConfigProvider({
           : parsed.subject
             ? [parsed.subject]
             : defaultPaperConfig.subjects;
-        nextConfig = normalizeQuestionFormatsForDifficulty(normalizeConfigQuestionCounts(configForSourceMode({
+        nextConfig = normalizeQuestionFormatsForDifficulty(normalizeConfigQuestionCounts(normalizeLegacySourceModeQuestionType(configForSourceMode({
           ...defaultPaperConfig,
           ...parsed,
           sourceMode: parsed.sourceMode ?? "curriculum",
@@ -89,7 +90,7 @@ export function PaperConfigProvider({
               chapterIds: parsed.chapterIds ?? [],
               topicIds: parsed.topicIds ?? [],
             })),
-        }, initialSourceMode)));
+        }, initialSourceMode))));
       }
     } catch {
       try {
@@ -121,7 +122,9 @@ export function PaperConfigProvider({
 
   const updateConfig = React.useCallback((patch: Partial<PaperConfig>) => {
     setConfig((current) => {
-      const next = normalizeQuestionFormatsForDifficulty({ ...current, ...patch });
+      const next = normalizeQuestionFormatsForDifficulty(
+        normalizeLegacySourceModeQuestionType({ ...current, ...patch }),
+      );
       const shapeChanged =
         "typeDistribution" in patch ||
         "totalQuestions" in patch ||
@@ -231,6 +234,23 @@ function normalizeConfigQuestionCounts(config: PaperConfig): PaperConfig {
     ...config,
     typeDistribution,
     totalMarks: marksForQuestionCounts(config.questionTypes, typeDistribution),
+  };
+}
+
+function normalizeLegacySourceModeQuestionType(config: PaperConfig): PaperConfig {
+  if (!config.questionTypes.includes("NCERT_FORMAT")) return config;
+
+  const questionTypes = config.questionTypes.filter(
+    (type) => type !== "NCERT_FORMAT",
+  );
+  const typeDistribution = { ...config.typeDistribution };
+  delete typeDistribution.NCERT_FORMAT;
+
+  return {
+    ...config,
+    generationMode: "source_exact",
+    questionTypes: questionTypes.length ? questionTypes : defaultPaperConfig.questionTypes,
+    typeDistribution,
   };
 }
 

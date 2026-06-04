@@ -678,6 +678,7 @@ Replacement rule: if this request is replacing invalid/duplicate questions, ever
 `
     : "";
 
+  const generationModeRules = buildGenerationModePromptRules(config);
   const strictRules = `
 Rules:
 - Obey CONFIG_JSON exactly: section type/count/marks, topics, exam type, and difficulty targets.
@@ -689,7 +690,8 @@ Rules:
   }
 - In normal NCERT_Books mode, the context has already been sliced to the selected class, subject, chapter, and topic. Never use the whole book/PDF, neighboring chapters, previous chapters, next chapters, contents pages, transcripts, or unrelated unit material.
 - If the user selected one chapter, every question must come only from that chapter. If the user selected a topic inside that chapter, every question must come only from that topic's scoped context.
-- No outside/web/generic filler; do not copy source lines verbatim.
+- No outside/web/generic filler.
+${generationModeRules}
 - Required fields on every item: text, correctAnswer, explanation, topic, difficulty, bloomLevel, reasoningSteps, difficultyConfidence, cognitiveComplexity{conceptIntegration,abstractionLevel,inferenceLevel,ambiguityLevel,cognitiveLoad}.
 - Topic must exactly match one allowed topic.
 - Subject must match the active subject in SUBJECT_WORKFLOW and the coverage focus.
@@ -819,7 +821,7 @@ If uploaded PDF or extracted NCERT text is present, use that local context inste
 If no full textbook/PDF text is present, generate NCERT-style questions from the selected chapter and allowed topics only.
 Never use unselected chapters from the same NCERT book or PDF.
 Use familiar NCERT exercise patterns such as define, give reasons, differentiate, explain, examples, in-text concept checks, and back-exercise style.
-Maintain NCERT phrasing style and textbook conceptual flow without copying exact source text.
+Follow CONFIG_JSON.generation_mode: source_exact may preserve selected exercise wording; fresh mode must create new wording from the concept.
 Return JSON: [{ "text","correctAnswer","marks":1|2|3,"topic" }]`,
   };
 
@@ -908,7 +910,7 @@ Rules:
 - Use ONLY the selected NCERT_Books TXT chunks above in normal NCERT mode.
 - In normal NCERT mode, CONFIG_JSON.source_kind must be NCERT_BOOKS_TXT and the paper must stay source-grounded.
 - Do not use the whole PDF/book, neighboring chapters, previous/next chapters, contents pages, transcripts, or outside/web knowledge.
-- Do not copy source lines verbatim as question text; read the source and create fresh exam questions from its meaning.
+${buildGenerationModePromptRules(config)}
 - Every returned question must include type, text, correctAnswer, explanation, topic, difficulty, bloomLevel, marks, reasoningSteps, difficultyConfidence, noveltyAngle, sourceChunkFocus, answerPath, cognitiveComplexity{conceptIntegration,abstractionLevel,inferenceLevel,ambiguityLevel,cognitiveLoad}.
 - The type/marks must exactly match CONFIG_JSON.sections, and section candidate_count must be satisfied whenever possible.
 - If CONFIG_JSON.integration_prompt is non-empty, apply it as teacher guidance for style, examples, local context, and emphasis only when it does not conflict with source scope, counts, marks, format, difficulty, or validation rules.
@@ -936,7 +938,8 @@ Never include these in any student-visible field:
 - instructions like "Use evidence from the selected source" unless this is a printed SOURCE_BASED passage question
 - chapter/meta framing such as "selected NCERT chapter", "the chapter explains", "according to the chapter", "in the chapter", "from the chapter", "ideas from the chapter", "idea described in the chapter", "chapter idea", "chapter concept", "chapter property", "chapter activity", "chapter evidence", "question focus", "concept focus", or "explain the chapter idea"
 
-Use the supplied source only to understand the concept. Convert it into natural exam questions.
+When CONFIG_JSON.generation_mode is "fresh", use the supplied source only to understand the concept and convert it into natural exam questions.
+When CONFIG_JSON.generation_mode is "source_exact", exact wording is allowed only for real selected TXT/PDF exercise or question prompts. Do not copy explanatory prose as fake question text.
 Ask the concept directly. Do not make the chapter title or the fact that a chapter exists part of the question unless the question is explicitly about a printed passage title.
 
 For MCQ:
@@ -959,6 +962,23 @@ For MATCH_FOLLOWING:
 
 Before returning JSON, silently rewrite any question that sounds like an AI prompt, source-audit task, or chapter-metadata task. The final paper must read like a teacher wrote it.
 `;
+}
+
+function buildGenerationModePromptRules(config: PaperConfig) {
+  if ((config.generationMode ?? "fresh") === "source_exact") {
+    return `GENERATION MODE: NCERT/PDF SOURCE
+- CONFIG_JSON.generation_mode is "source_exact".
+- Use only selected TXT/PDF/source chunks. Never use unselected chapters, neighboring pages, or outside knowledge.
+- Preserve exact wording when the selected source contains real exercise/question prompts that match the requested question type.
+- Do not copy explanatory prose, headings, examples, answers, captions, or source metadata as fake question text.
+- If exact source question wording is unavailable for the requested type/count, create a source-faithful teacher-written question from the selected source only.
+- Still obey selected question types, counts, marks, difficulty, Bloom distribution, answer structure, and validation rules.`;
+  }
+
+  return `GENERATION MODE: FRESH QUESTIONS
+- CONFIG_JSON.generation_mode is "fresh".
+- Create new teacher-written questions from selected concepts and selected source meaning.
+- Do not copy source lines verbatim as final question text.`;
 }
 
 function buildRepairFeedbackBlock(repairFeedback?: GenerationRepairFeedback) {

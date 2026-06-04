@@ -174,7 +174,10 @@ export const questionTypeMeta: {
 
 export const selectableQuestionTypeMeta = [
   ...questionTypeMeta.filter(
-    (item) => item.type !== "DIAGRAM" && item.type !== "MATCH_FOLLOWING",
+    (item) =>
+      item.type !== "DIAGRAM" &&
+      item.type !== "MATCH_FOLLOWING" &&
+      item.type !== "NCERT_FORMAT",
   ),
   questionTypeMeta.find((item) => item.type === "MATCH_FOLLOWING")!,
 ];
@@ -304,7 +307,6 @@ export const presetQuestionTypes: Record<string, QuestionType[]> = {
   "Objective Mix": ["MCQ", "ASSERTION_REASON", "TRUE_FALSE"],
   Subjective: ["VERY_SHORT", "SHORT", "LONG", "HOTS"],
   "Full Mix": selectableQuestionTypeMeta.map((item) => item.type),
-  "NCERT Books/PDF": ["NCERT_FORMAT"],
 };
 
 export const sectionDotColors: Record<string, string> = {

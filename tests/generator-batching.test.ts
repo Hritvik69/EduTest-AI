@@ -79,6 +79,28 @@ describe("generateQuestionsForSection batching", () => {
     });
   });
 
+  it("places source exact generation mode into section prompts", async () => {
+    mocks.generateJSON.mockResolvedValueOnce({ questions: [mcq(6)] });
+    const { generateQuestionsForSection } = await import("@/lib/generator");
+
+    await generateQuestionsForSection(
+      { ...section, count: 1, totalMarks: 1 },
+      "[Source: ncert_txt] [Topic: Acids] Q. Why do acids change blue litmus red?",
+      { ...config, generationMode: "source_exact" },
+      { availableTopics: ["Acids"] },
+    );
+
+    const prompt = String(mocks.generateJSON.mock.calls[0][0]);
+    const promptConfig = configFromPrompt(prompt);
+
+    expect(promptConfig).toMatchObject({
+      generation_mode: "source_exact",
+      generation_mode_label: "NCERT/PDF Source",
+    });
+    expect(prompt).toContain("GENERATION MODE: NCERT/PDF SOURCE");
+    expect(prompt).toContain("Preserve exact wording");
+  });
+
   it("drops duplicate MCQs and requests replacements before validation", async () => {
     mocks.generateJSON
       .mockResolvedValueOnce({
@@ -593,6 +615,7 @@ describe("generateQuestionsForSection batching", () => {
       chapters: { Science: [1] },
       topics: ["Acids"],
       total_questions: 2,
+      generation_mode: "fresh",
     });
     expect(prompt).toContain("Selected source text chunks:");
     expect(prompt).toContain("Litmus changes colour in acidic solutions");

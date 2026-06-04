@@ -23,6 +23,11 @@ export function GenerationManifestSummary({
   const warnings = manifest.warnings.slice(0, compact ? 2 : 4);
   const usage = manifest.ai.usageSummary;
   const contract = manifest.ai.promptContract;
+  const promptMode = contract
+    ? contract.paper.generationMode === "source_exact"
+      ? "NCERT/PDF Source"
+      : "Fresh Questions"
+    : null;
 
   return (
     <Card className="print:hidden p-4">
@@ -37,6 +42,7 @@ export function GenerationManifestSummary({
             {manifest.source.pdfFocusPrompt
               ? ` with focus: "${manifest.source.pdfFocusPrompt}"`
               : ""}
+            {promptMode ? `; mode: ${promptMode}` : ""}
           </p>
         </div>
         <Badge className="border-blue-300/25 bg-blue-500/10 text-blue-100">

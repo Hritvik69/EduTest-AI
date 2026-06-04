@@ -555,6 +555,10 @@ export function GenerationOverlay({
           {generationContract ? (
             <div className="mt-3 rounded-lg border border-white/10 bg-slate-950/45 px-3 py-2 text-xs leading-5 text-slate-300">
               Contract {generationContract.hash} |{" "}
+              {generationContract.paper.generationMode === "source_exact"
+                ? "NCERT/PDF Source"
+                : "Fresh Questions"}{" "}
+              |{" "}
               {generationContract.apiEstimate.plannedCalls} planned AI call
               {generationContract.apiEstimate.plannedCalls === 1 ? "" : "s"} |{" "}
               {generationContract.apiEstimate.riskLevel} API risk
@@ -840,10 +844,6 @@ function isRecoverableGenerationError(error: unknown) {
   return getErrorCode(error) === "GENERATION_CONTINUE_AVAILABLE";
 }
 
-function isSourceTextShortageError(
-  error: { message?: string; code?: string | number } | unknown,
-) {
-  if (!error || typeof error !== "object") return false;
 function canAutoContinueGenerationError(error: unknown) {
   if (!isRecoverableGenerationError(error)) return false;
   const code = getErrorCode(error);
@@ -854,6 +854,10 @@ function canAutoContinueGenerationError(error: unknown) {
   return code === "GENERATION_CONTINUE_AVAILABLE" || (progress.readyQuestionCount ?? 0) > 0;
 }
 
+function isSourceTextShortageError(
+  error: { message?: string; code?: string | number } | unknown,
+) {
+  if (!error || typeof error !== "object") return false;
   const code = "code" in error ? (error as { code?: unknown }).code : undefined;
   const message = "message" in error ? (error as { message?: unknown }).message : undefined;
   return (
@@ -901,10 +905,6 @@ function continuationMessage(
   return `Continuing from ${countLabel} valid questions in paper #${paperId}.${missingLabel} Auto-continue ${attempt}/${maxAutoContinueAttempts()}...`;
 }
 
-function maxAutoContinueAttempts() {
-  return 6;
-}
-
 function questionProgressLabel(progress: {
   readyQuestionCount?: number;
   targetQuestionCount?: number;
@@ -913,6 +913,10 @@ function questionProgressLabel(progress: {
   return progress.targetQuestionCount
     ? `${progress.readyQuestionCount}/${progress.targetQuestionCount} valid questions saved`
     : `${progress.readyQuestionCount} valid questions saved`;
+}
+
+function maxAutoContinueAttempts() {
+  return 6;
 }
 
 function autoContinueDelayMs() {

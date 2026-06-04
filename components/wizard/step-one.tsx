@@ -390,7 +390,10 @@ export function StepOne() {
                             onChange={() => toggleChapter(chapter)}
                             onClick={(event) => event.stopPropagation()}
                           />
-                          <span className="text-sm font-semibold text-slate-100">
+                          <span
+                            className="min-w-0 text-sm font-semibold leading-5 text-slate-100"
+                            title={chapter.name}
+                          >
                             Chapter {index + 1}: {chapter.name}
                           </span>
                         </label>
@@ -410,7 +413,9 @@ export function StepOne() {
                               disabled={!selected}
                               onChange={() => toggleTopic(topic.id)}
                             />
-                            <span>{topic.name}</span>
+                            <span className="min-w-0 break-words" title={topic.name}>
+                              {topic.name}
+                            </span>
                           </label>
                         ))}
                       </div>

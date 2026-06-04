@@ -6692,7 +6692,7 @@ const curriculumChapterOverrides: Partial<Record<number, Partial<Record<string, 
 };
 
 const subjectIcons: Record<string, string> = {
-  Mathematics: "∑",
+  Mathematics: "🧮",
   Science: "🔬",
   Physics: "⚛️",
   Chemistry: "🧪",
@@ -6706,6 +6706,28 @@ const subjectIcons: Record<string, string> = {
   "Basic Computer": "💻",
   "Advanced Computer": "🖥️",
 };
+
+const displaySubjectIcons: Record<string, string> = {
+  Mathematics: "🧮",
+  Science: "🔬",
+  Physics: "⚛️",
+  Chemistry: "🧪",
+  Biology: "🧬",
+  History: "📜",
+  Geography: "🌍",
+  Civics: "🏛️",
+  Economics: "📈",
+  English: "📖",
+  Hindi: "✍️",
+  "Basic Computer": "💻",
+  "Advanced Computer": "🖥️",
+  "Computer IT": "💻",
+  "Social Science": "🌐",
+};
+
+export function subjectIconForName(name: string) {
+  return displaySubjectIcons[name] ?? subjectIcons[name] ?? shortSubjectIcon(name);
+}
 
 export function getCurriculumSubjects() {
   const classesBySubject = new Map<string, Set<number>>();
@@ -6729,7 +6751,7 @@ export function getCurriculumSubjects() {
   return Array.from(classesBySubject.entries())
     .map(([name, subjectClasses]) => ({
       name,
-      icon: subjectIcons[name] ?? shortSubjectIcon(name),
+      icon: subjectIconForName(name),
       classes: visibleSubjectClasses(name, subjectClasses),
     }))
     .filter((subject) => subject.classes.length > 0)
@@ -6737,7 +6759,7 @@ export function getCurriculumSubjects() {
 }
 
 function visibleSubjectClasses(subject: string, classes: Set<number>) {
-  const hiddenIntegratedScienceClasses = new Set([9, 10]);
+  const hiddenIntegratedScienceClasses = new Set([9, 10, 11, 12]);
 
   return Array.from(classes)
     .filter(

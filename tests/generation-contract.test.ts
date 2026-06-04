@@ -20,6 +20,7 @@ const baseConfig: PaperConfig = {
   examType: "Practice",
   difficulty: "MEDIUM",
   aiProvider: "AUTO",
+  generationMode: "fresh",
   integrationPrompt:
     "Use simple classroom language and prefer practical examples where suitable.",
   questionTypes: ["MCQ", "SHORT"],
@@ -52,6 +53,7 @@ describe("GenerationContract", () => {
       totalQuestions: 18,
       totalMarks: 30,
       difficulty: "MEDIUM",
+      generationMode: "fresh",
       aiProvider: "AUTO",
     });
     expect(contract.sections.map((section) => [section.type, section.count])).toEqual([
@@ -64,6 +66,8 @@ describe("GenerationContract", () => {
       source_mode: "curriculum",
       total_questions: 18,
       difficulty: "MEDIUM",
+      generation_mode: "fresh",
+      generation_mode_label: "Fresh Questions",
       integration_prompt:
         "Use simple classroom language and prefer practical examples where suitable.",
       question_type_counts: { MCQ: 12, SHORT: 6 },
@@ -124,6 +128,9 @@ describe("GenerationContract", () => {
       }),
     ).not.toBe(baseline);
     expect(hashFor({ ...baseConfig, aiProvider: "GEMINI" })).not.toBe(baseline);
+    expect(hashFor({ ...baseConfig, generationMode: "source_exact" })).not.toBe(
+      baseline,
+    );
     expect(
       hashFor({
         ...baseConfig,

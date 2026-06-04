@@ -514,6 +514,10 @@ function PromptImpactPanel({
           }`;
   const hiddenChapters = Math.max(0, selectedChapters.length - 3);
   const integrationPrompt = contract.paper.integrationPrompt;
+  const generationModeLabel =
+    contract.paper.generationMode === "source_exact"
+      ? "NCERT/PDF Source"
+      : "Fresh Questions";
 
   return (
     <div className="rounded-lg border border-blue-300/20 bg-blue-500/[0.055] p-4">
@@ -541,6 +545,7 @@ function PromptImpactPanel({
             `Class ${contract.source.classNum} | ${contract.source.subjects.join(", ")}`,
             scopeLabel + (hiddenChapters ? ` (+ ${hiddenChapters} more)` : ""),
             `${contract.paper.totalQuestions} questions | ${contract.paper.totalMarks} marks | ${contract.paper.durationMin} min`,
+            `Mode: ${generationModeLabel}`,
             `${difficultyLabels[contract.paper.difficulty]} difficulty | ${aiProviderLabel}`,
           ]}
         />

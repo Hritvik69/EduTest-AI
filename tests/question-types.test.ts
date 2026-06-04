@@ -36,15 +36,19 @@ describe("question type setup", () => {
       "ASSERTION_REASON",
       "TRUE_FALSE",
     ]);
-    expect(presetQuestionTypes["NCERT Books/PDF"]).toEqual(["NCERT_FORMAT"]);
+    expect(presetQuestionTypes["NCERT Books/PDF"]).toBeUndefined();
     expect(presetQuestionTypes["MCQ Focus"]).toBeUndefined();
   });
 
-  it("keeps diagram questions out of the selectable wizard list", () => {
+  it("keeps diagram and legacy source-mode questions out of the selectable wizard list", () => {
     expect(selectableQuestionTypeMeta.map((item) => item.type)).not.toContain(
       "DIAGRAM",
     );
+    expect(selectableQuestionTypeMeta.map((item) => item.type)).not.toContain(
+      "NCERT_FORMAT",
+    );
     expect(presetQuestionTypes["Full Mix"]).not.toContain("DIAGRAM");
+    expect(presetQuestionTypes["Full Mix"]).not.toContain("NCERT_FORMAT");
     expect(selectableQuestionTypeMeta[selectableQuestionTypeMeta.length - 1]?.type).toBe(
       "MATCH_FOLLOWING",
     );

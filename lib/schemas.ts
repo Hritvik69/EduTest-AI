@@ -42,6 +42,7 @@ export const aiProviderValues = [
   "OPENAI",
 ] as const;
 export const sourceModeValues = ["curriculum", "pdf_upload"] as const;
+export const questionGenerationModeValues = ["fresh", "source_exact"] as const;
 export const bloomLevelValues = [
   "REMEMBER",
   "UNDERSTAND",
@@ -55,6 +56,7 @@ export const questionTypeSchema = z.enum(questionTypeValues);
 export const difficultySchema = z.enum(difficultyValues);
 export const aiProviderSchema = z.enum(aiProviderValues);
 export const sourceModeSchema = z.enum(sourceModeValues);
+export const questionGenerationModeSchema = z.enum(questionGenerationModeValues);
 export const bloomLevelSchema = z.enum(bloomLevelValues);
 
 const boundedText = (max: number) =>
@@ -146,6 +148,7 @@ export const paperConfigSchema = z
     examType: boundedText(80),
     difficulty: difficultySchema,
     aiProvider: aiProviderSchema.default("AUTO"),
+    generationMode: questionGenerationModeSchema.default("fresh"),
     integrationPrompt: z.string().trim().max(1200).optional(),
     questionTypes: z.array(questionTypeSchema).min(1).max(questionTypeValues.length),
     typeDistribution: typeDistributionSchema,
