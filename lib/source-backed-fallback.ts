@@ -146,7 +146,7 @@ function createSourceBackedQuestion(
 
   const question: GeneratedQuestion = {
     ...base,
-    text: base.text ?? `Explain ${concept.topic} from the selected chapter.`,
+    text: base.text ?? `Explain ${concept.topic} clearly.`,
     type,
     marks: section.marksPerQuestion,
     correctAnswer: base.correctAnswer ?? concept.summary,
@@ -172,7 +172,7 @@ function createSourceBackedQuestion(
     answerPath,
     explanation:
       base.explanation ||
-      `The answer follows from the chapter idea: ${visibleSummary}`,
+      `The answer follows from the concept: ${visibleSummary}`,
   };
 
   if (concept.topicId !== undefined) question.topicId = concept.topicId;
@@ -212,7 +212,6 @@ function baseQuestion(
   const summary = studentVisibleSummary(concept.summary);
   const excerpt = studentVisibleSummary(concept.excerpt, 560);
   const options = conceptOptions(concept, index, variant);
-  const chapter = studentVisibleChapter(concept.chapter);
   const idea = ideaPhrase(summary);
   const skill = visibleSkillFor(variant);
   const keyPoint = visibleKeyPoint(skill);
@@ -220,35 +219,35 @@ function baseQuestion(
   switch (type) {
     case "MCQ":
       return {
-        text: `${mcqLeadForSkill(skill)} ${idea} in ${chapter}?`,
+        text: mcqQuestionText(skill, summary),
         options,
         correctAnswer: "B",
       };
     case "ASSERTION_REASON":
       return {
-        text: `Assertion (A): The idea described in ${chapter} needs a clear conceptual explanation.\nReason (R): The chapter shows that ${toStatement(summary)}`,
-        assertion: `The idea described in ${chapter} needs a clear conceptual explanation.`,
-        reason: `The chapter shows that ${toStatement(summary)}`,
+        text: `Assertion (A): The concept needs a clear scientific explanation.\nReason (R): ${sentenceCase(toStatement(summary))}`,
+        assertion: `The concept needs a clear scientific explanation.`,
+        reason: sentenceCase(toStatement(summary)),
         correctAnswer: "A",
       };
     case "TRUE_FALSE":
       return {
-        text: `In ${chapter}, ${toStatement(summary)}`,
+        text: sentenceCase(toStatement(summary)),
         correctAnswer: "True",
       };
     case "ONE_WORD":
       return {
-        text: `Which key term best names this chapter idea: ${summary}`,
+        text: `Which key term best fits this statement: ${summary}`,
         correctAnswer: oneWordAnswer(summary),
       };
     case "FILL_BLANK":
       return {
-        text: `In ${chapter}, the idea "${stripFinalPunctuation(summary)}" is connected with ________.`,
+        text: `The statement "${stripFinalPunctuation(summary)}" is mainly connected with ________.`,
         correctAnswer: oneWordAnswer(summary),
       };
     case "VERY_SHORT":
       return {
-        text: `State one ${skill} point shown by ${idea} in ${chapter}.`,
+        text: `State one ${skill} point shown by ${idea}.`,
         correctAnswer: summary,
         keyPoints: [summary],
       };
@@ -256,13 +255,13 @@ function baseQuestion(
       return matchQuestion(concept, variant);
     case "SHORT":
       return {
-        text: `Explain ${idea} in ${chapter}, focusing on ${skill}.`,
+        text: `Explain ${idea}, focusing on ${skill}.`,
         correctAnswer: `${summary} ${keyPoint}`,
-        keyPoints: [summary, keyPoint, `Connect the answer to ${chapter}.`],
+        keyPoints: [summary, keyPoint, "Connect the reason to the concept."],
       };
     case "NUMERICAL":
       return {
-        text: `A learner records ${variant.firstCount} observations about ${chapter} and adds ${variant.secondCount} more related observations. How many observations are recorded in total?`,
+        text: `A learner records ${variant.firstCount} observations about this concept and adds ${variant.secondCount} more related observations. How many observations are recorded in total?`,
         correctAnswer: `${variant.firstCount + variant.secondCount} points`,
         keyPoints: [
           "Add the two counts.",
@@ -277,44 +276,44 @@ function baseQuestion(
     case "PARAGRAPH":
       return {
         scenario: `Read the passage below.\n${excerpt}`,
-        text: `Based on the passage, explain ${idea} in ${chapter}.`,
+        text: `Based on the passage, explain ${idea}.`,
         correctAnswer: `${summary} The answer should refer to the passage and explain the idea in the student's own words.`,
         keyPoints: [summary, "Refer to the passage.", keyPoint],
       };
     case "HOTS":
       return {
-        text: `What could be misunderstood about ${idea} in ${chapter}? Justify your answer.`,
+        text: `What could be misunderstood about ${idea}? Justify your answer.`,
         correctAnswer: `The idea must be understood carefully because ${toStatement(summary)} ${keyPoint}`,
         keyPoints: [summary, "Explain the effect.", keyPoint],
       };
     case "COMPETENCY":
       return {
-        text: `Use a practical example to apply ${idea} from ${chapter} and explain your reasoning.`,
-        correctAnswer: `A correct answer applies this idea: ${summary} The example should stay connected to the chapter concept and include a clear reason.`,
+        text: `Use a practical example to apply ${idea} and explain your reasoning.`,
+        correctAnswer: `A correct answer applies this idea: ${summary} The example should stay connected to the concept and include a clear reason.`,
         keyPoints: [summary, keyPoint, "Explain the reason."],
       };
     case "DIAGRAM":
       return {
-        text: `Draw a labelled concept map for ${idea} in ${chapter}.`,
-        diagramDescription: `A concept map with the chapter idea at the centre and linked ${skill} points around it.`,
+        text: `Draw a labelled concept map for ${idea}.`,
+        diagramDescription: `A concept map with the main concept at the centre and linked ${skill} points around it.`,
         correctAnswer: `The diagram should include this key idea: ${summary}`,
-        keyPoints: [chapter, summary, keyPoint],
+        keyPoints: [summary, keyPoint, "Use clear labels."],
       };
     case "PRACTICAL":
       return {
-        text: `Design a simple activity or observation to show ${idea} in ${chapter}.`,
-        correctAnswer: `Use a simple activity or observation related to the chapter idea. The conclusion should show: ${summary}`,
+        text: `Design a simple activity or observation to show ${idea}.`,
+        correctAnswer: `Use a simple activity or observation related to the concept. The final observation should show: ${summary}`,
         keyPoints: ["Aim", "Procedure", keyPoint, "Conclusion"],
       };
     case "LONG":
       return {
-        text: `Write a detailed answer explaining ${idea} in ${chapter}.`,
-        correctAnswer: `Introduction: This is a key chapter idea. Explanation: ${summary} Add supporting points, connect them logically, and conclude with why this idea matters.`,
+        text: `Write a detailed answer explaining ${idea}.`,
+        correctAnswer: `Introduction: State the main concept. Explanation: ${summary} Add supporting points, connect them logically, and conclude with why this idea matters.`,
         keyPoints: ["Introduce the idea.", summary, keyPoint, "Conclude clearly."],
       };
     case "NCERT_FORMAT":
       return {
-        text: `Give an NCERT-style answer explaining ${idea} in ${chapter}.`,
+        text: `Give an NCERT-style answer explaining ${idea}.`,
         correctAnswer: summary,
         keyPoints: [summary, keyPoint],
       };
@@ -327,13 +326,12 @@ function sourceBasedQuestion(
 ): Partial<GeneratedQuestion> {
   const summary = studentVisibleSummary(concept.summary);
   const excerpt = studentVisibleSummary(concept.excerpt, 560);
-  const chapter = studentVisibleChapter(concept.chapter);
   const skill = visibleSkillFor(variant);
   const subQuestions: SubQuestion[] = [
     shortSubQuestion(`What is the main ${skill} idea in the passage?`, summary, 1),
-    shortSubQuestion(`How is the passage connected to ${chapter}?`, summary, 1),
+    shortSubQuestion(`What concept does the passage explain?`, summary, 1),
     shortSubQuestion(`Give one supporting point from the passage.`, excerpt, 1),
-    shortSubQuestion(`Why is this idea important in the chapter?`, summary, 1),
+    shortSubQuestion(`Why is this idea important?`, summary, 1),
   ];
 
   return {
@@ -351,7 +349,6 @@ function caseBasedQuestion(
   variant: VariantRecipe,
 ): Partial<GeneratedQuestion> {
   const summary = studentVisibleSummary(concept.summary);
-  const chapter = studentVisibleChapter(concept.chapter);
   const skill = visibleSkillFor(variant);
   const options = conceptOptions(concept, concept.atomNumericId + 1, variant);
   const subQuestions: SubQuestion[] = [
@@ -371,7 +368,7 @@ function caseBasedQuestion(
   ];
 
   return {
-    scenario: `A class is discussing ${chapter}. They consider this idea: ${summary} The learner has to explain what follows from it.`,
+    scenario: `A class considers this idea: ${summary} The learner has to explain what follows from it.`,
     text: `Read the case and answer the questions.`,
     subQuestions,
     correctAnswer: `(1) B; (2) ${summary}`,
@@ -383,17 +380,10 @@ function matchQuestion(
   variant: VariantRecipe,
 ): Partial<GeneratedQuestion> {
   const summary = studentVisibleSummary(concept.summary, 140);
-  const chapter = studentVisibleChapter(concept.chapter);
-  const skill = visibleSkillFor(variant);
-  const pairs = [
-    { left: "Chapter idea", right: summary },
-    { left: "Chapter", right: chapter },
-    { left: "Question focus", right: skill },
-    { left: "Conclusion", right: visibleKeyPoint(skill) },
-  ];
+  const pairs = subjectMatchPairs(concept, summary, visibleSkillFor(variant));
 
   return {
-    text: `Match Column A with Column B for ideas from ${chapter}.`,
+    text: `Match Column A with Column B.`,
     matchPairs: pairs,
     correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
   };
@@ -414,10 +404,7 @@ function conceptOptions(
   variant: VariantRecipe,
 ): MCQOption[] {
   const distractors = misconceptionOptions(concept, index);
-  const correct = trimToSentence(
-    `${correctOptionLeadForSkill(visibleSkillFor(variant))} ${studentVisibleSummary(concept.summary)}`,
-    160,
-  );
+  const correct = optionStatement(studentVisibleSummary(concept.summary), variant);
 
   return [
     { id: "A", text: distractors[index % distractors.length], isCorrect: false },
@@ -430,37 +417,176 @@ function conceptOptions(
 function studentVisibleSummary(value: string, maxLength = 240) {
   const cleaned = removeDanglingTail(
     normalizeSourceFragment(value)
+      .replace(/\b(?:the\s+)?selected\s+NCERT\s+chapter\s+(?:shows|explains|teaches|highlights|states)\s+(?:that\s+|how\s+)?/gi, "")
+      .replace(/\b(?:the\s+)?selected\s+chapter\s+(?:shows|explains|teaches|highlights|states)\s+(?:that\s+|how\s+)?/gi, "")
+      .replace(/\b(?:the\s+)?chapter\s+(?:shows|explains|teaches|highlights|states)\s+(?:that\s+|how\s+)?/gi, "")
+      .replace(/\bselected\s+NCERT\s+chapter\b/gi, "NCERT passage")
+      .replace(/\bselected\s+chapter\s+passage\b/gi, "passage")
+      .replace(/\bselected\s+chapter\b/gi, "concept")
+      .replace(/\b(?:the\s+)?chapter\s+(?:links|connects)\s+/gi, "the text connects ")
+      .replace(/\baccording\s+to\s+the\s+chapter\b/gi, "")
+      .replace(/\b(?:in|from)\s+the\s+chapter\b/gi, "")
+      .replace(/\bidea\s+described\s+in\s+the\s+chapter\b/gi, "concept")
+      .replace(/\bchapter\s+idea\b/gi, "concept")
+      .replace(/\bchapter\s+evidence\b/gi, "supporting detail")
+      .replace(/\bthis\s+exact\s+chapter\b/gi, "this concept")
+      .replace(/\bsame\s+chapter\b/gi, "same topic")
+      .replace(/\bquestion\s+focus\b/gi, "focus")
+      .replace(/\bconcept\s+focus\b/gi, "focus")
+      .replace(/\b\d+\s+Exploration\s*[|\\\/]\s*Grade\s+\d+\b/gi, "")
+      .replace(/\bExploration\s*[|\\\/]\s*Grade\s+\d+\b/gi, "")
+      .replace(/\bGrade\s+\d+\b/gi, "")
+      .replace(/[|\\]+/g, " ")
+      .replace(/\bsurface\s+on\s+it\s+moves\b/gi, "surface on which it moves")
+      .replace(/\bmore\s+slow\b/gi, "more slowly")
       .replace(/\bfig(?:ure)?\.?\s*\d+(?:\.\d+)*\s*[:.-]\s*/gi, "")
       .replace(/\b\d+(?:\.\d+)+\s*[:.-]\s*/g, "")
-      .replace(/\bexact\s+source\s+detail\b/gi, "chapter idea")
-      .replace(/\bsource\s+detail\b/gi, "chapter idea")
-      .replace(/\bsource\s+text\b/gi, "chapter text")
-      .replace(/\bselected[-\s]+source\b/gi, "chapter")
-      .replace(/\bdetail\s+lens\b/gi, "concept focus")
+      .replace(/\bexact\s+source\s+detail\b/gi, "concept")
+      .replace(/\bsource\s+detail\b/gi, "concept")
+      .replace(/\bsource\s+text\b/gi, "passage")
+      .replace(/\bselected[-\s]+source\b/gi, "concept")
+      .replace(/\bdetail\s+lens\b/gi, "focus")
       .replace(/\bnoveltyAngle\b/gi, "question angle")
-      .replace(/\bsourceChunkFocus\b/gi, "question focus")
+      .replace(/\bsourceChunkFocus\b/gi, "focus")
       .replace(/\banswerPath\b/gi, "reasoning path")
-      .replace(/\b[a-z]+-c[a-z0-9-]*-t[a-z0-9-]*-(?:txt|pdf)-a\d+-[a-z0-9]+\b/gi, "chapter idea")
-      .replace(/\b(?:txt|pdf)-a\d+\b/gi, "chapter idea"),
+      .replace(/\b[a-z]+-c[a-z0-9-]*-t[a-z0-9-]*-(?:txt|pdf)-a\d+-[a-z0-9]+\b/gi, "concept")
+      .replace(/\b(?:txt|pdf)-a\d+\b/gi, "concept"),
   );
 
-  return trimToSentence(cleaned || "the chapter idea", maxLength);
-}
-
-function studentVisibleChapter(value: string) {
-  return studentVisibleSummary(value || "the chapter", 90);
+  return trimToSentence(cleaned || "the concept", maxLength);
 }
 
 function ideaPhrase(summary: string) {
   const idea = stripFinalPunctuation(summary);
-  if (!idea) return "the chapter idea";
-  if (idea.length > 130) return "the idea described in the chapter";
+  if (!idea) return "the concept";
+  if (idea.length > 130) return lowerFirst(stripFinalPunctuation(trimToSentence(idea, 120)));
   return `the idea that ${lowerFirst(idea)}`;
+}
+
+function mcqQuestionText(skill: string, summary: string) {
+  const motionQuestion = motionMcqQuestion(summary);
+  if (motionQuestion) return motionQuestion;
+  return `${mcqLeadForSkill(skill)} ${ideaPhrase(summary)}?`;
+}
+
+function motionMcqQuestion(summary: string) {
+  const text = summary.toLowerCase();
+  if (!/(friction|force|motion|velocity|surface|coins?|thought experiment)/i.test(text)) {
+    return "";
+  }
+
+  if (text.includes("thought experiment")) {
+    return "Why is a thought experiment useful when real experimental conditions are difficult to recreate?";
+  }
+
+  if (
+    text.includes("stack of coins") &&
+    (text.includes("smaller") || text.includes("larger distance") || text.includes("travels"))
+  ) {
+    return "Which statement correctly explains why the stack of coins travels farther when friction is smaller?";
+  }
+
+  if (text.includes("surface") && /smooth|rough|friction/.test(text)) {
+    return "Which statement correctly explains how surface smoothness affects friction?";
+  }
+
+  if (text.includes("velocity") && text.includes("decrease")) {
+    return "Why does the velocity of the stack of coins decrease as it moves?";
+  }
+
+  if (text.includes("friction")) {
+    return "Which statement correctly explains how friction affects motion?";
+  }
+
+  return "";
+}
+
+function optionStatement(summary: string, variant: VariantRecipe) {
+  const base = stripFinalPunctuation(trimToSentence(sentenceCase(toStatement(summary)), 130));
+  return trimToSentence(`${base}. ${optionReasonForVariant(variant)}`, 180);
+}
+
+function optionReasonForVariant(variant: VariantRecipe) {
+  const id = variant.id;
+  if (id.includes("cause") || id.includes("consequence")) {
+    return "This links the cause with the effect.";
+  }
+  if (id.includes("comparison") || id.includes("contrast")) {
+    return "This distinguishes it from a similar idea.";
+  }
+  if (id.includes("application") || id.includes("example")) {
+    return "This applies the concept correctly.";
+  }
+  if (id.includes("inference") || id.includes("conclusion") || id.includes("reasoning")) {
+    return "This follows logically from the clue.";
+  }
+  if (id.includes("misconception")) {
+    return "This avoids the common mistaken reading.";
+  }
+  if (id.includes("definition")) {
+    return "This states the meaning clearly.";
+  }
+  if (id.includes("process")) {
+    return "This keeps the steps in order.";
+  }
+  if (id.includes("exception") || id.includes("boundary")) {
+    return "This states the condition clearly.";
+  }
+  if (id.includes("diagram")) {
+    return "This identifies the relationship to show.";
+  }
+  if (id.includes("case")) {
+    return "This is the best judgement for the situation.";
+  }
+  if (id.includes("source-extract")) {
+    return "This fits the passage meaning.";
+  }
+  return "This gives a supporting reason.";
+}
+
+function subjectMatchPairs(
+  concept: NormalizedConcept,
+  summary: string,
+  skill: string,
+) {
+  if (isMotionConcept(concept, summary)) {
+    return [
+      { left: "Smooth surface", right: "Less friction" },
+      { left: "Rough surface", right: "More friction" },
+      { left: "Smaller frictional force", right: "Object travels farther" },
+      { left: "Thought experiment", right: "Used when real conditions are difficult to recreate" },
+    ];
+  }
+
+  const conceptTerm = sentenceCase(oneWordAnswer(summary));
+  return [
+    { left: conceptTerm, right: trimToSentence(summary, 110) },
+    { left: "Observation", right: "A visible clue used to explain the concept" },
+    { left: "Reason", right: visibleKeyPoint(skill) },
+    { left: "Application", right: "Use the idea in a relevant situation" },
+  ];
+}
+
+function isMotionConcept(concept: NormalizedConcept, summary: string) {
+  const subject = `${concept.subject ?? ""} ${concept.chapter} ${summary}`.toLowerCase();
+  return (
+    subject.includes("physics") ||
+    subject.includes("force") ||
+    subject.includes("motion") ||
+    subject.includes("friction") ||
+    subject.includes("surface") ||
+    subject.includes("coins")
+  );
 }
 
 function toStatement(summary: string) {
   const statement = stripFinalPunctuation(summary);
   return `${lowerFirst(statement)}.`;
+}
+
+function sentenceCase(value: string) {
+  const trimmed = value.trim();
+  return trimmed ? `${trimmed[0].toUpperCase()}${trimmed.slice(1)}` : trimmed;
 }
 
 function stripFinalPunctuation(value: string) {
@@ -522,7 +648,7 @@ function visibleKeyPoint(skill: string) {
     case "visual representation":
       return "Represent the relationship with clear labels.";
     default:
-      return "Explain the chapter idea clearly.";
+      return "Explain the concept clearly.";
   }
 }
 
@@ -550,23 +676,6 @@ function mcqLeadForSkill(skill: string) {
       return "Which quantitative interpretation best explains";
     default:
       return "Which statement best explains";
-  }
-}
-
-function correctOptionLeadForSkill(skill: string) {
-  switch (skill) {
-    case "inference":
-      return "It follows that";
-    case "definition":
-      return "It means that";
-    case "application":
-      return "It can be applied because";
-    case "comparison":
-      return "The comparison is correct because";
-    case "cause and effect":
-      return "The cause-effect link is that";
-    default:
-      return "It shows that";
   }
 }
 
@@ -620,7 +729,7 @@ function misconceptionOptions(concept: NormalizedConcept, index: number) {
                 "The surrounding sentence gives no clue to meaning.",
               ]
             : [
-                "The idea can be answered by ignoring the chapter context.",
+                "The idea can be answered without using the given condition.",
                 "Only a memorised label is needed; no explanation is required.",
                 "The conclusion is correct even if it does not match the described idea.",
                 "The relationship between the ideas does not matter.",
@@ -1313,11 +1422,12 @@ function sourceBackedConcepts(concepts: ConceptData[]) {
 
 function trimToSentence(value: string, maxLength: number) {
   const normalized = value.replace(/\s+/g, " ").trim();
-  if (normalized.length <= maxLength) return normalized;
+  if (normalized.length <= maxLength) return removeDanglingTail(normalized);
 
-  const sliced = normalized.slice(0, maxLength).trim();
+  const rawSlice = normalized.slice(0, maxLength).trim();
+  const sliced = rawSlice.replace(/\s+\S*$/, "").trim() || rawSlice;
   const complete = removeDanglingTail(sliced.replace(/[,.!?;:]+$/, ""));
-  return `${complete || "chapter idea"}.`;
+  return `${complete || "concept"}.`;
 }
 
 function sourceAtomsForConcept(concept: ConceptData) {
@@ -1370,6 +1480,10 @@ function sourceAtomsForConcept(concept: ConceptData) {
       `${clauses[index]} ${clauses[index + 1]} ${clauses[index + 2]}`,
       `clause-window ${index + 1}`,
     );
+  }
+  const words = text.split(/\s+/).filter(Boolean);
+  for (let index = 0; index < Math.min(Math.max(0, words.length - 8), 48); index += 4) {
+    addAtom(words.slice(index, index + 12).join(" "), `phrase-window ${index + 1}`);
   }
   addAtom(text, "full-source");
 

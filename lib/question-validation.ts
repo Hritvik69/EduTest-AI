@@ -84,8 +84,10 @@ export function hasValidMCQAnswer(options: unknown, correctAnswer?: string) {
 }
 
 export function hasStudentVisibleQualityIssue(question: GeneratedQuestion) {
-  return studentVisibleStrings(question).some((value) =>
-    hasForbiddenStudentVisiblePattern(value),
+  return (
+    studentVisibleStrings(question).some((value) =>
+      hasForbiddenStudentVisiblePattern(value),
+    ) || hasMetadataMatchPair(question)
   );
 }
 
@@ -142,6 +144,18 @@ function isVisibleString(value: unknown): value is string {
 }
 
 const forbiddenStudentVisiblePatterns = [
+  /\baccording\s+to\s+the\s+chapter\b/i,
+  /\bselected\s+(?:ncert\s+)?chapter\b/i,
+  /\bthe\s+chapter\s+(?:shows|explains|links|connects|states|teaches|highlights)\b/i,
+  /\b(?:in|from)\s+the\s+chapter\b/i,
+  /\bideas?\s+from\b/i,
+  /\bidea\s+described\s+in\s+the\s+chapter\b/i,
+  /\bchapter\s+idea\b/i,
+  /\bchapter\s+(?:concept|property|activity|evidence)\b/i,
+  /\bselected\s+chapter\s+concept\b/i,
+  /\bquestion\s+focus\b/i,
+  /\bconcept\s+focus\b/i,
+  /\bexplain\s+the\s+chapter\s+idea\b/i,
   /\bsource\s+detail\b/i,
   /\bselected[-\s]+source\b/i,
   /\bexact\s+source\b/i,
@@ -159,6 +173,35 @@ const forbiddenStudentVisiblePatterns = [
   /\bevidence\s+detail\s+link\b/i,
   /\bgeneral\s+claim\s+with\s+no\b/i,
 ];
+
+function hasMetadataMatchPair(question: GeneratedQuestion) {
+  if (question.type !== "MATCH_FOLLOWING") return false;
+
+  return (question.matchPairs ?? []).some(
+    (pair) => isMetadataMatchItem(pair.left) || isMetadataMatchItem(pair.right),
+  );
+}
+
+function isMetadataMatchItem(value: string) {
+  const normalized = value.replace(/\s+/g, " ").trim().toLowerCase();
+  return metadataMatchItems.has(normalized);
+}
+
+const metadataMatchItems = new Set([
+  "chapter",
+  "chapter idea",
+  "chapter concept",
+  "chapter property",
+  "chapter activity",
+  "chapter evidence",
+  "question focus",
+  "concept focus",
+  "source evidence",
+  "source detail",
+  "evidence",
+  "conclusion",
+  "explain the chapter idea clearly",
+]);
 
 function hasDanglingQuestionFragment(value: string) {
   if (value.length < 20) return false;

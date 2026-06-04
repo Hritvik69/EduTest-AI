@@ -247,7 +247,7 @@ describe("validatePaper", () => {
 
   it("rejects near-duplicate scenarios even when question stems differ", () => {
     const sharedScenario =
-      "A student tests a solution with litmus and observes a clear colour change during the chapter activity.";
+      "A student tests a solution with litmus and observes a clear colour change during the indicator activity.";
     const result = validatePaperKeepingValidQuestions(
       [
         {

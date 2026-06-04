@@ -867,10 +867,10 @@ function caseBasedQuestion(index = 1): GeneratedQuestion {
     },
     {
       scenario:
-        "A learner compares two labelled solutions and uses a chapter property to classify one sample.",
+        "A learner compares two labelled solutions and uses an indicator property to classify one sample.",
       mcq: "Which observation best supports the classification of the sample?",
       short: "Explain how the property helps identify the sample.",
-      answer: "The sample is identified by applying the selected property from the chapter.",
+      answer: "The sample is identified by applying the indicator property correctly.",
     },
     {
       scenario:
@@ -924,7 +924,7 @@ function sourceBasedQuestion(): GeneratedQuestion {
     difficulty: "MEDIUM",
     marks: 4,
     scenario:
-      "A student adds a few drops of indicator to an acid and observes a clear colour change. The observation is recorded and discussed using the chapter concept.",
+      "A student adds a few drops of indicator to an acid and observes a clear colour change. The observation is recorded and discussed using the acid indicator concept.",
     subQuestions: Array.from({ length: 4 }, (_, index) => ({
       text: `What does passage point ${index + 1} show?`,
       type: "VERY_SHORT",

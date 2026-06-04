@@ -78,7 +78,7 @@ function paperFixture(): StoredPaper {
     questions: [
       {
         id: 1,
-        text: "Which option best explains the selected chapter concept?",
+        text: "Which option best explains the selected concept?",
         type: "MCQ",
         difficulty: "MEDIUM",
         marks: 1,

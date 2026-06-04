@@ -71,7 +71,7 @@ describe("question duplicate decisions", () => {
       options: uniqueOptions("evidence", "atom-1"),
     });
     const second = sourceBackedMcq({
-      text: "Which evidence choice explains the selected indicator activity from the chapter?",
+      text: "Which evidence choice explains the selected indicator activity?",
       noveltyAngle: "SOURCE_BACKED_COMPLETION:MCQ:evidence:atom-1:99",
       sourceChunkFocus:
         "Different words for atom-1: litmus changes colour in acidic solution.",

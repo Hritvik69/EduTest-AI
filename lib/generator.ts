@@ -939,8 +939,10 @@ Never include these in any student-visible field:
 - "detail lens", "noveltyAngle", "sourceChunkFocus", "answerPath"
 - metadata-like labels such as physics-c..., txt-a..., pdf-a...
 - instructions like "Use evidence from the selected source" unless this is a printed SOURCE_BASED passage question
+- chapter/meta framing such as "selected NCERT chapter", "the chapter explains", "according to the chapter", "in the chapter", "from the chapter", "ideas from the chapter", "idea described in the chapter", "chapter idea", "chapter concept", "chapter property", "chapter activity", "chapter evidence", "question focus", "concept focus", or "explain the chapter idea"
 
 Use the supplied source only to understand the concept. Convert it into natural exam questions.
+Ask the concept directly. Do not make the chapter title or the fact that a chapter exists part of the question unless the question is explicitly about a printed passage title.
 
 For MCQ:
 - Ask one clear subject question.
@@ -958,9 +960,9 @@ For SHORT/LONG:
 
 For MATCH_FOLLOWING:
 - Column A and Column B must contain real subject terms, examples, causes/effects, definitions, observations, or formulas.
-- Do not match metadata labels.
+- Do not match metadata labels such as Chapter, Chapter idea, Question focus, Evidence, or Conclusion.
 
-Before returning JSON, silently rewrite any question that sounds like an AI prompt or source-audit task. The final paper must read like a teacher wrote it.
+Before returning JSON, silently rewrite any question that sounds like an AI prompt, source-audit task, or chapter-metadata task. The final paper must read like a teacher wrote it.
 `;
 }
 
@@ -1470,10 +1472,10 @@ function createDemoQuestion(
         ...base,
         text: `Match Column A with Column B for ${topic}.`,
         matchPairs: [
-          { left: `${topic} concept`, right: "Principle" },
-          { left: `Observation ${questionNumber}`, right: "Evidence" },
+          { left: `${topic} principle`, right: "Main rule" },
+          { left: `Observation ${questionNumber}`, right: "Visible result" },
           { left: "Application", right: "Daily use" },
-          { left: "Conclusion", right: "Inference" },
+          { left: "Reason", right: "Logical explanation" },
         ],
         correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
       };

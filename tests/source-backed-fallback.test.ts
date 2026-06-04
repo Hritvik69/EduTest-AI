@@ -273,8 +273,22 @@ describe("generateSourceBackedFallbackQuestions", () => {
     expect(visibleText).not.toMatch(
       /source detail|selected source|exact source|detail lens|noveltyAngle|sourceChunkFocus|answerPath|physics-c|txt-a|Vocabulary and grammar/i,
     );
-    expect(visibleText).toContain("How Forces Affect Motion");
+    expect(visibleText).not.toMatch(
+      /in How Forces Affect Motion|from How Forces Affect Motion|idea described in the chapter|chapter idea|question focus|according to the chapter|ideas from/i,
+    );
+    expect(visibleText).not.toContain("How Forces Affect Motion");
     expect(visibleText).toMatch(/friction|motion|coins|surface/i);
+
+    const matchQuestion = validation.questions.find(
+      (question) => question.type === "MATCH_FOLLOWING",
+    );
+    const matchText = (matchQuestion?.matchPairs ?? [])
+      .flatMap((pair) => [pair.left, pair.right])
+      .join(" ");
+
+    expect(matchText).toMatch(/Smooth surface|Rough surface|Smaller frictional force/i);
+    expect(matchText).toMatch(/Less friction|More friction|Object travels farther/i);
+    expect(matchText).not.toMatch(/Chapter idea|Question focus|Conclusion|Evidence/i);
   });
 });
 

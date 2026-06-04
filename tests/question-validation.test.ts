@@ -16,6 +16,13 @@ const section: BlueprintSection = {
   bloomBreakdown: { UNDERSTAND: 100 },
 };
 
+const matchSection: BlueprintSection = {
+  ...section,
+  questionType: "MATCH_FOLLOWING",
+  marksPerQuestion: 3,
+  totalMarks: 3,
+};
+
 describe("student-visible question quality validation", () => {
   it("rejects internal source metadata and source-audit wording", () => {
     expect(
@@ -33,6 +40,16 @@ describe("student-visible question quality validation", () => {
         "Why does a stack of coins slow down more on a rough surface?",
       ),
     ).toBe(false);
+    expect(
+      hasForbiddenStudentVisiblePattern(
+        "Which statement best explains the idea described in the chapter?",
+      ),
+    ).toBe(true);
+    expect(
+      hasForbiddenStudentVisiblePattern(
+        "Match Column A with Column B for ideas from How Forces Affect Motion.",
+      ),
+    ).toBe(true);
   });
 
   it("rejects an otherwise valid MCQ if options leak metadata", () => {
@@ -68,5 +85,36 @@ describe("student-visible question quality validation", () => {
     };
 
     expect(isUsableGeneratedQuestion(question, section)).toBe(false);
+  });
+
+  it("rejects match-column questions that use metadata labels instead of academic items", () => {
+    const question: GeneratedQuestion = {
+      text: "Match Column A with Column B.",
+      type: "MATCH_FOLLOWING",
+      marks: 3,
+      difficulty: "MEDIUM",
+      bloomLevel: "UNDERSTAND",
+      competencyLevel: 3,
+      reasoningSteps: 2,
+      difficultyConfidence: 0.8,
+      cognitiveComplexity: {
+        conceptIntegration: 2,
+        abstractionLevel: 2,
+        inferenceLevel: 2,
+        ambiguityLevel: 1,
+        cognitiveLoad: 2,
+      },
+      topic: "Force and friction",
+      correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
+      explanation: "The pairs should match subject concepts.",
+      matchPairs: [
+        { left: "Chapter idea", right: "Smooth surfaces reduce friction." },
+        { left: "Chapter", right: "How Forces Affect Motion" },
+        { left: "Question focus", right: "evidence" },
+        { left: "Conclusion", right: "Explain the chapter idea clearly." },
+      ],
+    };
+
+    expect(isUsableGeneratedQuestion(question, matchSection)).toBe(false);
   });
 });

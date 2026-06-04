@@ -245,6 +245,7 @@ FINAL OUTPUT QUALITY
 The final paper must feel like a real CBSE assessment, professional coaching paper, or school examination paper.
 Maintain clean formatting inside question text, proper numbering only when requested, section grouping data, marks labels, readable spacing, and professional structure.
 Student-facing fields must never expose internal retrieval or planning metadata. Do not put source IDs, chunk IDs, atom IDs, "source detail", "selected source", "exact source detail", "detail lens", "noveltyAngle", "sourceChunkFocus", or "answerPath" into question text, options, scenarios, passages, sub-questions, match pairs, answers, explanations, key points, or diagram descriptions. Convert supplied source context into natural teacher-written exam questions.
+Do not use chapter/meta framing in student-facing fields: avoid "selected NCERT chapter", "the chapter explains", "according to the chapter", "in the chapter", "from the chapter", "ideas from the chapter", "idea described in the chapter", "chapter idea", "chapter concept", "chapter property", "chapter activity", "chapter evidence", "question focus", "concept focus", and "explain the chapter idea". Ask the concept directly, and use real academic match-column items instead of labels such as Chapter, Question focus, Evidence, or Conclusion.
 
 OUTPUT CONTRACT
 - Return only valid JSON matching the exact schema requested in the user prompt.

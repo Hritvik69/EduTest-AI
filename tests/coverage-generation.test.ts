@@ -421,7 +421,7 @@ function mcq(
   const uniqueTerm = uniqueTerms[index % uniqueTerms.length];
 
   return {
-    text: `${subject} ${uniqueTerm} prompt ${index} checks ${topic} chapter concept token${index}.`,
+    text: `${subject} ${uniqueTerm} prompt ${index} checks ${topic} concept token${index}.`,
     type: "MCQ",
     difficulty: "MEDIUM",
     marks: 1,
@@ -432,7 +432,7 @@ function mcq(
       { id: "D", text: `Partial ${subject} idea ${index}`, isCorrect: false },
     ],
     correctAnswer: "B",
-    explanation: "The answer follows the chapter passage.",
+    explanation: "The answer follows the passage concept.",
     bloomLevel: "APPLY",
     competencyLevel: 2,
     topic,
