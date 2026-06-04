@@ -149,6 +149,7 @@ export async function POST(request: NextRequest) {
   const stream = new ReadableStream({
     async start(controller) {
       let streamClosed = false;
+      let preflightPassed = false;
       const generationSignalController = new AbortController();
       const serverBudgetMs = generationServerBudgetMs();
       const generationDeadlineAt = Date.now() + serverBudgetMs;
@@ -436,6 +437,7 @@ export async function POST(request: NextRequest) {
           if (!healthyProviders.length) {
             throw new Error(providerHealthFailureMessage(providerHealth));
           }
+          preflightPassed = true;
         }
 
         assertActive();

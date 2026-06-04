@@ -120,12 +120,12 @@ BEGIN
   ALTER TABLE concepts DROP CONSTRAINT IF EXISTS concepts_source_check;
   ALTER TABLE concepts
     ADD CONSTRAINT concepts_source_check
-    CHECK (source IN ('pdf', 'curriculum', 'demo', 'unknown')) NOT VALID;
+    CHECK (source IN ('pdf', 'curriculum', 'demo', 'unknown', 'ncert_txt')) NOT VALID;
 
   ALTER TABLE questions DROP CONSTRAINT IF EXISTS questions_source_check;
   ALTER TABLE questions
     ADD CONSTRAINT questions_source_check
-    CHECK (source IN ('pdf', 'curriculum', 'demo', 'unknown')) NOT VALID;
+    CHECK (source IN ('pdf', 'curriculum', 'demo', 'unknown', 'ncert_txt')) NOT VALID;
 
   IF NOT EXISTS (
     SELECT 1 FROM pg_constraint WHERE conname = 'attempts_status_check'

@@ -877,11 +877,10 @@ async function checkSingleProviderHealth(
       (probeSignal) =>
         generateProviderJSON<{ ok?: boolean }>(
           provider,
-          "Return exactly this JSON object and nothing else: {\"ok\":true}",
+          "Return {\"ok\": true}",
           {
             provider,
             task,
-            systemInstruction: "You are a provider health probe. Return only valid JSON.",
             temperature: 0.1,
             topP: 1,
             maxOutputTokens: 128,
@@ -954,7 +953,10 @@ function orderedCandidateModels(requestedProvider: AIProvider) {
 
 function isRetryableGeminiError(error: unknown) {
   if (!(error instanceof Error)) return false;
-  return /404|not found|not supported|503|service unavailable|temporarily|high demand|overloaded|rate.?limit|429/i.test(
+  if (/401|403|unauthorized|permission|api key|invalid key|not allowed/i.test(error.message)) {
+    return false;
+  }
+  return /404|not found|not supported|503|service unavailable|temporarily|high demand|overloaded|rate.?limit|429|empty response|invalid JSON|malformed JSON|text instead of valid JSON/i.test(
     error.message,
   );
 }
@@ -1613,7 +1615,7 @@ function providerHealthTimeoutMs() {
     return configured;
   }
 
-  return 4_500;
+  return 8_500;
 }
 
 function healthPreflightFailureMessage(task?: AITask) {
