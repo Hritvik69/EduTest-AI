@@ -23,7 +23,12 @@ import {
 } from "@/lib/generation-recovery";
 import { generationPhaseLabels } from "@/lib/question-planning";
 import { cn } from "@/lib/utils";
-import type { AIProvider, PaperConfig, StoredPaper } from "@/types";
+import type {
+  AIProvider,
+  GenerationRiskLevel,
+  PaperConfig,
+  StoredPaper,
+} from "@/types";
 
 const progressSteps = generationPhaseLabels;
 
@@ -53,6 +58,15 @@ type ProviderStatus = {
   openAIModel: string;
 };
 
+type GenerationStreamContractSummary = {
+  contractHash: string;
+  generationModeLabel: string;
+  plannedCalls: number;
+  riskLevel: GenerationRiskLevel;
+  chunkingNote?: string;
+  source: "server" | "client";
+};
+
 export function GenerationOverlay({
   config,
   open,
@@ -78,6 +92,8 @@ export function GenerationOverlay({
   const [providerStatus, setProviderStatus] = React.useState<ProviderStatus | null>(
     null,
   );
+  const [streamContract, setStreamContract] =
+    React.useState<GenerationStreamContractSummary | null>(null);
   const [salvageInvalidQuestions, setSalvageInvalidQuestions] =
     React.useState(true);
   const [error, setError] = React.useState<{
@@ -113,6 +129,23 @@ export function GenerationOverlay({
       return null;
     }
   }, [requestConfig]);
+  const clientContract = React.useMemo<GenerationStreamContractSummary | null>(() => {
+    if (!generationContract) return null;
+    const chunkingNote = generationContract.apiEstimate.riskReasons.find((reason) =>
+      /chunked focused batches/i.test(reason),
+    );
+    return {
+      contractHash: generationContract.hash,
+      generationModeLabel:
+        generationContract.paper.generationMode === "source_exact"
+          ? "NCERT/PDF Source"
+          : "Fresh Questions",
+      plannedCalls: generationContract.apiEstimate.plannedCalls,
+      riskLevel: generationContract.apiEstimate.riskLevel,
+      source: "client",
+      ...(chunkingNote ? { chunkingNote } : {}),
+    };
+  }, [generationContract]);
   const idempotencyKey = React.useMemo(
     () =>
       randomGenerationKey(
@@ -139,6 +172,7 @@ export function GenerationOverlay({
       setGenerationNow(Date.now());
       setCurrentMessage("Preparing generation...");
       setProviderOverride(null);
+      setStreamContract(null);
       setSalvageInvalidQuestions(true);
       setResumePaperId(null);
       setError(null);
@@ -183,6 +217,7 @@ export function GenerationOverlay({
       const startedAt = Date.now();
       setGenerationStartedAt(startedAt);
       setGenerationNow(startedAt);
+      setStreamContract(null);
       setCurrentMessage(
         requestedResumePaperId
           ? `Continuing saved generation from paper #${requestedResumePaperId}...`
@@ -191,6 +226,7 @@ export function GenerationOverlay({
     });
 
     const inFlightKey = `edutest:generation:${idempotencyKey}`;
+    clearStaleGenerationSessionKeys();
     const existingStartedAt = safeSessionGet(inFlightKey);
     if (existingStartedAt && !isStaleGeneration(existingStartedAt)) {
       queueMicrotask(() => {
@@ -280,6 +316,8 @@ export function GenerationOverlay({
 
             const event = eventLine.replace("event:", "").trim();
             const data = parseStreamData(dataLine.replace("data:", "").trim());
+            const contractFromStream = streamContractFromData(data);
+            if (contractFromStream) setStreamContract(contractFromStream);
             const streamedPaperId = numberValue(data.paperId);
             if (streamedPaperId) savedPaperId = streamedPaperId;
 
@@ -513,6 +551,7 @@ export function GenerationOverlay({
   const canRetry = !isSourceTextShortageError(error);
   const errorGuidance = generationErrorGuidance(error, provider);
   const timing = generationTimingSnapshot(progress, generationStartedAt, generationNow);
+  const displayedContract = streamContract ?? clientContract;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0e1a]/95 p-2 backdrop-blur-xl sm:p-4">
@@ -552,16 +591,19 @@ export function GenerationOverlay({
             ) : null}
           </div>
           <p className="mt-2 text-slate-300">{error ? error.message : currentMessage}</p>
-          {generationContract ? (
+          {displayedContract ? (
             <div className="mt-3 rounded-lg border border-white/10 bg-slate-950/45 px-3 py-2 text-xs leading-5 text-slate-300">
-              Contract {generationContract.hash} |{" "}
-              {generationContract.paper.generationMode === "source_exact"
-                ? "NCERT/PDF Source"
-                : "Fresh Questions"}{" "}
-              |{" "}
-              {generationContract.apiEstimate.plannedCalls} planned AI call
-              {generationContract.apiEstimate.plannedCalls === 1 ? "" : "s"} |{" "}
-              {generationContract.apiEstimate.riskLevel} API risk
+              Contract {displayedContract.contractHash} |{" "}
+              {displayedContract.generationModeLabel} |{" "}
+              {displayedContract.plannedCalls} planned AI call
+              {displayedContract.plannedCalls === 1 ? "" : "s"} |{" "}
+              {displayedContract.riskLevel} API risk
+              {displayedContract.source === "server" ? " | server confirmed" : ""}
+              {displayedContract.chunkingNote ? (
+                <span className="block pt-1 text-blue-200">
+                  {displayedContract.chunkingNote}
+                </span>
+              ) : null}
             </div>
           ) : null}
         </div>
@@ -746,6 +788,33 @@ function parseStreamData(raw: string) {
   }
 }
 
+function streamContractFromData(
+  data: Record<string, unknown>,
+): GenerationStreamContractSummary | null {
+  const nested = isRecord(data.promptContract) ? data.promptContract : data;
+  const contractHash = stringValue(nested.contractHash);
+  const generationModeLabel = stringValue(nested.generationModeLabel);
+  const plannedCalls = numberValue(nested.plannedCalls);
+  const riskLevel = generationRiskLevelValue(
+    nested.riskLevel ?? nested.apiRiskLevel,
+  );
+
+  if (!contractHash || !generationModeLabel || !plannedCalls || !riskLevel) {
+    return null;
+  }
+
+  return {
+    contractHash,
+    generationModeLabel,
+    plannedCalls,
+    riskLevel,
+    source: "server",
+    ...(stringValue(nested.chunkingNote)
+      ? { chunkingNote: stringValue(nested.chunkingNote) }
+      : {}),
+  };
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
@@ -760,6 +829,11 @@ function numberValue(value: unknown) {
     const parsed = Number(value);
     return Number.isFinite(parsed) ? parsed : undefined;
   }
+  return undefined;
+}
+
+function generationRiskLevelValue(value: unknown): GenerationRiskLevel | undefined {
+  if (value === "low" || value === "medium" || value === "high") return value;
   return undefined;
 }
 
@@ -1039,6 +1113,24 @@ function safeSessionRemove(key: string) {
     window.sessionStorage.removeItem(key);
   } catch {
     // Ignore blocked sessionStorage during cleanup.
+  }
+}
+
+function clearStaleGenerationSessionKeys() {
+  try {
+    const keys = Array.from({ length: window.sessionStorage.length }, (_, index) =>
+      window.sessionStorage.key(index),
+    ).filter((key): key is string => Boolean(key));
+
+    keys.forEach((key) => {
+      if (!key.startsWith("edutest:generation:")) return;
+      const value = window.sessionStorage.getItem(key);
+      if (!value || isStaleGeneration(value)) {
+        window.sessionStorage.removeItem(key);
+      }
+    });
+  } catch {
+    // Ignore blocked sessionStorage; generation still works without cleanup.
   }
 }
 

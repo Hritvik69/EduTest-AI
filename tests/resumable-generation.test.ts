@@ -23,6 +23,11 @@ describe("resumable paper generation wiring", () => {
     expect(route).toMatch(/phase:\s*"QUESTION_GENERATION"/);
     expect(route).toMatch(/generationHeartbeatMs/);
     expect(route).toMatch(/recoveryPayload/);
+    expect(route).toMatch(/contractPayload/);
+    expect(route).toMatch(/generationStreamContractSummary/);
+    expect(route).toMatch(/contractHash/);
+    expect(route).toMatch(/plannedCalls/);
+    expect(route).toMatch(/apiRiskLevel/);
     expect(route).toMatch(/onAcceptedBatch/);
     expect(route).toMatch(/shouldStopBeforeNextGenerationCall/);
     expect(route).toMatch(/isRecoverableGenerationRuntimeError/);
@@ -54,6 +59,10 @@ describe("resumable paper generation wiring", () => {
     expect(overlay).toMatch(/GENERATION_CONTINUE_AVAILABLE/);
     expect(overlay).toMatch(/GENERATION_STREAM_RECOVERABLE/);
     expect(overlay).toMatch(/classifyRecoveredPaper/);
+    expect(overlay).toMatch(/streamContractFromData/);
+    expect(overlay).toMatch(/streamContract \?\? clientContract/);
+    expect(overlay).toMatch(/server confirmed/);
+    expect(overlay).toMatch(/clearStaleGenerationSessionKeys/);
     expect(overlay).toMatch(/canAutoContinueGenerationError/);
     expect(overlay).toMatch(/progress\.readyQuestionCount \?\? 0\) > 0/);
     expect(overlay).not.toMatch(/is in your dashboard/);

@@ -27,6 +27,7 @@ import {
 import { summarizeAIUsage } from "@/lib/ai-usage-log";
 import { getChapterContent } from "@/lib/extractor";
 import { buildGenerationManifest } from "@/lib/generation-manifest";
+import { buildGenerationContract } from "@/lib/generation-contract";
 import {
   checkAIProviderHealth,
   getConfiguredProviders,
@@ -81,6 +82,7 @@ import type {
   ConceptData,
   GeneratedQuestion,
   AITask,
+  GenerationRiskLevel,
   PaperConfig,
   QuestionCompositionItem,
   StoredPaper,
@@ -88,6 +90,14 @@ import type {
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
+
+interface GenerationStreamContractSummary {
+  contractHash: string;
+  generationModeLabel: string;
+  plannedCalls: number;
+  riskLevel: GenerationRiskLevel;
+  chunkingNote?: string;
+}
 
 type LocalFallbackContext = {
   effectiveConfig: PaperConfig;
@@ -165,6 +175,7 @@ export async function POST(request: NextRequest) {
       let heartbeatMessage =
         "Phase 5 - Question Generation: still working with the selected AI/source contract.";
       let heartbeatTimer: ReturnType<typeof setInterval> | null = null;
+      let streamContractSummary: GenerationStreamContractSummary | null = null;
       const send = (data: object, event = "progress") => {
         if (streamClosed || request.signal.aborted) return false;
 
@@ -189,6 +200,17 @@ export async function POST(request: NextRequest) {
           lastMessage: state.lastMessage,
         };
       };
+      const contractPayload = () =>
+        streamContractSummary
+          ? {
+              promptContract: streamContractSummary,
+              contractHash: streamContractSummary.contractHash,
+              generationModeLabel: streamContractSummary.generationModeLabel,
+              plannedCalls: streamContractSummary.plannedCalls,
+              apiRiskLevel: streamContractSummary.riskLevel,
+              chunkingNote: streamContractSummary.chunkingNote,
+            }
+          : {};
       const recoveryPayload = () => ({
         paperId: paperId ?? undefined,
         status: streamStatusForGenerationState(recoverySnapshot.status),
@@ -197,6 +219,7 @@ export async function POST(request: NextRequest) {
         targetQuestionCount: recoverySnapshot.targetQuestionCount,
         missingQuestionCount: recoverySnapshot.missingQuestionCount,
         recoveryReason: recoverySnapshot.lastMessage,
+        ...contractPayload(),
       });
       const setHeartbeatContext = (step: number, pct: number, msg: string) => {
         heartbeatStep = step;
@@ -341,6 +364,12 @@ export async function POST(request: NextRequest) {
           scopedConcepts,
           composition,
         );
+        streamContractSummary = generationStreamContractSummary(
+          effectiveConfig,
+          blueprint,
+          scopedConcepts,
+          availableTopics,
+        );
         const isDemoMode =
           effectiveConfig.sourceMode !== "pdf_upload" &&
           scopedConcepts.some((concept) => concept.source === "demo");
@@ -351,6 +380,7 @@ export async function POST(request: NextRequest) {
           pct: 25,
           progress: 25,
           msg: "Phase 3 - Question Planning: building blueprint, S/C/T split, and question intelligence.",
+          ...contractPayload(),
         });
         localFallbackContext = {
           effectiveConfig,
@@ -378,6 +408,7 @@ export async function POST(request: NextRequest) {
               progress: 25,
               msg: "Saved generation progress was no longer available, so a fresh durable generation is starting.",
               status: "GENERATING",
+              ...contractPayload(),
             });
           } else if (resumablePaper.status === "READY") {
             send(
@@ -387,6 +418,7 @@ export async function POST(request: NextRequest) {
                 msg: "This generation already completed. Start a new generation to create a fresh paper.",
                 paperId: resumablePaper.id,
                 idempotencyKey,
+                ...contractPayload(),
               },
               "error",
             );
@@ -892,27 +924,30 @@ export async function POST(request: NextRequest) {
         if (validation.sourceBackedCompletedQuestions) {
           send({
             step: 6,
-            pct: 94,
-            progress: 94,
-            msg: `Phase 6 - Validation Engine: completed ${validation.sourceBackedCompletedQuestions} final source-backed replacement question${validation.sourceBackedCompletedQuestions === 1 ? "" : "s"} from selected text.`,
-          });
-        }
+          pct: 94,
+          progress: 94,
+          msg: `Phase 6 - Validation Engine: completed ${validation.sourceBackedCompletedQuestions} final source-backed replacement question${validation.sourceBackedCompletedQuestions === 1 ? "" : "s"} from selected text.`,
+          ...contractPayload(),
+        });
+      }
 
         if (validation.replacedQuestions) {
           send({
             step: 6,
-            pct: 92,
-            progress: 92,
-            msg: `Phase 6 - Validation Engine: replaced ${validation.replacedQuestions} invalid or duplicate question${validation.replacedQuestions === 1 ? "" : "s"} with valid alternatives.`,
-          });
-        } else if (validation.skipped.length) {
-          send({
-            step: 6,
-            pct: 92,
-            progress: 92,
-            msg: `Phase 6 - Validation Engine: found ${validation.skipped.length} invalid or duplicate question${validation.skipped.length === 1 ? "" : "s"}.`,
-          });
-        }
+          pct: 92,
+          progress: 92,
+          msg: `Phase 6 - Validation Engine: replaced ${validation.replacedQuestions} invalid or duplicate question${validation.replacedQuestions === 1 ? "" : "s"} with valid alternatives.`,
+          ...contractPayload(),
+        });
+      } else if (validation.skipped.length) {
+        send({
+          step: 6,
+          pct: 92,
+          progress: 92,
+          msg: `Phase 6 - Validation Engine: found ${validation.skipped.length} invalid or duplicate question${validation.skipped.length === 1 ? "" : "s"}.`,
+          ...contractPayload(),
+        });
+      }
 
         assertActive();
         setHeartbeatContext(
@@ -925,6 +960,7 @@ export async function POST(request: NextRequest) {
           pct: 95,
           progress: 95,
           msg: "Phase 7 - Final Paper Composition: numbering sections and preparing layout.",
+          ...contractPayload(),
         });
         await updatePaperDefinition(paperId, effectiveConfig, validation.blueprint);
         const storedQuestions = await saveQuestionsAndLink(
@@ -993,6 +1029,7 @@ export async function POST(request: NextRequest) {
             sessionOnly: Boolean(auth.user.isGuest),
             config: effectiveConfig,
             guestPaperToken,
+            ...contractPayload(),
             ...(isDemoMode ? demoMetadata() : {}),
           },
           "done",
@@ -1110,6 +1147,7 @@ export async function POST(request: NextRequest) {
                 recoverySnapshot.missingQuestionCount,
               recoveryReason:
                 continuationState?.lastMessage ?? recoverySnapshot.lastMessage,
+              ...contractPayload(),
               status: canContinueGeneration
                 ? "CONTINUING"
                 : paperStatusSaved
@@ -1697,6 +1735,33 @@ function shouldUseLocalGenerationFallback(isExplicitDemoMode: boolean, error: un
 function paperQuestionSourceForConcepts(concepts: ConceptData[]) {
   if (concepts.some((concept) => concept.source === "ncert_txt")) return "ncert_txt";
   return concepts.some((concept) => concept.source === "pdf") ? "pdf" : "curriculum";
+}
+
+function generationStreamContractSummary(
+  config: PaperConfig,
+  blueprint: Blueprint,
+  concepts: ConceptData[],
+  availableTopics: string[],
+): GenerationStreamContractSummary {
+  const sourceQuality = analyzeConceptSourceQuality(concepts);
+  const contract = buildGenerationContract(config, blueprint, {
+    availableTopics,
+    sourceTextChunks: sourceQuality.sourceTextChunks,
+  });
+  const chunkingNote = contract.apiEstimate.riskReasons.find((reason) =>
+    /chunked focused batches/i.test(reason),
+  );
+
+  return {
+    contractHash: contract.hash,
+    generationModeLabel:
+      contract.paper.generationMode === "source_exact"
+        ? "NCERT/PDF Source"
+        : "Fresh Questions",
+    plannedCalls: contract.apiEstimate.plannedCalls,
+    riskLevel: contract.apiEstimate.riskLevel,
+    ...(chunkingNote ? { chunkingNote } : {}),
+  };
 }
 
 function generationErrorCode(error: unknown) {
