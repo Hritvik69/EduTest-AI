@@ -139,8 +139,10 @@ function createSourceBackedQuestion(
 ): GeneratedQuestion {
   const variant = variantRecipeFor(index);
   const base = baseQuestion(type, concept, index, section.marksPerQuestion, variant);
-  const sourceFocus = `${variant.sourceFocus} ${concept.atomId}: ${trimToSentence(concept.summary, 150)} Lens: ${variant.label}.`;
-  const answerPath = `${variant.answerPath} ${topicSentence(concept.topic)} Use source detail ${concept.atomId} (${concept.atomLabel}) through the ${variant.label} lens to ${variant.answerVerb} the selected ${concept.source === "pdf" ? "PDF" : "NCERT TXT"} idea.`;
+  const visibleSummary = studentVisibleSummary(concept.summary);
+  const noveltyAtomId = `${concept.atomId}-${type.toLowerCase()}`;
+  const sourceFocus = `${variant.sourceFocus} ${concept.atomId}: ${trimToSentence(visibleSummary, 150)} Internal angle: ${variant.id}.`;
+  const answerPath = `${variant.answerPath} ${topicSentence(concept.topic)} Use internal atom ${concept.atomId} (${concept.atomLabel}) to ${variant.answerVerb} the ${concept.source === "pdf" ? "PDF" : "NCERT TXT"} idea.`;
 
   const question: GeneratedQuestion = {
     ...base,
@@ -165,12 +167,12 @@ function createSourceBackedQuestion(
     subject: concept.subject,
     classNum: concept.classNum,
     source: concept.source,
-    noveltyAngle: `${sourceBackedCompletionMarker}:${type}:${variant.id}:${concept.atomId}:${index}`,
+    noveltyAngle: `${sourceBackedCompletionMarker}:${type}:${variant.id}:${noveltyAtomId}:${index}`,
     sourceChunkFocus: sourceFocus,
     answerPath,
     explanation:
       base.explanation ||
-      `${variant.explanationLead}: ${concept.summary}`,
+      `The answer follows from the chapter idea: ${visibleSummary}`,
   };
 
   if (concept.topicId !== undefined) question.topicId = concept.topicId;
@@ -207,45 +209,46 @@ function baseQuestion(
   marks: number,
   variant: VariantRecipe,
 ): Partial<GeneratedQuestion> {
-  const topic = concept.topic;
-  const summary = concept.summary;
-  const excerpt = concept.excerpt;
+  const summary = studentVisibleSummary(concept.summary);
+  const excerpt = studentVisibleSummary(concept.excerpt, 560);
   const options = conceptOptions(concept, index, variant);
-  const stemTopic = `${topic} in ${concept.chapter}`;
-  const atomPrompt = `source detail ${concept.atomId} on ${concept.atomLabel}`;
+  const chapter = studentVisibleChapter(concept.chapter);
+  const idea = ideaPhrase(summary);
+  const skill = visibleSkillFor(variant);
+  const keyPoint = visibleKeyPoint(skill);
 
   switch (type) {
     case "MCQ":
       return {
-        text: `${variant.mcqStem} the selected detail "${concept.atomLabel}" for ${stemTopic}? Focus: ${variant.keyPoint}`,
+        text: `${mcqLeadForSkill(skill)} ${idea} in ${chapter}?`,
         options,
         correctAnswer: "B",
       };
     case "ASSERTION_REASON":
       return {
-        text: `Assertion (A): ${variant.assertion(topic)}\nReason (R): ${variant.reason(summary)}`,
-        assertion: variant.assertion(topic),
-        reason: variant.reason(summary),
+        text: `Assertion (A): The idea described in ${chapter} needs a clear conceptual explanation.\nReason (R): The chapter shows that ${toStatement(summary)}`,
+        assertion: `The idea described in ${chapter} needs a clear conceptual explanation.`,
+        reason: `The chapter shows that ${toStatement(summary)}`,
         correctAnswer: "A",
       };
     case "TRUE_FALSE":
       return {
-        text: `${variant.trueFalseLead} ${summary}`,
+        text: `In ${chapter}, ${toStatement(summary)}`,
         correctAnswer: "True",
       };
     case "ONE_WORD":
       return {
-        text: `Which key term names the ${variant.label} idea in ${atomPrompt}?`,
-        correctAnswer: oneWordAnswer(topic),
+        text: `Which key term best names this chapter idea: ${summary}`,
+        correctAnswer: oneWordAnswer(summary),
       };
     case "FILL_BLANK":
       return {
-        text: `In ${atomPrompt}, ________ is the topic connected with this ${variant.label} clue: ${summary}`,
-        correctAnswer: topic,
+        text: `In ${chapter}, the idea "${stripFinalPunctuation(summary)}" is connected with ________.`,
+        correctAnswer: oneWordAnswer(summary),
       };
     case "VERY_SHORT":
       return {
-        text: `State one ${variant.label} point about ${topic} from ${atomPrompt}; focus on ${variant.keyPoint}`,
+        text: `State one ${skill} point shown by ${idea} in ${chapter}.`,
         correctAnswer: summary,
         keyPoints: [summary],
       };
@@ -253,13 +256,13 @@ function baseQuestion(
       return matchQuestion(concept, variant);
     case "SHORT":
       return {
-        text: `${variant.shortStem} ${topic} using ${atomPrompt}; focus on ${variant.keyPoint}`,
-        correctAnswer: `${summary} ${variant.shortAnswer}`,
-        keyPoints: [summary, variant.keyPoint, `Connect the answer to ${topic}.`],
+        text: `Explain ${idea} in ${chapter}, focusing on ${skill}.`,
+        correctAnswer: `${summary} ${keyPoint}`,
+        keyPoints: [summary, keyPoint, `Connect the answer to ${chapter}.`],
       };
     case "NUMERICAL":
       return {
-        text: `A learner lists ${variant.firstCount} ${variant.label} points about ${topic} from the source and then adds ${variant.secondCount} more linked points. How many points are listed in total?`,
+        text: `A learner records ${variant.firstCount} observations about ${chapter} and adds ${variant.secondCount} more related observations. How many observations are recorded in total?`,
         correctAnswer: `${variant.firstCount + variant.secondCount} points`,
         keyPoints: [
           "Add the two counts.",
@@ -273,47 +276,47 @@ function baseQuestion(
       return caseBasedQuestion(concept, variant);
     case "PARAGRAPH":
       return {
-        scenario: `${variant.paragraphLead} ${excerpt}`,
-        text: `${variant.paragraphQuestion} ${topic} using ${atomPrompt}.`,
-        correctAnswer: `${summary} The answer should refer to the selected extract and explain the idea in the student's own words.`,
-        keyPoints: [summary, "Refer to the extract.", variant.keyPoint],
+        scenario: `Read the passage below.\n${excerpt}`,
+        text: `Based on the passage, explain ${idea} in ${chapter}.`,
+        correctAnswer: `${summary} The answer should refer to the passage and explain the idea in the student's own words.`,
+        keyPoints: [summary, "Refer to the passage.", keyPoint],
       };
     case "HOTS":
       return {
-        text: `${variant.hotsStem} ${topic} were misunderstood in ${atomPrompt}? Justify your answer using the selected source.`,
-        correctAnswer: `${topic} is needed because ${summary} ${variant.hotsAnswer}`,
-        keyPoints: [summary, "Explain the effect.", variant.keyPoint],
+        text: `What could be misunderstood about ${idea} in ${chapter}? Justify your answer.`,
+        correctAnswer: `The idea must be understood carefully because ${toStatement(summary)} ${keyPoint}`,
+        keyPoints: [summary, "Explain the effect.", keyPoint],
       };
     case "COMPETENCY":
       return {
-        text: `${variant.competencyStem} ${topic} from ${atomPrompt} and explain your reasoning.`,
-        correctAnswer: `A correct answer applies this idea: ${summary} The example should stay connected to the selected source and include a clear reason.`,
-        keyPoints: [summary, variant.keyPoint, "Explain the reason."],
+        text: `Use a practical example to apply ${idea} from ${chapter} and explain your reasoning.`,
+        correctAnswer: `A correct answer applies this idea: ${summary} The example should stay connected to the chapter concept and include a clear reason.`,
+        keyPoints: [summary, keyPoint, "Explain the reason."],
       };
     case "DIAGRAM":
       return {
-        text: `${variant.diagramStem} ${topic} from ${atomPrompt}.`,
-        diagramDescription: `A concept map with ${topic} at the centre and ${variant.label} points from ${concept.atomLabel}.`,
-        correctAnswer: `The diagram should show ${topic} and include this key idea: ${summary}`,
-        keyPoints: [topic, summary, variant.keyPoint],
+        text: `Draw a labelled concept map for ${idea} in ${chapter}.`,
+        diagramDescription: `A concept map with the chapter idea at the centre and linked ${skill} points around it.`,
+        correctAnswer: `The diagram should include this key idea: ${summary}`,
+        keyPoints: [chapter, summary, keyPoint],
       };
     case "PRACTICAL":
       return {
-        text: `${variant.practicalStem} ${topic} from ${atomPrompt}.`,
-        correctAnswer: `Use a simple activity or observation related to ${topic}. The conclusion should show: ${summary}`,
-        keyPoints: ["Aim", "Procedure", variant.keyPoint, "Conclusion"],
+        text: `Design a simple activity or observation to show ${idea} in ${chapter}.`,
+        correctAnswer: `Use a simple activity or observation related to the chapter idea. The conclusion should show: ${summary}`,
+        keyPoints: ["Aim", "Procedure", keyPoint, "Conclusion"],
       };
     case "LONG":
       return {
-        text: `${variant.longStem} ${topic} using only ${atomPrompt}.`,
-        correctAnswer: `Introduction: ${topic} is a key idea in the selected source. Explanation: ${summary} Add supporting points, connect them logically, and conclude with why this idea matters.`,
-        keyPoints: ["Introduce the topic.", summary, variant.keyPoint, "Conclude clearly."],
+        text: `Write a detailed answer explaining ${idea} in ${chapter}.`,
+        correctAnswer: `Introduction: This is a key chapter idea. Explanation: ${summary} Add supporting points, connect them logically, and conclude with why this idea matters.`,
+        keyPoints: ["Introduce the idea.", summary, keyPoint, "Conclude clearly."],
       };
     case "NCERT_FORMAT":
       return {
-        text: `${variant.ncertStem} ${topic} using ${atomPrompt}.`,
+        text: `Give an NCERT-style answer explaining ${idea} in ${chapter}.`,
         correctAnswer: summary,
-        keyPoints: [summary, variant.keyPoint],
+        keyPoints: [summary, keyPoint],
       };
   }
 }
@@ -322,16 +325,20 @@ function sourceBasedQuestion(
   concept: NormalizedConcept,
   variant: VariantRecipe,
 ): Partial<GeneratedQuestion> {
+  const summary = studentVisibleSummary(concept.summary);
+  const excerpt = studentVisibleSummary(concept.excerpt, 560);
+  const chapter = studentVisibleChapter(concept.chapter);
+  const skill = visibleSkillFor(variant);
   const subQuestions: SubQuestion[] = [
-    shortSubQuestion(`Identify the ${variant.label} idea in source detail ${concept.atomId}.`, concept.topic, 1),
-    shortSubQuestion(`What does ${concept.atomLabel} suggest about ${concept.topic}?`, concept.summary, 1),
-    shortSubQuestion(`Give one ${variant.label} supporting point from source detail ${concept.atomId}.`, concept.excerpt, 1),
-    shortSubQuestion(`Why is ${concept.atomLabel} important in the selected source?`, concept.summary, 1),
+    shortSubQuestion(`What is the main ${skill} idea in the passage?`, summary, 1),
+    shortSubQuestion(`How is the passage connected to ${chapter}?`, summary, 1),
+    shortSubQuestion(`Give one supporting point from the passage.`, excerpt, 1),
+    shortSubQuestion(`Why is this idea important in the chapter?`, summary, 1),
   ];
 
   return {
-    scenario: `${variant.sourceLead} Source detail ${concept.atomId}: ${concept.excerpt}`,
-    text: `Read source detail ${concept.atomId} and answer the ${variant.label} questions about ${concept.atomLabel}.`,
+    scenario: `Read the passage below.\n${excerpt}`,
+    text: `Read the passage below and answer the questions.`,
     subQuestions,
     correctAnswer: subQuestions
       .map((question, index) => `(${index + 1}) ${question.correctAnswer}`)
@@ -343,28 +350,31 @@ function caseBasedQuestion(
   concept: NormalizedConcept,
   variant: VariantRecipe,
 ): Partial<GeneratedQuestion> {
+  const summary = studentVisibleSummary(concept.summary);
+  const chapter = studentVisibleChapter(concept.chapter);
+  const skill = visibleSkillFor(variant);
   const options = conceptOptions(concept, concept.atomNumericId + 1, variant);
   const subQuestions: SubQuestion[] = [
     {
-      text: `Which option best explains the ${variant.label} case using source detail ${concept.atomId}?`,
+      text: `Which option best explains the case?`,
       type: "MCQ",
       options,
       correctAnswer: "B",
       marks: 2,
     },
     {
-      text: `Explain the reason using ${concept.atomLabel} from the selected source.`,
+      text: `Explain the ${skill} reason behind your answer.`,
       type: "SHORT",
-      correctAnswer: concept.summary,
+      correctAnswer: summary,
       marks: 2,
     },
   ];
 
   return {
-    scenario: `${variant.caseLead} Source detail ${concept.atomId} says: ${concept.summary} The learner now has to explain ${concept.topic}.`,
-    text: `Read the ${variant.label} case for ${concept.atomLabel} and answer the questions.`,
+    scenario: `A class is discussing ${chapter}. They consider this idea: ${summary} The learner has to explain what follows from it.`,
+    text: `Read the case and answer the questions.`,
     subQuestions,
-    correctAnswer: `(1) B; (2) ${concept.summary}`,
+    correctAnswer: `(1) B; (2) ${summary}`,
   };
 }
 
@@ -372,15 +382,18 @@ function matchQuestion(
   concept: NormalizedConcept,
   variant: VariantRecipe,
 ): Partial<GeneratedQuestion> {
+  const summary = studentVisibleSummary(concept.summary, 140);
+  const chapter = studentVisibleChapter(concept.chapter);
+  const skill = visibleSkillFor(variant);
   const pairs = [
-    { left: concept.topic, right: `${variant.label} source concept ${concept.atomId}` },
-    { left: "Source evidence", right: concept.summary },
-    { left: variant.label, right: variant.keyPoint },
-    { left: "Conclusion", right: `Connect back to ${concept.atomLabel}` },
+    { left: "Chapter idea", right: summary },
+    { left: "Chapter", right: chapter },
+    { left: "Question focus", right: skill },
+    { left: "Conclusion", right: visibleKeyPoint(skill) },
   ];
 
   return {
-    text: `Match Column A with Column B for the ${variant.label} view of ${concept.topic} in source detail ${concept.atomId}.`,
+    text: `Match Column A with Column B for ideas from ${chapter}.`,
     matchPairs: pairs,
     correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
   };
@@ -400,20 +413,220 @@ function conceptOptions(
   index: number,
   variant: VariantRecipe,
 ): MCQOption[] {
-  const distractors = [
-    `A point from another source that ignores ${concept.atomLabel}`,
-    `Only naming ${concept.topic} without explaining the ${variant.label} link in detail ${concept.atomId}`,
-    `A general claim with no selected-source support ${index}`,
-    `A partial detail that misses the ${variant.label} reasoning for ${concept.atomLabel}`,
-    `An unrelated definition not supported by ${concept.chapter}`,
-  ];
+  const distractors = misconceptionOptions(concept, index);
+  const correct = trimToSentence(
+    `${correctOptionLeadForSkill(visibleSkillFor(variant))} ${studentVisibleSummary(concept.summary)}`,
+    160,
+  );
 
   return [
     { id: "A", text: distractors[index % distractors.length], isCorrect: false },
-    { id: "B", text: trimToSentence(`${variant.optionLead} ${concept.atomId}: ${concept.summary}`, 140), isCorrect: true },
+    { id: "B", text: correct, isCorrect: true },
     { id: "C", text: distractors[(index + 1) % distractors.length], isCorrect: false },
     { id: "D", text: distractors[(index + 2) % distractors.length], isCorrect: false },
   ];
+}
+
+function studentVisibleSummary(value: string, maxLength = 240) {
+  const cleaned = removeDanglingTail(
+    normalizeSourceFragment(value)
+      .replace(/\bfig(?:ure)?\.?\s*\d+(?:\.\d+)*\s*[:.-]\s*/gi, "")
+      .replace(/\b\d+(?:\.\d+)+\s*[:.-]\s*/g, "")
+      .replace(/\bexact\s+source\s+detail\b/gi, "chapter idea")
+      .replace(/\bsource\s+detail\b/gi, "chapter idea")
+      .replace(/\bsource\s+text\b/gi, "chapter text")
+      .replace(/\bselected[-\s]+source\b/gi, "chapter")
+      .replace(/\bdetail\s+lens\b/gi, "concept focus")
+      .replace(/\bnoveltyAngle\b/gi, "question angle")
+      .replace(/\bsourceChunkFocus\b/gi, "question focus")
+      .replace(/\banswerPath\b/gi, "reasoning path")
+      .replace(/\b[a-z]+-c[a-z0-9-]*-t[a-z0-9-]*-(?:txt|pdf)-a\d+-[a-z0-9]+\b/gi, "chapter idea")
+      .replace(/\b(?:txt|pdf)-a\d+\b/gi, "chapter idea"),
+  );
+
+  return trimToSentence(cleaned || "the chapter idea", maxLength);
+}
+
+function studentVisibleChapter(value: string) {
+  return studentVisibleSummary(value || "the chapter", 90);
+}
+
+function ideaPhrase(summary: string) {
+  const idea = stripFinalPunctuation(summary);
+  if (!idea) return "the chapter idea";
+  if (idea.length > 130) return "the idea described in the chapter";
+  return `the idea that ${lowerFirst(idea)}`;
+}
+
+function toStatement(summary: string) {
+  const statement = stripFinalPunctuation(summary);
+  return `${lowerFirst(statement)}.`;
+}
+
+function stripFinalPunctuation(value: string) {
+  return value.replace(/[.!?;:]+$/g, "").trim();
+}
+
+function lowerFirst(value: string) {
+  return value ? `${value[0].toLowerCase()}${value.slice(1)}` : value;
+}
+
+function removeDanglingTail(value: string) {
+  return value
+    .replace(
+      /\s+\b(?:suppose|because|if|when|while|which|that|therefore|however|and|or|but|with|from|using|for|to|of|in|the|a|an)\.?$/i,
+      "",
+    )
+    .trim();
+}
+
+function visibleSkillFor(variant: VariantRecipe) {
+  if (variant.id.startsWith("cause-effect")) return "cause and effect";
+  if (variant.id.startsWith("assertion")) return "reasoning";
+  if (variant.id.startsWith("evidence")) return "evidence";
+  if (variant.id.startsWith("inference")) return "inference";
+  if (variant.id.startsWith("application")) return "application";
+  if (variant.id.startsWith("comparison")) return "comparison";
+  if (variant.id.startsWith("example")) return "example";
+  if (variant.id.startsWith("reasoning")) return "reasoning";
+  if (variant.id.startsWith("conclusion")) return "conclusion";
+  if (variant.id.startsWith("definition")) return "definition";
+  if (variant.id.startsWith("process")) return "process";
+  if (variant.id.startsWith("exception")) return "condition";
+  if (variant.id.startsWith("misconception")) return "misconception correction";
+  if (variant.id.startsWith("diagram")) return "visual representation";
+  if (variant.id.startsWith("numerical")) return "quantity";
+  if (variant.id.startsWith("case")) return "case reasoning";
+  if (variant.id.startsWith("source-extract")) return "passage reading";
+  return "conceptual reasoning";
+}
+
+function visibleKeyPoint(skill: string) {
+  switch (skill) {
+    case "cause and effect":
+      return "Connect the cause with its effect clearly.";
+    case "comparison":
+      return "Show the similarity or difference clearly.";
+    case "application":
+      return "Apply the idea to a relevant situation.";
+    case "inference":
+      return "Explain what follows from the idea.";
+    case "misconception correction":
+      return "Correct the mistaken idea with a clear reason.";
+    case "definition":
+      return "State the meaning in clear subject language.";
+    case "process":
+      return "Show the order or linked steps.";
+    case "condition":
+      return "Mention the condition or limit involved.";
+    case "visual representation":
+      return "Represent the relationship with clear labels.";
+    default:
+      return "Explain the chapter idea clearly.";
+  }
+}
+
+function mcqLeadForSkill(skill: string) {
+  switch (skill) {
+    case "cause and effect":
+      return "Which cause-effect statement best explains";
+    case "comparison":
+      return "Which comparison is most accurate for";
+    case "application":
+      return "Which situation correctly applies";
+    case "inference":
+      return "What can be inferred from";
+    case "misconception correction":
+      return "Which statement corrects a misconception about";
+    case "definition":
+      return "Which meaning best fits";
+    case "process":
+      return "Which process is shown by";
+    case "condition":
+      return "Which condition or limit is most important for";
+    case "visual representation":
+      return "Which visual representation best shows";
+    case "quantity":
+      return "Which quantitative interpretation best explains";
+    default:
+      return "Which statement best explains";
+  }
+}
+
+function correctOptionLeadForSkill(skill: string) {
+  switch (skill) {
+    case "inference":
+      return "It follows that";
+    case "definition":
+      return "It means that";
+    case "application":
+      return "It can be applied because";
+    case "comparison":
+      return "The comparison is correct because";
+    case "cause and effect":
+      return "The cause-effect link is that";
+    default:
+      return "It shows that";
+  }
+}
+
+function misconceptionOptions(concept: NormalizedConcept, index: number) {
+  const subject = `${concept.subject ?? ""} ${concept.chapter}`.toLowerCase();
+  const scienceMotion =
+    subject.includes("physics") ||
+    subject.includes("force") ||
+    subject.includes("motion");
+  const chemistry = subject.includes("chemistry");
+  const biology = subject.includes("biology");
+  const mathematics = subject.includes("mathematics") || subject.includes("math");
+  const language =
+    subject.includes("english") ||
+    subject.includes("hindi") ||
+    subject.includes("grammar");
+
+  const distractors = scienceMotion
+    ? [
+        "Friction and surface conditions do not affect motion.",
+        "A moving object stops only because it runs out of energy.",
+        "Changing the surface always makes an object move faster.",
+        "Force and motion are unrelated in this situation.",
+      ]
+    : chemistry
+      ? [
+          "The observation is only a colour change and has no chemical meaning.",
+          "All substances behave the same under the same condition.",
+          "The property can be decided without checking the reaction or evidence.",
+          "A chemical conclusion is correct even if the observation contradicts it.",
+        ]
+      : biology
+        ? [
+            "The structure and its function are unrelated.",
+            "All living processes happen in exactly the same way.",
+            "The observation can be explained without considering the organism.",
+            "A biological process has no conditions or stages.",
+          ]
+        : mathematics
+          ? [
+              "The result can be accepted without using the given condition.",
+              "Changing the given values never changes the result.",
+              "The rule works only by memorising the final answer.",
+              "The relationship between the quantities is not needed.",
+            ]
+          : language
+            ? [
+                "The meaning can be decided without considering context.",
+                "Tone and word choice never affect interpretation.",
+                "Only memorised definitions matter in this passage.",
+                "The surrounding sentence gives no clue to meaning.",
+              ]
+            : [
+                "The idea can be answered by ignoring the chapter context.",
+                "Only a memorised label is needed; no explanation is required.",
+                "The conclusion is correct even if it does not match the described idea.",
+                "The relationship between the ideas does not matter.",
+              ];
+
+  return distractors.slice(index % distractors.length).concat(distractors).slice(0, 4);
 }
 
 type NormalizedConcept = {
@@ -1103,7 +1316,8 @@ function trimToSentence(value: string, maxLength: number) {
   if (normalized.length <= maxLength) return normalized;
 
   const sliced = normalized.slice(0, maxLength).trim();
-  return `${sliced.replace(/[,.!?;:]+$/, "")}.`;
+  const complete = removeDanglingTail(sliced.replace(/[,.!?;:]+$/, ""));
+  return `${complete || "chapter idea"}.`;
 }
 
 function sourceAtomsForConcept(concept: ConceptData) {

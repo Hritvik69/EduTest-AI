@@ -172,6 +172,8 @@ describe("strict coverage generation", () => {
 
     expect(mocks.generateJSON).not.toHaveBeenCalled();
     expect(result.questions).toHaveLength(22);
+    expect(bank.result().rejectedQuestions).toEqual([]);
+    expect(bank.result().skipped).toEqual([]);
     expect(bank.readyCount()).toBe(22);
     expect(bank.missingCount()).toBe(0);
     expect(result.diagnostics.map((item) => item.generationMode)).toEqual([
@@ -217,6 +219,8 @@ describe("strict coverage generation", () => {
 
     expect(mocks.generateJSON).toHaveBeenCalledTimes(4);
     expect(result.questions).toHaveLength(22);
+    expect(bank.result().rejectedQuestions).toEqual([]);
+    expect(bank.result().skipped).toEqual([]);
     expect(bank.readyCount()).toBe(22);
     expect(bank.missingCount()).toBe(0);
     expect(new Set(result.questions.map((question) => question.subject))).toEqual(
@@ -379,7 +383,7 @@ function conceptFor(item: QuestionCompositionItem): ConceptData {
     `The comparison detail separates ${topic} from a nearby but different idea in the same chapter.`,
     `The application detail places ${topic} inside a classroom example where the learner chooses the correct method.`,
     `The misconception detail warns that a tempting shortcut gives the wrong interpretation of ${topic}.`,
-    `The conclusion detail links the selected source evidence back to the final answer expected for ${topic}.`,
+    `The conclusion detail links the chapter evidence back to the final answer expected for ${topic}.`,
   ];
 
   return {
@@ -417,7 +421,7 @@ function mcq(
   const uniqueTerm = uniqueTerms[index % uniqueTerms.length];
 
   return {
-    text: `${subject} ${uniqueTerm} prompt ${index} checks ${topic} source detail token${index}.`,
+    text: `${subject} ${uniqueTerm} prompt ${index} checks ${topic} chapter concept token${index}.`,
     type: "MCQ",
     difficulty: "MEDIUM",
     marks: 1,
@@ -428,7 +432,7 @@ function mcq(
       { id: "D", text: `Partial ${subject} idea ${index}`, isCorrect: false },
     ],
     correctAnswer: "B",
-    explanation: "The answer follows the selected source text.",
+    explanation: "The answer follows the chapter passage.",
     bloomLevel: "APPLY",
     competencyLevel: 2,
     topic,

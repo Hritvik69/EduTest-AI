@@ -5,7 +5,7 @@ import {
   hasSourceBackedFallbackConcepts,
 } from "@/lib/source-backed-fallback";
 import { validatePaperKeepingValidQuestions } from "@/lib/validator";
-import type { Blueprint, ConceptData, PaperConfig } from "@/types";
+import type { Blueprint, ConceptData, GeneratedQuestion, PaperConfig } from "@/types";
 
 const config: PaperConfig = {
   classNum: 8,
@@ -121,10 +121,10 @@ describe("generateSourceBackedFallbackQuestions", () => {
     );
     const validation = validatePaperKeepingValidQuestions(questions, blueprint, config);
 
+    expect(validation.skipped).toEqual([]);
     expect(validation.questions).toHaveLength(6);
     expect(validation.blueprint.totalQuestions).toBe(6);
     expect(validation.blueprint.totalMarks).toBe(18);
-    expect(validation.skipped).toEqual([]);
     expect(validation.questions.every((question) => question.chapterId === 1)).toBe(true);
     expect(
       validation.questions.find((question) => question.type === "SOURCE_BASED")
@@ -173,4 +173,132 @@ describe("generateSourceBackedFallbackQuestions", () => {
       ),
     ).toEqual([]);
   });
+
+  it("creates natural Class 9 Physics questions without source metadata leakage", () => {
+    const physicsConfig: PaperConfig = {
+      classNum: 9,
+      subject: "Physics",
+      subjects: ["Physics"],
+      subjectSelections: [{ subject: "Physics", chapterIds: [2], topicIds: [] }],
+      chapterIds: [2],
+      totalMarks: 10,
+      duration: 90,
+      examType: "School Test",
+      difficulty: "MEDIUM",
+      aiProvider: "AUTO",
+      questionTypes: ["MCQ", "TRUE_FALSE", "SHORT", "MATCH_FOLLOWING"],
+      typeDistribution: { MCQ: 2, TRUE_FALSE: 2, SHORT: 1, MATCH_FOLLOWING: 1 },
+      bloomDistribution: defaultBloomDistribution,
+      totalQuestions: 6,
+    };
+    const physicsBlueprint: Blueprint = {
+      sections: [
+        {
+          name: "Section A",
+          questionType: "MCQ",
+          count: 2,
+          marksPerQuestion: 1,
+          totalMarks: 2,
+          difficulty: "MEDIUM",
+          difficultyBreakdown: { MEDIUM: 100 },
+          bloomBreakdown: defaultBloomDistribution,
+        },
+        {
+          name: "Section A",
+          questionType: "TRUE_FALSE",
+          count: 2,
+          marksPerQuestion: 1,
+          totalMarks: 2,
+          difficulty: "MEDIUM",
+          difficultyBreakdown: { MEDIUM: 100 },
+          bloomBreakdown: defaultBloomDistribution,
+        },
+        {
+          name: "Section B/C",
+          questionType: "SHORT",
+          count: 1,
+          marksPerQuestion: 3,
+          totalMarks: 3,
+          difficulty: "MEDIUM",
+          difficultyBreakdown: { MEDIUM: 100 },
+          bloomBreakdown: defaultBloomDistribution,
+        },
+        {
+          name: "Section B/C",
+          questionType: "MATCH_FOLLOWING",
+          count: 1,
+          marksPerQuestion: 3,
+          totalMarks: 3,
+          difficulty: "MEDIUM",
+          difficultyBreakdown: { MEDIUM: 100 },
+          bloomBreakdown: defaultBloomDistribution,
+        },
+      ],
+      totalQuestions: 6,
+      totalMarks: 10,
+      estimatedTime: 20,
+      competencyPercentage: 60,
+    };
+    const physicsConcepts: ConceptData[] = [
+      {
+        text:
+          "When force of friction becomes smaller, the stack of coins travels a larger distance before coming to rest. A thought experiment compares motion on a horizontal floor with smoother surfaces and helps students understand how friction affects motion.",
+        type: "NCERT_TXT_SOURCE",
+        bloomLevel: "UNDERSTAND",
+        hotsPotential: true,
+        subject: "Physics",
+        classNum: 9,
+        chapterName: "How Forces Affect Motion",
+        topicName: "Vocabulary and grammar in context",
+        chapterId: 2,
+        topicId: 8,
+        source: "ncert_txt",
+      },
+    ];
+
+    const questions = generateSourceBackedFallbackQuestions(
+      physicsBlueprint.sections,
+      physicsConcepts,
+      physicsConfig,
+    );
+    const validation = validatePaperKeepingValidQuestions(
+      questions,
+      physicsBlueprint,
+      physicsConfig,
+    );
+    const visibleText = studentVisibleText(validation.questions);
+
+    expect(validation.skipped).toEqual([]);
+    expect(validation.questions).toHaveLength(6);
+    expect(visibleText).not.toMatch(
+      /source detail|selected source|exact source|detail lens|noveltyAngle|sourceChunkFocus|answerPath|physics-c|txt-a|Vocabulary and grammar/i,
+    );
+    expect(visibleText).toContain("How Forces Affect Motion");
+    expect(visibleText).toMatch(/friction|motion|coins|surface/i);
+  });
 });
+
+function studentVisibleText(questions: GeneratedQuestion[]) {
+  const values: string[] = [];
+
+  questions.forEach((question) => {
+    values.push(
+      question.text,
+      question.correctAnswer,
+      question.explanation,
+      question.scenario ?? "",
+      question.assertion ?? "",
+      question.reason ?? "",
+      question.diagramDescription ?? "",
+      ...(question.keyPoints ?? []),
+    );
+    question.options?.forEach((option) => values.push(option.text));
+    question.matchPairs?.forEach((pair) => values.push(pair.left, pair.right));
+    question.subQuestions?.forEach((subQuestion) => {
+      values.push(subQuestion.text, subQuestion.correctAnswer);
+      subQuestion.options?.forEach((option) => values.push(option.text));
+    });
+  });
+
+  return values.join(" ");
+}

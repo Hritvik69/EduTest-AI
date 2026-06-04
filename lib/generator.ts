@@ -702,6 +702,7 @@ Rules:
 - Self-check count, marks, structure, topic balance, duplicates, answer clarity, and format.
 ${antiRepeatRules}
 ${coverageFocusRules}
+${buildStudentFacingQualityContract()}
 `;
 
   const prompts: Record<QuestionType, string> = {
@@ -920,9 +921,47 @@ Rules:
 - Include proper structure for MCQ options, assertion/reason, match pairs, case/source/paragraph scenarios, subQuestions, diagrams, and keyPoints where the type requires them.
 - Avoid duplicates and avoid repeated concept angles, answer paths, examples, option patterns, case/source scenarios, and sub-question structures.
 - noveltyAngle must name the distinct concept angle being tested; sourceChunkFocus must name the exact selected TXT idea used; answerPath must summarize the reasoning/answer path and must differ across candidates.
+${buildStudentFacingQualityContract()}
 
 Return ONLY valid JSON:
 { "questions": [ ...all questions... ] }`;
+}
+
+function buildStudentFacingQualityContract() {
+  return `
+STUDENT-FACING QUESTION QUALITY CONTRACT
+
+You are writing a real school question paper for students. Students can know the chapter/topic, but they do not know internal source chunks, source IDs, retrieval labels, metadata, or AI planning fields.
+
+Never include these in any student-visible field:
+- source ID, chunk ID, atom ID, TXT/PDF ID
+- "source detail", "selected source", "exact source detail"
+- "detail lens", "noveltyAngle", "sourceChunkFocus", "answerPath"
+- metadata-like labels such as physics-c..., txt-a..., pdf-a...
+- instructions like "Use evidence from the selected source" unless this is a printed SOURCE_BASED passage question
+
+Use the supplied source only to understand the concept. Convert it into natural exam questions.
+
+For MCQ:
+- Ask one clear subject question.
+- The correct option should answer the concept.
+- Distractors should be plausible misconceptions from the same topic.
+- Do not make options about whether evidence is present.
+
+For TRUE_FALSE:
+- Write a complete, meaningful statement.
+- It must be clearly true or false from the concept.
+
+For SHORT/LONG:
+- Ask the student to explain, compare, reason, calculate, draw, or apply.
+- Do not ask them to name the source.
+
+For MATCH_FOLLOWING:
+- Column A and Column B must contain real subject terms, examples, causes/effects, definitions, observations, or formulas.
+- Do not match metadata labels.
+
+Before returning JSON, silently rewrite any question that sounds like an AI prompt or source-audit task. The final paper must read like a teacher wrote it.
+`;
 }
 
 function buildRepairFeedbackBlock(repairFeedback?: GenerationRepairFeedback) {

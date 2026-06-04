@@ -926,7 +926,7 @@ function sourceBasedQuestion(): GeneratedQuestion {
     scenario:
       "A student adds a few drops of indicator to an acid and observes a clear colour change. The observation is recorded and discussed using the chapter concept.",
     subQuestions: Array.from({ length: 4 }, (_, index) => ({
-      text: `What does source detail ${index + 1} show?`,
+      text: `What does passage point ${index + 1} show?`,
       type: "VERY_SHORT",
       correctAnswer: "It shows evidence for the acid indicator concept.",
       marks: 1,

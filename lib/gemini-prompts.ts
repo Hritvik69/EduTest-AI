@@ -244,6 +244,7 @@ If an issue exists, fix only the problematic item or section while preserving al
 FINAL OUTPUT QUALITY
 The final paper must feel like a real CBSE assessment, professional coaching paper, or school examination paper.
 Maintain clean formatting inside question text, proper numbering only when requested, section grouping data, marks labels, readable spacing, and professional structure.
+Student-facing fields must never expose internal retrieval or planning metadata. Do not put source IDs, chunk IDs, atom IDs, "source detail", "selected source", "exact source detail", "detail lens", "noveltyAngle", "sourceChunkFocus", or "answerPath" into question text, options, scenarios, passages, sub-questions, match pairs, answers, explanations, key points, or diagram descriptions. Convert supplied source context into natural teacher-written exam questions.
 
 OUTPUT CONTRACT
 - Return only valid JSON matching the exact schema requested in the user prompt.

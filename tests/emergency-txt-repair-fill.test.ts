@@ -515,7 +515,7 @@ function mcq(index: number): GeneratedQuestion {
       { id: "D", text: "Count lines without context", isCorrect: false },
     ],
     correctAnswer: "B",
-    explanation: `The answer follows the selected source text for ${uniqueTerm}.`,
+    explanation: `The answer follows the chapter passage for ${uniqueTerm}.`,
     bloomLevel: "APPLY",
     competencyLevel: 2,
     topic: "Dialogue inference",
