@@ -138,4 +138,44 @@ describe("GenerationContract", () => {
       }),
     ).not.toBe(baseline);
   });
+
+  it("estimates focused generation as bounded chunks instead of every type as a call", () => {
+    const config: PaperConfig = {
+      ...baseConfig,
+      totalQuestions: 9,
+      totalMarks: 25,
+      questionTypes: [
+        "MCQ",
+        "TRUE_FALSE",
+        "ONE_WORD",
+        "FILL_BLANK",
+        "VERY_SHORT",
+        "SHORT",
+        "NUMERICAL",
+        "HOTS",
+        "LONG",
+      ],
+      typeDistribution: {
+        MCQ: 1,
+        TRUE_FALSE: 1,
+        ONE_WORD: 1,
+        FILL_BLANK: 1,
+        VERY_SHORT: 1,
+        SHORT: 1,
+        NUMERICAL: 1,
+        HOTS: 1,
+        LONG: 1,
+      },
+      questionComposition: [
+        {
+          ...baseConfig.questionComposition![0],
+          questionCount: 9,
+        },
+      ],
+    };
+    const contract = buildGenerationContract(config, generateBlueprint(config));
+
+    expect(contract.apiEstimate.plannedCalls).toBe(3);
+    expect(contract.apiEstimate.riskReasons.join(" ")).toMatch(/chunked focused batches/);
+  });
 });

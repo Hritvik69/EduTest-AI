@@ -13,6 +13,7 @@ import {
 import {
   coverageDiagnosticsForFinalQuestions,
   generateCoveragePlannedQuestions,
+  type CoverageGenerationStopContext,
   type CoverageGenerationDiagnostic,
 } from "@/lib/coverage-generation";
 import {
@@ -574,6 +575,32 @@ export async function POST(request: NextRequest) {
         let allQuestions = resumeState?.candidateQuestions ?? [];
         let coverageDiagnostics: CoverageGenerationDiagnostic[] = [];
         let stoppedDuringCoverageGeneration = false;
+        const persistQuestionGenerationState = async (
+          candidateQuestions: GeneratedQuestion[],
+          lastMessage: string,
+          status: PaperGenerationState["status"] = "IN_PROGRESS",
+        ) => {
+          if (!paperId) return null;
+          const bank = new QuestionCandidateBank(
+            candidateQuestions,
+            blueprint,
+            effectiveConfig,
+            { initialReadyCount: resumeState?.readyQuestionCount ?? 0 },
+          );
+          const state = bank.toGenerationState({
+            status,
+            phase: "QUESTION_GENERATION",
+            generationJobId,
+            idempotencyKey,
+            sourceContextHash,
+            attemptCount: resumeState?.attemptCount ?? 0,
+            createdAt: resumeState?.createdAt,
+            lastMessage,
+          });
+          await setPaperGenerationState(paperId, state, effectiveConfig);
+          updateRecoverySnapshot(state);
+          return state;
+        };
         const resumeNeedsFinalCompletion =
           Boolean(resumeState) &&
           (resumeState?.phase === "VALIDATION" || resumeState?.phase === "REPAIR") &&
@@ -638,6 +665,19 @@ export async function POST(request: NextRequest) {
                 config: effectiveConfig,
                 existingQuestions: [],
               });
+              const savedState = await persistQuestionGenerationState(
+                allQuestions,
+                `Phase 5 saved ${allQuestions.length}/${blueprint.totalQuestions} source-backed questions after provider preflight outage.`,
+              );
+              if (savedState) {
+                send({
+                  step: 5,
+                  pct: 84,
+                  progress: 84,
+                  msg: `Phase 5 - Question Generation: saved ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid source-backed questions.`,
+                  ...recoveryPayload(),
+                });
+              }
             } else {
               try {
                 allQuestions = await generateBlueprintQuestions(
@@ -663,6 +703,19 @@ export async function POST(request: NextRequest) {
                     },
                   },
                 );
+                const savedState = await persistQuestionGenerationState(
+                  allQuestions,
+                  `Phase 5 saved ${allQuestions.length}/${blueprint.totalQuestions} candidate questions before validation.`,
+                );
+                if (savedState) {
+                  send({
+                    step: 5,
+                    pct: 84,
+                    progress: 84,
+                    msg: `Phase 5 - Question Generation: saved ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid questions before validation.`,
+                    ...recoveryPayload(),
+                  });
+                }
               } catch (error) {
                 if (!allowExplicitDemoFallback && isAIProviderUnavailableError(error)) {
                   send({
@@ -677,6 +730,19 @@ export async function POST(request: NextRequest) {
                     config: effectiveConfig,
                     existingQuestions: [],
                   });
+                  const savedState = await persistQuestionGenerationState(
+                    allQuestions,
+                    `Phase 5 saved ${allQuestions.length}/${blueprint.totalQuestions} source-backed questions after provider outage.`,
+                  );
+                  if (savedState) {
+                    send({
+                      step: 5,
+                      pct: 84,
+                      progress: 84,
+                      msg: `Phase 5 - Question Generation: saved ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid source-backed questions.`,
+                      ...recoveryPayload(),
+                    });
+                  }
                 } else {
                   throw error;
                 }
@@ -711,8 +777,24 @@ export async function POST(request: NextRequest) {
             cooldownScope: providerCooldownScope,
             healthyProviders,
             signal: generationSignal,
-            shouldStop: (generatedCount) =>
-              shouldStopForFinalization(generationDeadlineAt, generatedCount),
+            shouldStop: (context) =>
+              shouldStopBeforeNextGenerationCall(generationDeadlineAt, context),
+            onAcceptedBatch: async (details) => {
+              const savedCandidates = [...allQuestions, ...details.generatedQuestions];
+              const savedState = await persistQuestionGenerationState(
+                savedCandidates,
+                `Phase 5 saved ${details.generated}/${details.total} focused questions across ${details.batch}/${details.batches} chunked AI batch${details.batches === 1 ? "" : "es"}.`,
+              );
+              if (savedState) {
+                send({
+                  step: 5,
+                  pct: 82,
+                  progress: 82,
+                  msg: `Phase 5 - Question Generation: saved ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid questions (${details.batch}/${details.batches} chunked AI batch${details.batches === 1 ? "" : "es"}).`,
+                  ...recoveryPayload(),
+                });
+              }
+            },
             onProgress: (details) => {
               const providerOutageRecovered =
                 details.diagnostic.generationMode === "source_backed_provider_outage";
@@ -737,6 +819,17 @@ export async function POST(request: NextRequest) {
           allQuestions = [...allQuestions, ...coverageGeneration.questions];
           coverageDiagnostics = coverageGeneration.diagnostics;
           stoppedDuringCoverageGeneration = coverageGeneration.stoppedForBudget;
+        }
+
+        if (stoppedDuringCoverageGeneration && !allQuestions.length) {
+          await persistQuestionGenerationState(
+            allQuestions,
+            "Phase 5 paused before the first AI chunk because the server time budget was too low. Lower the question count/format variety or retry Auto Fallback.",
+            "NEEDS_CONTINUATION",
+          );
+          throw generationContinuationError(
+            "Server time budget was too low before the next AI chunk. Lower question formats/count, switch to source-backed mode, or retry with Auto Fallback.",
+          );
         }
 
         const stoppedForServerBudget = shouldStopForFinalization(
@@ -962,11 +1055,15 @@ export async function POST(request: NextRequest) {
           }
         }
 
+        const savedFailureState = paperId
+          ? await getPaperGenerationState(paperId, auth.user.id).catch(() => null)
+          : null;
         let paperStatusSaved = false;
         const canContinueGeneration =
           Boolean(paperId) &&
           !request.signal.aborted &&
-          isGenerationContinuationError(error);
+          (isGenerationContinuationError(error) ||
+            isRecoverableGenerationRuntimeError(error, savedFailureState));
         if (paperId && !canContinueGeneration) {
           try {
             await updatePaperStatus(paperId, "FAILED", {
@@ -993,9 +1090,7 @@ export async function POST(request: NextRequest) {
 
         if (!request.signal.aborted && !streamClosed) {
           const continuationState =
-            canContinueGeneration && paperId
-              ? await getPaperGenerationState(paperId, auth.user.id).catch(() => null)
-              : null;
+            canContinueGeneration && paperId ? savedFailureState : null;
           send(
             {
               error: true,
@@ -1668,6 +1763,36 @@ function isGenerationContinuationError(error: unknown) {
   return /GENERATION_CONTINUE_AVAILABLE/i.test(message);
 }
 
+function isRecoverableGenerationRuntimeError(
+  error: unknown,
+  state: PaperGenerationState | null,
+) {
+  if (!state || state.phase !== "QUESTION_GENERATION") return false;
+
+  const code = generationErrorCode(error);
+  if (
+    code === "SOURCE_TEXT_NOT_ENOUGH" ||
+    code === "SOURCE_NOT_TEXT_BACKED" ||
+    code === "PROVIDER_AUTH_ERROR"
+  ) {
+    return false;
+  }
+
+  const hasSavedProgress =
+    state.readyQuestionCount > 0 || state.candidateQuestions.length > 0;
+  if (!hasSavedProgress) {
+    return code === "PROVIDER_NETWORK_ERROR" || isServerTimeBudgetError(error);
+  }
+
+  return (
+    code === "PROVIDER_NETWORK_ERROR" ||
+    code === "PROVIDER_AUTO_FAILED" ||
+    code === "PROVIDER_QUOTA_ERROR" ||
+    code === "GENERATION_CAN_SKIP_INVALID" ||
+    isServerTimeBudgetError(error)
+  );
+}
+
 function stripGenerationContinuationPrefix(message: string) {
   return message.replace(/^GENERATION_CONTINUE_AVAILABLE:\s*/i, "");
 }
@@ -1757,6 +1882,24 @@ function generationFinalizationReserveMs() {
 function shouldStopForFinalization(deadlineAt: number, readyQuestionCount: number) {
   if (readyQuestionCount <= 0) return false;
   return deadlineAt - Date.now() <= generationFinalizationReserveMs();
+}
+
+function shouldStopBeforeNextGenerationCall(
+  deadlineAt: number,
+  context: CoverageGenerationStopContext,
+) {
+  const remainingMs = deadlineAt - Date.now();
+  const reserveForFinalization = generationFinalizationReserveMs();
+  const reserveForNextAiCall = Math.min(
+    22_000,
+    Math.max(10_000, context.nextQuestionCount * 2_750),
+  );
+
+  if (context.generatedQuestionCount > 0) {
+    return remainingMs <= reserveForFinalization + 2_000;
+  }
+
+  return remainingMs <= reserveForFinalization + reserveForNextAiCall;
 }
 
 function generationDeadlineError() {

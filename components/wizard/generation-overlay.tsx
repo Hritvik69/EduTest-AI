@@ -846,12 +846,8 @@ function isRecoverableGenerationError(error: unknown) {
 
 function canAutoContinueGenerationError(error: unknown) {
   if (!isRecoverableGenerationError(error)) return false;
-  const code = getErrorCode(error);
   const progress = continuationProgressFromError(error);
-  if (code === "GENERATION_STREAM_RECOVERABLE") {
-    return (progress.readyQuestionCount ?? 0) > 0;
-  }
-  return code === "GENERATION_CONTINUE_AVAILABLE" || (progress.readyQuestionCount ?? 0) > 0;
+  return (progress.readyQuestionCount ?? 0) > 0;
 }
 
 function isSourceTextShortageError(
@@ -970,7 +966,7 @@ function generationErrorGuidance(
     const progress = questionProgressLabel(error);
     return progress
       ? `Valid progress was saved (${progress}). Retry continues the same paper instead of starting from zero.`
-      : "The generation setup was saved, but no complete questions were saved yet. Retry continues the same paper setup without opening an incomplete paper.";
+      : "No valid questions were saved yet. Lower question formats/count, switch to source-backed mode, or use Retry Auto Fallback before trying again.";
   }
   return "Check the selected provider, source coverage, and question count before retrying.";
 }

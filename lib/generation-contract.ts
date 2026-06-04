@@ -145,7 +145,7 @@ function estimateApiUse(
   const compositionRows =
     config.questionComposition?.filter((item) => item.questionCount > 0).length ?? 0;
   const generationCalls = compositionRows
-    ? compositionRows * Math.max(1, blueprint.sections.length)
+    ? compositionRows * Math.max(1, Math.ceil(blueprint.sections.length / coverageSectionsPerAiCall()))
     : 1;
   const repairAllowance = Math.min(3, Math.max(1, Math.ceil(blueprint.totalQuestions / 20)));
   const candidateQuestions = options.candidateQuestions ?? blueprint.totalQuestions;
@@ -207,8 +207,13 @@ function estimateRiskReasons({
   } else if (blueprint.totalQuestions >= 40) {
     reasons.push("Medium-high question count may need more generation time.");
   }
+  if (compositionRows > 0 && blueprint.sections.length > coverageSectionsPerAiCall()) {
+    reasons.push(
+      "Many question formats will run as chunked focused batches so the server can pause and continue safely.",
+    );
+  }
   if (plannedCalls >= 12) {
-    reasons.push("Many focused batches are planned from the selected coverage split.");
+    reasons.push("Many chunked focused batches are planned from the selected coverage split.");
   } else if (compositionRows >= 6) {
     reasons.push("Several S/C/T coverage rows will be generated separately.");
   }
@@ -247,6 +252,10 @@ function estimateRiskLevel(
     return "medium";
   }
   return "low";
+}
+
+function coverageSectionsPerAiCall() {
+  return 4;
 }
 
 function stableHash(value: unknown) {

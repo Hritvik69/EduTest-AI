@@ -1,11 +1,12 @@
 import {
   buildQuestionCompositionPlan,
+  compositionKey,
   type SectionCompositionPlan,
 } from "@/lib/composition";
-import { difficultyTargetsForCount } from "@/lib/difficulty-protocol";
 import {
-  generateQuestionsForSection,
+  generateBlueprintQuestions,
 } from "@/lib/generator";
+import { blueprintForSections } from "@/lib/question-candidate-bank";
 import { isAIProviderUnavailableError } from "@/lib/error-classification";
 import { analyzeConceptSourceQuality, retrieveConcepts } from "@/lib/retriever";
 import { generateSourceBackedFallbackQuestions } from "@/lib/source-backed-fallback";
@@ -34,6 +35,23 @@ export interface CoverageGenerationDiagnostic {
   sourceQuality: ReturnType<typeof analyzeConceptSourceQuality>["quality"];
 }
 
+export interface CoverageGenerationStopContext {
+  generatedQuestionCount: number;
+  nextQuestionCount: number;
+  batch: number;
+  batches: number;
+}
+
+export interface CoverageGenerationAcceptedBatch {
+  questions: GeneratedQuestion[];
+  generatedQuestions: GeneratedQuestion[];
+  diagnostics: CoverageGenerationDiagnostic[];
+  generated: number;
+  total: number;
+  batch: number;
+  batches: number;
+}
+
 export async function generateCoveragePlannedQuestions({
   blueprint,
   concepts,
@@ -48,6 +66,7 @@ export async function generateCoveragePlannedQuestions({
   signal,
   shouldStop,
   onProgress,
+  onAcceptedBatch,
   onBatchComplete,
 }: {
   blueprint: Blueprint;
@@ -61,13 +80,16 @@ export async function generateCoveragePlannedQuestions({
   healthyProviders?: DirectAIProvider[];
   allowPartial?: boolean;
   signal?: AbortSignal;
-  shouldStop?: (generatedQuestionCount: number) => boolean;
+  shouldStop?: (context: CoverageGenerationStopContext) => boolean;
   onProgress?: (details: {
     label: string;
     generated: number;
     total: number;
     diagnostic: CoverageGenerationDiagnostic;
   }) => void;
+  onAcceptedBatch?: (
+    details: CoverageGenerationAcceptedBatch,
+  ) => void | Promise<void>;
   onBatchComplete?: (details: {
     generated: number;
     total: number;
@@ -90,112 +112,123 @@ export async function generateCoveragePlannedQuestions({
   let stoppedForBudget = false;
   const providersUnavailableBeforeCall =
     Array.isArray(healthyProviders) && healthyProviders.length === 0;
+  const batchPlans = buildCoverageBatchPlans(remainingPlan);
 
-  for (const sectionPlan of remainingPlan) {
-    for (const allocation of sectionPlan.allocations) {
-      if (allocation.count <= 0) continue;
-      if (shouldStop?.(existingQuestions.length + generatedQuestions.length)) {
-        stoppedForBudget = true;
-        return { questions: generatedQuestions, diagnostics, stoppedForBudget };
-      }
+  for (let batchIndex = 0; batchIndex < batchPlans.length; batchIndex += 1) {
+    const batchPlan = batchPlans[batchIndex];
+    if (!batchPlan.sections.length || batchPlan.totalQuestions <= 0) continue;
+    if (
+      shouldStop?.({
+        generatedQuestionCount: existingQuestions.length + generatedQuestions.length,
+        nextQuestionCount: batchPlan.totalQuestions,
+        batch: batchIndex + 1,
+        batches: batchPlans.length,
+      })
+    ) {
+      stoppedForBudget = true;
+      return { questions: generatedQuestions, diagnostics, stoppedForBudget };
+    }
 
-      const coverage = await retrieveConceptsForCoverageUnit(
-        concepts,
-        allocation.item,
+    const coverage = await retrieveConceptsForCoverageUnit(
+      concepts,
+      batchPlan.item,
+      config,
+    );
+    const focusedSections = batchPlan.sections.map(({ section, count }) => ({
+      ...section,
+      count,
+      totalMarks: count * section.marksPerQuestion,
+    }));
+    const label = coverageLabel(batchPlan.item);
+    let generationMode: CoverageGenerationDiagnostic["generationMode"] = "ai";
+    let acceptedBatch: GeneratedQuestion[] = [];
+    const existingForBatch = [...existingQuestions, ...generatedQuestions];
+
+    if (providersUnavailableBeforeCall) {
+      generationMode = "source_backed_provider_outage";
+      acceptedBatch = sourceBackedCoverageBatch({
+        allocation: batchPlan.item,
+        focusedSections,
+        concepts: coverage.concepts,
         config,
-      );
-      const focusedSection = {
-        ...sectionPlan.section,
-        count: allocation.count,
-        totalMarks: allocation.count * sectionPlan.section.marksPerQuestion,
-      };
-      const label = coverageLabel(allocation.item);
-      let generationMode: CoverageGenerationDiagnostic["generationMode"] = "ai";
-      let taggedQuestions: GeneratedQuestion[] = [];
-      const existingForBatch = [...existingQuestions, ...generatedQuestions];
-
-      if (providersUnavailableBeforeCall) {
-        generationMode = "source_backed_provider_outage";
-        taggedQuestions = sourceBackedCoverageQuestions({
-          allocation: allocation.item,
-          section: focusedSection,
+        existingQuestions: existingForBatch,
+      });
+    } else {
+      try {
+        const batchQuestions = await generateBlueprintQuestions(
+          blueprintForSections(blueprint, focusedSections),
+          coverage.context,
+          config,
+          {
+            allowPartial,
+            availableTopics: coverage.availableTopics,
+            existingQuestions: existingForBatch,
+            generationPlan,
+            generationNonce: `${generationNonce ?? "coverage"}:coverage:${batchIndex + 1}`,
+            cooldownScope,
+            healthyProviders,
+            signal,
+            onBatchComplete,
+          },
+        );
+        const taggedQuestions = tagQuestionsWithCoverage(
+          batchQuestions,
+          batchPlan.item,
+        );
+        acceptedBatch = acceptCoverageBatchQuestions({
+          taggedQuestions,
+          allocation: batchPlan.item,
+          focusedSections,
           concepts: coverage.concepts,
           config,
           existingQuestions: existingForBatch,
         });
-      } else {
-        try {
-          const batchQuestions = await generateQuestionsForSection(
-            focusedSection,
-            coverage.context,
-            config,
-            {
-              allowPartial,
-              availableTopics: coverage.availableTopics,
-              coverageFocus: allocation.item,
-              existingQuestions: existingForBatch,
-              generationPlan,
-              difficultyTargets: difficultyTargetsForCount(
-                config.difficulty,
-                allocation.count,
-                sectionPlan.section.questionType,
-              ),
-              generationNonce: `${generationNonce ?? "coverage"}:coverage:${diagnostics.length + 1}`,
-              cooldownScope,
-              healthyProviders,
-              signal,
-              onBatchComplete,
-            },
-          );
-          taggedQuestions = tagQuestionsWithCoverage(
-            batchQuestions,
-            allocation.item,
-          );
-        } catch (error) {
-          if (!isAIProviderUnavailableError(error)) throw error;
-          generationMode = "source_backed_provider_outage";
-          taggedQuestions = sourceBackedCoverageQuestions({
-            allocation: allocation.item,
-            section: focusedSection,
-            concepts: coverage.concepts,
-            config,
-            existingQuestions: existingForBatch,
-          });
-        }
+      } catch (error) {
+        if (!isAIProviderUnavailableError(error)) throw error;
+        generationMode = "source_backed_provider_outage";
+        acceptedBatch = sourceBackedCoverageBatch({
+          allocation: batchPlan.item,
+          focusedSections,
+          concepts: coverage.concepts,
+          config,
+          existingQuestions: existingForBatch,
+        });
       }
+    }
 
-      const toppedUpQuestions =
-        generationMode === "ai"
-          ? topUpCoverageQuestions({
-              questions: taggedQuestions,
-              allocation: allocation.item,
-              section: focusedSection,
-              concepts: coverage.concepts,
-              config,
-              existingQuestions: [
-                ...existingForBatch,
-                ...taggedQuestions,
-              ],
-            })
-          : taggedQuestions;
-      const acceptedBatch = toppedUpQuestions.slice(0, allocation.count);
-      generatedQuestions.push(...acceptedBatch);
+    generatedQuestions.push(...acceptedBatch);
 
-      const diagnostic: CoverageGenerationDiagnostic = {
-        subject: allocation.item.subject,
-        chapterId: allocation.item.chapterId,
-        chapterName: allocation.item.chapterName,
-        topicId: allocation.item.topicId,
-        topicName: allocation.item.topicName,
-        questionType: sectionPlan.section.questionType,
-        requestedQuestions: allocation.count,
-        generatedQuestions: acceptedBatch.length,
+    const batchDiagnostics = focusedSections.map((focusedSection) => {
+      const generatedForSection = acceptedBatch.filter(
+        (question) => question.type === focusedSection.questionType,
+      ).length;
+
+      return {
+        subject: batchPlan.item.subject,
+        chapterId: batchPlan.item.chapterId,
+        chapterName: batchPlan.item.chapterName,
+        topicId: batchPlan.item.topicId,
+        topicName: batchPlan.item.topicName,
+        questionType: focusedSection.questionType,
+        requestedQuestions: focusedSection.count,
+        generatedQuestions: Math.min(generatedForSection, focusedSection.count),
         generationMode,
         sourceConcepts: coverage.concepts.length,
         sourceTextChunks: coverage.sourceQuality.sourceTextChunks,
         sourceQuality: coverage.sourceQuality.quality,
       };
-      diagnostics.push(diagnostic);
+    });
+    diagnostics.push(...batchDiagnostics);
+    await onAcceptedBatch?.({
+      questions: acceptedBatch,
+      generatedQuestions: [...generatedQuestions],
+      diagnostics: [...diagnostics],
+      generated: Math.min(generatedQuestions.length, totalRequested),
+      total: totalRequested,
+      batch: batchIndex + 1,
+      batches: batchPlans.length,
+    });
+    batchDiagnostics.forEach((diagnostic) => {
       onProgress?.({
         label,
         generated: Math.min(
@@ -205,7 +238,7 @@ export async function generateCoveragePlannedQuestions({
         total: totalRequested,
         diagnostic,
       });
-    }
+    });
   }
 
   return { questions: generatedQuestions, diagnostics, stoppedForBudget };
@@ -237,6 +270,79 @@ export function buildRemainingCoveragePlan(
         .filter((allocation) => allocation.count > 0),
     }))
     .filter((sectionPlan) => sectionPlan.allocations.length > 0);
+}
+
+export function estimateCoverageGenerationChunks(
+  blueprint: Blueprint,
+  composition: QuestionCompositionItem[] = [],
+  acceptedQuestions: GeneratedQuestion[] = [],
+) {
+  return buildCoverageBatchPlans(
+    buildRemainingCoveragePlan(blueprint, composition, acceptedQuestions),
+  ).length;
+}
+
+interface CoverageBatchPlan {
+  item: QuestionCompositionItem;
+  sections: Array<{
+    section: Blueprint["sections"][number];
+    count: number;
+  }>;
+  totalQuestions: number;
+}
+
+function buildCoverageBatchPlans(
+  remainingPlan: SectionCompositionPlan[],
+): CoverageBatchPlan[] {
+  const grouped = new Map<string, CoverageBatchPlan>();
+
+  remainingPlan.forEach((sectionPlan) => {
+    sectionPlan.allocations.forEach((allocation) => {
+      if (allocation.count <= 0) return;
+      const key = compositionKey(allocation.item);
+      const current =
+        grouped.get(key) ??
+        {
+          item: allocation.item,
+          sections: [],
+          totalQuestions: 0,
+        };
+      current.sections.push({
+        section: sectionPlan.section,
+        count: allocation.count,
+      });
+      current.totalQuestions += allocation.count;
+      grouped.set(key, current);
+    });
+  });
+
+  return Array.from(grouped.values()).flatMap((plan) =>
+    chunkCoverageSections(plan, maxCoverageSectionsPerAiCall()).map((sections) => ({
+      item: plan.item,
+      sections,
+      totalQuestions: sections.reduce((sum, section) => sum + section.count, 0),
+    })),
+  );
+}
+
+function chunkCoverageSections(
+  plan: CoverageBatchPlan,
+  chunkSize: number,
+): CoverageBatchPlan["sections"][] {
+  const chunks: CoverageBatchPlan["sections"][] = [];
+  for (let index = 0; index < plan.sections.length; index += chunkSize) {
+    chunks.push(plan.sections.slice(index, index + chunkSize));
+  }
+  return chunks;
+}
+
+function maxCoverageSectionsPerAiCall() {
+  const configured = Number(process.env.EDUTEST_COVERAGE_SECTIONS_PER_AI_CALL);
+  if (Number.isFinite(configured) && configured >= 1 && configured <= 8) {
+    return Math.floor(configured);
+  }
+
+  return 4;
 }
 
 export async function retrieveConceptsForCoverageUnit(
@@ -339,6 +445,76 @@ function topUpCoverageQuestions({
     ...questions,
     ...fallback,
   ];
+}
+
+function acceptCoverageBatchQuestions({
+  taggedQuestions,
+  allocation,
+  focusedSections,
+  concepts,
+  config,
+  existingQuestions,
+}: {
+  taggedQuestions: GeneratedQuestion[];
+  allocation: QuestionCompositionItem;
+  focusedSections: Blueprint["sections"];
+  concepts: ConceptData[];
+  config: PaperConfig;
+  existingQuestions: GeneratedQuestion[];
+}) {
+  const accepted: GeneratedQuestion[] = [];
+
+  focusedSections.forEach((focusedSection) => {
+    const sectionQuestions = taggedQuestions.filter(
+      (question) => question.type === focusedSection.questionType,
+    );
+    const toppedUpQuestions = topUpCoverageQuestions({
+      questions: sectionQuestions,
+      allocation,
+      section: focusedSection,
+      concepts,
+      config,
+      existingQuestions: [
+        ...existingQuestions,
+        ...accepted,
+        ...sectionQuestions,
+      ],
+    });
+
+    accepted.push(...toppedUpQuestions.slice(0, focusedSection.count));
+  });
+
+  return accepted;
+}
+
+function sourceBackedCoverageBatch({
+  allocation,
+  focusedSections,
+  concepts,
+  config,
+  existingQuestions,
+}: {
+  allocation: QuestionCompositionItem;
+  focusedSections: Blueprint["sections"];
+  concepts: ConceptData[];
+  config: PaperConfig;
+  existingQuestions: GeneratedQuestion[];
+}) {
+  const accepted: GeneratedQuestion[] = [];
+
+  focusedSections.forEach((focusedSection) => {
+    accepted.push(
+      ...sourceBackedCoverageQuestions({
+        allocation,
+        section: focusedSection,
+        concepts,
+        config,
+        existingQuestions: [...existingQuestions, ...accepted],
+      }).slice(0, focusedSection.count),
+    );
+  });
+
+  return accepted;
 }
 
 function sourceBackedCoverageQuestions({

@@ -15,6 +15,7 @@ export type GenerationStateStatus =
 
 export type GenerationStatePhase =
   | "INITIAL_GENERATION"
+  | "QUESTION_GENERATION"
   | "VALIDATION"
   | "REPAIR"
   | "FINALIZING";

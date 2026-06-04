@@ -270,6 +270,28 @@ describe("strict coverage generation", () => {
     expect(prompt).not.toContain("Biology source text");
   });
 
+  it("estimates bounded chunks when one coverage row has many selected formats", async () => {
+    const { estimateCoverageGenerationChunks } = await import(
+      "@/lib/coverage-generation"
+    );
+    const focusedComposition = [{ ...composition[0], questionCount: 9 }];
+    const blueprint = blueprintWithTypes([
+      "MCQ",
+      "TRUE_FALSE",
+      "ONE_WORD",
+      "FILL_BLANK",
+      "VERY_SHORT",
+      "SHORT",
+      "NUMERICAL",
+      "HOTS",
+      "LONG",
+    ]);
+
+    expect(
+      estimateCoverageGenerationChunks(blueprint, focusedComposition),
+    ).toBe(3);
+  });
+
   it("fails clearly when a positive allocation has no real TXT or PDF source text", async () => {
     const { generateCoveragePlannedQuestions } = await import(
       "@/lib/coverage-generation"
@@ -344,6 +366,58 @@ describe("strict coverage generation", () => {
       new Set(["Biology", "Mathematics", "Chemistry", "Physics"]),
     );
   });
+
+  it("reports accepted focused batches so Phase 5 can persist progress", async () => {
+    const counts = [6, 6, 5, 5];
+    const largeComposition = composition.map((item, index) => ({
+      ...item,
+      questionCount: counts[index],
+    }));
+    mocks.generateJSON.mockImplementation(async (prompt: string) => {
+      const subject =
+        largeComposition.find((item) => prompt.includes(`${item.subject} source text`))
+          ?.subject ?? "Biology";
+      const item =
+        largeComposition.find((candidate) => candidate.subject === subject) ??
+        largeComposition[0];
+      const count = Number(prompt.match(/"candidate_count":(\d+)/)?.[1] ?? 1);
+      return {
+        questions: Array.from({ length: count }, (_, index) =>
+          mcq(index + 80, item.subject, item.chapterId!, item.topicId!, item.topicName!),
+        ),
+      };
+    });
+    const { generateCoveragePlannedQuestions } = await import(
+      "@/lib/coverage-generation"
+    );
+    const acceptedSnapshots: Array<{ generated: number; total: number }> = [];
+
+    const result = await generateCoveragePlannedQuestions({
+      blueprint: blueprintFor(22),
+      concepts: conceptsFor(largeComposition),
+      config: {
+        ...config,
+        questionComposition: largeComposition,
+        totalQuestions: 22,
+        totalMarks: 22,
+        typeDistribution: { MCQ: 22 },
+      },
+      onAcceptedBatch: (details) => {
+        acceptedSnapshots.push({
+          generated: details.generated,
+          total: details.total,
+        });
+      },
+    });
+
+    expect(result.questions).toHaveLength(22);
+    expect(acceptedSnapshots).toEqual([
+      { generated: 6, total: 22 },
+      { generated: 12, total: 22 },
+      { generated: 17, total: 22 },
+      { generated: 22, total: 22 },
+    ]);
+  });
 });
 
 function blueprintFor(count: number): Blueprint {
@@ -364,6 +438,27 @@ function blueprintFor(count: number): Blueprint {
         bloomBreakdown: defaultBloomDistribution,
       },
     ],
+  };
+}
+
+function blueprintWithTypes(types: Blueprint["sections"][number]["questionType"][]): Blueprint {
+  const sections = types.map((questionType, index) => ({
+    name: `Section ${index + 1}`,
+    questionType,
+    count: 1,
+    marksPerQuestion: 1,
+    totalMarks: 1,
+    difficulty: "MEDIUM" as const,
+    difficultyBreakdown: { MEDIUM: 100 },
+    bloomBreakdown: defaultBloomDistribution,
+  }));
+
+  return {
+    totalQuestions: sections.length,
+    totalMarks: sections.length,
+    estimatedTime: sections.length * 2,
+    competencyPercentage: 60,
+    sections,
   };
 }
 
