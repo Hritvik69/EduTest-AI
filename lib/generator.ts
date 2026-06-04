@@ -700,6 +700,7 @@ Rules:
 - Unique stems/concepts within this response; use fresh board-style questions grounded in concepts.
 - Never generate duplicate questions. A duplicate includes same concept angle, same numerical values, same scenario, same answer fact, same option pattern, or a near-paraphrase of any forbidden stem.
 - Fresh run nonce: ${generationNonce ?? "not-provided"}. Treat this as a new paper; do not reuse previous output, demo/template examples, or repeated numeric placeholders such as "20 units to 30 units".
+- If CONFIG_JSON.integration_prompt is non-empty, apply it as teacher guidance for style, examples, local context, and emphasis only when it does not conflict with source scope, counts, marks, format, difficulty, or validation rules.
 - For source/case/paragraph/diagram/practical/HOTS/competency/long, synthesize a fresh scenario from concepts.
 - If source is curriculum, use only chapter/topic scope; do not invent exact textbook facts.
 - For English/Hindi/literature, do not invent story scenes, character actions, dialogue, quotes, debates, examples, or specific incidents unless those details are present in the provided concept context.
@@ -910,6 +911,7 @@ Rules:
 - Do not copy source lines verbatim as question text; read the source and create fresh exam questions from its meaning.
 - Every returned question must include type, text, correctAnswer, explanation, topic, difficulty, bloomLevel, marks, reasoningSteps, difficultyConfidence, noveltyAngle, sourceChunkFocus, answerPath, cognitiveComplexity{conceptIntegration,abstractionLevel,inferenceLevel,ambiguityLevel,cognitiveLoad}.
 - The type/marks must exactly match CONFIG_JSON.sections, and section candidate_count must be satisfied whenever possible.
+- If CONFIG_JSON.integration_prompt is non-empty, apply it as teacher guidance for style, examples, local context, and emphasis only when it does not conflict with source scope, counts, marks, format, difficulty, or validation rules.
 - Topic must exactly match one allowed topic.
 - Include proper structure for MCQ options, assertion/reason, match pairs, case/source/paragraph scenarios, subQuestions, diagrams, and keyPoints where the type requires them.
 - Avoid duplicates and avoid repeated concept angles, answer paths, examples, option patterns, case/source scenarios, and sub-question structures.

@@ -37,6 +37,7 @@ import { ProgressSteps } from "./progress-steps";
 import { StepComposition } from "./step-composition";
 import { StepFour } from "./step-four";
 import { StepFive } from "./step-five";
+import { StepIntegrationPrompt } from "./step-integration-prompt";
 import { StepOne } from "./step-one";
 import { StepThree } from "./step-three";
 import { StepTwo } from "./step-two";
@@ -122,7 +123,7 @@ function WizardInner() {
 
   function next() {
     if (!validateStep()) return;
-    setStep((current) => Math.min(7, current + 1));
+    setStep((current) => Math.min(8, current + 1));
   }
 
   return (
@@ -138,7 +139,7 @@ function WizardInner() {
 
       <div className="safe-container pt-8">
         <ProgressSteps
-          currentStep={Math.min(step, 6)}
+          currentStep={Math.min(step, 7)}
           firstLabel={config.sourceMode === "pdf_upload" ? "Upload PDF" : "Class & Chapters"}
           secondLabel={config.sourceMode === "pdf_upload" ? "PDF Composition" : "S/C/T Composition"}
         />
@@ -153,7 +154,8 @@ function WizardInner() {
             {step === 4 ? <StepFour /> : null}
             {step === 5 ? <StepThree /> : null}
             {step === 6 ? <StepFive /> : null}
-            {step === 7 ? (
+            {step === 7 ? <StepIntegrationPrompt /> : null}
+            {step === 8 ? (
               <ConfirmationScreen
                 onEdit={() => setStep(1)}
                 onGenerate={() => setGenerating(true)}
@@ -161,7 +163,7 @@ function WizardInner() {
             ) : null}
           </div>
 
-          {step < 7 ? (
+          {step < 8 ? (
             <div className="mt-8 flex flex-col justify-between gap-3 border-t border-white/10 pt-5 sm:flex-row">
               <Button
                 type="button"
@@ -173,7 +175,7 @@ function WizardInner() {
                 Back
               </Button>
               <Button type="button" onClick={next}>
-                {step === 6 ? "Review Configuration" : "Continue"}
+                {step === 7 ? "Review Configuration" : "Continue"}
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
@@ -511,6 +513,7 @@ function PromptImpactPanel({
             contract.source.chapterIds.length === 1 ? "" : "s"
           }`;
   const hiddenChapters = Math.max(0, selectedChapters.length - 3);
+  const integrationPrompt = contract.paper.integrationPrompt;
 
   return (
     <div className="rounded-lg border border-blue-300/20 bg-blue-500/[0.055] p-4">
@@ -559,6 +562,9 @@ function PromptImpactPanel({
           lines={[
             sectionSummary || "No valid section shape yet",
             bloomSummary || "Bloom distribution pending",
+            integrationPrompt
+              ? `Integration: ${truncateText(integrationPrompt, 110)}`
+              : "No extra integration prompt",
             contract.apiEstimate.providerFallbackNote,
           ]}
         />
@@ -617,6 +623,10 @@ function formatTokenRange(range: { min: number; max: number }) {
 function compactNumber(value: number) {
   if (value >= 1000) return `${Math.round(value / 100) / 10}k`;
   return String(value);
+}
+
+function truncateText(value: string, maxLength: number) {
+  return value.length <= maxLength ? value : `${value.slice(0, maxLength - 3)}...`;
 }
 
 function SummaryLine({ label, value }: { label: string; value: string }) {

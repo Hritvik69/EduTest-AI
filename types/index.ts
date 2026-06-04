@@ -75,6 +75,7 @@ export interface GenerationContract {
     difficulty: Difficulty;
     bloomDistribution: Record<BloomLevel, number>;
     aiProvider: AIProvider;
+    integrationPrompt?: string;
   };
   sections: Array<{
     name: string;
@@ -263,6 +264,7 @@ export interface PaperConfig {
   examType: string;
   difficulty: Difficulty;
   aiProvider?: AIProvider;
+  integrationPrompt?: string;
   questionTypes: QuestionType[];
   /** Number of questions requested for each selected question type. */
   typeDistribution: Partial<Record<QuestionType, number>>;

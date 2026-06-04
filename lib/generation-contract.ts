@@ -59,6 +59,7 @@ export function buildGenerationContract(
       difficulty: config.difficulty,
       bloomDistribution: config.bloomDistribution,
       aiProvider: config.aiProvider ?? "AUTO",
+      integrationPrompt: normalizeIntegrationPrompt(config.integrationPrompt),
     },
     sections,
     apiEstimate,
@@ -88,6 +89,7 @@ export function generationContractPromptPayload(contract: GenerationContract) {
     difficulty: contract.paper.difficulty,
     blooms: contract.paper.bloomDistribution,
     ai_provider: contract.paper.aiProvider,
+    integration_prompt: contract.paper.integrationPrompt ?? "",
     question_types: questionTypeCounts(contract),
     question_type_counts: questionTypeCounts(contract),
     sections: contract.sections.map((section) => ({
@@ -266,4 +268,9 @@ function stableStringify(value: unknown): string {
 
 function unique(values: string[]) {
   return Array.from(new Set(values.map((value) => value.trim()).filter(Boolean)));
+}
+
+function normalizeIntegrationPrompt(value: string | undefined) {
+  const trimmed = value?.trim();
+  return trimmed ? trimmed.slice(0, 1200) : undefined;
 }

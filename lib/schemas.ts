@@ -146,6 +146,7 @@ export const paperConfigSchema = z
     examType: boundedText(80),
     difficulty: difficultySchema,
     aiProvider: aiProviderSchema.default("AUTO"),
+    integrationPrompt: z.string().trim().max(1200).optional(),
     questionTypes: z.array(questionTypeSchema).min(1).max(questionTypeValues.length),
     typeDistribution: typeDistributionSchema,
     questionComposition: z.array(questionCompositionItemSchema).max(100).optional(),

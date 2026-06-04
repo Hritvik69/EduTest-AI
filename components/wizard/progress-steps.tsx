@@ -10,6 +10,7 @@ const defaultStepLabels = [
   "Difficulty",
   "Question Types",
   "AI Engine",
+  "Integration Prompt",
 ];
 
 export function ProgressSteps({
@@ -24,8 +25,8 @@ export function ProgressSteps({
   const stepLabels = [firstLabel, secondLabel, ...defaultStepLabels.slice(2)];
 
   return (
-    <div className="mx-auto w-full max-w-5xl">
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-6 sm:items-start">
+    <div className="mx-auto w-full max-w-6xl">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-7 sm:items-start">
         {stepLabels.map((label, index) => {
           const step = index + 1;
           const done = currentStep > step;

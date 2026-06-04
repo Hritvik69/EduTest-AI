@@ -20,6 +20,8 @@ const baseConfig: PaperConfig = {
   examType: "Practice",
   difficulty: "MEDIUM",
   aiProvider: "AUTO",
+  integrationPrompt:
+    "Use simple classroom language and prefer practical examples where suitable.",
   questionTypes: ["MCQ", "SHORT"],
   typeDistribution: { MCQ: 12, SHORT: 6 },
   questionComposition: [
@@ -62,6 +64,8 @@ describe("GenerationContract", () => {
       source_mode: "curriculum",
       total_questions: 18,
       difficulty: "MEDIUM",
+      integration_prompt:
+        "Use simple classroom language and prefer practical examples where suitable.",
       question_type_counts: { MCQ: 12, SHORT: 6 },
     });
   });
@@ -120,5 +124,11 @@ describe("GenerationContract", () => {
       }),
     ).not.toBe(baseline);
     expect(hashFor({ ...baseConfig, aiProvider: "GEMINI" })).not.toBe(baseline);
+    expect(
+      hashFor({
+        ...baseConfig,
+        integrationPrompt: "Make every suitable question use local market examples.",
+      }),
+    ).not.toBe(baseline);
   });
 });

@@ -283,6 +283,7 @@ function formatZodErrorMessage(error: ZodError) {
 function humanizePath(path: string) {
   const labels: Record<string, string> = {
     pdfSourceId: "Uploaded PDF",
+    integrationPrompt: "Integration prompt",
     typeDistribution: "Question counts",
     questionComposition: "S/C/T composition",
     bloomDistribution: "Bloom distribution",

@@ -26,6 +26,7 @@ export const defaultPaperConfig: PaperConfig = {
   examType: "School Test",
   difficulty: "MEDIUM",
   aiProvider: "AUTO",
+  integrationPrompt: "",
   questionTypes: ["MCQ", "CASE_BASED", "SHORT", "LONG", "HOTS"],
   typeDistribution: {
     MCQ: 24,
