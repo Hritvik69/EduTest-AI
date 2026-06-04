@@ -23,6 +23,8 @@ import { assertDemoModeAllowed, demoMetadata } from "@/lib/demo-mode";
 import {
   compactAiProviderFailureMessage,
   isAIProviderUnavailableError,
+  providerHealthFailureMessage,
+  publicAIProviderHealthSnapshot,
 } from "@/lib/error-classification";
 import { summarizeAIUsage } from "@/lib/ai-usage-log";
 import { getChapterContent } from "@/lib/extractor";
@@ -31,6 +33,7 @@ import { buildGenerationContract } from "@/lib/generation-contract";
 import {
   checkAIProviderHealth,
   getConfiguredProviders,
+  type AIProviderHealthSnapshot,
   type DirectAIProvider,
 } from "@/lib/gemini";
 import { signGuestPaperSnapshot } from "@/lib/guest-paper-snapshot";
@@ -175,6 +178,7 @@ export async function POST(request: NextRequest) {
         "Phase 5 - Question Generation: still working with the selected AI/source contract.";
       let heartbeatTimer: ReturnType<typeof setInterval> | null = null;
       let streamContractSummary: GenerationStreamContractSummary | null = null;
+      let latestProviderHealth: AIProviderHealthSnapshot | null = null;
       const send = (data: object, event = "progress") => {
         if (streamClosed || request.signal.aborted) return false;
 
@@ -220,6 +224,12 @@ export async function POST(request: NextRequest) {
         recoveryReason: recoverySnapshot.lastMessage,
         ...contractPayload(),
       });
+      const providerHealthPayload = () =>
+        latestProviderHealth
+          ? {
+              providerHealth: publicAIProviderHealthSnapshot(latestProviderHealth),
+            }
+          : {};
       const setHeartbeatContext = (step: number, pct: number, msg: string) => {
         heartbeatStep = step;
         heartbeatPct = pct;
@@ -583,6 +593,7 @@ export async function POST(request: NextRequest) {
             signal: generationSignal,
             cooldownScope: providerCooldownScope,
           });
+          latestProviderHealth = providerHealth;
           healthyProviders = providerHealth.usableProviders;
           console.info("[generate-paper] provider health", {
             generationJobId,
@@ -604,8 +615,12 @@ export async function POST(request: NextRequest) {
             progress: 39,
             msg: healthyProviders.length
               ? `AI provider health ready: ${healthyProviders.join(", ")} usable.`
-              : "No AI provider passed health preflight; continuing from selected TXT/PDF source text without demo fallback.",
+              : "No AI provider passed health preflight.",
+            ...providerHealthPayload(),
           });
+          if (!healthyProviders.length) {
+            throw new Error(providerHealthFailureMessage(providerHealth));
+          }
         }
 
         let allQuestions = resumeState?.candidateQuestions ?? [];
@@ -1152,6 +1167,7 @@ export async function POST(request: NextRequest) {
                 recoverySnapshot.missingQuestionCount,
               recoveryReason:
                 continuationState?.lastMessage ?? recoverySnapshot.lastMessage,
+              ...providerHealthPayload(),
               ...contractPayload(),
               status: canContinueGeneration
                 ? "CONTINUING"
@@ -1793,6 +1809,10 @@ function generationErrorCode(error: unknown) {
 
   if (/GENERATION_CONTINUE_AVAILABLE/i.test(message)) {
     return "GENERATION_CONTINUE_AVAILABLE";
+  }
+
+  if (/No configured AI provider|No configured provider is usable|Set at least one AI provider key/i.test(message)) {
+    return "PROVIDER_AUTO_FAILED";
   }
 
   if (/SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(message)) {

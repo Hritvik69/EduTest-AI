@@ -1,4 +1,5 @@
 import { jsonSuccess } from "@/lib/api-security";
+import { publicAIProviderHealthSnapshot } from "@/lib/error-classification";
 import { checkAIProviderHealth } from "@/lib/gemini";
 
 export const runtime = "nodejs";
@@ -8,5 +9,5 @@ export async function GET() {
     task: "QUESTION_GENERATION",
   });
 
-  return jsonSuccess(health);
+  return jsonSuccess(publicAIProviderHealthSnapshot(health));
 }

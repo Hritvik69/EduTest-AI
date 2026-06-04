@@ -4,6 +4,12 @@ import * as React from "react";
 import { Check, Cpu, Globe2, RefreshCw, Sparkles, Zap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { fetchApiData } from "@/lib/api-client";
+import {
+  providerHealthAction,
+  providerHealthSummary,
+  type PublicAIProviderHealthSnapshot,
+  type PublicAIProviderHealthStatus,
+} from "@/lib/error-classification";
 import { cn } from "@/lib/utils";
 import type { AIProvider } from "@/types";
 import { usePaperConfig } from "./paper-config-context";
@@ -117,6 +123,9 @@ const providerCards: {
 export function StepFive() {
   const { config, updateConfig } = usePaperConfig();
   const [status, setStatus] = React.useState<ProviderStatus | null>(null);
+  const [health, setHealth] =
+    React.useState<PublicAIProviderHealthSnapshot | null>(null);
+  const [healthLoading, setHealthLoading] = React.useState(true);
 
   React.useEffect(() => {
     let cancelled = false;
@@ -132,6 +141,22 @@ export function StepFive() {
       })
       .catch(() => {
         if (!cancelled) setStatus(null);
+      });
+
+    fetchApiData<PublicAIProviderHealthSnapshot>(
+      "/api/ai/provider-health",
+      undefined,
+      "Could not load AI provider health.",
+    )
+      .then((payload) => {
+        if (cancelled) return;
+        setHealth(payload);
+      })
+      .catch(() => {
+        if (!cancelled) setHealth(null);
+      })
+      .finally(() => {
+        if (!cancelled) setHealthLoading(false);
       });
 
     return () => {
@@ -196,6 +221,30 @@ export function StepFive() {
       .join(" -> ");
   }
 
+  function healthForProvider(
+    provider: AIProvider,
+  ): PublicAIProviderHealthStatus | null {
+    if (!health || provider === "AUTO") return null;
+    return (
+      health.providers.find((item) => item.provider === provider) ?? null
+    );
+  }
+
+  function providerHealthNote(provider: AIProvider) {
+    if (!health) return "";
+    if (provider === "AUTO") {
+      return health.usableProviders.length
+        ? `${health.usableProviders.length} usable provider${
+            health.usableProviders.length === 1 ? "" : "s"
+          } now.`
+        : "No usable provider in production.";
+    }
+    const item = healthForProvider(provider);
+    if (!item || !item.configured) return "";
+    if (item.usable) return "Usable now.";
+    return item.failure ?? item.failureClass ?? "Not usable right now.";
+  }
+
   return (
     <div className="space-y-8">
       <div>
@@ -206,10 +255,45 @@ export function StepFive() {
         </p>
       </div>
 
+      <div className="rounded-lg border border-white/10 bg-white/[0.035] p-4 text-sm leading-6 text-slate-300">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <div className="font-semibold text-white">Production provider health</div>
+            <div className="mt-1 text-slate-300">
+              {healthLoading
+                ? "Checking deployed AI providers..."
+                : health
+                  ? providerHealthSummary(health)
+                  : "Provider health could not be checked."}
+            </div>
+            {health ? (
+              <div className="mt-1 text-xs text-slate-400">
+                {providerHealthAction(health)}
+              </div>
+            ) : null}
+          </div>
+          {health?.usableProviders.length ? (
+            <span className="rounded-md border border-emerald-300/20 bg-emerald-500/10 px-2 py-1 text-xs font-semibold text-emerald-100">
+              {health.usableProviders.length} usable
+            </span>
+          ) : (
+            <span className="rounded-md border border-red-300/20 bg-red-500/10 px-2 py-1 text-xs font-semibold text-red-100">
+              Needs provider
+            </span>
+          )}
+        </div>
+      </div>
+
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7">
         {providerCards.map((card) => {
           const selected = selectedProvider === card.provider;
           const disabled = isUnavailable(card.provider);
+          const healthNote = providerHealthNote(card.provider);
+          const unhealthy =
+            card.provider === "AUTO"
+              ? Boolean(health && !health.usableProviders.length)
+              : Boolean(healthForProvider(card.provider)?.configured &&
+                  !healthForProvider(card.provider)?.usable);
           const Icon = card.icon;
 
           return (
@@ -244,6 +328,16 @@ export function StepFive() {
               {disabled ? (
                 <p className="mt-3 text-xs font-semibold text-red-200">
                   API key not configured.
+                </p>
+              ) : null}
+              {!disabled && healthNote ? (
+                <p
+                  className={cn(
+                    "mt-3 text-xs font-semibold",
+                    unhealthy ? "text-red-200" : "text-emerald-200",
+                  )}
+                >
+                  {healthNote}
                 </p>
               ) : null}
             </Card>

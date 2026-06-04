@@ -10,6 +10,10 @@ describe("resumable paper generation wiring", () => {
       join(root, "app", "api", "generate-paper", "route.ts"),
       "utf8",
     );
+    const providerHealthRoute = readFileSync(
+      join(root, "app", "api", "ai", "provider-health", "route.ts"),
+      "utf8",
+    );
     const store = readFileSync(join(root, "lib", "paper-store.ts"), "utf8");
     const bank = readFileSync(
       join(root, "lib", "question-candidate-bank.ts"),
@@ -31,6 +35,13 @@ describe("resumable paper generation wiring", () => {
     expect(route).toMatch(/onAcceptedBatch/);
     expect(route).toMatch(/shouldStopBeforeNextGenerationCall/);
     expect(route).toMatch(/providerAttemptLimitForGeneration/);
+    expect(route).toMatch(/latestProviderHealth/);
+    expect(route).toMatch(/providerHealthPayload/);
+    expect(route).toMatch(/providerHealthFailureMessage/);
+    expect(route).toMatch(/publicAIProviderHealthSnapshot/);
+    expect(route).toMatch(/No AI provider passed health preflight/);
+    expect(route).not.toMatch(/continuing from selected TXT\/PDF source text without demo fallback/);
+    expect(providerHealthRoute).toMatch(/publicAIProviderHealthSnapshot/);
     expect(route).toMatch(/maxProviderAttempts/);
     expect(route).toMatch(/deadlineAt: generationDeadlineAt/);
     expect(route).toMatch(/isRecoverableGenerationRuntimeError/);
@@ -70,6 +81,10 @@ describe("resumable paper generation wiring", () => {
     expect(overlay).toMatch(/classifyRecoveredPaper/);
     expect(overlay).toMatch(/streamContractFromData/);
     expect(overlay).toMatch(/streamRecoverySnapshotFromData/);
+    expect(overlay).toMatch(/providerHealthFromStreamData/);
+    expect(overlay).toMatch(/getErrorProviderHealth/);
+    expect(overlay).toMatch(/providerHealthSummary/);
+    expect(overlay).toMatch(/providerHealthAction/);
     expect(overlay).toMatch(/lastRecoverySnapshot/);
     expect(overlay).toMatch(/recoverableStreamEndedErrorFromSnapshot/);
     expect(overlay).toMatch(/paperIdFromStreamRecoverySnapshot/);
@@ -103,5 +118,19 @@ describe("resumable paper generation wiring", () => {
     expect(overlay).toMatch(/isSourceTextShortageError/);
     expect(overlay).toMatch(/SOURCE_TEXT_NOT_ENOUGH/);
     expect(overlay).toMatch(/if \(isSourceTextShortageError\(error\)\) return false/);
+  });
+
+  it("shows deployed provider health in the provider selection UI", () => {
+    const stepFive = readFileSync(
+      join(root, "components", "wizard", "step-five.tsx"),
+      "utf8",
+    );
+
+    expect(stepFive).toMatch(/\/api\/ai\/provider-health/);
+    expect(stepFive).toMatch(/PublicAIProviderHealthSnapshot/);
+    expect(stepFive).toMatch(/providerHealthSummary/);
+    expect(stepFive).toMatch(/providerHealthAction/);
+    expect(stepFive).toMatch(/Production provider health/);
+    expect(stepFive).toMatch(/No usable provider in production/);
   });
 });

@@ -4,6 +4,9 @@ import {
   friendlyExportError,
   friendlyPdfProcessingError,
   isAIProviderUnavailableError,
+  providerHealthFailureMessage,
+  providerHealthAction,
+  publicAIProviderHealthSnapshot,
 } from "@/lib/error-classification";
 
 describe("error classification", () => {
@@ -32,6 +35,47 @@ describe("error classification", () => {
 
     expect(message).toContain("[redacted-key]");
     expect(message).not.toContain("xai-secretkey");
+  });
+
+  it("serializes provider health into safe, actionable deployment guidance", () => {
+    const health = publicAIProviderHealthSnapshot({
+      checkedAt: "2026-06-04T00:00:00.000Z",
+      task: "QUESTION_GENERATION",
+      configuredProviders: ["GEMINI", "GROQ"],
+      usableProviders: [],
+      providers: [
+        {
+          provider: "GEMINI",
+          configured: true,
+          usable: false,
+          model: "gemini-2.5-flash",
+          cooldownUntil: null,
+          cooldownReason: null,
+          cooldownErrorClass: null,
+          lastFailureClass: "timeout",
+          lastFailure: "Gemini request timed out after 10 seconds.",
+        },
+        {
+          provider: "GROQ",
+          configured: true,
+          usable: false,
+          model: "llama-3.3-70b-versatile",
+          cooldownUntil: null,
+          cooldownReason: null,
+          cooldownErrorClass: null,
+          lastFailureClass: "auth",
+          lastFailure: "invalid api key sk-secretkeythatisverylongandbad",
+        },
+      ],
+    });
+
+    expect(health.summary).toContain("Gemini: timed out");
+    expect(health.summary).toContain("GroqCloud: key missing, invalid, or not allowed");
+    expect(health.providers[1].failure).toContain("[redacted-key]");
+    expect(providerHealthAction(health)).toContain("Vercel Production");
+    expect(providerHealthFailureMessage(health)).toContain(
+      "All configured AI providers failed",
+    );
   });
 
   it("classifies provider outages through the shared detector", () => {

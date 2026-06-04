@@ -12,6 +12,49 @@ const providerNames = [
   "OpenAI",
 ] as const;
 
+type ProviderHealthStatusLike = {
+  provider: string;
+  configured: boolean;
+  usable: boolean;
+  model: string;
+  cooldownUntil?: string | null;
+  cooldownReason?: string | null;
+  cooldownErrorClass?: string | null;
+  lastFailureClass?: string | null;
+  lastFailure?: string | null;
+};
+
+type ProviderHealthSnapshotLike = {
+  checkedAt: string;
+  task: string;
+  providers: ProviderHealthStatusLike[];
+  configuredProviders: string[];
+  usableProviders: string[];
+};
+
+export type PublicAIProviderHealthStatus = {
+  provider: string;
+  label: string;
+  model: string;
+  configured: boolean;
+  usable: boolean;
+  failureClass: string | null;
+  failure: string | null;
+  cooldownUntil: string | null;
+  cooldownReason: string | null;
+  cooldownErrorClass: string | null;
+};
+
+export type PublicAIProviderHealthSnapshot = {
+  checkedAt: string;
+  task: string;
+  configuredProviders: string[];
+  usableProviders: string[];
+  providers: PublicAIProviderHealthStatus[];
+  summary: string;
+  action: string;
+};
+
 export function compactAiProviderFailureMessage(message: string) {
   const clean = sanitizeErrorText(message);
   const providerStatuses = providerNames
@@ -27,6 +70,128 @@ export function compactAiProviderFailureMessage(message: string) {
   }
 
   return limitMessage(clean);
+}
+
+export function publicAIProviderHealthSnapshot(
+  snapshot: ProviderHealthSnapshotLike,
+): PublicAIProviderHealthSnapshot {
+  const providers = snapshot.providers.map((provider) => {
+    const failureClass =
+      provider.lastFailureClass ?? provider.cooldownErrorClass ?? null;
+    const failure =
+      provider.lastFailure ??
+      provider.cooldownReason ??
+      providerHealthFailureText(failureClass, provider.configured);
+
+    return {
+      provider: provider.provider,
+      label: providerLabel(provider.provider),
+      model: provider.model,
+      configured: provider.configured,
+      usable: provider.usable,
+      failureClass,
+      failure: failure ? limitMessage(sanitizeErrorText(failure), 180) : null,
+      cooldownUntil: provider.cooldownUntil ?? null,
+      cooldownReason: provider.cooldownReason
+        ? limitMessage(sanitizeErrorText(provider.cooldownReason), 180)
+        : null,
+      cooldownErrorClass: provider.cooldownErrorClass ?? null,
+    };
+  });
+  const publicSnapshot = {
+    checkedAt: snapshot.checkedAt,
+    task: snapshot.task,
+    configuredProviders: snapshot.configuredProviders,
+    usableProviders: snapshot.usableProviders,
+    providers,
+    summary: "",
+    action: "",
+  };
+
+  return {
+    ...publicSnapshot,
+    summary: providerHealthSummary(publicSnapshot),
+    action: providerHealthAction(publicSnapshot),
+  };
+}
+
+export function providerHealthFailureMessage(
+  snapshot: ProviderHealthSnapshotLike,
+) {
+  const publicSnapshot = publicAIProviderHealthSnapshot(snapshot);
+  if (!publicSnapshot.configuredProviders.length) {
+    return "Set at least one AI provider key before generating papers.";
+  }
+
+  const failedConfigured = publicSnapshot.providers.filter(
+    (provider) => provider.configured && !provider.usable,
+  );
+  if (!failedConfigured.length) return publicSnapshot.summary;
+
+  return `All configured AI providers failed. ${failedConfigured
+    .map(
+      (provider) =>
+        `${provider.label}: ${providerHealthFailureLabel(provider)}`,
+    )
+    .join(" ")}`;
+}
+
+export function providerHealthSummary(
+  snapshot: Pick<
+    PublicAIProviderHealthSnapshot,
+    "configuredProviders" | "usableProviders" | "providers"
+  >,
+) {
+  if (!snapshot.configuredProviders.length) {
+    return "No production AI provider key is configured.";
+  }
+
+  if (snapshot.usableProviders.length) {
+    return `Usable providers: ${snapshot.usableProviders
+      .map(providerLabel)
+      .join(", ")}.`;
+  }
+
+  const failed = snapshot.providers
+    .filter((provider) => provider.configured && !provider.usable)
+    .map((provider) => `${provider.label}: ${providerHealthFailureLabel(provider)}`);
+
+  return failed.length
+    ? `No configured provider is usable right now. ${failed.join("; ")}.`
+    : "No configured provider is usable right now.";
+}
+
+export function providerHealthAction(
+  snapshot: Pick<
+    PublicAIProviderHealthSnapshot,
+    "configuredProviders" | "usableProviders" | "providers"
+  >,
+) {
+  if (snapshot.usableProviders.length) {
+    return "Retry generation or keep Auto Fallback selected.";
+  }
+
+  if (!snapshot.configuredProviders.length) {
+    return "Add GEMINI_API_KEY plus one backup provider key in Vercel Production, then redeploy.";
+  }
+
+  const classes = new Set(
+    snapshot.providers
+      .filter((provider) => provider.configured && !provider.usable)
+      .map((provider) => provider.failureClass ?? provider.cooldownErrorClass),
+  );
+
+  if (classes.has("auth") || classes.has("missing_key")) {
+    return "Fix the invalid or missing provider key in Vercel Production.";
+  }
+  if (classes.has("quota") || classes.has("rate_limit")) {
+    return "Add credits, wait for rate limits, or switch Auto Fallback to a funded provider.";
+  }
+  if (classes.has("timeout") || classes.has("network") || classes.has("provider_busy")) {
+    return "Retry in a minute, keep Auto Fallback enabled, or reduce question count/format variety.";
+  }
+
+  return "Check Vercel provider keys/credits, then retry with Auto Fallback.";
 }
 
 export function isAIProviderUnavailableError(error: unknown) {
@@ -87,6 +252,52 @@ function providerFailureStatus(provider: string, message: string) {
   const chunk = providerFailureChunk(provider, message);
   if (!chunk) return null;
   return `${provider}: ${classifyProviderFailure(chunk)}`;
+}
+
+function providerHealthFailureLabel(provider: PublicAIProviderHealthStatus) {
+  const failureClass = provider.failureClass ?? provider.cooldownErrorClass;
+  if (!provider.configured || failureClass === "missing_key") {
+    return "key missing";
+  }
+  if (failureClass === "auth") return "key missing, invalid, or not allowed";
+  if (failureClass === "quota") return "no credits or quota";
+  if (failureClass === "rate_limit") return "rate-limited";
+  if (failureClass === "timeout") return "timed out";
+  if (failureClass === "network") return "network error";
+  if (failureClass === "provider_busy") return "temporarily busy";
+  return provider.failure ? classifyProviderFailure(provider.failure) : "failed";
+}
+
+function providerHealthFailureText(
+  failureClass: string | null | undefined,
+  configured: boolean,
+) {
+  if (!configured || failureClass === "missing_key") return "Provider key missing.";
+  if (failureClass === "auth") return "Provider key missing, invalid, or not allowed.";
+  if (failureClass === "quota") return "Provider has no credits or quota.";
+  if (failureClass === "rate_limit") return "Provider is rate-limited.";
+  if (failureClass === "timeout") return "Provider timed out.";
+  if (failureClass === "network") return "Network error.";
+  if (failureClass === "provider_busy") return "Provider is temporarily busy.";
+  return null;
+}
+
+function providerLabel(provider: string) {
+  const labels: Record<string, string> = {
+    GEMINI: "Gemini",
+    GROQ: "GroqCloud",
+    GROK: "Grok",
+    MISTRAL: "Mistral",
+    CEREBRAS: "Cerebras",
+    DEEPSEEK: "DeepSeek",
+    OPENROUTER: "OpenRouter",
+    GITHUB_MODELS: "GitHub Models",
+    COHERE: "Cohere",
+    CLOUDFLARE: "Cloudflare Workers AI",
+    OPENAI: "OpenAI",
+  };
+
+  return labels[provider] ?? provider;
 }
 
 function providerFailureChunk(provider: string, message: string) {

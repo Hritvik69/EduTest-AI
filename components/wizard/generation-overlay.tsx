@@ -16,6 +16,11 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { fetchApiData } from "@/lib/api-client";
 import { generateBlueprint } from "@/lib/blueprint";
+import {
+  providerHealthAction,
+  providerHealthSummary,
+  type PublicAIProviderHealthSnapshot,
+} from "@/lib/error-classification";
 import { buildGenerationContract } from "@/lib/generation-contract";
 import {
   classifyRecoveredPaper,
@@ -115,6 +120,7 @@ export function GenerationOverlay({
     readyQuestionCount?: number;
     targetQuestionCount?: number;
     missingQuestionCount?: number;
+    providerHealth?: PublicAIProviderHealthSnapshot;
   } | null>(null);
   const [resumePaperId, setResumePaperId] = React.useState<number | null>(null);
   const [retryNonce, setRetryNonce] = React.useState(0);
@@ -360,6 +366,7 @@ export function GenerationOverlay({
                   readyQuestionCount: numberValue(data.readyQuestionCount),
                   targetQuestionCount: numberValue(data.targetQuestionCount),
                   missingQuestionCount: numberValue(data.missingQuestionCount),
+                  providerHealth: providerHealthFromStreamData(data),
                 },
               );
             }
@@ -479,6 +486,7 @@ export function GenerationOverlay({
         const explicitPaperId = getErrorPaperId(error);
         const recoverablePaperId = explicitPaperId ?? (recoverable ? savedPaperId : null);
         const continuation = continuationProgressFromError(error);
+        const providerHealth = getErrorProviderHealth(error);
         const hasSavedQuestionProgress =
           (continuation.readyQuestionCount ?? 0) > 0;
         if (
@@ -520,6 +528,7 @@ export function GenerationOverlay({
           code,
           paperId: recoverablePaperId ?? undefined,
           recoverable,
+          providerHealth,
           ...continuation,
         });
         toast.error(message);
@@ -709,6 +718,31 @@ export function GenerationOverlay({
               {errorGuidance}
             </div>
           ) : null}
+          {error.providerHealth ? (
+            <div className="mt-4 rounded-lg border border-red-300/20 bg-red-500/10 p-3 text-sm leading-6 text-red-50">
+              <div className="font-semibold text-red-100">
+                {providerHealthSummary(error.providerHealth)}
+              </div>
+              <div className="mt-1 text-red-100/90">
+                {providerHealthAction(error.providerHealth)}
+              </div>
+              <div className="mt-2 grid gap-2">
+                {error.providerHealth.providers
+                  .filter((item) => item.configured && !item.usable)
+                  .slice(0, 4)
+                  .map((item) => (
+                    <div
+                      key={item.provider}
+                      className="rounded-md border border-white/10 bg-slate-950/35 px-2 py-1 text-xs text-red-100/90"
+                    >
+                      <span className="font-semibold text-white">{item.label}</span>
+                      {item.model ? ` ${item.model}` : ""}:{" "}
+                      {item.failure ?? item.failureClass ?? "not usable"}
+                    </div>
+                  ))}
+              </div>
+            </div>
+          ) : null}
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {error.paperId && error.recoverable ? (
               <Button
@@ -785,6 +819,7 @@ function generationError(
     readyQuestionCount?: number;
     targetQuestionCount?: number;
     missingQuestionCount?: number;
+    providerHealth?: PublicAIProviderHealthSnapshot;
   } = {},
 ) {
   const error = new Error(message);
@@ -817,8 +852,14 @@ function generationError(
       readyQuestionCount?: number;
       targetQuestionCount?: number;
       missingQuestionCount?: number;
+      providerHealth?: PublicAIProviderHealthSnapshot;
     }
   ).missingQuestionCount = options.missingQuestionCount;
+  (
+    error as Error & {
+      providerHealth?: PublicAIProviderHealthSnapshot;
+    }
+  ).providerHealth = options.providerHealth;
   return error;
 }
 
@@ -895,6 +936,40 @@ function streamRecoverySnapshotFromData(
   };
 }
 
+function providerHealthFromStreamData(
+  data: Record<string, unknown>,
+): PublicAIProviderHealthSnapshot | undefined {
+  if (!isRecord(data.providerHealth)) return undefined;
+  const providers = Array.isArray(data.providerHealth.providers)
+    ? data.providerHealth.providers.filter(isRecord).map((provider) => ({
+        provider: stringValue(provider.provider) ?? "",
+        label: stringValue(provider.label) ?? stringValue(provider.provider) ?? "",
+        model: stringValue(provider.model) ?? "",
+        configured: Boolean(provider.configured),
+        usable: Boolean(provider.usable),
+        failureClass: stringValue(provider.failureClass) ?? null,
+        failure: stringValue(provider.failure) ?? null,
+        cooldownUntil: stringValue(provider.cooldownUntil) ?? null,
+        cooldownReason: stringValue(provider.cooldownReason) ?? null,
+        cooldownErrorClass: stringValue(provider.cooldownErrorClass) ?? null,
+      }))
+    : [];
+
+  return {
+    checkedAt: stringValue(data.providerHealth.checkedAt) ?? "",
+    task: stringValue(data.providerHealth.task) ?? "QUESTION_GENERATION",
+    configuredProviders: stringArrayValue(data.providerHealth.configuredProviders),
+    usableProviders: stringArrayValue(data.providerHealth.usableProviders),
+    providers,
+    summary:
+      stringValue(data.providerHealth.summary) ??
+      "No configured provider is usable right now.",
+    action:
+      stringValue(data.providerHealth.action) ??
+      "Check Vercel provider keys/credits, then retry with Auto Fallback.",
+  };
+}
+
 function recoverableStreamEndedErrorFromSnapshot(
   snapshot: GenerationStreamRecoverySnapshot,
   fallbackMessage?: string,
@@ -933,6 +1008,12 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function stringValue(value: unknown) {
   return typeof value === "string" ? value : undefined;
+}
+
+function stringArrayValue(value: unknown) {
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === "string")
+    : [];
 }
 
 function numberValue(value: unknown) {
@@ -1020,6 +1101,25 @@ function getErrorPaperId(error: unknown) {
   return typeof paperId === "number" && Number.isFinite(paperId)
     ? paperId
     : undefined;
+}
+
+function getErrorProviderHealth(error: unknown) {
+  if (!error || typeof error !== "object" || !("providerHealth" in error)) {
+    return undefined;
+  }
+  const providerHealth = (error as { providerHealth?: unknown }).providerHealth;
+  return isPublicProviderHealthSnapshot(providerHealth) ? providerHealth : undefined;
+}
+
+function isPublicProviderHealthSnapshot(
+  value: unknown,
+): value is PublicAIProviderHealthSnapshot {
+  return (
+    isRecord(value) &&
+    Array.isArray(value.providers) &&
+    Array.isArray(value.configuredProviders) &&
+    Array.isArray(value.usableProviders)
+  );
 }
 
 function isRecoverableGenerationError(error: unknown) {
@@ -1138,10 +1238,14 @@ function generationErrorGuidance(
     recoverable?: boolean;
     readyQuestionCount?: number;
     targetQuestionCount?: number;
+    providerHealth?: PublicAIProviderHealthSnapshot;
   } | null,
   provider: AIProvider,
 ) {
   if (!error) return "";
+  if (error.providerHealth && !error.providerHealth.usableProviders.length) {
+    return providerHealthAction(error.providerHealth);
+  }
   if (isSourceTextShortageError(error)) {
     return "Retry is disabled for this source shortage. Select more chapters/topics, upload clearer source text, or lower the question count before generating again.";
   }
