@@ -52,6 +52,34 @@ describe("generation recovery classification", () => {
     });
   });
 
+  it("treats NEEDS_CONTINUATION metadata as recoverable even if the paper row is failed", () => {
+    const paper: StoredPaper = {
+      ...basePaper,
+      status: "FAILED",
+      errorMetadata: {
+        generationState: {
+          version: 1,
+          status: "NEEDS_CONTINUATION",
+          phase: "QUESTION_GENERATION",
+          readyQuestionCount: 4,
+          targetQuestionCount: 10,
+          missingQuestionCount: 6,
+          lastMessage: "Generation reached the deployment time limit.",
+        },
+      },
+    };
+
+    expect(classifyRecoveredPaper(paper)).toMatchObject({
+      kind: "recoverable",
+      paperId: 101,
+      readyQuestionCount: 4,
+      targetQuestionCount: 10,
+      missingQuestionCount: 6,
+      savedQuestionProgress: true,
+      message: "Generation reached the deployment time limit.",
+    });
+  });
+
   it("marks shell-only and failed papers as ignored instead of dashboard-ready", () => {
     expect(classifyRecoveredPaper(basePaper)).toMatchObject({
       kind: "ignored",

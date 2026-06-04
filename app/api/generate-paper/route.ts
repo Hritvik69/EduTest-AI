@@ -40,7 +40,6 @@ import {
 } from "@/lib/generator";
 import {
   createPaperInDB,
-  deletePaperForUser,
   getPaper,
   getPaperGenerationState,
   markPaperDemoMode,
@@ -1116,12 +1115,9 @@ export async function POST(request: NextRequest) {
               message,
               generationJobId,
               cancelled: request.signal.aborted,
+              ...(savedFailureState ? { generationState: savedFailureState } : {}),
             });
             paperStatusSaved = true;
-            if (auth.user.isGuest) {
-              await deletePaperForUser(paperId, auth.user.id);
-              paperId = null;
-            }
           } catch (statusError) {
             console.error("[generate-paper] failed to mark paper FAILED", {
               paperId,

@@ -48,13 +48,20 @@ export function classifyRecoveredPaper(
   }
 
   const generationState = recoveryGenerationStateFromMetadata(paper.errorMetadata);
-  if (paper.status === "GENERATING" && generationState) {
+  const hasRecoverableGenerationState =
+    Boolean(generationState) &&
+    (paper.status === "GENERATING" ||
+      generationState?.status === "NEEDS_CONTINUATION");
+  if (generationState && hasRecoverableGenerationState) {
     const readyQuestionCount = generationState.readyQuestionCount ?? 0;
     const targetQuestionCount = generationState.targetQuestionCount;
     const missingQuestionCount =
       generationState.missingQuestionCount ??
       (targetQuestionCount ? Math.max(0, targetQuestionCount - readyQuestionCount) : undefined);
     const savedQuestionProgress = readyQuestionCount > 0;
+    const defaultMessage = savedQuestionProgress
+      ? `Generation paused after saving ${readyQuestionCount}/${targetQuestionCount ?? "?"} valid questions. Retry continues the same paper.`
+      : "Generation stopped before any complete questions were saved. Retry continues the same paper setup without opening an incomplete dashboard paper.";
 
     return {
       kind: "recoverable",
@@ -63,9 +70,7 @@ export function classifyRecoveredPaper(
       targetQuestionCount,
       missingQuestionCount,
       savedQuestionProgress,
-      message: savedQuestionProgress
-        ? `Generation paused after saving ${readyQuestionCount}/${targetQuestionCount ?? "?"} valid questions. Retry continues the same paper.`
-        : "Generation stopped before any complete questions were saved. Retry continues the same paper setup without opening an incomplete dashboard paper.",
+      message: generationState.lastMessage ?? defaultMessage,
     };
   }
 

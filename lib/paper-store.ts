@@ -156,14 +156,17 @@ export async function createPaperInDB(
       };
     } catch (error) {
       if (!guestMode) throw error;
+      if (!canUseMemoryPaperFallback(isDemoMode, guestMode)) {
+        throw paperPersistenceRequiredError(error);
+      }
       console.warn("[paper-store] guest database create failed; using memory store", {
         message: error instanceof Error ? error.message : String(error),
       });
     }
   }
 
-  if (!isDemoMode && !guestMode) {
-    throw new Error("Database is required outside explicit demo mode.");
+  if (!canUseMemoryPaperFallback(isDemoMode, guestMode)) {
+    throw paperPersistenceRequiredError();
   }
 
   const memoryKey = options.idempotencyKey
@@ -1206,6 +1209,21 @@ function deleteGuestPaper(paperId: number) {
   if (paper?.idempotencyKey && ownerId !== undefined) {
     memoryPaperIdempotency.delete(memoryIdempotencyKey(ownerId, paper.idempotencyKey));
   }
+}
+
+function canUseMemoryPaperFallback(isDemoMode: boolean, guestMode: boolean) {
+  if (isDemoMode) return true;
+  if (!guestMode) return false;
+  return process.env.NODE_ENV !== "production" && process.env.VERCEL !== "1";
+}
+
+function paperPersistenceRequiredError(error?: unknown) {
+  const detail = error instanceof Error ? error.message : error ? String(error) : "";
+  return new Error(
+    detail
+      ? `Database save failed for generated paper persistence: ${detail}`
+      : "Database save failed for generated paper persistence. Please try again after database connectivity is restored.",
+  );
 }
 
 function positiveEnvNumber(name: string, fallback: number) {

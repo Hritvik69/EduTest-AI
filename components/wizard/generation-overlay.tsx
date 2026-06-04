@@ -67,6 +67,16 @@ type GenerationStreamContractSummary = {
   source: "server" | "client";
 };
 
+type GenerationStreamRecoverySnapshot = {
+  paperId: number;
+  status?: string;
+  generationPhase?: string;
+  readyQuestionCount?: number;
+  targetQuestionCount?: number;
+  missingQuestionCount?: number;
+  recoveryReason?: string;
+};
+
 export function GenerationOverlay({
   config,
   open,
@@ -270,6 +280,7 @@ export function GenerationOverlay({
     async function run() {
       let completed = false;
       let savedPaperId: number | null = null;
+      let lastRecoverySnapshot: GenerationStreamRecoverySnapshot | null = null;
 
       try {
         const response = await fetch("/api/generate-paper", {
@@ -322,6 +333,11 @@ export function GenerationOverlay({
             if (contractFromStream) setStreamContract(contractFromStream);
             const streamedPaperId = numberValue(data.paperId);
             if (streamedPaperId) savedPaperId = streamedPaperId;
+            const recoverySnapshot = streamRecoverySnapshotFromData(
+              data,
+              savedPaperId ?? undefined,
+            );
+            if (recoverySnapshot) lastRecoverySnapshot = recoverySnapshot;
 
             if (event === "progress") {
               const step = numberValue(data.step) ?? 1;
@@ -408,11 +424,13 @@ export function GenerationOverlay({
         }
 
         if (!completed) {
-          if (savedPaperId) {
-            const recovery = await recoverSavedPaper(savedPaperId, requestConfig);
+          const recoveryPaperId =
+            savedPaperId ?? paperIdFromStreamRecoverySnapshot(lastRecoverySnapshot);
+          if (recoveryPaperId) {
+            const recovery = await recoverSavedPaper(recoveryPaperId, requestConfig);
             if (recovery.kind === "ready") {
               safeSessionRemove(inFlightKey);
-              router.push(`/papers/${savedPaperId}/preview`);
+              router.push(`/papers/${recoveryPaperId}/preview`);
               return;
             }
             if (recovery.kind === "recoverable") {
@@ -426,6 +444,17 @@ export function GenerationOverlay({
                   targetQuestionCount: recovery.targetQuestionCount,
                   missingQuestionCount: recovery.missingQuestionCount,
                 },
+              );
+            }
+
+            const streamRecoverySnapshot = matchingStreamRecoverySnapshot(
+              lastRecoverySnapshot,
+              recoveryPaperId,
+            );
+            if (streamRecoverySnapshot) {
+              throw recoverableStreamEndedErrorFromSnapshot(
+                streamRecoverySnapshot,
+                recovery.message,
               );
             }
 
@@ -829,6 +858,73 @@ function streamContractFromData(
       ? { chunkingNote: stringValue(nested.chunkingNote) }
       : {}),
   };
+}
+
+function streamRecoverySnapshotFromData(
+  data: Record<string, unknown>,
+  fallbackPaperId?: number,
+): GenerationStreamRecoverySnapshot | null {
+  const paperId = numberValue(data.paperId) ?? fallbackPaperId;
+  if (!paperId) return null;
+
+  const readyQuestionCount = numberValue(data.readyQuestionCount);
+  const targetQuestionCount = numberValue(data.targetQuestionCount);
+  const missingQuestionCount = numberValue(data.missingQuestionCount);
+  const status = stringValue(data.status);
+  const generationPhase = stringValue(data.generationPhase);
+  const recoveryReason =
+    stringValue(data.recoveryReason) ?? stringValue(data.msg);
+  const hasRecoveryData =
+    Boolean(status) ||
+    Boolean(generationPhase) ||
+    readyQuestionCount !== undefined ||
+    targetQuestionCount !== undefined ||
+    missingQuestionCount !== undefined ||
+    Boolean(recoveryReason);
+
+  if (!hasRecoveryData) return null;
+
+  return {
+    paperId,
+    status,
+    generationPhase,
+    readyQuestionCount,
+    targetQuestionCount,
+    missingQuestionCount,
+    recoveryReason,
+  };
+}
+
+function recoverableStreamEndedErrorFromSnapshot(
+  snapshot: GenerationStreamRecoverySnapshot,
+  fallbackMessage?: string,
+) {
+  return generationError(
+    snapshot.recoveryReason ??
+      fallbackMessage ??
+      "Generation stream ended after saving the paper setup. Retrying continues the same paper.",
+    "GENERATION_STREAM_RECOVERABLE",
+    snapshot.paperId,
+    {
+      recoverable: true,
+      readyQuestionCount: snapshot.readyQuestionCount,
+      targetQuestionCount: snapshot.targetQuestionCount,
+      missingQuestionCount: snapshot.missingQuestionCount,
+    },
+  );
+}
+
+function paperIdFromStreamRecoverySnapshot(
+  snapshot: GenerationStreamRecoverySnapshot | null,
+) {
+  return snapshot?.paperId;
+}
+
+function matchingStreamRecoverySnapshot(
+  snapshot: GenerationStreamRecoverySnapshot | null,
+  paperId: number,
+) {
+  return snapshot?.paperId === paperId ? snapshot : null;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

@@ -45,8 +45,12 @@ describe("resumable paper generation wiring", () => {
     expect(route).toMatch(/!stoppedForServerBudget/);
     expect(route).toMatch(/resume paper not found; starting fresh/);
     expect(route).toMatch(/Saved generation progress was no longer available/);
+    expect(route).toMatch(/generationState: savedFailureState/);
+    expect(route).not.toMatch(/deletePaperForUser/);
     expect(store).toMatch(/generationState/);
     expect(store).toMatch(/error_metadata/);
+    expect(store).toMatch(/canUseMemoryPaperFallback/);
+    expect(store).toMatch(/paperPersistenceRequiredError/);
     expect(bank).toMatch(/candidateQuestions/);
     expect(bank).toMatch(/acceptedQuestions/);
     expect(bank).toMatch(/missingSections/);
@@ -65,6 +69,11 @@ describe("resumable paper generation wiring", () => {
     expect(overlay).toMatch(/GENERATION_STREAM_RECOVERABLE/);
     expect(overlay).toMatch(/classifyRecoveredPaper/);
     expect(overlay).toMatch(/streamContractFromData/);
+    expect(overlay).toMatch(/streamRecoverySnapshotFromData/);
+    expect(overlay).toMatch(/lastRecoverySnapshot/);
+    expect(overlay).toMatch(/recoverableStreamEndedErrorFromSnapshot/);
+    expect(overlay).toMatch(/paperIdFromStreamRecoverySnapshot/);
+    expect(overlay).toMatch(/matchingStreamRecoverySnapshot/);
     expect(overlay).toMatch(/streamContract \?\? clientContract/);
     expect(overlay).toMatch(/server confirmed/);
     expect(overlay).toMatch(/clearStaleGenerationSessionKeys/);

@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
 import { createGuestUser } from "@/lib/api-security";
 import { generateBlueprint } from "@/lib/blueprint";
@@ -149,6 +149,24 @@ describe("guest-mode paper storage", () => {
     await expect(markPaperReady(created.paperId)).rejects.toThrow(
       "Cannot mark a paper READY before questions are saved.",
     );
+  });
+
+  it("does not create memory-only guest paper ids for production generation", async () => {
+    const guest = createGuestUser("guest-session-production-db");
+    const blueprint = generateBlueprint(config);
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("VERCEL", "");
+
+    try {
+      await expect(
+        createPaperInDB(config, blueprint, false, {
+          userId: guest.id,
+          idempotencyKey: "production-db-required",
+        }),
+      ).rejects.toThrow(/Database save failed.*persistence/);
+    } finally {
+      vi.unstubAllEnvs();
+    }
   });
 
   it("stores generation manifest metadata with guest papers", async () => {
