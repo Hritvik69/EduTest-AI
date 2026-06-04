@@ -10,18 +10,24 @@ import {
 export async function proxy(request: NextRequest) {
   const response = NextResponse.next();
 
-  const existing = request.cookies.get(guestSessionCookieName)?.value;
-  if (await readSignedGuestSessionCookieValue(existing)) return response;
+  try {
+    const existing = request.cookies.get(guestSessionCookieName)?.value;
+    if (await readSignedGuestSessionCookieValue(existing)) return response;
 
-  response.cookies.set({
-    name: guestSessionCookieName,
-    value: await createSignedGuestSessionCookieValue(createGuestSessionId()),
-    httpOnly: true,
-    sameSite: "lax",
-    secure: request.nextUrl.protocol === "https:",
-    path: "/",
-    maxAge: signedGuestSessionMaxAge,
-  });
+    response.cookies.set({
+      name: guestSessionCookieName,
+      value: await createSignedGuestSessionCookieValue(createGuestSessionId()),
+      httpOnly: true,
+      sameSite: "lax",
+      secure: request.nextUrl.protocol === "https:",
+      path: "/",
+      maxAge: signedGuestSessionMaxAge,
+    });
+  } catch (error) {
+    console.error("[proxy] guest session cookie setup failed", {
+      message: error instanceof Error ? error.message : String(error),
+    });
+  }
 
   return response;
 }

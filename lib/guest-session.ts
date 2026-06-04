@@ -58,24 +58,23 @@ async function signGuestSessionId(sessionId: string) {
 async function hmacSha256(message: string) {
   const secret = guestSessionSecret();
   const encoder = new TextEncoder();
-  if (globalThis.crypto?.subtle) {
-    const key = await globalThis.crypto.subtle.importKey(
-      "raw",
-      encoder.encode(secret),
-      { name: "HMAC", hash: "SHA-256" },
-      false,
-      ["sign"],
-    );
-    const signature = await globalThis.crypto.subtle.sign(
-      "HMAC",
-      key,
-      encoder.encode(message),
-    );
-    return new Uint8Array(signature);
+  if (!globalThis.crypto?.subtle) {
+    throw new Error("Web Crypto is required for guest session signing.");
   }
 
-  const { createHmac } = await import("node:crypto");
-  return createHmac("sha256", secret).update(message).digest();
+  const key = await globalThis.crypto.subtle.importKey(
+    "raw",
+    encoder.encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const signature = await globalThis.crypto.subtle.sign(
+    "HMAC",
+    key,
+    encoder.encode(message),
+  );
+  return new Uint8Array(signature);
 }
 
 function guestSessionSecret() {
@@ -91,11 +90,11 @@ function base64UrlEncode(bytes: Uint8Array) {
   bytes.forEach((byte) => {
     binary += String.fromCharCode(byte);
   });
-  const base64 =
-    typeof btoa === "function"
-      ? btoa(binary)
-      : Buffer.from(binary, "binary").toString("base64");
-  return base64
+  if (typeof btoa !== "function") {
+    throw new Error("base64 encoding is unavailable for guest session signing.");
+  }
+
+  return btoa(binary)
     .replace(/\+/g, "-")
     .replace(/\//g, "_")
     .replace(/=+$/g, "");
