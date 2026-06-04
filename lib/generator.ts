@@ -10,6 +10,10 @@ import {
 } from "@/lib/difficulty-protocol";
 import { questionTypeMeta } from "@/lib/edutest-data";
 import {
+  buildGenerationContract,
+  generationContractPromptPayload,
+} from "@/lib/generation-contract";
+import {
   generateJSON,
   getConfiguredProviders,
   type DirectAIProvider,
@@ -844,22 +848,33 @@ function buildBlueprintPrompt(
     (sum, section) => sum + section.count,
     0,
   );
-  const sections = blueprint.sections.map((section, index) => ({
-    name: section.name,
-    type: section.questionType,
-    count: section.count,
-    required_count: section.count,
-    candidate_count: candidateSections[index]?.count ?? section.count,
-    marks_per_question: section.marksPerQuestion,
-    total_marks: section.totalMarks,
-    difficulty_targets: normalizeDifficultyTargets(
-      sectionDifficultyTargets[index] ?? { [config.difficulty]: section.count },
-    ),
-    candidate_difficulty_targets: normalizeDifficultyTargets(
-      candidateDifficultyTargets[index] ??
-        { [config.difficulty]: candidateSections[index]?.count ?? section.count },
-    ),
-  }));
+  const contract = buildGenerationContract(config, blueprint, {
+    availableTopics,
+    candidateQuestions: candidateTotal,
+  });
+  const promptPayload = {
+    ...generationContractPromptPayload(contract),
+    total_candidate_questions: candidateTotal,
+    sections: contract.sections.map((section, index) => ({
+      name: section.name,
+      type: section.type,
+      label: section.label,
+      count: section.count,
+      required_count: section.count,
+      candidate_count: candidateSections[index]?.count ?? section.count,
+      marks_per_question: section.marksPerQuestion,
+      total_marks: section.totalMarks,
+      difficulty_targets: normalizeDifficultyTargets(
+        sectionDifficultyTargets[index] ?? { [config.difficulty]: section.count },
+      ),
+      candidate_difficulty_targets: normalizeDifficultyTargets(
+        candidateDifficultyTargets[index] ??
+          { [config.difficulty]: candidateSections[index]?.count ?? section.count },
+      ),
+    })),
+    architecture: generationPlan,
+    generation_nonce: generationNonce ?? null,
+  };
   const antiRepeatRules = existingQuestions.length
     ? `
 Forbidden existing/invalid question stems from this paper:
@@ -874,30 +889,7 @@ Do not repeat, paraphrase, lightly reword, or reuse these stems, examples, optio
 
   return `Generate a complete source-grounded EduTest paper in one JSON response.
 
-CONFIG_JSON:${JSON.stringify({
-    class: config.classNum,
-    subjects: config.subjects ?? [config.subject],
-    source_mode: config.sourceMode ?? "curriculum",
-    source_kind:
-      config.sourceMode === "pdf_upload" ? "UPLOADED_PDF" : "NCERT_BOOKS_TXT",
-    chapters: config.subjectSelections?.reduce<Record<string, number[]>>(
-      (acc, selection) => {
-        acc[selection.subject] = selection.chapterIds;
-        return acc;
-      },
-      {},
-    ) ?? { [config.subject]: config.chapterIds },
-    topics: availableTopics,
-    total_questions: blueprint.totalQuestions,
-    total_candidate_questions: candidateTotal,
-    total_marks: blueprint.totalMarks,
-    duration_min: config.duration,
-    exam_type: config.examType,
-    difficulty: config.difficulty,
-    sections,
-    architecture: generationPlan,
-    generation_nonce: generationNonce ?? null,
-  })}
+CONFIG_JSON:${JSON.stringify(promptPayload)}
 
 Subject: ${config.subject}, Class: ${config.classNum}
 ${subjectWorkflow}
@@ -913,6 +905,7 @@ Rules:
 - Generate ${candidateTotal} candidate questions across all sections in CONFIG_JSON.sections.
 - For each section, return candidate_count candidates; only required_count unique valid questions from that section will be saved.
 - Use ONLY the selected NCERT_Books TXT chunks above in normal NCERT mode.
+- In normal NCERT mode, CONFIG_JSON.source_kind must be NCERT_BOOKS_TXT and the paper must stay source-grounded.
 - Do not use the whole PDF/book, neighboring chapters, previous/next chapters, contents pages, transcripts, or outside/web knowledge.
 - Do not copy source lines verbatim as question text; read the source and create fresh exam questions from its meaning.
 - Every returned question must include type, text, correctAnswer, explanation, topic, difficulty, bloomLevel, marks, reasoningSteps, difficultyConfidence, noveltyAngle, sourceChunkFocus, answerPath, cognitiveComplexity{conceptIntegration,abstractionLevel,inferenceLevel,ambiguityLevel,cognitiveLoad}.
@@ -1032,11 +1025,13 @@ function buildPromptConfig(
   generationNonce?: string,
 ) {
   const blueprint = buildBlueprint(config);
-  const questionTypeCounts = toPromptQuestionTypeCounts(blueprint);
+  const contract = buildGenerationContract(config, blueprint, {
+    availableTopics,
+  });
+  const promptPayload = generationContractPromptPayload(contract);
 
   return {
-    class: config.classNum,
-    subjects: config.subjects ?? [config.subject],
+    ...promptPayload,
     subject_workflow: {
       active_subject: coverageFocus?.subject ?? config.subject,
       selected_subjects: config.subjects ?? [config.subject],
@@ -1061,15 +1056,8 @@ function buildPromptConfig(
       {},
     ) ?? { [config.subject]: config.chapterIds },
     topics: availableTopics.length ? { allowed_topics: availableTopics } : null,
-    source_mode: config.sourceMode ?? "curriculum",
     uploaded_pdf_source_id: config.pdfSourceId ?? null,
-    uploaded_pdf_title: config.pdfSource?.title ?? null,
-    total_marks: blueprint.totalMarks,
-    duration_min: config.duration,
-    question_count: blueprint.totalQuestions,
-    exam_type: config.examType,
-    question_types: questionTypeCounts,
-    question_type_counts: questionTypeCounts,
+    question_count: promptPayload.total_questions,
     difficulty_protocol: buildDifficultyProtocolPrompt(
       config.difficulty,
       section.questionType,
@@ -1082,28 +1070,9 @@ function buildPromptConfig(
       total_marks: section.totalMarks,
       difficulty_targets: normalizeDifficultyTargets(sectionDifficultyTargets),
     },
-    ai_provider: config.aiProvider ?? "AUTO",
     generation_nonce: generationNonce ?? null,
-    difficulty: config.difficulty,
-    blooms: config.bloomDistribution,
     architecture: generationPlan,
   };
-}
-
-function toPromptQuestionTypeCounts(blueprint: Blueprint) {
-  const counts = questionTypeMeta.reduce<Record<QuestionType, number>>(
-    (acc, item) => {
-      acc[item.type] = 0;
-      return acc;
-    },
-    {} as Record<QuestionType, number>,
-  );
-
-  blueprint.sections.forEach((section) => {
-    counts[section.questionType] = section.count;
-  });
-
-  return counts;
 }
 
 function generationTemperature(difficulty: PaperConfig["difficulty"]) {

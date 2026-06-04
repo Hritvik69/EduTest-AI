@@ -50,6 +50,51 @@ export type AITask =
   | "QUESTION_REPLACEMENT"
   | "ANSWER_EVALUATION";
 
+export type GenerationRiskLevel = "low" | "medium" | "high";
+
+export interface GenerationContract {
+  hash: string;
+  source: {
+    mode: PaperSourceMode;
+    kind: "NCERT_BOOKS_TXT" | "UPLOADED_PDF";
+    classNum: number;
+    subject: string;
+    subjects: string[];
+    chapters: Record<string, number[]>;
+    chapterIds: number[];
+    topicIds: number[];
+    allowedTopics: string[];
+    pdfTitle?: string;
+    pdfFocusPrompt?: string;
+  };
+  paper: {
+    totalQuestions: number;
+    totalMarks: number;
+    durationMin: number;
+    examType: string;
+    difficulty: Difficulty;
+    bloomDistribution: Record<BloomLevel, number>;
+    aiProvider: AIProvider;
+  };
+  sections: Array<{
+    name: string;
+    type: QuestionType;
+    label: string;
+    count: number;
+    marksPerQuestion: number;
+    totalMarks: number;
+  }>;
+  apiEstimate: {
+    plannedCalls: number;
+    repairAllowance: number;
+    estimatedInputTokens: { min: number; max: number };
+    estimatedOutputTokens: { min: number; max: number };
+    riskLevel: GenerationRiskLevel;
+    riskReasons: string[];
+    providerFallbackNote: string;
+  };
+}
+
 export interface GenerationManifest {
   version: 1;
   generatedAt: string;
@@ -77,6 +122,7 @@ export interface GenerationManifest {
   ai: {
     selectedProvider: AIProvider;
     taskProviderOrder: Partial<Record<AITask, AIProvider[]>>;
+    promptContract?: GenerationContract;
     usageSummary?: {
       totalCalls: number;
       successCalls: number;

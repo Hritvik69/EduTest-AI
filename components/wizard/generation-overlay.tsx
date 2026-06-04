@@ -15,6 +15,8 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { fetchApiData } from "@/lib/api-client";
+import { generateBlueprint } from "@/lib/blueprint";
+import { buildGenerationContract } from "@/lib/generation-contract";
 import { generationPhaseLabels } from "@/lib/question-planning";
 import { cn } from "@/lib/utils";
 import type { AIProvider, PaperConfig, StoredPaper } from "@/types";
@@ -99,6 +101,13 @@ export function GenerationOverlay({
         : config,
     [config, providerOverride],
   );
+  const generationContract = React.useMemo(() => {
+    try {
+      return buildGenerationContract(requestConfig, generateBlueprint(requestConfig));
+    } catch {
+      return null;
+    }
+  }, [requestConfig]);
   const idempotencyKey = React.useMemo(
     () =>
       randomGenerationKey(
@@ -477,6 +486,7 @@ export function GenerationOverlay({
   const providerModel = modelForProvider(provider, providerStatus);
   const canSkipAndReplace = isQuestionOutputError(error);
   const canRetry = !isSourceTextShortageError(error);
+  const errorGuidance = generationErrorGuidance(error, provider);
   const timing = generationTimingSnapshot(progress, generationStartedAt, generationNow);
 
   return (
@@ -517,6 +527,14 @@ export function GenerationOverlay({
             ) : null}
           </div>
           <p className="mt-2 text-slate-300">{error ? error.message : currentMessage}</p>
+          {generationContract ? (
+            <div className="mt-3 rounded-lg border border-white/10 bg-slate-950/45 px-3 py-2 text-xs leading-5 text-slate-300">
+              Contract {generationContract.hash} |{" "}
+              {generationContract.apiEstimate.plannedCalls} planned AI call
+              {generationContract.apiEstimate.plannedCalls === 1 ? "" : "s"} |{" "}
+              {generationContract.apiEstimate.riskLevel} API risk
+            </div>
+          ) : null}
         </div>
 
         <div className="mt-4 space-y-2">
@@ -569,6 +587,12 @@ export function GenerationOverlay({
         </div>
 
         {error ? (
+          <>
+          {errorGuidance ? (
+            <div className="mt-4 rounded-lg border border-amber-300/20 bg-amber-500/10 p-3 text-sm leading-6 text-amber-50">
+              {errorGuidance}
+            </div>
+          ) : null}
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {error.paperId ? (
               <Button
@@ -608,6 +632,7 @@ export function GenerationOverlay({
               </Button>
             ) : null}
           </div>
+          </>
         ) : onClose ? (
           <div className="mt-4 flex justify-center">
             <Button type="button" variant="outline" onClick={onClose}>
@@ -850,6 +875,31 @@ function isQuestionOutputError(
   return /Invalid .* question|No valid generated questions|no usable .* questions|generated \d+\/\d+ unique|Duplicate question|empty response|text instead of valid JSON|malformed JSON/i.test(
     error.message,
   );
+}
+
+function generationErrorGuidance(
+  error: { message: string; code?: string | number; paperId?: number; recoverable?: boolean } | null,
+  provider: AIProvider,
+) {
+  if (!error) return "";
+  if (isSourceTextShortageError(error)) {
+    return "Retry is disabled for this source shortage. Select more chapters/topics, upload clearer source text, or lower the question count before generating again.";
+  }
+  if (/quota|credit|billing|402|max_tokens/i.test(error.message)) {
+    return provider === "AUTO"
+      ? "Provider quota blocked the request. Lower the question count or add credits to the configured provider."
+      : "Provider quota blocked the request. Use Retry Auto Fallback, lower the question count, or add credits to that provider.";
+  }
+  if (/timeout|timed out|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(error.message)) {
+    return "The AI provider or deployed server timed out. Retry once, use Auto Fallback, or reduce question count/format variety for a faster run.";
+  }
+  if (isQuestionOutputError(error)) {
+    return "The AI returned invalid or duplicate output. Skip & Replace keeps valid questions and rebuilds the broken parts where possible.";
+  }
+  if (error.recoverable || error.paperId) {
+    return "Valid progress was saved. Retry continues the same paper instead of starting from zero.";
+  }
+  return "Check the selected provider, source coverage, and question count before retrying.";
 }
 
 function generationTimingSnapshot(

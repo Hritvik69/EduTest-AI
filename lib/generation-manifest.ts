@@ -7,6 +7,7 @@ import type {
   GenerationManifest,
   PaperConfig,
 } from "@/types";
+import { buildGenerationContract } from "@/lib/generation-contract";
 import { analyzeConceptSourceQuality } from "@/lib/retriever";
 
 export function buildGenerationManifest({
@@ -38,6 +39,10 @@ export function buildGenerationManifest({
 }): GenerationManifest {
   const conceptSource = dominantConceptSource(config, concepts);
   const sourceQuality = analyzeConceptSourceQuality(concepts);
+  const promptContract = buildGenerationContract(config, blueprint, {
+    availableTopics: unique(concepts.map((concept) => concept.topicName).filter(Boolean)),
+    sourceTextChunks: sourceQuality.sourceTextChunks,
+  });
   const warningTexts = normalizedValidationWarnings(validationWarnings);
   const sourceWarnings = sourceWarningTexts(config, conceptSource);
 
@@ -70,6 +75,7 @@ export function buildGenerationManifest({
     ai: {
       selectedProvider: config.aiProvider ?? "AUTO",
       taskProviderOrder,
+      promptContract,
       usageSummary,
     },
     validation: {

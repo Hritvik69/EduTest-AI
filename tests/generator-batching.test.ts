@@ -61,6 +61,22 @@ describe("generateQuestionsForSection batching", () => {
     expect(mocks.generateJSON).toHaveBeenCalledTimes(2);
     expect(mocks.generateJSON.mock.calls[0][0]).toContain("Generate 5 MCQ");
     expect(mocks.generateJSON.mock.calls[1][0]).toContain("Generate 2 MCQ");
+    const promptConfig = configFromPrompt(String(mocks.generateJSON.mock.calls[0][0]));
+    expect(promptConfig).toMatchObject({
+      prompt_contract_hash: expect.stringMatching(/^[a-f0-9]{8}$/),
+      class: 10,
+      subjects: ["Science"],
+      total_questions: 40,
+      question_count: 40,
+      difficulty: "MEDIUM",
+      ai_provider: "OPENROUTER",
+      question_type_counts: { MCQ: 40 },
+      current_section: {
+        type: "MCQ",
+        count: 5,
+        marks_per_question: 1,
+      },
+    });
   });
 
   it("drops duplicate MCQs and requests replacements before validation", async () => {
@@ -944,6 +960,12 @@ function brokenSourceBasedQuestion(): GeneratedQuestion {
     ...sourceBasedQuestion(),
     subQuestions: sourceBasedQuestion().subQuestions?.slice(0, 2),
   };
+}
+
+function configFromPrompt(prompt: string) {
+  const match = prompt.match(/CONFIG_JSON:(\{.*\})/);
+  expect(match).not.toBeNull();
+  return JSON.parse(match![1]);
 }
 
 function looseCaseBasedQuestion(): GeneratedQuestion {

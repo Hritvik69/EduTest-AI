@@ -21,6 +21,8 @@ export function GenerationManifestSummary({
       : `${manifest.source.subject} source`;
   const providerOrder = manifest.ai.taskProviderOrder.QUESTION_GENERATION ?? [];
   const warnings = manifest.warnings.slice(0, compact ? 2 : 4);
+  const usage = manifest.ai.usageSummary;
+  const contract = manifest.ai.promptContract;
 
   return (
     <Card className="print:hidden p-4">
@@ -42,7 +44,7 @@ export function GenerationManifestSummary({
         </Badge>
       </div>
 
-      <div className="mt-4 grid gap-3 md:grid-cols-3">
+      <div className="mt-4 grid gap-3 md:grid-cols-4">
         <SummaryTile
           icon={<FileText className="h-4 w-4 text-blue-200" />}
           label="Source"
@@ -61,6 +63,19 @@ export function GenerationManifestSummary({
           icon={<ShieldCheck className="h-4 w-4 text-emerald-200" />}
           label="Validation"
           value={`${manifest.validation.replacedQuestions} replaced, ${manifest.validation.skippedQuestions} skipped`}
+        />
+        <SummaryTile
+          icon={<BrainCircuit className="h-4 w-4 text-purple-200" />}
+          label="API Usage"
+          value={
+            usage
+              ? `${usage.totalCalls} calls, ${usage.failureCalls} failed, ${compactNumber(
+                  usage.estimatedInputTokens + usage.estimatedOutputTokens,
+                )} est. tokens`
+              : contract
+                ? `${contract.apiEstimate.plannedCalls} planned calls, ${contract.apiEstimate.riskLevel} risk`
+                : "Usage unavailable"
+          }
         />
       </div>
 
@@ -127,4 +142,9 @@ function sourceDescription(manifest: GenerationManifest) {
   }
 
   return "Unknown source";
+}
+
+function compactNumber(value: number) {
+  if (value >= 1000) return `${Math.round(value / 100) / 10}k`;
+  return String(value);
 }
