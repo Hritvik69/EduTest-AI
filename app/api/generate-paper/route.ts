@@ -1902,6 +1902,15 @@ function generationErrorMessage(
     return stripGenerationContinuationPrefix(message);
   }
 
+  if (
+    failureSource === "persistence" ||
+    /PAPER_PERSISTENCE_|Database save failed for generated paper persistence/i.test(
+      message,
+    )
+  ) {
+    return paperPersistenceFailureMessage(activeOperation);
+  }
+
   if (/SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(message)) {
     return "Real AI generation reached the deployment time limit before enough valid questions were ready. Saved progress can continue on retry; if this repeats, use fewer question formats or a faster configured provider.";
   }
@@ -1938,9 +1947,6 @@ function generationErrorMessage(
   }
 
   if (/timeout|timed out|network|fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT/i.test(message)) {
-    if (failureSource === "persistence") {
-      return "Paper persistence timed out after provider health preflight. Check /api/deployment-health database reachability and Neon connectivity, then retry; saved paper setup can continue if it was created.";
-    }
     if (failureSource === "source") {
       return "Source loading timed out before question generation. Check imported NCERT/PDF source availability, deployment health, and database reachability before retrying.";
     }
@@ -1957,11 +1963,37 @@ function generationErrorMessage(
   return compactAiProviderFailureMessage(message);
 }
 
+function paperPersistenceFailureMessage(
+  activeOperation: ActiveGenerationOperation | undefined,
+) {
+  if (activeOperation === "paper_shell_create") {
+    return "Paper setup could not be saved to the database. Check /api/deployment-health database reachability and Neon connectivity, then retry; no AI provider request was started.";
+  }
+
+  if (activeOperation === "generation_state_save") {
+    return "Paper progress could not be saved to the database. Check /api/deployment-health database reachability and Neon connectivity, then retry; saved paper setup can continue if it was created.";
+  }
+
+  if (activeOperation === "finalize") {
+    return "Final paper save did not complete in the database. Check /api/deployment-health database reachability and Neon connectivity, then retry; the paper may appear if Neon finished the write.";
+  }
+
+  return "Paper persistence could not complete in the database. Check /api/deployment-health database reachability and Neon connectivity, then retry; this is not an AI provider fallback issue.";
+}
+
 function generationFailureSource(
   error: unknown,
   activeOperation: ActiveGenerationOperation | undefined,
 ): GenerationFailureSource {
   const message = error instanceof Error ? error.message : String(error ?? "");
+
+  if (
+    /PAPER_PERSISTENCE_|Database save failed for generated paper persistence/i.test(
+      message,
+    )
+  ) {
+    return "persistence";
+  }
 
   if (/SOURCE_TEXT_NOT_ENOUGH|SOURCE_NOT_TEXT_BACKED|Selected source text/i.test(message)) {
     return "source";
@@ -2104,6 +2136,14 @@ function generationErrorCode(error: unknown) {
     return "GENERATION_CONTINUE_AVAILABLE";
   }
 
+  if (/PAPER_PERSISTENCE_TIMEOUT/i.test(message)) {
+    return "PAPER_PERSISTENCE_TIMEOUT";
+  }
+
+  if (/PAPER_PERSISTENCE_|Database save failed for generated paper persistence/i.test(message)) {
+    return "PAPER_PERSISTENCE_FAILED";
+  }
+
   if (/No configured AI provider|No configured provider is usable|Set at least one AI provider key/i.test(message)) {
     return "PROVIDER_AUTO_FAILED";
   }
@@ -2171,6 +2211,8 @@ function isRecoverableGenerationRuntimeError(
   if (
     code === "SOURCE_TEXT_NOT_ENOUGH" ||
     code === "SOURCE_NOT_TEXT_BACKED" ||
+    code === "PAPER_PERSISTENCE_TIMEOUT" ||
+    code === "PAPER_PERSISTENCE_FAILED" ||
     code === "PROVIDER_AUTH_ERROR"
   ) {
     return false;

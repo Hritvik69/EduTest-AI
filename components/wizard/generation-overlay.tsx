@@ -1241,6 +1241,13 @@ function canAutoContinueGenerationError(
 function isProviderRecoverableError(error: unknown) {
   const code = getErrorCode(error);
   const message = error instanceof Error ? error.message : String(error ?? "");
+  if (
+    code === "PAPER_PERSISTENCE_TIMEOUT" ||
+    code === "PAPER_PERSISTENCE_FAILED" ||
+    /paper persistence|database reachability|Neon connectivity/i.test(message)
+  ) {
+    return false;
+  }
   return (
     code === "PROVIDER_NETWORK_ERROR" ||
     code === "PROVIDER_AUTO_FAILED" ||
@@ -1362,7 +1369,7 @@ function generationErrorGuidance(
     error.failureSource === "persistence" ||
     /paper persistence|database reachability|Neon connectivity/i.test(error.message)
   ) {
-    return "Provider health already ran; the blocker is paper persistence. Check /api/deployment-health for database reachability, then retry the saved generation.";
+    return "The blocker is database persistence, not AI fallback. Check /api/deployment-health for database reachability and Neon connectivity, then retry; saved setup can continue if it was created.";
   }
   if (error.providerRecoveryMode === "source_backed_provider_outage") {
     return isSourceTextShortageError(error)

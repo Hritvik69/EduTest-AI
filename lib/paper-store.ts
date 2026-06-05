@@ -73,79 +73,87 @@ export async function createPaperInDB(
   const guestMode = isGuestUserId(options.userId);
 
   if (sql && options.userId) {
+    const database = sql;
     try {
       if (!options.userId) throw new Error("Authenticated user is required.");
       await ensureGuestDatabaseUser(options.userId);
 
-      const [, rows] = await sql.transaction((tx) => [
-        tx`SELECT pg_advisory_xact_lock(${options.userId})`,
-        tx`
-          WITH recovered AS (
-            UPDATE papers
-            SET
-              title = ${title},
-              class_num = ${paperConfig.classNum},
-              subject = ${displaySubject(paperConfig)},
-              subject_selections = ${json(paperConfig.subjectSelections ?? null)},
-              chapter_ids = ${paperConfig.chapterIds},
-              total_marks = ${paperConfig.totalMarks},
-              duration = ${paperConfig.duration},
-              difficulty = ${paperConfig.difficulty},
-              question_types = ${paperConfig.questionTypes},
-              type_distribution = ${json(paperConfig.typeDistribution)},
-              bloom_distribution = ${json(paperConfig.bloomDistribution)},
-              blueprint = ${json(blueprint)},
-              status = 'GENERATING',
-              error_metadata = NULL,
-              is_demo_mode = ${isDemoMode},
-              generation_job_id = ${options.generationJobId ?? null},
-              updated_at = NOW()
-            WHERE user_id = ${options.userId}
-            AND idempotency_key = ${options.idempotencyKey ?? null}
-            AND (
-              status = 'FAILED'
-              OR (status = 'GENERATING' AND updated_at < NOW() - INTERVAL '10 minutes')
-            )
-            RETURNING id, status, false AS reused
-          ),
-          existing AS (
-            SELECT id, status, true AS reused
-            FROM papers
-            WHERE user_id = ${options.userId}
-            AND idempotency_key = ${options.idempotencyKey ?? null}
-            AND NOT EXISTS (SELECT 1 FROM recovered)
-            LIMIT 1
-          ),
-          inserted AS (
-            INSERT INTO papers (
-              user_id, title, class_num, subject, subject_selections, chapter_ids,
-              total_marks, duration, difficulty, question_types, type_distribution,
-              bloom_distribution, blueprint, status, error_metadata, is_demo_mode,
-              generation_job_id, idempotency_key
-            )
-            SELECT
-              ${options.userId}, ${title}, ${paperConfig.classNum}, ${displaySubject(paperConfig)},
-              ${json(paperConfig.subjectSelections ?? null)}, ${paperConfig.chapterIds},
-              ${paperConfig.totalMarks}, ${paperConfig.duration}, ${paperConfig.difficulty},
-              ${paperConfig.questionTypes}, ${json(paperConfig.typeDistribution)},
-              ${json(paperConfig.bloomDistribution)}, ${json(blueprint)}, 'GENERATING',
-              NULL, ${isDemoMode}, ${options.generationJobId ?? null},
-              ${options.idempotencyKey ?? null}
-            WHERE NOT EXISTS (SELECT 1 FROM recovered)
-            AND NOT EXISTS (SELECT 1 FROM existing)
-            ON CONFLICT (user_id, idempotency_key)
-            WHERE idempotency_key IS NOT NULL
-            DO NOTHING
-            RETURNING id, status, false AS reused
-          )
-          SELECT id, status, reused FROM recovered
-          UNION ALL
-          SELECT id, status, reused FROM inserted
-          UNION ALL
-          SELECT id, status, reused FROM existing
-          LIMIT 1
-        `,
-      ]);
+      const transactionRows = await withPaperPersistenceRetry(
+        "paper shell create",
+        () =>
+          database.transaction((tx) => [
+            tx`SELECT set_config('statement_timeout', ${String(paperPersistenceStatementTimeoutMs())}, true)`,
+            tx`SELECT set_config('lock_timeout', ${String(paperPersistenceLockTimeoutMs())}, true)`,
+            tx`SELECT pg_advisory_xact_lock(${options.userId})`,
+            tx`
+              WITH recovered AS (
+                UPDATE papers
+                SET
+                  title = ${title},
+                  class_num = ${paperConfig.classNum},
+                  subject = ${displaySubject(paperConfig)},
+                  subject_selections = ${json(paperConfig.subjectSelections ?? null)},
+                  chapter_ids = ${paperConfig.chapterIds},
+                  total_marks = ${paperConfig.totalMarks},
+                  duration = ${paperConfig.duration},
+                  difficulty = ${paperConfig.difficulty},
+                  question_types = ${paperConfig.questionTypes},
+                  type_distribution = ${json(paperConfig.typeDistribution)},
+                  bloom_distribution = ${json(paperConfig.bloomDistribution)},
+                  blueprint = ${json(blueprint)},
+                  status = 'GENERATING',
+                  error_metadata = NULL,
+                  is_demo_mode = ${isDemoMode},
+                  generation_job_id = ${options.generationJobId ?? null},
+                  updated_at = NOW()
+                WHERE user_id = ${options.userId}
+                AND idempotency_key = ${options.idempotencyKey ?? null}
+                AND (
+                  status = 'FAILED'
+                  OR (status = 'GENERATING' AND updated_at < NOW() - INTERVAL '10 minutes')
+                )
+                RETURNING id, status, false AS reused
+              ),
+              existing AS (
+                SELECT id, status, true AS reused
+                FROM papers
+                WHERE user_id = ${options.userId}
+                AND idempotency_key = ${options.idempotencyKey ?? null}
+                AND NOT EXISTS (SELECT 1 FROM recovered)
+                LIMIT 1
+              ),
+              inserted AS (
+                INSERT INTO papers (
+                  user_id, title, class_num, subject, subject_selections, chapter_ids,
+                  total_marks, duration, difficulty, question_types, type_distribution,
+                  bloom_distribution, blueprint, status, error_metadata, is_demo_mode,
+                  generation_job_id, idempotency_key
+                )
+                SELECT
+                  ${options.userId}, ${title}, ${paperConfig.classNum}, ${displaySubject(paperConfig)},
+                  ${json(paperConfig.subjectSelections ?? null)}, ${paperConfig.chapterIds},
+                  ${paperConfig.totalMarks}, ${paperConfig.duration}, ${paperConfig.difficulty},
+                  ${paperConfig.questionTypes}, ${json(paperConfig.typeDistribution)},
+                  ${json(paperConfig.bloomDistribution)}, ${json(blueprint)}, 'GENERATING',
+                  NULL, ${isDemoMode}, ${options.generationJobId ?? null},
+                  ${options.idempotencyKey ?? null}
+                WHERE NOT EXISTS (SELECT 1 FROM recovered)
+                AND NOT EXISTS (SELECT 1 FROM existing)
+                ON CONFLICT (user_id, idempotency_key)
+                WHERE idempotency_key IS NOT NULL
+                DO NOTHING
+                RETURNING id, status, false AS reused
+              )
+              SELECT id, status, reused FROM recovered
+              UNION ALL
+              SELECT id, status, reused FROM inserted
+              UNION ALL
+              SELECT id, status, reused FROM existing
+              LIMIT 1
+            `,
+          ]),
+      );
+      const rows = transactionRows[3];
 
       if (!rows[0]?.id) throw new Error("PAPER_CREATION_FAILED");
 
@@ -239,8 +247,14 @@ export async function saveQuestionsAndLink(
   }
 
   if (sql) {
-    const transactionResults = await sql.transaction((tx) => [
-      tx`
+    const database = sql;
+    const transactionResults = await withPaperPersistenceRetry(
+      "paper questions save",
+      () =>
+        database.transaction((tx) => [
+          tx`SELECT set_config('statement_timeout', ${String(paperPersistenceStatementTimeoutMs())}, true)`,
+          tx`SELECT set_config('lock_timeout', ${String(paperPersistenceLockTimeoutMs())}, true)`,
+          tx`
         WITH removed AS (
           DELETE FROM paper_questions
           WHERE paper_id = ${paperId}
@@ -248,8 +262,8 @@ export async function saveQuestionsAndLink(
         )
         DELETE FROM questions
         WHERE id IN (SELECT question_id FROM removed)
-      `,
-      ...normalized.map((question, index) => tx`
+          `,
+          ...normalized.map((question, index) => tx`
         WITH inserted_question AS (
           INSERT INTO questions (
             text, type, difficulty, marks, options, correct_answer, explanation,
@@ -290,8 +304,8 @@ export async function saveQuestionsAndLink(
             ${question.orderNum ?? index + 1}
         FROM inserted_question
         RETURNING question_id AS id
-      `),
-      tx`
+          `),
+          tx`
         UPDATE papers
         SET status = 'READY',
             error_metadata = CASE
@@ -304,8 +318,9 @@ export async function saveQuestionsAndLink(
           SELECT 1 FROM paper_questions WHERE paper_id = ${paperId}
         )
         RETURNING id
-      `,
-    ]);
+          `,
+        ]),
+    );
 
     const readyRows = transactionResults[transactionResults.length - 1];
     if (!readyRows[0]?.id) {
@@ -313,7 +328,7 @@ export async function saveQuestionsAndLink(
     }
 
     const storedQuestions: GeneratedQuestion[] = normalized.map((question, index) => {
-      const insertResultIndex = 1 + index;
+      const insertResultIndex = 3 + index;
       return {
         ...question,
         id: Number(transactionResults[insertResultIndex][0].id),
@@ -343,15 +358,25 @@ export async function markPaperReady(paperId: number) {
   }
 
   if (sql) {
-    const rows = await sql`
-      UPDATE papers
-      SET status = 'READY', error_metadata = NULL, updated_at = NOW()
-      WHERE id = ${paperId}
-      AND EXISTS (
-        SELECT 1 FROM paper_questions WHERE paper_id = ${paperId}
-      )
-      RETURNING id
-    `;
+    const database = sql;
+    const transactionRows = await withPaperPersistenceRetry(
+      "paper ready mark",
+      () =>
+        database.transaction((tx) => [
+          tx`SELECT set_config('statement_timeout', ${String(paperPersistenceStatementTimeoutMs())}, true)`,
+          tx`SELECT set_config('lock_timeout', ${String(paperPersistenceLockTimeoutMs())}, true)`,
+          tx`
+            UPDATE papers
+            SET status = 'READY', error_metadata = NULL, updated_at = NOW()
+            WHERE id = ${paperId}
+            AND EXISTS (
+              SELECT 1 FROM paper_questions WHERE paper_id = ${paperId}
+            )
+            RETURNING id
+          `,
+        ]),
+    );
+    const rows = transactionRows[2];
     if (!rows[0]?.id) {
       throw new Error("Cannot mark a paper READY before questions are saved.");
     }
@@ -378,11 +403,18 @@ export async function markPaperDemoMode(paperId: number) {
   }
 
   if (sql) {
-    await sql`
-      UPDATE papers
-      SET is_demo_mode = true, updated_at = NOW()
-      WHERE id = ${paperId}
-    `;
+    const database = sql;
+    await withPaperPersistenceRetry("paper demo mark", () =>
+      database.transaction((tx) => [
+        tx`SELECT set_config('statement_timeout', ${String(paperPersistenceStatementTimeoutMs())}, true)`,
+        tx`SELECT set_config('lock_timeout', ${String(paperPersistenceLockTimeoutMs())}, true)`,
+        tx`
+          UPDATE papers
+          SET is_demo_mode = true, updated_at = NOW()
+          WHERE id = ${paperId}
+        `,
+      ]),
+    );
   }
 }
 
@@ -406,18 +438,25 @@ export async function setPaperGenerationManifest(
   }
 
   if (sql) {
-    await sql`
-      UPDATE papers
-      SET error_metadata = jsonb_strip_nulls(
-        COALESCE(error_metadata, '{}'::jsonb) ||
-        ${json({
-          generationManifest: manifest,
-          ...(normalizedConfig ? { normalizedConfig } : {}),
-        })}::jsonb
-      ),
-          updated_at = NOW()
-      WHERE id = ${paperId}
-    `;
+    const database = sql;
+    await withPaperPersistenceRetry("generation manifest save", () =>
+      database.transaction((tx) => [
+        tx`SELECT set_config('statement_timeout', ${String(paperPersistenceStatementTimeoutMs())}, true)`,
+        tx`SELECT set_config('lock_timeout', ${String(paperPersistenceLockTimeoutMs())}, true)`,
+        tx`
+          UPDATE papers
+          SET error_metadata = jsonb_strip_nulls(
+            COALESCE(error_metadata, '{}'::jsonb) ||
+            ${json({
+              generationManifest: manifest,
+              ...(normalizedConfig ? { normalizedConfig } : {}),
+            })}::jsonb
+          ),
+              updated_at = NOW()
+          WHERE id = ${paperId}
+        `,
+      ]),
+    );
   }
 }
 
@@ -445,19 +484,35 @@ export async function setPaperGenerationState(
   }
 
   if (sql) {
-    await sql`
-      UPDATE papers
-      SET
-        status = ${state.status === "FAILED" ? "FAILED" : "GENERATING"},
-        generation_job_id = ${state.generationJobId},
-        idempotency_key = COALESCE(idempotency_key, ${state.idempotencyKey}),
-        error_metadata = jsonb_strip_nulls(
-          COALESCE(error_metadata, '{}'::jsonb) ||
-          ${json(errorMetadata)}::jsonb
-        ),
-        updated_at = NOW()
-      WHERE id = ${paperId}
-    `;
+    const database = sql;
+    const transactionRows = await withPaperPersistenceRetry(
+      "generation state save",
+      () =>
+        database.transaction((tx) => [
+          tx`SELECT set_config('statement_timeout', ${String(paperPersistenceStatementTimeoutMs())}, true)`,
+          tx`SELECT set_config('lock_timeout', ${String(paperPersistenceLockTimeoutMs())}, true)`,
+          tx`
+            UPDATE papers
+            SET
+              status = ${state.status === "FAILED" ? "FAILED" : "GENERATING"},
+              generation_job_id = ${state.generationJobId},
+              idempotency_key = COALESCE(idempotency_key, ${state.idempotencyKey}),
+              error_metadata = jsonb_strip_nulls(
+                COALESCE(error_metadata, '{}'::jsonb) ||
+                ${json(errorMetadata)}::jsonb
+              ),
+              updated_at = NOW()
+            WHERE id = ${paperId}
+            RETURNING id
+          `,
+        ]),
+    );
+    const rows = transactionRows[2];
+    if (!rows[0]?.id) {
+      throw new Error(
+        `PAPER_PERSISTENCE_MISSING: Paper ${paperId} was not found while saving generation state.`,
+      );
+    }
   }
 }
 
@@ -506,12 +561,19 @@ export async function updatePaperStatus(
   }
 
   if (sql) {
-    await sql`
-      UPDATE papers
-      SET status = ${status}, error_metadata = ${json(errorMetadata ?? null)},
-          updated_at = NOW()
-      WHERE id = ${paperId}
-    `;
+    const database = sql;
+    await withPaperPersistenceRetry("paper status update", () =>
+      database.transaction((tx) => [
+        tx`SELECT set_config('statement_timeout', ${String(paperPersistenceStatementTimeoutMs())}, true)`,
+        tx`SELECT set_config('lock_timeout', ${String(paperPersistenceLockTimeoutMs())}, true)`,
+        tx`
+          UPDATE papers
+          SET status = ${status}, error_metadata = ${json(errorMetadata ?? null)},
+              updated_at = NOW()
+          WHERE id = ${paperId}
+        `,
+      ]),
+    );
     return;
   }
 
@@ -534,20 +596,27 @@ export async function updatePaperDefinition(
   }
 
   if (sql) {
-    await sql`
-      UPDATE papers
-      SET
-        subject = ${displaySubject(config)},
-        subject_selections = ${json(config.subjectSelections ?? null)},
-        chapter_ids = ${config.chapterIds},
-        total_marks = ${config.totalMarks},
-        question_types = ${config.questionTypes},
-        type_distribution = ${json(config.typeDistribution)},
-        bloom_distribution = ${json(config.bloomDistribution)},
-        blueprint = ${json(blueprint)},
-        updated_at = NOW()
-      WHERE id = ${paperId}
-    `;
+    const database = sql;
+    await withPaperPersistenceRetry("paper definition update", () =>
+      database.transaction((tx) => [
+        tx`SELECT set_config('statement_timeout', ${String(paperPersistenceStatementTimeoutMs())}, true)`,
+        tx`SELECT set_config('lock_timeout', ${String(paperPersistenceLockTimeoutMs())}, true)`,
+        tx`
+          UPDATE papers
+          SET
+            subject = ${displaySubject(config)},
+            subject_selections = ${json(config.subjectSelections ?? null)},
+            chapter_ids = ${config.chapterIds},
+            total_marks = ${config.totalMarks},
+            question_types = ${config.questionTypes},
+            type_distribution = ${json(config.typeDistribution)},
+            bloom_distribution = ${json(config.bloomDistribution)},
+            blueprint = ${json(blueprint)},
+            updated_at = NOW()
+          WHERE id = ${paperId}
+        `,
+      ]),
+    );
   }
 }
 
@@ -1211,6 +1280,120 @@ function deleteGuestPaper(paperId: number) {
   }
 }
 
+async function withPaperPersistenceRetry<T>(
+  operation: string,
+  run: () => Promise<T>,
+): Promise<T> {
+  const attempts = paperPersistenceAttemptCount();
+  let lastError: unknown;
+
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      return await withPaperPersistenceTimeout(operation, attempt, run());
+    } catch (error) {
+      lastError = error;
+      if (!isTransientPaperPersistenceError(error) || attempt === attempts) {
+        throw paperPersistenceOperationError(operation, error, attempt);
+      }
+
+      console.warn("[paper-store] transient paper persistence failure; retrying", {
+        operation,
+        attempt,
+        attempts,
+        message: error instanceof Error ? error.message : String(error),
+      });
+      await sleep(paperPersistenceRetryDelayMs(attempt));
+    }
+  }
+
+  throw paperPersistenceOperationError(operation, lastError, attempts);
+}
+
+function withPaperPersistenceTimeout<T>(
+  operation: string,
+  attempt: number,
+  promise: Promise<T>,
+): Promise<T> {
+  const timeoutMs = paperPersistenceOperationTimeoutMs();
+  return new Promise<T>((resolve, reject) => {
+    const timeout = setTimeout(() => {
+      reject(
+        new Error(
+          `PAPER_PERSISTENCE_TIMEOUT: ${operation} timed out after ${timeoutMs}ms (attempt ${attempt}).`,
+        ),
+      );
+    }, timeoutMs);
+
+    promise.then(
+      (value) => {
+        clearTimeout(timeout);
+        resolve(value);
+      },
+      (error) => {
+        clearTimeout(timeout);
+        reject(error);
+      },
+    );
+  });
+}
+
+function paperPersistenceOperationError(
+  operation: string,
+  error: unknown,
+  attempts: number,
+) {
+  const detail = error instanceof Error ? error.message : String(error ?? "");
+  const code = isTransientPaperPersistenceError(error)
+    ? "PAPER_PERSISTENCE_TIMEOUT"
+    : "PAPER_PERSISTENCE_FAILED";
+  return new Error(
+    `${code}: ${operation} failed after ${attempts} attempt${attempts === 1 ? "" : "s"}.${detail ? ` ${detail}` : ""}`,
+  );
+}
+
+function isTransientPaperPersistenceError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error ?? "");
+  return /PAPER_PERSISTENCE_TIMEOUT|timeout|timed out|canceling statement due to statement timeout|canceling statement due to lock timeout|lock_timeout|too many clients|connection terminated|ECONNRESET|ENOTFOUND|ETIMEDOUT|network|fetch failed|Neon|postgres connection/i.test(
+    message,
+  );
+}
+
+function paperPersistenceAttemptCount() {
+  return Math.floor(
+    boundedPositiveEnvNumber("EDUTEST_PAPER_PERSISTENCE_ATTEMPTS", 3, 1, 4),
+  );
+}
+
+function paperPersistenceOperationTimeoutMs() {
+  return boundedPositiveEnvNumber(
+    "EDUTEST_PAPER_PERSISTENCE_TIMEOUT_MS",
+    12_000,
+    3_000,
+    25_000,
+  );
+}
+
+function paperPersistenceStatementTimeoutMs() {
+  return Math.max(1_000, paperPersistenceOperationTimeoutMs() - 1_000);
+}
+
+function paperPersistenceLockTimeoutMs() {
+  return boundedPositiveEnvNumber(
+    "EDUTEST_PAPER_PERSISTENCE_LOCK_TIMEOUT_MS",
+    1_500,
+    500,
+    5_000,
+  );
+}
+
+function paperPersistenceRetryDelayMs(attempt: number) {
+  return Math.min(1_500, 250 * 2 ** Math.max(0, attempt - 1));
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 function canUseMemoryPaperFallback(isDemoMode: boolean, guestMode: boolean) {
   if (isDemoMode) return true;
   if (!guestMode) return false;
@@ -1229,6 +1412,16 @@ function paperPersistenceRequiredError(error?: unknown) {
 function positiveEnvNumber(name: string, fallback: number) {
   const value = Number(process.env[name]);
   return Number.isFinite(value) && value > 0 ? value : fallback;
+}
+
+function boundedPositiveEnvNumber(
+  name: string,
+  fallback: number,
+  min: number,
+  max: number,
+) {
+  const value = positiveEnvNumber(name, fallback);
+  return Math.max(min, Math.min(max, value));
 }
 
 function normalizedClientSavedAt(value?: string) {

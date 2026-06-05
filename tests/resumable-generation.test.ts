@@ -55,7 +55,8 @@ describe("resumable paper generation wiring", () => {
     expect(route).toMatch(/failureSource/);
     expect(route).toMatch(/errorClass/);
     expect(route).toMatch(/generationFailureSource/);
-    expect(route).toMatch(/Paper persistence timed out after provider health preflight/);
+    expect(route).toMatch(/paperPersistenceFailureMessage/);
+    expect(route).toMatch(/PAPER_PERSISTENCE_TIMEOUT/);
     expect(route).toMatch(/providerHealth: latestProviderHealth/);
     expect(route).toMatch(/providerRecoveryMode/);
     expect(route).toMatch(/sourceBackedProviderRecoveryMode/);
@@ -89,6 +90,9 @@ describe("resumable paper generation wiring", () => {
     expect(store).toMatch(/error_metadata/);
     expect(store).toMatch(/canUseMemoryPaperFallback/);
     expect(store).toMatch(/paperPersistenceRequiredError/);
+    expect(store).toMatch(/withPaperPersistenceRetry/);
+    expect(store).toMatch(/paperPersistenceLockTimeoutMs/);
+    expect(store).toMatch(/statement_timeout/);
     expect(bank).toMatch(/candidateQuestions/);
     expect(bank).toMatch(/acceptedQuestions/);
     expect(bank).toMatch(/missingSections/);
@@ -111,7 +115,8 @@ describe("resumable paper generation wiring", () => {
     expect(overlay).toMatch(/providerHealthFromStreamData/);
     expect(overlay).toMatch(/getErrorStringField/);
     expect(overlay).toMatch(/failureSource === "persistence"/);
-    expect(overlay).toMatch(/Provider health already ran; the blocker is paper persistence/);
+    expect(overlay).toMatch(/The blocker is database persistence, not AI fallback/);
+    expect(overlay).toMatch(/PAPER_PERSISTENCE_TIMEOUT/);
     expect(overlay).toMatch(/providerRecoveryModeFromData/);
     expect(overlay).toMatch(/isProviderRecoverableError/);
     expect(overlay).toMatch(/setProviderOverride\("AUTO"\)/);
