@@ -4,6 +4,7 @@ import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
 import {
   analyzeSourceBackedCompletionCapacity,
   completeQuestionBankWithSourceBackedFallback,
+  sourceBackedCapacityMessage,
   sourceBackedCompletionMarker,
 } from "@/lib/source-backed-fallback";
 import type {
@@ -12,6 +13,7 @@ import type {
   ConceptData,
   GeneratedQuestion,
   PaperConfig,
+  QuestionType,
 } from "@/types";
 
 const mcqSection: BlueprintSection = {
@@ -99,7 +101,8 @@ describe("source-backed completion", () => {
     });
 
     expect(capacity.requiredMissingCount).toBe(11);
-    expect(capacity.availableStrictCapacity).toBeLessThan(11);
+    expect(capacity.effectiveCapacity).toBeLessThan(11);
+    expect(capacity.rawAtomCapacity).toBeLessThan(11);
     expect(capacity.enough).toBe(false);
     expect(() =>
       completeQuestionBankWithSourceBackedFallback({
@@ -131,7 +134,8 @@ describe("source-backed completion", () => {
       config: paperConfig,
     });
 
-    expect(capacity.availableStrictCapacity).toBeGreaterThanOrEqual(11);
+    expect(capacity.effectiveCapacity).toBeGreaterThanOrEqual(11);
+    expect(capacity.rawAtomCapacity).toBeGreaterThanOrEqual(11);
     expect(capacity.enough).toBe(true);
 
     const completed = completeQuestionBankWithSourceBackedFallback({
@@ -210,6 +214,109 @@ describe("source-backed completion", () => {
     expect(capacity.byType.SHORT?.required).toBe(2);
     expect(capacity.byType.MCQ?.consumed).toBe(1);
     expect(capacity.byType.SHORT?.consumed).toBe(0);
+  });
+
+  it("completes the mixed 9-question replacement shape when effective capacity is enough", () => {
+    const mixedBlueprint: Blueprint = {
+      sections: [
+        sectionFor("MATCH_FOLLOWING", 3, 3),
+        sectionFor("TRUE_FALSE", 2, 1),
+        sectionFor("VERY_SHORT", 2, 1),
+        sectionFor("SHORT", 2, 3),
+      ],
+      totalQuestions: 9,
+      totalMarks: 19,
+      estimatedTime: 25,
+      competencyPercentage: 60,
+    };
+    const mixedConfig: PaperConfig = {
+      ...config,
+      questionTypes: ["MATCH_FOLLOWING", "TRUE_FALSE", "VERY_SHORT", "SHORT"],
+      totalQuestions: 9,
+      totalMarks: 19,
+      typeDistribution: {
+        MATCH_FOLLOWING: 3,
+        TRUE_FALSE: 2,
+        VERY_SHORT: 2,
+        SHORT: 2,
+      },
+    };
+    const bank = new QuestionCandidateBank(
+      [],
+      mixedBlueprint,
+      mixedConfig,
+    );
+
+    const capacity = analyzeSourceBackedCompletionCapacity({
+      bank,
+      concepts: [longParagraphConcept()],
+      config: mixedConfig,
+    });
+
+    expect(capacity.rawAtomCapacity).toBeGreaterThanOrEqual(9);
+    expect(capacity.effectiveCapacity).toBe(9);
+    expect(capacity.enough).toBe(true);
+    expect(sourceBackedCapacityMessage(capacity)).toContain(
+      "effective source capacity 9",
+    );
+    expect(sourceBackedCapacityMessage(capacity)).not.toContain(
+      "strict source capacity 9",
+    );
+
+    const completed = completeQuestionBankWithSourceBackedFallback({
+      bank,
+      concepts: [longParagraphConcept()],
+      config: mixedConfig,
+      throwOnInsufficientCapacity: true,
+    });
+
+    expect(completed).toHaveLength(9);
+    expect(bank.readyCount()).toBe(9);
+    expect(bank.missingCount()).toBe(0);
+  });
+
+  it("generates distinct fixed-format stems for repeated source-backed formats", () => {
+    const fixedBlueprint: Blueprint = {
+      sections: [
+        sectionFor("MATCH_FOLLOWING", 3, 3),
+        sectionFor("SOURCE_BASED", 2, 4),
+        sectionFor("CASE_BASED", 2, 4),
+      ],
+      totalQuestions: 7,
+      totalMarks: 25,
+      estimatedTime: 30,
+      competencyPercentage: 60,
+    };
+    const fixedConfig: PaperConfig = {
+      ...config,
+      questionTypes: ["MATCH_FOLLOWING", "SOURCE_BASED", "CASE_BASED"],
+      totalQuestions: 7,
+      totalMarks: 25,
+      typeDistribution: {
+        MATCH_FOLLOWING: 3,
+        SOURCE_BASED: 2,
+        CASE_BASED: 2,
+      },
+    };
+    const bank = new QuestionCandidateBank([], fixedBlueprint, fixedConfig);
+
+    completeQuestionBankWithSourceBackedFallback({
+      bank,
+      concepts: [longParagraphConcept()],
+      config: fixedConfig,
+      throwOnInsufficientCapacity: true,
+    });
+
+    const validation = bank.result();
+    expect(validation.questions).toHaveLength(7);
+    expect(validation.rejectionReasons.DUPLICATE ?? 0).toBe(0);
+
+    const fixedTexts = validation.questions
+      .filter((question) =>
+        ["MATCH_FOLLOWING", "SOURCE_BASED", "CASE_BASED"].includes(question.type),
+      )
+      .map((question) => question.text);
+    expect(new Set(fixedTexts).size).toBe(fixedTexts.length);
   });
 
   it("can complete an empty candidate bank when providers produce nothing", () => {
@@ -591,6 +698,21 @@ function blueprintForCount(count: number): Blueprint {
     totalMarks: count,
     estimatedTime: count,
     competencyPercentage: 60,
+  };
+}
+
+function sectionFor(
+  questionType: QuestionType,
+  count: number,
+  marksPerQuestion: number,
+): BlueprintSection {
+  return {
+    ...mcqSection,
+    name: `Section ${questionType}`,
+    questionType,
+    count,
+    marksPerQuestion,
+    totalMarks: count * marksPerQuestion,
   };
 }
 

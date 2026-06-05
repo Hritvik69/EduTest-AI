@@ -86,6 +86,9 @@ type GenerationStreamRecoverySnapshot = {
 type ProviderRecoveryMode = "source_backed_provider_outage";
 type SourceCapacityDiagnostics = {
   requiredMissingCount: number;
+  rawAtomCapacity?: number;
+  effectiveCapacity?: number;
+  effectiveMissingCount?: number;
   availableStrictCapacity: number;
   sourceConceptCount: number;
   atomCount: number;
@@ -96,7 +99,10 @@ type SourceCapacityDiagnostics = {
     {
       required: number;
       available: number;
+      rawAvailable?: number;
+      effectiveAvailable?: number;
       consumed: number;
+      missing?: number;
     }
   >;
   duplicatePressure?: {
@@ -678,15 +684,19 @@ export function GenerationOverlay({
   const provider = requestConfig.aiProvider ?? "AUTO";
   const providerModel = modelForProvider(provider, providerStatus);
   const sourceTextShortage = isSourceTextShortageError(error);
-  const canSkipAndReplace = !sourceTextShortage && isQuestionOutputError(error);
-  const canRetry = !sourceTextShortage;
+  const realSourceCapacityFailure = isRealSourceCapacityFailure(error);
+  const canSkipAndReplace =
+    !realSourceCapacityFailure && isQuestionOutputError(error);
+  const canRetry = !realSourceCapacityFailure;
   const timing = generationTimingSnapshot(progress, generationStartedAt, generationNow);
   const displayedContract = streamContract ?? clientContract;
   const visibleProviderRecoveryMode =
     sourceTextShortage ? null : error?.providerRecoveryMode ?? providerRecoveryMode;
   const errorGuidance =
     sourceTextShortage
-      ? sourceCapacityGuidance(error?.sourceCapacity)
+      ? realSourceCapacityFailure
+        ? sourceCapacityGuidance(error?.sourceCapacity)
+        : "Source-backed validation stopped even though effective source capacity appears sufficient. Retry this updated generation; provider retry is not required."
       : visibleProviderRecoveryMode === "source_backed_provider_outage"
       ? "Finishing from selected source text. Provider retry is not required for this run."
       : generationErrorGuidance(error, provider);
@@ -810,12 +820,13 @@ export function GenerationOverlay({
           {sourceTextShortage && error.sourceCapacity ? (
             <div className="mt-4 rounded-lg border border-red-300/20 bg-red-500/10 p-3 text-sm leading-6 text-red-50">
               <div className="font-semibold text-red-100">
-                Strict source capacity: {error.sourceCapacity.availableStrictCapacity}/
+                Effective source capacity: {error.sourceCapacity.effectiveCapacity ?? error.sourceCapacity.availableStrictCapacity}/
                 {error.sourceCapacity.requiredMissingCount} replacement question
                 {error.sourceCapacity.requiredMissingCount === 1 ? "" : "s"} available.
               </div>
               <div className="mt-1 text-red-100/90">
-                Source concepts {error.sourceCapacity.sourceConceptCount}; source atoms{" "}
+                Raw source slots {error.sourceCapacity.rawAtomCapacity ?? error.sourceCapacity.availableStrictCapacity}; source concepts{" "}
+                {error.sourceCapacity.sourceConceptCount}; source atoms{" "}
                 {error.sourceCapacity.atomCount}; used atom/type keys{" "}
                 {error.sourceCapacity.consumedAtomTypeKeys}.
               </div>
@@ -838,7 +849,9 @@ export function GenerationOverlay({
               </div>
               <div className="mt-1 text-red-100/90">
                 {sourceTextShortage
-                  ? "Selected source capacity is the blocker; provider retry is not required for this run."
+                  ? realSourceCapacityFailure
+                    ? "Selected source effective capacity is the blocker; provider retry is not required for this run."
+                    : "Effective source capacity appears sufficient; retry this updated generation before changing provider settings."
                   : visibleProviderRecoveryMode === "source_backed_provider_outage"
                   ? "Finishing from selected source text; provider retry is not required for this run."
                   : providerHealthAction(error.providerHealth)}
@@ -1316,6 +1329,10 @@ function sourceCapacityFromUnknown(
   if (!isRecord(value)) return undefined;
   const requiredMissingCount = numberValue(value.requiredMissingCount);
   const availableStrictCapacity = numberValue(value.availableStrictCapacity);
+  const rawAtomCapacity = numberValue(value.rawAtomCapacity);
+  const effectiveCapacity =
+    numberValue(value.effectiveCapacity) ?? availableStrictCapacity;
+  const effectiveMissingCount = numberValue(value.effectiveMissingCount);
   const sourceConceptCount = numberValue(value.sourceConceptCount);
   const atomCount = numberValue(value.atomCount);
   const consumedAtomTypeKeys = numberValue(value.consumedAtomTypeKeys);
@@ -1332,6 +1349,9 @@ function sourceCapacityFromUnknown(
 
   return {
     requiredMissingCount,
+    rawAtomCapacity,
+    effectiveCapacity,
+    effectiveMissingCount,
     availableStrictCapacity,
     sourceConceptCount,
     atomCount,
@@ -1355,7 +1375,10 @@ function sourceCapacityByTypeFromUnknown(
     if (!isRecord(item)) return items;
     const required = numberValue(item.required);
     const available = numberValue(item.available);
+    const rawAvailable = numberValue(item.rawAvailable);
+    const effectiveAvailable = numberValue(item.effectiveAvailable);
     const consumed = numberValue(item.consumed);
+    const missing = numberValue(item.missing);
     if (
       required === undefined ||
       available === undefined ||
@@ -1363,7 +1386,14 @@ function sourceCapacityByTypeFromUnknown(
     ) {
       return items;
     }
-    items[type] = { required, available, consumed };
+    items[type] = {
+      required,
+      available,
+      rawAvailable,
+      effectiveAvailable,
+      consumed,
+      missing,
+    };
     return items;
   }, {});
 }
@@ -1463,12 +1493,32 @@ function isSourceTextShortageError(
   );
 }
 
+function isRealSourceCapacityFailure(
+  error:
+    | {
+        message?: string;
+        code?: string | number;
+        sourceCapacity?: SourceCapacityDiagnostics;
+      }
+    | null,
+) {
+  if (!isSourceTextShortageError(error)) return false;
+  const capacity = error?.sourceCapacity;
+  if (!capacity) return true;
+  const effectiveCapacity =
+    capacity.effectiveCapacity ?? capacity.availableStrictCapacity;
+  return effectiveCapacity < capacity.requiredMissingCount;
+}
+
 function sourceCapacityGuidance(capacity: SourceCapacityDiagnostics | undefined) {
   if (!capacity) {
     return "Selected TXT/PDF source text does not have enough distinct material for the requested replacements. Select more chapters/topics, upload more source text, or lower the question count.";
   }
+  const effectiveCapacity =
+    capacity.effectiveCapacity ?? capacity.availableStrictCapacity;
+  const rawCapacity = capacity.rawAtomCapacity ?? capacity.availableStrictCapacity;
 
-  return `Selected TXT/PDF source text has strict capacity for ${capacity.availableStrictCapacity}/${capacity.requiredMissingCount} missing replacement question${capacity.requiredMissingCount === 1 ? "" : "s"}. Select more chapters/topics, upload more source text, or lower the question count.`;
+  return `Selected TXT/PDF source text has effective capacity for ${effectiveCapacity}/${capacity.requiredMissingCount} missing replacement question${capacity.requiredMissingCount === 1 ? "" : "s"} (${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}). Select more chapters/topics, upload more source text, or lower the question count.`;
 }
 
 function sourceCapacityTypeSummary(capacity: SourceCapacityDiagnostics) {
@@ -1478,7 +1528,7 @@ function sourceCapacityTypeSummary(capacity: SourceCapacityDiagnostics) {
   return entries
     .map(
       ([type, item]) =>
-        `${type}: ${item.available}/${item.required} available`,
+        `${type}: ${item.effectiveAvailable ?? item.available}/${item.required} effective${item.rawAvailable !== undefined ? ` (${item.rawAvailable} raw)` : ""}`,
     )
     .join(" | ");
 }

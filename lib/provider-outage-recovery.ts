@@ -131,6 +131,9 @@ function sourceBackedProviderRecoveryError(
   return new Error(
     `SOURCE_TEXT_NOT_ENOUGH: Selected source text cannot produce enough 100% distinct questions for ${scope}. Generated ${readyQuestionCount}/${targetQuestionCount} valid questions. Missing ${missing}. Source concepts: ${sourceConceptCount}. ${sourceBackedCapacityMessage({
       requiredMissingCount: missing,
+      rawAtomCapacity: 0,
+      effectiveCapacity: 0,
+      effectiveMissingCount: missing,
       availableStrictCapacity: 0,
       sourceConceptCount,
       atomCount: 0,
@@ -141,6 +144,7 @@ function sourceBackedProviderRecoveryError(
         sourceBackedCandidates: 0,
       },
       byType: {},
+      blockerReasons: ["no selected TXT/PDF source atoms are available"],
       enough: false,
     })}`,
   );

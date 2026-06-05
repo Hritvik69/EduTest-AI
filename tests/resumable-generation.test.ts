@@ -75,8 +75,8 @@ describe("session-only paper generation wiring", () => {
     expect(overlay).toMatch(/Finishing from selected source text/);
     expect(overlay).toMatch(/sourceTextShortage \? null/);
     expect(overlay).toMatch(/sourceCapacityGuidance/);
-    expect(overlay).toMatch(/Strict source capacity/);
-    expect(overlay).toMatch(/!sourceTextShortage && isQuestionOutputError/);
+    expect(overlay).toMatch(/Effective source capacity/);
+    expect(overlay).toMatch(/!realSourceCapacityFailure && isQuestionOutputError/);
     expect(overlay).toMatch(/Generation stopped before the session paper snapshot was completed/);
     expect(preview).toMatch(/readSessionPaper/);
     expect(preview).toMatch(/\/api\/session-paper\/export/);

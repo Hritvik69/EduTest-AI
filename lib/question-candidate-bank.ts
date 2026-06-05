@@ -120,6 +120,17 @@ export class QuestionCandidateBank {
     return [...this.candidates];
   }
 
+  clone() {
+    return new QuestionCandidateBank(
+      this.candidates,
+      this.blueprint,
+      this.config,
+      {
+        initialReadyCount: this.initialReadyCount,
+      },
+    );
+  }
+
   missingSections() {
     return missingSectionsForBlueprint(this.validation.questions, this.blueprint);
   }

@@ -24,11 +24,17 @@ type FallbackOptions = {
 export type SourceBackedCapacityTypeDiagnostics = {
   required: number;
   available: number;
+  rawAvailable: number;
+  effectiveAvailable: number;
   consumed: number;
+  missing: number;
 };
 
 export type SourceBackedCapacityDiagnostics = {
   requiredMissingCount: number;
+  rawAtomCapacity: number;
+  effectiveCapacity: number;
+  effectiveMissingCount: number;
   availableStrictCapacity: number;
   sourceConceptCount: number;
   atomCount: number;
@@ -39,6 +45,7 @@ export type SourceBackedCapacityDiagnostics = {
     sourceBackedCandidates: number;
   };
   byType: Partial<Record<QuestionType, SourceBackedCapacityTypeDiagnostics>>;
+  blockerReasons: string[];
   enough: boolean;
 };
 
@@ -78,6 +85,8 @@ export function completeQuestionBankWithSourceBackedFallback({
     bank,
     concepts,
     config,
+    startIndex,
+    maxCandidatesPerMissing,
   });
   if (!capacity.enough) {
     if (throwOnInsufficientCapacity) {
@@ -86,73 +95,29 @@ export function completeQuestionBankWithSourceBackedFallback({
     return [] satisfies GeneratedQuestion[];
   }
 
-  const accepted: GeneratedQuestion[] = [];
-  const candidateSpace = sourceBackedCandidateSpaceSize(conceptPool);
-  const attemptBudget = Math.max(
-    missingBefore,
-    missingBefore * Math.max(1, Math.floor(maxCandidatesPerMissing)),
-  );
-  const maxAttempts = Math.min(
-    candidateSpace,
-    attemptBudget,
-  );
-  const startSequence = startIndex ?? bank.allCandidates().length + 101;
-  const comparisonQuestions = bank.allCandidates();
-  const usedSourceKeys = new Set(
-    comparisonQuestions
-      .map(sourceBackedUniquenessKey)
-      .filter((key): key is string => Boolean(key)),
-  );
-  let attempts = 0;
-
-  while (
-    bank.missingCount() > 0 &&
-    attempts < maxAttempts &&
-    !sourceBackedDeadlineReached(deadlineAt, minRemainingMs)
-  ) {
-    const missingSections = bank.missingSections();
-    const section = missingSections[attempts % Math.max(1, missingSections.length)];
-    if (!section) break;
-    const candidate = sourceBackedQuestionForSequence(
-      section,
-      config,
-      conceptPool,
-      startSequence + attempts,
-    );
-
-    attempts += 1;
-    const sourceKey = sourceBackedUniquenessKey(candidate);
-    if (sourceKey && usedSourceKeys.has(sourceKey)) {
-      continue;
-    }
-
-    if (
-      comparisonQuestions.some((item) =>
-        isDuplicateQuestion(item, candidate),
-      )
-    ) {
-      continue;
-    }
-
-    if (bank.tryAdd(candidate)) {
-      comparisonQuestions.push(candidate);
-      if (sourceKey) usedSourceKeys.add(sourceKey);
-      accepted.push(candidate);
-      continue;
-    }
-  }
-
-  return accepted;
+  return fillQuestionBankWithSourceBackedCandidates({
+    bank,
+    conceptPool,
+    config,
+    startIndex,
+    maxCandidatesPerMissing,
+    deadlineAt,
+    minRemainingMs,
+  }).accepted;
 }
 
 export function analyzeSourceBackedCompletionCapacity({
   bank,
   concepts,
   config,
+  startIndex,
+  maxCandidatesPerMissing = 96,
 }: {
   bank: QuestionCandidateBank;
   concepts: ConceptData[];
   config: PaperConfig;
+  startIndex?: number;
+  maxCandidatesPerMissing?: number;
 }): SourceBackedCapacityDiagnostics {
   const conceptPool = normalizeConceptPool(concepts, config);
   const sourceConceptCount = sourceBackedConcepts(concepts).length;
@@ -172,7 +137,7 @@ export function analyzeSourceBackedCompletionCapacity({
   });
 
   const byType: SourceBackedCapacityDiagnostics["byType"] = {};
-  let availableStrictCapacity = 0;
+  let rawAtomCapacity = 0;
 
   requiredByType.forEach((required, type) => {
     const availableKeys = new Set<string>();
@@ -185,14 +150,45 @@ export function analyzeSourceBackedCompletionCapacity({
         key.startsWith(`${String(type).toLowerCase()}:`),
       ),
     ).size;
-    const available = availableKeys.size;
+    const rawAvailable = availableKeys.size;
 
     byType[type] = {
       required,
-      available,
+      available: 0,
+      rawAvailable,
+      effectiveAvailable: 0,
       consumed: consumedForType,
+      missing: required,
     };
-    availableStrictCapacity += Math.min(required, available);
+    rawAtomCapacity += Math.min(required, rawAvailable);
+  });
+
+  const simulationBank = bank.clone();
+  const simulation = fillQuestionBankWithSourceBackedCandidates({
+    bank: simulationBank,
+    conceptPool,
+    config,
+    startIndex,
+    maxCandidatesPerMissing,
+  });
+  const acceptedByType = questionCountsByType(simulation.accepted);
+  const simulatedMissingByType = new Map(
+    simulationBank.missingSections().map((section) => [
+      section.questionType,
+      section.count,
+    ]),
+  );
+  let effectiveCapacity = 0;
+
+  requiredByType.forEach((required, type) => {
+    const accepted = Math.min(required, acceptedByType.get(type) ?? 0);
+    const missing = simulatedMissingByType.get(type) ?? 0;
+    const current = byType[type];
+    if (!current) return;
+    current.available = accepted;
+    current.effectiveAvailable = accepted;
+    current.missing = missing;
+    effectiveCapacity += accepted;
   });
 
   const validation = bank.result();
@@ -200,10 +196,21 @@ export function analyzeSourceBackedCompletionCapacity({
     (sum, section) => sum + section.count,
     0,
   );
+  const effectiveMissingCount = Math.max(0, requiredMissingCount - effectiveCapacity);
+  const blockerReasons = sourceBackedCapacityBlockers({
+    requiredByType,
+    byType,
+    rawAtomCapacity,
+    effectiveCapacity,
+    simulation,
+  });
 
   return {
     requiredMissingCount,
-    availableStrictCapacity,
+    rawAtomCapacity,
+    effectiveCapacity,
+    effectiveMissingCount,
+    availableStrictCapacity: effectiveCapacity,
     sourceConceptCount,
     atomCount: conceptPool.length,
     consumedAtomTypeKeys: consumedKeys.size,
@@ -213,7 +220,8 @@ export function analyzeSourceBackedCompletionCapacity({
       sourceBackedCandidates: candidateKeys.length,
     },
     byType,
-    enough: requiredMissingCount <= availableStrictCapacity,
+    blockerReasons,
+    enough: requiredMissingCount <= effectiveCapacity,
   };
 }
 
@@ -246,13 +254,157 @@ export function sourceBackedCapacityMessage(
   const typeSummary = Object.entries(diagnostics.byType)
     .map(([type, item]) =>
       item
-        ? `${type}: ${item.available}/${item.required} available`
+        ? `${type}: ${item.effectiveAvailable}/${item.required} effective (${item.rawAvailable} raw)`
         : "",
     )
     .filter(Boolean)
     .join(", ");
+  const blockerSummary = diagnostics.blockerReasons.length
+    ? ` Blockers: ${diagnostics.blockerReasons.join("; ")}.`
+    : "";
 
-  return `Required ${diagnostics.requiredMissingCount}; strict source capacity ${diagnostics.availableStrictCapacity}; source concepts ${diagnostics.sourceConceptCount}; source atoms ${diagnostics.atomCount}; consumed atom/type keys ${diagnostics.consumedAtomTypeKeys}${typeSummary ? `; by type ${typeSummary}` : ""}. Select more chapters/topics, upload more source text, or lower the question count.`;
+  return `Required ${diagnostics.requiredMissingCount}; effective source capacity ${diagnostics.effectiveCapacity}; raw atom capacity ${diagnostics.rawAtomCapacity}; source concepts ${diagnostics.sourceConceptCount}; source atoms ${diagnostics.atomCount}; consumed atom/type keys ${diagnostics.consumedAtomTypeKeys}${typeSummary ? `; by type ${typeSummary}` : ""}.${blockerSummary} Select more chapters/topics, upload more source text, or lower the question count.`;
+}
+
+function fillQuestionBankWithSourceBackedCandidates({
+  bank,
+  conceptPool,
+  config,
+  startIndex,
+  maxCandidatesPerMissing = 96,
+  deadlineAt,
+  minRemainingMs = 5_000,
+}: {
+  bank: QuestionCandidateBank;
+  conceptPool: NormalizedConcept[];
+  config: PaperConfig;
+  startIndex?: number;
+  maxCandidatesPerMissing?: number;
+  deadlineAt?: number;
+  minRemainingMs?: number;
+}) {
+  const missingBefore = bank.missingCount();
+  const accepted: GeneratedQuestion[] = [];
+  const skipped = {
+    duplicate: 0,
+    repeatedSourceKey: 0,
+    validation: 0,
+  };
+
+  if (missingBefore <= 0 || !conceptPool.length) {
+    return { accepted, skipped, attempts: 0 };
+  }
+
+  const candidateSpace = sourceBackedCandidateSpaceSize(conceptPool);
+  const attemptBudget = Math.max(
+    missingBefore,
+    missingBefore * Math.max(1, Math.floor(maxCandidatesPerMissing)),
+  );
+  const maxAttempts = Math.min(candidateSpace, attemptBudget);
+  const startSequence = startIndex ?? bank.allCandidates().length + 101;
+  const comparisonQuestions = bank.allCandidates();
+  const usedSourceKeys = new Set(
+    comparisonQuestions
+      .map(sourceBackedUniquenessKey)
+      .filter((key): key is string => Boolean(key)),
+  );
+  let attempts = 0;
+
+  while (
+    bank.missingCount() > 0 &&
+    attempts < maxAttempts &&
+    !sourceBackedDeadlineReached(deadlineAt, minRemainingMs)
+  ) {
+    const missingSections = bank.missingSections();
+    const section = missingSections[attempts % Math.max(1, missingSections.length)];
+    if (!section) break;
+    const candidate = sourceBackedQuestionForSequence(
+      section,
+      config,
+      conceptPool,
+      startSequence + attempts,
+    );
+
+    attempts += 1;
+    const sourceKey = sourceBackedUniquenessKey(candidate);
+    if (sourceKey && usedSourceKeys.has(sourceKey)) {
+      skipped.repeatedSourceKey += 1;
+      continue;
+    }
+
+    if (comparisonQuestions.some((item) => isDuplicateQuestion(item, candidate))) {
+      skipped.duplicate += 1;
+      continue;
+    }
+
+    if (bank.tryAdd(candidate)) {
+      comparisonQuestions.push(candidate);
+      if (sourceKey) usedSourceKeys.add(sourceKey);
+      accepted.push(candidate);
+      continue;
+    }
+
+    skipped.validation += 1;
+  }
+
+  return { accepted, skipped, attempts };
+}
+
+function sourceBackedCapacityBlockers({
+  requiredByType,
+  byType,
+  rawAtomCapacity,
+  effectiveCapacity,
+  simulation,
+}: {
+  requiredByType: Map<QuestionType, number>;
+  byType: SourceBackedCapacityDiagnostics["byType"];
+  rawAtomCapacity: number;
+  effectiveCapacity: number;
+  simulation: ReturnType<typeof fillQuestionBankWithSourceBackedCandidates>;
+}) {
+  const blockers: string[] = [];
+
+  requiredByType.forEach((required, type) => {
+    const item = byType[type];
+    if (!item || item.effectiveAvailable >= required) return;
+    if (item.rawAvailable >= required) {
+      blockers.push(
+        `${type} has raw source atoms but only ${item.effectiveAvailable}/${required} passed strict duplicate/format validation`,
+      );
+      return;
+    }
+    blockers.push(
+      `${type} has only ${item.rawAvailable}/${required} unused source atoms`,
+    );
+  });
+
+  if (rawAtomCapacity >= requiredTotal(requiredByType) && effectiveCapacity < rawAtomCapacity) {
+    blockers.push("some generated source-backed templates were rejected as duplicate or invalid");
+  }
+  if (simulation.skipped.duplicate) {
+    blockers.push(`${simulation.skipped.duplicate} duplicate candidate${simulation.skipped.duplicate === 1 ? "" : "s"} skipped`);
+  }
+  if (simulation.skipped.validation) {
+    blockers.push(`${simulation.skipped.validation} candidate${simulation.skipped.validation === 1 ? "" : "s"} failed validation`);
+  }
+
+  return Array.from(new Set(blockers)).slice(0, 5);
+}
+
+function requiredTotal(requiredByType: Map<QuestionType, number>) {
+  let total = 0;
+  requiredByType.forEach((count) => {
+    total += count;
+  });
+  return total;
+}
+
+function questionCountsByType(questions: GeneratedQuestion[]) {
+  return questions.reduce((counts, question) => {
+    counts.set(question.type, (counts.get(question.type) ?? 0) + 1);
+    return counts;
+  }, new Map<QuestionType, number>());
 }
 
 export function generateSourceBackedFallbackQuestions(
@@ -430,8 +582,8 @@ function baseQuestion(
       };
     case "ASSERTION_REASON":
       return {
-        text: `Assertion (A): The concept needs a clear scientific explanation.\nReason (R): ${sentenceCase(toStatement(summary))}`,
-        assertion: `The concept needs a clear scientific explanation.`,
+        text: `Assertion (A): ${sentenceCase(stripFinalPunctuation(idea))} needs a ${skill} explanation.\nReason (R): ${sentenceCase(toStatement(summary))}`,
+        assertion: `${sentenceCase(stripFinalPunctuation(idea))} needs a ${skill} explanation.`,
         reason: sentenceCase(toStatement(summary)),
         correctAnswer: "A",
       };
@@ -532,6 +684,7 @@ function sourceBasedQuestion(
   const summary = studentVisibleSummary(concept.summary);
   const excerpt = studentVisibleSummary(concept.excerpt, 560);
   const skill = visibleSkillFor(variant);
+  const idea = ideaPhrase(summary);
   const subQuestions: SubQuestion[] = [
     shortSubQuestion(`What is the main ${skill} idea in the passage?`, summary, 1),
     shortSubQuestion(`What concept does the passage explain?`, summary, 1),
@@ -541,7 +694,7 @@ function sourceBasedQuestion(
 
   return {
     scenario: `Read the passage below.\n${excerpt}`,
-    text: `Read the passage below and answer the questions.`,
+    text: `Read the passage about ${idea} and answer the ${skill} questions.`,
     subQuestions,
     correctAnswer: subQuestions
       .map((question, index) => `(${index + 1}) ${question.correctAnswer}`)
@@ -555,10 +708,11 @@ function caseBasedQuestion(
 ): Partial<GeneratedQuestion> {
   const summary = studentVisibleSummary(concept.summary);
   const skill = visibleSkillFor(variant);
+  const idea = ideaPhrase(summary);
   const options = conceptOptions(concept, concept.atomNumericId + 1, variant);
   const subQuestions: SubQuestion[] = [
     {
-      text: `Which option best explains the case?`,
+      text: `Which option best explains the ${skill} case?`,
       type: "MCQ",
       options,
       correctAnswer: "B",
@@ -574,7 +728,7 @@ function caseBasedQuestion(
 
   return {
     scenario: `A class considers this idea: ${summary} The learner has to explain what follows from it.`,
-    text: `Read the case and answer the questions.`,
+    text: `Read the case about ${idea} and answer the ${skill} questions.`,
     subQuestions,
     correctAnswer: `(1) B; (2) ${summary}`,
   };
@@ -585,10 +739,11 @@ function matchQuestion(
   variant: VariantRecipe,
 ): Partial<GeneratedQuestion> {
   const summary = studentVisibleSummary(concept.summary, 140);
-  const pairs = subjectMatchPairs(concept, summary, visibleSkillFor(variant));
+  const skill = visibleSkillFor(variant);
+  const pairs = subjectMatchPairs(concept, summary, skill);
 
   return {
-    text: `Match Column A with Column B.`,
+    text: `Match the ${skill} clues for ${oneWordAnswer(summary)} with their meanings.`,
     matchPairs: pairs,
     correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
   };
