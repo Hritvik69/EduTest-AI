@@ -66,7 +66,9 @@ describe("provider outage source-backed recovery", () => {
   });
 
   it("fails clearly when selected TXT/PDF source cannot support recovery", () => {
-    const totalQuestions = 2;
+    const totalQuestions = 20;
+    const lowCapacityText =
+      "The selected source repeats one idea about tone and intention because one clue supports one answer.";
 
     expect(() =>
       buildSourceBackedProviderRecoveryBank({
@@ -74,13 +76,29 @@ describe("provider outage source-backed recovery", () => {
         concepts: [
           {
             ...concepts[0],
-            text: "Too short.",
+            text: lowCapacityText,
           },
         ],
         config: configForCount(totalQuestions),
         scope: "provider preflight outage",
       }),
     ).toThrow(/SOURCE_TEXT_NOT_ENOUGH: Selected source text cannot produce enough/);
+
+    try {
+      buildSourceBackedProviderRecoveryBank({
+        blueprint: blueprintForCount(totalQuestions),
+        concepts: [
+          {
+            ...concepts[0],
+            text: lowCapacityText,
+          },
+        ],
+        config: configForCount(totalQuestions),
+        scope: "provider preflight outage",
+      });
+    } catch (error) {
+      expect((error as { sourceCapacity?: unknown }).sourceCapacity).toBeDefined();
+    }
   });
 
   it("puts provider recovery into the final manifest warnings", () => {

@@ -1,4 +1,8 @@
-import { isDuplicateQuestion } from "@/lib/question-duplicates";
+import {
+  isDuplicateQuestion,
+  sourceBackedUniquenessKey,
+  sourceBackedUniquenessKeyFor,
+} from "@/lib/question-duplicates";
 import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
 import type {
   BloomLevel,
@@ -17,6 +21,32 @@ type FallbackOptions = {
   startIndex?: number;
 };
 
+export type SourceBackedCapacityTypeDiagnostics = {
+  required: number;
+  available: number;
+  consumed: number;
+};
+
+export type SourceBackedCapacityDiagnostics = {
+  requiredMissingCount: number;
+  availableStrictCapacity: number;
+  sourceConceptCount: number;
+  atomCount: number;
+  consumedAtomTypeKeys: number;
+  duplicatePressure: {
+    duplicateRejections: number;
+    duplicateGroups: number;
+    sourceBackedCandidates: number;
+  };
+  byType: Partial<Record<QuestionType, SourceBackedCapacityTypeDiagnostics>>;
+  enough: boolean;
+};
+
+type StrictCompletionOptions = {
+  throwOnInsufficientCapacity?: boolean;
+  capacityScope?: string;
+};
+
 export const sourceBackedCompletionMarker = "SOURCE_BACKED_COMPLETION";
 
 export function completeQuestionBankWithSourceBackedFallback({
@@ -27,6 +57,8 @@ export function completeQuestionBankWithSourceBackedFallback({
   maxCandidatesPerMissing = 96,
   deadlineAt,
   minRemainingMs = 5_000,
+  throwOnInsufficientCapacity = false,
+  capacityScope = "selected source completion",
 }: {
   bank: QuestionCandidateBank;
   concepts: ConceptData[];
@@ -35,12 +67,24 @@ export function completeQuestionBankWithSourceBackedFallback({
   maxCandidatesPerMissing?: number;
   deadlineAt?: number;
   minRemainingMs?: number;
-}) {
+} & StrictCompletionOptions) {
   const missingBefore = bank.missingCount();
   if (missingBefore <= 0) return [] satisfies GeneratedQuestion[];
 
   const conceptPool = normalizeConceptPool(concepts, config);
   if (!conceptPool.length) return [] satisfies GeneratedQuestion[];
+
+  const capacity = analyzeSourceBackedCompletionCapacity({
+    bank,
+    concepts,
+    config,
+  });
+  if (!capacity.enough) {
+    if (throwOnInsufficientCapacity) {
+      throw sourceBackedCapacityError(capacityScope, capacity);
+    }
+    return [] satisfies GeneratedQuestion[];
+  }
 
   const accepted: GeneratedQuestion[] = [];
   const candidateSpace = sourceBackedCandidateSpaceSize(conceptPool);
@@ -54,6 +98,11 @@ export function completeQuestionBankWithSourceBackedFallback({
   );
   const startSequence = startIndex ?? bank.allCandidates().length + 101;
   const comparisonQuestions = bank.allCandidates();
+  const usedSourceKeys = new Set(
+    comparisonQuestions
+      .map(sourceBackedUniquenessKey)
+      .filter((key): key is string => Boolean(key)),
+  );
   let attempts = 0;
 
   while (
@@ -72,6 +121,11 @@ export function completeQuestionBankWithSourceBackedFallback({
     );
 
     attempts += 1;
+    const sourceKey = sourceBackedUniquenessKey(candidate);
+    if (sourceKey && usedSourceKeys.has(sourceKey)) {
+      continue;
+    }
+
     if (
       comparisonQuestions.some((item) =>
         isDuplicateQuestion(item, candidate),
@@ -82,12 +136,123 @@ export function completeQuestionBankWithSourceBackedFallback({
 
     if (bank.tryAdd(candidate)) {
       comparisonQuestions.push(candidate);
+      if (sourceKey) usedSourceKeys.add(sourceKey);
       accepted.push(candidate);
       continue;
     }
   }
 
   return accepted;
+}
+
+export function analyzeSourceBackedCompletionCapacity({
+  bank,
+  concepts,
+  config,
+}: {
+  bank: QuestionCandidateBank;
+  concepts: ConceptData[];
+  config: PaperConfig;
+}): SourceBackedCapacityDiagnostics {
+  const conceptPool = normalizeConceptPool(concepts, config);
+  const sourceConceptCount = sourceBackedConcepts(concepts).length;
+  const candidateKeys = bank
+    .allCandidates()
+    .map(sourceBackedUniquenessKey)
+    .filter((key): key is string => Boolean(key));
+  const consumedKeys = new Set(candidateKeys);
+  const requiredByType = new Map<QuestionType, number>();
+  const missingSections = bank.missingSections();
+
+  missingSections.forEach((section) => {
+    requiredByType.set(
+      section.questionType,
+      (requiredByType.get(section.questionType) ?? 0) + section.count,
+    );
+  });
+
+  const byType: SourceBackedCapacityDiagnostics["byType"] = {};
+  let availableStrictCapacity = 0;
+
+  requiredByType.forEach((required, type) => {
+    const availableKeys = new Set<string>();
+    conceptPool.forEach((concept) => {
+      const key = sourceBackedAtomTypeKey(type, concept);
+      if (key && !consumedKeys.has(key)) availableKeys.add(key);
+    });
+    const consumedForType = new Set(
+      candidateKeys.filter((key) =>
+        key.startsWith(`${String(type).toLowerCase()}:`),
+      ),
+    ).size;
+    const available = availableKeys.size;
+
+    byType[type] = {
+      required,
+      available,
+      consumed: consumedForType,
+    };
+    availableStrictCapacity += Math.min(required, available);
+  });
+
+  const validation = bank.result();
+  const requiredMissingCount = missingSections.reduce(
+    (sum, section) => sum + section.count,
+    0,
+  );
+
+  return {
+    requiredMissingCount,
+    availableStrictCapacity,
+    sourceConceptCount,
+    atomCount: conceptPool.length,
+    consumedAtomTypeKeys: consumedKeys.size,
+    duplicatePressure: {
+      duplicateRejections: validation.rejectionReasons.DUPLICATE ?? 0,
+      duplicateGroups: validation.duplicateGroups.length,
+      sourceBackedCandidates: candidateKeys.length,
+    },
+    byType,
+    enough: requiredMissingCount <= availableStrictCapacity,
+  };
+}
+
+export function sourceBackedCapacityError(
+  scope: string,
+  diagnostics: SourceBackedCapacityDiagnostics,
+) {
+  const details = sourceBackedCapacityMessage(diagnostics);
+  const error = new Error(
+    `SOURCE_TEXT_NOT_ENOUGH: Selected source text cannot produce enough 100% distinct questions for ${scope}. ${details}`,
+  );
+  (
+    error as Error & {
+      code?: string;
+      sourceCapacity?: SourceBackedCapacityDiagnostics;
+    }
+  ).code = "SOURCE_TEXT_NOT_ENOUGH";
+  (
+    error as Error & {
+      code?: string;
+      sourceCapacity?: SourceBackedCapacityDiagnostics;
+    }
+  ).sourceCapacity = diagnostics;
+  return error;
+}
+
+export function sourceBackedCapacityMessage(
+  diagnostics: SourceBackedCapacityDiagnostics,
+) {
+  const typeSummary = Object.entries(diagnostics.byType)
+    .map(([type, item]) =>
+      item
+        ? `${type}: ${item.available}/${item.required} available`
+        : "",
+    )
+    .filter(Boolean)
+    .join(", ");
+
+  return `Required ${diagnostics.requiredMissingCount}; strict source capacity ${diagnostics.availableStrictCapacity}; source concepts ${diagnostics.sourceConceptCount}; source atoms ${diagnostics.atomCount}; consumed atom/type keys ${diagnostics.consumedAtomTypeKeys}${typeSummary ? `; by type ${typeSummary}` : ""}. Select more chapters/topics, upload more source text, or lower the question count.`;
 }
 
 export function generateSourceBackedFallbackQuestions(
@@ -99,6 +264,11 @@ export function generateSourceBackedFallbackQuestions(
   const existing = [...(options.existingQuestions ?? [])];
   const conceptPool = normalizeConceptPool(concepts, config);
   if (!conceptPool.length) return [];
+  const usedSourceKeys = new Set(
+    existing
+      .map(sourceBackedUniquenessKey)
+      .filter((key): key is string => Boolean(key)),
+  );
 
   let globalIndex = options.startIndex ?? existing.length + 1;
   const generated: GeneratedQuestion[] = [];
@@ -124,6 +294,10 @@ export function generateSourceBackedFallbackQuestions(
 
       attempts += 1;
       globalIndex += 1;
+      const sourceKey = sourceBackedUniquenessKey(question);
+      if (sourceKey && usedSourceKeys.has(sourceKey)) {
+        continue;
+      }
 
       if (
         [...existing, ...generated].some((item) =>
@@ -134,11 +308,23 @@ export function generateSourceBackedFallbackQuestions(
       }
 
       generated.push(question);
+      if (sourceKey) usedSourceKeys.add(sourceKey);
       acceptedInSection += 1;
     }
   }
 
   return generated;
+}
+
+function sourceBackedAtomTypeKey(type: QuestionType, concept: NormalizedConcept) {
+  return sourceBackedUniquenessKeyFor(
+    type,
+    sourceBackedAtomIdForType(concept, type),
+  );
+}
+
+function sourceBackedAtomIdForType(concept: NormalizedConcept, type: QuestionType) {
+  return `${concept.atomId}-${type.toLowerCase()}`;
 }
 
 export function hasSourceBackedFallbackConcepts(concepts: ConceptData[]) {
@@ -155,7 +341,7 @@ function createSourceBackedQuestion(
   const variant = variantRecipeFor(index);
   const base = baseQuestion(type, concept, index, section.marksPerQuestion, variant);
   const visibleSummary = studentVisibleSummary(concept.summary);
-  const noveltyAtomId = `${concept.atomId}-${type.toLowerCase()}`;
+  const noveltyAtomId = sourceBackedAtomIdForType(concept, type);
   const sourceFocus = `${variant.sourceFocus} ${concept.atomId}: ${trimToSentence(visibleSummary, 150)} Internal angle: ${variant.id}.`;
   const answerPath = `${variant.answerPath} ${topicSentence(concept.topic)} Use internal atom ${concept.atomId} (${concept.atomLabel}) to ${variant.answerVerb} the ${concept.source === "pdf" ? "PDF" : "NCERT TXT"} idea.`;
 

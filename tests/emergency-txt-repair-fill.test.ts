@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { defaultBloomDistribution } from "@/lib/edutest-data";
 import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
 import {
+  analyzeSourceBackedCompletionCapacity,
   completeQuestionBankWithSourceBackedFallback,
   sourceBackedCompletionMarker,
 } from "@/lib/source-backed-fallback";
@@ -77,6 +78,140 @@ const concepts: ConceptData[] = [
 ];
 
 describe("source-backed completion", () => {
+  it("reports that one tiny source cannot satisfy 11 strict unique MCQs", () => {
+    const totalQuestions = 11;
+    const paperConfig = {
+      ...config,
+      totalQuestions,
+      totalMarks: totalQuestions,
+      typeDistribution: { MCQ: totalQuestions },
+    };
+    const bank = new QuestionCandidateBank(
+      [],
+      blueprintForCount(totalQuestions),
+      paperConfig,
+    );
+
+    const capacity = analyzeSourceBackedCompletionCapacity({
+      bank,
+      concepts: [tinyRepetitiveConcept()],
+      config: paperConfig,
+    });
+
+    expect(capacity.requiredMissingCount).toBe(11);
+    expect(capacity.availableStrictCapacity).toBeLessThan(11);
+    expect(capacity.enough).toBe(false);
+    expect(() =>
+      completeQuestionBankWithSourceBackedFallback({
+        bank,
+        concepts: [tinyRepetitiveConcept()],
+        config: paperConfig,
+        throwOnInsufficientCapacity: true,
+        capacityScope: "test strict capacity",
+      }),
+    ).toThrow(/SOURCE_TEXT_NOT_ENOUGH/);
+  });
+
+  it("allows a long source paragraph to satisfy 11 strict unique MCQs", () => {
+    const totalQuestions = 11;
+    const paperConfig = {
+      ...config,
+      totalQuestions,
+      totalMarks: totalQuestions,
+      typeDistribution: { MCQ: totalQuestions },
+    };
+    const bank = new QuestionCandidateBank(
+      [],
+      blueprintForCount(totalQuestions),
+      paperConfig,
+    );
+    const capacity = analyzeSourceBackedCompletionCapacity({
+      bank,
+      concepts: [longParagraphConcept()],
+      config: paperConfig,
+    });
+
+    expect(capacity.availableStrictCapacity).toBeGreaterThanOrEqual(11);
+    expect(capacity.enough).toBe(true);
+
+    const completed = completeQuestionBankWithSourceBackedFallback({
+      bank,
+      concepts: [longParagraphConcept()],
+      config: paperConfig,
+      throwOnInsufficientCapacity: true,
+    });
+
+    expect(completed).toHaveLength(11);
+    expect(bank.readyCount()).toBe(11);
+    expect(bank.missingCount()).toBe(0);
+  });
+
+  it("tracks strict source capacity independently per question type", () => {
+    const mixedBlueprint: Blueprint = {
+      sections: [
+        {
+          ...mcqSection,
+          count: 2,
+          totalMarks: 2,
+        },
+        {
+          ...mcqSection,
+          name: "Section B",
+          questionType: "SHORT",
+          count: 2,
+          marksPerQuestion: 3,
+          totalMarks: 6,
+        },
+      ],
+      totalQuestions: 4,
+      totalMarks: 8,
+      estimatedTime: 10,
+      competencyPercentage: 60,
+    };
+    const mixedConfig: PaperConfig = {
+      ...config,
+      questionTypes: ["MCQ", "SHORT"],
+      totalQuestions: 4,
+      totalMarks: 8,
+      typeDistribution: { MCQ: 2, SHORT: 2 },
+    };
+    const existingMcq = completeQuestionBankWithSourceBackedFallback({
+      bank: new QuestionCandidateBank(
+        [],
+        blueprintForCount(1),
+        {
+          ...config,
+          totalQuestions: 1,
+          totalMarks: 1,
+          typeDistribution: { MCQ: 1 },
+        },
+      ),
+      concepts: [longParagraphConcept()],
+      config: {
+        ...config,
+        totalQuestions: 1,
+        totalMarks: 1,
+        typeDistribution: { MCQ: 1 },
+      },
+    })[0];
+    const bank = new QuestionCandidateBank(
+      existingMcq ? [existingMcq] : [],
+      mixedBlueprint,
+      mixedConfig,
+    );
+
+    const capacity = analyzeSourceBackedCompletionCapacity({
+      bank,
+      concepts: [longParagraphConcept()],
+      config: mixedConfig,
+    });
+
+    expect(capacity.byType.MCQ?.required).toBe(1);
+    expect(capacity.byType.SHORT?.required).toBe(2);
+    expect(capacity.byType.MCQ?.consumed).toBe(1);
+    expect(capacity.byType.SHORT?.consumed).toBe(0);
+  });
+
   it("can complete an empty candidate bank when providers produce nothing", () => {
     const blueprint = blueprintForCount(4);
     const paperConfig = {
@@ -490,6 +625,14 @@ function singleAtomConcept(): ConceptData {
     21,
     "Single dialogue clue",
     "The selected source gives one precise dialogue tone clue about a speaker choosing polite words to avoid conflict during a difficult classroom conversation.",
+  );
+}
+
+function tinyRepetitiveConcept(): ConceptData {
+  return concept(
+    22,
+    "Tiny friction clue",
+    "The source explains that friction slows motion on surfaces because contact opposes movement.",
   );
 }
 

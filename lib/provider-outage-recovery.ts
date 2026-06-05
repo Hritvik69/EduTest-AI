@@ -1,7 +1,11 @@
 import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
 import {
+  analyzeSourceBackedCompletionCapacity,
   completeQuestionBankWithSourceBackedFallback,
   hasSourceBackedFallbackConcepts,
+  sourceBackedCapacityError,
+  sourceBackedCapacityMessage,
+  type SourceBackedCapacityDiagnostics,
 } from "@/lib/source-backed-fallback";
 import type {
   Blueprint,
@@ -47,11 +51,29 @@ export function buildSourceBackedProviderRecoveryBank({
 
   const bank = new QuestionCandidateBank(existingQuestions, blueprint, config);
   const readyBefore = bank.readyCount();
+  const capacity = analyzeSourceBackedCompletionCapacity({
+    bank,
+    concepts,
+    config,
+  });
+  if (!capacity.enough) {
+    throw sourceBackedProviderRecoveryError(
+      scope,
+      bank.readyCount(),
+      blueprint.totalQuestions,
+      concepts,
+      bank.missingCount(),
+      capacity,
+    );
+  }
+
   const generatedQuestions = completeQuestionBankWithSourceBackedFallback({
     bank,
     concepts,
     config,
     startIndex: startIndex ?? bank.allCandidates().length + 101,
+    throwOnInsufficientCapacity: true,
+    capacityScope: scope,
   });
   const readyQuestionCount = bank.readyCount();
   const missingQuestionCount = bank.missingCount();
@@ -91,11 +113,36 @@ function sourceBackedProviderRecoveryError(
   targetQuestionCount: number,
   concepts: ConceptData[],
   missingQuestionCount = targetQuestionCount - readyQuestionCount,
+  diagnostics?: SourceBackedCapacityDiagnostics,
 ) {
   const sourceConceptCount = sourceBackedConceptCount(concepts);
   const missing = Math.max(0, missingQuestionCount);
+  if (diagnostics) {
+    return sourceBackedCapacityError(
+      scope,
+      {
+        ...diagnostics,
+        sourceConceptCount,
+        requiredMissingCount: missing,
+      },
+    );
+  }
+
   return new Error(
-    `SOURCE_TEXT_NOT_ENOUGH: Selected source text cannot produce enough 100% distinct questions for ${scope}. Generated ${readyQuestionCount}/${targetQuestionCount} valid questions. Missing ${missing}. Source concepts: ${sourceConceptCount}. Select more chapters/topics, upload stronger source text, or lower the question count.`,
+    `SOURCE_TEXT_NOT_ENOUGH: Selected source text cannot produce enough 100% distinct questions for ${scope}. Generated ${readyQuestionCount}/${targetQuestionCount} valid questions. Missing ${missing}. Source concepts: ${sourceConceptCount}. ${sourceBackedCapacityMessage({
+      requiredMissingCount: missing,
+      availableStrictCapacity: 0,
+      sourceConceptCount,
+      atomCount: 0,
+      consumedAtomTypeKeys: 0,
+      duplicatePressure: {
+        duplicateRejections: 0,
+        duplicateGroups: 0,
+        sourceBackedCandidates: 0,
+      },
+      byType: {},
+      enough: false,
+    })}`,
   );
 }
 

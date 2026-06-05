@@ -84,6 +84,27 @@ type GenerationStreamRecoverySnapshot = {
   recoveryReason?: string;
 };
 type ProviderRecoveryMode = "source_backed_provider_outage";
+type SourceCapacityDiagnostics = {
+  requiredMissingCount: number;
+  availableStrictCapacity: number;
+  sourceConceptCount: number;
+  atomCount: number;
+  consumedAtomTypeKeys: number;
+  enough: boolean;
+  byType?: Record<
+    string,
+    {
+      required: number;
+      available: number;
+      consumed: number;
+    }
+  >;
+  duplicatePressure?: {
+    duplicateRejections: number;
+    duplicateGroups: number;
+    sourceBackedCandidates: number;
+  };
+};
 
 export function GenerationOverlay({
   config,
@@ -127,6 +148,7 @@ export function GenerationOverlay({
     missingQuestionCount?: number;
     providerHealth?: PublicAIProviderHealthSnapshot;
     providerRecoveryMode?: ProviderRecoveryMode;
+    sourceCapacity?: SourceCapacityDiagnostics;
     activeOperation?: string;
     failureSource?: string;
     errorClass?: string;
@@ -385,6 +407,7 @@ export function GenerationOverlay({
                   missingQuestionCount: numberValue(data.missingQuestionCount),
                   providerHealth: providerHealthFromStreamData(data),
                   providerRecoveryMode: recoveryMode ?? undefined,
+                  sourceCapacity: sourceCapacityFromStreamData(data),
                   activeOperation: stringValue(data.activeOperation),
                   failureSource: stringValue(data.failureSource),
                   errorClass: stringValue(data.errorClass),
@@ -525,6 +548,7 @@ export function GenerationOverlay({
         const continuation = continuationProgressFromError(error);
         const providerHealth = getErrorProviderHealth(error);
         const errorProviderRecoveryMode = getErrorProviderRecoveryMode(error);
+        const sourceCapacity = getErrorSourceCapacity(error);
         const activeOperation = getErrorStringField(error, "activeOperation");
         const failureSource = getErrorStringField(error, "failureSource");
         const errorClass = getErrorStringField(error, "errorClass");
@@ -577,6 +601,7 @@ export function GenerationOverlay({
           recoverable,
           providerHealth,
           providerRecoveryMode: errorProviderRecoveryMode ?? undefined,
+          sourceCapacity,
           activeOperation,
           failureSource,
           errorClass,
@@ -652,14 +677,17 @@ export function GenerationOverlay({
 
   const provider = requestConfig.aiProvider ?? "AUTO";
   const providerModel = modelForProvider(provider, providerStatus);
-  const canSkipAndReplace = isQuestionOutputError(error);
-  const canRetry = !isSourceTextShortageError(error);
+  const sourceTextShortage = isSourceTextShortageError(error);
+  const canSkipAndReplace = !sourceTextShortage && isQuestionOutputError(error);
+  const canRetry = !sourceTextShortage;
   const timing = generationTimingSnapshot(progress, generationStartedAt, generationNow);
   const displayedContract = streamContract ?? clientContract;
   const visibleProviderRecoveryMode =
-    error?.providerRecoveryMode ?? providerRecoveryMode;
+    sourceTextShortage ? null : error?.providerRecoveryMode ?? providerRecoveryMode;
   const errorGuidance =
-    visibleProviderRecoveryMode === "source_backed_provider_outage"
+    sourceTextShortage
+      ? sourceCapacityGuidance(error?.sourceCapacity)
+      : visibleProviderRecoveryMode === "source_backed_provider_outage"
       ? "Finishing from selected source text. Provider retry is not required for this run."
       : generationErrorGuidance(error, provider);
 
@@ -779,6 +807,25 @@ export function GenerationOverlay({
               {errorGuidance}
             </div>
           ) : null}
+          {sourceTextShortage && error.sourceCapacity ? (
+            <div className="mt-4 rounded-lg border border-red-300/20 bg-red-500/10 p-3 text-sm leading-6 text-red-50">
+              <div className="font-semibold text-red-100">
+                Strict source capacity: {error.sourceCapacity.availableStrictCapacity}/
+                {error.sourceCapacity.requiredMissingCount} replacement question
+                {error.sourceCapacity.requiredMissingCount === 1 ? "" : "s"} available.
+              </div>
+              <div className="mt-1 text-red-100/90">
+                Source concepts {error.sourceCapacity.sourceConceptCount}; source atoms{" "}
+                {error.sourceCapacity.atomCount}; used atom/type keys{" "}
+                {error.sourceCapacity.consumedAtomTypeKeys}.
+              </div>
+              {sourceCapacityTypeSummary(error.sourceCapacity) ? (
+                <div className="mt-2 rounded-md border border-white/10 bg-slate-950/35 px-2 py-1 text-xs text-red-100/90">
+                  {sourceCapacityTypeSummary(error.sourceCapacity)}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
           {visibleProviderRecoveryMode === "source_backed_provider_outage" ? (
             <div className="mt-4 rounded-lg border border-emerald-300/20 bg-emerald-500/10 p-3 text-sm font-semibold leading-6 text-emerald-50">
               Finishing from selected TXT/PDF source text because provider fallback could not complete.
@@ -790,7 +837,9 @@ export function GenerationOverlay({
                 {providerHealthSummary(error.providerHealth)}
               </div>
               <div className="mt-1 text-red-100/90">
-                {visibleProviderRecoveryMode === "source_backed_provider_outage"
+                {sourceTextShortage
+                  ? "Selected source capacity is the blocker; provider retry is not required for this run."
+                  : visibleProviderRecoveryMode === "source_backed_provider_outage"
                   ? "Finishing from selected source text; provider retry is not required for this run."
                   : providerHealthAction(error.providerHealth)}
               </div>
@@ -889,6 +938,7 @@ function generationError(
     missingQuestionCount?: number;
     providerHealth?: PublicAIProviderHealthSnapshot;
     providerRecoveryMode?: ProviderRecoveryMode;
+    sourceCapacity?: SourceCapacityDiagnostics;
     activeOperation?: string;
     failureSource?: string;
     errorClass?: string;
@@ -941,6 +991,11 @@ function generationError(
       providerRecoveryMode?: ProviderRecoveryMode;
     }
   ).providerRecoveryMode = options.providerRecoveryMode;
+  (
+    error as Error & {
+      sourceCapacity?: SourceCapacityDiagnostics;
+    }
+  ).sourceCapacity = options.sourceCapacity;
   (
     error as Error & {
       activeOperation?: string;
@@ -1074,6 +1129,12 @@ function providerRecoveryModeFromData(
   return data.providerRecoveryMode === "source_backed_provider_outage"
     ? "source_backed_provider_outage"
     : null;
+}
+
+function sourceCapacityFromStreamData(
+  data: Record<string, unknown>,
+): SourceCapacityDiagnostics | undefined {
+  return sourceCapacityFromUnknown(data.sourceCapacity);
 }
 
 function recoverableStreamEndedErrorFromSnapshot(
@@ -1239,6 +1300,96 @@ function getErrorProviderRecoveryMode(error: unknown) {
   return value === "source_backed_provider_outage" ? value : undefined;
 }
 
+function getErrorSourceCapacity(error: unknown) {
+  if (!error || typeof error !== "object" || !("sourceCapacity" in error)) {
+    return undefined;
+  }
+
+  return sourceCapacityFromUnknown(
+    (error as { sourceCapacity?: unknown }).sourceCapacity,
+  );
+}
+
+function sourceCapacityFromUnknown(
+  value: unknown,
+): SourceCapacityDiagnostics | undefined {
+  if (!isRecord(value)) return undefined;
+  const requiredMissingCount = numberValue(value.requiredMissingCount);
+  const availableStrictCapacity = numberValue(value.availableStrictCapacity);
+  const sourceConceptCount = numberValue(value.sourceConceptCount);
+  const atomCount = numberValue(value.atomCount);
+  const consumedAtomTypeKeys = numberValue(value.consumedAtomTypeKeys);
+
+  if (
+    requiredMissingCount === undefined ||
+    availableStrictCapacity === undefined ||
+    sourceConceptCount === undefined ||
+    atomCount === undefined ||
+    consumedAtomTypeKeys === undefined
+  ) {
+    return undefined;
+  }
+
+  return {
+    requiredMissingCount,
+    availableStrictCapacity,
+    sourceConceptCount,
+    atomCount,
+    consumedAtomTypeKeys,
+    enough: value.enough === true,
+    byType: sourceCapacityByTypeFromUnknown(value.byType),
+    duplicatePressure: sourceCapacityDuplicatePressureFromUnknown(
+      value.duplicatePressure,
+    ),
+  };
+}
+
+function sourceCapacityByTypeFromUnknown(
+  value: unknown,
+): SourceCapacityDiagnostics["byType"] {
+  if (!isRecord(value)) return undefined;
+
+  return Object.entries(value).reduce<
+    NonNullable<SourceCapacityDiagnostics["byType"]>
+  >((items, [type, item]) => {
+    if (!isRecord(item)) return items;
+    const required = numberValue(item.required);
+    const available = numberValue(item.available);
+    const consumed = numberValue(item.consumed);
+    if (
+      required === undefined ||
+      available === undefined ||
+      consumed === undefined
+    ) {
+      return items;
+    }
+    items[type] = { required, available, consumed };
+    return items;
+  }, {});
+}
+
+function sourceCapacityDuplicatePressureFromUnknown(
+  value: unknown,
+): SourceCapacityDiagnostics["duplicatePressure"] {
+  if (!isRecord(value)) return undefined;
+  const duplicateRejections = numberValue(value.duplicateRejections);
+  const duplicateGroups = numberValue(value.duplicateGroups);
+  const sourceBackedCandidates = numberValue(value.sourceBackedCandidates);
+  if (
+    duplicateRejections === undefined ||
+    duplicateGroups === undefined ||
+    sourceBackedCandidates === undefined
+  ) {
+    return undefined;
+  }
+
+  return {
+    duplicateRejections,
+    duplicateGroups,
+    sourceBackedCandidates,
+  };
+}
+
 function getErrorStringField(
   error: unknown,
   field: "activeOperation" | "failureSource" | "errorClass",
@@ -1308,8 +1459,28 @@ function isSourceTextShortageError(
     (typeof message === "string" &&
       /Selected source text (?:is not enough|did not provide enough distinct material|cannot produce enough 100% distinct questions)/i.test(
         message,
-      ))
+    ))
   );
+}
+
+function sourceCapacityGuidance(capacity: SourceCapacityDiagnostics | undefined) {
+  if (!capacity) {
+    return "Selected TXT/PDF source text does not have enough distinct material for the requested replacements. Select more chapters/topics, upload more source text, or lower the question count.";
+  }
+
+  return `Selected TXT/PDF source text has strict capacity for ${capacity.availableStrictCapacity}/${capacity.requiredMissingCount} missing replacement question${capacity.requiredMissingCount === 1 ? "" : "s"}. Select more chapters/topics, upload more source text, or lower the question count.`;
+}
+
+function sourceCapacityTypeSummary(capacity: SourceCapacityDiagnostics) {
+  const entries = Object.entries(capacity.byType ?? {});
+  if (!entries.length) return "";
+
+  return entries
+    .map(
+      ([type, item]) =>
+        `${type}: ${item.available}/${item.required} available`,
+    )
+    .join(" | ");
 }
 
 function continuationProgressFromError(error: unknown) {
@@ -1397,6 +1568,7 @@ function generationErrorGuidance(
     targetQuestionCount?: number;
     providerHealth?: PublicAIProviderHealthSnapshot;
     providerRecoveryMode?: ProviderRecoveryMode;
+    sourceCapacity?: SourceCapacityDiagnostics;
     activeOperation?: string;
     failureSource?: string;
     errorClass?: string;
@@ -1404,19 +1576,17 @@ function generationErrorGuidance(
   provider: AIProvider,
 ) {
   if (!error) return "";
+  if (isSourceTextShortageError(error)) {
+    return sourceCapacityGuidance(error.sourceCapacity);
+  }
   if (error.providerRecoveryMode === "source_backed_provider_outage") {
-    return isSourceTextShortageError(error)
-      ? "AI providers failed, then selected TXT/PDF source text was not enough to finish the paper. Select more source material or lower the question count."
-      : "Finishing from selected TXT/PDF source text because provider fallback could not complete.";
+    return "Finishing from selected TXT/PDF source text because provider fallback could not complete.";
   }
   if (error.providerHealth && !error.providerHealth.usableProviders.length) {
     return providerHealthAction(error.providerHealth);
   }
   if (/provider diagnostics were available|deployment health|Vercel runtime log/i.test(error.message)) {
     return "The server stopped before AI provider health could be checked. Verify /api/deployment-health, then /api/ai/provider-health; if deployment health still returns 500, the first Vercel runtime log is the blocker.";
-  }
-  if (isSourceTextShortageError(error)) {
-    return "Retry is disabled for this source shortage. Select more chapters/topics, upload clearer source text, or lower the question count before generating again.";
   }
   if (/quota|credit|billing|402|max_tokens/i.test(error.message)) {
     return provider === "AUTO"

@@ -46,6 +46,9 @@ describe("session-only paper generation wiring", () => {
     expect(route).toMatch(/onProviderUnavailable/);
     expect(route).toMatch(/SOURCE_TEXT_NOT_ENOUGH/);
     expect(route).toMatch(/sourceTextNotEnoughForProviderOutage/);
+    expect(route).toMatch(/analyzeSourceBackedCompletionCapacity/);
+    expect(route).toMatch(/sourceCapacityFromError/);
+    expect(route).toMatch(/sourceCapacity/);
     expect(route).toMatch(/Retry starts a fresh session-only generation/);
     expect(providerRecovery).toMatch(/source_backed_provider_outage/);
     expect(providerRecovery).toMatch(/provider-recovery/);
@@ -70,6 +73,10 @@ describe("session-only paper generation wiring", () => {
     expect(overlay).toMatch(/paperSnapshotToken/);
     expect(overlay).toMatch(/visibleProviderRecoveryMode/);
     expect(overlay).toMatch(/Finishing from selected source text/);
+    expect(overlay).toMatch(/sourceTextShortage \? null/);
+    expect(overlay).toMatch(/sourceCapacityGuidance/);
+    expect(overlay).toMatch(/Strict source capacity/);
+    expect(overlay).toMatch(/!sourceTextShortage && isQuestionOutputError/);
     expect(overlay).toMatch(/Generation stopped before the session paper snapshot was completed/);
     expect(preview).toMatch(/readSessionPaper/);
     expect(preview).toMatch(/\/api\/session-paper\/export/);

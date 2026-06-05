@@ -222,6 +222,12 @@ export function hardDuplicateReason(left: QuestionLike, right: QuestionLike) {
     return "repeated source-backed angle";
   }
 
+  const leftSourceKey = sourceBackedUniquenessKeyFromMetadata(leftMetadata);
+  const rightSourceKey = sourceBackedUniquenessKeyFromMetadata(rightMetadata);
+  if (leftSourceKey && rightSourceKey && leftSourceKey === rightSourceKey) {
+    return "repeated source-backed atom";
+  }
+
   if (
     leftMetadata &&
     rightMetadata &&
@@ -458,6 +464,26 @@ export function parseSourceBackedCompletionMetadata(
     atomId,
     sequence,
   };
+}
+
+export function sourceBackedUniquenessKey(question: QuestionLike) {
+  return sourceBackedUniquenessKeyFromMetadata(
+    parseSourceBackedCompletionMetadata(question.noveltyAngle),
+  );
+}
+
+export function sourceBackedUniquenessKeyFor(type: string, atomId: string) {
+  const normalizedType = normalizeSmall(type);
+  const normalizedAtom = normalizeSmall(atomId);
+  if (!normalizedType || !normalizedAtom) return null;
+  return `${normalizedType}:${normalizedAtom}`;
+}
+
+function sourceBackedUniquenessKeyFromMetadata(
+  metadata: SourceBackedCompletionMetadata | null,
+) {
+  if (!metadata) return null;
+  return sourceBackedUniquenessKeyFor(metadata.type, metadata.atomId);
 }
 
 export function uniqueQuestionsByText<T extends QuestionLike>(

@@ -54,9 +54,13 @@ import {
   type PaperGenerationState,
 } from "@/lib/question-candidate-bank";
 import {
+  analyzeSourceBackedCompletionCapacity,
   completeQuestionBankWithSourceBackedFallback,
   hasSourceBackedFallbackConcepts,
+  sourceBackedCapacityError,
+  sourceBackedCapacityMessage,
   sourceBackedCompletionMarker,
+  type SourceBackedCapacityDiagnostics,
 } from "@/lib/source-backed-fallback";
 import {
   buildSourceBackedProviderRecoveryBank,
@@ -1199,6 +1203,7 @@ export async function POST(request: NextRequest) {
         }
 
         if (!request.signal.aborted && !streamClosed) {
+          const sourceCapacity = sourceCapacityFromError(error);
           send(
             {
               error: true,
@@ -1218,8 +1223,11 @@ export async function POST(request: NextRequest) {
               targetQuestionCount: recoverySnapshot.targetQuestionCount,
               missingQuestionCount: recoverySnapshot.missingQuestionCount,
               recoveryReason: recoverySnapshot.lastMessage,
+              ...(sourceCapacity ? { sourceCapacity } : {}),
               ...providerHealthPayload(),
-              ...providerRecoveryPayload(),
+              ...(code === "SOURCE_TEXT_NOT_ENOUGH"
+                ? {}
+                : providerRecoveryPayload()),
               ...contractPayload(),
               status: "FAILED",
             },
@@ -1963,6 +1971,30 @@ function stripSourceTextNotEnoughPrefix(message: string) {
   return message.replace(/^SOURCE_TEXT_NOT_ENOUGH:\s*/i, "");
 }
 
+function sourceCapacityFromError(error: unknown) {
+  if (!error || typeof error !== "object" || !("sourceCapacity" in error)) {
+    return undefined;
+  }
+
+  const value = (error as { sourceCapacity?: unknown }).sourceCapacity;
+  return isSourceBackedCapacityDiagnostics(value) ? value : undefined;
+}
+
+function isSourceBackedCapacityDiagnostics(
+  value: unknown,
+): value is SourceBackedCapacityDiagnostics {
+  if (!value || typeof value !== "object") return false;
+  const record = value as Partial<SourceBackedCapacityDiagnostics>;
+  return (
+    typeof record.requiredMissingCount === "number" &&
+    typeof record.availableStrictCapacity === "number" &&
+    typeof record.sourceConceptCount === "number" &&
+    typeof record.atomCount === "number" &&
+    typeof record.consumedAtomTypeKeys === "number" &&
+    typeof record.enough === "boolean"
+  );
+}
+
 function sourceTextNotEnoughForProviderOutage(concepts: ConceptData[]) {
   const sourceConceptCount = concepts.filter((concept) => {
     const source = concept.source;
@@ -2366,6 +2398,25 @@ async function validateGeneratedPaperSkippingInvalid({
     !stoppedForServerBudget &&
     bank.missingCount() > 0
   ) {
+    const sourceCapacity = analyzeSourceBackedCompletionCapacity({
+      bank,
+      concepts: scopedConcepts,
+      config,
+    });
+    if (!sourceCapacity.enough) {
+      await persistBank(
+        "FAILED",
+        "REPAIR",
+        (resumeState?.attemptCount ?? 0) + 4,
+        undefined,
+        sourceBackedCapacityMessage(sourceCapacity),
+      );
+      throw sourceBackedCapacityError(
+        "replacing invalid or duplicate questions",
+        sourceCapacity,
+      );
+    }
+
     send({
       step: 6,
       pct: 94,
@@ -2380,6 +2431,8 @@ async function validateGeneratedPaperSkippingInvalid({
       startIndex: bank.allCandidates().length + 101,
       deadlineAt,
       minRemainingMs: sourceBackedCompletionReserveMs(),
+      throwOnInsufficientCapacity: true,
+      capacityScope: "replacing invalid or duplicate questions",
     });
     if (
       bank.missingCount() > 0 &&
@@ -2436,11 +2489,11 @@ async function validateGeneratedPaperSkippingInvalid({
 
     if (!allowDemoFallback) {
       const reason = `Selected source text cannot produce enough 100% distinct questions to replace ${remainingMissingQuestions} invalid or duplicate question${remainingMissingQuestions === 1 ? "" : "s"}.`;
-      const sourceConceptCount = scopedConcepts.filter((concept) => {
-        const source = concept.source;
-        const textLength = concept.text?.replace(/\s+/g, " ").trim().length ?? 0;
-        return (source === "ncert_txt" || source === "pdf") && textLength >= 80;
-      }).length;
+      const sourceCapacity = analyzeSourceBackedCompletionCapacity({
+        bank,
+        concepts: scopedConcepts,
+        config,
+      });
       const topRejectionReasons = Object.entries(validation.rejectionReasons ?? {})
         .map(([key, count]) => [key, Number(count) || 0] as const)
         .filter(([, count]) => count > 0)
@@ -2449,7 +2502,7 @@ async function validateGeneratedPaperSkippingInvalid({
         .map(([key, count]) => `${key}:${count}`)
         .join(", ");
       const guidance = `Generated ${readyCount}/${targetQuestionCount} valid questions. Missing ${remainingMissingQuestions}. Select more chapters/topics, upload more source text, or lower the question count.`;
-      const diagnostics = `Source concepts: ${sourceConceptCount}. Top rejection reasons: ${topRejectionReasons || "none"}.`;
+      const diagnostics = `${sourceBackedCapacityMessage(sourceCapacity)} Top rejection reasons: ${topRejectionReasons || "none"}.`;
       await persistBank(
         "FAILED",
         "REPAIR",
@@ -2457,8 +2510,12 @@ async function validateGeneratedPaperSkippingInvalid({
         undefined,
         `${reason} ${guidance} ${diagnostics}`,
       );
-      throw new Error(
-        `SOURCE_TEXT_NOT_ENOUGH: ${reason} ${guidance}`,
+      throw sourceBackedCapacityError(
+        "replacing invalid or duplicate questions",
+        {
+          ...sourceCapacity,
+          requiredMissingCount: remainingMissingQuestions,
+        },
       );
     }
 
