@@ -50,6 +50,9 @@ describe("session-only paper generation wiring", () => {
     expect(route).toMatch(/sourceCapacityFromError/);
     expect(route).toMatch(/sourceCapacity/);
     expect(route).toMatch(/Retry starts a fresh session-only generation/);
+    expect(route).toMatch(/FINAL_REPAIR_VALIDATION_BLOCKED/);
+    expect(route).toMatch(/finalRepairValidationBlockedError/);
+    expect(route).toMatch(/if \(!sourceCapacity\.enough\)/);
     expect(providerRecovery).toMatch(/source_backed_provider_outage/);
     expect(providerRecovery).toMatch(/provider-recovery/);
   });
@@ -73,10 +76,12 @@ describe("session-only paper generation wiring", () => {
     expect(overlay).toMatch(/paperSnapshotToken/);
     expect(overlay).toMatch(/visibleProviderRecoveryMode/);
     expect(overlay).toMatch(/Finishing from selected source text/);
-    expect(overlay).toMatch(/sourceTextShortage \? null/);
+    expect(overlay).toMatch(/sourceTextShortage \|\| finalRepairValidationBlocked/);
     expect(overlay).toMatch(/sourceCapacityGuidance/);
+    expect(overlay).toMatch(/finalRepairValidationGuidance/);
     expect(overlay).toMatch(/Effective source capacity/);
-    expect(overlay).toMatch(/!realSourceCapacityFailure && isQuestionOutputError/);
+    expect(overlay).toMatch(/!finalRepairValidationBlocked[\s\S]*isQuestionOutputError/);
+    expect(overlay).toMatch(/sourceTextShortage && realSourceCapacityFailure && error\.sourceCapacity/);
     expect(overlay).toMatch(/Generation stopped before the session paper snapshot was completed/);
     expect(preview).toMatch(/readSessionPaper/);
     expect(preview).toMatch(/\/api\/session-paper\/export/);

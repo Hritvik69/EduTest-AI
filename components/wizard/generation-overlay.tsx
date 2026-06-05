@@ -687,19 +687,27 @@ export function GenerationOverlay({
   const provider = requestConfig.aiProvider ?? "AUTO";
   const providerModel = modelForProvider(provider, providerStatus);
   const sourceTextShortage = isSourceTextShortageError(error);
+  const finalRepairValidationBlocked =
+    isFinalRepairValidationBlockedError(error);
   const realSourceCapacityFailure = isRealSourceCapacityFailure(error);
   const canSkipAndReplace =
-    !realSourceCapacityFailure && isQuestionOutputError(error);
+    !realSourceCapacityFailure &&
+    !finalRepairValidationBlocked &&
+    isQuestionOutputError(error);
   const canRetry = !realSourceCapacityFailure;
   const timing = generationTimingSnapshot(progress, generationStartedAt, generationNow);
   const displayedContract = streamContract ?? clientContract;
   const visibleProviderRecoveryMode =
-    sourceTextShortage ? null : error?.providerRecoveryMode ?? providerRecoveryMode;
+    sourceTextShortage || finalRepairValidationBlocked
+      ? null
+      : error?.providerRecoveryMode ?? providerRecoveryMode;
   const errorGuidance =
-    sourceTextShortage
+    finalRepairValidationBlocked
+      ? finalRepairValidationGuidance(error?.sourceCapacity)
+      : sourceTextShortage
       ? realSourceCapacityFailure
         ? sourceCapacityGuidance(error?.sourceCapacity)
-        : "Source-backed validation stopped even though effective source capacity appears sufficient. Retry this updated generation; provider retry is not required."
+        : finalRepairValidationGuidance(error?.sourceCapacity)
       : visibleProviderRecoveryMode === "source_backed_provider_outage"
       ? "Finishing from selected source text. Provider retry is not required for this run."
       : generationErrorGuidance(error, provider);
@@ -823,7 +831,7 @@ export function GenerationOverlay({
               {errorGuidance}
             </div>
           ) : null}
-          {sourceTextShortage && error.sourceCapacity ? (
+          {sourceTextShortage && realSourceCapacityFailure && error.sourceCapacity ? (
             <div className="mt-4 rounded-lg border border-red-300/20 bg-red-500/10 p-3 text-sm leading-6 text-red-50">
               <div className="font-semibold text-red-100">
                 Effective source capacity: {error.sourceCapacity.effectiveCapacity ?? error.sourceCapacity.availableStrictCapacity}/
@@ -857,7 +865,7 @@ export function GenerationOverlay({
                 {sourceTextShortage
                   ? realSourceCapacityFailure
                     ? "Selected source effective capacity is the blocker; provider retry is not required for this run."
-                    : "Effective source capacity appears sufficient; retry this updated generation before changing provider settings."
+                    : finalRepairValidationGuidance(error.sourceCapacity)
                   : visibleProviderRecoveryMode === "source_backed_provider_outage"
                   ? "Finishing from selected source text; provider retry is not required for this run."
                   : providerHealthAction(error.providerHealth)}
@@ -1560,6 +1568,19 @@ function isSourceTextShortageError(
   );
 }
 
+function isFinalRepairValidationBlockedError(
+  error: { message?: string; code?: string | number } | unknown,
+) {
+  if (!error || typeof error !== "object") return false;
+  const code = "code" in error ? (error as { code?: unknown }).code : undefined;
+  const message = "message" in error ? (error as { message?: unknown }).message : undefined;
+  return (
+    code === "FINAL_REPAIR_VALIDATION_BLOCKED" ||
+    (typeof message === "string" &&
+      /^FINAL_REPAIR_VALIDATION_BLOCKED:/i.test(message))
+  );
+}
+
 function isRealSourceCapacityFailure(
   error:
     | {
@@ -1578,9 +1599,16 @@ function isRealSourceCapacityFailure(
 }
 
 function generationDisplayErrorMessage(
-  error: { message: string; sourceCapacity?: SourceCapacityDiagnostics },
+  error: {
+    message: string;
+    code?: string | number;
+    sourceCapacity?: SourceCapacityDiagnostics;
+  },
   sourceTextShortage: boolean,
 ) {
+  if (isFinalRepairValidationBlockedError(error)) {
+    return error.message.replace(/^FINAL_REPAIR_VALIDATION_BLOCKED:\s*/i, "");
+  }
   if (!sourceTextShortage || !error.sourceCapacity) return error.message;
 
   const capacity = error.sourceCapacity;
@@ -1588,7 +1616,24 @@ function generationDisplayErrorMessage(
     capacity.effectiveCapacity ?? capacity.availableStrictCapacity;
   const rawCapacity = capacity.rawAtomCapacity ?? capacity.availableStrictCapacity;
 
+  if (effectiveCapacity >= capacity.requiredMissingCount) {
+    return `Selected source text has enough capacity (${effectiveCapacity}/${capacity.requiredMissingCount}), but final repair candidates were rejected by validation.`;
+  }
+
   return `Selected source text can create ${effectiveCapacity}/${capacity.requiredMissingCount} strict replacement question${capacity.requiredMissingCount === 1 ? "" : "s"} from ${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}.`;
+}
+
+function finalRepairValidationGuidance(
+  capacity: SourceCapacityDiagnostics | undefined,
+) {
+  if (!capacity) {
+    return "Source capacity appears sufficient, but final repair candidates were rejected by validation. Retry generation; if it repeats, reduce fragile formats or use more chapter/topic-near coverage.";
+  }
+
+  const effectiveCapacity =
+    capacity.effectiveCapacity ?? capacity.availableStrictCapacity;
+  const rawCapacity = capacity.rawAtomCapacity ?? capacity.availableStrictCapacity;
+  return `Source capacity is sufficient (${effectiveCapacity}/${capacity.requiredMissingCount} effective from ${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}), but final repair candidates were rejected by validation. Retry generation; if it repeats, reduce fragile formats or use more chapter/topic-near coverage.`;
 }
 
 function sourceCapacityGuidance(capacity: SourceCapacityDiagnostics | undefined) {
@@ -1736,8 +1781,13 @@ function generationErrorGuidance(
   provider: AIProvider,
 ) {
   if (!error) return "";
+  if (isFinalRepairValidationBlockedError(error)) {
+    return finalRepairValidationGuidance(error.sourceCapacity);
+  }
   if (isSourceTextShortageError(error)) {
-    return sourceCapacityGuidance(error.sourceCapacity);
+    return isRealSourceCapacityFailure(error)
+      ? sourceCapacityGuidance(error.sourceCapacity)
+      : finalRepairValidationGuidance(error.sourceCapacity);
   }
   if (error.providerRecoveryMode === "source_backed_provider_outage") {
     return "Finishing from selected TXT/PDF source text because provider fallback could not complete.";

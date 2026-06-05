@@ -1255,8 +1255,10 @@ export async function POST(request: NextRequest) {
               readyQuestionCount: recoverySnapshot.readyQuestionCount,
               targetQuestionCount: recoverySnapshot.targetQuestionCount,
               missingQuestionCount: recoverySnapshot.missingQuestionCount,
+              ...questionProgressPayload(error),
               recoveryReason: recoverySnapshot.lastMessage,
               ...(sourceCapacity ? { sourceCapacity } : {}),
+              ...rejectionReasonsPayload(error),
               ...providerHealthPayload(),
               ...(code === "SOURCE_TEXT_NOT_ENOUGH"
                 ? {}
@@ -1757,6 +1759,10 @@ function generationErrorMessage(
   const failureSource =
     context.failureSource ?? generationFailureSource(error, activeOperation);
 
+  if (isFinalRepairValidationBlockedError(error)) {
+    return stripFinalRepairValidationBlockedPrefix(message);
+  }
+
   if (/SOURCE_TEXT_NOT_ENOUGH|Selected source text (?:is not enough|did not provide enough distinct material|cannot produce enough 100% distinct questions)/i.test(message)) {
     return stripSourceTextNotEnoughPrefix(message);
   }
@@ -1831,6 +1837,10 @@ function generationFailureSource(
     return "persistence";
   }
 
+  if (isFinalRepairValidationBlockedError(error)) {
+    return "validation";
+  }
+
   if (/SOURCE_TEXT_NOT_ENOUGH|SOURCE_NOT_TEXT_BACKED|Selected source text/i.test(message)) {
     return "source";
   }
@@ -1863,6 +1873,9 @@ function generationErrorClass(
 ) {
   const message = error instanceof Error ? error.message : String(error ?? "");
 
+  if (isFinalRepairValidationBlockedError(error)) {
+    return "validation_repair_blocked";
+  }
   if (/timeout|timed out|ETIMEDOUT/i.test(message)) return `${failureSource}_timeout`;
   if (/network|fetch failed|ECONNRESET|ENOTFOUND/i.test(message)) {
     return `${failureSource}_network`;
@@ -1945,6 +1958,14 @@ function providersForHealthPreflight(
 function generationErrorCode(error: unknown) {
   const message =
     error instanceof Error ? error.message : "Generation failed. Please try again.";
+  const explicitCode = explicitErrorCode(error);
+
+  if (
+    explicitCode === "FINAL_REPAIR_VALIDATION_BLOCKED" ||
+    /^FINAL_REPAIR_VALIDATION_BLOCKED:/i.test(message)
+  ) {
+    return "FINAL_REPAIR_VALIDATION_BLOCKED";
+  }
 
   if (/SOURCE_TEXT_NOT_ENOUGH|Selected source text (?:is not enough|did not provide enough distinct material|cannot produce enough 100% distinct questions)/i.test(message)) {
     return "SOURCE_TEXT_NOT_ENOUGH";
@@ -2001,8 +2022,28 @@ function stripSourceGroundingPrefix(message: string) {
   return message.replace(/^SOURCE_NOT_TEXT_BACKED:\s*/i, "");
 }
 
+function stripFinalRepairValidationBlockedPrefix(message: string) {
+  return message.replace(/^FINAL_REPAIR_VALIDATION_BLOCKED:\s*/i, "");
+}
+
 function stripSourceTextNotEnoughPrefix(message: string) {
   return message.replace(/^SOURCE_TEXT_NOT_ENOUGH:\s*/i, "");
+}
+
+function explicitErrorCode(error: unknown) {
+  if (!error || typeof error !== "object" || !("code" in error)) {
+    return undefined;
+  }
+  const code = (error as { code?: unknown }).code;
+  return typeof code === "string" || typeof code === "number" ? code : undefined;
+}
+
+function isFinalRepairValidationBlockedError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error ?? "");
+  return (
+    explicitErrorCode(error) === "FINAL_REPAIR_VALIDATION_BLOCKED" ||
+    /^FINAL_REPAIR_VALIDATION_BLOCKED:/i.test(message)
+  );
 }
 
 function sourceCapacityFromError(error: unknown) {
@@ -2012,6 +2053,41 @@ function sourceCapacityFromError(error: unknown) {
 
   const value = (error as { sourceCapacity?: unknown }).sourceCapacity;
   return isSourceBackedCapacityDiagnostics(value) ? value : undefined;
+}
+
+function rejectionReasonsPayload(error: unknown) {
+  if (!error || typeof error !== "object" || !("rejectionReasons" in error)) {
+    return {};
+  }
+
+  const value = (error as { rejectionReasons?: unknown }).rejectionReasons;
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return {};
+  }
+
+  return { rejectionReasons: value };
+}
+
+function questionProgressPayload(error: unknown) {
+  if (!error || typeof error !== "object") return {};
+  const record = error as {
+    readyQuestionCount?: unknown;
+    targetQuestionCount?: unknown;
+    missingQuestionCount?: unknown;
+  };
+  const readyQuestionCount = numericErrorField(record.readyQuestionCount);
+  const targetQuestionCount = numericErrorField(record.targetQuestionCount);
+  const missingQuestionCount = numericErrorField(record.missingQuestionCount);
+
+  return {
+    ...(readyQuestionCount !== undefined ? { readyQuestionCount } : {}),
+    ...(targetQuestionCount !== undefined ? { targetQuestionCount } : {}),
+    ...(missingQuestionCount !== undefined ? { missingQuestionCount } : {}),
+  };
+}
+
+function numericErrorField(value: unknown) {
+  return typeof value === "number" && Number.isFinite(value) ? value : undefined;
 }
 
 function isSourceBackedCapacityDiagnostics(
@@ -2042,6 +2118,113 @@ function sourceTextNotEnoughForProviderOutage(concepts: ConceptData[]) {
 
 function serverGenerationBudgetError(message: string) {
   return new Error(`SERVER_GENERATION_TIME_BUDGET_EXCEEDED: ${message}`);
+}
+
+function finalRepairValidationBlockedError({
+  message,
+  readyQuestionCount,
+  targetQuestionCount,
+  missingQuestionCount,
+  sourceCapacity,
+  rejectionReasons,
+}: {
+  message: string;
+  readyQuestionCount: number;
+  targetQuestionCount: number;
+  missingQuestionCount: number;
+  sourceCapacity: SourceBackedCapacityDiagnostics;
+  rejectionReasons: Record<string, number>;
+}) {
+  const error = new Error(`FINAL_REPAIR_VALIDATION_BLOCKED: ${message}`);
+  (
+    error as Error & {
+      code?: string;
+      readyQuestionCount?: number;
+      targetQuestionCount?: number;
+      missingQuestionCount?: number;
+      sourceCapacity?: SourceBackedCapacityDiagnostics;
+      rejectionReasons?: Record<string, number>;
+      activeOperation?: ActiveGenerationOperation;
+      failureSource?: GenerationFailureSource;
+    }
+  ).code = "FINAL_REPAIR_VALIDATION_BLOCKED";
+  (
+    error as Error & {
+      readyQuestionCount?: number;
+      targetQuestionCount?: number;
+      missingQuestionCount?: number;
+    }
+  ).readyQuestionCount = readyQuestionCount;
+  (
+    error as Error & {
+      targetQuestionCount?: number;
+    }
+  ).targetQuestionCount = targetQuestionCount;
+  (
+    error as Error & {
+      missingQuestionCount?: number;
+    }
+  ).missingQuestionCount = missingQuestionCount;
+  (
+    error as Error & {
+      sourceCapacity?: SourceBackedCapacityDiagnostics;
+    }
+  ).sourceCapacity = sourceCapacity;
+  (
+    error as Error & {
+      rejectionReasons?: Record<string, number>;
+    }
+  ).rejectionReasons = rejectionReasons;
+  (
+    error as Error & {
+      activeOperation?: ActiveGenerationOperation;
+      failureSource?: GenerationFailureSource;
+    }
+  ).activeOperation = "validation_repair";
+  (
+    error as Error & {
+      failureSource?: GenerationFailureSource;
+    }
+  ).failureSource = "validation";
+  return error;
+}
+
+function finalRepairValidationBlockedMessage({
+  readyCount,
+  targetQuestionCount,
+  remainingMissingQuestions,
+  sourceCapacity,
+  rejectionSummary,
+}: {
+  readyCount: number;
+  targetQuestionCount: number;
+  remainingMissingQuestions: number;
+  sourceCapacity: SourceBackedCapacityDiagnostics;
+  rejectionSummary: string;
+}) {
+  const effectiveCapacity =
+    sourceCapacity.effectiveCapacity ?? sourceCapacity.availableStrictCapacity;
+  const rawCapacity = sourceCapacity.rawAtomCapacity ?? sourceCapacity.availableStrictCapacity;
+
+  return `Selected source text has enough capacity (${effectiveCapacity}/${sourceCapacity.requiredMissingCount} effective from ${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}), but final repair candidates were rejected by validation. Generated ${readyCount}/${targetQuestionCount} valid questions; ${remainingMissingQuestions} still missing. Top rejection reasons: ${rejectionSummary}. Retry generation; if it repeats, reduce fragile formats or use more chapter/topic-near coverage.`;
+}
+
+function topValidationRejectionReasons(
+  reasons: Partial<Record<string, number>> | undefined,
+) {
+  return Object.entries(reasons ?? {})
+    .map(([key, count]) => [key, Number(count) || 0] as const)
+    .filter(([, count]) => count > 0)
+    .sort((left, right) => right[1] - left[1])
+    .slice(0, 3);
+}
+
+function formatTopRejectionReasons(
+  reasons: Array<readonly [string, number]>,
+) {
+  return reasons.length
+    ? reasons.map(([key, count]) => `${key}:${count}`).join(", ")
+    : "none";
 }
 
 function generationSourceContextHash({
@@ -2596,35 +2779,58 @@ async function validateGeneratedPaperSkippingInvalid({
     }
 
     if (!allowDemoFallback) {
-      const reason = `Selected source text cannot produce enough 100% distinct questions to replace ${remainingMissingQuestions} invalid or duplicate question${remainingMissingQuestions === 1 ? "" : "s"}.`;
       const sourceCapacity = analyzeSourceBackedCompletionCapacity({
         bank,
         concepts: scopedConcepts,
         config: activeConfig,
       });
-      const topRejectionReasons = Object.entries(validation.rejectionReasons ?? {})
-        .map(([key, count]) => [key, Number(count) || 0] as const)
-        .filter(([, count]) => count > 0)
-        .sort((left, right) => right[1] - left[1])
-        .slice(0, 3)
-        .map(([key, count]) => `${key}:${count}`)
-        .join(", ");
-      const guidance = `Generated ${readyCount}/${targetQuestionCount} valid questions. Missing ${remainingMissingQuestions}. Select more chapters/topics, upload more source text, or lower the question count.`;
-      const diagnostics = `${sourceBackedCapacityMessage(sourceCapacity)} Top rejection reasons: ${topRejectionReasons || "none"}.`;
+      const topRejectionReasons = topValidationRejectionReasons(
+        validation.rejectionReasons,
+      );
+      const rejectionSummary = formatTopRejectionReasons(topRejectionReasons);
+
+      if (!sourceCapacity.enough) {
+        const reason = `Selected source text cannot produce enough 100% distinct questions to replace ${remainingMissingQuestions} invalid or duplicate question${remainingMissingQuestions === 1 ? "" : "s"}.`;
+        const guidance = `Generated ${readyCount}/${targetQuestionCount} valid questions. Missing ${remainingMissingQuestions}. Select more chapters/topics, upload more source text, or lower the question count.`;
+        const diagnostics = `${sourceBackedCapacityMessage(sourceCapacity)} Top rejection reasons: ${rejectionSummary}.`;
+        await persistBank(
+          "FAILED",
+          "REPAIR",
+          (resumeState?.attemptCount ?? 0) + 4,
+          undefined,
+          `${reason} ${guidance} ${diagnostics}`,
+        );
+        throw sourceBackedCapacityError(
+          "replacing invalid or duplicate questions",
+          {
+            ...sourceCapacity,
+            requiredMissingCount: remainingMissingQuestions,
+          },
+        );
+      }
+
+      const blockedMessage = finalRepairValidationBlockedMessage({
+        readyCount,
+        targetQuestionCount,
+        remainingMissingQuestions,
+        sourceCapacity,
+        rejectionSummary,
+      });
       await persistBank(
         "FAILED",
         "REPAIR",
         (resumeState?.attemptCount ?? 0) + 4,
         undefined,
-        `${reason} ${guidance} ${diagnostics}`,
+        `${blockedMessage} ${sourceBackedCapacityMessage(sourceCapacity)}`,
       );
-      throw sourceBackedCapacityError(
-        "replacing invalid or duplicate questions",
-        {
-          ...sourceCapacity,
-          requiredMissingCount: remainingMissingQuestions,
-        },
-      );
+      throw finalRepairValidationBlockedError({
+        message: blockedMessage,
+        readyQuestionCount: readyCount,
+        targetQuestionCount,
+        missingQuestionCount: remainingMissingQuestions,
+        sourceCapacity,
+        rejectionReasons: Object.fromEntries(topRejectionReasons),
+      });
     }
 
     if (readyCount > 0) {
