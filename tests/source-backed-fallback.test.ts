@@ -281,6 +281,19 @@ describe("generateSourceBackedFallbackQuestions", () => {
     expect(visibleText).not.toContain("How Forces Affect Motion");
     expect(visibleText).toMatch(/friction|motion|coins|surface/i);
 
+    const trueFalseAnswers = validation.questions
+      .filter((question) => question.type === "TRUE_FALSE")
+      .map((question) => question.correctAnswer.trim().toLowerCase());
+    expect(new Set(trueFalseAnswers)).toEqual(new Set(["true", "false"]));
+
+    const shortQuestion = validation.questions.find(
+      (question) => question.type === "SHORT",
+    );
+    expect(shortQuestion?.text).not.toMatch(/evidence point|inference point/i);
+    expect(shortQuestion?.correctAnswer).not.toMatch(
+      /Explain the concept clearly/i,
+    );
+
     const matchQuestion = validation.questions.find(
       (question) => question.type === "MATCH_FOLLOWING",
     );
@@ -291,6 +304,9 @@ describe("generateSourceBackedFallbackQuestions", () => {
     expect(matchText).toMatch(/Smooth surface|Rough surface|Smaller frictional force/i);
     expect(matchText).toMatch(/Less friction|More friction|Object travels farther/i);
     expect(matchText).not.toMatch(/Chapter idea|Question focus|Conclusion|Evidence/i);
+    expect(matchQuestion?.correctAnswer).not.toBe(
+      "A1-B1, A2-B2, A3-B3, A4-B4",
+    );
   });
 
   it("replaces noisy Communication Skills fragments with clean syllabus-near questions", () => {
@@ -390,8 +406,20 @@ describe("generateSourceBackedFallbackQuestions", () => {
     expect(validation.questions.every((question) => question.subject === "Advanced Computer")).toBe(true);
     expect(visibleText).toMatch(/sender|receiver|message|communication|feedback/i);
     expect(visibleText).not.toMatch(
-      /Unit\s+1\.indd|24-08-2018|S\s*eSSIon|evidence clue|case reasoning clue|Employability SkillS/i,
+      /Unit\s+1\.indd|24-08-2018|S\s*eSSIon|evidence clue|case reasoning clue|Employability SkillS|IntroductIon to communIcatIon|Explain the concept clearly/i,
     );
+
+    const matchQuestion = validation.questions.find(
+      (question) => question.type === "MATCH_FOLLOWING",
+    );
+    expect(matchQuestion?.correctAnswer).not.toBe(
+      "A1-B1, A2-B2, A3-B3, A4-B4",
+    );
+    expect(
+      (matchQuestion?.matchPairs ?? [])
+        .flatMap((pair) => [pair.left, pair.right])
+        .join(" "),
+    ).not.toMatch(/\b(?:Context|Inference|Correct use|Application|Reason)\b/i);
   });
 });
 

@@ -8,6 +8,7 @@ import { Select } from "@/components/ui/select";
 import type { GeneratedQuestion, MCQOption, MatchPair, SubQuestion } from "@/types";
 import { cn } from "@/lib/utils";
 import { normalizeMCQOptions } from "@/lib/question-options";
+import { displayedMatchColumns } from "@/lib/match-display";
 
 export type AnswerValue = string | Record<string, string> | undefined;
 type MatchMode = "select" | "connect";
@@ -244,9 +245,13 @@ export function MatchFollowingQuestion({
     [question],
   );
   const answer = objectValue(value);
-  const shuffledRight = React.useMemo(
-    () => [...pairs.map((pair) => pair.right)].sort((a, b) => a.localeCompare(b)),
-    [pairs],
+  const rightItems = React.useMemo(
+    () =>
+      displayedMatchColumns(
+        pairs,
+        "correctAnswer" in question ? question.correctAnswer : "",
+      ).rightItems.map((item) => item.text),
+    [pairs, question],
   );
   const matchedCount = pairs.filter((pair) => answer[pair.left]).length;
 
@@ -292,14 +297,14 @@ export function MatchFollowingQuestion({
         <SelectMatchMode
           answer={answer}
           pairs={pairs}
-          rightItems={shuffledRight}
+          rightItems={rightItems}
           onChange={onChange}
         />
       ) : (
         <NodeMatchMode
           answer={answer}
           pairs={pairs}
-          rightItems={shuffledRight}
+          rightItems={rightItems}
           onChange={onChange}
         />
       )}

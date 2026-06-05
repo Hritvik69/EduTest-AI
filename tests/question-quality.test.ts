@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { deterministicMcqOptionShuffle } from "@/lib/mcq-option-shuffle";
+import {
+  buildShuffledMatchAnswer,
+  displayedMatchColumns,
+} from "@/lib/match-display";
 import { auditTeacherLogicQuality } from "@/lib/question-quality";
 import { defaultBloomDistribution } from "@/lib/edutest-data";
 import type { Blueprint, GeneratedQuestion, QuestionType } from "@/types";
@@ -76,6 +80,102 @@ describe("teacher logic quality audit", () => {
     ).toBe(true);
   });
 
+  it("rejects pasted non-MCQ fallback artifacts", () => {
+    const questions = [
+      {
+        ...baseQuestion(
+          1,
+          "TRUE_FALSE",
+          "True or False: IntroductIon to communIcatIon You probably hear people talking about communication all the time. Everyone needs it what exactly is communication.",
+        ),
+        correctAnswer: "True",
+        noveltyAngle: "SYLLABUS_NEAR_FALLBACK:TRUE_FALSE:1",
+      },
+      {
+        ...baseQuestion(
+          2,
+          "MATCH_FOLLOWING",
+          "Match the inference points about match highlighted words with their meanings.",
+          3,
+        ),
+        correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
+        matchPairs: [
+          {
+            left: "Match highlighted",
+            right: "Match the highlighted words with their meanings given in the box below.",
+          },
+          { left: "Context", right: "Match highlighted words with their meanings given" },
+          { left: "Inference", right: "Explain what follows from the idea." },
+          { left: "Correct use", right: "Use the idea in a relevant situation" },
+        ],
+        noveltyAngle: "SOURCE_BACKED_COMPLETION:MATCH_FOLLOWING:2",
+      },
+      {
+        ...baseQuestion(
+          3,
+          "SHORT",
+          "Explain the evidence point in the passage detail about receiving speaking writing examples information.",
+          3,
+        ),
+        correctAnswer:
+          "receiving (Fig. Speaking writing to someone are examples of giving information. Reading listening to someone are examples of receiving information. Explain the concept clearly.",
+        noveltyAngle: "SOURCE_BACKED_COMPLETION:SHORT:3",
+      },
+    ];
+
+    const reasons = issuesByPosition(
+      auditTeacherLogicQuality(questions, blueprintFor(questions)),
+    );
+
+    expect(reasons.get(1)).toBe("raw-template-artifact");
+    expect(reasons.get(2)).toBe("weak-match-pair");
+    expect(reasons.get(3)).toMatch(/raw-template-artifact|weak-short/);
+  });
+
+  it("rejects deterministic True/False fallback batches with one-sided answers", () => {
+    const questions = [
+      trueFalse(1, "True", true),
+      trueFalse(2, "True", true),
+      trueFalse(3, "True", true),
+    ];
+
+    expect(
+      auditTeacherLogicQuality(questions, blueprintFor(questions)).some(
+        (issue) => issue.reason === "true-false-answer-key-imbalance",
+      ),
+    ).toBe(true);
+  });
+
+  it("derives shuffled match display columns from canonical pairs", () => {
+    const pairs = [
+      { left: "Sender", right: "Creates a message" },
+      { left: "Receiver", right: "Understands a message" },
+      { left: "Channel", right: "Carries the message" },
+      { left: "Feedback", right: "Confirms understanding" },
+    ];
+    const columns = displayedMatchColumns(
+      pairs,
+      "A1-B3, A2-B1, A3-B4, A4-B2",
+    );
+
+    expect(columns.leftItems.map((item) => item.text)).toEqual([
+      "Sender",
+      "Receiver",
+      "Channel",
+      "Feedback",
+    ]);
+    expect(columns.rightItems.map((item) => item.text)).toEqual([
+      "Understands a message",
+      "Confirms understanding",
+      "Creates a message",
+      "Carries the message",
+    ]);
+    expect(columns.answerKey).toBe("A1-B3, A2-B1, A3-B4, A4-B2");
+    expect(buildShuffledMatchAnswer(pairs, "quality-match-seed")).not.toBe(
+      "A1-B1, A2-B2, A3-B3, A4-B4",
+    );
+  });
+
   it("accepts normal mixed teacher-usable questions", () => {
     const questions = [
       mcq(1, "Which option correctly describes feedback in communication?", "A"),
@@ -148,10 +248,11 @@ function mcq(id: number, text: string, correctAnswer: string): GeneratedQuestion
   };
 }
 
-function trueFalse(id: number) {
+function trueFalse(id: number, answer = "True", fallback = false) {
   return {
     ...baseQuestion(id, "TRUE_FALSE", "True or False: Feedback helps confirm whether a message was understood."),
-    correctAnswer: "True",
+    correctAnswer: answer,
+    noveltyAngle: fallback ? `SYLLABUS_NEAR_FALLBACK:TRUE_FALSE:${id}` : undefined,
   };
 }
 

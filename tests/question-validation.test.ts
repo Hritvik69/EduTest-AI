@@ -65,6 +65,19 @@ describe("student-visible question quality validation", () => {
         "Which case reasoning clue about feedback is most suitable?",
       ),
     ).toBe(true);
+    expect(
+      hasForbiddenStudentVisiblePattern(
+        "True or False: IntroductIon to communIcatIon You probably hear people talking about communication all the time. Everyone needs it what exactly is communication.",
+      ),
+    ).toBe(true);
+    expect(
+      hasForbiddenStudentVisiblePattern(
+        "Explain the evidence point in the passage detail about receiving information.",
+      ),
+    ).toBe(true);
+    expect(
+      hasForbiddenStudentVisiblePattern("Explain the concept clearly."),
+    ).toBe(true);
   });
 
   it("rejects an otherwise valid MCQ if options leak metadata", () => {
@@ -127,6 +140,40 @@ describe("student-visible question quality validation", () => {
         { left: "Chapter", right: "How Forces Affect Motion" },
         { left: "Question focus", right: "evidence" },
         { left: "Conclusion", right: "Explain the chapter idea clearly." },
+      ],
+    };
+
+    expect(isUsableGeneratedQuestion(question, matchSection)).toBe(false);
+  });
+
+  it("rejects match-column questions with generic labels or near-duplicate pairs", () => {
+    const question: GeneratedQuestion = {
+      text: "Match the terms with their meanings.",
+      type: "MATCH_FOLLOWING",
+      marks: 3,
+      difficulty: "MEDIUM",
+      bloomLevel: "UNDERSTAND",
+      competencyLevel: 3,
+      reasoningSteps: 2,
+      difficultyConfidence: 0.8,
+      cognitiveComplexity: {
+        conceptIntegration: 2,
+        abstractionLevel: 2,
+        inferenceLevel: 2,
+        ambiguityLevel: 1,
+        cognitiveLoad: 2,
+      },
+      topic: "Communication Skills",
+      correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
+      explanation: "The pairs should match subject concepts.",
+      matchPairs: [
+        {
+          left: "Match highlighted",
+          right: "Match the highlighted words with their meanings given in the box below.",
+        },
+        { left: "Context", right: "Match highlighted words with their meanings given" },
+        { left: "Inference", right: "Explain what follows from the idea." },
+        { left: "Correct use", right: "Use the idea in a relevant situation" },
       ],
     };
 

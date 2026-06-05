@@ -31,6 +31,9 @@ export function auditTeacherLogicQuality(
   mcqAnswerImbalanceIssues(questions).forEach((issue) => {
     if (!issues.has(issue.position)) issues.set(issue.position, issue);
   });
+  trueFalseAnswerImbalanceIssues(questions).forEach((issue) => {
+    if (!issues.has(issue.position)) issues.set(issue.position, issue);
+  });
 
   return Array.from(issues.values()).sort(
     (left, right) => left.position - right.position,
@@ -56,10 +59,19 @@ function teacherLogicIssueReason(question: GeneratedQuestion) {
   if (
     question.type === "MATCH_FOLLOWING" &&
     (question.matchPairs ?? []).some((pair) =>
-      hasGenericMatchLabel(pair.left) || hasGenericMatchLabel(pair.right),
+      hasGenericMatchLabel(pair.left) ||
+      hasGenericMatchLabel(pair.right) ||
+      hasWeakMatchPair(pair.left, pair.right),
     )
   ) {
-    return "generic-match-label";
+    return "weak-match-pair";
+  }
+
+  if (question.type === "SHORT") {
+    if (hasWeakShortStem(question.text)) return "weak-short-stem";
+    if (hasWeakShortAnswer(question.correctAnswer, question.text)) {
+      return "weak-short-answer";
+    }
   }
 
   return "";
@@ -131,6 +143,29 @@ function mcqAnswerImbalanceIssues(questions: GeneratedQuestion[]) {
   return issues;
 }
 
+function trueFalseAnswerImbalanceIssues(questions: GeneratedQuestion[]) {
+  const trueFalseQuestions = questions
+    .map((question, index) => ({ question, position: index + 1 }))
+    .filter(
+      ({ question }) =>
+        question.type === "TRUE_FALSE" && isDeterministicFallbackQuestion(question),
+    );
+  if (trueFalseQuestions.length < 2) return [];
+
+  const answers = trueFalseQuestions
+    .map(({ question }) => question.correctAnswer?.trim().toLowerCase())
+    .filter((answer): answer is string => answer === "true" || answer === "false");
+  if (answers.length !== trueFalseQuestions.length) return [];
+  if (new Set(answers).size > 1) return [];
+
+  return trueFalseQuestions.slice(1).map((item) => ({
+    question: item.question,
+    type: item.question.type,
+    position: item.position,
+    reason: "true-false-answer-key-imbalance",
+  }));
+}
+
 function repeatedStemKey(question: GeneratedQuestion) {
   const normalized = normalizeVisible(question.text);
   if (question.type === "MCQ") {
@@ -196,10 +231,13 @@ function studentVisibleStrings(question: GeneratedQuestion) {
 }
 
 function hasRawTemplateArtifact(value: string) {
-  return /\b(?:phrase window|focused point|evidence point about|grandmother unfortunately|case reasoning clue|evidence clue)\b/i.test(
-    value,
-  ) || /\bthe idea that\s*$/i.test(
-    value,
+  return (
+    /\b(?:phrase window|focused point|evidence point|inference point|case point|source point|grandmother unfortunately|case reasoning clue|evidence clue)\b/i.test(
+      value,
+    ) ||
+    /\bIntroductIon\s+to\s+communIcatIon\b/i.test(value) ||
+    /\beveryone\s+needs\s+it\s+what\s+exactly\s+is\s+communication\b/i.test(value) ||
+    /\bthe idea that\s*$/i.test(value)
   );
 }
 
@@ -229,9 +267,59 @@ function hasAccidentalShortAnswer(value: string | undefined) {
 }
 
 function hasGenericMatchLabel(value: string) {
-  return /^(?:focused point|phrase window|reason|application|evidence|conclusion)$/i.test(
+  return /^(?:focused point|phrase window|context|correct use|reason|application|evidence|conclusion|inference)$/i.test(
     value.replace(/\s+/g, " ").trim(),
   );
+}
+
+function hasWeakMatchPair(left: string, right: string) {
+  const normalizedLeft = normalizeMatchText(left);
+  const normalizedRight = normalizeMatchText(right);
+  if (!normalizedLeft || !normalizedRight) return true;
+  if (normalizedLeft === normalizedRight) return true;
+  if (
+    normalizedLeft.length >= 12 &&
+    normalizedRight.length >= 12 &&
+    (normalizedLeft.includes(normalizedRight) ||
+      normalizedRight.includes(normalizedLeft))
+  ) {
+    return true;
+  }
+  const leftTerms = new Set(normalizedLeft.split(/\s+/).filter((word) => word.length > 3));
+  const rightTerms = normalizedRight.split(/\s+/).filter((word) => word.length > 3);
+  if (leftTerms.size === 0 || rightTerms.length === 0) return false;
+  const overlap = rightTerms.filter((word) => leftTerms.has(word)).length;
+  return overlap >= Math.min(3, rightTerms.length) && overlap / rightTerms.length >= 0.75;
+}
+
+function hasWeakShortStem(value: string) {
+  return /\b(?:explain|describe|state)\s+the\s+(?:evidence|inference|case|source)\s+point\b/i.test(
+    value,
+  );
+}
+
+function hasWeakShortAnswer(answer: string | undefined, questionText: string) {
+  const normalizedAnswer = normalizeVisible(answer ?? "");
+  if (!normalizedAnswer) return true;
+  if (/\bexplain the concept clearly\b/i.test(answer ?? "")) return true;
+  if (/\ba complete answer should only\b/i.test(answer ?? "")) return true;
+  const questionTerms = new Set(
+    normalizeVisible(questionText)
+      .split(/\s+/)
+      .filter((word) => word.length > 4),
+  );
+  const answerTerms = normalizedAnswer.split(/\s+/).filter((word) => word.length > 4);
+  if (questionTerms.size < 4 || answerTerms.length < 8) return false;
+  const overlap = answerTerms.filter((word) => questionTerms.has(word)).length;
+  return overlap / answerTerms.length > 0.82;
+}
+
+function normalizeMatchText(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function normalizeVisible(value: string) {

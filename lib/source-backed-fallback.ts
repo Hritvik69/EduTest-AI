@@ -6,6 +6,7 @@ import {
 import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
 import { deterministicMcqOptionShuffle } from "@/lib/mcq-option-shuffle";
 import { hasTeacherLogicQualityIssue } from "@/lib/question-quality";
+import { buildShuffledMatchAnswer } from "@/lib/match-display";
 import type {
   BloomLevel,
   BlueprintSection,
@@ -925,12 +926,7 @@ function createSyllabusNearQuestion({
         explanation: "Both assertion and reason are true, and the reason correctly explains the assertion.",
       };
     case "TRUE_FALSE":
-      return {
-        ...common,
-        text: `True or False: ${concept.trueStatement}`,
-        correctAnswer: "True",
-        explanation: concept.explanation,
-      };
+      return syllabusNearTrueFalseQuestion(common, concept, index);
     case "ONE_WORD":
       return {
         ...common,
@@ -953,21 +949,23 @@ function createSyllabusNearQuestion({
         keyPoints: [concept.correct],
         explanation: concept.explanation,
       };
-    case "MATCH_FOLLOWING":
+    case "MATCH_FOLLOWING": {
+      const pairs = syllabusNearMatchPairs(item, config, concepts, index);
       return {
         ...common,
         text: `Match the ${concept.matchTitle} terms with their meanings.`,
-        matchPairs: syllabusNearMatchPairs(item, config, concepts, index),
-        correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
+        matchPairs: pairs,
+        correctAnswer: buildShuffledMatchAnswer(
+          pairs,
+          `syllabus-near:${concept.term}:${index}`,
+        ),
         explanation: "Each term should be matched with its correct classroom meaning.",
       };
+    }
     case "SHORT":
       return {
         ...common,
-        text: `Explain why ${concept.focus} is important.`,
-        correctAnswer: concept.correct,
-        keyPoints: [concept.correct, concept.example, concept.explanation],
-        explanation: concept.explanation,
+        ...syllabusNearShortQuestion(concept, index),
       };
     case "NUMERICAL":
       return {
@@ -1148,6 +1146,63 @@ function syllabusNearMcqStem(concept: SyllabusNearConcept, index: number) {
   return stems[Math.abs(index) % stems.length];
 }
 
+function syllabusNearTrueFalseQuestion(
+  common: GeneratedQuestion,
+  concept: SyllabusNearConcept,
+  index: number,
+): GeneratedQuestion {
+  const answer = positiveModulo(index, 2) === 0 ? "True" : "False";
+  const statement =
+    answer === "True"
+      ? trueStatementVariant(concept.trueStatement, concept.term, index)
+      : concept.falseStatement;
+
+  return {
+    ...common,
+    text: `True or False: ${statement}`,
+    correctAnswer: answer,
+    explanation:
+      answer === "True"
+        ? concept.explanation
+        : `This is false because ${lowerFirst(concept.correct)}`,
+  };
+}
+
+function syllabusNearShortQuestion(
+  concept: SyllabusNearConcept,
+  index: number,
+): Partial<GeneratedQuestion> {
+  const stems = [
+    `Explain why ${concept.focus} is important.`,
+    `How does ${concept.term} help in a real situation?`,
+    `Give two points that show the value of ${concept.term}.`,
+    `Use an example to explain ${concept.focus}.`,
+    `Compare ${concept.term} with a common misunderstanding about it.`,
+  ];
+  const keyPoints = [
+    concept.correct,
+    concept.example,
+    `Avoid this misconception: ${concept.misconception}`,
+  ];
+
+  return {
+    text: stems[positiveModulo(index, stems.length)] ?? stems[0],
+    correctAnswer: `${concept.correct} ${concept.example} A complete answer should also avoid the misconception that ${lowerFirst(stripFinalPunctuation(concept.misconception))}.`,
+    keyPoints,
+    explanation: concept.explanation,
+  };
+}
+
+function trueStatementVariant(statement: string, term: string, index: number) {
+  const cleanStatement = sentenceCase(stripFinalPunctuation(statement));
+  const variants = [
+    `${cleanStatement}.`,
+    `${sentenceCase(term)} is useful when it is applied with clear understanding.`,
+    `${cleanStatement} This makes the concept useful in a real situation.`,
+  ];
+  return variants[positiveModulo(index, variants.length)] ?? variants[0];
+}
+
 type SyllabusNearConcept = {
   term: string;
   focus: string;
@@ -1155,6 +1210,7 @@ type SyllabusNearConcept = {
   misconception: string;
   example: string;
   explanation: string;
+  falseStatement: string;
   assertion: string;
   reason: string;
   trueStatement: string;
@@ -1205,6 +1261,7 @@ function communicationSkillConcepts(): SyllabusNearConcept[] {
       correct: "Communication is a two-way process in which a sender shares a message and the receiver understands it.",
       misconception: "Communication is not only speaking; it also includes listening and feedback.",
       example: "A student explains a timetable change and checks whether classmates understood it.",
+      falseStatement: "Communication is complete as soon as the sender speaks, even if the receiver does not understand the message.",
     }),
     syllabusConcept({
       term: "Sender",
@@ -1212,6 +1269,7 @@ function communicationSkillConcepts(): SyllabusNearConcept[] {
       correct: "The sender starts communication by creating and sending a clear message.",
       misconception: "A sender should not assume the receiver understood without checking feedback.",
       example: "A teacher announces homework instructions clearly before the class ends.",
+      falseStatement: "The sender's role begins only after the receiver has already understood the message.",
     }),
     syllabusConcept({
       term: "Receiver",
@@ -1219,6 +1277,7 @@ function communicationSkillConcepts(): SyllabusNearConcept[] {
       correct: "The receiver listens, reads, or observes the message and interprets its meaning.",
       misconception: "A receiver is active because understanding requires attention and response.",
       example: "A learner listens to safety instructions and asks a question for clarity.",
+      falseStatement: "The receiver only hears words and does not need to interpret meaning.",
     }),
     syllabusConcept({
       term: "Message",
@@ -1226,6 +1285,7 @@ function communicationSkillConcepts(): SyllabusNearConcept[] {
       correct: "The message is the idea, fact, instruction, or feeling that the sender wants to share.",
       misconception: "A message should not be vague because unclear words can confuse the receiver.",
       example: "Please submit the assignment by Friday is a clear message.",
+      falseStatement: "A message is always clear as long as it contains many words.",
     }),
     syllabusConcept({
       term: "Channel",
@@ -1233,6 +1293,7 @@ function communicationSkillConcepts(): SyllabusNearConcept[] {
       correct: "A channel is the path used for communication, such as speech, writing, phone call, email, or gesture.",
       misconception: "The same channel is not best for every situation.",
       example: "An email is suitable for written instructions, while a phone call is faster for urgent news.",
+      falseStatement: "One communication channel is equally suitable for every message and situation.",
     }),
     syllabusConcept({
       term: "Feedback",
@@ -1240,6 +1301,7 @@ function communicationSkillConcepts(): SyllabusNearConcept[] {
       correct: "Feedback is the receiver's response that tells the sender whether the message was understood.",
       misconception: "Without feedback, communication may remain incomplete.",
       example: "A student nods and repeats the instruction to show understanding.",
+      falseStatement: "Feedback is optional because the sender always knows the receiver understood.",
     }),
     syllabusConcept({
       term: "Verbal communication",
@@ -1247,6 +1309,7 @@ function communicationSkillConcepts(): SyllabusNearConcept[] {
       correct: "Verbal communication uses words to share a message clearly.",
       misconception: "Verbal communication can be spoken or written, not only face-to-face speech.",
       example: "Giving a presentation or writing a notice are verbal communication examples.",
+      falseStatement: "Verbal communication happens only when two people speak face to face.",
     }),
     syllabusConcept({
       term: "Non-verbal communication",
@@ -1254,6 +1317,7 @@ function communicationSkillConcepts(): SyllabusNearConcept[] {
       correct: "Non-verbal communication uses body language, facial expressions, gestures, posture, or eye contact.",
       misconception: "Non-verbal signs can support or weaken spoken words.",
       example: "Maintaining eye contact can show attention during a conversation.",
+      falseStatement: "Non-verbal communication has no effect when a person is speaking.",
     }),
     syllabusConcept({
       term: "Communication barrier",
@@ -1261,6 +1325,7 @@ function communicationSkillConcepts(): SyllabusNearConcept[] {
       correct: "A communication barrier is anything that prevents a message from being sent, received, or understood properly.",
       misconception: "Noise, unclear language, distraction, and wrong channel can all become barriers.",
       example: "A noisy classroom can stop students from hearing an announcement.",
+      falseStatement: "A barrier affects only the sender and cannot affect the receiver's understanding.",
     }),
     syllabusConcept({
       term: "Active listening",
@@ -1268,6 +1333,7 @@ function communicationSkillConcepts(): SyllabusNearConcept[] {
       correct: "Active listening means paying full attention, understanding the message, and responding appropriately.",
       misconception: "Hearing words is not the same as listening carefully.",
       example: "A learner listens, asks a relevant question, and summarizes the speaker's point.",
+      falseStatement: "Active listening means staying silent without checking the message.",
     }),
     syllabusConcept({
       term: "Clarity",
@@ -1275,6 +1341,7 @@ function communicationSkillConcepts(): SyllabusNearConcept[] {
       correct: "Clarity means using simple, specific, and complete language so the receiver understands the message.",
       misconception: "Long or complicated words do not automatically make communication better.",
       example: "Meet at 9 a.m. near the library is clearer than Come there early.",
+      falseStatement: "Clarity improves when the sender uses complicated words instead of specific details.",
     }),
     syllabusConcept({
       term: "Digital communication",
@@ -1282,6 +1349,7 @@ function communicationSkillConcepts(): SyllabusNearConcept[] {
       correct: "Digital communication should be clear, polite, accurate, and safe because messages can be stored or forwarded.",
       misconception: "Online messages should not share private information carelessly.",
       example: "A student writes a polite email with a clear subject and avoids sharing passwords.",
+      falseStatement: "Digital communication does not need care because online messages disappear immediately.",
     }),
   ];
 }
@@ -1319,12 +1387,14 @@ function syllabusConcept({
   correct,
   misconception,
   example,
+  falseStatement,
 }: {
   term: string;
   focus: string;
   correct: string;
   misconception: string;
   example: string;
+  falseStatement?: string;
 }): SyllabusNearConcept {
   return {
     term,
@@ -1333,6 +1403,9 @@ function syllabusConcept({
     misconception,
     example,
     explanation: correct,
+    falseStatement:
+      falseStatement ??
+      `${term} can be answered well by naming the topic without a reason or example.`,
     assertion: `${sentenceCase(stripFinalPunctuation(focus))} is important for effective learning.`,
     reason: correct,
     trueStatement: correct,
@@ -1679,10 +1752,7 @@ function baseQuestion(
     case "ASSERTION_REASON":
       return assertionReasonQuestion(summary, idea, skill);
     case "TRUE_FALSE":
-      return {
-        text: trueFalseQuestionText(summary, skill),
-        correctAnswer: "True",
-      };
+      return trueFalseQuestion(concept, summary, skill, placementIndex);
     case "ONE_WORD":
       return {
         text: `Which key term best fits this statement: ${summary}`,
@@ -1700,13 +1770,9 @@ function baseQuestion(
         keyPoints: [summary],
       };
     case "MATCH_FOLLOWING":
-      return matchQuestion(concept, variant);
+      return matchQuestion(concept, variant, placementIndex);
     case "SHORT":
-      return {
-        text: shortQuestionText(idea, skill),
-        correctAnswer: `${summary} ${keyPoint}`,
-        keyPoints: [summary, keyPoint, "Connect the reason to the concept."],
-      };
+      return shortAnswerQuestion(summary, skill, placementIndex);
     case "NUMERICAL":
       return {
         text: `A learner records ${variant.firstCount} observations about this concept and adds ${variant.secondCount} more related observations. How many observations are recorded in total?`,
@@ -1784,12 +1850,78 @@ function assertionReasonQuestion(
   };
 }
 
-function trueFalseQuestionText(summary: string, _skill: string) {
-  return `True or False: ${sentenceCase(stripFinalPunctuation(summary))}.`;
+function trueFalseQuestion(
+  concept: NormalizedConcept,
+  summary: string,
+  skill: string,
+  placementIndex: number,
+): Partial<GeneratedQuestion> {
+  const answer = positiveModulo(placementIndex, 2) === 0 ? "True" : "False";
+  const statement =
+    answer === "True"
+      ? sourceTrueStatement(summary, skill, placementIndex)
+      : sourceFalseStatement(concept, placementIndex);
+
+  return {
+    text: `True or False: ${statement}`,
+    correctAnswer: answer,
+  };
 }
 
-function shortQuestionText(idea: string, skill: string) {
-  return `Explain the ${skill} point in ${idea}.`;
+function sourceTrueStatement(
+  summary: string,
+  skill: string,
+  placementIndex: number,
+) {
+  const cleanSummary = sentenceCase(stripFinalPunctuation(summary));
+  const focus = mcqFocusPhrase(summary);
+  const variants = [
+    `${cleanSummary}.`,
+    `${sentenceCase(focus)} should be interpreted with attention to ${skill}.`,
+    `${cleanSummary} This supports a clear answer about ${focus}.`,
+  ];
+  return variants[positiveModulo(placementIndex, variants.length)] ?? variants[0];
+}
+
+function sourceFalseStatement(concept: NormalizedConcept, placementIndex: number) {
+  const distractors = misconceptionOptions(concept, placementIndex);
+  return trimToSentence(
+    sentenceCase(distractors[positiveModulo(placementIndex, distractors.length)]),
+    170,
+  );
+}
+
+function shortAnswerQuestion(
+  summary: string,
+  skill: string,
+  placementIndex: number,
+): Partial<GeneratedQuestion> {
+  const focus = mcqFocusPhrase(summary);
+  const answer = shortModelAnswer(summary, skill);
+  const keyPoints = [
+    trimToSentence(summary, 140),
+    visibleKeyPoint(skill),
+    "Support the point with a relevant reason or example.",
+  ];
+  const stems = [
+    `Explain why ${focus} matters in this context.`,
+    `How does ${focus} help answer the question?`,
+    `Give two points that show the importance of ${focus}.`,
+    `Use an example to explain ${focus}.`,
+    `Compare ${focus} with a common misunderstanding.`,
+  ];
+
+  return {
+    text: stems[positiveModulo(placementIndex, stems.length)] ?? stems[0],
+    correctAnswer: answer,
+    keyPoints,
+  };
+}
+
+function shortModelAnswer(summary: string, skill: string) {
+  const cleanSummary = trimToSentence(summary, 170);
+  const reason = visibleKeyPoint(skill).replace(/\.$/, "").toLowerCase();
+  return `${cleanSummary} This matters because students must ${reason}. A complete answer should connect the idea with a relevant detail or example.`;
 }
 
 function sourceBasedQuestion(
@@ -1856,6 +1988,7 @@ function caseBasedQuestion(
 function matchQuestion(
   concept: NormalizedConcept,
   variant: VariantRecipe,
+  placementIndex: number,
 ): Partial<GeneratedQuestion> {
   const summary = studentVisibleSummary(concept.summary, 140);
   const skill = visibleSkillFor(variant);
@@ -1863,10 +1996,22 @@ function matchQuestion(
   const focus = matchFocusPhrase(summary);
 
   return {
-    text: `Match the ${skill} points about ${focus} with their meanings.`,
+    text: matchQuestionStem(skill, focus, placementIndex),
     matchPairs: pairs,
-    correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
+    correctAnswer: buildShuffledMatchAnswer(
+      pairs,
+      `source-backed:${concept.atomId}:${variant.id}:${placementIndex}`,
+    ),
   };
+}
+
+function matchQuestionStem(skill: string, focus: string, placementIndex: number) {
+  const stems = [
+    `Match the terms about ${focus} with their meanings.`,
+    `Match each ${skill} item about ${focus} with the best description.`,
+    `Match the examples and ideas linked to ${focus}.`,
+  ];
+  return stems[positiveModulo(placementIndex, stems.length)] ?? stems[0];
 }
 
 function shortSubQuestion(text: string, correctAnswer: string, marks: number): SubQuestion {
@@ -2174,13 +2319,31 @@ function subjectMatchPairs(
     ];
   }
 
+  if (isCommunicationConcept(concept, summary)) {
+    return [
+      { left: "Sender", right: "Creates and sends a message" },
+      { left: "Receiver", right: "Understands and responds to a message" },
+      { left: "Channel", right: "Medium used to carry a message" },
+      { left: "Feedback", right: "Response that confirms understanding" },
+    ];
+  }
+
+  if (isLanguageConcept(concept, summary)) {
+    return [
+      { left: "Main idea", right: "Central point of a passage" },
+      { left: "Supporting detail", right: "Information that explains or proves an answer" },
+      { left: "Inference from clues", right: "Meaning understood from clues" },
+      { left: "Context clue", right: "Nearby words that guide meaning" },
+    ];
+  }
+
   const conceptTerm = sentenceCase(oneWordAnswer(summary));
-  const atomLabel = sentenceCase(trimToSentence(concept.atomLabel, 90));
+  const focus = sentenceCase(matchFocusPhrase(summary));
   return [
-    { left: conceptTerm, right: trimToSentence(summary, 110) },
-    { left: "Context", right: atomLabel },
-    { left: sentenceCase(skill), right: visibleKeyPoint(skill) },
-    { left: "Correct use", right: "Use the idea in a relevant situation" },
+    { left: conceptTerm, right: "Main concept being tested" },
+    { left: `${focus} example`, right: "Specific case that shows the idea" },
+    { left: `${sentenceCase(skill)} reason`, right: visibleKeyPoint(skill) },
+    { left: "Misconception", right: "Common mistaken reading to avoid" },
   ];
 }
 
@@ -2197,6 +2360,18 @@ function isMotionConcept(concept: NormalizedConcept, summary: string) {
     subject.includes("friction") ||
     subject.includes("surface") ||
     subject.includes("coins")
+  );
+}
+
+function isCommunicationConcept(concept: NormalizedConcept, summary: string) {
+  return /communication|sender|receiver|message|channel|feedback|verbal|non-verbal/i.test(
+    `${concept.subject ?? ""} ${concept.chapter} ${concept.topic} ${summary}`,
+  );
+}
+
+function isLanguageConcept(concept: NormalizedConcept, summary: string) {
+  return /english|language|reading|meaning|passage|dialogue|vocabulary|context|inference/i.test(
+    `${concept.subject ?? ""} ${concept.chapter} ${concept.topic} ${summary}`,
   );
 }
 
@@ -2269,7 +2444,7 @@ function visibleKeyPoint(skill: string) {
     case "visual representation":
       return "Represent the relationship with clear labels.";
     default:
-      return "Explain the concept clearly.";
+      return "Connect the idea to a clear reason.";
   }
 }
 

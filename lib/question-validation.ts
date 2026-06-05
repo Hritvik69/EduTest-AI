@@ -157,6 +157,7 @@ const forbiddenStudentVisiblePatterns = [
   /\bconcept\s+focus\b/i,
   /\bexplain\s+the\s+chapter\s+idea\b/i,
   /\bsource\s+detail\b/i,
+  /\b(?:evidence|inference|case|source)\s+point\b/i,
   /\bselected[-\s]+source\b/i,
   /\bexact\s+source\b/i,
   /\bdetail\s+lens\b/i,
@@ -177,6 +178,9 @@ const forbiddenStudentVisiblePatterns = [
   /\bcondition\s+clue\s+shows\b/i,
   /\bextract[-\s]+based\s+clue\b/i,
   /\bUnit\s+\d+\.indd\b/i,
+  /\bIntroductIon\s+to\s+communIcatIon\b/i,
+  /\beveryone\s+needs\s+it\s+what\s+exactly\s+is\s+communication\b/i,
+  /\bexplain\s+the\s+concept\s+clearly\b/i,
   /\b\d{2}-\d{2}-\d{4}\s+\d{1,2}:\d{2}:\d{2}\b/i,
   /\bPage\s+\d+\b/i,
   /\bEmployability\s+Skills\s*-\s*Class\s+iX\b/i,
@@ -188,7 +192,10 @@ function hasMetadataMatchPair(question: GeneratedQuestion) {
   if (question.type !== "MATCH_FOLLOWING") return false;
 
   return (question.matchPairs ?? []).some(
-    (pair) => isMetadataMatchItem(pair.left) || isMetadataMatchItem(pair.right),
+    (pair) =>
+      isMetadataMatchItem(pair.left) ||
+      isMetadataMatchItem(pair.right) ||
+      hasWeakMatchPair(pair.left, pair.right),
   );
 }
 
@@ -208,10 +215,44 @@ const metadataMatchItems = new Set([
   "concept focus",
   "source evidence",
   "source detail",
+  "context",
+  "correct use",
+  "reason",
+  "application",
+  "inference",
   "evidence",
   "conclusion",
   "explain the chapter idea clearly",
 ]);
+
+function hasWeakMatchPair(left: string, right: string) {
+  const normalizedLeft = normalizeMatchText(left);
+  const normalizedRight = normalizeMatchText(right);
+  if (!normalizedLeft || !normalizedRight) return true;
+  if (normalizedLeft === normalizedRight) return true;
+  if (
+    normalizedLeft.length >= 12 &&
+    normalizedRight.length >= 12 &&
+    (normalizedLeft.includes(normalizedRight) ||
+      normalizedRight.includes(normalizedLeft))
+  ) {
+    return true;
+  }
+
+  const leftTerms = new Set(normalizedLeft.split(/\s+/).filter((word) => word.length > 3));
+  const rightTerms = normalizedRight.split(/\s+/).filter((word) => word.length > 3);
+  if (leftTerms.size === 0 || rightTerms.length === 0) return false;
+  const overlap = rightTerms.filter((word) => leftTerms.has(word)).length;
+  return overlap >= Math.min(3, rightTerms.length) && overlap / rightTerms.length >= 0.75;
+}
+
+function normalizeMatchText(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
 function hasDanglingQuestionFragment(value: string) {
   if (value.length < 20) return false;

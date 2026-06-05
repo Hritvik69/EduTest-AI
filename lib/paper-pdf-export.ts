@@ -1,4 +1,5 @@
 import { questionTypeMeta } from "@/lib/edutest-data";
+import { displayedMatchColumns } from "@/lib/match-display";
 import type { GeneratedQuestion, StoredPaper } from "@/types";
 import { existsSync } from "node:fs";
 import React from "react";
@@ -144,12 +145,20 @@ function pushQuestionLines(
     lines.push({ text: `${option.id}. ${option.text}`, indent: 14 });
   });
 
-  question.matchPairs?.forEach((pair, pairIndex) => {
-    lines.push({
-      text: `${pairIndex + 1}. ${pair.left}  -  ${pair.right}`,
-      indent: 14,
+  if (question.matchPairs?.length) {
+    const columns = displayedMatchColumns(
+      question.matchPairs,
+      question.correctAnswer,
+    );
+    lines.push({ text: "Column A                         Column B", indent: 14 });
+    columns.leftItems.forEach((left, index) => {
+      const right = columns.rightItems[index];
+      lines.push({
+        text: `${left.label}. ${left.text}  -  ${right?.label ?? `B${index + 1}`}. ${right?.text ?? ""}`,
+        indent: 14,
+      });
     });
-  });
+  }
 
   question.subQuestions?.forEach((subQuestion, subIndex) => {
     lines.push({

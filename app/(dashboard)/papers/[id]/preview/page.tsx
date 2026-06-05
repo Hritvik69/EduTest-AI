@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { fetchApiData } from "@/lib/api-client";
 import { questionTypeMeta } from "@/lib/edutest-data";
+import { displayedMatchColumns } from "@/lib/match-display";
 import type { GeneratedQuestion, StoredPaper } from "@/types";
 
 export default function PaperPreviewPage() {
@@ -355,16 +356,27 @@ function QuestionPreview({
         </div>
       ) : null}
 
-      {question.matchPairs ? (
-        <div className="mt-2 grid gap-2 sm:grid-cols-2">
-          {question.matchPairs.map((pair, pairIndex) => (
-            <React.Fragment key={`${pair.left}-${pairIndex}`}>
-              <div>{pairIndex + 1}. {pair.left}</div>
-              <div>{String.fromCharCode(65 + pairIndex)}. {pair.right}</div>
-            </React.Fragment>
-          ))}
-        </div>
-      ) : null}
+      {question.matchPairs
+        ? (() => {
+            const columns = displayedMatchColumns(
+              question.matchPairs ?? [],
+              question.correctAnswer,
+            );
+            return (
+              <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                {columns.leftItems.map((left, pairIndex) => {
+                  const right = columns.rightItems[pairIndex];
+                  return (
+                    <React.Fragment key={`${left.text}-${pairIndex}`}>
+                      <div>{left.label}. {left.text}</div>
+                      <div>{right?.label ?? `B${pairIndex + 1}`}. {right?.text ?? ""}</div>
+                    </React.Fragment>
+                  );
+                })}
+              </div>
+            );
+          })()
+        : null}
 
       {question.subQuestions ? (
         <div className="mt-3 space-y-2 pl-4">

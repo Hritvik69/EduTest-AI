@@ -13,6 +13,7 @@ import {
   buildGenerationContract,
   generationContractPromptPayload,
 } from "@/lib/generation-contract";
+import { buildShuffledMatchAnswer } from "@/lib/match-display";
 import {
   generateJSON,
   getConfiguredProviders,
@@ -741,6 +742,8 @@ Return JSON: [{ "text" (full formatted), "assertion","reason","correctAnswer":"A
 ${sectionContext}
 ${strictRules}
 Statements must be precise, unambiguous, and conceptually testable. Avoid partially true wording.
+Use varied statement intents: definition, application, cause/effect, misconception, example, and comparison.
+When generating 2 or more True/False questions, include both True and False answers. False statements must be plausible misconceptions, not obvious negations.
 Return JSON: [{ "text":"statement","correctAnswer":"True|False","explanation","topic" }]`,
     ONE_WORD: `Generate ${section.count} One Word questions.
 ${sectionContext}
@@ -762,11 +765,14 @@ ${sectionContext}
 ${strictRules}
 Each question: 4 items Column A matched to 4 different items Column B.
 Items from different sub-topics. Relationships must be academically meaningful, logically matchable, and unambiguous. Not too obvious.
+Use real terms, examples, functions, causes/effects, definitions, observations, or formulas only. Do not use generic labels such as Context, Inference, Correct use, Application, Reason, or Evidence.
+Return matchPairs as canonical correct pairs, but make correctAnswer use a shuffled Column B key such as A1-B3, A2-B1, A3-B4, A4-B2. Do not always return A1-B1 order.
 Return JSON: [{ "text":"Match Column A with Column B","matchPairs":[{"left","right"},...],"correctAnswer":"A1-B3, A2-B1, A3-B4, A4-B2","explanation","marks":3,"topic" }]`,
     SHORT: `Generate ${section.count} Short Answer questions.
 ${sectionContext}
 ${strictRules}
 Questions needing 3-5 line answers. Require explanation ability, conceptual clarity, and reasoning where appropriate. Use "explain", "describe", "compare" style.
+Vary stems across explain, how, give two reasons, use an example, and compare. Model answers must be clean 2-3 sentence/key-point answers, not copied source fragments or generic filler.
 Return JSON: [{ "text","correctAnswer":"full model answer","keyPoints":["p1","p2","p3"],"bloomLevel","marks":3,"topic" }]`,
     NUMERICAL: `Generate ${section.count} Numerical questions.
 ${sectionContext}
@@ -957,14 +963,18 @@ For MCQ:
 For TRUE_FALSE:
 - Write a complete, meaningful statement.
 - It must be clearly true or false from the concept.
+- Use both True and False across the batch when the requested count permits.
+- False statements should be plausible misconceptions, not obvious negations.
 
 For SHORT/LONG:
 - Ask the student to explain, compare, reason, calculate, draw, or apply.
 - Do not ask them to name the source.
+- Avoid generic stems such as "evidence point" or "inference point". Answers must not append generic filler.
 
 For MATCH_FOLLOWING:
 - Column A and Column B must contain real subject terms, examples, causes/effects, definitions, observations, or formulas.
 - Do not match metadata labels such as Chapter, Chapter idea, Question focus, Evidence, or Conclusion.
+- Keep matchPairs as the correct pair mapping, but shuffle the Column B answer key instead of returning A1-B1 for every question.
 
 Before returning JSON, silently rewrite any question that sounds like an AI prompt, source-audit task, or chapter-metadata task. The final paper must read like a teacher wrote it.
 `;
@@ -1440,12 +1450,17 @@ function createDemoQuestion(
         options: assertionOptions(),
         correctAnswer: "A",
       };
-    case "TRUE_FALSE":
+    case "TRUE_FALSE": {
+      const answer = questionNumber % 2 === 0 ? "False" : "True";
       return {
         ...base,
-        text: `${topic} can be explained using evidence from observation ${questionNumber}.`,
-        correctAnswer: "True",
+        text:
+          answer === "True"
+            ? `True or False: ${topic} can be explained by connecting the concept with a clear example.`
+            : `True or False: ${topic} can be answered correctly by naming the topic without explaining any reason or example.`,
+        correctAnswer: answer,
       };
+    }
     case "ONE_WORD":
       return {
         ...base,
@@ -1464,18 +1479,23 @@ function createDemoQuestion(
         text: `State one reason why ${topic} is important in case ${questionNumber}.`,
         correctAnswer: "It helps explain the observation using the correct NCERT concept.",
       };
-    case "MATCH_FOLLOWING":
+    case "MATCH_FOLLOWING": {
+      const matchPairs = [
+        { left: `${topic} meaning`, right: "Main idea being tested" },
+        { left: `${topic} example`, right: "Situation where the idea is used" },
+        { left: `${topic} function`, right: "Purpose served by the concept" },
+        { left: `${topic} misconception`, right: "Mistake that should be avoided" },
+      ];
       return {
         ...base,
         text: `Match Column A with Column B for ${topic}.`,
-        matchPairs: [
-          { left: `${topic} principle`, right: "Main rule" },
-          { left: `Observation ${questionNumber}`, right: "Visible result" },
-          { left: "Application", right: "Daily use" },
-          { left: "Reason", right: "Logical explanation" },
-        ],
-        correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
+        matchPairs,
+        correctAnswer: buildShuffledMatchAnswer(
+          matchPairs,
+          `demo-match:${topic}:${questionNumber}`,
+        ),
       };
+    }
     case "NUMERICAL":
       return {
         ...base,
