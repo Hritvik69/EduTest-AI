@@ -53,9 +53,16 @@ const providerCards: {
     provider: "AUTO",
     title: "Auto Fallback",
     description:
-      "Try healthy free/fast providers first, then continue through the configured fallback chain.",
+      "Try healthy providers first, including MiniMax when it is configured, then continue the fallback chain.",
     detail: "Skips recently failed providers to reduce wasted API calls.",
     icon: RefreshCw,
+  },
+  {
+    provider: "MINIMAX",
+    title: "MiniMax Only",
+    description: "Use MiniMax for every generated question.",
+    detail: "OpenAI-compatible JSON path with thinking disabled.",
+    icon: Sparkles,
   },
   {
     provider: "GROQ",
@@ -76,13 +83,6 @@ const providerCards: {
     title: "Mistral Only",
     description: "Use Mistral AI for every generated question.",
     detail: "Good for fast structured JSON generation.",
-    icon: Sparkles,
-  },
-  {
-    provider: "MINIMAX",
-    title: "MiniMax Only",
-    description: "Use MiniMax for every generated question.",
-    detail: "Uses MiniMax's OpenAI-compatible API with thinking disabled for clean JSON.",
     icon: Sparkles,
   },
   {
@@ -246,8 +246,15 @@ export function StepFive() {
   function providerHealthNote(provider: AIProvider) {
     if (!health) return "";
     if (provider === "AUTO") {
+      const miniMaxConfigured = health.configuredProviders.includes("MINIMAX");
+      const miniMaxUsable = health.usableProviders.includes("MINIMAX");
+      const miniMaxNote = miniMaxConfigured
+        ? miniMaxUsable
+          ? "MiniMax usable in fallback. "
+          : "MiniMax in fallback, health check not usable now. "
+        : "";
       return health.usableProviders.length
-        ? `${health.usableProviders.length} usable provider${
+        ? `${miniMaxNote}${health.usableProviders.length} usable provider${
             health.usableProviders.length === 1 ? "" : "s"
           } now.`
         : "No usable provider in production.";

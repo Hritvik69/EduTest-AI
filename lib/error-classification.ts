@@ -148,9 +148,16 @@ export function providerHealthSummary(
   }
 
   if (snapshot.usableProviders.length) {
-    return `Usable providers: ${snapshot.usableProviders
+    const usable = `Usable providers: ${snapshot.usableProviders
       .map(providerLabel)
       .join(", ")}.`;
+    const unavailableConfigured = snapshot.providers
+      .filter((provider) => provider.configured && !provider.usable)
+      .map((provider) => `${provider.label}: ${providerHealthFailureLabel(provider)}`);
+
+    return unavailableConfigured.length
+      ? `${usable} Configured but not usable now: ${unavailableConfigured.join("; ")}.`
+      : usable;
   }
 
   const failed = snapshot.providers
