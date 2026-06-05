@@ -275,6 +275,96 @@ describe("source-backed completion", () => {
     expect(bank.missingCount()).toBe(0);
   });
 
+  it("completes the screenshot mixed-type replacement shape after stale source keys", () => {
+    const screenshotBlueprint: Blueprint = {
+      sections: [
+        sectionFor("MCQ", 4, 1),
+        sectionFor("SHORT", 1, 3),
+        sectionFor("ASSERTION_REASON", 2, 1),
+        sectionFor("TRUE_FALSE", 1, 1),
+        sectionFor("MATCH_FOLLOWING", 1, 3),
+      ],
+      totalQuestions: 9,
+      totalMarks: 13,
+      estimatedTime: 25,
+      competencyPercentage: 60,
+    };
+    const screenshotConfig: PaperConfig = {
+      ...config,
+      questionTypes: [
+        "MCQ",
+        "SHORT",
+        "ASSERTION_REASON",
+        "TRUE_FALSE",
+        "MATCH_FOLLOWING",
+      ],
+      totalQuestions: 9,
+      totalMarks: 13,
+      typeDistribution: {
+        MCQ: 4,
+        SHORT: 1,
+        ASSERTION_REASON: 2,
+        TRUE_FALSE: 1,
+        MATCH_FOLLOWING: 1,
+      },
+    };
+    const staleBank = new QuestionCandidateBank(
+      [],
+      screenshotBlueprint,
+      screenshotConfig,
+    );
+    const staleSourceQuestions = completeQuestionBankWithSourceBackedFallback({
+      bank: staleBank,
+      concepts: [longParagraphConcept()],
+      config: screenshotConfig,
+      throwOnInsufficientCapacity: true,
+    });
+    const invalidStaleCandidates = staleSourceQuestions.map((question) => ({
+      ...question,
+      marks: question.marks + 20,
+    }));
+    const bank = new QuestionCandidateBank(
+      invalidStaleCandidates,
+      screenshotBlueprint,
+      screenshotConfig,
+    );
+
+    expect(bank.readyCount()).toBe(0);
+    expect(bank.missingCount()).toBe(9);
+
+    const capacity = analyzeSourceBackedCompletionCapacity({
+      bank,
+      concepts: [longParagraphConcept()],
+      config: screenshotConfig,
+    });
+
+    expect(capacity.consumedAtomTypeKeys).toBe(9);
+    expect(capacity.rawAtomCapacity).toBeGreaterThanOrEqual(9);
+    expect(capacity.effectiveCapacity).toBe(9);
+    expect(capacity.enough).toBe(true);
+    expect(
+      Object.values(capacity.byType).some(
+        (item) => (item?.skipped.repeatedSourceKey ?? 0) > 0,
+      ),
+    ).toBe(true);
+
+    const completed = completeQuestionBankWithSourceBackedFallback({
+      bank,
+      concepts: [longParagraphConcept()],
+      config: screenshotConfig,
+      throwOnInsufficientCapacity: true,
+    });
+    const validation = bank.result();
+
+    expect(completed).toHaveLength(9);
+    expect(bank.readyCount()).toBe(9);
+    expect(bank.missingCount()).toBe(0);
+    expect(validation.rejectionReasons.DUPLICATE ?? 0).toBe(0);
+    expect(studentVisibleText(validation.questions)).not.toMatch(
+      /source detail|selected source|exact source|detail lens|noveltyAngle|sourceChunkFocus|answerPath|english-c|txt-a|chapter idea|question focus|according to the chapter|ideas from/i,
+    );
+  });
+
   it("generates distinct fixed-format stems for repeated source-backed formats", () => {
     const fixedBlueprint: Blueprint = {
       sections: [
@@ -699,6 +789,31 @@ function blueprintForCount(count: number): Blueprint {
     estimatedTime: count,
     competencyPercentage: 60,
   };
+}
+
+function studentVisibleText(questions: GeneratedQuestion[]) {
+  const values: string[] = [];
+
+  questions.forEach((question) => {
+    values.push(
+      question.text,
+      question.correctAnswer,
+      question.explanation,
+      question.scenario ?? "",
+      question.assertion ?? "",
+      question.reason ?? "",
+      question.diagramDescription ?? "",
+      ...(question.keyPoints ?? []),
+    );
+    question.options?.forEach((option) => values.push(option.text));
+    question.matchPairs?.forEach((pair) => values.push(pair.left, pair.right));
+    question.subQuestions?.forEach((subQuestion) => {
+      values.push(subQuestion.text, subQuestion.correctAnswer);
+      subQuestion.options?.forEach((option) => values.push(option.text));
+    });
+  });
+
+  return values.join(" ");
 }
 
 function sectionFor(

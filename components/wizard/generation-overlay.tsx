@@ -103,6 +103,12 @@ type SourceCapacityDiagnostics = {
       effectiveAvailable?: number;
       consumed: number;
       missing?: number;
+      skipped?: {
+        duplicate: number;
+        repeatedSourceKey: number;
+        validation: number;
+      };
+      blockerReasons?: string[];
     }
   >;
   duplicatePressure?: {
@@ -700,6 +706,9 @@ export function GenerationOverlay({
       : visibleProviderRecoveryMode === "source_backed_provider_outage"
       ? "Finishing from selected source text. Provider retry is not required for this run."
       : generationErrorGuidance(error, provider);
+  const displayedErrorMessage = error
+    ? generationDisplayErrorMessage(error, sourceTextShortage)
+    : "";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0e1a]/95 p-2 backdrop-blur-xl sm:p-4">
@@ -718,7 +727,7 @@ export function GenerationOverlay({
         </h2>
           <p className="mt-1 text-center text-sm text-slate-400">
             {error
-              ? error.message
+              ? displayedErrorMessage
               : "Progress and ETA are based on live generation events."}
           </p>
           {error?.paperId && error.recoverable ? (
@@ -738,7 +747,7 @@ export function GenerationOverlay({
               <span className="text-slate-400">Model: {providerModel}</span>
             ) : null}
           </div>
-          <p className="mt-2 text-slate-300">{error ? error.message : currentMessage}</p>
+          <p className="mt-2 text-slate-300">{error ? displayedErrorMessage : currentMessage}</p>
           {!error && providerRecoveryMode === "source_backed_provider_outage" ? (
             <p className="mt-2 text-xs font-semibold text-emerald-200">
               Finishing from selected TXT/PDF source text because provider fallback could not complete.
@@ -1393,9 +1402,35 @@ function sourceCapacityByTypeFromUnknown(
       effectiveAvailable,
       consumed,
       missing,
+      skipped: sourceCapacitySkippedFromUnknown(item.skipped),
+      blockerReasons: stringArrayValue(item.blockerReasons),
     };
     return items;
   }, {});
+}
+
+function sourceCapacitySkippedFromUnknown(
+  value: unknown,
+): NonNullable<
+  NonNullable<SourceCapacityDiagnostics["byType"]>[string]["skipped"]
+> | undefined {
+  if (!isRecord(value)) return undefined;
+  const duplicate = numberValue(value.duplicate);
+  const repeatedSourceKey = numberValue(value.repeatedSourceKey);
+  const validation = numberValue(value.validation);
+  if (
+    duplicate === undefined ||
+    repeatedSourceKey === undefined ||
+    validation === undefined
+  ) {
+    return undefined;
+  }
+
+  return {
+    duplicate,
+    repeatedSourceKey,
+    validation,
+  };
 }
 
 function sourceCapacityDuplicatePressureFromUnknown(
@@ -1510,6 +1545,20 @@ function isRealSourceCapacityFailure(
   return effectiveCapacity < capacity.requiredMissingCount;
 }
 
+function generationDisplayErrorMessage(
+  error: { message: string; sourceCapacity?: SourceCapacityDiagnostics },
+  sourceTextShortage: boolean,
+) {
+  if (!sourceTextShortage || !error.sourceCapacity) return error.message;
+
+  const capacity = error.sourceCapacity;
+  const effectiveCapacity =
+    capacity.effectiveCapacity ?? capacity.availableStrictCapacity;
+  const rawCapacity = capacity.rawAtomCapacity ?? capacity.availableStrictCapacity;
+
+  return `Selected source text can create ${effectiveCapacity}/${capacity.requiredMissingCount} strict replacement question${capacity.requiredMissingCount === 1 ? "" : "s"} from ${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}.`;
+}
+
 function sourceCapacityGuidance(capacity: SourceCapacityDiagnostics | undefined) {
   if (!capacity) {
     return "Selected TXT/PDF source text does not have enough distinct material for the requested replacements. Select more chapters/topics, upload more source text, or lower the question count.";
@@ -1526,11 +1575,40 @@ function sourceCapacityTypeSummary(capacity: SourceCapacityDiagnostics) {
   if (!entries.length) return "";
 
   return entries
-    .map(
-      ([type, item]) =>
+    .map(([type, item]) => {
+      const skipped = sourceCapacitySkippedSummary(item.skipped);
+      const blocker = item.blockerReasons?.[0];
+
+      return [
         `${type}: ${item.effectiveAvailable ?? item.available}/${item.required} effective${item.rawAvailable !== undefined ? ` (${item.rawAvailable} raw)` : ""}`,
-    )
+        skipped,
+        blocker,
+      ]
+        .filter(Boolean)
+        .join("; ");
+    })
     .join(" | ");
+}
+
+function sourceCapacitySkippedSummary(
+  skipped: NonNullable<
+    NonNullable<SourceCapacityDiagnostics["byType"]>[string]["skipped"]
+  > | undefined,
+) {
+  if (!skipped) return "";
+  const parts = [
+    skipped.repeatedSourceKey
+      ? `${skipped.repeatedSourceKey} reused key${skipped.repeatedSourceKey === 1 ? "" : "s"}`
+      : "",
+    skipped.duplicate
+      ? `${skipped.duplicate} duplicate${skipped.duplicate === 1 ? "" : "s"}`
+      : "",
+    skipped.validation
+      ? `${skipped.validation} invalid`
+      : "",
+  ].filter(Boolean);
+
+  return parts.length ? `skipped ${parts.join(", ")}` : "";
 }
 
 function continuationProgressFromError(error: unknown) {

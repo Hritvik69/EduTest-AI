@@ -28,6 +28,8 @@ export type SourceBackedCapacityTypeDiagnostics = {
   effectiveAvailable: number;
   consumed: number;
   missing: number;
+  skipped: SourceBackedSkipCounts;
+  blockerReasons: string[];
 };
 
 export type SourceBackedCapacityDiagnostics = {
@@ -47,6 +49,12 @@ export type SourceBackedCapacityDiagnostics = {
   byType: Partial<Record<QuestionType, SourceBackedCapacityTypeDiagnostics>>;
   blockerReasons: string[];
   enough: boolean;
+};
+
+export type SourceBackedSkipCounts = {
+  duplicate: number;
+  repeatedSourceKey: number;
+  validation: number;
 };
 
 type StrictCompletionOptions = {
@@ -159,6 +167,8 @@ export function analyzeSourceBackedCompletionCapacity({
       effectiveAvailable: 0,
       consumed: consumedForType,
       missing: required,
+      skipped: emptySourceBackedSkipCounts(),
+      blockerReasons: [],
     };
     rawAtomCapacity += Math.min(required, rawAvailable);
   });
@@ -188,6 +198,8 @@ export function analyzeSourceBackedCompletionCapacity({
     current.available = accepted;
     current.effectiveAvailable = accepted;
     current.missing = missing;
+    current.skipped = simulation.skippedByType[type] ?? emptySourceBackedSkipCounts();
+    current.blockerReasons = sourceBackedCapacityTypeBlockers(type, current);
     effectiveCapacity += accepted;
   });
 
@@ -285,23 +297,31 @@ function fillQuestionBankWithSourceBackedCandidates({
 }) {
   const missingBefore = bank.missingCount();
   const accepted: GeneratedQuestion[] = [];
-  const skipped = {
-    duplicate: 0,
-    repeatedSourceKey: 0,
-    validation: 0,
-  };
+  const skipped = emptySourceBackedSkipCounts();
+  const skippedByType: Partial<Record<QuestionType, SourceBackedSkipCounts>> = {};
 
   if (missingBefore <= 0 || !conceptPool.length) {
-    return { accepted, skipped, attempts: 0 };
+    return { accepted, skipped, skippedByType, attempts: 0 };
   }
 
   const candidateSpace = sourceBackedCandidateSpaceSize(conceptPool);
-  const attemptBudget = Math.max(
-    missingBefore,
-    missingBefore * Math.max(1, Math.floor(maxCandidatesPerMissing)),
-  );
-  const maxAttempts = Math.min(candidateSpace, attemptBudget);
-  const startSequence = startIndex ?? bank.allCandidates().length + 101;
+  const initialMissingByType = questionCountsBySectionType(bank.missingSections());
+  const maxAttemptsByType = new Map<QuestionType, number>();
+  initialMissingByType.forEach((required, type) => {
+    maxAttemptsByType.set(
+      type,
+      Math.min(
+        candidateSpace,
+        Math.max(
+          required,
+          conceptPool.length,
+          required * Math.max(1, Math.floor(maxCandidatesPerMissing)),
+        ),
+      ),
+    );
+  });
+  const attemptsByType = new Map<QuestionType, number>();
+  const cursorsByType = new Map<QuestionType, number>();
   const comparisonQuestions = bank.allCandidates();
   const usedSourceKeys = new Set(
     comparisonQuestions
@@ -309,31 +329,50 @@ function fillQuestionBankWithSourceBackedCandidates({
       .filter((key): key is string => Boolean(key)),
   );
   let attempts = 0;
+  let sectionCursor = 0;
 
   while (
     bank.missingCount() > 0 &&
-    attempts < maxAttempts &&
     !sourceBackedDeadlineReached(deadlineAt, minRemainingMs)
   ) {
-    const missingSections = bank.missingSections();
-    const section = missingSections[attempts % Math.max(1, missingSections.length)];
+    const eligibleSections = bank
+      .missingSections()
+      .filter((section) => {
+        const usedAttempts = attemptsByType.get(section.questionType) ?? 0;
+        const maxAttemptsForType =
+          maxAttemptsByType.get(section.questionType) ?? candidateSpace;
+        return usedAttempts < maxAttemptsForType;
+      });
+    if (!eligibleSections.length) break;
+
+    const section = eligibleSections[
+      sectionCursor % Math.max(1, eligibleSections.length)
+    ];
+    sectionCursor += 1;
     if (!section) break;
-    const candidate = sourceBackedQuestionForSequence(
+
+    const type = section.questionType;
+    const cursor =
+      cursorsByType.get(type) ??
+      sourceBackedCursorStartForType(type, startIndex, candidateSpace);
+    const candidate = sourceBackedQuestionForCursor(
       section,
       config,
       conceptPool,
-      startSequence + attempts,
+      cursor,
     );
+    cursorsByType.set(type, cursor + 1);
+    attemptsByType.set(type, (attemptsByType.get(type) ?? 0) + 1);
 
     attempts += 1;
     const sourceKey = sourceBackedUniquenessKey(candidate);
     if (sourceKey && usedSourceKeys.has(sourceKey)) {
-      skipped.repeatedSourceKey += 1;
+      recordSourceBackedSkip(skipped, skippedByType, type, "repeatedSourceKey");
       continue;
     }
 
     if (comparisonQuestions.some((item) => isDuplicateQuestion(item, candidate))) {
-      skipped.duplicate += 1;
+      recordSourceBackedSkip(skipped, skippedByType, type, "duplicate");
       continue;
     }
 
@@ -344,10 +383,10 @@ function fillQuestionBankWithSourceBackedCandidates({
       continue;
     }
 
-    skipped.validation += 1;
+    recordSourceBackedSkip(skipped, skippedByType, type, "validation");
   }
 
-  return { accepted, skipped, attempts };
+  return { accepted, skipped, skippedByType, attempts };
 }
 
 function sourceBackedCapacityBlockers({
@@ -368,15 +407,7 @@ function sourceBackedCapacityBlockers({
   requiredByType.forEach((required, type) => {
     const item = byType[type];
     if (!item || item.effectiveAvailable >= required) return;
-    if (item.rawAvailable >= required) {
-      blockers.push(
-        `${type} has raw source atoms but only ${item.effectiveAvailable}/${required} passed strict duplicate/format validation`,
-      );
-      return;
-    }
-    blockers.push(
-      `${type} has only ${item.rawAvailable}/${required} unused source atoms`,
-    );
+    blockers.push(...item.blockerReasons);
   });
 
   if (rawAtomCapacity >= requiredTotal(requiredByType) && effectiveCapacity < rawAtomCapacity) {
@@ -392,6 +423,34 @@ function sourceBackedCapacityBlockers({
   return Array.from(new Set(blockers)).slice(0, 5);
 }
 
+function sourceBackedCapacityTypeBlockers(
+  type: QuestionType,
+  item: SourceBackedCapacityTypeDiagnostics,
+) {
+  if (item.effectiveAvailable >= item.required) return [];
+
+  const blockers: string[] = [];
+  if (item.rawAvailable < item.required) {
+    blockers.push(`${type} has only ${item.rawAvailable}/${item.required} unused source atoms`);
+    return blockers;
+  }
+
+  blockers.push(
+    `${type} has raw source atoms but only ${item.effectiveAvailable}/${item.required} passed strict duplicate/format validation`,
+  );
+  if (item.skipped.repeatedSourceKey) {
+    blockers.push(`${type} skipped ${item.skipped.repeatedSourceKey} reused source atom/type key${item.skipped.repeatedSourceKey === 1 ? "" : "s"}`);
+  }
+  if (item.skipped.duplicate) {
+    blockers.push(`${type} skipped ${item.skipped.duplicate} duplicate candidate${item.skipped.duplicate === 1 ? "" : "s"}`);
+  }
+  if (item.skipped.validation) {
+    blockers.push(`${type} skipped ${item.skipped.validation} format-invalid candidate${item.skipped.validation === 1 ? "" : "s"}`);
+  }
+
+  return blockers;
+}
+
 function requiredTotal(requiredByType: Map<QuestionType, number>) {
   let total = 0;
   requiredByType.forEach((count) => {
@@ -405,6 +464,36 @@ function questionCountsByType(questions: GeneratedQuestion[]) {
     counts.set(question.type, (counts.get(question.type) ?? 0) + 1);
     return counts;
   }, new Map<QuestionType, number>());
+}
+
+function questionCountsBySectionType(sections: BlueprintSection[]) {
+  return sections.reduce((counts, section) => {
+    counts.set(
+      section.questionType,
+      (counts.get(section.questionType) ?? 0) + section.count,
+    );
+    return counts;
+  }, new Map<QuestionType, number>());
+}
+
+function emptySourceBackedSkipCounts(): SourceBackedSkipCounts {
+  return {
+    duplicate: 0,
+    repeatedSourceKey: 0,
+    validation: 0,
+  };
+}
+
+function recordSourceBackedSkip(
+  total: SourceBackedSkipCounts,
+  byType: Partial<Record<QuestionType, SourceBackedSkipCounts>>,
+  type: QuestionType,
+  reason: keyof SourceBackedSkipCounts,
+) {
+  total[reason] += 1;
+  const typeSkipped = byType[type] ?? emptySourceBackedSkipCounts();
+  typeSkipped[reason] += 1;
+  byType[type] = typeSkipped;
 }
 
 export function generateSourceBackedFallbackQuestions(
@@ -538,7 +627,17 @@ function sourceBackedQuestionForSequence(
   conceptPool: NormalizedConcept[],
   sequence: number,
 ) {
-  const normalizedSequence = Math.max(0, Math.floor(sequence));
+  return sourceBackedQuestionForCursor(section, config, conceptPool, sequence);
+}
+
+function sourceBackedQuestionForCursor(
+  section: BlueprintSection,
+  config: PaperConfig,
+  conceptPool: NormalizedConcept[],
+  cursor: number,
+) {
+  const candidateSpace = sourceBackedCandidateSpaceSize(conceptPool);
+  const normalizedSequence = positiveModulo(Math.floor(cursor), candidateSpace);
   const concept = conceptPool[normalizedSequence % conceptPool.length];
   const variantSequence = Math.floor(normalizedSequence / conceptPool.length) + 1;
 
@@ -553,6 +652,27 @@ function sourceBackedQuestionForSequence(
 
 function sourceBackedCandidateSpaceSize(conceptPool: NormalizedConcept[]) {
   return Math.max(1, conceptPool.length * variantSlotCount());
+}
+
+function sourceBackedCursorStartForType(
+  type: QuestionType,
+  startIndex: number | undefined,
+  candidateSpace: number,
+) {
+  return positiveModulo((startIndex ?? 0) + sourceBackedTypeSeed(type), candidateSpace);
+}
+
+function sourceBackedTypeSeed(type: QuestionType) {
+  let seed = 0;
+  String(type).split("").forEach((char) => {
+    seed = (seed * 33 + char.charCodeAt(0)) >>> 0;
+  });
+  return seed;
+}
+
+function positiveModulo(value: number, divisor: number) {
+  if (!Number.isFinite(value) || divisor <= 0) return 0;
+  return ((value % divisor) + divisor) % divisor;
 }
 
 function sourceBackedDeadlineReached(deadlineAt: number | undefined, minRemainingMs: number) {
@@ -581,15 +701,10 @@ function baseQuestion(
         correctAnswer: "B",
       };
     case "ASSERTION_REASON":
-      return {
-        text: `Assertion (A): ${sentenceCase(stripFinalPunctuation(idea))} needs a ${skill} explanation.\nReason (R): ${sentenceCase(toStatement(summary))}`,
-        assertion: `${sentenceCase(stripFinalPunctuation(idea))} needs a ${skill} explanation.`,
-        reason: sentenceCase(toStatement(summary)),
-        correctAnswer: "A",
-      };
+      return assertionReasonQuestion(summary, idea, skill);
     case "TRUE_FALSE":
       return {
-        text: sentenceCase(toStatement(summary)),
+        text: trueFalseQuestionText(summary, skill),
         correctAnswer: "True",
       };
     case "ONE_WORD":
@@ -612,7 +727,7 @@ function baseQuestion(
       return matchQuestion(concept, variant);
     case "SHORT":
       return {
-        text: `Explain ${idea}, focusing on ${skill}.`,
+        text: shortQuestionText(idea, skill),
         correctAnswer: `${summary} ${keyPoint}`,
         keyPoints: [summary, keyPoint, "Connect the reason to the concept."],
       };
@@ -675,6 +790,30 @@ function baseQuestion(
         keyPoints: [summary, keyPoint],
       };
   }
+}
+
+function assertionReasonQuestion(
+  summary: string,
+  idea: string,
+  skill: string,
+): Partial<GeneratedQuestion> {
+  const assertion = `${sentenceCase(stripFinalPunctuation(idea))} can be understood through ${skill}.`;
+  const reason = `${sentenceCase(toStatement(summary))} This gives the ${skill} clue.`;
+
+  return {
+    text: `Assertion (A): ${assertion}\nReason (R): ${reason}`,
+    assertion,
+    reason,
+    correctAnswer: "A",
+  };
+}
+
+function trueFalseQuestionText(summary: string, skill: string) {
+  return `True or False: The ${skill} clue shows that ${lowerFirst(stripFinalPunctuation(summary))}.`;
+}
+
+function shortQuestionText(idea: string, skill: string) {
+  return `Explain the ${skill} point in ${idea}.`;
 }
 
 function sourceBasedQuestion(
@@ -741,9 +880,10 @@ function matchQuestion(
   const summary = studentVisibleSummary(concept.summary, 140);
   const skill = visibleSkillFor(variant);
   const pairs = subjectMatchPairs(concept, summary, skill);
+  const focus = matchFocusPhrase(summary);
 
   return {
-    text: `Match the ${skill} clues for ${oneWordAnswer(summary)} with their meanings.`,
+    text: `Match the ${skill} clues about ${focus} with their meanings.`,
     matchPairs: pairs,
     correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
   };
@@ -826,7 +966,13 @@ function ideaPhrase(summary: string) {
 function mcqQuestionText(skill: string, summary: string) {
   const motionQuestion = motionMcqQuestion(summary);
   if (motionQuestion) return motionQuestion;
-  return `${mcqLeadForSkill(skill)} ${ideaPhrase(summary)}?`;
+  return `${mcqLeadForSkill(skill)} the ${skill} clue about ${mcqFocusPhrase(summary)} in ${ideaPhrase(summary)}?`;
+}
+
+function mcqFocusPhrase(summary: string) {
+  const words = distinctiveSourceWords(summary);
+  const phrase = uniqueInOrder([...words.slice(0, 3), ...words.slice(-3)]).join(" ");
+  return phrase || oneWordAnswer(summary).toLowerCase();
 }
 
 function motionMcqQuestion(summary: string) {
@@ -919,12 +1065,17 @@ function subjectMatchPairs(
   }
 
   const conceptTerm = sentenceCase(oneWordAnswer(summary));
+  const atomLabel = sentenceCase(trimToSentence(concept.atomLabel, 90));
   return [
     { left: conceptTerm, right: trimToSentence(summary, 110) },
-    { left: "Observation", right: "A visible clue used to explain the concept" },
+    { left: "Focused clue", right: atomLabel },
     { left: "Reason", right: visibleKeyPoint(skill) },
     { left: "Application", right: "Use the idea in a relevant situation" },
   ];
+}
+
+function matchFocusPhrase(summary: string) {
+  return keyPhrase(summary).split(/\s+/).slice(0, 4).join(" ") || oneWordAnswer(summary);
 }
 
 function isMotionConcept(concept: NormalizedConcept, summary: string) {
@@ -1890,6 +2041,23 @@ function keyPhrase(value: string) {
     .slice(0, 7);
 
   return words.length ? words.join(" ") : trimToSentence(value, 70);
+}
+
+function distinctiveSourceWords(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter((word) => word.length > 3 && !sourceAtomStopWords.has(word));
+}
+
+function uniqueInOrder(values: string[]) {
+  const seen = new Set<string>();
+  return values.filter((value) => {
+    if (!value || seen.has(value)) return false;
+    seen.add(value);
+    return true;
+  });
 }
 
 function normalizeAtomKey(value: string) {
