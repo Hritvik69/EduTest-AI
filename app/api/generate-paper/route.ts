@@ -57,6 +57,7 @@ import {
   analyzeSourceBackedCompletionCapacity,
   completeQuestionBankWithSourceBackedFallback,
   hasSourceBackedFallbackConcepts,
+  retargetSourceBackedCompletionForGuaranteedFinalRepair,
   sourceBackedCapacityError,
   sourceBackedCapacityMessage,
   sourceBackedCompletionMarker,
@@ -85,6 +86,7 @@ import type {
   GenerationRiskLevel,
   PaperConfig,
   QuestionCompositionItem,
+  QuestionType,
   StoredPaper,
 } from "@/types";
 
@@ -2225,13 +2227,16 @@ async function validateGeneratedPaperSkippingInvalid({
   onActiveOperation?: (operation: ActiveGenerationOperation) => void;
   onProviderUnavailable?: (error: unknown) => void | Promise<void>;
 }) {
-  const bank = resumeState
+  let bank = resumeState
     ? QuestionCandidateBank.fromGenerationState(resumeState, blueprint, config)
     : new QuestionCandidateBank(questions, blueprint, config);
+  let activeBlueprint = blueprint;
+  let activeConfig = config;
   const targetQuestionCount = blueprint.totalQuestions;
   let stoppedForServerBudget = Boolean(partialFinalizationReason);
   let lastRepairError: string | undefined;
   let sourceBackedCompletedQuestions = 0;
+  const guaranteedCompletionWarnings: Array<{ type: string; reason: string }> = [];
   const stateCreatedAt = resumeState?.createdAt ?? new Date().toISOString();
   const sourceBackedRepairRecoveryAvailable =
     allowSourceBackedCompletion && hasSourceBackedFallbackConcepts(scopedConcepts);
@@ -2294,7 +2299,7 @@ async function validateGeneratedPaperSkippingInvalid({
         break;
       }
 
-      const repairBlueprint = blueprintForSections(blueprint, missingSections);
+      const repairBlueprint = blueprintForSections(activeBlueprint, missingSections);
       await persistBank(
         "IN_PROGRESS",
         "REPAIR",
@@ -2314,7 +2319,7 @@ async function validateGeneratedPaperSkippingInvalid({
         replacements = await generateBlueprintQuestions(
           repairBlueprint,
           conceptContext,
-          config,
+          activeConfig,
           {
             availableTopics,
             allowPartial: true,
@@ -2401,61 +2406,88 @@ async function validateGeneratedPaperSkippingInvalid({
     const sourceCapacity = analyzeSourceBackedCompletionCapacity({
       bank,
       concepts: scopedConcepts,
-      config,
+      config: activeConfig,
     });
     if (!sourceCapacity.enough) {
+      const guaranteedCompletion =
+        retargetSourceBackedCompletionForGuaranteedFinalRepair({
+          bank,
+          concepts: scopedConcepts,
+          blueprint: activeBlueprint,
+          config: activeConfig,
+          sourceCapacity,
+        });
+      if (guaranteedCompletion) {
+        bank = guaranteedCompletion.bank;
+        activeBlueprint = guaranteedCompletion.blueprint;
+        activeConfig = guaranteedCompletion.config;
+        guaranteedCompletionWarnings.push({
+          type: "source-backed-guaranteed-completion",
+          reason: guaranteedCompletion.warning,
+        });
+        await persistBank(
+          "IN_PROGRESS",
+          "REPAIR",
+          (resumeState?.attemptCount ?? 0) + 4,
+          guaranteedCompletion.warning,
+          sourceBackedCapacityMessage(sourceCapacity),
+        );
+      } else {
+        await persistBank(
+          "FAILED",
+          "REPAIR",
+          (resumeState?.attemptCount ?? 0) + 4,
+          undefined,
+          sourceBackedCapacityMessage(sourceCapacity),
+        );
+        throw sourceBackedCapacityError(
+          "replacing invalid or duplicate questions",
+          sourceCapacity,
+        );
+      }
+    }
+
+    if (bank.missingCount() > 0) {
+      send({
+        step: 6,
+        pct: 94,
+        progress: 94,
+        msg: "Completing remaining questions from selected source text...",
+      });
+      const beforeCompletionReady = bank.readyCount();
+      const completionQuestions = completeQuestionBankWithSourceBackedFallback({
+        bank,
+        concepts: scopedConcepts,
+        config: activeConfig,
+        startIndex: bank.allCandidates().length + 101,
+        deadlineAt,
+        minRemainingMs: sourceBackedCompletionReserveMs(),
+        throwOnInsufficientCapacity: true,
+        capacityScope: "replacing invalid or duplicate questions",
+      });
+      if (
+        bank.missingCount() > 0 &&
+        sourceBackedCompletionDeadlineReached(deadlineAt)
+      ) {
+        stoppedForServerBudget = true;
+      }
+
+      sourceBackedCompletedQuestions = Math.max(
+        0,
+        bank.readyCount() - beforeCompletionReady,
+      );
       await persistBank(
-        "FAILED",
+        bank.missingCount() > 0 ? "IN_PROGRESS" : "READY",
         "REPAIR",
         (resumeState?.attemptCount ?? 0) + 4,
-        undefined,
-        sourceBackedCapacityMessage(sourceCapacity),
-      );
-      throw sourceBackedCapacityError(
-        "replacing invalid or duplicate questions",
-        sourceCapacity,
+        sourceBackedCompletedQuestions
+          ? `Accepted ${sourceBackedCompletedQuestions} selected-source completion question${sourceBackedCompletedQuestions === 1 ? "" : "s"}.`
+          : completionQuestions.length
+            ? "Selected-source completion candidates were generated but did not pass validation."
+            : "Selected source text cannot produce enough 100% distinct completion candidates.",
+        lastRepairError,
       );
     }
-
-    send({
-      step: 6,
-      pct: 94,
-      progress: 94,
-      msg: "Completing remaining questions from selected source text...",
-    });
-    const beforeCompletionReady = bank.readyCount();
-    const completionQuestions = completeQuestionBankWithSourceBackedFallback({
-      bank,
-      concepts: scopedConcepts,
-      config,
-      startIndex: bank.allCandidates().length + 101,
-      deadlineAt,
-      minRemainingMs: sourceBackedCompletionReserveMs(),
-      throwOnInsufficientCapacity: true,
-      capacityScope: "replacing invalid or duplicate questions",
-    });
-    if (
-      bank.missingCount() > 0 &&
-      sourceBackedCompletionDeadlineReached(deadlineAt)
-    ) {
-      stoppedForServerBudget = true;
-    }
-
-    sourceBackedCompletedQuestions = Math.max(
-      0,
-      bank.readyCount() - beforeCompletionReady,
-    );
-    await persistBank(
-      bank.missingCount() > 0 ? "IN_PROGRESS" : "READY",
-      "REPAIR",
-      (resumeState?.attemptCount ?? 0) + 4,
-      sourceBackedCompletedQuestions
-        ? `Accepted ${sourceBackedCompletedQuestions} selected-source completion question${sourceBackedCompletedQuestions === 1 ? "" : "s"}.`
-        : completionQuestions.length
-          ? "Selected-source completion candidates were generated but did not pass validation."
-          : "Selected source text cannot produce enough 100% distinct completion candidates.",
-      lastRepairError,
-    );
   }
 
   const validation = bank.result();
@@ -2470,6 +2502,10 @@ async function validateGeneratedPaperSkippingInvalid({
         },
       ]
     : [];
+  const validationWarnings = [
+    ...sourceBackedCompletionWarnings,
+    ...guaranteedCompletionWarnings,
+  ];
 
   if (remainingMissingQuestions > 0) {
     if (stoppedForServerBudget) {
@@ -2492,7 +2528,7 @@ async function validateGeneratedPaperSkippingInvalid({
       const sourceCapacity = analyzeSourceBackedCompletionCapacity({
         bank,
         concepts: scopedConcepts,
-        config,
+        config: activeConfig,
       });
       const topRejectionReasons = Object.entries(validation.rejectionReasons ?? {})
         .map(([key, count]) => [key, Number(count) || 0] as const)
@@ -2539,7 +2575,7 @@ async function validateGeneratedPaperSkippingInvalid({
         ...validation,
         skipped: [
           ...validation.skipped,
-          ...sourceBackedCompletionWarnings,
+          ...validationWarnings,
           {
             type: "server-time-budget",
             reason: `${reason} Generated ${readyCount}/${targetQuestionCount} valid question${readyCount === 1 ? "" : "s"}; ${remainingMissingQuestions} requested question${remainingMissingQuestions === 1 ? "" : "s"} could not be generated in time.`,
@@ -2572,7 +2608,7 @@ async function validateGeneratedPaperSkippingInvalid({
 
   return {
     ...validation,
-    skipped: [...validation.skipped, ...sourceBackedCompletionWarnings],
+    skipped: [...validation.skipped, ...validationWarnings],
     replacedQuestions,
     remainingMissingQuestions,
     sourceBackedCompletedQuestions,

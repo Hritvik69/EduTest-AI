@@ -4,6 +4,7 @@ import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
 import {
   analyzeSourceBackedCompletionCapacity,
   completeQuestionBankWithSourceBackedFallback,
+  retargetSourceBackedCompletionForGuaranteedFinalRepair,
   sourceBackedCapacityMessage,
   sourceBackedCompletionMarker,
 } from "@/lib/source-backed-fallback";
@@ -363,6 +364,126 @@ describe("source-backed completion", () => {
     expect(studentVisibleText(validation.questions)).not.toMatch(
       /source detail|selected source|exact source|detail lens|noveltyAngle|sourceChunkFocus|answerPath|english-c|txt-a|chapter idea|question focus|according to the chapter|ideas from/i,
     );
+  });
+
+  it("retargets fragile final repair formats to same-mark robust formats", () => {
+    const fragileBlueprint: Blueprint = {
+      sections: [
+        sectionFor("MCQ", 3, 1),
+        sectionFor("TRUE_FALSE", 2, 1),
+        sectionFor("MATCH_FOLLOWING", 1, 3),
+      ],
+      totalQuestions: 6,
+      totalMarks: 8,
+      estimatedTime: 20,
+      competencyPercentage: 60,
+    };
+    const fragileConfig: PaperConfig = {
+      ...config,
+      questionTypes: ["MCQ", "TRUE_FALSE", "MATCH_FOLLOWING"],
+      totalQuestions: 6,
+      totalMarks: 8,
+      typeDistribution: {
+        MCQ: 3,
+        TRUE_FALSE: 2,
+        MATCH_FOLLOWING: 1,
+      },
+    };
+    const staleBank = new QuestionCandidateBank(
+      [],
+      fragileBlueprint,
+      fragileConfig,
+    );
+    const staleSourceQuestions = completeQuestionBankWithSourceBackedFallback({
+      bank: staleBank,
+      concepts: [longParagraphConcept()],
+      config: fragileConfig,
+      throwOnInsufficientCapacity: true,
+    });
+    const bank = new QuestionCandidateBank(
+      staleSourceQuestions.map((question) => ({
+        ...question,
+        marks: question.marks + 20,
+      })),
+      fragileBlueprint,
+      fragileConfig,
+    );
+    const capacity = analyzeSourceBackedCompletionCapacity({
+      bank,
+      concepts: [longParagraphConcept()],
+      config: fragileConfig,
+    });
+    const screenshotCapacity = {
+      ...capacity,
+      requiredMissingCount: 6,
+      effectiveCapacity: 3,
+      effectiveMissingCount: 3,
+      availableStrictCapacity: 3,
+      enough: false,
+      byType: {
+        ...capacity.byType,
+        MCQ: {
+          ...capacity.byType.MCQ!,
+          required: 3,
+          effectiveAvailable: 3,
+          available: 3,
+          missing: 0,
+        },
+        TRUE_FALSE: {
+          ...capacity.byType.TRUE_FALSE!,
+          required: 2,
+          effectiveAvailable: 0,
+          available: 0,
+          missing: 2,
+        },
+        MATCH_FOLLOWING: {
+          ...capacity.byType.MATCH_FOLLOWING!,
+          required: 1,
+          effectiveAvailable: 0,
+          available: 0,
+          missing: 1,
+        },
+      },
+    };
+
+    const retarget = retargetSourceBackedCompletionForGuaranteedFinalRepair({
+      bank,
+      concepts: [longParagraphConcept()],
+      blueprint: fragileBlueprint,
+      config: fragileConfig,
+      sourceCapacity: screenshotCapacity,
+    });
+
+    expect(retarget).not.toBeNull();
+    expect(retarget?.conversions).toEqual([
+      { from: "TRUE_FALSE", to: "MCQ", count: 2 },
+      { from: "MATCH_FOLLOWING", to: "SHORT", count: 1 },
+    ]);
+    expect(retarget?.warning).toContain(
+      "Converted 2 TRUE_FALSE replacements to MCQ and 1 MATCH_FOLLOWING replacement to SHORT",
+    );
+
+    const completed = completeQuestionBankWithSourceBackedFallback({
+      bank: retarget!.bank,
+      concepts: [longParagraphConcept()],
+      config: retarget!.config,
+      throwOnInsufficientCapacity: true,
+    });
+    const validation = retarget!.bank.result();
+
+    expect(completed).toHaveLength(6);
+    expect(retarget!.bank.readyCount()).toBe(6);
+    expect(retarget!.bank.missingCount()).toBe(0);
+    expect(validation.blueprint.totalQuestions).toBe(6);
+    expect(validation.blueprint.totalMarks).toBe(8);
+    expect(validation.config.typeDistribution).toMatchObject({
+      MCQ: 5,
+      SHORT: 1,
+    });
+    expect(validation.questions.every((question) =>
+      question.noveltyAngle?.startsWith(sourceBackedCompletionMarker),
+    )).toBe(true);
+    expect(validation.rejectionReasons.DUPLICATE ?? 0).toBe(0);
   });
 
   it("generates distinct fixed-format stems for repeated source-backed formats", () => {

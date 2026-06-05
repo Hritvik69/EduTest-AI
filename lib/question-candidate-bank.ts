@@ -131,6 +131,12 @@ export class QuestionCandidateBank {
     );
   }
 
+  retarget(blueprint: Blueprint, config: PaperConfig) {
+    return new QuestionCandidateBank(this.candidates, blueprint, config, {
+      initialReadyCount: this.initialReadyCount,
+    });
+  }
+
   missingSections() {
     return missingSectionsForBlueprint(this.validation.questions, this.blueprint);
   }

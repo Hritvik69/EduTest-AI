@@ -7,6 +7,7 @@ import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
 import type {
   BloomLevel,
   BlueprintSection,
+  Blueprint,
   ConceptData,
   Difficulty,
   GeneratedQuestion,
@@ -55,6 +56,20 @@ export type SourceBackedSkipCounts = {
   duplicate: number;
   repeatedSourceKey: number;
   validation: number;
+};
+
+export type SourceBackedGuaranteedConversion = {
+  from: QuestionType;
+  to: QuestionType;
+  count: number;
+};
+
+export type SourceBackedGuaranteedCompletionRetarget = {
+  bank: QuestionCandidateBank;
+  blueprint: Blueprint;
+  config: PaperConfig;
+  conversions: SourceBackedGuaranteedConversion[];
+  warning: string;
 };
 
 type StrictCompletionOptions = {
@@ -276,6 +291,176 @@ export function sourceBackedCapacityMessage(
     : "";
 
   return `Required ${diagnostics.requiredMissingCount}; effective source capacity ${diagnostics.effectiveCapacity}; raw atom capacity ${diagnostics.rawAtomCapacity}; source concepts ${diagnostics.sourceConceptCount}; source atoms ${diagnostics.atomCount}; consumed atom/type keys ${diagnostics.consumedAtomTypeKeys}${typeSummary ? `; by type ${typeSummary}` : ""}.${blockerSummary} Select more chapters/topics, upload more source text, or lower the question count.`;
+}
+
+export function retargetSourceBackedCompletionForGuaranteedFinalRepair({
+  bank,
+  concepts,
+  blueprint,
+  config,
+  sourceCapacity,
+}: {
+  bank: QuestionCandidateBank;
+  concepts: ConceptData[];
+  blueprint: Blueprint;
+  config: PaperConfig;
+  sourceCapacity: SourceBackedCapacityDiagnostics;
+}): SourceBackedGuaranteedCompletionRetarget | null {
+  const conversions = guaranteedCompletionConversions(bank, sourceCapacity);
+  if (!conversions.length) return null;
+
+  const nextBlueprint = blueprintWithGuaranteedCompletionConversions(
+    blueprint,
+    bank,
+    conversions,
+  );
+  const nextConfig = configForGuaranteedCompletionConversions(config, nextBlueprint);
+  const nextBank = bank.retarget(nextBlueprint, nextConfig);
+  const nextCapacity = analyzeSourceBackedCompletionCapacity({
+    bank: nextBank,
+    concepts,
+    config: nextConfig,
+  });
+
+  if (!nextCapacity.enough) return null;
+
+  return {
+    bank: nextBank,
+    blueprint: nextBlueprint,
+    config: nextConfig,
+    conversions,
+    warning: guaranteedCompletionWarning(conversions),
+  };
+}
+
+function guaranteedCompletionConversions(
+  bank: QuestionCandidateBank,
+  sourceCapacity: SourceBackedCapacityDiagnostics,
+) {
+  return bank
+    .missingSections()
+    .map((section) => {
+      const replacement = guaranteedCompletionReplacementFor(section.questionType);
+      if (!replacement) return null;
+
+      const item = sourceCapacity.byType[section.questionType];
+      if (!item) return null;
+      if (item.rawAvailable < section.count) return null;
+      if (item.effectiveAvailable >= section.count) return null;
+
+      return {
+        from: section.questionType,
+        to: replacement,
+        count: section.count,
+      };
+    })
+    .filter((item): item is SourceBackedGuaranteedConversion => Boolean(item));
+}
+
+function guaranteedCompletionReplacementFor(type: QuestionType): QuestionType | null {
+  if (type === "TRUE_FALSE") return "MCQ";
+  if (type === "MATCH_FOLLOWING") return "SHORT";
+  return null;
+}
+
+function blueprintWithGuaranteedCompletionConversions(
+  blueprint: Blueprint,
+  bank: QuestionCandidateBank,
+  conversions: SourceBackedGuaranteedConversion[],
+): Blueprint {
+  const conversionBySource = conversions.reduce<
+    Partial<Record<QuestionType, SourceBackedGuaranteedConversion>>
+  >((items, conversion) => {
+    items[conversion.from] = conversion;
+    return items;
+  }, {});
+  const nextSections: BlueprintSection[] = [];
+
+  blueprint.sections.forEach((section) => {
+    const conversion = conversionBySource[section.questionType];
+    const convertedCount = conversion?.count ?? 0;
+    const remainingCount = Math.max(0, section.count - convertedCount);
+    if (remainingCount > 0) {
+      mergeBlueprintSection(nextSections, {
+        ...section,
+        count: remainingCount,
+        totalMarks: remainingCount * section.marksPerQuestion,
+      });
+    }
+  });
+
+  conversions.forEach((conversion) => {
+    const sourceSection = bank
+      .missingSections()
+      .find((section) => section.questionType === conversion.from);
+    const existingTarget = blueprint.sections.find(
+      (section) => section.questionType === conversion.to,
+    );
+    const template = existingTarget ?? sourceSection;
+    if (!template) return;
+
+    mergeBlueprintSection(nextSections, {
+      ...template,
+      name: existingTarget?.name ?? `Section ${conversion.to}`,
+      questionType: conversion.to,
+      count: conversion.count,
+      totalMarks: conversion.count * template.marksPerQuestion,
+    });
+  });
+
+  return {
+    ...blueprint,
+    sections: nextSections,
+    totalQuestions: nextSections.reduce((sum, section) => sum + section.count, 0),
+    totalMarks: nextSections.reduce((sum, section) => sum + section.totalMarks, 0),
+  };
+}
+
+function mergeBlueprintSection(
+  sections: BlueprintSection[],
+  section: BlueprintSection,
+) {
+  const existing = sections.find((item) => item.questionType === section.questionType);
+  if (!existing) {
+    sections.push(section);
+    return;
+  }
+
+  existing.count += section.count;
+  existing.totalMarks += section.totalMarks;
+}
+
+function configForGuaranteedCompletionConversions(
+  config: PaperConfig,
+  blueprint: Blueprint,
+): PaperConfig {
+  const typeDistribution = blueprint.sections.reduce<
+    Partial<Record<QuestionType, number>>
+  >((items, section) => {
+    items[section.questionType] = section.count;
+    return items;
+  }, {});
+
+  return {
+    ...config,
+    questionTypes: blueprint.sections.map((section) => section.questionType),
+    typeDistribution,
+    totalQuestions: blueprint.totalQuestions,
+    totalMarks: blueprint.totalMarks,
+  };
+}
+
+function guaranteedCompletionWarning(
+  conversions: SourceBackedGuaranteedConversion[],
+) {
+  const summary = conversions
+    .map(
+      (conversion) =>
+        `${conversion.count} ${conversion.from} replacement${conversion.count === 1 ? "" : "s"} to ${conversion.to}`,
+    )
+    .join(" and ");
+
+  return `Converted ${summary} to complete strict source-backed repair.`;
 }
 
 function fillQuestionBankWithSourceBackedCandidates({
