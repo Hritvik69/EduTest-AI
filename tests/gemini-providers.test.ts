@@ -17,6 +17,10 @@ describe("multi-provider JSON generation", () => {
     delete process.env.CEREBRAS_MODEL;
     delete process.env.DEEPSEEK_API_KEY;
     delete process.env.DEEPSEEK_MODEL;
+    delete process.env.MINIMAX_API_KEY;
+    delete process.env.MINIMAX_MODEL;
+    delete process.env.MINIMAX_BASE_URL;
+    delete process.env.MINIMAX_CHAT_COMPLETIONS_URL;
     delete process.env.OPENROUTER_API_KEY;
     delete process.env.GITHUB_MODELS_TOKEN;
     delete process.env.GITHUB_MODELS_MODEL;
@@ -186,6 +190,34 @@ describe("multi-provider JSON generation", () => {
     const body = JSON.parse(String(init?.body));
     expect(body.model).toBe("deepseek-v4-flash");
     expect(body.max_tokens).toBe(1500);
+    expect(body.messages[0].content).toContain("System rules");
+    expect(body.messages[1].content).toBe("Return JSON");
+  });
+
+  it("sends MiniMax requests through the OpenAI-compatible endpoint", async () => {
+    process.env.MINIMAX_API_KEY = "minimax-test-key";
+    process.env.MINIMAX_MODEL = "MiniMax-M3";
+    const fetchMock = mockJSONFetch({ ok: true });
+    const { generateJSON } = await import("@/lib/gemini");
+
+    const result = await generateJSON<{ ok: boolean }>("Return JSON", {
+      provider: "MINIMAX",
+      systemInstruction: "System rules",
+      maxOutputTokens: 1600,
+    });
+
+    expect(result.ok).toBe(true);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("https://api.minimax.io/v1/chat/completions");
+    expect((init?.headers as Record<string, string>).Authorization).toBe(
+      "Bearer minimax-test-key",
+    );
+    const body = JSON.parse(String(init?.body));
+    expect(body.model).toBe("MiniMax-M3");
+    expect(body.max_completion_tokens).toBe(1600);
+    expect(body.max_tokens).toBeUndefined();
+    expect(body.thinking).toEqual({ type: "disabled" });
     expect(body.messages[0].content).toContain("System rules");
     expect(body.messages[1].content).toBe("Return JSON");
   });
@@ -723,6 +755,7 @@ describe("multi-provider JSON generation", () => {
     process.env.MISTRAL_API_KEY = "mistral-test-key";
     process.env.CEREBRAS_API_KEY = "csk-test-key";
     process.env.DEEPSEEK_API_KEY = "deepseek-test-key";
+    process.env.MINIMAX_API_KEY = "minimax-test-key";
     process.env.OPENROUTER_API_KEY = "sk-or-test-key";
     process.env.GITHUB_MODELS_TOKEN = "github-token-test";
     process.env.COHERE_API_KEY = "cohere-test-key";
@@ -739,6 +772,7 @@ describe("multi-provider JSON generation", () => {
     expect(payload.data.mistral).toBe(true);
     expect(payload.data.cerebras).toBe(true);
     expect(payload.data.deepseek).toBe(true);
+    expect(payload.data.minimax).toBe(true);
     expect(payload.data.openrouter).toBe(true);
     expect(payload.data.githubModels).toBe(true);
     expect(payload.data.cohere).toBe(true);
@@ -752,6 +786,7 @@ describe("multi-provider JSON generation", () => {
     expect(JSON.stringify(payload)).not.toContain("mistral-test-key");
     expect(JSON.stringify(payload)).not.toContain("csk-test-key");
     expect(JSON.stringify(payload)).not.toContain("deepseek-test-key");
+    expect(JSON.stringify(payload)).not.toContain("minimax-test-key");
     expect(JSON.stringify(payload)).not.toContain("xai-test-key");
     expect(JSON.stringify(payload)).not.toContain("sk-or-test-key");
   }, 20_000);

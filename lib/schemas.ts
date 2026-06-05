@@ -35,6 +35,7 @@ export const aiProviderValues = [
   "MISTRAL",
   "CEREBRAS",
   "DEEPSEEK",
+  "MINIMAX",
   "OPENROUTER",
   "GITHUB_MODELS",
   "COHERE",

@@ -245,6 +245,8 @@ function ConfirmationScreen({
             ? "Cerebras Only"
           : config.aiProvider === "DEEPSEEK"
             ? "DeepSeek Only"
+          : config.aiProvider === "MINIMAX"
+            ? "MiniMax Only"
         : config.aiProvider === "OPENROUTER"
           ? "OpenRouter Only"
       : config.aiProvider === "GITHUB_MODELS"

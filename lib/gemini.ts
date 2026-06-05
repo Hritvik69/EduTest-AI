@@ -16,6 +16,8 @@ type ChatCompletionProviderConfig = {
   apiKey: string;
   model: string;
   headers: Record<string, string>;
+  extraBody?: Record<string, unknown>;
+  tokenLimitField?: "max_tokens" | "max_completion_tokens";
 };
 
 export type AIProviderHealthStatus = {
@@ -44,6 +46,7 @@ const autoFallbackOrder: DirectAIProvider[] = [
   "GEMINI",
   "GROQ",
   "MISTRAL",
+  "MINIMAX",
   "GITHUB_MODELS",
   "OPENROUTER",
   "CEREBRAS",
@@ -57,6 +60,7 @@ const taskFallbackOrders: Record<AITask, DirectAIProvider[]> = {
   PDF_EXTRACTION: [
     "GEMINI",
     "MISTRAL",
+    "MINIMAX",
     "CEREBRAS",
     "DEEPSEEK",
     "OPENROUTER",
@@ -71,6 +75,7 @@ const taskFallbackOrders: Record<AITask, DirectAIProvider[]> = {
     "GEMINI",
     "GROQ",
     "MISTRAL",
+    "MINIMAX",
     "GITHUB_MODELS",
     "OPENROUTER",
     "CEREBRAS",
@@ -84,6 +89,7 @@ const taskFallbackOrders: Record<AITask, DirectAIProvider[]> = {
     "GROQ",
     "CEREBRAS",
     "MISTRAL",
+    "MINIMAX",
     "GEMINI",
     "OPENROUTER",
     "GITHUB_MODELS",
@@ -97,6 +103,7 @@ const taskFallbackOrders: Record<AITask, DirectAIProvider[]> = {
     "GEMINI",
     "GROQ",
     "MISTRAL",
+    "MINIMAX",
     "CEREBRAS",
     "DEEPSEEK",
     "OPENROUTER",
@@ -115,6 +122,7 @@ const providerLabels: Record<DirectAIProvider, string> = {
   MISTRAL: "Mistral",
   CEREBRAS: "Cerebras",
   DEEPSEEK: "DeepSeek",
+  MINIMAX: "MiniMax",
   OPENROUTER: "OpenRouter",
   GITHUB_MODELS: "GitHub Models",
   COHERE: "Cohere",
@@ -590,7 +598,11 @@ async function generateChatCompletionJSONWithModel<T = unknown>(
         model: config.model,
         temperature: options.temperature ?? 0.4,
         top_p: options.topP ?? 0.85,
-        max_tokens: maxTokensForProvider(provider, options.maxOutputTokens),
+        [config.tokenLimitField ?? "max_tokens"]: maxTokensForProvider(
+          provider,
+          options.maxOutputTokens,
+        ),
+        ...config.extraBody,
         messages: [
           {
             role: "system",
@@ -748,6 +760,7 @@ export function getAIProviderStatus() {
     mistral: isConfigured("MISTRAL"),
     cerebras: isConfigured("CEREBRAS"),
     deepseek: isConfigured("DEEPSEEK"),
+    minimax: isConfigured("MINIMAX"),
     openrouter: isConfigured("OPENROUTER"),
     githubModels: isConfigured("GITHUB_MODELS"),
     cohere: isConfigured("COHERE"),
@@ -761,6 +774,7 @@ export function getAIProviderStatus() {
     mistralModel: process.env.MISTRAL_MODEL ?? "mistral-small-latest",
     cerebrasModel: process.env.CEREBRAS_MODEL ?? "gpt-oss-120b",
     deepseekModel: process.env.DEEPSEEK_MODEL ?? "deepseek-v4-flash",
+    miniMaxModel: process.env.MINIMAX_MODEL ?? "MiniMax-M3",
     openRouterModel: process.env.OPENROUTER_MODEL ?? "openrouter/auto",
     githubModelsModel: process.env.GITHUB_MODELS_MODEL ?? "openai/gpt-4.1",
     cohereModel: process.env.COHERE_MODEL ?? "command-a-03-2025",
@@ -1220,6 +1234,7 @@ function normalizeProvider(value: string | AIProvider | undefined): AIProvider {
   if (normalized === "MISTRAL") return "MISTRAL";
   if (normalized === "CEREBRAS") return "CEREBRAS";
   if (normalized === "DEEPSEEK" || normalized === "DEEP_SEEK") return "DEEPSEEK";
+  if (normalized === "MINIMAX" || normalized === "MINI_MAX") return "MINIMAX";
   if (normalized === "OPENROUTER" || normalized === "OPEN_ROUTER") {
     return "OPENROUTER";
   }
@@ -1295,6 +1310,19 @@ function chatCompletionProviderConfig(
     };
   }
 
+  if (provider === "MINIMAX") {
+    return {
+      url: miniMaxChatCompletionsUrl(),
+      apiKey: requiredKey("MINIMAX_API_KEY", provider),
+      model: process.env.MINIMAX_MODEL ?? "MiniMax-M3",
+      headers: {},
+      extraBody: {
+        thinking: { type: "disabled" },
+      },
+      tokenLimitField: "max_completion_tokens",
+    };
+  }
+
   if (provider === "OPENROUTER") {
     return {
       url: "https://openrouter.ai/api/v1/chat/completions",
@@ -1344,6 +1372,15 @@ function openRouterHeaders() {
   };
 }
 
+function miniMaxChatCompletionsUrl() {
+  const explicitUrl = process.env.MINIMAX_CHAT_COMPLETIONS_URL?.trim();
+  if (explicitUrl) return explicitUrl;
+
+  const baseUrl = (process.env.MINIMAX_BASE_URL?.trim() ?? "https://api.minimax.io/v1")
+    .replace(/\/+$/, "");
+  return `${baseUrl}/chat/completions`;
+}
+
 function isConfigured(provider: AIProvider) {
   if (provider === "AUTO") return getConfiguredProviders().length > 0;
   return Boolean(providerKey(provider));
@@ -1360,6 +1397,7 @@ function providerKey(provider: DirectAIProvider) {
   if (provider === "DEEPSEEK") {
     return normalizedKey(process.env.DEEPSEEK_API_KEY);
   }
+  if (provider === "MINIMAX") return normalizedKey(process.env.MINIMAX_API_KEY);
   if (provider === "OPENROUTER") {
     return normalizedKey(process.env.OPENROUTER_API_KEY);
   }
@@ -1408,7 +1446,9 @@ function aiRequestTimeoutMs(provider?: DirectAIProvider | "GEMINI") {
   const configured = Number(process.env.AI_REQUEST_TIMEOUT_MS);
   if (Number.isFinite(configured) && configured >= 5_000) return configured;
 
-  if (provider === "MISTRAL" || provider === "CEREBRAS") return 14_000;
+  if (provider === "MISTRAL" || provider === "CEREBRAS" || provider === "MINIMAX") {
+    return 14_000;
+  }
   if (
     provider === "OPENROUTER" ||
     provider === "OPENAI" ||
@@ -1644,6 +1684,7 @@ function missingProviderKeyMessage(provider: AIProvider) {
     MISTRAL: "MISTRAL_API_KEY",
     CEREBRAS: "CEREBRAS_API_KEY",
     DEEPSEEK: "DEEPSEEK_API_KEY",
+    MINIMAX: "MINIMAX_API_KEY",
     OPENROUTER: "OPENROUTER_API_KEY",
     GITHUB_MODELS: "GITHUB_MODELS_TOKEN",
     COHERE: "COHERE_API_KEY",
@@ -1718,6 +1759,9 @@ function modelNameForProvider(provider: DirectAIProvider) {
   }
   if (provider === "DEEPSEEK") {
     return process.env.DEEPSEEK_MODEL ?? "deepseek-v4-flash";
+  }
+  if (provider === "MINIMAX") {
+    return process.env.MINIMAX_MODEL ?? "MiniMax-M3";
   }
   if (provider === "OPENROUTER") {
     return process.env.OPENROUTER_MODEL ?? "openrouter/auto";

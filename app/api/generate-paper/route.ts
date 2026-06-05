@@ -1963,7 +1963,7 @@ function generationFailureSource(
     activeOperation === "ai_generation" ||
     activeOperation === "validation_repair"
   ) {
-    if (isAIProviderUnavailableError(error) || /AI provider|Gemini|GroqCloud|Mistral|Cerebras|OpenRouter|GitHub Models|Cohere|Cloudflare|Grok|DeepSeek|OpenAI/i.test(message)) {
+    if (isAIProviderUnavailableError(error) || /AI provider|Gemini|GroqCloud|Mistral|Cerebras|MiniMax|OpenRouter|GitHub Models|Cohere|Cloudflare|Grok|DeepSeek|OpenAI/i.test(message)) {
       return "provider";
     }
     return activeOperation === "validation_repair" ? "validation" : "unknown";

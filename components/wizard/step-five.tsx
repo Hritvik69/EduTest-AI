@@ -20,6 +20,7 @@ type ProviderStatus = {
   grok: boolean;
   mistral: boolean;
   deepseek: boolean;
+  minimax: boolean;
   openrouter: boolean;
   githubModels: boolean;
   cohere: boolean;
@@ -33,6 +34,7 @@ type ProviderStatus = {
   mistralModel: string;
   cerebrasModel: string;
   deepseekModel: string;
+  miniMaxModel: string;
   openRouterModel: string;
   githubModelsModel: string;
   cohereModel: string;
@@ -74,6 +76,13 @@ const providerCards: {
     title: "Mistral Only",
     description: "Use Mistral AI for every generated question.",
     detail: "Good for fast structured JSON generation.",
+    icon: Sparkles,
+  },
+  {
+    provider: "MINIMAX",
+    title: "MiniMax Only",
+    description: "Use MiniMax for every generated question.",
+    detail: "Uses MiniMax's OpenAI-compatible API with thinking disabled for clean JSON.",
     icon: Sparkles,
   },
   {
@@ -171,6 +180,7 @@ export function StepFive() {
     if (provider === "GEMINI") return !status.gemini;
     if (provider === "GROQ") return !status.groq;
     if (provider === "MISTRAL") return !status.mistral;
+    if (provider === "MINIMAX") return !status.minimax;
     if (provider === "CEREBRAS") return !status.cerebras;
     if (provider === "GROK") return !status.grok;
     if (provider === "OPENROUTER") return !status.openrouter;
@@ -182,6 +192,7 @@ export function StepFive() {
       !status.gemini &&
       !status.groq &&
       !status.mistral &&
+      !status.minimax &&
       !status.cerebras &&
       !status.grok &&
       !status.openrouter &&
@@ -197,6 +208,7 @@ export function StepFive() {
     if (selectedProvider === "GEMINI") return status.geminiModel;
     if (selectedProvider === "GROQ") return status.groqModel;
     if (selectedProvider === "MISTRAL") return status.mistralModel;
+    if (selectedProvider === "MINIMAX") return status.miniMaxModel;
     if (selectedProvider === "CEREBRAS") return status.cerebrasModel;
     if (selectedProvider === "GROK") return status.grokModel;
     if (selectedProvider === "OPENROUTER") return status.openRouterModel;
@@ -208,6 +220,7 @@ export function StepFive() {
       status.gemini ? `Gemini: ${status.geminiModel}` : null,
       status.groq ? `GroqCloud: ${status.groqModel}` : null,
       status.mistral ? `Mistral: ${status.mistralModel}` : null,
+      status.minimax ? `MiniMax: ${status.miniMaxModel}` : null,
       status.cerebras ? `Cerebras: ${status.cerebrasModel}` : null,
       status.openrouter ? `OpenRouter: ${status.openRouterModel}` : null,
       status.githubModels ? `GitHub Models: ${status.githubModelsModel}` : null,

@@ -28,6 +28,7 @@ export type AIProvider =
   | "MISTRAL"
   | "CEREBRAS"
   | "DEEPSEEK"
+  | "MINIMAX"
   | "OPENROUTER"
   | "GITHUB_MODELS"
   | "COHERE"

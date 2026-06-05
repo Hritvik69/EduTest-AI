@@ -74,6 +74,13 @@ describe("request schemas", () => {
     expect(
       generationRequestSchema.parse({
         ...validGeneration,
+        aiProvider: "MINIMAX",
+      }).aiProvider,
+    ).toBe("MINIMAX");
+
+    expect(
+      generationRequestSchema.parse({
+        ...validGeneration,
         aiProvider: "OPENROUTER",
       }).aiProvider,
     ).toBe("OPENROUTER");

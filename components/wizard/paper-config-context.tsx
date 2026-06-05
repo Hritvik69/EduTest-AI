@@ -262,6 +262,7 @@ function normalizeAIProvider(value: unknown): AIProvider {
     value === "MISTRAL" ||
     value === "CEREBRAS" ||
     value === "DEEPSEEK" ||
+    value === "MINIMAX" ||
     value === "OPENROUTER" ||
     value === "GITHUB_MODELS" ||
     value === "COHERE" ||
