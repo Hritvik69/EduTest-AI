@@ -75,7 +75,7 @@ type GenerationStreamContractSummary = {
 };
 
 type GenerationStreamRecoverySnapshot = {
-  paperId: number;
+  paperId: string;
   status?: string;
   generationPhase?: string;
   readyQuestionCount?: number;
@@ -296,7 +296,7 @@ export function GenerationOverlay({
 
     async function run() {
       let completed = false;
-      let savedPaperId: number | null = null;
+      let savedPaperId: string | null = null;
       let lastRecoverySnapshot: GenerationStreamRecoverySnapshot | null = null;
 
       try {
@@ -350,7 +350,7 @@ export function GenerationOverlay({
             if (contractFromStream) setStreamContract(contractFromStream);
             const recoveryMode = providerRecoveryModeFromData(data);
             if (recoveryMode) setProviderRecoveryMode(recoveryMode);
-            const streamedPaperId = numberValue(data.paperId);
+            const streamedPaperId = paperIdValue(data.paperId);
             if (streamedPaperId) savedPaperId = streamedPaperId;
             const recoverySnapshot = streamRecoverySnapshotFromData(
               data,
@@ -373,7 +373,7 @@ export function GenerationOverlay({
               throw generationError(
                 stringValue(data.msg) ?? "Paper generation failed.",
                 stringValue(data.code) ?? numberValue(data.code),
-                streamedPaperId ?? undefined,
+                undefined,
                 {
                   recoverable: status === "CONTINUING",
                   readyQuestionCount: numberValue(data.readyQuestionCount),
@@ -392,7 +392,7 @@ export function GenerationOverlay({
               completed = true;
               setActiveIndex(progressSteps.length - 1);
               setProgress(100);
-              const paperId = numberValue(data.paperId);
+              const paperId = paperIdValue(data.paperId);
               if (!paperId) {
                 throw generationError(
                   "Generation finished without a valid paper id. Please retry.",
@@ -416,8 +416,11 @@ export function GenerationOverlay({
                         : `Class ${paperConfig.classNum} ${paperConfig.subject} ${paperConfig.examType}`),
                     config: paperConfig,
                     status: "READY",
-                    sessionOnly: Boolean(data.sessionOnly),
-                    guestPaperToken: stringValue(data.guestPaperToken),
+                    sessionOnly: data.sessionOnly !== false,
+                    paperSnapshotToken: stringValue(data.paperSnapshotToken),
+                    guestPaperToken:
+                      stringValue(data.guestPaperToken) ??
+                      stringValue(data.paperSnapshotToken),
                   }),
                 )
               ) {
@@ -442,7 +445,7 @@ export function GenerationOverlay({
               autoContinueAttempts.current = 0;
               zeroProgressAutoContinueAttempts.current = 0;
               clearAutoContinueTimer(autoContinueTimer);
-              router.push(`/papers/${paperId}/preview`);
+              router.push(`/papers/${encodeURIComponent(paperId)}/preview`);
             }
           });
         }
@@ -450,11 +453,18 @@ export function GenerationOverlay({
         if (!completed) {
           const recoveryPaperId =
             savedPaperId ?? paperIdFromStreamRecoverySnapshot(lastRecoverySnapshot);
-          if (recoveryPaperId) {
-            const recovery = await recoverSavedPaper(recoveryPaperId, requestConfig);
+          if (recoveryPaperId && !isSessionPaperId(recoveryPaperId)) {
+            const numericRecoveryPaperId = Number(recoveryPaperId);
+            if (!Number.isInteger(numericRecoveryPaperId) || numericRecoveryPaperId <= 0) {
+              return;
+            }
+            const recovery = await recoverSavedPaper(
+              numericRecoveryPaperId,
+              requestConfig,
+            );
             if (recovery.kind === "ready") {
               safeSessionRemove(inFlightKey);
-              router.push(`/papers/${recoveryPaperId}/preview`);
+              router.push(`/papers/${numericRecoveryPaperId}/preview`);
               return;
             }
             if (recovery.kind === "recoverable") {
@@ -486,7 +496,7 @@ export function GenerationOverlay({
           }
 
           throw generationError(
-            "Generation stopped before the paper was saved.",
+            "Generation stopped before the session paper snapshot was completed.",
             "GENERATION_STREAM_ENDED",
           );
         }
@@ -501,7 +511,7 @@ export function GenerationOverlay({
         const code = getErrorCode(error);
         const recoverable = isRecoverableGenerationError(error);
         const explicitPaperId = getErrorPaperId(error);
-        const recoverablePaperId = explicitPaperId ?? (recoverable ? savedPaperId : null);
+        const recoverablePaperId = explicitPaperId ?? null;
         const continuation = continuationProgressFromError(error);
         const providerHealth = getErrorProviderHealth(error);
         const errorProviderRecoveryMode = getErrorProviderRecoveryMode(error);
@@ -634,9 +644,14 @@ export function GenerationOverlay({
   const providerModel = modelForProvider(provider, providerStatus);
   const canSkipAndReplace = isQuestionOutputError(error);
   const canRetry = !isSourceTextShortageError(error);
-  const errorGuidance = generationErrorGuidance(error, provider);
   const timing = generationTimingSnapshot(progress, generationStartedAt, generationNow);
   const displayedContract = streamContract ?? clientContract;
+  const visibleProviderRecoveryMode =
+    error?.providerRecoveryMode ?? providerRecoveryMode;
+  const errorGuidance =
+    visibleProviderRecoveryMode === "source_backed_provider_outage"
+      ? "Finishing from selected source text. Provider retry is not required for this run."
+      : generationErrorGuidance(error, provider);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0e1a]/95 p-2 backdrop-blur-xl sm:p-4">
@@ -754,7 +769,7 @@ export function GenerationOverlay({
               {errorGuidance}
             </div>
           ) : null}
-          {error.providerRecoveryMode === "source_backed_provider_outage" ? (
+          {visibleProviderRecoveryMode === "source_backed_provider_outage" ? (
             <div className="mt-4 rounded-lg border border-emerald-300/20 bg-emerald-500/10 p-3 text-sm font-semibold leading-6 text-emerald-50">
               Finishing from selected TXT/PDF source text because provider fallback could not complete.
             </div>
@@ -765,7 +780,7 @@ export function GenerationOverlay({
                 {providerHealthSummary(error.providerHealth)}
               </div>
               <div className="mt-1 text-red-100/90">
-                {error.providerRecoveryMode === "source_backed_provider_outage"
+                {visibleProviderRecoveryMode === "source_backed_provider_outage"
                   ? "Finishing from selected source text; provider retry is not required for this run."
                   : providerHealthAction(error.providerHealth)}
               </div>
@@ -797,7 +812,7 @@ export function GenerationOverlay({
                 Open Dashboard
               </Button>
             ) : null}
-            {!error.providerRecoveryMode && provider !== "AUTO" && canRetry ? (
+            {visibleProviderRecoveryMode !== "source_backed_provider_outage" && provider !== "AUTO" && canRetry ? (
               <Button
                 type="button"
                 className="flex-1 sm:col-span-2"
@@ -976,9 +991,9 @@ function streamContractFromData(
 
 function streamRecoverySnapshotFromData(
   data: Record<string, unknown>,
-  fallbackPaperId?: number,
+  fallbackPaperId?: string,
 ): GenerationStreamRecoverySnapshot | null {
-  const paperId = numberValue(data.paperId) ?? fallbackPaperId;
+  const paperId = paperIdValue(data.paperId) ?? fallbackPaperId;
   if (!paperId) return null;
 
   const readyQuestionCount = numberValue(data.readyQuestionCount);
@@ -1060,7 +1075,7 @@ function recoverableStreamEndedErrorFromSnapshot(
       fallbackMessage ??
       "Generation stream ended after saving the paper setup. Retrying continues the same paper.",
     "GENERATION_STREAM_RECOVERABLE",
-    snapshot.paperId,
+    undefined,
     {
       recoverable: true,
       readyQuestionCount: snapshot.readyQuestionCount,
@@ -1078,7 +1093,7 @@ function paperIdFromStreamRecoverySnapshot(
 
 function matchingStreamRecoverySnapshot(
   snapshot: GenerationStreamRecoverySnapshot | null,
-  paperId: number,
+  paperId: string,
 ) {
   return snapshot?.paperId === paperId ? snapshot : null;
 }
@@ -1104,6 +1119,20 @@ function numberValue(value: unknown) {
     return Number.isFinite(parsed) ? parsed : undefined;
   }
   return undefined;
+}
+
+function paperIdValue(value: unknown) {
+  if (typeof value === "number" && Number.isInteger(value) && value > 0) {
+    return String(value);
+  }
+  if (typeof value !== "string") return undefined;
+  const trimmed = value.trim();
+  if (/^[1-9]\d*$/.test(trimmed) || isSessionPaperId(trimmed)) return trimmed;
+  return undefined;
+}
+
+function isSessionPaperId(value: string) {
+  return /^session-\d{10,17}-[a-z0-9]{8,32}$/i.test(value);
 }
 
 function generationRiskLevelValue(value: unknown): GenerationRiskLevel | undefined {
@@ -1365,12 +1394,6 @@ function generationErrorGuidance(
   provider: AIProvider,
 ) {
   if (!error) return "";
-  if (
-    error.failureSource === "persistence" ||
-    /paper persistence|database reachability|Neon connectivity/i.test(error.message)
-  ) {
-    return "The blocker is database persistence, not AI fallback. Check /api/deployment-health for database reachability and Neon connectivity, then retry; saved setup can continue if it was created.";
-  }
   if (error.providerRecoveryMode === "source_backed_provider_outage") {
     return isSourceTextShortageError(error)
       ? "AI providers failed, then selected TXT/PDF source text was not enough to finish the paper. Select more source material or lower the question count."

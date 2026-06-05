@@ -142,6 +142,26 @@ CREATE TABLE analytics (
   created_at TIMESTAMP DEFAULT NOW()
 );
 
+CREATE TABLE session_paper_results (
+  id TEXT PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  session_paper_id TEXT NOT NULL,
+  paper_title TEXT NOT NULL,
+  subject VARCHAR(100),
+  class_num INTEGER,
+  score FLOAT,
+  max_score INTEGER,
+  percentage FLOAT,
+  time_taken INTEGER,
+  result_json JSONB NOT NULL DEFAULT '{}',
+  weak_topics TEXT[],
+  strong_topics TEXT[],
+  bloom_scores JSONB,
+  competency_score FLOAT,
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+
 CREATE INDEX idx_chapters_subject ON chapters(subject_id);
 CREATE INDEX idx_subjects_active_class ON subjects(active, class_num, name);
 CREATE INDEX idx_chapters_active_import ON chapters(active, import_source, subject_id);
@@ -160,3 +180,7 @@ CREATE UNIQUE INDEX idx_attempts_progress_unique
   WHERE status = 'IN_PROGRESS';
 CREATE UNIQUE INDEX idx_paper_questions_unique_order
   ON paper_questions(paper_id, order_num);
+CREATE INDEX idx_session_paper_results_user
+  ON session_paper_results(user_id, created_at DESC);
+CREATE INDEX idx_session_paper_results_session_paper
+  ON session_paper_results(session_paper_id);

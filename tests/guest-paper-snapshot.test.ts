@@ -36,6 +36,20 @@ describe("guest paper snapshot signing", () => {
       verifyGuestPaperSnapshot(toGuestPaperSnapshot(paper), token, otherGuest.id, paper.id),
     ).resolves.toBeNull();
   });
+
+  it("verifies signed session-only paper snapshots with client-safe ids", async () => {
+    const guest = createGuestUser("guest-session-snapshot-session-id");
+    const paper = {
+      ...paperFixture(),
+      id: "session-1780069688366-abc123def456",
+      sessionOnly: true,
+    };
+    const token = await signGuestPaperSnapshot(paper, guest.id);
+
+    await expect(
+      verifyGuestPaperSnapshot(toGuestPaperSnapshot(paper), token, guest.id, paper.id),
+    ).resolves.toMatchObject({ id: paper.id, questions: paper.questions });
+  });
 });
 
 function paperFixture(): StoredPaper {

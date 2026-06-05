@@ -12,6 +12,7 @@ import {
   getPaper,
   getPaperOwnerId,
   saveAttemptForUser,
+  saveSessionPaperResultForUser,
 } from "@/lib/paper-store";
 import { evaluationRequestSchema } from "@/lib/schemas";
 import type { BloomLevel, GeneratedQuestion, StoredAttempt, StoredPaper } from "@/types";
@@ -29,17 +30,19 @@ export async function POST(request: NextRequest) {
   if (parsed.response) return parsed.response;
 
   const body = parsed.data;
-  const ownerId = await getPaperOwnerId(body.paperId);
+  const numericPaperId =
+    typeof body.paperId === "number" ? body.paperId : undefined;
+  const ownerId = numericPaperId ? await getPaperOwnerId(numericPaperId) : null;
   const isOwner = ownerId === auth.user.id;
   let paper: StoredPaper | null = ownerId
-    ? await getPaper(body.paperId, isOwner ? auth.user.id : undefined)
+    ? await getPaper(numericPaperId!, isOwner ? auth.user.id : undefined)
     : null;
   let snapshotOnly = false;
 
-  if (!paper && auth.user.isGuest) {
+  if (!paper) {
     const snapshot = await verifyGuestPaperSnapshot(
       body.paperSnapshot,
-      body.guestPaperToken,
+      body.paperSnapshotToken ?? body.guestPaperToken,
       auth.user.id,
       body.paperId,
     );
@@ -148,14 +151,14 @@ export async function POST(request: NextRequest) {
   };
 
   const saved = snapshotOnly
-    ? {
-        ...payload,
-        attemptId: Date.now(),
-        createdAt: new Date().toISOString(),
-      }
+    ? await saveSessionPaperResultForUser(
+        auth.user.id,
+        String(body.paperId),
+        payload,
+      )
     : await saveAttemptForUser(
         auth.user.id,
-        body.paperId,
+        numericPaperId!,
         payload,
         body.answers,
       );

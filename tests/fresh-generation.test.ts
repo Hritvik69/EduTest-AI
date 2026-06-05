@@ -61,9 +61,10 @@ describe("fresh question generation invariant", () => {
 
     expect(route).toMatch(/shouldStopForFinalization/);
     expect(route).toMatch(/partialFinalizationReason/);
-    expect(route).toMatch(/No local template paper was saved/);
+    expect(route).toMatch(/session-only generation/);
     expect(route).toMatch(/!stoppedForServerBudget/);
-    expect(route).toMatch(/Retry continues this same paper instead of starting over/);
+    expect(route).toMatch(/Retry starts a fresh session-only generation/);
+    expect(route).toMatch(/sourceTextNotEnoughForProviderOutage/);
     expect(route).toMatch(/generateBlueprintQuestions/);
     expect(route).toMatch(/repairAttempt <= 3/);
     expect(route).toMatch(/QuestionCandidateBank/);

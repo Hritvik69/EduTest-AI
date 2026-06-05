@@ -15,7 +15,9 @@ export async function GET(
   if (auth.response) return auth.response;
 
   const { id } = await params;
-  const attemptId = parseIdParam(id);
+  const attemptId = /^session-result-\d{10,17}-[a-z0-9]{2,8}$/i.test(id)
+    ? id
+    : parseIdParam(id);
   if (!attemptId) return jsonError("Invalid attempt id.", 400);
 
   const attempt = await getAttemptForUser(attemptId, auth.user.id);

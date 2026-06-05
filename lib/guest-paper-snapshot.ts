@@ -44,11 +44,11 @@ export async function verifyGuestPaperSnapshot(
   snapshot: unknown,
   token: string | undefined,
   ownerId: number,
-  expectedPaperId: number,
+  expectedPaperId: number | string,
 ) {
   const normalized = normalizeGuestPaperSnapshot(snapshot);
   if (!normalized || !token) return null;
-  if (normalized.id !== expectedPaperId) return null;
+  if (String(normalized.id) !== String(expectedPaperId)) return null;
   if (normalized.status !== "READY") return null;
 
   const expected = await signSnapshotPayload(normalized, ownerId);
@@ -58,14 +58,15 @@ export async function verifyGuestPaperSnapshot(
 function normalizeGuestPaperSnapshot(value: unknown): GuestPaperSnapshot | null {
   if (!value || typeof value !== "object") return null;
   const record = value as Partial<StoredPaper>;
-  if (!Number.isInteger(record.id) || Number(record.id) <= 0) return null;
+  const id = normalizePaperSnapshotId(record.id);
+  if (!id) return null;
   if (!record.config || !record.blueprint || !Array.isArray(record.questions)) {
     return null;
   }
   if (!record.questions.length || record.questions.length > 150) return null;
 
   return {
-    id: Number(record.id),
+    id,
     title: typeof record.title === "string" ? record.title : "Guest Paper",
     config: record.config,
     blueprint: record.blueprint,
@@ -82,6 +83,16 @@ function normalizeGuestPaperSnapshot(value: unknown): GuestPaperSnapshot | null 
     idempotencyKey:
       typeof record.idempotencyKey === "string" ? record.idempotencyKey : null,
   };
+}
+
+function normalizePaperSnapshotId(value: unknown): number | string | null {
+  if (Number.isInteger(value) && Number(value) > 0) return Number(value);
+  if (typeof value !== "string") return null;
+
+  const trimmed = value.trim();
+  if (/^[1-9]\d{0,9}$/.test(trimmed)) return Number(trimmed);
+  if (/^session-\d{10,17}-[a-z0-9]{8,32}$/i.test(trimmed)) return trimmed;
+  return null;
 }
 
 async function signSnapshotPayload(snapshot: GuestPaperSnapshot, ownerId: number) {

@@ -21,6 +21,8 @@ const globalForPapers = globalThis as typeof globalThis & {
   __edutestPaperIdempotency?: Map<string, number>;
   __edutestAttempts?: Map<number, StoredAttempt>;
   __edutestAttemptOwners?: Map<number, number>;
+  __edutestSessionResults?: Map<string, StoredAttempt>;
+  __edutestSessionResultOwners?: Map<string, number>;
   __edutestMemorySequence?: number;
 };
 
@@ -43,6 +45,14 @@ globalForPapers.__edutestPaperIdempotency = memoryPaperIdempotency;
 const memoryAttemptOwners =
   globalForPapers.__edutestAttemptOwners ?? new Map<number, number>();
 globalForPapers.__edutestAttemptOwners = memoryAttemptOwners;
+
+export const memorySessionResults =
+  globalForPapers.__edutestSessionResults ?? new Map<string, StoredAttempt>();
+globalForPapers.__edutestSessionResults = memorySessionResults;
+
+const memorySessionResultOwners =
+  globalForPapers.__edutestSessionResultOwners ?? new Map<string, number>();
+globalForPapers.__edutestSessionResultOwners = memorySessionResultOwners;
 
 const maxDatabaseIntegerId = 2_147_483_647;
 const maxGuestPapersPerSession = positiveEnvNumber("EDUTEST_MAX_GUEST_PAPERS", 25);
@@ -188,7 +198,8 @@ export async function createPaperInDB(
 
   if (existingPaper && existingPaper.status !== "FAILED" && !staleGenerating) {
     return {
-      paperId: existingPaper.id,
+      paperId:
+        typeof existingPaper.id === "number" ? existingPaper.id : existingPaperId!,
       status: existingPaper.status,
       reused: true,
     };
@@ -717,7 +728,8 @@ export async function listPapersForUser(userId: number) {
         latestAttemptId: null,
         latestPercentage: null,
         isDemoMode: paper.isDemoMode,
-        isOwner: memoryPaperOwners.get(paper.id) === userId,
+        isOwner:
+          typeof paper.id === "number" && memoryPaperOwners.get(paper.id) === userId,
         errorMetadata: paper.errorMetadata ?? null,
         createdAt: paper.createdAt,
       }));
@@ -872,6 +884,54 @@ export async function saveAttemptForUser(
   };
 }
 
+export async function saveSessionPaperResultForUser(
+  userId: number,
+  sessionPaperId: string,
+  report: StoredAttempt,
+) {
+  pruneGuestMemory();
+  const resultId = createSessionResultId();
+  const saved: StoredAttempt = {
+    ...report,
+    attemptId: resultId,
+    paperId: sessionPaperId,
+    createdAt: new Date().toISOString(),
+  };
+  const storedReport = sanitizeAttemptForStorage(saved);
+
+  if (isGuestUserId(userId) && !sql) {
+    enforceGuestAttemptLimit(userId);
+    memorySessionResults.set(resultId, storedReport);
+    memorySessionResultOwners.set(resultId, userId);
+    return saved;
+  }
+
+  if (!sql) throw new Error("Database is required to save session paper results.");
+
+  await ensureGuestDatabaseUser(userId);
+  const rows = await sql`
+    INSERT INTO session_paper_results (
+      id, user_id, session_paper_id, paper_title, subject, class_num,
+      score, max_score, percentage, time_taken, result_json,
+      weak_topics, strong_topics, bloom_scores, competency_score
+    )
+    VALUES (
+      ${resultId}, ${userId}, ${sessionPaperId}, ${saved.paperTitle ?? "Session Paper"},
+      ${saved.subject ?? "Subject"}, ${saved.classNum ?? 0},
+      ${saved.totalScore}, ${saved.maxScore}, ${saved.percentage}, ${saved.timeTaken},
+      ${json(storedReport)}, ${saved.weakTopics.map((topic) => topic.topic)},
+      ${saved.strongTopics.map((topic) => topic.topic)}, ${json(saved.bloomScores)},
+      ${saved.competencyScore}
+    )
+    RETURNING created_at
+  `;
+
+  return {
+    ...saved,
+    createdAt: new Date(rows[0].created_at).toISOString(),
+  };
+}
+
 export async function saveProgressForUser(
   userId: number,
   paperId: number,
@@ -909,8 +969,12 @@ export async function saveProgressForUser(
   };
 }
 
-export async function getAttemptForUser(attemptId: number, userId: number) {
+export async function getAttemptForUser(attemptId: number | string, userId: number) {
   pruneGuestMemory();
+  if (typeof attemptId === "string") {
+    return getSessionPaperResultForUser(attemptId, userId);
+  }
+
   const memoryAttempt = memoryAttempts.get(attemptId);
   if (memoryAttempt) {
     return memoryAttemptOwners.get(attemptId) === userId ? memoryAttempt : null;
@@ -955,27 +1019,91 @@ export async function getAttemptForUser(attemptId: number, userId: number) {
   return null;
 }
 
+export async function getSessionPaperResultForUser(
+  resultId: string,
+  userId: number,
+) {
+  pruneGuestMemory();
+  const memoryResult = memorySessionResults.get(resultId);
+  if (memoryResult) {
+    return memorySessionResultOwners.get(resultId) === userId ? memoryResult : null;
+  }
+
+  if (!isSessionResultId(resultId)) return null;
+
+  if (sql) {
+    const rows = await sql`
+      SELECT id, session_paper_id, paper_title, subject, class_num,
+             result_json, score, max_score, percentage, time_taken, created_at
+      FROM session_paper_results
+      WHERE id = ${resultId}
+      AND user_id = ${userId}
+      LIMIT 1
+    `;
+
+    if (!rows[0]) return null;
+
+    const feedback = (rows[0].result_json as Partial<StoredAttempt> | null) ?? {};
+    return {
+      ...feedback,
+      attemptId: String(rows[0].id),
+      paperId: String(rows[0].session_paper_id),
+      paperTitle: rows[0].paper_title ?? feedback.paperTitle ?? "Session Paper",
+      subject: rows[0].subject ?? feedback.subject ?? "Subject",
+      classNum: Number(rows[0].class_num ?? feedback.classNum ?? 0),
+      totalScore: Number(rows[0].score ?? feedback.totalScore ?? 0),
+      maxScore: Number(rows[0].max_score ?? feedback.maxScore ?? 0),
+      percentage: Number(rows[0].percentage ?? feedback.percentage ?? 0),
+      grade: feedback.grade ?? "Needs Practice",
+      timeTaken: Number(rows[0].time_taken ?? feedback.timeTaken ?? 0),
+      questionResults: feedback.questionResults ?? [],
+      bloomScores: feedback.bloomScores ?? {},
+      weakTopics: feedback.weakTopics ?? [],
+      strongTopics: feedback.strongTopics ?? [],
+      competencyScore: feedback.competencyScore ?? 0,
+      recommendations: feedback.recommendations ?? [],
+      createdAt: new Date(rows[0].created_at).toISOString(),
+      isDemoMode: feedback.isDemoMode ?? false,
+      generationManifest: feedback.generationManifest,
+    } satisfies StoredAttempt;
+  }
+
+  return null;
+}
+
 export async function analyticsSummaryForUser(userId: number) {
   pruneGuestMemory();
   if (isGuestUserId(userId) && !sql) {
     const attempts = Array.from(memoryAttempts.values()).filter(
-      (attempt) => memoryAttemptOwners.get(attempt.attemptId) === userId,
+      (attempt) =>
+        typeof attempt.attemptId === "number" &&
+        memoryAttemptOwners.get(attempt.attemptId) === userId,
+    );
+    const sessionResults = Array.from(memorySessionResults.values()).filter(
+      (attempt) =>
+        typeof attempt.attemptId === "string" &&
+        memorySessionResultOwners.get(attempt.attemptId) === userId,
     );
     const papers = Array.from(memoryPapers.values()).filter(
-      (paper) => memoryPaperOwners.get(paper.id) === userId,
+      (paper) =>
+        typeof paper.id === "number" && memoryPaperOwners.get(paper.id) === userId,
     );
+    const allAttempts = [...attempts, ...sessionResults].sort(
+      (left, right) => Date.parse(left.createdAt) - Date.parse(right.createdAt),
+    );
+    const latestAttempt = allAttempts[allAttempts.length - 1];
     return {
       papersCreated: papers.length,
-      attemptsCompleted: attempts.length,
-      averageScore: attempts.length
+      attemptsCompleted: allAttempts.length,
+      averageScore: allAttempts.length
         ? Math.round(
-            attempts.reduce((sum, attempt) => sum + attempt.percentage, 0) /
-              attempts.length,
+            allAttempts.reduce((sum, attempt) => sum + attempt.percentage, 0) /
+              allAttempts.length,
           )
         : 0,
-      competencyScore: attempts[0]?.competencyScore ?? 0,
-      dayStreak: attempts.length ? 1 : 0,
-      recentAttempts: attempts.slice(-10).map((attempt) => ({
+      competencyScore: latestAttempt?.competencyScore ?? 0,
+      dayStreak: allAttempts.length ? 1 : 0,
+      recentAttempts: allAttempts.slice(-10).map((attempt) => ({
         attemptId: attempt.attemptId,
         paperId: attempt.paperId ?? 0,
         title: attempt.paperTitle ?? "Guest paper",
@@ -986,15 +1114,23 @@ export async function analyticsSummaryForUser(userId: number) {
       })),
       weakTopicDetails: [],
       subjectCards: [],
-      weakTopics: attempts[0]?.weakTopics.map((topic) => topic.topic) ?? [],
-      strongTopics: attempts[0]?.strongTopics.map((topic) => topic.topic) ?? [],
-      bloomScores: attempts[0]?.bloomScores ?? {},
+      weakTopics: latestAttempt?.weakTopics.map((topic) => topic.topic) ?? [],
+      strongTopics: latestAttempt?.strongTopics.map((topic) => topic.topic) ?? [],
+      bloomScores: latestAttempt?.bloomScores ?? {},
     };
   }
 
   if (!sql) throw new Error("Database is required for analytics.");
 
-  const [paperRows, attemptRows, analyticsRows, recentAttemptRows] = await sql.transaction((tx) => [
+  const [
+    paperRows,
+    attemptRows,
+    sessionAttemptRows,
+    analyticsRows,
+    sessionAnalyticsRows,
+    recentAttemptRows,
+    recentSessionRows,
+  ] = await sql.transaction((tx) => [
     tx`
       SELECT COUNT(*)::int AS count
       FROM papers
@@ -1008,8 +1144,21 @@ export async function analyticsSummaryForUser(userId: number) {
       AND completed_at IS NOT NULL
     `,
     tx`
-      SELECT weak_topics, strong_topics, bloom_scores, competency_score
+      SELECT COUNT(*)::int AS count,
+             COALESCE(AVG(percentage), 0)::float AS average_score
+      FROM session_paper_results
+      WHERE user_id = ${userId}
+    `,
+    tx`
+      SELECT weak_topics, strong_topics, bloom_scores, competency_score, created_at
       FROM analytics
+      WHERE user_id = ${userId}
+      ORDER BY created_at DESC
+      LIMIT 50
+    `,
+    tx`
+      SELECT weak_topics, strong_topics, bloom_scores, competency_score, created_at
+      FROM session_paper_results
       WHERE user_id = ${userId}
       ORDER BY created_at DESC
       LIMIT 50
@@ -1024,11 +1173,24 @@ export async function analyticsSummaryForUser(userId: number) {
       ORDER BY a.completed_at DESC
       LIMIT 50
     `,
+    tx`
+      SELECT id, session_paper_id, paper_title, subject, class_num,
+             percentage, created_at
+      FROM session_paper_results
+      WHERE user_id = ${userId}
+      ORDER BY created_at DESC
+      LIMIT 50
+    `,
   ]);
 
-  const latest = analyticsRows[0];
+  const combinedAnalyticsRows = [...analyticsRows, ...sessionAnalyticsRows].sort(
+    (left, right) =>
+      Date.parse(String(right.created_at ?? 0)) -
+      Date.parse(String(left.created_at ?? 0)),
+  );
+  const latest = combinedAnalyticsRows[0];
   const weakTopicCounts = new Map<string, { count: number; accuracy: number }>();
-  analyticsRows.forEach((row) => {
+  combinedAnalyticsRows.forEach((row) => {
     (row.weak_topics ?? []).forEach((topic: string, index: number) => {
       const current = weakTopicCounts.get(topic) ?? { count: 0, accuracy: 35 + index * 7 };
       current.count += 1;
@@ -1036,8 +1198,35 @@ export async function analyticsSummaryForUser(userId: number) {
     });
   });
 
+  const recentAttempts = [
+    ...recentAttemptRows.map((row) => ({
+      attemptId: Number(row.id),
+      paperId: Number(row.paper_id),
+      title: row.title,
+      subject: row.subject,
+      classNum: row.class_num,
+      percentage: Math.round(Number(row.percentage ?? 0)),
+      completedAt: new Date(row.completed_at).toISOString(),
+    })),
+    ...recentSessionRows.map((row) => ({
+      attemptId: String(row.id),
+      paperId: String(row.session_paper_id),
+      title: row.paper_title,
+      subject: row.subject,
+      classNum: row.class_num,
+      percentage: Math.round(Number(row.percentage ?? 0)),
+      completedAt: new Date(row.created_at).toISOString(),
+    })),
+  ]
+    .sort(
+      (left, right) =>
+        Date.parse(right.completedAt) - Date.parse(left.completedAt),
+    )
+    .slice(0, 10)
+    .reverse();
+
   const subjectMap = new Map<string, { scores: number[]; tests: number }>();
-  recentAttemptRows.forEach((row) => {
+  recentAttempts.forEach((row) => {
     const subject = row.subject ?? "Subject";
     const current = subjectMap.get(subject) ?? { scores: [], tests: 0 };
     current.tests += 1;
@@ -1045,24 +1234,22 @@ export async function analyticsSummaryForUser(userId: number) {
     subjectMap.set(subject, current);
   });
 
+  const legacyAttemptCount = Number(attemptRows[0]?.count ?? 0);
+  const sessionAttemptCount = Number(sessionAttemptRows[0]?.count ?? 0);
+  const totalAttemptCount = legacyAttemptCount + sessionAttemptCount;
+  const weightedAverage = totalAttemptCount
+    ? (Number(attemptRows[0]?.average_score ?? 0) * legacyAttemptCount +
+        Number(sessionAttemptRows[0]?.average_score ?? 0) * sessionAttemptCount) /
+      totalAttemptCount
+    : 0;
+
   return {
     papersCreated: Number(paperRows[0]?.count ?? 0),
-    attemptsCompleted: Number(attemptRows[0]?.count ?? 0),
-    averageScore: Math.round(Number(attemptRows[0]?.average_score ?? 0)),
+    attemptsCompleted: totalAttemptCount,
+    averageScore: Math.round(weightedAverage),
     competencyScore: Math.round(Number(latest?.competency_score ?? 0)),
-    dayStreak: Number(attemptRows[0]?.count ?? 0) ? 1 : 0,
-    recentAttempts: recentAttemptRows
-      .slice(0, 10)
-      .reverse()
-      .map((row) => ({
-        attemptId: Number(row.id),
-        paperId: Number(row.paper_id),
-        title: row.title,
-        subject: row.subject,
-        classNum: row.class_num,
-        percentage: Math.round(Number(row.percentage ?? 0)),
-        completedAt: new Date(row.completed_at).toISOString(),
-      })),
+    dayStreak: totalAttemptCount ? 1 : 0,
+    recentAttempts,
     weakTopicDetails: Array.from(weakTopicCounts.entries())
       .map(([topic, value]) => ({
         topic,
@@ -1217,6 +1404,18 @@ function nextMemoryId() {
   return Date.now() * 1000 + (next % 1000);
 }
 
+function createSessionResultId() {
+  const next = (globalForPapers.__edutestMemorySequence ?? 0) + 1;
+  globalForPapers.__edutestMemorySequence = next;
+  return `session-result-${Date.now()}-${(next % 1000)
+    .toString(36)
+    .padStart(2, "0")}`;
+}
+
+function isSessionResultId(value: string) {
+  return /^session-result-\d{10,17}-[a-z0-9]{2,8}$/i.test(value);
+}
+
 function canQueryDatabaseId(id: number) {
   return Number.isInteger(id) && id > 0 && id <= maxDatabaseIntegerId;
 }
@@ -1245,27 +1444,45 @@ function guestEmail(userId: number) {
 function enforceGuestPaperLimit(ownerId: number) {
   if (!isGuestUserId(ownerId)) return;
   const owned = Array.from(memoryPapers.values())
-    .filter((paper) => memoryPaperOwners.get(paper.id) === ownerId)
+    .filter(
+      (paper) =>
+        typeof paper.id === "number" && memoryPaperOwners.get(paper.id) === ownerId,
+    )
     .sort((left, right) => Date.parse(left.createdAt) - Date.parse(right.createdAt));
 
   while (owned.length >= maxGuestPapersPerSession) {
     const oldest = owned.shift();
     if (!oldest) break;
-    deleteGuestPaper(oldest.id);
+    if (typeof oldest.id === "number") deleteGuestPaper(oldest.id);
   }
 }
 
 function enforceGuestAttemptLimit(ownerId: number) {
   if (!isGuestUserId(ownerId)) return;
-  const owned = Array.from(memoryAttempts.values())
-    .filter((attempt) => memoryAttemptOwners.get(attempt.attemptId) === ownerId)
+  const owned = [
+    ...Array.from(memoryAttempts.values()).filter(
+      (attempt) =>
+        typeof attempt.attemptId === "number" &&
+        memoryAttemptOwners.get(attempt.attemptId) === ownerId,
+    ),
+    ...Array.from(memorySessionResults.values()).filter(
+      (attempt) =>
+        typeof attempt.attemptId === "string" &&
+        memorySessionResultOwners.get(attempt.attemptId) === ownerId,
+    ),
+  ]
     .sort((left, right) => Date.parse(left.createdAt) - Date.parse(right.createdAt));
 
   while (owned.length >= maxGuestAttemptsPerSession) {
     const oldest = owned.shift();
     if (!oldest) break;
-    memoryAttempts.delete(oldest.attemptId);
-    memoryAttemptOwners.delete(oldest.attemptId);
+    if (typeof oldest.attemptId === "number") {
+      memoryAttempts.delete(oldest.attemptId);
+      memoryAttemptOwners.delete(oldest.attemptId);
+    } else {
+      memorySessionResults.delete(oldest.attemptId);
+      memorySessionResultOwners.delete(oldest.attemptId);
+    }
   }
 }
 
@@ -1444,6 +1661,7 @@ function sanitizeAttemptForStorage(report: StoredAttempt): StoredAttempt {
       ...result,
       questionText: undefined,
       correctAnswer: "",
+      studentAnswer: "",
     })),
   };
 }

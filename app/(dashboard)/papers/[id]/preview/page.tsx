@@ -17,6 +17,7 @@ export default function PaperPreviewPage() {
   const [paper, setPaper] = React.useState<StoredPaper | null>(null);
   const [loading, setLoading] = React.useState(true);
   const [teacherView, setTeacherView] = React.useState(false);
+  const [exporting, setExporting] = React.useState(false);
 
   React.useEffect(() => {
     let cancelled = false;
@@ -26,7 +27,8 @@ export default function PaperPreviewPage() {
         if (cancelled) return;
         setPaper({
           ...parsed,
-          id: parsed.id ?? parsed.paperId ?? Number(paperId),
+          id: parsed.id ?? parsed.paperId ?? paperId,
+          sessionOnly: parsed.sessionOnly ?? true,
         });
         setLoading(false);
       });
@@ -73,6 +75,8 @@ export default function PaperPreviewPage() {
   }
 
   const grouped = groupQuestions(paper.questions);
+  const isSessionPaper =
+    Boolean(paper.sessionOnly) || String(paper.id).startsWith("session-");
 
   return (
     <main className="min-h-screen bg-[#111827] pb-14 text-slate-100">
@@ -96,16 +100,34 @@ export default function PaperPreviewPage() {
               <Printer className="h-4 w-4" />
               Print
             </Button>
-            <Button asChild variant="outline">
-              <Link
-                href={`/api/papers/${paperId}/export?format=pdf${
-                  teacherView ? "&includeAnswers=true" : ""
-                }`}
+            {isSessionPaper ? (
+              <Button
+                type="button"
+                variant="outline"
+                disabled={exporting}
+                onClick={() =>
+                  void downloadSessionPaper({
+                    paper,
+                    includeAnswers: teacherView,
+                    setExporting,
+                  })
+                }
               >
                 <Download className="h-4 w-4" />
-                Download PDF
-              </Link>
-            </Button>
+                {exporting ? "Exporting" : "Download PDF"}
+              </Button>
+            ) : (
+              <Button asChild variant="outline">
+                <Link
+                  href={`/api/papers/${paperId}/export?format=pdf${
+                    teacherView ? "&includeAnswers=true" : ""
+                  }`}
+                >
+                  <Download className="h-4 w-4" />
+                  Download PDF
+                </Link>
+              </Button>
+            )}
             <Button asChild>
               <Link href={`/test/${paperId}`}>
                 <Play className="h-4 w-4" />
@@ -170,6 +192,77 @@ function readSessionPaper(paperId: string) {
     }
     return null;
   }
+}
+
+async function downloadSessionPaper({
+  paper,
+  includeAnswers,
+  setExporting,
+}: {
+  paper: StoredPaper;
+  includeAnswers: boolean;
+  setExporting: (value: boolean) => void;
+}) {
+  const token = paper.paperSnapshotToken ?? paper.guestPaperToken;
+  if (!token) {
+    window.alert("This session paper cannot be exported without its signed token.");
+    return;
+  }
+
+  setExporting(true);
+  try {
+    const response = await fetch("/api/session-paper/export", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        paperSnapshot: serializablePaperSnapshot(paper),
+        paperSnapshotToken: token,
+        includeAnswers,
+        format: "pdf",
+      }),
+    });
+    if (!response.ok) {
+      const payload = await response.json().catch(() => null);
+      throw new Error(payload?.error ?? "Could not export session paper.");
+    }
+
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = exportFileName(response, paper);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error(error);
+    window.alert(error instanceof Error ? error.message : "Could not export session paper.");
+  } finally {
+    setExporting(false);
+  }
+}
+
+function serializablePaperSnapshot(paper: StoredPaper) {
+  return {
+    id: paper.id,
+    title: paper.title,
+    config: paper.config,
+    blueprint: paper.blueprint,
+    questions: paper.questions,
+    isDemoMode: paper.isDemoMode,
+    status: paper.status,
+    createdAt: paper.createdAt,
+    manifest: paper.manifest,
+    generationJobId: paper.generationJobId,
+    idempotencyKey: paper.idempotencyKey,
+  };
+}
+
+function exportFileName(response: Response, paper: StoredPaper) {
+  const disposition = response.headers.get("Content-Disposition") ?? "";
+  const match = disposition.match(/filename="?([^"]+)"?/i);
+  return match?.[1] ?? `${String(paper.id)}.pdf`;
 }
 
 function PaperHeader({ paper }: { paper: StoredPaper }) {

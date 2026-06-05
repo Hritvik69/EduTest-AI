@@ -33,7 +33,7 @@ export function classifyRecoveredPaper(
   paper: StoredPaper | null | undefined,
   fallbackPaperId?: number,
 ): GenerationRecoveryDecision {
-  const paperId = paper?.id ?? fallbackPaperId;
+  const paperId = typeof paper?.id === "number" ? paper.id : fallbackPaperId;
 
   if (!paper) {
     return {
@@ -44,7 +44,7 @@ export function classifyRecoveredPaper(
   }
 
   if (paper.status === "READY" && paper.questions?.length) {
-    return { kind: "ready", paperId: paper.id, paper };
+    return { kind: "ready", paperId: paperId ?? 0, paper };
   }
 
   const generationState = recoveryGenerationStateFromMetadata(paper.errorMetadata);
@@ -65,7 +65,7 @@ export function classifyRecoveredPaper(
 
     return {
       kind: "recoverable",
-      paperId: paper.id,
+      paperId: paperId ?? 0,
       readyQuestionCount,
       targetQuestionCount,
       missingQuestionCount,

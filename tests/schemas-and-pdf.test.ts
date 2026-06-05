@@ -187,6 +187,17 @@ describe("request schemas", () => {
       timeTaken: 12,
     });
   });
+
+  it("accepts signed session-only paper evaluation requests", () => {
+    expect(
+      evaluationRequestSchema.parse({
+        paperId: "session-1780069688366-abc123def456",
+        answers: { "1": "B" },
+        paperSnapshot: { id: "session-1780069688366-abc123def456" },
+        paperSnapshotToken: "a".repeat(64),
+      }).paperId,
+    ).toBe("session-1780069688366-abc123def456");
+  });
 });
 
 describe("PDF SSRF guards", () => {

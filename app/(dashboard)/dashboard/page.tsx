@@ -42,8 +42,9 @@ interface Summary {
   strongTopics: string[];
   weakTopicDetails?: { topic: string; accuracy: number; attempts: number }[];
   recentAttempts?: {
-    attemptId: number;
-    paperId: number;
+    attemptId: number | string;
+    paperId: number | string;
+    title?: string;
     subject: string;
     classNum: number;
     percentage: number;

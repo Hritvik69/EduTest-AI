@@ -412,7 +412,7 @@ export interface ConceptData {
 }
 
 export interface StoredPaper {
-  id: number;
+  id: number | string;
   title: string;
   config: PaperConfig;
   blueprint: Blueprint;
@@ -424,12 +424,14 @@ export interface StoredPaper {
   manifest?: GenerationManifest;
   generationJobId?: string | null;
   idempotencyKey?: string | null;
+  sessionOnly?: boolean;
+  paperSnapshotToken?: string;
   guestPaperToken?: string;
 }
 
 export interface StoredAttempt {
-  attemptId: number;
-  paperId?: number;
+  attemptId: number | string;
+  paperId?: number | string;
   totalScore: number;
   maxScore: number;
   percentage: number;

@@ -54,8 +54,11 @@ export function TestRunner({ paperId }: { paperId: string }) {
 
   const saveProgress = React.useCallback(() => {
     const savedAt = new Date().toISOString();
+    const currentPaper = paperRef.current;
+    const sessionOnly =
+      Boolean(currentPaper?.sessionOnly) || String(paperId).startsWith("session-");
     const payload = {
-      paperId: Number(paperId),
+      paperId,
       answers: answersRef.current,
       visited: Array.from(visitedRef.current),
       marked: Array.from(markedRef.current),
@@ -71,7 +74,7 @@ export function TestRunner({ paperId }: { paperId: string }) {
       return false;
     }
 
-    if (paperRef.current) {
+    if (currentPaper && !sessionOnly) {
       saveControllerRef.current?.abort();
       const controller = new AbortController();
       saveControllerRef.current = controller;
@@ -306,10 +309,11 @@ export function TestRunner({ paperId }: { paperId: string }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          paperId: Number(paperId),
+          paperId,
           answers: latestAnswers,
           timeTaken,
           paperSnapshot: serializablePaperSnapshot(paper),
+          paperSnapshotToken: paper.paperSnapshotToken ?? paper.guestPaperToken,
           guestPaperToken: paper.guestPaperToken,
         }),
       });
@@ -489,7 +493,8 @@ function readSessionPaper(paperId: string): StoredPaper | null {
     const parsed = JSON.parse(stored);
     return {
       ...parsed,
-      id: parsed.id ?? parsed.paperId ?? Number(paperId),
+      id: parsed.id ?? parsed.paperId ?? paperId,
+      sessionOnly: parsed.sessionOnly ?? String(paperId).startsWith("session-"),
       status: parsed.status ?? "READY",
       questions: Array.isArray(parsed.questions) ? parsed.questions : [],
     };

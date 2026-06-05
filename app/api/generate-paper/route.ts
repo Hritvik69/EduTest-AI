@@ -41,18 +41,6 @@ import {
   generateBlueprintQuestions,
   generateDemoQuestions,
 } from "@/lib/generator";
-import {
-  createPaperInDB,
-  getPaper,
-  getPaperGenerationState,
-  markPaperDemoMode,
-  markPaperReady,
-  saveQuestionsAndLink,
-  setPaperGenerationState,
-  setPaperGenerationManifest,
-  updatePaperDefinition,
-  updatePaperStatus,
-} from "@/lib/paper-store";
 import { getUploadedPdfSourceConcepts } from "@/lib/pdf-source-store";
 import {
   buildGenerationArchitecturePlan,
@@ -117,8 +105,6 @@ type ActiveGenerationOperation =
   | "configuration"
   | "source_loading"
   | "planning"
-  | "paper_shell_create"
-  | "generation_state_save"
   | "provider_preflight"
   | "ai_generation"
   | "validation_repair"
@@ -130,6 +116,15 @@ type GenerationFailureSource =
   | "validation"
   | "deployment"
   | "unknown";
+
+function createSessionPaperId() {
+  const random = crypto.randomUUID().replace(/-/g, "").slice(0, 12);
+  return `session-${Date.now()}-${random}`;
+}
+
+function sessionOnlyResumeState(): PaperGenerationState | null {
+  return null;
+}
 
 export async function POST(request: NextRequest) {
   const auth = await requireAuthenticatedUser(request);
@@ -166,7 +161,7 @@ export async function POST(request: NextRequest) {
       : null) ??
     `paper:${generationJobId}`;
   const encoder = new TextEncoder();
-  let paperId: number | null = null;
+  const paperId = createSessionPaperId();
   const providerCooldownScope = `user:${auth.user.id}`;
 
   const stream = new ReadableStream({
@@ -432,7 +427,6 @@ export async function POST(request: NextRequest) {
           selectionAwareConcepts,
           localNcertDiagnostics,
         );
-        const paperQuestionSource = paperQuestionSourceForConcepts(scopedConcepts);
         const composition = normalizeServerQuestionComposition(
           effectiveConfig,
           scopedConcepts,
@@ -494,124 +488,24 @@ export async function POST(request: NextRequest) {
           conceptContext,
           concepts: scopedConcepts,
         });
-        let resumeState: PaperGenerationState | null = null;
+        let resumeState: PaperGenerationState | null = sessionOnlyResumeState();
         if (resumePaperId) {
-          const resumablePaper = await runWithOperation("paper_shell_create", () =>
-            getPaper(resumePaperId, auth.user.id),
-          );
-          if (!resumablePaper) {
-            console.warn("[generate-paper] resume paper not found; starting fresh", {
-              resumePaperId,
-              generationJobId,
-              idempotencyKey,
-            });
-            send({
-              step: 3,
-              pct: 25,
-              progress: 25,
-              msg: "Saved generation progress was no longer available, so a fresh durable generation is starting.",
-              status: "GENERATING",
-              ...contractPayload(),
-            });
-          } else if (resumablePaper.status === "READY") {
-            send(
-              {
-                error: true,
-                code: "GENERATION_ALREADY_COMPLETED",
-                msg: "This generation already completed. Start a new generation to create a fresh paper.",
-                paperId: resumablePaper.id,
-                idempotencyKey,
-                ...contractPayload(),
-              },
-              "error",
-            );
-            close();
-            return;
-          } else {
-            const storedState = await runWithOperation(
-              "paper_shell_create",
-              () => getPaperGenerationState(resumablePaper.id, auth.user.id),
-            );
-            if (storedState && storedState.sourceContextHash === sourceContextHash) {
-              resumeState = storedState;
-              paperId = resumablePaper.id;
-              await runWithOperation("paper_shell_create", () =>
-                updatePaperDefinition(resumablePaper.id, effectiveConfig, blueprint),
-              );
-            } else {
-              console.warn("[generate-paper] resume state unavailable or stale", {
-                resumePaperId,
-                hasStoredState: Boolean(storedState),
-                expectedSourceContextHash: sourceContextHash,
-                storedSourceContextHash: storedState?.sourceContextHash,
-              });
-              send({
-                step: 3,
-                pct: 25,
-                progress: 25,
-                msg: "Saved generation progress did not match this request, so a fresh durable generation is starting.",
-                status: "GENERATING",
-              });
-            }
-          }
+          console.info("[generate-paper] ignoring persisted resume for session-only generation", {
+            resumePaperId,
+            sessionPaperId: paperId,
+            generationJobId,
+            idempotencyKey,
+          });
+          send({
+            step: 3,
+            pct: 25,
+            progress: 25,
+            msg: "Session-only generation starts fresh from the selected configuration.",
+            paperId,
+            status: "GENERATING",
+            ...contractPayload(),
+          });
         }
-
-        if (!paperId) {
-          const created = await runWithOperation(
-            "paper_shell_create",
-            () =>
-              createPaperInDB(effectiveConfig, blueprint, isDemoMode, {
-                userId: auth.user.id,
-                generationJobId,
-                idempotencyKey,
-              }),
-          );
-          paperId = created.paperId;
-
-          if (created.reused) {
-            const storedState = await runWithOperation(
-              "paper_shell_create",
-              () => getPaperGenerationState(created.paperId, auth.user.id),
-            );
-            if (
-              created.status !== "READY" &&
-              storedState?.sourceContextHash === sourceContextHash
-            ) {
-              resumeState = storedState;
-            } else if (created.status === "READY") {
-              send(
-                {
-                  error: true,
-                  code: "GENERATION_ALREADY_COMPLETED",
-                  msg: "This generation already completed. Start a new generation to create a fresh paper.",
-                  paperId: created.paperId,
-                  idempotencyKey,
-                },
-                "error",
-              );
-              close();
-              return;
-            } else {
-              send(
-                {
-                  error: true,
-                  code: "GENERATION_IN_PROGRESS",
-                  msg: "A generation job for this configuration is already running.",
-                  paperId: created.paperId,
-                  idempotencyKey,
-                },
-                "error",
-              );
-              close();
-              return;
-            }
-          }
-        }
-
-        if (!paperId) {
-          throw new Error("Paper shell could not be created.");
-        }
-        const durablePaperId = paperId;
 
         if (resumeState) {
           updateRecoverySnapshot(resumeState);
@@ -628,17 +522,8 @@ export async function POST(request: NextRequest) {
             sourceContextHash,
             attemptCount: 0,
             lastMessage:
-              "Paper shell saved; waiting for the first valid AI questions.",
+              "Session-only paper snapshot prepared; waiting for the first valid questions.",
           });
-          await runWithOperation(
-            "generation_state_save",
-            () =>
-              setPaperGenerationState(
-                durablePaperId,
-                initialGenerationState,
-                effectiveConfig,
-              ),
-          );
           updateRecoverySnapshot(initialGenerationState);
         }
         startHeartbeat();
@@ -649,7 +534,7 @@ export async function POST(request: NextRequest) {
           progress: 30,
           msg: resumeState
             ? `Phase 3 - Question Planning: continuing saved generation from ${resumeState.readyQuestionCount}/${resumeState.targetQuestionCount} valid questions.`
-            : "Phase 3 - Question Planning: paper shell saved; starting AI question generation.",
+            : "Phase 3 - Question Planning: session paper prepared; starting question generation.",
           paperId,
           status: resumeState ? "CONTINUING" : "GENERATING",
           generationPhase: recoverySnapshot.phase,
@@ -716,7 +601,7 @@ export async function POST(request: NextRequest) {
           });
           if (!healthyProviders.length) {
             if (!providerRecoveryMode) {
-              throw new Error(providerHealthFailureMessage(providerHealth));
+              throw sourceTextNotEnoughForProviderOutage(scopedConcepts);
             }
           } else {
             preflightPassed = true;
@@ -761,9 +646,6 @@ export async function POST(request: NextRequest) {
             createdAt: resumeState?.createdAt,
             lastMessage,
           });
-          await runWithOperation("generation_state_save", () =>
-            setPaperGenerationState(durablePaperId, state, effectiveConfig),
-          );
           updateRecoverySnapshot(state);
           return state;
         };
@@ -836,14 +718,14 @@ export async function POST(request: NextRequest) {
               });
               const savedState = await persistQuestionGenerationState(
                 allQuestions,
-                `Phase 5 saved ${allQuestions.length}/${blueprint.totalQuestions} source-backed questions after provider preflight outage.`,
+                `Phase 5 prepared ${allQuestions.length}/${blueprint.totalQuestions} source-backed questions after provider preflight outage.`,
               );
               if (savedState) {
                 send({
                   step: 5,
                   pct: 84,
                   progress: 84,
-                  msg: `Phase 5 - Question Generation: saved ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid source-backed questions.`,
+                  msg: `Phase 5 - Question Generation: prepared ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid source-backed questions.`,
                   ...recoveryPayload(),
                   ...providerHealthPayload(),
                 });
@@ -878,14 +760,14 @@ export async function POST(request: NextRequest) {
                 );
                 const savedState = await persistQuestionGenerationState(
                   allQuestions,
-                  `Phase 5 saved ${allQuestions.length}/${blueprint.totalQuestions} candidate questions before validation.`,
+                  `Phase 5 prepared ${allQuestions.length}/${blueprint.totalQuestions} candidate questions before validation.`,
                 );
                 if (savedState) {
                   send({
                     step: 5,
                     pct: 84,
                     progress: 84,
-                    msg: `Phase 5 - Question Generation: saved ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid questions before validation.`,
+                    msg: `Phase 5 - Question Generation: prepared ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid questions before validation.`,
                     ...recoveryPayload(),
                   });
                 }
@@ -915,19 +797,25 @@ export async function POST(request: NextRequest) {
                   });
                   const savedState = await persistQuestionGenerationState(
                     allQuestions,
-                    `Phase 5 saved ${allQuestions.length}/${blueprint.totalQuestions} source-backed questions after provider outage.`,
+                    `Phase 5 prepared ${allQuestions.length}/${blueprint.totalQuestions} source-backed questions after provider outage.`,
                   );
                   if (savedState) {
                     send({
                       step: 5,
                       pct: 84,
                       progress: 84,
-                      msg: `Phase 5 - Question Generation: saved ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid source-backed questions.`,
+                      msg: `Phase 5 - Question Generation: prepared ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid source-backed questions.`,
                       ...recoveryPayload(),
                       ...providerHealthPayload(),
                     });
                   }
                 } else {
+                  if (
+                    !allowExplicitDemoFallback &&
+                    isProviderOutageRecoverableForSource(error)
+                  ) {
+                    throw sourceTextNotEnoughForProviderOutage(scopedConcepts);
+                  }
                   throw error;
                 }
               }
@@ -949,73 +837,84 @@ export async function POST(request: NextRequest) {
               ? "Phase 5 - Question Generation: continuing strict subject/chapter TXT coverage batches..."
               : `Phase 5 - Question Generation: generating ${blueprint.totalQuestions} questions in strict subject/chapter TXT batches...`,
           });
-          const coverageGeneration = await runWithOperation("ai_generation", () =>
-            generateCoveragePlannedQuestions({
-              blueprint,
-              concepts: scopedConcepts,
-              config: effectiveConfig,
-              generationPlan,
-              existingQuestions: allQuestions,
-              acceptedQuestions: resumeState?.acceptedQuestions ?? [],
-              allowPartial: salvageMode,
-              generationNonce: generationJobId,
-              cooldownScope: providerCooldownScope,
-              healthyProviders,
-              ...generationAiBudget,
-              signal: generationSignal,
-              shouldStop: (context) =>
-                shouldStopBeforeNextGenerationCall(generationDeadlineAt, context),
-              onProviderUnavailable: async ({ error }) => {
-                providerRecoveryMode = sourceBackedProviderRecoveryMode;
-                await refreshProviderHealthAfterRuntimeFailure(error);
-              },
-              onAcceptedBatch: async (details) => {
-                const savedCandidates = [
-                  ...allQuestions,
-                  ...details.generatedQuestions,
-                ];
-                const savedState = await persistQuestionGenerationState(
-                  savedCandidates,
-                  `Phase 5 saved ${details.generated}/${details.total} focused questions across ${details.batch}/${details.batches} chunked AI batch${details.batches === 1 ? "" : "es"}.`,
-                );
-                if (savedState) {
+          let coverageGeneration;
+          try {
+            coverageGeneration = await runWithOperation("ai_generation", () =>
+              generateCoveragePlannedQuestions({
+                blueprint,
+                concepts: scopedConcepts,
+                config: effectiveConfig,
+                generationPlan,
+                existingQuestions: allQuestions,
+                acceptedQuestions: resumeState?.acceptedQuestions ?? [],
+                allowPartial: salvageMode,
+                generationNonce: generationJobId,
+                cooldownScope: providerCooldownScope,
+                healthyProviders,
+                ...generationAiBudget,
+                signal: generationSignal,
+                shouldStop: (context) =>
+                  shouldStopBeforeNextGenerationCall(generationDeadlineAt, context),
+                onProviderUnavailable: async ({ error }) => {
+                  providerRecoveryMode = sourceBackedProviderRecoveryMode;
+                  await refreshProviderHealthAfterRuntimeFailure(error);
+                },
+                onAcceptedBatch: async (details) => {
+                  const savedCandidates = [
+                    ...allQuestions,
+                    ...details.generatedQuestions,
+                  ];
+                  const savedState = await persistQuestionGenerationState(
+                    savedCandidates,
+                    `Phase 5 prepared ${details.generated}/${details.total} focused questions across ${details.batch}/${details.batches} chunked AI batch${details.batches === 1 ? "" : "es"}.`,
+                  );
+                  if (savedState) {
+                    send({
+                      step: 5,
+                      pct: 82,
+                      progress: 82,
+                      msg: `Phase 5 - Question Generation: prepared ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid questions (${details.batch}/${details.batches} chunked AI batch${details.batches === 1 ? "" : "es"}).`,
+                      ...recoveryPayload(),
+                      ...providerHealthPayload(),
+                    });
+                  }
+                },
+                onProgress: (details) => {
+                  const providerOutageRecovered =
+                    details.diagnostic.generationMode === sourceBackedProviderRecoveryMode;
+                  if (providerOutageRecovered) {
+                    providerRecoveryMode = sourceBackedProviderRecoveryMode;
+                  }
                   send({
                     step: 5,
                     pct: 82,
                     progress: 82,
-                    msg: `Phase 5 - Question Generation: saved ${savedState.readyQuestionCount}/${savedState.targetQuestionCount} valid questions (${details.batch}/${details.batches} chunked AI batch${details.batches === 1 ? "" : "es"}).`,
-                    ...recoveryPayload(),
+                    msg: providerOutageRecovered
+                      ? `Phase 5 - Question Generation: providers unavailable; generated ${details.label} from selected TXT/PDF (${details.diagnostic.generatedQuestions}/${details.diagnostic.requestedQuestions} question${details.diagnostic.requestedQuestions === 1 ? "" : "s"}).`
+                      : `Phase 5 - Question Generation: ${details.label} - ${details.diagnostic.generatedQuestions}/${details.diagnostic.requestedQuestions} focused question${details.diagnostic.requestedQuestions === 1 ? "" : "s"} ready.`,
                     ...providerHealthPayload(),
+                    ...providerRecoveryPayload(),
                   });
-                }
-              },
-              onProgress: (details) => {
-                const providerOutageRecovered =
-                  details.diagnostic.generationMode === sourceBackedProviderRecoveryMode;
-                if (providerOutageRecovered) {
-                  providerRecoveryMode = sourceBackedProviderRecoveryMode;
-                }
-                send({
-                  step: 5,
-                  pct: 82,
-                  progress: 82,
-                  msg: providerOutageRecovered
-                    ? `Phase 5 - Question Generation: providers unavailable; generated ${details.label} from selected TXT/PDF (${details.diagnostic.generatedQuestions}/${details.diagnostic.requestedQuestions} question${details.diagnostic.requestedQuestions === 1 ? "" : "s"}).`
-                    : `Phase 5 - Question Generation: ${details.label} - ${details.diagnostic.generatedQuestions}/${details.diagnostic.requestedQuestions} focused question${details.diagnostic.requestedQuestions === 1 ? "" : "s"} ready.`,
-                  ...providerHealthPayload(),
-                  ...providerRecoveryPayload(),
-                });
-              },
-              onBatchComplete: (details) => {
-                send({
-                  step: 5,
-                  pct: 82,
-                  progress: 82,
-                  msg: `Phase 5 - Question Generation: focused batch ${details.generated}/${details.total} TXT-grounded AI questions ready...`,
-                });
-              },
-            }),
-          );
+                },
+                onBatchComplete: (details) => {
+                  send({
+                    step: 5,
+                    pct: 82,
+                    progress: 82,
+                    msg: `Phase 5 - Question Generation: focused batch ${details.generated}/${details.total} TXT-grounded AI questions ready...`,
+                  });
+                },
+              }),
+            );
+          } catch (error) {
+            if (
+              !allowExplicitDemoFallback &&
+              isProviderOutageRecoverableForSource(error)
+            ) {
+              throw sourceTextNotEnoughForProviderOutage(scopedConcepts);
+            }
+            throw error;
+          }
           allQuestions = [...allQuestions, ...coverageGeneration.questions];
           coverageDiagnostics = coverageGeneration.diagnostics;
           stoppedDuringCoverageGeneration = coverageGeneration.stoppedForBudget;
@@ -1031,11 +930,11 @@ export async function POST(request: NextRequest) {
         ) {
           await persistQuestionGenerationState(
             allQuestions,
-            "Phase 5 paused before the first AI chunk because the server time budget was too low. Retry continues the same saved paper setup.",
-            "NEEDS_CONTINUATION",
+            "Phase 5 stopped before the first AI chunk because the server time budget was too low. Retry starts a fresh session-only generation.",
+            "FAILED",
           );
-          throw generationContinuationError(
-            "Server time budget was too low before the next AI chunk. Saved setup is intact; retry continues this same paper.",
+          throw serverGenerationBudgetError(
+            "Server time budget was too low before the next AI chunk. Retry starts a fresh session-only generation.",
           );
         }
 
@@ -1102,7 +1001,6 @@ export async function POST(request: NextRequest) {
           deadlineAt: generationDeadlineAt,
           finalizationReserveMs: generationAiBudget.finalizationReserveMs,
           maxProviderAttempts: generationAiBudget.maxProviderAttempts,
-          paperId,
           idempotencyKey,
           sourceContextHash,
           resumeState,
@@ -1166,17 +1064,7 @@ export async function POST(request: NextRequest) {
           ...providerHealthPayload(),
           ...providerRecoveryPayload(),
         });
-        await runWithOperation("finalize", () =>
-          updatePaperDefinition(durablePaperId, effectiveConfig, validation.blueprint),
-        );
-        const storedQuestions = await runWithOperation("finalize", () =>
-          saveQuestionsAndLink(
-            validated,
-            durablePaperId,
-            isDemoMode ? "demo" : paperQuestionSource,
-          ),
-        );
-        await runWithOperation("finalize", () => markPaperReady(durablePaperId));
+        const storedQuestions = validated;
         const providerRecoveryWarnings = providerRecoveryMode
           ? [sourceBackedProviderRecoveryWarning()]
           : [];
@@ -1206,11 +1094,8 @@ export async function POST(request: NextRequest) {
                 )
               : undefined,
         });
-        await runWithOperation("finalize", () =>
-          setPaperGenerationManifest(durablePaperId, manifest, effectiveConfig),
-        );
         const readyPaper = buildReadyPaperPayload({
-          paperId: durablePaperId,
+          paperId,
           config: effectiveConfig,
           blueprint: validation.blueprint,
           questions: storedQuestions,
@@ -1219,9 +1104,10 @@ export async function POST(request: NextRequest) {
           generationJobId,
           idempotencyKey,
         });
-        const guestPaperToken = auth.user.isGuest
-          ? await signGuestPaperSnapshot(readyPaper, auth.user.id)
-          : undefined;
+        const paperSnapshotToken = await signGuestPaperSnapshot(
+          readyPaper,
+          auth.user.id,
+        );
 
         send(
           {
@@ -1243,9 +1129,11 @@ export async function POST(request: NextRequest) {
             status: "READY",
             isDemoMode,
             createdAt: readyPaper.createdAt,
-            sessionOnly: Boolean(auth.user.isGuest),
+            sessionOnly: true,
             config: effectiveConfig,
-            guestPaperToken,
+            paperSnapshot: readyPaper,
+            paperSnapshotToken,
+            guestPaperToken: paperSnapshotToken,
             ...providerHealthPayload(),
             ...providerRecoveryPayload(),
             ...contractPayload(),
@@ -1282,20 +1170,6 @@ export async function POST(request: NextRequest) {
           shouldUseLocalGenerationFallback(Boolean(demoMode), error)
         ) {
           try {
-            if (!paperId) {
-              const fallbackPaper = await createPaperInDB(
-                localFallbackContext.effectiveConfig,
-                localFallbackContext.blueprint,
-                true,
-                {
-                  userId: auth.user.id,
-                  generationJobId,
-                  idempotencyKey,
-                },
-              );
-              paperId = fallbackPaper.paperId;
-            }
-
             await completeWithLocalGenerationFallback({
               paperId,
               context: localFallbackContext,
@@ -1303,7 +1177,7 @@ export async function POST(request: NextRequest) {
               idempotencyKey,
               ownerId: auth.user.id,
               originalError: error,
-              sessionOnly: Boolean(auth.user.isGuest),
+              sessionOnly: true,
               send,
             });
             close();
@@ -1320,42 +1194,11 @@ export async function POST(request: NextRequest) {
           }
         }
 
-        const savedFailureState = paperId
-          ? await getPaperGenerationState(paperId, auth.user.id).catch(() => null)
-          : null;
-        let paperStatusSaved = false;
-        const canContinueGeneration =
-          Boolean(paperId) &&
-          !request.signal.aborted &&
-          (isGenerationContinuationError(error) ||
-            isRecoverableGenerationRuntimeError(error, savedFailureState));
         if (!request.signal.aborted && isProviderOutageRecoverableForSource(error)) {
           await refreshProviderHealthAfterRuntimeFailure(error);
         }
-        if (paperId && !canContinueGeneration) {
-          try {
-            await updatePaperStatus(paperId, "FAILED", {
-              message,
-              generationJobId,
-              cancelled: request.signal.aborted,
-              ...(savedFailureState ? { generationState: savedFailureState } : {}),
-            });
-            paperStatusSaved = true;
-          } catch (statusError) {
-            console.error("[generate-paper] failed to mark paper FAILED", {
-              paperId,
-              generationJobId,
-              message:
-                statusError instanceof Error
-                  ? statusError.message
-              : String(statusError),
-            });
-          }
-        }
 
         if (!request.signal.aborted && !streamClosed) {
-          const continuationState =
-            canContinueGeneration && paperId ? savedFailureState : null;
           send(
             {
               error: true,
@@ -1370,26 +1213,15 @@ export async function POST(request: NextRequest) {
               activeOperation: failedActiveOperation,
               failureSource,
               errorClass,
-              generationPhase: continuationState?.phase ?? recoverySnapshot.phase,
-              readyQuestionCount:
-                continuationState?.readyQuestionCount ??
-                recoverySnapshot.readyQuestionCount,
-              targetQuestionCount:
-                continuationState?.targetQuestionCount ??
-                recoverySnapshot.targetQuestionCount,
-              missingQuestionCount:
-                continuationState?.missingQuestionCount ??
-                recoverySnapshot.missingQuestionCount,
-              recoveryReason:
-                continuationState?.lastMessage ?? recoverySnapshot.lastMessage,
+              generationPhase: recoverySnapshot.phase,
+              readyQuestionCount: recoverySnapshot.readyQuestionCount,
+              targetQuestionCount: recoverySnapshot.targetQuestionCount,
+              missingQuestionCount: recoverySnapshot.missingQuestionCount,
+              recoveryReason: recoverySnapshot.lastMessage,
               ...providerHealthPayload(),
               ...providerRecoveryPayload(),
               ...contractPayload(),
-              status: canContinueGeneration
-                ? "CONTINUING"
-                : paperStatusSaved
-                  ? "FAILED"
-                  : streamStatusForGenerationState(recoverySnapshot.status),
+              status: "FAILED",
             },
             "error",
           );
@@ -1445,7 +1277,7 @@ async function completeWithLocalGenerationFallback({
   sessionOnly,
   send,
 }: {
-  paperId: number;
+  paperId: string;
   context: LocalFallbackContext;
   generationJobId: string;
   idempotencyKey: string;
@@ -1458,7 +1290,7 @@ async function completeWithLocalGenerationFallback({
     step: 6,
     pct: 88,
     progress: 88,
-    msg: "AI providers could not finish; using local guest fallback so the paper is still saved.",
+    msg: "AI providers could not finish; using local fallback to finish this session paper.",
     paperId,
     status: "GENERATING",
     generationJobId,
@@ -1481,20 +1313,13 @@ async function completeWithLocalGenerationFallback({
     step: 7,
     pct: 95,
     progress: 95,
-    msg: "Phase 7 - Final Paper Composition: saving fallback paper.",
+    msg: "Phase 7 - Final Paper Composition: preparing fallback paper snapshot.",
     paperId,
     status: "GENERATING",
     generationJobId,
   });
 
-  await updatePaperDefinition(paperId, validation.config, validation.blueprint);
-  await markPaperDemoMode(paperId);
-  const storedQuestions = await saveQuestionsAndLink(
-    stripGenerationMetadataFromQuestions(validation.questions),
-    paperId,
-    "demo",
-  );
-  await markPaperReady(paperId);
+  const storedQuestions = stripGenerationMetadataFromQuestions(validation.questions);
   const manifest = buildGenerationManifest({
     config: validation.config,
     blueprint: validation.blueprint,
@@ -1513,7 +1338,6 @@ async function completeWithLocalGenerationFallback({
     taskProviderOrder: configuredTaskProviderOrder(),
     usageSummary: summarizeAIUsage(generationJobId),
   });
-  await setPaperGenerationManifest(paperId, manifest, validation.config);
   const readyPaper = buildReadyPaperPayload({
     paperId,
     config: validation.config,
@@ -1524,9 +1348,7 @@ async function completeWithLocalGenerationFallback({
     generationJobId,
     idempotencyKey,
   });
-  const guestPaperToken = sessionOnly
-    ? await signGuestPaperSnapshot(readyPaper, ownerId)
-    : undefined;
+  const paperSnapshotToken = await signGuestPaperSnapshot(readyPaper, ownerId);
 
   send(
     {
@@ -1555,7 +1377,9 @@ async function completeWithLocalGenerationFallback({
       createdAt: readyPaper.createdAt,
       sessionOnly,
       config: validation.config,
-      guestPaperToken,
+      paperSnapshot: readyPaper,
+      paperSnapshotToken,
+      guestPaperToken: paperSnapshotToken,
       ...demoMetadata(),
     },
     "done",
@@ -1572,7 +1396,7 @@ function buildReadyPaperPayload({
   generationJobId,
   idempotencyKey,
 }: {
-  paperId: number;
+  paperId: number | string;
   config: PaperConfig;
   blueprint: Blueprint;
   questions: GeneratedQuestion[];
@@ -1596,6 +1420,7 @@ function buildReadyPaperPayload({
     manifest,
     generationJobId,
     idempotencyKey,
+    sessionOnly: typeof paperId === "string",
   };
 }
 
@@ -1898,21 +1723,8 @@ function generationErrorMessage(
     return stripSourceGroundingPrefix(message);
   }
 
-  if (/GENERATION_CONTINUE_AVAILABLE/i.test(message)) {
-    return stripGenerationContinuationPrefix(message);
-  }
-
-  if (
-    failureSource === "persistence" ||
-    /PAPER_PERSISTENCE_|Database save failed for generated paper persistence/i.test(
-      message,
-    )
-  ) {
-    return paperPersistenceFailureMessage(activeOperation);
-  }
-
   if (/SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(message)) {
-    return "Real AI generation reached the deployment time limit before enough valid questions were ready. Saved progress can continue on retry; if this repeats, use fewer question formats or a faster configured provider.";
+    return "Real AI generation reached the deployment time limit before enough valid questions were ready. Retry starts a fresh session-only generation; if this repeats, use fewer question formats or a faster configured provider.";
   }
 
   if (
@@ -1963,24 +1775,6 @@ function generationErrorMessage(
   return compactAiProviderFailureMessage(message);
 }
 
-function paperPersistenceFailureMessage(
-  activeOperation: ActiveGenerationOperation | undefined,
-) {
-  if (activeOperation === "paper_shell_create") {
-    return "Paper setup could not be saved to the database. Check /api/deployment-health database reachability and Neon connectivity, then retry; no AI provider request was started.";
-  }
-
-  if (activeOperation === "generation_state_save") {
-    return "Paper progress could not be saved to the database. Check /api/deployment-health database reachability and Neon connectivity, then retry; saved paper setup can continue if it was created.";
-  }
-
-  if (activeOperation === "finalize") {
-    return "Final paper save did not complete in the database. Check /api/deployment-health database reachability and Neon connectivity, then retry; the paper may appear if Neon finished the write.";
-  }
-
-  return "Paper persistence could not complete in the database. Check /api/deployment-health database reachability and Neon connectivity, then retry; this is not an AI provider fallback issue.";
-}
-
 function generationFailureSource(
   error: unknown,
   activeOperation: ActiveGenerationOperation | undefined,
@@ -1997,14 +1791,6 @@ function generationFailureSource(
 
   if (/SOURCE_TEXT_NOT_ENOUGH|SOURCE_NOT_TEXT_BACKED|Selected source text/i.test(message)) {
     return "source";
-  }
-
-  if (
-    activeOperation === "paper_shell_create" ||
-    activeOperation === "generation_state_save" ||
-    activeOperation === "finalize"
-  ) {
-    return "persistence";
   }
 
   if (activeOperation === "source_loading" || activeOperation === "planning") {
@@ -2054,7 +1840,6 @@ function shouldUseLocalGenerationFallback(isExplicitDemoMode: boolean, error: un
   if (!isExplicitDemoMode) return false;
 
   const code = generationErrorCode(error);
-  if (code === "GENERATION_CONTINUE_AVAILABLE") return false;
   if (
     code === "PROVIDER_AUTO_FAILED" ||
     code === "PROVIDER_AUTH_ERROR" ||
@@ -2070,11 +1855,6 @@ function shouldUseLocalGenerationFallback(isExplicitDemoMode: boolean, error: un
   return /AI provider|Auto Fallback|Gemini|GroqCloud|Mistral|Cerebras|OpenRouter|GitHub Models|Cohere|Cloudflare|Grok|DeepSeek|OpenAI|question generation|No valid generated questions|Could not replace/i.test(
     message,
   );
-}
-
-function paperQuestionSourceForConcepts(concepts: ConceptData[]) {
-  if (concepts.some((concept) => concept.source === "ncert_txt")) return "ncert_txt";
-  return concepts.some((concept) => concept.source === "pdf") ? "pdf" : "curriculum";
 }
 
 function generationStreamContractSummary(
@@ -2132,10 +1912,6 @@ function generationErrorCode(error: unknown) {
     return "SOURCE_NOT_TEXT_BACKED";
   }
 
-  if (/GENERATION_CONTINUE_AVAILABLE/i.test(message)) {
-    return "GENERATION_CONTINUE_AVAILABLE";
-  }
-
   if (/PAPER_PERSISTENCE_TIMEOUT/i.test(message)) {
     return "PAPER_PERSISTENCE_TIMEOUT";
   }
@@ -2187,57 +1963,19 @@ function stripSourceTextNotEnoughPrefix(message: string) {
   return message.replace(/^SOURCE_TEXT_NOT_ENOUGH:\s*/i, "");
 }
 
-function generationContinuationError(message: string) {
-  return new Error(`GENERATION_CONTINUE_AVAILABLE: ${message}`);
-}
-
-function isGenerationContinuationError(error: unknown) {
-  const message = error instanceof Error ? error.message : String(error);
-  return /GENERATION_CONTINUE_AVAILABLE/i.test(message);
-}
-
-function isRecoverableGenerationRuntimeError(
-  error: unknown,
-  state: PaperGenerationState | null,
-) {
-  if (
-    !state ||
-    (state.phase !== "QUESTION_GENERATION" && state.phase !== "INITIAL_GENERATION")
-  ) {
-    return false;
-  }
-
-  const code = generationErrorCode(error);
-  if (
-    code === "SOURCE_TEXT_NOT_ENOUGH" ||
-    code === "SOURCE_NOT_TEXT_BACKED" ||
-    code === "PAPER_PERSISTENCE_TIMEOUT" ||
-    code === "PAPER_PERSISTENCE_FAILED" ||
-    code === "PROVIDER_AUTH_ERROR"
-  ) {
-    return false;
-  }
-
-  const hasSavedProgress =
-    state.readyQuestionCount > 0 || state.candidateQuestions.length > 0;
-  if (!hasSavedProgress) {
-    return (
-      state.phase === "INITIAL_GENERATION" &&
-      (code === "PROVIDER_NETWORK_ERROR" || isServerTimeBudgetError(error))
-    );
-  }
-
-  return (
-    code === "PROVIDER_NETWORK_ERROR" ||
-    code === "PROVIDER_AUTO_FAILED" ||
-    code === "PROVIDER_QUOTA_ERROR" ||
-    code === "GENERATION_CAN_SKIP_INVALID" ||
-    isServerTimeBudgetError(error)
+function sourceTextNotEnoughForProviderOutage(concepts: ConceptData[]) {
+  const sourceConceptCount = concepts.filter((concept) => {
+    const source = concept.source;
+    const textLength = concept.text?.replace(/\s+/g, " ").trim().length ?? 0;
+    return (source === "ncert_txt" || source === "pdf") && textLength >= 80;
+  }).length;
+  return new Error(
+    `SOURCE_TEXT_NOT_ENOUGH: No AI provider passed health preflight, and the selected TXT/PDF source text is not enough for deterministic source-backed completion. Source concepts: ${sourceConceptCount}. Select more chapters/topics, upload more source text, or lower the question count.`,
   );
 }
 
-function stripGenerationContinuationPrefix(message: string) {
-  return message.replace(/^GENERATION_CONTINUE_AVAILABLE:\s*/i, "");
+function serverGenerationBudgetError(message: string) {
+  return new Error(`SERVER_GENERATION_TIME_BUDGET_EXCEEDED: ${message}`);
 }
 
 function generationSourceContextHash({
@@ -2412,7 +2150,6 @@ async function validateGeneratedPaperSkippingInvalid({
   deadlineAt,
   finalizationReserveMs,
   maxProviderAttempts,
-  paperId,
   idempotencyKey,
   sourceContextHash,
   resumeState,
@@ -2438,7 +2175,6 @@ async function validateGeneratedPaperSkippingInvalid({
   deadlineAt: number;
   finalizationReserveMs?: number;
   maxProviderAttempts?: number;
-  paperId: number;
   idempotencyKey: string;
   sourceContextHash: string;
   resumeState?: PaperGenerationState | null;
@@ -2477,8 +2213,6 @@ async function validateGeneratedPaperSkippingInvalid({
       lastMessage,
       lastError,
     });
-    onActiveOperation?.("generation_state_save");
-    await setPaperGenerationState(paperId, state, config);
     onStatePersisted?.(state);
   };
 
@@ -2515,7 +2249,7 @@ async function validateGeneratedPaperSkippingInvalid({
           "NEEDS_CONTINUATION",
           "REPAIR",
           (resumeState?.attemptCount ?? 0) + repairAttempt - 1,
-          "Server time budget is low; saved valid candidates for continuation.",
+          "Server time budget is low; retry starts a fresh session-only generation.",
         );
         break;
       }
@@ -2585,7 +2319,7 @@ async function validateGeneratedPaperSkippingInvalid({
             "NEEDS_CONTINUATION",
             bank.readyCount() > 0 ? "REPAIR" : "QUESTION_GENERATION",
             (resumeState?.attemptCount ?? 0) + repairAttempt,
-            "AI repair hit the server time budget; saved valid candidates for continuation.",
+            "AI repair hit the server time budget; retry starts a fresh session-only generation.",
             error instanceof Error ? error.message : String(error),
           );
           break;
@@ -2674,13 +2408,13 @@ async function validateGeneratedPaperSkippingInvalid({
         partialFinalizationReason ??
         "Generation reached the deployment time limit during replacement.";
       await persistBank(
-        "NEEDS_CONTINUATION",
+        "FAILED",
         readyCount > 0 ? "REPAIR" : "QUESTION_GENERATION",
         (resumeState?.attemptCount ?? 0) + 3,
-        `${reason} Saved ${readyCount}/${targetQuestionCount} valid candidate${readyCount === 1 ? "" : "s"} for continuation.`,
+        `${reason} Generated ${readyCount}/${targetQuestionCount} valid candidate${readyCount === 1 ? "" : "s"}. Retry starts a fresh session-only generation.`,
       );
-      throw generationContinuationError(
-        `${reason} Generated ${readyCount}/${targetQuestionCount} valid AI question${readyCount === 1 ? "" : "s"} from the selected source text. Saved progress. Retry continues this same paper instead of starting over.`,
+      throw serverGenerationBudgetError(
+        `${reason} Generated ${readyCount}/${targetQuestionCount} valid AI question${readyCount === 1 ? "" : "s"} from the selected source text. Retry starts a fresh session-only generation.`,
       );
     }
 
@@ -2717,14 +2451,14 @@ async function validateGeneratedPaperSkippingInvalid({
         partialFinalizationReason ??
         "Generation reached the deployment time limit during replacement.";
       await persistBank(
-        "NEEDS_CONTINUATION",
+        "FAILED",
         "REPAIR",
         (resumeState?.attemptCount ?? 0) + 3,
-        `${reason} Saved ${readyCount}/${targetQuestionCount} valid candidates for continuation.`,
+        `${reason} Generated ${readyCount}/${targetQuestionCount} valid candidates. Retry starts a fresh session-only generation.`,
       );
       if (!allowDemoFallback) {
-        throw generationContinuationError(
-          `${reason} Generated ${readyCount}/${targetQuestionCount} valid AI question${readyCount === 1 ? "" : "s"} from the selected source text. Saved progress. No local template paper was saved. Click Retry Auto to continue this same paper instead of starting over.`,
+        throw serverGenerationBudgetError(
+          `${reason} Generated ${readyCount}/${targetQuestionCount} valid AI question${readyCount === 1 ? "" : "s"} from the selected source text. Retry starts a fresh session-only generation.`,
         );
       }
 
@@ -2735,7 +2469,7 @@ async function validateGeneratedPaperSkippingInvalid({
           ...sourceBackedCompletionWarnings,
           {
             type: "server-time-budget",
-            reason: `${reason} Saved ${readyCount}/${targetQuestionCount} valid question${readyCount === 1 ? "" : "s"}; ${remainingMissingQuestions} requested question${remainingMissingQuestions === 1 ? "" : "s"} could not be generated in time.`,
+            reason: `${reason} Generated ${readyCount}/${targetQuestionCount} valid question${readyCount === 1 ? "" : "s"}; ${remainingMissingQuestions} requested question${remainingMissingQuestions === 1 ? "" : "s"} could not be generated in time.`,
           },
         ],
         replacedQuestions,
