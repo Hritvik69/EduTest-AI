@@ -23,6 +23,9 @@ describe("deployment runtime safety", () => {
     expect(deploymentHealthRoute).toMatch(/export const runtime = "nodejs"/);
     expect(deploymentHealthRoute).toMatch(/VERCEL_GIT_COMMIT_SHA/);
     expect(deploymentHealthRoute).toMatch(/databaseConfigured/);
+    expect(deploymentHealthRoute).toMatch(/databaseReachable/);
+    expect(deploymentHealthRoute).toMatch(/databaseErrorClass/);
+    expect(deploymentHealthRoute).toMatch(/checkDatabaseReachability/);
     expect(deploymentHealthRoute).toMatch(/guestSecretConfigured/);
     expect(deploymentHealthRoute).toMatch(/providerHealthPath/);
     expect(deploymentHealthRoute).not.toMatch(/@\/lib\/api-security/);

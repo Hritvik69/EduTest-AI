@@ -124,6 +124,9 @@ export function GenerationOverlay({
     targetQuestionCount?: number;
     missingQuestionCount?: number;
     providerHealth?: PublicAIProviderHealthSnapshot;
+    activeOperation?: string;
+    failureSource?: string;
+    errorClass?: string;
   } | null>(null);
   const [resumePaperId, setResumePaperId] = React.useState<number | null>(null);
   const [retryNonce, setRetryNonce] = React.useState(0);
@@ -374,6 +377,9 @@ export function GenerationOverlay({
                   targetQuestionCount: numberValue(data.targetQuestionCount),
                   missingQuestionCount: numberValue(data.missingQuestionCount),
                   providerHealth: providerHealthFromStreamData(data),
+                  activeOperation: stringValue(data.activeOperation),
+                  failureSource: stringValue(data.failureSource),
+                  errorClass: stringValue(data.errorClass),
                 },
               );
             }
@@ -494,6 +500,9 @@ export function GenerationOverlay({
         const recoverablePaperId = explicitPaperId ?? (recoverable ? savedPaperId : null);
         const continuation = continuationProgressFromError(error);
         const providerHealth = getErrorProviderHealth(error);
+        const activeOperation = getErrorStringField(error, "activeOperation");
+        const failureSource = getErrorStringField(error, "failureSource");
+        const errorClass = getErrorStringField(error, "errorClass");
         const hasSavedQuestionProgress =
           (continuation.readyQuestionCount ?? 0) > 0;
         if (
@@ -539,6 +548,9 @@ export function GenerationOverlay({
           paperId: recoverablePaperId ?? undefined,
           recoverable,
           providerHealth,
+          activeOperation,
+          failureSource,
+          errorClass,
           ...continuation,
         });
         toast.error(message);
@@ -835,6 +847,9 @@ function generationError(
     targetQuestionCount?: number;
     missingQuestionCount?: number;
     providerHealth?: PublicAIProviderHealthSnapshot;
+    activeOperation?: string;
+    failureSource?: string;
+    errorClass?: string;
   } = {},
 ) {
   const error = new Error(message);
@@ -873,8 +888,28 @@ function generationError(
   (
     error as Error & {
       providerHealth?: PublicAIProviderHealthSnapshot;
+      activeOperation?: string;
+      failureSource?: string;
+      errorClass?: string;
     }
   ).providerHealth = options.providerHealth;
+  (
+    error as Error & {
+      activeOperation?: string;
+      failureSource?: string;
+      errorClass?: string;
+    }
+  ).activeOperation = options.activeOperation;
+  (
+    error as Error & {
+      failureSource?: string;
+    }
+  ).failureSource = options.failureSource;
+  (
+    error as Error & {
+      errorClass?: string;
+    }
+  ).errorClass = options.errorClass;
   return error;
 }
 
@@ -1134,6 +1169,15 @@ function getErrorProviderHealth(error: unknown) {
   return isPublicProviderHealthSnapshot(providerHealth) ? providerHealth : undefined;
 }
 
+function getErrorStringField(
+  error: unknown,
+  field: "activeOperation" | "failureSource" | "errorClass",
+) {
+  if (!error || typeof error !== "object" || !(field in error)) return undefined;
+  const value = (error as Record<string, unknown>)[field];
+  return typeof value === "string" && value.trim() ? value : undefined;
+}
+
 function isPublicProviderHealthSnapshot(
   value: unknown,
 ): value is PublicAIProviderHealthSnapshot {
@@ -1275,10 +1319,19 @@ function generationErrorGuidance(
     readyQuestionCount?: number;
     targetQuestionCount?: number;
     providerHealth?: PublicAIProviderHealthSnapshot;
+    activeOperation?: string;
+    failureSource?: string;
+    errorClass?: string;
   } | null,
   provider: AIProvider,
 ) {
   if (!error) return "";
+  if (
+    error.failureSource === "persistence" ||
+    /paper persistence|database reachability|Neon connectivity/i.test(error.message)
+  ) {
+    return "Provider health already ran; the blocker is paper persistence. Check /api/deployment-health for database reachability, then retry the saved generation.";
+  }
   if (error.providerHealth && !error.providerHealth.usableProviders.length) {
     return providerHealthAction(error.providerHealth);
   }

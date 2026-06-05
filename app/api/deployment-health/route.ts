@@ -1,3 +1,5 @@
+import { neon } from "@neondatabase/serverless";
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -19,6 +21,7 @@ export async function GET() {
   const configuredProviderKeys = Object.entries(providerEnvKeys)
     .filter(([provider]) => isProviderConfigured(provider))
     .map(([provider, envKey]) => ({ provider, envKey }));
+  const database = await checkDatabaseReachability();
 
   return Response.json(
     {
@@ -39,6 +42,8 @@ export async function GET() {
         },
         env: {
           databaseConfigured: Boolean(process.env.DATABASE_URL),
+          databaseReachable: database.reachable,
+          databaseErrorClass: database.errorClass,
           guestSecretConfigured: Boolean(
             process.env.EDUTEST_GUEST_SECRET ?? process.env.NEXTAUTH_SECRET,
           ),
@@ -65,4 +70,53 @@ function isProviderConfigured(provider: string) {
 
   const envKey = providerEnvKeys[provider as keyof typeof providerEnvKeys];
   return Boolean(envKey && process.env[envKey]);
+}
+
+async function checkDatabaseReachability() {
+  const databaseUrl = process.env.DATABASE_URL;
+  if (
+    !databaseUrl ||
+    (!databaseUrl.startsWith("postgres://") &&
+      !databaseUrl.startsWith("postgresql://"))
+  ) {
+    return { reachable: false, errorClass: "not_configured" };
+  }
+
+  try {
+    const sql = neon(databaseUrl);
+    await withTimeout(sql`SELECT 1 AS ok`, 2_500);
+    return { reachable: true, errorClass: null };
+  } catch (error) {
+    return {
+      reachable: false,
+      errorClass: classifyDatabaseHealthError(error),
+    };
+  }
+}
+
+function withTimeout<T>(promise: Promise<T>, timeoutMs: number) {
+  return new Promise<T>((resolve, reject) => {
+    const timeout = setTimeout(() => {
+      reject(new Error("database health check timed out"));
+    }, timeoutMs);
+
+    promise.then(
+      (value) => {
+        clearTimeout(timeout);
+        resolve(value);
+      },
+      (error) => {
+        clearTimeout(timeout);
+        reject(error);
+      },
+    );
+  });
+}
+
+function classifyDatabaseHealthError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error ?? "");
+  if (/timeout|timed out|ETIMEDOUT/i.test(message)) return "timeout";
+  if (/ECONNRESET|ENOTFOUND|network|fetch failed/i.test(message)) return "network";
+  if (/auth|password|permission|not allowed|invalid/i.test(message)) return "auth";
+  return "database_error";
 }

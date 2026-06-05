@@ -42,9 +42,16 @@ describe("resumable paper generation wiring", () => {
     expect(route).toMatch(/Checking deployed AI provider health before paper generation/);
     expect(route).toMatch(/providersForHealthPreflight/);
     expect(route).toMatch(/No AI provider passed health preflight/);
-    expect(route.indexOf("Checking deployed AI provider health before paper generation")).toBeLessThan(
-      route.indexOf("paper shell saved; starting AI question generation"),
+    expect(route.indexOf("paper shell saved; starting AI question generation")).toBeLessThan(
+      route.indexOf("Checking deployed AI provider health before paper generation"),
     );
+    expect(route).toMatch(/ActiveGenerationOperation/);
+    expect(route).toMatch(/GenerationFailureSource/);
+    expect(route).toMatch(/activeOperation/);
+    expect(route).toMatch(/failureSource/);
+    expect(route).toMatch(/errorClass/);
+    expect(route).toMatch(/generationFailureSource/);
+    expect(route).toMatch(/Paper persistence timed out after provider health preflight/);
     expect(route).toMatch(/providerHealth: latestProviderHealth/);
     expect(route).toMatch(/providerRecoveryMode/);
     expect(route).toMatch(/source_backed_provider_outage/);
@@ -96,6 +103,9 @@ describe("resumable paper generation wiring", () => {
     expect(overlay).toMatch(/streamContractFromData/);
     expect(overlay).toMatch(/streamRecoverySnapshotFromData/);
     expect(overlay).toMatch(/providerHealthFromStreamData/);
+    expect(overlay).toMatch(/getErrorStringField/);
+    expect(overlay).toMatch(/failureSource === "persistence"/);
+    expect(overlay).toMatch(/Provider health already ran; the blocker is paper persistence/);
     expect(overlay).toMatch(/providerRecoveryModeFromData/);
     expect(overlay).toMatch(/isProviderRecoverableError/);
     expect(overlay).toMatch(/setProviderOverride\("AUTO"\)/);
