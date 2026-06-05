@@ -126,6 +126,7 @@ export function GenerationOverlay({
     targetQuestionCount?: number;
     missingQuestionCount?: number;
     providerHealth?: PublicAIProviderHealthSnapshot;
+    providerRecoveryMode?: ProviderRecoveryMode;
     activeOperation?: string;
     failureSource?: string;
     errorClass?: string;
@@ -379,6 +380,7 @@ export function GenerationOverlay({
                   targetQuestionCount: numberValue(data.targetQuestionCount),
                   missingQuestionCount: numberValue(data.missingQuestionCount),
                   providerHealth: providerHealthFromStreamData(data),
+                  providerRecoveryMode: recoveryMode ?? undefined,
                   activeOperation: stringValue(data.activeOperation),
                   failureSource: stringValue(data.failureSource),
                   errorClass: stringValue(data.errorClass),
@@ -502,9 +504,13 @@ export function GenerationOverlay({
         const recoverablePaperId = explicitPaperId ?? (recoverable ? savedPaperId : null);
         const continuation = continuationProgressFromError(error);
         const providerHealth = getErrorProviderHealth(error);
+        const errorProviderRecoveryMode = getErrorProviderRecoveryMode(error);
         const activeOperation = getErrorStringField(error, "activeOperation");
         const failureSource = getErrorStringField(error, "failureSource");
         const errorClass = getErrorStringField(error, "errorClass");
+        if (errorProviderRecoveryMode) {
+          setProviderRecoveryMode(errorProviderRecoveryMode);
+        }
         const hasSavedQuestionProgress =
           (continuation.readyQuestionCount ?? 0) > 0;
         if (
@@ -550,6 +556,7 @@ export function GenerationOverlay({
           paperId: recoverablePaperId ?? undefined,
           recoverable,
           providerHealth,
+          providerRecoveryMode: errorProviderRecoveryMode ?? undefined,
           activeOperation,
           failureSource,
           errorClass,
@@ -671,7 +678,7 @@ export function GenerationOverlay({
           <p className="mt-2 text-slate-300">{error ? error.message : currentMessage}</p>
           {!error && providerRecoveryMode === "source_backed_provider_outage" ? (
             <p className="mt-2 text-xs font-semibold text-emerald-200">
-              Using selected source text while provider fallback recovers.
+              Finishing from selected TXT/PDF source text because provider fallback could not complete.
             </p>
           ) : null}
           {displayedContract ? (
@@ -747,13 +754,20 @@ export function GenerationOverlay({
               {errorGuidance}
             </div>
           ) : null}
+          {error.providerRecoveryMode === "source_backed_provider_outage" ? (
+            <div className="mt-4 rounded-lg border border-emerald-300/20 bg-emerald-500/10 p-3 text-sm font-semibold leading-6 text-emerald-50">
+              Finishing from selected TXT/PDF source text because provider fallback could not complete.
+            </div>
+          ) : null}
           {error.providerHealth ? (
             <div className="mt-4 rounded-lg border border-red-300/20 bg-red-500/10 p-3 text-sm leading-6 text-red-50">
               <div className="font-semibold text-red-100">
                 {providerHealthSummary(error.providerHealth)}
               </div>
               <div className="mt-1 text-red-100/90">
-                {providerHealthAction(error.providerHealth)}
+                {error.providerRecoveryMode === "source_backed_provider_outage"
+                  ? "Finishing from selected source text; provider retry is not required for this run."
+                  : providerHealthAction(error.providerHealth)}
               </div>
               <div className="mt-2 grid gap-2">
                 {error.providerHealth.providers
@@ -783,7 +797,7 @@ export function GenerationOverlay({
                 Open Dashboard
               </Button>
             ) : null}
-            {provider !== "AUTO" && canRetry ? (
+            {!error.providerRecoveryMode && provider !== "AUTO" && canRetry ? (
               <Button
                 type="button"
                 className="flex-1 sm:col-span-2"
@@ -849,6 +863,7 @@ function generationError(
     targetQuestionCount?: number;
     missingQuestionCount?: number;
     providerHealth?: PublicAIProviderHealthSnapshot;
+    providerRecoveryMode?: ProviderRecoveryMode;
     activeOperation?: string;
     failureSource?: string;
     errorClass?: string;
@@ -890,11 +905,17 @@ function generationError(
   (
     error as Error & {
       providerHealth?: PublicAIProviderHealthSnapshot;
+      providerRecoveryMode?: ProviderRecoveryMode;
       activeOperation?: string;
       failureSource?: string;
       errorClass?: string;
     }
   ).providerHealth = options.providerHealth;
+  (
+    error as Error & {
+      providerRecoveryMode?: ProviderRecoveryMode;
+    }
+  ).providerRecoveryMode = options.providerRecoveryMode;
   (
     error as Error & {
       activeOperation?: string;
@@ -1171,6 +1192,14 @@ function getErrorProviderHealth(error: unknown) {
   return isPublicProviderHealthSnapshot(providerHealth) ? providerHealth : undefined;
 }
 
+function getErrorProviderRecoveryMode(error: unknown) {
+  if (!error || typeof error !== "object" || !("providerRecoveryMode" in error)) {
+    return undefined;
+  }
+  const value = (error as { providerRecoveryMode?: unknown }).providerRecoveryMode;
+  return value === "source_backed_provider_outage" ? value : undefined;
+}
+
 function getErrorStringField(
   error: unknown,
   field: "activeOperation" | "failureSource" | "errorClass",
@@ -1321,6 +1350,7 @@ function generationErrorGuidance(
     readyQuestionCount?: number;
     targetQuestionCount?: number;
     providerHealth?: PublicAIProviderHealthSnapshot;
+    providerRecoveryMode?: ProviderRecoveryMode;
     activeOperation?: string;
     failureSource?: string;
     errorClass?: string;
@@ -1333,6 +1363,11 @@ function generationErrorGuidance(
     /paper persistence|database reachability|Neon connectivity/i.test(error.message)
   ) {
     return "Provider health already ran; the blocker is paper persistence. Check /api/deployment-health for database reachability, then retry the saved generation.";
+  }
+  if (error.providerRecoveryMode === "source_backed_provider_outage") {
+    return isSourceTextShortageError(error)
+      ? "AI providers failed, then selected TXT/PDF source text was not enough to finish the paper. Select more source material or lower the question count."
+      : "Finishing from selected TXT/PDF source text because provider fallback could not complete.";
   }
   if (error.providerHealth && !error.providerHealth.usableProviders.length) {
     return providerHealthAction(error.providerHealth);

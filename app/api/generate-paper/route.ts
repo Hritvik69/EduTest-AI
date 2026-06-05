@@ -67,10 +67,15 @@ import {
 } from "@/lib/question-candidate-bank";
 import {
   completeQuestionBankWithSourceBackedFallback,
-  generateSourceBackedFallbackQuestions,
   hasSourceBackedFallbackConcepts,
   sourceBackedCompletionMarker,
 } from "@/lib/source-backed-fallback";
+import {
+  buildSourceBackedProviderRecoveryBank,
+  sourceBackedProviderRecoveryMode,
+  sourceBackedProviderRecoveryWarning,
+  type SourceBackedProviderRecoveryMode,
+} from "@/lib/provider-outage-recovery";
 import { analyzeConceptSourceQuality, retrieveConcepts } from "@/lib/retriever";
 import { generationRequestSchema } from "@/lib/schemas";
 import {
@@ -107,7 +112,7 @@ type LocalFallbackContext = {
   blueprint: Blueprint;
   scopedConcepts: ConceptData[];
 };
-type ProviderRecoveryMode = "source_backed_provider_outage";
+type ProviderRecoveryMode = SourceBackedProviderRecoveryMode;
 type ActiveGenerationOperation =
   | "configuration"
   | "source_loading"
@@ -279,7 +284,7 @@ export async function POST(request: NextRequest) {
         if (
           request.signal.aborted ||
           generationSignal.aborted ||
-          !isAIProviderUnavailableError(error)
+          !isProviderOutageRecoverableForSource(error)
         ) {
           return;
         }
@@ -695,7 +700,7 @@ export async function POST(request: NextRequest) {
             !allowExplicitDemoFallback &&
             hasSourceBackedFallbackConcepts(scopedConcepts)
           ) {
-            providerRecoveryMode = "source_backed_provider_outage";
+            providerRecoveryMode = sourceBackedProviderRecoveryMode;
           }
           send({
             step: 3,
@@ -814,7 +819,7 @@ export async function POST(request: NextRequest) {
               Array.isArray(healthyProviders) &&
               healthyProviders.length === 0;
             if (providersUnavailableBeforeCall) {
-              providerRecoveryMode = "source_backed_provider_outage";
+              providerRecoveryMode = sourceBackedProviderRecoveryMode;
               send({
                 step: 5,
                 pct: 42,
@@ -885,8 +890,14 @@ export async function POST(request: NextRequest) {
                   });
                 }
               } catch (error) {
-                if (!allowExplicitDemoFallback && isAIProviderUnavailableError(error)) {
-                  providerRecoveryMode = "source_backed_provider_outage";
+                if (
+                  canUseSourceBackedProviderRecovery(
+                    allowExplicitDemoFallback,
+                    scopedConcepts,
+                  ) &&
+                  isProviderOutageRecoverableForSource(error)
+                ) {
+                  providerRecoveryMode = sourceBackedProviderRecoveryMode;
                   await refreshProviderHealthAfterRuntimeFailure(error);
                   send({
                     step: 5,
@@ -955,7 +966,7 @@ export async function POST(request: NextRequest) {
               shouldStop: (context) =>
                 shouldStopBeforeNextGenerationCall(generationDeadlineAt, context),
               onProviderUnavailable: async ({ error }) => {
-                providerRecoveryMode = "source_backed_provider_outage";
+                providerRecoveryMode = sourceBackedProviderRecoveryMode;
                 await refreshProviderHealthAfterRuntimeFailure(error);
               },
               onAcceptedBatch: async (details) => {
@@ -980,9 +991,9 @@ export async function POST(request: NextRequest) {
               },
               onProgress: (details) => {
                 const providerOutageRecovered =
-                  details.diagnostic.generationMode === "source_backed_provider_outage";
+                  details.diagnostic.generationMode === sourceBackedProviderRecoveryMode;
                 if (providerOutageRecovered) {
-                  providerRecoveryMode = "source_backed_provider_outage";
+                  providerRecoveryMode = sourceBackedProviderRecoveryMode;
                 }
                 send({
                   step: 5,
@@ -1010,7 +1021,14 @@ export async function POST(request: NextRequest) {
           stoppedDuringCoverageGeneration = coverageGeneration.stoppedForBudget;
         }
 
-        if (stoppedDuringCoverageGeneration && !allQuestions.length) {
+        if (
+          stoppedDuringCoverageGeneration &&
+          !allQuestions.length &&
+          !canUseSourceBackedProviderRecovery(
+            allowExplicitDemoFallback,
+            scopedConcepts,
+          )
+        ) {
           await persistQuestionGenerationState(
             allQuestions,
             "Phase 5 paused before the first AI chunk because the server time budget was too low. Retry continues the same saved paper setup.",
@@ -1021,10 +1039,28 @@ export async function POST(request: NextRequest) {
           );
         }
 
-        const stoppedForServerBudget = shouldStopForFinalization(
+        let stoppedForServerBudget = shouldStopForFinalization(
           generationDeadlineAt,
           allQuestions.length,
         ) || stoppedDuringCoverageGeneration;
+        if (
+          stoppedForServerBudget &&
+          canUseSourceBackedProviderRecovery(
+            allowExplicitDemoFallback,
+            scopedConcepts,
+          )
+        ) {
+          providerRecoveryMode = sourceBackedProviderRecoveryMode;
+          stoppedForServerBudget = false;
+          send({
+            step: 5,
+            pct: 84,
+            progress: 84,
+            msg: "Phase 5 - Question Generation: AI time budget is low; completing from selected TXT/PDF source text.",
+            ...providerHealthPayload(),
+            ...providerRecoveryPayload(),
+          });
+        }
         if (!stoppedForServerBudget) {
           send({
             step: 5,
@@ -1078,7 +1114,7 @@ export async function POST(request: NextRequest) {
           onStatePersisted: updateRecoverySnapshot,
           onActiveOperation: setActiveOperation,
           onProviderUnavailable: async (error) => {
-            providerRecoveryMode = "source_backed_provider_outage";
+            providerRecoveryMode = sourceBackedProviderRecoveryMode;
             await refreshProviderHealthAfterRuntimeFailure(error);
           },
         });
@@ -1142,13 +1178,7 @@ export async function POST(request: NextRequest) {
         );
         await runWithOperation("finalize", () => markPaperReady(durablePaperId));
         const providerRecoveryWarnings = providerRecoveryMode
-          ? [
-              {
-                type: "provider-recovery",
-                reason:
-                  "source_backed_provider_outage: AI providers were unavailable during generation, so remaining questions were completed from selected source text.",
-              },
-            ]
+          ? [sourceBackedProviderRecoveryWarning()]
           : [];
         const finalValidationWarnings = [
           ...validation.skipped,
@@ -1299,7 +1329,7 @@ export async function POST(request: NextRequest) {
           !request.signal.aborted &&
           (isGenerationContinuationError(error) ||
             isRecoverableGenerationRuntimeError(error, savedFailureState));
-        if (!request.signal.aborted && isAIProviderUnavailableError(error)) {
+        if (!request.signal.aborted && isProviderOutageRecoverableForSource(error)) {
           await refreshProviderHealthAfterRuntimeFailure(error);
         }
         if (paperId && !canContinueGeneration) {
@@ -1393,25 +1423,16 @@ function generateSourceBackedProviderOutageQuestions({
   config: PaperConfig;
   existingQuestions: GeneratedQuestion[];
 }) {
-  if (!hasSourceBackedFallbackConcepts(concepts)) {
-    throw selectedSourceTextNotEnoughError("this paper");
-  }
-
-  const questions = generateSourceBackedFallbackQuestions(
-    blueprint.sections,
+  const recovery = buildSourceBackedProviderRecoveryBank({
+    blueprint,
     concepts,
     config,
-    {
-      existingQuestions,
-      startIndex: existingQuestions.length + 101,
-    },
-  );
+    existingQuestions,
+    scope: "this paper",
+    startIndex: existingQuestions.length + 101,
+  });
 
-  if (!questions.length) {
-    throw selectedSourceTextNotEnoughError("this paper");
-  }
-
-  return questions;
+  return recovery.candidateQuestions;
 }
 
 async function completeWithLocalGenerationFallback({
@@ -2318,14 +2339,19 @@ function isServerTimeBudgetError(error: unknown) {
   );
 }
 
-function isAIProviderRepairUnavailable(error: unknown) {
-  return isAIProviderUnavailableError(error);
+function canUseSourceBackedProviderRecovery(
+  allowExplicitDemoFallback: boolean,
+  concepts: ConceptData[],
+) {
+  return !allowExplicitDemoFallback && hasSourceBackedFallbackConcepts(concepts);
 }
 
-function selectedSourceTextNotEnoughError(scope: string) {
-  return new Error(
-    `SOURCE_TEXT_NOT_ENOUGH: Selected source text is not enough for ${scope}. Select more chapters/topics, upload stronger source text, or lower the question count.`,
-  );
+function isProviderOutageRecoverableForSource(error: unknown) {
+  return isAIProviderUnavailableError(error) || isServerTimeBudgetError(error);
+}
+
+function isAIProviderRepairUnavailable(error: unknown) {
+  return isProviderOutageRecoverableForSource(error);
 }
 
 async function validateGeneratedPaperSkippingInvalid({
@@ -2389,6 +2415,8 @@ async function validateGeneratedPaperSkippingInvalid({
   let lastRepairError: string | undefined;
   let sourceBackedCompletedQuestions = 0;
   const stateCreatedAt = resumeState?.createdAt ?? new Date().toISOString();
+  const sourceBackedRepairRecoveryAvailable =
+    allowSourceBackedCompletion && hasSourceBackedFallbackConcepts(scopedConcepts);
   const persistBank = async (
     status: PaperGenerationState["status"],
     phase: PaperGenerationState["phase"],
@@ -2427,6 +2455,19 @@ async function validateGeneratedPaperSkippingInvalid({
       if (missingCount <= 0) break;
 
       if (shouldStopForFinalization(deadlineAt, bank.readyCount())) {
+        if (sourceBackedRepairRecoveryAvailable) {
+          lastRepairError =
+            "SERVER_GENERATION_TIME_BUDGET_EXCEEDED: Server time budget is low before AI repair.";
+          await persistBank(
+            "IN_PROGRESS",
+            "REPAIR",
+            (resumeState?.attemptCount ?? 0) + repairAttempt - 1,
+            "Server time budget is low; attempting selected-source completion.",
+            lastRepairError,
+          );
+          break;
+        }
+
         stoppedForServerBudget = true;
         await persistBank(
           "NEEDS_CONTINUATION",
@@ -2484,6 +2525,19 @@ async function validateGeneratedPaperSkippingInvalid({
         );
       } catch (error) {
         if (isServerTimeBudgetError(error)) {
+          if (sourceBackedRepairRecoveryAvailable) {
+            await onProviderUnavailable?.(error);
+            lastRepairError = error instanceof Error ? error.message : String(error);
+            await persistBank(
+              "IN_PROGRESS",
+              "REPAIR",
+              (resumeState?.attemptCount ?? 0) + repairAttempt,
+              "AI repair hit the server time budget; attempting selected-source completion.",
+              lastRepairError,
+            );
+            break;
+          }
+
           stoppedForServerBudget = true;
           await persistBank(
             "NEEDS_CONTINUATION",

@@ -200,7 +200,12 @@ export async function generateCoveragePlannedQuestions({
           existingQuestions: existingForBatch,
         });
       } catch (error) {
-        if (!isAIProviderUnavailableError(error)) throw error;
+        if (
+          !isAIProviderUnavailableError(error) &&
+          !isServerTimeBudgetError(error)
+        ) {
+          throw error;
+        }
         await onProviderUnavailable?.({
           error,
           label,
@@ -365,6 +370,13 @@ function maxCoverageSectionsPerAiCall() {
   }
 
   return 4;
+}
+
+function isServerTimeBudgetError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  return /SERVER_GENERATION_TIME_BUDGET_EXCEEDED|Vercel function time budget|server time budget/i.test(
+    message,
+  );
 }
 
 export async function retrieveConceptsForCoverageUnit(

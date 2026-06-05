@@ -231,6 +231,51 @@ describe("strict coverage generation", () => {
     )).toBe(true);
   });
 
+  it("falls back to selected-source coverage batches when AI budget expires", async () => {
+    const counts = [6, 6, 5, 5];
+    const largeComposition = composition.map((item, index) => ({
+      ...item,
+      questionCount: counts[index],
+    }));
+    mocks.generateJSON.mockRejectedValue(
+      new Error(
+        "SERVER_GENERATION_TIME_BUDGET_EXCEEDED: Server time budget is too low to start another AI provider attempt.",
+      ),
+    );
+    const blueprint = blueprintFor(22);
+    const paperConfig = {
+      ...config,
+      questionComposition: largeComposition,
+      totalQuestions: 22,
+      totalMarks: 22,
+      typeDistribution: { MCQ: 22 },
+    };
+    const onProviderUnavailable = vi.fn();
+    const { generateCoveragePlannedQuestions } = await import(
+      "@/lib/coverage-generation"
+    );
+    const { QuestionCandidateBank } = await import(
+      "@/lib/question-candidate-bank"
+    );
+
+    const result = await generateCoveragePlannedQuestions({
+      blueprint,
+      concepts: conceptsFor(largeComposition),
+      config: paperConfig,
+      onProviderUnavailable,
+    });
+    const bank = new QuestionCandidateBank(result.questions, blueprint, paperConfig);
+
+    expect(mocks.generateJSON).toHaveBeenCalledTimes(4);
+    expect(onProviderUnavailable).toHaveBeenCalledTimes(4);
+    expect(result.questions).toHaveLength(22);
+    expect(bank.readyCount()).toBe(22);
+    expect(bank.missingCount()).toBe(0);
+    expect(result.diagnostics.every(
+      (item) => item.generationMode === "source_backed_provider_outage",
+    )).toBe(true);
+  });
+
   it("continues only remaining coverage allocations on resume", async () => {
     mocks.generateJSON.mockResolvedValue({
       questions: [mcq(3, "Chemistry", 301, 3001, "Molarity")],
