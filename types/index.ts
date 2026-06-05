@@ -160,7 +160,7 @@ export interface GenerationManifest {
       questionType: string;
       requestedQuestions: number;
       generatedQuestions: number;
-      generationMode: "ai" | "source_backed_provider_outage";
+      generationMode: "ai" | "source_backed_provider_outage" | "syllabus_near_fallback";
       sourceConcepts: number;
       sourceTextChunks: number;
       sourceQuality: "strong" | "weak" | "outline_only" | "missing";

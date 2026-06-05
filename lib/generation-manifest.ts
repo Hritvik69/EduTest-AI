@@ -45,6 +45,7 @@ export function buildGenerationManifest({
   });
   const warningTexts = normalizedValidationWarnings(validationWarnings);
   const sourceWarnings = sourceWarningTexts(config, conceptSource);
+  const coverageWarnings = coverageWarningTexts(coverage);
 
   return {
     version: 1,
@@ -88,7 +89,7 @@ export function buildGenerationManifest({
       warnings: warningTexts,
     },
     ...(coverage ? { coverage } : {}),
-    warnings: unique([...sourceWarnings, ...warningTexts]).slice(0, 12),
+    warnings: unique([...sourceWarnings, ...warningTexts, ...coverageWarnings]).slice(0, 12),
   };
 }
 
@@ -148,6 +149,25 @@ function normalizedValidationWarnings(values: unknown[]) {
         : `${type}: ${reason}`;
     })
     .filter(Boolean);
+}
+
+function coverageWarningTexts(coverage: GenerationManifest["coverage"] | undefined) {
+  if (!coverage?.generated?.length) return [];
+
+  const counts = new Map<string, number>();
+  coverage.generated.forEach((item) => {
+    if (item.generationMode !== "syllabus_near_fallback") return;
+    const label = [
+      item.subject,
+      item.topicName ?? item.chapterName ?? "selected coverage",
+    ].join(": ");
+    counts.set(label, (counts.get(label) ?? 0) + item.generatedQuestions);
+  });
+
+  return Array.from(counts.entries()).map(
+    ([label, count]) =>
+      `${label} had weak/noisy source text, so ${count} question${count === 1 ? "" : "s"} were generated from chapter/topic-near syllabus coverage to preserve the requested paper count.`,
+  );
 }
 
 function isGenerationManifest(value: unknown): value is GenerationManifest {

@@ -13,6 +13,7 @@ import type {
   GeneratedQuestion,
   MCQOption,
   PaperConfig,
+  QuestionCompositionItem,
   QuestionType,
   SubQuestion,
 } from "@/types";
@@ -70,6 +71,15 @@ export type SourceBackedGuaranteedCompletionRetarget = {
   config: PaperConfig;
   conversions: SourceBackedGuaranteedConversion[];
   warning: string;
+};
+
+export type SyllabusNearFallbackWarning = {
+  type: "syllabus-near-fallback";
+  reason: string;
+  subject: string;
+  chapterName?: string;
+  topicName?: string;
+  count: number;
 };
 
 type StrictCompletionOptions = {
@@ -742,6 +752,745 @@ export function generateSourceBackedFallbackQuestions(
   return generated;
 }
 
+export function hasWeakOrNoisySourceForSyllabusFallback(
+  concepts: ConceptData[],
+  item?: QuestionCompositionItem,
+) {
+  const focused = item ? conceptsForSyllabusItem(concepts, item) : concepts;
+  const sourceConcepts = sourceBackedConcepts(focused);
+  if (!sourceConcepts.length) return true;
+
+  const meaningfulText = uniqueNormalized(
+    sourceConcepts.map((concept) => concept.text),
+  ).join(" ");
+  const noisyCount = sourceConcepts.filter((concept) =>
+    hasNoisySourceArtifact(concept.text),
+  ).length;
+  const totalChars = meaningfulText.length;
+  const sentenceCount = meaningfulText
+    .split(/(?<=[.!?])\s+/)
+    .filter((sentence) => sentence.trim().length >= 50).length;
+
+  return (
+    totalChars < 650 ||
+    sentenceCount < 3 ||
+    noisyCount >= Math.max(1, Math.ceil(sourceConcepts.length * 0.2))
+  );
+}
+
+export function generateSyllabusNearFallbackQuestions(
+  sections: BlueprintSection[],
+  item: QuestionCompositionItem,
+  config: PaperConfig,
+  options: {
+    existingQuestions?: GeneratedQuestion[];
+    concepts?: ConceptData[];
+    startIndex?: number;
+  } = {},
+) {
+  const existing = [...(options.existingQuestions ?? [])];
+  const generated: GeneratedQuestion[] = [];
+  let index = options.startIndex ?? existing.length + 1;
+
+  for (const section of sections) {
+    let acceptedInSection = 0;
+    let attempts = 0;
+    const maxAttempts = Math.max(section.count * 8, 16);
+
+    while (acceptedInSection < section.count && attempts < maxAttempts) {
+      const question = createSyllabusNearQuestion({
+        section,
+        item,
+        config,
+        concepts: options.concepts ?? [],
+        index,
+      });
+      attempts += 1;
+      index += 1;
+
+      if ([...existing, ...generated].some((other) => isDuplicateQuestion(other, question))) {
+        continue;
+      }
+
+      generated.push(question);
+      acceptedInSection += 1;
+    }
+  }
+
+  return generated;
+}
+
+export function completeQuestionBankWithSyllabusNearFallback({
+  bank,
+  config,
+  concepts,
+  startIndex,
+}: {
+  bank: QuestionCandidateBank;
+  config: PaperConfig;
+  concepts: ConceptData[];
+  startIndex?: number;
+}) {
+  const composition = normalizedFallbackComposition(config, concepts);
+  if (!composition.length || bank.missingCount() <= 0) {
+    return {
+      accepted: 0,
+      warnings: [] satisfies SyllabusNearFallbackWarning[],
+    };
+  }
+
+  const acceptedByItem = composition.map((item) => ({
+    item,
+    accepted: questionsMatchingSyllabusItem(bank.result().questions, item),
+    added: 0,
+  }));
+  let cursor = startIndex ?? bank.allCandidates().length + 401;
+
+  for (const missingSection of expandMissingSections(bank.missingSections())) {
+    const target = nextSyllabusDeficit(acceptedByItem) ?? acceptedByItem[0];
+    if (!target) break;
+
+    const candidates = generateSyllabusNearFallbackQuestions(
+      [missingSection],
+      target.item,
+      config,
+      {
+        concepts: conceptsForSyllabusItem(concepts, target.item),
+        existingQuestions: bank.allCandidates(),
+        startIndex: cursor,
+      },
+    );
+    cursor += candidates.length + 1;
+
+    const accepted = candidates.some((candidate) => bank.tryAdd(candidate));
+    if (accepted) {
+      target.accepted += 1;
+      target.added += 1;
+    }
+  }
+
+  const warnings = acceptedByItem
+    .filter((entry) => entry.added > 0)
+    .map((entry) => syllabusNearFallbackWarning(entry.item, entry.added));
+
+  return {
+    accepted: acceptedByItem.reduce((sum, entry) => sum + entry.added, 0),
+    warnings,
+  };
+}
+
+function createSyllabusNearQuestion({
+  section,
+  item,
+  config,
+  concepts,
+  index,
+}: {
+  section: BlueprintSection;
+  item: QuestionCompositionItem;
+  config: PaperConfig;
+  concepts: ConceptData[];
+  index: number;
+}): GeneratedQuestion {
+  const concept = syllabusNearConceptFor(item, config, concepts, index);
+  const common = syllabusNearCommonQuestionFields(section, item, config, concept, index);
+  const options = syllabusNearOptions(concept, index);
+
+  switch (section.questionType) {
+    case "MCQ":
+      return {
+        ...common,
+        text: `Which statement best explains ${concept.focus}?`,
+        options,
+        correctAnswer: "B",
+        explanation: concept.explanation,
+      };
+    case "ASSERTION_REASON":
+      return {
+        ...common,
+        text: `Assertion (A): ${concept.assertion}\nReason (R): ${concept.reason}`,
+        assertion: concept.assertion,
+        reason: concept.reason,
+        correctAnswer: "A",
+        explanation: "Both assertion and reason are true, and the reason correctly explains the assertion.",
+      };
+    case "TRUE_FALSE":
+      return {
+        ...common,
+        text: `True or False: ${concept.trueStatement}`,
+        correctAnswer: "True",
+        explanation: concept.explanation,
+      };
+    case "ONE_WORD":
+      return {
+        ...common,
+        text: `Which term means ${concept.oneWordPrompt}?`,
+        correctAnswer: concept.term,
+        explanation: concept.explanation,
+      };
+    case "FILL_BLANK":
+      return {
+        ...common,
+        text: `${concept.fillBlankPrompt} is called ________.`,
+        correctAnswer: concept.term,
+        explanation: concept.explanation,
+      };
+    case "VERY_SHORT":
+      return {
+        ...common,
+        text: `State one important point about ${concept.focus}.`,
+        correctAnswer: concept.correct,
+        keyPoints: [concept.correct],
+        explanation: concept.explanation,
+      };
+    case "MATCH_FOLLOWING":
+      return {
+        ...common,
+        text: `Match the ${concept.matchTitle} terms with their meanings.`,
+        matchPairs: syllabusNearMatchPairs(item, config, concepts, index),
+        correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
+        explanation: "Each term should be matched with its correct classroom meaning.",
+      };
+    case "SHORT":
+      return {
+        ...common,
+        text: `Explain why ${concept.focus} is important.`,
+        correctAnswer: concept.correct,
+        keyPoints: [concept.correct, concept.example, concept.explanation],
+        explanation: concept.explanation,
+      };
+    case "NUMERICAL":
+      return {
+        ...common,
+        text: `A learner notes ${concept.firstCount} examples of ${concept.term} and adds ${concept.secondCount} more. How many examples are noted in all?`,
+        correctAnswer: `${concept.firstCount + concept.secondCount} examples`,
+        keyPoints: [
+          `${concept.firstCount} + ${concept.secondCount} = ${concept.firstCount + concept.secondCount}.`,
+          `Final answer: ${concept.firstCount + concept.secondCount} examples.`,
+        ],
+        explanation: "Add both counts to find the total.",
+      };
+    case "SOURCE_BASED":
+      return syllabusNearSourceBasedQuestion(common, concept);
+    case "CASE_BASED":
+      return syllabusNearCaseBasedQuestion(common, concept, options);
+    case "PARAGRAPH":
+      return {
+        ...common,
+        scenario: concept.scenario,
+        text: `Based on the paragraph, explain ${concept.focus}.`,
+        correctAnswer: concept.correct,
+        keyPoints: [concept.correct, concept.example],
+        explanation: concept.explanation,
+      };
+    case "HOTS":
+      return {
+        ...common,
+        text: `What problem can occur if ${concept.focus} is ignored? Justify your answer.`,
+        correctAnswer: concept.hotsAnswer,
+        keyPoints: [concept.hotsAnswer, concept.example],
+        explanation: concept.explanation,
+      };
+    case "COMPETENCY":
+      return {
+        ...common,
+        text: `Use a classroom example to show ${concept.focus}.`,
+        correctAnswer: `${concept.example} ${concept.correct}`,
+        keyPoints: [concept.example, concept.correct],
+        explanation: concept.explanation,
+      };
+    case "DIAGRAM":
+      return {
+        ...common,
+        text: `Draw a labelled concept map for ${concept.term}.`,
+        diagramDescription: `Place ${concept.term} in the centre and connect it with meaning, example, importance, and common mistake.`,
+        correctAnswer: `The concept map should include ${concept.term}, its meaning, one example, and why it matters.`,
+        keyPoints: [concept.term, concept.correct, concept.example],
+        explanation: "A complete concept map uses clear labels and correct links.",
+      };
+    case "PRACTICAL":
+      return {
+        ...common,
+        text: `Design a short classroom activity to practise ${concept.focus}.`,
+        correctAnswer: `Activity: ${concept.example} Students should identify the concept and explain why it is effective.`,
+        keyPoints: ["Aim", "Activity steps", concept.correct, "Conclusion"],
+        explanation: concept.explanation,
+      };
+    case "LONG":
+      return {
+        ...common,
+        text: `Write a detailed answer explaining ${concept.focus}.`,
+        correctAnswer: `Introduce ${concept.term}. Explain: ${concept.correct} Add example: ${concept.example} Conclude with why it matters.`,
+        keyPoints: [`Define ${concept.term}.`, concept.correct, concept.example, "Conclude clearly."],
+        explanation: "A complete answer defines, explains, supports with an example, and concludes.",
+      };
+    case "NCERT_FORMAT":
+      return {
+        ...common,
+        text: `Give an NCERT-style answer on ${concept.focus}.`,
+        correctAnswer: concept.correct,
+        keyPoints: [concept.correct, concept.example],
+        explanation: concept.explanation,
+      };
+  }
+}
+
+function syllabusNearCommonQuestionFields(
+  section: BlueprintSection,
+  item: QuestionCompositionItem,
+  config: PaperConfig,
+  concept: SyllabusNearConcept,
+  index: number,
+): GeneratedQuestion {
+  return {
+    id: index,
+    text: concept.focus,
+    type: section.questionType,
+    marks: section.marksPerQuestion,
+    difficulty: config.difficulty,
+    bloomLevel: bloomFor(section.questionType, config.difficulty),
+    competencyLevel: section.questionType === "MCQ" || section.questionType === "TRUE_FALSE" ? 2 : 3,
+    reasoningSteps: reasoningStepsFor(config.difficulty),
+    difficultyConfidence: 0.76,
+    cognitiveComplexity: {
+      conceptIntegration: complexityFor(config.difficulty),
+      abstractionLevel: complexityFor(config.difficulty),
+      inferenceLevel: Math.max(1, complexityFor(config.difficulty) - 1),
+      ambiguityLevel: 1,
+      cognitiveLoad: complexityFor(config.difficulty),
+    },
+    topic: item.topicName ?? concept.term,
+    chapterId: item.chapterId,
+    topicId: item.topicId,
+    subject: item.subject || config.subject,
+    classNum: config.classNum,
+    source: "curriculum",
+    noveltyAngle: `SYLLABUS_NEAR_FALLBACK:${section.questionType}:${index}:${slugPart(concept.term)}`,
+    correctAnswer: concept.correct,
+    explanation: concept.explanation,
+  };
+}
+
+function syllabusNearSourceBasedQuestion(
+  common: GeneratedQuestion,
+  concept: SyllabusNearConcept,
+): GeneratedQuestion {
+  const subQuestions: SubQuestion[] = [
+    shortSubQuestion("Identify the main concept in the passage.", concept.term, 1),
+    shortSubQuestion("State why the concept is useful.", concept.correct, 1),
+    shortSubQuestion("Give one example from the passage.", concept.example, 1),
+    shortSubQuestion("Mention one mistake to avoid.", concept.misconception, 1),
+  ];
+
+  return {
+    ...common,
+    scenario: concept.scenario,
+    text: `Read the passage about ${concept.term} and answer the questions.`,
+    subQuestions,
+    correctAnswer: subQuestions
+      .map((question, index) => `(${index + 1}) ${question.correctAnswer}`)
+      .join("; "),
+  };
+}
+
+function syllabusNearCaseBasedQuestion(
+  common: GeneratedQuestion,
+  concept: SyllabusNearConcept,
+  options: MCQOption[],
+): GeneratedQuestion {
+  const subQuestions: SubQuestion[] = [
+    {
+      text: `Which option best explains the situation related to ${concept.term}?`,
+      type: "MCQ",
+      options,
+      correctAnswer: "B",
+      marks: 2,
+    },
+    {
+      text: "Give the reason for your answer.",
+      type: "SHORT",
+      correctAnswer: concept.correct,
+      marks: 2,
+    },
+  ];
+
+  return {
+    ...common,
+    scenario: concept.scenario,
+    text: `Read the case about ${concept.term} and answer the questions.`,
+    subQuestions,
+    correctAnswer: `(1) B; (2) ${concept.correct}`,
+  };
+}
+
+type SyllabusNearConcept = {
+  term: string;
+  focus: string;
+  correct: string;
+  misconception: string;
+  example: string;
+  explanation: string;
+  assertion: string;
+  reason: string;
+  trueStatement: string;
+  oneWordPrompt: string;
+  fillBlankPrompt: string;
+  matchTitle: string;
+  scenario: string;
+  hotsAnswer: string;
+  firstCount: number;
+  secondCount: number;
+};
+
+function syllabusNearConceptFor(
+  item: QuestionCompositionItem,
+  config: PaperConfig,
+  concepts: ConceptData[],
+  index: number,
+): SyllabusNearConcept {
+  const seeds = syllabusNearConcepts(item, config, concepts);
+  return seeds[Math.abs(index) % seeds.length];
+}
+
+function syllabusNearConcepts(
+  item: QuestionCompositionItem,
+  config: PaperConfig,
+  concepts: ConceptData[],
+): SyllabusNearConcept[] {
+  const label = cleanSyllabusLabel(
+    item.topicName ?? item.chapterName ?? item.subject ?? config.subject,
+  );
+  const subject = item.subject || config.subject;
+  const combined = `${subject} ${item.chapterName ?? ""} ${item.topicName ?? ""} ${concepts
+    .map((concept) => `${concept.topicName} ${concept.text}`)
+    .join(" ")}`;
+
+  if (/communication|communicat|employability/i.test(combined)) {
+    return communicationSkillConcepts();
+  }
+
+  return genericSyllabusConcepts(label, subject);
+}
+
+function communicationSkillConcepts(): SyllabusNearConcept[] {
+  return [
+    syllabusConcept({
+      term: "Communication",
+      focus: "the process of sharing information, ideas, or feelings between people",
+      correct: "Communication is a two-way process in which a sender shares a message and the receiver understands it.",
+      misconception: "Communication is not only speaking; it also includes listening and feedback.",
+      example: "A student explains a timetable change and checks whether classmates understood it.",
+    }),
+    syllabusConcept({
+      term: "Sender",
+      focus: "the role of the sender in a communication process",
+      correct: "The sender starts communication by creating and sending a clear message.",
+      misconception: "A sender should not assume the receiver understood without checking feedback.",
+      example: "A teacher announces homework instructions clearly before the class ends.",
+    }),
+    syllabusConcept({
+      term: "Receiver",
+      focus: "the role of the receiver in understanding a message",
+      correct: "The receiver listens, reads, or observes the message and interprets its meaning.",
+      misconception: "A receiver is active because understanding requires attention and response.",
+      example: "A learner listens to safety instructions and asks a question for clarity.",
+    }),
+    syllabusConcept({
+      term: "Message",
+      focus: "the message as the information being communicated",
+      correct: "The message is the idea, fact, instruction, or feeling that the sender wants to share.",
+      misconception: "A message should not be vague because unclear words can confuse the receiver.",
+      example: "Please submit the assignment by Friday is a clear message.",
+    }),
+    syllabusConcept({
+      term: "Channel",
+      focus: "the medium used to send a message",
+      correct: "A channel is the path used for communication, such as speech, writing, phone call, email, or gesture.",
+      misconception: "The same channel is not best for every situation.",
+      example: "An email is suitable for written instructions, while a phone call is faster for urgent news.",
+    }),
+    syllabusConcept({
+      term: "Feedback",
+      focus: "feedback in effective communication",
+      correct: "Feedback is the receiver's response that tells the sender whether the message was understood.",
+      misconception: "Without feedback, communication may remain incomplete.",
+      example: "A student nods and repeats the instruction to show understanding.",
+    }),
+    syllabusConcept({
+      term: "Verbal communication",
+      focus: "communication through spoken or written words",
+      correct: "Verbal communication uses words to share a message clearly.",
+      misconception: "Verbal communication can be spoken or written, not only face-to-face speech.",
+      example: "Giving a presentation or writing a notice are verbal communication examples.",
+    }),
+    syllabusConcept({
+      term: "Non-verbal communication",
+      focus: "communication without words",
+      correct: "Non-verbal communication uses body language, facial expressions, gestures, posture, or eye contact.",
+      misconception: "Non-verbal signs can support or weaken spoken words.",
+      example: "Maintaining eye contact can show attention during a conversation.",
+    }),
+    syllabusConcept({
+      term: "Communication barrier",
+      focus: "barriers that disturb clear communication",
+      correct: "A communication barrier is anything that prevents a message from being sent, received, or understood properly.",
+      misconception: "Noise, unclear language, distraction, and wrong channel can all become barriers.",
+      example: "A noisy classroom can stop students from hearing an announcement.",
+    }),
+    syllabusConcept({
+      term: "Active listening",
+      focus: "active listening during communication",
+      correct: "Active listening means paying full attention, understanding the message, and responding appropriately.",
+      misconception: "Hearing words is not the same as listening carefully.",
+      example: "A learner listens, asks a relevant question, and summarizes the speaker's point.",
+    }),
+    syllabusConcept({
+      term: "Clarity",
+      focus: "clarity in communication",
+      correct: "Clarity means using simple, specific, and complete language so the receiver understands the message.",
+      misconception: "Long or complicated words do not automatically make communication better.",
+      example: "Meet at 9 a.m. near the library is clearer than Come there early.",
+    }),
+    syllabusConcept({
+      term: "Digital communication",
+      focus: "safe and respectful digital communication",
+      correct: "Digital communication should be clear, polite, accurate, and safe because messages can be stored or forwarded.",
+      misconception: "Online messages should not share private information carelessly.",
+      example: "A student writes a polite email with a clear subject and avoids sharing passwords.",
+    }),
+  ];
+}
+
+function genericSyllabusConcepts(label: string, subject: string): SyllabusNearConcept[] {
+  const safeLabel = label || subject || "selected topic";
+  return [
+    syllabusConcept({
+      term: safeLabel,
+      focus: `${safeLabel} as an important ${subject} concept`,
+      correct: `${safeLabel} should be explained with its meaning, one supporting point, and a relevant example.`,
+      misconception: `A good answer about ${safeLabel} needs more than just the term name.`,
+      example: `A correct answer connects ${safeLabel} with a classroom example from ${subject}.`,
+    }),
+    syllabusConcept({
+      term: `${safeLabel} application`,
+      focus: `the application of ${safeLabel}`,
+      correct: `Applying ${safeLabel} means using the idea correctly in a suitable situation.`,
+      misconception: `An application must stay connected to ${safeLabel}, not to an unrelated idea.`,
+      example: `A learner uses ${safeLabel} to explain a familiar classroom situation.`,
+    }),
+    syllabusConcept({
+      term: `${safeLabel} reasoning`,
+      focus: `reasoning about ${safeLabel}`,
+      correct: `Reasoning about ${safeLabel} requires a clear cause, effect, or explanation.`,
+      misconception: `A reason is stronger when it explains why the answer is correct.`,
+      example: `The answer states the point and then gives a reason linked to ${safeLabel}.`,
+    }),
+  ];
+}
+
+function syllabusConcept({
+  term,
+  focus,
+  correct,
+  misconception,
+  example,
+}: {
+  term: string;
+  focus: string;
+  correct: string;
+  misconception: string;
+  example: string;
+}): SyllabusNearConcept {
+  return {
+    term,
+    focus,
+    correct,
+    misconception,
+    example,
+    explanation: correct,
+    assertion: `${sentenceCase(stripFinalPunctuation(focus))} is important for effective learning.`,
+    reason: correct,
+    trueStatement: correct,
+    oneWordPrompt: `${focus}`,
+    fillBlankPrompt: stripFinalPunctuation(focus),
+    matchTitle: term.toLowerCase(),
+    scenario: `A Class 9 learner studies ${term}. ${example} The learner must explain the idea clearly and avoid common mistakes.`,
+    hotsAnswer: `If ${term} is ignored, the answer or situation can become unclear because ${correct}`,
+    firstCount: 3 + (term.length % 4),
+    secondCount: 2 + (focus.length % 4),
+  };
+}
+
+function syllabusNearOptions(concept: SyllabusNearConcept, index: number): MCQOption[] {
+  const distractors = [
+    concept.misconception,
+    `${concept.term} means using unrelated information without checking the situation.`,
+    `${concept.term} is useful only when no explanation is required.`,
+    `The idea can be answered correctly without clarity or examples.`,
+  ];
+
+  return [
+    { id: "A", text: distractors[index % distractors.length], isCorrect: false },
+    { id: "B", text: concept.correct, isCorrect: true },
+    { id: "C", text: distractors[(index + 1) % distractors.length], isCorrect: false },
+    { id: "D", text: distractors[(index + 2) % distractors.length], isCorrect: false },
+  ];
+}
+
+function syllabusNearMatchPairs(
+  item: QuestionCompositionItem,
+  config: PaperConfig,
+  concepts: ConceptData[],
+  index: number,
+) {
+  const seeds = syllabusNearConcepts(item, config, concepts);
+  const offset = Math.abs(index) % seeds.length;
+  return Array.from({ length: 4 }, (_, pairIndex) => {
+    const concept = seeds[(offset + pairIndex) % seeds.length];
+    return {
+      left: concept.term,
+      right: trimToSentence(concept.correct, 120),
+    };
+  });
+}
+
+function normalizedFallbackComposition(
+  config: PaperConfig,
+  concepts: ConceptData[],
+) {
+  if (config.questionComposition?.length) return config.questionComposition;
+  const subject = config.subjects?.[0] ?? config.subject;
+  const chapterId = config.chapterIds[0] ?? concepts[0]?.chapterId;
+  const concept = concepts.find((item) => item.chapterId === chapterId) ?? concepts[0];
+  return [
+    {
+      subject,
+      chapterId,
+      chapterName: concept?.chapterName ?? `${subject} chapter ${chapterId ?? 1}`,
+      topicId: concept?.topicId,
+      topicName: concept?.topicName,
+      questionCount: config.totalQuestions,
+    },
+  ] satisfies QuestionCompositionItem[];
+}
+
+function expandMissingSections(sections: BlueprintSection[]) {
+  return sections.flatMap((section) =>
+    Array.from({ length: section.count }, () => ({
+      ...section,
+      count: 1,
+      totalMarks: section.marksPerQuestion,
+    })),
+  );
+}
+
+function questionsMatchingSyllabusItem(
+  questions: GeneratedQuestion[],
+  item: QuestionCompositionItem,
+) {
+  return questions.filter((question) => questionMatchesSyllabusItem(question, item)).length;
+}
+
+function questionMatchesSyllabusItem(
+  question: GeneratedQuestion,
+  item: QuestionCompositionItem,
+) {
+  if (
+    item.subject &&
+    question.subject &&
+    item.subject.trim().toLowerCase() !== question.subject.trim().toLowerCase()
+  ) {
+    return false;
+  }
+  if (item.chapterId !== undefined && question.chapterId !== item.chapterId) return false;
+  if (item.topicId !== undefined && question.topicId !== item.topicId) return false;
+  if (
+    item.topicName &&
+    question.topic &&
+    item.topicName.trim().toLowerCase() !== question.topic.trim().toLowerCase()
+  ) {
+    return false;
+  }
+  return true;
+}
+
+function nextSyllabusDeficit(
+  entries: Array<{ item: QuestionCompositionItem; accepted: number; added: number }>,
+) {
+  return entries
+    .filter((entry) => entry.accepted < entry.item.questionCount)
+    .sort(
+      (left, right) =>
+        (right.item.questionCount - right.accepted) -
+        (left.item.questionCount - left.accepted),
+    )[0];
+}
+
+function syllabusNearFallbackWarning(
+  item: QuestionCompositionItem,
+  count: number,
+): SyllabusNearFallbackWarning {
+  const label = item.topicName ?? item.chapterName ?? "selected coverage";
+  const subject = item.subject || "Selected subject";
+  return {
+    type: "syllabus-near-fallback",
+    reason: `${subject}: ${label} had weak/noisy source text, so ${count} question${count === 1 ? "" : "s"} were generated from chapter/topic-near syllabus coverage to preserve the requested paper count.`,
+    subject,
+    chapterName: item.chapterName,
+    topicName: item.topicName,
+    count,
+  };
+}
+
+function conceptsForSyllabusItem(
+  concepts: ConceptData[],
+  item: QuestionCompositionItem,
+) {
+  const subjectMatched = concepts.filter((concept) => {
+    if (!item.subject || !concept.subject) return true;
+    return concept.subject.trim().toLowerCase() === item.subject.trim().toLowerCase();
+  });
+  if (item.topicId !== undefined) {
+    const byTopic = subjectMatched.filter((concept) => concept.topicId === item.topicId);
+    if (byTopic.length) return byTopic;
+  }
+  if (item.topicName) {
+    const topicName = item.topicName.trim().toLowerCase();
+    const byTopicName = subjectMatched.filter(
+      (concept) => concept.topicName.trim().toLowerCase() === topicName,
+    );
+    if (byTopicName.length) return byTopicName;
+  }
+  if (item.chapterId !== undefined) {
+    const byChapter = subjectMatched.filter((concept) => concept.chapterId === item.chapterId);
+    if (byChapter.length) return byChapter;
+  }
+  return subjectMatched.length ? subjectMatched : concepts;
+}
+
+function uniqueNormalized(values: string[]) {
+  return Array.from(
+    new Set(values.map((value) => normalizeSourceFragment(value)).filter(Boolean)),
+  );
+}
+
+function hasNoisySourceArtifact(value: string) {
+  return /Unit\s+\d+\.indd|\d{2}-\d{2}-\d{4}\s+\d{1,2}:\d{2}:\d{2}|Page\s+\d+|Employability SkillS - ClaSS iX|S\s*eSSIon\s+\d+/i.test(
+    value,
+  );
+}
+
+function cleanSyllabusLabel(value: string) {
+  return (
+    value
+      .replace(/\bUnit\s+\d+\.indd\b/gi, "")
+      .replace(/\b\d{2}-\d{2}-\d{4}\s+\d{1,2}:\d{2}:\d{2}\b/g, "")
+      .replace(/\bPage\s+\d+\b/gi, "")
+      .replace(/\s+/g, " ")
+      .trim() || "selected topic"
+  );
+}
+
 function sourceBackedAtomTypeKey(type: QuestionType, concept: NormalizedConcept) {
   return sourceBackedUniquenessKeyFor(
     type,
@@ -983,7 +1732,7 @@ function assertionReasonQuestion(
   skill: string,
 ): Partial<GeneratedQuestion> {
   const assertion = `${sentenceCase(stripFinalPunctuation(idea))} can be understood through ${skill}.`;
-  const reason = `${sentenceCase(toStatement(summary))} This gives the ${skill} clue.`;
+  const reason = `${sentenceCase(toStatement(summary))} This supports the ${skill} reasoning.`;
 
   return {
     text: `Assertion (A): ${assertion}\nReason (R): ${reason}`,
@@ -993,8 +1742,8 @@ function assertionReasonQuestion(
   };
 }
 
-function trueFalseQuestionText(summary: string, skill: string) {
-  return `True or False: The ${skill} clue shows that ${lowerFirst(stripFinalPunctuation(summary))}.`;
+function trueFalseQuestionText(summary: string, _skill: string) {
+  return `True or False: ${sentenceCase(stripFinalPunctuation(summary))}.`;
 }
 
 function shortQuestionText(idea: string, skill: string) {
@@ -1068,7 +1817,7 @@ function matchQuestion(
   const focus = matchFocusPhrase(summary);
 
   return {
-    text: `Match the ${skill} clues about ${focus} with their meanings.`,
+    text: `Match the ${skill} points about ${focus} with their meanings.`,
     matchPairs: pairs,
     correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
   };
@@ -1151,7 +1900,7 @@ function ideaPhrase(summary: string) {
 function mcqQuestionText(skill: string, summary: string) {
   const motionQuestion = motionMcqQuestion(summary);
   if (motionQuestion) return motionQuestion;
-  return `${mcqLeadForSkill(skill)} the ${skill} clue about ${mcqFocusPhrase(summary)} in ${ideaPhrase(summary)}?`;
+  return `${mcqLeadForSkill(skill)} the ${skill} point about ${mcqFocusPhrase(summary)} in ${ideaPhrase(summary)}?`;
 }
 
 function mcqFocusPhrase(summary: string) {
@@ -1253,7 +2002,7 @@ function subjectMatchPairs(
   const atomLabel = sentenceCase(trimToSentence(concept.atomLabel, 90));
   return [
     { left: conceptTerm, right: trimToSentence(summary, 110) },
-    { left: "Focused clue", right: atomLabel },
+    { left: "Focused point", right: atomLabel },
     { left: "Reason", right: visibleKeyPoint(skill) },
     { left: "Application", right: "Use the idea in a relevant situation" },
   ];
@@ -2029,18 +2778,18 @@ const variantRecipes: VariantRecipe[] = [
     assertion: (topic) => `${topic} depends on close reading of the selected extract.`,
     reason: (summary) => `Close reading matters because ${summary}`,
     trueFalseLead: "Close reading of the selected extract shows that",
-    shortStem: "Explain the extract-based clue for",
+    shortStem: "Explain the extract-based point for",
     shortAnswer: "The answer should stay close to the extract and avoid outside knowledge.",
     paragraphLead: "The paragraph is an extract for close reading.",
     paragraphQuestion: "Using this extract, explain",
     hotsStem: "What would be missed if the extract for",
-    hotsAnswer: "The key clue would be missed without close reading of the selected extract.",
+    hotsAnswer: "The key point would be missed without close reading of the selected extract.",
     competencyStem: "Use an extract-based response to explain",
-    diagramStem: "Draw an extract-clue map for",
+    diagramStem: "Draw an extract-point map for",
     practicalStem: "Design a close-reading activity for",
     longStem: "Write a detailed extract-based answer on",
     ncertStem: "Give an NCERT-style extract answer on",
-    keyPoint: "Use only the selected extract clue.",
+    keyPoint: "Use only the selected extract point.",
     explanationLead: "The answer comes from close source reading",
     answerPath: "Read the extract, isolate the clue, and",
     answerVerb: "interpret",

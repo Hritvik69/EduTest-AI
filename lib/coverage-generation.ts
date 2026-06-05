@@ -9,7 +9,11 @@ import {
 import { blueprintForSections } from "@/lib/question-candidate-bank";
 import { isAIProviderUnavailableError } from "@/lib/error-classification";
 import { analyzeConceptSourceQuality, retrieveConcepts } from "@/lib/retriever";
-import { generateSourceBackedFallbackQuestions } from "@/lib/source-backed-fallback";
+import {
+  generateSourceBackedFallbackQuestions,
+  generateSyllabusNearFallbackQuestions,
+  hasWeakOrNoisySourceForSyllabusFallback,
+} from "@/lib/source-backed-fallback";
 import type { DirectAIProvider } from "@/lib/gemini";
 import type {
   Blueprint,
@@ -29,7 +33,7 @@ export interface CoverageGenerationDiagnostic {
   questionType: string;
   requestedQuestions: number;
   generatedQuestions: number;
-  generationMode: "ai" | "source_backed_provider_outage";
+  generationMode: "ai" | "source_backed_provider_outage" | "syllabus_near_fallback";
   sourceConcepts: number;
   sourceTextChunks: number;
   sourceQuality: ReturnType<typeof analyzeConceptSourceQuality>["quality"];
@@ -157,7 +161,16 @@ export async function generateCoveragePlannedQuestions({
     let acceptedBatch: GeneratedQuestion[] = [];
     const existingForBatch = [...existingQuestions, ...generatedQuestions];
 
-    if (providersUnavailableBeforeCall) {
+    if (hasWeakOrNoisySourceForSyllabusFallback(coverage.concepts, batchPlan.item)) {
+      generationMode = "syllabus_near_fallback";
+      acceptedBatch = syllabusNearCoverageBatch({
+        allocation: batchPlan.item,
+        focusedSections,
+        concepts: coverage.concepts,
+        config,
+        existingQuestions: existingForBatch,
+      });
+    } else if (providersUnavailableBeforeCall) {
       generationMode = "source_backed_provider_outage";
       acceptedBatch = sourceBackedCoverageBatch({
         allocation: batchPlan.item,
@@ -385,17 +398,20 @@ export async function retrieveConceptsForCoverageUnit(
   config: PaperConfig,
 ) {
   const focusedConcepts = conceptsForCoverageItem(concepts, item);
-  if (!hasSelectedSourceText(focusedConcepts)) {
+  const hasSourceText = hasSelectedSourceText(focusedConcepts);
+  if (!hasSourceText && !hasSyllabusNearCoverageLabel(item, config)) {
     throw new Error(
       `Selected source text is not enough for ${coverageLabel(item)}. Select more chapters/topics, upload stronger source text, or lower this coverage count.`,
     );
   }
 
-  const context = await retrieveConcepts(
-    focusedConcepts,
-    config.difficulty,
-    config.bloomDistribution,
-  );
+  const context = hasSourceText
+    ? await retrieveConcepts(
+        focusedConcepts,
+        config.difficulty,
+        config.bloomDistribution,
+      )
+    : syllabusNearCoverageContext(item, config);
   if (!context.trim()) {
     throw new Error(
       `Selected source text is not enough for ${coverageLabel(item)}. No focused TXT/PDF context could be built.`,
@@ -463,17 +479,29 @@ function topUpCoverageQuestions({
   if (questions.length >= section.count) return questions;
 
   const missing = section.count - questions.length;
-  const fallback = sourceBackedCoverageQuestions({
-    allocation,
-    section: {
-      ...section,
-      count: missing,
-      totalMarks: missing * section.marksPerQuestion,
-    },
-    concepts,
-    config,
-    existingQuestions,
-  });
+  const fallback = hasWeakOrNoisySourceForSyllabusFallback(concepts, allocation)
+    ? syllabusNearCoverageQuestions({
+        allocation,
+        section: {
+          ...section,
+          count: missing,
+          totalMarks: missing * section.marksPerQuestion,
+        },
+        concepts,
+        config,
+        existingQuestions,
+      })
+    : sourceBackedCoverageQuestions({
+        allocation,
+        section: {
+          ...section,
+          count: missing,
+          totalMarks: missing * section.marksPerQuestion,
+        },
+        concepts,
+        config,
+        existingQuestions,
+      });
 
   return [
     ...questions,
@@ -549,6 +577,63 @@ function sourceBackedCoverageBatch({
   });
 
   return accepted;
+}
+
+function syllabusNearCoverageBatch({
+  allocation,
+  focusedSections,
+  concepts,
+  config,
+  existingQuestions,
+}: {
+  allocation: QuestionCompositionItem;
+  focusedSections: Blueprint["sections"];
+  concepts: ConceptData[];
+  config: PaperConfig;
+  existingQuestions: GeneratedQuestion[];
+}) {
+  const accepted: GeneratedQuestion[] = [];
+
+  focusedSections.forEach((focusedSection) => {
+    accepted.push(
+      ...syllabusNearCoverageQuestions({
+        allocation,
+        section: focusedSection,
+        concepts,
+        config,
+        existingQuestions: [...existingQuestions, ...accepted],
+      }).slice(0, focusedSection.count),
+    );
+  });
+
+  return accepted;
+}
+
+function syllabusNearCoverageQuestions({
+  allocation,
+  section,
+  concepts,
+  config,
+  existingQuestions,
+}: {
+  allocation: QuestionCompositionItem;
+  section: Blueprint["sections"][number];
+  concepts: ConceptData[];
+  config: PaperConfig;
+  existingQuestions: GeneratedQuestion[];
+}) {
+  const fallback = generateSyllabusNearFallbackQuestions(
+    [section],
+    allocation,
+    config,
+    {
+      existingQuestions,
+      concepts,
+      startIndex: existingQuestions.length + 401,
+    },
+  );
+
+  return tagQuestionsWithCoverage(fallback, allocation);
 }
 
 function sourceBackedCoverageQuestions({
@@ -667,6 +752,31 @@ function hasSelectedSourceText(concepts: ConceptData[]) {
       text.length >= 80
     );
   });
+}
+
+function hasSyllabusNearCoverageLabel(
+  item: QuestionCompositionItem,
+  config: PaperConfig,
+) {
+  return Boolean(
+    (item.topicName ?? item.chapterName ?? item.subject ?? config.subject)
+      ?.replace(/\s+/g, " ")
+      .trim(),
+  );
+}
+
+function syllabusNearCoverageContext(
+  item: QuestionCompositionItem,
+  config: PaperConfig,
+) {
+  const subject = item.subject || config.subject;
+  const chapter = item.chapterName ?? `${subject} chapter ${item.chapterId ?? ""}`.trim();
+  const topic = item.topicName ?? chapter;
+  return [
+    `[Subject: ${subject}] [Chapter: ${chapter}] [Topic: ${topic}]`,
+    `Generate clean Class ${config.classNum} ${subject} questions around ${topic}.`,
+    "Use chapter/topic-near syllabus coverage because exact source text is weak or unavailable.",
+  ].join("\n");
 }
 
 function conceptTopics(concepts: ConceptData[]) {

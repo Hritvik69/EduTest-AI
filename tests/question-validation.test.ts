@@ -50,6 +50,21 @@ describe("student-visible question quality validation", () => {
         "Match Column A with Column B for ideas from How Forces Affect Motion.",
       ),
     ).toBe(true);
+    expect(
+      hasForbiddenStudentVisiblePattern(
+        "Unit 1.indd 2 24-08-2018 15:24:21 S eSSIon 1 Communication Skills",
+      ),
+    ).toBe(true);
+    expect(
+      hasForbiddenStudentVisiblePattern(
+        "True or False: The evidence clue shows that communication is complete.",
+      ),
+    ).toBe(true);
+    expect(
+      hasForbiddenStudentVisiblePattern(
+        "Which case reasoning clue about feedback is most suitable?",
+      ),
+    ).toBe(true);
   });
 
   it("rejects an otherwise valid MCQ if options leak metadata", () => {

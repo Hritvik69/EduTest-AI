@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import { defaultBloomDistribution } from "@/lib/edutest-data";
 import {
   generateSourceBackedFallbackQuestions,
+  generateSyllabusNearFallbackQuestions,
+  hasWeakOrNoisySourceForSyllabusFallback,
   hasSourceBackedFallbackConcepts,
 } from "@/lib/source-backed-fallback";
 import { validatePaperKeepingValidQuestions } from "@/lib/validator";
@@ -290,7 +292,125 @@ describe("generateSourceBackedFallbackQuestions", () => {
     expect(matchText).toMatch(/Less friction|More friction|Object travels farther/i);
     expect(matchText).not.toMatch(/Chapter idea|Question focus|Conclusion|Evidence/i);
   });
+
+  it("replaces noisy Communication Skills fragments with clean syllabus-near questions", () => {
+    const communicationItem = {
+      subject: "Advanced Computer",
+      chapterId: 1,
+      chapterName: "Communication Skills",
+      questionCount: 6,
+    };
+    const communicationConfig: PaperConfig = {
+      classNum: 9,
+      subject: "English",
+      subjects: ["English", "Advanced Computer"],
+      subjectSelections: [
+        { subject: "English", chapterIds: [1], topicIds: [] },
+        { subject: "Advanced Computer", chapterIds: [1], topicIds: [] },
+      ],
+      chapterIds: [1],
+      totalMarks: 11,
+      duration: 60,
+      examType: "School Test",
+      difficulty: "MEDIUM",
+      aiProvider: "AUTO",
+      questionTypes: [
+        "MCQ",
+        "TRUE_FALSE",
+        "ONE_WORD",
+        "ASSERTION_REASON",
+        "MATCH_FOLLOWING",
+        "SHORT",
+      ],
+      typeDistribution: {
+        MCQ: 1,
+        TRUE_FALSE: 1,
+        ONE_WORD: 1,
+        ASSERTION_REASON: 1,
+        MATCH_FOLLOWING: 1,
+        SHORT: 1,
+      },
+      questionComposition: [communicationItem],
+      bloomDistribution: defaultBloomDistribution,
+      totalQuestions: 6,
+    };
+    const communicationBlueprint: Blueprint = {
+      sections: [
+        sectionFor("MCQ", 1, 1),
+        sectionFor("TRUE_FALSE", 1, 1),
+        sectionFor("ONE_WORD", 1, 1),
+        sectionFor("ASSERTION_REASON", 1, 2),
+        sectionFor("MATCH_FOLLOWING", 1, 3),
+        sectionFor("SHORT", 1, 3),
+      ],
+      totalQuestions: 6,
+      totalMarks: 11,
+      estimatedTime: 20,
+      competencyPercentage: 60,
+    };
+    const noisyCommunicationConcepts: ConceptData[] = [
+      {
+        text:
+          "Unit 1.indd 2 24-08-2018 15:24:21 S eSSIon 1 Communication Skills Employability SkillS - ClaSS iX",
+        type: "NCERT_TXT_SOURCE",
+        bloomLevel: "UNDERSTAND",
+        hotsPotential: true,
+        subject: "Advanced Computer",
+        classNum: 9,
+        chapterName: "Communication Skills",
+        topicName: "Communication Skills",
+        chapterId: 1,
+        topicId: 1,
+        source: "ncert_txt",
+      },
+    ];
+
+    expect(
+      hasWeakOrNoisySourceForSyllabusFallback(
+        noisyCommunicationConcepts,
+        communicationItem,
+      ),
+    ).toBe(true);
+
+    const questions = generateSyllabusNearFallbackQuestions(
+      communicationBlueprint.sections,
+      communicationItem,
+      communicationConfig,
+      { concepts: noisyCommunicationConcepts },
+    );
+    const validation = validatePaperKeepingValidQuestions(
+      questions,
+      communicationBlueprint,
+      communicationConfig,
+    );
+    const visibleText = studentVisibleText(validation.questions);
+
+    expect(validation.skipped).toEqual([]);
+    expect(validation.questions).toHaveLength(6);
+    expect(validation.questions.every((question) => question.subject === "Advanced Computer")).toBe(true);
+    expect(visibleText).toMatch(/sender|receiver|message|communication|feedback/i);
+    expect(visibleText).not.toMatch(
+      /Unit\s+1\.indd|24-08-2018|S\s*eSSIon|evidence clue|case reasoning clue|Employability SkillS/i,
+    );
+  });
 });
+
+function sectionFor(
+  questionType: Blueprint["sections"][number]["questionType"],
+  count: number,
+  marksPerQuestion: number,
+): Blueprint["sections"][number] {
+  return {
+    name: `Section ${questionType}`,
+    questionType,
+    count,
+    marksPerQuestion,
+    totalMarks: count * marksPerQuestion,
+    difficulty: "MEDIUM",
+    difficultyBreakdown: { MEDIUM: 100 },
+    bloomBreakdown: defaultBloomDistribution,
+  };
+}
 
 function studentVisibleText(questions: GeneratedQuestion[]) {
   const values: string[] = [];

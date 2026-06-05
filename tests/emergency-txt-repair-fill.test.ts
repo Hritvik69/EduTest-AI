@@ -4,6 +4,7 @@ import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
 import {
   analyzeSourceBackedCompletionCapacity,
   completeQuestionBankWithSourceBackedFallback,
+  completeQuestionBankWithSyllabusNearFallback,
   retargetSourceBackedCompletionForGuaranteedFinalRepair,
   sourceBackedCapacityMessage,
   sourceBackedCompletionMarker,
@@ -894,6 +895,63 @@ describe("source-backed completion", () => {
     expect(bank.readyCount()).toBe(0);
     expect(bank.missingCount()).toBe(4);
   });
+
+  it("fills final missing slots with clean syllabus-near Communication Skills questions when OCR source is noisy", () => {
+    const communicationBlueprint: Blueprint = {
+      sections: [
+        sectionFor("MCQ", 2, 1),
+        sectionFor("TRUE_FALSE", 1, 1),
+        sectionFor("MATCH_FOLLOWING", 1, 3),
+      ],
+      totalQuestions: 4,
+      totalMarks: 6,
+      estimatedTime: 12,
+      competencyPercentage: 60,
+    };
+    const paperConfig: PaperConfig = {
+      ...config,
+      classNum: 9,
+      subject: "Advanced Computer",
+      subjects: ["Advanced Computer"],
+      subjectSelections: [
+        { subject: "Advanced Computer", chapterIds: [1], topicIds: [] },
+      ],
+      chapterIds: [1],
+      topicIds: [],
+      totalQuestions: 4,
+      totalMarks: 6,
+      questionTypes: ["MCQ", "TRUE_FALSE", "MATCH_FOLLOWING"],
+      typeDistribution: { MCQ: 2, TRUE_FALSE: 1, MATCH_FOLLOWING: 1 },
+      questionComposition: [
+        {
+          subject: "Advanced Computer",
+          chapterId: 1,
+          chapterName: "Communication Skills",
+          questionCount: 4,
+        },
+      ],
+    };
+    const bank = new QuestionCandidateBank([], communicationBlueprint, paperConfig);
+
+    const completed = completeQuestionBankWithSyllabusNearFallback({
+      bank,
+      config: paperConfig,
+      concepts: [noisyCommunicationConcept()],
+      startIndex: 700,
+    });
+    const validation = bank.result();
+    const visibleText = studentVisibleText(validation.questions);
+
+    expect(completed.accepted).toBe(4);
+    expect(bank.readyCount()).toBe(4);
+    expect(bank.missingCount()).toBe(0);
+    expect(validation.skipped).toEqual([]);
+    expect(completed.warnings[0]?.reason).toMatch(/weak\/noisy source text/);
+    expect(visibleText).toMatch(/communication|sender|receiver|feedback/i);
+    expect(visibleText).not.toMatch(
+      /Unit\s+1\.indd|24-08-2018|S\s*eSSIon|evidence clue|case reasoning clue/i,
+    );
+  });
 });
 
 function blueprintForCount(count: number): Blueprint {
@@ -992,6 +1050,23 @@ function tinyRepetitiveConcept(): ConceptData {
     "Tiny friction clue",
     "The source explains that friction slows motion on surfaces because contact opposes movement.",
   );
+}
+
+function noisyCommunicationConcept(): ConceptData {
+  return {
+    text:
+      "Unit 1.indd 2 24-08-2018 15:24:21 S eSSIon 1 Communication Skills Employability SkillS - ClaSS iX",
+    type: "NCERT_TXT_SOURCE",
+    bloomLevel: "UNDERSTAND",
+    hotsPotential: true,
+    subject: "Advanced Computer",
+    classNum: 9,
+    chapterName: "Communication Skills",
+    topicName: "Communication Skills",
+    chapterId: 1,
+    topicId: 1,
+    source: "ncert_txt",
+  };
 }
 
 function mcq(index: number): GeneratedQuestion {

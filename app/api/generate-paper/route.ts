@@ -57,6 +57,7 @@ import {
 import {
   analyzeSourceBackedCompletionCapacity,
   completeQuestionBankWithSourceBackedFallback,
+  completeQuestionBankWithSyllabusNearFallback,
   hasSourceBackedFallbackConcepts,
   retargetSourceBackedCompletionForGuaranteedFinalRepair,
   sourceBackedCapacityError,
@@ -2268,6 +2269,8 @@ async function validateGeneratedPaperSkippingInvalid({
   let lastRepairError: string | undefined;
   let sourceBackedCompletedQuestions = 0;
   const guaranteedCompletionWarnings: Array<{ type: string; reason: string }> = [];
+  const syllabusNearCompletionWarnings: Array<{ type: string; reason: string }> =
+    [];
   const stateCreatedAt = resumeState?.createdAt ?? new Date().toISOString();
   const sourceBackedRepairRecoveryAvailable =
     allowSourceBackedCompletion && hasSourceBackedFallbackConcepts(scopedConcepts);
@@ -2434,6 +2437,7 @@ async function validateGeneratedPaperSkippingInvalid({
     !stoppedForServerBudget &&
     bank.missingCount() > 0
   ) {
+    let sourceBackedCapacityBlocked = false;
     const sourceCapacity = analyzeSourceBackedCompletionCapacity({
       bank,
       concepts: scopedConcepts,
@@ -2465,20 +2469,17 @@ async function validateGeneratedPaperSkippingInvalid({
         );
       } else {
         await persistBank(
-          "FAILED",
+          "IN_PROGRESS",
           "REPAIR",
           (resumeState?.attemptCount ?? 0) + 4,
-          undefined,
+          "Strict selected-source completion is blocked; attempting chapter/topic-near completion for the final missing slots.",
           sourceBackedCapacityMessage(sourceCapacity),
         );
-        throw sourceBackedCapacityError(
-          "replacing invalid or duplicate questions",
-          sourceCapacity,
-        );
+        sourceBackedCapacityBlocked = true;
       }
     }
 
-    if (bank.missingCount() > 0) {
+    if (bank.missingCount() > 0 && !sourceBackedCapacityBlocked) {
       send({
         step: 6,
         pct: 94,
@@ -2521,6 +2522,45 @@ async function validateGeneratedPaperSkippingInvalid({
     }
   }
 
+  if (
+    !allowDemoFallback &&
+    !stoppedForServerBudget &&
+    bank.missingCount() > 0
+  ) {
+    send({
+      step: 6,
+      pct: 95,
+      progress: 95,
+      msg: "Completing final missing questions with clean chapter/topic-near coverage...",
+    });
+    const beforeSyllabusNearReady = bank.readyCount();
+    const completion = completeQuestionBankWithSyllabusNearFallback({
+      bank,
+      config: activeConfig,
+      concepts: scopedConcepts,
+      startIndex: bank.allCandidates().length + 401,
+    });
+    const syllabusNearCompletedQuestions = Math.max(
+      0,
+      bank.readyCount() - beforeSyllabusNearReady,
+    );
+    syllabusNearCompletionWarnings.push(
+      ...completion.warnings.map((warning) => ({
+        type: warning.type,
+        reason: warning.reason,
+      })),
+    );
+    await persistBank(
+      bank.missingCount() > 0 ? "IN_PROGRESS" : "READY",
+      "REPAIR",
+      (resumeState?.attemptCount ?? 0) + 5,
+      syllabusNearCompletedQuestions
+        ? `Accepted ${syllabusNearCompletedQuestions} chapter/topic-near fallback question${syllabusNearCompletedQuestions === 1 ? "" : "s"} for weak or noisy source text.`
+        : "Chapter/topic-near fallback could not complete the remaining missing questions.",
+      lastRepairError,
+    );
+  }
+
   const validation = bank.result();
   const remainingMissingQuestions = bank.missingCount();
   const readyCount = bank.readyCount();
@@ -2536,6 +2576,7 @@ async function validateGeneratedPaperSkippingInvalid({
   const validationWarnings = [
     ...sourceBackedCompletionWarnings,
     ...guaranteedCompletionWarnings,
+    ...syllabusNearCompletionWarnings,
   ];
 
   if (remainingMissingQuestions > 0) {

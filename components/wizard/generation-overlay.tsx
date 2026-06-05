@@ -471,6 +471,11 @@ export function GenerationOverlay({
                   } with valid alternatives.`,
                 );
               }
+              const syllabusNearWarning =
+                syllabusNearFallbackWarningFromDoneEvent(data);
+              if (syllabusNearWarning) {
+                toast.warning(syllabusNearWarning);
+              }
               safeSessionRemove(inFlightKey);
               setResumePaperId(null);
               autoContinueAttempts.current = 0;
@@ -1144,6 +1149,44 @@ function providerRecoveryModeFromData(
   return data.providerRecoveryMode === "source_backed_provider_outage"
     ? "source_backed_provider_outage"
     : null;
+}
+
+function syllabusNearFallbackWarningFromDoneEvent(
+  data: Record<string, unknown>,
+) {
+  const candidates: unknown[] = [];
+  if (Array.isArray(data.validationWarnings)) {
+    candidates.push(...data.validationWarnings);
+  }
+  if (isRecord(data.manifest)) {
+    const manifestWarnings = data.manifest.warnings;
+    if (Array.isArray(manifestWarnings)) candidates.push(...manifestWarnings);
+    const validation = data.manifest.validation;
+    if (isRecord(validation) && Array.isArray(validation.warnings)) {
+      candidates.push(...validation.warnings);
+    }
+  }
+
+  for (const candidate of candidates) {
+    const text =
+      typeof candidate === "string"
+        ? candidate
+        : isRecord(candidate)
+          ? stringValue(candidate.reason) ??
+            stringValue(candidate.message) ??
+            stringValue(candidate.type)
+          : undefined;
+    if (
+      text &&
+      /syllabus-near-fallback|weak\/noisy source text|chapter\/topic-near/i.test(
+        text,
+      )
+    ) {
+      return text.length > 240 ? `${text.slice(0, 237)}...` : text;
+    }
+  }
+
+  return undefined;
 }
 
 function sourceCapacityFromStreamData(

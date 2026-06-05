@@ -171,6 +171,16 @@ const forbiddenStudentVisiblePatterns = [
   /\bpartial\s+detail\s+that\s+misses\b/i,
   /\bunrelated\s+definition\s+not\s+supported\b/i,
   /\bevidence\s+detail\s+link\b/i,
+  /\bevidence\s+clue\b/i,
+  /\bcase\s+reasoning\s+clue\s+about\b/i,
+  /\bmisconception\s+correction\s+clues?\s+about\b/i,
+  /\bcondition\s+clue\s+shows\b/i,
+  /\bextract[-\s]+based\s+clue\b/i,
+  /\bUnit\s+\d+\.indd\b/i,
+  /\b\d{2}-\d{2}-\d{4}\s+\d{1,2}:\d{2}:\d{2}\b/i,
+  /\bPage\s+\d+\b/i,
+  /\bEmployability\s+Skills\s*-\s*Class\s+iX\b/i,
+  /\bS\s*eSSIon\s+\d+\b/i,
   /\bgeneral\s+claim\s+with\s+no\b/i,
 ];
 

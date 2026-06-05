@@ -315,6 +315,98 @@ describe("strict coverage generation", () => {
     expect(prompt).not.toContain("Biology source text");
   });
 
+  it("preserves a 20-question English and Advanced Computer split when one source row is noisy", async () => {
+    const observedComposition: QuestionCompositionItem[] = [
+      {
+        subject: "English",
+        chapterId: 1,
+        chapterName: "English Chapter One",
+        topicId: 11,
+        topicName: "Reading comprehension",
+        questionCount: 10,
+      },
+      {
+        subject: "Advanced Computer",
+        chapterId: 1,
+        chapterName: "Communication Skills",
+        questionCount: 10,
+      },
+    ];
+    const paperConfig: PaperConfig = {
+      ...config,
+      classNum: 9,
+      subject: "English",
+      subjects: ["English", "Advanced Computer"],
+      subjectSelections: [
+        { subject: "English", chapterIds: [1], topicIds: [11] },
+        { subject: "Advanced Computer", chapterIds: [1], topicIds: [] },
+      ],
+      chapterIds: [1],
+      topicIds: [11],
+      totalQuestions: 20,
+      totalMarks: 20,
+      questionComposition: observedComposition,
+      typeDistribution: { MCQ: 20 },
+    };
+    mocks.generateJSON.mockImplementation(async (prompt: string) => {
+      const count = Number(
+        prompt.match(/"candidate_count":(\d+)/)?.[1] ??
+          prompt.match(/Generate\s+(\d+)\s+MCQ/i)?.[1] ??
+          10,
+      );
+      return {
+        questions: Array.from({ length: count }, (_, index) =>
+          mcq(
+            index + 200,
+            "English",
+            1,
+            11,
+            "Reading comprehension",
+          ),
+        ),
+      };
+    });
+    const { generateCoveragePlannedQuestions } = await import(
+      "@/lib/coverage-generation"
+    );
+    const { QuestionCandidateBank } = await import(
+      "@/lib/question-candidate-bank"
+    );
+
+    const result = await generateCoveragePlannedQuestions({
+      blueprint: blueprintFor(20),
+      concepts: observedConceptsForRegression(),
+      config: paperConfig,
+    });
+    const bank = new QuestionCandidateBank(result.questions, blueprintFor(20), paperConfig);
+    const visibleText = studentVisibleText(result.questions);
+
+    expect(result.questions).toHaveLength(20);
+    expect(bank.readyCount()).toBe(20);
+    expect(bank.missingCount()).toBe(0);
+    expect(
+      result.questions.filter((question) => question.subject === "English"),
+    ).toHaveLength(10);
+    expect(
+      result.questions.filter(
+        (question) => question.subject === "Advanced Computer",
+      ),
+    ).toHaveLength(10);
+    expect(mocks.generateJSON).toHaveBeenCalledTimes(1);
+    expect(
+      result.diagnostics.find((item) => item.subject === "English")
+        ?.generationMode,
+    ).toBe("ai");
+    expect(
+      result.diagnostics.find((item) => item.subject === "Advanced Computer")
+        ?.generationMode,
+    ).toBe("syllabus_near_fallback");
+    expect(visibleText).toMatch(/communication|sender|receiver|feedback/i);
+    expect(visibleText).not.toMatch(
+      /Unit\s+1\.indd|24-08-2018|S\s*eSSIon|evidence clue|case reasoning clue/i,
+    );
+  });
+
   it("estimates bounded chunks when one coverage row has many selected formats", async () => {
     const { estimateCoverageGenerationChunks } = await import(
       "@/lib/coverage-generation"
@@ -337,28 +429,35 @@ describe("strict coverage generation", () => {
     ).toBe(3);
   });
 
-  it("fails clearly when a positive allocation has no real TXT or PDF source text", async () => {
+  it("fails clearly when a positive allocation has no real TXT or PDF source text and no safe syllabus label", async () => {
     const { generateCoveragePlannedQuestions } = await import(
       "@/lib/coverage-generation"
     );
+    const unlabeledComposition: QuestionCompositionItem[] = [
+      { subject: "", questionCount: 1 },
+    ];
 
     await expect(
       generateCoveragePlannedQuestions({
         blueprint: blueprintFor(1),
         concepts: [
           {
-            ...conceptFor(composition[0]),
+            ...conceptFor({ ...composition[0], subject: "" }),
             text: "Only topic outline",
             source: "curriculum",
             type: "CURRICULUM_TOPIC",
+            subject: "",
+            chapterName: "",
+            topicName: "",
           },
         ],
         config: {
           ...config,
-          subjects: ["Biology"],
-          chapterIds: [101],
-          topicIds: [1001],
-          questionComposition: [{ ...composition[0], questionCount: 1 }],
+          subject: "",
+          subjects: [""],
+          chapterIds: [],
+          topicIds: [],
+          questionComposition: unlabeledComposition,
           totalQuestions: 1,
           totalMarks: 1,
           typeDistribution: { MCQ: 1 },
@@ -585,4 +684,70 @@ function mcq(
     sourceChunkFocus: `${subject}-focus-${index}`,
     answerPath: `${subject}-answer-path-${index}`,
   };
+}
+
+function observedConceptsForRegression(): ConceptData[] {
+  return [
+    {
+      text: [
+        "English source text for English Chapter One explains reading comprehension with clear paragraph evidence and vocabulary clues.",
+        "Students identify the main idea, supporting details, speaker intention, and word meaning from the passage.",
+        "The chapter material asks learners to infer tone, compare details, and choose answers that are supported by the text.",
+        "A strong answer uses the passage details and avoids unsupported guesses when explaining character, event, or meaning.",
+        "The passage also shows how a learner can connect a character's action with the reason given later in the same paragraph.",
+        "Questions from this source can ask students to select the best inference, identify a suitable title, or explain the purpose of a sentence.",
+        "Vocabulary questions should use context clues around the word instead of asking for a memorised dictionary meaning.",
+        "Short answers should mention the exact idea from the passage and then add a clear explanation in the student's own words.",
+      ].join(" "),
+      type: "NCERT_TXT_SOURCE",
+      bloomLevel: "UNDERSTAND",
+      hotsPotential: true,
+      subject: "English",
+      classNum: 9,
+      chapterName: "English Chapter One",
+      topicName: "Reading comprehension",
+      chapterId: 1,
+      topicId: 11,
+      source: "ncert_txt",
+    },
+    {
+      text:
+        "Unit 1.indd 2 24-08-2018 15:24:21 S eSSIon 1 Communication Skills Employability SkillS - ClaSS iX",
+      type: "NCERT_TXT_SOURCE",
+      bloomLevel: "UNDERSTAND",
+      hotsPotential: true,
+      subject: "Advanced Computer",
+      classNum: 9,
+      chapterName: "Communication Skills",
+      topicName: "Communication Skills",
+      chapterId: 1,
+      topicId: 1,
+      source: "ncert_txt",
+    },
+  ];
+}
+
+function studentVisibleText(questions: GeneratedQuestion[]) {
+  const values: string[] = [];
+
+  questions.forEach((question) => {
+    values.push(
+      question.text,
+      question.correctAnswer,
+      question.explanation,
+      question.scenario ?? "",
+      question.assertion ?? "",
+      question.reason ?? "",
+      question.diagramDescription ?? "",
+      ...(question.keyPoints ?? []),
+    );
+    question.options?.forEach((option) => values.push(option.text));
+    question.matchPairs?.forEach((pair) => values.push(pair.left, pair.right));
+    question.subQuestions?.forEach((subQuestion) => {
+      values.push(subQuestion.text, subQuestion.correctAnswer);
+      subQuestion.options?.forEach((option) => values.push(option.text));
+    });
+  });
+
+  return values.join(" ");
 }
