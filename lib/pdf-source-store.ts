@@ -70,7 +70,7 @@ export async function storeUploadedPdfSource(
     ...input.topics.map((topic) => topic.name),
   ]).slice(0, 24);
 
-  if (isGuestUserId(input.userId)) {
+  if (isGuestUserId(input.userId) && !sql) {
     enforceGuestPdfSourceLimit(input.userId);
     const sourceId = nextMemoryPdfSourceId();
     const source: UploadedPdfSourceSummary = {
@@ -107,6 +107,11 @@ export async function storeUploadedPdfSource(
   if (!sql) {
     throw new Error("Database is required to store uploaded PDF concepts.");
   }
+
+  await ensureGuestDatabaseUser(input.userId);
+  await pruneGuestDatabasePdfSources(input.userId, {
+    keepNewest: Math.max(0, maxGuestPdfSourcesPerSession - 1),
+  });
 
   const rows = await sql`
     WITH inserted_source AS (
@@ -172,7 +177,7 @@ export async function findUploadedPdfSourceByContentHash(
   pruneGuestPdfSources();
   const normalizedFocusPrompt = focusPrompt.trim();
 
-  if (isGuestUserId(userId)) {
+  if (isGuestUserId(userId) && !sql) {
     const stored = Array.from(memoryPdfSources.values())
       .filter((candidate) => memoryPdfSourceOwners.get(candidate.source.id) === userId)
       .find(
@@ -184,6 +189,7 @@ export async function findUploadedPdfSourceByContentHash(
   }
 
   if (!sql) return null;
+  await pruneGuestDatabasePdfSources(userId);
 
   const rows = await sql`
     SELECT id, title, subject, class_num, file_name, word_count,
@@ -221,7 +227,7 @@ export async function getUploadedPdfSourceConcepts(
   userId: number,
 ) {
   pruneGuestPdfSources();
-  if (isGuestUserId(userId)) {
+  if (isGuestUserId(userId) && !sql) {
     return memoryPdfSourceOwners.get(sourceId) === userId
       ? (memoryPdfSources.get(sourceId) ?? null)
       : null;
@@ -230,6 +236,7 @@ export async function getUploadedPdfSourceConcepts(
   if (!sql) {
     throw new Error("Database is required to load uploaded PDF concepts.");
   }
+  await pruneGuestDatabasePdfSources(userId);
 
   const sourceRows = await sql`
     SELECT id, title, subject, class_num, file_name, word_count,
@@ -488,4 +495,46 @@ function enforceGuestPdfSourceLimit(ownerId: number) {
 function positiveEnvNumber(name: string, fallback: number) {
   const value = Number(process.env[name]);
   return Number.isFinite(value) && value > 0 ? value : fallback;
+}
+
+async function ensureGuestDatabaseUser(userId: number) {
+  if (!sql || !isGuestUserId(userId)) return;
+
+  await sql`
+    INSERT INTO users (id, email, name)
+    VALUES (${userId}, ${guestEmail(userId)}, 'Guest')
+    ON CONFLICT (id) DO UPDATE
+    SET name = COALESCE(users.name, EXCLUDED.name)
+  `;
+}
+
+function guestEmail(userId: number) {
+  return `guest-${Math.abs(userId)}@edutest.local`;
+}
+
+async function pruneGuestDatabasePdfSources(
+  userId: number,
+  options: { keepNewest?: number } = {},
+) {
+  if (!sql || !isGuestUserId(userId)) return;
+
+  const cutoff = new Date(Date.now() - guestPdfSourceTtlMs).toISOString();
+  await sql`
+    DELETE FROM uploaded_pdf_sources
+    WHERE user_id = ${userId}
+    AND created_at < ${cutoff}::timestamp
+  `;
+
+  const keepNewest = options.keepNewest ?? maxGuestPdfSourcesPerSession;
+  if (keepNewest < 0) return;
+  await sql`
+    DELETE FROM uploaded_pdf_sources
+    WHERE id IN (
+      SELECT id
+      FROM uploaded_pdf_sources
+      WHERE user_id = ${userId}
+      ORDER BY created_at DESC, id DESC
+      OFFSET ${keepNewest}
+    )
+  `;
 }

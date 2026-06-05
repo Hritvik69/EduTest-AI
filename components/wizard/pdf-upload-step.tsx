@@ -24,6 +24,7 @@ interface UploadProgressState {
 export function PdfUploadStep() {
   const { config, updateConfig } = usePaperConfig();
   const inputRef = React.useRef<HTMLInputElement | null>(null);
+  const uploadControllerRef = React.useRef<AbortController | null>(null);
   const [dragActive, setDragActive] = React.useState(false);
   const [uploading, setUploading] = React.useState(false);
   const [uploadProgress, setUploadProgress] = React.useState<UploadProgressState | null>(
@@ -40,9 +41,17 @@ export function PdfUploadStep() {
     return () => window.clearInterval(interval);
   }, [uploading]);
 
+  React.useEffect(
+    () => () => {
+      uploadControllerRef.current?.abort();
+    },
+    [],
+  );
+
   async function handleFile(file: File | null) {
     if (!file) return;
     setError(null);
+    uploadControllerRef.current?.abort();
 
     if (file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) {
       setError("Only PDF files are allowed.");
@@ -65,6 +74,8 @@ export function PdfUploadStep() {
       lastProgressAt: startedAt,
     });
     setUploading(true);
+    const controller = new AbortController();
+    uploadControllerRef.current = controller;
     const formData = new FormData();
     formData.append("file", file);
     const trimmedFocusPrompt = focusPrompt.trim();
@@ -76,8 +87,9 @@ export function PdfUploadStep() {
       const response = await fetch("/api/pdf-sources?stream=1", {
         method: "POST",
         body: formData,
+        signal: controller.signal,
       });
-      const payload = await readUploadApiPayload(response, (progress) => {
+      const payload = await readUploadApiPayload(response, controller.signal, (progress) => {
         setUploadProgress((current) =>
           current
             ? {
@@ -111,11 +123,17 @@ export function PdfUploadStep() {
       });
       toast.success("PDF understood. Continue to paper settings.");
     } catch (uploadError) {
+      if (controller.signal.aborted) {
+        return;
+      }
       const message =
         uploadError instanceof Error ? uploadError.message : "PDF understanding failed.";
       setError(message);
       toast.error(message);
     } finally {
+      if (uploadControllerRef.current === controller) {
+        uploadControllerRef.current = null;
+      }
       setUploading(false);
       setUploadProgress(null);
       if (inputRef.current) inputRef.current.value = "";
@@ -232,6 +250,7 @@ async function readApiPayload(response: Response) {
 
 async function readUploadApiPayload(
   response: Response,
+  signal: AbortSignal,
   onProgress: (progress: { progress: number; message: string }) => void,
 ) {
   const contentType = response.headers.get("content-type") ?? "";
@@ -240,36 +259,45 @@ async function readUploadApiPayload(
   }
 
   const reader = response.body.getReader();
+  const abort = () => {
+    void reader.cancel().catch(() => {});
+  };
+  signal.addEventListener("abort", abort, { once: true });
   const decoder = new TextDecoder();
   let buffer = "";
   let completePayload: unknown = null;
 
-  while (true) {
-    const { value, done } = await reader.read();
-    if (done) break;
-    buffer += decoder.decode(value, { stream: true });
-    const blocks = buffer.split("\n\n");
-    buffer = blocks.pop() ?? "";
+  try {
+    while (true) {
+      if (signal.aborted) throw new Error("PDF upload was cancelled.");
+      const { value, done } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const blocks = buffer.split("\n\n");
+      buffer = blocks.pop() ?? "";
 
-    for (const block of blocks) {
-      const event = parseServerEventBlock(block);
-      if (!event) continue;
+      for (const block of blocks) {
+        const event = parseServerEventBlock(block);
+        if (!event) continue;
 
-      if (event.event === "progress") {
-        onProgress({
-          progress: clampProgress(Number(event.data.progress)),
-          message: String(event.data.message ?? "Working on PDF"),
-        });
-      }
+        if (event.event === "progress") {
+          onProgress({
+            progress: clampProgress(Number(event.data.progress)),
+            message: String(event.data.message ?? "Working on PDF"),
+          });
+        }
 
-      if (event.event === "complete") {
-        completePayload = event.data;
-      }
+        if (event.event === "complete") {
+          completePayload = event.data;
+        }
 
-      if (event.event === "error") {
-        throw new Error(apiErrorMessage(event.data, "PDF understanding failed."));
+        if (event.event === "error") {
+          throw new Error(apiErrorMessage(event.data, "PDF understanding failed."));
+        }
       }
     }
+  } finally {
+    signal.removeEventListener("abort", abort);
   }
 
   if (buffer.trim()) {
@@ -329,7 +357,7 @@ function UploadProgressCard({
               {snapshot.percent}% complete
             </div>
             <div className="mt-1 text-xs text-slate-400">
-              {snapshot.fileName ? `${snapshot.fileName} · ` : ""}
+              {snapshot.fileName ? `${snapshot.fileName} - ` : ""}
               elapsed {snapshot.elapsedLabel}
             </div>
           </div>

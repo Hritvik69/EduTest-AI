@@ -1,3 +1,5 @@
+import { guestSigningSecret } from "@/lib/guest-secret";
+
 export const guestSessionCookieName = "edutest_guest_session";
 export const guestSessionHeaderName = "x-edutest-guest-session";
 export const defaultGuestSessionId = "default-guest-session";
@@ -78,11 +80,7 @@ async function hmacSha256(message: string) {
 }
 
 function guestSessionSecret() {
-  return (
-    process.env.EDUTEST_GUEST_SECRET ??
-    process.env.NEXTAUTH_SECRET ??
-    "edutest-local-guest-session-secret"
-  );
+  return guestSigningSecret();
 }
 
 function base64UrlEncode(bytes: Uint8Array) {

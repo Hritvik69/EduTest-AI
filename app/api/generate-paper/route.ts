@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import {
   jsonError,
   parseJsonWithSchema,
+  rateLimit,
   requireAuthenticatedUser,
 } from "@/lib/api-security";
 import {
@@ -123,6 +124,15 @@ type GenerationFailureSource =
   | "deployment"
   | "unknown";
 
+const globalForGenerationRequests = globalThis as typeof globalThis & {
+  __edutestInFlightGenerationKeys?: Map<string, number>;
+};
+const inFlightGenerationKeys =
+  globalForGenerationRequests.__edutestInFlightGenerationKeys ??
+  new Map<string, number>();
+globalForGenerationRequests.__edutestInFlightGenerationKeys = inFlightGenerationKeys;
+const inFlightGenerationTtlMs = 10 * 60 * 1000;
+
 function createSessionPaperId() {
   const random = crypto.randomUUID().replace(/-/g, "").slice(0, 12);
   return `session-${Date.now()}-${random}`;
@@ -135,6 +145,15 @@ function sessionOnlyResumeState(): PaperGenerationState | null {
 export async function POST(request: NextRequest) {
   const auth = await requireAuthenticatedUser(request);
   if (auth.response) return auth.response;
+
+  const limited = rateLimit(
+    request,
+    `generate-paper:${auth.user.id}`,
+    6,
+    10 * 60_000,
+    { action: "paper generation requests" },
+  );
+  if (limited) return limited;
 
   const parsed = await parseJsonWithSchema(request, generationRequestSchema);
   if (parsed.response) return parsed.response;
@@ -169,6 +188,17 @@ export async function POST(request: NextRequest) {
   const encoder = new TextEncoder();
   const paperId = createSessionPaperId();
   const providerCooldownScope = `user:${auth.user.id}`;
+  const releaseInFlightGeneration = acquireInFlightGeneration(
+    auth.user.id,
+    idempotencyKey,
+  );
+  if (!releaseInFlightGeneration) {
+    return jsonError(
+      "This exact paper generation is already running. Wait for it to finish, or retry after a minute if the previous request was interrupted.",
+      409,
+      { code: "GENERATION_IN_PROGRESS", idempotencyKey },
+    );
+  }
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -1241,6 +1271,7 @@ export async function POST(request: NextRequest) {
         stopHeartbeat();
         clearTimeout(generationDeadlineTimer);
         request.signal.removeEventListener("abort", abortGenerationFromClient);
+        releaseInFlightGeneration();
       }
     },
   });
@@ -2612,6 +2643,25 @@ async function validateGeneratedPaperSkippingInvalid({
     replacedQuestions,
     remainingMissingQuestions,
     sourceBackedCompletedQuestions,
+  };
+}
+
+function acquireInFlightGeneration(userId: number, idempotencyKey: string) {
+  const now = Date.now();
+  for (const [key, expiresAt] of Array.from(inFlightGenerationKeys.entries())) {
+    if (expiresAt <= now) inFlightGenerationKeys.delete(key);
+  }
+
+  const key = `${userId}:${idempotencyKey}`;
+  const activeUntil = inFlightGenerationKeys.get(key);
+  if (activeUntil && activeUntil > now) return null;
+
+  inFlightGenerationKeys.set(key, now + inFlightGenerationTtlMs);
+  let released = false;
+  return () => {
+    if (released) return;
+    released = true;
+    inFlightGenerationKeys.delete(key);
   };
 }
 

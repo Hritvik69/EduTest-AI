@@ -67,7 +67,12 @@ export function TestRunner({ paperId }: { paperId: string }) {
     };
 
     try {
-      window.sessionStorage.setItem(storageKey, JSON.stringify(payload));
+      const serialized = JSON.stringify(payload);
+      try {
+        window.sessionStorage.setItem(storageKey, serialized);
+      } catch {
+        window.localStorage.setItem(storageKey, serialized);
+      }
       setLastSaved(new Date(payload.savedAt));
     } catch {
       toast.error("Could not save progress for this session.");
@@ -141,9 +146,10 @@ export function TestRunner({ paperId }: { paperId: string }) {
       cancelled = true;
     };
     function restoreLocalProgress() {
-      clearLegacyLocalProgress(storageKey);
       try {
-        const stored = window.sessionStorage.getItem(storageKey);
+        const stored =
+          window.sessionStorage.getItem(storageKey) ??
+          window.localStorage.getItem(storageKey);
         if (stored) {
           const parsed = JSON.parse(stored);
           setAnswers(parsed.answers ?? {});
@@ -155,8 +161,9 @@ export function TestRunner({ paperId }: { paperId: string }) {
       } catch {
         try {
           window.sessionStorage.removeItem(storageKey);
+          window.localStorage.removeItem(storageKey);
         } catch {
-          // Ignore blocked sessionStorage.
+          // Ignore blocked browser storage.
         }
       }
     }
@@ -478,17 +485,11 @@ export function TestRunner({ paperId }: { paperId: string }) {
   );
 }
 
-function clearLegacyLocalProgress(storageKey: string) {
-  try {
-    window.localStorage.removeItem(storageKey);
-  } catch {
-    // Ignore blocked localStorage; guest mode does not rely on persistent browser storage.
-  }
-}
-
 function readSessionPaper(paperId: string): StoredPaper | null {
+  const key = `edutest:paper:${paperId}`;
   try {
-    const stored = window.sessionStorage.getItem(`edutest:paper:${paperId}`);
+    const stored =
+      window.sessionStorage.getItem(key) ?? window.localStorage.getItem(key);
     if (!stored) return null;
     const parsed = JSON.parse(stored);
     return {
@@ -500,9 +501,10 @@ function readSessionPaper(paperId: string): StoredPaper | null {
     };
   } catch {
     try {
-      window.sessionStorage.removeItem(`edutest:paper:${paperId}`);
+      window.sessionStorage.removeItem(key);
+      window.localStorage.removeItem(key);
     } catch {
-      // Ignore blocked sessionStorage.
+      // Ignore blocked browser storage.
     }
     return null;
   }

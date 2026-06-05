@@ -125,6 +125,28 @@ describe("API authentication helper", () => {
     );
   }, 10_000);
 
+  it("rejects oversized JSON bodies before schema validation", async () => {
+    const { parseJsonWithSchema } = await import("@/lib/api-security");
+    const request = new NextRequest("http://localhost/api/evaluate-answers", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Content-Length": "1000",
+      },
+      body: JSON.stringify({ value: "small" }),
+    });
+
+    const result = await parseJsonWithSchema(
+      request,
+      z.object({ value: z.string() }),
+      { maxBytes: 10 },
+    );
+
+    expect(result.response?.status).toBe(413);
+    const payload = await result.response?.json();
+    expect(payload.error).toContain("too large");
+  }, 10_000);
+
   it("returns rate limit messages with limit and retry timing", async () => {
     const { rateLimit } = await import("@/lib/api-security");
     const request = new NextRequest("http://localhost/api/evaluate-answers");

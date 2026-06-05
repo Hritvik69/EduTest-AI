@@ -281,22 +281,26 @@ describe("uploaded PDF concept extraction", () => {
     );
 
     const { extractUploadedPdfConcepts } = await import("@/lib/extractor");
-    const result = await extractUploadedPdfConcepts(
-      [
+    const text = [
         "Cell Structure and Function",
         "The cell membrane controls movement of substances in and out of cells.",
         "The nucleus contains genetic material and controls cellular activities.",
         "For example, mitochondria release energy from food during respiration.",
         "This chapter includes diagrams, observations, and examples from daily life.",
-      ].join("\n"),
+      ].join("\n");
+    const result = await extractUploadedPdfConcepts(
+      text,
       "cells.pdf",
     );
+    const cached = await extractUploadedPdfConcepts(text, "cells.pdf");
 
     expect(result.title).toBe("Cell Structure and Function");
+    expect(cached.extractionMethod).toBe("CACHED_LOCAL_FALLBACK");
     expect(result.topics.length).toBeGreaterThan(0);
     expect(result.importantTopics.length).toBeGreaterThan(0);
     expect(result.topics[0].concepts.length).toBeGreaterThan(0);
     expect(result.extractionMethod).toBe("LOCAL_FALLBACK");
+    expect(mocks.generateJSON).toHaveBeenCalledTimes(1);
   });
 
   it("stores PDF provenance metadata with guest PDF sources", async () => {

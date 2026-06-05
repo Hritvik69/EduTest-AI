@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   jsonError,
+  parseJsonWithSchema,
   rateLimit,
   requireAuthenticatedUser,
 } from "@/lib/api-security";
@@ -11,6 +12,7 @@ import {
   downloadPaperFileName,
   paperExportTextSize,
 } from "@/lib/paper-pdf-export";
+import { sessionPaperExportRequestSchema } from "@/lib/schemas";
 import type { StoredPaper } from "@/types";
 
 export const runtime = "nodejs";
@@ -27,11 +29,16 @@ export async function POST(request: NextRequest) {
   });
   if (limited) return limited;
 
-  const body = await request.json().catch(() => null);
-  const paperSnapshot = body?.paperSnapshot;
-  const token = body?.paperSnapshotToken ?? body?.guestPaperToken;
-  const includeAnswers = Boolean(body?.includeAnswers);
-  const format = body?.format === "json" ? "json" : "pdf";
+  const parsed = await parseJsonWithSchema(request, sessionPaperExportRequestSchema, {
+    maxBytes: 350_000,
+  });
+  if (parsed.response) return parsed.response;
+
+  const body = parsed.data;
+  const paperSnapshot = body.paperSnapshot;
+  const token = body.paperSnapshotToken ?? body.guestPaperToken;
+  const includeAnswers = Boolean(body.includeAnswers);
+  const format = body.format === "json" ? "json" : "pdf";
   const expectedPaperId = snapshotId(paperSnapshot);
   if (!expectedPaperId) return jsonError("Invalid paper snapshot.", 400);
 

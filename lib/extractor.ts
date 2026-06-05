@@ -38,6 +38,11 @@ export interface PdfTextExtractionProgress {
 
 interface PdfTextExtractionOptions {
   onProgress?: (progress: PdfTextExtractionProgress) => void;
+  signal?: AbortSignal;
+}
+
+interface UploadedPdfConceptExtractionOptions {
+  signal?: AbortSignal;
 }
 
 interface ConceptExtractionResult {
@@ -109,12 +114,15 @@ export async function extractTextFromPdf(
   buffer: Buffer,
   options: PdfTextExtractionOptions = {},
 ): Promise<ExtractedContent> {
+  throwIfAborted(options.signal);
   const { PDFParse } = await import("pdf-parse");
   const parser = new PDFParse({ data: buffer });
 
   try {
     options.onProgress?.({ progress: 10, message: "Reading PDF text layer" });
+    throwIfAborted(options.signal);
     const textResult = await parser.getText();
+    throwIfAborted(options.signal);
     const infoResult = await parser.getInfo();
     const rawText = textResult.text ?? "";
     const pageCount = Number(textResult.total ?? textResult.pages?.length ?? 0);
@@ -160,11 +168,13 @@ async function extractScannedPdfText(
   rawText: string,
   options: PdfTextExtractionOptions,
 ) {
+  throwIfAborted(options.signal);
   const subprocessText = await extractScannedPdfTextViaSubprocess(
     buffer,
     pageCount,
     options,
   );
+  throwIfAborted(options.signal);
   if (subprocessText && subprocessText.split(/\s+/).filter(Boolean).length > 25) {
     return subprocessText;
   }
@@ -190,53 +200,68 @@ async function extractScannedPdfText(
     });
   });
 
-  options.onProgress?.({
-    progress: 16,
-    message: `Detected scanned PDF. Rendering ${pageLimit} pages for OCR`,
-  });
-  for (let page = 1; page <= pageLimit; page += 1) {
-    const screenshot = await parser.getScreenshot({
-      first: page,
-      last: page,
-      desiredWidth: scannedPdfOcrWidth,
-      imageDataUrl: false,
-      imageBuffer: true,
-    });
-    const renderedPage = screenshot.pages[0];
-    renderedPages.push({
-      page,
-      image: renderedPage?.data ? Buffer.from(renderedPage.data) : undefined,
-      dataUrl: renderedPage?.dataUrl,
-    });
-    if (renderedPage?.data) {
-      const image = Buffer.from(renderedPage.data);
-      localTextJobs.push(
-        schedulerPromise
-          .then(async (scheduler) => {
-            if (!scheduler) return;
-            const result = await scheduler.addJob("recognize", image);
-            const text = normalizeOcrText(result.data?.text ?? "");
-            if (text) localTexts.set(page, text);
-            completedOcrPages += 1;
-            options.onProgress?.({
-              progress: Math.round(30 + (completedOcrPages / pageLimit) * 35),
-              message: `OCR read page ${page} of ${pageLimit}`,
-            });
-          })
-          .catch((error) => {
-            console.warn(`Local scanned PDF OCR failed for page ${page}.`, error);
-          }),
-      );
-    }
+  let schedulerTerminated = false;
+  try {
     options.onProgress?.({
-      progress: Math.round(16 + (page / pageLimit) * 12),
-      message: `Rendered page ${page} of ${pageLimit} for OCR`,
+      progress: 16,
+      message: `Detected scanned PDF. Rendering ${pageLimit} pages for OCR`,
     });
+    for (let page = 1; page <= pageLimit; page += 1) {
+      throwIfAborted(options.signal);
+      const screenshot = await parser.getScreenshot({
+        first: page,
+        last: page,
+        desiredWidth: scannedPdfOcrWidth,
+        imageDataUrl: false,
+        imageBuffer: true,
+      });
+      throwIfAborted(options.signal);
+      const renderedPage = screenshot.pages[0];
+      renderedPages.push({
+        page,
+        image: renderedPage?.data ? Buffer.from(renderedPage.data) : undefined,
+        dataUrl: renderedPage?.dataUrl,
+      });
+      if (renderedPage?.data) {
+        const image = Buffer.from(renderedPage.data);
+        localTextJobs.push(
+          schedulerPromise
+            .then(async (scheduler) => {
+              throwIfAborted(options.signal);
+              if (!scheduler) return;
+              const result = await scheduler.addJob("recognize", image);
+              throwIfAborted(options.signal);
+              const text = normalizeOcrText(result.data?.text ?? "");
+              if (text) localTexts.set(page, text);
+              completedOcrPages += 1;
+              options.onProgress?.({
+                progress: Math.round(30 + (completedOcrPages / pageLimit) * 35),
+                message: `OCR read page ${page} of ${pageLimit}`,
+              });
+            })
+            .catch((error) => {
+              if (isAbortError(error)) throw error;
+              console.warn(`Local scanned PDF OCR failed for page ${page}.`, error);
+            }),
+        );
+      }
+      options.onProgress?.({
+        progress: Math.round(16 + (page / pageLimit) * 12),
+        message: `Rendered page ${page} of ${pageLimit} for OCR`,
+      });
+    }
+
+    await Promise.all(localTextJobs);
+    const scheduler = await schedulerPromise;
+    await scheduler?.terminate();
+    schedulerTerminated = true;
+  } finally {
+    if (!schedulerTerminated) {
+      const scheduler = await schedulerPromise.catch(() => null);
+      await scheduler?.terminate().catch(() => {});
+    }
   }
 
-  await Promise.all(localTextJobs);
-  const scheduler = await schedulerPromise;
-  await scheduler?.terminate();
   const pageTexts: string[] = [];
 
   for (const renderedPage of renderedPages) {
@@ -246,6 +271,7 @@ async function extractScannedPdfText(
       continue;
     }
 
+    throwIfAborted(options.signal);
     const dataUrl = renderedPage.dataUrl ?? (await renderPageDataUrl(parser, renderedPage.page));
     const image = dataUrl ? parseDataUrl(dataUrl) : null;
     if (!image) continue;
@@ -285,6 +311,7 @@ async function extractScannedPdfTextViaSubprocess(
   options: PdfTextExtractionOptions,
 ) {
   if (process.env.PDF_OCR_SUBPROCESS === "0") return "";
+  throwIfAborted(options.signal);
 
   const tempPath = path.join(tmpdir(), `edutest-ocr-${randomUUID()}.pdf`);
   const scriptPath = path.join(process.cwd(), "scripts", "ocr-scanned-pdf.mjs");
@@ -317,14 +344,25 @@ async function extractScannedPdfTextViaSubprocess(
         if (settled) return;
         settled = true;
         child.kill();
+        options.signal?.removeEventListener("abort", abort);
         console.warn("Scanned PDF OCR subprocess timed out.");
         resolve("");
       }, scannedPdfOcrSubprocessTimeoutMs);
+      const abort = () => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timeout);
+        child.kill();
+        options.signal?.removeEventListener("abort", abort);
+        resolve("");
+      };
+      options.signal?.addEventListener("abort", abort, { once: true });
 
       const finish = (value: string) => {
         if (settled) return;
         settled = true;
         clearTimeout(timeout);
+        options.signal?.removeEventListener("abort", abort);
         resolve(value);
       };
 
@@ -529,7 +567,9 @@ export async function extractUploadedPdfConcepts(
   cleanedText: string,
   fallbackTitle = "Uploaded Chapter PDF",
   focusPrompt = "",
+  options: UploadedPdfConceptExtractionOptions = {},
 ) {
+  throwIfAborted(options.signal);
   const normalizedFocusPrompt = normalizePdfFocusPrompt(focusPrompt);
   const cacheKey = uploadedPdfExtractionCacheKey(
     cleanedText,
@@ -616,6 +656,8 @@ Use HIGH importance for repeated, exercise-heavy, formula-heavy, boxed, summary,
   const timeout = setTimeout(() => {
     controller.abort();
   }, uploadedPdfAiExtractionTimeoutMs);
+  const abort = () => controller.abort();
+  options.signal?.addEventListener("abort", abort, { once: true });
 
   try {
     result = await generateJSON<UploadedPdfExtractionResult>(prompt, {
@@ -631,9 +673,11 @@ Use HIGH importance for repeated, exercise-heavy, formula-heavy, boxed, summary,
       focusTextForLocalPdfExtraction(cleanedText, normalizedFocusPrompt),
       normalizedFocusPrompt || fallbackTitle,
     );
+    setUploadedPdfExtractionCache(cacheKey, local);
     return cloneUploadedPdfConceptAnalysis(local);
   } finally {
     clearTimeout(timeout);
+    options.signal?.removeEventListener("abort", abort);
   }
 
   const title = normalizeOptionalText(result.title) || fallbackTitle;
@@ -653,10 +697,7 @@ Use HIGH importance for repeated, exercise-heavy, formula-heavy, boxed, summary,
     topics,
     extractionMethod: "AI" as const,
   };
-  uploadedPdfExtractionCache.set(cacheKey, {
-    expiresAt: Date.now() + uploadedPdfExtractionCacheTtlMs,
-    result: analysis,
-  });
+  setUploadedPdfExtractionCache(cacheKey, analysis);
 
   return cloneUploadedPdfConceptAnalysis(analysis);
 }
@@ -1026,7 +1067,7 @@ export async function getChapterContent(
     concepts.push(...(await storeExtractedTopics(chapterId, topics, "demo")));
   }
 
-  conceptCache.set(cacheKey, {
+  setConceptCache(cacheKey, {
     concepts,
     localNcertDiagnostics,
     expiresAt: Date.now() + conceptCacheTtlMs,
@@ -1051,8 +1092,58 @@ function conceptCacheKey(
   });
 }
 
+function setUploadedPdfExtractionCache(
+  key: string,
+  result: UploadedPdfConceptAnalysis,
+) {
+  const now = Date.now();
+  pruneExpiringCache(uploadedPdfExtractionCache, now);
+  uploadedPdfExtractionCache.set(key, {
+    expiresAt: now + uploadedPdfExtractionCacheTtlMs,
+    result,
+  });
+  enforceCacheLimit(uploadedPdfExtractionCache, 80);
+}
+
+function setConceptCache(key: string, value: ConceptCacheValue) {
+  pruneExpiringCache(conceptCache, Date.now());
+  conceptCache.set(key, value);
+  enforceCacheLimit(conceptCache, 120);
+}
+
+function pruneExpiringCache<T extends { expiresAt: number }>(
+  cache: Map<string, T>,
+  now: number,
+) {
+  for (const [key, value] of Array.from(cache.entries())) {
+    if (value.expiresAt <= now) cache.delete(key);
+  }
+}
+
+function enforceCacheLimit<T>(cache: Map<string, T>, maxEntries: number) {
+  while (cache.size > maxEntries) {
+    const oldestKey = cache.keys().next().value;
+    if (!oldestKey) break;
+    cache.delete(oldestKey);
+  }
+}
+
+function throwIfAborted(signal?: AbortSignal) {
+  if (!signal?.aborted) return;
+  if (signal.reason instanceof Error) throw signal.reason;
+  throw new Error("Operation cancelled.");
+}
+
+function isAbortError(error: unknown) {
+  return (
+    error instanceof Error &&
+    (error.name === "AbortError" || /cancelled|aborted/i.test(error.message))
+  );
+}
+
 function clearConceptCacheForChapter(_chapterId: number) {
   conceptCache.clear();
+  uploadedPdfExtractionCache.clear();
 }
 
 function hasRealSourceTextConcepts(concepts: ConceptData[]) {

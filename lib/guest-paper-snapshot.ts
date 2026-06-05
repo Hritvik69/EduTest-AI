@@ -1,4 +1,5 @@
 import type { StoredPaper } from "@/types";
+import { guestSigningSecret } from "@/lib/guest-secret";
 
 export type GuestPaperSnapshot = Pick<
   StoredPaper,
@@ -46,8 +47,9 @@ export async function verifyGuestPaperSnapshot(
   ownerId: number,
   expectedPaperId: number | string,
 ) {
+  if (!isValidSnapshotToken(token)) return null;
   const normalized = normalizeGuestPaperSnapshot(snapshot);
-  if (!normalized || !token) return null;
+  if (!normalized) return null;
   if (String(normalized.id) !== String(expectedPaperId)) return null;
   if (normalized.status !== "READY") return null;
 
@@ -57,6 +59,7 @@ export async function verifyGuestPaperSnapshot(
 
 function normalizeGuestPaperSnapshot(value: unknown): GuestPaperSnapshot | null {
   if (!value || typeof value !== "object") return null;
+  if (!isBoundedSnapshotValue(value)) return null;
   const record = value as Partial<StoredPaper>;
   const id = normalizePaperSnapshotId(record.id);
   if (!id) return null;
@@ -64,6 +67,9 @@ function normalizeGuestPaperSnapshot(value: unknown): GuestPaperSnapshot | null 
     return null;
   }
   if (!record.questions.length || record.questions.length > 150) return null;
+  if (!isBoundedSnapshotValue(record.config) || !isBoundedSnapshotValue(record.blueprint)) {
+    return null;
+  }
 
   return {
     id,
@@ -105,10 +111,7 @@ async function signSnapshotPayload(snapshot: GuestPaperSnapshot, ownerId: number
 }
 
 async function hmacSha256(message: string) {
-  const secret =
-    process.env.EDUTEST_GUEST_SECRET ??
-    process.env.NEXTAUTH_SECRET ??
-    "edutest-local-guest-session-secret";
+  const secret = guestSigningSecret();
   const encoder = new TextEncoder();
   if (globalThis.crypto?.subtle) {
     const key = await globalThis.crypto.subtle.importKey(
@@ -161,4 +164,57 @@ function timingSafeEqual(left: string, right: string) {
   }
 
   return mismatch === 0;
+}
+
+function isValidSnapshotToken(value: string | undefined): value is string {
+  return typeof value === "string" && value.length >= 32 && value.length <= 256;
+}
+
+function isBoundedSnapshotValue(value: unknown) {
+  let nodes = 0;
+  let estimatedChars = 0;
+
+  const visit = (item: unknown, depth: number, ancestors: Set<object>): boolean => {
+    nodes += 1;
+    if (nodes > 8_000 || depth > 10) return false;
+
+    if (item === null || item === undefined) {
+      estimatedChars += 4;
+      return estimatedChars <= 300_000;
+    }
+
+    if (typeof item === "string") {
+      if (item.length > 20_000) return false;
+      estimatedChars += item.length;
+    } else if (typeof item === "number" || typeof item === "boolean") {
+      estimatedChars += 16;
+    } else if (Array.isArray(item)) {
+      if (item.length > 250) return false;
+      if (ancestors.has(item)) return false;
+      ancestors.add(item);
+      estimatedChars += item.length * 2;
+      for (const child of item) {
+        if (!visit(child, depth + 1, ancestors)) return false;
+      }
+      ancestors.delete(item);
+    } else if (typeof item === "object") {
+      if (ancestors.has(item)) return false;
+      ancestors.add(item);
+      const entries = Object.entries(item as Record<string, unknown>);
+      if (entries.length > 160) return false;
+      for (const [key, child] of entries) {
+        if (key.length > 300) estimatedChars += 300;
+        else estimatedChars += key.length;
+        if (!visit(child, depth + 1, ancestors)) return false;
+      }
+      ancestors.delete(item);
+    } else {
+      return false;
+    }
+
+    if (estimatedChars > 300_000) return false;
+    return true;
+  };
+
+  return visit(value, 0, new Set());
 }

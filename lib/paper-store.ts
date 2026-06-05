@@ -715,6 +715,10 @@ export async function listPapersForUser(userId: number) {
   pruneGuestMemory();
   if (isGuestUserId(userId) && !sql) {
     return Array.from(memoryPapers.values())
+      .filter(
+        (paper) =>
+          typeof paper.id === "number" && memoryPaperOwners.get(paper.id) === userId,
+      )
       .sort((left, right) => Date.parse(right.createdAt) - Date.parse(left.createdAt))
       .slice(0, 100)
       .map((paper) => ({
@@ -728,8 +732,7 @@ export async function listPapersForUser(userId: number) {
         latestAttemptId: null,
         latestPercentage: null,
         isDemoMode: paper.isDemoMode,
-        isOwner:
-          typeof paper.id === "number" && memoryPaperOwners.get(paper.id) === userId,
+        isOwner: true,
         errorMetadata: paper.errorMetadata ?? null,
         createdAt: paper.createdAt,
       }));
@@ -753,6 +756,7 @@ export async function listPapersForUser(userId: number) {
       ORDER BY completed_at DESC
       LIMIT 1
     ) latest_attempt ON TRUE
+    WHERE p.user_id = ${userId}
     ORDER BY p.created_at DESC
     LIMIT 100
   `;

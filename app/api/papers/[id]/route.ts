@@ -27,21 +27,20 @@ export async function GET(
     );
   }
   const isOwner = ownerId === auth.user.id;
-  const paper = await getPaper(paperId, isOwner ? auth.user.id : undefined);
+  if (!isOwner) {
+    return jsonError(
+      "Paper access denied. This paper belongs to another user or guest session.",
+      403,
+    );
+  }
+
+  const paper = await getPaper(paperId, auth.user.id);
   if (!paper) {
     return jsonError(
       "Paper not found. It may have been removed or created in another browser session.",
       404,
     );
   }
-  if (!isOwner && paper.status !== "READY") {
-    return jsonError(
-      "This shared paper is not ready yet.",
-      409,
-      { status: paper.status, errorMetadata: paper.errorMetadata ?? null },
-    );
-  }
-
   const guestPaperToken = auth.user.isGuest
     ? await signGuestPaperSnapshot(paper, auth.user.id)
     : undefined;

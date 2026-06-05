@@ -60,10 +60,18 @@ function streamPdfSourceUpload(request: NextRequest, user: PdfUploadUser) {
 
   const stream = new ReadableStream({
     async start(controller) {
+      let closed = false;
       const send = (event: string, data: object) => {
-        controller.enqueue(
-          encoder.encode(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`),
-        );
+        if (closed || request.signal.aborted) return false;
+        try {
+          controller.enqueue(
+            encoder.encode(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`),
+          );
+          return true;
+        } catch {
+          closed = true;
+          return false;
+        }
       };
 
       try {
@@ -82,7 +90,14 @@ function streamPdfSourceUpload(request: NextRequest, user: PdfUploadUser) {
           code: error instanceof PdfUploadClientError ? error.status : 502,
         });
       } finally {
-        controller.close();
+        if (!closed) {
+          closed = true;
+          try {
+            controller.close();
+          } catch {
+            // The browser may have disconnected while OCR or AI extraction was running.
+          }
+        }
       }
     },
   });
@@ -101,6 +116,7 @@ async function processPdfSourceUpload(
   user: PdfUploadUser,
   onProgress?: PdfUploadProgressSender,
 ) {
+  throwIfUploadAborted(request.signal);
   onProgress?.({ progress: 3, message: "Receiving PDF upload" });
 
   let formData: FormData;
@@ -115,6 +131,7 @@ async function processPdfSourceUpload(
 
   const file = formData.get("file");
   const focusPrompt = sanitizeFocusPrompt(formData.get("focusPrompt"));
+  throwIfUploadAborted(request.signal);
 
   if (!(file instanceof File)) {
     throw new PdfUploadClientError(
@@ -133,6 +150,7 @@ async function processPdfSourceUpload(
 
   onProgress?.({ progress: 6, message: "Validating PDF file" });
   const buffer = Buffer.from(await file.arrayBuffer());
+  throwIfUploadAborted(request.signal);
   try {
     assertPdfBufferSize(buffer);
     assertPdfMagic(buffer);
@@ -155,7 +173,11 @@ async function processPdfSourceUpload(
     return cachedSource;
   }
 
-  const extracted = await extractTextFromPdf(buffer, { onProgress });
+  const extracted = await extractTextFromPdf(buffer, {
+    onProgress,
+    signal: request.signal,
+  });
+  throwIfUploadAborted(request.signal);
   const cleanedText = limitExtractedText(cleanExtractedText(extracted.text));
 
   if (!cleanedText || cleanedText.length < 250) {
@@ -170,7 +192,9 @@ async function processPdfSourceUpload(
     cleanedText,
     extracted.title || file.name.replace(/\.pdf$/i, ""),
     focusPrompt,
+    { signal: request.signal },
   );
+  throwIfUploadAborted(request.signal);
   onProgress?.({ progress: 92, message: "Saving extracted concepts" });
 
   return storeUploadedPdfSource({
@@ -186,6 +210,12 @@ async function processPdfSourceUpload(
     importantTopics: analysis.importantTopics,
     topics: analysis.topics,
   });
+}
+
+function throwIfUploadAborted(signal: AbortSignal) {
+  if (signal.aborted) {
+    throw new PdfUploadClientError("PDF upload was cancelled.", 499);
+  }
 }
 
 class PdfUploadClientError extends Error {

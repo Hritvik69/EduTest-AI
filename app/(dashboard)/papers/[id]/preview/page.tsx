@@ -181,14 +181,16 @@ export default function PaperPreviewPage() {
 function readSessionPaper(paperId: string) {
   const key = `edutest:paper:${paperId}`;
   try {
-    const stored = window.sessionStorage.getItem(key);
+    const stored =
+      window.sessionStorage.getItem(key) ?? window.localStorage.getItem(key);
     if (!stored) return null;
     return JSON.parse(stored);
   } catch {
     try {
       window.sessionStorage.removeItem(key);
+      window.localStorage.removeItem(key);
     } catch {
-      // Ignore blocked sessionStorage.
+      // Ignore blocked browser storage.
     }
     return null;
   }

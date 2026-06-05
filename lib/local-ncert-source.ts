@@ -137,8 +137,12 @@ export async function getLocalNcertChapterSource(
     resolved.chapterName,
     resolved.chapterTopics,
     diagnostics,
-  );
+  ).catch((error) => {
+    chapterConceptCache.delete(cacheKey);
+    throw error;
+  });
   chapterConceptCache.set(cacheKey, promise);
+  enforcePromiseCacheLimit(chapterConceptCache, 120);
   return promise;
 }
 
@@ -476,8 +480,12 @@ async function readRemoteNcertText(
       throw new Error(`Remote NCERT text fetch failed with HTTP ${response.status}.`);
     }
     return response.text();
-  })();
+  })().catch((error) => {
+    remoteTextCache.delete(relativePath);
+    throw error;
+  });
   remoteTextCache.set(relativePath, promise);
+  enforcePromiseCacheLimit(remoteTextCache, 80);
   const attempt: LocalNcertSourceDiagnostics["remoteFallbacks"][number] = {
     path: relativePath,
     url,
@@ -729,9 +737,21 @@ async function readPdfText(pdfPath: string) {
     } finally {
       await parser.destroy();
     }
-  })();
+  })().catch((error) => {
+    pdfTextCache.delete(pdfPath);
+    throw error;
+  });
   pdfTextCache.set(pdfPath, promise);
+  enforcePromiseCacheLimit(pdfTextCache, 60);
   return promise;
+}
+
+function enforcePromiseCacheLimit<T>(cache: Map<string, Promise<T>>, maxEntries: number) {
+  while (cache.size > maxEntries) {
+    const oldestKey = cache.keys().next().value;
+    if (!oldestKey) break;
+    cache.delete(oldestKey);
+  }
 }
 
 function extractChapterSlice(text: string, chapterName: string, chapterNames: string[]) {

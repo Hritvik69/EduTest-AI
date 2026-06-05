@@ -59,7 +59,7 @@ describe("guest-mode paper storage", () => {
     expect(await getPaper(expiredGuestId, guest.id)).toBeNull();
   });
 
-  it("shares dashboard paper listings while keeping ownership scoped", async () => {
+  it("scopes dashboard paper listings to the current guest owner", async () => {
     const firstGuest = createGuestUser("guest-session-aaaaaaaa");
     const secondGuest = createGuestUser("guest-session-bbbbbbbb");
     const blueprint = generateBlueprint(config);
@@ -88,16 +88,13 @@ describe("guest-mode paper storage", () => {
     expect(await getPaper(first.paperId)).not.toBeNull();
 
     const secondDashboard = await listPapersForUser(secondGuest.id);
-    expect(secondDashboard.map((paper) => paper.id)).toContain(first.paperId);
-    expect(secondDashboard.find((paper) => paper.id === first.paperId)).toMatchObject({
-      isOwner: false,
-    });
+    expect(secondDashboard.map((paper) => paper.id)).not.toContain(first.paperId);
     expect(secondDashboard.find((paper) => paper.id === second.paperId)).toMatchObject({
       isOwner: true,
     });
   });
 
-  it("lets another guest open a ready shared paper but not delete it", async () => {
+  it("does not let another guest open or delete a ready paper", async () => {
     const firstGuest = createGuestUser("guest-session-sharedaa");
     const secondSessionId = "guest-session-sharedbb";
     const secondGuest = createGuestUser(secondSessionId);
@@ -121,10 +118,8 @@ describe("guest-mode paper storage", () => {
     });
     const getPayload = await getResponse.json();
 
-    expect(getResponse.status).toBe(200);
-    expect(getPayload.data.id).toBe(created.paperId);
-    expect(getPayload.data.isOwner).toBe(false);
-    expect(getPayload.data.questions).toHaveLength(1);
+    expect(getResponse.status).toBe(403);
+    expect(getPayload.error).toContain("Paper access denied");
 
     const deleteResponse = await DELETE(request, {
       params: Promise.resolve({ id: String(created.paperId) }),

@@ -26,7 +26,9 @@ export async function POST(request: NextRequest) {
   });
   if (limited) return limited;
 
-  const parsed = await parseJsonWithSchema(request, evaluationRequestSchema);
+  const parsed = await parseJsonWithSchema(request, evaluationRequestSchema, {
+    maxBytes: 500_000,
+  });
   if (parsed.response) return parsed.response;
 
   const body = parsed.data;
@@ -34,8 +36,14 @@ export async function POST(request: NextRequest) {
     typeof body.paperId === "number" ? body.paperId : undefined;
   const ownerId = numericPaperId ? await getPaperOwnerId(numericPaperId) : null;
   const isOwner = ownerId === auth.user.id;
+  if (ownerId && !isOwner) {
+    return jsonError(
+      "Paper access denied. This paper belongs to another user or guest session.",
+      403,
+    );
+  }
   let paper: StoredPaper | null = ownerId
-    ? await getPaper(numericPaperId!, isOwner ? auth.user.id : undefined)
+    ? await getPaper(numericPaperId!, auth.user.id)
     : null;
   let snapshotOnly = false;
 
@@ -87,6 +95,9 @@ export async function POST(request: NextRequest) {
   try {
     results = await evaluateAnswers(questions, body.answers, {
       allowDemoHeuristic: paper.isDemoMode,
+      signal: request.signal,
+      deadlineAt: Date.now() + 25_000,
+      maxSubjectiveAiCalls: 8,
     });
   } catch (error) {
     return jsonError(

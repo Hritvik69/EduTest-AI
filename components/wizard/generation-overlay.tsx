@@ -209,7 +209,7 @@ export function GenerationOverlay({
   const idempotencyKey = React.useMemo(
     () =>
       randomGenerationKey(
-        `${open}:${retryNonce}:${requestConfig.aiProvider}:${requestConfig.classNum}:${requestConfig.subject}:${requestConfig.totalQuestions}:${salvageInvalidQuestions}`,
+        `${open}:${retryNonce}:${salvageInvalidQuestions}:${JSON.stringify(requestConfig)}`,
       ),
     [open, requestConfig, retryNonce, salvageInvalidQuestions],
   );
@@ -442,28 +442,20 @@ export function GenerationOverlay({
               const paperConfig = paperConfigFromStream(data.config, requestConfig);
               const skippedQuestions = numberValue(data.skippedQuestions) ?? 0;
               const replacedQuestions = numberValue(data.replacedQuestions) ?? 0;
-              if (
-                !safeSessionSet(
-                  `edutest:paper:${paperId}`,
-                  JSON.stringify({
-                    ...data,
-                    id: paperId,
-                    title:
-                      stringValue(data.title) ??
-                      (paperConfig.sourceMode === "pdf_upload"
-                        ? `${paperConfig.pdfSource?.title ?? "PDF-EDU-TEST"} Paper`
-                        : `Class ${paperConfig.classNum} ${paperConfig.subject} ${paperConfig.examType}`),
-                    config: paperConfig,
-                    status: "READY",
-                    sessionOnly: data.sessionOnly !== false,
-                    paperSnapshotToken: stringValue(data.paperSnapshotToken),
-                    guestPaperToken:
-                      stringValue(data.guestPaperToken) ??
-                      stringValue(data.paperSnapshotToken),
-                  }),
-                )
-              ) {
-                toast.warning("Paper is ready, but browser session storage is full.");
+              const storedPaper = compactSessionPaperFromDoneEvent(
+                data,
+                paperId,
+                paperConfig,
+              );
+              if (!safePaperStorageSet(paperId, storedPaper)) {
+                safeSessionRemove(inFlightKey);
+                setError({
+                  code: "PAPER_STORAGE_FULL",
+                  message:
+                    "Paper generation finished, but this browser could not save the paper for preview. Free browser storage or use a smaller paper, then retry.",
+                });
+                toast.error("Paper is ready, but browser storage is full.");
+                return;
               }
               if (skippedQuestions > 0) {
                 toast.warning(
@@ -936,11 +928,12 @@ export function GenerationOverlay({
 }
 
 function randomGenerationKey(seed: string) {
-  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
-    return `paper:${crypto.randomUUID()}`;
+  let hash = 0x811c9dc5;
+  for (let index = 0; index < seed.length; index += 1) {
+    hash ^= seed.charCodeAt(index);
+    hash = Math.imul(hash, 0x01000193);
   }
-
-  return `paper:${seed}-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  return `paper:${(hash >>> 0).toString(36)}:${seed.length}`;
 }
 
 function isStaleGeneration(value: string) {
@@ -1258,17 +1251,13 @@ async function recoverSavedPaper(
       const decision = classifyRecoveredPaper(paper, paperId);
       lastDecision = decision;
       if (decision.kind === "ready") {
-        safeSessionSet(
-          `edutest:paper:${paperId}`,
-          JSON.stringify({
-            ...decision.paper,
-            id: paperId,
-            paperId,
-            config: decision.paper.config ?? fallbackConfig,
-            status: decision.paper.status ?? "READY",
-            sessionOnly: true,
-          }),
-        );
+        safePaperStorageSet(paperId, {
+          ...decision.paper,
+          id: paperId,
+          config: decision.paper.config ?? fallbackConfig,
+          status: decision.paper.status ?? "READY",
+          sessionOnly: true,
+        });
         return decision;
       }
       if (decision.kind === "recoverable") {
@@ -1799,6 +1788,53 @@ function safeSessionSet(key: string, value: string) {
   } catch {
     return false;
   }
+}
+
+function safeLocalSet(key: string, value: string) {
+  try {
+    window.localStorage.setItem(key, value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function safePaperStorageSet(paperId: number | string, paper: StoredPaper) {
+  const key = `edutest:paper:${paperId}`;
+  const value = JSON.stringify(paper);
+  return safeSessionSet(key, value) || safeLocalSet(key, value);
+}
+
+function compactSessionPaperFromDoneEvent(
+  data: Record<string, unknown>,
+  paperId: number | string,
+  config: PaperConfig,
+): StoredPaper {
+  return {
+    id: paperId,
+    title:
+      stringValue(data.title) ??
+      (config.sourceMode === "pdf_upload"
+        ? `${config.pdfSource?.title ?? "PDF-EDU-TEST"} Paper`
+        : `Class ${config.classNum} ${config.subject} ${config.examType}`),
+    config,
+    blueprint: data.blueprint as StoredPaper["blueprint"],
+    questions: Array.isArray(data.questions)
+      ? (data.questions as StoredPaper["questions"])
+      : [],
+    manifest: isRecord(data.manifest)
+      ? (data.manifest as unknown as StoredPaper["manifest"])
+      : undefined,
+    isDemoMode: Boolean(data.isDemoMode),
+    status: "READY",
+    createdAt: stringValue(data.createdAt) ?? new Date().toISOString(),
+    generationJobId: stringValue(data.generationJobId),
+    idempotencyKey: stringValue(data.idempotencyKey),
+    sessionOnly: data.sessionOnly !== false,
+    paperSnapshotToken: stringValue(data.paperSnapshotToken),
+    guestPaperToken:
+      stringValue(data.guestPaperToken) ?? stringValue(data.paperSnapshotToken),
+  };
 }
 
 function safeSessionRemove(key: string) {

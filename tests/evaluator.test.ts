@@ -131,6 +131,34 @@ describe("evaluateAnswers", () => {
     expect(mockedGenerateJSON).toHaveBeenCalledTimes(1);
   });
 
+  it("stops using AI for subjective answers after the configured budget", async () => {
+    mockedGenerateJSON.mockResolvedValue({
+      marksAwarded: 3,
+      feedback: "Complete answer.",
+      missingPoints: [],
+      strongPoints: ["Relevant key points"],
+      evaluationMethod: "AI",
+    });
+
+    const results = await evaluateAnswers(
+      [
+        subjective,
+        { ...subjective, id: 10, text: "Explain respiration." },
+        { ...subjective, id: 11, text: "Explain transpiration." },
+      ],
+      {
+        "9": "Chlorophyll captures sunlight and plants make glucose.",
+        "10": "Cells release energy from glucose.",
+        "11": "Plants lose water vapour through stomata.",
+      },
+      { maxSubjectiveAiCalls: 1 },
+    );
+
+    expect(mockedGenerateJSON).toHaveBeenCalledTimes(1);
+    expect(results[0].evaluationMethod).toBe("AI");
+    expect(results.slice(1).every((result) => result.evaluationMethod === "LOCAL_FALLBACK")).toBe(true);
+  });
+
   it("checks numerical sub-questions locally when the final answer is clear", async () => {
     const results = await evaluateAnswers([caseBasedWithNumerical], {
       "11": { "0": { final: "20", unit: "cm" } },

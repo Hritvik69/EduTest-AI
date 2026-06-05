@@ -238,9 +238,21 @@ function readCookie(cookieHeader: string, name: string) {
 export async function parseJsonWithSchema<T>(
   request: NextRequest,
   schema: ZodSchema<T>,
+  options: { maxBytes?: number } = {},
 ) {
   try {
-    const body = await request.json();
+    const maxBytes = options.maxBytes ?? 1_000_000;
+    const contentLength = Number(request.headers.get("content-length") ?? 0);
+    if (Number.isFinite(contentLength) && contentLength > maxBytes) {
+      return { response: jsonError("JSON request body is too large.", 413) };
+    }
+
+    const text = await request.text();
+    if (text.length > maxBytes) {
+      return { response: jsonError("JSON request body is too large.", 413) };
+    }
+
+    const body = JSON.parse(text);
     return { data: schema.parse(body) };
   } catch (error) {
     if (error instanceof ZodError) {

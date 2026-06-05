@@ -15,6 +15,10 @@ interface SubjectiveEvaluationOptions {
   allowDemoHeuristic?: boolean;
   forceLocalFallback?: boolean;
   onAiUnavailable?: () => void;
+  signal?: AbortSignal;
+  deadlineAt?: number;
+  canUseAi?: () => boolean;
+  onAiAttempt?: () => void;
 }
 
 const objectiveTypes = new Set([
@@ -29,10 +33,17 @@ const objectiveTypes = new Set([
 export async function evaluateAnswers(
   questions: (GeneratedQuestion & { id?: number })[],
   answers: Record<string, unknown>,
-  options: { allowDemoHeuristic?: boolean } = {},
+  options: {
+    allowDemoHeuristic?: boolean;
+    signal?: AbortSignal;
+    deadlineAt?: number;
+    maxSubjectiveAiCalls?: number;
+  } = {},
 ): Promise<EvaluationResult[]> {
   const results: EvaluationResult[] = [];
   let useLocalSubjectiveFallback = Boolean(options.allowDemoHeuristic);
+  let subjectiveAiCalls = 0;
+  const maxSubjectiveAiCalls = Math.max(0, options.maxSubjectiveAiCalls ?? 8);
 
   for (let index = 0; index < questions.length; index += 1) {
     const question = questions[index];
@@ -55,7 +66,16 @@ export async function evaluateAnswers(
 
     const subjectiveOptions: SubjectiveEvaluationOptions = {
       allowDemoHeuristic: options.allowDemoHeuristic,
-      forceLocalFallback: useLocalSubjectiveFallback,
+      forceLocalFallback:
+        useLocalSubjectiveFallback || isEvaluationBudgetLow(options.deadlineAt),
+      signal: options.signal,
+      deadlineAt: options.deadlineAt,
+      canUseAi: () =>
+        subjectiveAiCalls < maxSubjectiveAiCalls &&
+        !isEvaluationBudgetLow(options.deadlineAt),
+      onAiAttempt: () => {
+        subjectiveAiCalls += 1;
+      },
       onAiUnavailable: () => {
         useLocalSubjectiveFallback = true;
       },
@@ -293,6 +313,18 @@ async function evaluateSubjective(
     });
   }
 
+  if (options.signal?.aborted || isEvaluationBudgetLow(options.deadlineAt)) {
+    return heuristicSubjectiveGrade(question, studentAnswer, {
+      reason: "ai-unavailable",
+    });
+  }
+
+  if (options.canUseAi && !options.canUseAi()) {
+    return heuristicSubjectiveGrade(question, studentAnswer, {
+      reason: "ai-unavailable",
+    });
+  }
+
   const prompt = `You are a strict CBSE examiner. Evaluate this student answer.
 
 Question:
@@ -328,8 +360,10 @@ Return ONLY JSON:
 }`;
 
   try {
+    options.onAiAttempt?.();
     const grade = await generateJSON<SubjectiveGrade>(prompt, {
       task: "ANSWER_EVALUATION",
+      signal: options.signal,
     });
     return {
       marksAwarded: clampScore(Number(grade.marksAwarded ?? 0), question.marks),
@@ -643,4 +677,8 @@ function clampScore(value: number, max: number) {
 
 function limit(value: string, max: number) {
   return value.length > max ? `${value.slice(0, max)}...` : value;
+}
+
+function isEvaluationBudgetLow(deadlineAt?: number) {
+  return typeof deadlineAt === "number" && deadlineAt - Date.now() < 5_000;
 }

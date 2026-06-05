@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   signGuestPaperSnapshot,
   toGuestPaperSnapshot,
@@ -49,6 +49,40 @@ describe("guest paper snapshot signing", () => {
     await expect(
       verifyGuestPaperSnapshot(toGuestPaperSnapshot(paper), token, guest.id, paper.id),
     ).resolves.toMatchObject({ id: paper.id, questions: paper.questions });
+  });
+
+  it("rejects oversized snapshots before accepting a signed guest paper", async () => {
+    const guest = createGuestUser("guest-session-snapshot-large");
+    const paper = paperFixture();
+    const token = await signGuestPaperSnapshot(paper, guest.id);
+    const oversized = {
+      ...toGuestPaperSnapshot(paper),
+      questions: [
+        {
+          ...paper.questions[0],
+          explanation: "x".repeat(25_000),
+        },
+      ],
+    };
+
+    await expect(
+      verifyGuestPaperSnapshot(oversized, token, guest.id, paper.id),
+    ).resolves.toBeNull();
+  });
+
+  it("requires a configured guest signing secret in production", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("VERCEL_ENV", "");
+    vi.stubEnv("EDUTEST_GUEST_SECRET", "");
+    vi.stubEnv("NEXTAUTH_SECRET", "");
+
+    try {
+      await expect(
+        signGuestPaperSnapshot(paperFixture(), createGuestUser("guest-session-secret").id),
+      ).rejects.toThrow("EDUTEST_GUEST_SECRET or NEXTAUTH_SECRET is required");
+    } finally {
+      vi.unstubAllEnvs();
+    }
   });
 });
 
