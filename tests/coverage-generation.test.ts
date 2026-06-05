@@ -380,6 +380,9 @@ describe("strict coverage generation", () => {
     });
     const bank = new QuestionCandidateBank(result.questions, blueprintFor(20), paperConfig);
     const visibleText = studentVisibleText(result.questions);
+    const mcqAnswers = result.questions
+      .filter((question) => question.type === "MCQ")
+      .map((question) => question.correctAnswer);
 
     expect(result.questions).toHaveLength(20);
     expect(bank.readyCount()).toBe(20);
@@ -401,9 +404,11 @@ describe("strict coverage generation", () => {
       result.diagnostics.find((item) => item.subject === "Advanced Computer")
         ?.generationMode,
     ).toBe("syllabus_near_fallback");
+    expect(new Set(mcqAnswers).size).toBeGreaterThanOrEqual(3);
     expect(visibleText).toMatch(/communication|sender|receiver|feedback/i);
+    expect(visibleText).not.toMatch(/Which statement best explains/i);
     expect(visibleText).not.toMatch(
-      /Unit\s+1\.indd|24-08-2018|S\s*eSSIon|evidence clue|case reasoning clue/i,
+      /Unit\s+1\.indd|24-08-2018|S\s*eSSIon|evidence clue|case reasoning clue|Phrase window|Focused point|Grandmother Unfortunately/i,
     );
   });
 

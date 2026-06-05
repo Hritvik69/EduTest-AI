@@ -4,6 +4,8 @@ import {
   sourceBackedUniquenessKeyFor,
 } from "@/lib/question-duplicates";
 import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
+import { deterministicMcqOptionShuffle } from "@/lib/mcq-option-shuffle";
+import { hasTeacherLogicQualityIssue } from "@/lib/question-quality";
 import type {
   BloomLevel,
   BlueprintSection,
@@ -742,6 +744,9 @@ export function generateSourceBackedFallbackQuestions(
       ) {
         continue;
       }
+      if (hasTeacherLogicQualityIssue(question)) {
+        continue;
+      }
 
       generated.push(question);
       if (sourceKey) usedSourceKeys.add(sourceKey);
@@ -809,6 +814,9 @@ export function generateSyllabusNearFallbackQuestions(
       index += 1;
 
       if ([...existing, ...generated].some((other) => isDuplicateQuestion(other, question))) {
+        continue;
+      }
+      if (hasTeacherLogicQualityIssue(question)) {
         continue;
       }
 
@@ -895,14 +903,16 @@ function createSyllabusNearQuestion({
   const concept = syllabusNearConceptFor(item, config, concepts, index);
   const common = syllabusNearCommonQuestionFields(section, item, config, concept, index);
   const options = syllabusNearOptions(concept, index);
+  const mcqSeed = `syllabus-near:${item.subject}:${item.chapterId ?? ""}:${item.topicId ?? ""}:${section.questionType}:${concept.term}:${index}`;
+  const shuffledMcq = deterministicMcqOptionShuffle(options, mcqSeed, index);
 
   switch (section.questionType) {
     case "MCQ":
       return {
         ...common,
-        text: `Which statement best explains ${concept.focus}?`,
-        options,
-        correctAnswer: "B",
+        text: syllabusNearMcqStem(concept, index),
+        options: shuffledMcq.options,
+        correctAnswer: shuffledMcq.correctAnswer,
         explanation: concept.explanation,
       };
     case "ASSERTION_REASON":
@@ -973,7 +983,7 @@ function createSyllabusNearQuestion({
     case "SOURCE_BASED":
       return syllabusNearSourceBasedQuestion(common, concept);
     case "CASE_BASED":
-      return syllabusNearCaseBasedQuestion(common, concept, options);
+      return syllabusNearCaseBasedQuestion(common, concept, shuffledMcq.options);
     case "PARAGRAPH":
       return {
         ...common,
@@ -1098,12 +1108,13 @@ function syllabusNearCaseBasedQuestion(
   concept: SyllabusNearConcept,
   options: MCQOption[],
 ): GeneratedQuestion {
+  const correctAnswer = correctOptionId(options);
   const subQuestions: SubQuestion[] = [
     {
       text: `Which option best explains the situation related to ${concept.term}?`,
       type: "MCQ",
       options,
-      correctAnswer: "B",
+      correctAnswer,
       marks: 2,
     },
     {
@@ -1119,8 +1130,22 @@ function syllabusNearCaseBasedQuestion(
     scenario: concept.scenario,
     text: `Read the case about ${concept.term} and answer the questions.`,
     subQuestions,
-    correctAnswer: `(1) B; (2) ${concept.correct}`,
+    correctAnswer: `(1) ${correctAnswer}; (2) ${concept.correct}`,
   };
+}
+
+function correctOptionId(options: MCQOption[]) {
+  return options.find((option) => option.isCorrect)?.id ?? "A";
+}
+
+function syllabusNearMcqStem(concept: SyllabusNearConcept, index: number) {
+  const stems = [
+    `Which option correctly describes ${concept.term}?`,
+    `Which statement shows the importance of ${concept.focus}?`,
+    `Which example best matches ${concept.term}?`,
+    `Which choice explains how ${concept.term} supports clear understanding?`,
+  ];
+  return stems[Math.abs(index) % stems.length];
 }
 
 type SyllabusNearConcept = {
@@ -1512,9 +1537,17 @@ function createSourceBackedQuestion(
   config: PaperConfig,
   concept: NormalizedConcept,
   index: number,
+  placementIndex = index,
 ): GeneratedQuestion {
   const variant = variantRecipeFor(index);
-  const base = baseQuestion(type, concept, index, section.marksPerQuestion, variant);
+  const base = baseQuestion(
+    type,
+    concept,
+    index,
+    section.marksPerQuestion,
+    variant,
+    placementIndex,
+  );
   const visibleSummary = studentVisibleSummary(concept.summary);
   const noveltyAtomId = sourceBackedAtomIdForType(concept, type);
   const sourceFocus = `${variant.sourceFocus} ${concept.atomId}: ${trimToSentence(visibleSummary, 150)} Internal angle: ${variant.id}.`;
@@ -1581,6 +1614,7 @@ function sourceBackedQuestionForCursor(
     config,
     concept,
     variantSequence,
+    cursor,
   );
 }
 
@@ -1593,7 +1627,9 @@ function sourceBackedCursorStartForType(
   startIndex: number | undefined,
   candidateSpace: number,
 ) {
-  return positiveModulo((startIndex ?? 0) + sourceBackedTypeSeed(type), candidateSpace);
+  const atomSpan = Math.max(1, Math.floor(candidateSpace / variantSlotCount()));
+  const typeAtomOffset = sourceBackedTypeSeed(type) % atomSpan;
+  return positiveModulo((startIndex ?? 0) + typeAtomOffset, candidateSpace);
 }
 
 function sourceBackedTypeSeed(type: QuestionType) {
@@ -1619,10 +1655,16 @@ function baseQuestion(
   index: number,
   marks: number,
   variant: VariantRecipe,
+  placementIndex = index,
 ): Partial<GeneratedQuestion> {
   const summary = studentVisibleSummary(concept.summary);
   const excerpt = studentVisibleSummary(concept.excerpt, 560);
   const options = conceptOptions(concept, index, variant);
+  const shuffledMcq = deterministicMcqOptionShuffle(
+    options,
+    `source-backed:${type}:${concept.atomId}:${variant.id}:${index}`,
+    placementIndex,
+  );
   const idea = ideaPhrase(summary);
   const skill = visibleSkillFor(variant);
   const keyPoint = visibleKeyPoint(skill);
@@ -1630,9 +1672,9 @@ function baseQuestion(
   switch (type) {
     case "MCQ":
       return {
-        text: mcqQuestionText(skill, summary),
-        options,
-        correctAnswer: "B",
+        text: mcqQuestionText(skill, summary, placementIndex),
+        options: shuffledMcq.options,
+        correctAnswer: shuffledMcq.correctAnswer,
       };
     case "ASSERTION_REASON":
       return assertionReasonQuestion(summary, idea, skill);
@@ -1782,13 +1824,17 @@ function caseBasedQuestion(
   const summary = studentVisibleSummary(concept.summary);
   const skill = visibleSkillFor(variant);
   const idea = ideaPhrase(summary);
-  const options = conceptOptions(concept, concept.atomNumericId + 1, variant);
+  const options = deterministicMcqOptionShuffle(
+    conceptOptions(concept, concept.atomNumericId + 1, variant),
+    `source-backed-case:${concept.atomId}:${variant.id}`,
+  ).options;
+  const correctAnswer = correctOptionId(options);
   const subQuestions: SubQuestion[] = [
     {
       text: `Which option best explains the ${skill} case?`,
       type: "MCQ",
       options,
-      correctAnswer: "B",
+      correctAnswer,
       marks: 2,
     },
     {
@@ -1803,7 +1849,7 @@ function caseBasedQuestion(
     scenario: `A class considers this idea: ${summary} The learner has to explain what follows from it.`,
     text: `Read the case about ${idea} and answer the ${skill} questions.`,
     subQuestions,
-    correctAnswer: `(1) B; (2) ${summary}`,
+    correctAnswer: `(1) ${correctAnswer}; (2) ${summary}`,
   };
 }
 
@@ -1893,14 +1939,144 @@ function studentVisibleSummary(value: string, maxLength = 240) {
 function ideaPhrase(summary: string) {
   const idea = stripFinalPunctuation(summary);
   if (!idea) return "the concept";
-  if (idea.length > 130) return lowerFirst(stripFinalPunctuation(trimToSentence(idea, 120)));
+  if (idea.length > 130) return `the passage detail about ${mcqFocusPhrase(idea)}`;
   return `the idea that ${lowerFirst(idea)}`;
 }
 
-function mcqQuestionText(skill: string, summary: string) {
+function mcqQuestionText(
+  skill: string,
+  summary: string,
+  placementIndex?: number,
+) {
   const motionQuestion = motionMcqQuestion(summary);
   if (motionQuestion) return motionQuestion;
-  return `${mcqLeadForSkill(skill)} the ${skill} point about ${mcqFocusPhrase(summary)} in ${ideaPhrase(summary)}?`;
+  const focus = mcqFocusPhrase(summary);
+  switch (skill) {
+    case "evidence":
+      return mcqStemVariant(focus, [
+        `Which option is best supported by the detail about ${focus}?`,
+        `What evidence-based answer fits the detail about ${focus}?`,
+        `Which choice uses the detail about ${focus} correctly?`,
+      ], placementIndex);
+    case "inference":
+      return mcqStemVariant(focus, [
+        `What can be inferred from the detail about ${focus}?`,
+        `Which inference follows from the detail about ${focus}?`,
+        `What does the detail about ${focus} suggest?`,
+      ], placementIndex);
+    case "cause and effect":
+      return mcqStemVariant(focus, [
+        `Which cause-effect link is most accurate for ${focus}?`,
+        `What result is best connected with ${focus}?`,
+        `Which answer links the cause and effect in ${focus}?`,
+      ], placementIndex);
+    case "comparison":
+      return mcqStemVariant(focus, [
+        `Which comparison best fits the passage detail about ${focus}?`,
+        `How is the detail about ${focus} best compared?`,
+        `Which choice separates the ideas in ${focus} correctly?`,
+      ], placementIndex);
+    case "application":
+      return mcqStemVariant(focus, [
+        `Which situation correctly applies the idea about ${focus}?`,
+        `Where would the idea about ${focus} be used correctly?`,
+        `Which example applies ${focus} in the right way?`,
+      ], placementIndex);
+    case "definition":
+      return mcqStemVariant(focus, [
+        `Which meaning best fits ${focus} in this context?`,
+        `What does ${focus} mean in this context?`,
+        `Which choice defines ${focus} most clearly?`,
+      ], placementIndex);
+    case "process":
+      return mcqStemVariant(focus, [
+        `Which process is shown by the detail about ${focus}?`,
+        `What step is best represented by ${focus}?`,
+        `Which choice puts the process in ${focus} in order?`,
+      ], placementIndex);
+    case "case reasoning":
+      return mcqStemVariant(focus, [
+        `Which judgement best fits the situation about ${focus}?`,
+        `What is the best decision for the case about ${focus}?`,
+        `Which answer reasons correctly about ${focus}?`,
+      ], placementIndex);
+    case "reasoning":
+      return mcqStemVariant(focus, [
+        `Which reasoning best supports the detail about ${focus}?`,
+        `Why does the detail about ${focus} support the answer?`,
+        `Which choice gives the strongest reason for ${focus}?`,
+      ], placementIndex);
+    case "conclusion":
+      return mcqStemVariant(focus, [
+        `Which conclusion is best supported by the detail about ${focus}?`,
+        `What does the detail about ${focus} most clearly show?`,
+        `Which answer follows best from the detail about ${focus}?`,
+        `Which choice draws the strongest conclusion about ${focus}?`,
+      ], placementIndex);
+    case "example":
+      return mcqStemVariant(focus, [
+        `Which example best matches the detail about ${focus}?`,
+        `What example is most suitable for ${focus}?`,
+        `Which choice illustrates ${focus} correctly?`,
+      ], placementIndex);
+    case "condition":
+      return mcqStemVariant(focus, [
+        `Which condition is most important for ${focus}?`,
+        `What limit or condition matters most for ${focus}?`,
+        `Which choice states the needed condition for ${focus}?`,
+      ], placementIndex);
+    case "misconception correction":
+      return mcqStemVariant(focus, [
+        `Which statement corrects a mistaken idea about ${focus}?`,
+        `What correction is needed for the idea about ${focus}?`,
+        `Which choice avoids the common mistake about ${focus}?`,
+      ], placementIndex);
+    case "visual representation":
+      return mcqStemVariant(focus, [
+        `Which visual link best represents ${focus}?`,
+        `What diagram link would show ${focus} most clearly?`,
+        `Which choice labels the relationship in ${focus} correctly?`,
+      ], placementIndex);
+    case "quantity":
+      return mcqStemVariant(focus, [
+        `Which quantitative reading best fits ${focus}?`,
+        `What number-based interpretation matches ${focus}?`,
+        `Which choice reads the quantity in ${focus} correctly?`,
+      ], placementIndex);
+    case "passage reading":
+      return mcqStemVariant(focus, [
+        `Which reading best matches the passage detail about ${focus}?`,
+        `What reading of the passage best fits ${focus}?`,
+        `Which choice stays closest to the passage detail about ${focus}?`,
+      ], placementIndex);
+    default:
+      return mcqStemVariant(focus, [
+        `Which option best matches the detail about ${focus}?`,
+        `What choice best fits the detail about ${focus}?`,
+        `Which answer is most accurate for ${focus}?`,
+      ], placementIndex);
+  }
+}
+
+function mcqStemVariant(
+  seed: string,
+  stems: string[],
+  placementIndex?: number,
+) {
+  const index = Number.isFinite(placementIndex)
+    ? positiveModulo(Number(placementIndex), stems.length)
+    : stableTextIndex(seed, stems.length);
+  return stems[index] ?? stems[0];
+}
+
+function stableTextIndex(value: string, modulo: number) {
+  if (modulo <= 0) return 0;
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619) >>> 0;
+  }
+  return hash % modulo;
 }
 
 function mcqFocusPhrase(summary: string) {
@@ -1958,7 +2134,7 @@ function optionReasonForVariant(variant: VariantRecipe) {
     return "This applies the concept correctly.";
   }
   if (id.includes("inference") || id.includes("conclusion") || id.includes("reasoning")) {
-    return "This follows logically from the clue.";
+    return "This follows logically from the given detail.";
   }
   if (id.includes("misconception")) {
     return "This avoids the common mistaken reading.";
@@ -2002,9 +2178,9 @@ function subjectMatchPairs(
   const atomLabel = sentenceCase(trimToSentence(concept.atomLabel, 90));
   return [
     { left: conceptTerm, right: trimToSentence(summary, 110) },
-    { left: "Focused point", right: atomLabel },
-    { left: "Reason", right: visibleKeyPoint(skill) },
-    { left: "Application", right: "Use the idea in a relevant situation" },
+    { left: "Context", right: atomLabel },
+    { left: sentenceCase(skill), right: visibleKeyPoint(skill) },
+    { left: "Correct use", right: "Use the idea in a relevant situation" },
   ];
 }
 
@@ -2869,8 +3045,28 @@ function trimToSentence(value: string, maxLength: number) {
   const normalized = value.replace(/\s+/g, " ").trim();
   if (normalized.length <= maxLength) return removeDanglingTail(normalized);
 
+  const completeSentences = normalized.match(/[^.!?]+[.!?]+/g) ?? [];
+  const sentenceFit: string[] = [];
+  for (const sentence of completeSentences) {
+    const candidate = [...sentenceFit, sentence.trim()].join(" ");
+    if (candidate.length > maxLength) break;
+    sentenceFit.push(sentence.trim());
+  }
+  if (sentenceFit.length) {
+    return removeDanglingTail(sentenceFit.join(" "));
+  }
+
   const rawSlice = normalized.slice(0, maxLength).trim();
-  const sliced = rawSlice.replace(/\s+\S*$/, "").trim() || rawSlice;
+  const clauseBoundary = Math.max(
+    rawSlice.lastIndexOf(","),
+    rawSlice.lastIndexOf(";"),
+    rawSlice.lastIndexOf(":"),
+  );
+  const clauseSlice =
+    clauseBoundary >= Math.floor(maxLength * 0.45)
+      ? rawSlice.slice(0, clauseBoundary).trim()
+      : rawSlice;
+  const sliced = clauseSlice.replace(/\s+\S*$/, "").trim() || clauseSlice;
   const complete = removeDanglingTail(sliced.replace(/[,.!?;:]+$/, ""));
   return `${complete || "concept"}.`;
 }
@@ -2887,12 +3083,13 @@ function sourceAtomsForConcept(concept: ConceptData) {
   const atoms: Array<{ summary: string; excerpt: string; label: string }> = [];
   const addAtom = (value: string, labelHint = "") => {
     const fragment = normalizeSourceFragment(value);
+    if (!isCleanSourceAtom(fragment, labelHint)) return;
     const summary = trimToSentence(fragment, 240);
     if (!summary || summary.length < 36) return;
     atoms.push({
       summary,
       excerpt: trimToSentence(fragment, 560),
-      label: keyPhrase(`${labelHint} ${summary}`),
+      label: keyPhrase(summary),
     });
   };
 
@@ -2914,9 +3111,12 @@ function sourceAtomsForConcept(concept: ConceptData) {
       `paragraph-window ${index + 1}`,
     );
   }
-  clauses.slice(0, 28).forEach((clause, index) =>
-    addAtom(clause, `clause ${index + 1}`),
-  );
+  clauses.slice(0, 28).forEach((clause, index) => {
+    addAtom(clause, `clause ${index + 1}`);
+    if (isCoherentClause(clause)) {
+      addAtom(sourceLensAtom(clause), `lens ${index + 1}`);
+    }
+  });
   for (let index = 0; index < Math.min(clauses.length - 1, 24); index += 1) {
     addAtom(`${clauses[index]} ${clauses[index + 1]}`, `clause-window ${index + 1}`);
   }
@@ -2928,7 +3128,10 @@ function sourceAtomsForConcept(concept: ConceptData) {
   }
   const words = text.split(/\s+/).filter(Boolean);
   for (let index = 0; index < Math.min(Math.max(0, words.length - 8), 48); index += 4) {
-    addAtom(words.slice(index, index + 12).join(" "), `phrase-window ${index + 1}`);
+    const phrase = words.slice(index, index + 12).join(" ");
+    if (isCompleteSourceThought(phrase)) {
+      addAtom(phrase, `phrase-window ${index + 1}`);
+    }
   }
   addAtom(text, "full-source");
 
@@ -2941,6 +3144,62 @@ function sourceAtomsForConcept(concept: ConceptData) {
       return true;
     })
     .slice(0, 96);
+}
+
+function isCleanSourceAtom(fragment: string, labelHint: string) {
+  if (!fragment || hasNoisySourceArtifact(fragment)) return false;
+  if (/\b(?:phrase window|focused point|grandmother unfortunately)\b/i.test(fragment)) {
+    return false;
+  }
+  if (/phrase-window/i.test(labelHint)) return isCompleteSourceThought(fragment);
+  if (/clause/i.test(labelHint) && !isCoherentClause(fragment)) return false;
+  return !hasSourceFragmentBoundaryProblem(fragment);
+}
+
+function sourceLensAtom(fragment: string) {
+  return `The source detail shows that ${lowerFirst(stripFinalPunctuation(fragment))}.`;
+}
+
+function isCompleteSourceThought(fragment: string) {
+  const normalized = normalizeSourceFragment(fragment);
+  const words = normalized.split(/\s+/).filter(Boolean);
+  return (
+    words.length >= 8 &&
+    /^[A-Z0-9"']/.test(normalized) &&
+    /[.!?]$/.test(normalized) &&
+    !hasSourceFragmentBoundaryProblem(normalized)
+  );
+}
+
+function isCoherentClause(fragment: string) {
+  const normalized = normalizeSourceFragment(fragment);
+  const words = normalized.split(/\s+/).filter(Boolean);
+  if (words.length < 5) return false;
+  if (/^(?:of|and|or|but|with|from|to|in)\b/i.test(normalized)) {
+    return false;
+  }
+  if (
+    /^(?:connects?|supports?|separates?|places?|defines?|gives?|asks?|contrasts?|depends?|shows?|explains?|means?|includes?|uses?|helps?|warns?|links?)\b/i.test(
+      normalized,
+    )
+  ) {
+    return false;
+  }
+  if (hasSourceFragmentBoundaryProblem(normalized)) return false;
+  return /\b(?:is|are|was|were|has|have|had|can|could|should|would|will|does|do|did|becomes?|shows?|explains?|uses?|helps?|connects?|means?|includes?)\b/i.test(
+    normalized,
+  );
+}
+
+function hasSourceFragmentBoundaryProblem(fragment: string) {
+  const normalized = normalizeSourceFragment(fragment);
+  return (
+    /\b(?:was|were|is|are|also|very|then|because|which|that|with|from|to|of|in|the)\.?$/i.test(
+      normalized,
+    ) ||
+    /^(?:of|and|or|but|with|from|to|in)\b/i.test(normalized) ||
+    /\bGrandmother\s+Unfortunately\b/i.test(normalized)
+  );
 }
 
 function normalizeSourceFragment(value: string) {
@@ -3036,13 +3295,18 @@ const sourceAtomStopWords = new Set([
   "source",
   "students",
   "through",
+  "unfortunately",
   "using",
   "which",
   "would",
 ]);
 
 function oneWordAnswer(topic: string) {
-  return topic.split(/\s+/).filter(Boolean).slice(0, 2).join(" ") || "Concept";
+  const words = distinctiveSourceWords(topic)
+    .filter((word) => !/^(?:ordinary|people|statement|grandmother)$/i.test(word))
+    .slice(0, 2);
+  if (words.length) return sentenceCase(words.join(" "));
+  return sentenceCase(topic.split(/\s+/).filter(Boolean).slice(0, 2).join(" ")) || "Concept";
 }
 
 function variantRecipeFor(index: number) {

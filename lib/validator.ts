@@ -15,6 +15,7 @@ import {
   summarizeSubQuestionAnswers,
 } from "@/lib/question-structure";
 import { isUsableGeneratedQuestion } from "@/lib/question-validation";
+import { auditTeacherLogicQuality } from "@/lib/question-quality";
 
 export type QuestionValidationRejectionReason =
   | "BAD_JSON"
@@ -24,7 +25,8 @@ export type QuestionValidationRejectionReason =
   | "TOPIC_MISMATCH"
   | "SOURCE_UNGROUNDED"
   | "DIFFICULTY_INCOMPATIBLE"
-  | "AMBIGUOUS_ANSWER";
+  | "AMBIGUOUS_ANSWER"
+  | "TEACHER_QUALITY";
 
 export interface QuestionValidationRejection {
   question: GeneratedQuestion;
@@ -79,6 +81,12 @@ export async function validatePaper(
   }
 
   const deduped = removeDuplicates(cleaned);
+  const qualityIssues = auditTeacherLogicQuality(deduped, blueprint);
+  if (qualityIssues.length) {
+    throw new Error(
+      `Teacher-quality issue near position ${qualityIssues[0].position}: ${qualityIssues[0].reason}.`,
+    );
+  }
   const totalMarks = deduped.reduce((sum, question) => sum + question.marks, 0);
   if (totalMarks !== blueprint.totalMarks) {
     throw new Error(
@@ -214,11 +222,40 @@ export function validatePaperKeepingValidQuestions(
     throw new Error("No valid generated questions were available for this paper.");
   }
 
-  const finalQuestions = cleaned.map((question, index) => ({
+  const preliminaryQuestions = cleaned.map((question, index) => ({
     ...question,
     id: question.id ?? index + 1,
     orderNum: index + 1,
   }));
+  const qualityIssues = auditTeacherLogicQuality(preliminaryQuestions, blueprint);
+  const qualityRejectedPositions = new Set(
+    qualityIssues.map((issue) => issue.position),
+  );
+  qualityIssues.forEach((issue) => {
+    skipped.push({
+      type: issue.type,
+      position: issue.position,
+      reason: `teacher-quality:${issue.reason}`,
+    });
+    rejectedQuestions.push({
+      question: issue.question,
+      type: issue.type,
+      position: issue.position,
+      reason: "TEACHER_QUALITY",
+    });
+  });
+
+  const finalQuestions = preliminaryQuestions
+    .filter((_, index) => !qualityRejectedPositions.has(index + 1))
+    .map((question, index) => ({
+      ...question,
+      id: index + 1,
+      orderNum: index + 1,
+    }));
+
+  if (!finalQuestions.length) {
+    throw new Error("No valid generated questions were available for this paper.");
+  }
   const finalBlueprint = blueprintForValidatedQuestions(blueprint, finalQuestions);
   const missingSections = missingSectionsForValidation(finalQuestions, blueprint);
   const rejectionReasons = rejectionReasonCounts(rejectedQuestions);
