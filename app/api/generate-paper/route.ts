@@ -2032,7 +2032,7 @@ function generationServerBudgetMs() {
     return configured;
   }
 
-  return 45_000;
+  return 38_000;
 }
 
 function generationHeartbeatMs() {
@@ -2067,6 +2067,14 @@ function generationFinalizationReserveMs() {
   }
 
   return 12_000;
+}
+
+function sourceBackedCompletionReserveMs() {
+  return 7_500;
+}
+
+function sourceBackedCompletionDeadlineReached(deadlineAt: number) {
+  return deadlineAt - Date.now() <= sourceBackedCompletionReserveMs();
 }
 
 function shouldStopForFinalization(deadlineAt: number, readyQuestionCount: number) {
@@ -2370,7 +2378,15 @@ async function validateGeneratedPaperSkippingInvalid({
       concepts: scopedConcepts,
       config,
       startIndex: bank.allCandidates().length + 101,
+      deadlineAt,
+      minRemainingMs: sourceBackedCompletionReserveMs(),
     });
+    if (
+      bank.missingCount() > 0 &&
+      sourceBackedCompletionDeadlineReached(deadlineAt)
+    ) {
+      stoppedForServerBudget = true;
+    }
 
     sourceBackedCompletedQuestions = Math.max(
       0,

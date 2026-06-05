@@ -418,6 +418,29 @@ describe("source-backed completion", () => {
     expect(bank.readyCount()).toBe(1);
     expect(bank.missingCount()).toBe(2);
   });
+
+  it("stops source-backed completion when the server deadline is already spent", () => {
+    const blueprint = blueprintForCount(4);
+    const paperConfig = {
+      ...config,
+      totalQuestions: 4,
+      totalMarks: 4,
+      typeDistribution: { MCQ: 4 },
+    };
+    const bank = new QuestionCandidateBank([], blueprint, paperConfig);
+
+    const completed = completeQuestionBankWithSourceBackedFallback({
+      bank,
+      concepts,
+      config: paperConfig,
+      deadlineAt: Date.now() - 1,
+      minRemainingMs: 1,
+    });
+
+    expect(completed).toEqual([]);
+    expect(bank.readyCount()).toBe(0);
+    expect(bank.missingCount()).toBe(4);
+  });
 });
 
 function blueprintForCount(count: number): Blueprint {

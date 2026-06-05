@@ -298,6 +298,7 @@ export function GenerationOverlay({
       let completed = false;
       let savedPaperId: string | null = null;
       let lastRecoverySnapshot: GenerationStreamRecoverySnapshot | null = null;
+      let observedProviderRecoveryMode: ProviderRecoveryMode | null = null;
 
       try {
         const response = await fetch("/api/generate-paper", {
@@ -349,7 +350,10 @@ export function GenerationOverlay({
             const contractFromStream = streamContractFromData(data);
             if (contractFromStream) setStreamContract(contractFromStream);
             const recoveryMode = providerRecoveryModeFromData(data);
-            if (recoveryMode) setProviderRecoveryMode(recoveryMode);
+            if (recoveryMode) {
+              observedProviderRecoveryMode = recoveryMode;
+              setProviderRecoveryMode(recoveryMode);
+            }
             const streamedPaperId = paperIdValue(data.paperId);
             if (streamedPaperId) savedPaperId = streamedPaperId;
             const recoverySnapshot = streamRecoverySnapshotFromData(
@@ -496,8 +500,14 @@ export function GenerationOverlay({
           }
 
           throw generationError(
-            "Generation stopped before the session paper snapshot was completed.",
+            observedProviderRecoveryMode
+              ? "Server time budget ended while finishing from selected source text. Retry starts a fresh session-only generation; lower the question count or format variety if this repeats."
+              : "Generation stopped before the session paper snapshot was completed.",
             "GENERATION_STREAM_ENDED",
+            undefined,
+            {
+              providerRecoveryMode: observedProviderRecoveryMode ?? undefined,
+            },
           );
         }
       } catch (error) {

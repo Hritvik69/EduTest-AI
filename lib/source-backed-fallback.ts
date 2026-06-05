@@ -25,12 +25,16 @@ export function completeQuestionBankWithSourceBackedFallback({
   config,
   startIndex,
   maxCandidatesPerMissing = 96,
+  deadlineAt,
+  minRemainingMs = 5_000,
 }: {
   bank: QuestionCandidateBank;
   concepts: ConceptData[];
   config: PaperConfig;
   startIndex?: number;
   maxCandidatesPerMissing?: number;
+  deadlineAt?: number;
+  minRemainingMs?: number;
 }) {
   const missingBefore = bank.missingCount();
   if (missingBefore <= 0) return [] satisfies GeneratedQuestion[];
@@ -40,15 +44,23 @@ export function completeQuestionBankWithSourceBackedFallback({
 
   const accepted: GeneratedQuestion[] = [];
   const candidateSpace = sourceBackedCandidateSpaceSize(conceptPool);
+  const attemptBudget = Math.max(
+    missingBefore,
+    missingBefore * Math.max(1, Math.floor(maxCandidatesPerMissing)),
+  );
   const maxAttempts = Math.min(
     candidateSpace,
-    Math.max(missingBefore * Math.max(1, Math.floor(maxCandidatesPerMissing)), candidateSpace),
+    attemptBudget,
   );
   const startSequence = startIndex ?? bank.allCandidates().length + 101;
   const comparisonQuestions = bank.allCandidates();
   let attempts = 0;
 
-  while (bank.missingCount() > 0 && attempts < maxAttempts) {
+  while (
+    bank.missingCount() > 0 &&
+    attempts < maxAttempts &&
+    !sourceBackedDeadlineReached(deadlineAt, minRemainingMs)
+  ) {
     const missingSections = bank.missingSections();
     const section = missingSections[attempts % Math.max(1, missingSections.length)];
     if (!section) break;
@@ -94,7 +106,10 @@ export function generateSourceBackedFallbackQuestions(
   for (const section of sections) {
     let acceptedInSection = 0;
     let attempts = 0;
-    const maxAttempts = sourceBackedCandidateSpaceSize(conceptPool);
+    const maxAttempts = Math.min(
+      sourceBackedCandidateSpaceSize(conceptPool),
+      Math.max(section.count, section.count * 96),
+    );
 
     while (
       acceptedInSection < section.count &&
@@ -200,6 +215,10 @@ function sourceBackedQuestionForSequence(
 
 function sourceBackedCandidateSpaceSize(conceptPool: NormalizedConcept[]) {
   return Math.max(1, conceptPool.length * variantSlotCount());
+}
+
+function sourceBackedDeadlineReached(deadlineAt: number | undefined, minRemainingMs: number) {
+  return Number.isFinite(deadlineAt) && Number(deadlineAt) - Date.now() <= minRemainingMs;
 }
 
 function baseQuestion(

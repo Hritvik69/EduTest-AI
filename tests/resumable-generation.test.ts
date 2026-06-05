@@ -70,7 +70,7 @@ describe("session-only paper generation wiring", () => {
     expect(overlay).toMatch(/paperSnapshotToken/);
     expect(overlay).toMatch(/visibleProviderRecoveryMode/);
     expect(overlay).toMatch(/Finishing from selected source text/);
-    expect(overlay).not.toMatch(/The blocker is database persistence, not AI fallback/);
+    expect(overlay).toMatch(/Generation stopped before the session paper snapshot was completed/);
     expect(preview).toMatch(/readSessionPaper/);
     expect(preview).toMatch(/\/api\/session-paper\/export/);
     expect(runner).toMatch(/readSessionPaper/);
