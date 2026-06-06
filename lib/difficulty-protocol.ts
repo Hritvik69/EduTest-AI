@@ -454,12 +454,23 @@ export function normalizeQuestionDifficulty(
   const aiDifficulty = normalizeDifficultyLabel(question.difficulty);
   const bloomLevel = normalizeBloomLevel(question.bloomLevel);
   const confidence = normalizeConfidence(question.difficultyConfidence);
-  const metadataSupportedDifficulty =
+  const fallbackSupportedDifficulty = deterministicFallbackDifficulty(
+    question,
+    aiDifficulty,
+    selectedDifficulty,
+    ceiling,
+    allowed,
+  );
+  const providerSupportedDifficulty =
     aiDifficulty &&
     Math.abs(compareDifficulty(aiDifficulty, estimated.difficulty)) <= 1 &&
     isDifficultyAtMost(aiDifficulty, ceiling)
       ? aiDifficulty
-      : estimated.difficulty;
+      : null;
+  const metadataSupportedDifficulty =
+    fallbackSupportedDifficulty ??
+    providerSupportedDifficulty ??
+    estimated.difficulty;
   const boundedDifficulty = isDifficultyAtMost(metadataSupportedDifficulty, ceiling)
     ? metadataSupportedDifficulty
     : ceiling;
@@ -483,7 +494,8 @@ export function normalizeQuestionDifficulty(
   if (
     aiDifficulty &&
     !isDifficultyAtMost(aiDifficulty, ceiling) &&
-    confidence >= 0.7
+    confidence >= 0.7 &&
+    !fallbackSupportedDifficulty
   ) {
     reasons.push(
       `AI difficulty metadata ${aiDifficulty} exceeds ${questionType} ceiling ${ceiling}.`,
@@ -785,6 +797,34 @@ function chooseDifficultyForSectionRemainder(
       const maximum = Math.floor((protocol.mix[difficulty] / 100) * total);
       return actualTotals[difficulty] < maximum;
     });
+}
+
+function deterministicFallbackDifficulty(
+  question: GeneratedQuestion,
+  aiDifficulty: Difficulty | null,
+  selectedDifficulty: Difficulty,
+  ceiling: Difficulty,
+  allowed: Difficulty[],
+) {
+  if (!isDeterministicFallbackQuestion(question)) return null;
+
+  const intendedDifficulty = aiDifficulty ?? selectedDifficulty;
+  const bounded = isDifficultyAtMost(intendedDifficulty, ceiling)
+    ? intendedDifficulty
+    : ceiling;
+
+  return allowed.includes(bounded) ? bounded : null;
+}
+
+function isDeterministicFallbackQuestion(question: GeneratedQuestion) {
+  return [
+    question.noveltyAngle,
+    question.sourceChunkFocus,
+    question.answerPath,
+    question.source,
+  ].some((value) =>
+    /SOURCE_BACKED_COMPLETION|SYLLABUS_NEAR_FALLBACK/i.test(String(value ?? "")),
+  );
 }
 
 function estimateQuestionDifficulty(

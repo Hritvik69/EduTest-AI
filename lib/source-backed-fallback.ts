@@ -319,7 +319,12 @@ export function retargetSourceBackedCompletionForGuaranteedFinalRepair({
   config: PaperConfig;
   sourceCapacity: SourceBackedCapacityDiagnostics;
 }): SourceBackedGuaranteedCompletionRetarget | null {
-  const conversions = guaranteedCompletionConversions(bank, sourceCapacity);
+  const conversions = guaranteedCompletionConversions(
+    bank,
+    sourceCapacity,
+    config,
+    blueprint,
+  );
   if (!conversions.length) return null;
 
   const nextBlueprint = blueprintWithGuaranteedCompletionConversions(
@@ -349,17 +354,32 @@ export function retargetSourceBackedCompletionForGuaranteedFinalRepair({
 function guaranteedCompletionConversions(
   bank: QuestionCandidateBank,
   sourceCapacity: SourceBackedCapacityDiagnostics,
+  config: PaperConfig,
+  blueprint: Blueprint,
 ) {
   return bank
     .missingSections()
     .map((section) => {
-      const replacement = guaranteedCompletionReplacementFor(section.questionType);
+      const replacement = guaranteedCompletionReplacementFor(
+        section.questionType,
+        config,
+      );
       if (!replacement) return null;
 
       const item = sourceCapacity.byType[section.questionType];
       if (!item) return null;
       if (item.rawAvailable < section.count) return null;
       if (item.effectiveAvailable >= section.count) return null;
+
+      const targetSection = blueprint.sections.find(
+        (candidate) => candidate.questionType === replacement,
+      );
+      if (
+        targetSection &&
+        targetSection.marksPerQuestion !== section.marksPerQuestion
+      ) {
+        return null;
+      }
 
       return {
         from: section.questionType,
@@ -370,10 +390,30 @@ function guaranteedCompletionConversions(
     .filter((item): item is SourceBackedGuaranteedConversion => Boolean(item));
 }
 
-function guaranteedCompletionReplacementFor(type: QuestionType): QuestionType | null {
+function guaranteedCompletionReplacementFor(
+  type: QuestionType,
+  config: PaperConfig,
+): QuestionType | null {
+  if (type === "ASSERTION_REASON") return "MCQ";
   if (type === "TRUE_FALSE") return "MCQ";
   if (type === "MATCH_FOLLOWING") return "SHORT";
+  if (type === "SHORT" && hasQuantitativeSubject(config)) return "NUMERICAL";
   return null;
+}
+
+function hasQuantitativeSubject(config: PaperConfig) {
+  const labels = [
+    config.subject,
+    ...(config.subjects ?? []),
+    ...(config.subjectSelections ?? []).map((selection) => selection.subject),
+    ...(config.questionComposition ?? []).map((item) => item.subject),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return /\b(?:math|mathematics|physics|chemistry|science|computer|economics|accountancy|statistics)\b/.test(
+    labels,
+  );
 }
 
 function blueprintWithGuaranteedCompletionConversions(

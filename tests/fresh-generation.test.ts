@@ -85,6 +85,30 @@ describe("fresh question generation invariant", () => {
     expect(generator).toMatch(/Validator repair feedback/);
   });
 
+  it("keeps chapter/topic-near repair before the final source-capacity failure", () => {
+    const route = readFileSync(
+      join(root, "app", "api", "generate-paper", "route.ts"),
+      "utf8",
+    );
+
+    const sourceRepairIndex = route.indexOf(
+      "completeQuestionBankWithSourceBackedFallback({",
+      route.indexOf("allowSourceBackedCompletion"),
+    );
+    const syllabusNearIndex = route.indexOf(
+      "completeQuestionBankWithSyllabusNearFallback({",
+      sourceRepairIndex,
+    );
+    const finalCapacityThrowIndex = route.indexOf(
+      "throw sourceBackedCapacityError",
+      syllabusNearIndex,
+    );
+
+    expect(sourceRepairIndex).toBeGreaterThan(0);
+    expect(syllabusNearIndex).toBeGreaterThan(sourceRepairIndex);
+    expect(finalCapacityThrowIndex).toBeGreaterThan(syllabusNearIndex);
+  });
+
   it("validates admin chapter PDF mutations against class and subject scope", () => {
     const uploadRoute = readFileSync(
       join(root, "app", "api", "upload-pdf", "route.ts"),

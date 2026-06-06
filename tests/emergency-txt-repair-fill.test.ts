@@ -371,21 +371,23 @@ describe("source-backed completion", () => {
     const fragileBlueprint: Blueprint = {
       sections: [
         sectionFor("MCQ", 3, 1),
+        sectionFor("ASSERTION_REASON", 2, 1),
         sectionFor("TRUE_FALSE", 2, 1),
         sectionFor("MATCH_FOLLOWING", 1, 3),
       ],
-      totalQuestions: 6,
-      totalMarks: 8,
+      totalQuestions: 8,
+      totalMarks: 10,
       estimatedTime: 20,
       competencyPercentage: 60,
     };
     const fragileConfig: PaperConfig = {
       ...config,
-      questionTypes: ["MCQ", "TRUE_FALSE", "MATCH_FOLLOWING"],
-      totalQuestions: 6,
-      totalMarks: 8,
+      questionTypes: ["MCQ", "ASSERTION_REASON", "TRUE_FALSE", "MATCH_FOLLOWING"],
+      totalQuestions: 8,
+      totalMarks: 10,
       typeDistribution: {
         MCQ: 3,
+        ASSERTION_REASON: 2,
         TRUE_FALSE: 2,
         MATCH_FOLLOWING: 1,
       },
@@ -416,9 +418,9 @@ describe("source-backed completion", () => {
     });
     const screenshotCapacity = {
       ...capacity,
-      requiredMissingCount: 6,
+      requiredMissingCount: 8,
       effectiveCapacity: 3,
-      effectiveMissingCount: 3,
+      effectiveMissingCount: 5,
       availableStrictCapacity: 3,
       enough: false,
       byType: {
@@ -429,6 +431,13 @@ describe("source-backed completion", () => {
           effectiveAvailable: 3,
           available: 3,
           missing: 0,
+        },
+        ASSERTION_REASON: {
+          ...capacity.byType.ASSERTION_REASON!,
+          required: 2,
+          effectiveAvailable: 0,
+          available: 0,
+          missing: 2,
         },
         TRUE_FALSE: {
           ...capacity.byType.TRUE_FALSE!,
@@ -457,11 +466,12 @@ describe("source-backed completion", () => {
 
     expect(retarget).not.toBeNull();
     expect(retarget?.conversions).toEqual([
+      { from: "ASSERTION_REASON", to: "MCQ", count: 2 },
       { from: "TRUE_FALSE", to: "MCQ", count: 2 },
       { from: "MATCH_FOLLOWING", to: "SHORT", count: 1 },
     ]);
     expect(retarget?.warning).toContain(
-      "Converted 2 TRUE_FALSE replacements to MCQ and 1 MATCH_FOLLOWING replacement to SHORT",
+      "Converted 2 ASSERTION_REASON replacements to MCQ and 2 TRUE_FALSE replacements to MCQ and 1 MATCH_FOLLOWING replacement to SHORT",
     );
 
     const completed = completeQuestionBankWithSourceBackedFallback({
@@ -472,13 +482,13 @@ describe("source-backed completion", () => {
     });
     const validation = retarget!.bank.result();
 
-    expect(completed).toHaveLength(6);
-    expect(retarget!.bank.readyCount()).toBe(6);
+    expect(completed).toHaveLength(8);
+    expect(retarget!.bank.readyCount()).toBe(8);
     expect(retarget!.bank.missingCount()).toBe(0);
-    expect(validation.blueprint.totalQuestions).toBe(6);
-    expect(validation.blueprint.totalMarks).toBe(8);
+    expect(validation.blueprint.totalQuestions).toBe(8);
+    expect(validation.blueprint.totalMarks).toBe(10);
     expect(validation.config.typeDistribution).toMatchObject({
-      MCQ: 5,
+      MCQ: 7,
       SHORT: 1,
     });
     expect(validation.questions.every((question) =>
@@ -486,6 +496,112 @@ describe("source-backed completion", () => {
     )).toBe(true);
     expect(validation.rejectionReasons.DUPLICATE ?? 0).toBe(0);
   });
+
+  it("completes the same selected source under absurd mixed fragile formats", () => {
+    const absurdBlueprint: Blueprint = {
+      sections: [
+        sectionFor("MCQ", 10, 1),
+        sectionFor("SHORT", 1, 3),
+        sectionFor("ASSERTION_REASON", 2, 1),
+        sectionFor("TRUE_FALSE", 2, 1),
+        sectionFor("MATCH_FOLLOWING", 2, 3),
+      ],
+      totalQuestions: 17,
+      totalMarks: 23,
+      estimatedTime: 45,
+      competencyPercentage: 70,
+    };
+    const absurdConfig: PaperConfig = {
+      ...config,
+      difficulty: "ABSURD",
+      questionTypes: [
+        "MCQ",
+        "SHORT",
+        "ASSERTION_REASON",
+        "TRUE_FALSE",
+        "MATCH_FOLLOWING",
+      ],
+      totalQuestions: 17,
+      totalMarks: 23,
+      typeDistribution: {
+        MCQ: 10,
+        SHORT: 1,
+        ASSERTION_REASON: 2,
+        TRUE_FALSE: 2,
+        MATCH_FOLLOWING: 2,
+      },
+    };
+    const bank = new QuestionCandidateBank([], absurdBlueprint, absurdConfig);
+
+    const completed = completeQuestionBankWithSourceBackedFallback({
+      bank,
+      concepts: [longParagraphConcept()],
+      config: absurdConfig,
+      throwOnInsufficientCapacity: true,
+      capacityScope: "absurd mixed fragile regression",
+    });
+    const validation = bank.result();
+
+    expect(completed).toHaveLength(17);
+    expect(bank.readyCount()).toBe(17);
+    expect(bank.missingCount()).toBe(0);
+    expect(validation.questions).toHaveLength(17);
+    expect(validation.rejectionReasons.DIFFICULTY_INCOMPATIBLE ?? 0).toBe(0);
+    expect(validation.questions.every((question) =>
+      question.noveltyAngle?.startsWith(sourceBackedCompletionMarker),
+    )).toBe(true);
+  });
+
+  it.each(["EASY", "MEDIUM", "HARD", "ABSURD"] as const)(
+    "completes the same selected source at %s difficulty",
+    (difficulty) => {
+      const mixedBlueprint: Blueprint = {
+        sections: [
+          sectionFor("MCQ", 2, 1),
+          sectionFor("SHORT", 1, 3),
+          sectionFor("ASSERTION_REASON", 1, 1),
+          sectionFor("TRUE_FALSE", 1, 1),
+          sectionFor("MATCH_FOLLOWING", 1, 3),
+        ],
+        totalQuestions: 6,
+        totalMarks: 10,
+        estimatedTime: 20,
+        competencyPercentage: 60,
+      };
+      const paperConfig: PaperConfig = {
+        ...config,
+        difficulty,
+        questionTypes: [
+          "MCQ",
+          "SHORT",
+          "ASSERTION_REASON",
+          "TRUE_FALSE",
+          "MATCH_FOLLOWING",
+        ],
+        totalQuestions: 6,
+        totalMarks: 10,
+        typeDistribution: {
+          MCQ: 2,
+          SHORT: 1,
+          ASSERTION_REASON: 1,
+          TRUE_FALSE: 1,
+          MATCH_FOLLOWING: 1,
+        },
+      };
+      const bank = new QuestionCandidateBank([], mixedBlueprint, paperConfig);
+
+      completeQuestionBankWithSourceBackedFallback({
+        bank,
+        concepts: [longParagraphConcept()],
+        config: paperConfig,
+        throwOnInsufficientCapacity: true,
+        capacityScope: `${difficulty.toLowerCase()} mixed-source regression`,
+      });
+
+      expect(bank.readyCount()).toBe(6);
+      expect(bank.missingCount()).toBe(0);
+    },
+  );
 
   it("generates distinct fixed-format stems for repeated source-backed formats", () => {
     const fixedBlueprint: Blueprint = {

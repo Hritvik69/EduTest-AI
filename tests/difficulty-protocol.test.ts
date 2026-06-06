@@ -160,6 +160,38 @@ describe("difficulty protocol", () => {
     expect(result.reasons.join(" ")).toMatch(/not allowed|conflicts|ceiling/);
   });
 
+  it("validates deterministic absurd fallback formats at their hard ceiling", () => {
+    const result = normalizeQuestionDifficulty(
+      {
+        ...questionBase(),
+        type: "ASSERTION_REASON",
+        difficulty: "ABSURD",
+        bloomLevel: "EVALUATE",
+        text:
+          "Assertion (A): A supported answer should connect the idea with a clear reason.\nReason (R): A complete answer links the concept with the given evidence.",
+        assertion:
+          "A supported answer should connect the idea with a clear reason.",
+        reason: "A complete answer links the concept with the given evidence.",
+        correctAnswer: "A",
+        reasoningSteps: 5,
+        difficultyConfidence: 0.72,
+        cognitiveComplexity: {
+          conceptIntegration: 5,
+          abstractionLevel: 5,
+          inferenceLevel: 4,
+          ambiguityLevel: 2,
+          cognitiveLoad: 5,
+        },
+        noveltyAngle: "SOURCE_BACKED_COMPLETION:ASSERTION_REASON:evidence:atom-1:1",
+      },
+      "ABSURD",
+      "ASSERTION_REASON",
+    );
+
+    expect(result.valid).toBe(true);
+    expect(result.validatedDifficulty).toBe("HARD");
+  });
+
   it("validates final distribution with minimum and maximum overlap bounds", () => {
     const questions: GeneratedQuestion[] = Array.from({ length: 10 }, (_, index) => ({
       ...questionBase(),
