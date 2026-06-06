@@ -1,4 +1,7 @@
 import {
+  normalizeMatchAnswerKey,
+} from "@/lib/match-display";
+import {
   normalizeMCQOptions,
   withNormalizedQuestionOptions,
 } from "@/lib/question-options";
@@ -23,6 +26,10 @@ export function normalizeQuestionStructure(
     normalized.subQuestions = normalizeSourceBasedSubQuestions(normalized);
     normalized.correctAnswer =
       readAnswer(normalized) || summarizeSubQuestionAnswers(normalized);
+  }
+
+  if (normalized.type === "MATCH_FOLLOWING") {
+    normalized.correctAnswer = normalizeMatchFollowingAnswer(normalized);
   }
 
   return withNormalizedQuestionOptions(normalized);
@@ -87,6 +94,19 @@ function normalizeSourceBasedSubQuestions(question: GeneratedQuestion) {
     correctAnswer: readAnswer(subQuestion),
     marks: 1,
   })) satisfies SubQuestion[];
+}
+
+function normalizeMatchFollowingAnswer(question: GeneratedQuestion) {
+  const pairs = question.matchPairs ?? [];
+  if (!pairs.length) return readAnswer(question);
+
+  return normalizeMatchAnswerKey(
+    pairs,
+    readAnswer(question),
+    `match-normalize:${question.topic ?? ""}:${question.text}:${pairs
+      .map((pair) => `${pair.left}->${pair.right}`)
+      .join("|")}`,
+  );
 }
 
 function looseSubQuestions(question: GeneratedQuestion) {

@@ -4,6 +4,7 @@ import {
   buildShuffledMatchAnswer,
   displayedMatchColumns,
 } from "@/lib/match-display";
+import { normalizeQuestionStructure } from "@/lib/question-structure";
 import { auditTeacherLogicQuality } from "@/lib/question-quality";
 import { defaultBloomDistribution } from "@/lib/edutest-data";
 import type { Blueprint, GeneratedQuestion, QuestionType } from "@/types";
@@ -146,6 +147,50 @@ describe("teacher logic quality audit", () => {
     ).toBe(true);
   });
 
+  it("rejects one-sided Assertion-Reason batches and weak template links", () => {
+    const weakTemplate = {
+      ...baseQuestion(
+        1,
+        "ASSERTION_REASON",
+        "Assertion (A): Feedback can be understood through inference.\nReason (R): Feedback tells the sender whether the message was understood. This supports the inference reasoning.",
+      ),
+      assertion: "Feedback can be understood through inference.",
+      reason:
+        "Feedback tells the sender whether the message was understood. This supports the inference reasoning.",
+      correctAnswer: "A",
+    };
+
+    const weakReasons = issuesByPosition(
+      auditTeacherLogicQuality([weakTemplate], blueprintFor([weakTemplate])),
+    );
+    expect(weakReasons.get(1)).toBe("weak-assertion-reason");
+
+    const oneSided = [
+      assertionReason(2, "A"),
+      assertionReason(3, "A"),
+      assertionReason(4, "A"),
+    ];
+    expect(
+      auditTeacherLogicQuality(oneSided, blueprintFor(oneSided)).some(
+        (issue) => issue.reason === "assertion-reason-answer-key-imbalance",
+      ),
+    ).toBe(true);
+  });
+
+  it("normalizes identity match answer keys into shuffled keys", () => {
+    const question = matchFollowing(10, false, true);
+    const normalized = normalizeQuestionStructure(
+      question,
+      blueprintFor([question]).sections[0],
+    );
+
+    expect(question.correctAnswer).toBe("A1-B1, A2-B2, A3-B3, A4-B4");
+    expect(normalized.correctAnswer).not.toBe("A1-B1, A2-B2, A3-B3, A4-B4");
+    expect(
+      auditTeacherLogicQuality([normalized], blueprintFor([normalized])),
+    ).toEqual([]);
+  });
+
   it("derives shuffled match display columns from canonical pairs", () => {
     const pairs = [
       { left: "Sender", right: "Creates a message" },
@@ -270,7 +315,7 @@ function fillBlank(id: number, text: string, answer: string) {
   };
 }
 
-function assertionReason(id: number) {
+function assertionReason(id: number, correctAnswer = "A") {
   return {
     ...baseQuestion(
       id,
@@ -279,27 +324,31 @@ function assertionReason(id: number) {
     ),
     assertion: "Feedback improves communication.",
     reason: "It helps the sender know whether the receiver understood the message.",
-    correctAnswer: "A",
+    correctAnswer,
   };
 }
 
-function matchFollowing(id: number, bad = true) {
+function matchFollowing(id: number, bad = true, forceIdentity = false) {
+  const matchPairs = bad
+    ? [
+        { left: "Focused point", right: "Phrase window communication feedback" },
+        { left: "Reason", right: "Explain the concept clearly." },
+        { left: "Application", right: "Use the idea." },
+        { left: "Conclusion", right: "Finish clearly." },
+      ]
+    : [
+        { left: "Sender", right: "Starts the message" },
+        { left: "Receiver", right: "Understands the message" },
+        { left: "Channel", right: "Medium used for communication" },
+        { left: "Feedback", right: "Response from the receiver" },
+      ];
   return {
     ...baseQuestion(id, "MATCH_FOLLOWING", "Match the terms with their meanings.", 3),
-    correctAnswer: "A1-B1, A2-B2, A3-B3, A4-B4",
-    matchPairs: bad
-      ? [
-          { left: "Focused point", right: "Phrase window communication feedback" },
-          { left: "Reason", right: "Explain the concept clearly." },
-          { left: "Application", right: "Use the idea." },
-          { left: "Conclusion", right: "Finish clearly." },
-        ]
-      : [
-          { left: "Sender", right: "Starts the message" },
-          { left: "Receiver", right: "Understands the message" },
-          { left: "Channel", right: "Medium used for communication" },
-          { left: "Feedback", right: "Response from the receiver" },
-        ],
+    correctAnswer:
+      bad || forceIdentity
+        ? "A1-B1, A2-B2, A3-B3, A4-B4"
+        : buildShuffledMatchAnswer(matchPairs, `quality-good-match:${id}`),
+    matchPairs,
   };
 }
 

@@ -919,11 +919,7 @@ function createSyllabusNearQuestion({
     case "ASSERTION_REASON":
       return {
         ...common,
-        text: `Assertion (A): ${concept.assertion}\nReason (R): ${concept.reason}`,
-        assertion: concept.assertion,
-        reason: concept.reason,
-        correctAnswer: "A",
-        explanation: "Both assertion and reason are true, and the reason correctly explains the assertion.",
+        ...syllabusNearAssertionReasonQuestion(concept, index),
       };
     case "TRUE_FALSE":
       return syllabusNearTrueFalseQuestion(common, concept, index);
@@ -1419,6 +1415,34 @@ function syllabusConcept({
   };
 }
 
+function syllabusNearAssertionReasonQuestion(
+  concept: SyllabusNearConcept,
+  index: number,
+): Partial<GeneratedQuestion> {
+  const answer = assertionReasonAnswerFor(index);
+  const trueAssertion = concept.assertion;
+  const explanatoryReason = concept.reason;
+  const unrelatedTrueReason =
+    "Examples can make a classroom explanation easier to remember.";
+  const falseStatement = concept.falseStatement;
+
+  const [assertion, reason] = assertionReasonPairForAnswer(answer, {
+    trueAssertion,
+    explanatoryReason,
+    unrelatedTrueReason,
+    falseAssertion: falseStatement,
+    falseReason: falseStatement,
+  });
+
+  return {
+    text: `Assertion (A): ${assertion}\nReason (R): ${reason}`,
+    assertion,
+    reason,
+    correctAnswer: answer,
+    explanation: assertionReasonExplanation(answer),
+  };
+}
+
 function syllabusNearOptions(concept: SyllabusNearConcept, index: number): MCQOption[] {
   const distractors = [
     concept.misconception,
@@ -1750,7 +1774,7 @@ function baseQuestion(
         correctAnswer: shuffledMcq.correctAnswer,
       };
     case "ASSERTION_REASON":
-      return assertionReasonQuestion(summary, idea, skill);
+      return assertionReasonQuestion(concept, summary, skill, placementIndex);
     case "TRUE_FALSE":
       return trueFalseQuestion(concept, summary, skill, placementIndex);
     case "ONE_WORD":
@@ -1835,19 +1859,77 @@ function baseQuestion(
 }
 
 function assertionReasonQuestion(
+  concept: NormalizedConcept,
   summary: string,
-  idea: string,
   skill: string,
+  placementIndex: number,
 ): Partial<GeneratedQuestion> {
-  const assertion = `${sentenceCase(stripFinalPunctuation(idea))} can be understood through ${skill}.`;
-  const reason = `${sentenceCase(toStatement(summary))} This supports the ${skill} reasoning.`;
+  const answer = assertionReasonAnswerFor(placementIndex);
+  const focus = sentenceCase(matchFocusPhrase(summary));
+  const trueAssertion = `A correct answer about ${focus} should include a clear ${skill} link.`;
+  const explanatoryReason = `A complete answer connects the idea with this point: ${toStatement(summary)}`;
+  const unrelatedTrueReason =
+    "A neat, specific example can make a classroom answer easier to follow.";
+  const falseStatement = sourceFalseStatement(concept, placementIndex);
+  const [assertion, reason] = assertionReasonPairForAnswer(answer, {
+    trueAssertion,
+    explanatoryReason,
+    unrelatedTrueReason,
+    falseAssertion: falseStatement,
+    falseReason: falseStatement,
+  });
 
   return {
     text: `Assertion (A): ${assertion}\nReason (R): ${reason}`,
     assertion,
     reason,
-    correctAnswer: "A",
+    correctAnswer: answer,
+    explanation: assertionReasonExplanation(answer),
   };
+}
+
+type AssertionReasonKey = "A" | "B" | "C" | "D";
+
+function assertionReasonAnswerFor(index: number): AssertionReasonKey {
+  const answers: AssertionReasonKey[] = ["A", "B", "C", "D"];
+  return answers[positiveModulo(index, answers.length)] ?? "A";
+}
+
+function assertionReasonPairForAnswer(
+  answer: AssertionReasonKey,
+  statements: {
+    trueAssertion: string;
+    explanatoryReason: string;
+    unrelatedTrueReason: string;
+    falseAssertion: string;
+    falseReason: string;
+  },
+): [string, string] {
+  switch (answer) {
+    case "B":
+      return [statements.trueAssertion, statements.unrelatedTrueReason];
+    case "C":
+      return [statements.trueAssertion, statements.falseReason];
+    case "D":
+      return [statements.falseAssertion, statements.explanatoryReason];
+    case "A":
+    default:
+      return [statements.trueAssertion, statements.explanatoryReason];
+  }
+}
+
+function assertionReasonExplanation(answer: AssertionReasonKey) {
+  switch (answer) {
+    case "B":
+      return "Both assertion and reason are true, but the reason does not explain the assertion.";
+    case "C":
+      return "The assertion is true, but the reason is false.";
+    case "D":
+      return "The assertion is false, but the reason is true.";
+    case "A":
+    default:
+      return "Both assertion and reason are true, and the reason correctly explains the assertion.";
+  }
 }
 
 function trueFalseQuestion(

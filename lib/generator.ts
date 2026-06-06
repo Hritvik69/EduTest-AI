@@ -735,6 +735,7 @@ Options are ALWAYS exactly these 4:
   B: Both A and R true, R does NOT explain A
   C: A true, R false
   D: A false, R true
+When generating 2 or more Assertion-Reason questions, use at least two different correctAnswer values across the batch. Do not make every answer A.
 Make combinations genuinely tricky. NOT obvious.
 Avoid trivial assertions, fake logical links, and textbook-copy statements. The reason must be academically valid and must genuinely test conceptual understanding.
 Return JSON: [{ "text" (full formatted), "assertion","reason","correctAnswer":"A|B|C|D","explanation","difficulty","topic" }]`,
@@ -767,6 +768,7 @@ Each question: 4 items Column A matched to 4 different items Column B.
 Items from different sub-topics. Relationships must be academically meaningful, logically matchable, and unambiguous. Not too obvious.
 Use real terms, examples, functions, causes/effects, definitions, observations, or formulas only. Do not use generic labels such as Context, Inference, Correct use, Application, Reason, or Evidence.
 Return matchPairs as canonical correct pairs, but make correctAnswer use a shuffled Column B key such as A1-B3, A2-B1, A3-B4, A4-B2. Do not always return A1-B1 order.
+For 4 pairs, correctAnswer must not be A1-B1, A2-B2, A3-B3, A4-B4.
 Return JSON: [{ "text":"Match Column A with Column B","matchPairs":[{"left","right"},...],"correctAnswer":"A1-B3, A2-B1, A3-B4, A4-B2","explanation","marks":3,"topic" }]`,
     SHORT: `Generate ${section.count} Short Answer questions.
 ${sectionContext}
@@ -975,6 +977,12 @@ For MATCH_FOLLOWING:
 - Column A and Column B must contain real subject terms, examples, causes/effects, definitions, observations, or formulas.
 - Do not match metadata labels such as Chapter, Chapter idea, Question focus, Evidence, or Conclusion.
 - Keep matchPairs as the correct pair mapping, but shuffle the Column B answer key instead of returning A1-B1 for every question.
+- For 4-pair questions, never return the identity key A1-B1, A2-B2, A3-B3, A4-B4.
+
+For ASSERTION_REASON:
+- Use the fixed CBSE A/B/C/D meanings.
+- When more than one Assertion-Reason question is requested, vary the correctAnswer values instead of making every key A.
+- Avoid generic links such as "This supports the inference reasoning"; write natural assertion and reason statements.
 
 Before returning JSON, silently rewrite any question that sounds like an AI prompt, source-audit task, or chapter-metadata task. The final paper must read like a teacher wrote it.
 `;
@@ -1444,11 +1452,7 @@ function createDemoQuestion(
     case "ASSERTION_REASON":
       return {
         ...base,
-        text: `Assertion (A): ${topic} works only when the correct condition is present. Reason (R): That condition changes the observed result in case ${questionNumber}.`,
-        assertion: `${topic} works only when the correct condition is present.`,
-        reason: `That condition changes the observed result in case ${questionNumber}.`,
-        options: assertionOptions(),
-        correctAnswer: "A",
+        ...demoAssertionReasonQuestion(topic, questionNumber),
       };
     case "TRUE_FALSE": {
       const answer = questionNumber % 2 === 0 ? "False" : "True";
@@ -1603,19 +1607,88 @@ function defaultOptions() {
   ];
 }
 
-function assertionOptions() {
+type AssertionReasonKey = "A" | "B" | "C" | "D";
+
+function demoAssertionReasonQuestion(topic: string, questionNumber: number) {
+  const answer = assertionReasonAnswerFor(questionNumber);
+  const trueAssertion = `${topic} works best when the correct condition is present.`;
+  const explanatoryReason = `The condition changes the observed result in case ${questionNumber}.`;
+  const unrelatedTrueReason =
+    "A clear example can make a classroom answer easier to understand.";
+  const falseStatement = `${topic} can be explained correctly without using any condition or reason.`;
+  const [assertion, reason] = assertionReasonPairForAnswer(answer, {
+    trueAssertion,
+    explanatoryReason,
+    unrelatedTrueReason,
+    falseAssertion: falseStatement,
+    falseReason: falseStatement,
+  });
+
+  return {
+    text: `Assertion (A): ${assertion}\nReason (R): ${reason}`,
+    assertion,
+    reason,
+    options: assertionOptions(answer),
+    correctAnswer: answer,
+    explanation: assertionReasonExplanation(answer),
+  };
+}
+
+function assertionReasonAnswerFor(index: number): AssertionReasonKey {
+  const answers: AssertionReasonKey[] = ["A", "B", "C", "D"];
+  return answers[((index % answers.length) + answers.length) % answers.length] ?? "A";
+}
+
+function assertionReasonPairForAnswer(
+  answer: AssertionReasonKey,
+  statements: {
+    trueAssertion: string;
+    explanatoryReason: string;
+    unrelatedTrueReason: string;
+    falseAssertion: string;
+    falseReason: string;
+  },
+): [string, string] {
+  switch (answer) {
+    case "B":
+      return [statements.trueAssertion, statements.unrelatedTrueReason];
+    case "C":
+      return [statements.trueAssertion, statements.falseReason];
+    case "D":
+      return [statements.falseAssertion, statements.explanatoryReason];
+    case "A":
+    default:
+      return [statements.trueAssertion, statements.explanatoryReason];
+  }
+}
+
+function assertionReasonExplanation(answer: AssertionReasonKey) {
+  switch (answer) {
+    case "B":
+      return "Both assertion and reason are true, but the reason does not explain the assertion.";
+    case "C":
+      return "The assertion is true, but the reason is false.";
+    case "D":
+      return "The assertion is false, but the reason is true.";
+    case "A":
+    default:
+      return "Both assertion and reason are true, and the reason correctly explains the assertion.";
+  }
+}
+
+function assertionOptions(correctAnswer: AssertionReasonKey = "A") {
   return [
     {
       id: "A",
       text: "Both A and R true, R correctly explains A",
-      isCorrect: true,
+      isCorrect: correctAnswer === "A",
     },
     {
       id: "B",
       text: "Both A and R true, R does NOT explain A",
-      isCorrect: false,
+      isCorrect: correctAnswer === "B",
     },
-    { id: "C", text: "A true, R false", isCorrect: false },
-    { id: "D", text: "A false, R true", isCorrect: false },
+    { id: "C", text: "A true, R false", isCorrect: correctAnswer === "C" },
+    { id: "D", text: "A false, R true", isCorrect: correctAnswer === "D" },
   ];
 }

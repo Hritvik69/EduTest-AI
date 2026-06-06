@@ -1,3 +1,4 @@
+import { isIdentityMatchAnswer } from "@/lib/match-display";
 import type { Blueprint, GeneratedQuestion, QuestionType } from "@/types";
 
 export type TeacherQualityIssue = {
@@ -34,6 +35,9 @@ export function auditTeacherLogicQuality(
   trueFalseAnswerImbalanceIssues(questions).forEach((issue) => {
     if (!issues.has(issue.position)) issues.set(issue.position, issue);
   });
+  assertionReasonAnswerImbalanceIssues(questions).forEach((issue) => {
+    if (!issues.has(issue.position)) issues.set(issue.position, issue);
+  });
 
   return Array.from(issues.values()).sort(
     (left, right) => left.position - right.position,
@@ -65,6 +69,17 @@ function teacherLogicIssueReason(question: GeneratedQuestion) {
     )
   ) {
     return "weak-match-pair";
+  }
+
+  if (
+    question.type === "MATCH_FOLLOWING" &&
+    isIdentityMatchAnswer(question.correctAnswer, question.matchPairs?.length ?? 0)
+  ) {
+    return "identity-match-answer";
+  }
+
+  if (question.type === "ASSERTION_REASON" && hasWeakAssertionReasonPair(question)) {
+    return "weak-assertion-reason";
   }
 
   if (question.type === "SHORT") {
@@ -166,6 +181,26 @@ function trueFalseAnswerImbalanceIssues(questions: GeneratedQuestion[]) {
   }));
 }
 
+function assertionReasonAnswerImbalanceIssues(questions: GeneratedQuestion[]) {
+  const assertionReasonQuestions = questions
+    .map((question, index) => ({ question, position: index + 1 }))
+    .filter(({ question }) => question.type === "ASSERTION_REASON");
+  if (assertionReasonQuestions.length < 2) return [];
+
+  const answers = assertionReasonQuestions
+    .map(({ question }) => assertionReasonAnswerId(question))
+    .filter((answer): answer is string => Boolean(answer));
+  if (answers.length !== assertionReasonQuestions.length) return [];
+  if (new Set(answers).size > 1) return [];
+
+  return assertionReasonQuestions.slice(1).map((item) => ({
+    question: item.question,
+    type: item.question.type,
+    position: item.position,
+    reason: "assertion-reason-answer-key-imbalance",
+  }));
+}
+
 function repeatedStemKey(question: GeneratedQuestion) {
   const normalized = normalizeVisible(question.text);
   if (question.type === "MCQ") {
@@ -185,6 +220,10 @@ function mcqAnswerId(question: GeneratedQuestion) {
   const answer = question.correctAnswer?.trim().match(/^[A-D]/i)?.[0];
   if (answer) return answer.toUpperCase();
   return question.options?.find((option) => option.isCorrect)?.id?.toUpperCase() ?? "";
+}
+
+function assertionReasonAnswerId(question: GeneratedQuestion) {
+  return question.correctAnswer?.trim().match(/^[A-D]/i)?.[0]?.toUpperCase() ?? "";
 }
 
 function isDeterministicFallbackQuestion(question: GeneratedQuestion) {
@@ -290,6 +329,79 @@ function hasWeakMatchPair(left: string, right: string) {
   if (leftTerms.size === 0 || rightTerms.length === 0) return false;
   const overlap = rightTerms.filter((word) => leftTerms.has(word)).length;
   return overlap >= Math.min(3, rightTerms.length) && overlap / rightTerms.length >= 0.75;
+}
+
+function hasWeakAssertionReasonPair(question: GeneratedQuestion) {
+  const assertion = question.assertion?.trim() || assertionFromText(question.text);
+  const reason = question.reason?.trim() || reasonFromText(question.text);
+  if (!assertion || !reason) return true;
+  if (hasGenericAssertionReasonTemplate(assertion, reason)) return true;
+
+  const normalizedAssertion = normalizeVisible(assertion);
+  const normalizedReason = normalizeVisible(reason);
+  if (!normalizedAssertion || !normalizedReason) return true;
+  if (normalizedAssertion === normalizedReason) return true;
+  if (
+    normalizedAssertion.length >= 18 &&
+    normalizedReason.length >= 18 &&
+    (normalizedAssertion.includes(normalizedReason) ||
+      normalizedReason.includes(normalizedAssertion))
+  ) {
+    return true;
+  }
+
+  const assertionTerms = contentWords(normalizedAssertion);
+  const reasonTerms = contentWords(normalizedReason);
+  if (assertionTerms.length < 4 || reasonTerms.length < 4) return false;
+  const assertionSet = new Set(assertionTerms);
+  const overlap = reasonTerms.filter((word) => assertionSet.has(word)).length;
+  return overlap / reasonTerms.length > 0.82;
+}
+
+function hasGenericAssertionReasonTemplate(assertion: string, reason: string) {
+  return (
+    /\bcan be understood through\s+(?:evidence|inference|reasoning|application|case reasoning|conceptual reasoning)\b/i.test(
+      assertion,
+    ) ||
+    /\bthis supports (?:the )?(?:evidence|inference|reasoning|application|case|conceptual reasoning)\s+reasoning\b/i.test(
+      reason,
+    ) ||
+    /\bsupports the inference reasoning\b/i.test(reason)
+  );
+}
+
+function assertionFromText(text: string) {
+  return text.match(/Assertion\s*\(A\)\s*:\s*([\s\S]*?)(?:\n|Reason\s*\(R\)\s*:)/i)?.[1]?.trim() ?? "";
+}
+
+function reasonFromText(text: string) {
+  return text.match(/Reason\s*\(R\)\s*:\s*([\s\S]*)/i)?.[1]?.trim() ?? "";
+}
+
+function contentWords(value: string) {
+  const stopWords = new Set([
+    "the",
+    "and",
+    "that",
+    "this",
+    "with",
+    "from",
+    "because",
+    "should",
+    "would",
+    "could",
+    "about",
+    "when",
+    "where",
+    "which",
+    "what",
+    "into",
+    "only",
+    "also",
+  ]);
+  return value
+    .split(/\s+/)
+    .filter((word) => word.length > 3 && !stopWords.has(word));
 }
 
 function hasWeakShortStem(value: string) {

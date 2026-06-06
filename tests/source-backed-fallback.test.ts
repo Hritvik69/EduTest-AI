@@ -421,6 +421,87 @@ describe("generateSourceBackedFallbackQuestions", () => {
         .join(" "),
     ).not.toMatch(/\b(?:Context|Inference|Correct use|Application|Reason)\b/i);
   });
+
+  it("diversifies Assertion-Reason answer keys in source-backed fallback", () => {
+    const assertionBlueprint: Blueprint = {
+      sections: [sectionFor("ASSERTION_REASON", 2, 1)],
+      totalQuestions: 2,
+      totalMarks: 2,
+      estimatedTime: 6,
+      competencyPercentage: 60,
+    };
+    const assertionConfig: PaperConfig = {
+      ...config,
+      questionTypes: ["ASSERTION_REASON"],
+      typeDistribution: { ASSERTION_REASON: 2 },
+      totalQuestions: 2,
+      totalMarks: 2,
+    };
+
+    const questions = generateSourceBackedFallbackQuestions(
+      assertionBlueprint.sections,
+      concepts,
+      assertionConfig,
+    );
+    const validation = validatePaperKeepingValidQuestions(
+      questions,
+      assertionBlueprint,
+      assertionConfig,
+    );
+    const answers = validation.questions.map((question) => question.correctAnswer);
+    const visibleText = studentVisibleText(validation.questions);
+
+    expect(validation.questions).toHaveLength(2);
+    expect(new Set(answers).size).toBeGreaterThan(1);
+    expect(visibleText).not.toMatch(/can be understood through|supports the .* reasoning/i);
+  });
+
+  it("diversifies Assertion-Reason answer keys in syllabus-near fallback", () => {
+    const communicationItem = {
+      subject: "Advanced Computer",
+      chapterId: 1,
+      chapterName: "Communication Skills",
+      questionCount: 4,
+    };
+    const assertionBlueprint: Blueprint = {
+      sections: [sectionFor("ASSERTION_REASON", 4, 1)],
+      totalQuestions: 4,
+      totalMarks: 4,
+      estimatedTime: 8,
+      competencyPercentage: 60,
+    };
+    const assertionConfig: PaperConfig = {
+      ...config,
+      subject: "Advanced Computer",
+      subjects: ["Advanced Computer"],
+      subjectSelections: [
+        { subject: "Advanced Computer", chapterIds: [1], topicIds: [] },
+      ],
+      questionTypes: ["ASSERTION_REASON"],
+      typeDistribution: { ASSERTION_REASON: 4 },
+      totalQuestions: 4,
+      totalMarks: 4,
+    };
+
+    const questions = generateSyllabusNearFallbackQuestions(
+      assertionBlueprint.sections,
+      communicationItem,
+      assertionConfig,
+      { concepts: [] },
+    );
+    const validation = validatePaperKeepingValidQuestions(
+      questions,
+      assertionBlueprint,
+      assertionConfig,
+    );
+    const answers = validation.questions.map((question) => question.correctAnswer);
+
+    expect(validation.questions).toHaveLength(4);
+    expect(new Set(answers).size).toBeGreaterThan(1);
+    expect(studentVisibleText(validation.questions)).not.toMatch(
+      /can be understood through|supports the .* reasoning/i,
+    );
+  });
 });
 
 function sectionFor(

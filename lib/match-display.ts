@@ -22,6 +22,33 @@ export function buildShuffledMatchAnswer(
     .join(", ");
 }
 
+export function normalizeMatchAnswerKey(
+  pairs: MatchPair[],
+  correctAnswer: string | undefined,
+  seed: string,
+) {
+  if (!pairs.length) return correctAnswer ?? "";
+  if (
+    !hasCompleteMatchAnswer(correctAnswer ?? "", pairs.length) ||
+    isIdentityMatchAnswer(correctAnswer ?? "", pairs.length)
+  ) {
+    return buildShuffledMatchAnswer(pairs, seed);
+  }
+
+  return displayedMatchColumns(pairs, correctAnswer).answerKey;
+}
+
+export function isIdentityMatchAnswer(answer: string | undefined, length: number) {
+  if (length <= 1) return false;
+  const mapping = parseMatchAnswer(answer ?? "", length);
+  if (mapping.size !== length) return false;
+
+  for (let index = 0; index < length; index += 1) {
+    if (mapping.get(index) !== index) return false;
+  }
+  return true;
+}
+
 export function displayedMatchColumns(
   pairs: MatchPair[] = [],
   correctAnswer = "",
@@ -85,6 +112,12 @@ export function displayedMatchColumns(
       })
       .join(", "),
   };
+}
+
+function hasCompleteMatchAnswer(answer: string, length: number) {
+  const mapping = parseMatchAnswer(answer, length);
+  if (mapping.size !== length) return false;
+  return new Set(mapping.values()).size === length;
 }
 
 function deterministicMatchOrder(length: number, seed: string) {

@@ -124,6 +124,8 @@ ASSERTION_REASON:
 - avoid trivial statements and directly copied textbook lines
 - reason must genuinely test conceptual understanding
 - ensure the logical relation is academically correct
+- when generating more than one Assertion-Reason item, vary correct answer keys across A/B/C/D instead of making every answer A
+- avoid generic template wording such as "This supports the inference reasoning"
 
 TRUE_FALSE:
 - statements must be precise
@@ -202,6 +204,7 @@ MATCH_FOLLOWING:
 - both columns must remain logically matchable
 - avoid ambiguity
 - relationships must be academically meaningful
+- use a shuffled answer key; for 4-pair questions, do not return A1-B1, A2-B2, A3-B3, A4-B4
 
 NCERT_FORMAT:
 - closely follow textbook exercise patterns
