@@ -58,6 +58,10 @@ describe("fresh question generation invariant", () => {
       "utf8",
     );
     const generator = readFileSync(join(root, "lib", "generator.ts"), "utf8");
+    const finalCompletion = readFileSync(
+      join(root, "lib", "final-generation-completion.ts"),
+      "utf8",
+    );
 
     expect(route).toMatch(/shouldStopForFinalization/);
     expect(route).toMatch(/partialFinalizationReason/);
@@ -70,12 +74,14 @@ describe("fresh question generation invariant", () => {
     expect(route).toMatch(/QuestionCandidateBank/);
     expect(route).toMatch(/candidateReserveCount/);
     expect(route).toMatch(/stripGenerationMetadataFromQuestions/);
-    expect(route).toMatch(/completeQuestionBankWithSourceBackedFallback/);
+    expect(route).toMatch(/completeQuestionBankWithFinalFallbacks/);
     expect(route).toMatch(/generateSourceBackedProviderOutageQuestions/);
     expect(route).toMatch(/hasSourceBackedFallbackConcepts/);
     expect(route).toMatch(/providers unavailable; generating from selected TXT\/PDF/);
-    expect(route).toMatch(/sourceBackedCompletionMarker/);
     expect(route).not.toMatch(/completeWithSourceBackedGenerationFallback/);
+    expect(finalCompletion).toMatch(/completeQuestionBankWithSourceBackedFallback/);
+    expect(finalCompletion).toMatch(/completeQuestionBankWithSyllabusNearFallback/);
+    expect(finalCompletion).toMatch(/sourceBackedCompletionMarker/);
     expect(generator).toMatch(/NCERT_BOOKS_TXT/);
     expect(generator).toMatch(/Do not copy source lines verbatim/);
     expect(generator).toMatch(/candidate_count/);
@@ -85,28 +91,25 @@ describe("fresh question generation invariant", () => {
     expect(generator).toMatch(/Validator repair feedback/);
   });
 
-  it("keeps chapter/topic-near repair before the final source-capacity failure", () => {
+  it("keeps shared final fallback completion before any validation failure", () => {
     const route = readFileSync(
       join(root, "app", "api", "generate-paper", "route.ts"),
       "utf8",
     );
 
-    const sourceRepairIndex = route.indexOf(
-      "completeQuestionBankWithSourceBackedFallback({",
+    const finalCompletionIndex = route.indexOf(
+      "completeQuestionBankWithFinalFallbacks({",
       route.indexOf("allowSourceBackedCompletion"),
     );
-    const syllabusNearIndex = route.indexOf(
-      "completeQuestionBankWithSyllabusNearFallback({",
-      sourceRepairIndex,
-    );
-    const finalCapacityThrowIndex = route.indexOf(
-      "throw sourceBackedCapacityError",
-      syllabusNearIndex,
+    const finalValidationBlockedIndex = route.indexOf(
+      "throw finalRepairValidationBlockedError",
+      finalCompletionIndex,
     );
 
-    expect(sourceRepairIndex).toBeGreaterThan(0);
-    expect(syllabusNearIndex).toBeGreaterThan(sourceRepairIndex);
-    expect(finalCapacityThrowIndex).toBeGreaterThan(syllabusNearIndex);
+    expect(finalCompletionIndex).toBeGreaterThan(0);
+    expect(route).toMatch(/requireSyllabusComposition: true/);
+    expect(finalValidationBlockedIndex).toBeGreaterThan(finalCompletionIndex);
+    expect(route).not.toMatch(/throw sourceBackedCapacityError/);
   });
 
   it("validates admin chapter PDF mutations against class and subject scope", () => {

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { defaultBloomDistribution } from "@/lib/edutest-data";
+import { completeQuestionBankWithFinalFallbacks } from "@/lib/final-generation-completion";
 import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
 import {
   analyzeSourceBackedCompletionCapacity,
@@ -1066,6 +1067,91 @@ describe("source-backed completion", () => {
     expect(visibleText).toMatch(/communication|sender|receiver|feedback/i);
     expect(visibleText).not.toMatch(
       /Unit\s+1\.indd|24-08-2018|S\s*eSSIon|evidence clue|case reasoning clue/i,
+    );
+  });
+
+  it("finishes the screenshot-shaped fragile repair mix when strict source capacity is low", () => {
+    const screenshotBlueprint: Blueprint = {
+      sections: [
+        sectionFor("MCQ", 7, 1),
+        sectionFor("SHORT", 1, 3),
+        sectionFor("MATCH_FOLLOWING", 2, 3),
+        sectionFor("COMPETENCY", 1, 4),
+        sectionFor("TRUE_FALSE", 3, 1),
+        sectionFor("ASSERTION_REASON", 3, 1),
+      ],
+      totalQuestions: 17,
+      totalMarks: 26,
+      estimatedTime: 40,
+      competencyPercentage: 70,
+    };
+    const paperConfig: PaperConfig = {
+      ...config,
+      classNum: 9,
+      subject: "Advanced Computer",
+      subjects: ["Advanced Computer"],
+      subjectSelections: [
+        { subject: "Advanced Computer", chapterIds: [1], topicIds: [] },
+      ],
+      chapterIds: [1],
+      topicIds: [],
+      totalQuestions: 17,
+      totalMarks: 26,
+      questionTypes: [
+        "MCQ",
+        "SHORT",
+        "MATCH_FOLLOWING",
+        "COMPETENCY",
+        "TRUE_FALSE",
+        "ASSERTION_REASON",
+      ],
+      typeDistribution: {
+        MCQ: 7,
+        SHORT: 1,
+        MATCH_FOLLOWING: 2,
+        COMPETENCY: 1,
+        TRUE_FALSE: 3,
+        ASSERTION_REASON: 3,
+      },
+      questionComposition: [
+        {
+          subject: "Advanced Computer",
+          chapterId: 1,
+          chapterName: "Communication Skills",
+          questionCount: 17,
+        },
+      ],
+    };
+    const bank = new QuestionCandidateBank([], screenshotBlueprint, paperConfig);
+    const strictCapacity = analyzeSourceBackedCompletionCapacity({
+      bank,
+      concepts: [noisyCommunicationConcept()],
+      config: paperConfig,
+    });
+
+    expect(strictCapacity.enough).toBe(false);
+    expect(strictCapacity.effectiveCapacity).toBeLessThan(17);
+
+    const completion = completeQuestionBankWithFinalFallbacks({
+      bank,
+      blueprint: screenshotBlueprint,
+      config: paperConfig,
+      concepts: [noisyCommunicationConcept()],
+      scope: "screenshot fragile repair regression",
+      requireSyllabusComposition: true,
+    });
+    const validation = completion.bank.result();
+    const visibleText = studentVisibleText(validation.questions);
+
+    expect(completion.readyQuestionCount).toBe(17);
+    expect(completion.missingQuestionCount).toBe(0);
+    expect(validation.questions).toHaveLength(17);
+    expect(completion.warnings.some((warning) =>
+      /syllabus-near-fallback|chapter\/topic-near/i.test(warning.reason),
+    )).toBe(true);
+    expect(visibleText).toMatch(/communication|sender|receiver|feedback/i);
+    expect(visibleText).not.toMatch(
+      /Unit\s+1\.indd|24-08-2018|S\s*eSSIon|Employability SkillS|evidence clue|case reasoning clue/i,
     );
   });
 });

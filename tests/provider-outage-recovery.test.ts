@@ -209,6 +209,10 @@ describe("provider outage source-backed recovery", () => {
     expect(route).toMatch(/canUseSourceBackedProviderRecovery/);
     expect(route).toMatch(/AI time budget is low; completing from selected TXT\/PDF source text/);
     expect(route).toMatch(/sourceBackedProviderRecoveryWarning/);
+    expect(readFileSync(
+      join(root, "lib", "provider-outage-recovery.ts"),
+      "utf8",
+    )).toMatch(/completeQuestionBankWithFinalFallbacks/);
   });
 });
 

@@ -36,6 +36,10 @@ describe("session-only paper generation wiring", () => {
       join(root, "lib", "provider-outage-recovery.ts"),
       "utf8",
     );
+    const finalCompletion = readFileSync(
+      join(root, "lib", "final-generation-completion.ts"),
+      "utf8",
+    );
 
     expect(route).toMatch(/sourceBackedProviderRecoveryMode/);
     expect(route).toMatch(/sourceBackedProviderRecoveryWarning/);
@@ -46,15 +50,20 @@ describe("session-only paper generation wiring", () => {
     expect(route).toMatch(/onProviderUnavailable/);
     expect(route).toMatch(/SOURCE_TEXT_NOT_ENOUGH/);
     expect(route).toMatch(/sourceTextNotEnoughForProviderOutage/);
-    expect(route).toMatch(/analyzeSourceBackedCompletionCapacity/);
     expect(route).toMatch(/sourceCapacityFromError/);
     expect(route).toMatch(/sourceCapacity/);
     expect(route).toMatch(/Retry starts a fresh session-only generation/);
     expect(route).toMatch(/FINAL_REPAIR_VALIDATION_BLOCKED/);
     expect(route).toMatch(/finalRepairValidationBlockedError/);
-    expect(route).toMatch(/if \(!sourceCapacity\.enough\)/);
+    expect(route).toMatch(/completeQuestionBankWithFinalFallbacks/);
+    expect(route).toMatch(/requireSyllabusComposition: true/);
+    expect(route).not.toMatch(/throw sourceBackedCapacityError/);
     expect(providerRecovery).toMatch(/source_backed_provider_outage/);
     expect(providerRecovery).toMatch(/provider-recovery/);
+    expect(providerRecovery).toMatch(/completeQuestionBankWithFinalFallbacks/);
+    expect(finalCompletion).toMatch(/analyzeSourceBackedCompletionCapacity/);
+    expect(finalCompletion).toMatch(/completeQuestionBankWithSourceBackedFallback/);
+    expect(finalCompletion).toMatch(/completeQuestionBankWithSyllabusNearFallback/);
   });
 
   it("stores generated snapshots in sessionStorage and keeps recovery UI visible", () => {

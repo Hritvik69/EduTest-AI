@@ -55,16 +55,11 @@ import {
   type PaperGenerationState,
 } from "@/lib/question-candidate-bank";
 import {
-  analyzeSourceBackedCompletionCapacity,
-  completeQuestionBankWithSourceBackedFallback,
-  completeQuestionBankWithSyllabusNearFallback,
   hasSourceBackedFallbackConcepts,
-  retargetSourceBackedCompletionForGuaranteedFinalRepair,
-  sourceBackedCapacityError,
   sourceBackedCapacityMessage,
-  sourceBackedCompletionMarker,
   type SourceBackedCapacityDiagnostics,
 } from "@/lib/source-backed-fallback";
+import { completeQuestionBankWithFinalFallbacks } from "@/lib/final-generation-completion";
 import {
   buildSourceBackedProviderRecoveryBank,
   sourceBackedProviderRecoveryMode,
@@ -2242,7 +2237,7 @@ function finalRepairValidationBlockedMessage({
     sourceCapacity.effectiveCapacity ?? sourceCapacity.availableStrictCapacity;
   const rawCapacity = sourceCapacity.rawAtomCapacity ?? sourceCapacity.availableStrictCapacity;
 
-  return `Selected source text has enough capacity (${effectiveCapacity}/${sourceCapacity.requiredMissingCount} effective from ${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}), but final repair candidates were rejected by validation. Generated ${readyCount}/${targetQuestionCount} valid questions; ${remainingMissingQuestions} still missing. Top rejection reasons: ${rejectionSummary}. Retry generation; if it repeats, reduce fragile formats or use more chapter/topic-near coverage.`;
+  return `Final completion tried strict source-backed repair and chapter/topic-near fallback, but validation still rejected the remaining candidates. Strict selected-source capacity was ${effectiveCapacity}/${sourceCapacity.requiredMissingCount} effective from ${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}. Generated ${readyCount}/${targetQuestionCount} valid questions; ${remainingMissingQuestions} still missing. Top rejection reasons: ${rejectionSummary}.`;
 }
 
 function topValidationRejectionReasons(
@@ -2356,10 +2351,6 @@ function generationFinalizationReserveMs() {
 
 function sourceBackedCompletionReserveMs() {
   return 7_500;
-}
-
-function sourceBackedCompletionDeadlineReached(deadlineAt: number) {
-  return deadlineAt - Date.now() <= sourceBackedCompletionReserveMs();
 }
 
 function shouldStopForFinalization(deadlineAt: number, readyQuestionCount: number) {
@@ -2487,9 +2478,8 @@ async function validateGeneratedPaperSkippingInvalid({
   let stoppedForServerBudget = Boolean(partialFinalizationReason);
   let lastRepairError: string | undefined;
   let sourceBackedCompletedQuestions = 0;
-  const guaranteedCompletionWarnings: Array<{ type: string; reason: string }> = [];
-  const syllabusNearCompletionWarnings: Array<{ type: string; reason: string }> =
-    [];
+  let finalCompletionSourceCapacity: SourceBackedCapacityDiagnostics | undefined;
+  const finalCompletionWarnings: Array<{ type: string; reason: string }> = [];
   const stateCreatedAt = resumeState?.createdAt ?? new Date().toISOString();
   const sourceBackedRepairRecoveryAvailable =
     allowSourceBackedCompletion && hasSourceBackedFallbackConcepts(scopedConcepts);
@@ -2653,129 +2643,46 @@ async function validateGeneratedPaperSkippingInvalid({
 
   if (
     allowSourceBackedCompletion &&
-    !stoppedForServerBudget &&
-    bank.missingCount() > 0
-  ) {
-    let sourceBackedCapacityBlocked = false;
-    const sourceCapacity = analyzeSourceBackedCompletionCapacity({
-      bank,
-      concepts: scopedConcepts,
-      config: activeConfig,
-    });
-    if (!sourceCapacity.enough) {
-      const guaranteedCompletion =
-        retargetSourceBackedCompletionForGuaranteedFinalRepair({
-          bank,
-          concepts: scopedConcepts,
-          blueprint: activeBlueprint,
-          config: activeConfig,
-          sourceCapacity,
-        });
-      if (guaranteedCompletion) {
-        bank = guaranteedCompletion.bank;
-        activeBlueprint = guaranteedCompletion.blueprint;
-        activeConfig = guaranteedCompletion.config;
-        guaranteedCompletionWarnings.push({
-          type: "source-backed-guaranteed-completion",
-          reason: guaranteedCompletion.warning,
-        });
-        await persistBank(
-          "IN_PROGRESS",
-          "REPAIR",
-          (resumeState?.attemptCount ?? 0) + 4,
-          guaranteedCompletion.warning,
-          sourceBackedCapacityMessage(sourceCapacity),
-        );
-      } else {
-        await persistBank(
-          "IN_PROGRESS",
-          "REPAIR",
-          (resumeState?.attemptCount ?? 0) + 4,
-          "Strict selected-source completion is blocked; attempting chapter/topic-near completion for the final missing slots.",
-          sourceBackedCapacityMessage(sourceCapacity),
-        );
-        sourceBackedCapacityBlocked = true;
-      }
-    }
-
-    if (bank.missingCount() > 0 && !sourceBackedCapacityBlocked) {
-      send({
-        step: 6,
-        pct: 94,
-        progress: 94,
-        msg: "Completing remaining questions from selected source text...",
-      });
-      const beforeCompletionReady = bank.readyCount();
-      const completionQuestions = completeQuestionBankWithSourceBackedFallback({
-        bank,
-        concepts: scopedConcepts,
-        config: activeConfig,
-        startIndex: bank.allCandidates().length + 101,
-        deadlineAt,
-        minRemainingMs: sourceBackedCompletionReserveMs(),
-        throwOnInsufficientCapacity: true,
-        capacityScope: "replacing invalid or duplicate questions",
-      });
-      if (
-        bank.missingCount() > 0 &&
-        sourceBackedCompletionDeadlineReached(deadlineAt)
-      ) {
-        stoppedForServerBudget = true;
-      }
-
-      sourceBackedCompletedQuestions = Math.max(
-        0,
-        bank.readyCount() - beforeCompletionReady,
-      );
-      await persistBank(
-        bank.missingCount() > 0 ? "IN_PROGRESS" : "READY",
-        "REPAIR",
-        (resumeState?.attemptCount ?? 0) + 4,
-        sourceBackedCompletedQuestions
-          ? `Accepted ${sourceBackedCompletedQuestions} selected-source completion question${sourceBackedCompletedQuestions === 1 ? "" : "s"}.`
-          : completionQuestions.length
-            ? "Selected-source completion candidates were generated but did not pass validation."
-            : "Selected source text cannot produce enough 100% distinct completion candidates.",
-        lastRepairError,
-      );
-    }
-  }
-
-  if (
     !allowDemoFallback &&
     !stoppedForServerBudget &&
     bank.missingCount() > 0
   ) {
     send({
       step: 6,
-      pct: 95,
-      progress: 95,
-      msg: "Completing final missing questions with clean chapter/topic-near coverage...",
+      pct: 94,
+      progress: 94,
+      msg: "Completing remaining questions from selected source text and chapter/topic-near coverage...",
     });
-    const beforeSyllabusNearReady = bank.readyCount();
-    const completion = completeQuestionBankWithSyllabusNearFallback({
+    const beforeFinalCompletionReady = bank.readyCount();
+    const completion = completeQuestionBankWithFinalFallbacks({
       bank,
+      blueprint: activeBlueprint,
       config: activeConfig,
       concepts: scopedConcepts,
-      startIndex: bank.allCandidates().length + 401,
+      scope: "replacing invalid or duplicate questions",
+      startIndex: bank.allCandidates().length + 101,
+      deadlineAt,
+      minRemainingMs: sourceBackedCompletionReserveMs(),
+      requireSyllabusComposition: true,
     });
-    const syllabusNearCompletedQuestions = Math.max(
+    bank = completion.bank;
+    activeBlueprint = completion.blueprint;
+    activeConfig = completion.config;
+    sourceBackedCompletedQuestions = completion.sourceBackedCompletedQuestions;
+    finalCompletionSourceCapacity = completion.sourceCapacity;
+    finalCompletionWarnings.push(...completion.warnings);
+
+    const finalCompletedQuestions = Math.max(
       0,
-      bank.readyCount() - beforeSyllabusNearReady,
-    );
-    syllabusNearCompletionWarnings.push(
-      ...completion.warnings.map((warning) => ({
-        type: warning.type,
-        reason: warning.reason,
-      })),
+      bank.readyCount() - beforeFinalCompletionReady,
     );
     await persistBank(
       bank.missingCount() > 0 ? "IN_PROGRESS" : "READY",
       "REPAIR",
       (resumeState?.attemptCount ?? 0) + 5,
-      syllabusNearCompletedQuestions
-        ? `Accepted ${syllabusNearCompletedQuestions} chapter/topic-near fallback question${syllabusNearCompletedQuestions === 1 ? "" : "s"} for weak or noisy source text.`
-        : "Chapter/topic-near fallback could not complete the remaining missing questions.",
+      finalCompletedQuestions
+        ? `Accepted ${finalCompletedQuestions} final fallback replacement question${finalCompletedQuestions === 1 ? "" : "s"}.`
+        : "Final fallback completion could not produce additional valid questions.",
       lastRepairError,
     );
   }
@@ -2784,19 +2691,7 @@ async function validateGeneratedPaperSkippingInvalid({
   const remainingMissingQuestions = bank.missingCount();
   const readyCount = bank.readyCount();
   const replacedQuestions = bank.replacedQuestions();
-  const sourceBackedCompletionWarnings = sourceBackedCompletedQuestions
-    ? [
-        {
-          type: "source-backed-completion",
-          reason: `${sourceBackedCompletionMarker}: completed ${sourceBackedCompletedQuestions} final source-backed replacement question${sourceBackedCompletedQuestions === 1 ? "" : "s"} from selected source text.`,
-        },
-      ]
-    : [];
-  const validationWarnings = [
-    ...sourceBackedCompletionWarnings,
-    ...guaranteedCompletionWarnings,
-    ...syllabusNearCompletionWarnings,
-  ];
+  const validationWarnings = finalCompletionWarnings;
 
   if (remainingMissingQuestions > 0) {
     if (stoppedForServerBudget) {
@@ -2815,33 +2710,22 @@ async function validateGeneratedPaperSkippingInvalid({
     }
 
     if (!allowDemoFallback) {
-      const sourceCapacity = analyzeSourceBackedCompletionCapacity({
-        bank,
-        concepts: scopedConcepts,
-        config: activeConfig,
-      });
       const topRejectionReasons = topValidationRejectionReasons(
         validation.rejectionReasons,
       );
       const rejectionSummary = formatTopRejectionReasons(topRejectionReasons);
+      const sourceCapacity = finalCompletionSourceCapacity;
 
-      if (!sourceCapacity.enough) {
-        const reason = `Selected source text cannot produce enough 100% distinct questions to replace ${remainingMissingQuestions} invalid or duplicate question${remainingMissingQuestions === 1 ? "" : "s"}.`;
-        const guidance = `Generated ${readyCount}/${targetQuestionCount} valid questions. Missing ${remainingMissingQuestions}. Select more chapters/topics, upload more source text, or lower the question count.`;
-        const diagnostics = `${sourceBackedCapacityMessage(sourceCapacity)} Top rejection reasons: ${rejectionSummary}.`;
+      if (!sourceCapacity) {
         await persistBank(
           "FAILED",
           "REPAIR",
           (resumeState?.attemptCount ?? 0) + 4,
           undefined,
-          `${reason} ${guidance} ${diagnostics}`,
+          `Final fallback completion did not run, and ${remainingMissingQuestions} question${remainingMissingQuestions === 1 ? "" : "s"} remain missing. Top rejection reasons: ${rejectionSummary}.`,
         );
-        throw sourceBackedCapacityError(
-          "replacing invalid or duplicate questions",
-          {
-            ...sourceCapacity,
-            requiredMissingCount: remainingMissingQuestions,
-          },
+        throw new Error(
+          `FINAL_REPAIR_VALIDATION_BLOCKED: Final fallback completion did not run. Generated ${readyCount}/${targetQuestionCount} valid questions; ${remainingMissingQuestions} still missing.`,
         );
       }
 

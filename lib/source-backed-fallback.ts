@@ -895,23 +895,31 @@ export function completeQuestionBankWithSyllabusNearFallback({
   }));
   let cursor = startIndex ?? bank.allCandidates().length + 401;
 
+  const maxCandidateWindowsPerMissingSlot = 48;
   for (const missingSection of expandMissingSections(bank.missingSections())) {
     const target = nextSyllabusDeficit(acceptedByItem) ?? acceptedByItem[0];
     if (!target) break;
 
-    const candidates = generateSyllabusNearFallbackQuestions(
-      [missingSection],
-      target.item,
-      config,
-      {
-        concepts: conceptsForSyllabusItem(concepts, target.item),
-        existingQuestions: bank.allCandidates(),
-        startIndex: cursor,
-      },
-    );
-    cursor += candidates.length + 1;
+    let accepted = false;
+    for (
+      let candidateWindow = 0;
+      candidateWindow < maxCandidateWindowsPerMissingSlot && !accepted;
+      candidateWindow += 1
+    ) {
+      const candidates = generateSyllabusNearFallbackQuestions(
+        [missingSection],
+        target.item,
+        config,
+        {
+          concepts: conceptsForSyllabusItem(concepts, target.item),
+          existingQuestions: bank.allCandidates(),
+          startIndex: cursor,
+        },
+      );
+      cursor += Math.max(1, candidates.length + 1);
+      accepted = candidates.some((candidate) => bank.tryAdd(candidate));
+    }
 
-    const accepted = candidates.some((candidate) => bank.tryAdd(candidate));
     if (accepted) {
       target.accepted += 1;
       target.added += 1;
