@@ -472,7 +472,7 @@ export function GenerationOverlay({
                 );
               }
               const syllabusNearWarning =
-                syllabusNearFallbackWarningFromDoneEvent(data);
+                successfulGenerationFallbackWarningFromDoneEvent(data);
               if (syllabusNearWarning) {
                 toast.warning(syllabusNearWarning);
               }
@@ -728,7 +728,7 @@ export function GenerationOverlay({
           </div>
         )}
         <h2 className="mt-3 text-center text-xl font-extrabold text-white sm:text-2xl">
-          {error ? "Generation Needs Attention" : "Generating Your Paper"}
+          {generationOverlayTitle(Boolean(error))}
         </h2>
           <p className="mt-1 text-center text-sm text-slate-400">
             {error
@@ -1161,7 +1161,11 @@ function providerRecoveryModeFromData(
     : null;
 }
 
-function syllabusNearFallbackWarningFromDoneEvent(
+export function generationOverlayTitle(hasBlockingError: boolean) {
+  return hasBlockingError ? "Generation Needs Attention" : "Generating Your Paper";
+}
+
+export function successfulGenerationFallbackWarningFromDoneEvent(
   data: Record<string, unknown>,
 ) {
   const candidates: unknown[] = [];
