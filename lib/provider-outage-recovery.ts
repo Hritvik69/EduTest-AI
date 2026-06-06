@@ -2,7 +2,9 @@ import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
 import {
   analyzeSourceBackedCompletionCapacity,
   completeQuestionBankWithSourceBackedFallback,
+  completeQuestionBankWithSyllabusNearFallback,
   hasSourceBackedFallbackConcepts,
+  retargetSourceBackedCompletionForGuaranteedFinalRepair,
   sourceBackedCapacityError,
   sourceBackedCapacityMessage,
   type SourceBackedCapacityDiagnostics,
@@ -22,12 +24,20 @@ export type SourceBackedProviderRecoveryMode =
 
 export type SourceBackedProviderRecoveryResult = {
   bank: QuestionCandidateBank;
+  blueprint: Blueprint;
+  config: PaperConfig;
   candidateQuestions: GeneratedQuestion[];
   generatedQuestions: GeneratedQuestion[];
+  warnings: SourceBackedProviderRecoveryWarning[];
   readyQuestionCount: number;
   targetQuestionCount: number;
   completedQuestionCount: number;
   missingQuestionCount: number;
+};
+
+export type SourceBackedProviderRecoveryWarning = {
+  type: string;
+  reason: string;
 };
 
 export function buildSourceBackedProviderRecoveryBank({
@@ -49,61 +59,136 @@ export function buildSourceBackedProviderRecoveryBank({
     throw sourceBackedProviderRecoveryError(scope, 0, blueprint.totalQuestions, concepts);
   }
 
-  const bank = new QuestionCandidateBank(existingQuestions, blueprint, config);
+  let activeBlueprint = blueprint;
+  let activeConfig = config;
+  let bank = new QuestionCandidateBank(existingQuestions, activeBlueprint, activeConfig);
   const readyBefore = bank.readyCount();
-  const capacity = analyzeSourceBackedCompletionCapacity({
+  const warnings: SourceBackedProviderRecoveryWarning[] = [];
+  const tryStrictSourceCompletion = () => {
+    const strictCapacity = analyzeSourceBackedCompletionCapacity({
+      bank,
+      concepts,
+      config: activeConfig,
+    });
+    if (!strictCapacity.enough || bank.missingCount() <= 0) return strictCapacity;
+
+    completeQuestionBankWithSourceBackedFallback({
+      bank,
+      concepts,
+      config: activeConfig,
+      startIndex: startIndex ?? bank.allCandidates().length + 101,
+      throwOnInsufficientCapacity: false,
+      capacityScope: scope,
+    });
+
+    return analyzeSourceBackedCompletionCapacity({
+      bank,
+      concepts,
+      config: activeConfig,
+    });
+  };
+  let capacity = analyzeSourceBackedCompletionCapacity({
     bank,
     concepts,
-    config,
+    config: activeConfig,
   });
+
   if (!capacity.enough) {
-    throw sourceBackedProviderRecoveryError(
-      scope,
-      bank.readyCount(),
-      blueprint.totalQuestions,
+    const retarget = retargetSourceBackedCompletionForGuaranteedFinalRepair({
+      bank,
       concepts,
-      bank.missingCount(),
-      capacity,
-    );
+      blueprint: activeBlueprint,
+      config: activeConfig,
+      sourceCapacity: capacity,
+    });
+    if (retarget) {
+      bank = retarget.bank;
+      activeBlueprint = retarget.blueprint;
+      activeConfig = retarget.config;
+      warnings.push({
+        type: "source-backed-guaranteed-completion",
+        reason: retarget.warning,
+      });
+      capacity = analyzeSourceBackedCompletionCapacity({
+        bank,
+        concepts,
+        config: activeConfig,
+      });
+    }
   }
 
-  const generatedQuestions = completeQuestionBankWithSourceBackedFallback({
-    bank,
-    concepts,
-    config,
-    startIndex: startIndex ?? bank.allCandidates().length + 101,
-    throwOnInsufficientCapacity: true,
-    capacityScope: scope,
-  });
+  if (bank.missingCount() > 0 && capacity.enough) {
+    capacity = tryStrictSourceCompletion();
+  }
+
+  if (bank.missingCount() > 0) {
+    const beforeSyllabusNear = bank.readyCount();
+    const completion = completeQuestionBankWithSyllabusNearFallback({
+      bank,
+      config: activeConfig,
+      concepts,
+      startIndex: startIndex ?? bank.allCandidates().length + 401,
+    });
+    const added = Math.max(0, bank.readyCount() - beforeSyllabusNear);
+    if (added > 0) {
+      warnings.push(
+        ...completion.warnings.map((warning) => ({
+          type: warning.type,
+          reason: warning.reason,
+        })),
+      );
+    }
+  }
+
+  if (bank.missingCount() > 0) {
+    capacity = tryStrictSourceCompletion();
+  }
+
   const readyQuestionCount = bank.readyCount();
   const missingQuestionCount = bank.missingCount();
 
   if (missingQuestionCount > 0) {
+    const finalCapacity = analyzeSourceBackedCompletionCapacity({
+      bank,
+      concepts,
+      config: activeConfig,
+    });
     throw sourceBackedProviderRecoveryError(
       scope,
       readyQuestionCount,
-      blueprint.totalQuestions,
+      activeBlueprint.totalQuestions,
       concepts,
       missingQuestionCount,
+      finalCapacity,
     );
   }
 
+  const candidateQuestions = bank.allCandidates();
+
   return {
     bank,
-    candidateQuestions: bank.allCandidates(),
-    generatedQuestions,
+    blueprint: activeBlueprint,
+    config: activeConfig,
+    candidateQuestions,
+    generatedQuestions: candidateQuestions.slice(existingQuestions.length),
+    warnings,
     readyQuestionCount,
-    targetQuestionCount: blueprint.totalQuestions,
+    targetQuestionCount: activeBlueprint.totalQuestions,
     completedQuestionCount: Math.max(0, readyQuestionCount - readyBefore),
     missingQuestionCount,
   };
 }
 
-export function sourceBackedProviderRecoveryWarning() {
+export function sourceBackedProviderRecoveryWarning(
+  details: SourceBackedProviderRecoveryWarning[] = [],
+) {
+  const detailSummary = details.length
+    ? ` ${details.map((warning) => warning.reason).join(" ")}`
+    : "";
   return {
     type: "provider-recovery",
     reason:
-      "source_backed_provider_outage: AI providers were unavailable during generation, so remaining questions were completed from selected source text.",
+      `source_backed_provider_outage: AI providers were unavailable during generation, so remaining questions were completed from selected source text.${detailSummary}`,
   };
 }
 

@@ -70,6 +70,7 @@ import {
   sourceBackedProviderRecoveryMode,
   sourceBackedProviderRecoveryWarning,
   type SourceBackedProviderRecoveryMode,
+  type SourceBackedProviderRecoveryResult,
 } from "@/lib/provider-outage-recovery";
 import { analyzeConceptSourceQuality, retrieveConcepts } from "@/lib/retriever";
 import { generationRequestSchema } from "@/lib/schemas";
@@ -238,6 +239,7 @@ export async function POST(request: NextRequest) {
       let latestProviderHealth: AIProviderHealthSnapshot | null = null;
       let healthyProviders: DirectAIProvider[] | undefined;
       let providerRecoveryMode: ProviderRecoveryMode | undefined;
+      let providerRecoveryWarnings: Array<{ type: string; reason: string }> = [];
       let activeOperation: ActiveGenerationOperation = "configuration";
       let failedOperation: ActiveGenerationOperation | null = null;
       const setActiveOperation = (operation: ActiveGenerationOperation) => {
@@ -476,7 +478,7 @@ export async function POST(request: NextRequest) {
             effectiveConfig.bloomDistribution,
           ),
         };
-        const blueprint = generateBlueprint(effectiveConfig);
+        let blueprint = generateBlueprint(effectiveConfig);
         const conceptContext = await runWithOperation("planning", () =>
           retrieveConcepts(
             scopedConcepts,
@@ -485,7 +487,7 @@ export async function POST(request: NextRequest) {
           ),
         );
         const availableTopics = conceptTopics(scopedConcepts);
-        const generationPlan = buildGenerationArchitecturePlan(
+        let generationPlan = buildGenerationArchitecturePlan(
           effectiveConfig,
           blueprint,
           scopedConcepts,
@@ -519,7 +521,7 @@ export async function POST(request: NextRequest) {
           blueprint,
           scopedConcepts,
         };
-        const sourceContextHash = generationSourceContextHash({
+        let sourceContextHash = generationSourceContextHash({
           config: effectiveConfig,
           blueprint,
           conceptContext,
@@ -662,6 +664,40 @@ export async function POST(request: NextRequest) {
         let allQuestions = resumeState?.candidateQuestions ?? [];
         let coverageDiagnostics: CoverageGenerationDiagnostic[] = [];
         let stoppedDuringCoverageGeneration = false;
+        const applyProviderRecoveryResult = (
+          recovery: SourceBackedProviderRecoveryResult,
+        ) => {
+          blueprint = recovery.blueprint;
+          effectiveConfig = recovery.config;
+          generationPlan = buildGenerationArchitecturePlan(
+            effectiveConfig,
+            blueprint,
+            scopedConcepts,
+            composition,
+          );
+          streamContractSummary = generationStreamContractSummary(
+            effectiveConfig,
+            blueprint,
+            scopedConcepts,
+            availableTopics,
+          );
+          sourceContextHash = generationSourceContextHash({
+            config: effectiveConfig,
+            blueprint,
+            conceptContext,
+            concepts: scopedConcepts,
+          });
+          localFallbackContext = {
+            effectiveConfig,
+            blueprint,
+            scopedConcepts,
+          };
+          providerRecoveryWarnings = [
+            sourceBackedProviderRecoveryWarning(recovery.warnings),
+            ...recovery.warnings,
+          ];
+          return recovery.candidateQuestions;
+        };
         const persistQuestionGenerationState = async (
           candidateQuestions: GeneratedQuestion[],
           lastMessage: string,
@@ -747,12 +783,13 @@ export async function POST(request: NextRequest) {
                 ...providerHealthPayload(),
                 ...providerRecoveryPayload(),
               });
-              allQuestions = generateSourceBackedProviderOutageQuestions({
+              const recovery = generateSourceBackedProviderOutageQuestions({
                 blueprint,
                 concepts: scopedConcepts,
                 config: effectiveConfig,
                 existingQuestions: [],
               });
+              allQuestions = applyProviderRecoveryResult(recovery);
               const savedState = await persistQuestionGenerationState(
                 allQuestions,
                 `Phase 5 prepared ${allQuestions.length}/${blueprint.totalQuestions} source-backed questions after provider preflight outage.`,
@@ -826,12 +863,13 @@ export async function POST(request: NextRequest) {
                     ...providerHealthPayload(),
                     ...providerRecoveryPayload(),
                   });
-                  allQuestions = generateSourceBackedProviderOutageQuestions({
+                  const recovery = generateSourceBackedProviderOutageQuestions({
                     blueprint,
                     concepts: scopedConcepts,
                     config: effectiveConfig,
                     existingQuestions: [],
                   });
+                  allQuestions = applyProviderRecoveryResult(recovery);
                   const savedState = await persistQuestionGenerationState(
                     allQuestions,
                     `Phase 5 prepared ${allQuestions.length}/${blueprint.totalQuestions} source-backed questions after provider outage.`,
@@ -1102,12 +1140,14 @@ export async function POST(request: NextRequest) {
           ...providerRecoveryPayload(),
         });
         const storedQuestions = validated;
-        const providerRecoveryWarnings = providerRecoveryMode
-          ? [sourceBackedProviderRecoveryWarning()]
+        const finalProviderRecoveryWarnings = providerRecoveryMode
+          ? providerRecoveryWarnings.length
+            ? providerRecoveryWarnings
+            : [sourceBackedProviderRecoveryWarning()]
           : [];
         const finalValidationWarnings = [
           ...validation.skipped,
-          ...providerRecoveryWarnings,
+          ...finalProviderRecoveryWarnings,
         ];
         const manifest = buildGenerationManifest({
           config: effectiveConfig,
@@ -1260,9 +1300,7 @@ export async function POST(request: NextRequest) {
               ...(sourceCapacity ? { sourceCapacity } : {}),
               ...rejectionReasonsPayload(error),
               ...providerHealthPayload(),
-              ...(code === "SOURCE_TEXT_NOT_ENOUGH"
-                ? {}
-                : providerRecoveryPayload()),
+              ...providerRecoveryPayload(),
               ...contractPayload(),
               status: "FAILED",
             },
@@ -1298,8 +1336,8 @@ function generateSourceBackedProviderOutageQuestions({
   concepts: ConceptData[];
   config: PaperConfig;
   existingQuestions: GeneratedQuestion[];
-}) {
-  const recovery = buildSourceBackedProviderRecoveryBank({
+}): SourceBackedProviderRecoveryResult {
+  return buildSourceBackedProviderRecoveryBank({
     blueprint,
     concepts,
     config,
@@ -1307,8 +1345,6 @@ function generateSourceBackedProviderOutageQuestions({
     scope: "this paper",
     startIndex: existingQuestions.length + 101,
   });
-
-  return recovery.candidateQuestions;
 }
 
 async function completeWithLocalGenerationFallback({

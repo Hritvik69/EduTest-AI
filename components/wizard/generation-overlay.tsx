@@ -853,7 +853,7 @@ export function GenerationOverlay({
           ) : null}
           {visibleProviderRecoveryMode === "source_backed_provider_outage" ? (
             <div className="mt-4 rounded-lg border border-emerald-300/20 bg-emerald-500/10 p-3 text-sm font-semibold leading-6 text-emerald-50">
-              Finishing from selected TXT/PDF source text because provider fallback could not complete.
+              Provider-outage recovery tried selected TXT/PDF source text for this run.
             </div>
           ) : null}
           {error.providerHealth ? (
@@ -863,7 +863,9 @@ export function GenerationOverlay({
               </div>
               <div className="mt-1 text-red-100/90">
                 {sourceTextShortage
-                  ? realSourceCapacityFailure
+                  ? visibleProviderRecoveryMode === "source_backed_provider_outage"
+                    ? "AI providers are unavailable, and local source recovery could not complete every required question. Restore provider capacity or reduce fragile formats/question count."
+                    : realSourceCapacityFailure
                     ? "Selected source effective capacity is the blocker; provider retry is not required for this run."
                     : finalRepairValidationGuidance(error.sourceCapacity)
                   : visibleProviderRecoveryMode === "source_backed_provider_outage"

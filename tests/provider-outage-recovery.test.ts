@@ -13,6 +13,7 @@ import type {
   BlueprintSection,
   ConceptData,
   PaperConfig,
+  QuestionType,
 } from "@/types";
 
 const root = process.cwd();
@@ -67,8 +68,7 @@ describe("provider outage source-backed recovery", () => {
 
   it("fails clearly when selected TXT/PDF source cannot support recovery", () => {
     const totalQuestions = 20;
-    const lowCapacityText =
-      "The selected source repeats one idea about tone and intention because one clue supports one answer.";
+    const lowCapacityText = "Tone needs context clues.";
 
     expect(() =>
       buildSourceBackedProviderRecoveryBank({
@@ -97,8 +97,75 @@ describe("provider outage source-backed recovery", () => {
         scope: "provider preflight outage",
       });
     } catch (error) {
-      expect((error as { sourceCapacity?: unknown }).sourceCapacity).toBeDefined();
+      expect(error).toBeInstanceOf(Error);
+      expect((error as Error).message).toContain("Source concepts: 0");
     }
+  });
+
+  it("completes a provider-outage paper with the screenshot fragile format mix", () => {
+    const blueprint = mixedBlueprint([
+      sectionFor("MCQ", 5, 1),
+      sectionFor("SHORT", 2, 3),
+      sectionFor("MATCH_FOLLOWING", 2, 3),
+      sectionFor("VERY_SHORT", 1, 2),
+      sectionFor("TRUE_FALSE", 3, 1),
+      sectionFor("ASSERTION_REASON", 2, 1),
+    ]);
+    const config = configForBlueprint(blueprint, {
+      difficulty: "ABSURD",
+      subjects: ["English"],
+      subject: "English",
+    });
+
+    const recovery = buildSourceBackedProviderRecoveryBank({
+      blueprint,
+      concepts: richProviderConcepts(),
+      config,
+      scope: "provider outage fragile mix",
+    });
+
+    expect(recovery.readyQuestionCount).toBe(15);
+    expect(recovery.missingQuestionCount).toBe(0);
+    expect(recovery.blueprint.totalQuestions).toBe(15);
+    expect(recovery.blueprint.totalMarks).toBe(24);
+    expect(recovery.config.totalQuestions).toBe(15);
+    expect(recovery.generatedQuestions).toHaveLength(15);
+  });
+
+  it("uses chapter/topic-near fallback when strict provider recovery capacity is too low", () => {
+    const blueprint = mixedBlueprint([
+      sectionFor("MCQ", 2, 1),
+      sectionFor("SHORT", 2, 3),
+      sectionFor("MATCH_FOLLOWING", 2, 3),
+      sectionFor("TRUE_FALSE", 2, 1),
+      sectionFor("ASSERTION_REASON", 2, 1),
+      sectionFor("VERY_SHORT", 2, 2),
+    ]);
+    const config = configForBlueprint(blueprint, {
+      subject: "Advanced Computer",
+      subjects: ["Advanced Computer"],
+      questionComposition: [
+        {
+          subject: "Advanced Computer",
+          chapterId: 1,
+          chapterName: "Communication Skills",
+          questionCount: blueprint.totalQuestions,
+        },
+      ],
+    });
+
+    const recovery = buildSourceBackedProviderRecoveryBank({
+      blueprint,
+      concepts: [lowCapacityCommunicationConcept()],
+      config,
+      scope: "provider outage low strict capacity",
+    });
+
+    expect(recovery.readyQuestionCount).toBe(12);
+    expect(recovery.missingQuestionCount).toBe(0);
+    expect(recovery.warnings.some((warning) =>
+      /syllabus-near-fallback|chapter\/topic-near/i.test(warning.reason),
+    )).toBe(true);
   });
 
   it("puts provider recovery into the final manifest warnings", () => {
@@ -161,12 +228,58 @@ function blueprintForCount(count: number): Blueprint {
   };
 }
 
+function mixedBlueprint(sections: BlueprintSection[]): Blueprint {
+  return {
+    sections,
+    totalQuestions: sections.reduce((sum, section) => sum + section.count, 0),
+    totalMarks: sections.reduce((sum, section) => sum + section.totalMarks, 0),
+    estimatedTime: sections.reduce((sum, section) => sum + section.count * 2, 0),
+    competencyPercentage: 60,
+  };
+}
+
+function sectionFor(
+  questionType: QuestionType,
+  count: number,
+  marksPerQuestion: number,
+): BlueprintSection {
+  return {
+    ...mcqSection,
+    name: `Section ${questionType}`,
+    questionType,
+    count,
+    marksPerQuestion,
+    totalMarks: count * marksPerQuestion,
+  };
+}
+
 function configForCount(count: number): PaperConfig {
   return {
     ...baseConfig,
     totalQuestions: count,
     totalMarks: count,
     typeDistribution: { MCQ: count },
+  };
+}
+
+function configForBlueprint(
+  blueprint: Blueprint,
+  overrides: Partial<PaperConfig> = {},
+): PaperConfig {
+  const typeDistribution = blueprint.sections.reduce<
+    Partial<Record<QuestionType, number>>
+  >((items, section) => {
+    items[section.questionType] = section.count;
+    return items;
+  }, {});
+
+  return {
+    ...baseConfig,
+    ...overrides,
+    totalQuestions: blueprint.totalQuestions,
+    totalMarks: blueprint.totalMarks,
+    questionTypes: blueprint.sections.map((section) => section.questionType),
+    typeDistribution,
   };
 }
 
@@ -183,6 +296,28 @@ function concept(topicId: number, topicName: string, text: string): ConceptData 
     chapterId: 1,
     topicId,
     source: "ncert_txt",
+  };
+}
+
+function richProviderConcepts(): ConceptData[] {
+  return Array.from({ length: 16 }, (_, index) =>
+    concept(
+      100 + index,
+      `Provider recovery clue ${index + 1}`,
+      `The selected source explains dialogue recovery clue ${index + 1}: careful reading connects word choice, context, speaker intention, evidence, and feedback so a learner can infer meaning, compare alternatives, avoid unsupported guesses, and justify an answer with a clear classroom reason.`,
+    ),
+  );
+}
+
+function lowCapacityCommunicationConcept(): ConceptData {
+  return {
+    ...concepts[0],
+    subject: "Advanced Computer",
+    classNum: 9,
+    chapterName: "Communication Skills",
+    topicName: "Communication Skills",
+    text:
+      "Communication needs a sender, receiver, message, and feedback so students can check whether meaning is understood in class.",
   };
 }
 
