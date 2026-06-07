@@ -603,7 +603,7 @@ export function GenerationOverlay({
           return;
         }
         setResumePaperId(recoverable ? recoverablePaperId : null);
-        setError({
+        const nextError = {
           message,
           code,
           paperId: recoverablePaperId ?? undefined,
@@ -615,8 +615,9 @@ export function GenerationOverlay({
           failureSource,
           errorClass,
           ...continuation,
-        });
-        toast.error(message);
+        };
+        setError(nextError);
+        toast.error(compactGenerationToastMessage(nextError));
       } finally {
         window.clearTimeout(slowTimer);
         window.clearTimeout(hardTimer);
@@ -660,6 +661,18 @@ export function GenerationOverlay({
     setRetryNonce((value) => value + 1);
   }
 
+  function tryAgainWithNewQuestions() {
+    safeSessionRemove(`edutest:generation:${idempotencyKey}`);
+    setSalvageInvalidQuestions(true);
+    autoContinueAttempts.current = 0;
+    zeroProgressAutoContinueAttempts.current = 0;
+    clearAutoContinueTimer(autoContinueTimer);
+    setResumePaperId(null);
+    setCurrentMessage("Trying again with a fresh AI question set...");
+    started.current = false;
+    setRetryNonce((value) => value + 1);
+  }
+
   function retryWithAutoFallback() {
     safeSessionRemove(`edutest:generation:${idempotencyKey}`);
     setSalvageInvalidQuestions(true);
@@ -694,13 +707,19 @@ export function GenerationOverlay({
     !realSourceCapacityFailure &&
     !finalRepairValidationBlocked &&
     isQuestionOutputError(error);
-  const canRetry = !realSourceCapacityFailure;
+  const shouldFreshQuestionRetry = shouldOfferFreshQuestionRetry(error);
+  const canRetry = !realSourceCapacityFailure || shouldFreshQuestionRetry;
   const timing = generationTimingSnapshot(progress, generationStartedAt, generationNow);
   const displayedContract = streamContract ?? clientContract;
   const visibleProviderRecoveryMode =
     sourceTextShortage || finalRepairValidationBlocked
       ? null
       : error?.providerRecoveryMode ?? providerRecoveryMode;
+  const canRetryAutoFallback =
+    !realSourceCapacityFailure &&
+    visibleProviderRecoveryMode !== "source_backed_provider_outage" &&
+    provider !== "AUTO" &&
+    canRetry;
   const errorGuidance =
     finalRepairValidationBlocked
       ? finalRepairValidationGuidance(error?.sourceCapacity)
@@ -866,7 +885,7 @@ export function GenerationOverlay({
                   ? visibleProviderRecoveryMode === "source_backed_provider_outage"
                     ? "AI providers are unavailable, and local source recovery could not complete every required question. Restore provider capacity or reduce fragile formats/question count."
                     : realSourceCapacityFailure
-                    ? "Selected source effective capacity is the blocker; provider retry is not required for this run."
+                    ? "Final replacement capacity is the blocker. Try Again With New Questions starts a fresh AI set; if it repeats, add source text or lower the question count."
                     : finalRepairValidationGuidance(error.sourceCapacity)
                   : visibleProviderRecoveryMode === "source_backed_provider_outage"
                   ? "Finishing from selected source text; provider retry is not required for this run."
@@ -900,7 +919,7 @@ export function GenerationOverlay({
                 Open Dashboard
               </Button>
             ) : null}
-            {visibleProviderRecoveryMode !== "source_backed_provider_outage" && provider !== "AUTO" && canRetry ? (
+            {canRetryAutoFallback ? (
               <Button
                 type="button"
                 className="flex-1 sm:col-span-2"
@@ -922,9 +941,13 @@ export function GenerationOverlay({
               </Button>
             ) : null}
             {canRetry ? (
-              <Button type="button" className="flex-1" onClick={retry}>
+              <Button
+                type="button"
+                className={cn("flex-1", shouldFreshQuestionRetry && "sm:col-span-2")}
+                onClick={shouldFreshQuestionRetry ? tryAgainWithNewQuestions : retry}
+              >
                 <RefreshCw className="h-4 w-4" />
-                Retry
+                {shouldFreshQuestionRetry ? "Try Again With New Questions" : "Retry"}
               </Button>
             ) : null}
           </div>
@@ -1360,7 +1383,7 @@ function getErrorProviderHealth(error: unknown) {
   return isPublicProviderHealthSnapshot(providerHealth) ? providerHealth : undefined;
 }
 
-function getErrorProviderRecoveryMode(error: unknown) {
+function getErrorProviderRecoveryMode(error: unknown): ProviderRecoveryMode | undefined {
   if (!error || typeof error !== "object" || !("providerRecoveryMode" in error)) {
     return undefined;
   }
@@ -1604,6 +1627,43 @@ function isRealSourceCapacityFailure(
   return effectiveCapacity < capacity.requiredMissingCount;
 }
 
+export function shouldOfferFreshQuestionRetry(
+  error:
+    | {
+        message?: string;
+        code?: string | number;
+        sourceCapacity?: SourceCapacityDiagnostics;
+      }
+    | null,
+) {
+  if (!error) return false;
+  if (isFinalRepairValidationBlockedError(error)) return true;
+  return isSourceTextShortageError(error) && Boolean(error.sourceCapacity);
+}
+
+export function compactGenerationToastMessage(error: {
+  message: string;
+  code?: string | number;
+  sourceCapacity?: SourceCapacityDiagnostics;
+}) {
+  if (shouldOfferFreshQuestionRetry(error) && error.sourceCapacity) {
+    const effectiveCapacity =
+      error.sourceCapacity.effectiveCapacity ??
+      error.sourceCapacity.availableStrictCapacity;
+    return `Generation needs attention: ${effectiveCapacity}/${error.sourceCapacity.requiredMissingCount} strict replacements available. Try again with new questions.`;
+  }
+
+  if (isFinalRepairValidationBlockedError(error)) {
+    return "Generation needs attention: final repair candidates were rejected. Try again with new questions.";
+  }
+
+  const message = generationDisplayErrorMessage(
+    error,
+    isSourceTextShortageError(error),
+  );
+  return message.length > 180 ? `${message.slice(0, 177)}...` : message;
+}
+
 function generationDisplayErrorMessage(
   error: {
     message: string;
@@ -1644,13 +1704,13 @@ function finalRepairValidationGuidance(
 
 function sourceCapacityGuidance(capacity: SourceCapacityDiagnostics | undefined) {
   if (!capacity) {
-    return "Selected TXT/PDF source text does not have enough distinct material for the requested replacements. Select more chapters/topics, upload more source text, or lower the question count.";
+    return "Selected TXT/PDF source text does not have enough distinct material for the requested replacements. Try one fresh AI generation; if it repeats, select more chapters/topics, upload more source text, or lower the question count.";
   }
   const effectiveCapacity =
     capacity.effectiveCapacity ?? capacity.availableStrictCapacity;
   const rawCapacity = capacity.rawAtomCapacity ?? capacity.availableStrictCapacity;
 
-  return `Selected TXT/PDF source text has effective capacity for ${effectiveCapacity}/${capacity.requiredMissingCount} missing replacement question${capacity.requiredMissingCount === 1 ? "" : "s"} (${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}). Select more chapters/topics, upload more source text, or lower the question count.`;
+  return `Selected TXT/PDF source text has effective capacity for ${effectiveCapacity}/${capacity.requiredMissingCount} missing replacement question${capacity.requiredMissingCount === 1 ? "" : "s"} (${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}). Try one fresh AI generation; if it repeats, select more chapters/topics, upload more source text, or lower the question count.`;
 }
 
 function sourceCapacityTypeSummary(capacity: SourceCapacityDiagnostics) {

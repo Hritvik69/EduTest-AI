@@ -13,7 +13,9 @@ vi.mock("sonner", () => ({
 }));
 
 import {
+  compactGenerationToastMessage,
   generationOverlayTitle,
+  shouldOfferFreshQuestionRetry,
   successfulGenerationFallbackWarningFromDoneEvent,
 } from "@/components/wizard/generation-overlay";
 
@@ -47,5 +49,29 @@ describe("generation overlay completion fallback UI", () => {
     expect(successfulGenerationFallbackWarningFromDoneEvent(donePayload)).toMatch(
       /chapter\/topic-near coverage/i,
     );
+  });
+
+  it("offers a fresh-question retry for strict replacement capacity failures", () => {
+    const error = {
+      code: "SOURCE_TEXT_NOT_ENOUGH",
+      message:
+        "Selected source text cannot produce enough 100% distinct questions for replacing invalid or duplicate questions. MCQ skipped 300 format-invalid candidates.",
+      sourceCapacity: {
+        requiredMissingCount: 13,
+        rawAtomCapacity: 13,
+        effectiveCapacity: 3,
+        availableStrictCapacity: 3,
+        sourceConceptCount: 8,
+        atomCount: 89,
+        consumedAtomTypeKeys: 12,
+        enough: false,
+      },
+    };
+
+    expect(shouldOfferFreshQuestionRetry(error)).toBe(true);
+    expect(compactGenerationToastMessage(error)).toBe(
+      "Generation needs attention: 3/13 strict replacements available. Try again with new questions.",
+    );
+    expect(compactGenerationToastMessage(error)).not.toMatch(/MCQ skipped 300/i);
   });
 });
