@@ -762,6 +762,24 @@ export function GenerationOverlay({
             </p>
           ) : null}
 
+        {error && canRetry ? (
+          <div className="mt-4 rounded-lg border border-emerald-300/25 bg-emerald-500/10 p-3">
+            <Button
+              type="button"
+              className="w-full"
+              onClick={shouldFreshQuestionRetry ? tryAgainWithNewQuestions : retry}
+            >
+              <RefreshCw className="h-4 w-4" />
+              {shouldFreshQuestionRetry ? "Try Again With New Questions" : "Retry Generation"}
+            </Button>
+            <p className="mt-2 text-center text-xs leading-5 text-emerald-50/90">
+              {shouldFreshQuestionRetry
+                ? "Starts a new AI attempt with a fresh candidate pool instead of resuming this failed replacement set."
+                : "Restarts generation with the current configuration."}
+            </p>
+          </div>
+        ) : null}
+
         <div className="mt-4 rounded-lg border border-white/10 bg-white/[0.035] p-3 text-sm">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
             <span className="font-semibold text-slate-100">

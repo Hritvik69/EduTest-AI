@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock("next/navigation", () => ({
@@ -20,6 +22,20 @@ import {
 } from "@/components/wizard/generation-overlay";
 
 describe("generation overlay completion fallback UI", () => {
+  it("keeps the fresh retry action above engine diagnostics", () => {
+    const overlay = readFileSync(
+      join(process.cwd(), "components", "wizard", "generation-overlay.tsx"),
+      "utf8",
+    );
+    const topActionIndex = overlay.indexOf(
+      "Starts a new AI attempt with a fresh candidate pool",
+    );
+    const engineDiagnosticsIndex = overlay.indexOf("Engine: {providerLabel(provider)}");
+
+    expect(topActionIndex).toBeGreaterThan(0);
+    expect(engineDiagnosticsIndex).toBeGreaterThan(topActionIndex);
+  });
+
   it("treats low strict source capacity as a success warning when final fallback completes", () => {
     const donePayload = {
       paperId: "session-123",
