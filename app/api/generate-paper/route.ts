@@ -50,11 +50,12 @@ import {
 import {
   blueprintForSections,
   QuestionCandidateBank,
-  repairCandidateReserveCount,
+  repairCandidateReserveByType,
   stripGenerationMetadataFromQuestions,
   type PaperGenerationState,
 } from "@/lib/question-candidate-bank";
 import {
+  analyzeSourceBackedCompletionCapacity,
   hasSourceBackedFallbackConcepts,
   sourceBackedCapacityMessage,
   type SourceBackedCapacityDiagnostics,
@@ -511,6 +512,22 @@ export async function POST(request: NextRequest) {
           msg: "Phase 3 - Question Planning: building blueprint, S/C/T split, and question intelligence.",
           ...contractPayload(),
         });
+        const sourceCapacityRisk = qualityFirstSourceCapacityRisk({
+          blueprint,
+          config: effectiveConfig,
+          concepts: scopedConcepts,
+        });
+        if (sourceCapacityRisk) {
+          send({
+            step: 3,
+            pct: 28,
+            progress: 28,
+            msg: sourceCapacityRisk.message,
+            sourceCapacity: sourceCapacityRisk.sourceCapacity,
+            sourceCapacityRisk: true,
+            ...contractPayload(),
+          });
+        }
         localFallbackContext = {
           effectiveConfig,
           blueprint,
@@ -2077,6 +2094,52 @@ function isFinalRepairValidationBlockedError(error: unknown) {
   );
 }
 
+function qualityFirstSourceCapacityRisk({
+  blueprint,
+  config,
+  concepts,
+}: {
+  blueprint: Blueprint;
+  config: PaperConfig;
+  concepts: ConceptData[];
+}): { message: string; sourceCapacity: SourceBackedCapacityDiagnostics } | null {
+  if (!hasSourceBackedFallbackConcepts(concepts)) return null;
+
+  const sourceCapacity = analyzeSourceBackedCompletionCapacity({
+    bank: new QuestionCandidateBank([], blueprint, config),
+    concepts,
+    config,
+  });
+  const riskyTypes = Object.entries(sourceCapacity.byType ?? {}).filter(
+    ([type, item]) =>
+      fragileGenerationQuestionTypes.has(type as QuestionType) &&
+      (item.effectiveAvailable ?? item.available) < item.required,
+  );
+  if (!riskyTypes.length) return null;
+
+  const typeSummary = riskyTypes
+    .map(([type, item]) => {
+      const effective = item.effectiveAvailable ?? item.available;
+      return `${type} ${effective}/${item.required}`;
+    })
+    .join(", ");
+
+  return {
+    sourceCapacity,
+    message: `Source capacity risk: ${typeSummary}. Quality-first reserve is active and the requested mix will be preserved; if this repeats, add source text or lower fragile format counts.`,
+  };
+}
+
+const fragileGenerationQuestionTypes = new Set<QuestionType>([
+  "MCQ",
+  "TRUE_FALSE",
+  "MATCH_FOLLOWING",
+  "ASSERTION_REASON",
+  "SHORT",
+  "FILL_BLANK",
+  "ONE_WORD",
+]);
+
 function sourceCapacityFromError(error: unknown) {
   if (!error || typeof error !== "object" || !("sourceCapacity" in error)) {
     return undefined;
@@ -2566,7 +2629,7 @@ async function validateGeneratedPaperSkippingInvalid({
           {
             availableTopics,
             allowPartial: true,
-            candidateReserveCount: repairCandidateReserveCount(missingCount),
+            candidateReserveByType: repairCandidateReserveByType(missingSections),
             existingQuestions: bank.allCandidates(),
             generationPlan,
             generationNonce: `${generationNonce}:repair:${repairAttempt}`,

@@ -284,6 +284,39 @@ export function repairCandidateReserveCount(missingCount: number) {
   return Math.min(8, Math.max(4, Math.ceil(missingCount * 1.5)));
 }
 
+export function repairCandidateReserveByType(
+  missingSections: BlueprintSection[],
+): Partial<Record<QuestionType, number>> {
+  return missingSections.reduce<Partial<Record<QuestionType, number>>>(
+    (reserves, section) => {
+      const reserve = fragileRepairQuestionTypes.has(section.questionType)
+        ? clampReserve(Math.ceil(section.count * 3), 6, 18)
+        : clampReserve(Math.ceil(section.count * 1.5), 3, 10);
+      reserves[section.questionType] = Math.max(
+        reserves[section.questionType] ?? 0,
+        reserve,
+      );
+      return reserves;
+    },
+    {},
+  );
+}
+
+const fragileRepairQuestionTypes = new Set<QuestionType>([
+  "MCQ",
+  "TRUE_FALSE",
+  "MATCH_FOLLOWING",
+  "ASSERTION_REASON",
+  "SHORT",
+  "FILL_BLANK",
+  "ONE_WORD",
+]);
+
+function clampReserve(value: number, minimum: number, maximum: number) {
+  if (!Number.isFinite(value)) return minimum;
+  return Math.max(minimum, Math.min(maximum, Math.floor(value)));
+}
+
 export function stripGenerationMetadataFromQuestions(
   questions: GeneratedQuestion[],
 ) {

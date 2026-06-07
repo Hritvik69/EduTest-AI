@@ -72,7 +72,11 @@ describe("fresh question generation invariant", () => {
     expect(route).toMatch(/generateBlueprintQuestions/);
     expect(route).toMatch(/repairAttempt <= 3/);
     expect(route).toMatch(/QuestionCandidateBank/);
-    expect(route).toMatch(/candidateReserveCount/);
+    expect(route).toMatch(/repairCandidateReserveByType/);
+    expect(route).toMatch(/candidateReserveByType/);
+    expect(route).toMatch(/qualityFirstSourceCapacityRisk/);
+    expect(route).toMatch(/sourceCapacityRisk: true/);
+    expect(route).toMatch(/Quality-first reserve is active/);
     expect(route).toMatch(/stripGenerationMetadataFromQuestions/);
     expect(route).toMatch(/completeQuestionBankWithFinalFallbacks/);
     expect(route).toMatch(/generateSourceBackedProviderOutageQuestions/);

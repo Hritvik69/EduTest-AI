@@ -68,6 +68,7 @@ interface GenerateBlueprintOptions {
   allowPartial?: boolean;
   availableTopics?: string[];
   candidateReserveCount?: number;
+  candidateReserveByType?: Partial<Record<QuestionType, number>>;
   existingQuestions?: GeneratedQuestion[];
   generationPlan?: GenerationArchitecturePlan;
   generationNonce?: string;
@@ -195,7 +196,10 @@ export async function generateBlueprintQuestions(
     (_section, index) => requiredDifficultyAllocation[index],
   );
   const candidateSections = blueprint.sections.map((section) =>
-    sectionWithCandidateReserve(section, options.candidateReserveCount),
+    sectionWithCandidateReserve(
+      section,
+      candidateReserveForSection(section, options),
+    ),
   );
   const candidateBlueprint = blueprintForCandidateSections(blueprint, candidateSections);
   const candidateDifficultyAllocation = allocateDifficultyTargetsForSections(
@@ -324,15 +328,7 @@ export async function generateBlueprintQuestions(
   return acceptedQuestions;
 }
 
-function sectionWithCandidateReserve(
-  section: BlueprintSection,
-  reserveOverride?: number,
-): BlueprintSection {
-  const reserve =
-    reserveOverride === undefined
-      ? defaultCandidateReserve(section)
-      : Math.max(0, Math.min(10, Math.floor(reserveOverride)));
-
+function sectionWithCandidateReserve(section: BlueprintSection, reserve: number): BlueprintSection {
   return {
     ...section,
     count: section.count + reserve,
@@ -340,28 +336,59 @@ function sectionWithCandidateReserve(
   };
 }
 
-function defaultCandidateReserve(section: BlueprintSection) {
+function candidateReserveForSection(
+  section: BlueprintSection,
+  options: Pick<
+    GenerateBlueprintOptions,
+    "candidateReserveByType" | "candidateReserveCount"
+  >,
+) {
+  const typeReserve = options.candidateReserveByType?.[section.questionType];
+  if (typeReserve !== undefined) return clampReserve(typeReserve, 0, 18);
+  if (options.candidateReserveCount !== undefined) {
+    return clampReserve(options.candidateReserveCount, 0, 10);
+  }
+  return qualityFirstCandidateReserve(section);
+}
+
+export function qualityFirstCandidateReserve(section: BlueprintSection) {
   if (section.count <= 0) return 0;
 
-  const heavyQuestionTypes = new Set<QuestionType>([
-    "CASE_BASED",
-    "SOURCE_BASED",
-    "PARAGRAPH",
-    "LONG",
-    "DIAGRAM",
-  ]);
-  if (section.count >= 8) {
-    const maximumReserve = heavyQuestionTypes.has(section.questionType) ? 4 : 12;
-    return Math.min(maximumReserve, Math.ceil(section.count * 0.5));
+  if (fragileQuestionTypes.has(section.questionType)) {
+    return clampReserve(Math.ceil(section.count * 1.5), 5, 12);
   }
 
-  const maximumReserve = heavyQuestionTypes.has(section.questionType) ? 2 : 6;
-  const minimumReserve = section.count === 1 ? 1 : 2;
+  if (heavyQuestionTypes.has(section.questionType)) {
+    return clampReserve(Math.ceil(section.count * 0.5), 1, 4);
+  }
 
-  return Math.min(
-    maximumReserve,
-    Math.max(minimumReserve, Math.ceil(section.count * 0.35)),
-  );
+  return clampReserve(Math.ceil(section.count), 2, 8);
+}
+
+const fragileQuestionTypes = new Set<QuestionType>([
+  "MCQ",
+  "TRUE_FALSE",
+  "MATCH_FOLLOWING",
+  "ASSERTION_REASON",
+  "SHORT",
+  "FILL_BLANK",
+  "ONE_WORD",
+]);
+
+const heavyQuestionTypes = new Set<QuestionType>([
+  "CASE_BASED",
+  "SOURCE_BASED",
+  "PARAGRAPH",
+  "LONG",
+  "DIAGRAM",
+  "PRACTICAL",
+  "HOTS",
+  "COMPETENCY",
+]);
+
+function clampReserve(value: number, minimum: number, maximum: number) {
+  if (!Number.isFinite(value)) return minimum;
+  return Math.max(minimum, Math.min(maximum, Math.floor(value)));
 }
 
 function blueprintForCandidateSections(
@@ -716,6 +743,7 @@ ${generationModeRules}
 - Self-check count, marks, structure, topic balance, duplicates, answer clarity, and format.
 ${antiRepeatRules}
 ${coverageFocusRules}
+${buildCandidateDiversityContract()}
 ${buildStudentFacingQualityContract()}
 `;
 
@@ -932,10 +960,27 @@ ${buildGenerationModePromptRules(config)}
 - Include proper structure for MCQ options, assertion/reason, match pairs, case/source/paragraph scenarios, subQuestions, diagrams, and keyPoints where the type requires them.
 - Avoid duplicates and avoid repeated concept angles, answer paths, examples, option patterns, case/source scenarios, and sub-question structures.
 - noveltyAngle must name the distinct concept angle being tested; sourceChunkFocus must name the exact selected TXT idea used; answerPath must summarize the reasoning/answer path and must differ across candidates.
+${buildCandidateDiversityContract()}
 ${buildStudentFacingQualityContract()}
 
 Return ONLY valid JSON:
 { "questions": [ ...all questions... ] }`;
+}
+
+function buildCandidateDiversityContract() {
+  return `
+CANDIDATE DIVERSITY CONTRACT
+
+candidate_count is an extra unique candidate pool. It does not mean repeated versions of the same required question.
+Every candidate must use a different concept angle, source focus, scenario/example, answer path, and option/answer pattern.
+Do not reuse the same source atom/type key for multiple candidates unless the question tests a clearly different academic idea.
+Avoid weak labels and raw planning labels such as Evidence, Inference, Conclusion, Correct use, Chapter idea, Question focus, source detail, phrase window, or focused point.
+For MCQ, spread correct options across A/B/C/D when count permits; do not make all correct answers the same letter.
+For TRUE_FALSE, use both True and False when count permits; false statements must be plausible misconceptions, not obvious negations.
+For ASSERTION_REASON, vary A/B/C/D correctAnswer values when count permits; avoid making every answer A.
+For MATCH_FOLLOWING, use real subject pairs and avoid identity keys such as A1-B1, A2-B2, A3-B3, A4-B4.
+Before returning JSON, replace any candidate that is a duplicate, weak format, repeated source atom, identity match, raw template, or answer-pattern imbalance.
+`;
 }
 
 function buildStudentFacingQualityContract() {
@@ -1057,6 +1102,8 @@ ${duplicateGroups}
 Repair requirements:
 - Replace the rejected/duplicate items with genuinely new source-grounded questions.
 - Use a different noveltyAngle, sourceChunkFocus, scenario/example, answerPath, and option pattern from every rejected item.
+- Explicitly avoid the validation failure patterns above: weak labels, identity match keys, repeated source atoms, raw template text, answer-key imbalance, format-invalid stems, and near-duplicate phrasing.
+- If a source atom already failed for one type, choose a different source focus or a different academic angle before returning a replacement.
 - Do not copy a failed question and change only wording.
 `;
 }

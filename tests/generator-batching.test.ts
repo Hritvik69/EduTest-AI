@@ -677,8 +677,101 @@ describe("generateQuestionsForSection batching", () => {
     expect(promptConfig.total_candidate_questions).toBeGreaterThan(16);
     expect(promptConfig.sections?.[0]).toMatchObject({
       required_count: 16,
-      candidate_count: 24,
+      candidate_count: 28,
     });
+  });
+
+  it("uses quality-first candidate reserves for fragile screenshot-shaped papers", async () => {
+    mocks.generateJSON.mockResolvedValue({
+      questions: [mcq(31)],
+    });
+    const { generateBlueprintQuestions } = await import("@/lib/generator");
+
+    await generateBlueprintQuestions(
+      {
+        totalQuestions: 13,
+        totalMarks: 13,
+        estimatedTime: 26,
+        competencyPercentage: 60,
+        sections: [
+          { ...section, questionType: "MCQ", count: 5, totalMarks: 5 },
+          { ...section, questionType: "SHORT", count: 2, totalMarks: 2 },
+          { ...section, questionType: "MATCH_FOLLOWING", count: 2, totalMarks: 2 },
+          { ...section, questionType: "ASSERTION_REASON", count: 2, totalMarks: 2 },
+          { ...section, questionType: "TRUE_FALSE", count: 2, totalMarks: 2 },
+        ],
+      },
+      "[Source: ncert_txt] [Chapter: 1] [Topic: Acids] The selected TXT explains acid indicators, reactions, observations, and common misconceptions.",
+      {
+        ...config,
+        totalQuestions: 13,
+        totalMarks: 13,
+        questionTypes: [
+          "MCQ",
+          "SHORT",
+          "MATCH_FOLLOWING",
+          "ASSERTION_REASON",
+          "TRUE_FALSE",
+        ],
+        typeDistribution: {
+          MCQ: 5,
+          SHORT: 2,
+          MATCH_FOLLOWING: 2,
+          ASSERTION_REASON: 2,
+          TRUE_FALSE: 2,
+        },
+      },
+      { availableTopics: ["Acids"], allowPartial: true },
+    );
+
+    const prompt = String(mocks.generateJSON.mock.calls[0][0]);
+    const promptConfig = extractPromptConfig(prompt);
+    const sections = (promptConfig.sections ?? []) as Array<{
+      type: string;
+      candidate_count: number;
+    }>;
+    const candidateCounts = Object.fromEntries(
+      sections.map((item) => [item.type, item.candidate_count]),
+    );
+
+    expect(candidateCounts).toMatchObject({
+      MCQ: 13,
+      SHORT: 7,
+      MATCH_FOLLOWING: 7,
+      ASSERTION_REASON: 7,
+      TRUE_FALSE: 7,
+    });
+    expect(promptConfig.total_candidate_questions).toBe(41);
+    expect(prompt).toContain("CANDIDATE DIVERSITY CONTRACT");
+    expect(prompt).toContain(
+      "candidate_count is an extra unique candidate pool",
+    );
+    expect(prompt).toContain("identity keys such as A1-B1");
+    expect(prompt).toContain("answer-pattern imbalance");
+  });
+
+  it("uses stronger per-type reserves for fragile repair sections", async () => {
+    const { repairCandidateReserveByType } = await import(
+      "@/lib/question-candidate-bank"
+    );
+
+    const reserves = repairCandidateReserveByType([
+      { ...section, questionType: "MCQ", count: 5, totalMarks: 5 },
+      { ...section, questionType: "SHORT", count: 2, totalMarks: 2 },
+      { ...section, questionType: "MATCH_FOLLOWING", count: 2, totalMarks: 2 },
+      { ...section, questionType: "ASSERTION_REASON", count: 2, totalMarks: 2 },
+      { ...section, questionType: "TRUE_FALSE", count: 2, totalMarks: 2 },
+    ]);
+
+    expect(reserves).toMatchObject({
+      MCQ: 15,
+      SHORT: 6,
+      MATCH_FOLLOWING: 6,
+      ASSERTION_REASON: 6,
+      TRUE_FALSE: 6,
+    });
+    expect(reserves.MCQ).toBeGreaterThan(8);
+    expect(reserves.SHORT).toBeGreaterThan(5);
   });
 
   it("fills an 18-question request when one required candidate is duplicate and a reserve candidate is unique", async () => {
@@ -788,6 +881,9 @@ describe("generateQuestionsForSection batching", () => {
     );
     expect(prompt).toContain(
       "noveltyAngle, sourceChunkFocus, answerPath",
+    );
+    expect(prompt).toContain(
+      "weak labels, identity match keys, repeated source atoms",
     );
   });
 });
