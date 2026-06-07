@@ -137,7 +137,7 @@ function deterministicMatchOrder(length: number, seed: string) {
 
 function parseMatchAnswer(answer: string, length: number) {
   const mapping = new Map<number, number>();
-  const pattern = /A\s*(\d+)\s*[-:=]\s*B\s*(\d+)/gi;
+  const pattern = /A\s*(\d+)\s*(?:-|:|=)\s*B\s*(\d+)/gi;
   let match: RegExpExecArray | null;
   while ((match = pattern.exec(answer)) !== null) {
     const pairIndex = Number(match[1]) - 1;
