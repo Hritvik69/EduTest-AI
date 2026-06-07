@@ -1817,7 +1817,7 @@ function baseQuestion(
   switch (type) {
     case "MCQ":
       return {
-        text: mcqQuestionText(skill, summary, placementIndex),
+        text: mcqQuestionText(skill, summary, placementIndex, concept),
         options: shuffledMcq.options,
         correctAnswer: shuffledMcq.correctAnswer,
       };
@@ -1826,15 +1826,9 @@ function baseQuestion(
     case "TRUE_FALSE":
       return trueFalseQuestion(concept, summary, skill, placementIndex);
     case "ONE_WORD":
-      return {
-        text: `Which key term best fits this statement: ${summary}`,
-        correctAnswer: oneWordAnswer(summary),
-      };
+      return buildOneWordQuestion(summary, concept, placementIndex);
     case "FILL_BLANK":
-      return {
-        text: `The statement "${stripFinalPunctuation(summary)}" is mainly connected with ________.`,
-        correctAnswer: oneWordAnswer(summary),
-      };
+      return buildFillBlankQuestion(summary, concept, placementIndex);
     case "VERY_SHORT":
       return {
         text: `State one ${skill} point shown by ${idea}.`,
@@ -1909,16 +1903,26 @@ function baseQuestion(
 function assertionReasonQuestion(
   concept: NormalizedConcept,
   summary: string,
-  skill: string,
+  _skill: string,
   placementIndex: number,
 ): Partial<GeneratedQuestion> {
   const answer = assertionReasonAnswerFor(placementIndex);
+  const cleanSummary = sentenceCase(stripFinalPunctuation(studentVisibleSummary(summary)));
   const focus = sentenceCase(matchFocusPhrase(summary));
-  const trueAssertion = `A correct answer about ${focus} should include a clear ${skill} link.`;
-  const explanatoryReason = `A complete answer connects the idea with this point: ${toStatement(summary)}`;
+  const topic = sentenceCase(concept.topic);
+  const trueAssertionOptions = [
+    `${cleanSummary}.`,
+    `${focus} plays an important role in ${topic}.`,
+    `Understanding ${focus.toLowerCase()} is essential for explaining the key concept in ${topic}.`,
+  ];
+  const trueAssertion =
+    trueAssertionOptions[positiveModulo(placementIndex, trueAssertionOptions.length)] ??
+    trueAssertionOptions[0];
+  const cleanReason = trimToSentence(cleanSummary, 160);
+  const explanatoryReason = cleanReason.endsWith(".") ? cleanReason : `${cleanReason}.`;
   const unrelatedTrueReason =
-    "A neat, specific example can make a classroom answer easier to follow.";
-  const falseStatement = sourceFalseStatement(concept, placementIndex);
+    "A clear, step-by-step explanation helps make the answer easier to follow.";
+  const falseStatement = buildFalseStatement(concept, placementIndex);
   const [assertion, reason] = assertionReasonPairForAnswer(answer, {
     trueAssertion,
     explanatoryReason,
@@ -1934,6 +1938,69 @@ function assertionReasonQuestion(
     correctAnswer: answer,
     explanation: assertionReasonExplanation(answer),
   };
+}
+
+function buildOneWordQuestion(
+  summary: string,
+  concept: NormalizedConcept,
+  placementIndex: number,
+): Partial<GeneratedQuestion> {
+  const term = oneWordAnswer(summary);
+  const topic = sentenceCase(
+    concept.topic
+      .replace(/reading comprehension and inference|theme.*literary devices|vocabulary.*context/gi, "the selected topic")
+      .trim() || "the concept",
+  );
+  const focus = mcqFocusPhrase(summary);
+  const stems = [
+    `Which term describes the key idea related to ${focus}?`,
+    `Name the concept associated with ${focus} in this context.`,
+    `What is the one-word term for the main idea in ${topic}?`,
+    `Which term best names the central concept of ${focus}?`,
+    `Give the technical term that refers to ${focus}.`,
+  ];
+
+  return {
+    text: stems[positiveModulo(placementIndex, stems.length)] ?? stems[0],
+    correctAnswer: term,
+  };
+}
+
+function buildFillBlankQuestion(
+  summary: string,
+  concept: NormalizedConcept,
+  placementIndex: number,
+): Partial<GeneratedQuestion> {
+  const term = oneWordAnswer(summary);
+  const topic = sentenceCase(
+    concept.topic
+      .replace(/reading comprehension and inference|theme.*literary devices|vocabulary.*context/gi, "")
+      .trim() || "the selected topic",
+  );
+  const focus = mcqFocusPhrase(summary);
+  const stems = [
+    `The key concept related to ${focus} is known as ________.`,
+    `In ${topic}, the main idea about ${focus} is called ________.`,
+    `________ is the term that best describes the concept of ${focus}.`,
+    `The process or idea described by "${focus}" is called ________.`,
+    `The concept of ${focus} belongs to the category of ________.`,
+  ];
+
+  return {
+    text: stems[positiveModulo(placementIndex, stems.length)] ?? stems[0],
+    correctAnswer: term,
+  };
+}
+
+function buildFalseStatement(concept: NormalizedConcept, placementIndex: number): string {
+  const topic = sentenceCase(concept.topic);
+  const falsities = [
+    `${topic} has no practical application in everyday life.`,
+    `${topic} can be fully explained without considering any conditions or exceptions.`,
+    `Changes in ${topic.toLowerCase()} never affect the surrounding environment.`,
+    `${topic} follows the same rule regardless of the situation.`,
+  ];
+  return falsities[positiveModulo(placementIndex, falsities.length)] ?? falsities[0];
 }
 
 type AssertionReasonKey = "A" | "B" | "C" | "D";
@@ -2005,12 +2072,30 @@ function sourceTrueStatement(
 ) {
   const cleanSummary = sentenceCase(stripFinalPunctuation(summary));
   const focus = mcqFocusPhrase(summary);
-  const variants = [
-    `${cleanSummary}.`,
-    `${sentenceCase(focus)} should be interpreted with attention to ${skill}.`,
-    `${cleanSummary} This supports a clear answer about ${focus}.`,
-  ];
+  const isCompleteSentence =
+    cleanSummary.split(/\s+/).length >= 8 &&
+    /\b(?:is|are|was|were|has|have|can|does|do|will|would|should|contains|includes|occurs|means|refers|helps|allows|prevents|causes|shows|explains|produces|forms|depends)\b/i.test(
+      cleanSummary,
+    ) &&
+    !hasRawArtifact(cleanSummary);
+  const variants = isCompleteSentence
+    ? [
+        `${cleanSummary}.`,
+        `${sentenceCase(focus)} is an important concept in this topic.`,
+        `${cleanSummary} This can be verified from the passage.`,
+      ]
+    : [
+        `${sentenceCase(focus)} is a key idea in this topic.`,
+        `${sentenceCase(focus)} can be understood by applying the concept correctly.`,
+        `Understanding ${focus.toLowerCase()} is important for answering ${skill} questions.`,
+      ];
   return variants[positiveModulo(placementIndex, variants.length)] ?? variants[0];
+}
+
+function hasRawArtifact(value: string): boolean {
+  return /\b(?:phrase window|focused point|evidence point|inference point|grandmother unfortunately|Building Block of Life \d|Activity \d|Fig\.\s*\d)\b/i.test(
+    value,
+  );
 }
 
 function sourceFalseStatement(concept: NormalizedConcept, placementIndex: number) {
@@ -2136,10 +2221,12 @@ function matchQuestion(
 }
 
 function matchQuestionStem(skill: string, focus: string, placementIndex: number) {
+  void skill;
   const stems = [
-    `Match the terms about ${focus} with their meanings.`,
-    `Match each ${skill} item about ${focus} with the best description.`,
-    `Match the examples and ideas linked to ${focus}.`,
+    `Match the terms about ${focus} with their correct descriptions.`,
+    `Match each concept related to ${focus} with its meaning.`,
+    `Match the examples and ideas linked to ${focus} with their explanations.`,
+    `Match Column A with Column B for ${focus}.`,
   ];
   return stems[positiveModulo(placementIndex, stems.length)] ?? stems[0];
 }
@@ -2188,6 +2275,11 @@ function studentVisibleSummary(value: string, maxLength = 240) {
       .replace(/\bsame\s+chapter\b/gi, "same topic")
       .replace(/\bquestion\s+focus\b/gi, "focus")
       .replace(/\bconcept\s+focus\b/gi, "focus")
+      .replace(/\b[A-Z][a-zA-Z\s]{3,40}\s+\d{1,3}\s+[a-z]\s+(?=[A-Z])/g, "")
+      .replace(/\b(?:Activity|Fig(?:ure)?|Table|Box|Example|Exercise)\s*\.?\s*\d+(?:\.\d+)*\s*[.:]?\s*/gi, "")
+      .replace(/\b\d{1,3}\s+(?:y|a|b|c)\s+/gi, " ")
+      .replace(/^\d{1,3}\s+/, "")
+      .replace(/\b\d+(?:\.\d+){1,3}\s*[:.-]\s*/g, "")
       .replace(/\b\d+\s+Exploration\s*[|\\\/]\s*Grade\s+\d+\b/gi, "")
       .replace(/\bExploration\s*[|\\\/]\s*Grade\s+\d+\b/gi, "")
       .replace(/\bGrade\s+\d+\b/gi, "")
@@ -2195,7 +2287,6 @@ function studentVisibleSummary(value: string, maxLength = 240) {
       .replace(/\bsurface\s+on\s+it\s+moves\b/gi, "surface on which it moves")
       .replace(/\bmore\s+slow\b/gi, "more slowly")
       .replace(/\bfig(?:ure)?\.?\s*\d+(?:\.\d+)*\s*[:.-]\s*/gi, "")
-      .replace(/\b\d+(?:\.\d+)+\s*[:.-]\s*/g, "")
       .replace(/\bexact\s+source\s+detail\b/gi, "concept")
       .replace(/\bsource\s+detail\b/gi, "concept")
       .replace(/\bsource\s+text\b/gi, "passage")
@@ -2222,6 +2313,7 @@ function mcqQuestionText(
   skill: string,
   summary: string,
   placementIndex?: number,
+  concept?: NormalizedConcept,
 ) {
   const motionQuestion = motionMcqQuestion(summary);
   if (motionQuestion) return motionQuestion;
@@ -2324,13 +2416,24 @@ function mcqQuestionText(
         `What reading of the passage best fits ${focus}?`,
         `Which choice stays closest to the passage detail about ${focus}?`,
       ], placementIndex);
-    default:
-      return mcqStemVariant(focus, [
-        `Which option best matches the detail about ${focus}?`,
-        `What choice best fits the detail about ${focus}?`,
-        `Which answer is most accurate for ${focus}?`,
+    default: {
+      const cleanFocus = isReadableFocus(focus) ? focus : concept?.topic ?? focus;
+      return mcqStemVariant(cleanFocus, [
+        `Which option best describes ${cleanFocus}?`,
+        `What is the most accurate statement about ${cleanFocus}?`,
+        `Which of the following correctly explains ${cleanFocus}?`,
       ], placementIndex);
+    }
   }
+}
+
+function isReadableFocus(focus: string): boolean {
+  const words = focus.split(/\s+/).filter(Boolean);
+  return (
+    words.length <= 5 &&
+    words.every((word) => word.length >= 3) &&
+    !/\d{2,}/.test(focus)
+  );
 }
 
 function mcqStemVariant(
@@ -2392,9 +2495,11 @@ function motionMcqQuestion(summary: string) {
   return "";
 }
 
-function optionStatement(summary: string, variant: VariantRecipe) {
-  const base = stripFinalPunctuation(trimToSentence(sentenceCase(toStatement(summary)), 130));
-  return trimToSentence(`${base}. ${optionReasonForVariant(variant)}`, 180);
+function optionStatement(summary: string, _variant: VariantRecipe) {
+  const base = stripFinalPunctuation(
+    trimToSentence(sentenceCase(toStatement(summary)), 160),
+  );
+  return base;
 }
 
 function optionReasonForVariant(variant: VariantRecipe) {
@@ -2439,41 +2544,111 @@ function subjectMatchPairs(
   concept: NormalizedConcept,
   summary: string,
   skill: string,
-) {
+): Array<{ left: string; right: string }> {
   if (isMotionConcept(concept, summary)) {
     return [
-      { left: "Smooth surface", right: "Less friction" },
-      { left: "Rough surface", right: "More friction" },
-      { left: "Smaller frictional force", right: "Object travels farther" },
+      { left: "Smooth surface", right: "Less friction, object travels farther" },
+      { left: "Rough surface", right: "More friction, object slows down faster" },
+      { left: "Smaller frictional force", right: "Object travels a greater distance" },
       { left: "Thought experiment", right: "Used when real conditions are difficult to recreate" },
     ];
   }
 
   if (isCommunicationConcept(concept, summary)) {
     return [
-      { left: "Sender", right: "Creates and sends a message" },
-      { left: "Receiver", right: "Understands and responds to a message" },
-      { left: "Channel", right: "Medium used to carry a message" },
-      { left: "Feedback", right: "Response that confirms understanding" },
+      { left: "Sender", right: "Creates and transmits the message" },
+      { left: "Receiver", right: "Understands and responds to the message" },
+      { left: "Channel", right: "Medium used to carry the message" },
+      { left: "Feedback", right: "Response that confirms the message was understood" },
     ];
   }
 
   if (isLanguageConcept(concept, summary)) {
     return [
-      { left: "Main idea", right: "Central point of a passage" },
-      { left: "Supporting detail", right: "Information that explains or proves an answer" },
-      { left: "Inference from clues", right: "Meaning understood from clues" },
-      { left: "Context clue", right: "Nearby words that guide meaning" },
+      { left: "Passage main idea", right: "Central point or argument of a passage" },
+      { left: "Supporting passage detail", right: "Information that explains or proves the main idea" },
+      { left: "Context clue", right: "Nearby words that guide the meaning of an unfamiliar word" },
+      { left: "Supported inference", right: "Conclusion drawn from clues in the passage" },
     ];
   }
 
-  const conceptTerm = sentenceCase(oneWordAnswer(summary));
-  const focus = sentenceCase(matchFocusPhrase(summary));
+  if (isChemistryConcept(concept)) {
+    return buildChemistryMatchPairs(concept, summary);
+  }
+
+  if (isBiologyConcept(concept)) {
+    return buildBiologyMatchPairs(concept, summary);
+  }
+
+  if (isMathsConcept(concept)) {
+    return buildMathsMatchPairs(concept, summary);
+  }
+
+  return buildGenericAcademicMatchPairs(concept, summary, skill);
+}
+
+function buildChemistryMatchPairs(
+  concept: NormalizedConcept,
+  summary: string,
+): Array<{ left: string; right: string }> {
+  const words = distinctiveSourceWords(summary);
+  const term1 = sentenceCase(words[0] || concept.topic);
+  const term2 = sentenceCase(words[1] || "solute");
+  const term3 = sentenceCase(words[2] || "solvent");
   return [
-    { left: conceptTerm, right: "Main concept being tested" },
-    { left: `${focus} example`, right: "Specific case that shows the idea" },
-    { left: `${sentenceCase(skill)} reason`, right: visibleKeyPoint(skill) },
-    { left: "Misconception", right: "Common mistaken reading to avoid" },
+    { left: "Mixture", right: "Combination of two or more substances not chemically combined" },
+    { left: term1, right: trimToSentence(summary, 90) },
+    { left: term2, right: `Substance dissolved in ${term3.toLowerCase()} to form a solution` },
+    { left: "Solubility", right: "Maximum amount of solute that can dissolve in a fixed amount of solvent" },
+  ];
+}
+
+function buildBiologyMatchPairs(
+  concept: NormalizedConcept,
+  summary: string,
+): Array<{ left: string; right: string }> {
+  const words = distinctiveSourceWords(summary);
+  const term1 = sentenceCase(words[0] || concept.topic || "Cell wall");
+  const term2 = sentenceCase(words[1] || "Cell membrane");
+  return [
+    { left: term1, right: trimToSentence(summary, 90) },
+    { left: term2, right: "Flexible boundary controlling what enters and exits the cell" },
+    { left: "Nucleus", right: "Controls cell activities and contains genetic material" },
+    { left: "Cytoplasm", right: "Jelly-like fluid filling the cell where metabolic reactions occur" },
+  ];
+}
+
+function buildMathsMatchPairs(
+  concept: NormalizedConcept,
+  summary: string,
+): Array<{ left: string; right: string }> {
+  const words = distinctiveSourceWords(summary);
+  const term1 = sentenceCase(words[0] || concept.topic);
+  return [
+    { left: term1, right: trimToSentence(summary, 90) },
+    { left: "Formula", right: "Mathematical rule expressed using symbols and numbers" },
+    { left: "Variable", right: "A symbol representing an unknown or changing quantity" },
+    { left: "Result", right: "The final answer obtained by applying the formula or rule" },
+  ];
+}
+
+function buildGenericAcademicMatchPairs(
+  concept: NormalizedConcept,
+  summary: string,
+  _skill: string,
+): Array<{ left: string; right: string }> {
+  const words = distinctiveSourceWords(summary);
+  const topic = concept.topic;
+  const term1 = sentenceCase(words[0] || topic);
+  const term2 = sentenceCase(words[1] || "Key term");
+  const term3 = sentenceCase(words[2] || "Example");
+  const shortSummary = trimToSentence(summary, 90);
+
+  return [
+    { left: term1, right: shortSummary },
+    { left: `${term2} definition`, right: `The precise meaning of ${term2.toLowerCase()} in this context` },
+    { left: `${term3} application`, right: `A real situation where ${term3.toLowerCase()} is used` },
+    { left: `${topic} importance`, right: `Why ${topic.toLowerCase()} matters in this topic` },
   ];
 }
 
@@ -2502,6 +2677,27 @@ function isCommunicationConcept(concept: NormalizedConcept, summary: string) {
 function isLanguageConcept(concept: NormalizedConcept, summary: string) {
   return /english|language|reading|meaning|passage|dialogue|vocabulary|context|inference/i.test(
     `${concept.subject ?? ""} ${concept.chapter} ${concept.topic} ${summary}`,
+  );
+}
+
+function isChemistryConcept(concept: NormalizedConcept): boolean {
+  const text = `${concept.subject ?? ""} ${concept.chapter} ${concept.topic}`.toLowerCase();
+  return /chemistry|mixture|solution|compound|element|reaction|acid|base|salt|solubility|separati/i.test(
+    text,
+  );
+}
+
+function isBiologyConcept(concept: NormalizedConcept): boolean {
+  const text = `${concept.subject ?? ""} ${concept.chapter} ${concept.topic}`.toLowerCase();
+  return /biology|cell|tissue|organ|organism|photosynthesis|respiration|dna|chromosome|membrane|nucleus/i.test(
+    text,
+  );
+}
+
+function isMathsConcept(concept: NormalizedConcept): boolean {
+  const text = `${concept.subject ?? ""} ${concept.chapter} ${concept.topic}`.toLowerCase();
+  return /math|algebra|geometry|trigonometry|polynomial|equation|theorem|proof|formula/i.test(
+    text,
   );
 }
 
@@ -2646,14 +2842,9 @@ function misconceptionOptions(concept: NormalizedConcept, index: number) {
               "Changing the given values never changes the result.",
               "The rule works only by memorising the final answer.",
               "The relationship between the quantities is not needed.",
-            ]
-          : language
-            ? [
-                "The meaning can be decided without considering context.",
-                "Tone and word choice never affect interpretation.",
-                "Only memorised definitions matter in this passage.",
-                "The surrounding sentence gives no clue to meaning.",
-              ]
+          ]
+        : language
+            ? buildLanguageDistractors(concept, index)
             : [
                 "The idea can be answered without using the given condition.",
                 "Only a memorised label is needed; no explanation is required.",
@@ -2662,6 +2853,68 @@ function misconceptionOptions(concept: NormalizedConcept, index: number) {
               ];
 
   return distractors.slice(index % distractors.length).concat(distractors).slice(0, 4);
+}
+
+function buildLanguageDistractors(concept: NormalizedConcept, index: number): string[] {
+  const topic = `${concept.topic} ${concept.chapter}`.toLowerCase();
+
+  if (/comprehension|passage|reading/i.test(topic)) {
+    return [
+      "The passage can be summarised accurately by reading only the first sentence.",
+      "The tone of a passage is unrelated to the author's message.",
+      "A title gives no useful information about the passage's main idea.",
+      "Every word in a passage carries equal importance for meaning.",
+    ];
+  }
+
+  if (/vocabulary|word|grammar|syntax/i.test(topic)) {
+    return [
+      "Word meaning never changes with the surrounding context.",
+      "Grammar rules are the same across all styles of writing.",
+      "Synonyms always have identical meaning in every context.",
+      "Punctuation does not affect the meaning of a sentence.",
+    ];
+  }
+
+  if (/character|theme|tone|literary/i.test(topic)) {
+    return [
+      "A character's actions have no connection to the story's theme.",
+      "The theme of a story is always stated directly in the first paragraph.",
+      "Tone and mood refer to the same quality of a literary text.",
+      "Symbols in a story are always explained by the narrator.",
+    ];
+  }
+
+  if (/novel|story|prose|narrative/i.test(topic)) {
+    return [
+      "The setting of a story has no effect on the characters' choices.",
+      "A first-person narrator always gives an unbiased account of events.",
+      "The climax of a story always occurs in the final paragraph.",
+      "Dialogue in a narrative is only decorative and not plot-relevant.",
+    ];
+  }
+
+  const sets = [
+    [
+      "The author's purpose is irrelevant when reading a passage.",
+      "Figurative language and literal language mean the same thing.",
+      "A reader does not need to consider the audience when interpreting a text.",
+      "Repetition in poetry has no effect on emphasis or meaning.",
+    ],
+    [
+      "The structure of a paragraph has no impact on the reader's understanding.",
+      "A conclusion paragraph can introduce new ideas not covered in the body.",
+      "Coherence and cohesion refer to the same feature of a text.",
+      "The voice of a narrator never influences the reader's perspective.",
+    ],
+    [
+      "Similes and metaphors serve identical functions in descriptive writing.",
+      "A story's conflict is always resolved before the final chapter.",
+      "The point of view of a story does not affect how events are described.",
+      "Foreshadowing is used only in science fiction and fantasy texts.",
+    ],
+  ];
+  return sets[positiveModulo(index, sets.length)] ?? sets[0];
 }
 
 type NormalizedConcept = {
