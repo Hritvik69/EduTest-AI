@@ -374,6 +374,7 @@ function hasRawTemplateArtifact(value: string) {
     /\bis useful only when no explanation is required\b/i.test(value) ||
     /\bThe idea can be answered correctly without clarity or examples\b/i.test(value) ||
     /\bWhich choice explains how .+ supports clear understanding\b/i.test(value) ||
+    /\bA worked example for .+ uses \d+ given cases and \d+ checking cases\b/i.test(value) ||
     /\bcan be understood through (?:inference|evidence)\b/i.test(value) ||
     /\bcan be explained through evidence\b/i.test(value) ||
     /\brequires inference from the selected source\b/i.test(value) ||
