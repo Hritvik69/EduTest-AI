@@ -368,6 +368,12 @@ function hasRawTemplateArtifact(value: string) {
     /\bThis states the meaning clearly\b/i.test(value) ||
     /\bThis avoids the common mistaken reading\b/i.test(value) ||
     /\bThis gives a supporting reason\b/i.test(value) ||
+    /\bimportant for effective learning\b/i.test(value) ||
+    /\bcan be answered well by naming the topic without a reason or example\b/i.test(value) ||
+    /\bmeans using unrelated information without checking the situation\b/i.test(value) ||
+    /\bis useful only when no explanation is required\b/i.test(value) ||
+    /\bThe idea can be answered correctly without clarity or examples\b/i.test(value) ||
+    /\bWhich choice explains how .+ supports clear understanding\b/i.test(value) ||
     /\bcan be understood through (?:inference|evidence)\b/i.test(value) ||
     /\bcan be explained through evidence\b/i.test(value) ||
     /\brequires inference from the selected source\b/i.test(value) ||
@@ -484,6 +490,9 @@ function hasWeakAssertionReasonPair(question: GeneratedQuestion) {
 
 function hasGenericAssertionReasonTemplate(assertion: string, reason: string) {
   return (
+    /\bimportant for effective learning\b/i.test(assertion) ||
+    /\bExamples can make a classroom explanation easier to remember\b/i.test(reason) ||
+    /\bcan be answered well by naming the topic without a reason or example\b/i.test(reason) ||
     /\bcan be understood through\s+(?:evidence|inference|reasoning|application|case reasoning|conceptual reasoning)\b/i.test(
       assertion,
     ) ||
@@ -536,8 +545,11 @@ function contentWords(value: string) {
 }
 
 function hasWeakShortStem(value: string) {
-  return /\b(?:explain|describe|state)\s+the\s+(?:evidence|inference|case|source)\s+point\b/i.test(
-    value,
+  return (
+    /\b(?:explain|describe|state)\s+the\s+(?:evidence|inference|case|source)\s+point\b/i.test(
+      value,
+    ) ||
+    /\bState one important point about the application of\b/i.test(value)
   );
 }
 

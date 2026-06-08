@@ -301,8 +301,8 @@ describe("generateSourceBackedFallbackQuestions", () => {
       .flatMap((pair) => [pair.left, pair.right])
       .join(" ");
 
-    expect(matchText).toMatch(/Smooth surface|Rough surface|Smaller frictional force/i);
-    expect(matchText).toMatch(/Less friction|More friction|Object travels farther/i);
+    expect(matchText).toMatch(/Smooth surface|Rough surface|Smaller frictional force|Larger frictional force|Contact force|Velocity decrease|Surface condition/i);
+    expect(matchText).toMatch(/Less friction|More friction|Object travels farther|loses speed|opposes motion|amount of friction/i);
     expect(matchText).not.toMatch(/Chapter idea|Question focus|Conclusion|Evidence/i);
     expect(matchQuestion?.correctAnswer).not.toBe(
       "A1-B1, A2-B2, A3-B3, A4-B4",

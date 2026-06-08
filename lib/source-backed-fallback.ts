@@ -1013,16 +1013,7 @@ function createSyllabusNearQuestion({
         ...syllabusNearShortQuestion(concept, index),
       };
     case "NUMERICAL":
-      return {
-        ...common,
-        text: `A learner notes ${concept.firstCount} examples of ${concept.term} and adds ${concept.secondCount} more. How many examples are noted in all?`,
-        correctAnswer: `${concept.firstCount + concept.secondCount} examples`,
-        keyPoints: [
-          `${concept.firstCount} + ${concept.secondCount} = ${concept.firstCount + concept.secondCount}.`,
-          `Final answer: ${concept.firstCount + concept.secondCount} examples.`,
-        ],
-        explanation: "Add both counts to find the total.",
-      };
+      return syllabusNearNumericalQuestion(common, concept);
     case "SOURCE_BASED":
       return syllabusNearSourceBasedQuestion(common, concept);
     case "CASE_BASED":
@@ -1189,9 +1180,9 @@ function correctOptionId(options: MCQOption[]) {
 function syllabusNearMcqStem(concept: SyllabusNearConcept, index: number) {
   const stems = [
     `Which option correctly describes ${concept.term}?`,
-    `Which statement shows the importance of ${concept.focus}?`,
+    `Which statement correctly applies ${concept.focus}?`,
     `Which example best matches ${concept.term}?`,
-    `Which choice explains how ${concept.term} supports clear understanding?`,
+    `Which choice gives the most accurate subject-specific explanation of ${concept.term}?`,
   ];
   return stems[Math.abs(index) % stems.length];
 }
@@ -1240,6 +1231,53 @@ function syllabusNearShortQuestion(
     correctAnswer: `${concept.correct} ${concept.example} A complete answer should also avoid the misconception that ${lowerFirst(stripFinalPunctuation(concept.misconception))}.`,
     keyPoints,
     explanation: concept.explanation,
+  };
+}
+
+function syllabusNearNumericalQuestion(
+  common: GeneratedQuestion,
+  concept: SyllabusNearConcept,
+): GeneratedQuestion {
+  const termText = `${concept.term} ${concept.focus}`.toLowerCase();
+  if (/light|reflection|refraction|mirror|lens|ray|image/.test(termText)) {
+    const angle = 20 + ((concept.firstCount + concept.secondCount) % 6) * 5;
+    return {
+      ...common,
+      text: `A light ray strikes a plane mirror with an angle of incidence of ${angle}°. What is the angle of reflection?`,
+      correctAnswer: `${angle}°`,
+      keyPoints: [
+        "By the law of reflection, angle of incidence equals angle of reflection.",
+        `Angle of reflection = ${angle}°.`,
+      ],
+      explanation: "The law of reflection gives equal incident and reflected angles.",
+    };
+  }
+
+  if (/chemical|reaction|equation|atom|molecule|oxidation|reduction/.test(termText)) {
+    const reactantAtoms = 2 + (concept.firstCount % 4);
+    const productAtoms = reactantAtoms + 2 + (concept.secondCount % 3);
+    const difference = productAtoms - reactantAtoms;
+    return {
+      ...common,
+      text: `In a draft chemical equation, the reactant side has ${reactantAtoms} oxygen atoms and the product side has ${productAtoms} oxygen atoms. How many oxygen atoms must be balanced?`,
+      correctAnswer: `${difference} oxygen atoms`,
+      keyPoints: [
+        `Compare oxygen atoms on both sides: ${productAtoms} - ${reactantAtoms} = ${difference}.`,
+        `The equation must be balanced for ${difference} oxygen atoms.`,
+      ],
+      explanation: "A balanced equation has the same number of each atom on both sides.",
+    };
+  }
+
+  return {
+    ...common,
+    text: `A worked example for ${concept.term} uses ${concept.firstCount} given cases and ${concept.secondCount} checking cases. How many cases are considered in all?`,
+    correctAnswer: `${concept.firstCount + concept.secondCount} cases`,
+    keyPoints: [
+      `${concept.firstCount} + ${concept.secondCount} = ${concept.firstCount + concept.secondCount}.`,
+      `Final answer: ${concept.firstCount + concept.secondCount} cases.`,
+    ],
+    explanation: "Add the given cases and checking cases to find the total.",
   };
 }
 
@@ -1298,6 +1336,14 @@ function syllabusNearConcepts(
 
   if (/communication|communicat|employability/i.test(combined)) {
     return communicationSkillConcepts();
+  }
+
+  if (/light|reflection|refraction|mirror|lens|ray|image/i.test(combined)) {
+    return lightReflectionRefractionConcepts();
+  }
+
+  if (/chemical\s+reactions?|chemical\s+equations?|reaction|equation|oxidation|reduction|displacement/i.test(combined)) {
+    return chemicalReactionsConcepts();
   }
 
   return genericSyllabusConcepts(label, subject);
@@ -1409,24 +1455,140 @@ function genericSyllabusConcepts(label: string, subject: string): SyllabusNearCo
   return [
     syllabusConcept({
       term: safeLabel,
-      focus: `${safeLabel} as an important ${subject} concept`,
-      correct: `${safeLabel} should be explained with its meaning, one supporting point, and a relevant example.`,
-      misconception: `A good answer about ${safeLabel} needs more than just the term name.`,
-      example: `A correct answer connects ${safeLabel} with a classroom example from ${subject}.`,
+      focus: `the core idea of ${safeLabel}`,
+      correct: `${safeLabel} should be explained with the correct definition, supporting condition, and one subject-specific example.`,
+      misconception: `A good answer about ${safeLabel} cannot rely only on naming the chapter.`,
+      example: `A correct answer connects ${safeLabel} with a concrete example from ${subject}.`,
+      assertion: `${safeLabel} needs a subject-specific explanation, not only the chapter name.`,
+      reason: `Definitions, conditions, and examples show whether the answer really matches ${safeLabel}.`,
     }),
     syllabusConcept({
-      term: `${safeLabel} application`,
-      focus: `the application of ${safeLabel}`,
-      correct: `Applying ${safeLabel} means using the idea correctly in a suitable situation.`,
-      misconception: `An application must stay connected to ${safeLabel}, not to an unrelated idea.`,
-      example: `A learner uses ${safeLabel} to explain a familiar classroom situation.`,
+      term: `${safeLabel} condition`,
+      focus: `the condition needed in ${safeLabel}`,
+      correct: `${safeLabel} answers should mention the condition or rule that controls the result.`,
+      misconception: `The same answer may become wrong if the controlling condition changes.`,
+      example: `A learner checks the given condition before choosing the rule for ${safeLabel}.`,
+      assertion: `A condition can change the correct answer for ${safeLabel}.`,
+      reason: `Subject rules often depend on the situation described in the question.`,
     }),
     syllabusConcept({
-      term: `${safeLabel} reasoning`,
-      focus: `reasoning about ${safeLabel}`,
-      correct: `Reasoning about ${safeLabel} requires a clear cause, effect, or explanation.`,
-      misconception: `A reason is stronger when it explains why the answer is correct.`,
-      example: `The answer states the point and then gives a reason linked to ${safeLabel}.`,
+      term: `${safeLabel} example`,
+      focus: `a correct example of ${safeLabel}`,
+      correct: `A valid example of ${safeLabel} must show the rule or feature being used correctly.`,
+      misconception: `An unrelated example does not prove understanding of ${safeLabel}.`,
+      example: `The answer identifies the example and explains which feature of ${safeLabel} it shows.`,
+      assertion: `An example is useful only when it shows the actual rule in ${safeLabel}.`,
+      reason: `The explanation must connect the example with the tested concept.`,
+    }),
+  ];
+}
+
+function lightReflectionRefractionConcepts(): SyllabusNearConcept[] {
+  return [
+    syllabusConcept({
+      term: "Law of reflection",
+      focus: "the relation between incident and reflected rays",
+      correct: "In reflection, the angle of incidence equals the angle of reflection, and the incident ray, reflected ray, and normal lie in the same plane.",
+      misconception: "The reflected ray does not leave at a random angle.",
+      example: "A plane mirror reflects a ray so that both angles measured from the normal are equal.",
+      falseStatement: "The reflected ray can make any angle with the normal regardless of the incident ray.",
+      assertion: "The angle of reflection equals the angle of incidence for a plane mirror.",
+      reason: "Both angles are measured from the normal at the point where the ray strikes the mirror.",
+    }),
+    syllabusConcept({
+      term: "Concave mirror",
+      focus: "image formation by a concave mirror",
+      correct: "A concave mirror can form real inverted images or virtual magnified images depending on the object's position.",
+      misconception: "A concave mirror does not always form the same kind of image.",
+      example: "A shaving mirror uses a concave mirror to form a magnified virtual image when the face is close to it.",
+      falseStatement: "A concave mirror always forms a diminished virtual image for every object position.",
+      assertion: "A concave mirror's image changes when the object position changes.",
+      reason: "Ray diagrams show different image positions and sizes for different object distances.",
+    }),
+    syllabusConcept({
+      term: "Convex mirror",
+      focus: "image formation by a convex mirror",
+      correct: "A convex mirror forms a virtual, erect, and diminished image and gives a wider field of view.",
+      misconception: "A convex mirror is not used when a real inverted image is required on a screen.",
+      example: "Vehicle rear-view mirrors use convex mirrors to show a wider area behind the vehicle.",
+      falseStatement: "A convex mirror usually forms a real inverted image on a screen.",
+      assertion: "A convex mirror is useful for rear-view mirrors.",
+      reason: "It forms diminished erect images and provides a wider field of view.",
+    }),
+    syllabusConcept({
+      term: "Refraction",
+      focus: "bending of light between media",
+      correct: "Refraction is the bending of light when it passes from one medium to another because its speed changes.",
+      misconception: "Light does not bend at a boundary if its speed and direction remain unchanged.",
+      example: "A pencil appears bent in water because light refracts as it passes from water to air.",
+      falseStatement: "Refraction happens because light stops at the boundary between two media.",
+      assertion: "Light bends during refraction when it enters a medium where its speed changes.",
+      reason: "A change in speed at the boundary changes the direction of the ray.",
+    }),
+    syllabusConcept({
+      term: "Convex lens",
+      focus: "converging action of a convex lens",
+      correct: "A convex lens converges parallel rays of light and can form real or virtual images depending on object position.",
+      misconception: "A convex lens does not always form only one fixed image size.",
+      example: "A magnifying glass uses a convex lens to produce an enlarged virtual image for a nearby object.",
+      falseStatement: "A convex lens always diverges parallel rays away from the principal axis.",
+      assertion: "A convex lens can converge parallel rays of light.",
+      reason: "Its shape bends rays toward the principal focus after refraction.",
+    }),
+  ];
+}
+
+function chemicalReactionsConcepts(): SyllabusNearConcept[] {
+  return [
+    syllabusConcept({
+      term: "Chemical equation",
+      focus: "representation of a chemical reaction",
+      correct: "A chemical equation represents reactants, products, and their physical states using chemical formulae and symbols.",
+      misconception: "A chemical equation is not complete if it only names the chapter topic.",
+      example: "Zn + H2SO4 -> ZnSO4 + H2 shows zinc reacting with sulphuric acid to form zinc sulphate and hydrogen.",
+      falseStatement: "A chemical equation does not need reactants or products.",
+      assertion: "A chemical equation must show reactants and products.",
+      reason: "Reactants change into products during a chemical reaction.",
+    }),
+    syllabusConcept({
+      term: "Balanced equation",
+      focus: "law of conservation of mass in equations",
+      correct: "A balanced chemical equation has the same number of atoms of each element on the reactant and product sides.",
+      misconception: "Balancing does not mean changing the chemical formulae of substances.",
+      example: "2H2 + O2 -> 2H2O is balanced because hydrogen and oxygen atoms are equal on both sides.",
+      falseStatement: "A balanced equation can have different numbers of the same atom on both sides.",
+      assertion: "Balancing a chemical equation follows conservation of mass.",
+      reason: "Atoms are neither created nor destroyed in an ordinary chemical reaction.",
+    }),
+    syllabusConcept({
+      term: "Combination reaction",
+      focus: "formation of one product from reactants",
+      correct: "In a combination reaction, two or more reactants combine to form a single product.",
+      misconception: "A combination reaction does not produce many unrelated products.",
+      example: "Calcium oxide reacts with water to form calcium hydroxide.",
+      falseStatement: "A combination reaction always breaks one compound into simpler substances.",
+      assertion: "A combination reaction forms a single main product.",
+      reason: "The reactants combine to make one new substance.",
+    }),
+    syllabusConcept({
+      term: "Decomposition reaction",
+      focus: "breaking of a compound into simpler substances",
+      correct: "In a decomposition reaction, one compound breaks down into two or more simpler products.",
+      misconception: "Decomposition is not the same as two reactants joining to form one product.",
+      example: "Calcium carbonate decomposes on heating to form calcium oxide and carbon dioxide.",
+      falseStatement: "A decomposition reaction begins with several reactants combining into one product.",
+      assertion: "A decomposition reaction has one compound breaking into simpler products.",
+      reason: "Heat, light, or electricity can supply energy to split the compound.",
+    }),
+    syllabusConcept({
+      term: "Oxidation and reduction",
+      focus: "oxygen and electron changes in reactions",
+      correct: "Oxidation involves gain of oxygen or loss of electrons, while reduction involves loss of oxygen or gain of electrons.",
+      misconception: "Oxidation and reduction are not random labels; they describe specific changes.",
+      example: "Copper oxide is reduced to copper when oxygen is removed from it.",
+      falseStatement: "Reduction always means adding oxygen to a substance.",
+      assertion: "Oxidation and reduction describe opposite chemical changes.",
+      reason: "One process involves gain of oxygen or electron loss, while the other involves oxygen loss or electron gain.",
     }),
   ];
 }
@@ -1438,6 +1600,9 @@ function syllabusConcept({
   misconception,
   example,
   falseStatement,
+  assertion,
+  reason,
+  trueStatement,
 }: {
   term: string;
   focus: string;
@@ -1445,6 +1610,9 @@ function syllabusConcept({
   misconception: string;
   example: string;
   falseStatement?: string;
+  assertion?: string;
+  reason?: string;
+  trueStatement?: string;
 }): SyllabusNearConcept {
   return {
     term,
@@ -1455,10 +1623,10 @@ function syllabusConcept({
     explanation: correct,
     falseStatement:
       falseStatement ??
-      `${term} can be answered well by naming the topic without a reason or example.`,
-    assertion: `${sentenceCase(stripFinalPunctuation(focus))} is important for effective learning.`,
-    reason: correct,
-    trueStatement: correct,
+      `A correct answer for ${term} can ignore the relevant rule and still be complete.`,
+    assertion: assertion ?? `${sentenceCase(stripFinalPunctuation(focus))} must be linked to the correct subject rule.`,
+    reason: reason ?? correct,
+    trueStatement: trueStatement ?? correct,
     oneWordPrompt: `${focus}`,
     fillBlankPrompt: stripFinalPunctuation(focus),
     matchTitle: term.toLowerCase(),
@@ -1500,9 +1668,9 @@ function syllabusNearAssertionReasonQuestion(
 function syllabusNearOptions(concept: SyllabusNearConcept, index: number): MCQOption[] {
   const distractors = [
     concept.misconception,
-    `${concept.term} means using unrelated information without checking the situation.`,
-    `${concept.term} is useful only when no explanation is required.`,
-    `The idea can be answered correctly without clarity or examples.`,
+    `${concept.term} can be explained correctly even when the relevant rule is ignored.`,
+    `The example is valid even when it contradicts ${concept.term}.`,
+    `A correct answer for ${concept.term} should avoid the given conditions.`,
   ];
 
   return [
@@ -1525,9 +1693,25 @@ function syllabusNearMatchPairs(
     const concept = seeds[(offset + pairIndex) % seeds.length];
     return {
       left: concept.term,
-      right: trimToSentence(concept.correct, 120),
+      right: trimToSentence(syllabusNearMatchRight(concept), 120),
     };
   });
+}
+
+function syllabusNearMatchRight(concept: SyllabusNearConcept) {
+  const termPattern = new RegExp(
+    `\\b${escapeRegExp(concept.term).replace(/\s+/g, "\\s+")}\\b`,
+    "ig",
+  );
+  const withoutTerm = concept.correct
+    .replace(termPattern, "")
+    .replace(/^\s*(?:is|are|means|refers to|involves|uses|can|should)\b\s*/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (withoutTerm.split(/\s+/).filter(Boolean).length >= 5) {
+    return sentenceCase(withoutTerm);
+  }
+  return concept.example;
 }
 
 function normalizedFallbackComposition(
@@ -1850,15 +2034,7 @@ function baseQuestion(
     case "SHORT":
       return shortAnswerQuestion(summary, skill, placementIndex);
     case "NUMERICAL":
-      return {
-        text: `A learner records ${variant.firstCount} observations about this concept and adds ${variant.secondCount} more related observations. How many observations are recorded in total?`,
-        correctAnswer: `${variant.firstCount + variant.secondCount} points`,
-        keyPoints: [
-          "Add the two counts.",
-          `${variant.firstCount} + ${variant.secondCount} = ${variant.firstCount + variant.secondCount}.`,
-          `Final answer: ${variant.firstCount + variant.secondCount} points.`,
-        ],
-      };
+      return sourceBackedNumericalQuestion(concept, variant);
     case "SOURCE_BASED":
       return sourceBasedQuestion(concept, variant);
     case "CASE_BASED":
@@ -2149,6 +2325,63 @@ function shortModelAnswer(summary: string, skill: string) {
   return `${cleanSummary} This matters because students must ${reason}. A complete answer should connect the idea with a relevant detail or example.`;
 }
 
+function sourceBackedNumericalQuestion(
+  concept: NormalizedConcept,
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const context = `${concept.subject ?? ""} ${concept.chapter} ${concept.topic} ${concept.summary}`.toLowerCase();
+
+  if (/light|reflection|mirror|ray|normal|incidence/.test(context)) {
+    const angle = 20 + ((variant.firstCount + variant.secondCount) % 6) * 5;
+    return {
+      text: `A ray of light is incident on a plane mirror at ${angle}° from the normal. What is the angle of reflection?`,
+      correctAnswer: `${angle}°`,
+      keyPoints: [
+        "Use the law of reflection.",
+        `Angle of reflection = angle of incidence = ${angle}°.`,
+        `Final answer: ${angle}°.`,
+      ],
+    };
+  }
+
+  if (/refraction|lens|refractive|medium/.test(context)) {
+    const incident = 30 + (variant.firstCount % 4) * 5;
+    const refracted = Math.max(10, incident - 10);
+    return {
+      text: `A ray enters a denser medium with angle of incidence ${incident}° and angle of refraction ${refracted}°. By how many degrees does it bend towards the normal?`,
+      correctAnswer: `${incident - refracted}°`,
+      keyPoints: [
+        `Bending = ${incident}° - ${refracted}°.`,
+        `Final answer: ${incident - refracted}° towards the normal.`,
+      ],
+    };
+  }
+
+  if (/chemical|reaction|equation|atom|molecule|oxidation|reduction/.test(context)) {
+    const leftAtoms = 2 + (variant.firstCount % 4);
+    const rightAtoms = leftAtoms + 1 + (variant.secondCount % 3);
+    const difference = rightAtoms - leftAtoms;
+    return {
+      text: `In an unbalanced chemical equation, one side has ${leftAtoms} oxygen atoms and the other side has ${rightAtoms} oxygen atoms. How many oxygen atoms must be balanced?`,
+      correctAnswer: `${difference} oxygen atoms`,
+      keyPoints: [
+        `Compare the atoms: ${rightAtoms} - ${leftAtoms} = ${difference}.`,
+        `Final answer: ${difference} oxygen atoms.`,
+      ],
+    };
+  }
+
+  return {
+    text: `A worked example for ${concept.topic} uses ${variant.firstCount} given cases and ${variant.secondCount} checking cases. How many cases are considered in all?`,
+    correctAnswer: `${variant.firstCount + variant.secondCount} cases`,
+    keyPoints: [
+      "Add the two counts.",
+      `${variant.firstCount} + ${variant.secondCount} = ${variant.firstCount + variant.secondCount}.`,
+      `Final answer: ${variant.firstCount + variant.secondCount} cases.`,
+    ],
+  };
+}
+
 function sourceBasedQuestion(
   concept: NormalizedConcept,
   variant: VariantRecipe,
@@ -2217,7 +2450,7 @@ function matchQuestion(
 ): Partial<GeneratedQuestion> {
   const summary = studentVisibleSummary(concept.summary, 140);
   const skill = visibleSkillFor(variant);
-  const pairs = subjectMatchPairs(concept, summary, skill);
+  const pairs = subjectMatchPairs(concept, summary, skill, placementIndex);
   const focus = matchFocusPhrase(summary);
 
   return {
@@ -2325,6 +2558,9 @@ function mcqQuestionText(
   placementIndex?: number,
   concept?: NormalizedConcept,
 ) {
+  const opticsQuestion = opticsMcqQuestion(summary, placementIndex);
+  if (opticsQuestion) return opticsQuestion;
+
   const motionQuestion = motionMcqQuestion(summary);
   if (motionQuestion) return motionQuestion;
   const focus = mcqFocusPhrase(summary);
@@ -2435,6 +2671,81 @@ function mcqQuestionText(
       ], placementIndex);
     }
   }
+}
+
+function opticsMcqQuestion(summary: string, placementIndex?: number) {
+  const text = summary.toLowerCase();
+  if (!/(light|reflection|refraction|mirror|lens|ray|image|normal|incidence|magnified|reduced)/i.test(text)) {
+    return "";
+  }
+
+  if (/magnified|reduced|same size|object position|position of the object/.test(text)) {
+    return mcqStemVariant(summary, [
+      "What does the size of an image formed by a spherical mirror depend on?",
+      "Which factor decides whether a spherical mirror image is magnified or diminished?",
+      "How does object position affect the size of an image in a spherical mirror?",
+    ], placementIndex);
+  }
+
+  if (/extended object|ray diagram|spherical mirror/.test(text)) {
+    return mcqStemVariant(summary, [
+      "Why are ray diagrams used to study image formation by spherical mirrors?",
+      "Which statement explains the use of ray diagrams for a spherical mirror?",
+      "What do ray diagrams help us determine for image formation?",
+    ], placementIndex);
+  }
+
+  if (/angle of incidence|angle of reflection|normal/.test(text)) {
+    return mcqStemVariant(summary, [
+      "Which statement correctly applies the law of reflection?",
+      "What relation between the incident ray and reflected ray is correct?",
+      "Which answer correctly uses the normal in a reflection diagram?",
+    ], placementIndex);
+  }
+
+  if (/convex mirror|rear.view|field of view/.test(text)) {
+    return mcqStemVariant(summary, [
+      "Why is a convex mirror useful as a rear-view mirror?",
+      "Which image property makes a convex mirror suitable for vehicles?",
+      "What advantage does a convex mirror give to a driver?",
+    ], placementIndex);
+  }
+
+  if (/concave mirror|focus|real image|virtual image/.test(text)) {
+    return mcqStemVariant(summary, [
+      "How does object position affect image formation by a concave mirror?",
+      "Which statement about concave-mirror image formation is correct?",
+      "When can a concave mirror form a magnified virtual image?",
+    ], placementIndex);
+  }
+
+  if (/refraction|bending|medium|denser|rarer/.test(text)) {
+    return mcqStemVariant(summary, [
+      "Why does a light ray bend when it passes from one medium to another?",
+      "Which explanation correctly describes refraction of light?",
+      "What causes the direction of a light ray to change at a boundary?",
+      "How is refraction related to a change in the speed of light?",
+      "Which statement correctly compares the incident ray and refracted ray?",
+      "What should be checked to decide whether light bends towards the normal?",
+    ], placementIndex);
+  }
+
+  if (/convex lens|converge|principal focus/.test(text)) {
+    return mcqStemVariant(summary, [
+      "Which statement correctly describes the action of a convex lens?",
+      "What happens to parallel rays passing through a convex lens?",
+      "Which answer identifies the principal focus of a convex lens?",
+    ], placementIndex);
+  }
+
+  return mcqStemVariant(summary, [
+    "Which statement correctly explains the selected concept from light, reflection, and refraction?",
+    "Which option best connects the ray diagram with the optical concept?",
+    "What conclusion follows from the selected light-ray behaviour?",
+    "Which choice correctly applies the optics concept in the question?",
+    "Which statement uses the mirror or lens rule correctly?",
+    "What does the selected optical observation show?",
+  ], placementIndex);
 }
 
 function isReadableFocus(focus: string): boolean {
@@ -2554,98 +2865,189 @@ function subjectMatchPairs(
   concept: NormalizedConcept,
   summary: string,
   skill: string,
+  placementIndex: number,
 ): Array<{ left: string; right: string }> {
+  if (isOpticsConcept(concept, summary)) {
+    return buildOpticsMatchPairs(concept, summary, placementIndex);
+  }
+
   if (isMotionConcept(concept, summary)) {
-    return [
+    return selectMatchPairs([
       { left: "Smooth surface", right: "Less friction, object travels farther" },
       { left: "Rough surface", right: "More friction, object slows down faster" },
       { left: "Smaller frictional force", right: "Object travels a greater distance" },
       { left: "Thought experiment", right: "Used when real conditions are difficult to recreate" },
-    ];
+      { left: "Larger frictional force", right: "Object loses speed more quickly" },
+      { left: "Contact force", right: "Force that acts when surfaces touch" },
+      { left: "Velocity decrease", right: "Object slows as friction opposes motion" },
+      { left: "Surface condition", right: "Factor that changes the amount of friction" },
+    ], placementIndex);
   }
 
   if (isCommunicationConcept(concept, summary)) {
-    return [
+    return selectMatchPairs([
       { left: "Sender", right: "Creates and transmits the message" },
       { left: "Receiver", right: "Understands and responds to the message" },
       { left: "Channel", right: "Medium used to carry the message" },
       { left: "Feedback", right: "Response that confirms the message was understood" },
-    ];
+      { left: "Message", right: "Information or idea being communicated" },
+      { left: "Barrier", right: "Obstacle that disturbs clear communication" },
+      { left: "Active listening", right: "Listening carefully and responding appropriately" },
+      { left: "Clarity", right: "Using specific words so the receiver understands" },
+    ], placementIndex);
   }
 
   if (isLanguageConcept(concept, summary)) {
-    return [
+    return selectMatchPairs([
       { left: "Passage main idea", right: "Central point or argument of a passage" },
       { left: "Supporting passage detail", right: "Information that explains or proves the main idea" },
       { left: "Context clue", right: "Nearby words that guide the meaning of an unfamiliar word" },
       { left: "Supported inference", right: "Conclusion drawn from clues in the passage" },
-    ];
+      { left: "Tone", right: "Writer's attitude shown through word choice" },
+      { left: "Theme", right: "Central message developed in a text" },
+      { left: "Character motive", right: "Reason behind a character's action" },
+      { left: "Vocabulary in context", right: "Meaning decided from surrounding words" },
+    ], placementIndex);
   }
 
   if (isChemistryConcept(concept)) {
-    return buildChemistryMatchPairs(concept, summary);
+    return buildChemistryMatchPairs(concept, summary, placementIndex);
   }
 
   if (isBiologyConcept(concept)) {
-    return buildBiologyMatchPairs(concept, summary);
+    return buildBiologyMatchPairs(concept, summary, placementIndex);
   }
 
   if (isMathsConcept(concept)) {
-    return buildMathsMatchPairs(concept, summary);
+    return buildMathsMatchPairs(concept, summary, placementIndex);
   }
 
-  return buildGenericAcademicMatchPairs(concept, summary, skill);
+  return buildGenericAcademicMatchPairs(concept, summary, skill, placementIndex);
+}
+
+function buildOpticsMatchPairs(
+  concept: NormalizedConcept,
+  summary: string,
+  placementIndex: number,
+): Array<{ left: string; right: string }> {
+  const text = `${concept.chapter} ${concept.topic} ${summary}`.toLowerCase();
+  if (/mirror|image|reflection/.test(text)) {
+    return selectMatchPairs([
+      { left: "Incident ray", right: "Ray of light that strikes a reflecting surface" },
+      { left: "Reflected ray", right: "Ray that returns from the mirror after reflection" },
+      { left: "Normal", right: "Perpendicular line drawn at the point of incidence" },
+      { left: "Concave mirror", right: "Mirror that can form magnified images for nearby objects" },
+      { left: "Convex mirror", right: "Mirror that forms a diminished erect image" },
+      { left: "Real image", right: "Image that can be obtained on a screen" },
+      { left: "Virtual image", right: "Image that appears behind a mirror or lens" },
+      { left: "Principal focus", right: "Point where reflected rays meet or appear to meet" },
+    ], placementIndex);
+  }
+
+  if (/refraction|lens|medium/.test(text)) {
+    return selectMatchPairs([
+      { left: "Refraction", right: "Bending of light when it enters another medium" },
+      { left: "Denser medium", right: "Medium in which light travels more slowly" },
+      { left: "Convex lens", right: "Lens that converges parallel rays toward a focus" },
+      { left: "Principal focus", right: "Point where parallel rays meet after refraction" },
+      { left: "Concave lens", right: "Lens that diverges parallel rays" },
+      { left: "Refractive index", right: "Measure of how much a medium slows light" },
+      { left: "Rarer medium", right: "Medium in which light travels faster" },
+      { left: "Emergent ray", right: "Ray that comes out after refraction" },
+    ], placementIndex);
+  }
+
+  return selectMatchPairs([
+    { left: "Reflection", right: "Bouncing back of light from a surface" },
+    { left: "Refraction", right: "Bending of light at a boundary between media" },
+    { left: "Real image", right: "Image that can be obtained on a screen" },
+    { left: "Virtual image", right: "Image that appears to form behind a mirror or lens" },
+    { left: "Incident ray", right: "Ray that approaches a surface or boundary" },
+    { left: "Normal", right: "Reference line perpendicular to the surface" },
+    { left: "Convex lens", right: "Lens that converges light rays" },
+    { left: "Convex mirror", right: "Mirror that gives a wider field of view" },
+  ], placementIndex);
 }
 
 function buildChemistryMatchPairs(
   concept: NormalizedConcept,
   summary: string,
+  placementIndex: number,
 ): Array<{ left: string; right: string }> {
+  const context = `${concept.chapter} ${concept.topic} ${summary}`.toLowerCase();
+  if (/reaction|equation|oxidation|reduction|displacement|decomposition|combination/.test(context)) {
+    return selectMatchPairs([
+      { left: "Reactants", right: "Substances present before a chemical reaction" },
+      { left: "Products", right: "Substances formed after a chemical reaction" },
+      { left: "Balanced equation", right: "Equation with equal atoms of each element on both sides" },
+      { left: "Decomposition", right: "Reaction in which one compound breaks into simpler products" },
+      { left: "Combination reaction", right: "Reaction in which reactants form one product" },
+      { left: "Displacement reaction", right: "Reaction where a more reactive element replaces another" },
+      { left: "Oxidation", right: "Gain of oxygen or loss of electrons" },
+      { left: "Reduction", right: "Loss of oxygen or gain of electrons" },
+    ], placementIndex);
+  }
+
   const words = distinctiveSourceWords(summary);
   const term1 = sentenceCase(words[0] || concept.topic);
   const term2 = sentenceCase(words[1] || "solute");
   const term3 = sentenceCase(words[2] || "solvent");
-  return [
+  return selectMatchPairs([
     { left: "Mixture", right: "Combination of two or more substances not chemically combined" },
     { left: term1, right: trimToSentence(summary, 90) },
     { left: term2, right: `Substance dissolved in ${term3.toLowerCase()} to form a solution` },
     { left: "Solubility", right: "Maximum amount of solute that can dissolve in a fixed amount of solvent" },
-  ];
+    { left: "Solution", right: "Homogeneous mixture of solute and solvent" },
+    { left: "Solvent", right: "Substance that dissolves the solute" },
+    { left: "Saturated solution", right: "Solution that cannot dissolve more solute at that temperature" },
+    { left: "Separation", right: "Process used to obtain useful components from a mixture" },
+  ], placementIndex);
 }
 
 function buildBiologyMatchPairs(
   concept: NormalizedConcept,
   summary: string,
+  placementIndex: number,
 ): Array<{ left: string; right: string }> {
   const words = distinctiveSourceWords(summary);
   const term1 = sentenceCase(words[0] || concept.topic || "Cell wall");
   const term2 = sentenceCase(words[1] || "Cell membrane");
-  return [
+  return selectMatchPairs([
     { left: term1, right: trimToSentence(summary, 90) },
     { left: term2, right: "Flexible boundary controlling what enters and exits the cell" },
     { left: "Nucleus", right: "Controls cell activities and contains genetic material" },
     { left: "Cytoplasm", right: "Jelly-like fluid filling the cell where metabolic reactions occur" },
-  ];
+    { left: "Cell wall", right: "Rigid outer layer that supports a plant cell" },
+    { left: "Mitochondria", right: "Organelles that release energy during respiration" },
+    { left: "Chloroplast", right: "Organelle that contains chlorophyll for photosynthesis" },
+    { left: "Vacuole", right: "Storage space for water, food, or wastes" },
+  ], placementIndex);
 }
 
 function buildMathsMatchPairs(
   concept: NormalizedConcept,
   summary: string,
+  placementIndex: number,
 ): Array<{ left: string; right: string }> {
   const words = distinctiveSourceWords(summary);
   const term1 = sentenceCase(words[0] || concept.topic);
-  return [
+  return selectMatchPairs([
     { left: term1, right: trimToSentence(summary, 90) },
     { left: "Formula", right: "Mathematical rule expressed using symbols and numbers" },
     { left: "Variable", right: "A symbol representing an unknown or changing quantity" },
     { left: "Result", right: "The final answer obtained by applying the formula or rule" },
-  ];
+    { left: "Coefficient", right: "Number multiplying a variable or term" },
+    { left: "Equation", right: "Statement showing two expressions are equal" },
+    { left: "Substitution", right: "Replacing a variable with a given value" },
+    { left: "Verification", right: "Checking whether the result satisfies the condition" },
+  ], placementIndex);
 }
 
 function buildGenericAcademicMatchPairs(
   concept: NormalizedConcept,
   summary: string,
   _skill: string,
+  placementIndex: number,
 ): Array<{ left: string; right: string }> {
   const words = distinctiveSourceWords(summary);
   const topic = concept.topic;
@@ -2654,12 +3056,25 @@ function buildGenericAcademicMatchPairs(
   const term3 = sentenceCase(words[2] || "Example");
   const shortSummary = trimToSentence(summary, 90);
 
-  return [
+  return selectMatchPairs([
     { left: term1, right: shortSummary },
     { left: `${term2} definition`, right: `The precise meaning of ${term2.toLowerCase()} in this context` },
     { left: `${term3} application`, right: `A real situation where ${term3.toLowerCase()} is used` },
     { left: `${topic} importance`, right: `Why ${topic.toLowerCase()} matters in this topic` },
-  ];
+    { left: `${topic} condition`, right: `Rule or condition that controls the answer` },
+    { left: `${term1} example`, right: `Specific example linked to ${term1.toLowerCase()}` },
+    { left: `${term2} misconception`, right: `Incorrect idea that should be avoided` },
+    { left: `${term3} conclusion`, right: `Final point supported by the concept` },
+  ], placementIndex);
+}
+
+function selectMatchPairs(
+  pool: Array<{ left: string; right: string }>,
+  placementIndex: number,
+) {
+  if (pool.length <= 4) return pool;
+  const offset = positiveModulo(placementIndex, pool.length);
+  return Array.from({ length: 4 }, (_, index) => pool[(offset + index) % pool.length]);
 }
 
 function matchFocusPhrase(summary: string) {
@@ -2669,12 +3084,17 @@ function matchFocusPhrase(summary: string) {
 function isMotionConcept(concept: NormalizedConcept, summary: string) {
   const subject = `${concept.subject ?? ""} ${concept.chapter} ${summary}`.toLowerCase();
   return (
-    subject.includes("physics") ||
     subject.includes("force") ||
     subject.includes("motion") ||
     subject.includes("friction") ||
     subject.includes("surface") ||
     subject.includes("coins")
+  );
+}
+
+function isOpticsConcept(concept: NormalizedConcept, summary: string) {
+  return /light|reflection|refraction|mirror|lens|ray|image|normal|incidence|focus/i.test(
+    `${concept.subject ?? ""} ${concept.chapter} ${concept.topic} ${summary}`,
   );
 }
 
@@ -2727,6 +3147,10 @@ function stripFinalPunctuation(value: string) {
 
 function lowerFirst(value: string) {
   return value ? `${value[0].toLowerCase()}${value.slice(1)}` : value;
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function removeDanglingTail(value: string) {
@@ -2812,11 +3236,15 @@ function mcqLeadForSkill(skill: string) {
 }
 
 function misconceptionOptions(concept: NormalizedConcept, index: number) {
-  const subject = `${concept.subject ?? ""} ${concept.chapter}`.toLowerCase();
+  const subject = `${concept.subject ?? ""} ${concept.chapter} ${concept.topic}`.toLowerCase();
+  const optics = /light|reflection|refraction|mirror|lens|ray|image|normal|incidence|focus/.test(
+    subject,
+  );
   const scienceMotion =
-    subject.includes("physics") ||
     subject.includes("force") ||
-    subject.includes("motion");
+    subject.includes("motion") ||
+    subject.includes("friction") ||
+    subject.includes("surface");
   const chemistry = subject.includes("chemistry");
   const biology = subject.includes("biology");
   const mathematics = subject.includes("mathematics") || subject.includes("math");
@@ -2825,7 +3253,14 @@ function misconceptionOptions(concept: NormalizedConcept, index: number) {
     subject.includes("hindi") ||
     subject.includes("grammar");
 
-  const distractors = scienceMotion
+  const distractors = optics
+    ? [
+        "The image formed by a mirror is always the same size for every object position.",
+        "The angle of reflection is unrelated to the angle of incidence.",
+        "Light never changes direction when it passes from one medium to another.",
+        "A convex mirror always forms a real inverted image on a screen.",
+      ]
+    : scienceMotion
     ? [
         "Friction and surface conditions do not affect motion.",
         "A moving object stops only because it runs out of energy.",

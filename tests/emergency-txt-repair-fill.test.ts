@@ -804,6 +804,100 @@ describe("source-backed completion", () => {
     ).toBe(true);
   });
 
+  it("keeps physics chemistry fallback questions chapter-specific instead of generic or similar", () => {
+    const sampleBlueprint: Blueprint = {
+      sections: [
+        sectionFor("MCQ", 5, 1),
+        sectionFor("MATCH_FOLLOWING", 2, 3),
+        sectionFor("COMPETENCY", 1, 4),
+        sectionFor("NUMERICAL", 2, 3),
+        sectionFor("VERY_SHORT", 1, 2),
+        sectionFor("TRUE_FALSE", 1, 1),
+        sectionFor("ASSERTION_REASON", 2, 1),
+      ],
+      totalQuestions: 14,
+      totalMarks: 26,
+      estimatedTime: 90,
+      competencyPercentage: 70,
+    };
+    const sampleConfig: PaperConfig = {
+      ...config,
+      classNum: 10,
+      subject: "Physics",
+      subjects: ["Physics", "Chemistry"],
+      subjectSelections: [
+        { subject: "Physics", chapterIds: [10], topicIds: [] },
+        { subject: "Chemistry", chapterIds: [20], topicIds: [] },
+      ],
+      chapterIds: [10, 20],
+      topicIds: [],
+      difficulty: "ABSURD",
+      totalQuestions: 14,
+      totalMarks: 26,
+      questionTypes: [
+        "MCQ",
+        "MATCH_FOLLOWING",
+        "COMPETENCY",
+        "NUMERICAL",
+        "VERY_SHORT",
+        "TRUE_FALSE",
+        "ASSERTION_REASON",
+      ],
+      typeDistribution: {
+        MCQ: 5,
+        MATCH_FOLLOWING: 2,
+        COMPETENCY: 1,
+        NUMERICAL: 2,
+        VERY_SHORT: 1,
+        TRUE_FALSE: 1,
+        ASSERTION_REASON: 2,
+      },
+      questionComposition: [
+        {
+          subject: "Physics",
+          chapterId: 10,
+          chapterName: "Light - Reflection and Refraction",
+          questionCount: 7,
+        },
+        {
+          subject: "Chemistry",
+          chapterId: 20,
+          chapterName: "Chemical Reactions and Equations",
+          questionCount: 7,
+        },
+      ],
+    };
+    const bank = new QuestionCandidateBank([], sampleBlueprint, sampleConfig);
+
+    const completion = completeQuestionBankWithSyllabusNearFallback({
+      bank,
+      config: sampleConfig,
+      concepts: [],
+      startIndex: 2300,
+    });
+    const validation = bank.result();
+    const visibleText = studentVisibleText(validation.questions);
+    const matchSignatures = validation.questions
+      .filter((question) => question.type === "MATCH_FOLLOWING")
+      .map((question) =>
+        question.matchPairs
+          ?.map((pair) => `${pair.left}:${pair.right}`)
+          .sort()
+          .join("|"),
+      );
+
+    expect(completion.accepted).toBe(14);
+    expect(bank.missingCount()).toBe(0);
+    expect(validation.questions).toHaveLength(14);
+    expect(visibleText).toMatch(/angle of incidence|refraction|convex mirror|balanced equation|reactants|products/i);
+    expect(visibleText).not.toMatch(
+      /important for effective learning|can be answered well by naming the topic|Chemical Reactions and Equations application|reasoning about Chemical Reactions and Equations|supports clear understanding/i,
+    );
+    expect(visibleText).not.toMatch(/Smooth surface|Rough surface|friction/i);
+    expect(visibleText).not.toMatch(/learner (?:records|notes) \d+ (?:observations|examples).+adds \d+ more/i);
+    expect(new Set(matchSignatures).size).toBe(matchSignatures.length);
+  });
+
   it.each(["EASY", "MEDIUM", "HARD", "ABSURD"] as const)(
     "completes the same selected source at %s difficulty",
     (difficulty) => {
