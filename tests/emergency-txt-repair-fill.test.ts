@@ -6,6 +6,7 @@ import {
   analyzeSourceBackedCompletionCapacity,
   completeQuestionBankWithSourceBackedFallback,
   completeQuestionBankWithSyllabusNearFallback,
+  generateSourceBackedFallbackQuestions,
   retargetSourceBackedCompletionForGuaranteedFinalRepair,
   sourceBackedCapacityMessage,
   sourceBackedCompletionMarker,
@@ -551,6 +552,92 @@ describe("source-backed completion", () => {
     expect(validation.questions.every((question) =>
       question.noveltyAngle?.startsWith(sourceBackedCompletionMarker),
     )).toBe(true);
+  });
+
+  it("labels fragile deterministic absurd fallbacks at their valid hard ceiling", () => {
+    const absurdConfig: PaperConfig = {
+      ...config,
+      difficulty: "ABSURD",
+      questionTypes: [
+        "MCQ",
+        "SHORT",
+        "ASSERTION_REASON",
+        "TRUE_FALSE",
+        "MATCH_FOLLOWING",
+      ],
+      totalQuestions: 5,
+      totalMarks: 9,
+      typeDistribution: {
+        MCQ: 1,
+        SHORT: 1,
+        ASSERTION_REASON: 1,
+        TRUE_FALSE: 1,
+        MATCH_FOLLOWING: 1,
+      },
+    };
+    const sections = [
+      sectionFor("MCQ", 1, 1),
+      sectionFor("SHORT", 1, 3),
+      sectionFor("ASSERTION_REASON", 1, 1),
+      sectionFor("TRUE_FALSE", 1, 1),
+      sectionFor("MATCH_FOLLOWING", 1, 3),
+    ];
+
+    const generated = generateSourceBackedFallbackQuestions(
+      sections,
+      [longParagraphConcept()],
+      absurdConfig,
+      { startIndex: 900 },
+    );
+    const difficultyByType = new Map(
+      generated.map((question) => [question.type, question.difficulty]),
+    );
+
+    expect(generated).toHaveLength(5);
+    expect(difficultyByType.get("MCQ")).toBe("ABSURD");
+    expect(difficultyByType.get("SHORT")).toBe("HARD");
+    expect(difficultyByType.get("ASSERTION_REASON")).toBe("HARD");
+    expect(difficultyByType.get("TRUE_FALSE")).toBe("HARD");
+    expect(difficultyByType.get("MATCH_FOLLOWING")).toBe("HARD");
+  });
+
+  it("uses hard final fill when absurd repair has no explicit syllabus composition", () => {
+    const rescueBlueprint: Blueprint = {
+      sections: [sectionFor("MCQ", 4, 1)],
+      totalQuestions: 4,
+      totalMarks: 4,
+      estimatedTime: 12,
+      competencyPercentage: 60,
+    };
+    const rescueConfig: PaperConfig = {
+      ...config,
+      difficulty: "ABSURD",
+      questionTypes: ["MCQ"],
+      typeDistribution: { MCQ: 4 },
+      totalQuestions: 4,
+      totalMarks: 4,
+    };
+    const bank = new QuestionCandidateBank([], rescueBlueprint, rescueConfig);
+
+    const completion = completeQuestionBankWithFinalFallbacks({
+      bank,
+      blueprint: rescueBlueprint,
+      config: rescueConfig,
+      concepts: [singleAtomConcept()],
+      requireSyllabusComposition: true,
+    });
+    const validation = completion.bank.result();
+
+    expect(completion.readyQuestionCount).toBe(4);
+    expect(completion.missingQuestionCount).toBe(0);
+    expect(validation.questions).toHaveLength(4);
+    expect(validation.questions.every((question) => question.type === "MCQ")).toBe(true);
+    expect(validation.questions.reduce((sum, question) => sum + question.marks, 0)).toBe(4);
+    expect(validation.rejectionReasons.TEACHER_QUALITY ?? 0).toBe(0);
+    expect(validation.questions.some((question) => question.difficulty === "HARD")).toBe(true);
+    expect(
+      completion.warnings.some((warning) => warning.type === "absurd-hard-final-fill"),
+    ).toBe(true);
   });
 
   it.each(["EASY", "MEDIUM", "HARD", "ABSURD"] as const)(

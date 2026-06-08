@@ -5,6 +5,7 @@ import {
 } from "@/lib/question-duplicates";
 import { QuestionCandidateBank } from "@/lib/question-candidate-bank";
 import { deterministicMcqOptionShuffle } from "@/lib/mcq-option-shuffle";
+import { allowedDifficultiesForFormat } from "@/lib/difficulty-protocol";
 import { hasTeacherLogicQualityIssue } from "@/lib/question-quality";
 import { buildShuffledMatchAnswer } from "@/lib/match-display";
 import type {
@@ -1094,22 +1095,27 @@ function syllabusNearCommonQuestionFields(
   concept: SyllabusNearConcept,
   index: number,
 ): GeneratedQuestion {
+  const difficulty = deterministicFallbackDifficultyForFormat(
+    section.questionType,
+    config.difficulty,
+  );
+
   return {
     id: index,
     text: concept.focus,
     type: section.questionType,
     marks: section.marksPerQuestion,
-    difficulty: config.difficulty,
-    bloomLevel: bloomFor(section.questionType, config.difficulty),
+    difficulty,
+    bloomLevel: bloomFor(section.questionType, difficulty),
     competencyLevel: section.questionType === "MCQ" || section.questionType === "TRUE_FALSE" ? 2 : 3,
-    reasoningSteps: reasoningStepsFor(config.difficulty),
+    reasoningSteps: reasoningStepsFor(difficulty),
     difficultyConfidence: 0.76,
     cognitiveComplexity: {
-      conceptIntegration: complexityFor(config.difficulty),
-      abstractionLevel: complexityFor(config.difficulty),
-      inferenceLevel: Math.max(1, complexityFor(config.difficulty) - 1),
+      conceptIntegration: complexityFor(difficulty),
+      abstractionLevel: complexityFor(difficulty),
+      inferenceLevel: Math.max(1, complexityFor(difficulty) - 1),
       ambiguityLevel: 1,
-      cognitiveLoad: complexityFor(config.difficulty),
+      cognitiveLoad: complexityFor(difficulty),
     },
     topic: item.topicName ?? concept.term,
     chapterId: item.chapterId,
@@ -1697,6 +1703,10 @@ function createSourceBackedQuestion(
   const noveltyAtomId = sourceBackedAtomIdForType(concept, type);
   const sourceFocus = `${variant.sourceFocus} ${concept.atomId}: ${trimToSentence(visibleSummary, 150)} Internal angle: ${variant.id}.`;
   const answerPath = `${variant.answerPath} ${topicSentence(concept.topic)} Use internal atom ${concept.atomId} (${concept.atomLabel}) to ${variant.answerVerb} the ${concept.source === "pdf" ? "PDF" : "NCERT TXT"} idea.`;
+  const difficulty = deterministicFallbackDifficultyForFormat(
+    type,
+    config.difficulty,
+  );
 
   const question: GeneratedQuestion = {
     ...base,
@@ -1704,17 +1714,17 @@ function createSourceBackedQuestion(
     type,
     marks: section.marksPerQuestion,
     correctAnswer: base.correctAnswer ?? concept.summary,
-    difficulty: config.difficulty,
-    bloomLevel: bloomFor(type, config.difficulty),
+    difficulty,
+    bloomLevel: bloomFor(type, difficulty),
     competencyLevel: type === "MCQ" || type === "TRUE_FALSE" ? 2 : 3,
-    reasoningSteps: reasoningStepsFor(config.difficulty),
+    reasoningSteps: reasoningStepsFor(difficulty),
     difficultyConfidence: 0.72,
     cognitiveComplexity: {
-      conceptIntegration: complexityFor(config.difficulty),
-      abstractionLevel: complexityFor(config.difficulty),
-      inferenceLevel: Math.max(1, complexityFor(config.difficulty) - 1),
+      conceptIntegration: complexityFor(difficulty),
+      abstractionLevel: complexityFor(difficulty),
+      inferenceLevel: Math.max(1, complexityFor(difficulty) - 1),
       ambiguityLevel: 1,
-      cognitiveLoad: complexityFor(config.difficulty),
+      cognitiveLoad: complexityFor(difficulty),
     },
     topic: concept.topic,
     chapterId: concept.chapterId,
@@ -3938,4 +3948,16 @@ function complexityFor(difficulty: Difficulty) {
   if (difficulty === "HARD") return 4;
   if (difficulty === "MEDIUM") return 3;
   return 2;
+}
+
+function deterministicFallbackDifficultyForFormat(
+  type: QuestionType,
+  selectedDifficulty: Difficulty,
+): Difficulty {
+  if (selectedDifficulty !== "ABSURD") return selectedDifficulty;
+
+  const allowed = allowedDifficultiesForFormat(selectedDifficulty, type);
+  if (allowed.includes("ABSURD")) return "ABSURD";
+  if (allowed.includes("HARD")) return "HARD";
+  return selectedDifficulty;
 }

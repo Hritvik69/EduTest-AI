@@ -102,6 +102,72 @@ export function completeQuestionBankWithFinalFallbacks({
     });
   };
 
+  const tryAbsurdHardFinalFill = () => {
+    if (activeConfig.difficulty !== "ABSURD" || activeBank.missingCount() <= 0) {
+      return;
+    }
+
+    const hardConfig: PaperConfig = {
+      ...activeConfig,
+      difficulty: "HARD",
+    };
+    const readyBeforeHardFill = activeBank.readyCount();
+    let hardSourceAdded = 0;
+    let hardSyllabusAdded = 0;
+
+    const hardSourceCapacity = analyzeSourceBackedCompletionCapacity({
+      bank: activeBank,
+      concepts,
+      config: hardConfig,
+      startIndex: startIndex ?? activeBank.allCandidates().length + 801,
+    });
+
+    if (hardSourceCapacity.enough) {
+      const beforeHardSource = activeBank.readyCount();
+      completeQuestionBankWithSourceBackedFallback({
+        bank: activeBank,
+        concepts,
+        config: hardConfig,
+        startIndex: startIndex ?? activeBank.allCandidates().length + 801,
+        deadlineAt,
+        minRemainingMs,
+        throwOnInsufficientCapacity: false,
+        capacityScope: `${scope} absurd hard final fill`,
+      });
+      hardSourceAdded = Math.max(0, activeBank.readyCount() - beforeHardSource);
+    }
+
+    if (activeBank.missingCount() > 0) {
+      const beforeHardSyllabus = activeBank.readyCount();
+      completeQuestionBankWithSyllabusNearFallback({
+        bank: activeBank,
+        config: hardConfig,
+        concepts,
+        startIndex: startIndex ?? activeBank.allCandidates().length + 1201,
+      });
+      hardSyllabusAdded = Math.max(
+        0,
+        activeBank.readyCount() - beforeHardSyllabus,
+      );
+    }
+
+    const added = Math.max(0, activeBank.readyCount() - readyBeforeHardFill);
+    if (added > 0) {
+      sourceBackedCompletedQuestions += hardSourceAdded;
+      syllabusNearCompletedQuestions += hardSyllabusAdded;
+      warnings.push({
+        type: "absurd-hard-final-fill",
+        reason: `Completed ${added} final Absurd replacement question${added === 1 ? "" : "s"} at HARD difficulty because the remaining selected-source slots could not produce teacher-quality Absurd candidates.`,
+      });
+    }
+
+    sourceCapacity = analyzeSourceBackedCompletionCapacity({
+      bank: activeBank,
+      concepts,
+      config: activeBank.missingCount() > 0 ? hardConfig : activeConfig,
+    });
+  };
+
   tryStrictSourceCompletion();
 
   if (activeBank.missingCount() > 0) {
@@ -154,6 +220,7 @@ export function completeQuestionBankWithFinalFallbacks({
 
   if (activeBank.missingCount() > 0) {
     tryStrictSourceCompletion();
+    tryAbsurdHardFinalFill();
   } else {
     sourceCapacity = analyzeSourceBackedCompletionCapacity({
       bank: activeBank,
