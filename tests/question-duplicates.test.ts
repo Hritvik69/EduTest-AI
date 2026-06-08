@@ -15,6 +15,7 @@ type DuplicateTestQuestion = {
   scenario?: string;
   correctAnswer?: string;
   options?: Array<{ id?: string; text?: string; isCorrect?: boolean }>;
+  matchPairs?: Array<{ left?: string; right?: string }>;
   subQuestions?: Array<{
     text?: string;
     correctAnswer?: string;
@@ -63,6 +64,30 @@ describe("question duplicate decisions", () => {
     });
 
     expect(duplicateQuestionReason(first, second)).toBe("repeated option pattern");
+  });
+
+  it("rejects repeated match-column pair patterns even when the stem is reworded", () => {
+    const first: DuplicateTestQuestion = {
+      text: "Match the terms about image formation with their correct descriptions.",
+      type: "MATCH_FOLLOWING",
+      topic: "Light - Reflection and Refraction",
+      correctAnswer: "A1-B3, A2-B4, A3-B1, A4-B2",
+      matchPairs: [
+        { left: "Incident ray", right: "Ray that strikes a reflecting surface" },
+        { left: "Reflected ray", right: "Ray that returns from the mirror" },
+        { left: "Normal", right: "Perpendicular line at the point of incidence" },
+        { left: "Concave mirror", right: "Mirror that can form magnified images" },
+      ],
+    };
+    const second: DuplicateTestQuestion = {
+      ...first,
+      text: "Match each concept related to spherical mirrors with its meaning.",
+      correctAnswer: "A1-B2, A2-B1, A3-B4, A4-B3",
+    };
+
+    expect(duplicateQuestionReason(first, second)).toBe(
+      "repeated match-column pattern",
+    );
   });
 
   it("rejects the same source atom and angle as a hard duplicate", () => {
@@ -275,6 +300,25 @@ describe("question duplicate decisions", () => {
 
     expect(duplicateQuestionReason(first, second)).toBe(
       "repeated numerical values",
+    );
+  });
+
+  it("rejects repeated weak fallback numerical templates even when values differ", () => {
+    const first = numericalQuestion({
+      text: "A learner records 4 observations about this concept and adds 3 more related observations. How many observations are recorded in total?",
+      correctAnswer: "7 points",
+      answerPath: "Add 4 and 3 to get 7 points.",
+    });
+    const second = numericalQuestion({
+      text: "A learner notes 3 examples of Chemical Reactions and Equations application and adds 5 more. How many examples are noted in all?",
+      subject: "Chemistry",
+      topic: "Chemical Reactions and Equations",
+      correctAnswer: "8 examples",
+      answerPath: "Add 3 and 5 to get 8 examples.",
+    });
+
+    expect(duplicateQuestionReason(first, second)).toBe(
+      "repeated numerical template",
     );
   });
 

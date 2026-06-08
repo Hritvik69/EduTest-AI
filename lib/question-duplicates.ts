@@ -38,6 +38,7 @@ type QuestionLike = {
   explanation?: string;
   keyPoints?: string[];
   options?: Array<{ id?: string; text?: string; isCorrect?: boolean }>;
+  matchPairs?: Array<{ left?: string; right?: string }>;
   subQuestions?: Array<{
     text?: string;
     correctAnswer?: string;
@@ -195,6 +196,17 @@ export function hardDuplicateReason(left: QuestionLike, right: QuestionLike) {
     return "repeated option pattern";
   }
 
+  const leftMatchPairs = matchPairSignature(left.matchPairs);
+  const rightMatchPairs = matchPairSignature(right.matchPairs);
+  if (
+    leftMatchPairs &&
+    rightMatchPairs &&
+    isMeaningfulMatchPairSignature(leftMatchPairs) &&
+    leftMatchPairs === rightMatchPairs
+  ) {
+    return "repeated match-column pattern";
+  }
+
   const leftSubQuestions = subQuestionSignature(left);
   const rightSubQuestions = subQuestionSignature(right);
   if (
@@ -250,6 +262,9 @@ export function hardDuplicateReason(left: QuestionLike, right: QuestionLike) {
 
   const numericalDuplicate = hardNumericalDuplicateReason(left, right);
   if (numericalDuplicate) return numericalDuplicate;
+
+  const repeatedNumericalTemplate = repeatedWeakNumericalTemplateReason(left, right);
+  if (repeatedNumericalTemplate) return repeatedNumericalTemplate;
 
   return null;
 }
@@ -612,6 +627,16 @@ function optionSignature(options: QuestionLike["options"]) {
     .join("|");
 }
 
+function matchPairSignature(matchPairs: QuestionLike["matchPairs"]) {
+  if (!matchPairs?.length) return "";
+  return matchPairs
+    .map((pair) =>
+      normalizeQuestionText(`${pair.left ?? ""}:${pair.right ?? ""}`),
+    )
+    .sort()
+    .join("|");
+}
+
 function subQuestionSignature(question: QuestionLike) {
   if (!question.subQuestions?.length) return "";
   return question.subQuestions
@@ -627,6 +652,33 @@ function subQuestionSignature(question: QuestionLike) {
       ),
     )
     .join(" | ");
+}
+
+function repeatedWeakNumericalTemplateReason(
+  left: QuestionLike,
+  right: QuestionLike,
+) {
+  const leftFamily = weakNumericalTemplateFamily(left);
+  const rightFamily = weakNumericalTemplateFamily(right);
+  if (leftFamily && rightFamily && leftFamily === rightFamily) {
+    return "repeated numerical template";
+  }
+  return null;
+}
+
+function weakNumericalTemplateFamily(question: QuestionLike) {
+  const type = normalizeSmall(question.type).replace(/[\s_-]+/g, "");
+  if (type !== "numerical" && type !== "numeric") return "";
+  const text = normalizeQuestionText(question.text);
+  if (
+    /\b(?:learner|student)\s+(?:records|notes)\s+\d+\s+(?:observations|examples)\b/.test(
+      text,
+    ) &&
+    /\b(?:adds|add)\s+\d+\s+(?:more|related)\b/.test(text)
+  ) {
+    return "learner-counts-and-adds";
+  }
+  return "";
 }
 
 function comparableQuestionScope(left: QuestionLike, right: QuestionLike) {
@@ -686,6 +738,7 @@ function questionNonAnswerText(question: QuestionLike) {
     question.subject,
     question.sourceChunkFocus,
     question.options?.map((option) => option.text).join(" "),
+    question.matchPairs?.map((pair) => `${pair.left ?? ""} ${pair.right ?? ""}`).join(" "),
     question.subQuestions?.map((item) => item.text).join(" "),
   ].filter((value): value is string => Boolean(value?.trim()));
 }
@@ -741,6 +794,11 @@ function isMeaningfulOptionSignature(value: string) {
   return !/^a option a false\|b option b true\|c option c false\|d option d false$/.test(
     value,
   );
+}
+
+function isMeaningfulMatchPairSignature(value: string) {
+  const words = uniqueQuestionWords(value);
+  return words.size >= 6 && value.length >= 45;
 }
 
 function normalizeSmall(value: unknown) {
