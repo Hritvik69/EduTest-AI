@@ -309,6 +309,80 @@ describe("generateSourceBackedFallbackQuestions", () => {
     );
   });
 
+  it("does not build fallback questions from extracted textbook exercise prompts", () => {
+    const physicsConfig: PaperConfig = {
+      classNum: 10,
+      subject: "Physics",
+      subjects: ["Physics"],
+      subjectSelections: [{ subject: "Physics", chapterIds: [10], topicIds: [] }],
+      chapterIds: [10],
+      totalMarks: 6,
+      duration: 30,
+      examType: "School Test",
+      difficulty: "MEDIUM",
+      aiProvider: "AUTO",
+      questionTypes: ["MCQ", "TRUE_FALSE", "SHORT", "NUMERICAL"],
+      typeDistribution: { MCQ: 1, TRUE_FALSE: 1, SHORT: 1, NUMERICAL: 1 },
+      bloomDistribution: defaultBloomDistribution,
+      totalQuestions: 4,
+    };
+    const physicsBlueprint: Blueprint = {
+      sections: [
+        sectionFor("MCQ", 1, 1),
+        sectionFor("TRUE_FALSE", 1, 1),
+        sectionFor("SHORT", 1, 1),
+        sectionFor("NUMERICAL", 1, 3),
+      ],
+      totalQuestions: 4,
+      totalMarks: 6,
+      estimatedTime: 15,
+      competencyPercentage: 60,
+    };
+    const exerciseMixedConcepts: ConceptData[] = [
+      {
+        text: [
+          "Exercises.",
+          "1. Why does a ray of light bend at the boundary between air and glass?",
+          "2. Explain the laws of reflection.",
+          "Answer the following questions.",
+          "Refraction occurs when light passes from one transparent medium to another and changes speed at the boundary.",
+          "In reflection from a plane mirror, the angle of incidence is equal to the angle of reflection.",
+          "Both angles are measured from the normal drawn at the point where the ray strikes the reflecting surface.",
+          "A convex lens converges parallel rays towards the principal focus after refraction.",
+        ].join(" "),
+        type: "NCERT_TXT_SOURCE",
+        bloomLevel: "UNDERSTAND",
+        hotsPotential: true,
+        subject: "Physics",
+        classNum: 10,
+        chapterName: "Light - Reflection and Refraction",
+        topicName: "Reflection and refraction",
+        chapterId: 10,
+        topicId: 101,
+        source: "ncert_txt",
+      },
+    ];
+
+    const questions = generateSourceBackedFallbackQuestions(
+      physicsBlueprint.sections,
+      exerciseMixedConcepts,
+      physicsConfig,
+    );
+    const validation = validatePaperKeepingValidQuestions(
+      questions,
+      physicsBlueprint,
+      physicsConfig,
+    );
+    const visibleText = studentVisibleText(validation.questions);
+
+    expect(validation.skipped).toEqual([]);
+    expect(validation.questions).toHaveLength(4);
+    expect(visibleText).toMatch(/refraction|angle of incidence|angle of reflection|convex lens/i);
+    expect(visibleText).not.toMatch(
+      /Why does a ray of light bend at the boundary|Explain the laws of reflection|Answer the following questions|Exercises/i,
+    );
+  });
+
   it("replaces noisy Communication Skills fragments with clean syllabus-near questions", () => {
     const communicationItem = {
       subject: "Advanced Computer",

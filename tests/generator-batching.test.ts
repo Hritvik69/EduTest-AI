@@ -98,7 +98,8 @@ describe("generateQuestionsForSection batching", () => {
       generation_mode_label: "NCERT/PDF Source",
     });
     expect(prompt).toContain("GENERATION MODE: NCERT/PDF SOURCE");
-    expect(prompt).toContain("Preserve exact wording");
+    expect(prompt).toContain("Do not copy extracted exercise/question prompts");
+    expect(prompt).toContain("write fresh teacher-made questions");
   });
 
   it("drops duplicate MCQs and requests replacements before validation", async () => {
