@@ -839,7 +839,8 @@ function conceptsFromChapterText({
     text
       .split(/(?<=[.!?।])\s+/)
       .map((sentence) => sentence.trim())
-      .filter((sentence) => sentence.length >= 55),
+      .filter((sentence) => sentence.length >= 55)
+      .filter((sentence) => !isExtractedExercisePrompt(sentence)),
   ).slice(0, 24);
   const chunkSize = Math.max(2, Math.ceil(sentences.length / 8));
   const concepts: ConceptData[] = [];
@@ -937,6 +938,29 @@ function unique(values: string[]) {
 
 function cleanPdfText(text: string) {
   return text.replace(/\u0008/g, "").replace(/\t/g, " ").replace(/\r/g, "\n");
+}
+
+function isExtractedExercisePrompt(value: string) {
+  const normalized = value.replace(/\s+/g, " ").trim();
+  if (!normalized) return false;
+
+  return (
+    /^(?:exercise|exercises|questions?|question\s+bank|worksheet|practice\s+questions?|review\s+questions?|multiple\s+choice\s+questions?|very\s+short\s+answer|short\s+answer|long\s+answer)\s*[:.-]?$/i.test(
+      normalized,
+    ) ||
+    /^(?:q(?:uestion)?\.?\s*)?\d{1,3}[.)]\s*(?:what|why|how|when|where|which|who|whom|whose|explain|describe|define|state|list|name|choose|tick|fill|match|answer|give|write|discuss|differentiate|calculate|find|prove|show)\b/i.test(
+      normalized,
+    ) ||
+    /^(?:what|why|how|when|where|which|who|whom|whose)\b.{12,}\?/i.test(
+      normalized,
+    ) ||
+    /^(?:explain|describe|define|state|list|name|choose|tick|fill|match|answer|give|write|discuss|differentiate|calculate|find|prove|show)\b.{12,}[.?]?$/i.test(
+      normalized,
+    ) ||
+    /\b(?:answer\s+the\s+following|answer\s+these\s+questions|choose\s+the\s+correct|tick\s+the\s+correct|fill\s+in\s+the\s+blanks?|match\s+the\s+following|true\s+or\s+false|assertion\s+and\s+reason|give\s+reasons?|very\s+short\s+answer|short\s+answer|long\s+answer)\b/i.test(
+      normalized,
+    )
+  );
 }
 
 function safeErrorMessage(error: unknown) {
