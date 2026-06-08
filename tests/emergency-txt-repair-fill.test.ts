@@ -733,6 +733,77 @@ describe("source-backed completion", () => {
     );
   });
 
+  it("finishes the 12/14 absurd last-mile case when strict capacity is available near the old deadline reserve", () => {
+    const totalQuestions = 14;
+    const lastMileConfig: PaperConfig = {
+      ...config,
+      difficulty: "ABSURD",
+      totalQuestions,
+      totalMarks: totalQuestions,
+      typeDistribution: { MCQ: totalQuestions },
+    };
+    const lastMileBlueprint = blueprintForCount(totalQuestions);
+    const sourceConcept = longParagraphConcept();
+    const acceptedSeedQuestions = completeQuestionBankWithSourceBackedFallback({
+      bank: new QuestionCandidateBank(
+        [],
+        blueprintForCount(12),
+        {
+          ...lastMileConfig,
+          totalQuestions: 12,
+          totalMarks: 12,
+          typeDistribution: { MCQ: 12 },
+        },
+      ),
+      concepts: [sourceConcept],
+      config: {
+        ...lastMileConfig,
+        totalQuestions: 12,
+        totalMarks: 12,
+        typeDistribution: { MCQ: 12 },
+      },
+    });
+    const bank = new QuestionCandidateBank(
+      [
+        ...acceptedSeedQuestions,
+        acceptedSeedQuestions[0]!,
+        acceptedSeedQuestions[1]!,
+      ],
+      lastMileBlueprint,
+      lastMileConfig,
+    );
+    const capacity = analyzeSourceBackedCompletionCapacity({
+      bank,
+      concepts: [sourceConcept],
+      config: lastMileConfig,
+    });
+
+    expect(bank.readyCount()).toBe(12);
+    expect(bank.missingCount()).toBe(2);
+    expect(capacity.requiredMissingCount).toBe(2);
+    expect(capacity.effectiveCapacity).toBe(2);
+    expect(capacity.enough).toBe(true);
+
+    const completion = completeQuestionBankWithFinalFallbacks({
+      bank,
+      blueprint: lastMileBlueprint,
+      config: lastMileConfig,
+      concepts: [sourceConcept],
+      deadlineAt: Date.now() + 3_000,
+      minRemainingMs: 7_500,
+      requireSyllabusComposition: true,
+    });
+
+    expect(completion.readyQuestionCount).toBe(14);
+    expect(completion.missingQuestionCount).toBe(0);
+    expect(completion.bank.result().questions).toHaveLength(14);
+    expect(
+      completion.warnings.some(
+        (warning) => warning.type === "source-backed-last-mile-fill",
+      ),
+    ).toBe(true);
+  });
+
   it.each(["EASY", "MEDIUM", "HARD", "ABSURD"] as const)(
     "completes the same selected source at %s difficulty",
     (difficulty) => {
