@@ -1269,15 +1269,31 @@ function syllabusNearNumericalQuestion(
     };
   }
 
+  if (/mixture|solution|solute|solvent|concentration|separation|filtration|evaporation|distillation/.test(termText)) {
+    const solute = 4 + (concept.firstCount % 5);
+    const solvent = 20 + (concept.secondCount % 6) * 5;
+    const total = solute + solvent;
+    return {
+      ...common,
+      text: `A solution is prepared using ${solute} g of solute and ${solvent} g of solvent. What is the total mass of the solution?`,
+      correctAnswer: `${total} g`,
+      keyPoints: [
+        `Total mass = mass of solute + mass of solvent.`,
+        `${solute} g + ${solvent} g = ${total} g.`,
+      ],
+      explanation: "For a simple mixture, add the solute and solvent masses.",
+    };
+  }
+
   return {
     ...common,
-    text: `A worked example for ${concept.term} uses ${concept.firstCount} given cases and ${concept.secondCount} checking cases. How many cases are considered in all?`,
-    correctAnswer: `${concept.firstCount + concept.secondCount} cases`,
+    text: `In a chapter activity on ${concept.term}, ${concept.firstCount} correct features and ${concept.secondCount} supporting examples are listed. How many evidence points are listed in all?`,
+    correctAnswer: `${concept.firstCount + concept.secondCount} evidence points`,
     keyPoints: [
       `${concept.firstCount} + ${concept.secondCount} = ${concept.firstCount + concept.secondCount}.`,
-      `Final answer: ${concept.firstCount + concept.secondCount} cases.`,
+      `Final answer: ${concept.firstCount + concept.secondCount} evidence points.`,
     ],
-    explanation: "Add the given cases and checking cases to find the total.",
+    explanation: "Add the listed features and examples to find the total evidence points.",
   };
 }
 
@@ -2371,13 +2387,28 @@ function sourceBackedNumericalQuestion(
     };
   }
 
+  if (/mixture|solution|solute|solvent|concentration|separation|filtration|evaporation|distillation/.test(context)) {
+    const solute = 3 + (variant.firstCount % 6);
+    const solvent = 25 + (variant.secondCount % 5) * 5;
+    const total = solute + solvent;
+    return {
+      text: `A solution contains ${solute} g of solute and ${solvent} g of solvent. What is the total mass of the solution?`,
+      correctAnswer: `${total} g`,
+      keyPoints: [
+        "Add the mass of solute and solvent.",
+        `${solute} g + ${solvent} g = ${total} g.`,
+        `Final answer: ${total} g.`,
+      ],
+    };
+  }
+
   return {
-    text: `A worked example for ${concept.topic} uses ${variant.firstCount} given cases and ${variant.secondCount} checking cases. How many cases are considered in all?`,
-    correctAnswer: `${variant.firstCount + variant.secondCount} cases`,
+    text: `A source-based activity on ${concept.topic} lists ${variant.firstCount} key details and ${variant.secondCount} supporting examples. How many evidence points are listed in all?`,
+    correctAnswer: `${variant.firstCount + variant.secondCount} evidence points`,
     keyPoints: [
-      "Add the two counts.",
+      "Add the two listed counts.",
       `${variant.firstCount} + ${variant.secondCount} = ${variant.firstCount + variant.secondCount}.`,
-      `Final answer: ${variant.firstCount + variant.secondCount} cases.`,
+      `Final answer: ${variant.firstCount + variant.secondCount} evidence points.`,
     ],
   };
 }
@@ -3983,8 +4014,11 @@ function normalizeConceptPool(
 ): NormalizedConcept[] {
   const pool: NormalizedConcept[] = [];
   const seenAtoms = new Set<string>();
+  const selectedConcepts = sourceBackedConcepts(concepts).filter((concept) =>
+    conceptMatchesSelectedCoverage(concept, config),
+  );
 
-  sourceBackedConcepts(concepts).forEach((concept, conceptIndex) => {
+  selectedConcepts.forEach((concept, conceptIndex) => {
     const topic = concept.topicName?.trim() || concept.chapterName || config.subject;
     const chapter = concept.chapterName || `Chapter ${concept.chapterId}`;
     const atoms = sourceAtomsForConcept(concept);
@@ -4016,6 +4050,161 @@ function normalizeConceptPool(
   });
 
   return pool;
+}
+
+function conceptMatchesSelectedCoverage(
+  concept: ConceptData,
+  config: PaperConfig,
+) {
+  const selectedSubjects = selectedSubjectLabels(config);
+  const conceptSubject = concept.subject;
+  if (
+    conceptSubject &&
+    selectedSubjects.length &&
+    !selectedSubjects.some((subject) => labelsCompatible(subject, conceptSubject))
+  ) {
+    return false;
+  }
+
+  const composition = config.questionComposition ?? [];
+  if (composition.length) {
+    const subjectCompatibleItems = composition.filter((item) => {
+      if (!item.subject || !concept.subject) return true;
+      return labelsCompatible(item.subject, concept.subject);
+    });
+    if (!subjectCompatibleItems.length) return false;
+
+    const hasCoverageMetadata = Boolean(
+      concept.topicId !== undefined ||
+        concept.chapterId !== undefined ||
+        concept.topicName ||
+        concept.chapterName,
+    );
+    if (!hasCoverageMetadata) return true;
+
+    return subjectCompatibleItems.some((item) =>
+      conceptMatchesSyllabusCoverage(concept, item),
+    );
+  }
+
+  return true;
+}
+
+function conceptMatchesSyllabusCoverage(
+  concept: ConceptData,
+  item: QuestionCompositionItem,
+) {
+  const itemHasSpecificCoverage = Boolean(
+    item.topicId !== undefined ||
+      item.chapterId !== undefined ||
+      item.topicName ||
+      item.chapterName,
+  );
+  if (!itemHasSpecificCoverage) return true;
+
+  if (
+    item.topicId !== undefined &&
+    concept.topicId !== undefined &&
+    item.topicId === concept.topicId
+  ) {
+    return true;
+  }
+  if (
+    item.chapterId !== undefined &&
+    concept.chapterId !== undefined &&
+    item.chapterId === concept.chapterId
+  ) {
+    return true;
+  }
+  if (
+    item.topicName &&
+    concept.topicName &&
+    labelsCompatible(item.topicName, concept.topicName)
+  ) {
+    return true;
+  }
+  if (
+    item.chapterName &&
+    concept.chapterName &&
+    labelsCompatible(item.chapterName, concept.chapterName)
+  ) {
+    return true;
+  }
+
+  const conceptHasSpecificCoverage = Boolean(
+    concept.topicId !== undefined ||
+      concept.chapterId !== undefined ||
+      concept.topicName ||
+      concept.chapterName,
+  );
+  return !conceptHasSpecificCoverage;
+}
+
+function selectedSubjectLabels(config: PaperConfig) {
+  return uniqueNormalizedLabels([
+    config.subject,
+    ...(config.subjects ?? []),
+    ...(config.subjectSelections ?? []).map((selection) => selection.subject),
+    ...(config.questionComposition ?? []).map((item) => item.subject),
+  ]);
+}
+
+function uniqueNormalizedLabels(values: Array<string | undefined>) {
+  return Array.from(
+    new Set(
+      values
+        .flatMap((value) => splitSubjectLabel(value ?? ""))
+        .map(normalizeCoverageLabel)
+        .filter(Boolean),
+    ),
+  );
+}
+
+function splitSubjectLabel(value: string) {
+  return value
+    .split(/\s*(?:\+|,|\/|&|\band\b)\s*/i)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function labelsCompatible(left: string, right: string) {
+  const normalizedLeft = normalizeCoverageLabel(left);
+  const normalizedRight = normalizeCoverageLabel(right);
+  if (!normalizedLeft || !normalizedRight) return false;
+  if (normalizedLeft === normalizedRight) return true;
+  if (
+    normalizedLeft.length >= 8 &&
+    normalizedRight.length >= 8 &&
+    (normalizedLeft.includes(normalizedRight) ||
+      normalizedRight.includes(normalizedLeft))
+  ) {
+    return true;
+  }
+
+  const leftTokens = coverageTokens(normalizedLeft);
+  const rightTokens = coverageTokens(normalizedRight);
+  const smaller = Math.min(leftTokens.length, rightTokens.length);
+  if (smaller < 2) return false;
+  const overlap = leftTokens.filter((token) => rightTokens.includes(token)).length;
+  return overlap / smaller >= 0.75;
+}
+
+function normalizeCoverageLabel(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function coverageTokens(value: string) {
+  return value
+    .split(/\s+/)
+    .filter(
+      (token) =>
+        token.length > 2 &&
+        !["and", "the", "for", "with", "chapter", "unit"].includes(token),
+    );
 }
 
 function sourceAtomId(

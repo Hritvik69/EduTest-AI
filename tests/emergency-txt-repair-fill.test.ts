@@ -898,6 +898,72 @@ describe("source-backed completion", () => {
     expect(new Set(matchSignatures).size).toBe(matchSignatures.length);
   });
 
+  it("keeps final numerical completion inside selected science chapters", () => {
+    const numericalBlueprint: Blueprint = {
+      sections: [sectionFor("NUMERICAL", 3, 3)],
+      totalQuestions: 3,
+      totalMarks: 9,
+      estimatedTime: 20,
+      competencyPercentage: 70,
+    };
+    const scienceConfig: PaperConfig = {
+      ...config,
+      classNum: 10,
+      subject: "Physics + Chemistry",
+      subjects: ["Physics", "Chemistry"],
+      subjectSelections: [
+        { subject: "Physics", chapterIds: [10], topicIds: [] },
+        { subject: "Chemistry", chapterIds: [20], topicIds: [] },
+      ],
+      chapterIds: [10, 20],
+      topicIds: [],
+      difficulty: "ABSURD",
+      totalQuestions: 3,
+      totalMarks: 9,
+      questionTypes: ["NUMERICAL"],
+      typeDistribution: { NUMERICAL: 3 },
+      questionComposition: [
+        {
+          subject: "Physics",
+          chapterId: 10,
+          chapterName: "Light - Reflection and Refraction",
+          questionCount: 1,
+        },
+        {
+          subject: "Chemistry",
+          chapterId: 20,
+          chapterName: "Chemical Reactions and Equations",
+          questionCount: 2,
+        },
+      ],
+    };
+    const bank = new QuestionCandidateBank([], numericalBlueprint, scienceConfig);
+
+    const completed = completeQuestionBankWithSourceBackedFallback({
+      bank,
+      concepts: [
+        concept(713, "Reading comprehension and inference", longParagraphConcept().text),
+        concept(714, "Vocabulary and grammar in context", longParagraphConcept().text),
+        chemistryMixtureConcept(),
+        physicsLightConcept(),
+        chemistryReactionConcept(),
+      ],
+      config: scienceConfig,
+      startIndex: 900,
+      throwOnInsufficientCapacity: true,
+      capacityScope: "selected Physics Chemistry numerical repair",
+    });
+    const visibleText = studentVisibleText(bank.result().questions);
+
+    expect(completed).toHaveLength(3);
+    expect(bank.readyCount()).toBe(3);
+    expect(bank.missingCount()).toBe(0);
+    expect(visibleText).toMatch(/angle of reflection|chemical equation|oxygen atoms/i);
+    expect(visibleText).not.toMatch(
+      /Reading comprehension|Vocabulary and grammar|Exploring Mixtures|worked example|given cases|checking cases|How many cases are considered/i,
+    );
+  });
+
   it.each(["EASY", "MEDIUM", "HARD", "ABSURD"] as const)(
     "completes the same selected source at %s difficulty",
     (difficulty) => {
@@ -1656,6 +1722,50 @@ function chemistryMixtureConcept(): ConceptData {
     topicName: "Solutions and mixtures",
     chapterId: 301,
     topicId: 3001,
+    source: "ncert_txt",
+  };
+}
+
+function physicsLightConcept(): ConceptData {
+  return {
+    text: [
+      "A physics chapter on light explains that the angle of incidence is equal to the angle of reflection when a ray strikes a plane mirror.",
+      "Both angles are measured from the normal at the point of incidence, and the incident ray, reflected ray, and normal lie in the same plane.",
+      "A concave mirror can form different images depending on the position of the object, while a convex mirror gives a wider field of view.",
+      "Refraction occurs when light passes from one transparent medium to another and changes speed, causing the ray to bend at the boundary.",
+      "A correct answer about reflection or refraction should use the ray, normal, image, and medium conditions given in the question.",
+    ].join(" "),
+    type: "NCERT_TXT_SOURCE",
+    bloomLevel: "ANALYZE",
+    hotsPotential: true,
+    subject: "Physics",
+    classNum: 10,
+    chapterName: "Light - Reflection and Refraction",
+    topicName: "Reflection and refraction",
+    chapterId: 10,
+    topicId: 1001,
+    source: "ncert_txt",
+  };
+}
+
+function chemistryReactionConcept(): ConceptData {
+  return {
+    text: [
+      "A chemistry chapter on chemical reactions explains that a balanced chemical equation has the same number of atoms of each element on the reactant and product sides.",
+      "Students compare atoms of oxygen, hydrogen, or other elements on both sides before adjusting coefficients in the equation.",
+      "A combination reaction forms one product from two or more reactants, while a decomposition reaction breaks one compound into simpler substances.",
+      "Oxidation and reduction are identified by the gain or loss of oxygen or electrons according to the reaction conditions.",
+      "A correct answer about chemical reactions should connect reactants, products, coefficients, and conservation of atoms.",
+    ].join(" "),
+    type: "NCERT_TXT_SOURCE",
+    bloomLevel: "ANALYZE",
+    hotsPotential: true,
+    subject: "Chemistry",
+    classNum: 10,
+    chapterName: "Chemical Reactions and Equations",
+    topicName: "Balancing chemical equations",
+    chapterId: 20,
+    topicId: 2001,
     source: "ncert_txt",
   };
 }
