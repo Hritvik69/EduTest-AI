@@ -1,22 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   createGuestSessionId,
-  createSignedGuestSessionCookieValue,
   guestSessionCookieName,
-  readSignedGuestSessionCookieValue,
+  hasValidGuestSessionIdShape,
   signedGuestSessionMaxAge,
 } from "@/lib/guest-session";
 
-export async function proxy(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const response = NextResponse.next();
 
   try {
     const existing = request.cookies.get(guestSessionCookieName)?.value;
-    if (await readSignedGuestSessionCookieValue(existing)) return response;
+    const sessionId = guestSessionIdFromCookieShape(existing);
+    if (sessionId) return response;
 
     response.cookies.set({
       name: guestSessionCookieName,
-      value: await createSignedGuestSessionCookieValue(createGuestSessionId()),
+      value: createGuestSessionId(),
       httpOnly: true,
       sameSite: "lax",
       secure: request.nextUrl.protocol === "https:",
@@ -30,6 +30,18 @@ export async function proxy(request: NextRequest) {
   }
 
   return response;
+}
+
+function guestSessionIdFromCookieShape(value: string | undefined) {
+  if (!value) return null;
+  if (hasValidGuestSessionIdShape(value)) return value;
+
+  const [sessionId, signature, extra] = value.split(".");
+  if (extra !== undefined || !signature || !hasValidGuestSessionIdShape(sessionId)) {
+    return null;
+  }
+
+  return sessionId;
 }
 
 export const config = {

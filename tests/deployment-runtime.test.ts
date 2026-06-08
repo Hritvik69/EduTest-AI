@@ -17,6 +17,9 @@ describe("deployment runtime safety", () => {
     expect(proxy).toMatch(/guest session cookie setup failed/);
     expect(proxy).toMatch(/api\/ai\/provider-health/);
     expect(proxy).toMatch(/api\/deployment-health/);
+    expect(proxy).not.toMatch(/createSignedGuestSessionCookieValue/);
+    expect(proxy).not.toMatch(/readSignedGuestSessionCookieValue/);
+    expect(proxy).not.toMatch(/guestSigningSecret/);
     expect(guestSession).toMatch(/globalThis\.crypto\?\.subtle/);
     expect(guestSession).not.toMatch(/node:crypto/);
     expect(guestSession).not.toMatch(/Buffer\.from/);

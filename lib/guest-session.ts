@@ -25,6 +25,7 @@ export async function readSignedGuestSessionCookieValue(
   value: string | undefined | null,
 ) {
   if (!value) return null;
+  if (hasValidGuestSessionIdShape(value)) return value;
 
   const [sessionId, signature, extra] = value.split(".");
   if (extra !== undefined || !isValidGuestSessionId(sessionId) || !signature) {
@@ -38,7 +39,11 @@ export async function readSignedGuestSessionCookieValue(
 export function isValidGuestSessionId(
   value: string | undefined | null,
 ): value is string {
-  return typeof value === "string" && guestSessionPattern.test(value);
+  return typeof value === "string" && hasValidGuestSessionIdShape(value);
+}
+
+export function hasValidGuestSessionIdShape(value: string) {
+  return guestSessionPattern.test(value);
 }
 
 export function guestUserIdFromSession(sessionId: string) {

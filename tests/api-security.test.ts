@@ -75,6 +75,28 @@ describe("API authentication helper", () => {
     expect(headerResult.response?.status).toBe(401);
   }, 10_000);
 
+  it("accepts opaque guest session cookies issued by the edge proxy", async () => {
+    const { requireAuthenticatedUser } = await import("@/lib/api-security");
+    const { guestSessionCookieName } = await import("@/lib/guest-session");
+    const first = new Request("http://localhost/api/papers", {
+      headers: {
+        cookie: `${guestSessionCookieName}=guest-session-plainaa`,
+      },
+    });
+    const second = new Request("http://localhost/api/papers", {
+      headers: {
+        cookie: `${guestSessionCookieName}=guest-session-plainbb`,
+      },
+    });
+
+    const firstResult = await requireAuthenticatedUser(first);
+    const secondResult = await requireAuthenticatedUser(second);
+
+    expect(firstResult.user?.isGuest).toBe(true);
+    expect(secondResult.user?.isGuest).toBe(true);
+    expect(firstResult.user?.id).not.toBe(secondResult.user?.id);
+  }, 10_000);
+
   it("keeps guest mode even if an old NextAuth env value is still set", async () => {
     process.env.EDUTEST_AUTH_MODE = "nextauth";
 
