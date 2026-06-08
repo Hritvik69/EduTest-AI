@@ -2375,7 +2375,7 @@ function generationServerBudgetMs() {
     return configured;
   }
 
-  return 38_000;
+  return 52_000;
 }
 
 function generationHeartbeatMs() {

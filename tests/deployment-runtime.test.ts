@@ -12,6 +12,10 @@ describe("deployment runtime safety", () => {
       join(root, "app", "api", "deployment-health", "route.ts"),
       "utf8",
     );
+    const generatePaperRoute = readFileSync(
+      join(root, "app", "api", "generate-paper", "route.ts"),
+      "utf8",
+    );
 
     expect(proxy).toMatch(/try\s*{/);
     expect(proxy).toMatch(/guest session cookie setup failed/);
@@ -34,5 +38,8 @@ describe("deployment runtime safety", () => {
     expect(deploymentHealthRoute).not.toMatch(/@\/lib\/api-security/);
     expect(deploymentHealthRoute).not.toMatch(/@\/lib\/db/);
     expect(deploymentHealthRoute).not.toMatch(/@\/lib\/gemini/);
+    expect(generatePaperRoute).toMatch(/export const maxDuration = 60/);
+    expect(generatePaperRoute).toMatch(/return 52_000/);
+    expect(generatePaperRoute).toMatch(/EDUTEST_SERVER_GENERATION_BUDGET_MS/);
   });
 });

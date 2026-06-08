@@ -1358,8 +1358,16 @@ function syllabusNearConcepts(
     return lightReflectionRefractionConcepts();
   }
 
+  if (/motion|speed|velocity|acceleration|displacement|distance|friction|force/i.test(combined)) {
+    return motionAndFrictionConcepts();
+  }
+
   if (/chemical\s+reactions?|chemical\s+equations?|reaction|equation|oxidation|reduction|displacement/i.test(combined)) {
     return chemicalReactionsConcepts();
+  }
+
+  if (/mixtures?|solutions?|solute|solvent|separation|filtration|evaporation|distillation|suspension|colloid/i.test(combined)) {
+    return mixturesAndSeparationConcepts();
   }
 
   return genericSyllabusConcepts(label, subject);
@@ -1609,6 +1617,116 @@ function chemicalReactionsConcepts(): SyllabusNearConcept[] {
   ];
 }
 
+function motionAndFrictionConcepts(): SyllabusNearConcept[] {
+  return [
+    syllabusConcept({
+      term: "Average velocity",
+      focus: "change in displacement divided by the time taken",
+      correct: "Average velocity is displacement divided by time, so it includes both magnitude and direction.",
+      misconception: "Average velocity is not always the same as average speed because displacement depends on direction.",
+      example: "A runner who returns to the starting point has zero displacement even after covering distance.",
+      falseStatement: "Average velocity depends only on the total distance covered and never on direction.",
+      assertion: "Average velocity can become zero even when distance has been covered.",
+      reason: "Displacement may be zero if the final position is the same as the initial position.",
+    }),
+    syllabusConcept({
+      term: "Acceleration",
+      focus: "rate of change of velocity with time",
+      correct: "Acceleration measures how quickly velocity changes with time and can occur when speed or direction changes.",
+      misconception: "Acceleration does not require an object to be speeding up only; direction change also matters.",
+      example: "A car turning on a curved road has changing velocity because its direction changes.",
+      falseStatement: "Acceleration is present only when an object moves in a straight line with constant speed.",
+      assertion: "An object can accelerate even when its speed remains constant.",
+      reason: "Velocity includes direction, so a change in direction changes velocity.",
+    }),
+    syllabusConcept({
+      term: "Uniform motion",
+      focus: "motion in which equal distances are covered in equal intervals of time",
+      correct: "Uniform motion means an object covers equal distances in equal time intervals.",
+      misconception: "Uniform motion is not shown when the distance covered changes from one equal time interval to the next.",
+      example: "A toy car moving 2 m every second on a straight track shows uniform motion.",
+      falseStatement: "Uniform motion happens when unequal distances are covered in equal time intervals.",
+      assertion: "Equal distance in equal time intervals indicates uniform motion.",
+      reason: "The speed remains constant when the same distance is covered each second.",
+    }),
+    syllabusConcept({
+      term: "Friction",
+      focus: "force that opposes relative motion between surfaces in contact",
+      correct: "Friction acts between surfaces in contact and opposes relative motion or the tendency of motion.",
+      misconception: "Friction is not always useless because it helps walking, writing, and braking.",
+      example: "A bicycle brake slows the wheel because friction acts between the brake pad and rim.",
+      falseStatement: "Friction always helps objects move faster on every surface.",
+      assertion: "Friction can slow a moving object.",
+      reason: "It acts opposite to the relative motion between surfaces in contact.",
+    }),
+    syllabusConcept({
+      term: "Distance and displacement",
+      focus: "difference between path length and shortest directed change in position",
+      correct: "Distance is the total path length, while displacement is the shortest directed change from initial to final position.",
+      misconception: "Distance and displacement are not always equal because path and direction can differ.",
+      example: "Walking around a square path and returning to the start gives non-zero distance but zero displacement.",
+      falseStatement: "Displacement is always equal to the total distance travelled.",
+      assertion: "Displacement can be smaller than distance.",
+      reason: "Displacement depends only on initial and final positions with direction.",
+    }),
+  ];
+}
+
+function mixturesAndSeparationConcepts(): SyllabusNearConcept[] {
+  return [
+    syllabusConcept({
+      term: "Solution",
+      focus: "homogeneous mixture of solute and solvent",
+      correct: "A solution is a homogeneous mixture in which the solute dissolves uniformly in the solvent.",
+      misconception: "A solution does not show separate visible particles when it is truly homogeneous.",
+      example: "Salt dissolved in water forms a uniform salt solution.",
+      falseStatement: "A true solution always has visible particles that settle down on standing.",
+      assertion: "A solution has uniform composition throughout.",
+      reason: "The solute particles are distributed evenly in the solvent.",
+    }),
+    syllabusConcept({
+      term: "Solute and solvent",
+      focus: "roles of dissolved substance and dissolving medium",
+      correct: "The solute is the substance dissolved, while the solvent is the medium that dissolves it.",
+      misconception: "The solute and solvent should not be identified without checking which substance dissolves in which medium.",
+      example: "In sugar solution, sugar is the solute and water is the solvent.",
+      falseStatement: "In every solution, water must be the solute.",
+      assertion: "A solute dissolves in a solvent to form a solution.",
+      reason: "The solvent is the medium that spreads the solute uniformly.",
+    }),
+    syllabusConcept({
+      term: "Suspension",
+      focus: "heterogeneous mixture with particles that can settle",
+      correct: "A suspension is a heterogeneous mixture whose particles are large enough to be seen and can settle on standing.",
+      misconception: "A suspension is not the same as a true solution because its particles are not uniformly dissolved.",
+      example: "Muddy water is a suspension because soil particles can settle down.",
+      falseStatement: "Suspension particles never settle down even after a long time.",
+      assertion: "A suspension can show settling of particles.",
+      reason: "Its particles are large and remain unevenly distributed in the mixture.",
+    }),
+    syllabusConcept({
+      term: "Filtration",
+      focus: "separation of insoluble solid from liquid",
+      correct: "Filtration separates an insoluble solid from a liquid using a filter medium.",
+      misconception: "Filtration cannot separate a dissolved solute from a true solution.",
+      example: "Sand can be separated from water by passing the mixture through filter paper.",
+      falseStatement: "Filtration is used to separate dissolved salt from salt water directly.",
+      assertion: "Filtration can separate sand from water.",
+      reason: "Sand is insoluble and is trapped by the filter medium.",
+    }),
+    syllabusConcept({
+      term: "Evaporation",
+      focus: "separation based on conversion of liquid into vapour",
+      correct: "Evaporation can separate a dissolved solid from a solution by converting the liquid solvent into vapour.",
+      misconception: "Evaporation is not suitable when the liquid itself must be collected unchanged.",
+      example: "Salt can be obtained from salt water by evaporating water.",
+      falseStatement: "Evaporation keeps all the solvent in the container as liquid.",
+      assertion: "Evaporation can help recover salt from salt water.",
+      reason: "Water changes into vapour and leaves the dissolved salt behind.",
+    }),
+  ];
+}
+
 function syllabusConcept({
   term,
   focus,
@@ -1661,7 +1779,7 @@ function syllabusNearAssertionReasonQuestion(
   const trueAssertion = concept.assertion;
   const explanatoryReason = concept.reason;
   const unrelatedTrueReason =
-    "Examples can make a classroom explanation easier to remember.";
+    `${sentenceCase(concept.term)} can be supported by examples, but an example alone does not prove the stated rule.`;
   const falseStatement = concept.falseStatement;
 
   const [assertion, reason] = assertionReasonPairForAnswer(answer, {
