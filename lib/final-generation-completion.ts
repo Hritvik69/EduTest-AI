@@ -60,17 +60,19 @@ export function completeQuestionBankWithFinalFallbacks({
   const warnings: FinalGenerationCompletionWarning[] = [];
   let sourceBackedCompletedQuestions = 0;
   let syllabusNearCompletedQuestions = 0;
+  let sourceCapacityConfig = activeConfig;
   let sourceCapacity = analyzeSourceBackedCompletionCapacity({
     bank: activeBank,
     concepts,
-    config: activeConfig,
+    config: sourceCapacityConfig,
   });
 
   const tryStrictSourceCompletion = () => {
+    sourceCapacityConfig = activeConfig;
     sourceCapacity = analyzeSourceBackedCompletionCapacity({
       bank: activeBank,
       concepts,
-      config: activeConfig,
+      config: sourceCapacityConfig,
     });
     if (!sourceCapacity.enough || activeBank.missingCount() <= 0) {
       return;
@@ -98,7 +100,7 @@ export function completeQuestionBankWithFinalFallbacks({
     sourceCapacity = analyzeSourceBackedCompletionCapacity({
       bank: activeBank,
       concepts,
-      config: activeConfig,
+      config: sourceCapacityConfig,
     });
   };
 
@@ -138,6 +140,26 @@ export function completeQuestionBankWithFinalFallbacks({
     }
 
     if (activeBank.missingCount() > 0) {
+      sourceCapacityConfig = hardConfig;
+      sourceCapacity = analyzeSourceBackedCompletionCapacity({
+        bank: activeBank,
+        concepts,
+        config: sourceCapacityConfig,
+        startIndex: startIndex ?? activeBank.allCandidates().length + 1601,
+      });
+      if (sourceCapacity.enough) {
+        if (hardSourceAdded > 0) {
+          sourceBackedCompletedQuestions += hardSourceAdded;
+          warnings.push({
+            type: "absurd-hard-final-fill",
+            reason: `Completed ${hardSourceAdded} final Absurd replacement question${hardSourceAdded === 1 ? "" : "s"} at HARD difficulty because the remaining selected-source slots could not produce teacher-quality Absurd candidates.`,
+          });
+        }
+        return;
+      }
+    }
+
+    if (activeBank.missingCount() > 0) {
       const beforeHardSyllabus = activeBank.readyCount();
       completeQuestionBankWithSyllabusNearFallback({
         bank: activeBank,
@@ -161,10 +183,48 @@ export function completeQuestionBankWithFinalFallbacks({
       });
     }
 
+    sourceCapacityConfig = activeBank.missingCount() > 0 ? hardConfig : activeConfig;
     sourceCapacity = analyzeSourceBackedCompletionCapacity({
       bank: activeBank,
       concepts,
-      config: activeBank.missingCount() > 0 ? hardConfig : activeConfig,
+      config: sourceCapacityConfig,
+    });
+  };
+
+  const trySourceBackedLastMileFill = () => {
+    if (activeBank.missingCount() <= 0) return;
+
+    sourceCapacity = analyzeSourceBackedCompletionCapacity({
+      bank: activeBank,
+      concepts,
+      config: sourceCapacityConfig,
+      startIndex: startIndex ?? activeBank.allCandidates().length + 1601,
+    });
+    if (!sourceCapacity.enough) return;
+
+    const beforeLastMile = activeBank.readyCount();
+    completeQuestionBankWithSourceBackedFallback({
+      bank: activeBank,
+      concepts,
+      config: sourceCapacityConfig,
+      startIndex: startIndex ?? activeBank.allCandidates().length + 1601,
+      throwOnInsufficientCapacity: false,
+      capacityScope: `${scope} source-backed last-mile fill`,
+      minRemainingMs: 0,
+    });
+    const added = Math.max(0, activeBank.readyCount() - beforeLastMile);
+    if (added > 0) {
+      sourceBackedCompletedQuestions += added;
+      warnings.push({
+        type: "source-backed-last-mile-fill",
+        reason: `${sourceBackedCompletionMarker}: completed ${added} final local source-backed replacement question${added === 1 ? "" : "s"} after the AI repair time reserve was too low for another network attempt.`,
+      });
+    }
+
+    sourceCapacity = analyzeSourceBackedCompletionCapacity({
+      bank: activeBank,
+      concepts,
+      config: sourceCapacityConfig,
     });
   };
 
@@ -221,11 +281,13 @@ export function completeQuestionBankWithFinalFallbacks({
   if (activeBank.missingCount() > 0) {
     tryStrictSourceCompletion();
     tryAbsurdHardFinalFill();
+    trySourceBackedLastMileFill();
   } else {
+    sourceCapacityConfig = activeConfig;
     sourceCapacity = analyzeSourceBackedCompletionCapacity({
       bank: activeBank,
       concepts,
-      config: activeConfig,
+      config: sourceCapacityConfig,
     });
   }
 

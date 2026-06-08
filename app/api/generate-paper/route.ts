@@ -2413,7 +2413,12 @@ function generationFinalizationReserveMs() {
 }
 
 function sourceBackedCompletionReserveMs() {
-  return 7_500;
+  const configured = Number(process.env.EDUTEST_SOURCE_BACKED_COMPLETION_RESERVE_MS);
+  if (Number.isFinite(configured) && configured >= 250 && configured <= 5_000) {
+    return Math.floor(configured);
+  }
+
+  return 1_000;
 }
 
 function shouldStopForFinalization(deadlineAt: number, readyQuestionCount: number) {
