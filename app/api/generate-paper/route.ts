@@ -28,7 +28,10 @@ import {
   publicAIProviderHealthSnapshot,
 } from "@/lib/error-classification";
 import { summarizeAIUsage } from "@/lib/ai-usage-log";
-import { getChapterContent } from "@/lib/extractor";
+import {
+  getChapterContent,
+  type ChapterContentDatabaseDiagnostics,
+} from "@/lib/extractor";
 import { buildGenerationManifest } from "@/lib/generation-manifest";
 import { buildGenerationContract } from "@/lib/generation-contract";
 import {
@@ -105,6 +108,7 @@ type LocalFallbackContext = {
   blueprint: Blueprint;
   scopedConcepts: ConceptData[];
 };
+type GenerationWarning = { type: string; reason: string };
 type ProviderRecoveryMode = SourceBackedProviderRecoveryMode;
 type ActiveGenerationOperation =
   | "configuration"
@@ -235,7 +239,9 @@ export async function POST(request: NextRequest) {
       let latestProviderHealth: AIProviderHealthSnapshot | null = null;
       let healthyProviders: DirectAIProvider[] | undefined;
       let providerRecoveryMode: ProviderRecoveryMode | undefined;
-      let providerRecoveryWarnings: Array<{ type: string; reason: string }> = [];
+      let providerRecoveryWarnings: GenerationWarning[] = [];
+      let providerHealthWarnings: GenerationWarning[] = [];
+      let sourceLoadingWarnings: GenerationWarning[] = [];
       let activeOperation: ActiveGenerationOperation = "configuration";
       let failedOperation: ActiveGenerationOperation | null = null;
       const setActiveOperation = (operation: ActiveGenerationOperation) => {
@@ -385,6 +391,7 @@ export async function POST(request: NextRequest) {
       };
       let localFallbackContext: LocalFallbackContext | null = null;
       const localNcertDiagnostics: LocalNcertSourceDiagnostics[] = [];
+      const databaseDiagnostics: ChapterContentDatabaseDiagnostics[] = [];
 
       try {
         assertActive();
@@ -428,6 +435,9 @@ export async function POST(request: NextRequest) {
                     onLocalNcertDiagnostics: (diagnostics) => {
                       localNcertDiagnostics.push(diagnostics);
                     },
+                    onDatabaseDiagnostics: (diagnostics) => {
+                      databaseDiagnostics.push(diagnostics);
+                    },
                   },
                 ),
             );
@@ -462,6 +472,20 @@ export async function POST(request: NextRequest) {
           selectionAwareConcepts,
           localNcertDiagnostics,
         );
+        sourceLoadingWarnings = sourceLoadingRecoveryWarnings({
+          databaseDiagnostics,
+          localNcertDiagnostics,
+          uploadedPdfUsed: Boolean(uploadedPdf),
+        });
+        if (sourceLoadingWarnings.length) {
+          send({
+            step: 2,
+            pct: 19,
+            progress: 19,
+            msg: sourceLoadingWarnings[0].reason,
+            validationWarnings: sourceLoadingWarnings,
+          });
+        }
         const composition = normalizeServerQuestionComposition(
           effectiveConfig,
           scopedConcepts,
@@ -618,6 +642,7 @@ export async function POST(request: NextRequest) {
           );
           latestProviderHealth = providerHealth;
           healthyProviders = providerHealth.usableProviders;
+          providerHealthWarnings = providerHealthPreflightWarnings(providerHealth);
           console.info("[generate-paper] provider health", {
             generationJobId,
             usableProviders: providerHealth.usableProviders,
@@ -650,6 +675,17 @@ export async function POST(request: NextRequest) {
             ...providerHealthPayload(),
             ...recoveryPayload(),
           });
+          if (providerHealthWarnings.length) {
+            send({
+              step: 3,
+              pct: 33,
+              progress: 33,
+              msg: providerHealthWarnings[0].reason,
+              validationWarnings: providerHealthWarnings,
+              ...providerHealthPayload(),
+              ...recoveryPayload(),
+            });
+          }
           if (!healthyProviders.length) {
             if (!providerRecoveryMode) {
               throw sourceTextNotEnoughForProviderOutage(scopedConcepts);
@@ -1158,7 +1194,9 @@ export async function POST(request: NextRequest) {
             : [sourceBackedProviderRecoveryWarning()]
           : [];
         const finalValidationWarnings = [
+          ...sourceLoadingWarnings,
           ...validation.skipped,
+          ...providerHealthWarnings,
           ...finalProviderRecoveryWarnings,
         ];
         const manifest = buildGenerationManifest({
@@ -1311,6 +1349,10 @@ export async function POST(request: NextRequest) {
               recoveryReason: recoverySnapshot.lastMessage,
               ...(sourceCapacity ? { sourceCapacity } : {}),
               ...rejectionReasonsPayload(error),
+              validationWarnings: [
+                ...sourceLoadingWarnings,
+                ...providerHealthWarnings,
+              ],
               ...providerHealthPayload(),
               ...providerRecoveryPayload(),
               ...contractPayload(),
@@ -1631,6 +1673,164 @@ function summarizeLocalNcertDiagnostics(diagnostics: LocalNcertSourceDiagnostics
       error: item.error.slice(0, 180),
     })),
   };
+}
+
+function sourceLoadingRecoveryWarnings({
+  databaseDiagnostics,
+  localNcertDiagnostics,
+  uploadedPdfUsed,
+}: {
+  databaseDiagnostics: ChapterContentDatabaseDiagnostics[];
+  localNcertDiagnostics: LocalNcertSourceDiagnostics[];
+  uploadedPdfUsed: boolean;
+}): GenerationWarning[] {
+  if (uploadedPdfUsed) {
+    return [
+      {
+        type: "source-mode",
+        reason:
+          "Source mode: uploaded PDF text was used for this paper; bundled NCERT TXT and database concepts were not needed.",
+      },
+    ];
+  }
+
+  const localSuccesses = localNcertDiagnostics.filter(
+    (diagnostics) => diagnostics.conceptCount > 0 && diagnostics.selectedSource,
+  );
+  const failedDatabaseLookup = databaseDiagnostics.find(
+    (diagnostics) => diagnostics.status === "failed",
+  );
+
+  if (localSuccesses.length) {
+    const sourceLabels = Array.from(
+      new Set(
+        localSuccesses.map((diagnostics) =>
+          localNcertSourceLabel(diagnostics.selectedSource),
+        ),
+      ),
+    ).join(", ");
+    const chapterCount = localSuccesses.length;
+    const chapterText = `${chapterCount} selected chapter${chapterCount === 1 ? "" : "s"}`;
+
+    if (failedDatabaseLookup) {
+      return [
+        {
+          type: "source-loading-recovery",
+          reason: `Database source lookup was ${databaseFailureLabel(failedDatabaseLookup)}, so ${sourceLabels} was used for ${chapterText}.`,
+        },
+      ];
+    }
+
+    if (
+      databaseDiagnostics.some(
+        (diagnostics) =>
+          diagnostics.status === "skipped" &&
+          diagnostics.reason?.includes("bundled_ncert_txt_primary"),
+      )
+    ) {
+      return [
+        {
+          type: "source-mode",
+          reason: `${sourceLabels} was used for ${chapterText}; database concept lookup was skipped so DB/network issues do not block normal NCERT generation.`,
+        },
+      ];
+    }
+
+    return [
+      {
+        type: "source-mode",
+        reason: `${sourceLabels} was used for ${chapterText}.`,
+      },
+    ];
+  }
+
+  if (failedDatabaseLookup) {
+    return [
+      {
+        type: "source-loading-warning",
+        reason: `Database source lookup was ${databaseFailureLabel(failedDatabaseLookup)} and no bundled NCERT TXT matched the selected chapter.`,
+      },
+    ];
+  }
+
+  return [];
+}
+
+function localNcertSourceLabel(
+  source: LocalNcertSourceDiagnostics["selectedSource"],
+) {
+  switch (source) {
+    case "bundled_text":
+    case "local_extracted_text":
+      return "bundled NCERT TXT";
+    case "local_pdf":
+      return "local NCERT PDF text";
+    case "static_cache":
+      return "cached NCERT source text";
+    default:
+      return "selected source text";
+  }
+}
+
+function databaseFailureLabel(diagnostics: ChapterContentDatabaseDiagnostics) {
+  if (diagnostics.errorClass === "timeout") return "too slow";
+  if (diagnostics.errorClass === "network") return "unreachable";
+  return "unavailable";
+}
+
+function providerHealthPreflightWarnings(
+  providerHealth: AIProviderHealthSnapshot,
+): GenerationWarning[] {
+  const snapshot = publicAIProviderHealthSnapshot(providerHealth);
+  if (!snapshot.usableProviders.length) return [];
+
+  const unavailable = snapshot.providers.filter(
+    (provider) => provider.configured && !provider.usable,
+  );
+  if (!unavailable.length) return [];
+
+  const usable = snapshot.providers
+    .filter((provider) => provider.configured && provider.usable)
+    .map((provider) => provider.label)
+    .slice(0, 4)
+    .join(", ");
+  const unavailableSummary = unavailable
+    .slice(0, 5)
+    .map(
+      (provider) =>
+        `${provider.label} ${providerFailurePlainLabel(
+          provider.failureClass ?? provider.cooldownErrorClass,
+        )}`,
+    )
+    .join(", ");
+
+  return [
+    {
+      type: "provider-health-fallback",
+      reason: `AI provider preflight: ${unavailableSummary}; using ${usable}.`,
+    },
+  ];
+}
+
+function providerFailurePlainLabel(value: unknown) {
+  switch (value) {
+    case "provider_busy":
+      return "busy";
+    case "quota":
+      return "quota";
+    case "auth":
+      return "auth";
+    case "rate_limit":
+      return "rate limited";
+    case "timeout":
+      return "timed out";
+    case "network":
+      return "network";
+    case "not_configured":
+      return "not configured";
+    default:
+      return "unavailable";
+  }
 }
 
 function enrichConceptsWithSelectionMetadata(
@@ -1990,9 +2190,9 @@ function generationStreamContractSummary(
 function providerAttemptLimitForGeneration(
   summary: GenerationStreamContractSummary,
 ): { maxProviderAttempts?: number } {
-  if (summary.plannedCalls >= 12) return { maxProviderAttempts: 1 };
+  if (summary.plannedCalls >= 12) return { maxProviderAttempts: 2 };
   if (summary.riskLevel === "high" || summary.plannedCalls >= 6) {
-    return { maxProviderAttempts: 2 };
+    return { maxProviderAttempts: 3 };
   }
   return {};
 }
@@ -2289,18 +2489,32 @@ function finalRepairValidationBlockedMessage({
   remainingMissingQuestions,
   sourceCapacity,
   rejectionSummary,
+  missingSections,
 }: {
   readyCount: number;
   targetQuestionCount: number;
   remainingMissingQuestions: number;
   sourceCapacity: SourceBackedCapacityDiagnostics;
   rejectionSummary: string;
+  missingSections?: Blueprint["sections"];
 }) {
   const effectiveCapacity =
     sourceCapacity.effectiveCapacity ?? sourceCapacity.availableStrictCapacity;
   const rawCapacity = sourceCapacity.rawAtomCapacity ?? sourceCapacity.availableStrictCapacity;
+  const missingSectionSummary = formatMissingSectionSummary(missingSections);
 
-  return `Final completion tried strict source-backed repair and chapter/topic-near fallback, but validation still rejected the remaining candidates. Strict selected-source capacity was ${effectiveCapacity}/${sourceCapacity.requiredMissingCount} effective from ${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}. Generated ${readyCount}/${targetQuestionCount} valid questions; ${remainingMissingQuestions} still missing. Top rejection reasons: ${rejectionSummary}.`;
+  return `Final completion tried strict source-backed repair and chapter/topic-near fallback, but validation still rejected the remaining candidates. Strict selected-source capacity was ${effectiveCapacity}/${sourceCapacity.requiredMissingCount} effective from ${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}. Generated ${readyCount}/${targetQuestionCount} valid questions; ${remainingMissingQuestions} still missing. Missing sections: ${missingSectionSummary}. Top rejection reasons: ${rejectionSummary}.`;
+}
+
+function formatMissingSectionSummary(sections: Blueprint["sections"] | undefined) {
+  if (!sections?.length) return "none reported";
+
+  return sections
+    .map(
+      (section) =>
+        `${section.questionType} x${section.count} (${section.marksPerQuestion} mark${section.marksPerQuestion === 1 ? "" : "s"} each)`,
+    )
+    .join(", ");
 }
 
 function topValidationRejectionReasons(
@@ -2793,7 +3007,7 @@ async function validateGeneratedPaperSkippingInvalid({
           `Final fallback completion did not run, and ${remainingMissingQuestions} question${remainingMissingQuestions === 1 ? "" : "s"} remain missing. Top rejection reasons: ${rejectionSummary}.`,
         );
         throw new Error(
-          `FINAL_REPAIR_VALIDATION_BLOCKED: Final fallback completion did not run. Generated ${readyCount}/${targetQuestionCount} valid questions; ${remainingMissingQuestions} still missing.`,
+          `FINAL_REPAIR_VALIDATION_BLOCKED: Final fallback completion did not run. Generated ${readyCount}/${targetQuestionCount} valid questions; ${remainingMissingQuestions} still missing. Missing sections: ${formatMissingSectionSummary(bank.missingSections())}.`,
         );
       }
 
@@ -2803,6 +3017,7 @@ async function validateGeneratedPaperSkippingInvalid({
         remainingMissingQuestions,
         sourceCapacity,
         rejectionSummary,
+        missingSections: bank.missingSections(),
       });
       await persistBank(
         "FAILED",

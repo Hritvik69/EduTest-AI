@@ -172,6 +172,19 @@ async function resolveNcertChapter(
   subjects: string[],
   selectedChapterId: number,
 ): Promise<ResolvedNcertChapter | null> {
+  for (const subject of subjects) {
+    const chapter = getCurriculumChapter(classNum, subject, selectedChapterId);
+    if (chapter) {
+      return {
+        selectedChapterId,
+        sourceChapterId: selectedChapterId,
+        subject,
+        chapterName: chapter.name,
+        chapterTopics: chapter.topics,
+      };
+    }
+  }
+
   const imported = await getImportedChapterMetadata(selectedChapterId);
   if (imported?.classNum === classNum) {
     const subject =
@@ -189,19 +202,6 @@ async function resolveNcertChapter(
     };
   }
 
-  for (const subject of subjects) {
-    const chapter = getCurriculumChapter(classNum, subject, selectedChapterId);
-    if (chapter) {
-      return {
-        selectedChapterId,
-        sourceChapterId: selectedChapterId,
-        subject,
-        chapterName: chapter.name,
-        chapterTopics: chapter.topics,
-      };
-    }
-  }
-
   return null;
 }
 
@@ -209,22 +209,22 @@ async function getImportedChapterMetadata(chapterId: number) {
   if (!sql) return null;
 
   try {
-    const chapterRows = await sql`
+    const chapterRows = await withDatabaseLookupTimeout(sql`
       SELECT c.name AS chapter_name, s.name AS subject_name, s.class_num
       FROM chapters c
       JOIN subjects s ON s.id = c.subject_id
       WHERE c.id = ${chapterId}
       LIMIT 1
-    `;
+    `, "imported chapter metadata");
     const chapter = chapterRows[0];
     if (!chapter) return null;
 
-    const topicRows = await sql`
+    const topicRows = await withDatabaseLookupTimeout(sql`
       SELECT id, name
       FROM topics
       WHERE chapter_id = ${chapterId}
       ORDER BY id ASC
-    `;
+    `, "imported chapter topics");
 
     return {
       chapterName: String(chapter.chapter_name),
@@ -235,7 +235,10 @@ async function getImportedChapterMetadata(chapterId: number) {
         name: String(row.name),
       })),
     };
-  } catch {
+  } catch (error) {
+    console.warn(
+      `Skipping imported chapter metadata lookup for chapter ${chapterId}: ${safeErrorMessage(error)}`,
+    );
     return null;
   }
 }
@@ -965,4 +968,36 @@ function isExtractedExercisePrompt(value: string) {
 
 function safeErrorMessage(error: unknown) {
   return error instanceof Error ? error.message : String(error ?? "unknown error");
+}
+
+function databaseLookupTimeoutMs() {
+  const configured = Number(
+    process.env.EDUTEST_DB_SOURCE_LOOKUP_TIMEOUT_MS ??
+      process.env.EDUTEST_DB_LOOKUP_TIMEOUT_MS,
+  );
+  if (Number.isFinite(configured) && configured >= 250 && configured <= 3_000) {
+    return Math.floor(configured);
+  }
+
+  return 1_200;
+}
+
+function withDatabaseLookupTimeout<T>(promise: Promise<T>, label: string) {
+  const timeoutMs = databaseLookupTimeoutMs();
+  let timeout: ReturnType<typeof setTimeout> | undefined;
+
+  return Promise.race([
+    promise,
+    new Promise<never>((_, reject) => {
+      timeout = setTimeout(() => {
+        reject(
+          new Error(
+            `DATABASE_LOOKUP_TIMEOUT: ${label} exceeded ${timeoutMs}ms`,
+          ),
+        );
+      }, timeoutMs);
+    }),
+  ]).finally(() => {
+    if (timeout) clearTimeout(timeout);
+  });
 }

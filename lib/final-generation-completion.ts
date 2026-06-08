@@ -282,9 +282,34 @@ export function completeQuestionBankWithFinalFallbacks({
     });
   };
 
-  tryStrictSourceCompletion();
+  const trySyllabusNearCompletion = (indexOffset: number) => {
+    if (activeBank.missingCount() <= 0) return;
+    if (requireSyllabusComposition && !activeConfig.questionComposition?.length) {
+      return;
+    }
 
-  if (activeBank.missingCount() > 0) {
+    const beforeSyllabusNear = activeBank.readyCount();
+    const completion = completeQuestionBankWithSyllabusNearFallback({
+      bank: activeBank,
+      config: activeConfig,
+      concepts,
+      startIndex: startIndex ?? activeBank.allCandidates().length + indexOffset,
+    });
+    const added = Math.max(0, activeBank.readyCount() - beforeSyllabusNear);
+    if (added > 0) {
+      syllabusNearCompletedQuestions += added;
+      warnings.push(
+        ...completion.warnings.map((warning) => ({
+          type: warning.type,
+          reason: warning.reason,
+        })),
+      );
+    }
+  };
+
+  const tryRetargetedSourceCompletion = () => {
+    if (activeBank.missingCount() <= 0) return;
+
     const retarget = retargetSourceBackedCompletionForGuaranteedFinalRepair({
       bank: activeBank,
       concepts,
@@ -307,36 +332,26 @@ export function completeQuestionBankWithFinalFallbacks({
       });
       tryStrictSourceCompletion();
     }
-  }
+  };
 
-  if (
-    activeBank.missingCount() > 0 &&
-    (!requireSyllabusComposition || Boolean(activeConfig.questionComposition?.length))
-  ) {
-    const beforeSyllabusNear = activeBank.readyCount();
-    const completion = completeQuestionBankWithSyllabusNearFallback({
-      bank: activeBank,
-      config: activeConfig,
-      concepts,
-      startIndex: startIndex ?? activeBank.allCandidates().length + 401,
-    });
-    const added = Math.max(0, activeBank.readyCount() - beforeSyllabusNear);
-    if (added > 0) {
-      syllabusNearCompletedQuestions += added;
-      warnings.push(
-        ...completion.warnings.map((warning) => ({
-          type: warning.type,
-          reason: warning.reason,
-        })),
-      );
-    }
-  }
+  tryStrictSourceCompletion();
+  tryRetargetedSourceCompletion();
+  trySyllabusNearCompletion(401);
 
   if (activeBank.missingCount() > 0) {
-    tryStrictSourceCompletion();
-    tryAbsurdHardFinalFill();
-    trySourceBackedLastMileFill();
-    tryQualityStableFinalFill();
+    for (let pass = 0; pass < 3 && activeBank.missingCount() > 0; pass += 1) {
+      const missingBeforePass = activeBank.missingCount();
+      tryStrictSourceCompletion();
+      tryRetargetedSourceCompletion();
+      trySyllabusNearCompletion(1801 + pass * 300);
+      tryAbsurdHardFinalFill();
+      trySourceBackedLastMileFill();
+      tryQualityStableFinalFill();
+
+      if (activeBank.missingCount() >= missingBeforePass) {
+        break;
+      }
+    }
   } else {
     sourceCapacityConfig = activeConfig;
     sourceCapacity = analyzeSourceBackedCompletionCapacity({
