@@ -898,6 +898,190 @@ describe("source-backed completion", () => {
     expect(new Set(matchSignatures).size).toBe(matchSignatures.length);
   });
 
+  it("completes the current physics chemistry 14-question absurd fragile-format request from chapter coverage", () => {
+    const currentBlueprint: Blueprint = {
+      sections: [
+        sectionFor("MCQ", 4, 1),
+        sectionFor("TRUE_FALSE", 2, 1),
+        sectionFor("ASSERTION_REASON", 2, 1),
+        sectionFor("MATCH_FOLLOWING", 2, 3),
+        sectionFor("VERY_SHORT", 2, 2),
+        sectionFor("SHORT", 2, 3),
+      ],
+      totalQuestions: 14,
+      totalMarks: 24,
+      estimatedTime: 90,
+      competencyPercentage: 70,
+    };
+    const currentConfig: PaperConfig = {
+      ...config,
+      classNum: 9,
+      subject: "Physics + Chemistry",
+      subjects: ["Physics", "Chemistry"],
+      subjectSelections: [
+        { subject: "Physics", chapterIds: [10], topicIds: [] },
+        { subject: "Chemistry", chapterIds: [20], topicIds: [] },
+      ],
+      chapterIds: [10, 20],
+      topicIds: [],
+      difficulty: "ABSURD",
+      totalQuestions: 14,
+      totalMarks: 24,
+      questionTypes: [
+        "MCQ",
+        "TRUE_FALSE",
+        "ASSERTION_REASON",
+        "MATCH_FOLLOWING",
+        "VERY_SHORT",
+        "SHORT",
+      ],
+      typeDistribution: {
+        MCQ: 4,
+        TRUE_FALSE: 2,
+        ASSERTION_REASON: 2,
+        MATCH_FOLLOWING: 2,
+        VERY_SHORT: 2,
+        SHORT: 2,
+      },
+      questionComposition: [
+        {
+          subject: "Physics",
+          chapterId: 10,
+          chapterName: "Motion and Friction",
+          questionCount: 7,
+        },
+        {
+          subject: "Chemistry",
+          chapterId: 20,
+          chapterName: "Exploring Mixtures and their Separation",
+          questionCount: 7,
+        },
+      ],
+    };
+    const bank = new QuestionCandidateBank([], currentBlueprint, currentConfig);
+
+    const completion = completeQuestionBankWithFinalFallbacks({
+      bank,
+      blueprint: currentBlueprint,
+      config: currentConfig,
+      concepts: [],
+      scope: "current physics chemistry absurd fragile mix",
+      requireSyllabusComposition: true,
+    });
+    const validation = completion.bank.result();
+    const visibleText = studentVisibleText(validation.questions);
+
+    expect(completion.readyQuestionCount).toBe(14);
+    expect(completion.missingQuestionCount).toBe(0);
+    expect(validation.questions).toHaveLength(14);
+    expect(validation.questions.reduce((sum, question) => sum + question.marks, 0)).toBe(24);
+    expect(validation.rejectionReasons.TEACHER_QUALITY ?? 0).toBe(0);
+    expect(validation.config.typeDistribution).toMatchObject({
+      MCQ: 4,
+      TRUE_FALSE: 2,
+      ASSERTION_REASON: 2,
+      MATCH_FOLLOWING: 2,
+      VERY_SHORT: 2,
+      SHORT: 2,
+    });
+    expect(visibleText).toMatch(/average velocity|friction|solution|solute|filtration|evaporation/i);
+    expect(visibleText).not.toMatch(
+      /important for effective learning|Exploring Mixtures and their Separation application|reasoning about Exploring Mixtures and their Separation|Examples can make a classroom explanation easier to remember/i,
+    );
+  });
+
+  it("uses quality-stable final fill when exact final fragile slots cannot validate", () => {
+    const totalQuestions = 14;
+    const impossibleBlueprint: Blueprint = {
+      sections: [
+        sectionFor("MCQ", 12, 1),
+        sectionFor("ONE_WORD", 2, 1),
+      ],
+      totalQuestions,
+      totalMarks: totalQuestions,
+      estimatedTime: 45,
+      competencyPercentage: 70,
+    };
+    const impossibleConfig: PaperConfig = {
+      ...config,
+      classNum: 9,
+      subject: "Chemistry",
+      subjects: ["Chemistry"],
+      subjectSelections: [
+        { subject: "Chemistry", chapterIds: [20], topicIds: [] },
+      ],
+      chapterIds: [20],
+      topicIds: [],
+      difficulty: "ABSURD",
+      totalQuestions,
+      totalMarks: totalQuestions,
+      questionTypes: ["MCQ", "ONE_WORD"],
+      typeDistribution: { MCQ: 12, ONE_WORD: 2 },
+      questionComposition: [
+        {
+          subject: "Chemistry",
+          chapterId: 20,
+          chapterName: "Exploring Mixtures and their Separation",
+          questionCount: totalQuestions,
+        },
+      ],
+    };
+    const seedConfig: PaperConfig = {
+      ...impossibleConfig,
+      totalQuestions: 12,
+      totalMarks: 12,
+      questionTypes: ["MCQ"],
+      typeDistribution: { MCQ: 12 },
+      questionComposition: impossibleConfig.questionComposition?.map((item) => ({
+        ...item,
+        questionCount: 12,
+      })),
+    };
+    const seedBlueprint: Blueprint = {
+      sections: [sectionFor("MCQ", 12, 1)],
+      totalQuestions: 12,
+      totalMarks: 12,
+      estimatedTime: 30,
+      competencyPercentage: 70,
+    };
+    const seedBank = new QuestionCandidateBank([], seedBlueprint, seedConfig);
+    completeQuestionBankWithSyllabusNearFallback({
+      bank: seedBank,
+      config: seedConfig,
+      concepts: [chemistryMixtureConcept()],
+      startIndex: 3100,
+    });
+    const bank = new QuestionCandidateBank(
+      seedBank.result().questions,
+      impossibleBlueprint,
+      impossibleConfig,
+    );
+
+    expect(bank.readyCount()).toBe(12);
+    expect(bank.missingCount()).toBe(2);
+
+    const completion = completeQuestionBankWithFinalFallbacks({
+      bank,
+      blueprint: impossibleBlueprint,
+      config: impossibleConfig,
+      concepts: [chemistryMixtureConcept()],
+      scope: "quality-stable final fill regression",
+      requireSyllabusComposition: true,
+    });
+    const validation = completion.bank.result();
+
+    expect(completion.readyQuestionCount).toBe(14);
+    expect(completion.missingQuestionCount).toBe(0);
+    expect(validation.questions).toHaveLength(14);
+    expect(validation.questions.reduce((sum, question) => sum + question.marks, 0)).toBe(14);
+    expect(validation.rejectionReasons.TEACHER_QUALITY ?? 0).toBe(0);
+    expect(validation.config.typeDistribution.ONE_WORD ?? 0).toBe(0);
+    expect(validation.config.typeDistribution.COMPETENCY ?? 0).toBe(2);
+    expect(
+      completion.warnings.some((warning) => warning.type === "quality-stable-final-fill"),
+    ).toBe(true);
+  });
+
   it("keeps final numerical completion inside selected science chapters", () => {
     const numericalBlueprint: Blueprint = {
       sections: [sectionFor("NUMERICAL", 3, 3)],
