@@ -24,7 +24,7 @@ afterEach(() => {
 });
 
 describe("NCERT source priority", () => {
-  it("uses local source-backed NCERT content before outline DB concepts", async () => {
+  it("uses local source-backed NCERT content without touching DB for known NCERT chapters", async () => {
     process.env.EDUTEST_DISABLE_LOCAL_NCERT_PDF = "1";
     dbMock.mockImplementation(async () => {
       throw new Error("DB outline concepts are unavailable");
@@ -34,13 +34,22 @@ describe("NCERT source priority", () => {
       item.name.includes("The Wit that Won Hearts"),
     );
     expect(chapter).toBeDefined();
+    const databaseDiagnostics: unknown[] = [];
 
     const concepts = await getChapterContent([chapter!.id], "English", 8, {
       allowCurriculumFallback: true,
       requireKnownSource: true,
+      onDatabaseDiagnostics: (item) => databaseDiagnostics.push(item),
     });
 
-    expect(dbMock).toHaveBeenCalled();
+    expect(dbMock).not.toHaveBeenCalled();
+    expect(databaseDiagnostics).toEqual([
+      expect.objectContaining({
+        chapterId: chapter!.id,
+        lookup: "stored_concepts",
+        status: "skipped",
+      }),
+    ]);
     expect(concepts.length).toBeGreaterThanOrEqual(6);
     expect(concepts.every((concept) => concept.source === "ncert_txt")).toBe(true);
     expect(concepts.every((concept) => concept.type === "NCERT_TXT_SOURCE")).toBe(true);
@@ -50,13 +59,14 @@ describe("NCERT source priority", () => {
     expect(() => assertSourceGroundingForGeneration(config(chapter!.id), concepts)).not.toThrow();
   });
 
-  it("does not accept outline-only DB concepts when matching local TXT exists", async () => {
+  it("does not spend DB budget on outline-only concepts when matching local TXT exists", async () => {
     process.env.EDUTEST_DISABLE_LOCAL_NCERT_PDF = "1";
     const chapter = getCurriculumChapters(8, "English").find((item) =>
       item.name.includes("A Concrete Example"),
     );
     expect(chapter).toBeDefined();
     const diagnostics: unknown[] = [];
+    const databaseDiagnostics: unknown[] = [];
 
     dbMock.mockImplementation(async (strings: TemplateStringsArray) => {
       const query = strings.join(" ");
@@ -101,9 +111,18 @@ describe("NCERT source priority", () => {
       allowCurriculumFallback: true,
       requireKnownSource: true,
       onLocalNcertDiagnostics: (item) => diagnostics.push(item),
+      onDatabaseDiagnostics: (item) => databaseDiagnostics.push(item),
     });
 
     expect(concepts.length).toBeGreaterThanOrEqual(6);
+    expect(dbMock).not.toHaveBeenCalled();
+    expect(databaseDiagnostics).toEqual([
+      expect.objectContaining({
+        chapterId: chapter!.id,
+        lookup: "stored_concepts",
+        status: "skipped",
+      }),
+    ]);
     expect(concepts.every((concept) => concept.source === "ncert_txt")).toBe(true);
     expect(concepts.every((concept) => concept.type === "NCERT_TXT_SOURCE")).toBe(true);
     expect(concepts.some((concept) => /concrete|example/i.test(concept.text))).toBe(true);
@@ -116,6 +135,40 @@ describe("NCERT source priority", () => {
     expect(() => assertSourceGroundingForGeneration(config(chapter!.id), concepts)).not.toThrow();
   });
 
+  it("reports bounded DB failures when local TXT cannot resolve and static fallback is allowed", async () => {
+    process.env.EDUTEST_DISABLE_LOCAL_NCERT_PDF = "1";
+    dbMock.mockRejectedValue(new Error("connect ECONNREFUSED neon.example"));
+
+    const chapter = getCurriculumChapters(10, "English").find((item) =>
+      item.name.includes("The Hack Driver"),
+    );
+    expect(chapter).toBeDefined();
+    const databaseDiagnostics: unknown[] = [];
+
+    const concepts = await getChapterContent([chapter!.id], "English", 10, {
+      allowCurriculumFallback: true,
+      requireKnownSource: false,
+      onDatabaseDiagnostics: (item) => databaseDiagnostics.push(item),
+    });
+
+    expect(concepts.length).toBeGreaterThan(0);
+    expect(concepts.some((concept) => concept.source === "curriculum")).toBe(true);
+    expect(databaseDiagnostics).toEqual([
+      expect.objectContaining({
+        chapterId: chapter!.id,
+        lookup: "stored_concepts",
+        status: "failed",
+        errorClass: "network",
+      }),
+      expect.objectContaining({
+        chapterId: chapter!.id,
+        lookup: "curriculum_concepts",
+        status: "failed",
+        errorClass: "network",
+      }),
+    ]);
+  });
+
   it("maps imported database chapter IDs back to NCERT source text by chapter name", async () => {
     process.env.EDUTEST_DISABLE_LOCAL_NCERT_PDF = "1";
     const importedChapterId = 178001;
@@ -123,7 +176,7 @@ describe("NCERT source priority", () => {
       const query = strings.join(" ");
 
       if (query.includes("COUNT(*)::int AS count")) {
-        return [{ count: 0 }];
+        throw new Error("Stored concept lookup should not run after imported source maps to local TXT");
       }
 
       if (query.includes("SELECT c.name AS chapter_name")) {

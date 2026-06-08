@@ -111,4 +111,39 @@ describe("local NCERT source bridge", () => {
       ),
     ).toThrow(/only outline topics/i);
   });
+
+  it("resolves the Class 9 Physics and Chemistry chapters from bundled NCERT TXT", async () => {
+    process.env.EDUTEST_DISABLE_LOCAL_NCERT_PDF = "1";
+    const physicsChapter = getCurriculumChapters(9, "Physics").find((item) =>
+      item.name.includes("How Forces Affect Motion"),
+    );
+    const chemistryChapter = getCurriculumChapters(9, "Chemistry").find((item) =>
+      item.name.includes("Exploring Mixtures and their Separation"),
+    );
+
+    expect(physicsChapter).toBeDefined();
+    expect(chemistryChapter).toBeDefined();
+
+    const physics = await getLocalNcertChapterSource(
+      9,
+      ["Physics", "Chemistry"],
+      physicsChapter!.id,
+    );
+    const chemistry = await getLocalNcertChapterSource(
+      9,
+      ["Physics", "Chemistry"],
+      chemistryChapter!.id,
+    );
+    const physicsText = physics.concepts.map((concept) => concept.text).join(" ");
+    const chemistryText = chemistry.concepts.map((concept) => concept.text).join(" ");
+
+    expect(physics.diagnostics.selectedSource).toBe("bundled_text");
+    expect(chemistry.diagnostics.selectedSource).toBe("bundled_text");
+    expect(physics.concepts.length).toBeGreaterThanOrEqual(6);
+    expect(chemistry.concepts.length).toBeGreaterThanOrEqual(6);
+    expect(physicsText).toMatch(/friction|net force|Newton/i);
+    expect(chemistryText).toMatch(/solubility|crystallization|separation/i);
+    expect(physics.concepts.every((concept) => concept.source === "ncert_txt")).toBe(true);
+    expect(chemistry.concepts.every((concept) => concept.source === "ncert_txt")).toBe(true);
+  });
 });

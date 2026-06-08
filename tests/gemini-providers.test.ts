@@ -371,7 +371,7 @@ describe("multi-provider JSON generation", () => {
     );
   });
 
-  it("uses task-specific Auto fallback order for question generation", async () => {
+  it("uses quality-stable Auto fallback order for question generation", async () => {
     process.env.GROQ_API_KEY = "gsk-test-key";
     process.env.MISTRAL_API_KEY = "mistral-test-key";
     process.env.CEREBRAS_API_KEY = "csk-test-key";
@@ -390,7 +390,7 @@ describe("multi-provider JSON generation", () => {
           status: 503,
         }),
       )
-      .mockResolvedValueOnce(chatResponse({ fallback: "openrouter" }));
+      .mockResolvedValueOnce(chatResponse({ fallback: "groq" }));
     vi.stubGlobal("fetch", fetchMock);
     const { generateJSON } = await import("@/lib/gemini");
 
@@ -399,13 +399,15 @@ describe("multi-provider JSON generation", () => {
       task: "QUESTION_GENERATION",
     });
 
-    expect(result.fallback).toBe("openrouter");
+    expect(result.fallback).toBe("groq");
     expect(fetchMock).toHaveBeenCalledTimes(3);
-    expect(fetchMock.mock.calls[0][0]).toBe(
+    expect(fetchMock.mock.calls[0][0]).toBe("https://api.mistral.ai/v1/chat/completions");
+    expect(fetchMock.mock.calls[1][0]).toBe(
+      "https://api.cerebras.ai/v1/chat/completions",
+    );
+    expect(fetchMock.mock.calls[2][0]).toBe(
       "https://api.groq.com/openai/v1/chat/completions",
     );
-    expect(fetchMock.mock.calls[1][0]).toBe("https://api.mistral.ai/v1/chat/completions");
-    expect(fetchMock.mock.calls[2][0]).toBe("https://openrouter.ai/api/v1/chat/completions");
   });
 
   it("caps Auto provider attempts when a generation batch is high risk", async () => {
@@ -426,12 +428,10 @@ describe("multi-provider JSON generation", () => {
         task: "QUESTION_GENERATION",
         maxProviderAttempts: 1,
       }),
-    ).rejects.toThrow(/GroqCloud/);
+    ).rejects.toThrow(/Mistral/);
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(fetchMock.mock.calls[0][0]).toBe(
-      "https://api.groq.com/openai/v1/chat/completions",
-    );
+    expect(fetchMock.mock.calls[0][0]).toBe("https://api.mistral.ai/v1/chat/completions");
   });
 
   it("skips provider calls when the server deadline cannot fit an AI attempt", async () => {

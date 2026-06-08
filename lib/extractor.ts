@@ -78,6 +78,15 @@ type ConceptCacheValue = {
   concepts: ConceptData[];
   localNcertDiagnostics?: LocalNcertSourceDiagnostics[];
 };
+
+export interface ChapterContentDatabaseDiagnostics {
+  chapterId: number;
+  lookup: "stored_concepts" | "curriculum_concepts" | "chapter_name";
+  status: "skipped" | "failed";
+  reason?: string;
+  errorClass?: "timeout" | "network" | "unknown";
+  error?: string;
+}
 const globalForConceptCache = globalThis as typeof globalThis & {
   __edutestConceptCache?: Map<string, ConceptCacheValue>;
   __edutestUploadedPdfExtractionCache?: Map<
@@ -988,6 +997,7 @@ interface GetChapterContentOptions {
   allowCurriculumFallback?: boolean;
   requireKnownSource?: boolean;
   onLocalNcertDiagnostics?: (diagnostics: LocalNcertSourceDiagnostics) => void;
+  onDatabaseDiagnostics?: (diagnostics: ChapterContentDatabaseDiagnostics) => void;
 }
 
 export async function getChapterContent(
@@ -1013,12 +1023,6 @@ export async function getChapterContent(
   const localNcertDiagnostics: LocalNcertSourceDiagnostics[] = [];
 
   for (const chapterId of chapterIds) {
-    const fromDb = await getConceptsFromDB(chapterId);
-    if (hasRealSourceTextConcepts(fromDb)) {
-      concepts.push(...fromDb);
-      continue;
-    }
-
     const fromLocalNcert = await getLocalNcertChapterSource(
       classNum,
       subjects,
@@ -1027,7 +1031,20 @@ export async function getChapterContent(
     options.onLocalNcertDiagnostics?.(fromLocalNcert.diagnostics);
     localNcertDiagnostics.push(fromLocalNcert.diagnostics);
     if (fromLocalNcert.concepts.length) {
+      options.onDatabaseDiagnostics?.({
+        chapterId,
+        lookup: "stored_concepts",
+        status: "skipped",
+        reason:
+          "bundled_ncert_txt_primary: local NCERT TXT resolved the selected chapter, so database concept lookup was not needed.",
+      });
       concepts.push(...fromLocalNcert.concepts);
+      continue;
+    }
+
+    const fromDb = await getConceptsFromDB(chapterId, options.onDatabaseDiagnostics);
+    if (hasRealSourceTextConcepts(fromDb)) {
+      concepts.push(...fromDb);
       continue;
     }
 
@@ -1037,7 +1054,10 @@ export async function getChapterContent(
     }
 
     const fromCurriculum = options.allowCurriculumFallback
-      ? await getCurriculumConceptsFromDB(chapterId)
+      ? await getCurriculumConceptsFromDB(
+          chapterId,
+          options.onDatabaseDiagnostics,
+        )
       : [];
     if (fromCurriculum.length) {
       concepts.push(...fromCurriculum);
@@ -1166,20 +1186,23 @@ function hasKnownBackedConcepts(concepts: ConceptData[]) {
   );
 }
 
-async function getConceptsFromDB(chapterId: number) {
+async function getConceptsFromDB(
+  chapterId: number,
+  onDatabaseDiagnostics?: (diagnostics: ChapterContentDatabaseDiagnostics) => void,
+) {
   if (!sql) return [];
 
   try {
-    const countRows = await sql`
+    const countRows = await withDatabaseLookupTimeout(sql`
       SELECT COUNT(*)::int AS count
       FROM concepts c
       JOIN chapters ch ON ch.id = c.chapter_id
       WHERE c.chapter_id = ${chapterId}
       AND ch.name NOT ILIKE '%Full Book Source%'
-    `;
+    `, "stored concept count");
     if (!Number(countRows[0].count)) return [];
 
-    const rows = await sql`
+    const rows = await withDatabaseLookupTimeout(sql`
       SELECT
         c.text,
         c.type,
@@ -1198,7 +1221,7 @@ async function getConceptsFromDB(chapterId: number) {
       WHERE c.chapter_id = ${chapterId}
       AND ch.name NOT ILIKE '%Full Book Source%'
       ORDER BY c.id ASC
-    `;
+    `, "stored concepts");
 
     return rows.map((row) => {
       const type = normalizeNcertTxtConceptType(row.type);
@@ -1220,6 +1243,13 @@ async function getConceptsFromDB(chapterId: number) {
       };
     }) satisfies ConceptData[];
   } catch (error) {
+    onDatabaseDiagnostics?.({
+      chapterId,
+      lookup: "stored_concepts",
+      status: "failed",
+      errorClass: classifyDatabaseLookupError(error),
+      error: safeErrorMessage(error),
+    });
     console.warn(
       `Skipping stored concept lookup for chapter ${chapterId}: ${safeErrorMessage(error)}`,
     );
@@ -1227,11 +1257,14 @@ async function getConceptsFromDB(chapterId: number) {
   }
 }
 
-async function getCurriculumConceptsFromDB(chapterId: number) {
+async function getCurriculumConceptsFromDB(
+  chapterId: number,
+  onDatabaseDiagnostics?: (diagnostics: ChapterContentDatabaseDiagnostics) => void,
+) {
   if (!sql) return [];
 
   try {
-    const rows = await sql`
+    const rows = await withDatabaseLookupTimeout(sql`
       SELECT
         c.name AS chapter_name,
         s.name AS subject_name,
@@ -1245,7 +1278,7 @@ async function getCurriculumConceptsFromDB(chapterId: number) {
       WHERE c.id = ${chapterId}
       AND c.name NOT ILIKE '%Full Book Source%'
       ORDER BY t.id ASC
-    `;
+    `, "curriculum concepts");
 
     if (!rows.length) return [];
     const chapterName = rows[0].chapter_name ?? `Chapter ${chapterId}`;
@@ -1287,6 +1320,13 @@ async function getCurriculumConceptsFromDB(chapterId: number) {
       source: "curriculum",
     })) satisfies ConceptData[];
   } catch (error) {
+    onDatabaseDiagnostics?.({
+      chapterId,
+      lookup: "curriculum_concepts",
+      status: "failed",
+      errorClass: classifyDatabaseLookupError(error),
+      error: safeErrorMessage(error),
+    });
     console.warn(
       `Skipping curriculum DB lookup for chapter ${chapterId}: ${safeErrorMessage(error)}`,
     );
@@ -1301,7 +1341,9 @@ async function getChapterName(
 ) {
   if (sql) {
     try {
-      const rows = await sql`SELECT name FROM chapters WHERE id = ${chapterId} LIMIT 1`;
+      const rows = await withDatabaseLookupTimeout(sql`
+        SELECT name FROM chapters WHERE id = ${chapterId} LIMIT 1
+      `, "chapter name");
       if (rows[0]?.name) return String(rows[0].name);
     } catch {
       // Demo lookup below.
@@ -1426,6 +1468,55 @@ function normalizeStoredSource(value: unknown): ContentSource {
 
 function safeErrorMessage(error: unknown) {
   return error instanceof Error ? error.message : String(error ?? "unknown error");
+}
+
+function databaseLookupTimeoutMs() {
+  const configured = Number(
+    process.env.EDUTEST_DB_SOURCE_LOOKUP_TIMEOUT_MS ??
+      process.env.EDUTEST_DB_LOOKUP_TIMEOUT_MS,
+  );
+  if (Number.isFinite(configured) && configured >= 250 && configured <= 3_000) {
+    return Math.floor(configured);
+  }
+
+  return 1_200;
+}
+
+function withDatabaseLookupTimeout<T>(promise: Promise<T>, label: string) {
+  const timeoutMs = databaseLookupTimeoutMs();
+  let timeout: ReturnType<typeof setTimeout> | undefined;
+
+  return Promise.race([
+    promise,
+    new Promise<never>((_, reject) => {
+      timeout = setTimeout(() => {
+        reject(
+          new Error(
+            `DATABASE_LOOKUP_TIMEOUT: ${label} exceeded ${timeoutMs}ms`,
+          ),
+        );
+      }, timeoutMs);
+    }),
+  ]).finally(() => {
+    if (timeout) clearTimeout(timeout);
+  });
+}
+
+function classifyDatabaseLookupError(
+  error: unknown,
+): ChapterContentDatabaseDiagnostics["errorClass"] {
+  const message = safeErrorMessage(error);
+  if (/DATABASE_LOOKUP_TIMEOUT|timeout|timed out|ETIMEDOUT/i.test(message)) {
+    return "timeout";
+  }
+  if (
+    /network|fetch failed|ECONNRESET|ENOTFOUND|EAI_AGAIN|ECONNREFUSED|connection|socket/i.test(
+      message,
+    )
+  ) {
+    return "network";
+  }
+  return "unknown";
 }
 
 function normalizeImportance(value: unknown): "LOW" | "MEDIUM" | "HIGH" {

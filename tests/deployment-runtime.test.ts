@@ -41,5 +41,10 @@ describe("deployment runtime safety", () => {
     expect(generatePaperRoute).toMatch(/export const maxDuration = 60/);
     expect(generatePaperRoute).toMatch(/return 52_000/);
     expect(generatePaperRoute).toMatch(/EDUTEST_SERVER_GENERATION_BUDGET_MS/);
+    expect(generatePaperRoute).toMatch(/EDUTEST_SOURCE_BACKED_COMPLETION_RESERVE_MS/);
+    expect(generatePaperRoute).toMatch(/return 1_000/);
+    expect(generatePaperRoute).toMatch(/maxProviderAttempts: 3/);
+    expect(generatePaperRoute).toMatch(/sourceLoadingRecoveryWarnings/);
+    expect(generatePaperRoute).toMatch(/providerHealthPreflightWarnings/);
   });
 });
