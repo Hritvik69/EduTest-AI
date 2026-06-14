@@ -108,7 +108,7 @@ function repeatedStemIssues(questions: GeneratedQuestion[]) {
 
   groups.forEach((group) => {
     const typeTotal = totalsByType.get(group[0]?.question.type ?? "MCQ") ?? group.length;
-    const allowed = Math.max(2, Math.ceil(typeTotal * 0.4));
+    const allowed = Math.max(3, Math.ceil(typeTotal * 0.6));
     if (group.length <= allowed) return;
     group.slice(allowed).forEach((item) => {
       issues.push({

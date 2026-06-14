@@ -114,7 +114,7 @@ export function isDuplicateQuestionText(left: string, right: string) {
   if (leftNormalized === rightNormalized) return true;
 
   const { ratio, shared } = questionOverlap(leftNormalized, rightNormalized);
-  return shared >= 6 && ratio >= 0.76;
+  return shared >= 8 && ratio >= 0.85;
 }
 
 export function isDuplicateQuestion(left: QuestionLike, right: QuestionLike) {
@@ -389,7 +389,18 @@ export function sourceBackedDistinctnessProof(
       differentSubQuestionSignature,
   );
 
-  const allowSoftSimilarity = false;
+  // Allow soft similarity only when there is strong structural evidence that the
+  // two questions are genuinely distinct despite surface-level text similarity.
+  // Conditions: both are source-backed, they differ on at least atom OR angle,
+  // they have a concrete structural difference (different options/scenario/sub-questions),
+  // and they are NOT repeating the same answer path (which would be the same question).
+  const allowSoftSimilarity = Boolean(
+    bothSourceBacked &&
+      !repeatedAnswerPath &&
+      score >= 2 &&
+      (differentAtom || differentAngle) &&
+      hasStructuralDifference,
+  );
 
   return {
     sourceBackedInvolved,

@@ -703,9 +703,8 @@ Every returned question's subject field must be "${coverageFocus.subject}".
   const antiRepeatRules = existingQuestions.length
     ? `
 Forbidden existing/invalid question stems from this paper:
-${existingQuestions
-  .slice(-24)
-  .map((question, index) => `${index + 1}. ${question.text}`)
+${deduplicatedAntiRepeatStems(existingQuestions)
+  .map((stem, idx) => `${idx + 1}. ${stem}`)
   .join("\n")}
 Do not repeat, paraphrase, lightly reword, or reuse these ideas, stems, examples, numbers, option patterns, answer facts, source/case scenarios, or diagrams.
 Replacement rule: if this request is replacing invalid/duplicate questions, every returned question must be a genuinely new valid alternative with a different concept angle, different data/example, and different answer path. Do not copy a failed question and only change wording.
@@ -925,9 +924,8 @@ function buildBlueprintPrompt(
   const antiRepeatRules = existingQuestions.length
     ? `
 Forbidden existing/invalid question stems from this paper:
-${existingQuestions
-  .slice(-36)
-  .map((question, index) => `${index + 1}. [${question.type}] ${question.text}`)
+${deduplicatedAntiRepeatStems(existingQuestions)
+  .map((stem, idx) => `${idx + 1}. ${stem}`)
   .join("\n")}
 Do not repeat, paraphrase, lightly reword, or reuse these stems, examples, option patterns, answer facts, source/case scenarios, or diagrams.
 `
@@ -967,6 +965,25 @@ ${buildStudentFacingQualityContract()}
 
 Return ONLY valid JSON:
 { "questions": [ ...all questions... ] }`;
+}
+
+function deduplicatedAntiRepeatStems(
+  questions: Array<{ text: string }>,
+  limit = 50,
+): string[] {
+  const seen = new Set<string>();
+  const stems: string[] = [];
+  // Walk newest-first so the most recent questions get priority
+  for (let i = questions.length - 1; i >= 0 && stems.length < limit; i--) {
+    const raw = (questions[i]?.text ?? "").replace(/\s+/g, " ").trim();
+    if (!raw) continue;
+    const fingerprint = raw.toLowerCase().slice(0, 80);
+    if (seen.has(fingerprint)) continue;
+    seen.add(fingerprint);
+    stems.push(raw.length > 120 ? `${raw.slice(0, 117)}...` : raw);
+  }
+  // Restore chronological order (oldest first) for readability
+  return stems.reverse();
 }
 
 function buildCandidateDiversityContract() {
