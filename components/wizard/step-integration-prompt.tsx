@@ -24,8 +24,8 @@ const generationModes: {
   {
     mode: "source_exact",
     title: "NCERT/PDF Source",
-    description: "AI uses selected TXT/PDF question wording when real question lines exist.",
-    detail: "Best for NCERT or uploaded PDF exercise-style papers. It still follows your selected type counts, marks, difficulty, and Bloom plan.",
+    description: "AI follows selected TXT/PDF wording closely when real question lines exist.",
+    detail: "Best for NCERT or uploaded PDF exercise-style papers. It can clean wording slightly, but must stay according to the selected source.",
     icon: BookOpenCheck,
   },
 ];
@@ -121,8 +121,8 @@ export function StepIntegrationPrompt() {
           })}
         </div>
         <p className="mt-3 text-xs leading-5 text-slate-400">
-          Question formats from the previous step still decide the paper shape.
-          This mode only decides whether source question wording may be reused.
+          Question formats in a later phase still decide the paper shape. This
+          mode decides whether source question wording should be reused closely.
         </p>
       </div>
 

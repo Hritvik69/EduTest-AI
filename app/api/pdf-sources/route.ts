@@ -31,6 +31,9 @@ type PdfUploadProgressSender = (progress: {
   message: string;
 }) => void;
 
+export const runtime = "nodejs";
+export const maxDuration = 60;
+
 export async function POST(request: NextRequest) {
   const auth = await requireAuthenticatedUser(request);
   if (auth.response) return auth.response;
@@ -61,6 +64,22 @@ function streamPdfSourceUpload(request: NextRequest, user: PdfUploadUser) {
   const stream = new ReadableStream({
     async start(controller) {
       let closed = false;
+      const uploadController = new AbortController();
+      const uploadSignal = uploadController.signal;
+      const abortFromClient = () => {
+        if (!uploadSignal.aborted) {
+          uploadController.abort(new Error("PDF upload was cancelled."));
+        }
+      };
+      const deadlineTimer = setTimeout(() => {
+        if (!uploadSignal.aborted) {
+          uploadController.abort(pdfUploadDeadlineError());
+        }
+      }, pdfUploadServerBudgetMs());
+      let heartbeatProgress = 12;
+      let heartbeatMessage = "Still understanding PDF. Large or scanned files can take longer.";
+      let heartbeatTimer: ReturnType<typeof setInterval> | null = null;
+
       const send = (event: string, data: object) => {
         if (closed || request.signal.aborted) return false;
         try {
@@ -73,11 +92,36 @@ function streamPdfSourceUpload(request: NextRequest, user: PdfUploadUser) {
           return false;
         }
       };
+      const close = () => {
+        if (heartbeatTimer) {
+          clearInterval(heartbeatTimer);
+          heartbeatTimer = null;
+        }
+        clearTimeout(deadlineTimer);
+        request.signal.removeEventListener("abort", abortFromClient);
+        if (closed) return;
+        closed = true;
+        try {
+          controller.close();
+        } catch {
+          // The browser may have disconnected while OCR or AI extraction was running.
+        }
+      };
+
+      request.signal.addEventListener("abort", abortFromClient, { once: true });
+      heartbeatTimer = setInterval(() => {
+        send("progress", {
+          progress: heartbeatProgress,
+          message: heartbeatMessage,
+        });
+      }, pdfUploadHeartbeatMs());
 
       try {
         const source = await processPdfSourceUpload(request, user, (progress) => {
+          heartbeatProgress = Math.max(heartbeatProgress, progress.progress);
+          heartbeatMessage = progress.message;
           send("progress", progress);
-        });
+        }, uploadSignal);
         send("progress", {
           progress: 100,
           message: "PDF ready for fresh question generation",
@@ -86,18 +130,11 @@ function streamPdfSourceUpload(request: NextRequest, user: PdfUploadUser) {
       } catch (error) {
         send("error", {
           success: false,
-          error: friendlyPdfProcessingError(error),
-          code: error instanceof PdfUploadClientError ? error.status : 502,
+          error: friendlyPdfUploadStreamError(error),
+          code: pdfUploadErrorStatus(error),
         });
       } finally {
-        if (!closed) {
-          closed = true;
-          try {
-            controller.close();
-          } catch {
-            // The browser may have disconnected while OCR or AI extraction was running.
-          }
-        }
+        close();
       }
     },
   });
@@ -115,8 +152,9 @@ async function processPdfSourceUpload(
   request: NextRequest,
   user: PdfUploadUser,
   onProgress?: PdfUploadProgressSender,
+  signal: AbortSignal = request.signal,
 ) {
-  throwIfUploadAborted(request.signal);
+  throwIfUploadAborted(signal);
   onProgress?.({ progress: 3, message: "Receiving PDF upload" });
 
   let formData: FormData;
@@ -131,7 +169,7 @@ async function processPdfSourceUpload(
 
   const file = formData.get("file");
   const focusPrompt = sanitizeFocusPrompt(formData.get("focusPrompt"));
-  throwIfUploadAborted(request.signal);
+  throwIfUploadAborted(signal);
 
   if (!(file instanceof File)) {
     throw new PdfUploadClientError(
@@ -150,7 +188,7 @@ async function processPdfSourceUpload(
 
   onProgress?.({ progress: 6, message: "Validating PDF file" });
   const buffer = Buffer.from(await file.arrayBuffer());
-  throwIfUploadAborted(request.signal);
+  throwIfUploadAborted(signal);
   try {
     assertPdfBufferSize(buffer);
     assertPdfMagic(buffer);
@@ -175,9 +213,9 @@ async function processPdfSourceUpload(
 
   const extracted = await extractTextFromPdf(buffer, {
     onProgress,
-    signal: request.signal,
+    signal,
   });
-  throwIfUploadAborted(request.signal);
+  throwIfUploadAborted(signal);
   const cleanedText = limitExtractedText(cleanExtractedText(extracted.text));
 
   if (!cleanedText || cleanedText.length < 250) {
@@ -192,9 +230,9 @@ async function processPdfSourceUpload(
     cleanedText,
     extracted.title || file.name.replace(/\.pdf$/i, ""),
     focusPrompt,
-    { signal: request.signal },
+    { signal },
   );
-  throwIfUploadAborted(request.signal);
+  throwIfUploadAborted(signal);
   onProgress?.({ progress: 92, message: "Saving extracted concepts" });
 
   return storeUploadedPdfSource({
@@ -214,6 +252,13 @@ async function processPdfSourceUpload(
 
 function throwIfUploadAborted(signal: AbortSignal) {
   if (signal.aborted) {
+    const reason = signal.reason as unknown;
+    if (reason instanceof Error) {
+      if (reason instanceof PdfUploadClientError) throw reason;
+      if (reason.name !== "AbortError" && !/operation was aborted/i.test(reason.message)) {
+        throw reason;
+      }
+    }
     throw new PdfUploadClientError("PDF upload was cancelled.", 499);
   }
 }
@@ -226,6 +271,53 @@ class PdfUploadClientError extends Error {
     super(message);
     this.name = "PdfUploadClientError";
   }
+}
+
+class PdfUploadServerBudgetError extends Error {
+  status = 504;
+
+  constructor() {
+    super(
+      "PDF_UPLOAD_TIME_BUDGET_EXCEEDED: PDF understanding reached the deployment time limit.",
+    );
+    this.name = "PdfUploadServerBudgetError";
+  }
+}
+
+function pdfUploadDeadlineError() {
+  return new PdfUploadServerBudgetError();
+}
+
+function friendlyPdfUploadStreamError(error: unknown) {
+  if (error instanceof PdfUploadServerBudgetError) {
+    return "PDF understanding reached the deployment time limit. Try a smaller or text-based PDF, or narrow the PDF focus prompt.";
+  }
+
+  return friendlyPdfProcessingError(error);
+}
+
+function pdfUploadErrorStatus(error: unknown) {
+  if (error instanceof PdfUploadClientError) return error.status;
+  if (error instanceof PdfUploadServerBudgetError) return error.status;
+  return 502;
+}
+
+function pdfUploadServerBudgetMs() {
+  const configured = Number(process.env.EDUTEST_PDF_UPLOAD_SERVER_BUDGET_MS);
+  if (Number.isFinite(configured) && configured >= 15_000 && configured <= 55_000) {
+    return Math.floor(configured);
+  }
+
+  return 52_000;
+}
+
+function pdfUploadHeartbeatMs() {
+  const configured = Number(process.env.EDUTEST_PDF_UPLOAD_HEARTBEAT_MS);
+  if (Number.isFinite(configured) && configured >= 3_000 && configured <= 20_000) {
+    return Math.floor(configured);
+  }
+
+  return 8_000;
 }
 
 function sanitizeFilename(name: string) {

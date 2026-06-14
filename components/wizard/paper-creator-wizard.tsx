@@ -79,7 +79,7 @@ function WizardInner() {
       return false;
     }
 
-    if (step === 2) {
+    if (step === 3) {
       const compositionTotal = (config.questionComposition ?? []).reduce(
         (sum, item) => sum + item.questionCount,
         0,
@@ -90,22 +90,22 @@ function WizardInner() {
       }
     }
 
-    if (step === 3 && config.duration < 30) {
+    if (step === 4 && config.duration < 30) {
       toast.error("Set at least 30 minutes.");
       return false;
     }
 
-    if (step === 4 && bloomTotal !== 100) {
+    if (step === 5 && bloomTotal !== 100) {
       toast.error("Bloom distribution must add up to 100%.");
       return false;
     }
 
-    if (step === 5 && !config.questionTypes.length) {
+    if (step === 6 && !config.questionTypes.length) {
       toast.error("Select at least one question format.");
       return false;
     }
 
-    if (step === 5) {
+    if (step === 6) {
       try {
         generateBlueprint(config);
       } catch (error) {
@@ -141,7 +141,7 @@ function WizardInner() {
         <ProgressSteps
           currentStep={Math.min(step, 7)}
           firstLabel={config.sourceMode === "pdf_upload" ? "Upload PDF" : "Class & Chapters"}
-          secondLabel={config.sourceMode === "pdf_upload" ? "PDF Composition" : "S/C/T Composition"}
+          compositionLabel={config.sourceMode === "pdf_upload" ? "PDF Composition" : "S/C/T Composition"}
         />
 
         <Card className="mx-auto mt-8 max-w-5xl p-5 sm:p-7">
@@ -149,12 +149,12 @@ function WizardInner() {
             {step === 1 ? (
               config.sourceMode === "pdf_upload" ? <PdfUploadStep /> : <StepOne />
             ) : null}
-            {step === 2 ? <StepComposition /> : null}
-            {step === 3 ? <StepTwo /> : null}
-            {step === 4 ? <StepFour /> : null}
-            {step === 5 ? <StepThree /> : null}
-            {step === 6 ? <StepFive /> : null}
-            {step === 7 ? <StepIntegrationPrompt /> : null}
+            {step === 2 ? <StepIntegrationPrompt /> : null}
+            {step === 3 ? <StepComposition /> : null}
+            {step === 4 ? <StepTwo /> : null}
+            {step === 5 ? <StepFour /> : null}
+            {step === 6 ? <StepThree /> : null}
+            {step === 7 ? <StepFive /> : null}
             {step === 8 ? (
               <ConfirmationScreen
                 onEdit={() => setStep(1)}

@@ -5,24 +5,29 @@ import { cn } from "@/lib/utils";
 
 const defaultStepLabels = [
   "Class & Chapters",
+  "Integration Prompt",
   "S/C/T Composition",
   "Time & Exam",
   "Difficulty",
   "Question Types",
   "AI Engine",
-  "Integration Prompt",
 ];
 
 export function ProgressSteps({
   currentStep,
   firstLabel = "Class & Chapters",
-  secondLabel = "S/C/T Composition",
+  compositionLabel = "S/C/T Composition",
 }: {
   currentStep: number;
   firstLabel?: string;
-  secondLabel?: string;
+  compositionLabel?: string;
 }) {
-  const stepLabels = [firstLabel, secondLabel, ...defaultStepLabels.slice(2)];
+  const stepLabels = [
+    firstLabel,
+    defaultStepLabels[1],
+    compositionLabel,
+    ...defaultStepLabels.slice(3),
+  ];
 
   return (
     <div className="mx-auto w-full max-w-6xl">

@@ -248,7 +248,10 @@ async function readApiPayload(response: Response) {
   }
 }
 
-async function readUploadApiPayload(
+export const pdfUploadInterruptedStreamMessage =
+  "PDF upload was interrupted before the server sent a final result. This can happen if the upload timed out or the network connection closed. Try again with a smaller or text-based PDF.";
+
+export async function readUploadApiPayload(
   response: Response,
   signal: AbortSignal,
   onProgress: (progress: { progress: number; message: string }) => void,
@@ -273,46 +276,32 @@ async function readUploadApiPayload(
       const { value, done } = await reader.read();
       if (done) break;
       buffer += decoder.decode(value, { stream: true });
-      const blocks = buffer.split("\n\n");
+      const blocks = splitServerEventBlocks(buffer);
       buffer = blocks.pop() ?? "";
 
       for (const block of blocks) {
-        const event = parseServerEventBlock(block);
-        if (!event) continue;
-
-        if (event.event === "progress") {
-          onProgress({
-            progress: clampProgress(Number(event.data.progress)),
-            message: String(event.data.message ?? "Working on PDF"),
-          });
-        }
-
-        if (event.event === "complete") {
-          completePayload = event.data;
-        }
-
-        if (event.event === "error") {
-          throw new Error(apiErrorMessage(event.data, "PDF understanding failed."));
-        }
+        completePayload = handleUploadServerEvent(block, onProgress) ?? completePayload;
       }
     }
+
+    buffer += decoder.decode();
   } finally {
     signal.removeEventListener("abort", abort);
   }
 
   if (buffer.trim()) {
-    const event = parseServerEventBlock(buffer);
-    if (event?.event === "complete") completePayload = event.data;
+    completePayload = handleUploadServerEvent(buffer, onProgress) ?? completePayload;
   }
 
   return completePayload ?? {
     success: false,
-    error: "PDF upload finished without a completion response.",
+    error: pdfUploadInterruptedStreamMessage,
+    code: 0,
   };
 }
 
-function parseServerEventBlock(block: string) {
-  const lines = block.split(/\n/);
+export function parseServerEventBlock(block: string) {
+  const lines = block.split(/\r?\n/);
   const event = lines
     .find((line) => line.startsWith("event:"))
     ?.replace(/^event:\s*/, "")
@@ -332,6 +321,36 @@ function parseServerEventBlock(block: string) {
   } catch {
     return null;
   }
+}
+
+function splitServerEventBlocks(buffer: string) {
+  return buffer.split(/\r?\n\r?\n/);
+}
+
+function handleUploadServerEvent(
+  block: string,
+  onProgress: (progress: { progress: number; message: string }) => void,
+) {
+  const event = parseServerEventBlock(block);
+  if (!event) return null;
+
+  if (event.event === "progress") {
+    onProgress({
+      progress: clampProgress(Number(event.data.progress)),
+      message: String(event.data.message ?? "Working on PDF"),
+    });
+    return null;
+  }
+
+  if (event.event === "complete") {
+    return event.data;
+  }
+
+  if (event.event === "error") {
+    throw new Error(apiErrorMessage(event.data, "PDF understanding failed."));
+  }
+
+  return null;
 }
 
 function clampProgress(value: number) {

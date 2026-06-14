@@ -82,11 +82,13 @@ describe("generateQuestionsForSection batching", () => {
   it("places source exact generation mode into section prompts", async () => {
     mocks.generateJSON.mockResolvedValueOnce({ questions: [mcq(6)] });
     const { generateQuestionsForSection } = await import("@/lib/generator");
+    const integrationPrompt =
+      "Use exact NCERT wording when available and keep the language simple.";
 
     await generateQuestionsForSection(
       { ...section, count: 1, totalMarks: 1 },
       "[Source: ncert_txt] [Topic: Acids] Q. Why do acids change blue litmus red?",
-      { ...config, generationMode: "source_exact" },
+      { ...config, generationMode: "source_exact", integrationPrompt },
       { availableTopics: ["Acids"] },
     );
 
@@ -96,10 +98,13 @@ describe("generateQuestionsForSection batching", () => {
     expect(promptConfig).toMatchObject({
       generation_mode: "source_exact",
       generation_mode_label: "NCERT/PDF Source",
+      integration_prompt: integrationPrompt,
     });
     expect(prompt).toContain("GENERATION MODE: NCERT/PDF SOURCE");
-    expect(prompt).toContain("Do not copy extracted exercise/question prompts");
-    expect(prompt).toContain("write fresh teacher-made questions");
+    expect(prompt).toContain("preserve the student-facing question wording");
+    expect(prompt).toContain("Make only minimal edits needed");
+    expect(prompt).toContain("without outside content");
+    expect(prompt).toContain("If CONFIG_JSON.integration_prompt is non-empty");
   });
 
   it("drops duplicate MCQs and requests replacements before validation", async () => {

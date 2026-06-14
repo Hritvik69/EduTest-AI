@@ -723,7 +723,8 @@ Rules:
       : "Selected chapters/topics are the allowed scope."
   }
 - In normal NCERT_Books mode, the context has already been sliced to the selected class, subject, chapter, and topic. Never use the whole book/PDF, neighboring chapters, previous chapters, next chapters, contents pages, transcripts, or unrelated unit material.
-- Do not copy extracted textbook exercise/question prompts as final questions. Use selected source text to understand the concept, then write fresh teacher-made questions.
+- In fresh mode, do not copy extracted textbook exercise/question prompts as final questions. Use selected source text to understand the concept, then write fresh teacher-made questions.
+- In NCERT/PDF Source mode, when a selected TXT/PDF chunk contains a real exercise or question line, preserve that question wording closely and change only what is needed for grammar, selected format, marks, options, or sub-question structure.
 - If the user selected one chapter, every question must come only from that chapter. If the user selected a topic inside that chapter, every question must come only from that topic's scoped context.
 - No outside/web/generic filler.
 ${generationModeRules}
@@ -864,7 +865,7 @@ If uploaded PDF or extracted NCERT text is present, use that local context inste
 If no full textbook/PDF text is present, generate NCERT-style questions from the selected chapter and allowed topics only.
 Never use unselected chapters from the same NCERT book or PDF.
 Use familiar NCERT exercise patterns such as define, give reasons, differentiate, explain, examples, in-text concept checks, and back-exercise style.
-Follow CONFIG_JSON.generation_mode: source_exact must stay closer to selected source concepts, but it must not copy extracted exercise wording; fresh mode must create new wording from the concept.
+Follow CONFIG_JSON.generation_mode: source_exact must stay close to selected source wording when real exercise/question lines exist; fresh mode must create new wording from the concept.
 Return JSON: [{ "text","correctAnswer","marks":1|2|3,"topic" }]`,
   };
 
@@ -999,7 +1000,7 @@ Never include these in any student-visible field:
 - chapter/meta framing such as "selected NCERT chapter", "the chapter explains", "according to the chapter", "in the chapter", "from the chapter", "ideas from the chapter", "idea described in the chapter", "chapter idea", "chapter concept", "chapter property", "chapter activity", "chapter evidence", "question focus", "concept focus", or "explain the chapter idea"
 
 When CONFIG_JSON.generation_mode is "fresh", use the supplied source only to understand the concept and convert it into natural exam questions.
-When CONFIG_JSON.generation_mode is "source_exact", stay tightly grounded to selected TXT/PDF concepts, but still write fresh teacher-made questions. Do not copy extracted exercise prompts or explanatory prose as fake question text.
+When CONFIG_JSON.generation_mode is "source_exact", stay tightly grounded to selected TXT/PDF concepts. If a selected chunk contains a real exercise/question line, preserve that source question wording closely; if it contains only explanation, build the question from exact source facts and wording without outside content.
 Ask the concept directly. Do not make the chapter title or the fact that a chapter exists part of the question unless the question is explicitly about a printed passage title.
 
 For MCQ:
@@ -1039,9 +1040,10 @@ function buildGenerationModePromptRules(config: PaperConfig) {
     return `GENERATION MODE: NCERT/PDF SOURCE
 - CONFIG_JSON.generation_mode is "source_exact".
 - Use only selected TXT/PDF/source chunks. Never use unselected chapters, neighboring pages, or outside knowledge.
-- Stay close to selected TXT/PDF concepts, but write fresh teacher-made questions.
-- Do not copy extracted exercise/question prompts, explanatory prose, headings, examples, answers, captions, or source metadata as fake question text.
-- If source question wording is present, use only the underlying concept and create a source-faithful teacher-written question from the selected source.
+- If selected TXT/PDF/source chunks contain real exercise or question lines, preserve the student-facing question wording as closely as practical.
+- Make only minimal edits needed to remove numbering/metadata, fix OCR/grammar, fit selected marks, or convert into the selected question type/options/sub-questions.
+- If selected chunks contain explanation but no real question line, build the question from exact source facts and wording without outside content.
+- Do not use source answers, captions, headings, or metadata alone as fake question text.
 - Still obey selected question types, counts, marks, difficulty, Bloom distribution, answer structure, and validation rules.`;
   }
 

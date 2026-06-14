@@ -16,6 +16,11 @@ describe("deployment runtime safety", () => {
       join(root, "app", "api", "generate-paper", "route.ts"),
       "utf8",
     );
+    const pdfSourcesRoute = readFileSync(
+      join(root, "app", "api", "pdf-sources", "route.ts"),
+      "utf8",
+    );
+    const vercelConfig = readFileSync(join(root, "vercel.json"), "utf8");
 
     expect(proxy).toMatch(/try\s*{/);
     expect(proxy).toMatch(/guest session cookie setup failed/);
@@ -46,5 +51,10 @@ describe("deployment runtime safety", () => {
     expect(generatePaperRoute).toMatch(/maxProviderAttempts: 3/);
     expect(generatePaperRoute).toMatch(/sourceLoadingRecoveryWarnings/);
     expect(generatePaperRoute).toMatch(/providerHealthPreflightWarnings/);
+    expect(pdfSourcesRoute).toMatch(/export const runtime = "nodejs"/);
+    expect(pdfSourcesRoute).toMatch(/export const maxDuration = 60/);
+    expect(pdfSourcesRoute).toMatch(/EDUTEST_PDF_UPLOAD_SERVER_BUDGET_MS/);
+    expect(pdfSourcesRoute).toMatch(/EDUTEST_PDF_UPLOAD_HEARTBEAT_MS/);
+    expect(vercelConfig).toMatch(/app\/api\/pdf-sources\/route\.ts/);
   });
 });
