@@ -631,6 +631,53 @@ export async function updatePaperDefinition(
   }
 }
 
+/**
+ * Persist a fully generated (READY) paper to the database so it appears on the
+ * dashboard and survives browser/refresh. This chains the existing
+ * createPaperInDB -> saveQuestionsAndLink -> setPaperGenerationManifest ->
+ * markPaperReady helpers. On any failure it returns null so callers can fall
+ * back to the session-only snapshot — generation never breaks because of this.
+ *
+ * Returns the numeric database paper id on success, or null when persistence
+ * was skipped/failed (for example when no database is configured or a guest
+ * memory store is in use and the DB write failed transiently).
+ */
+export async function persistGeneratedPaper(
+  paper: StoredPaper,
+  userId: number,
+  generationJobId?: string | null,
+  idempotencyKey?: string | null,
+): Promise<{ paperId: number; status: string; reused: boolean } | null> {
+  if (!paper.questions.length) return null;
+
+  try {
+    const creation = await createPaperInDB(paper.config, paper.blueprint, paper.isDemoMode, {
+      userId,
+      generationJobId: generationJobId ?? paper.generationJobId ?? undefined,
+      idempotencyKey: idempotencyKey ?? paper.idempotencyKey ?? undefined,
+    });
+
+    await saveQuestionsAndLink(paper.questions, creation.paperId, "ncert_txt");
+
+    if (paper.manifest) {
+      await setPaperGenerationManifest(creation.paperId, paper.manifest, paper.config);
+    }
+
+    await markPaperReady(creation.paperId);
+
+    return {
+      paperId: creation.paperId,
+      status: creation.status,
+      reused: creation.reused,
+    };
+  } catch (error) {
+    console.warn("[paper-store] persistGeneratedPaper failed; using session-only snapshot", {
+      message: error instanceof Error ? error.message : String(error),
+    });
+    return null;
+  }
+}
+
 export async function getPaper(paperId: number, userId?: number) {
   pruneGuestMemory();
   const memoryPaper = memoryPapers.get(paperId);

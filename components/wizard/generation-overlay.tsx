@@ -431,7 +431,11 @@ export function GenerationOverlay({
               completed = true;
               setActiveIndex(progressSteps.length - 1);
               setProgress(100);
-              const paperId = paperIdValue(data.paperId);
+              // Prefer the persisted database id so the preview, test, and
+              // evaluation flows resolve the paper server-side. Falls back to
+              // the session-only id when persistence did not happen.
+              const persistedPaperId = paperIdValue(data.persistedPaperId);
+              const paperId = persistedPaperId ?? paperIdValue(data.paperId);
               if (!paperId) {
                 throw generationError(
                   "Generation finished without a valid paper id. Please retry.",

@@ -47,6 +47,7 @@ import {
   generateDemoQuestions,
   recordGeneratedPaperFingerprint,
 } from "@/lib/generator";
+import { persistGeneratedPaper } from "@/lib/paper-store";
 import { getUploadedPdfSourceConcepts } from "@/lib/pdf-source-store";
 import {
   buildGenerationArchitecturePlan,
@@ -502,8 +503,8 @@ export async function POST(request: NextRequest) {
         };
         let blueprint = generateBlueprint(effectiveConfig);
         let conceptContext: string;
-        if (sql && (effectiveConfig.chapterIds.length || (effectiveConfig.sourceMode === "pdf_upload" && effectiveConfig.pdfSourceId)) && (effectiveConfig.integrationPrompt?.trim() || effectiveConfig.examType)) {
-          const queryText = (effectiveConfig.integrationPrompt?.trim() || `Class ${effectiveConfig.classNum} ${effectiveConfig.subject} ${effectiveConfig.examType}`).slice(0, 300);
+        if (sql && (effectiveConfig.chapterIds.length || (effectiveConfig.sourceMode === "pdf_upload" && effectiveConfig.pdfSourceId))) {
+          const queryText = (effectiveConfig.integrationPrompt?.trim() || `Class ${effectiveConfig.classNum} ${effectiveConfig.subject} ${effectiveConfig.examType || ""}`).slice(0, 300);
           try {
             const { hybridSearch } = await import("@/lib/rag-retriever");
             const targetIds = effectiveConfig.sourceMode === "pdf_upload"
@@ -1285,6 +1286,37 @@ export async function POST(request: NextRequest) {
         // persisted — every fresh server is intentionally a clean slate so
         // each new generation can pick different concept angles.)
         recordGeneratedPaperFingerprint(paperId, effectiveConfig, storedQuestions);
+
+        // Persist the finished paper to the database so it shows up on the
+        // dashboard and so attempts/results can be resolved server-side. On
+        // failure we keep the session-only id and snapshot — generation never
+        // breaks because of persistence.
+        let persistedPaperId: number | undefined;
+        let sessionOnly = true;
+        try {
+          const persisted = await persistGeneratedPaper(
+            readyPaper,
+            auth.user.id,
+            generationJobId,
+            idempotencyKey,
+          );
+          if (persisted) {
+            persistedPaperId = persisted.paperId;
+            sessionOnly = false;
+          }
+        } catch (error) {
+          console.warn("[generate-paper] paper persistence failed; using session-only snapshot", {
+            generationJobId,
+            message: error instanceof Error ? error.message : String(error),
+          });
+        }
+
+        // When persistence succeeds, use the real numeric DB id everywhere so
+        // the client, preview, test, and evaluation flows all resolve the
+        // paper from the database instead of the browser snapshot.
+        const finalPaperId: number | string = persistedPaperId ?? paperId;
+        readyPaper.id = finalPaperId;
+
         const paperSnapshotToken = await signGuestPaperSnapshot(
           readyPaper,
           auth.user.id,
@@ -1296,7 +1328,8 @@ export async function POST(request: NextRequest) {
             pct: 100,
             progress: 100,
             msg: "Phase 7 - Final Paper Composition: paper ready.",
-            paperId,
+            paperId: finalPaperId,
+            ...(persistedPaperId ? { persistedPaperId } : {}),
             done: true,
             idempotencyKey,
             generationJobId,
@@ -1310,7 +1343,7 @@ export async function POST(request: NextRequest) {
             status: "READY",
             isDemoMode,
             createdAt: readyPaper.createdAt,
-            sessionOnly: true,
+            sessionOnly,
             config: effectiveConfig,
             paperSnapshot: readyPaper,
             paperSnapshotToken,
@@ -1537,6 +1570,32 @@ async function completeWithLocalGenerationFallback({
     idempotencyKey,
   });
   recordGeneratedPaperFingerprint(paperId, validation.config, storedQuestions);
+
+  // Persist the local-fallback paper too so it still appears on the dashboard
+  // and supports evaluation. Falls back to session-only on any failure.
+  let persistedPaperId: number | undefined;
+  let finalSessionOnly = sessionOnly;
+  try {
+    const persisted = await persistGeneratedPaper(
+      readyPaper,
+      ownerId,
+      generationJobId,
+      idempotencyKey,
+    );
+    if (persisted) {
+      persistedPaperId = persisted.paperId;
+      finalSessionOnly = false;
+    }
+  } catch (error) {
+    console.warn("[generate-paper] local fallback persistence failed; using session-only snapshot", {
+      paperId,
+      generationJobId,
+      message: error instanceof Error ? error.message : String(error),
+    });
+  }
+  const finalPaperId: number | string = persistedPaperId ?? paperId;
+  readyPaper.id = finalPaperId;
+
   const paperSnapshotToken = await signGuestPaperSnapshot(readyPaper, ownerId);
 
   send(
@@ -1545,7 +1604,8 @@ async function completeWithLocalGenerationFallback({
       pct: 100,
       progress: 100,
       msg: "Phase 7 - Final Paper Composition: fallback paper ready.",
-      paperId,
+      paperId: finalPaperId,
+      ...(persistedPaperId ? { persistedPaperId } : {}),
       done: true,
       idempotencyKey,
       generationJobId,
@@ -1564,7 +1624,7 @@ async function completeWithLocalGenerationFallback({
       status: "READY",
       localFallback: true,
       createdAt: readyPaper.createdAt,
-      sessionOnly,
+      sessionOnly: finalSessionOnly,
       config: validation.config,
       paperSnapshot: readyPaper,
       paperSnapshotToken,

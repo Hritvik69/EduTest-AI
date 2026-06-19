@@ -91,13 +91,23 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  // Scale AI grading budget by the number of subjective questions so every
+  // answer gets a fair evaluation even on long papers.
+  const OBJECTIVE_TYPES = new Set([
+    "MCQ", "ASSERTION_REASON", "TRUE_FALSE", "ONE_WORD", "FILL_BLANK", "MATCH_FOLLOWING",
+  ]);
+  const subjectiveCount = questions.filter(
+    (q) => !OBJECTIVE_TYPES.has(q.type) && q.type !== "NUMERICAL",
+  ).length;
+  const maxSubjectiveAiCalls = Math.max(8, Math.min(40, subjectiveCount + 4));
+
   let results;
   try {
     results = await evaluateAnswers(questions, body.answers, {
       allowDemoHeuristic: paper.isDemoMode,
       signal: request.signal,
-      deadlineAt: Date.now() + 25_000,
-      maxSubjectiveAiCalls: 8,
+      deadlineAt: Date.now() + 45_000,
+      maxSubjectiveAiCalls,
     });
   } catch (error) {
     return jsonError(

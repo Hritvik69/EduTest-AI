@@ -517,7 +517,36 @@ function isObjectiveAnswerCorrect(question: GeneratedQuestion, studentAnswer: st
     return shortAnswerEquivalent(studentAnswer, question.correctAnswer);
   }
 
-  return normalize(studentAnswer) === normalize(question.correctAnswer);
+  // Direct normalized comparison (handles exact key matches like "A", "Option A")
+  if (normalize(studentAnswer) === normalize(question.correctAnswer)) {
+    return true;
+  }
+
+  // MCQ option-text fallback: student may have sent the option label ("a", "b")
+  // or the option text itself instead of the stored correctAnswer key.
+  if (question.type === "MCQ" && question.options?.length) {
+    const normalizedStudent = normalize(studentAnswer);
+    const correctOption = question.options.find((o) => o.isCorrect);
+    if (
+      correctOption &&
+      (normalize(correctOption.id) === normalizedStudent ||
+        normalize(correctOption.text) === normalizedStudent)
+    ) {
+      return true;
+    }
+    // Also check if correctAnswer matches any option label so we can compare labels
+    const normalizedCorrect = normalize(question.correctAnswer);
+    for (const opt of question.options) {
+      if (normalize(opt.id) === normalizedStudent && normalize(opt.id) === normalizedCorrect) {
+        return true;
+      }
+      if (normalize(opt.text) === normalizedStudent && normalize(opt.text) === normalizedCorrect) {
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 function shortAnswerEquivalent(studentAnswer: string, correctAnswer: string) {
