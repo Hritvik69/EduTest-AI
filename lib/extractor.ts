@@ -192,6 +192,15 @@ async function extractScannedPdfText(
   const schedulerPromise = createLocalOcrScheduler(
     Math.min(scannedPdfOcrWorkers, Math.max(pageLimit, 1)),
   );
+  
+  let schedulerInstance: any = null;
+  const abortHandler = () => {
+    if (schedulerInstance) {
+      schedulerInstance.terminate().catch(() => {});
+    }
+  };
+  options.signal?.addEventListener("abort", abortHandler, { once: true });
+
   const renderedPages: Array<{
     page: number;
     image?: Buffer;
@@ -203,6 +212,11 @@ async function extractScannedPdfText(
 
   void schedulerPromise.then((scheduler) => {
     if (!scheduler) return;
+    schedulerInstance = scheduler;
+    if (options.signal?.aborted) {
+      scheduler.terminate().catch(() => {});
+      return;
+    }
     options.onProgress?.({
       progress: 29,
       message: `OCR engine ready. Reading ${pageLimit} pages in parallel`,
@@ -265,46 +279,62 @@ async function extractScannedPdfText(
     await scheduler?.terminate();
     schedulerTerminated = true;
   } finally {
+    options.signal?.removeEventListener("abort", abortHandler);
     if (!schedulerTerminated) {
       const scheduler = await schedulerPromise.catch(() => null);
       await scheduler?.terminate().catch(() => {});
     }
   }
 
-  const pageTexts: string[] = [];
+  const pagesToOcr = renderedPages.filter(p => !localTexts.has(p.page));
+  const concurrency = 3;
+  const ocrResults = new Map<number, string>();
 
+  for (let i = 0; i < pagesToOcr.length; i += concurrency) {
+    const chunk = pagesToOcr.slice(i, i + concurrency);
+    await Promise.all(
+      chunk.map(async (renderedPage) => {
+        throwIfAborted(options.signal);
+        try {
+          const dataUrl =
+            renderedPage.dataUrl ??
+            (await renderPageDataUrl(parser, renderedPage.page));
+          const image = dataUrl ? parseDataUrl(dataUrl) : null;
+          if (!image) return;
+
+          const result = await generateGeminiImageJSON<{ text?: string }>(
+            [
+              "Read this scanned NCERT chapter PDF page and transcribe the educational text.",
+              `PDF title: ${title}`,
+              `Page ${renderedPage.page} of ${pageCount}.`,
+              'Return JSON only in this exact shape: { "text": "clean readable page text" }.',
+              "Preserve headings, textbook paragraphs, activities, examples, exercises, tables, and important labels.",
+              "Do not describe the image. Do not invent missing text. If a page has no readable textbook content, return an empty string.",
+            ].join("\n"),
+            [image],
+            {
+              temperature: 0.1,
+              maxOutputTokens: 4096,
+              signal: options.signal,
+            },
+          );
+          const pageText = normalizeOcrText(result.text ?? "");
+          if (pageText) ocrResults.set(renderedPage.page, pageText);
+        } catch (error) {
+          console.warn(`Vision OCR failed for page ${renderedPage.page}.`, error);
+        }
+      })
+    );
+  }
+
+  const pageTexts: string[] = [];
   for (const renderedPage of renderedPages) {
     const localText = localTexts.get(renderedPage.page);
     if (localText) {
       pageTexts.push(localText);
-      continue;
-    }
-
-    throwIfAborted(options.signal);
-    const dataUrl = renderedPage.dataUrl ?? (await renderPageDataUrl(parser, renderedPage.page));
-    const image = dataUrl ? parseDataUrl(dataUrl) : null;
-    if (!image) continue;
-
-    try {
-      const result = await generateGeminiImageJSON<{ text?: string }>(
-        [
-          "Read this scanned NCERT chapter PDF page and transcribe the educational text.",
-          `PDF title: ${title}`,
-          `Page ${renderedPage.page} of ${pageCount}.`,
-          "Return JSON only in this exact shape: { \"text\": \"clean readable page text\" }.",
-          "Preserve headings, textbook paragraphs, activities, examples, exercises, tables, and important labels.",
-          "Do not describe the image. Do not invent missing text. If a page has no readable textbook content, return an empty string.",
-        ].join("\n"),
-        [image],
-        {
-          temperature: 0.1,
-          maxOutputTokens: 4096,
-        },
-      );
-      const pageText = normalizeOcrText(result.text ?? "");
-      if (pageText) pageTexts.push(pageText);
-    } catch (error) {
-      console.warn("Vision OCR failed for a scanned PDF page.", error);
+    } else {
+      const visionText = ocrResults.get(renderedPage.page);
+      if (visionText) pageTexts.push(visionText);
     }
   }
 
@@ -927,7 +957,40 @@ export async function storeExtractedTopics(
   clearConceptCacheForChapter(chapterId);
 
   if (sql) {
-    const topicsJson = JSON.stringify(topics);
+    const conceptTexts: string[] = [];
+    topics.forEach((topic) => {
+      topic.concepts.forEach((concept) => {
+        conceptTexts.push(concept.text);
+      });
+    });
+
+    let embeddings: number[][] = [];
+    try {
+      const { generateEmbeddingsBatch } = await import("./embeddings");
+      const batchSize = 30;
+      for (let i = 0; i < conceptTexts.length; i += batchSize) {
+        const batch = conceptTexts.slice(i, i + batchSize);
+        const batchEmbeds = await generateEmbeddingsBatch(batch);
+        embeddings.push(...batchEmbeds);
+      }
+    } catch (err) {
+      console.warn("Could not generate embeddings for topics", err);
+    }
+
+    let embedIdx = 0;
+    const topicsWithEmbeddings = topics.map((topic) => ({
+      ...topic,
+      concepts: topic.concepts.map((concept) => {
+        const embedding = embeddings[embedIdx];
+        embedIdx += 1;
+        return {
+          ...concept,
+          embedding: embedding ? `[${embedding.join(",")}]` : null,
+        };
+      }),
+    }));
+
+    const topicsJson = JSON.stringify(topicsWithEmbeddings);
 
     await sql.transaction((tx) => [
       tx`DELETE FROM concepts WHERE chapter_id = ${chapterId}`,
@@ -950,7 +1013,8 @@ export async function storeExtractedTopics(
             concept.text,
             concept.type,
             concept.bloom_level,
-            concept.hots_potential
+            concept.hots_potential,
+            concept.embedding
           FROM topic_input
           JOIN inserted_topics ON inserted_topics.name = topic_input.name
           CROSS JOIN LATERAL jsonb_to_recordset(topic_input.concepts)
@@ -958,14 +1022,16 @@ export async function storeExtractedTopics(
               text text,
               type text,
               bloom_level text,
-              hots_potential boolean
+              hots_potential boolean,
+              embedding text
             )
         )
         INSERT INTO concepts (
-          topic_id, chapter_id, text, type, bloom_level, hots_potential, source
+          topic_id, chapter_id, text, type, bloom_level, hots_potential, source, embedding
         )
         SELECT
-          topic_id, ${chapterId}, text, type, bloom_level, hots_potential, ${source}
+          topic_id, ${chapterId}, text, type, bloom_level, hots_potential, ${source},
+          embedding::vector
         FROM concept_input
       `,
     ]);

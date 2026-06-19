@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import sql from "@/lib/db";
 import {
   jsonError,
   parseJsonWithSchema,
@@ -93,7 +94,7 @@ import type {
 } from "@/types";
 
 export const runtime = "nodejs";
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 interface GenerationStreamContractSummary {
   contractHash: string;
@@ -499,13 +500,59 @@ export async function POST(request: NextRequest) {
           ),
         };
         let blueprint = generateBlueprint(effectiveConfig);
-        const conceptContext = await runWithOperation("planning", () =>
-          retrieveConcepts(
-            scopedConcepts,
-            effectiveConfig.difficulty,
-            effectiveConfig.bloomDistribution,
-          ),
-        );
+        let conceptContext: string;
+        if (sql && (effectiveConfig.chapterIds.length || (effectiveConfig.sourceMode === "pdf_upload" && effectiveConfig.pdfSourceId)) && (effectiveConfig.integrationPrompt?.trim() || effectiveConfig.examType)) {
+          const queryText = (effectiveConfig.integrationPrompt?.trim() || `Class ${effectiveConfig.classNum} ${effectiveConfig.subject} ${effectiveConfig.examType}`).slice(0, 300);
+          try {
+            const { hybridSearch } = await import("@/lib/rag-retriever");
+            const targetIds = effectiveConfig.sourceMode === "pdf_upload"
+              ? [] // Handled via other filters or all concepts of the PDF source if chapterIds is empty
+              : effectiveConfig.chapterIds;
+              
+            const retrieved = await runWithOperation("planning", () =>
+              hybridSearch(
+                targetIds.length ? targetIds : (scopedConcepts.map(c => c.chapterId).filter(Boolean) as number[]),
+                queryText,
+                15
+              )
+            );
+            if (retrieved.length > 0) {
+              const { retrieveConcepts } = await import("@/lib/retriever");
+              conceptContext = await retrieveConcepts(
+                retrieved,
+                effectiveConfig.difficulty,
+                effectiveConfig.bloomDistribution,
+              );
+            } else {
+              conceptContext = await runWithOperation("planning", () =>
+                retrieveConcepts(
+                  scopedConcepts,
+                  effectiveConfig.difficulty,
+                  effectiveConfig.bloomDistribution,
+                )
+              );
+            }
+          } catch (err) {
+            console.warn("Hybrid search failed, falling back to standard retrieve", err);
+            const { retrieveConcepts } = await import("@/lib/retriever");
+            conceptContext = await runWithOperation("planning", () =>
+              retrieveConcepts(
+                scopedConcepts,
+                effectiveConfig.difficulty,
+                effectiveConfig.bloomDistribution,
+              )
+            );
+          }
+        } else {
+          const { retrieveConcepts } = await import("@/lib/retriever");
+          conceptContext = await runWithOperation("planning", () =>
+            retrieveConcepts(
+              scopedConcepts,
+              effectiveConfig.difficulty,
+              effectiveConfig.bloomDistribution,
+            )
+          );
+        }
         const availableTopics = conceptTopics(scopedConcepts);
         let generationPlan = buildGenerationArchitecturePlan(
           effectiveConfig,
@@ -2585,11 +2632,11 @@ function stableHash(input: string) {
 
 function generationServerBudgetMs() {
   const configured = Number(process.env.EDUTEST_SERVER_GENERATION_BUDGET_MS);
-  if (Number.isFinite(configured) && configured >= 15_000 && configured <= 55_000) {
+  if (Number.isFinite(configured) && configured >= 15_000 && configured <= 290_000) {
     return configured;
   }
 
-  return 52_000;
+  return 270_000;
 }
 
 function generationHeartbeatMs() {
@@ -2619,11 +2666,11 @@ function streamStatusForGenerationState(status?: PaperGenerationState["status"])
 
 function generationFinalizationReserveMs() {
   const configured = Number(process.env.EDUTEST_GENERATION_FINALIZATION_RESERVE_MS);
-  if (Number.isFinite(configured) && configured >= 5_000 && configured <= 20_000) {
+  if (Number.isFinite(configured) && configured >= 5_000 && configured <= 40_000) {
     return configured;
   }
 
-  return 12_000;
+  return 20_000;
 }
 
 function sourceBackedCompletionReserveMs() {
