@@ -629,10 +629,19 @@ function buildSubjectWorkflowPrompt(
               selection.topicIds?.length
                 ? `; topics ${selection.topicIds.join(", ")}`
                 : ""
+            }${
+              selection.languageMode
+                ? `; languageMode=${selection.languageMode}`
+                : ""
             }`,
         )
         .join("\n")
     : `- ${config.subject}: chapters ${config.chapterIds.join(", ")}`;
+
+  const languageModeHint = buildLanguageModeHint(
+    config,
+    coverageFocus?.subject ?? activeSubject,
+  );
 
   return `SUBJECT_WORKFLOW
 Selected subjects: ${selectedSubjects.join(", ")}
@@ -641,7 +650,59 @@ Selected chapter/topic routing:
 ${selections}
 Subject-specific generation rules:
 ${rules}
+${languageModeHint}
 Workflow rule: generate every question from the active subject plus its selected chapter/topic context only.`;
+}
+
+/**
+ * For Hindi/English subjects the user may pin a languageMode (grammar / story /
+ * auto). This produces a short prompt fragment that biases question-type
+ * selection. With "auto" the AI is told to read the chapter content first and
+ * state its decision in the manifest (effectiveLanguageMode).
+ */
+function buildLanguageModeHint(
+  config: PaperConfig,
+  activeSubject: string,
+): string {
+  const selection = config.subjectSelections?.find(
+    (item) => item.subject.toLowerCase() === activeSubject.toLowerCase(),
+  );
+  const mode = selection?.languageMode ?? "auto";
+  const subject = activeSubject.toLowerCase();
+  if (subject !== "hindi" && subject !== "english") return "";
+
+  const focusLines =
+    mode === "story"
+      ? [
+          "User selected STORY mode for this language subject.",
+          "Read the supplied chapter content and decide which question types best fit a story/poem/narrative chapter:",
+          "- comprehension (literal, inferential, evaluative)",
+          "- character / narrator / poet analysis",
+          "- plot, theme, message, moral, summary",
+          "- vocabulary in context, literary devices (for Hindi: भाषा-शैली, अलंकार, रस, छंद; for English: imagery, tone, figurative language)",
+          "Favour LONG, SHORT, VERY_SHORT, MCQ items that probe understanding rather than rote grammar.",
+          "Still include a small grammar/usage question only if the chapter explicitly covers it.",
+        ]
+      : mode === "grammar"
+        ? [
+            "User selected GRAMMAR mode for this language subject.",
+            "Read the supplied chapter content and decide which question types best fit a grammar/usage chapter:",
+            "- For Hindi: संधि/विच्छेद, समास, उपसर्ग/प्रत्यय, वाक्य-शुद्धि, लिंग/वचन/कारक, मुहावरे/लोकोक्ति, अलंकार पहचान",
+            "- For English: tenses, voice, narration (active/passive, direct/indirect), parts of speech, modals, articles, prepositions, sentence transformation, error correction",
+            "Favour MCQ, VERY_SHORT, SHORT, FILL_BLANK items that test rule application and correction.",
+            "Avoid comprehension-style questions unless the chapter content is narrative.",
+          ]
+        : [
+            "Language mode is AUTO for this subject.",
+            "Read the supplied chapter content first. If it reads as a story/poem/narrative -> behave like STORY mode. If it reads as grammar rules/exercises -> behave like GRAMMAR mode. If mixed, blend both proportionally.",
+            "State your decision in the manifest as effectiveLanguageMode (grammar | story | mixed).",
+          ];
+
+  return [
+    "LANGUAGE_MODE_FOCUS:",
+    ...focusLines.map((line) => `- ${line}`),
+    "Do not invent characters, scenes, dialogue, quotes, or grammar rules that are not present in the supplied chapter context.",
+  ].join("\n");
 }
 
 function subjectRule(subject: string) {

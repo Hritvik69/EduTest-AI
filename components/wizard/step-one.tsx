@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { fetchApiData } from "@/lib/api-client";
 import { classes, subjects as staticSubjects } from "@/lib/edutest-data";
 import { cn } from "@/lib/utils";
-import type { ChapterOption, SubjectSelection } from "@/types";
+import type { ChapterOption, LanguageMode, SubjectSelection } from "@/types";
 import { usePaperConfig } from "./paper-config-context";
 
 interface SubjectOption {
@@ -188,6 +188,19 @@ export function StepOne() {
     });
   }
 
+  function setLanguageMode(subject: string, mode: LanguageMode) {
+    const nextSelections = (config.subjectSelections ?? []).map((selection) =>
+      selection.subject === subject ? { ...selection, languageMode: mode } : selection,
+    );
+    const ensuredSelections = nextSelections.some((s) => s.subject === subject)
+      ? nextSelections
+      : [
+          ...nextSelections,
+          { subject, chapterIds: [], topicIds: [], languageMode: mode },
+        ];
+    updateConfig({ subjectSelections: ensuredSelections });
+  }
+
   function toggleChapter(chapter: ChapterOption) {
     const selected = config.chapterIds.includes(chapter.id);
     const nextChapterIds = selected
@@ -300,6 +313,64 @@ export function StepOne() {
           })}
         </div>
       </div>
+
+      {selectedSubjects.some((s) => isLanguageSubject(s)) ? (
+        <div className="space-y-3">
+          {selectedSubjects
+            .filter((subject) => isLanguageSubject(subject))
+            .map((subject) => {
+              const selection = (config.subjectSelections ?? []).find(
+                (s) => s.subject === subject,
+              );
+              const current: LanguageMode = selection?.languageMode ?? "auto";
+              return (
+                <div
+                  key={`mode-${subject}`}
+                  className="rounded-lg border border-blue-300/20 bg-blue-500/5 p-4"
+                >
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <div className="text-sm font-semibold text-blue-50">
+                        {subject} — language mode
+                      </div>
+<p className="mt-1 text-xs text-slate-400">
+                          Choose how the AI should focus this paper. &ldquo;Auto&rdquo;
+                          lets the AI decide from the chapter content.
+                        </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {(
+                        [
+                          { id: "story", label: "📖 Story", hint: "Comprehension, character, moral" },
+                          { id: "grammar", label: "✍️ Grammar", hint: "Rules, correction, analysis" },
+                          { id: "auto", label: "🤖 Auto", hint: "AI decides" },
+                        ] as const
+                      ).map((option) => {
+                        const active = current === option.id;
+                        return (
+                          <button
+                            key={option.id}
+                            type="button"
+                            onClick={() => setLanguageMode(subject, option.id)}
+                            title={option.hint}
+                            className={cn(
+                              "h-9 rounded-lg border px-3 text-xs font-bold transition",
+                              active
+                                ? "border-blue-300 bg-primary text-white shadow-glow"
+                                : "border-white/10 bg-white/[0.035] text-slate-300 hover:border-blue-300/50",
+                            )}
+                          >
+                            {option.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+        </div>
+      ) : null}
 
       <div>
         <div className="mb-3 flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
@@ -450,6 +521,7 @@ function buildSubjectSelections(
         subject,
         chapterIds: previous?.chapterIds ?? [],
         topicIds: previous?.topicIds ?? [],
+        languageMode: previous?.languageMode,
       };
     }
 
@@ -462,6 +534,12 @@ function buildSubjectSelections(
       subject,
       chapterIds: chapterIds.filter((id) => groupChapterIds.has(id)),
       topicIds: topicIds.filter((id) => groupTopicIds.has(id)),
+      languageMode: previous?.languageMode,
     };
   });
+}
+
+function isLanguageSubject(subject: string): boolean {
+  const normalized = subject.trim().toLowerCase();
+  return normalized === "hindi" || normalized === "english";
 }

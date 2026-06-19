@@ -68,10 +68,14 @@ const optionalBooleanSchema = z.preprocess((value) => {
   return value;
 }, z.boolean().optional());
 
+export const languageModeValues = ["grammar", "story", "auto"] as const;
+export const languageModeSchema = z.enum(languageModeValues);
+
 export const subjectSelectionSchema = z.object({
   subject: boundedText(100),
   chapterIds: z.array(z.coerce.number().int().positive()).max(50),
   topicIds: z.array(z.coerce.number().int().positive()).max(250).optional(),
+  languageMode: languageModeSchema.optional(),
 });
 
 export const questionCompositionItemSchema = z.object({

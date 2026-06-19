@@ -122,11 +122,23 @@ export interface GenerationManifest {
     sourceQuality?: "strong" | "weak" | "outline_only" | "missing";
     sourceTextChunks?: number;
     extractionMethod?: "AI" | "LOCAL_FALLBACK" | "CACHED_AI" | "CACHED_LOCAL_FALLBACK";
+    /**
+     * User-selected language mode per language subject (Hindi / English). The AI
+     * records its effective choice (which may differ when mode is "auto") in
+     * `languageModes` below.
+     */
+    languageModes?: Record<string, LanguageMode>;
   };
   ai: {
     selectedProvider: AIProvider;
     taskProviderOrder: Partial<Record<AITask, AIProvider[]>>;
     promptContract?: GenerationContract;
+    /**
+     * Effective language mode the AI used per language subject. Differs from
+     * the user-selected value only when the user picked "auto" and the AI
+     * inferred a specific focus from chapter content.
+     */
+    languageModes?: Record<string, LanguageMode>;
     usageSummary?: {
       totalCalls: number;
       successCalls: number;
@@ -292,10 +304,18 @@ export interface UploadedPdfSourceSummary {
   createdAt?: string;
 }
 
+export type LanguageMode = "grammar" | "story" | "auto";
+
 export interface SubjectSelection {
   subject: string;
   chapterIds: number[];
   topicIds?: number[];
+  /**
+   * For language subjects (Hindi / English), how the AI should focus question
+   * generation. `auto` lets the AI infer from the chapter content. When omitted
+   * the value defaults to `auto`.
+   */
+  languageMode?: LanguageMode;
 }
 
 export interface BlueprintSection {

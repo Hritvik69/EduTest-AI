@@ -72,11 +72,13 @@ export function buildGenerationManifest({
       sourceQuality: sourceQuality.quality,
       sourceTextChunks: sourceQuality.sourceTextChunks,
       extractionMethod: config.pdfSource?.extractionMethod,
+      languageModes: collectUserLanguageModes(config),
     },
     ai: {
       selectedProvider: config.aiProvider ?? "AUTO",
       taskProviderOrder,
       promptContract,
+      languageModes: collectUserLanguageModes(config),
       usageSummary,
     },
     validation: {
@@ -91,6 +93,22 @@ export function buildGenerationManifest({
     ...(coverage ? { coverage } : {}),
     warnings: unique([...sourceWarnings, ...warningTexts, ...coverageWarnings]).slice(0, 12),
   };
+}
+
+function collectUserLanguageModes(config: PaperConfig) {
+  const entries = (config.subjectSelections ?? [])
+    .filter(
+      (selection) =>
+        selection.languageMode !== undefined &&
+        isLanguageSubjectName(selection.subject),
+    )
+    .map((selection) => [selection.subject, selection.languageMode!] as const);
+  return entries.length ? Object.fromEntries(entries) : undefined;
+}
+
+function isLanguageSubjectName(subject: string) {
+  const normalized = subject.trim().toLowerCase();
+  return normalized === "hindi" || normalized === "english";
 }
 
 export function generationManifestFromMetadata(
