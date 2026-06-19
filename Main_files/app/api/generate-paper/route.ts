@@ -1,5 +1,4 @@
 import { NextRequest } from "next/server";
-import sql from "@/lib/db";
 import {
   jsonError,
   parseJsonWithSchema,
@@ -29,10 +28,7 @@ import {
   publicAIProviderHealthSnapshot,
 } from "@/lib/error-classification";
 import { summarizeAIUsage } from "@/lib/ai-usage-log";
-import {
-  getChapterContent,
-  type ChapterContentDatabaseDiagnostics,
-} from "@/lib/extractor";
+import { getChapterContent } from "@/lib/extractor";
 import { buildGenerationManifest } from "@/lib/generation-manifest";
 import { buildGenerationContract } from "@/lib/generation-contract";
 import {
@@ -45,7 +41,6 @@ import { signGuestPaperSnapshot } from "@/lib/guest-paper-snapshot";
 import {
   generateBlueprintQuestions,
   generateDemoQuestions,
-  recordGeneratedPaperFingerprint,
 } from "@/lib/generator";
 import { getUploadedPdfSourceConcepts } from "@/lib/pdf-source-store";
 import {
@@ -55,12 +50,11 @@ import {
 import {
   blueprintForSections,
   QuestionCandidateBank,
-  repairCandidateReserveByType,
+  repairCandidateReserveCount,
   stripGenerationMetadataFromQuestions,
   type PaperGenerationState,
 } from "@/lib/question-candidate-bank";
 import {
-  analyzeSourceBackedCompletionCapacity,
   hasSourceBackedFallbackConcepts,
   sourceBackedCapacityMessage,
   type SourceBackedCapacityDiagnostics,
@@ -95,7 +89,7 @@ import type {
 } from "@/types";
 
 export const runtime = "nodejs";
-export const maxDuration = 300;
+export const maxDuration = 60;
 
 interface GenerationStreamContractSummary {
   contractHash: string;
@@ -110,7 +104,6 @@ type LocalFallbackContext = {
   blueprint: Blueprint;
   scopedConcepts: ConceptData[];
 };
-type GenerationWarning = { type: string; reason: string };
 type ProviderRecoveryMode = SourceBackedProviderRecoveryMode;
 type ActiveGenerationOperation =
   | "configuration"
@@ -241,9 +234,7 @@ export async function POST(request: NextRequest) {
       let latestProviderHealth: AIProviderHealthSnapshot | null = null;
       let healthyProviders: DirectAIProvider[] | undefined;
       let providerRecoveryMode: ProviderRecoveryMode | undefined;
-      let providerRecoveryWarnings: GenerationWarning[] = [];
-      let providerHealthWarnings: GenerationWarning[] = [];
-      let sourceLoadingWarnings: GenerationWarning[] = [];
+      let providerRecoveryWarnings: Array<{ type: string; reason: string }> = [];
       let activeOperation: ActiveGenerationOperation = "configuration";
       let failedOperation: ActiveGenerationOperation | null = null;
       const setActiveOperation = (operation: ActiveGenerationOperation) => {
@@ -393,7 +384,6 @@ export async function POST(request: NextRequest) {
       };
       let localFallbackContext: LocalFallbackContext | null = null;
       const localNcertDiagnostics: LocalNcertSourceDiagnostics[] = [];
-      const databaseDiagnostics: ChapterContentDatabaseDiagnostics[] = [];
 
       try {
         assertActive();
@@ -437,9 +427,6 @@ export async function POST(request: NextRequest) {
                     onLocalNcertDiagnostics: (diagnostics) => {
                       localNcertDiagnostics.push(diagnostics);
                     },
-                    onDatabaseDiagnostics: (diagnostics) => {
-                      databaseDiagnostics.push(diagnostics);
-                    },
                   },
                 ),
             );
@@ -474,20 +461,6 @@ export async function POST(request: NextRequest) {
           selectionAwareConcepts,
           localNcertDiagnostics,
         );
-        sourceLoadingWarnings = sourceLoadingRecoveryWarnings({
-          databaseDiagnostics,
-          localNcertDiagnostics,
-          uploadedPdfUsed: Boolean(uploadedPdf),
-        });
-        if (sourceLoadingWarnings.length) {
-          send({
-            step: 2,
-            pct: 19,
-            progress: 19,
-            msg: sourceLoadingWarnings[0].reason,
-            validationWarnings: sourceLoadingWarnings,
-          });
-        }
         const composition = normalizeServerQuestionComposition(
           effectiveConfig,
           scopedConcepts,
@@ -501,59 +474,13 @@ export async function POST(request: NextRequest) {
           ),
         };
         let blueprint = generateBlueprint(effectiveConfig);
-        let conceptContext: string;
-        if (sql && (effectiveConfig.chapterIds.length || (effectiveConfig.sourceMode === "pdf_upload" && effectiveConfig.pdfSourceId)) && (effectiveConfig.integrationPrompt?.trim() || effectiveConfig.examType)) {
-          const queryText = (effectiveConfig.integrationPrompt?.trim() || `Class ${effectiveConfig.classNum} ${effectiveConfig.subject} ${effectiveConfig.examType}`).slice(0, 300);
-          try {
-            const { hybridSearch } = await import("@/lib/rag-retriever");
-            const targetIds = effectiveConfig.sourceMode === "pdf_upload"
-              ? [] // Handled via other filters or all concepts of the PDF source if chapterIds is empty
-              : effectiveConfig.chapterIds;
-              
-            const retrieved = await runWithOperation("planning", () =>
-              hybridSearch(
-                targetIds.length ? targetIds : (scopedConcepts.map(c => c.chapterId).filter(Boolean) as number[]),
-                queryText,
-                15
-              )
-            );
-            if (retrieved.length > 0) {
-              const { retrieveConcepts } = await import("@/lib/retriever");
-              conceptContext = await retrieveConcepts(
-                retrieved,
-                effectiveConfig.difficulty,
-                effectiveConfig.bloomDistribution,
-              );
-            } else {
-              conceptContext = await runWithOperation("planning", () =>
-                retrieveConcepts(
-                  scopedConcepts,
-                  effectiveConfig.difficulty,
-                  effectiveConfig.bloomDistribution,
-                )
-              );
-            }
-          } catch (err) {
-            console.warn("Hybrid search failed, falling back to standard retrieve", err);
-            const { retrieveConcepts } = await import("@/lib/retriever");
-            conceptContext = await runWithOperation("planning", () =>
-              retrieveConcepts(
-                scopedConcepts,
-                effectiveConfig.difficulty,
-                effectiveConfig.bloomDistribution,
-              )
-            );
-          }
-        } else {
-          const { retrieveConcepts } = await import("@/lib/retriever");
-          conceptContext = await runWithOperation("planning", () =>
-            retrieveConcepts(
-              scopedConcepts,
-              effectiveConfig.difficulty,
-              effectiveConfig.bloomDistribution,
-            )
-          );
-        }
+        const conceptContext = await runWithOperation("planning", () =>
+          retrieveConcepts(
+            scopedConcepts,
+            effectiveConfig.difficulty,
+            effectiveConfig.bloomDistribution,
+          ),
+        );
         const availableTopics = conceptTopics(scopedConcepts);
         let generationPlan = buildGenerationArchitecturePlan(
           effectiveConfig,
@@ -584,22 +511,6 @@ export async function POST(request: NextRequest) {
           msg: "Phase 3 - Question Planning: building blueprint, S/C/T split, and question intelligence.",
           ...contractPayload(),
         });
-        const sourceCapacityRisk = qualityFirstSourceCapacityRisk({
-          blueprint,
-          config: effectiveConfig,
-          concepts: scopedConcepts,
-        });
-        if (sourceCapacityRisk) {
-          send({
-            step: 3,
-            pct: 28,
-            progress: 28,
-            msg: sourceCapacityRisk.message,
-            sourceCapacity: sourceCapacityRisk.sourceCapacity,
-            sourceCapacityRisk: true,
-            ...contractPayload(),
-          });
-        }
         localFallbackContext = {
           effectiveConfig,
           blueprint,
@@ -690,7 +601,6 @@ export async function POST(request: NextRequest) {
           );
           latestProviderHealth = providerHealth;
           healthyProviders = providerHealth.usableProviders;
-          providerHealthWarnings = providerHealthPreflightWarnings(providerHealth);
           console.info("[generate-paper] provider health", {
             generationJobId,
             usableProviders: providerHealth.usableProviders,
@@ -723,17 +633,6 @@ export async function POST(request: NextRequest) {
             ...providerHealthPayload(),
             ...recoveryPayload(),
           });
-          if (providerHealthWarnings.length) {
-            send({
-              step: 3,
-              pct: 33,
-              progress: 33,
-              msg: providerHealthWarnings[0].reason,
-              validationWarnings: providerHealthWarnings,
-              ...providerHealthPayload(),
-              ...recoveryPayload(),
-            });
-          }
           if (!healthyProviders.length) {
             if (!providerRecoveryMode) {
               throw sourceTextNotEnoughForProviderOutage(scopedConcepts);
@@ -1242,9 +1141,7 @@ export async function POST(request: NextRequest) {
             : [sourceBackedProviderRecoveryWarning()]
           : [];
         const finalValidationWarnings = [
-          ...sourceLoadingWarnings,
           ...validation.skipped,
-          ...providerHealthWarnings,
           ...finalProviderRecoveryWarnings,
         ];
         const manifest = buildGenerationManifest({
@@ -1279,12 +1176,6 @@ export async function POST(request: NextRequest) {
           generationJobId,
           idempotencyKey,
         });
-        // Record this paper's question stems into the in-memory fingerprint
-        // ring so the next click of "Generate paper" in the same session can
-        // avoid repeating them. (Cross-process / cold-start state is not
-        // persisted — every fresh server is intentionally a clean slate so
-        // each new generation can pick different concept angles.)
-        recordGeneratedPaperFingerprint(paperId, effectiveConfig, storedQuestions);
         const paperSnapshotToken = await signGuestPaperSnapshot(
           readyPaper,
           auth.user.id,
@@ -1403,10 +1294,6 @@ export async function POST(request: NextRequest) {
               recoveryReason: recoverySnapshot.lastMessage,
               ...(sourceCapacity ? { sourceCapacity } : {}),
               ...rejectionReasonsPayload(error),
-              validationWarnings: [
-                ...sourceLoadingWarnings,
-                ...providerHealthWarnings,
-              ],
               ...providerHealthPayload(),
               ...providerRecoveryPayload(),
               ...contractPayload(),
@@ -1536,7 +1423,6 @@ async function completeWithLocalGenerationFallback({
     generationJobId,
     idempotencyKey,
   });
-  recordGeneratedPaperFingerprint(paperId, validation.config, storedQuestions);
   const paperSnapshotToken = await signGuestPaperSnapshot(readyPaper, ownerId);
 
   send(
@@ -1728,164 +1614,6 @@ function summarizeLocalNcertDiagnostics(diagnostics: LocalNcertSourceDiagnostics
       error: item.error.slice(0, 180),
     })),
   };
-}
-
-function sourceLoadingRecoveryWarnings({
-  databaseDiagnostics,
-  localNcertDiagnostics,
-  uploadedPdfUsed,
-}: {
-  databaseDiagnostics: ChapterContentDatabaseDiagnostics[];
-  localNcertDiagnostics: LocalNcertSourceDiagnostics[];
-  uploadedPdfUsed: boolean;
-}): GenerationWarning[] {
-  if (uploadedPdfUsed) {
-    return [
-      {
-        type: "source-mode",
-        reason:
-          "Source mode: uploaded PDF text was used for this paper; bundled NCERT TXT and database concepts were not needed.",
-      },
-    ];
-  }
-
-  const localSuccesses = localNcertDiagnostics.filter(
-    (diagnostics) => diagnostics.conceptCount > 0 && diagnostics.selectedSource,
-  );
-  const failedDatabaseLookup = databaseDiagnostics.find(
-    (diagnostics) => diagnostics.status === "failed",
-  );
-
-  if (localSuccesses.length) {
-    const sourceLabels = Array.from(
-      new Set(
-        localSuccesses.map((diagnostics) =>
-          localNcertSourceLabel(diagnostics.selectedSource),
-        ),
-      ),
-    ).join(", ");
-    const chapterCount = localSuccesses.length;
-    const chapterText = `${chapterCount} selected chapter${chapterCount === 1 ? "" : "s"}`;
-
-    if (failedDatabaseLookup) {
-      return [
-        {
-          type: "source-loading-recovery",
-          reason: `Database source lookup was ${databaseFailureLabel(failedDatabaseLookup)}, so ${sourceLabels} was used for ${chapterText}.`,
-        },
-      ];
-    }
-
-    if (
-      databaseDiagnostics.some(
-        (diagnostics) =>
-          diagnostics.status === "skipped" &&
-          diagnostics.reason?.includes("bundled_ncert_txt_primary"),
-      )
-    ) {
-      return [
-        {
-          type: "source-mode",
-          reason: `${sourceLabels} was used for ${chapterText}; database concept lookup was skipped so DB/network issues do not block normal NCERT generation.`,
-        },
-      ];
-    }
-
-    return [
-      {
-        type: "source-mode",
-        reason: `${sourceLabels} was used for ${chapterText}.`,
-      },
-    ];
-  }
-
-  if (failedDatabaseLookup) {
-    return [
-      {
-        type: "source-loading-warning",
-        reason: `Database source lookup was ${databaseFailureLabel(failedDatabaseLookup)} and no bundled NCERT TXT matched the selected chapter.`,
-      },
-    ];
-  }
-
-  return [];
-}
-
-function localNcertSourceLabel(
-  source: LocalNcertSourceDiagnostics["selectedSource"],
-) {
-  switch (source) {
-    case "bundled_text":
-    case "local_extracted_text":
-      return "bundled NCERT TXT";
-    case "local_pdf":
-      return "local NCERT PDF text";
-    case "static_cache":
-      return "cached NCERT source text";
-    default:
-      return "selected source text";
-  }
-}
-
-function databaseFailureLabel(diagnostics: ChapterContentDatabaseDiagnostics) {
-  if (diagnostics.errorClass === "timeout") return "too slow";
-  if (diagnostics.errorClass === "network") return "unreachable";
-  return "unavailable";
-}
-
-function providerHealthPreflightWarnings(
-  providerHealth: AIProviderHealthSnapshot,
-): GenerationWarning[] {
-  const snapshot = publicAIProviderHealthSnapshot(providerHealth);
-  if (!snapshot.usableProviders.length) return [];
-
-  const unavailable = snapshot.providers.filter(
-    (provider) => provider.configured && !provider.usable,
-  );
-  if (!unavailable.length) return [];
-
-  const usable = snapshot.providers
-    .filter((provider) => provider.configured && provider.usable)
-    .map((provider) => provider.label)
-    .slice(0, 4)
-    .join(", ");
-  const unavailableSummary = unavailable
-    .slice(0, 5)
-    .map(
-      (provider) =>
-        `${provider.label} ${providerFailurePlainLabel(
-          provider.failureClass ?? provider.cooldownErrorClass,
-        )}`,
-    )
-    .join(", ");
-
-  return [
-    {
-      type: "provider-health-fallback",
-      reason: `AI provider preflight: ${unavailableSummary}; using ${usable}.`,
-    },
-  ];
-}
-
-function providerFailurePlainLabel(value: unknown) {
-  switch (value) {
-    case "provider_busy":
-      return "busy";
-    case "quota":
-      return "quota";
-    case "auth":
-      return "auth";
-    case "rate_limit":
-      return "rate limited";
-    case "timeout":
-      return "timed out";
-    case "network":
-      return "network";
-    case "not_configured":
-      return "not configured";
-    default:
-      return "unavailable";
-  }
 }
 
 function enrichConceptsWithSelectionMetadata(
@@ -2245,9 +1973,9 @@ function generationStreamContractSummary(
 function providerAttemptLimitForGeneration(
   summary: GenerationStreamContractSummary,
 ): { maxProviderAttempts?: number } {
-  if (summary.plannedCalls >= 12) return { maxProviderAttempts: 2 };
+  if (summary.plannedCalls >= 12) return { maxProviderAttempts: 1 };
   if (summary.riskLevel === "high" || summary.plannedCalls >= 6) {
-    return { maxProviderAttempts: 3 };
+    return { maxProviderAttempts: 2 };
   }
   return {};
 }
@@ -2348,52 +2076,6 @@ function isFinalRepairValidationBlockedError(error: unknown) {
     /^FINAL_REPAIR_VALIDATION_BLOCKED:/i.test(message)
   );
 }
-
-function qualityFirstSourceCapacityRisk({
-  blueprint,
-  config,
-  concepts,
-}: {
-  blueprint: Blueprint;
-  config: PaperConfig;
-  concepts: ConceptData[];
-}): { message: string; sourceCapacity: SourceBackedCapacityDiagnostics } | null {
-  if (!hasSourceBackedFallbackConcepts(concepts)) return null;
-
-  const sourceCapacity = analyzeSourceBackedCompletionCapacity({
-    bank: new QuestionCandidateBank([], blueprint, config),
-    concepts,
-    config,
-  });
-  const riskyTypes = Object.entries(sourceCapacity.byType ?? {}).filter(
-    ([type, item]) =>
-      fragileGenerationQuestionTypes.has(type as QuestionType) &&
-      (item.effectiveAvailable ?? item.available) < item.required,
-  );
-  if (!riskyTypes.length) return null;
-
-  const typeSummary = riskyTypes
-    .map(([type, item]) => {
-      const effective = item.effectiveAvailable ?? item.available;
-      return `${type} ${effective}/${item.required}`;
-    })
-    .join(", ");
-
-  return {
-    sourceCapacity,
-    message: `Source capacity risk: ${typeSummary}. Quality-first reserve is active and the requested mix will be preserved; if this repeats, add source text or lower fragile format counts.`,
-  };
-}
-
-const fragileGenerationQuestionTypes = new Set<QuestionType>([
-  "MCQ",
-  "TRUE_FALSE",
-  "MATCH_FOLLOWING",
-  "ASSERTION_REASON",
-  "SHORT",
-  "FILL_BLANK",
-  "ONE_WORD",
-]);
 
 function sourceCapacityFromError(error: unknown) {
   if (!error || typeof error !== "object" || !("sourceCapacity" in error)) {
@@ -2544,32 +2226,18 @@ function finalRepairValidationBlockedMessage({
   remainingMissingQuestions,
   sourceCapacity,
   rejectionSummary,
-  missingSections,
 }: {
   readyCount: number;
   targetQuestionCount: number;
   remainingMissingQuestions: number;
   sourceCapacity: SourceBackedCapacityDiagnostics;
   rejectionSummary: string;
-  missingSections?: Blueprint["sections"];
 }) {
   const effectiveCapacity =
     sourceCapacity.effectiveCapacity ?? sourceCapacity.availableStrictCapacity;
   const rawCapacity = sourceCapacity.rawAtomCapacity ?? sourceCapacity.availableStrictCapacity;
-  const missingSectionSummary = formatMissingSectionSummary(missingSections);
 
-  return `Final completion tried strict source-backed repair and chapter/topic-near fallback, but validation still rejected the remaining candidates. Strict selected-source capacity was ${effectiveCapacity}/${sourceCapacity.requiredMissingCount} effective from ${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}. Generated ${readyCount}/${targetQuestionCount} valid questions; ${remainingMissingQuestions} still missing. Missing sections: ${missingSectionSummary}. Top rejection reasons: ${rejectionSummary}.`;
-}
-
-function formatMissingSectionSummary(sections: Blueprint["sections"] | undefined) {
-  if (!sections?.length) return "none reported";
-
-  return sections
-    .map(
-      (section) =>
-        `${section.questionType} x${section.count} (${section.marksPerQuestion} mark${section.marksPerQuestion === 1 ? "" : "s"} each)`,
-    )
-    .join(", ");
+  return `Final completion tried strict source-backed repair and chapter/topic-near fallback, but validation still rejected the remaining candidates. Strict selected-source capacity was ${effectiveCapacity}/${sourceCapacity.requiredMissingCount} effective from ${rawCapacity} raw source slot${rawCapacity === 1 ? "" : "s"}. Generated ${readyCount}/${targetQuestionCount} valid questions; ${remainingMissingQuestions} still missing. Top rejection reasons: ${rejectionSummary}.`;
 }
 
 function topValidationRejectionReasons(
@@ -2640,11 +2308,11 @@ function stableHash(input: string) {
 
 function generationServerBudgetMs() {
   const configured = Number(process.env.EDUTEST_SERVER_GENERATION_BUDGET_MS);
-  if (Number.isFinite(configured) && configured >= 15_000 && configured <= 290_000) {
+  if (Number.isFinite(configured) && configured >= 15_000 && configured <= 55_000) {
     return configured;
   }
 
-  return 270_000;
+  return 38_000;
 }
 
 function generationHeartbeatMs() {
@@ -2674,20 +2342,15 @@ function streamStatusForGenerationState(status?: PaperGenerationState["status"])
 
 function generationFinalizationReserveMs() {
   const configured = Number(process.env.EDUTEST_GENERATION_FINALIZATION_RESERVE_MS);
-  if (Number.isFinite(configured) && configured >= 5_000 && configured <= 40_000) {
+  if (Number.isFinite(configured) && configured >= 5_000 && configured <= 20_000) {
     return configured;
   }
 
-  return 20_000;
+  return 12_000;
 }
 
 function sourceBackedCompletionReserveMs() {
-  const configured = Number(process.env.EDUTEST_SOURCE_BACKED_COMPLETION_RESERVE_MS);
-  if (Number.isFinite(configured) && configured >= 250 && configured <= 5_000) {
-    return Math.floor(configured);
-  }
-
-  return 1_000;
+  return 7_500;
 }
 
 function shouldStopForFinalization(deadlineAt: number, readyQuestionCount: number) {
@@ -2903,7 +2566,7 @@ async function validateGeneratedPaperSkippingInvalid({
           {
             availableTopics,
             allowPartial: true,
-            candidateReserveByType: repairCandidateReserveByType(missingSections),
+            candidateReserveCount: repairCandidateReserveCount(missingCount),
             existingQuestions: bank.allCandidates(),
             generationPlan,
             generationNonce: `${generationNonce}:repair:${repairAttempt}`,
@@ -3062,7 +2725,7 @@ async function validateGeneratedPaperSkippingInvalid({
           `Final fallback completion did not run, and ${remainingMissingQuestions} question${remainingMissingQuestions === 1 ? "" : "s"} remain missing. Top rejection reasons: ${rejectionSummary}.`,
         );
         throw new Error(
-          `FINAL_REPAIR_VALIDATION_BLOCKED: Final fallback completion did not run. Generated ${readyCount}/${targetQuestionCount} valid questions; ${remainingMissingQuestions} still missing. Missing sections: ${formatMissingSectionSummary(bank.missingSections())}.`,
+          `FINAL_REPAIR_VALIDATION_BLOCKED: Final fallback completion did not run. Generated ${readyCount}/${targetQuestionCount} valid questions; ${remainingMissingQuestions} still missing.`,
         );
       }
 
@@ -3072,7 +2735,6 @@ async function validateGeneratedPaperSkippingInvalid({
         remainingMissingQuestions,
         sourceCapacity,
         rejectionSummary,
-        missingSections: bank.missingSections(),
       });
       await persistBank(
         "FAILED",

@@ -849,8 +849,6 @@ export async function saveAttemptForUser(
 
   if (!sql) throw new Error("Database is required to save attempts.");
 
-  await ensureGuestDatabaseUser(userId);
-
   const storedReport = sanitizeAttemptForStorage(report);
   const rows = await sql`
     WITH inserted_attempt AS (
@@ -953,8 +951,6 @@ export async function saveProgressForUser(
   }
 
   if (!sql) throw new Error("Database is required to save progress.");
-
-  await ensureGuestDatabaseUser(userId);
 
   const rows = await sql`
     INSERT INTO attempts (paper_id, user_id, answers, status)

@@ -7,6 +7,9 @@ export function deterministicMcqOptionShuffle(
   seed: string,
   sequence?: number,
 ) {
+  const len = options.length;
+  if (len === 0) return { options: [], correctAnswer: "" };
+
   const normalized = options.slice(0, 4);
   const correct = normalized.find((option) => option.isCorrect) ?? normalized[0];
   const distractors = deterministicShuffle(
@@ -14,13 +17,13 @@ export function deterministicMcqOptionShuffle(
     `${seed}:distractors`,
   );
   const correctIndex = Number.isFinite(sequence)
-    ? positiveModulo(Number(sequence), optionIds.length)
-    : positiveModulo(stableHash(seed), optionIds.length);
+    ? positiveModulo(Number(sequence), normalized.length)
+    : positiveModulo(stableHash(seed), normalized.length);
   const arranged: MCQOption[] = [];
   arranged[correctIndex] = correct;
 
   let distractorIndex = 0;
-  for (let index = 0; index < optionIds.length; index += 1) {
+  for (let index = 0; index < normalized.length; index += 1) {
     if (arranged[index]) continue;
     arranged[index] = distractors[distractorIndex] ?? normalized[distractorIndex];
     distractorIndex += 1;
@@ -28,13 +31,13 @@ export function deterministicMcqOptionShuffle(
 
   const shuffledOptions = arranged.map((option, index) => ({
     ...option,
-    id: optionIds[index],
+    id: optionIds[index] ?? String.fromCharCode(65 + index),
     isCorrect: index === correctIndex,
   }));
 
   return {
     options: shuffledOptions,
-    correctAnswer: optionIds[correctIndex],
+    correctAnswer: shuffledOptions[correctIndex]?.id ?? "",
   };
 }
 

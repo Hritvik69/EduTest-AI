@@ -72,13 +72,11 @@ export function buildGenerationManifest({
       sourceQuality: sourceQuality.quality,
       sourceTextChunks: sourceQuality.sourceTextChunks,
       extractionMethod: config.pdfSource?.extractionMethod,
-      languageModes: collectUserLanguageModes(config),
     },
     ai: {
       selectedProvider: config.aiProvider ?? "AUTO",
       taskProviderOrder,
       promptContract,
-      languageModes: collectUserLanguageModes(config),
       usageSummary,
     },
     validation: {
@@ -93,22 +91,6 @@ export function buildGenerationManifest({
     ...(coverage ? { coverage } : {}),
     warnings: unique([...sourceWarnings, ...warningTexts, ...coverageWarnings]).slice(0, 12),
   };
-}
-
-function collectUserLanguageModes(config: PaperConfig) {
-  const entries = (config.subjectSelections ?? [])
-    .filter(
-      (selection) =>
-        selection.languageMode !== undefined &&
-        isLanguageSubjectName(selection.subject),
-    )
-    .map((selection) => [selection.subject, selection.languageMode!] as const);
-  return entries.length ? Object.fromEntries(entries) : undefined;
-}
-
-function isLanguageSubjectName(subject: string) {
-  const normalized = subject.trim().toLowerCase();
-  return normalized === "hindi" || normalized === "english";
 }
 
 export function generationManifestFromMetadata(
@@ -162,19 +144,6 @@ function normalizedValidationWarnings(values: unknown[]) {
       const type = typeof record.type === "string" ? record.type : "question";
       const position = Number(record.position);
       const reason = typeof record.reason === "string" ? record.reason : "invalid";
-
-      // Surface type-preservation swaps prominently so users see exactly
-      // which question types were auto-picked and why.
-      if (type === "type-preservation") {
-        const from = typeof record.from === "string" ? record.from : "unknown";
-        const to = typeof record.to === "string" ? record.to : "unknown";
-        const count = Number(record.count);
-        const swapSummary = Number.isFinite(count)
-          ? `${count} ${from} → ${to} replacement${count === 1 ? "" : "s"}`
-          : `${from} → ${to} replacement`;
-        return `[type-preservation] ${swapSummary}: ${reason}`;
-      }
-
       return Number.isFinite(position)
         ? `${type} at position ${position}: ${reason}`
         : `${type}: ${reason}`;

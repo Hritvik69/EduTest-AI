@@ -63,7 +63,6 @@ export function buildSourceBackedProviderRecoveryBank({
     concepts,
     scope,
     startIndex,
-    strictQualityFilter: true,
   });
   const {
     bank,

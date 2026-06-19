@@ -6,6 +6,8 @@ import {
   retargetSourceBackedCompletionForGuaranteedFinalRepair,
   sourceBackedCompletionMarker,
   type SourceBackedCapacityDiagnostics,
+  type TypePreservationWarning,
+  typePreservationWarningText,
 } from "@/lib/source-backed-fallback";
 import type {
   Blueprint,
@@ -25,6 +27,7 @@ export type FinalGenerationCompletionResult = {
   blueprint: Blueprint;
   config: PaperConfig;
   warnings: FinalGenerationCompletionWarning[];
+  typePreservationWarnings: TypePreservationWarning[];
   readyQuestionCount: number;
   targetQuestionCount: number;
   completedQuestionCount: number;
@@ -44,6 +47,7 @@ export function completeQuestionBankWithFinalFallbacks({
   deadlineAt,
   minRemainingMs = 5_000,
   requireSyllabusComposition = false,
+  strictQualityFilter = false,
 }: {
   bank: QuestionCandidateBank;
   blueprint: Blueprint;
@@ -54,12 +58,14 @@ export function completeQuestionBankWithFinalFallbacks({
   deadlineAt?: number;
   minRemainingMs?: number;
   requireSyllabusComposition?: boolean;
+  strictQualityFilter?: boolean;
 }): FinalGenerationCompletionResult {
   let activeBank = bank;
   let activeBlueprint = blueprint;
   let activeConfig = config;
   const readyBefore = activeBank.readyCount();
   const warnings: FinalGenerationCompletionWarning[] = [];
+  const typePreservationWarnings: TypePreservationWarning[] = [];
   let sourceBackedCompletedQuestions = 0;
   let syllabusNearCompletedQuestions = 0;
   let sourceCapacityConfig = activeConfig;
@@ -90,6 +96,7 @@ export function completeQuestionBankWithFinalFallbacks({
       minRemainingMs,
       throwOnInsufficientCapacity: false,
       capacityScope: scope,
+      strictQualityFilter,
     });
     const added = Math.max(0, activeBank.readyCount() - beforeStrict);
     if (added > 0) {
@@ -137,6 +144,7 @@ export function completeQuestionBankWithFinalFallbacks({
         minRemainingMs,
         throwOnInsufficientCapacity: false,
         capacityScope: `${scope} absurd hard final fill`,
+        strictQualityFilter,
       });
       hardSourceAdded = Math.max(0, activeBank.readyCount() - beforeHardSource);
     }
@@ -168,6 +176,7 @@ export function completeQuestionBankWithFinalFallbacks({
         config: hardConfig,
         concepts,
         startIndex: startIndex ?? activeBank.allCandidates().length + 1201,
+        strictQualityFilter,
       });
       hardSyllabusAdded = Math.max(
         0,
@@ -213,6 +222,7 @@ export function completeQuestionBankWithFinalFallbacks({
       throwOnInsufficientCapacity: false,
       capacityScope: `${scope} source-backed last-mile fill`,
       minRemainingMs: 0,
+      strictQualityFilter,
     });
     const added = Math.max(0, activeBank.readyCount() - beforeLastMile);
     if (added > 0) {
@@ -253,6 +263,7 @@ export function completeQuestionBankWithFinalFallbacks({
       config: retarget.config,
       concepts,
       startIndex: startIndex ?? retargetedBank.allCandidates().length + 2401,
+      strictQualityFilter,
     });
     const added = Math.max(0, retargetedBank.readyCount() - beforeRetargetedFill);
     if (added <= 0 || retargetedBank.missingCount() >= activeBank.missingCount()) {
@@ -268,6 +279,26 @@ export function completeQuestionBankWithFinalFallbacks({
       type: "quality-stable-final-fill",
       reason: `Completed ${added} final replacement question${added === 1 ? "" : "s"} by converting ${retarget.summary} after exact fragile-format fallback candidates were still rejected by strict teacher-quality validation.`,
     });
+    for (const conversion of retarget.conversions) {
+      const tpWarning: TypePreservationWarning = {
+        type: "type-preservation",
+        from: conversion.from,
+        to: conversion.to,
+        count: conversion.count,
+        reason: "fragile-format-exhausted",
+        reasonText: typePreservationWarningText(
+          conversion.from,
+          conversion.to,
+          conversion.count,
+          "fragile-format-exhausted",
+        ),
+      };
+      typePreservationWarnings.push(tpWarning);
+      warnings.push({
+        type: "type-preservation",
+        reason: tpWarning.reasonText,
+      });
+    }
     warnings.push(
       ...completion.warnings.map((warning) => ({
         type: warning.type,
@@ -294,6 +325,7 @@ export function completeQuestionBankWithFinalFallbacks({
       config: activeConfig,
       concepts,
       startIndex: startIndex ?? activeBank.allCandidates().length + indexOffset,
+      strictQualityFilter,
     });
     const added = Math.max(0, activeBank.readyCount() - beforeSyllabusNear);
     if (added > 0) {
@@ -325,6 +357,13 @@ export function completeQuestionBankWithFinalFallbacks({
         type: "source-backed-guaranteed-completion",
         reason: retarget.warning,
       });
+      for (const tpWarning of retarget.typePreservationWarnings) {
+        typePreservationWarnings.push(tpWarning);
+        warnings.push({
+          type: "type-preservation",
+          reason: tpWarning.reasonText,
+        });
+      }
       sourceCapacity = analyzeSourceBackedCompletionCapacity({
         bank: activeBank,
         concepts,
@@ -368,6 +407,7 @@ export function completeQuestionBankWithFinalFallbacks({
     blueprint: activeBlueprint,
     config: activeConfig,
     warnings,
+    typePreservationWarnings,
     readyQuestionCount,
     targetQuestionCount: activeBlueprint.totalQuestions,
     completedQuestionCount: Math.max(0, readyQuestionCount - readyBefore),
@@ -391,7 +431,7 @@ function retargetFinalFragileSlotsForQualityStableFill({
 }: {
   bank: QuestionCandidateBank;
   blueprint: Blueprint;
-  config: PaperConfig;
+  config: PaperConfig,
 }) {
   const conversions = qualityStableConversions(bank, blueprint, config);
   if (!conversions.length) return null;
@@ -408,6 +448,7 @@ function retargetFinalFragileSlotsForQualityStableFill({
   return {
     blueprint: nextBlueprint,
     config: nextConfig,
+    conversions,
     summary: conversions
       .map(
         (conversion) =>

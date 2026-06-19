@@ -34,13 +34,6 @@ import {
   type DuplicateQuestionMatch,
 } from "@/lib/question-duplicates";
 import { isUsableGeneratedQuestion } from "@/lib/question-validation";
-import {
-  configFingerprintKey,
-  fingerprintForPaper,
-  getAntiRepeatStemsForConfig,
-  nextFingerprintSequence,
-  recordPaperFingerprint,
-} from "@/lib/paper-fingerprint-store";
 import type {
   Blueprint,
   BlueprintSection,
@@ -75,7 +68,6 @@ interface GenerateBlueprintOptions {
   allowPartial?: boolean;
   availableTopics?: string[];
   candidateReserveCount?: number;
-  candidateReserveByType?: Partial<Record<QuestionType, number>>;
   existingQuestions?: GeneratedQuestion[];
   generationPlan?: GenerationArchitecturePlan;
   generationNonce?: string;
@@ -136,20 +128,6 @@ export async function generatePaperQuestions(config: PaperConfig, conceptContext
   }
 
   return { questions };
-}
-
-/**
- * Record a freshly-generated paper's stems into the cross-paper fingerprint
- * store so the next click on "Generate paper" can avoid repeating them.
- * Public so the API layer can call it after persistence too.
- */
-export function recordGeneratedPaperFingerprint(
-  paperId: number | string,
-  config: PaperConfig,
-  questions: GeneratedQuestion[],
-): void {
-  if (!questions.length) return;
-  recordPaperFingerprint(fingerprintForPaper(paperId, config, questions));
 }
 
 export async function generateQuestionsForSection(
@@ -217,10 +195,7 @@ export async function generateBlueprintQuestions(
     (_section, index) => requiredDifficultyAllocation[index],
   );
   const candidateSections = blueprint.sections.map((section) =>
-    sectionWithCandidateReserve(
-      section,
-      candidateReserveForSection(section, options),
-    ),
+    sectionWithCandidateReserve(section, options.candidateReserveCount),
   );
   const candidateBlueprint = blueprintForCandidateSections(blueprint, candidateSections);
   const candidateDifficultyAllocation = allocateDifficultyTargetsForSections(
@@ -349,7 +324,15 @@ export async function generateBlueprintQuestions(
   return acceptedQuestions;
 }
 
-function sectionWithCandidateReserve(section: BlueprintSection, reserve: number): BlueprintSection {
+function sectionWithCandidateReserve(
+  section: BlueprintSection,
+  reserveOverride?: number,
+): BlueprintSection {
+  const reserve =
+    reserveOverride === undefined
+      ? defaultCandidateReserve(section)
+      : Math.max(0, Math.min(10, Math.floor(reserveOverride)));
+
   return {
     ...section,
     count: section.count + reserve,
@@ -357,61 +340,28 @@ function sectionWithCandidateReserve(section: BlueprintSection, reserve: number)
   };
 }
 
-function candidateReserveForSection(
-  section: BlueprintSection,
-  options: Pick<
-    GenerateBlueprintOptions,
-    "candidateReserveByType" | "candidateReserveCount"
-  >,
-) {
-  const typeReserve = options.candidateReserveByType?.[section.questionType];
-  if (typeReserve !== undefined) return clampReserve(typeReserve, 0, 18);
-  if (options.candidateReserveCount !== undefined) {
-    return clampReserve(options.candidateReserveCount, 0, 10);
-  }
-  return qualityFirstCandidateReserve(section);
-}
-
-export function qualityFirstCandidateReserve(section: BlueprintSection) {
+function defaultCandidateReserve(section: BlueprintSection) {
   if (section.count <= 0) return 0;
 
-  if (fragileQuestionTypes.has(section.questionType)) {
-    return clampReserve(Math.ceil(section.count * 1.5), 5, 12);
+  const heavyQuestionTypes = new Set<QuestionType>([
+    "CASE_BASED",
+    "SOURCE_BASED",
+    "PARAGRAPH",
+    "LONG",
+    "DIAGRAM",
+  ]);
+  if (section.count >= 8) {
+    const maximumReserve = heavyQuestionTypes.has(section.questionType) ? 4 : 12;
+    return Math.min(maximumReserve, Math.ceil(section.count * 0.5));
   }
 
-  if (heavyQuestionTypes.has(section.questionType)) {
-    return clampReserve(Math.ceil(section.count * 0.5), 1, 4);
-  }
+  const maximumReserve = heavyQuestionTypes.has(section.questionType) ? 2 : 6;
+  const minimumReserve = section.count === 1 ? 1 : 2;
 
-  return clampReserve(Math.ceil(section.count), 2, 8);
-}
-
-const MAX_INLINE_CROSS_PAPER_STEMS = 30;
-
-const fragileQuestionTypes = new Set<QuestionType>([
-  "MCQ",
-  "TRUE_FALSE",
-  "MATCH_FOLLOWING",
-  "ASSERTION_REASON",
-  "SHORT",
-  "FILL_BLANK",
-  "ONE_WORD",
-]);
-
-const heavyQuestionTypes = new Set<QuestionType>([
-  "CASE_BASED",
-  "SOURCE_BASED",
-  "PARAGRAPH",
-  "LONG",
-  "DIAGRAM",
-  "PRACTICAL",
-  "HOTS",
-  "COMPETENCY",
-]);
-
-function clampReserve(value: number, minimum: number, maximum: number) {
-  if (!Number.isFinite(value)) return minimum;
-  return Math.max(minimum, Math.min(maximum, Math.floor(value)));
+  return Math.min(
+    maximumReserve,
+    Math.max(minimumReserve, Math.ceil(section.count * 0.35)),
+  );
 }
 
 function blueprintForCandidateSections(
@@ -652,19 +602,10 @@ function buildSubjectWorkflowPrompt(
               selection.topicIds?.length
                 ? `; topics ${selection.topicIds.join(", ")}`
                 : ""
-            }${
-              selection.languageMode
-                ? `; languageMode=${selection.languageMode}`
-                : ""
             }`,
         )
         .join("\n")
     : `- ${config.subject}: chapters ${config.chapterIds.join(", ")}`;
-
-  const languageModeHint = buildLanguageModeHint(
-    config,
-    coverageFocus?.subject ?? activeSubject,
-  );
 
   return `SUBJECT_WORKFLOW
 Selected subjects: ${selectedSubjects.join(", ")}
@@ -673,59 +614,7 @@ Selected chapter/topic routing:
 ${selections}
 Subject-specific generation rules:
 ${rules}
-${languageModeHint}
 Workflow rule: generate every question from the active subject plus its selected chapter/topic context only.`;
-}
-
-/**
- * For Hindi/English subjects the user may pin a languageMode (grammar / story /
- * auto). This produces a short prompt fragment that biases question-type
- * selection. With "auto" the AI is told to read the chapter content first and
- * state its decision in the manifest (effectiveLanguageMode).
- */
-function buildLanguageModeHint(
-  config: PaperConfig,
-  activeSubject: string,
-): string {
-  const selection = config.subjectSelections?.find(
-    (item) => item.subject.toLowerCase() === activeSubject.toLowerCase(),
-  );
-  const mode = selection?.languageMode ?? "auto";
-  const subject = activeSubject.toLowerCase();
-  if (subject !== "hindi" && subject !== "english") return "";
-
-  const focusLines =
-    mode === "story"
-      ? [
-          "User selected STORY mode for this language subject.",
-          "Read the supplied chapter content and decide which question types best fit a story/poem/narrative chapter:",
-          "- comprehension (literal, inferential, evaluative)",
-          "- character / narrator / poet analysis",
-          "- plot, theme, message, moral, summary",
-          "- vocabulary in context, literary devices (for Hindi: भाषा-शैली, अलंकार, रस, छंद; for English: imagery, tone, figurative language)",
-          "Favour LONG, SHORT, VERY_SHORT, MCQ items that probe understanding rather than rote grammar.",
-          "Still include a small grammar/usage question only if the chapter explicitly covers it.",
-        ]
-      : mode === "grammar"
-        ? [
-            "User selected GRAMMAR mode for this language subject.",
-            "Read the supplied chapter content and decide which question types best fit a grammar/usage chapter:",
-            "- For Hindi: संधि/विच्छेद, समास, उपसर्ग/प्रत्यय, वाक्य-शुद्धि, लिंग/वचन/कारक, मुहावरे/लोकोक्ति, अलंकार पहचान",
-            "- For English: tenses, voice, narration (active/passive, direct/indirect), parts of speech, modals, articles, prepositions, sentence transformation, error correction",
-            "Favour MCQ, VERY_SHORT, SHORT, FILL_BLANK items that test rule application and correction.",
-            "Avoid comprehension-style questions unless the chapter content is narrative.",
-          ]
-        : [
-            "Language mode is AUTO for this subject.",
-            "Read the supplied chapter content first. If it reads as a story/poem/narrative -> behave like STORY mode. If it reads as grammar rules/exercises -> behave like GRAMMAR mode. If mixed, blend both proportionally.",
-            "State your decision in the manifest as effectiveLanguageMode (grammar | story | mixed).",
-          ];
-
-  return [
-    "LANGUAGE_MODE_FOCUS:",
-    ...focusLines.map((line) => `- ${line}`),
-    "Do not invent characters, scenes, dialogue, quotes, or grammar rules that are not present in the supplied chapter context.",
-  ].join("\n");
 }
 
 function subjectRule(subject: string) {
@@ -750,9 +639,6 @@ function buildPrompt(
   sectionDifficultyTargets: DifficultyTargets = {},
   generationNonce?: string,
 ) {
-  const configKey = configFingerprintKey(config);
-  const crossPaperStems = getAntiRepeatStemsForConfig(config);
-  const fingerprintSequence = nextFingerprintSequence(configKey);
   const subjectWorkflow = buildSubjectWorkflowPrompt(config, coverageFocus);
   const topicList = availableTopics.length
     ? availableTopics.map((topic) => `- ${topic}`).join("\n")
@@ -790,30 +676,14 @@ Every returned question's subject field must be "${coverageFocus.subject}".
   const antiRepeatRules = existingQuestions.length
     ? `
 Forbidden existing/invalid question stems from this paper:
-${deduplicatedAntiRepeatStems(existingQuestions)
-  .map((stem, idx) => `${idx + 1}. ${stem}`)
+${existingQuestions
+  .slice(-24)
+  .map((question, index) => `${index + 1}. ${question.text}`)
   .join("\n")}
 Do not repeat, paraphrase, lightly reword, or reuse these ideas, stems, examples, numbers, option patterns, answer facts, source/case scenarios, or diagrams.
 Replacement rule: if this request is replacing invalid/duplicate questions, every returned question must be a genuinely new valid alternative with a different concept angle, different data/example, and different answer path. Do not copy a failed question and only change wording.
 `
     : "";
-
-  const crossPaperRules = crossPaperStems.length
-    ? `
-CROSS-PAPER ANTI-REPEAT BLOCK (authoritative)
-This is fingerprint sequence #${fingerprintSequence} for the same class+subject+chapter+difficulty+types config. The user expects every click of "Generate paper" to produce a fresh paper, never a repeat of a past one.
-Forbidden question stems that already appeared in the last ${crossPaperStems.length} question(s) from previous papers under this same config:
-${crossPaperStems
-  .slice(0, MAX_INLINE_CROSS_PAPER_STEMS)
-  .map((stem, idx) => `${idx + 1}. ${stem}`)
-  .join("\n")}
-Do NOT repeat, paraphrase, lightly reword, mirror the same scenario, reuse the same example data, or copy the same MCQ option pattern of any forbidden stem above. Use a different concept angle, different example/numbers, different scenario context, and a different option/answer pattern.
-If you cannot think of a genuinely fresh question in the requested format, switch to a different sub-topic or aspect of the chapter rather than echoing a forbidden stem.
-`
-    : `
-FRESH PAPER GUARANTEE
-This is fingerprint sequence #${fingerprintSequence} for a brand-new paper. Treat it as the FIRST paper ever generated for this config — no past stems to repeat. Still invent distinct concept angles, distinct examples, and distinct option patterns per question in this batch.
-`;
 
   const generationModeRules = buildGenerationModePromptRules(config);
   const strictRules = `
@@ -826,8 +696,6 @@ Rules:
       : "Selected chapters/topics are the allowed scope."
   }
 - In normal NCERT_Books mode, the context has already been sliced to the selected class, subject, chapter, and topic. Never use the whole book/PDF, neighboring chapters, previous chapters, next chapters, contents pages, transcripts, or unrelated unit material.
-- In fresh mode, do not copy extracted textbook exercise/question prompts as final questions. Use selected source text to understand the concept, then write fresh teacher-made questions.
-- In NCERT/PDF Source mode, when a selected TXT/PDF chunk contains a real exercise or question line, preserve that question wording closely and change only what is needed for grammar, selected format, marks, options, or sub-question structure.
 - If the user selected one chapter, every question must come only from that chapter. If the user selected a topic inside that chapter, every question must come only from that topic's scoped context.
 - No outside/web/generic filler.
 ${generationModeRules}
@@ -847,9 +715,7 @@ ${generationModeRules}
 - For English/Hindi/literature, do not invent story scenes, character actions, dialogue, quotes, debates, examples, or specific incidents unless those details are present in the provided concept context.
 - Self-check count, marks, structure, topic balance, duplicates, answer clarity, and format.
 ${antiRepeatRules}
-${crossPaperRules}
 ${coverageFocusRules}
-${buildCandidateDiversityContract()}
 ${buildStudentFacingQualityContract()}
 `;
 
@@ -969,7 +835,7 @@ If uploaded PDF or extracted NCERT text is present, use that local context inste
 If no full textbook/PDF text is present, generate NCERT-style questions from the selected chapter and allowed topics only.
 Never use unselected chapters from the same NCERT book or PDF.
 Use familiar NCERT exercise patterns such as define, give reasons, differentiate, explain, examples, in-text concept checks, and back-exercise style.
-Follow CONFIG_JSON.generation_mode: source_exact must stay close to selected source wording when real exercise/question lines exist; fresh mode must create new wording from the concept.
+Follow CONFIG_JSON.generation_mode: source_exact may preserve selected exercise wording; fresh mode must create new wording from the concept.
 Return JSON: [{ "text","correctAnswer","marks":1|2|3,"topic" }]`,
   };
 
@@ -991,9 +857,6 @@ function buildBlueprintPrompt(
   candidateDifficultyTargets: DifficultyTargets[] = sectionDifficultyTargets,
   repairFeedback?: GenerationRepairFeedback,
 ) {
-  const configKey = configFingerprintKey(config);
-  const crossPaperStems = getAntiRepeatStemsForConfig(config);
-  const fingerprintSequence = nextFingerprintSequence(configKey);
   const subjectWorkflow = buildSubjectWorkflowPrompt(config);
   const topicList = availableTopics.length
     ? availableTopics.map((topic) => `- ${topic}`).join("\n")
@@ -1032,29 +895,13 @@ function buildBlueprintPrompt(
   const antiRepeatRules = existingQuestions.length
     ? `
 Forbidden existing/invalid question stems from this paper:
-${deduplicatedAntiRepeatStems(existingQuestions)
-  .map((stem, idx) => `${idx + 1}. ${stem}`)
+${existingQuestions
+  .slice(-36)
+  .map((question, index) => `${index + 1}. [${question.type}] ${question.text}`)
   .join("\n")}
 Do not repeat, paraphrase, lightly reword, or reuse these stems, examples, option patterns, answer facts, source/case scenarios, or diagrams.
 `
     : "";
-
-  const crossPaperRules = crossPaperStems.length
-    ? `
-CROSS-PAPER ANTI-REPEAT BLOCK (authoritative)
-This is fingerprint sequence #${fingerprintSequence} for the same class+subject+chapter+difficulty+types config. The user expects every click of "Generate paper" to produce a fresh paper, never a repeat of a past one.
-Forbidden question stems that already appeared in the last ${crossPaperStems.length} question(s) from previous papers under this same config:
-${crossPaperStems
-  .slice(0, MAX_INLINE_CROSS_PAPER_STEMS)
-  .map((stem, idx) => `${idx + 1}. ${stem}`)
-  .join("\n")}
-Do NOT repeat, paraphrase, lightly reword, mirror the same scenario, reuse the same example data, or copy the same MCQ option pattern of any forbidden stem above. Use a different concept angle, different example/numbers, different scenario context, and a different option/answer pattern.
-If you cannot think of a genuinely fresh question in the requested format, switch to a different sub-topic or aspect of the chapter rather than echoing a forbidden stem.
-`
-    : `
-FRESH PAPER GUARANTEE
-This is fingerprint sequence #${fingerprintSequence} for a brand-new paper. Treat it as the FIRST paper ever generated for this config — no past stems to repeat. Still invent distinct concept angles, distinct examples, and distinct option patterns per question in this batch.
-`;
   const repairFeedbackBlock = buildRepairFeedbackBlock(repairFeedback);
 
   return `Generate a complete source-grounded EduTest paper in one JSON response.
@@ -1070,7 +917,6 @@ Selected source text chunks:
 ${conceptContext}
 
 ${antiRepeatRules}
-${crossPaperRules}
 ${repairFeedbackBlock}
 Rules:
 - Generate ${candidateTotal} candidate questions across all sections in CONFIG_JSON.sections.
@@ -1086,46 +932,10 @@ ${buildGenerationModePromptRules(config)}
 - Include proper structure for MCQ options, assertion/reason, match pairs, case/source/paragraph scenarios, subQuestions, diagrams, and keyPoints where the type requires them.
 - Avoid duplicates and avoid repeated concept angles, answer paths, examples, option patterns, case/source scenarios, and sub-question structures.
 - noveltyAngle must name the distinct concept angle being tested; sourceChunkFocus must name the exact selected TXT idea used; answerPath must summarize the reasoning/answer path and must differ across candidates.
-${buildCandidateDiversityContract()}
 ${buildStudentFacingQualityContract()}
 
 Return ONLY valid JSON:
 { "questions": [ ...all questions... ] }`;
-}
-
-function deduplicatedAntiRepeatStems(
-  questions: Array<{ text: string }>,
-  limit = 50,
-): string[] {
-  const seen = new Set<string>();
-  const stems: string[] = [];
-  // Walk newest-first so the most recent questions get priority
-  for (let i = questions.length - 1; i >= 0 && stems.length < limit; i--) {
-    const raw = (questions[i]?.text ?? "").replace(/\s+/g, " ").trim();
-    if (!raw) continue;
-    const fingerprint = raw.toLowerCase().slice(0, 80);
-    if (seen.has(fingerprint)) continue;
-    seen.add(fingerprint);
-    stems.push(raw.length > 120 ? `${raw.slice(0, 117)}...` : raw);
-  }
-  // Restore chronological order (oldest first) for readability
-  return stems.reverse();
-}
-
-function buildCandidateDiversityContract() {
-  return `
-CANDIDATE DIVERSITY CONTRACT
-
-candidate_count is an extra unique candidate pool. It does not mean repeated versions of the same required question.
-Every candidate must use a different concept angle, source focus, scenario/example, answer path, and option/answer pattern.
-Do not reuse the same source atom/type key for multiple candidates unless the question tests a clearly different academic idea.
-Avoid weak labels and raw planning labels such as Evidence, Inference, Conclusion, Correct use, Chapter idea, Question focus, source detail, phrase window, or focused point.
-For MCQ, spread correct options across A/B/C/D when count permits; do not make all correct answers the same letter.
-For TRUE_FALSE, use both True and False when count permits; false statements must be plausible misconceptions, not obvious negations.
-For ASSERTION_REASON, vary A/B/C/D correctAnswer values when count permits; avoid making every answer A.
-For MATCH_FOLLOWING, use real subject pairs and avoid identity keys such as A1-B1, A2-B2, A3-B3, A4-B4.
-Before returning JSON, replace any candidate that is a duplicate, weak format, repeated source atom, identity match, raw template, or answer-pattern imbalance.
-`;
 }
 
 function buildStudentFacingQualityContract() {
@@ -1143,7 +953,7 @@ Never include these in any student-visible field:
 - chapter/meta framing such as "selected NCERT chapter", "the chapter explains", "according to the chapter", "in the chapter", "from the chapter", "ideas from the chapter", "idea described in the chapter", "chapter idea", "chapter concept", "chapter property", "chapter activity", "chapter evidence", "question focus", "concept focus", or "explain the chapter idea"
 
 When CONFIG_JSON.generation_mode is "fresh", use the supplied source only to understand the concept and convert it into natural exam questions.
-When CONFIG_JSON.generation_mode is "source_exact", stay tightly grounded to selected TXT/PDF concepts. If a selected chunk contains a real exercise/question line, preserve that source question wording closely; if it contains only explanation, build the question from exact source facts and wording without outside content.
+When CONFIG_JSON.generation_mode is "source_exact", exact wording is allowed only for real selected TXT/PDF exercise or question prompts. Do not copy explanatory prose as fake question text.
 Ask the concept directly. Do not make the chapter title or the fact that a chapter exists part of the question unless the question is explicitly about a printed passage title.
 
 For MCQ:
@@ -1183,10 +993,9 @@ function buildGenerationModePromptRules(config: PaperConfig) {
     return `GENERATION MODE: NCERT/PDF SOURCE
 - CONFIG_JSON.generation_mode is "source_exact".
 - Use only selected TXT/PDF/source chunks. Never use unselected chapters, neighboring pages, or outside knowledge.
-- If selected TXT/PDF/source chunks contain real exercise or question lines, preserve the student-facing question wording as closely as practical.
-- Make only minimal edits needed to remove numbering/metadata, fix OCR/grammar, fit selected marks, or convert into the selected question type/options/sub-questions.
-- If selected chunks contain explanation but no real question line, build the question from exact source facts and wording without outside content.
-- Do not use source answers, captions, headings, or metadata alone as fake question text.
+- Preserve exact wording when the selected source contains real exercise/question prompts that match the requested question type.
+- Do not copy explanatory prose, headings, examples, answers, captions, or source metadata as fake question text.
+- If exact source question wording is unavailable for the requested type/count, create a source-faithful teacher-written question from the selected source only.
 - Still obey selected question types, counts, marks, difficulty, Bloom distribution, answer structure, and validation rules.`;
   }
 
@@ -1248,8 +1057,6 @@ ${duplicateGroups}
 Repair requirements:
 - Replace the rejected/duplicate items with genuinely new source-grounded questions.
 - Use a different noveltyAngle, sourceChunkFocus, scenario/example, answerPath, and option pattern from every rejected item.
-- Explicitly avoid the validation failure patterns above: weak labels, identity match keys, repeated source atoms, raw template text, answer-key imbalance, format-invalid stems, and near-duplicate phrasing.
-- If a source atom already failed for one type, choose a different source focus or a different academic angle before returning a replacement.
 - Do not copy a failed question and change only wording.
 `;
 }
