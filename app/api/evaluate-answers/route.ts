@@ -186,18 +186,43 @@ async function handleEvaluation(request: NextRequest) {
     generationManifest: paper.manifest,
   };
 
-  const saved = snapshotOnly
-    ? await saveSessionPaperResultForUser(
-        auth.user.id,
-        String(body.paperId),
-        payload,
-      )
-    : await saveAttemptForUser(
-        auth.user.id,
-        numericPaperId ?? Number(body.paperId) ?? 0,
-        payload,
-        body.answers,
-      );
+  let saved: StoredAttempt;
+  try {
+    saved = snapshotOnly
+      ? await saveSessionPaperResultForUser(
+          auth.user.id,
+          String(body.paperId),
+          payload,
+        )
+      : await saveAttemptForUser(
+          auth.user.id,
+          numericPaperId ?? Number(body.paperId) ?? 0,
+          payload,
+          body.answers,
+        );
+  } catch (dbError) {
+    // Neon "fetch failed" / transient network errors should not destroy a
+    // completed evaluation. Fall back to session-scoped storage so the
+    // student still gets their result for this browser session.
+    const message = dbError instanceof Error ? dbError.message : String(dbError);
+    if (/fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT|network|connection terminated|Neon|postgres connection/i.test(message)) {
+      const fallbackId = Math.floor(Math.random() * 1_000_000) + 1;
+      saved = {
+        ...payload,
+        attemptId: fallbackId,
+        paperId: body.paperId,
+        createdAt: new Date().toISOString(),
+      };
+      try {
+        await saveSessionPaperResultForUser(auth.user.id, String(body.paperId), saved);
+      } catch {
+        // Even session storage failed — return the in-memory result so the
+        // user still sees their score instead of a hard error.
+      }
+    } else {
+      throw dbError;
+    }
+  }
   return jsonSuccess(saved);
 }
 
