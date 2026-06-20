@@ -1288,8 +1288,6 @@ export async function POST(request: NextRequest) {
 
         // Papers are session-only by default. The user explicitly saves them
         // to the dashboard via POST /api/papers/save from the preview page.
-        let persistedPaperId: number | undefined;
-        let sessionOnly = true;
         const finalPaperId: number | string = paperId;
         readyPaper.id = finalPaperId;
 
@@ -1305,7 +1303,6 @@ export async function POST(request: NextRequest) {
             progress: 100,
             msg: "Phase 7 - Final Paper Composition: paper ready.",
             paperId: finalPaperId,
-            ...(persistedPaperId ? { persistedPaperId } : {}),
             done: true,
             idempotencyKey,
             generationJobId,
@@ -1319,7 +1316,7 @@ export async function POST(request: NextRequest) {
             status: "READY",
             isDemoMode,
             createdAt: readyPaper.createdAt,
-            sessionOnly,
+            sessionOnly: true,
             config: effectiveConfig,
             paperSnapshot: readyPaper,
             paperSnapshotToken,
@@ -1552,8 +1549,6 @@ async function completeWithLocalGenerationFallback({
 
   // Papers are session-only by default. The user explicitly saves them to
   // the dashboard via POST /api/papers/save from the preview page.
-  let persistedPaperId: number | undefined;
-  let finalSessionOnly = true;
   const finalPaperId: number | string = paperId;
   readyPaper.id = finalPaperId;
 
@@ -1566,7 +1561,6 @@ async function completeWithLocalGenerationFallback({
       progress: 100,
       msg: "Phase 7 - Final Paper Composition: fallback paper ready.",
       paperId: finalPaperId,
-      ...(persistedPaperId ? { persistedPaperId } : {}),
       done: true,
       idempotencyKey,
       generationJobId,
@@ -1585,7 +1579,7 @@ async function completeWithLocalGenerationFallback({
       status: "READY",
       localFallback: true,
       createdAt: readyPaper.createdAt,
-      sessionOnly: finalSessionOnly,
+      sessionOnly: true,
       config: validation.config,
       paperSnapshot: readyPaper,
       paperSnapshotToken,
