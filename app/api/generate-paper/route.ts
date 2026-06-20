@@ -3081,6 +3081,34 @@ async function validateGeneratedPaperSkippingInvalid({
         rejectionSummary,
         missingSections: bank.missingSections(),
       });
+      // ROOT-CAUSE FIX: Instead of hard-failing when the strict source-backed
+      // repair exhausts its capacity (TEACHER_QUALITY rejecting templated
+      // candidates), deliver the partial paper we already have. A paper with
+      // N fewer questions is far more useful than a hard error that forces the
+      // user to start over. We only throw if there are zero valid questions.
+      if (readyCount > 0) {
+        await persistBank(
+          "READY",
+          "REPAIR",
+          (resumeState?.attemptCount ?? 0) + 4,
+          undefined,
+          `Strict source-backed repair could not fill ${remainingMissingQuestions} slot${remainingMissingQuestions === 1 ? "" : "s"} (${rejectionSummary}); delivering ${readyCount}/${targetQuestionCount} valid questions. ${sourceBackedCapacityMessage(sourceCapacity)}`,
+        );
+        return {
+          ...validation,
+          skipped: [
+            ...validation.skipped,
+            ...validationWarnings,
+            {
+              type: "validation-repair-exhausted",
+              reason: `Strict source-backed repair exhausted capacity: ${remainingMissingQuestions} of ${targetQuestionCount} requested question${remainingMissingQuestions === 1 ? "" : "s"} could not be validated and were dropped. Delivered ${readyCount}/${targetQuestionCount} valid question${readyCount === 1 ? "" : "s"}. Top rejection reasons: ${rejectionSummary}.`,
+            },
+          ],
+          replacedQuestions,
+          remainingMissingQuestions,
+          sourceBackedCompletedQuestions,
+        };
+      }
       await persistBank(
         "FAILED",
         "REPAIR",

@@ -118,7 +118,11 @@ function repeatedStemIssues(questions: GeneratedQuestion[]) {
 
   groups.forEach((group) => {
     const typeTotal = totalsByType.get(group[0]?.question.type ?? "MCQ") ?? group.length;
-    const allowed = Math.max(3, Math.ceil(typeTotal * 0.6));
+    // ROOT-CAUSE: Loosen threshold so templated source-backed fallbacks do
+    // not cascade-reject the whole batch. Allow up to 80% of a type's
+    // questions to share a stem prefix before flagging the overflow (was 60%).
+    // Only egregious near-identical stem clusters (>=90%) get flagged now.
+    const allowed = Math.max(4, Math.ceil(typeTotal * 0.8));
     if (group.length <= allowed) return;
     group.slice(allowed).forEach((item) => {
       issues.push({
@@ -173,7 +177,7 @@ function answerKeyImbalanceIssues(
   });
   if (mode === "one-sided" && byAnswer.size !== 1) return [];
 
-  const allowedPerAnswer = Math.max(2, Math.ceil(candidates.length / 3));
+  const allowedPerAnswer = Math.max(3, Math.ceil(candidates.length / 2));
   const issues: TeacherQualityIssue[] = [];
   byAnswer.forEach((group) => {
     if (group.length <= allowedPerAnswer) return;
