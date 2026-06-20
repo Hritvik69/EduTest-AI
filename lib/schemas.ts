@@ -43,7 +43,7 @@ export const aiProviderValues = [
   "OPENAI",
 ] as const;
 export const sourceModeValues = ["curriculum", "pdf_upload"] as const;
-export const questionGenerationModeValues = ["fresh", "source_exact"] as const;
+export const questionGenerationModeValues = ["fresh", "source_exact", "source_insights"] as const;
 export const bloomLevelValues = [
   "REMEMBER",
   "UNDERSTAND",
