@@ -23,3 +23,6 @@ NCERT_Books/**/*.pdf
 -
 
 .vercel
+
+# Windows reserved device-name artifact (cannot be deleted normally)
+nul
