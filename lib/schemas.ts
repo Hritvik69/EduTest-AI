@@ -356,6 +356,13 @@ export const sessionPaperExportRequestSchema = z.object({
   format: z.enum(["pdf", "json"]).optional(),
 });
 
+export const savePaperRequestSchema = z.object({
+  paperId: paperRequestIdSchema,
+  paperSnapshot: z.unknown(),
+  paperSnapshotToken: z.string().min(32).max(256).optional(),
+  guestPaperToken: z.string().min(32).max(256).optional(),
+});
+
 export const saveProgressSchema = z.object({
   paperId: z.coerce.number().int().positive(),
   attemptId: z.coerce.number().int().positive().optional(),

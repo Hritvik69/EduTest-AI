@@ -1287,34 +1287,11 @@ export async function POST(request: NextRequest) {
         // each new generation can pick different concept angles.)
         recordGeneratedPaperFingerprint(paperId, effectiveConfig, storedQuestions);
 
-        // Persist the finished paper to the database so it shows up on the
-        // dashboard and so attempts/results can be resolved server-side. On
-        // failure we keep the session-only id and snapshot — generation never
-        // breaks because of persistence.
+        // Papers are session-only by default. The user explicitly saves them
+        // to the dashboard via POST /api/papers/save from the preview page.
         let persistedPaperId: number | undefined;
         let sessionOnly = true;
-        try {
-          const persisted = await persistGeneratedPaper(
-            readyPaper,
-            auth.user.id,
-            generationJobId,
-            idempotencyKey,
-          );
-          if (persisted) {
-            persistedPaperId = persisted.paperId;
-            sessionOnly = false;
-          }
-        } catch (error) {
-          console.warn("[generate-paper] paper persistence failed; using session-only snapshot", {
-            generationJobId,
-            message: error instanceof Error ? error.message : String(error),
-          });
-        }
-
-        // When persistence succeeds, use the real numeric DB id everywhere so
-        // the client, preview, test, and evaluation flows all resolve the
-        // paper from the database instead of the browser snapshot.
-        const finalPaperId: number | string = persistedPaperId ?? paperId;
+        const finalPaperId: number | string = paperId;
         readyPaper.id = finalPaperId;
 
         const paperSnapshotToken = await signGuestPaperSnapshot(
@@ -1574,29 +1551,11 @@ async function completeWithLocalGenerationFallback({
   });
   recordGeneratedPaperFingerprint(paperId, validation.config, storedQuestions);
 
-  // Persist the local-fallback paper too so it still appears on the dashboard
-  // and supports evaluation. Falls back to session-only on any failure.
+  // Papers are session-only by default. The user explicitly saves them to
+  // the dashboard via POST /api/papers/save from the preview page.
   let persistedPaperId: number | undefined;
-  let finalSessionOnly = sessionOnly;
-  try {
-    const persisted = await persistGeneratedPaper(
-      readyPaper,
-      ownerId,
-      generationJobId,
-      idempotencyKey,
-    );
-    if (persisted) {
-      persistedPaperId = persisted.paperId;
-      finalSessionOnly = false;
-    }
-  } catch (error) {
-    console.warn("[generate-paper] local fallback persistence failed; using session-only snapshot", {
-      paperId,
-      generationJobId,
-      message: error instanceof Error ? error.message : String(error),
-    });
-  }
-  const finalPaperId: number | string = persistedPaperId ?? paperId;
+  let finalSessionOnly = true;
+  const finalPaperId: number | string = paperId;
   readyPaper.id = finalPaperId;
 
   const paperSnapshotToken = await signGuestPaperSnapshot(readyPaper, ownerId);

@@ -2,8 +2,9 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { ArrowLeft, Download, Eye, EyeOff, Play, Printer } from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
+import { ArrowLeft, BookmarkCheck, BookmarkPlus, Download, Eye, EyeOff, Play, Printer } from "lucide-react";
+import { toast } from "sonner";
 import { GenerationManifestSummary } from "@/components/paper/generation-manifest-summary";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -14,11 +15,14 @@ import type { GeneratedQuestion, StoredPaper } from "@/types";
 
 export default function PaperPreviewPage() {
   const params = useParams<{ id: string }>();
+  const router = useRouter();
   const paperId = params.id;
   const [paper, setPaper] = React.useState<StoredPaper | null>(null);
   const [loading, setLoading] = React.useState(true);
   const [teacherView, setTeacherView] = React.useState(false);
   const [exporting, setExporting] = React.useState(false);
+  const [saving, setSaving] = React.useState(false);
+  const [savedPaperId, setSavedPaperId] = React.useState<number | null>(null);
 
   React.useEffect(() => {
     let cancelled = false;
@@ -59,6 +63,41 @@ export default function PaperPreviewPage() {
     };
   }, [paperId]);
 
+  const isSessionPaper =
+    Boolean(paper?.sessionOnly) || String(paperId).startsWith("session-");
+  const isAlreadySaved = !isSessionPaper && savedPaperId === null ? true : savedPaperId !== null;
+
+  async function handleSaveToDashboard() {
+    if (!paper || saving) return;
+    const token = paper.paperSnapshotToken ?? paper.guestPaperToken;
+    if (!token) {
+      toast.error("This session paper cannot be saved without its signed token.");
+      return;
+    }
+    setSaving(true);
+    try {
+      const result = await fetchApiData<{ saved: boolean; persistedPaperId: number }>(
+        "/api/papers/save",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            paperId,
+            paperSnapshot: serializablePaperSnapshot(paper),
+            paperSnapshotToken: token,
+          }),
+        },
+        "Could not save paper to dashboard.",
+      );
+      setSavedPaperId(result.persistedPaperId);
+      toast.success("Paper saved to dashboard.");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Could not save paper.");
+    } finally {
+      setSaving(false);
+    }
+  }
+
   if (loading) {
     return (
       <main className="min-h-screen bg-[#111827] p-6 text-slate-100">
@@ -76,8 +115,6 @@ export default function PaperPreviewPage() {
   }
 
   const grouped = groupQuestions(paper.questions);
-  const isSessionPaper =
-    Boolean(paper.sessionOnly) || String(paper.id).startsWith("session-");
 
   return (
     <main className="min-h-screen bg-[#111827] pb-14 text-slate-100">
@@ -90,6 +127,21 @@ export default function PaperPreviewPage() {
             </Link>
           </Button>
           <div className="flex flex-wrap gap-2">
+            {isAlreadySaved ? (
+              <Button variant="gold" disabled>
+                <BookmarkCheck className="h-4 w-4" />
+                Saved to Dashboard
+              </Button>
+            ) : (
+              <Button
+                variant="gold"
+                disabled={saving}
+                onClick={() => void handleSaveToDashboard()}
+              >
+                <BookmarkPlus className="h-4 w-4" />
+                {saving ? "Saving..." : "Save to Dashboard"}
+              </Button>
+            )}
             <Button
               variant={teacherView ? "gold" : "outline"}
               onClick={() => setTeacherView((current) => !current)}
