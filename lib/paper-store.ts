@@ -671,10 +671,15 @@ export async function persistGeneratedPaper(
       reused: creation.reused,
     };
   } catch (error) {
-    console.warn("[paper-store] persistGeneratedPaper failed; using session-only snapshot", {
+    console.warn("[paper-store] persistGeneratedPaper failed; falling back to in-memory store", {
       message: error instanceof Error ? error.message : String(error),
     });
-    return null;
+    // Even if the database write fails (e.g. Neon "fetch failed"), store the
+    // paper in the in-memory guest map so it still appears on the dashboard.
+    const fallbackId = nextMemoryId();
+    memoryPapers.set(fallbackId, paper);
+    memoryPaperOwners.set(fallbackId, userId);
+    return { paperId: fallbackId, status: paper.status ?? "READY", reused: false };
   }
 }
 
