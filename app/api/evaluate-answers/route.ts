@@ -20,6 +20,19 @@ import type { BloomLevel, GeneratedQuestion, StoredAttempt, StoredPaper } from "
 export const maxDuration = 60;
 
 export async function POST(request: NextRequest) {
+  try {
+    return await handleEvaluation(request);
+  } catch (error) {
+    return jsonError(
+      error instanceof Error
+        ? error.message
+        : "Evaluation failed due to an unexpected server error.",
+      500,
+    );
+  }
+}
+
+async function handleEvaluation(request: NextRequest) {
   const auth = await requireAuthenticatedUser(request);
   if (auth.response) return auth.response;
 
@@ -126,10 +139,10 @@ export async function POST(request: NextRequest) {
 
   const totalScore = results.reduce((sum, item) => sum + item.marksAwarded, 0);
   const maxScore = results.reduce((sum, item) => sum + item.maxMarks, 0);
-  const percentage = maxScore ? Math.round((totalScore / maxScore) * 100) : 0;
-  if (totalScore > maxScore) {
-    return jsonError("Evaluation score exceeds maximum marks.", 500);
-  }
+  // Clamp the aggregate to the paper max so floating-point / AI-grading edge
+  // cases never make the total exceed 100% (which used to throw HTTP 500).
+  const clampedTotal = Math.min(totalScore, maxScore);
+  const percentage = maxScore ? Math.round((clampedTotal / maxScore) * 100) : 0;
 
   const bloomScores = buildBloomScores(questions, results);
   const topicScores = buildTopicScores(questions, results);
@@ -142,7 +155,7 @@ export async function POST(request: NextRequest) {
     paperTitle: paper.title,
     subject: paper.config.subject,
     classNum: paper.config.classNum,
-    totalScore,
+    totalScore: clampedTotal,
     maxScore,
     percentage,
     grade: gradeFor(percentage),
@@ -181,7 +194,7 @@ export async function POST(request: NextRequest) {
       )
     : await saveAttemptForUser(
         auth.user.id,
-        numericPaperId!,
+        numericPaperId ?? Number(body.paperId) ?? 0,
         payload,
         body.answers,
       );
