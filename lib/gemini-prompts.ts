@@ -509,4 +509,82 @@ OUTPUT CONTRACT
 - If percentages, marks, or counts are imperfect, silently normalize inside the requested section count.
 - If a prompt asks for fewer objects than the ideal paper would need, return exactly the requested count.
 - If context is thin, stay inside the allowed topic names and produce the best NCERT-aligned question possible without inventing unsupported specifics.
-- If context is thin for ABSURD difficulty, generate the best HARD question and set difficulty: "HARD" with difficultyConfidence: 0.6.`;
+- If context is thin for ABSURD difficulty, generate the best HARD question and set difficulty: "HARD" with difficultyConfidence: 0.6.
+
+============================================================
+SECTION: HARD RULE — DIRECT INTERROGATIVES ONLY (overrides Bloom)
+============================================================
+
+Every question stem MUST begin with a direct interrogative word or a clear task verb. The internal Bloom classification and the difficulty level are SECONDARY to this rule — a question can be a HARD MCQ but it must still START with one of the words below.
+
+ALLOWED STEM OPENERS (first word of the question text):
+- Direct question words: What, Which, How, Why, When, Where
+- Task verbs: Name, State, Define, List, Explain, Compare, Differentiate, Predict, Identify, Calculate, Find, Observe, Mention, Describe, Illustrate, Justify, Prove, Derive, Evaluate, Analyse, Analyze, Design, Suggest, Recommend, Sketch, Draw, Label
+
+ABSOLUTELY FORBIDDEN STEM STARTERS — these patterns have produced broken papers in the past and must NEVER be emitted under any difficulty or question type:
+- "What does the detail about…" (any variant — "the detail about X suggest", "the detail about X explain", "the detail about X tell us")
+- "What can be inferred from the detail about…"
+- "What can be understood from the detail about…"
+- "What can be inferred from the idea that…"
+- "Which inference (most accurately )?follows from the detail about…"
+- "Which (evidence-based|inference-based|case-based) statement best (explains|describes)…"
+- "Which option best matches the detail about…"
+- "Which choice best fits the detail about…"
+- "According to the passage/chapter/source…"
+- "Based on the detail about…"
+- "The detail about…"
+- "This gives…", "This supports…", "This fits…", "This avoids…", "This follows…", "This states…", "This identifies…", "This keeps…", "This applies…", "This distinguishes…", "This links…"
+- "A complete answer…", "A correct answer…", "An effective answer…"
+- "A worked example for…" (as an MCQ option)
+- "IntroductIon to communIcatIon" or any garbled case-mixed title
+- "everyone needs it what exactly is…" (corrupted source fragment)
+- Any reference to "the selected source", "the selected chapter", "according to the chapter", "the chapter explains", "ideas from the chapter"
+- Any reference to internal planning vocabulary: "evidence point", "inference point", "case point", "source point", "phrase window", "focused point", "detail lens", "source chunk focus", "source ID", "chunk ID", "atom ID", "noveltyAngle", "answerPath"
+
+DETECTION RULE: Before finalising any question, scan every student-facing string (text, options[].text, correctAnswer, assertion, reason, matchPairs, subQuestions, keyPoints) for the forbidden patterns above. If ANY appear, REWRITE the question from scratch.
+
+WHY THIS MATTERS: A question that starts with "What does the detail about X suggest?" is a comprehension prompt — it tests whether the student noticed a sentence in the supplied text. A question that starts with "What is the role of X in Y?" tests whether the student actually understands the concept. The user explicitly wants the second kind.
+
+============================================================
+SECTION: 3-AXIS QUESTION STYLE (verb / vocab / depth)
+============================================================
+
+The user controls question style through three independent axes that REPLACE the old Bloom distribution UI:
+
+1. VERB — which interrogative or task word opens the stem:
+   WHAT | WHICH | HOW | WHY | WHEN | WHERE | NAME | STATE | DEFINE |
+   LIST | EXPLAIN | COMPARE | DIFFERENTIATE | PREDICT | MIXED (rotate)
+
+2. VOCAB — how academic the wording should be:
+   SIMPLE (Class 6-7 register)
+   STANDARD (NCERT textbook language)
+   ACADEMIC (formal academic register)
+   TECHNICAL (subject-specific jargon allowed)
+
+3. DEPTH — how many reasoning steps the question demands:
+   DIRECT (1 step, recall or recognition)
+   STANDARD (2-3 steps, apply or analyse)
+   DEEP (3-4 steps, evaluate / multi-concept)
+   EXTREME (4-5 steps, synthesis / Olympiad-style)
+
+When a Question Style block is included in the per-batch user prompt, you MUST obey all three axes. Examples of what each axis means in practice:
+
+- verb=WHAT, vocab=SIMPLE, depth=DIRECT:
+    "What is xylem?"
+    "What is the function of the cell wall?"
+
+- verb=WHY, vocab=STANDARD, depth=DEEP:
+    "Why does lignin deposition make xylem tissue suitable for supporting a 50m tree against strong wind?"
+    "Why does a plant cell lose turgidity when placed in a hypertonic solution?"
+
+- verb=PREDICT, vocab=TECHNICAL, depth=EXTREME:
+    "Predict the most likely consequence on a forest ecosystem if mycorrhizal associations with xylem tissue were eliminated for one growing season."
+
+The DEPTH axis is what changes the actual cognitive demand — verb only changes the stem opener, vocab only changes the wording. The user's three axes are the ONLY way the user controls question style; you must not invent your own interpretation.
+
+The HARD INTERROGATIVE rule above is non-negotiable. If the locked verb is PREDICT but the user-prompt user-content is a source passage without a graph, prefer "Predict what would happen if…" with a clearly described hypothetical, not "What does the graph show about…". The hypothetical must be self-contained in the question itself.
+
+When the source material is THIN (e.g. only an outline), the verb still controls the stem; the depth must be dropped by one level (EXTREME → DEEP, DEEP → STANDARD) to keep the question answerable.
+
+`;
+

@@ -53,6 +53,38 @@ export const bloomLevelValues = [
   "CREATE",
 ] as const;
 
+// New 3-axis style controls (verb / vocab / depth). UI defaults to MIXED /
+// STANDARD / STANDARD if omitted. The legacy bloomDistribution is still
+// accepted on the wire for storage compatibility; the UI no longer
+// surfaces it.
+export const questionVerbValues = [
+  "MIXED",
+  "WHAT",
+  "WHICH",
+  "HOW",
+  "WHY",
+  "WHEN",
+  "WHERE",
+  "NAME",
+  "STATE",
+  "DEFINE",
+  "LIST",
+  "EXPLAIN",
+  "COMPARE",
+  "DIFFERENTIATE",
+  "PREDICT",
+] as const;
+export const vocabLevelValues = ["SIMPLE", "STANDARD", "ACADEMIC", "TECHNICAL"] as const;
+export const reasoningDepthValues = ["DIRECT", "STANDARD", "DEEP", "EXTREME"] as const;
+
+export const questionStyleSchema = z
+  .object({
+    verb: z.enum(questionVerbValues).default("MIXED"),
+    vocab: z.enum(vocabLevelValues).default("STANDARD"),
+    depth: z.enum(reasoningDepthValues).default("STANDARD"),
+  })
+  .default({ verb: "MIXED", vocab: "STANDARD", depth: "STANDARD" });
+
 export const questionTypeSchema = z.enum(questionTypeValues);
 export const difficultySchema = z.enum(difficultyValues);
 export const aiProviderSchema = z.enum(aiProviderValues);
@@ -162,6 +194,7 @@ export const paperConfigSchema = z
     typeDistribution: typeDistributionSchema,
     questionComposition: z.array(questionCompositionItemSchema).max(100).optional(),
     bloomDistribution: bloomDistributionSchema,
+    questionStyle: questionStyleSchema.optional(),
     totalQuestions: z.coerce.number().int().min(5).max(100),
   })
   .superRefine((config, ctx) => {

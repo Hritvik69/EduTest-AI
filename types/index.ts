@@ -43,6 +43,41 @@ export type BloomLevel =
   | "EVALUATE"
   | "CREATE";
 
+/**
+ * Three-axis question style controls that REPLACE the old Bloom's distribution
+ * sliders. These give the user a more direct way to shape how each question
+ * is *written* (which verb opens the stem, how academic the language is,
+ * how deep the reasoning has to go) — independent of the difficulty level.
+ *
+ * Defaults: { verb: "MIXED", vocab: "STANDARD", depth: "STANDARD" }.
+ */
+export type QuestionVerb =
+  | "MIXED"
+  | "WHAT"
+  | "WHICH"
+  | "HOW"
+  | "WHY"
+  | "WHEN"
+  | "WHERE"
+  | "NAME"
+  | "STATE"
+  | "DEFINE"
+  | "LIST"
+  | "EXPLAIN"
+  | "COMPARE"
+  | "DIFFERENTIATE"
+  | "PREDICT";
+
+export type VocabLevel = "SIMPLE" | "STANDARD" | "ACADEMIC" | "TECHNICAL";
+
+export type ReasoningDepth = "DIRECT" | "STANDARD" | "DEEP" | "EXTREME";
+
+export interface QuestionStyle {
+  verb: QuestionVerb;
+  vocab: VocabLevel;
+  depth: ReasoningDepth;
+}
+
 export type ContentSource = "pdf" | "ncert_txt" | "curriculum" | "demo" | "unknown";
 export type PaperSourceMode = "curriculum" | "pdf_upload";
 export type QuestionGenerationMode = "fresh" | "source_exact" | "source_insights";
@@ -79,6 +114,13 @@ export interface GenerationContract {
     generationMode: QuestionGenerationMode;
     paperFocus?: PaperFocus;
     bloomDistribution: Record<BloomLevel, number>;
+    /**
+     * User-controlled 3-axis style (verb / vocab / depth). The Bloom mix
+     * above is derived from this and sent together so legacy consumers
+     * still get a bloomDistribution while the AI is explicitly told the
+     * 3 axes.
+     */
+    questionStyle: QuestionStyle;
     aiProvider: AIProvider;
     integrationPrompt?: string;
   };
@@ -288,7 +330,20 @@ export interface PaperConfig {
   /** Number of questions requested for each selected question type. */
   typeDistribution: Partial<Record<QuestionType, number>>;
   questionComposition?: QuestionCompositionItem[];
+  /**
+   * @deprecated Retained for storage compatibility only. UI no longer
+   * exposes Bloom distribution sliders. The active style signal lives in
+   * {@link questionStyle} and is converted to a Bloom mix internally
+   * before any backend prompt is sent.
+   */
   bloomDistribution: Record<BloomLevel, number>;
+  /**
+   * New 3-axis style control that REPLACES the Bloom distribution UI:
+   *   - verb: which interrogative/task word opens the question stem
+   *   - vocab: how academic the wording should be
+   *   - depth: how many reasoning steps the question demands
+   */
+  questionStyle?: QuestionStyle;
   totalQuestions: number;
 }
 

@@ -9,6 +9,11 @@ import {
   normalizeQuestionCountDistribution,
 } from "@/lib/blueprint";
 import { defaultBloomDistribution } from "@/lib/edutest-data";
+import {
+  defaultQuestionStyle,
+  deriveBloomMixFromStyle,
+  normalizeQuestionStyle,
+} from "@/lib/question-style-protocol";
 import type { AIProvider, PaperConfig, PaperFocus, PaperSourceMode, QuestionGenerationMode, QuestionType } from "@/types";
 
 const storageKey = "edutest:paper-config";
@@ -39,6 +44,7 @@ export const defaultPaperConfig: PaperConfig = {
   },
   questionComposition: [],
   bloomDistribution: defaultBloomDistribution,
+  questionStyle: defaultQuestionStyle,
   totalQuestions: 28,
 };
 
@@ -79,7 +85,7 @@ export function PaperConfigProvider({
           : parsed.subject
             ? [parsed.subject]
             : defaultPaperConfig.subjects;
-        nextConfig = normalizeQuestionFormatsForDifficulty(normalizeConfigQuestionCounts(normalizeLegacySourceModeQuestionType(configForEntry({
+        const merged = configForEntry({
           ...defaultPaperConfig,
           ...parsed,
           sourceMode: parsed.sourceMode ?? "curriculum",
@@ -93,7 +99,13 @@ export function PaperConfigProvider({
               chapterIds: parsed.chapterIds ?? [],
               topicIds: parsed.topicIds ?? [],
             })),
-        }, initialSourceMode, initialGenerationMode))));
+        }, initialSourceMode, initialGenerationMode);
+        nextConfig = normalizeQuestionFormatsForDifficulty(
+          normalizeConfigQuestionCounts(
+            normalizeLegacySourceModeQuestionType(merged),
+          ),
+        );
+        nextConfig = applyQuestionStyleDerivation(nextConfig);
       }
     } catch {
       try {
@@ -134,9 +146,10 @@ export function PaperConfigProvider({
         "totalMarks" in patch ||
         "questionTypes" in patch;
 
-      return shapeChanged
+      const normalized = shapeChanged
         ? normalizeQuestionFormatsForDifficulty(normalizeConfigQuestionCounts(next))
         : next;
+      return applyQuestionStyleDerivation(normalized);
     });
   }, []);
 
@@ -252,6 +265,25 @@ function normalizeConfigQuestionCounts(config: PaperConfig): PaperConfig {
     ...config,
     typeDistribution,
     totalMarks: marksForQuestionCounts(config.questionTypes, typeDistribution),
+  };
+}
+
+/**
+ * Whenever `questionStyle` is set, derive a fresh `bloomDistribution` from it
+ * (so the rest of the pipeline that still reads the legacy bloomDistribution
+ * field sees the right mix). When only `bloomDistribution` is set (legacy
+ * configs from before the 3-axis UI shipped), seed a default `questionStyle`
+ * so the user has something to edit on the wizard.
+ *
+ * Always normalises the style through `normalizeQuestionStyle` to defend
+ * against stale sessionStorage values with unknown enum strings.
+ */
+function applyQuestionStyleDerivation(config: PaperConfig): PaperConfig {
+  const normalizedStyle = normalizeQuestionStyle(config.questionStyle);
+  return {
+    ...config,
+    questionStyle: normalizedStyle,
+    bloomDistribution: deriveBloomMixFromStyle(normalizedStyle),
   };
 }
 

@@ -3,6 +3,10 @@ import {
   buildQuestionCompositionPlan,
   compositionKey,
 } from "@/lib/composition";
+import {
+  defaultQuestionStyle,
+  normalizeQuestionStyle,
+} from "@/lib/question-style-protocol";
 import type {
   AIProvider,
   Blueprint,
@@ -64,6 +68,7 @@ export function buildGenerationContract(
       generationMode: normalizeGenerationMode(config.generationMode),
       paperFocus: (config.paperFocus ?? "mixed") as "mixed" | "numerical" | "concept",
       bloomDistribution: config.bloomDistribution,
+      questionStyle: normalizeQuestionStyle(config.questionStyle ?? defaultQuestionStyle),
       aiProvider: config.aiProvider ?? "AUTO",
       integrationPrompt: normalizeIntegrationPrompt(config.integrationPrompt),
     },
@@ -100,6 +105,7 @@ export function generationContractPromptPayload(contract: GenerationContract) {
         : "Fresh Questions",
     paper_focus: contract.paper.paperFocus ?? "mixed",
     blooms: contract.paper.bloomDistribution,
+    question_style: contract.paper.questionStyle,
     ai_provider: contract.paper.aiProvider,
     integration_prompt: contract.paper.integrationPrompt ?? "",
     question_types: questionTypeCounts(contract),

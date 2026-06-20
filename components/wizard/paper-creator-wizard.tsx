@@ -24,12 +24,19 @@ import {
   questionTypeMeta,
 } from "@/lib/edutest-data";
 import { buildGenerationContract } from "@/lib/generation-contract";
+import {
+  defaultQuestionStyle,
+  depthLabels,
+  questionVerbLabels,
+  vocabLabels,
+} from "@/lib/question-style-protocol";
 import type {
   BloomLevel,
   ChapterOption,
   GenerationContract,
   PaperSourceMode,
   QuestionGenerationMode,
+  QuestionStyle,
 } from "@/types";
 import { GenerationOverlay } from "./generation-overlay";
 import { PaperConfigProvider, usePaperConfig } from "./paper-config-context";
@@ -65,11 +72,6 @@ function WizardInner() {
   const [step, setStep] = React.useState(1);
   const [generating, setGenerating] = React.useState(false);
 
-  const bloomTotal = Object.values(config.bloomDistribution).reduce(
-    (sum, value) => sum + value,
-    0,
-  );
-
   function validateStep() {
     if (step === 1 && config.sourceMode === "pdf_upload" && !config.pdfSourceId) {
       toast.error("Upload and process a PDF before continuing.");
@@ -98,11 +100,6 @@ function WizardInner() {
 
     if (step === 4 && config.duration < 30) {
       toast.error("Set at least 30 minutes.");
-      return false;
-    }
-
-    if (step === 5 && bloomTotal !== 100) {
-      toast.error("Bloom distribution must add up to 100%.");
       return false;
     }
 
@@ -445,20 +442,41 @@ function ConfirmationScreen({
         )}
       </SummaryBlock>
 
-      <SummaryBlock title="Bloom Distribution">
-        <div className="grid gap-2 sm:grid-cols-3">
-          {(Object.keys(config.bloomDistribution) as BloomLevel[]).map((level) => (
-            <div
-              key={level}
-              className="flex items-center justify-between rounded-lg border border-white/10 bg-slate-950/40 px-3 py-2 text-sm"
-            >
-              <span className="text-slate-300">{bloomLabels[level]}</span>
-              <span className="font-bold text-white">
-                {config.bloomDistribution[level]}%
-              </span>
+      <SummaryBlock title="Question Style">
+        {(() => {
+          const style: QuestionStyle = config.questionStyle ?? defaultQuestionStyle;
+          return (
+            <div className="grid gap-2 sm:grid-cols-3">
+              <StyleTile
+                label="Stem Opener"
+                value={questionVerbLabels[style.verb]}
+                hint="Which interrogative / task word opens the question"
+              />
+              <StyleTile
+                label="Language Register"
+                value={vocabLabels[style.vocab]}
+                hint="How academic the wording should be"
+              />
+              <StyleTile
+                label="Reasoning Depth"
+                value={depthLabels[style.depth]}
+                hint="How many reasoning steps the question demands"
+              />
             </div>
-          ))}
-        </div>
+          );
+        })()}
+        <p className="mt-3 text-[11px] leading-snug text-slate-500">
+          Derived Bloom mix (used internally):{" "}
+          <span className="text-slate-300">
+            {(Object.keys(config.bloomDistribution) as BloomLevel[])
+              .filter((level) => config.bloomDistribution[level] > 0)
+              .map(
+                (level) =>
+                  `${bloomLabels[level]} ${config.bloomDistribution[level]}%`,
+              )
+              .join(" | ") || "Balanced"}
+          </span>
+        </p>
       </SummaryBlock>
 
       <div className="flex flex-col justify-between gap-3 border-t border-white/10 pt-5 sm:flex-row">
@@ -509,6 +527,11 @@ function PromptImpactPanel({
     .filter((level) => contract.paper.bloomDistribution[level] > 0)
     .map((level) => `${bloomLabels[level]} ${contract.paper.bloomDistribution[level]}%`)
     .join(" | ");
+  const styleSummary = (() => {
+    const style: QuestionStyle =
+      contract.paper.questionStyle ?? defaultQuestionStyle;
+    return `${questionVerbLabels[style.verb]} | ${vocabLabels[style.vocab]} | ${depthLabels[style.depth]}`;
+  })();
   const scopeLabel =
     contract.source.mode === "pdf_upload"
       ? contract.source.pdfTitle || "Uploaded PDF"
@@ -574,7 +597,8 @@ function PromptImpactPanel({
           title="Prompt Shape"
           lines={[
             sectionSummary || "No valid section shape yet",
-            bloomSummary || "Bloom distribution pending",
+            `Style: ${styleSummary}`,
+            bloomSummary || "Bloom mix pending",
             integrationPrompt
               ? `Integration: ${truncateText(integrationPrompt, 110)}`
               : "No extra integration prompt",
@@ -649,6 +673,26 @@ function SummaryLine({ label, value }: { label: string; value: string }) {
       <span className="max-w-[70%] text-right text-sm font-semibold text-slate-100">
         {value}
       </span>
+    </div>
+  );
+}
+
+function StyleTile({
+  label,
+  value,
+  hint,
+}: {
+  label: string;
+  value: string;
+  hint: string;
+}) {
+  return (
+    <div className="rounded-lg border border-white/10 bg-slate-950/40 px-3 py-2 text-sm">
+      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+        {label}
+      </div>
+      <div className="mt-1 text-sm font-bold text-white">{value}</div>
+      <div className="mt-0.5 text-[11px] leading-snug text-slate-400">{hint}</div>
     </div>
   );
 }

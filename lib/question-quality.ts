@@ -1,5 +1,6 @@
 import { isIdentityMatchAnswer } from "@/lib/match-display";
-import type { Blueprint, GeneratedQuestion, QuestionType } from "@/types";
+import { questionStyleViolation, normalizeQuestionStyle } from "@/lib/question-style-protocol";
+import type { Blueprint, GeneratedQuestion, QuestionStyle, QuestionType } from "@/types";
 
 export type TeacherQualityIssue = {
   question: GeneratedQuestion;

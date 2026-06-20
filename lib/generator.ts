@@ -28,6 +28,11 @@ import {
 } from "@/lib/question-planning";
 import { normalizeQuestionStructure } from "@/lib/question-structure";
 import {
+  buildQuestionStylePrompt,
+  defaultQuestionStyle,
+  normalizeQuestionStyle,
+} from "@/lib/question-style-protocol";
+import {
   partitionUniqueQuestionsByNovelty,
   partitionUniqueQuestionsByText,
   questionNoveltyFingerprint,
@@ -754,6 +759,8 @@ function buildPrompt(
   const crossPaperStems = getAntiRepeatStemsForConfig(config);
   const fingerprintSequence = nextFingerprintSequence(configKey);
   const subjectWorkflow = buildSubjectWorkflowPrompt(config, coverageFocus);
+  const questionStyle = normalizeQuestionStyle(config.questionStyle ?? defaultQuestionStyle);
+  const stylePrompt = buildQuestionStylePrompt(questionStyle);
   const topicList = availableTopics.length
     ? availableTopics.map((topic) => `- ${topic}`).join("\n")
     : "- Use only the extracted NCERT chapter concepts below";
@@ -762,6 +769,7 @@ CONFIG_JSON:${JSON.stringify(buildPromptConfig(config, section, availableTopics,
 
 Subject: ${config.subject}, Class: ${config.classNum}
 ${subjectWorkflow}
+${stylePrompt}
 Difficulty: ${section.difficulty}
 Count needed: ${section.count}
 Allowed chapter topics:
@@ -1351,6 +1359,7 @@ function buildPromptConfig(
     },
     generation_nonce: generationNonce ?? null,
     architecture: generationPlan,
+    question_style: normalizeQuestionStyle(config.questionStyle ?? defaultQuestionStyle),
   };
 }
 
