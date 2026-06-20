@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { apiErrorMessage, unwrapApiData } from "@/lib/api-client";
-import type { GeneratedQuestion, StoredPaper } from "@/types";
+import type { GeneratedQuestion, StoredAttempt, StoredPaper } from "@/types";
 import { cn } from "@/lib/utils";
 
 type Answers = Record<string, AnswerValue>;
@@ -124,11 +124,20 @@ export function TestRunner({ paperId }: { paperId: string }) {
 
     fetch(`/api/papers/${paperId}`)
       .then(async (response) => {
-        const data = await response.json();
+        let data: unknown;
+        try {
+          data = await response.json();
+        } catch {
+          throw new Error(
+            response.ok
+              ? "Paper data could not be loaded (empty response). Please retry."
+              : `Could not load paper (HTTP ${response.status}). Please retry.`,
+          );
+        }
         if (!response.ok) {
           throw new Error(apiErrorMessage(data, "Could not load paper."));
         }
-        return unwrapApiData<StoredPaper>(data);
+        return unwrapApiData<StoredPaper>(data as Parameters<typeof unwrapApiData<StoredPaper>>[0]);
       })
       .then((data) => {
         if (cancelled) return;
@@ -324,11 +333,20 @@ export function TestRunner({ paperId }: { paperId: string }) {
           guestPaperToken: paper.guestPaperToken,
         }),
       });
-      const result = await response.json();
+      let result: unknown;
+      try {
+        result = await response.json();
+      } catch {
+        throw new Error(
+          response.ok
+            ? "Evaluation returned an empty or incomplete response. Please retry."
+            : `Evaluation failed (HTTP ${response.status}). Please retry.`,
+        );
+      }
       if (!response.ok) {
         throw new Error(apiErrorMessage(result, "Evaluation failed."));
       }
-      const attempt = unwrapApiData<typeof result>(result);
+      const attempt = unwrapApiData<StoredAttempt>(result as Parameters<typeof unwrapApiData<StoredAttempt>>[0]);
       try {
         window.sessionStorage.removeItem(storageKey);
         window.sessionStorage.setItem(

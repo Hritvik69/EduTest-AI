@@ -17,6 +17,8 @@ import {
 import { evaluationRequestSchema } from "@/lib/schemas";
 import type { BloomLevel, GeneratedQuestion, StoredAttempt, StoredPaper } from "@/types";
 
+export const maxDuration = 60;
+
 export async function POST(request: NextRequest) {
   const auth = await requireAuthenticatedUser(request);
   if (auth.response) return auth.response;
