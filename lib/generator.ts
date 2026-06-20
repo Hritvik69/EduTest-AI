@@ -495,7 +495,7 @@ async function generateQuestionBatches(
         systemInstruction: questionGenerationSystemInstruction,
         temperature: generationTemperature(config.difficulty),
         topP: 0.85,
-        maxOutputTokens: maxOutputTokensForSection(batchSection, tokenMode),
+        maxOutputTokens: maxOutputTokensForSection(batchSection, tokenMode, config.generationMode),
         provider: config.aiProvider ?? "AUTO",
         task: generationNonce?.includes(":replacement:")
           ? "QUESTION_REPLACEMENT"
@@ -1144,6 +1144,7 @@ Never include these in any student-visible field:
 
 When CONFIG_JSON.generation_mode is "fresh", use the supplied source only to understand the concept and convert it into natural exam questions.
 When CONFIG_JSON.generation_mode is "source_exact", stay tightly grounded to selected TXT/PDF concepts. If a selected chunk contains a real exercise/question line, preserve that source question wording closely; if it contains only explanation, build the question from exact source facts and wording without outside content.
+When CONFIG_JSON.generation_mode is "source_insights", write original insight-driven questions (why/how, compare-contrast, application, misconceptions, synthesis) that are fully answerable from the selected source but never copy a source line verbatim. The student should never sense that a source chunk exists behind the question.
 Ask the concept directly. Do not make the chapter title or the fact that a chapter exists part of the question unless the question is explicitly about a printed passage title.
 
 For MCQ:
@@ -1187,6 +1188,16 @@ function buildGenerationModePromptRules(config: PaperConfig) {
 - Make only minimal edits needed to remove numbering/metadata, fix OCR/grammar, fit selected marks, or convert into the selected question type/options/sub-questions.
 - If selected chunks contain explanation but no real question line, build the question from exact source facts and wording without outside content.
 - Do not use source answers, captions, headings, or metadata alone as fake question text.
+- Still obey selected question types, counts, marks, difficulty, Bloom distribution, answer structure, and validation rules.`;
+  }
+
+  if (config.generationMode === "source_insights") {
+    return `GENERATION MODE: NCERT SOURCE + INSIGHTS
+- CONFIG_JSON.generation_mode is "source_insights".
+- Deep-read the selected NCERT source first: core concepts, definitions, derivations, worked examples, diagram descriptions, interconnections between sub-topics, and exam-significance. Build a mental model before writing any question.
+- Generate questions that test deep understanding and insight rather than recall: "why" and "how" reasoning, compare-contrast, application of a concept to a new context, edge cases, common misconceptions, multi-step synthesis across sub-topics, and interpretation of examples/diagrams from the source.
+- Do NOT lift source lines verbatim as final question text. Convert the insight into an original, exam-grade question a teacher would write.
+- Every answer must be fully supported by the selected source (no outside facts), but the question framing must be original.
 - Still obey selected question types, counts, marks, difficulty, Bloom distribution, answer structure, and validation rules.`;
   }
 
@@ -1351,7 +1362,27 @@ function maxQuestionsPerRequest(type: QuestionType, mode: TokenBudgetMode) {
   return 3;
 }
 
-function maxOutputTokensForSection(section: BlueprintSection, mode: TokenBudgetMode) {
+function maxOutputTokensForSection(
+  section: BlueprintSection,
+  mode: TokenBudgetMode,
+  generationMode: PaperConfig["generationMode"] = "fresh",
+) {
+  // source_insights questions need more reasoning headroom per question
+  // (why/how, synthesis, application). We bump the base token budget for the
+  // heavy types so quality stays high WITHOUT adding extra API calls.
+  const HEAVY_INSIGHT_TYPES = new Set<QuestionType>([
+    "SOURCE_BASED",
+    "CASE_BASED",
+    "PARAGRAPH",
+    "HOTS",
+    "COMPETENCY",
+    "LONG",
+  ]);
+  const insightBoost =
+    generationMode === "source_insights" && HEAVY_INSIGHT_TYPES.has(section.questionType)
+      ? 1.15
+      : 1;
+
   const baseByType: Partial<Record<QuestionType, number>> = {
     MCQ: 3200,
     ASSERTION_REASON: 3000,
@@ -1373,7 +1404,9 @@ function maxOutputTokensForSection(section: BlueprintSection, mode: TokenBudgetM
     NCERT_FORMAT: 3600,
   };
 
-  const requested = (baseByType[section.questionType] ?? 4200) + section.count * 300;
+  const requested =
+    Math.round((baseByType[section.questionType] ?? 4200) * insightBoost) +
+    section.count * 300;
 
   if (mode === "LOW") {
     const lowBudgetByType: Partial<Record<QuestionType, number>> = {
@@ -1399,7 +1432,7 @@ function maxOutputTokensForSection(section: BlueprintSection, mode: TokenBudgetM
 
     return Math.min(
       openRouterMaxOutputTokens(),
-      lowBudgetByType[section.questionType] ?? 1000,
+      Math.round((lowBudgetByType[section.questionType] ?? 1000) * insightBoost),
       requested,
     );
   }

@@ -29,6 +29,7 @@ import type {
   ChapterOption,
   GenerationContract,
   PaperSourceMode,
+  QuestionGenerationMode,
 } from "@/types";
 import { GenerationOverlay } from "./generation-overlay";
 import { PaperConfigProvider, usePaperConfig } from "./paper-config-context";
@@ -44,11 +45,16 @@ import { StepTwo } from "./step-two";
 
 export function PaperCreatorWizard({
   initialSourceMode = "curriculum",
+  initialGenerationMode,
 }: {
   initialSourceMode?: PaperSourceMode;
+  initialGenerationMode?: QuestionGenerationMode;
 }) {
   return (
-    <PaperConfigProvider initialSourceMode={initialSourceMode}>
+    <PaperConfigProvider
+      initialSourceMode={initialSourceMode}
+      initialGenerationMode={initialGenerationMode}
+    >
       <WizardInner />
     </PaperConfigProvider>
   );

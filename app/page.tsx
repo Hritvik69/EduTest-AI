@@ -169,6 +169,7 @@ const heroEvaluation = [
 export default async function LandingPage() {
   const createTestHref = "/create-test";
   const pdfTestHref = "/create-test?mode=pdf";
+  const ncertInsightsHref = "/create-test?mode=insights";
 
   return (
     <main className="min-h-screen overflow-hidden bg-background text-slate-100">
@@ -210,6 +211,16 @@ export default async function LandingPage() {
                 <Link href={pdfTestHref}>
                   <UploadCloud className="h-5 w-5" />
                   PDF-EDU-TEST
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                className="border-red-300/50 bg-red-600 text-white shadow-[0_0_34px_rgb(239_68_68/0.58)] ring-1 ring-red-200/20 hover:bg-red-500 hover:shadow-[0_0_46px_rgb(239_68_68/0.72)]"
+              >
+                <Link href={ncertInsightsHref}>
+                  <BookOpenCheck className="h-5 w-5" />
+                  NCERT SOURCE + INSIGHTS
                 </Link>
               </Button>
             </div>

@@ -322,5 +322,6 @@ function normalizeIntegrationPrompt(value: string | undefined) {
 function normalizeGenerationMode(
   value: PaperConfig["generationMode"],
 ): NonNullable<PaperConfig["generationMode"]> {
-  return value === "source_exact" ? "source_exact" : "fresh";
+  if (value === "source_exact" || value === "source_insights") return value;
+  return "fresh";
 }

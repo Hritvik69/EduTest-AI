@@ -2295,7 +2295,9 @@ function generationStreamContractSummary(
     generationModeLabel:
       contract.paper.generationMode === "source_exact"
         ? "NCERT/PDF Source"
-        : "Fresh Questions",
+        : contract.paper.generationMode === "source_insights"
+          ? "NCERT Source + Insights"
+          : "Fresh Questions",
     plannedCalls: contract.apiEstimate.plannedCalls,
     riskLevel: contract.apiEstimate.riskLevel,
     ...(chunkingNote ? { chunkingNote } : {}),

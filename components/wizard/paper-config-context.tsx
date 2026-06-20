@@ -9,7 +9,7 @@ import {
   normalizeQuestionCountDistribution,
 } from "@/lib/blueprint";
 import { defaultBloomDistribution } from "@/lib/edutest-data";
-import type { AIProvider, PaperConfig, PaperSourceMode, QuestionType } from "@/types";
+import type { AIProvider, PaperConfig, PaperSourceMode, QuestionGenerationMode, QuestionType } from "@/types";
 
 const storageKey = "edutest:paper-config";
 
@@ -53,12 +53,14 @@ const PaperConfigContext = React.createContext<PaperConfigContextValue | null>(n
 export function PaperConfigProvider({
   children,
   initialSourceMode = "curriculum",
+  initialGenerationMode,
 }: {
   children: React.ReactNode;
   initialSourceMode?: PaperSourceMode;
+  initialGenerationMode?: QuestionGenerationMode;
 }) {
   const [config, setConfig] = React.useState<PaperConfig>(() =>
-    configForSourceMode(defaultPaperConfig, initialSourceMode),
+    configForEntry(defaultPaperConfig, initialSourceMode, initialGenerationMode),
   );
   const [hydrated, setHydrated] = React.useState(false);
 
@@ -76,7 +78,7 @@ export function PaperConfigProvider({
           : parsed.subject
             ? [parsed.subject]
             : defaultPaperConfig.subjects;
-        nextConfig = normalizeQuestionFormatsForDifficulty(normalizeConfigQuestionCounts(normalizeLegacySourceModeQuestionType(configForSourceMode({
+        nextConfig = normalizeQuestionFormatsForDifficulty(normalizeConfigQuestionCounts(normalizeLegacySourceModeQuestionType(configForEntry({
           ...defaultPaperConfig,
           ...parsed,
           sourceMode: parsed.sourceMode ?? "curriculum",
@@ -90,7 +92,7 @@ export function PaperConfigProvider({
               chapterIds: parsed.chapterIds ?? [],
               topicIds: parsed.topicIds ?? [],
             })),
-        }, initialSourceMode))));
+        }, initialSourceMode, initialGenerationMode))));
       }
     } catch {
       try {
@@ -109,7 +111,7 @@ export function PaperConfigProvider({
     return () => {
       cancelled = true;
     };
-  }, [initialSourceMode]);
+  }, [initialSourceMode, initialGenerationMode]);
 
   React.useEffect(() => {
     if (!hydrated) return;
@@ -138,13 +140,13 @@ export function PaperConfigProvider({
   }, []);
 
   const resetConfig = React.useCallback(() => {
-    setConfig(configForSourceMode(defaultPaperConfig, initialSourceMode));
+    setConfig(configForEntry(defaultPaperConfig, initialSourceMode, initialGenerationMode));
     try {
       window.sessionStorage.removeItem(storageKey);
     } catch {
       // Ignore blocked sessionStorage.
     }
-  }, [initialSourceMode]);
+  }, [initialSourceMode, initialGenerationMode]);
 
   return (
     <PaperConfigContext.Provider
@@ -174,6 +176,21 @@ function configForSourceMode(config: PaperConfig, sourceMode: PaperSourceMode): 
     pdfSourceId: undefined,
     pdfSource: undefined,
   };
+}
+
+// Applies both the source mode (curriculum vs pdf_upload) and the optional
+// entry-point generation mode (e.g. source_insights from the NCERT SOURCE +
+// INSIGHTS button). The generation mode is only applied on the initial entry
+// config; once the user edits anything, sessionStorage hydration preserves the
+// stored value so a returning session keeps its chosen mode.
+function configForEntry(
+  config: PaperConfig,
+  sourceMode: PaperSourceMode,
+  generationMode?: QuestionGenerationMode,
+): PaperConfig {
+  const withSource = configForSourceMode(config, sourceMode);
+  if (!generationMode) return withSource;
+  return { ...withSource, generationMode };
 }
 
 export function usePaperConfig() {
