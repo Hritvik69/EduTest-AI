@@ -1221,17 +1221,19 @@ function buildGenerationModePromptRules(config: PaperConfig) {
 function buildPaperFocusRules(config: PaperConfig) {
   const focus = config.paperFocus ?? "mixed";
   if (focus === "numerical") {
-    return `PAPER FOCUS: NUMERICAL
+    return `PAPER FOCUS: NUMERICAL (STRICT — every question must be calculation/problem-solving)
 - CONFIG_JSON.paper_focus is "numerical".
+- The paper blueprint has been collapsed so every section is NUMERICAL. You must obey that.
 - Generate ONLY numerical / problem-solving questions: calculations, derivations, solve-for-x, find-the-value, prove-and-compute, data interpretation, and quantitative application of the selected chapter formulas and concepts.
 - Deep-read every selected chapter's worked examples, formulae, and exercise numericals. Build fresh numericals grounded in those exact formulas, values, and units from the selected topics only.
-- Every question must require a computation, formula application, or step-by-step quantitative derivation as its core task. Do NOT produce pure-theory or "explain why" questions.
+- Every question must require a computation, formula application, or step-by-step quantitative derivation as its core task. Do NOT produce pure-theory, "explain why", definition, "what is the SI unit", "state the formula", or any other conceptual question — those will be auto-rejected.
 - Include the correct numerical answer in correctAnswer, the full step-by-step solution in reasoningSteps, and the relevant formula in explanation.
 - Vary the given values across questions so answers are not identical.`;
   }
   if (focus === "concept") {
-    return `PAPER FOCUS: CONCEPT
+    return `PAPER FOCUS: CONCEPT (STRICT — every question must be theory/reasoning)
 - CONFIG_JSON.paper_focus is "concept".
+- The paper blueprint has been collapsed so every section is concept-only. You must obey that.
 - Generate ONLY concept / theory / reasoning questions: definitions, explain why/how, compare-contrast, application of concepts, distinguish-between, give-reasons, and qualitative understanding of the selected chapters.
 - Deep-read ALL the selected chapter text — definitions, explanations, examples, diagrams, and reasoning — then ask questions that test conceptual understanding and reasoning rather than computation.
 - Do NOT produce calculation or "find the value" numerical questions. Focus on understanding, reasoning, and explanation.

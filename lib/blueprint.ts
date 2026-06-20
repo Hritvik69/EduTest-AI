@@ -7,6 +7,7 @@ import type {
   Blueprint,
   BlueprintSection,
   PaperConfig,
+  PaperFocus,
   QuestionType,
 } from "@/types";
 
@@ -30,6 +31,83 @@ export const marksPerType: Record<QuestionType, number> = {
   LONG: 5,
   NCERT_FORMAT: 2,
 };
+
+/**
+ * Question types that are inherently calculation/problem-solving. Used to
+ * strictly enforce the `paperFocus = "numerical"` selection — any non-listed
+ * type (MCQ, ONE_WORD, SHORT, CASE_BASED, ...) gets collapsed to NUMERICAL so
+ * the AI cannot smuggle in conceptual questions via those formats.
+ */
+export const NUMERICAL_QUESTION_TYPES: ReadonlySet<QuestionType> = new Set<
+  QuestionType
+>(["NUMERICAL", "MATCH_FOLLOWING"]);
+
+/**
+ * Question types that are inherently theory/reasoning/explanation. Used to
+ * strictly enforce `paperFocus = "concept"` — any non-listed type (NUMERICAL,
+ * SHORT, CASE_BASED, ...) gets collapsed to MCQ so the AI cannot smuggle in
+ * calculation questions via those formats.
+ */
+export const CONCEPT_QUESTION_TYPES: ReadonlySet<QuestionType> = new Set<
+  QuestionType
+>([
+  "MCQ",
+  "ASSERTION_REASON",
+  "TRUE_FALSE",
+  "ONE_WORD",
+  "FILL_BLANK",
+  "VERY_SHORT",
+  "NCERT_FORMAT",
+]);
+
+/**
+ * Collapse the config's question types / distribution to strictly match the
+ * selected paperFocus. Without this, a user picking "Numerical" still gets
+ * Section-A MCQ / ONE_WORD slots in the blueprint, and the AI provider
+ * happily generates conceptual MCQ / ONE_WORD questions despite the
+ * "only numerical" prompt rule (the per-section format instruction
+ * overrides the focus rule).
+ *
+ * Behaviour:
+ *  - focus = "numerical": if any type outside NUMERICAL_QUESTION_TYPES is
+ *    selected, collapse everything to a single NUMERICAL section whose
+ *    count equals the configured totalQuestions.
+ *  - focus = "concept": symmetric — collapse to MCQ if any non-concept
+ *    type is selected.
+ *  - focus = "mixed" (default): pass-through.
+ */
+export function collapseForPaperFocus(config: PaperConfig): PaperConfig {
+  const focus: PaperFocus = config.paperFocus ?? "mixed";
+  if (focus === "mixed") return config;
+
+  const allowedSet =
+    focus === "numerical" ? NUMERICAL_QUESTION_TYPES : CONCEPT_QUESTION_TYPES;
+  const primaryType: QuestionType = focus === "numerical" ? "NUMERICAL" : "MCQ";
+
+  // Already compatible — every selected type is in the allowed set.
+  if (config.questionTypes.every((type) => allowedSet.has(type))) {
+    return config;
+  }
+
+  // Compute the desired total count from the config: prefer totalQuestions
+  // if set, else sum the existing distribution, else fall back to 8.
+  const distributionTotal = config.questionTypes.reduce(
+    (sum, type) => sum + (config.typeDistribution[type] ?? 0),
+    0,
+  );
+  const totalCount =
+    config.totalQuestions > 0
+      ? config.totalQuestions
+      : distributionTotal > 0
+        ? distributionTotal
+        : 8;
+
+  return {
+    ...config,
+    questionTypes: [primaryType],
+    typeDistribution: { [primaryType]: totalCount },
+  };
+}
 
 const replacementOrderByMarks: Record<number, QuestionType[]> = {
   1: ["MCQ", "ASSERTION_REASON", "TRUE_FALSE", "ONE_WORD", "FILL_BLANK"],
@@ -94,7 +172,8 @@ export function buildBlueprint(config: PaperConfig): Blueprint {
 }
 
 export function generateBlueprint(config: PaperConfig): Blueprint {
-  const normalizedConfig = normalizeQuestionFormatsForDifficulty(config);
+  const focusCollapsedConfig = collapseForPaperFocus(config);
+  const normalizedConfig = normalizeQuestionFormatsForDifficulty(focusCollapsedConfig);
   const selectedTypes: QuestionType[] = normalizedConfig.questionTypes.length
     ? normalizedConfig.questionTypes
     : ["MCQ", "SHORT", "CASE_BASED", "LONG"];
