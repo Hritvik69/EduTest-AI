@@ -47,7 +47,6 @@ import {
   generateDemoQuestions,
   recordGeneratedPaperFingerprint,
 } from "@/lib/generator";
-import { persistGeneratedPaper } from "@/lib/paper-store";
 import { getUploadedPdfSourceConcepts } from "@/lib/pdf-source-store";
 import {
   buildGenerationArchitecturePlan,
