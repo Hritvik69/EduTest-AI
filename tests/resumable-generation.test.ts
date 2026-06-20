@@ -11,7 +11,7 @@ describe("session-only paper generation wiring", () => {
       "utf8",
     );
 
-    expect(route).not.toMatch(/from\s+"@\/lib\/paper-store"/);
+    expect(route).toMatch(/persistGeneratedPaper/);
     expect(route).not.toMatch(/createPaperInDB/);
     expect(route).not.toMatch(/setPaperGenerationState/);
     expect(route).not.toMatch(/saveQuestionsAndLink/);

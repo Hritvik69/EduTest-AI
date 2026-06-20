@@ -69,34 +69,55 @@ export function completeQuestionBankWithFinalFallbacks({
   let sourceBackedCompletedQuestions = 0;
   let syllabusNearCompletedQuestions = 0;
   let sourceCapacityConfig = activeConfig;
-  let sourceCapacity = analyzeSourceBackedCompletionCapacity({
-    bank: activeBank,
-    concepts,
-    config: sourceCapacityConfig,
-  });
+
+  const localAnalyzeCapacity = (opts?: { config?: PaperConfig; startIndex?: number }) => {
+    return analyzeSourceBackedCompletionCapacity({
+      bank: activeBank,
+      concepts,
+      config: opts?.config ?? sourceCapacityConfig,
+      startIndex: opts?.startIndex,
+      requireSyllabusComposition,
+      strictQualityFilter,
+    });
+  };
+
+  const localSourceFallback = (opts: {
+    config: PaperConfig;
+    startIndex: number;
+    deadlineAt?: number;
+    minRemainingMs?: number;
+    capacityScope: string;
+  }) => {
+    return completeQuestionBankWithSourceBackedFallback({
+      bank: activeBank,
+      concepts,
+      config: opts.config,
+      startIndex: opts.startIndex,
+      deadlineAt: opts.deadlineAt,
+      minRemainingMs: opts.minRemainingMs,
+      throwOnInsufficientCapacity: false,
+      capacityScope: opts.capacityScope,
+      strictQualityFilter,
+      requireSyllabusComposition,
+    });
+  };
+
+  let sourceCapacity = localAnalyzeCapacity();
 
   const tryStrictSourceCompletion = () => {
     sourceCapacityConfig = activeConfig;
-    sourceCapacity = analyzeSourceBackedCompletionCapacity({
-      bank: activeBank,
-      concepts,
-      config: sourceCapacityConfig,
-    });
+    sourceCapacity = localAnalyzeCapacity();
     if (!sourceCapacity.enough || activeBank.missingCount() <= 0) {
       return;
     }
 
     const beforeStrict = activeBank.readyCount();
-    completeQuestionBankWithSourceBackedFallback({
-      bank: activeBank,
-      concepts,
+    localSourceFallback({
       config: activeConfig,
       startIndex: startIndex ?? activeBank.allCandidates().length + 101,
       deadlineAt,
       minRemainingMs,
-      throwOnInsufficientCapacity: false,
       capacityScope: scope,
-      strictQualityFilter,
     });
     const added = Math.max(0, activeBank.readyCount() - beforeStrict);
     if (added > 0) {
@@ -106,11 +127,7 @@ export function completeQuestionBankWithFinalFallbacks({
         reason: `${sourceBackedCompletionMarker}: completed ${added} final source-backed replacement question${added === 1 ? "" : "s"} from selected source text.`,
       });
     }
-    sourceCapacity = analyzeSourceBackedCompletionCapacity({
-      bank: activeBank,
-      concepts,
-      config: sourceCapacityConfig,
-    });
+    sourceCapacity = localAnalyzeCapacity();
   };
 
   const tryAbsurdHardFinalFill = () => {
@@ -126,35 +143,26 @@ export function completeQuestionBankWithFinalFallbacks({
     let hardSourceAdded = 0;
     let hardSyllabusAdded = 0;
 
-    const hardSourceCapacity = analyzeSourceBackedCompletionCapacity({
-      bank: activeBank,
-      concepts,
+    const hardSourceCapacity = localAnalyzeCapacity({
       config: hardConfig,
       startIndex: startIndex ?? activeBank.allCandidates().length + 801,
     });
 
     if (hardSourceCapacity.enough) {
       const beforeHardSource = activeBank.readyCount();
-      completeQuestionBankWithSourceBackedFallback({
-        bank: activeBank,
-        concepts,
+      localSourceFallback({
         config: hardConfig,
         startIndex: startIndex ?? activeBank.allCandidates().length + 801,
         deadlineAt,
         minRemainingMs,
-        throwOnInsufficientCapacity: false,
         capacityScope: `${scope} absurd hard final fill`,
-        strictQualityFilter,
       });
       hardSourceAdded = Math.max(0, activeBank.readyCount() - beforeHardSource);
     }
 
     if (activeBank.missingCount() > 0) {
       sourceCapacityConfig = hardConfig;
-      sourceCapacity = analyzeSourceBackedCompletionCapacity({
-        bank: activeBank,
-        concepts,
-        config: sourceCapacityConfig,
+      sourceCapacity = localAnalyzeCapacity({
         startIndex: startIndex ?? activeBank.allCandidates().length + 1601,
       });
       if (sourceCapacity.enough) {
@@ -195,34 +203,23 @@ export function completeQuestionBankWithFinalFallbacks({
     }
 
     sourceCapacityConfig = activeBank.missingCount() > 0 ? hardConfig : activeConfig;
-    sourceCapacity = analyzeSourceBackedCompletionCapacity({
-      bank: activeBank,
-      concepts,
-      config: sourceCapacityConfig,
-    });
+    sourceCapacity = localAnalyzeCapacity();
   };
 
   const trySourceBackedLastMileFill = () => {
     if (activeBank.missingCount() <= 0) return;
 
-    sourceCapacity = analyzeSourceBackedCompletionCapacity({
-      bank: activeBank,
-      concepts,
-      config: sourceCapacityConfig,
+    sourceCapacity = localAnalyzeCapacity({
       startIndex: startIndex ?? activeBank.allCandidates().length + 1601,
     });
     if (!sourceCapacity.enough) return;
 
     const beforeLastMile = activeBank.readyCount();
-    completeQuestionBankWithSourceBackedFallback({
-      bank: activeBank,
-      concepts,
+    localSourceFallback({
       config: sourceCapacityConfig,
       startIndex: startIndex ?? activeBank.allCandidates().length + 1601,
-      throwOnInsufficientCapacity: false,
-      capacityScope: `${scope} source-backed last-mile fill`,
       minRemainingMs: 0,
-      strictQualityFilter,
+      capacityScope: `${scope} source-backed last-mile fill`,
     });
     const added = Math.max(0, activeBank.readyCount() - beforeLastMile);
     if (added > 0) {
@@ -233,11 +230,7 @@ export function completeQuestionBankWithFinalFallbacks({
       });
     }
 
-    sourceCapacity = analyzeSourceBackedCompletionCapacity({
-      bank: activeBank,
-      concepts,
-      config: sourceCapacityConfig,
-    });
+    sourceCapacity = localAnalyzeCapacity();
   };
 
   const tryQualityStableFinalFill = () => {
@@ -306,11 +299,7 @@ export function completeQuestionBankWithFinalFallbacks({
       })),
     );
 
-    sourceCapacity = analyzeSourceBackedCompletionCapacity({
-      bank: activeBank,
-      concepts,
-      config: sourceCapacityConfig,
-    });
+    sourceCapacity = localAnalyzeCapacity();
   };
 
   const trySyllabusNearCompletion = (indexOffset: number) => {
@@ -364,11 +353,7 @@ export function completeQuestionBankWithFinalFallbacks({
           reason: tpWarning.reasonText,
         });
       }
-      sourceCapacity = analyzeSourceBackedCompletionCapacity({
-        bank: activeBank,
-        concepts,
-        config: activeConfig,
-      });
+      sourceCapacity = localAnalyzeCapacity({ config: activeConfig });
       tryStrictSourceCompletion();
     }
   };
@@ -393,11 +378,7 @@ export function completeQuestionBankWithFinalFallbacks({
     }
   } else {
     sourceCapacityConfig = activeConfig;
-    sourceCapacity = analyzeSourceBackedCompletionCapacity({
-      bank: activeBank,
-      concepts,
-      config: sourceCapacityConfig,
-    });
+    sourceCapacity = localAnalyzeCapacity();
   }
 
   const readyQuestionCount = activeBank.readyCount();

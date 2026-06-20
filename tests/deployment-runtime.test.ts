@@ -43,8 +43,8 @@ describe("deployment runtime safety", () => {
     expect(deploymentHealthRoute).not.toMatch(/@\/lib\/api-security/);
     expect(deploymentHealthRoute).not.toMatch(/@\/lib\/db/);
     expect(deploymentHealthRoute).not.toMatch(/@\/lib\/gemini/);
-    expect(generatePaperRoute).toMatch(/export const maxDuration = 60/);
-    expect(generatePaperRoute).toMatch(/return 52_000/);
+    expect(generatePaperRoute).toMatch(/export const maxDuration = 300/);
+    expect(generatePaperRoute).toMatch(/return 270_000/);
     expect(generatePaperRoute).toMatch(/EDUTEST_SERVER_GENERATION_BUDGET_MS/);
     expect(generatePaperRoute).toMatch(/EDUTEST_SOURCE_BACKED_COMPLETION_RESERVE_MS/);
     expect(generatePaperRoute).toMatch(/return 1_000/);

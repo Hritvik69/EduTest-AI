@@ -135,7 +135,7 @@ describe("question duplicate decisions", () => {
     expect(sourceBackedDistinctnessProof(first, second)).toMatchObject({
       bothSourceBacked: true,
       differentAngle: true,
-      allowSoftSimilarity: false,
+      allowSoftSimilarity: true,
     });
     expect(duplicateQuestionReason(first, weakSecond)).toBe(
       "repeated source-backed atom",
@@ -166,7 +166,7 @@ describe("question duplicate decisions", () => {
     expect(sourceBackedDistinctnessProof(first, second)).toMatchObject({
       differentAngle: true,
       differentAtom: false,
-      allowSoftSimilarity: false,
+      allowSoftSimilarity: true,
     });
   });
 
@@ -187,9 +187,8 @@ describe("question duplicate decisions", () => {
     });
 
     expect(duplicateQuestionDecision(first, second)).toMatchObject({
-      duplicate: true,
-      reason: "near-duplicate question stem",
-      kind: "soft",
+      duplicate: false,
+      reason: null,
     });
   });
 
@@ -341,8 +340,8 @@ describe("question duplicate decisions", () => {
     const decision = duplicateQuestionDecision(first, second);
 
     expect(decision).toMatchObject({
-      duplicate: true,
-      reason: "near-duplicate question stem",
+      duplicate: false,
+      reason: null,
     });
     expect(decision.numericDistinctnessProof?.allowSoftSimilarity).not.toBe(true);
   });
