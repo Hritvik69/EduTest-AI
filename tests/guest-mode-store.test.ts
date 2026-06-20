@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
 import { createGuestUser } from "@/lib/api-security";
 import { generateBlueprint } from "@/lib/blueprint";
@@ -13,10 +13,16 @@ import {
   getPaperOwnerId,
   listPapersForUser,
   markPaperReady,
+  persistGeneratedPaper,
   saveQuestionsAndLink,
   setPaperGenerationManifest,
 } from "@/lib/paper-store";
-import type { GeneratedQuestion, GenerationManifest, PaperConfig } from "@/types";
+import type {
+  GeneratedQuestion,
+  GenerationManifest,
+  PaperConfig,
+  StoredPaper,
+} from "@/types";
 
 const config: PaperConfig = {
   classNum: 10,
@@ -262,5 +268,277 @@ describe("guest-mode paper storage", () => {
       paperId: first.paperId,
       reused: true,
     });
+  });
+
+  it("returns null from persistGeneratedPaper when the paper has no questions", async () => {
+    const guest = createGuestUser("guest-session-persist-empty");
+    const blueprint = generateBlueprint(config);
+    const emptyPaper: StoredPaper = {
+      id: 999_001,
+      title: "Class 10 Science Practice",
+      config,
+      blueprint,
+      questions: [],
+      isDemoMode: false,
+      status: "READY",
+      createdAt: new Date().toISOString(),
+    };
+
+    const persisted = await persistGeneratedPaper(
+      emptyPaper,
+      guest.id,
+      null,
+      "empty-persist-key",
+    );
+
+    expect(persisted).toBeNull();
+  });
+
+  it("persists a ready paper to the dashboard listing in dev with no database", async () => {
+    const guest = createGuestUser("guest-session-persist-happy");
+    const blueprint = generateBlueprint(config);
+    const readyPaper: StoredPaper = {
+      id: 999_002,
+      title: "Class 10 Science Practice",
+      config,
+      blueprint,
+      questions: [question],
+      isDemoMode: false,
+      status: "READY",
+      createdAt: new Date().toISOString(),
+    };
+
+    const persisted = await persistGeneratedPaper(
+      readyPaper,
+      guest.id,
+      "job-persist-happy",
+      "persist-happy-key",
+    );
+
+    expect(persisted).not.toBeNull();
+    // persistGeneratedPaper returns the status captured from createPaperInDB
+    // (GENERATING); saveQuestionsAndLink + markPaperReady then update the
+    // memory row to READY before we read the dashboard listing below.
+    expect(persisted?.status).toBe("GENERATING");
+    expect(persisted?.reused).toBe(false);
+    expect(typeof persisted?.paperId).toBe("number");
+
+    const dashboard = await listPapersForUser(guest.id);
+    const persistedRow = dashboard.find((row) => row.id === persisted?.paperId);
+    expect(persistedRow).toMatchObject({
+      isOwner: true,
+      status: "READY",
+      title: "Class 10 Science Practice",
+    });
+  });
+
+  it("throws from persistGeneratedPaper in production when no database is configured", async () => {
+    const guest = createGuestUser("guest-session-persist-prod");
+    const blueprint = generateBlueprint(config);
+    const readyPaper: StoredPaper = {
+      id: 999_003,
+      title: "Class 10 Science Practice",
+      config,
+      blueprint,
+      questions: [question],
+      isDemoMode: false,
+      status: "READY",
+      createdAt: new Date().toISOString(),
+    };
+
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("VERCEL", "");
+
+    try {
+      await expect(
+        persistGeneratedPaper(
+          readyPaper,
+          guest.id,
+          "job-persist-prod",
+          "persist-prod-key",
+        ),
+      ).rejects.toThrow(/Database save failed.*persistence/);
+    } finally {
+      vi.unstubAllEnvs();
+    }
+  });
+});
+
+describe("listPapersForUser with database configured", () => {
+  beforeEach(() => {
+    vi.resetModules();
+    delete process.env.DATABASE_URL;
+    delete process.env.VERCEL;
+  });
+
+  afterEach(() => {
+    vi.resetModules();
+    vi.doUnmock("@/lib/db");
+  });
+
+  function dbRow(
+    overrides: Partial<{
+      id: number;
+      title: string;
+      created_at: string;
+      user_id: number;
+    }> = {},
+  ) {
+    return {
+      id: 1,
+      title: "DB Paper",
+      subject: "Science",
+      class_num: 10,
+      total_marks: 100,
+      duration: 60,
+      status: "READY",
+      is_demo_mode: false,
+      error_metadata: null,
+      created_at: new Date().toISOString(),
+      user_id: -1,
+      latest_attempt_id: null,
+      latest_percentage: null,
+      ...overrides,
+    };
+  }
+
+  function installSqlMock(rows: unknown[]) {
+    const sql: any = vi.fn();
+    sql.mockResolvedValue(rows);
+    sql.transaction = vi.fn();
+    vi.doMock("@/lib/db", () => ({ default: sql }));
+    return sql;
+  }
+
+  function installNullSql() {
+    vi.doMock("@/lib/db", () => ({ default: null }));
+  }
+
+  function insertMemoryPaper(
+    memoryPapers: Map<number, StoredPaper>,
+    ownerId: number,
+    paperId: number,
+    overrides: Partial<StoredPaper> = {},
+  ) {
+    const blueprint = generateBlueprint(config);
+    memoryPapers.set(paperId, {
+      id: paperId,
+      title: "Memory Paper",
+      config,
+      blueprint,
+      questions: [],
+      isDemoMode: false,
+      status: "READY",
+      createdAt: new Date().toISOString(),
+      ...overrides,
+    });
+    // paper-store.ts keeps the owners map on globalThis.__edutestPaperOwners;
+    // reach it via the same registration to stay in sync without exporting it.
+    const owners = (globalThis as { __edutestPaperOwners?: Map<number, number> })
+      .__edutestPaperOwners;
+    if (!owners) {
+      throw new Error("memoryPaperOwners registry is missing on globalThis");
+    }
+    owners.set(paperId, ownerId);
+  }
+
+  it("merges database rows with memory fallback papers for a guest user, sorted by createdAt desc", async () => {
+    const guest = createGuestUser("guest-session-merge-rows");
+    const now = Date.now();
+
+    installSqlMock([
+      dbRow({
+        id: 100,
+        title: "DB Paper",
+        user_id: guest.id,
+        created_at: new Date(now - 1_000).toISOString(),
+      }),
+    ]);
+
+    const { listPapersForUser, memoryPapers } = await import("@/lib/paper-store");
+    insertMemoryPaper(memoryPapers, guest.id, 2_147_483_648, {
+      title: "Memory Fallback Paper",
+      createdAt: new Date(now - 5_000).toISOString(),
+    });
+
+    const dashboard = await listPapersForUser(guest.id);
+
+    expect(dashboard).toHaveLength(2);
+    expect(dashboard.map((row) => row.id)).toEqual([100, 2_147_483_648]);
+    expect(dashboard.map((row) => row.title)).toEqual([
+      "DB Paper",
+      "Memory Fallback Paper",
+    ]);
+    expect(dashboard.every((row) => row.isOwner)).toBe(true);
+  });
+
+  it("deduplicates papers that exist in both memory and database by id", async () => {
+    const guest = createGuestUser("guest-session-merge-dedup");
+
+    installSqlMock([
+      dbRow({
+        id: 200,
+        title: "Shared Paper",
+        user_id: guest.id,
+      }),
+    ]);
+
+    const { listPapersForUser, memoryPapers } = await import("@/lib/paper-store");
+    insertMemoryPaper(memoryPapers, guest.id, 200, {
+      title: "Shared Paper",
+    });
+
+    const dashboard = await listPapersForUser(guest.id);
+
+    expect(dashboard).toHaveLength(1);
+    expect(dashboard[0].id).toBe(200);
+  });
+
+  it("returns only database rows when a guest has no memory fallback papers", async () => {
+    const guest = createGuestUser("guest-session-merge-db-only");
+
+    installSqlMock([
+      dbRow({ id: 400, title: "DB Only", user_id: guest.id }),
+    ]);
+
+    const { listPapersForUser } = await import("@/lib/paper-store");
+
+    const dashboard = await listPapersForUser(guest.id);
+
+    expect(dashboard).toHaveLength(1);
+    expect(dashboard[0]).toMatchObject({
+      id: 400,
+      title: "DB Only",
+      isOwner: true,
+    });
+  });
+
+  it("does not merge memory papers for non-guest users", async () => {
+    const nonGuestId = 4242;
+
+    installSqlMock([
+      dbRow({ id: 500, title: "DB Paper", user_id: nonGuestId }),
+    ]);
+
+    const { listPapersForUser, memoryPapers } = await import("@/lib/paper-store");
+    insertMemoryPaper(memoryPapers, nonGuestId, 501, {
+      title: "Should Not Appear",
+    });
+
+    const dashboard = await listPapersForUser(nonGuestId);
+
+    expect(dashboard).toHaveLength(1);
+    expect(dashboard[0].id).toBe(500);
+    expect(dashboard[0].title).toBe("DB Paper");
+  });
+
+  it("throws when database is required but not configured for a non-guest user", async () => {
+    installNullSql();
+
+    const { listPapersForUser } = await import("@/lib/paper-store");
+
+    await expect(listPapersForUser(9999)).rejects.toThrow(
+      "Database is required to list papers.",
+    );
   });
 });

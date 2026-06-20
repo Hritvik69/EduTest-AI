@@ -635,12 +635,20 @@ export async function updatePaperDefinition(
  * Persist a fully generated (READY) paper to the database so it appears on the
  * dashboard and survives browser/refresh. This chains the existing
  * createPaperInDB -> saveQuestionsAndLink -> setPaperGenerationManifest ->
- * markPaperReady helpers. On any failure it returns null so callers can fall
- * back to the session-only snapshot — generation never breaks because of this.
+ * markPaperReady helpers.
  *
- * Returns the numeric database paper id on success, or null when persistence
- * was skipped/failed (for example when no database is configured or a guest
- * memory store is in use and the DB write failed transiently).
+ * Behaviour by environment:
+ *   - DB configured: writes to Postgres. On any failure, rethrows so the route
+ *     returns a real 502 — we never claim "Saved!" when the row isn't durable.
+ *   - DB not configured AND dev mode (NODE_ENV !== production AND not on
+ *     Vercel): falls back to the in-memory guest map so local dev still shows
+ *     saved papers on the dashboard. This fallback is intentionally absent in
+ *     production because serverless lambda instances do not share the
+ *     in-memory map, so a "saved" paper on one instance would never appear on
+ *     another — the original bug we are guarding against here.
+ *
+ * Returns the numeric database paper id on success, or null when there are no
+ * questions to save.
  */
 export async function persistGeneratedPaper(
   paper: StoredPaper,
@@ -671,11 +679,20 @@ export async function persistGeneratedPaper(
       reused: creation.reused,
     };
   } catch (error) {
-    console.warn("[paper-store] persistGeneratedPaper failed; falling back to in-memory store", {
-      message: error instanceof Error ? error.message : String(error),
-    });
-    // Even if the database write fails (e.g. Neon "fetch failed"), store the
-    // paper in the in-memory guest map so it still appears on the dashboard.
+    const isProduction = process.env.NODE_ENV === "production" || process.env.VERCEL === "1";
+    if (sql || isProduction) {
+      console.error("[paper-store] persistGeneratedPaper failed; not silently falling back", {
+        message: error instanceof Error ? error.message : String(error),
+      });
+      throw error;
+    }
+
+    console.warn(
+      "[paper-store] persistGeneratedPaper failed in dev mode; falling back to in-memory store",
+      {
+        message: error instanceof Error ? error.message : String(error),
+      },
+    );
     const fallbackId = nextMemoryId();
     memoryPapers.set(fallbackId, paper);
     memoryPaperOwners.set(fallbackId, userId);
@@ -766,30 +783,62 @@ export async function getPaperOwnerId(paperId: number) {
 export async function listPapersForUser(userId: number) {
   pruneGuestMemory();
   if (isGuestUserId(userId) && !sql) {
-    return Array.from(memoryPapers.values())
-      .filter(
-        (paper) =>
-          typeof paper.id === "number" && memoryPaperOwners.get(paper.id) === userId,
-      )
-      .sort((left, right) => Date.parse(right.createdAt) - Date.parse(left.createdAt))
-      .slice(0, 100)
-      .map((paper) => ({
-        id: paper.id,
-        title: paper.title,
-        subject: paper.config.subject,
-        classNum: paper.config.classNum,
-        totalMarks: paper.config.totalMarks,
-        duration: paper.config.duration,
-        status: paper.status,
-        latestAttemptId: null,
-        latestPercentage: null,
-        isDemoMode: paper.isDemoMode,
-        isOwner: true,
-        errorMetadata: paper.errorMetadata ?? null,
-        createdAt: paper.createdAt,
-      }));
+    return listMemoryPapersForGuest(userId);
   }
 
+  if (!sql) throw new Error("Database is required to list papers.");
+
+  const dbRows = await listDatabasePapersForUser(userId);
+
+  // For guest users also merge in any in-memory fallback papers. In production
+  // the memory fallback is not used (persistGeneratedPaper throws on DB
+  // failure), so this branch only matters for dev where memory fallback is
+  // still allowed. We dedupe by paper id so we never double-list a paper that
+  // happens to exist in both stores (which can happen transiently in dev).
+  if (isGuestUserId(userId)) {
+    const memoryRows = listMemoryPapersForGuest(userId);
+    if (!memoryRows.length) return dbRows;
+    const dbIds = new Set(dbRows.map((row) => row.id));
+    const merged = [...dbRows];
+    for (const row of memoryRows) {
+      if (!dbIds.has(row.id)) {
+        merged.push(row);
+        dbIds.add(row.id);
+      }
+    }
+    merged.sort((left, right) => Date.parse(right.createdAt) - Date.parse(left.createdAt));
+    return merged.slice(0, 100);
+  }
+
+  return dbRows;
+}
+
+function listMemoryPapersForGuest(userId: number) {
+  return Array.from(memoryPapers.values())
+    .filter(
+      (paper) =>
+        typeof paper.id === "number" && memoryPaperOwners.get(paper.id) === userId,
+    )
+    .sort((left, right) => Date.parse(right.createdAt) - Date.parse(left.createdAt))
+    .slice(0, 100)
+    .map((paper) => ({
+      id: Number(paper.id),
+      title: paper.title,
+      subject: paper.config.subject,
+      classNum: paper.config.classNum,
+      totalMarks: paper.config.totalMarks,
+      duration: paper.config.duration,
+      status: paper.status,
+      latestAttemptId: null,
+      latestPercentage: null,
+      isDemoMode: paper.isDemoMode,
+      isOwner: true,
+      errorMetadata: paper.errorMetadata ?? null,
+      createdAt: paper.createdAt,
+    }));
+}
+
+async function listDatabasePapersForUser(userId: number) {
   if (!sql) throw new Error("Database is required to list papers.");
 
   const rows = await sql`
