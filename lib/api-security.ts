@@ -252,7 +252,7 @@ async function resolveGuestSessionId(request?: Request) {
     const signedValue = await createSignedGuestSessionCookieValue(cookieValue);
     try {
       const { cookies } = await import("next/headers");
-      const cookieStore = cookies();
+      const cookieStore = await cookies();
       cookieStore.set({
         name: guestSessionCookieName,
         value: signedValue,
