@@ -58,6 +58,8 @@ export const difficultySchema = z.enum(difficultyValues);
 export const aiProviderSchema = z.enum(aiProviderValues);
 export const sourceModeSchema = z.enum(sourceModeValues);
 export const questionGenerationModeSchema = z.enum(questionGenerationModeValues);
+export const paperFocusValues = ["mixed", "numerical", "concept"] as const;
+export const paperFocusSchema = z.enum(paperFocusValues);
 export const bloomLevelSchema = z.enum(bloomLevelValues);
 
 const boundedText = (max: number) =>
@@ -154,6 +156,7 @@ export const paperConfigSchema = z
     difficulty: difficultySchema,
     aiProvider: aiProviderSchema.default("AUTO"),
     generationMode: questionGenerationModeSchema.default("fresh"),
+    paperFocus: paperFocusSchema.default("mixed"),
     integrationPrompt: z.string().trim().max(1200).optional(),
     questionTypes: z.array(questionTypeSchema).min(1).max(questionTypeValues.length),
     typeDistribution: typeDistributionSchema,

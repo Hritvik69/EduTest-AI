@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { fetchApiData } from "@/lib/api-client";
 import { classes, subjects as staticSubjects } from "@/lib/edutest-data";
 import { cn } from "@/lib/utils";
-import type { ChapterOption, LanguageMode, SubjectSelection } from "@/types";
+import type { ChapterOption, LanguageMode, PaperFocus, SubjectSelection } from "@/types";
 import { usePaperConfig } from "./paper-config-context";
 
 interface SubjectOption {
@@ -372,6 +372,50 @@ export function StepOne() {
         </div>
       ) : null}
 
+      {selectedSubjects.some((s) => isScienceSubject(s)) ? (
+        <div className="rounded-lg border border-blue-300/20 bg-blue-500/5 p-4">
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <div className="text-sm font-semibold text-blue-50">
+                Paper Focus — Numerical / Concept / Mixed
+              </div>
+              <p className="mt-1 text-xs text-slate-400">
+                Choose the type of questions. &ldquo;Numerical&rdquo; generates
+                calculation/solve-type questions, &ldquo;Concept&rdquo; generates
+                theory/reasoning questions, &ldquo;Mixed&rdquo; gives 50-50.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {(
+                [
+                  { id: "numerical" as PaperFocus, label: "🔢 Numerical", hint: "Calculation, solve, derive" },
+                  { id: "concept" as PaperFocus, label: "📖 Concept", hint: "Theory, reasoning, explain" },
+                  { id: "mixed" as PaperFocus, label: "🔀 Mixed", hint: "50% Numerical + 50% Concept" },
+                ] as const
+              ).map((option) => {
+                const active = (config.paperFocus ?? "mixed") === option.id;
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => updateConfig({ paperFocus: option.id })}
+                    title={option.hint}
+                    className={cn(
+                      "h-9 rounded-lg border px-3 text-xs font-bold transition",
+                      active
+                        ? "border-blue-300 bg-primary text-white shadow-glow"
+                        : "border-white/10 bg-white/[0.035] text-slate-300 hover:border-blue-300/50",
+                    )}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <div>
         <div className="mb-3 flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
           <div>
@@ -542,4 +586,13 @@ function buildSubjectSelections(
 function isLanguageSubject(subject: string): boolean {
   const normalized = subject.trim().toLowerCase();
   return normalized === "hindi" || normalized === "english";
+}
+
+function isScienceSubject(subject: string): boolean {
+  const normalized = subject.trim().toLowerCase();
+  return (
+    normalized === "mathematics" ||
+    normalized === "physics" ||
+    normalized === "chemistry"
+  );
 }

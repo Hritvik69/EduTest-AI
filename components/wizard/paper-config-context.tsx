@@ -9,7 +9,7 @@ import {
   normalizeQuestionCountDistribution,
 } from "@/lib/blueprint";
 import { defaultBloomDistribution } from "@/lib/edutest-data";
-import type { AIProvider, PaperConfig, PaperSourceMode, QuestionGenerationMode, QuestionType } from "@/types";
+import type { AIProvider, PaperConfig, PaperFocus, PaperSourceMode, QuestionGenerationMode, QuestionType } from "@/types";
 
 const storageKey = "edutest:paper-config";
 
@@ -27,6 +27,7 @@ export const defaultPaperConfig: PaperConfig = {
   difficulty: "MEDIUM",
   aiProvider: "AUTO",
   generationMode: "fresh",
+  paperFocus: "mixed" as PaperFocus,
   integrationPrompt: "",
   questionTypes: ["MCQ", "CASE_BASED", "SHORT", "LONG", "HOTS"],
   typeDistribution: {

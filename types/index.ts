@@ -46,6 +46,7 @@ export type BloomLevel =
 export type ContentSource = "pdf" | "ncert_txt" | "curriculum" | "demo" | "unknown";
 export type PaperSourceMode = "curriculum" | "pdf_upload";
 export type QuestionGenerationMode = "fresh" | "source_exact" | "source_insights";
+export type PaperFocus = "mixed" | "numerical" | "concept";
 export type AITask =
   | "PDF_EXTRACTION"
   | "QUESTION_GENERATION"
@@ -76,6 +77,7 @@ export interface GenerationContract {
     examType: string;
     difficulty: Difficulty;
     generationMode: QuestionGenerationMode;
+    paperFocus?: PaperFocus;
     bloomDistribution: Record<BloomLevel, number>;
     aiProvider: AIProvider;
     integrationPrompt?: string;
@@ -280,6 +282,7 @@ export interface PaperConfig {
   difficulty: Difficulty;
   aiProvider?: AIProvider;
   generationMode?: QuestionGenerationMode;
+  paperFocus?: PaperFocus;
   integrationPrompt?: string;
   questionTypes: QuestionType[];
   /** Number of questions requested for each selected question type. */

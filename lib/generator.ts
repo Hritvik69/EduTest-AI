@@ -816,6 +816,7 @@ This is fingerprint sequence #${fingerprintSequence} for a brand-new paper. Trea
 `;
 
   const generationModeRules = buildGenerationModePromptRules(config);
+  const paperFocusRules = buildPaperFocusRules(config);
   const strictRules = `
 Rules:
 - Obey CONFIG_JSON exactly: section type/count/marks, topics, exam type, and difficulty targets.
@@ -831,6 +832,7 @@ Rules:
 - If the user selected one chapter, every question must come only from that chapter. If the user selected a topic inside that chapter, every question must come only from that topic's scoped context.
 - No outside/web/generic filler.
 ${generationModeRules}
+${paperFocusRules}
 - Required fields on every item: text, correctAnswer, explanation, topic, difficulty, bloomLevel, reasoningSteps, difficultyConfidence, cognitiveComplexity{conceptIntegration,abstractionLevel,inferenceLevel,ambiguityLevel,cognitiveLoad}.
 - Topic must exactly match one allowed topic.
 - Subject must match the active subject in SUBJECT_WORKFLOW and the coverage focus.
@@ -1079,6 +1081,7 @@ Rules:
 - In normal NCERT mode, CONFIG_JSON.source_kind must be NCERT_BOOKS_TXT and the paper must stay source-grounded.
 - Do not use the whole PDF/book, neighboring chapters, previous/next chapters, contents pages, transcripts, or outside/web knowledge.
 ${buildGenerationModePromptRules(config)}
+${buildPaperFocusRules(config)}
 - Every returned question must include type, text, correctAnswer, explanation, topic, difficulty, bloomLevel, marks, reasoningSteps, difficultyConfidence, noveltyAngle, sourceChunkFocus, answerPath, cognitiveComplexity{conceptIntegration,abstractionLevel,inferenceLevel,ambiguityLevel,cognitiveLoad}.
 - The type/marks must exactly match CONFIG_JSON.sections, and section candidate_count must be satisfied whenever possible.
 - If CONFIG_JSON.integration_prompt is non-empty, apply it as teacher guidance for style, examples, local context, and emphasis only when it does not conflict with source scope, counts, marks, format, difficulty, or validation rules.
@@ -1205,6 +1208,32 @@ function buildGenerationModePromptRules(config: PaperConfig) {
 - CONFIG_JSON.generation_mode is "fresh".
 - Create new teacher-written questions from selected concepts and selected source meaning.
 - Do not copy source lines verbatim as final question text.`;
+}
+
+function buildPaperFocusRules(config: PaperConfig) {
+  const focus = config.paperFocus ?? "mixed";
+  if (focus === "numerical") {
+    return `PAPER FOCUS: NUMERICAL
+- CONFIG_JSON.paper_focus is "numerical".
+- Generate ONLY numerical / problem-solving questions: calculations, derivations, solve-for-x, find-the-value, prove-and-compute, data interpretation, and quantitative application of the selected chapter formulas and concepts.
+- Deep-read every selected chapter's worked examples, formulae, and exercise numericals. Build fresh numericals grounded in those exact formulas, values, and units from the selected topics only.
+- Every question must require a computation, formula application, or step-by-step quantitative derivation as its core task. Do NOT produce pure-theory or "explain why" questions.
+- Include the correct numerical answer in correctAnswer, the full step-by-step solution in reasoningSteps, and the relevant formula in explanation.
+- Vary the given values across questions so answers are not identical.`;
+  }
+  if (focus === "concept") {
+    return `PAPER FOCUS: CONCEPT
+- CONFIG_JSON.paper_focus is "concept".
+- Generate ONLY concept / theory / reasoning questions: definitions, explain why/how, compare-contrast, application of concepts, distinguish-between, give-reasons, and qualitative understanding of the selected chapters.
+- Deep-read ALL the selected chapter text — definitions, explanations, examples, diagrams, and reasoning — then ask questions that test conceptual understanding and reasoning rather than computation.
+- Do NOT produce calculation or "find the value" numerical questions. Focus on understanding, reasoning, and explanation.
+- Answers must be backed by NCERT keywords, definitions, and reasoning from the selected source only.`;
+  }
+  return `PAPER FOCUS: MIXED
+- CONFIG_JSON.paper_focus is "mixed".
+- Generate a balanced ~50% numerical / problem-solving questions and ~50% concept / theory / reasoning questions from the selected chapters.
+- Distribute the two kinds across the batch as evenly as the question count allows. Do not let one kind dominate.
+- Numerical questions require computation or formula application; concept questions require definition, reasoning, comparison, or qualitative understanding.`;
 }
 
 function buildRepairFeedbackBlock(repairFeedback?: GenerationRepairFeedback) {

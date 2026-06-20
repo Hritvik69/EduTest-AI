@@ -62,6 +62,7 @@ export function buildGenerationContract(
       examType: config.examType,
       difficulty: config.difficulty,
       generationMode: normalizeGenerationMode(config.generationMode),
+      paperFocus: (config.paperFocus ?? "mixed") as "mixed" | "numerical" | "concept",
       bloomDistribution: config.bloomDistribution,
       aiProvider: config.aiProvider ?? "AUTO",
       integrationPrompt: normalizeIntegrationPrompt(config.integrationPrompt),
@@ -97,6 +98,7 @@ export function generationContractPromptPayload(contract: GenerationContract) {
       contract.paper.generationMode === "source_exact"
         ? "NCERT/PDF Source"
         : "Fresh Questions",
+    paper_focus: contract.paper.paperFocus ?? "mixed",
     blooms: contract.paper.bloomDistribution,
     ai_provider: contract.paper.aiProvider,
     integration_prompt: contract.paper.integrationPrompt ?? "",
