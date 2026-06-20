@@ -3,7 +3,6 @@ import sql from "@/lib/db";
 import {
   jsonError,
   parseJsonWithSchema,
-  rateLimit,
   requireAuthenticatedUser,
 } from "@/lib/api-security";
 import {
@@ -149,15 +148,6 @@ function sessionOnlyResumeState(): PaperGenerationState | null {
 export async function POST(request: NextRequest) {
   const auth = await requireAuthenticatedUser(request);
   if (auth.response) return auth.response;
-
-  const limited = rateLimit(
-    request,
-    `generate-paper:${auth.user.id}`,
-    6,
-    10 * 60_000,
-    { action: "paper generation requests" },
-  );
-  if (limited) return limited;
 
   const parsed = await parseJsonWithSchema(request, generationRequestSchema);
   if (parsed.response) return parsed.response;
