@@ -25,7 +25,6 @@ export async function readSignedGuestSessionCookieValue(
   value: string | undefined | null,
 ) {
   if (!value) return null;
-  if (hasValidGuestSessionIdShape(value)) return value;
 
   const [sessionId, signature, extra] = value.split(".");
   if (extra !== undefined || !isValidGuestSessionId(sessionId) || !signature) {

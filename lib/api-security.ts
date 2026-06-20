@@ -218,7 +218,57 @@ async function resolveGuestSessionId(request?: Request) {
   if (!request) return defaultGuestSessionId;
   const cookieHeader = request?.headers.get("cookie") ?? "";
   const cookieValue = readCookie(cookieHeader, guestSessionCookieName);
-  return readSignedGuestSessionCookieValue(cookieValue);
+  if (!cookieValue) return null;
+
+  const signedId = await readSignedGuestSessionCookieValue(cookieValue);
+  if (signedId) return signedId;
+
+  // If it's unsigned but has a valid shape (e.g. set by the edge proxy)
+  const {
+    hasValidGuestSessionIdShape,
+    guestUserIdFromSession,
+    createSignedGuestSessionCookieValue,
+    signedGuestSessionMaxAge,
+  } = await import("@/lib/guest-session");
+
+  if (hasValidGuestSessionIdShape(cookieValue)) {
+    const guestUserId = guestUserIdFromSession(cookieValue);
+    let userExists = false;
+    if (sql) {
+      try {
+        const rows = await sql`SELECT 1 FROM users WHERE id = ${guestUserId} LIMIT 1`;
+        userExists = Array.isArray(rows) && rows.length > 0;
+      } catch (err) {
+        console.error("[resolveGuestSessionId] failed to query guest user from database", err);
+      }
+    }
+
+    if (userExists) {
+      // Reject unsigned access to an existing guest account
+      return null;
+    }
+
+    // It's a new guest session; auto-upgrade it by setting a signed cookie
+    const signedValue = await createSignedGuestSessionCookieValue(cookieValue);
+    try {
+      const { cookies } = await import("next/headers");
+      const cookieStore = cookies();
+      cookieStore.set({
+        name: guestSessionCookieName,
+        value: signedValue,
+        httpOnly: true,
+        sameSite: "lax",
+        secure: request.url.startsWith("https:"),
+        path: "/",
+        maxAge: signedGuestSessionMaxAge,
+      });
+    } catch {
+      // Ignore failures when cookies() is used outside Next.js request context (e.g., in unit tests)
+    }
+    return cookieValue;
+  }
+
+  return null;
 }
 
 function readCookie(cookieHeader: string, name: string) {

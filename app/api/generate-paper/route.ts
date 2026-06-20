@@ -205,11 +205,11 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  const generationSignalController = new AbortController();
   const stream = new ReadableStream({
     async start(controller) {
       let streamClosed = false;
       let preflightPassed = false;
-      const generationSignalController = new AbortController();
       const serverBudgetMs = generationServerBudgetMs();
       const generationDeadlineAt = Date.now() + serverBudgetMs;
       const generationDeadlineTimer = setTimeout(() => {
@@ -1455,6 +1455,9 @@ export async function POST(request: NextRequest) {
         request.signal.removeEventListener("abort", abortGenerationFromClient);
         releaseInFlightGeneration();
       }
+    },
+    cancel(reason) {
+      generationSignalController.abort(reason || new Error("Stream cancelled by client."));
     },
   });
 

@@ -16,13 +16,14 @@ function getPool() {
 
 const sql = sqlFunc
   ? Object.assign(sqlFunc, {
-      transaction: async (callback: (tx: any) => any[]) => {
+      transaction: async (callback: (tx: any) => any) => {
         const p = getPool();
         if (!p) throw new Error("Database not configured");
         const client = await p.connect();
         try {
           await client.query("BEGIN");
           
+          let queryQueue = Promise.resolve();
           const txTag = async (strings: TemplateStringsArray, ...values: any[]) => {
             let queryText = "";
             for (let i = 0; i < strings.length; i++) {
@@ -31,14 +32,24 @@ const sql = sqlFunc
                 queryText += `$${i + 1}`;
               }
             }
-            const res = await client.query(queryText, values);
+            const resultPromise = queryQueue.then(() => client.query(queryText, values));
+            queryQueue = resultPromise.then(() => {}, () => {}); // Catch and continue queue chain
+            const res = await resultPromise;
             return res.rows;
           };
 
-          const queries = callback(txTag);
+          const resultOrPromise = callback(txTag);
+          const queries =
+            resultOrPromise instanceof Promise ? await resultOrPromise : resultOrPromise;
+
           const results = [];
-          for (const queryPromise of queries) {
-            results.push(await queryPromise);
+          if (Array.isArray(queries)) {
+            for (const queryPromise of queries) {
+              results.push(await queryPromise);
+            }
+          } else {
+            await queryQueue;
+            results.push(queries);
           }
 
           await client.query("COMMIT");

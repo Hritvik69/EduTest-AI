@@ -61,11 +61,12 @@ export async function POST(request: NextRequest) {
 function streamPdfSourceUpload(request: NextRequest, user: PdfUploadUser) {
   const encoder = new TextEncoder();
 
+  const uploadController = new AbortController();
+  const uploadSignal = uploadController.signal;
+
   const stream = new ReadableStream({
     async start(controller) {
       let closed = false;
-      const uploadController = new AbortController();
-      const uploadSignal = uploadController.signal;
       const abortFromClient = () => {
         if (!uploadSignal.aborted) {
           uploadController.abort(new Error("PDF upload was cancelled."));
@@ -136,6 +137,9 @@ function streamPdfSourceUpload(request: NextRequest, user: PdfUploadUser) {
       } finally {
         close();
       }
+    },
+    cancel(reason) {
+      uploadController.abort(reason || new Error("PDF upload was cancelled."));
     },
   });
 
