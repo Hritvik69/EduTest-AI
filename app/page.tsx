@@ -13,6 +13,10 @@ import {
   Timer,
   UploadCloud,
 } from "lucide-react";
+// Note: the red "NCERT SOURCE + INSIGHTS" landing-page hero button has been
+// removed. Hidden-Gems / Curiosity / NCERT+Insights source modes are now
+// surfaced as in-flow mode toggles inside the create-test wizard
+// (`components/wizard/step-one.tsx`).
 import { BrandLogo } from "@/components/brand-logo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -169,7 +173,11 @@ const heroEvaluation = [
 export default async function LandingPage() {
   const createTestHref = "/create-test";
   const pdfTestHref = "/create-test?mode=pdf";
-  const ncertInsightsHref = "/create-test?mode=insights";
+  // The red "NCERT SOURCE + INSIGHTS" hero CTA used to live here. It has been
+  // intentionally removed from the landing page — hidden-gems / NCERT insights
+  // source modes are now surfaced inside the create-test wizard instead
+  // (see components/wizard/step-one.tsx → "Hidden Gems & Curiosity Questions"
+  // card).
 
   return (
     <main className="min-h-screen overflow-hidden bg-background text-slate-100">
@@ -211,16 +219,6 @@ export default async function LandingPage() {
                 <Link href={pdfTestHref}>
                   <UploadCloud className="h-5 w-5" />
                   PDF-EDU-TEST
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                className="border-red-300/50 bg-red-600 text-white shadow-[0_0_34px_rgb(239_68_68/0.58)] ring-1 ring-red-200/20 hover:bg-red-500 hover:shadow-[0_0_46px_rgb(239_68_68/0.72)]"
-              >
-                <Link href={ncertInsightsHref}>
-                  <BookOpenCheck className="h-5 w-5" />
-                  NCERT SOURCE + INSIGHTS
                 </Link>
               </Button>
             </div>

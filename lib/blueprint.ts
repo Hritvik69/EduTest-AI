@@ -6,6 +6,7 @@ import {
 import type {
   Blueprint,
   BlueprintSection,
+  Difficulty,
   PaperConfig,
   PaperFocus,
   QuestionType,
@@ -187,7 +188,7 @@ export function generateBlueprint(config: PaperConfig): Blueprint {
     normalizedConfig.bloomDistribution,
   );
 
-  const sections: BlueprintSection[] = selectedTypes
+  const regularSections: BlueprintSection[] = selectedTypes
     .filter((questionType) => (counts[questionType] ?? 0) > 0)
     .map((questionType) => {
       const marks = marksPerType[questionType];
@@ -203,6 +204,7 @@ export function generateBlueprint(config: PaperConfig): Blueprint {
         bloomBreakdown,
       };
     });
+  const sections = withHiddenGemsSection(regularSections, normalizedConfig);
 
   return {
     sections,
@@ -217,6 +219,66 @@ export function generateBlueprint(config: PaperConfig): Blueprint {
         1,
     ),
   };
+}
+
+function withHiddenGemsSection(
+  sections: BlueprintSection[],
+  config: PaperConfig,
+): BlueprintSection[] {
+  const requested = config.hiddenGems?.enabled
+    ? clampHiddenGemsCount(config.hiddenGems.questionCount)
+    : 0;
+  if (!requested) return sections;
+
+  const hiddenDifficulty = normalizeHiddenGemsDifficulty(
+    config.hiddenGems?.difficulty,
+  );
+  const existingMcq = sections.find((section) => section.questionType === "MCQ");
+
+  if (existingMcq) {
+    return sections.map((section) => {
+      if (section !== existingMcq) return section;
+
+      const count = section.count + requested;
+      return {
+        ...section,
+        count,
+        totalMarks: count * section.marksPerQuestion,
+        hiddenGemsCount: (section.hiddenGemsCount ?? 0) + requested,
+        hiddenGemsDifficulty: hiddenDifficulty,
+      };
+    });
+  }
+
+  return [
+    ...sections,
+    {
+      name: "Hidden Gems & Curiosity",
+      questionType: "MCQ",
+      count: requested,
+      marksPerQuestion: marksPerType.MCQ,
+      totalMarks: requested * marksPerType.MCQ,
+      difficulty: hiddenDifficulty,
+      difficultyBreakdown: difficultyMixFor(hiddenDifficulty),
+      bloomBreakdown: normalizeBloomDistributionForDifficulty(
+        hiddenDifficulty,
+        config.bloomDistribution,
+      ),
+      hiddenGemsCount: requested,
+      hiddenGemsDifficulty: hiddenDifficulty,
+    },
+  ];
+}
+
+function clampHiddenGemsCount(value: unknown) {
+  const numberValue = Number(value);
+  if (!Number.isFinite(numberValue)) return 0;
+  return Math.max(0, Math.min(10, Math.round(numberValue)));
+}
+
+function normalizeHiddenGemsDifficulty(value: unknown): Difficulty {
+  if (value === "EASY" || value === "MEDIUM" || value === "HARD") return value;
+  return "MEDIUM";
 }
 
 export function normalizeQuestionCountDistribution(

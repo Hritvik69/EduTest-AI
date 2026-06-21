@@ -48,10 +48,14 @@ export function buildGenerationContract(
   const sections = blueprint.sections.map((section) => ({
     name: section.name,
     type: section.questionType,
-    label: questionTypeLabel(section.questionType),
+    label: section.hiddenGemsCount === section.count
+      ? "Hidden Gems & Curiosity"
+      : questionTypeLabel(section.questionType),
     count: section.count,
     marksPerQuestion: section.marksPerQuestion,
     totalMarks: section.totalMarks,
+    hiddenGemsCount: section.hiddenGemsCount,
+    hiddenGemsDifficulty: section.hiddenGemsDifficulty,
   }));
   const apiEstimate = estimateApiUse(config, blueprint, {
     candidateQuestions: options.candidateQuestions,
@@ -71,6 +75,7 @@ export function buildGenerationContract(
       questionStyle: normalizeQuestionStyle(config.questionStyle ?? defaultQuestionStyle),
       aiProvider: config.aiProvider ?? "AUTO",
       integrationPrompt: normalizeIntegrationPrompt(config.integrationPrompt),
+      hiddenGems: normalizeHiddenGems(config),
     },
     sections,
     apiEstimate,
@@ -102,7 +107,14 @@ export function generationContractPromptPayload(contract: GenerationContract) {
     generation_mode_label:
       contract.paper.generationMode === "source_exact"
         ? "NCERT/PDF Source"
+        : contract.paper.generationMode === "source_insights"
+          ? "NCERT Source + Insights"
         : "Fresh Questions",
+    hidden_gems: contract.paper.hiddenGems ?? {
+      enabled: false,
+      questionCount: 0,
+      difficulty: "MEDIUM",
+    },
     paper_focus: contract.paper.paperFocus ?? "mixed",
     blooms: contract.paper.bloomDistribution,
     question_style: contract.paper.questionStyle,
@@ -117,6 +129,8 @@ export function generationContractPromptPayload(contract: GenerationContract) {
       count: section.count,
       marks_per_question: section.marksPerQuestion,
       total_marks: section.totalMarks,
+      hidden_gems_count: section.hiddenGemsCount ?? 0,
+      hidden_gems_difficulty: section.hiddenGemsDifficulty ?? null,
     })),
     api_estimate: contract.apiEstimate,
   };
@@ -327,9 +341,34 @@ function normalizeIntegrationPrompt(value: string | undefined) {
   return trimmed ? trimmed.slice(0, 1200) : undefined;
 }
 
+function normalizeHiddenGems(config: PaperConfig) {
+  const questionCount = Math.max(
+    0,
+    Math.min(10, Math.round(config.hiddenGems?.questionCount ?? 0)),
+  );
+  const difficulty =
+    config.hiddenGems?.difficulty === "EASY" ||
+    config.hiddenGems?.difficulty === "MEDIUM" ||
+    config.hiddenGems?.difficulty === "HARD"
+      ? config.hiddenGems.difficulty
+      : "MEDIUM";
+
+  return {
+    enabled: Boolean(config.hiddenGems?.enabled && questionCount > 0),
+    questionCount,
+    difficulty,
+  };
+}
+
 function normalizeGenerationMode(
   value: PaperConfig["generationMode"],
 ): NonNullable<PaperConfig["generationMode"]> {
-  if (value === "source_exact" || value === "source_insights") return value;
+  if (
+    value === "source_exact" ||
+    value === "source_insights" ||
+    value === "hidden_gems"
+  ) {
+    return value;
+  }
   return "fresh";
 }

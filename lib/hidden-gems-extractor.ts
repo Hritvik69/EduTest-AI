@@ -50,7 +50,9 @@ export function extractHiddenGems(
   const gems: HiddenGem[] = [];
 
   // 1. HIGH PRIORITY: Did You Know sections
-  const didYouKnowMatches = sourceText.matchAll(EXTRACTION_PATTERNS.didYouKnow);
+  const didYouKnowMatches = Array.from(
+    sourceText.matchAll(EXTRACTION_PATTERNS.didYouKnow),
+  );
   for (const match of didYouKnowMatches) {
     gems.push({
       type: "DID_YOU_KNOW",
@@ -61,7 +63,9 @@ export function extractHiddenGems(
   }
 
   // 2. HIGH PRIORITY: Side notes and footnotes
-  const sideNoteMatches = sourceText.matchAll(EXTRACTION_PATTERNS.sideNote);
+  const sideNoteMatches = Array.from(
+    sourceText.matchAll(EXTRACTION_PATTERNS.sideNote),
+  );
   for (const match of sideNoteMatches) {
     const content = match[1]?.trim() || match[2]?.trim() || "";
     if (content) {
@@ -75,7 +79,9 @@ export function extractHiddenGems(
   }
 
   // 3. Scientist names and contributions
-  const scientistMatches = sourceText.matchAll(EXTRACTION_PATTERNS.scientistName);
+  const scientistMatches = Array.from(
+    sourceText.matchAll(EXTRACTION_PATTERNS.scientistName),
+  );
   const scientists = new Set<string>();
   for (const match of scientistMatches) {
     const name = match[1]?.trim();
@@ -91,7 +97,9 @@ export function extractHiddenGems(
   }
 
   // 4. Discoveries and formulations
-  const discoveryMatches = sourceText.matchAll(EXTRACTION_PATTERNS.discovery);
+  const discoveryMatches = Array.from(
+    sourceText.matchAll(EXTRACTION_PATTERNS.discovery),
+  );
   for (const match of discoveryMatches) {
     gems.push({
       type: "DISCOVERY",
@@ -102,7 +110,9 @@ export function extractHiddenGems(
   }
 
   // 5. Timelines
-  const timelineMatches = sourceText.matchAll(EXTRACTION_PATTERNS.timeline);
+  const timelineMatches = Array.from(
+    sourceText.matchAll(EXTRACTION_PATTERNS.timeline),
+  );
   for (const match of timelineMatches) {
     gems.push({
       type: "TIMELINE",
@@ -113,7 +123,9 @@ export function extractHiddenGems(
   }
 
   // 6. Etymology and origins
-  const etymologyMatches = sourceText.matchAll(EXTRACTION_PATTERNS.etymology);
+  const etymologyMatches = Array.from(
+    sourceText.matchAll(EXTRACTION_PATTERNS.etymology),
+  );
   for (const match of etymologyMatches) {
     gems.push({
       type: "ETYMOLOGY",
@@ -124,18 +136,22 @@ export function extractHiddenGems(
   }
 
   // 7. Experiments and observations
-  const experimentMatches = sourceText.matchAll(EXTRACTION_PATTERNS.experiment);
+  const experimentMatches = Array.from(
+    sourceText.matchAll(EXTRACTION_PATTERNS.experiment),
+  );
   for (const match of experimentMatches) {
     gems.push({
       type: "EXPERIMENT",
       content: match[1]?.trim() || "",
-      bloomLevel: "APPLY",
+      bloomLevel: "ANALYZE",
       source: chapter,
     });
   }
 
   // 8. Comparisons
-  const comparisonMatches = sourceText.matchAll(EXTRACTION_PATTERNS.comparison);
+  const comparisonMatches = Array.from(
+    sourceText.matchAll(EXTRACTION_PATTERNS.comparison),
+  );
   for (const match of comparisonMatches) {
     gems.push({
       type: "COMPARISON",

@@ -1,7 +1,16 @@
 "use client";
 
 import * as React from "react";
-import { Check, Loader2 } from "lucide-react";
+import {
+  Brain,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  Loader2,
+  Minus,
+  Plus,
+  Sparkles,
+} from "lucide-react";
 import { AccordionItem } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -9,8 +18,27 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { fetchApiData } from "@/lib/api-client";
 import { classes, subjects as staticSubjects } from "@/lib/edutest-data";
 import { cn } from "@/lib/utils";
-import type { ChapterOption, LanguageMode, PaperFocus, SubjectSelection } from "@/types";
+import type {
+  ChapterOption,
+  Difficulty,
+  LanguageMode,
+  PaperFocus,
+  SubjectSelection,
+} from "@/types";
 import { usePaperConfig } from "./paper-config-context";
+
+const HIDDEN_GEMS_DIFFICULTY_OPTIONS: {
+  id: Difficulty;
+  label: string;
+  hint: string;
+}[] = [
+  { id: "EASY", label: "Easy", hint: "Light did-you-know facts" },
+  { id: "MEDIUM", label: "Medium", hint: "Balanced mix of curiosity" },
+  { id: "HARD", label: "Hard", hint: "Tough origins & timelines" },
+];
+
+const HIDDEN_GEMS_MIN_COUNT = 0;
+const HIDDEN_GEMS_MAX_COUNT = 10;
 
 interface SubjectOption {
   name: string;
@@ -26,6 +54,34 @@ export function StepOne() {
   const [subjectOptions, setSubjectOptions] =
     React.useState<SubjectOption[]>(staticSubjects);
   const [loading, setLoading] = React.useState(false);
+  const [hiddenGemsOpen, setHiddenGemsOpen] = React.useState(() =>
+    Boolean(config.hiddenGems?.enabled),
+  );
+  const hiddenGems = config.hiddenGems ?? {
+    enabled: false,
+    questionCount: 0,
+    difficulty: "MEDIUM" as Difficulty,
+  };
+
+  function setHiddenGems(patch: Partial<typeof hiddenGems>) {
+    const next = { ...hiddenGems, ...patch };
+    const enabled = Boolean(next.enabled);
+    const questionCount =
+      patch.enabled === true && clampHiddenGemsCount(next.questionCount) === 0
+        ? 5
+        : clampHiddenGemsCount(next.questionCount);
+    updateConfig({
+      hiddenGems: {
+        enabled,
+        questionCount,
+        difficulty: next.difficulty,
+      },
+    });
+  }
+
+  React.useEffect(() => {
+    if (config.hiddenGems?.enabled) setHiddenGemsOpen(true);
+  }, [config.hiddenGems?.enabled]);
 
   React.useEffect(() => {
     let cancelled = false;
@@ -314,6 +370,23 @@ export function StepOne() {
         </div>
       </div>
 
+      {selectedSubjects.length ? (
+        <div className="space-y-3">
+          <div className="mono-label text-xs uppercase text-slate-400">
+            Modes for selected subjects
+          </div>
+          <HiddenGemsCard
+            open={hiddenGemsOpen}
+            onToggleOpen={() => setHiddenGemsOpen((value) => !value)}
+            enabled={hiddenGems.enabled}
+            questionCount={hiddenGems.questionCount}
+            difficulty={hiddenGems.difficulty}
+            onChange={setHiddenGems}
+            selectedSubjects={selectedSubjects}
+          />
+        </div>
+      ) : null}
+
       {selectedSubjects.some((s) => isLanguageSubject(s)) ? (
         <div className="space-y-3">
           {selectedSubjects
@@ -546,6 +619,196 @@ export function StepOne() {
         )}
       </div>
     </div>
+  );
+}
+
+function HiddenGemsCard({
+  open,
+  onToggleOpen,
+  enabled,
+  questionCount,
+  difficulty,
+  onChange,
+  selectedSubjects,
+}: {
+  open: boolean;
+  onToggleOpen: () => void;
+  enabled: boolean;
+  questionCount: number;
+  difficulty: Difficulty;
+  onChange: (patch: {
+    enabled?: boolean;
+    questionCount?: number;
+    difficulty?: Difficulty;
+  }) => void;
+  selectedSubjects: string[];
+}) {
+  const count = clampHiddenGemsCount(questionCount);
+  const effectiveDifficulty =
+    difficulty === "EASY" || difficulty === "MEDIUM" || difficulty === "HARD"
+      ? difficulty
+      : "MEDIUM";
+  const subjectLabel =
+    selectedSubjects.length > 3
+      ? `${selectedSubjects.slice(0, 3).join(", ")} +${selectedSubjects.length - 3}`
+      : selectedSubjects.join(", ");
+
+  return (
+    <Card
+      className={cn(
+        "overflow-hidden border-blue-300/20 bg-blue-500/[0.055]",
+        enabled && "border-blue-300/50 bg-blue-500/10",
+      )}
+    >
+      <button
+        type="button"
+        onClick={onToggleOpen}
+        className="flex w-full items-start justify-between gap-3 p-4 text-left"
+        aria-expanded={open}
+      >
+        <div className="flex min-w-0 gap-3">
+          <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-blue-300/20 bg-slate-950/60 text-blue-100">
+            <Brain className="h-4 w-4" />
+          </span>
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <h3 className="text-base font-extrabold text-white">
+                Hidden Gems & Curiosity Questions
+              </h3>
+              {enabled ? (
+                <span className="rounded-full border border-emerald-300/25 bg-emerald-400/10 px-2 py-0.5 text-[11px] font-bold uppercase text-emerald-100">
+                  {count} included
+                </span>
+              ) : null}
+            </div>
+            <p className="mt-1 text-xs leading-5 text-slate-400">
+              Mine overlooked facts and side notes from {subjectLabel || "the selected subjects"}.
+            </p>
+          </div>
+        </div>
+        {open ? (
+          <ChevronUp className="mt-1 h-4 w-4 shrink-0 text-slate-400" />
+        ) : (
+          <ChevronDown className="mt-1 h-4 w-4 shrink-0 text-slate-400" />
+        )}
+      </button>
+
+      {open ? (
+        <div className="border-t border-white/10 p-4 pt-3">
+          <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-white/10 bg-slate-950/40 p-3">
+            <Checkbox
+              checked={enabled}
+              onChange={(event) => onChange({ enabled: event.target.checked })}
+              className="mt-1"
+            />
+            <span>
+              <span className="block text-sm font-bold text-slate-100">
+                Include Hidden Facts
+              </span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">
+                Generate from did-you-know facts, scientist names, discoveries,
+                timelines, origins, experiments, rare comparisons, tables,
+                footnotes, captions, and context students usually ignore.
+              </span>
+            </span>
+          </label>
+
+          <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div>
+              <div className="mb-2 text-xs font-bold uppercase text-slate-400">
+                Difficulty
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {HIDDEN_GEMS_DIFFICULTY_OPTIONS.map((option) => {
+                  const active = effectiveDifficulty === option.id;
+                  return (
+                    <button
+                      key={option.id}
+                      type="button"
+                      title={option.hint}
+                      onClick={() => onChange({ difficulty: option.id })}
+                      disabled={!enabled}
+                      className={cn(
+                        "h-9 rounded-lg border px-3 text-xs font-bold transition disabled:cursor-not-allowed disabled:opacity-50",
+                        active
+                          ? "border-blue-300 bg-primary text-white shadow-glow"
+                          : "border-white/10 bg-white/[0.035] text-slate-300 hover:border-blue-300/50",
+                      )}
+                    >
+                      {option.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div>
+              <div className="mb-2 text-xs font-bold uppercase text-slate-400">
+                Questions
+              </div>
+              <div className="flex items-center gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  aria-label="Decrease hidden gems questions"
+                  disabled={!enabled || count <= HIDDEN_GEMS_MIN_COUNT}
+                  className="h-9 w-9"
+                  onClick={() => onChange({ questionCount: count - 1 })}
+                >
+                  <Minus className="h-4 w-4" />
+                </Button>
+                <input
+                  value={count}
+                  type="number"
+                  min={HIDDEN_GEMS_MIN_COUNT}
+                  max={HIDDEN_GEMS_MAX_COUNT}
+                  disabled={!enabled}
+                  onChange={(event) =>
+                    onChange({ questionCount: Number(event.target.value) })
+                  }
+                  className="h-9 w-16 rounded-lg border border-white/10 bg-slate-950 text-center text-sm font-bold text-white outline-none transition disabled:opacity-50 focus:border-blue-300/70"
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  aria-label="Increase hidden gems questions"
+                  disabled={!enabled || count >= HIDDEN_GEMS_MAX_COUNT}
+                  className="h-9 w-9"
+                  onClick={() => onChange({ questionCount: count + 1 })}
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
+              <div className="mt-1 text-[11px] text-slate-500">
+                0-{HIDDEN_GEMS_MAX_COUNT} extra questions
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-4 rounded-lg border border-white/10 bg-slate-950/40 p-3 text-xs leading-5 text-slate-400">
+            <div className="mb-1 flex items-center gap-2 font-bold text-blue-100">
+              <Sparkles className="h-3.5 w-3.5" />
+              Source-mining priority
+            </div>
+            Hidden slots avoid basic textbook definitions and prioritize names,
+            dates, discoveries, origins, observations, instruments, timelines,
+            side notes, forgotten tables, and unusual comparisons found in the
+            selected chapter source.
+          </div>
+        </div>
+      ) : null}
+    </Card>
+  );
+}
+
+function clampHiddenGemsCount(value: number | undefined) {
+  const numberValue = Number(value ?? 0);
+  if (!Number.isFinite(numberValue)) return 0;
+  return Math.max(
+    HIDDEN_GEMS_MIN_COUNT,
+    Math.min(HIDDEN_GEMS_MAX_COUNT, Math.round(numberValue)),
   );
 }
 

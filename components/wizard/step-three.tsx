@@ -283,6 +283,9 @@ export function StepThree() {
                   <span className="ml-2 text-slate-400">
                     {section.count} question{section.count === 1 ? "" : "s"} |{" "}
                     {section.totalMarks} marks
+                    {section.hiddenGemsCount
+                      ? ` | ${section.hiddenGemsCount} hidden gems`
+                      : ""}
                   </span>
                 </div>
               );

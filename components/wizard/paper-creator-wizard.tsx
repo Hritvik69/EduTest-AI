@@ -422,6 +422,9 @@ function ConfirmationScreen({
                   <span className="ml-2 text-slate-400">
                     {section.count} question{section.count === 1 ? "" : "s"} |{" "}
                     {section.totalMarks} marks
+                    {section.hiddenGemsCount
+                      ? ` | ${section.hiddenGemsCount} hidden gems`
+                      : ""}
                   </span>
                 </div>
               );
@@ -548,7 +551,11 @@ function PromptImpactPanel({
   const generationModeLabel =
     contract.paper.generationMode === "source_exact"
       ? "NCERT/PDF Source"
+      : contract.paper.generationMode === "source_insights"
+        ? "NCERT Source + Insights"
       : "Fresh Questions";
+  const hiddenGems = contract.paper.hiddenGems;
+  const hiddenGemsEnabled = Boolean(hiddenGems?.enabled && hiddenGems.questionCount > 0);
 
   return (
     <div className="rounded-lg border border-blue-300/20 bg-blue-500/[0.055] p-4">
@@ -577,6 +584,9 @@ function PromptImpactPanel({
             scopeLabel + (hiddenChapters ? ` (+ ${hiddenChapters} more)` : ""),
             `${contract.paper.totalQuestions} questions | ${contract.paper.totalMarks} marks | ${contract.paper.durationMin} min`,
             `Mode: ${generationModeLabel}`,
+            hiddenGemsEnabled
+              ? `Hidden Gems: ${hiddenGems!.questionCount} ${hiddenGems!.difficulty.toLowerCase()}`
+              : "Hidden Gems: off",
             `${difficultyLabels[contract.paper.difficulty]} difficulty | ${aiProviderLabel}`,
           ]}
         />
@@ -599,6 +609,9 @@ function PromptImpactPanel({
             sectionSummary || "No valid section shape yet",
             `Style: ${styleSummary}`,
             bloomSummary || "Bloom mix pending",
+            hiddenGemsEnabled
+              ? `Curiosity source-mining: ${hiddenGems!.questionCount} slots`
+              : "Curiosity source-mining off",
             integrationPrompt
               ? `Integration: ${truncateText(integrationPrompt, 110)}`
               : "No extra integration prompt",

@@ -3,6 +3,7 @@ import {
   allocateDifficultyTargetsForSections,
   buildDifficultyProtocolPrompt,
   chooseBatchDifficultyTargets,
+  difficultyTargetsForCount,
   normalizeDifficultyTargets,
   normalizeQuestionDifficulty,
   subtractDifficultyTargets,
@@ -124,10 +125,7 @@ export async function generatePaperQuestions(config: PaperConfig, conceptContext
   const blueprint = buildBlueprint(config);
   const questions: GeneratedQuestion[] = [];
   const availableTopics = extractAvailableTopics(conceptContext);
-  const difficultyAllocations = allocateDifficultyTargetsForSections(
-    config.difficulty,
-    blueprint.sections,
-  );
+  const difficultyAllocations = difficultyTargetsForBlueprint(config, blueprint.sections);
 
   for (let index = 0; index < blueprint.sections.length; index += 1) {
     const section = blueprint.sections[index];
@@ -214,8 +212,8 @@ export async function generateBlueprintQuestions(
   }
 
   const availableTopics = options.availableTopics ?? extractAvailableTopics(conceptContext);
-  const requiredDifficultyAllocation = allocateDifficultyTargetsForSections(
-    config.difficulty,
+  const requiredDifficultyAllocation = difficultyTargetsForBlueprint(
+    config,
     blueprint.sections,
   );
   const sectionDifficultyTargets = blueprint.sections.map(
@@ -228,13 +226,39 @@ export async function generateBlueprintQuestions(
     ),
   );
   const candidateBlueprint = blueprintForCandidateSections(blueprint, candidateSections);
-  const candidateDifficultyAllocation = allocateDifficultyTargetsForSections(
-    config.difficulty,
+  const candidateDifficultyAllocation = difficultyTargetsForBlueprint(
+    config,
     candidateSections,
   );
   const sectionCandidateDifficultyTargets = candidateSections.map(
     (_section, index) => candidateDifficultyAllocation[index],
   );
+
+  if (blueprint.sections.some((section) => section.hiddenGemsCount)) {
+    const questions: GeneratedQuestion[] = [];
+
+    for (let index = 0; index < blueprint.sections.length; index += 1) {
+      const section = blueprint.sections[index];
+      questions.push(
+        ...(await generateQuestionsForSection(section, conceptContext, config, {
+          allowPartial: options.allowPartial,
+          availableTopics,
+          existingQuestions: [...(options.existingQuestions ?? []), ...questions],
+          generationPlan: options.generationPlan,
+          difficultyTargets: requiredDifficultyAllocation[index],
+          generationNonce: options.generationNonce,
+          cooldownScope: options.cooldownScope,
+          healthyProviders: options.healthyProviders,
+          partialMaxExtraAttempts: options.allowPartial ? 1 : undefined,
+          signal: options.signal,
+          onBatchComplete: options.onBatchComplete,
+        })),
+      );
+    }
+
+    return questions;
+  }
+
   const prompt = buildBlueprintPrompt(
     blueprint,
     conceptContext,
@@ -435,6 +459,47 @@ function duplicateReasons(duplicates: Array<DuplicateQuestionMatch<GeneratedQues
   return Array.from(new Set(duplicates.map((item) => item.reason)))
     .slice(0, 3)
     .join(", ");
+}
+
+function difficultyTargetsForBlueprint(
+  config: PaperConfig,
+  sections: BlueprintSection[],
+): Record<number, Record<PaperConfig["difficulty"], number>> {
+  if (!sections.some((section) => section.hiddenGemsCount)) {
+    return allocateDifficultyTargetsForSections(config.difficulty, sections);
+  }
+
+  return Object.fromEntries(
+    sections.map((section, index) => [
+      index,
+      difficultyTargetsForSection(config, section),
+    ]),
+  ) as Record<number, Record<PaperConfig["difficulty"], number>>;
+}
+
+function difficultyTargetsForSection(
+  config: PaperConfig,
+  section: BlueprintSection,
+): Record<PaperConfig["difficulty"], number> {
+  const hiddenCount = Math.max(0, Math.min(section.count, section.hiddenGemsCount ?? 0));
+  const regularCount = Math.max(0, section.count - hiddenCount);
+  const regularTargets = regularCount
+    ? difficultyTargetsForCount(config.difficulty, regularCount, section.questionType)
+    : { EASY: 0, MEDIUM: 0, HARD: 0, ABSURD: 0 };
+  const hiddenTargets = hiddenCount
+    ? difficultyTargetsForCount(
+        section.hiddenGemsDifficulty ?? "MEDIUM",
+        hiddenCount,
+        section.questionType,
+      )
+    : { EASY: 0, MEDIUM: 0, HARD: 0, ABSURD: 0 };
+
+  return {
+    EASY: regularTargets.EASY + hiddenTargets.EASY,
+    MEDIUM: regularTargets.MEDIUM + hiddenTargets.MEDIUM,
+    HARD: regularTargets.HARD + hiddenTargets.HARD,
+    ABSURD: regularTargets.ABSURD + hiddenTargets.ABSURD,
+  };
 }
 
 async function generateQuestionBatches(
@@ -778,9 +843,9 @@ Chapter concepts:
 ${conceptContext}
 `;
   const batchIntelligence = intelligenceCountsForTotal(section.count);
-  const cognitiveLevels = targetBloomLevelsForDifficulty(config.difficulty);
+  const cognitiveLevels = targetBloomLevelsForDifficulty(section.difficulty);
   const difficultyProtocol = buildDifficultyProtocolPrompt(
-    config.difficulty,
+    section.difficulty,
     section.questionType,
     batchDifficultyTargets,
   );
@@ -824,7 +889,8 @@ This is fingerprint sequence #${fingerprintSequence} for a brand-new paper. Trea
 `;
 
   const generationModeRules = buildGenerationModePromptRules(config);
-  const paperFocusRules = buildPaperFocusRules(config);
+  const paperFocusRules = buildPaperFocusRules(config, section);
+  const hiddenGemsRules = buildHiddenGemsPromptRules(section);
   const strictRules = `
 Rules:
 - Obey CONFIG_JSON exactly: section type/count/marks, topics, exam type, and difficulty targets.
@@ -841,13 +907,14 @@ Rules:
 - No outside/web/generic filler.
 ${generationModeRules}
 ${paperFocusRules}
+${hiddenGemsRules}
 - Required fields on every item: text, correctAnswer, explanation, topic, difficulty, bloomLevel, reasoningSteps, difficultyConfidence, cognitiveComplexity{conceptIntegration,abstractionLevel,inferenceLevel,ambiguityLevel,cognitiveLoad}.
 - Topic must exactly match one allowed topic.
 - Subject must match the active subject in SUBJECT_WORKFLOW and the coverage focus.
 - Batch intelligence: ${batchIntelligence.basic} basic, ${batchIntelligence.important} important, ${batchIntelligence.conceptualTrap} conceptual trap.
 - Difficulty targets: batch ${JSON.stringify(normalizeDifficultyTargets(batchDifficultyTargets))}; section ${JSON.stringify(normalizeDifficultyTargets(sectionDifficultyTargets))}.
 - Ceiling/allowed: ${section.questionType} max ${difficultyProtocol.ceiling}; allowed ${difficultyProtocol.allowed.join(",")}; forbidden ${difficultyProtocol.forbidden.join(",")}.
-- Bloom focus for ${config.difficulty}: ${cognitiveLevels.join("+")}. Difficulty must be real reasoning/application/integration, never wording tricks.
+- Bloom focus for ${section.difficulty}: ${cognitiveLevels.join("+")}. Difficulty must be real reasoning/application/integration, never wording tricks.
 - Unique stems/concepts within this response; use fresh board-style questions grounded in concepts.
 - Never generate duplicate questions. A duplicate includes same concept angle, same numerical values, same scenario, same answer fact, same option pattern, or a near-paraphrase of any forbidden stem.
 - Fresh run nonce: ${generationNonce ?? "not-provided"}. Treat this as a new paper; do not reuse previous output, demo/template examples, or repeated numeric placeholders such as "20 units to 30 units".
@@ -1224,7 +1291,35 @@ function buildGenerationModePromptRules(config: PaperConfig) {
 - Do not copy source lines verbatim as final question text.`;
 }
 
-function buildPaperFocusRules(config: PaperConfig) {
+function buildHiddenGemsPromptRules(section: BlueprintSection) {
+  const hiddenCount = Math.max(0, Math.min(section.count, section.hiddenGemsCount ?? 0));
+  if (!hiddenCount) return "";
+
+  const regularCount = Math.max(0, section.count - hiddenCount);
+  const scope =
+    regularCount > 0
+      ? `Generate exactly ${hiddenCount} Hidden Gems & Curiosity question(s) inside this ${section.questionType} section. The remaining ${regularCount} question(s) are normal section questions.`
+      : `Every question in this section is a Hidden Gems & Curiosity question.`;
+
+  return `HIDDEN GEMS & CURIOSITY QUESTIONS (AUTHORITATIVE SOURCE-MINING MODE)
+- ${scope}
+- This is not a normal question type. It is a source mode for the requested slots; keep current_section.type, marks, and JSON shape exactly as requested.
+- Target hidden-gems difficulty: ${section.hiddenGemsDifficulty ?? "MEDIUM"}. Difficulty means how hard the overlooked detail is to notice and reason about, not vague wording.
+- Mine hidden facts, side notes, marginal notes, note boxes, "Did You Know?", "Know More", footnotes, captions, timelines, forgotten tables, discovery boxes, glossary/origin notes, experiments, observations, historical context, etymology, names, dates, instruments, places, and rare comparisons from the provided source text.
+- Give these high priority when present: note boxes, fun facts, footnotes, timeline sections, additional information boxes, marginal notes, "Did You Know?", "Know More", captions, and tables.
+- Do not write basic textbook questions for the hidden-gems slots. Avoid direct prompts like "What is an atom?", "Define LLM", "What is photosynthesis?", or "Who invented the microscope?" unless the source has a more specific overlooked context around the person/event.
+- Prefer hidden-gems angles such as: named person plus contribution, discovery order, century/date context, origin or literal meaning of a term, instrument used in an observation, overlooked experimental detail, before/after comparison, rare example, or table/sidebar detail.
+- Each hidden-gems question must include noveltyAngle starting with "Hidden Gems:" and sourceChunkFocus naming the mined source detail internally. Do not expose those labels in student-visible text.
+- If the selected source has no real hidden/sidebar/timeline detail, use the most overlooked concrete source detail available and still avoid generic definitions.`;
+}
+
+function buildPaperFocusRules(config: PaperConfig, section?: BlueprintSection) {
+  if (section?.hiddenGemsCount && section.hiddenGemsCount >= section.count) {
+    return `PAPER FOCUS OVERRIDE FOR HIDDEN GEMS
+- This section is dedicated to Hidden Gems & Curiosity source-mining. It is exempt from numerical/concept paper-focus collapse when those rules conflict with hidden factual, historical, origin, timeline, or side-note mining.
+- Still obey the requested section type, marks, count, source scope, and hidden-gems rules.`;
+  }
+
   const focus = config.paperFocus ?? "mixed";
   if (focus === "numerical") {
     return `PAPER FOCUS: NUMERICAL (STRICT — every question must be calculation/problem-solving)
@@ -1354,7 +1449,7 @@ function buildPromptConfig(
     uploaded_pdf_source_id: config.pdfSourceId ?? null,
     question_count: promptPayload.total_questions,
     difficulty_protocol: buildDifficultyProtocolPrompt(
-      config.difficulty,
+      section.difficulty,
       section.questionType,
       sectionDifficultyTargets,
     ),
@@ -1363,6 +1458,8 @@ function buildPromptConfig(
       count: section.count,
       marks_per_question: section.marksPerQuestion,
       total_marks: section.totalMarks,
+      hidden_gems_count: section.hiddenGemsCount ?? 0,
+      hidden_gems_difficulty: section.hiddenGemsDifficulty ?? null,
       difficulty_targets: normalizeDifficultyTargets(sectionDifficultyTargets),
     },
     generation_nonce: generationNonce ?? null,
@@ -1428,6 +1525,7 @@ function maxOutputTokensForSection(
     generationMode === "source_insights" && HEAVY_INSIGHT_TYPES.has(section.questionType)
       ? 1.15
       : 1;
+  const hiddenGemsBoost = section.hiddenGemsCount ? 1.12 : 1;
 
   const baseByType: Partial<Record<QuestionType, number>> = {
     MCQ: 3200,
@@ -1451,7 +1549,7 @@ function maxOutputTokensForSection(
   };
 
   const requested =
-    Math.round((baseByType[section.questionType] ?? 4200) * insightBoost) +
+    Math.round((baseByType[section.questionType] ?? 4200) * insightBoost * hiddenGemsBoost) +
     section.count * 300;
 
   if (mode === "LOW") {
@@ -1478,7 +1576,7 @@ function maxOutputTokensForSection(
 
     return Math.min(
       openRouterMaxOutputTokens(),
-      Math.round((lowBudgetByType[section.questionType] ?? 1000) * insightBoost),
+      Math.round((lowBudgetByType[section.questionType] ?? 1000) * insightBoost * hiddenGemsBoost),
       requested,
     );
   }
@@ -1589,9 +1687,13 @@ function applyDifficultyGovernance(
   const rejected: Array<{ question: GeneratedQuestion; reason: string }> = [];
 
   questions.forEach((question) => {
+    const selectedDifficultyForQuestion =
+      section.hiddenGemsCount && question.difficulty
+        ? question.difficulty
+        : section.difficulty;
     const result = normalizeQuestionDifficulty(
       question,
-      config.difficulty,
+      selectedDifficultyForQuestion,
       section.questionType,
     );
 

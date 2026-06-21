@@ -46,6 +46,11 @@ export const defaultPaperConfig: PaperConfig = {
   bloomDistribution: defaultBloomDistribution,
   questionStyle: defaultQuestionStyle,
   totalQuestions: 28,
+  hiddenGems: {
+    enabled: false,
+    questionCount: 0,
+    difficulty: "MEDIUM",
+  },
 };
 
 interface PaperConfigContextValue {

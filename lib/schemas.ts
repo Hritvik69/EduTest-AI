@@ -43,7 +43,12 @@ export const aiProviderValues = [
   "OPENAI",
 ] as const;
 export const sourceModeValues = ["curriculum", "pdf_upload"] as const;
-export const questionGenerationModeValues = ["fresh", "source_exact", "source_insights", "hidden_gems"] as const;
+export const questionGenerationModeValues = [
+  "fresh",
+  "source_exact",
+  "source_insights",
+  "hidden_gems",
+] as const;
 export const bloomLevelValues = [
   "REMEMBER",
   "UNDERSTAND",
@@ -100,6 +105,7 @@ export const questionStyleSchema = z
 
 export const questionTypeSchema = z.enum(questionTypeValues);
 export const difficultySchema = z.enum(difficultyValues);
+export const hiddenGemsDifficultySchema = z.enum(["EASY", "MEDIUM", "HARD"]);
 export const aiProviderSchema = z.enum(aiProviderValues);
 export const sourceModeSchema = z.enum(sourceModeValues);
 export const questionGenerationModeSchema = z.enum(questionGenerationModeValues);
@@ -194,6 +200,22 @@ export const uploadedPdfSourceSummarySchema = z.object({
   createdAt: z.string().optional(),
 });
 
+/**
+ * Hidden Gems & Curiosity Questions mode — extra MCQ section that asks the AI
+ * to mine side-notes / scientist names / dates / discoveries / historical
+ * context from the chapter source instead of writing basic textbook
+ * questions. Disabled by default; `questionCount` is 0-10 and `difficulty`
+ * controls how challenging the curiosity questions should be (independent of
+ * the paper's overall difficulty).
+ */
+export const hiddenGemsSchema = z
+  .object({
+    enabled: z.boolean().default(false),
+    questionCount: z.coerce.number().int().min(0).max(10).default(0),
+    difficulty: hiddenGemsDifficultySchema.default("MEDIUM"),
+  })
+  .default({ enabled: false, questionCount: 0, difficulty: "MEDIUM" });
+
 export const paperConfigSchema = z
   .object({
     sourceMode: sourceModeSchema.default("curriculum"),
@@ -220,6 +242,7 @@ export const paperConfigSchema = z
     questionStyle: questionStyleSchema.optional(),
     curiosityConfig: curiosityConfigSchema,
     totalQuestions: z.coerce.number().int().min(5).max(100),
+    hiddenGems: hiddenGemsSchema.optional(),
   })
   .superRefine((config, ctx) => {
     const uniqueTypes = new Set(config.questionTypes);
@@ -240,7 +263,7 @@ export const paperConfigSchema = z
         ctx.addIssue({
           code: "custom",
           path: ["questionTypes"],
-          message: `${type} cannot be generated for ${config.difficulty} difficulty because its format ceiling is ${formatDifficultyCeilings[type]}. Choose another format or lower the difficulty.[...]
+          message: `${type} cannot be generated for ${config.difficulty} difficulty because its format ceiling is ${formatDifficultyCeilings[type]}. Choose another format or lower the difficulty.`,
         });
       }
     });

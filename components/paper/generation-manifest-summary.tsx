@@ -26,8 +26,11 @@ export function GenerationManifestSummary({
   const promptMode = contract
     ? contract.paper.generationMode === "source_exact"
       ? "NCERT/PDF Source"
+      : contract.paper.generationMode === "source_insights"
+        ? "NCERT Source + Insights"
       : "Fresh Questions"
     : null;
+  const hiddenGems = contract?.paper.hiddenGems;
 
   return (
     <Card className="print:hidden p-4">
@@ -43,6 +46,9 @@ export function GenerationManifestSummary({
               ? ` with focus: "${manifest.source.pdfFocusPrompt}"`
               : ""}
             {promptMode ? `; mode: ${promptMode}` : ""}
+            {hiddenGems?.enabled && hiddenGems.questionCount > 0
+              ? `; hidden gems: ${hiddenGems.questionCount}`
+              : ""}
           </p>
         </div>
         <Badge className="border-blue-300/25 bg-blue-500/10 text-blue-100">

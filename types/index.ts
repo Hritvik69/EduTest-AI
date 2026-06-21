@@ -80,7 +80,19 @@ export interface QuestionStyle {
 
 export type ContentSource = "pdf" | "ncert_txt" | "curriculum" | "demo" | "unknown";
 export type PaperSourceMode = "curriculum" | "pdf_upload";
-export type QuestionGenerationMode = "fresh" | "source_exact" | "source_insights" | "hidden_gems";
+export type QuestionGenerationMode =
+  | "fresh"
+  | "source_exact"
+  | "source_insights"
+  /**
+   * Hidden Gems & Curiosity Questions — the AI is asked to mine overlooked
+   * side-notes, scientist names, dates, discoveries, experiments, historical
+   * context, "Did You Know?" boxes, marginal notes, and etymologies from the
+   * chapter source and write original question stems around them. Treated as
+   * an *additional* question source on top of the user's regular question
+   * types — controlled by {@link PaperConfig.hiddenGems}.
+   */
+  | "hidden_gems";
 export type PaperFocus = "mixed" | "numerical" | "concept";
 export type AITask =
   | "PDF_EXTRACTION"
@@ -141,6 +153,7 @@ export interface GenerationContract {
     questionStyle: QuestionStyle;
     aiProvider: AIProvider;
     integrationPrompt?: string;
+    hiddenGems?: HiddenGemsConfig;
   };
   sections: Array<{
     name: string;
@@ -149,6 +162,8 @@ export interface GenerationContract {
     count: number;
     marksPerQuestion: number;
     totalMarks: number;
+    hiddenGemsCount?: number;
+    hiddenGemsDifficulty?: Difficulty;
   }>;
   apiEstimate: {
     plannedCalls: number;
@@ -326,6 +341,27 @@ export interface QuestionCompositionItem {
   questionCount: number;
 }
 
+/**
+ * "Hidden Gems & Curiosity Questions" mode — an additional question source on
+ * top of the user's regular question types. When `enabled` is true and
+ * `questionCount > 0`, the wizard injects an extra MCQ section into the paper
+ * blueprint and the generator tells the AI to mine overlooked side-notes,
+ * scientist names, dates, discoveries, experiments, historical context,
+ * "Did You Know?" boxes, marginal notes, and etymologies from the chapter
+ * source instead of writing basic textbook questions.
+ *
+ * The `difficulty` here is the difficulty the AI should target when writing
+ * the curiosity questions — independent from the paper's overall difficulty
+ * so the user can opt for "Easy" curiosity questions in a "Hard" paper, etc.
+ */
+export interface HiddenGemsConfig {
+  enabled: boolean;
+  /** 0-10 questions added on top of the user's selected types. */
+  questionCount: number;
+  /** Curiosity-question difficulty (Easy / Medium / Hard). */
+  difficulty: Difficulty;
+}
+
 export interface PaperConfig {
   sourceMode?: PaperSourceMode;
   pdfSourceId?: number;
@@ -367,6 +403,13 @@ export interface PaperConfig {
    */
   curiosityConfig?: CuriosityConfig;
   totalQuestions: number;
+  /**
+   * Hidden Gems & Curiosity Questions mode. When enabled, the generator adds
+   * an extra MCQ section that asks the AI to mine side-notes / scientist
+   * names / dates / discoveries / historical context from the chapter
+   * source. See {@link HiddenGemsConfig}.
+   */
+  hiddenGems?: HiddenGemsConfig;
 }
 
 export interface UploadedPdfSourceSummary {
@@ -407,6 +450,13 @@ export interface BlueprintSection {
   difficulty: Difficulty;
   difficultyBreakdown: Partial<Record<Difficulty, number>>;
   bloomBreakdown: Partial<Record<BloomLevel, number>>;
+  /**
+   * Non-normal source-mode overlay. These are still rendered/validated as
+   * `questionType` questions, but the AI must mine overlooked source details
+   * for this many slots instead of writing regular textbook questions.
+   */
+  hiddenGemsCount?: number;
+  hiddenGemsDifficulty?: Difficulty;
 }
 
 export interface Blueprint {
