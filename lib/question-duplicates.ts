@@ -229,14 +229,24 @@ export function hardDuplicateReason(left: QuestionLike, right: QuestionLike) {
     leftMetadata &&
     rightMetadata &&
     normalizeSmall(leftMetadata.angleId) === normalizeSmall(rightMetadata.angleId) &&
-    normalizeSmall(leftMetadata.atomId) === normalizeSmall(rightMetadata.atomId)
+    normalizeSmall(leftMetadata.atomId) === normalizeSmall(rightMetadata.atomId) &&
+    !numericDistinctnessProof(left, right).allowSoftSimilarity
   ) {
     return "repeated source-backed angle";
   }
 
   const leftSourceKey = sourceBackedUniquenessKeyFromMetadata(leftMetadata);
   const rightSourceKey = sourceBackedUniquenessKeyFromMetadata(rightMetadata);
-  if (leftSourceKey && rightSourceKey && leftSourceKey === rightSourceKey) {
+  if (
+    leftSourceKey &&
+    rightSourceKey &&
+    leftSourceKey === rightSourceKey &&
+    !numericDistinctnessProof(left, right).allowSoftSimilarity
+  ) {
+    // Numerical questions on the same (concept, type) but with genuinely
+    // different inputs and final answers are distinct, even though their
+    // source-backed uniqueness key collides. We still let the dedicated
+    // `numericDistinctnessProof` guard flag truly identical numeric stems.
     return "repeated source-backed atom";
   }
 

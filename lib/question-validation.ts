@@ -186,6 +186,18 @@ const forbiddenStudentVisiblePatterns = [
   /\bEmployability\s+Skills\s*-\s*Class\s+iX\b/i,
   /\bS\s*eSSIon\s+\d+\b/i,
   /\bgeneral\s+claim\s+with\s+no\b/i,
+  // Fake "source-based activity" / "chapter activity" numerical patterns.
+  // These are textbook-section placeholders, not real calculations, so any
+  // NUMERICAL question whose text uses them is auto-rejected and the
+  // generator fills the slot with a real arithmetic problem.
+  /\bsource[- ]based\s+activity\s+on\b/i,
+  /\bchapter\s+activity\s+on\b/i,
+  /\bevidence\s+points?\s+(?:are|is)\s+listed\b/i,
+  /\blists?\s+\d+\s+key\s+details?\b/i,
+  /\bkey\s+details?\s+and\s+\d+\s+supporting\s+examples?\b/i,
+  /\bcorrect\s+features?\s+and\s+\d+\s+supporting\s+examples?\b/i,
+  /\b(?:supporting\s+examples?|key\s+details?|correct\s+features?)\s+(?:are|is)\s+listed\b/i,
+  /\bhow\s+many\s+evidence\s+points?\b/i,
 ];
 
 function hasMetadataMatchPair(question: GeneratedQuestion) {

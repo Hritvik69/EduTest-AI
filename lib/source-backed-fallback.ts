@@ -1,5 +1,6 @@
 import {
   isDuplicateQuestion,
+  numericDistinctnessProof,
   sourceBackedUniquenessKey,
   sourceBackedUniquenessKeyFor,
 } from "@/lib/question-duplicates";
@@ -929,7 +930,22 @@ export function generateSourceBackedFallbackQuestions(
       globalIndex += 1;
       const sourceKey = sourceBackedUniquenessKey(question);
       if (sourceKey && usedSourceKeys.has(sourceKey)) {
-        continue;
+        // Numerical questions on the same (concept, type) but with genuinely
+        // different numeric inputs and final answers are distinct problems,
+        // even though their source-backed uniqueness key collides. Letting
+        // them through lets a single concept fill all NUMERICAL slots in a
+        // paper (the hardDuplicateReason / isDuplicateQuestion paths below
+        // still catch truly identical numeric stems via the dedicated
+        // `numericDistinctnessProof` guard).
+        const sameKeyPeer = [...existing, ...generated].find(
+          (item) => sourceBackedUniquenessKey(item) === sourceKey,
+        );
+        const allowSoftSimilarNumerical =
+          !!sameKeyPeer &&
+          numericDistinctnessProof(sameKeyPeer, question).allowSoftSimilarity;
+        if (!allowSoftSimilarNumerical) {
+          continue;
+        }
       }
 
       if (
@@ -1447,16 +1463,78 @@ function syllabusNearNumericalQuestion(
     };
   }
 
-  return {
+  // Catch-all: real arithmetic with proper units. NEVER emit the
+  // "chapter activity lists X key details / evidence points" fake — that
+  // pattern is a textbook-section placeholder, not a real calculation.
+  return syllabusNearArithmeticNumericalQuestion(concept, common);
+}
+
+function syllabusNearArithmeticNumericalQuestion(
+  concept: SyllabusNearConcept,
+  common: GeneratedQuestion,
+): GeneratedQuestion {
+  const a = concept.firstCount;
+  const b = concept.secondCount;
+  const template = (a + b * 3) % 4;
+  const baseBody = (text: string, answer: string, keyPoints: string[]) => ({
     ...common,
-    text: `In a chapter activity on ${concept.term}, ${concept.firstCount} correct features and ${concept.secondCount} supporting examples are listed. How many evidence points are listed in all?`,
-    correctAnswer: `${concept.firstCount + concept.secondCount} evidence points`,
-    keyPoints: [
-      `${concept.firstCount} + ${concept.secondCount} = ${concept.firstCount + concept.secondCount}.`,
-      `Final answer: ${concept.firstCount + concept.secondCount} evidence points.`,
+    text,
+    correctAnswer: answer,
+    keyPoints,
+    explanation: "Apply the standard formula and the correct order of operations.",
+  });
+
+  if (template === 0) {
+    const result = a * b + (a - b);
+    return baseBody(
+      `Calculate the value of ${a} × ${b} + (${a} − ${b}).`,
+      `${result}`,
+      [
+        `First compute ${a} × ${b} = ${a * b}.`,
+        `Then compute (${a} − ${b}) = ${a - b}.`,
+        `Add them: ${a * b} + ${a - b} = ${result}.`,
+        `Final answer: ${result}.`,
+      ],
+    );
+  }
+  if (template === 1) {
+    const pct = 10 + (a % 5) * 10;
+    const whole = 200 + (b % 8) * 50;
+    const result = +((pct / 100) * whole).toFixed(2);
+    return baseBody(
+      `Calculate ${pct}% of ${whole}.`,
+      `${result}`,
+      [
+        `${pct}% of ${whole} = (${pct} / 100) × ${whole}.`,
+        `= ${result}.`,
+        `Final answer: ${result}.`,
+      ],
+    );
+  }
+  if (template === 2) {
+    const km = 2 + (a % 6);
+    const m = km * 1000;
+    return baseBody(
+      `Convert ${km} km into metres.`,
+      `${m} m`,
+      [
+        `1 km = 1000 m.`,
+        `${km} km = ${km} × 1000 = ${m} m.`,
+        `Final answer: ${m} m.`,
+      ],
+    );
+  }
+  const c = (a + b) % 10 + 5;
+  const mean = +((a + b + c) / 3).toFixed(2);
+  return baseBody(
+    `Find the mean of the numbers ${a}, ${b}, and ${c}.`,
+    `${mean}`,
+    [
+      `Mean = (sum of all observations) / (number of observations).`,
+      `Mean = (${a} + ${b} + ${c}) / 3 = ${a + b + c} / 3 = ${mean}.`,
+      `Final answer: ${mean}.`,
     ],
-    explanation: "Add the listed features and examples to find the total evidence points.",
-  };
+  );
 }
 
 function trueStatementVariant(statement: string, term: string, index: number) {
@@ -2627,6 +2705,28 @@ function sourceBackedNumericalQuestion(
 ): Partial<GeneratedQuestion> {
   const context = `${concept.subject ?? ""} ${concept.chapter} ${concept.topic} ${concept.summary}`.toLowerCase();
 
+  // === Physics branches (most specific first) ==============================
+  if (isMotionConcept(concept, concept.summary)) {
+    return motionNumericalQuestion(variant);
+  }
+  if (/work|energy|power|joule|kinetic|potential/.test(context)) {
+    return workEnergyNumericalQuestion(variant);
+  }
+  if (/electric|current|voltage|resistance|ohm|circuit|series|parallel|watt|kilowatt/.test(context)) {
+    return electricityNumericalQuestion(variant);
+  }
+  if (/sound|wave|frequency|wavelength|echo|vibration|pitch|loudness|hertz|hz/.test(context)) {
+    return soundNumericalQuestion(variant);
+  }
+  if (/heat|temperature|specific heat|latent|calor|thermal/.test(context)) {
+    return heatNumericalQuestion(variant);
+  }
+  if (/pressure|buoyancy|hydraulic|fluid|density|archimedes/.test(context)) {
+    return pressureNumericalQuestion(variant);
+  }
+  if (/gravit|gravity|free fall|weight|acceleration due to gravity|gravitational/.test(context)) {
+    return gravityNumericalQuestion(variant);
+  }
   if (/light|reflection|mirror|ray|normal|incidence/.test(context)) {
     const angle = 20 + ((variant.firstCount + variant.secondCount) % 6) * 5;
     return {
@@ -2639,8 +2739,7 @@ function sourceBackedNumericalQuestion(
       ],
     };
   }
-
-  if (/refraction|lens|refractive|medium/.test(context)) {
+  if (/refraction|lens|refractive|medium|glass|prism/.test(context)) {
     const incident = 30 + (variant.firstCount % 4) * 5;
     const refracted = Math.max(10, incident - 10);
     return {
@@ -2653,7 +2752,17 @@ function sourceBackedNumericalQuestion(
     };
   }
 
-  if (/chemical|reaction|equation|atom|molecule|oxidation|reduction/.test(context)) {
+  // === Chemistry branches ==================================================
+  if (/mole|molar|molar mass|molecular mass|avogadro/.test(context)) {
+    return molesNumericalQuestion(variant);
+  }
+  if (/acid|base|salt|pH|indicator|neutralization|titration/.test(context)) {
+    return acidBaseNumericalQuestion(variant);
+  }
+  if (/periodic|group|period|element|proton|neutron|electron|nucleus|isotope|atomic number|mass number|electronic configuration|valence|valency/.test(context)) {
+    return atomicStructureNumericalQuestion(variant);
+  }
+  if (/chemical|reaction|equation|balancing|oxidation|reduction|redox/.test(context)) {
     const leftAtoms = 2 + (variant.firstCount % 4);
     const rightAtoms = leftAtoms + 1 + (variant.secondCount % 3);
     const difference = rightAtoms - leftAtoms;
@@ -2666,7 +2775,6 @@ function sourceBackedNumericalQuestion(
       ],
     };
   }
-
   if (/mixture|solution|solute|solvent|concentration|separation|filtration|evaporation|distillation/.test(context)) {
     const solute = 3 + (variant.firstCount % 6);
     const solvent = 25 + (variant.secondCount % 5) * 5;
@@ -2682,13 +2790,943 @@ function sourceBackedNumericalQuestion(
     };
   }
 
+  // === Mathematics (subject-level dispatcher with many templates) ==========
+  if (isMathsConcept(concept)) {
+    return mathNumericalQuestion(variant);
+  }
+
+  // === Biology ============================================================
+  if (isBiologyConcept(concept)) {
+    return biologyNumericalQuestion(concept, variant);
+  }
+
+  // === Economics / Commerce / Accountancy =================================
+  if (/profit|loss|interest|gst|tax|depreciation|discount|share|dividend|economics|commerce|accounting|balance|invoice|cost price|selling price|markup/.test(context)) {
+    return economicsNumericalQuestion(variant);
+  }
+
+  // === Geography ==========================================================
+  if (/scale|distance|map|elevation|longitude|latitude|meridian|time zone|population density|climate|rainfall/.test(context)) {
+    return geographyNumericalQuestion(variant);
+  }
+
+  // === Generic fallback: a real arithmetic problem, NOT a fake
+  //     "source-based activity lists X key details" placeholder. The previous
+  //     pattern produced obviously-fake questions that polluted numerical
+  //     papers across all classes and subjects. This fallback uses variant
+  //     inputs to generate a unique, solvable arithmetic task with a real
+  //     numeric answer and proper units. =================================
+  return genericArithmeticNumericalQuestion(variant);
+}
+
+/**
+ * Generate a real physics numerical for a motion / kinematics concept. The
+ * variant's `firstCount` and `secondCount` are used to vary the inputs
+ * (distance, time, force, etc.) so multiple fallback questions don't all
+ * produce the same answer.
+ */
+function motionNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 5;
+
+  if (template === 0) {
+    // Distance + displacement (opposite directions)
+    const d1 = 20 + (variant.firstCount % 8) * 10;
+    const d2 = 10 + (variant.secondCount % 6) * 10;
+    const axis = variant.firstCount % 2 === 0 ? "north" : "east";
+    const opposite = variant.firstCount % 2 === 0 ? "south" : "west";
+    const totalDistance = d1 + d2;
+    const displacement = Math.abs(d1 - d2);
+    return {
+      text: `A car travels ${d1} km ${axis} and then ${d2} km ${opposite}. Calculate (i) the total distance covered, and (ii) the magnitude of the displacement.`,
+      correctAnswer: `Distance = ${totalDistance} km; Displacement = ${displacement} km`,
+      keyPoints: [
+        `Total distance = ${d1} + ${d2} = ${totalDistance} km.`,
+        `Displacement = |${d1} - ${d2}| = ${displacement} km.`,
+        `Final answer: ${totalDistance} km, ${displacement} km.`,
+      ],
+    };
+  }
+
+  if (template === 1) {
+    // Average speed (single leg, km/h)
+    const distance = 60 + (variant.firstCount % 9) * 20;
+    const time = 1.5 + (variant.secondCount % 5) * 0.5;
+    const speed = +(distance / time).toFixed(2);
+    return {
+      text: `A car travels ${distance} km in ${time} hours. Calculate its average speed in km/h.`,
+      correctAnswer: `${speed} km/h`,
+      keyPoints: [
+        `Average speed = total distance / total time.`,
+        `Average speed = ${distance} / ${time} = ${speed} km/h.`,
+        `Final answer: ${speed} km/h.`,
+      ],
+    };
+  }
+
+  if (template === 2) {
+    // Two-leg journey — average speed AND average velocity
+    const d1 = 100 + (variant.firstCount % 8) * 40;
+    const t1 = 2 + (variant.secondCount % 4);
+    const d2 = 50 + ((variant.firstCount + 1) % 6) * 30;
+    const t2 = 1 + ((variant.secondCount + 1) % 3);
+    const totalDistance = d1 + d2;
+    const totalTime = t1 + t2;
+    const displacement = Math.abs(d1 - d2);
+    const averageSpeed = +(totalDistance / totalTime).toFixed(2);
+    const averageVelocity = +(displacement / totalTime).toFixed(2);
+    return {
+      text: `A train moves ${d1} km east in ${t1} hours and then ${d2} km west in ${t2} hours. Calculate (i) the average speed for the entire journey, and (ii) the magnitude of the average velocity.`,
+      correctAnswer: `Average speed = ${averageSpeed} km/h; Average velocity = ${averageVelocity} km/h`,
+      keyPoints: [
+        `Total distance = ${d1} + ${d2} = ${totalDistance} km.`,
+        `Total time = ${t1} + ${t2} = ${totalTime} hours.`,
+        `Average speed = ${totalDistance} / ${totalTime} = ${averageSpeed} km/h.`,
+        `Displacement = |${d1} - ${d2}| = ${displacement} km.`,
+        `Average velocity = ${displacement} / ${totalTime} = ${averageVelocity} km/h.`,
+      ],
+    };
+  }
+
+  if (template === 3) {
+    // Acceleration
+    const u = (variant.firstCount % 5) * 5;
+    const v = u + 10 + (variant.secondCount % 6) * 5;
+    const t = 2 + (variant.firstCount % 4);
+    const a = +((v - u) / t).toFixed(2);
+    return {
+      text: `A car accelerates uniformly from ${u} m/s to ${v} m/s in ${t} seconds. Calculate the acceleration of the car.`,
+      correctAnswer: `${a} m/s²`,
+      keyPoints: [
+        `Use a = (v - u) / t.`,
+        `a = (${v} - ${u}) / ${t} = ${a} m/s².`,
+        `Final answer: ${a} m/s².`,
+      ],
+    };
+  }
+
+  // Force (Newton's 2nd law)
+  const f = 10 + (variant.firstCount % 8) * 5;
+  const m = 2 + (variant.secondCount % 6);
+  const a = +(f / m).toFixed(2);
   return {
-    text: `A source-based activity on ${concept.topic} lists ${variant.firstCount} key details and ${variant.secondCount} supporting examples. How many evidence points are listed in all?`,
-    correctAnswer: `${variant.firstCount + variant.secondCount} evidence points`,
+    text: `A constant force of ${f} N is applied to a body of mass ${m} kg at rest on a frictionless surface. Calculate the acceleration produced.`,
+    correctAnswer: `${a} m/s²`,
     keyPoints: [
-      "Add the two listed counts.",
-      `${variant.firstCount} + ${variant.secondCount} = ${variant.firstCount + variant.secondCount}.`,
-      `Final answer: ${variant.firstCount + variant.secondCount} evidence points.`,
+      `Use Newton's second law: F = m × a, so a = F / m.`,
+      `a = ${f} / ${m} = ${a} m/s².`,
+      `Final answer: ${a} m/s².`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Physics: Work / Energy / Power
+// ============================================================================
+function workEnergyNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 3;
+  if (template === 0) {
+    const f = 10 + (variant.firstCount % 8) * 5;
+    const d = 2 + (variant.secondCount % 6);
+    const w = f * d;
+    return {
+      text: `A force of ${f} N displaces a body through a distance of ${d} m in the direction of the force. Calculate the work done.`,
+      correctAnswer: `${w} J`,
+      keyPoints: [
+        `W = F × d.`,
+        `W = ${f} × ${d} = ${w} J.`,
+        `Final answer: ${w} J.`,
+      ],
+    };
+  }
+  if (template === 1) {
+    const m = 2 + (variant.firstCount % 8);
+    const v = 5 + (variant.secondCount % 6) * 2;
+    const ke = +(0.5 * m * v * v).toFixed(2);
+    return {
+      text: `A body of mass ${m} kg is moving with a velocity of ${v} m/s. Calculate its kinetic energy.`,
+      correctAnswer: `${ke} J`,
+      keyPoints: [
+        `KE = ½ × m × v².`,
+        `KE = ½ × ${m} × ${v}² = ½ × ${m * v * v} = ${ke} J.`,
+        `Final answer: ${ke} J.`,
+      ],
+    };
+  }
+  const w = 200 + (variant.firstCount % 8) * 50;
+  const t = 5 + (variant.secondCount % 6);
+  const p = +(w / t).toFixed(2);
+  return {
+    text: `A machine does ${w} J of work in ${t} seconds. Calculate the power developed by the machine.`,
+    correctAnswer: `${p} W`,
+    keyPoints: [
+      `P = W / t.`,
+      `P = ${w} / ${t} = ${p} W.`,
+      `Final answer: ${p} W.`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Physics: Electricity (Ohm's law, power, series resistance, energy)
+// ============================================================================
+function electricityNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 4;
+  if (template === 0) {
+    const i = 1 + (variant.firstCount % 5);
+    const r = 5 + (variant.secondCount % 8) * 2;
+    const v = i * r;
+    return {
+      text: `A resistor of ${r} Ω carries a current of ${i} A. Calculate the potential difference across the resistor.`,
+      correctAnswer: `${v} V`,
+      keyPoints: [
+        `Use Ohm's law: V = I × R.`,
+        `V = ${i} × ${r} = ${v} V.`,
+        `Final answer: ${v} V.`,
+      ],
+    };
+  }
+  if (template === 1) {
+    const v = 10 + (variant.firstCount % 6) * 5;
+    const i = 1 + (variant.secondCount % 5);
+    const p = v * i;
+    return {
+      text: `An appliance works at ${v} V and draws a current of ${i} A. Calculate the electric power consumed.`,
+      correctAnswer: `${p} W`,
+      keyPoints: [
+        `P = V × I.`,
+        `P = ${v} × ${i} = ${p} W.`,
+        `Final answer: ${p} W.`,
+      ],
+    };
+  }
+  if (template === 2) {
+    const p = 500 + (variant.firstCount % 6) * 100;
+    const t = 2 + (variant.secondCount % 6);
+    const e = +(p * t / 1000).toFixed(2);
+    return {
+      text: `An appliance of power ${p} W is used for ${t} hours. Calculate the electrical energy consumed in kWh.`,
+      correctAnswer: `${e} kWh`,
+      keyPoints: [
+        `E (kWh) = P (W) × t (h) / 1000.`,
+        `E = ${p} × ${t} / 1000 = ${e} kWh.`,
+        `Final answer: ${e} kWh.`,
+      ],
+    };
+  }
+  const r1 = 4 + (variant.firstCount % 6);
+  const r2 = 6 + (variant.secondCount % 6);
+  const rTotal = r1 + r2;
+  return {
+    text: `Two resistors of ${r1} Ω and ${r2} Ω are connected in series. Calculate the total resistance.`,
+    correctAnswer: `${rTotal} Ω`,
+    keyPoints: [
+      `For resistors in series, R_total = R₁ + R₂.`,
+      `R_total = ${r1} + ${r2} = ${rTotal} Ω.`,
+      `Final answer: ${rTotal} Ω.`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Physics: Sound (wave speed, echo, frequency)
+// ============================================================================
+function soundNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 3;
+  if (template === 0) {
+    const f = 200 + (variant.firstCount % 8) * 50;
+    const wavelength = +(340 / f).toFixed(3);
+    return {
+      text: `A sound wave has a frequency of ${f} Hz. If the speed of sound in air is 340 m/s, calculate its wavelength.`,
+      correctAnswer: `${wavelength} m`,
+      keyPoints: [
+        `Use v = f × λ, so λ = v / f.`,
+        `λ = 340 / ${f} = ${wavelength} m.`,
+        `Final answer: ${wavelength} m.`,
+      ],
+    };
+  }
+  if (template === 1) {
+    const t = 1 + (variant.firstCount % 4);
+    const distance = +((340 * t) / 2).toFixed(2);
+    return {
+      text: `A person claps near a cliff and hears the echo after ${t} second${t > 1 ? "s" : ""}. If the speed of sound is 340 m/s, calculate the distance of the cliff from the person.`,
+      correctAnswer: `${distance} m`,
+      keyPoints: [
+        `The sound travels to the cliff and back, so distance = (v × t) / 2.`,
+        `Distance = (340 × ${t}) / 2 = ${distance} m.`,
+        `Final answer: ${distance} m.`,
+      ],
+    };
+  }
+  const tMs = 1 + (variant.firstCount % 5) * 2;
+  const f = +(1000 / tMs).toFixed(2);
+  return {
+    text: `A sound wave has a time period of ${tMs} ms. Calculate its frequency.`,
+    correctAnswer: `${f} Hz`,
+    keyPoints: [
+      `f = 1 / T (with T in seconds).`,
+      `T = ${tMs} ms = ${tMs / 1000} s.`,
+      `f = 1 / ${tMs / 1000} = ${f} Hz.`,
+      `Final answer: ${f} Hz.`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Physics: Heat (specific heat, latent heat)
+// ============================================================================
+function heatNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 2;
+  if (template === 0) {
+    const m = 1 + (variant.firstCount % 5);
+    const deltaT = 10 + (variant.secondCount % 6) * 5;
+    const q = m * 4200 * deltaT;
+    return {
+      text: `Calculate the heat required to raise the temperature of ${m} kg of water by ${deltaT} °C. (Specific heat capacity of water = 4200 J/(kg·°C))`,
+      correctAnswer: `${q} J`,
+      keyPoints: [
+        `Q = m × c × ΔT.`,
+        `Q = ${m} × 4200 × ${deltaT} = ${q} J.`,
+        `Final answer: ${q} J.`,
+      ],
+    };
+  }
+  const m = (variant.firstCount % 5) + 1;
+  const L = 334000;
+  const q = m * L;
+  return {
+    text: `Calculate the heat required to melt ${m} kg of ice at 0 °C to water at 0 °C. (Latent heat of fusion of ice = 3.34 × 10⁵ J/kg)`,
+    correctAnswer: `${q} J`,
+    keyPoints: [
+      `Q = m × L.`,
+      `Q = ${m} × 3.34 × 10⁵ = ${q} J.`,
+      `Final answer: ${q} J.`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Physics: Pressure / Density
+// ============================================================================
+function pressureNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 2;
+  if (template === 0) {
+    const f = 100 + (variant.firstCount % 8) * 20;
+    const a = +(0.5 + (variant.secondCount % 6) * 0.5).toFixed(2);
+    const p = +(f / a).toFixed(2);
+    return {
+      text: `A force of ${f} N is applied on an area of ${a} m². Calculate the pressure exerted.`,
+      correctAnswer: `${p} Pa`,
+      keyPoints: [
+        `P = F / A.`,
+        `P = ${f} / ${a} = ${p} Pa.`,
+        `Final answer: ${p} Pa.`,
+      ],
+    };
+  }
+  const m = 100 + (variant.firstCount % 6) * 50;
+  const v = 50 + (variant.secondCount % 6) * 10;
+  const rho = +(m / v).toFixed(2);
+  return {
+    text: `A block of mass ${m} g occupies a volume of ${v} cm³. Calculate its density.`,
+    correctAnswer: `${rho} g/cm³`,
+    keyPoints: [
+      `ρ = m / V.`,
+      `ρ = ${m} / ${v} = ${rho} g/cm³.`,
+      `Final answer: ${rho} g/cm³.`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Physics: Gravity (weight, free fall)
+// ============================================================================
+function gravityNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 2;
+  if (template === 0) {
+    const m = 5 + (variant.firstCount % 8) * 5;
+    const w = +(m * 9.8).toFixed(2);
+    return {
+      text: `Calculate the weight of a body of mass ${m} kg on Earth. (Take g = 9.8 m/s²)`,
+      correctAnswer: `${w} N`,
+      keyPoints: [
+        `W = m × g.`,
+        `W = ${m} × 9.8 = ${w} N.`,
+        `Final answer: ${w} N.`,
+      ],
+    };
+  }
+  const t = 2 + (variant.firstCount % 5);
+  const v = +(9.8 * t).toFixed(2);
+  return {
+    text: `A stone is dropped from rest. Calculate its velocity after ${t} seconds. (Take g = 9.8 m/s²)`,
+    correctAnswer: `${v} m/s`,
+    keyPoints: [
+      `Use v = u + g × t with u = 0.`,
+      `v = 0 + 9.8 × ${t} = ${v} m/s.`,
+      `Final answer: ${v} m/s.`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Chemistry: Mole concept
+// ============================================================================
+function molesNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 3;
+  if (template === 0) {
+    const m = 18 + (variant.firstCount % 5) * 18;
+    const n = +(m / 18).toFixed(2);
+    return {
+      text: `Calculate the number of moles in ${m} g of water (H₂O). (Molar mass of water = 18 g/mol)`,
+      correctAnswer: `${n} mol`,
+      keyPoints: [
+        `n = m / M.`,
+        `n = ${m} / 18 = ${n} mol.`,
+        `Final answer: ${n} mol.`,
+      ],
+    };
+  }
+  if (template === 1) {
+    const n = 1 + (variant.firstCount % 4);
+    const M = 58.5;
+    const m = +(n * M).toFixed(2);
+    return {
+      text: `Calculate the mass of ${n} mol of sodium chloride (NaCl). (Molar mass of NaCl = 58.5 g/mol)`,
+      correctAnswer: `${m} g`,
+      keyPoints: [
+        `m = n × M.`,
+        `m = ${n} × 58.5 = ${m} g.`,
+        `Final answer: ${m} g.`,
+      ],
+    };
+  }
+  const n = (variant.firstCount % 4) + 1;
+  const molecules = +(n * 6.022).toFixed(3);
+  return {
+    text: `Calculate the number of molecules in ${n} mol of a substance. (Avogadro's number = 6.022 × 10²³)`,
+    correctAnswer: `${molecules} × 10²³ molecules`,
+    keyPoints: [
+      `N = n × Nₐ.`,
+      `N = ${n} × 6.022 × 10²³ = ${molecules} × 10²³ molecules.`,
+      `Final answer: ${molecules} × 10²³ molecules.`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Chemistry: Acids / Bases / Salts (pH, neutralization)
+// ============================================================================
+function acidBaseNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 2;
+  if (template === 0) {
+    const exponent = 2 + (variant.firstCount % 5);
+    return {
+      text: `Calculate the pH of a solution whose hydrogen ion concentration is 1 × 10⁻${exponent} mol/L.`,
+      correctAnswer: `${exponent}`,
+      keyPoints: [
+        `pH = -log[H⁺].`,
+        `pH = -log(10⁻${exponent}) = ${exponent}.`,
+        `Final answer: ${exponent}.`,
+      ],
+    };
+  }
+  const va = 20 + (variant.firstCount % 4) * 5;
+  const ma = +(0.1 + (variant.firstCount % 3) * 0.1).toFixed(2);
+  const mb = +(0.2 + (variant.secondCount % 3) * 0.1).toFixed(2);
+  const vb = +((va * ma) / mb).toFixed(2);
+  return {
+    text: `${va} mL of an acid of molarity ${ma} M is completely neutralized by a base of molarity ${mb} M. Calculate the volume of the base required.`,
+    correctAnswer: `${vb} mL`,
+    keyPoints: [
+      `For neutralization: V_a × M_a = V_b × M_b.`,
+      `V_b = (V_a × M_a) / M_b = (${va} × ${ma}) / ${mb} = ${vb} mL.`,
+      `Final answer: ${vb} mL.`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Chemistry: Atomic structure (mass number, electrons per shell)
+// ============================================================================
+function atomicStructureNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 2;
+  if (template === 0) {
+    const z = 6 + (variant.firstCount % 8);
+    const n = 6 + (variant.secondCount % 8);
+    const a = z + n;
+    return {
+      text: `An atom has ${z} protons and ${n} neutrons. What is its mass number?`,
+      correctAnswer: `${a}`,
+      keyPoints: [
+        `Mass number (A) = number of protons (Z) + number of neutrons (N).`,
+        `A = ${z} + ${n} = ${a}.`,
+        `Final answer: ${a}.`,
+      ],
+    };
+  }
+  const n = 1 + (variant.firstCount % 4);
+  const electrons = 2 * n * n;
+  return {
+    text: `According to Bohr's formula, how many electrons can the nth shell of an atom hold? Calculate for n = ${n}.`,
+    correctAnswer: `${electrons}`,
+    keyPoints: [
+      `Maximum electrons in nth shell = 2n².`,
+      `For n = ${n}, electrons = 2 × ${n}² = 2 × ${n * n} = ${electrons}.`,
+      `Final answer: ${electrons}.`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Mathematics (12 templates — algebra, geometry, trigonometry, statistics,
+//  commercial math, mensuration, number system)
+// ============================================================================
+function mathNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 12;
+
+  if (template === 0) {
+    const a = 2 + (variant.firstCount % 4);
+    const x = 3 + (variant.secondCount % 6);
+    const b = a * x + 5;
+    return {
+      text: `Solve for x: ${a}x + 5 = ${b}.`,
+      correctAnswer: `x = ${x}`,
+      keyPoints: [
+        `${a}x + 5 = ${b}`,
+        `${a}x = ${b - 5}`,
+        `x = ${b - 5} / ${a} = ${x}`,
+        `Final answer: x = ${x}.`,
+      ],
+    };
+  }
+  if (template === 1) {
+    const a = 3 + (variant.firstCount % 4);
+    const b = 4 + (variant.secondCount % 4);
+    const c = +Math.sqrt(a * a + b * b).toFixed(2);
+    return {
+      text: `In a right-angled triangle, the two perpendicular sides are ${a} cm and ${b} cm. Find the length of the hypotenuse.`,
+      correctAnswer: `${c} cm`,
+      keyPoints: [
+        `Use Pythagoras theorem: c² = a² + b².`,
+        `c² = ${a}² + ${b}² = ${a * a} + ${b * b} = ${a * a + b * b}.`,
+        `c = √${a * a + b * b} ≈ ${c} cm.`,
+        `Final answer: ${c} cm.`,
+      ],
+    };
+  }
+  if (template === 2) {
+    const l = 8 + (variant.firstCount % 8);
+    const w = 5 + (variant.secondCount % 6);
+    const area = l * w;
+    return {
+      text: `Find the area of a rectangle with length ${l} cm and breadth ${w} cm.`,
+      correctAnswer: `${area} cm²`,
+      keyPoints: [
+        `Area of rectangle = length × breadth.`,
+        `Area = ${l} × ${w} = ${area} cm².`,
+        `Final answer: ${area} cm².`,
+      ],
+    };
+  }
+  if (template === 3) {
+    const base = 10 + (variant.firstCount % 8);
+    const height = 6 + (variant.secondCount % 6);
+    const area = +((base * height) / 2).toFixed(2);
+    return {
+      text: `Find the area of a triangle with base ${base} cm and height ${height} cm.`,
+      correctAnswer: `${area} cm²`,
+      keyPoints: [
+        `Area of triangle = ½ × base × height.`,
+        `Area = ½ × ${base} × ${height} = ${area} cm².`,
+        `Final answer: ${area} cm².`,
+      ],
+    };
+  }
+  if (template === 4) {
+    const r = 7 + (variant.firstCount % 8);
+    const c = +(2 * Math.PI * r).toFixed(2);
+    return {
+      text: `Find the circumference of a circle with radius ${r} cm. (Use π = 3.14)`,
+      correctAnswer: `${c} cm`,
+      keyPoints: [
+        `Circumference = 2πr.`,
+        `C = 2 × 3.14 × ${r} = ${c} cm.`,
+        `Final answer: ${c} cm.`,
+      ],
+    };
+  }
+  if (template === 5) {
+    const p = 1000 + (variant.firstCount % 8) * 500;
+    const r = 4 + (variant.secondCount % 6);
+    const t = 2 + (variant.firstCount % 4);
+    const si = +((p * r * t) / 100).toFixed(2);
+    return {
+      text: `Find the simple interest on a principal of ₹${p} at ${r}% per annum for ${t} years.`,
+      correctAnswer: `₹${si}`,
+      keyPoints: [
+        `Simple Interest = (P × R × T) / 100.`,
+        `SI = (${p} × ${r} × ${t}) / 100 = ${si}.`,
+        `Final answer: ₹${si}.`,
+      ],
+    };
+  }
+  if (template === 6) {
+    const cp = 100 + (variant.firstCount % 8) * 20;
+    const sp = cp + 20 + (variant.secondCount % 6) * 10;
+    const profit = sp - cp;
+    const profitPct = +((profit / cp) * 100).toFixed(2);
+    return {
+      text: `A trader buys an article for ₹${cp} and sells it for ₹${sp}. Find the profit percent.`,
+      correctAnswer: `${profitPct}%`,
+      keyPoints: [
+        `Profit = SP - CP = ${sp} - ${cp} = ${profit}.`,
+        `Profit % = (Profit / CP) × 100 = (${profit} / ${cp}) × 100 = ${profitPct}%.`,
+        `Final answer: ${profitPct}%.`,
+      ],
+    };
+  }
+  if (template === 7) {
+    const whole = 100 + (variant.firstCount % 8) * 50;
+    const pct = 10 + (variant.secondCount % 8) * 5;
+    const result = +((whole * pct) / 100).toFixed(2);
+    return {
+      text: `Find ${pct}% of ${whole}.`,
+      correctAnswer: `${result}`,
+      keyPoints: [
+        `${pct}% of ${whole} = (${pct} / 100) × ${whole}.`,
+        `= (${pct * whole}) / 100 = ${result}.`,
+        `Final answer: ${result}.`,
+      ],
+    };
+  }
+  if (template === 8) {
+    const a = 10 + (variant.firstCount % 8);
+    const b = 12 + (variant.secondCount % 6);
+    const c = 8 + ((variant.firstCount + variant.secondCount) % 8);
+    const mean = +((a + b + c) / 3).toFixed(2);
+    return {
+      text: `Find the mean of the numbers ${a}, ${b}, and ${c}.`,
+      correctAnswer: `${mean}`,
+      keyPoints: [
+        `Mean = (sum of all observations) / (number of observations).`,
+        `Mean = (${a} + ${b} + ${c}) / 3 = ${a + b + c} / 3 = ${mean}.`,
+        `Final answer: ${mean}.`,
+      ],
+    };
+  }
+  if (template === 9) {
+    const l = 5 + (variant.firstCount % 6);
+    const w = 4 + (variant.secondCount % 5);
+    const h = 3 + ((variant.firstCount + 1) % 4);
+    const v = l * w * h;
+    return {
+      text: `Find the volume of a cuboid with length ${l} cm, breadth ${w} cm, and height ${h} cm.`,
+      correctAnswer: `${v} cm³`,
+      keyPoints: [
+        `Volume of cuboid = length × breadth × height.`,
+        `Volume = ${l} × ${w} × ${h} = ${v} cm³.`,
+        `Final answer: ${v} cm³.`,
+      ],
+    };
+  }
+  if (template === 10) {
+    const trigValues = [
+      { expr: "sin 30°", value: "0.5" },
+      { expr: "sin 45°", value: "0.71" },
+      { expr: "sin 60°", value: "0.87" },
+      { expr: "cos 0°", value: "1" },
+      { expr: "sin 90°", value: "1" },
+      { expr: "tan 45°", value: "1" },
+    ];
+    const t =
+      trigValues[variant.secondCount % trigValues.length] ?? trigValues[0];
+    return {
+      text: `Evaluate ${t.expr}.`,
+      correctAnswer: `${t.value}`,
+      keyPoints: [
+        `${t.expr} is a standard trigonometric value.`,
+        `${t.expr} = ${t.value}.`,
+        `Final answer: ${t.value}.`,
+      ],
+    };
+  }
+  const a = 4 + (variant.firstCount % 4);
+  const b = 6 + (variant.secondCount % 4);
+  const lcm = (a * b) / gcd(a, b);
+  return {
+    text: `Find the LCM of ${a} and ${b}.`,
+    correctAnswer: `${lcm}`,
+    keyPoints: [
+      `LCM = (a × b) / HCF(a, b).`,
+      `HCF(${a}, ${b}) = ${gcd(a, b)}.`,
+      `LCM = (${a} × ${b}) / ${gcd(a, b)} = ${lcm}.`,
+      `Final answer: ${lcm}.`,
+    ],
+  };
+}
+
+function gcd(a: number, b: number): number {
+  a = Math.abs(a);
+  b = Math.abs(b);
+  while (b) {
+    [a, b] = [b, a % b];
+  }
+  return a;
+}
+
+// ============================================================================
+//  Biology (Mendelian ratios, cell magnification)
+// ============================================================================
+function biologyNumericalQuestion(
+  concept: NormalizedConcept,
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const context = `${concept.subject ?? ""} ${concept.chapter} ${concept.topic} ${concept.summary}`.toLowerCase();
+
+  if (/mendel|inherit|gene|allele|dominant|recessive|monohybrid|dihybrid|genotype|phenotype|cross/.test(context)) {
+    const template = (variant.firstCount + variant.secondCount * 3) % 2;
+    if (template === 0) {
+      const total = 100 + (variant.firstCount % 4) * 50;
+      const dominant = +(total * 0.75).toFixed(2);
+      return {
+        text: `In a monohybrid cross between two heterozygous parents (Tt × Tt), ${total} offspring are produced. How many will show the dominant phenotype?`,
+        correctAnswer: `${dominant} (dominant phenotype)`,
+        keyPoints: [
+          `In a monohybrid cross (Tt × Tt), the phenotypic ratio is 3:1 (dominant : recessive).`,
+          `Dominant phenotype = 3/4 of total offspring = 3/4 × ${total} = ${dominant}.`,
+          `Final answer: ${dominant} offspring show the dominant phenotype.`,
+        ],
+      };
+    }
+    const total = 64 + (variant.firstCount % 4) * 16;
+    const bothDominant = +(total * 9 / 16).toFixed(2);
+    return {
+      text: `In a dihybrid cross (RrYy × RrYy), ${total} offspring are produced. How many show both dominant traits according to the 9:3:3:1 ratio?`,
+      correctAnswer: `${bothDominant}`,
+      keyPoints: [
+        `In a dihybrid cross, the ratio is 9:3:3:1.`,
+        `Both dominant phenotype = 9/16 of total offspring.`,
+        `= 9/16 × ${total} = ${bothDominant}.`,
+        `Final answer: ${bothDominant}.`,
+      ],
+    };
+  }
+  if (/cell|magnif|microorganism|microscope|tissue/.test(context)) {
+    const eyepiece = 10;
+    const objective = 4 + (variant.firstCount % 5) * 10;
+    const total = eyepiece * objective;
+    return {
+      text: `A compound microscope has an eyepiece of ${eyepiece}× magnification and an objective of ${objective}× magnification. Calculate the total magnification.`,
+      correctAnswer: `${total}×`,
+      keyPoints: [
+        `Total magnification = magnification of eyepiece × magnification of objective.`,
+        `Total = ${eyepiece} × ${objective} = ${total}.`,
+        `Final answer: ${total}×.`,
+      ],
+    };
+  }
+  // Test cross (Tt × tt) → 1:1 ratio
+  const total = 80 + (variant.firstCount % 4) * 20;
+  const half = total / 2;
+  return {
+    text: `In a test cross (Tt × tt), ${total} offspring are produced. How many will show the recessive phenotype?`,
+    correctAnswer: `${half}`,
+    keyPoints: [
+      `In a test cross, the ratio is 1:1 (dominant : recessive).`,
+      `Recessive phenotype = 1/2 of total = ${total} / 2 = ${half}.`,
+      `Final answer: ${half}.`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Economics / Commerce / Accountancy (profit/loss, SI, CI, discount)
+// ============================================================================
+function economicsNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 4;
+  if (template === 0) {
+    const cp = 200 + (variant.firstCount % 8) * 50;
+    const sp = cp + 30 + (variant.secondCount % 8) * 10;
+    const profit = sp - cp;
+    const profitPct = +((profit / cp) * 100).toFixed(2);
+    return {
+      text: `A shopkeeper buys an article for ₹${cp} and sells it for ₹${sp}. Find his profit percent.`,
+      correctAnswer: `${profitPct}%`,
+      keyPoints: [
+        `Profit = SP - CP = ${sp} - ${cp} = ${profit}.`,
+        `Profit % = (Profit / CP) × 100 = (${profit} / ${cp}) × 100 = ${profitPct}%.`,
+        `Final answer: ${profitPct}%.`,
+      ],
+    };
+  }
+  if (template === 1) {
+    const p = 5000 + (variant.firstCount % 8) * 1000;
+    const r = 5 + (variant.secondCount % 6);
+    const t = 2 + (variant.firstCount % 4);
+    const si = +((p * r * t) / 100).toFixed(2);
+    return {
+      text: `Find the simple interest on ₹${p} at ${r}% per annum for ${t} years.`,
+      correctAnswer: `₹${si}`,
+      keyPoints: [
+        `SI = (P × R × T) / 100.`,
+        `SI = (${p} × ${r} × ${t}) / 100 = ${si}.`,
+        `Final answer: ₹${si}.`,
+      ],
+    };
+  }
+  if (template === 2) {
+    const mp = 500 + (variant.firstCount % 8) * 100;
+    const discountPct = 10 + (variant.secondCount % 6) * 5;
+    const discount = +((mp * discountPct) / 100).toFixed(2);
+    const sp = mp - discount;
+    return {
+      text: `The marked price of a shirt is ₹${mp} and a discount of ${discountPct}% is offered. Find the selling price.`,
+      correctAnswer: `₹${sp}`,
+      keyPoints: [
+        `Discount = (${discountPct} / 100) × ${mp} = ₹${discount}.`,
+        `Selling Price = Marked Price - Discount = ${mp} - ${discount} = ₹${sp}.`,
+        `Final answer: ₹${sp}.`,
+      ],
+    };
+  }
+  const p = 1000 + (variant.firstCount % 8) * 500;
+  const r = 10;
+  const t = 2;
+  const amount = +(p * Math.pow(1 + r / 100, t)).toFixed(2);
+  const ci = +(amount - p).toFixed(2);
+  return {
+    text: `Find the compound interest on ₹${p} for ${t} years at ${r}% per annum compounded annually.`,
+    correctAnswer: `₹${ci}`,
+    keyPoints: [
+      `A = P × (1 + R/100)^T = ${p} × (1 + ${r}/100)^${t} = ₹${amount}.`,
+      `CI = A - P = ${amount} - ${p} = ₹${ci}.`,
+      `Final answer: ₹${ci}.`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Geography (map scale, population density)
+// ============================================================================
+function geographyNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 2;
+  if (template === 0) {
+    const mapDistance = 5 + (variant.firstCount % 8);
+    const scaleKm = 50 + (variant.secondCount % 6) * 50;
+    const realDistance = +(mapDistance * scaleKm).toFixed(2);
+    return {
+      text: `On a map with a scale of 1 cm = ${scaleKm} km, two cities are ${mapDistance} cm apart. Find the actual distance between them.`,
+      correctAnswer: `${realDistance} km`,
+      keyPoints: [
+        `Real distance = map distance × scale factor.`,
+        `Real distance = ${mapDistance} cm × ${scaleKm} km = ${realDistance} km.`,
+        `Final answer: ${realDistance} km.`,
+      ],
+    };
+  }
+  const population = 50000 + (variant.firstCount % 8) * 5000;
+  const area = 100 + (variant.secondCount % 6) * 50;
+  const density = +(population / area).toFixed(2);
+  return {
+    text: `A district has a population of ${population} and an area of ${area} km². Calculate the population density.`,
+    correctAnswer: `${density} persons/km²`,
+    keyPoints: [
+      `Population density = population / area.`,
+      `Density = ${population} / ${area} = ${density} persons/km².`,
+      `Final answer: ${density} persons/km².`,
+    ],
+  };
+}
+
+// ============================================================================
+//  Generic arithmetic fallback — a real calculation with proper units. This
+//  replaces the old "source-based activity lists X key details" fake that
+//  polluted papers across all subjects. The fallback is the LAST resort and
+//  only fires when no subject-specific handler matched.
+// ============================================================================
+function genericArithmeticNumericalQuestion(
+  variant: VariantRecipe,
+): Partial<GeneratedQuestion> {
+  const template = (variant.firstCount + variant.secondCount * 3) % 4;
+  const a = variant.firstCount;
+  const b = variant.secondCount;
+
+  if (template === 0) {
+    const result = a * b + (a - b);
+    return {
+      text: `Calculate the value of ${a} × ${b} + (${a} − ${b}).`,
+      correctAnswer: `${result}`,
+      keyPoints: [
+        `First compute ${a} × ${b} = ${a * b}.`,
+        `Then compute (${a} − ${b}) = ${a - b}.`,
+        `Add them: ${a * b} + ${a - b} = ${result}.`,
+        `Final answer: ${result}.`,
+      ],
+    };
+  }
+  if (template === 1) {
+    const pct = 10 + (a % 5) * 10;
+    const whole = 200 + (b % 8) * 50;
+    const result = +((pct / 100) * whole).toFixed(2);
+    return {
+      text: `Calculate ${pct}% of ${whole}.`,
+      correctAnswer: `${result}`,
+      keyPoints: [
+        `${pct}% of ${whole} = (${pct} / 100) × ${whole}.`,
+        `= ${result}.`,
+        `Final answer: ${result}.`,
+      ],
+    };
+  }
+  if (template === 2) {
+    const km = 2 + (a % 6);
+    const m = km * 1000;
+    return {
+      text: `Convert ${km} km into metres.`,
+      correctAnswer: `${m} m`,
+      keyPoints: [
+        `1 km = 1000 m.`,
+        `${km} km = ${km} × 1000 = ${m} m.`,
+        `Final answer: ${m} m.`,
+      ],
+    };
+  }
+  const c = (a + b) % 10 + 5;
+  const mean = +((a + b + c) / 3).toFixed(2);
+  return {
+    text: `Find the mean of the numbers ${a}, ${b}, and ${c}.`,
+    correctAnswer: `${mean}`,
+    keyPoints: [
+      `Mean = (sum of all observations) / (number of observations).`,
+      `Mean = (${a} + ${b} + ${c}) / 3 = ${a + b + c} / 3 = ${mean}.`,
+      `Final answer: ${mean}.`,
     ],
   };
 }
@@ -2831,6 +3869,20 @@ function studentVisibleSummary(value: string, maxLength = 240) {
       .replace(/\bconcept\s+focus\b/gi, "focus")
       .replace(/\b[A-Z][a-zA-Z\s]{3,40}\s+\d{1,3}\s+[a-z]\s+(?=[A-Z])/g, "")
       .replace(/\b(?:Activity|Fig(?:ure)?|Table|Box|Example|Exercise)\s*\.?\s*\d+(?:\.\d+)*\s*[.:]?\s*/gi, "")
+      // "Exercises." (plural, standalone, no trailing number) — stripped because
+      // it is a textbook-section heading, not a learnable fact.
+      .replace(/\bExercises?(?!\s*\d)\s*\.?\s*/gi, "")
+      // Numbered prompt lists ("1. Why does...", "2. Explain the laws...") —
+      // these are exercise prompts extracted from the textbook, not concept
+      // statements the student can study. Strip the whole numbered sentence.
+      // The terminator is optional so truncated fragments (where the sentence
+      // got cut by `trimToSentence`) are also removed cleanly.
+      .replace(
+        /\b\d{1,3}\.\s+(?:Why|What|How|When|Where|Which|Who|Whom|Whose|Explain|Describe|Define|State|List|Name|Choose|Tick|Fill|Match|Answer|Give|Write|Discuss|Differentiate|Calculate|Find|Prove|Show|Determine|Identify|Compare|Contrast|Illustrate|Outline|Summarize|Formulate|Predict|Evaluate|Analyze|Justify|Apply|Solve|Compute|Express)\b[^.!?]*[.!?]?\s*/gi,
+        "",
+      )
+      // "Answer the following questions." / "Answer the following."
+      .replace(/\bAnswer\s+the\s+following\s+(?:questions?|parts?|items?|sub-?questions?)\.?\s*/gi, "")
       .replace(/\b\d{1,3}\s+(?:y|a|b|c)\s+/gi, " ")
       .replace(/^\d{1,3}\s+/, "")
       .replace(/\b\d+(?:\.\d+){1,3}\s*[:.-]\s*/g, "")

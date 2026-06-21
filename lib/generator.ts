@@ -923,8 +923,14 @@ Return JSON: [{ "text","correctAnswer":"full model answer","keyPoints":["p1","p2
     NUMERICAL: `Generate ${section.count} Numerical questions.
 ${sectionContext}
 ${strictRules}
-Include all given data in question. Must be solvable with realistic values. Avoid arithmetic traps unrelated to the concept. Show complete solution.
-Return JSON: [{ "text":"problem with all values given","correctAnswer":"final answer with unit","keyPoints":["Step1:formula","Step2:values","Step3:answer"],"marks":3,"topic" }]`,
+Every question must be a real, calculation/problem-solving task grounded in the chapter's formulas, units, and worked examples. Include all given data, realistic values with proper units, and a meaningful calculation (distance, speed, velocity, acceleration, force, work, energy, mass balance, refraction, etc.).
+BANNED patterns — questions that look like these will be auto-rejected:
+- "A source-based activity on X lists Y key details and Z supporting examples. How many evidence points?"
+- "In a chapter activity on X, Y features and Z examples are listed. How many in all?"
+- "Read the passage and count / add / calculate the number of ..."
+- Any "list/table/activity has X items, calculate Y" pattern where the numbers are made up and don't come from a real physics/chemistry/math scenario.
+Show complete solution. Every keyPoint should be a real formula → values → answer step.
+Return JSON: [{ "text":"problem with all values and units given","correctAnswer":"final answer with unit","keyPoints":["Step1:formula","Step2:values","Step3:answer"],"marks":3,"topic" }]`,
     SOURCE_BASED: `Generate ${section.count} Source-Based questions.
 ${sectionContext}
 ${strictRules}

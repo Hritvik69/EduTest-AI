@@ -383,6 +383,85 @@ describe("generateSourceBackedFallbackQuestions", () => {
     );
   });
 
+  it("generates real motion numericals for Class 10 'Describing Motion Around Us' instead of source-based activity fake questions", () => {
+    const motionConfig: PaperConfig = {
+      classNum: 10,
+      subject: "Physics",
+      subjects: ["Physics"],
+      subjectSelections: [{ subject: "Physics", chapterIds: [1], topicIds: [] }],
+      chapterIds: [1],
+      totalMarks: 24,
+      duration: 60,
+      examType: "Practice",
+      difficulty: "MEDIUM",
+      aiProvider: "AUTO",
+      questionTypes: ["NUMERICAL"],
+      typeDistribution: { NUMERICAL: 8 },
+      bloomDistribution: defaultBloomDistribution,
+      totalQuestions: 8,
+      paperFocus: "numerical",
+    };
+    const motionBlueprint: Blueprint = {
+      sections: [sectionFor("NUMERICAL", 8, 3)],
+      totalQuestions: 8,
+      totalMarks: 24,
+      estimatedTime: 60,
+      competencyPercentage: 60,
+    };
+    const motionConcepts: ConceptData[] = [
+      {
+        text:
+          "Describing motion around us requires measuring distance and displacement, average speed and average velocity, and the direction of motion for objects travelling along straight lines.",
+        type: "NCERT_TXT_SOURCE",
+        bloomLevel: "APPLY",
+        hotsPotential: true,
+        subject: "Physics",
+        classNum: 10,
+        chapterName: "Describing Motion Around Us",
+        topicName: "Distance, displacement, speed and velocity",
+        chapterId: 1,
+        topicId: 1,
+        source: "ncert_txt",
+      },
+    ];
+
+    const questions = generateSourceBackedFallbackQuestions(
+      motionBlueprint.sections,
+      motionConcepts,
+      motionConfig,
+    );
+    const validation = validatePaperKeepingValidQuestions(
+      questions,
+      motionBlueprint,
+      motionConfig,
+    );
+    const visibleText = studentVisibleText(validation.questions);
+
+    // Should fill all 8 slots from the motion concept pool
+    expect(validation.questions).toHaveLength(8);
+
+    // Must NOT produce the generic fake "source-based activity" pattern
+    // (Q5–Q7 in the user's bug report) — that text is not a real physics
+    // numerical and pollutes papers with paperFocus = "numerical".
+    expect(visibleText).not.toMatch(/source-based activity on .* lists \d+ key details/i);
+    expect(visibleText).not.toMatch(/chapter activity on .* correct features and \d+ supporting examples/i);
+    expect(visibleText).not.toMatch(/How many evidence points are listed in all/i);
+
+    // Should produce real physics numericals: distance / speed / velocity /
+    // acceleration / force, with units and varied inputs.
+    expect(visibleText).toMatch(/km\/h|m\/s|kg|N|m\/s²|J|metre|kilometre/i);
+
+    // Each question's correctAnswer should look like a real numeric result
+    // (number + unit), not the "X evidence points" template.
+    const correctAnswers = validation.questions.map((q) => q.correctAnswer);
+    expect(
+      correctAnswers.some((answer) => /\b\d+(\.\d+)?\s*(km\/h|m\/s|kg|N|m\/s²|J|km)\b/i.test(answer)),
+    ).toBe(true);
+    expect(
+      correctAnswers.every((answer) => !/evidence points|key details|supporting examples/i.test(answer)),
+    ).toBe(true);
+  });
+
   it("replaces noisy Communication Skills fragments with clean syllabus-near questions", () => {
     const communicationItem = {
       subject: "Advanced Computer",
