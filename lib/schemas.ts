@@ -43,7 +43,7 @@ export const aiProviderValues = [
   "OPENAI",
 ] as const;
 export const sourceModeValues = ["curriculum", "pdf_upload"] as const;
-export const questionGenerationModeValues = ["fresh", "source_exact", "source_insights"] as const;
+export const questionGenerationModeValues = ["fresh", "source_exact", "source_insights", "hidden_gems"] as const;
 export const bloomLevelValues = [
   "REMEMBER",
   "UNDERSTAND",
@@ -51,6 +51,19 @@ export const bloomLevelValues = [
   "ANALYZE",
   "EVALUATE",
   "CREATE",
+] as const;
+
+export const hiddenGemTypeValues = [
+  "SCIENTIST_NAME",
+  "DISCOVERY",
+  "TIMELINE",
+  "DID_YOU_KNOW",
+  "ETYMOLOGY",
+  "EXPERIMENT",
+  "SIDE_NOTE",
+  "COMPARISON",
+  "HISTORICAL_CONTEXT",
+  "FORGOTTEN_DETAIL",
 ] as const;
 
 // New 3-axis style controls (verb / vocab / depth). UI defaults to MIXED /
@@ -93,6 +106,7 @@ export const questionGenerationModeSchema = z.enum(questionGenerationModeValues)
 export const paperFocusValues = ["mixed", "numerical", "concept"] as const;
 export const paperFocusSchema = z.enum(paperFocusValues);
 export const bloomLevelSchema = z.enum(bloomLevelValues);
+export const hiddenGemTypeSchema = z.enum(hiddenGemTypeValues);
 
 const boundedText = (max: number) =>
   z.string().trim().min(1).max(max);
@@ -104,6 +118,15 @@ const optionalBooleanSchema = z.preprocess((value) => {
 
 export const languageModeValues = ["grammar", "story", "auto"] as const;
 export const languageModeSchema = z.enum(languageModeValues);
+
+export const curiosityConfigSchema = z
+  .object({
+    enabled: z.boolean().default(false),
+    minDifficulty: difficultySchema.optional(),
+    maxQuestions: z.coerce.number().int().min(0).max(10).optional(),
+    focus: z.array(hiddenGemTypeSchema).max(10).optional(),
+  })
+  .optional();
 
 export const subjectSelectionSchema = z.object({
   subject: boundedText(100),
@@ -195,6 +218,7 @@ export const paperConfigSchema = z
     questionComposition: z.array(questionCompositionItemSchema).max(100).optional(),
     bloomDistribution: bloomDistributionSchema,
     questionStyle: questionStyleSchema.optional(),
+    curiosityConfig: curiosityConfigSchema,
     totalQuestions: z.coerce.number().int().min(5).max(100),
   })
   .superRefine((config, ctx) => {
@@ -216,7 +240,7 @@ export const paperConfigSchema = z
         ctx.addIssue({
           code: "custom",
           path: ["questionTypes"],
-          message: `${type} cannot be generated for ${config.difficulty} difficulty because its format ceiling is ${formatDifficultyCeilings[type]}. Choose another format or lower the difficulty.`,
+          message: `${type} cannot be generated for ${config.difficulty} difficulty because its format ceiling is ${formatDifficultyCeilings[type]}. Choose another format or lower the difficulty.[...]
         });
       }
     });
