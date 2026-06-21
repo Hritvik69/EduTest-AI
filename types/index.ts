@@ -80,7 +80,7 @@ export interface QuestionStyle {
 
 export type ContentSource = "pdf" | "ncert_txt" | "curriculum" | "demo" | "unknown";
 export type PaperSourceMode = "curriculum" | "pdf_upload";
-export type QuestionGenerationMode = "fresh" | "source_exact" | "source_insights";
+export type QuestionGenerationMode = "fresh" | "source_exact" | "source_insights" | "hidden_gems";
 export type PaperFocus = "mixed" | "numerical" | "concept";
 export type AITask =
   | "PDF_EXTRACTION"
@@ -89,6 +89,24 @@ export type AITask =
   | "ANSWER_EVALUATION";
 
 export type GenerationRiskLevel = "low" | "medium" | "high";
+
+export interface CuriosityConfig {
+  enabled: boolean;
+  minDifficulty?: Difficulty;
+  maxQuestions?: number;
+  focus?: Array<
+    | "SCIENTIST_NAME"
+    | "DISCOVERY"
+    | "TIMELINE"
+    | "DID_YOU_KNOW"
+    | "ETYMOLOGY"
+    | "EXPERIMENT"
+    | "SIDE_NOTE"
+    | "COMPARISON"
+    | "HISTORICAL_CONTEXT"
+    | "FORGOTTEN_DETAIL"
+  >;
+}
 
 export interface GenerationContract {
   hash: string;
@@ -344,6 +362,10 @@ export interface PaperConfig {
    *   - depth: how many reasoning steps the question demands
    */
   questionStyle?: QuestionStyle;
+  /**
+   * Curiosity-based question config for "Hidden Gems" mode
+   */
+  curiosityConfig?: CuriosityConfig;
   totalQuestions: number;
 }
 
