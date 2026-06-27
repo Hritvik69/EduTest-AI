@@ -33,7 +33,7 @@ export async function GET(
   const paperId = parseIdParam(id);
   if (!paperId) return jsonError("Invalid paper id.", 400);
 
-  const ownerId = await getPaperOwnerId(paperId);
+  const ownerId = await getPaperOwnerId(paperId, auth.user.id);
   if (!ownerId) {
     return jsonError(
       "Paper not found. It may have been removed or created in another browser session.",

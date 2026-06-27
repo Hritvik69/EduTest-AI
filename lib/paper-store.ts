@@ -24,6 +24,8 @@ const globalForPapers = globalThis as typeof globalThis & {
   __edutestSessionResults?: Map<string, StoredAttempt>;
   __edutestSessionResultOwners?: Map<string, number>;
   __edutestMemorySequence?: number;
+  /** In-memory lock map for serializing concurrent paper status updates. */
+  __edutestPaperLocks?: Map<number, { resolve: () => void }>;
 };
 
 export const memoryPapers =
@@ -353,54 +355,59 @@ export async function saveQuestionsAndLink(
 }
 
 export async function markPaperReady(paperId: number) {
-  if (memoryPapers.has(paperId)) {
-    const existing = memoryPapers.get(paperId);
-    if (existing) {
-      if (!existing.questions.length) {
+  // Serialize concurrent updates to the same paper to prevent stale reads
+  // overwriting more recent status changes (e.g., FAILED set by another request
+  // while this one is trying to set READY).
+  return withPaperLock(paperId, async () => {
+    if (memoryPapers.has(paperId)) {
+      const existing = memoryPapers.get(paperId);
+      if (existing) {
+        if (!existing.questions.length) {
+          throw new Error("Cannot mark a paper READY before questions are saved.");
+        }
+        memoryPapers.set(paperId, {
+          ...existing,
+          status: "READY",
+          errorMetadata: null,
+        });
+      }
+      return;
+    }
+
+    if (sql) {
+      const database = sql;
+      const transactionRows = await withPaperPersistenceRetry(
+        "paper ready mark",
+        () =>
+          database.transaction((tx) => [
+            tx`SELECT set_config('statement_timeout', ${String(paperPersistenceStatementTimeoutMs())}, true)`,
+            tx`SELECT set_config('lock_timeout', ${String(paperPersistenceLockTimeoutMs())}, true)`,
+            tx`
+              UPDATE papers
+              SET status = 'READY', error_metadata = NULL, updated_at = NOW()
+              WHERE id = ${paperId}
+              AND EXISTS (
+                SELECT 1 FROM paper_questions WHERE paper_id = ${paperId}
+              )
+              RETURNING id
+            `,
+          ]),
+      );
+      const rows = transactionRows[2];
+      if (!rows[0]?.id) {
         throw new Error("Cannot mark a paper READY before questions are saved.");
       }
+      return;
+    }
+
+    const existing = memoryPapers.get(paperId);
+    if (existing) {
       memoryPapers.set(paperId, {
         ...existing,
         status: "READY",
-        errorMetadata: null,
       });
     }
-    return;
-  }
-
-  if (sql) {
-    const database = sql;
-    const transactionRows = await withPaperPersistenceRetry(
-      "paper ready mark",
-      () =>
-        database.transaction((tx) => [
-          tx`SELECT set_config('statement_timeout', ${String(paperPersistenceStatementTimeoutMs())}, true)`,
-          tx`SELECT set_config('lock_timeout', ${String(paperPersistenceLockTimeoutMs())}, true)`,
-          tx`
-            UPDATE papers
-            SET status = 'READY', error_metadata = NULL, updated_at = NOW()
-            WHERE id = ${paperId}
-            AND EXISTS (
-              SELECT 1 FROM paper_questions WHERE paper_id = ${paperId}
-            )
-            RETURNING id
-          `,
-        ]),
-    );
-    const rows = transactionRows[2];
-    if (!rows[0]?.id) {
-      throw new Error("Cannot mark a paper READY before questions are saved.");
-    }
-    return;
-  }
-
-  const existing = memoryPapers.get(paperId);
-  if (existing) {
-    memoryPapers.set(paperId, {
-      ...existing,
-      status: "READY",
-    });
-  }
+  });
 }
 
 export async function markPaperDemoMode(paperId: number) {
@@ -561,33 +568,36 @@ export async function updatePaperStatus(
   status: StoredPaper["status"],
   errorMetadata?: Record<string, unknown>,
 ) {
-  const existing = memoryPapers.get(paperId);
-  if (existing) {
-    memoryPapers.set(paperId, {
-      ...existing,
-      status,
-      errorMetadata: errorMetadata ?? null,
-    });
-    return;
-  }
+  // Serialize concurrent status updates to prevent a stale status overwriting
+  // a more recent one (e.g., another request setting FAILED while this sets READY).
+  return withPaperLock(paperId, async () => {
+    const existing = memoryPapers.get(paperId);
+    if (existing) {
+      memoryPapers.set(paperId, {
+        ...existing,
+        status,
+        errorMetadata: errorMetadata ?? null,
+      });
+      return;
+    }
 
-  if (sql) {
-    const database = sql;
-    await withPaperPersistenceRetry("paper status update", () =>
-      database.transaction((tx) => [
-        tx`SELECT set_config('statement_timeout', ${String(paperPersistenceStatementTimeoutMs())}, true)`,
-        tx`SELECT set_config('lock_timeout', ${String(paperPersistenceLockTimeoutMs())}, true)`,
-        tx`
-          UPDATE papers
-          SET status = ${status}, error_metadata = ${json(errorMetadata ?? null)},
-              updated_at = NOW()
-          WHERE id = ${paperId}
-        `,
-      ]),
-    );
-    return;
-  }
-
+    if (sql) {
+      const database = sql;
+      await withPaperPersistenceRetry("paper status update", () =>
+        database.transaction((tx) => [
+          tx`SELECT set_config('statement_timeout', ${String(paperPersistenceStatementTimeoutMs())}, true)`,
+          tx`SELECT set_config('lock_timeout', ${String(paperPersistenceLockTimeoutMs())}, true)`,
+          tx`
+            UPDATE papers
+            SET status = ${status}, error_metadata = ${json(errorMetadata ?? null)},
+                updated_at = NOW()
+            WHERE id = ${paperId}
+          `,
+        ]),
+      );
+      return;
+    }
+  });
 }
 
 export async function updatePaperDefinition(
@@ -688,7 +698,7 @@ export async function persistGeneratedPaper(
     }
 
     console.warn(
-      "[paper-store] persistGeneratedPaper failed in dev mode; falling back to in-memory store",
+      "[paper-store] persistGeneratedPaper failed in dev mode; falling back to in-memory store — NOTE: this paper will NOT survive server restart or cold start.",
       {
         message: error instanceof Error ? error.message : String(error),
       },
@@ -696,6 +706,7 @@ export async function persistGeneratedPaper(
     const fallbackId = nextMemoryId();
     memoryPapers.set(fallbackId, paper);
     memoryPaperOwners.set(fallbackId, userId);
+    console.info(`[paper-store] in-memory fallback used: paperId=${fallbackId} userId=${userId} isDemoMode=${paper.isDemoMode}`);
     return { paperId: fallbackId, status: paper.status ?? "READY", reused: false };
   }
 }
@@ -760,24 +771,40 @@ export async function getPaper(paperId: number, userId?: number) {
   return memoryPapers.get(paperId) ?? null;
 }
 
-export async function getPaperOwnerId(paperId: number) {
+export async function getPaperOwnerId(paperId: number, requestingUserId?: number) {
   pruneGuestMemory();
-  if (memoryPapers.has(paperId)) return memoryPaperOwners.get(paperId) ?? null;
+  if (memoryPapers.has(paperId)) {
+    const ownerId = memoryPaperOwners.get(paperId) ?? null;
+    // SECURITY: Do not leak the owner if the requester doesn't own this paper
+    if (ownerId !== null && requestingUserId !== undefined && ownerId !== requestingUserId) {
+      return null;
+    }
+    return ownerId;
+  }
 
   if (!canQueryDatabaseId(paperId)) return null;
 
   if (sql) {
+    // SECURITY: Always require the requesting user to match when looking up owner
+    // from the database — we must NOT expose ownership of arbitrary papers.
+    if (requestingUserId === undefined) return null;
     const rows = await sql`
       SELECT user_id
       FROM papers
       WHERE id = ${paperId}
+      AND user_id = ${requestingUserId}
       LIMIT 1
     `;
     return rows[0]?.user_id ? Number(rows[0].user_id) : null;
   }
 
   const paper = memoryPapers.get(paperId);
-  return paper ? (memoryPaperOwners.get(paperId) ?? null) : null;
+  if (!paper) return null;
+  const ownerId = memoryPaperOwners.get(paperId) ?? null;
+  if (ownerId !== null && requestingUserId !== undefined && ownerId !== requestingUserId) {
+    return null;
+  }
+  return ownerId;
 }
 
 export async function listPapersForUser(userId: number) {
@@ -934,6 +961,23 @@ export async function saveAttemptForUser(
   report: StoredAttempt,
   answers: Record<string, unknown>,
 ) {
+  // SECURITY: Demo mode scores must NOT be persisted to the database — they are
+  // for practice only and would pollute analytics / academic records if stored.
+  // Return the result without saving; the caller still returns the score to the
+  // user so they see their result.
+  if (report.isDemoMode) {
+    pruneGuestMemory();
+    enforceGuestAttemptLimit(userId);
+    const attemptId = nextMemoryId();
+    const saved: StoredAttempt = {
+      ...report,
+      attemptId,
+      createdAt: new Date().toISOString(),
+    };
+    memoryAttempts.set(attemptId, saved);
+    memoryAttemptOwners.set(attemptId, userId);
+    return saved;
+  }
   pruneGuestMemory();
   if (isGuestUserId(userId) && !sql) {
     enforceGuestAttemptLimit(userId);
@@ -1507,18 +1551,74 @@ function numericId(value: unknown) {
   return Number.isInteger(numberValue) && numberValue > 0 ? numberValue : undefined;
 }
 
+/**
+ * Generate a collision-resistant in-memory paper ID.
+ * Uses Date.now() for time-ordering + crypto random for cross-instance uniqueness.
+ * In serverless, each cold start gets a fresh in-memory map; crypto random
+ * prevents accidental collisions within a single instance's in-flight requests.
+ */
 function nextMemoryId() {
   const next = (globalForPapers.__edutestMemorySequence ?? 0) + 1;
   globalForPapers.__edutestMemorySequence = next;
-  return Date.now() * 1000 + (next % 1000);
+  const random = getCryptoRandomHex(3);
+  return Date.now() * 1_000_000 + (next % 1_000_000) * 1000 + parseInt(random, 16) % 1000;
 }
 
+/**
+ * Generate a cryptographically random session result ID.
+ * crypto.randomUUID() is available in Node 14.17+ and all modern browsers.
+ */
 function createSessionResultId() {
-  const next = (globalForPapers.__edutestMemorySequence ?? 0) + 1;
-  globalForPapers.__edutestMemorySequence = next;
-  return `session-result-${Date.now()}-${(next % 1000)
-    .toString(36)
-    .padStart(2, "0")}`;
+  const random = getCryptoRandomHex(8);
+  return `session-result-${Date.now()}-${random}`;
+}
+
+/**
+ * Return N bytes of random hex from the Web Crypto API.
+ * Falls back to Math.random() only when crypto is unavailable (e.g. some test
+ * environments), with a warning logged.
+ */
+function getCryptoRandomHex(bytes: number): string {
+  if (globalThis.crypto?.getRandomValues) {
+    const buf = new Uint8Array(bytes);
+    globalThis.crypto.getRandomValues(buf);
+    return Array.from(buf)
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+  }
+  // Fallback only for test environments — do NOT use in production hot paths
+  console.warn("[paper-store] crypto.getRandomValues unavailable; using Math.random for ID generation");
+  return Math.random().toString(16).slice(2, 2 + bytes * 2).padEnd(bytes * 2, "0");
+}
+
+/**
+ * Acquire an in-memory exclusive lock for a paper ID.
+ * Returns a function to call when done.  Concurrent callers for the same
+ * paperId are serialized — each waits for the previous to release.
+ *
+ * SECURITY NOTE: This lock is per-process only.  In serverless environments,
+ * each cold-start is a fresh process so the lock has no effect across instances.
+ * For cross-instance atomicity, the database-level pg_advisory_xact_lock
+ * (already used in createPaperInDB) is relied upon.  This in-memory lock
+ * guards the status Map operations within a single process.
+ */
+function withPaperLock<T>(paperId: number, fn: () => Promise<T>): Promise<T> {
+  const locks = globalForPapers.__edutestPaperLocks ?? new Map<string, Promise<() => void>>();
+  globalForPapers.__edutestPaperLocks = locks as Map<number, Promise<() => void>>;
+
+  const key = String(paperId);
+  const waitFor = locks.get(paperId) ?? Promise.resolve();
+
+  let unlock: () => void;
+  const locked = new Promise<() => void>((resolve) => { unlock = resolve; });
+  locks.set(paperId, locked);
+
+  return waitFor.then(() => fn()).finally(() => {
+    unlock!();
+    // If we are still the front of the queue, clean up
+    if (locks.get(paperId) === locked) locks.delete(paperId);
+  });
+}
 }
 
 function isSessionResultId(value: string) {
@@ -1720,10 +1820,36 @@ function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+/**
+ * Determine if in-memory fallback storage can be used.
+ * In serverless environments, memory storage is NOT shared across instances,
+ * so in-memory fallback can lead to data loss.
+ */
 function canUseMemoryPaperFallback(isDemoMode: boolean, guestMode: boolean) {
+  // Demo mode papers can use memory fallback (they're ephemeral)
   if (isDemoMode) return true;
+
+  // Authenticated users must always use database
   if (!guestMode) return false;
-  return process.env.NODE_ENV !== "production" && process.env.VERCEL !== "1";
+
+  // In serverless or production, memory fallback is too risky
+  // because memory is not shared across instances
+  const isProduction =
+    process.env.NODE_ENV === "production" ||
+    process.env.VERCEL === "1" ||
+    process.env.AWS_LAMBDA_FUNCTION_NAME ||
+    process.env.FLY ||
+    process.env.K_SERVICE;
+
+  if (isProduction) {
+    console.warn(
+      "[paper-store] In-memory fallback disabled in production/serverless. " +
+      "Papers must be persisted to database. This may cause failures if DB is unavailable.",
+    );
+    return false;
+  }
+
+  return true;
 }
 
 function paperPersistenceRequiredError(error?: unknown) {

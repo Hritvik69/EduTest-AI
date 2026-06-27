@@ -24,7 +24,19 @@ import type { GeneratedQuestion, PaperConfig } from "@/types";
 const globalForFingerprints = globalThis as typeof globalThis & {
   __edutestFingerprints?: Map<string, PaperFingerprintEntry[]>;
   __edutestFingerprintSequences?: Map<string, number>;
+  __edutestFingerprintPruneAt?: number; // last prune timestamp
 };
+
+/**
+ * Fingerprint entries older than this are considered stale and pruned.
+ * Default: 7 days.  Configurable via EDUTEST_FINGERPRINT_MAX_AGE_DAYS env var.
+ */
+function maxFingerprintAgeMs(): number {
+  const days = Math.floor(
+    Number(process.env["EDUTEST_FINGERPRINT_MAX_AGE_DAYS"] ?? "7"),
+  );
+  return Math.max(1, days) * 86_400_000;
+}
 
 export const MAX_IN_MEMORY_FINGERPRINTS = 50;
 export const MAX_ANTI_REPEAT_STEMS_INJECTED = 80;
@@ -119,11 +131,29 @@ export function fingerprintForPaper(
 /**
  * Record a freshly-generated paper so subsequent generations can avoid
  * repeating its questions. Caps each config bucket at
- * {@link MAX_IN_MEMORY_FINGERPRINTS} entries.
+ * {@link MAX_IN_MEMORY_FINGERPRINTS} entries and evicts entries older
+ * than the configured TTL (default 7 days).
  */
 export function recordPaperFingerprint(entry: PaperFingerprintEntry): void {
+  pruneExpiredFingerprints(); // lazy, rate-limited to once per minute
   const store = fingerprintStore();
-  const list = store.get(entry.configKey) ?? [];
+  const cutoff = Date.now() - maxFingerprintAgeMs();
+  let list = store.get(entry.configKey) ?? [];
+
+  // Prune entries older than the TTL
+  if (list.length > 0) {
+    const before = list.length;
+    list = list.filter((e) => Date.parse(e.createdAt) > cutoff);
+    if (list.length < before) {
+      if (list.length === 0) {
+        store.delete(entry.configKey);
+        return;
+      } else {
+        store.set(entry.configKey, list);
+      }
+    }
+  }
+
   list.push(entry);
   while (list.length > MAX_IN_MEMORY_FINGERPRINTS) {
     list.shift();
@@ -238,6 +268,29 @@ export function nextFingerprintSequence(configKey: string): number {
   const next = (sequences.get(configKey) ?? 0) + 1;
   sequences.set(configKey, next);
   return next;
+}
+
+/**
+ * Prune all fingerprint buckets of entries older than the configured TTL.
+ * Called lazily from recordPaperFingerprint to avoid scanning on every read.
+ */
+function pruneExpiredFingerprints(): void {
+  const lastPruneAt = globalForFingerprints.__edutestFingerprintPruneAt ?? 0;
+  const now = Date.now();
+  // Only prune once per minute
+  if (now - lastPruneAt < 60_000) return;
+
+  const cutoff = now - maxFingerprintAgeMs();
+  const store = fingerprintStore();
+  for (const [key, entries] of store.entries()) {
+    const pruned = entries.filter((e) => Date.parse(e.createdAt) > cutoff);
+    if (pruned.length === 0) {
+      store.delete(key);
+    } else if (pruned.length < entries.length) {
+      store.set(key, pruned);
+    }
+  }
+  globalForFingerprints.__edutestFingerprintPruneAt = now;
 }
 
 export function clearFingerprintStoreForTests(): void {

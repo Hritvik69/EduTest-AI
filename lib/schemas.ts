@@ -5,6 +5,34 @@ import {
   formatDifficultyCeilings,
 } from "@/lib/difficulty-protocol";
 
+/**
+ * SECURITY FIX: Replace z.coerce.number() which silently accepts strings like
+ * "100abc" → 100 or "-1" → -1 without validation.  This helper accepts only
+ * proper numeric input:
+ *   - A finite number  → passed through
+ *   - A string that parses cleanly as an integer (no trailing non-numeric chars)  → parsed
+ *   - Anything else  → rejected with a Zod validation error
+ */
+function strictInt(
+  params: { min?: number; max?: number } = {},
+): z.ZodType<number> {
+  return z.preprocess((val) => {
+    if (typeof val === "number" && Number.isFinite(val)) return Math.floor(val);
+    if (typeof val === "string") {
+      const trimmed = val.trim();
+      // Reject strings with trailing non-numeric characters
+      if (!/^-?\d+$/.test(trimmed)) return NaN;
+      const n = Number(trimmed);
+      return Number.isInteger(n) ? n : NaN;
+    }
+    return NaN;
+  }, z.number().int(params));
+}
+
+const _positiveInt = strictInt({ min: 1 });
+const _nonNegInt = strictInt({ min: 0 });
+const _boundedInt = (min: number, max: number) => strictInt({ min, max });
+
 export const questionTypeValues = [
   "MCQ",
   "ASSERTION_REASON",
@@ -129,35 +157,35 @@ export const curiosityConfigSchema = z
   .object({
     enabled: z.boolean().default(false),
     minDifficulty: difficultySchema.optional(),
-    maxQuestions: z.coerce.number().int().min(0).max(10).optional(),
+    maxQuestions: strictInt({ min: 0, max: 10 }).optional(),
     focus: z.array(hiddenGemTypeSchema).max(10).optional(),
   })
   .optional();
 
 export const subjectSelectionSchema = z.object({
   subject: boundedText(100),
-  chapterIds: z.array(z.coerce.number().int().positive()).max(50),
-  topicIds: z.array(z.coerce.number().int().positive()).max(250).optional(),
+  chapterIds: z.array(_positiveInt).max(50),
+  topicIds: z.array(_positiveInt).max(250).optional(),
   languageMode: languageModeSchema.optional(),
 });
 
 export const questionCompositionItemSchema = z.object({
   subject: boundedText(100),
-  chapterId: z.coerce.number().int().positive().optional(),
+  chapterId: _positiveInt.optional(),
   chapterName: z.string().trim().max(200).optional(),
-  topicId: z.coerce.number().int().positive().optional(),
+  topicId: _positiveInt.optional(),
   topicName: z.string().trim().max(500).optional(),
-  questionCount: z.coerce.number().int().min(0).max(100),
+  questionCount: strictInt({ min: 0, max: 100 }),
 });
 
 export const bloomDistributionSchema = z
   .object({
-    REMEMBER: z.coerce.number().int().min(0).max(100),
-    UNDERSTAND: z.coerce.number().int().min(0).max(100),
-    APPLY: z.coerce.number().int().min(0).max(100),
-    ANALYZE: z.coerce.number().int().min(0).max(100),
-    EVALUATE: z.coerce.number().int().min(0).max(100),
-    CREATE: z.coerce.number().int().min(0).max(100),
+    REMEMBER: strictInt({ min: 0, max: 100 }),
+    UNDERSTAND: strictInt({ min: 0, max: 100 }),
+    APPLY: strictInt({ min: 0, max: 100 }),
+    ANALYZE: strictInt({ min: 0, max: 100 }),
+    EVALUATE: strictInt({ min: 0, max: 100 }),
+    CREATE: strictInt({ min: 0, max: 100 }),
   })
   .superRefine((distribution, ctx) => {
     const total = Object.values(distribution).reduce((sum, value) => sum + value, 0);
@@ -184,18 +212,18 @@ const typeDistributionShape = questionTypeValues.reduce(
 export const typeDistributionSchema = z.object(typeDistributionShape);
 
 export const uploadedPdfSourceSummarySchema = z.object({
-  id: z.coerce.number().int().positive(),
+  id: _positiveInt,
   title: boundedText(300),
   subject: z.string().trim().max(100).optional(),
-  classNum: z.coerce.number().int().min(6).max(12).optional(),
+  classNum: strictInt({ min: 6, max: 12 }).optional(),
   fileName: z.string().trim().max(300).optional(),
   focusPrompt: z.string().trim().max(1000).optional(),
   contentHash: z.string().trim().max(128).optional(),
   extractionMethod: z
     .enum(["AI", "LOCAL_FALLBACK", "CACHED_AI", "CACHED_LOCAL_FALLBACK"])
     .optional(),
-  wordCount: z.coerce.number().int().min(0).max(1_000_000),
-  conceptsCount: z.coerce.number().int().min(0).max(10_000),
+  wordCount: strictInt({ min: 0, max: 1_000_000 }),
+  conceptsCount: strictInt({ min: 0, max: 10_000 }),
   topics: z.array(z.string().trim().min(1).max(500)).max(100),
   createdAt: z.string().optional(),
 });
@@ -211,7 +239,7 @@ export const uploadedPdfSourceSummarySchema = z.object({
 export const hiddenGemsSchema = z
   .object({
     enabled: z.boolean().default(false),
-    questionCount: z.coerce.number().int().min(0).max(10).default(0),
+    questionCount: strictInt({ min: 0, max: 10 }).default(0),
     difficulty: hiddenGemsDifficultySchema.default("MEDIUM"),
   })
   .default({ enabled: false, questionCount: 0, difficulty: "MEDIUM" });
@@ -219,16 +247,16 @@ export const hiddenGemsSchema = z
 export const paperConfigSchema = z
   .object({
     sourceMode: sourceModeSchema.default("curriculum"),
-    pdfSourceId: z.coerce.number().int().positive().optional(),
+    pdfSourceId: _positiveInt.optional(),
     pdfSource: uploadedPdfSourceSummarySchema.optional(),
-    classNum: z.coerce.number().int().min(6).max(12),
+    classNum: strictInt({ min: 6, max: 12 }),
     subject: boundedText(100),
     subjects: z.array(boundedText(100)).min(1).max(10).optional(),
     subjectSelections: z.array(subjectSelectionSchema).max(10).optional(),
-    chapterIds: z.array(z.coerce.number().int().positive()).max(100),
-    topicIds: z.array(z.coerce.number().int().positive()).max(500).optional(),
-    totalMarks: z.coerce.number().int().min(5).max(500),
-    duration: z.coerce.number().int().min(30).max(240),
+    chapterIds: z.array(_positiveInt).max(100),
+    topicIds: z.array(_positiveInt).max(500).optional(),
+    totalMarks: strictInt({ min: 5, max: 500 }),
+    duration: strictInt({ min: 30, max: 240 }),
     examType: boundedText(80),
     difficulty: difficultySchema,
     aiProvider: aiProviderSchema.default("AUTO"),
@@ -241,7 +269,7 @@ export const paperConfigSchema = z
     bloomDistribution: bloomDistributionSchema,
     questionStyle: questionStyleSchema.optional(),
     curiosityConfig: curiosityConfigSchema,
-    totalQuestions: z.coerce.number().int().min(5).max(100),
+    totalQuestions: strictInt({ min: 5, max: 100 }),
     hiddenGems: hiddenGemsSchema.optional(),
   })
   .superRefine((config, ctx) => {
@@ -339,7 +367,7 @@ export const paperConfigSchema = z
 
 export const generationRequestSchema = paperConfigSchema.extend({
   idempotencyKey: z.string().trim().min(8).max(128).optional(),
-  resumePaperId: z.coerce.number().int().positive().optional(),
+  resumePaperId: _positiveInt.optional(),
   demoMode: z.boolean().optional(),
   salvageInvalidQuestions: z.boolean().optional(),
 });
@@ -378,25 +406,28 @@ const subQuestionSchema = z
     type: questionTypeSchema,
     options: z.array(mcqOptionSchema).max(8).optional(),
     correctAnswer: boundedText(4000),
-    marks: z.coerce.number().int().min(1).max(20),
+    marks: strictInt({ min: 1, max: 20 }),
   })
   .passthrough();
 
 export const generatedQuestionPayloadSchema = z
   .object({
-    id: z.coerce.number().int().positive().optional(),
+    id: _positiveInt.optional(),
     text: boundedText(4000),
     type: questionTypeSchema,
     difficulty: difficultySchema,
-    marks: z.coerce.number().int().min(1).max(20),
+    marks: strictInt({ min: 1, max: 20 }),
     options: z.array(mcqOptionSchema).max(8).optional(),
     correctAnswer: boundedText(6000),
     explanation: z.string().max(6000).default(""),
     keyPoints: z.array(boundedText(1000)).max(30).optional(),
     bloomLevel: bloomLevelSchema.default("UNDERSTAND"),
-    competencyLevel: z.coerce.number().int().min(1).max(5).default(2),
-    reasoningSteps: z.coerce.number().int().min(1).max(5).optional(),
-    difficultyConfidence: z.coerce.number().min(0).max(1).optional(),
+    competencyLevel: strictInt({ min: 1, max: 5 }).default(2),
+    reasoningSteps: strictInt({ min: 1, max: 5 }).optional(),
+    difficultyConfidence: z.preprocess(
+      (val) => (typeof val === "number" ? val : typeof val === "string" ? Number(val) : NaN),
+      z.number().min(0).max(1),
+    ).optional(),
     cognitiveComplexity: cognitiveComplexitySchema.optional(),
     validatedDifficulty: difficultySchema.optional(),
     scenario: z.string().max(6000).optional(),
@@ -408,12 +439,12 @@ export const generatedQuestionPayloadSchema = z
     topic: z.string().max(500).optional(),
     section: z.string().max(100).optional(),
     subject: z.string().max(100).optional(),
-    classNum: z.coerce.number().int().min(6).max(12).optional(),
+    classNum: strictInt({ min: 6, max: 12 }).optional(),
   })
   .passthrough();
 
 export const paperRequestIdSchema = z.union([
-  z.coerce.number().int().positive(),
+  _positiveInt,
   z
     .string()
     .trim()
@@ -425,7 +456,7 @@ export const evaluationRequestSchema = z.object({
   answers: z
     .record(z.string().max(64), answerValueSchema)
     .refine((value) => Object.keys(value).length <= 150, "Too many answers."),
-  timeTaken: z.coerce.number().int().min(0).max(24 * 60 * 60).optional(),
+  timeTaken: strictInt({ min: 0, max: 86400 }).optional(),
   paperSnapshot: z.unknown().optional(),
   paperSnapshotToken: z.string().min(32).max(256).optional(),
   guestPaperToken: z.string().min(32).max(256).optional(),
@@ -447,32 +478,32 @@ export const savePaperRequestSchema = z.object({
 });
 
 export const saveProgressSchema = z.object({
-  paperId: z.coerce.number().int().positive(),
-  attemptId: z.coerce.number().int().positive().optional(),
+  paperId: _positiveInt,
+  attemptId: _positiveInt.optional(),
   answers: z.record(z.string().max(64), answerValueSchema).default({}),
-  visited: z.array(z.coerce.number().int().min(0)).max(200).optional(),
-  marked: z.array(z.coerce.number().int().min(0)).max(200).optional(),
+  visited: z.array(strictInt({ min: 0 })).max(200).optional(),
+  marked: z.array(strictInt({ min: 0 })).max(200).optional(),
   clientSavedAt: z.string().datetime().optional(),
   savedAt: z.string().datetime().optional(),
 });
 
 export const uploadFieldsSchema = z.object({
-  chapterId: z.coerce.number().int().positive(),
-  classNum: z.coerce.number().int().min(6).max(12),
+  chapterId: _positiveInt,
+  classNum: strictInt({ min: 6, max: 12 }),
   chapterName: boundedText(200),
   subject: boundedText(100),
   demoMode: optionalBooleanSchema,
 });
 
 export const extractionRequestSchema = z.object({
-  chapterId: z.coerce.number().int().positive(),
+  chapterId: _positiveInt,
   objectPath: z.string().trim().min(1).max(512).optional(),
   pdfUrl: z.string().url().max(2048).optional(),
   chapterName: boundedText(200),
   subject: boundedText(100),
-  classNum: z.coerce.number().int().min(6).max(12),
+  classNum: strictInt({ min: 6, max: 12 }),
   demoMode: z.boolean().optional(),
 });
 
-export const pdfSourceIdSchema = z.coerce.number().int().positive();
-export const idParamSchema = z.coerce.number().int().positive();
+export const pdfSourceIdSchema = _positiveInt;
+export const idParamSchema = _positiveInt;

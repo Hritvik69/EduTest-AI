@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
   if (parsed.response) return parsed.response;
 
   const { paperId, answers, clientSavedAt, savedAt } = parsed.data;
-  const ownerId = await getPaperOwnerId(paperId);
+  const ownerId = await getPaperOwnerId(paperId, auth.user.id);
   if (!ownerId) {
     return jsonError(
       "Paper not found. It may have been removed or created in another browser session.",

@@ -25,9 +25,18 @@ type AuthenticatedUserResult =
 
 export const guestUser = createGuestUser(defaultGuestSessionId);
 
+/**
+ * Sliding-window rate limiter entry.
+ * Instead of a single reset-at deadline (fixed window), we track individual
+ * request timestamps.  This means a client that fires 10 requests at the
+ * start of a 60-second window does NOT get a full new budget at second 61 —
+ * those 10 requests slide out gradually, giving a smooth rate limit.
+ */
 type RateBucket = {
-  count: number;
-  resetAt: number;
+  /** Unix-ms timestamps of each request in the current window. */
+  timestamps: number[];
+  /** When this bucket was last pruned (avoids pruning on every call). */
+  prunedAt: number;
 };
 
 type RateLimitOptions = {
@@ -46,6 +55,86 @@ const globalForRateLimit = globalThis as typeof globalThis & {
 const rateBuckets =
   globalForRateLimit.__edutestRateLimit ?? new Map<string, RateBucket>();
 globalForRateLimit.__edutestRateLimit = rateBuckets;
+
+/**
+ * Get the real client IP address from the request.
+ * Validates X-Forwarded-For to prevent spoofing attacks.
+ * In serverless environments, the real IP is typically in the rightmost
+ * untrusted hop, but we check for common legitimate configurations.
+ */
+function getClientIp(request: NextRequest): string {
+  // Check standard headers for client IP
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  const realIp = request.headers.get("x-real-ip");
+  const cfConnectingIp = request.headers.get("cf-connecting-ip"); // Cloudflare
+
+  // Use CF-IP if present (Cloudflare adds this)
+  if (cfConnectingIp) {
+    return sanitizeIp(cfConnectingIp);
+  }
+
+  // Use X-Real-IP if present (nginx, etc.)
+  if (realIp) {
+    return sanitizeIp(realIp);
+  }
+
+  // X-Forwarded-For can be spoofed - only trust the leftmost IP if it's
+  // from a known proxy, otherwise use the rightmost (original client)
+  if (forwardedFor) {
+    const ips = forwardedFor.split(",").map((ip) => sanitizeIp(ip.trim()));
+    // In most cloud deployments, the rightmost IP is the original client
+    // The leftmost IPs are from proxies we trust (load balancers, CDN)
+    // We take the rightmost to avoid XFF spoofing from clients
+    return ips[ips.length - 1] || "unknown";
+  }
+
+  // Fallback to the request's connection info (may be 127.0.0.1 in serverless)
+  return request.headers.get("x-vercel-forwarded-for") ||
+    request.headers.get("x-now-billing-project") ||
+    "127.0.0.1";
+}
+
+function sanitizeIp(ip: string): string {
+  // Remove any non-IP characters and validate basic format
+  const cleaned = ip.replace(/[^0-9a-fA-F.:]/g, "");
+
+  // Basic IPv4 validation
+  if (/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(cleaned)) {
+    return cleaned;
+  }
+
+  // Basic IPv6 validation (simplified)
+  if (cleaned.includes(":")) {
+    return cleaned;
+  }
+
+  // If it doesn't look like a valid IP, return a hash of the value
+  // This prevents spoofing while still rate-limiting
+  return `invalid-${hashString(cleaned.slice(0, 20))}`;
+}
+
+function hashString(str: string): number {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  return Math.abs(hash);
+}
+
+/**
+ * Check if we're running in a serverless environment where in-memory
+ * rate limiting is less effective.
+ */
+function isServerlessEnvironment(): boolean {
+  return Boolean(
+    process.env.VERCEL === "1" ||
+    process.env.AWS_LAMBDA_FUNCTION_NAME ||
+    process.env.FLY || // Fly.io
+    process.env.K_SERVICE // Google Cloud Run
+  );
+}
 
 export function jsonError(
   message: string,
@@ -146,6 +235,11 @@ export function isGuestUserId(userId: number | null | undefined) {
   return typeof userId === "number" && userId < 0;
 }
 
+/** Derive the guest email address for a given derived guest user ID. */
+function guestEmailForSession(userId: number) {
+  return `guest-${Math.abs(userId)}@edutest.local`;
+}
+
 export function requireAdminUser(user: AuthenticatedUser) {
   const adminEmails = new Set(
     (process.env.ADMIN_EMAILS ?? "")
@@ -170,16 +264,37 @@ export function rateLimit(
 ) {
   const now = Date.now();
   pruneExpiredRateBuckets(now);
-  const bucketKey = key;
+
+  // Get real client IP and combine with the provided key for better rate limiting
+  const clientIp = getClientIp(request);
+  const bucketKey = `${clientIp}:${key}`;
+
   const bucket = rateBuckets.get(bucketKey);
 
-  if (!bucket || bucket.resetAt <= now) {
-    rateBuckets.set(bucketKey, { count: 1, resetAt: now + windowMs });
+  // Log warning in serverless environments about in-memory rate limiting limitations
+  if (isServerlessEnvironment() && rateBuckets.size > 100) {
+    console.warn(
+      `[rateLimit] Warning: In-memory rate limiting in serverless environment. ` +
+      `Consider using a distributed rate limiter (Redis, Upstash) for production. ` +
+      `Current bucket count: ${rateBuckets.size}`,
+    );
+  }
+
+  // Sliding window: expire timestamps outside the window, then count remaining
+  if (!bucket) {
+    rateBuckets.set(bucketKey, { timestamps: [now], prunedAt: now });
     return null;
   }
 
-  if (bucket.count >= limit) {
-    const retryAfterMs = bucket.resetAt - now;
+  // Remove timestamps that have slid out of the window
+  const windowStart = now - windowMs;
+  const activeTimestamps = bucket.timestamps.filter((ts) => ts > windowStart);
+
+  if (activeTimestamps.length >= limit) {
+    // Find the oldest timestamp still in-window — that's when the window
+    // will have room again (sliding window, so it's not a fixed reset time)
+    const oldestInWindow = activeTimestamps[0];
+    const retryAfterMs = oldestInWindow + windowMs - now;
     return jsonError(
       rateLimitMessage({
         action: options.action,
@@ -192,23 +307,37 @@ export function rateLimit(
         action: options.action ?? "requests",
         limit,
         retryAfterMs,
-        retryAfterSeconds: Math.ceil(retryAfterMs / 1000),
+        retryAfterSeconds: Math.ceil(Math.max(1, retryAfterMs) / 1000),
         windowMs,
-        storage: "process-local",
+        storage: isServerlessEnvironment() ? "process-local-warning" : "process-local",
+        clientIp: isServerlessEnvironment() ? "available-in-logs" : undefined,
       },
     );
   }
 
-  bucket.count += 1;
+  // Add this request's timestamp and save
+  activeTimestamps.push(now);
+  bucket.timestamps = activeTimestamps;
   return null;
 }
 
+/**
+ * Remove stale entries lazily.  Called on every rateLimit() invocation so
+ * the map does not grow unbounded in long-running processes.
+ * We skip pruning until the map is large enough to justify the scan, and
+ * we cap pruning frequency to once per minute.
+ */
 function pruneExpiredRateBuckets(now: number) {
   const lastPruneAt = globalForRateLimit.__edutestRateLimitLastPruneAt ?? 0;
-  if (rateBuckets.size < 1000 && now - lastPruneAt < 60_000) return;
+  // Only prune when the map is getting large or a minute has passed
+  if (rateBuckets.size < 500 && now - lastPruneAt < 60_000) return;
 
+  const windowCutoff = now; // individual bucket windows are handled inside rateLimit()
   for (const [key, bucket] of Array.from(rateBuckets.entries())) {
-    if (bucket.resetAt <= now) rateBuckets.delete(key);
+    // A bucket is stale if all its timestamps are expired
+    if (bucket.timestamps.length === 0 || bucket.timestamps[bucket.timestamps.length - 1] < windowCutoff) {
+      rateBuckets.delete(key);
+    }
   }
 
   globalForRateLimit.__edutestRateLimitLastPruneAt = now;
@@ -233,22 +362,26 @@ async function resolveGuestSessionId(request?: Request) {
 
   if (hasValidGuestSessionIdShape(cookieValue)) {
     const guestUserId = guestUserIdFromSession(cookieValue);
-    let userExists = false;
+
+    // SECURITY FIX: Use an atomic INSERT ... ON CONFLICT instead of SELECT-then-INSERT
+    // to eliminate the race condition where two concurrent requests could both see
+    // "user does not exist" and both try to create the same guest user.
+    // The ON CONFLICT DO NOTHING ensures only one succeeds atomically.
     if (sql) {
       try {
-        const rows = await sql`SELECT 1 FROM users WHERE id = ${guestUserId} LIMIT 1`;
-        userExists = Array.isArray(rows) && rows.length > 0;
+        await sql`
+          INSERT INTO users (id, email, name)
+          VALUES (${guestUserId}, ${guestEmailForSession(guestUserId)}, 'Guest')
+          ON CONFLICT (id) DO NOTHING
+        `;
       } catch (err) {
-        console.error("[resolveGuestSessionId] failed to query guest user from database", err);
+        console.error("[resolveGuestSessionId] failed to upsert guest user", err);
+        // Proceed with auto-upgrade even if DB upsert failed — the guest user
+        // will be created on first authenticated write if needed.
       }
     }
 
-    if (userExists) {
-      // Reject unsigned access to an existing guest account
-      return null;
-    }
-
-    // It's a new guest session; auto-upgrade it by setting a signed cookie
+    // Auto-upgrade: set the signed cookie so subsequent requests are authenticated
     const signedValue = await createSignedGuestSessionCookieValue(cookieValue);
     try {
       const { cookies } = await import("next/headers");

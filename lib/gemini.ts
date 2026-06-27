@@ -132,11 +132,23 @@ const providerLabels: Record<DirectAIProvider, string> = {
 
 const globalForProviderCooldowns = globalThis as typeof globalThis & {
   __edutestProviderCooldowns?: Map<string, ProviderCooldown>;
+  /** Cache for AI provider health checks: keyed by "task:scope:providers-hash". */
+  __edutestHealthCache?: Map<string, { snapshot: AIProviderHealthSnapshot; until: number }>;
 };
 const providerCooldowns =
   globalForProviderCooldowns.__edutestProviderCooldowns ??
   new Map<string, ProviderCooldown>();
 globalForProviderCooldowns.__edutestProviderCooldowns = providerCooldowns;
+
+/** Minimum interval between health check calls for the same (task, scope) in ms. */
+const HEALTH_CHECK_CACHE_TTL_MS = 10_000;
+
+function healthCache() {
+  if (!globalForProviderCooldowns.__edutestHealthCache) {
+    globalForProviderCooldowns.__edutestHealthCache = new Map();
+  }
+  return globalForProviderCooldowns.__edutestHealthCache;
+}
 
 let workingGeminiModelName: string | null = process.env.GEMINI_MODEL ?? null;
 
@@ -799,7 +811,19 @@ export async function checkAIProviderHealth({
   cooldownScope?: string;
   timeoutMs?: number;
 } = {}): Promise<AIProviderHealthSnapshot> {
+  const now = Date.now();
   const ordered = providers?.length ? providers : fallbackOrderForTask(task);
+  const scopeKey = normalizeCooldownScope(cooldownScope);
+  const providersHash = ordered.join(",");
+
+  // Cache health check results for HEALTH_CHECK_CACHE_TTL_MS to avoid hammering
+  // provider APIs with repeated health checks from concurrent requests.
+  const cacheKey = `${task}:${scopeKey}:${providersHash}`;
+  const cached = healthCache().get(cacheKey);
+  if (cached && cached.until > now) {
+    return cached.snapshot;
+  }
+
   const statuses = await Promise.all(
     ordered.map((provider) =>
       checkSingleProviderHealth(provider, {
@@ -821,7 +845,7 @@ export async function checkAIProviderHealth({
       .map((status) => status.provider),
   );
 
-  return {
+  const snapshot: AIProviderHealthSnapshot = {
     checkedAt: new Date().toISOString(),
     task,
     providers: statuses,
@@ -833,6 +857,18 @@ export async function checkAIProviderHealth({
     ),
     grokUsable: Boolean(statuses.find((status) => status.provider === "GROK")?.usable),
   };
+
+  // Cache until the minimum TTL has passed
+  healthCache().set(cacheKey, { snapshot, until: now + HEALTH_CHECK_CACHE_TTL_MS });
+
+  // Prune stale cache entries to avoid unbounded growth
+  if (healthCache().size > 100) {
+    for (const [key, entry] of healthCache().entries()) {
+      if (entry.until <= now) healthCache().delete(key);
+    }
+  }
+
+  return snapshot;
 }
 
 export function getConfiguredProviders(task?: AITask): DirectAIProvider[] {

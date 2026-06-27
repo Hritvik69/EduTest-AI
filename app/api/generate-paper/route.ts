@@ -367,6 +367,20 @@ export async function POST(request: NextRequest) {
         stopHeartbeat();
         if (streamClosed) return;
         streamClosed = true;
+
+        // SECURITY: Explicitly remove the abort listener now that the stream is
+        // closed.  Although the listener was registered with { once: true } and
+        // would self-remove if the client aborts, removing it here ensures it
+        // does not fire for any reason after the stream has closed (e.g. a
+        // delayed abort signal firing after the stream ends).  This prevents
+        // stale abort handlers from interfering with subsequent requests.
+        try {
+          request.signal.removeEventListener("abort", abortGenerationFromClient);
+        } catch {
+          // removeEventListener throws if the listener was already removed (e.g.
+          // because { once: true } fired first).  This is harmless — ignore it.
+        }
+
         try {
           controller.close();
         } catch {

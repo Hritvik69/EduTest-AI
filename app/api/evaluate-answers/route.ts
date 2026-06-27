@@ -49,7 +49,7 @@ async function handleEvaluation(request: NextRequest) {
   const body = parsed.data;
   const numericPaperId =
     typeof body.paperId === "number" ? body.paperId : undefined;
-  const ownerId = numericPaperId ? await getPaperOwnerId(numericPaperId) : null;
+  const ownerId = numericPaperId ? await getPaperOwnerId(numericPaperId, auth.user.id) : null;
   const isOwner = ownerId === auth.user.id;
   if (ownerId && !isOwner) {
     return jsonError(
