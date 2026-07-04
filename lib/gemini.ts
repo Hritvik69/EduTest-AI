@@ -863,7 +863,7 @@ export async function checkAIProviderHealth({
 
   // Prune stale cache entries to avoid unbounded growth
   if (healthCache().size > 100) {
-    for (const [key, entry] of healthCache().entries()) {
+    for (const [key, entry] of healthCache()) {
       if (entry.until <= now) healthCache().delete(key);
     }
   }
