@@ -1,0 +1,85 @@
+import os, json
+
+MIN_CHARS = 900
+issues = []
+ok = []
+
+for root, dirs, files in os.walk('NCERT_Books'):
+    if '_extracted_text' not in root:
+        continue
+    for f in files:
+        if not f.endswith('.txt'):
+            continue
+        fp = os.path.join(root, f)
+        try:
+            with open(fp, 'r', encoding='utf-8') as fh:
+                content = fh.read()
+            lines = content.strip().splitlines()
+            char_count = len(content)
+            line_count = len(lines)
+            words = len(content.split())
+
+            name_ok = True
+            name_issue = ''
+
+            # Check if filename is garbled (repeated words in name)
+            name_clean = f.replace('_', ' ')
+            name_words = name_clean.split()
+            dup_count = sum(1 for i in range(1, len(name_words))
+                           if name_words[i] == name_words[i-1] and len(name_words[i]) > 3)
+            if dup_count >= 3:
+                name_ok = False
+                name_issue = f'filename has {dup_count} repeated word patterns'
+
+            if char_count < MIN_CHARS:
+                issues.append({
+                    'file': fp, 'lines': line_count, 'chars': char_count, 'words': words,
+                    'severity': 'CRITICAL' if char_count < 200 else 'WARNING',
+                    'issue': 'too_short'
+                })
+            elif not name_ok:
+                issues.append({
+                    'file': fp, 'lines': line_count, 'chars': char_count, 'words': words,
+                    'severity': 'WARNING',
+                    'issue': name_issue
+                })
+            else:
+                ok.append({'file': fp, 'lines': line_count, 'chars': char_count, 'words': words})
+        except Exception as e:
+            issues.append({'file': fp, 'severity': 'ERROR', 'issue': str(e)})
+
+print('=== SCAN RESULTS ===')
+print(f'OK files: {len(ok)}')
+print(f'Issues: {len(issues)}')
+print()
+criticals = [i for i in issues if i.get('severity') == 'CRITICAL']
+warnings = [i for i in issues if i.get('severity') == 'WARNING']
+errors = [i for i in issues if i.get('severity') == 'ERROR']
+print(f'CRITICAL: {len(criticals)}')
+for i in criticals:
+    print(f'  [{i["lines"]} lines, {i["chars"]} chars] {i["file"]}')
+print(f'WARNING: {len(warnings)}')
+for i in warnings:
+    print(f'  [{i["lines"]} lines, {i["chars"]} chars] {os.path.basename(i["file"])}: {i["issue"]}')
+print(f'ERROR: {len(errors)}')
+for i in errors:
+    print(f'  {i["file"]}: {i["issue"]}')
+
+# Print summary by class
+print('\n=== BY CLASS ===')
+by_class = {}
+for item in ok:
+    parts = item['file'].split(os.sep)
+    # Find the class (e.g., '9th', '10th')
+    for p in parts:
+        if p.endswith('th') or p in ['6th','7th','8th','9th','10th','11th','12th']:
+            cls = p
+            break
+    if cls not in by_class:
+        by_class[cls] = []
+    by_class[cls].append(item)
+
+for cls in sorted(by_class.keys()):
+    items = by_class[cls]
+    total_words = sum(i['words'] for i in items)
+    print(f'{cls}: {len(items)} chapters, {total_words} words total')

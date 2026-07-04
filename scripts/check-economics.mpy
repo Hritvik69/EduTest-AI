@@ -1,0 +1,15 @@
+import os
+
+base = r'NCERT_Books\10th\Social_Science\_extracted_text\Understanding_Economic_Development'
+for f in sorted(os.listdir(base)):
+    fp = os.path.join(base, f)
+    size = os.path.getsize(fp)
+    with open(fp, 'r', encoding='utf-8') as fh:
+        content = fh.read()
+    lines = content.strip().splitlines()
+    print(f'{size:8d} {f[:70]}')
+    # Print real content lines (skip garbled header)
+    real_lines = [l for l in lines if len(l) > 40 and not l.startswith(('U ', 'S ', ' '))]
+    if real_lines:
+        print(f'         -> {real_lines[0][:100]}')
+    print()
