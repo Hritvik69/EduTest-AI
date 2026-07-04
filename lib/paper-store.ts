@@ -1619,7 +1619,6 @@ function withPaperLock<T>(paperId: number, fn: () => Promise<T>): Promise<T> {
     if (locks.get(paperId) === locked) locks.delete(paperId);
   });
 }
-}
 
 function isSessionResultId(value: string) {
   return /^session-result-\d{10,17}-[a-z0-9]{2,8}$/i.test(value);
