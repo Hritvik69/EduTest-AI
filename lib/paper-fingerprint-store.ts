@@ -282,8 +282,8 @@ function pruneExpiredFingerprints(): void {
 
   const cutoff = now - maxFingerprintAgeMs();
   const store = fingerprintStore();
-  for (const [key, entries] of store.entries()) {
-    const pruned = entries.filter((e) => Date.parse(e.createdAt) > cutoff);
+  for (const [key, entries] of Array.from(store.entries())) {
+    const pruned = entries.filter((e: { createdAt: string }) => Date.parse(e.createdAt) > cutoff);
     if (pruned.length === 0) {
       store.delete(key);
     } else if (pruned.length < entries.length) {

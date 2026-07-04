@@ -16,6 +16,9 @@ import {
 function strictInt(
   params: { min?: number; max?: number } = {},
 ): z.ZodType<number> {
+  let s = z.number().int();
+  if (params.min !== undefined) s = s.min(params.min);
+  if (params.max !== undefined) s = s.max(params.max);
   return z.preprocess((val) => {
     if (typeof val === "number" && Number.isFinite(val)) return Math.floor(val);
     if (typeof val === "string") {
@@ -26,7 +29,7 @@ function strictInt(
       return Number.isInteger(n) ? n : NaN;
     }
     return NaN;
-  }, z.number().int(params));
+  }, s);
 }
 
 const _positiveInt = strictInt({ min: 1 });

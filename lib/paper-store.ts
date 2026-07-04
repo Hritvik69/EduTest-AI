@@ -25,7 +25,7 @@ const globalForPapers = globalThis as typeof globalThis & {
   __edutestSessionResultOwners?: Map<string, number>;
   __edutestMemorySequence?: number;
   /** In-memory lock map for serializing concurrent paper status updates. */
-  __edutestPaperLocks?: Map<number, { resolve: () => void }>;
+  __edutestPaperLocks?: Map<number, Promise<() => void>>;
 };
 
 export const memoryPapers =
@@ -1603,14 +1603,13 @@ function getCryptoRandomHex(bytes: number): string {
  * guards the status Map operations within a single process.
  */
 function withPaperLock<T>(paperId: number, fn: () => Promise<T>): Promise<T> {
-  const locks = globalForPapers.__edutestPaperLocks ?? new Map<string, Promise<() => void>>();
-  globalForPapers.__edutestPaperLocks = locks as Map<number, Promise<() => void>>;
+  const locks = globalForPapers.__edutestPaperLocks ?? new Map<number, Promise<() => void>>();
+  globalForPapers.__edutestPaperLocks = locks;
 
-  const key = String(paperId);
   const waitFor = locks.get(paperId) ?? Promise.resolve();
 
   let unlock: () => void;
-  const locked = new Promise<() => void>((resolve) => { unlock = resolve; });
+  const locked = new Promise<() => void>((resolve) => { unlock = resolve as () => void; });
   locks.set(paperId, locked);
 
   return waitFor.then(() => fn()).finally(() => {
