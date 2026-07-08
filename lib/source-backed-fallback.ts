@@ -3768,16 +3768,18 @@ function caseBasedQuestion(
     `source-backed-case:${concept.atomId}:${variant.id}`,
   ).options;
   const correctAnswer = correctOptionId(options);
+  // Build human-readable sub-question stems using topic, not raw idea phrase
+  const topicForStem = concept.topic || concept.atomLabel || idea;
   const subQuestions: SubQuestion[] = [
     {
-      text: `Which option best explains the ${skill} case?`,
+      text: `Which of the following correctly describes ${topicForStem}?`,
       type: "MCQ",
       options,
       correctAnswer,
       marks: 2,
     },
     {
-      text: `Explain the ${skill} reason behind your answer.`,
+      text: `Explain what you understand about ${topicForStem} based on the case.`,
       type: "SHORT",
       correctAnswer: summary,
       marks: 2,
@@ -3785,8 +3787,8 @@ function caseBasedQuestion(
   ];
 
   return {
-    scenario: `A class considers this idea: ${summary} The learner has to explain what follows from it.`,
-    text: `Read the case about ${idea} and answer the ${skill} questions.`,
+    scenario: `Study the following: ${summary}`,
+    text: `Read the case and answer the questions below.`,
     subQuestions,
     correctAnswer: `(1) ${correctAnswer}; (2) ${summary}`,
   };
@@ -3908,11 +3910,23 @@ function studentVisibleSummary(value: string, maxLength = 240) {
   return trimToSentence(cleaned || "the concept", maxLength);
 }
 
-function ideaPhrase(summary: string) {
+function ideaPhrase(summary: string, topic?: string) {
+  // Use topic name when available — avoids embedding raw source fragments in student-visible text
+  if (topic && topic.trim().length > 3) return topic.trim().toLowerCase();
   const idea = stripFinalPunctuation(summary);
   if (!idea) return "the concept";
-  if (idea.length > 130) return `the passage detail about ${mcqFocusPhrase(idea)}`;
-  return `the idea that ${lowerFirst(idea)}`;
+  // Only use the idea phrase for short, clean summaries (no garbled raw-atom fragments)
+  if (idea.length <= 60 && isCleanSentence(idea)) return `${lowerFirst(idea)}`;
+  return "the concept";
+}
+
+function isCleanSentence(text: string): boolean {
+  // A clean sentence has at least 3 words and no raw-fragment markers
+  const words = text.split(/\s+/).filter(Boolean);
+  if (words.length < 3) return false;
+  // Reject if it looks like a truncated/garbled source fragment (no verb-like word)
+  const hasVerb = /\b(?:is|are|was|were|has|have|can|does|do|shows?|gives?|helps?|allows?|means?|refers?|occurs?|forms?|causes?|produces?|leads?|results?)\b/i.test(text);
+  return hasVerb;
 }
 
 function mcqQuestionText(
@@ -3926,111 +3940,114 @@ function mcqQuestionText(
 
   const motionQuestion = motionMcqQuestion(summary);
   if (motionQuestion) return motionQuestion;
-  const focus = mcqFocusPhrase(summary);
+
+  // Use topic/atomLabel as the question subject — never raw source fragments
+  const topicLabel = concept?.topic ?? "";
+  const termLabel = concept?.atomLabel ?? concept?.topic ?? "";
+  const subjectLabel = topicLabel || termLabel || "this concept";
+
   switch (skill) {
     case "evidence":
-      return mcqStemVariant(focus, [
-        `Which option is best supported by the detail about ${focus}?`,
-        `What evidence-based answer fits the detail about ${focus}?`,
-        `Which choice uses the detail about ${focus} correctly?`,
+      return mcqStemVariant(subjectLabel, [
+        `Which of the following statements about ${subjectLabel} is correct?`,
+        `What is the most accurate description of ${subjectLabel}?`,
+        `Which statement correctly explains ${subjectLabel}?`,
       ], placementIndex);
     case "inference":
-      return mcqStemVariant(focus, [
-        `What can be inferred from the detail about ${focus}?`,
-        `Which inference follows from the detail about ${focus}?`,
-        `What does the detail about ${focus} suggest?`,
+      return mcqStemVariant(subjectLabel, [
+        `What can be concluded about ${subjectLabel}?`,
+        `Which statement correctly describes the role of ${subjectLabel}?`,
+        `What does an understanding of ${subjectLabel} help us conclude?`,
       ], placementIndex);
     case "cause and effect":
-      return mcqStemVariant(focus, [
-        `Which cause-effect link is most accurate for ${focus}?`,
-        `What result is best connected with ${focus}?`,
-        `Which answer links the cause and effect in ${focus}?`,
+      return mcqStemVariant(subjectLabel, [
+        `What is the effect of ${subjectLabel}?`,
+        `Which of the following correctly explains the cause-effect relationship involving ${subjectLabel}?`,
+        `Why does ${subjectLabel} occur in this context?`,
       ], placementIndex);
     case "comparison":
-      return mcqStemVariant(focus, [
-        `Which comparison best fits the passage detail about ${focus}?`,
-        `How is the detail about ${focus} best compared?`,
-        `Which choice separates the ideas in ${focus} correctly?`,
+      return mcqStemVariant(subjectLabel, [
+        `How does ${subjectLabel} differ from the other options?`,
+        `Which option correctly distinguishes ${subjectLabel} from related concepts?`,
+        `Which statement correctly compares ${subjectLabel} with an alternative?`,
       ], placementIndex);
     case "application":
-      return mcqStemVariant(focus, [
-        `Which situation correctly applies the idea about ${focus}?`,
-        `Where would the idea about ${focus} be used correctly?`,
-        `Which example applies ${focus} in the right way?`,
+      return mcqStemVariant(subjectLabel, [
+        `Which situation is an example of ${subjectLabel}?`,
+        `Where is ${subjectLabel} most appropriately applied?`,
+        `Which of the following correctly applies the concept of ${subjectLabel}?`,
       ], placementIndex);
     case "definition":
-      return mcqStemVariant(focus, [
-        `Which meaning best fits ${focus} in this context?`,
-        `What does ${focus} mean in this context?`,
-        `Which choice defines ${focus} most clearly?`,
+      return mcqStemVariant(subjectLabel, [
+        `Which of the following best defines ${termLabel || subjectLabel}?`,
+        `What is the correct meaning of ${termLabel || subjectLabel}?`,
+        `Which option accurately describes the term '${termLabel || subjectLabel}'?`,
       ], placementIndex);
     case "process":
-      return mcqStemVariant(focus, [
-        `Which process is shown by the detail about ${focus}?`,
-        `What step is best represented by ${focus}?`,
-        `Which choice puts the process in ${focus} in order?`,
+      return mcqStemVariant(subjectLabel, [
+        `What is the correct sequence of steps in ${subjectLabel}?`,
+        `Which option correctly describes the process of ${subjectLabel}?`,
+        `How does ${subjectLabel} take place?`,
       ], placementIndex);
     case "case reasoning":
-      return mcqStemVariant(focus, [
-        `Which judgement best fits the situation about ${focus}?`,
-        `What is the best decision for the case about ${focus}?`,
-        `Which answer reasons correctly about ${focus}?`,
+      return mcqStemVariant(subjectLabel, [
+        `Which conclusion is most appropriate for a situation involving ${subjectLabel}?`,
+        `In a scenario involving ${subjectLabel}, which judgment is correct?`,
+        `Which answer shows correct reasoning about ${subjectLabel}?`,
       ], placementIndex);
     case "reasoning":
-      return mcqStemVariant(focus, [
-        `Which reasoning best supports the detail about ${focus}?`,
-        `Why does the detail about ${focus} support the answer?`,
-        `Which choice gives the strongest reason for ${focus}?`,
+      return mcqStemVariant(subjectLabel, [
+        `Why is ${subjectLabel} important in this context?`,
+        `Which reason best explains ${subjectLabel}?`,
+        `Which of the following gives the strongest explanation for ${subjectLabel}?`,
       ], placementIndex);
     case "conclusion":
-      return mcqStemVariant(focus, [
-        `Which conclusion is best supported by the detail about ${focus}?`,
-        `What does the detail about ${focus} most clearly show?`,
-        `Which answer follows best from the detail about ${focus}?`,
-        `Which choice draws the strongest conclusion about ${focus}?`,
+      return mcqStemVariant(subjectLabel, [
+        `What conclusion can be drawn about ${subjectLabel}?`,
+        `Which statement best summarises ${subjectLabel}?`,
+        `Which of the following is a valid conclusion about ${subjectLabel}?`,
       ], placementIndex);
     case "example":
-      return mcqStemVariant(focus, [
-        `Which example best matches the detail about ${focus}?`,
-        `What example is most suitable for ${focus}?`,
-        `Which choice illustrates ${focus} correctly?`,
+      return mcqStemVariant(subjectLabel, [
+        `Which of the following is an example of ${subjectLabel}?`,
+        `Which option correctly illustrates ${subjectLabel}?`,
+        `What is the best example of ${subjectLabel}?`,
       ], placementIndex);
     case "condition":
-      return mcqStemVariant(focus, [
-        `Which condition is most important for ${focus}?`,
-        `What limit or condition matters most for ${focus}?`,
-        `Which choice states the needed condition for ${focus}?`,
+      return mcqStemVariant(subjectLabel, [
+        `Which condition is necessary for ${subjectLabel}?`,
+        `Under which condition does ${subjectLabel} occur?`,
+        `What is required for ${subjectLabel} to take place?`,
       ], placementIndex);
     case "misconception correction":
-      return mcqStemVariant(focus, [
-        `Which statement corrects a mistaken idea about ${focus}?`,
-        `What correction is needed for the idea about ${focus}?`,
-        `Which choice avoids the common mistake about ${focus}?`,
+      return mcqStemVariant(subjectLabel, [
+        `Which statement about ${subjectLabel} corrects a common misconception?`,
+        `What is a common misconception about ${subjectLabel}?`,
+        `Which of the following statements about ${subjectLabel} is FALSE?`,
       ], placementIndex);
     case "visual representation":
-      return mcqStemVariant(focus, [
-        `Which visual link best represents ${focus}?`,
-        `What diagram link would show ${focus} most clearly?`,
-        `Which choice labels the relationship in ${focus} correctly?`,
+      return mcqStemVariant(subjectLabel, [
+        `Which diagram best represents ${subjectLabel}?`,
+        `How would you correctly label ${subjectLabel} in a diagram?`,
+        `Which visual correctly shows the relationship in ${subjectLabel}?`,
       ], placementIndex);
     case "quantity":
-      return mcqStemVariant(focus, [
-        `Which quantitative reading best fits ${focus}?`,
-        `What number-based interpretation matches ${focus}?`,
-        `Which choice reads the quantity in ${focus} correctly?`,
+      return mcqStemVariant(subjectLabel, [
+        `Which value correctly represents ${subjectLabel}?`,
+        `What is the quantitative relationship involving ${subjectLabel}?`,
+        `Which numerical interpretation of ${subjectLabel} is correct?`,
       ], placementIndex);
     case "passage reading":
-      return mcqStemVariant(focus, [
-        `Which reading best matches the passage detail about ${focus}?`,
-        `What reading of the passage best fits ${focus}?`,
-        `Which choice stays closest to the passage detail about ${focus}?`,
+      return mcqStemVariant(subjectLabel, [
+        `Which statement about ${subjectLabel} is supported by the passage?`,
+        `What does the passage tell us about ${subjectLabel}?`,
+        `Which of the following correctly interprets ${subjectLabel} from the passage?`,
       ], placementIndex);
     default: {
-      const cleanFocus = isReadableFocus(focus) ? focus : concept?.topic ?? focus;
-      return mcqStemVariant(cleanFocus, [
-        `Which option best describes ${cleanFocus}?`,
-        `What is the most accurate statement about ${cleanFocus}?`,
-        `Which of the following correctly explains ${cleanFocus}?`,
+      return mcqStemVariant(subjectLabel, [
+        `Which of the following correctly describes ${subjectLabel}?`,
+        `What is the most accurate statement about ${subjectLabel}?`,
+        `Which option correctly explains ${subjectLabel}?`,
       ], placementIndex);
     }
   }
@@ -4186,42 +4203,12 @@ function optionStatement(summary: string, _variant: VariantRecipe) {
   return base;
 }
 
-function optionReasonForVariant(variant: VariantRecipe) {
-  const id = variant.id;
-  if (id.includes("cause") || id.includes("consequence")) {
-    return "This links the cause with the effect.";
-  }
-  if (id.includes("comparison") || id.includes("contrast")) {
-    return "This distinguishes it from a similar idea.";
-  }
-  if (id.includes("application") || id.includes("example")) {
-    return "This applies the concept correctly.";
-  }
-  if (id.includes("inference") || id.includes("conclusion") || id.includes("reasoning")) {
-    return "This follows logically from the given detail.";
-  }
-  if (id.includes("misconception")) {
-    return "This avoids the common mistaken reading.";
-  }
-  if (id.includes("definition")) {
-    return "This states the meaning clearly.";
-  }
-  if (id.includes("process")) {
-    return "This keeps the steps in order.";
-  }
-  if (id.includes("exception") || id.includes("boundary")) {
-    return "This states the condition clearly.";
-  }
-  if (id.includes("diagram")) {
-    return "This identifies the relationship to show.";
-  }
-  if (id.includes("case")) {
-    return "This is the best judgement for the situation.";
-  }
-  if (id.includes("source-extract")) {
-    return "This fits the passage meaning.";
-  }
-  return "This gives a supporting reason.";
+function optionReasonForVariant(_variant: VariantRecipe) {
+  // Previously this returned generic meta-commentary strings like
+  // "This gives a supporting reason." / "This links the cause with the effect."
+  // which were flagged as forbidden student-visible artifacts.
+  // Now returns empty string — the caller (optionStatement) builds real content from the summary.
+  return "";
 }
 
 function subjectMatchPairs(

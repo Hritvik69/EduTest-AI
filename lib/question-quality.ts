@@ -396,7 +396,15 @@ function hasRawTemplateArtifact(value: string) {
     /\bOnly memorised definitions matter in this (?:passage|chapter)\b/i.test(value) ||
     /\bThe surrounding sentence gives no clue to meaning\b/i.test(value) ||
     /\bThe meaning can be decided without considering context\b/i.test(value) ||
-    /\bTone and word choice never affect interpretation\b/i.test(value)
+    /\bTone and word choice never affect interpretation\b/i.test(value) ||
+    // ─── New patterns from user's broken sample questions ─────────────────────
+    /\bWhich option (?:is )?best supported by the detail about\b/i.test(value) ||
+    /\bread the case about the (?:idea|passage|detail)\b/i.test(value) ||
+    /\bExplain the (?:evidence|inference|case|skill) reason behind\b/i.test(value) ||
+    /\bWhich option best explains the \w+ case\b/i.test(value) ||
+    /\bA class considers this idea\b/i.test(value) ||
+    /\bThe learner has to explain what follows\b/i.test(value) ||
+    /\bthe detail about\b/i.test(value)
   );
 }
 

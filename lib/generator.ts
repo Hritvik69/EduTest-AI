@@ -675,7 +675,13 @@ export function generateDemoQuestionsForSection(
 
 const subjectPromptRules: Record<string, string> = {
   Mathematics:
-    "Use equations, formulas, constructions, proofs, exact values, units where needed, and stepwise solutions. Avoid vague wording.",
+    `MATHEMATICS GENERATION RULES:
+1. EXERCISE-FIRST (highest priority): Scan the provided chapter source for NCERT exercise questions, worked examples, and in-text problems. Use their exact values, algebraic expressions, geometric figures, and contexts. Reword minimally to fit the target question type and marks.
+2. FRESH FALLBACK: When no exercise text is available, write original problems grounded in the chapter's specific formulas and worked examples — not vague generic questions.
+3. HUMAN-WRITTEN STANDARD: Every math question must resemble a real textbook or board exam question. Use specific numbers (3x+5, 2y²−4y+3, a rectangle of length 12 cm and breadth 8 cm). Never write abstract meta-stems.
+4. FORBIDDEN MATH STEMS: Do not write questions like 'What can be inferred from the detail about rectangle then width?' — these are garbled source fragments, not math questions. Every math question must test a specific calculation, formula application, or geometric/algebraic reasoning step.
+5. MCQ DISTRACTORS: Must be results of specific student errors (sign error, incorrect formula, wrong order of operations), not generic meta-commentary.
+6. ONE-WORD & FILL-BLANK: Must ask for specific math terms or values (e.g., 'coefficient', 'degree', 'perimeter'), not vague concept labels.`,
   Science:
     "Use observations, cause-effect explanations, diagrams, activities, units, and NCERT vocabulary within the selected topic.",
   Physics:
@@ -1006,12 +1012,20 @@ Return JSON: [{ "scenario":"passage text","text":"Read and answer:","subQuestion
     CASE_BASED: `Generate ${section.count} Case-Based questions.
 ${sectionContext}
 ${strictRules}
-Realistic scenario (3-5 lines) derived from the extracted chapter concepts. The questions must logically emerge from the case. Avoid artificial storytelling.
+
+MANDATORY CASE-BASED QUALITY RULES:
+- The scenario MUST be a complete, coherent 3-5 sentence real-world situation written by a teacher. It must make complete sense as a standalone paragraph a student can read without knowing any internal source chunks.
+- NEVER paste raw NCERT source sentences, OCR fragments, or chapter section text directly as the scenario.
+- The scenario must be a realistic situation: a student conducting an experiment, a family making a decision, a scientist observing a phenomenon, a student solving a problem — grounded in the chapter concept but presented as a story, not as a textbook excerpt.
+- Sub-question (a) [MCQ, 2 marks]: Must begin with a direct interrogative ("Which of the following...", "What is...", "How does..."). NEVER use stems like 'Which option best explains the [skill] case?' or 'What evidence-based answer fits the detail about...'.
+- Sub-question (b) [SHORT, 2 marks]: Must begin with a proper task verb ("Explain", "Describe", "Why", "How", "Compare"). NEVER use stems like 'Explain the [skill] reason behind your answer.'.
+- The case text ("text" field) must always be "Read the following case and answer the questions below." — not "Read the case about the idea that..." or any variant with raw source text.
+
 2 sub-questions: sub-Q1 is MCQ (2 marks), sub-Q2 is SHORT (2 marks).
 Return EXACT JSON shape:
-[{ "scenario":"3-5 line case", "text":"Read the case and answer the questions.", "subQuestions":[
-  { "text":"MCQ sub-question", "type":"MCQ", "marks":2, "options":[{"id":"A","text":"...","isCorrect":false},{"id":"B","text":"...","isCorrect":true},{"id":"C","text":"...","isCorrect":false},{"id":"D","text":"...","isCorrect":false}], "correctAnswer":"B" },
-  { "text":"Short-answer sub-question", "type":"SHORT", "marks":2, "correctAnswer":"2-3 sentence model answer" }
+[{ "scenario":"3-5 line coherent teacher-written case", "text":"Read the following case and answer the questions below.", "subQuestions":[
+  { "text":"Direct interrogative MCQ stem", "type":"MCQ", "marks":2, "options":[{"id":"A","text":"...","isCorrect":false},{"id":"B","text":"...","isCorrect":true},{"id":"C","text":"...","isCorrect":false},{"id":"D","text":"...","isCorrect":false}], "correctAnswer":"B" },
+  { "text":"Task-verb short answer stem", "type":"SHORT", "marks":2, "correctAnswer":"2-3 sentence model answer" }
 ], "correctAnswer":"(1) B; (2) 2-3 sentence model answer", "explanation":"marking reason", "marks":4, "topic":"exact allowed topic" }]
 Do not omit sub-question type, marks, options, or correctAnswer.`,
     PARAGRAPH: `Generate ${section.count} Paragraph questions.
@@ -1226,6 +1240,23 @@ Never include these in any student-visible field:
 - instructions like "Use evidence from the selected source" unless this is a printed SOURCE_BASED passage question
 - chapter/meta framing such as "selected NCERT chapter", "the chapter explains", "according to the chapter", "in the chapter", "from the chapter", "ideas from the chapter", "idea described in the chapter", "chapter idea", "chapter concept", "chapter property", "chapter activity", "chapter evidence", "question focus", "concept focus", or "explain the chapter idea"
 
+ADDITIONAL FORBIDDEN STEMS (from real broken-paper examples — auto-reject if ANY appear):
+- "Which option is best supported by the detail about [anything]"
+- "What evidence-based answer fits the detail about [anything]"
+- "Which choice uses the detail about [anything] correctly"
+- "What can be inferred from the detail about [anything]"
+- "Which inference follows from the detail about [anything]"
+- "What does the detail about [anything] suggest"
+- "Which comparison best fits the passage detail about [anything]"
+- "Which process is shown by the detail about [anything]"
+- "Read the case about the idea that [anything]"
+- "Read the case about the passage detail about [anything]"
+- "Which option best explains the [skill] case" (e.g. "Which option best explains the inference case")
+- "Explain the [skill] reason behind your answer" (e.g. "Explain the evidence reason behind your answer")
+- "A class considers this idea: [raw text]"
+- "The learner has to explain what follows from it"
+- Any stem containing raw source text fragments that look like garbled OCR or sliding window output
+
 When CONFIG_JSON.generation_mode is "fresh", use the supplied source only to understand the concept and convert it into natural exam questions.
 When CONFIG_JSON.generation_mode is "source_exact", stay tightly grounded to selected TXT/PDF concepts. If a selected chunk contains a real exercise/question line, preserve that source question wording closely; if it contains only explanation, build the question from exact source facts and wording without outside content.
 When CONFIG_JSON.generation_mode is "source_insights", write original insight-driven questions (why/how, compare-contrast, application, misconceptions, synthesis) that are fully answerable from the selected source but never copy a source line verbatim. The student should never sense that a source chunk exists behind the question.
@@ -1236,6 +1267,13 @@ For MCQ:
 - The correct option should answer the concept.
 - Distractors should be plausible misconceptions from the same topic.
 - Do not make options about whether evidence is present.
+- FORBIDDEN options: "This gives a supporting reason.", "This links the cause with the effect.", "This fits the passage meaning.", "This follows logically from the given detail.", "This avoids the common mistaken reading."
+
+For CASE_BASED:
+- The scenario must be a complete, coherent 3-5 sentence real-world situation (experiment, daily life, observation) — not a pasted raw source excerpt.
+- The \"text\" field must always be "Read the following case and answer the questions below." — not "Read the case about the idea that..." or any variant.
+- MCQ sub-question: must start with "Which of the following...", "What is...", "How does..." — NEVER with "Which option best explains the [word] case".
+- SHORT sub-question: must start with "Explain", "Describe", "Why", "How", "Compare" — NEVER with "Explain the [word] reason behind your answer".
 
 For TRUE_FALSE:
 - Write a complete, meaningful statement.

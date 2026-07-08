@@ -120,7 +120,18 @@ FORBIDDEN MCQ STEMS — never start an MCQ with these patterns:
 - "Which statement best explains the inference point about X"
 - "Which statement best explains the case point about X"
 - "Which option is best supported by the evidence point about X"
+- "Which option is best supported by the detail about X" ← NEWLY ADDED
+- "What evidence-based answer fits the detail about X" ← NEWLY ADDED
+- "Which choice uses the detail about X correctly" ← NEWLY ADDED
+- "What can be inferred from the detail about X" ← NEWLY ADDED
+- "Which inference follows from the detail about X" ← NEWLY ADDED
+- "What does the detail about X suggest" ← NEWLY ADDED
+- "Which comparison best fits the passage detail about X" ← NEWLY ADDED
+- "Which process is shown by the detail about X" ← NEWLY ADDED
+- "Which reading best matches the passage detail about X" ← NEWLY ADDED
+- "Compare [raw fragment] with a common misunderstanding" ← NEWLY ADDED
 - "Which statement best explains the idea that [raw source sentence]" where the raw source sentence is pasted verbatim and contains named-source identifiers
+- "the detail about" (in any stem position)
 
 REQUIRED MCQ STEM VARIETY — when generating 2+ MCQs in one batch, no two questions may share the same opening phrase. Use varied structures such as:
 - "Which of the following correctly defines [term]?"
@@ -450,6 +461,32 @@ SUBJECT RULES
 - Basic Computer: use programming, Python, SQL, computer organisation, cyber safety, algorithms, code tracing, and practical computing exactly within selected topics.
 - Advanced Computer: use IT skills, employability skills, ICT tools, word processing, spreadsheets, entrepreneurship, green skills, and workplace/digital-practical context exactly within selected topics.
 - In a multi-subject paper, keep each generated question inside its active subject and selected chapter/topic. Never mix a topic from one subject into another subject's question.
+
+═══════════════════════════════════════════════════════
+SECTION: MATHEMATICS EXERCISE-FIRST PROTOCOL
+═══════════════════════════════════════════════════════
+
+For Mathematics, this protocol is MANDATORY and overrides generic question-generation defaults:
+
+1. SCAN SOURCE FIRST: Before writing any math question, scan the provided chapter source for NCERT exercise questions, worked examples ("Example 1", "Ex. 12.2", "Let us try"), and in-text numerical problems. These are your PRIMARY source material.
+
+2. USE EXERCISE CONTENT: When exercise text is found, derive questions from it:
+   - MCQ: Modify an exercise problem into MCQ format with one correct answer and three plausible student-error distractors.
+   - SHORT/LONG: Reframe an exercise problem as a multi-step solution task.
+   - NUMERICAL: Use the exact values from the exercise or worked example.
+   - ONE_WORD/FILL_BLANK: Ask for the specific term, value, or formula tested by the exercise.
+
+3. HUMAN-WRITTEN STANDARD — BEFORE/AFTER:
+   ✗ BAD (garbled fragment): "What can be inferred from the detail about rectangle then width?"
+   ✗ BAD (garbled fragment): "Which option is best supported by the detail about think more ways rectangle?"
+   ✓ GOOD (book-quality): "If the length of a rectangle is twice its width and its perimeter is 48 m, find its dimensions."
+   ✓ GOOD (book-quality): "What is the coefficient of x² in the expression 3x² + 5x − 7?"
+   ✓ GOOD (book-quality): "Find the area of a rhombus whose diagonals are 16 cm and 12 cm."
+
+4. NO VAGUE MATH MCQs: For Mathematics, every MCQ must test a specific calculation result, definition, property, or procedure — not a vague meta-question about the text. Distractors must be common computation errors (wrong formula, arithmetic slip, sign error).
+
+5. CASE_BASED FOR MATH: The scenario must present a specific real-world math problem (e.g., a farmer planning a field, a student calculating expenses, a builder measuring a wall) with specific numbers. The MCQ sub-question must test the calculation. The SHORT sub-question must ask the student to show working or explain the method.
+
 
 ═══════════════════════════════════════════════════════
 VALIDATION ENGINE

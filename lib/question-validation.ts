@@ -198,6 +198,41 @@ const forbiddenStudentVisiblePatterns = [
   /\bcorrect\s+features?\s+and\s+\d+\s+supporting\s+examples?\b/i,
   /\b(?:supporting\s+examples?|key\s+details?|correct\s+features?)\s+(?:are|is)\s+listed\b/i,
   /\bhow\s+many\s+evidence\s+points?\b/i,
+  // ─── Patterns from broken question samples ─────────────────────────────────
+  // "Which option is best supported by the detail about think more ways rectangle"
+  /\bwhich\s+option\s+(?:is\s+)?best\s+supported\s+by\s+the\s+detail\s+about\b/i,
+  // "Read the case about the idea that (Think of a few more ways...)"
+  /\bread\s+the\s+case\s+about\s+the\s+(?:idea|passage|detail)\b/i,
+  // "Explain the evidence reason behind your answer"
+  /\bexplain\s+the\s+(?:evidence|inference|case|skill)\s+reason\s+behind\b/i,
+  // "Which option best explains the evidence case"
+  /\bwhich\s+option\s+best\s+explains\s+the\s+\w+\s+case\b/i,
+  // "Which inference-based / evidence-based statement best..."
+  /\bwhich\s+(?:inference|evidence)[- ]based\s+statement\b/i,
+  // "What evidence-based answer fits the detail about..."
+  /\bevidence[- ]based\s+answer\s+fits\b/i,
+  // "Which choice uses the detail about..."
+  /\bwhich\s+choice\s+uses\s+the\s+detail\s+about\b/i,
+  // "What can be inferred from the detail about..."
+  /\bwhat\s+can\s+be\s+inferred\s+from\s+the\s+detail\s+about\b/i,
+  // "Which inference follows from the detail about..."
+  /\bwhich\s+inference\s+follows\s+from\s+the\s+detail\s+about\b/i,
+  // "What does the detail about ... suggest"
+  /\bwhat\s+does\s+the\s+detail\s+about\b/i,
+  // "Compare length rectangle then width with a common misunderstanding"
+  /\bcompare\s+\w+\s+\w+\s+then\s+\w+\s+with\s+a\s+common\b/i,
+  // "Which comparison best fits the passage detail about..."
+  /\bwhich\s+comparison\s+best\s+fits\s+the\s+passage\s+detail\s+about\b/i,
+  // "Which process is shown by the detail about..."
+  /\bwhich\s+process\s+is\s+shown\s+by\s+the\s+detail\s+about\b/i,
+  // "Which reading best matches the passage detail about..."
+  /\bwhich\s+reading\s+best\s+matches\s+the\s+passage\s+detail\s+about\b/i,
+  // Generic: any use of "the detail about" in a stem
+  /\bthe\s+detail\s+about\b/i,
+  // "A class considers this idea: [raw source text]"
+  /\ba\s+class\s+considers\s+this\s+idea\b/i,
+  // "The learner has to explain what follows from it"
+  /\bthe\s+learner\s+has\s+to\s+explain\s+what\s+follows\b/i,
 ];
 
 function hasMetadataMatchPair(question: GeneratedQuestion) {
