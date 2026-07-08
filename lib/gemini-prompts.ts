@@ -463,29 +463,61 @@ SUBJECT RULES
 - In a multi-subject paper, keep each generated question inside its active subject and selected chapter/topic. Never mix a topic from one subject into another subject's question.
 
 ═══════════════════════════════════════════════════════
-SECTION: MATHEMATICS EXERCISE-FIRST PROTOCOL
+SECTION: ALL-SUBJECTS EXERCISE-FIRST PROTOCOL (MANDATORY)
 ═══════════════════════════════════════════════════════
 
-For Mathematics, this protocol is MANDATORY and overrides generic question-generation defaults:
+This protocol applies to EVERY subject and OVERRIDES generic question-generation defaults:
 
-1. SCAN SOURCE FIRST: Before writing any math question, scan the provided chapter source for NCERT exercise questions, worked examples ("Example 1", "Ex. 12.2", "Let us try"), and in-text numerical problems. These are your PRIMARY source material.
+STEP 1 — SCAN SOURCE BEFORE WRITING:
+Before writing any question for any subject, scan the provided chapter source for:
+- NCERT exercise questions, worked examples, in-text questions, activity boxes
+- Subject-specific sections: "Let's Recall", "Think and Discuss", "Try This", "Check Your Progress", "Abhyas", "Let Us Try"
+These are your PRIMARY question material. Use their exact values, names, events, organisms, or code.
 
-2. USE EXERCISE CONTENT: When exercise text is found, derive questions from it:
-   - MCQ: Modify an exercise problem into MCQ format with one correct answer and three plausible student-error distractors.
-   - SHORT/LONG: Reframe an exercise problem as a multi-step solution task.
-   - NUMERICAL: Use the exact values from the exercise or worked example.
-   - ONE_WORD/FILL_BLANK: Ask for the specific term, value, or formula tested by the exercise.
+STEP 2 — DERIVE FROM EXERCISE CONTENT:
+- MCQ: Convert an exercise problem into MCQ with one correct answer + three plausible student-error distractors (subject-specific errors, not generic meta-commentary).
+- SHORT/LONG: Reframe as a multi-step explain/calculate/describe task.
+- NUMERICAL: Use exact values from the exercise or worked example.
+- ONE_WORD/FILL_BLANK: Ask for the specific term, value, formula, or name tested by the exercise.
+- CASE_BASED: Build a real-world scenario around the chapter concept — not a pasted raw sentence.
 
-3. HUMAN-WRITTEN STANDARD — BEFORE/AFTER:
-   ✗ BAD (garbled fragment): "What can be inferred from the detail about rectangle then width?"
-   ✗ BAD (garbled fragment): "Which option is best supported by the detail about think more ways rectangle?"
-   ✓ GOOD (book-quality): "If the length of a rectangle is twice its width and its perimeter is 48 m, find its dimensions."
-   ✓ GOOD (book-quality): "What is the coefficient of x² in the expression 3x² + 5x − 7?"
-   ✓ GOOD (book-quality): "Find the area of a rhombus whose diagonals are 16 cm and 12 cm."
+STEP 3 — HUMAN-WRITTEN STANDARD (BEFORE/AFTER for all subjects):
 
-4. NO VAGUE MATH MCQs: For Mathematics, every MCQ must test a specific calculation result, definition, property, or procedure — not a vague meta-question about the text. Distractors must be common computation errors (wrong formula, arithmetic slip, sign error).
+✗ BAD — MATHEMATICS (garbled fragment):
+  "Which option is best supported by the detail about think more ways rectangle then width?"
+✓ GOOD — MATHEMATICS (book-quality):
+  "If the length of a rectangle is twice its width and its perimeter is 48 m, find its dimensions."
 
-5. CASE_BASED FOR MATH: The scenario must present a specific real-world math problem (e.g., a farmer planning a field, a student calculating expenses, a builder measuring a wall) with specific numbers. The MCQ sub-question must test the calculation. The SHORT sub-question must ask the student to show working or explain the method.
+✗ BAD — SCIENCE/PHYSICS (garbled fragment):
+  "What can be inferred from the detail about force velocity surface coins?"
+✓ GOOD — PHYSICS (book-quality):
+  "A ball is thrown vertically upward with a velocity of 20 m/s. How long does it take to reach the highest point? (g = 10 m/s²)"
+
+✗ BAD — BIOLOGY (garbled fragment):
+  "Which process is shown by the detail about mosaic molecules arranged?"
+✓ GOOD — BIOLOGY (book-quality):
+  "Why is the cell membrane described as a fluid mosaic model? Explain the role of phospholipids."
+
+✗ BAD — HISTORY (garbled fragment):
+  "Which comparison best fits the passage detail about uprising sepoy Company?"
+✓ GOOD — HISTORY (book-quality):
+  "What were the main causes of the Revolt of 1857? Mention any three causes."
+
+✗ BAD — ENGLISH (garbled fragment):
+  "Which reading best matches the passage detail about narrator letter guilt?"
+✓ GOOD — ENGLISH (book-quality):
+  "Why did the postmaster feel guilty after reading Lencho's second letter? Explain in 2-3 sentences."
+
+✗ BAD — CIVICS (garbled fragment):
+  "Which choice links the cause and effect in rights government article?"
+✓ GOOD — CIVICS (book-quality):
+  "Under which Fundamental Right does a citizen have the right to move the Supreme Court if their rights are violated?"
+
+STEP 4 — NO VAGUE META-MCQs:
+For EVERY subject, MCQs must test a specific fact, calculation, term, event, or application — never a vague meta-question about 'the detail about' or 'the passage detail about' some source fragment.
+
+STEP 5 — CASE_BASED SCENARIO QUALITY:
+For ALL subjects, the scenario must present a coherent real-world situation (3-5 sentences) that a student can read and understand without any knowledge of the internal source text. Never paste raw NCERT OCR text as the scenario.
 
 
 ═══════════════════════════════════════════════════════

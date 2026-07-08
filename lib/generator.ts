@@ -683,29 +683,89 @@ const subjectPromptRules: Record<string, string> = {
 5. MCQ DISTRACTORS: Must be results of specific student errors (sign error, incorrect formula, wrong order of operations), not generic meta-commentary.
 6. ONE-WORD & FILL-BLANK: Must ask for specific math terms or values (e.g., 'coefficient', 'degree', 'perimeter'), not vague concept labels.`,
   Science:
-    "Use observations, cause-effect explanations, diagrams, activities, units, and NCERT vocabulary within the selected topic.",
+    `SCIENCE GENERATION RULES:
+1. EXERCISE-FIRST: Scan the source for NCERT in-text questions, end-of-chapter exercises, activity boxes, and "Think and Discuss" sections. Use those scenarios, observations, and values as primary question material.
+2. HUMAN-WRITTEN STANDARD: Every question must sound like it was written by a science teacher — name specific phenomena, organisms, chemicals, or units from the chapter. Never write abstract meta-stems.
+3. USE NCERT VOCABULARY: Use the exact terms, definitions, and cause-effect relationships from the selected chapter.
+4. MCQ DISTRACTORS: Must be plausible science misconceptions (wrong cause, wrong unit, wrong organism), not generic meta-commentary.
+5. NUMERICALS/ACTIVITIES: Where the chapter contains experiments or observations (e.g., rusting, germination, refraction), derive questions from those specific activities.`,
   Physics:
-    "Use formulas, SI units, graphs, numerical reasoning, observations, and cause-effect logic from the selected chapter.",
+    `PHYSICS GENERATION RULES:
+1. EXERCISE-FIRST: Scan the source for NCERT solved examples, numerical exercises, and in-chapter questions. Use their exact values, units, and physical scenarios.
+2. HUMAN-WRITTEN STANDARD: Every question must test a specific formula, SI unit, graph reading, or cause-effect reasoning. Use real values (e.g., v = 20 m/s, F = 15 N, m = 2 kg).
+3. FORBIDDEN: 'What can be inferred from the detail about force velocity surface?' — garbled fragments are not physics questions.
+4. MCQ DISTRACTORS: Wrong formula application, unit confusion, or incorrect physical reasoning — not meta-commentary.
+5. NUMERICALS: Include all given data, correct SI units, the relevant formula, and a complete step-by-step solution.`,
   Chemistry:
-    "Use reactions, equations, symbols, properties, lab observations, valency, formulae, and precise chemical terminology.",
+    `CHEMISTRY GENERATION RULES:
+1. EXERCISE-FIRST: Scan the source for NCERT exercises, in-text questions, and lab-activity observations. Use their exact reactions, compounds, and experimental contexts.
+2. HUMAN-WRITTEN STANDARD: Every question must name specific elements, compounds, or reactions from the chapter (e.g., Na + H₂O → NaOH + H₂). Never write vague meta-stems.
+3. USE CORRECT NOTATION: Use chemical symbols, balanced equations, valency, IUPAC names, and state symbols (s), (l), (g), (aq) where relevant.
+4. MCQ DISTRACTORS: Wrong products, incorrect valency, reversed reactants, or confused properties — not generic meta-commentary.
+5. FILL-BLANK & ONE-WORD: Ask for specific chemical names, formulae, or properties — not vague concept labels.`,
   Biology:
-    "Use life processes, structures, functions, diagrams, examples, classification, and correct biological terms.",
+    `BIOLOGY GENERATION RULES:
+1. EXERCISE-FIRST: Scan the source for NCERT exercises, in-text questions, diagram labels, and activity observations. Use those specific organisms, structures, and processes.
+2. HUMAN-WRITTEN STANDARD: Every question must name specific biological structures, functions, or life processes from the chapter (e.g., mitochondria, osmosis, xylem). Never write abstract meta-stems.
+3. DIAGRAM-LINKED: Where the chapter has diagrams (cell, heart, nephron, flower), derive labelling or function questions from those specific diagrams.
+4. MCQ DISTRACTORS: Incorrect organ, wrong function, misidentified organism, or confused process — not generic meta-commentary.
+5. CASE_BASED: The scenario should describe a real biological observation (e.g., a student puts a cell in salt water and observes shrinkage) — not a pasted raw NCERT sentence.`,
   History:
-    "Use chronology, sources, causes, consequences, movements, terms, evidence, and supported dates only when present in scope.",
+    `HISTORY GENERATION RULES:
+1. EXERCISE-FIRST: Scan the source for NCERT Let's Recall, Let's Discuss, and source-document questions. Use the actual historical events, dates, people, and primary sources named in the chapter.
+2. HUMAN-WRITTEN STANDARD: Every question must reference specific events, leaders, terms, or causes named in the chapter. Never write vague meta-stems about 'the detail about' some fragment.
+3. SOURCE-BASED: For source/case-based questions, quote or paraphrase an actual historical document or event description from the chapter — never paste a raw OCR fragment.
+4. MCQ DISTRACTORS: Wrong year, wrong leader, wrong consequence, or confused movement — not generic meta-commentary.
+5. EVIDENCE-BASED: Use dates and facts only when they appear in the provided source text. Do not invent specific dates.`,
   Geography:
-    "Use maps, locations, physical features, resources, climate, population, diagrams, and selected-case reasoning.",
+    `GEOGRAPHY GENERATION RULES:
+1. EXERCISE-FIRST: Scan the source for NCERT exercises, map-based questions, and "Activity" sections. Use the specific regions, landforms, crops, rivers, or climate types named.
+2. HUMAN-WRITTEN STANDARD: Every question must name specific geographical features from the chapter (e.g., Western Ghats, Brahmaputra, Laterite soil). Never write vague meta-stems.
+3. MAP-LINKED: For diagram/map questions, reference specific named locations or features from the chapter.
+4. MCQ DISTRACTORS: Wrong region, wrong climate type, confused landform — not generic meta-commentary.
+5. DATA INTERPRETATION: Where the chapter has tables or statistics (population, rainfall, crop yield), derive data-based questions from those specific figures.`,
   Civics:
-    "Use constitutional terms, democracy, rights, duties, institutions, governance, public policy, and citizen reasoning.",
+    `CIVICS GENERATION RULES:
+1. EXERCISE-FIRST: Scan the source for NCERT exercises, case studies, and "Let's Think" questions. Use the actual constitutional provisions, institutions, and real-world examples named in the chapter.
+2. HUMAN-WRITTEN STANDARD: Every question must name a specific article, institution, right, or case from the chapter. Never write vague meta-stems.
+3. CASE_BASED: The scenario should describe a real civic situation (e.g., a citizen facing a rights violation, a local panchayat making a decision) — not a pasted raw textbook sentence.
+4. MCQ DISTRACTORS: Wrong article number, incorrect institution, misidentified right — not generic meta-commentary.
+5. ONE-WORD: Ask for specific constitutional terms (e.g., 'Fundamental Right', 'Directive Principle', 'Lok Sabha').`,
   Economics:
-    "Use definitions, indicators, markets, money, sectors, development logic, examples, tables, and simple data interpretation.",
+    `ECONOMICS GENERATION RULES:
+1. EXERCISE-FIRST: Scan the source for NCERT exercises, data tables, and case studies. Use the actual indicators, examples, and statistics named in the chapter.
+2. HUMAN-WRITTEN STANDARD: Every question must use specific economic terms, examples, or data from the chapter (e.g., GDP, BPL, NREGA). Never write vague meta-stems.
+3. DATA-BASED: Where the chapter has tables or graphs (HDI ranking, sectoral share), derive data-interpretation questions from those specific figures.
+4. MCQ DISTRACTORS: Wrong indicator value, incorrect sector, confused economic term — not generic meta-commentary.
+5. CASE_BASED: The scenario should describe a real economic situation (e.g., a farmer taking a loan, a worker in the informal sector) — not a pasted raw textbook sentence.`,
   English:
-    "Use the selected prose, poem, grammar, vocabulary, reading, writing, and comprehension format without changing the text scope.",
+    `ENGLISH GENERATION RULES:
+1. EXERCISE-FIRST: Scan the source for NCERT comprehension questions, grammar exercises, and writing prompts from the selected chapter/unit. Use the actual passage, poem, or prose text named.
+2. HUMAN-WRITTEN STANDARD: For literature, every question must reference a specific character, event, theme, or line from the selected text. For grammar, test a specific rule with a real sentence example.
+3. COMPREHENSION: MCQ and short-answer questions must be directly answerable from the provided prose/poem text — not generic 'which option best explains the detail about' stems.
+4. MCQ DISTRACTORS for literature: Content-specific wrong answers (wrong character, wrong theme, wrong literary device) — never generic meta-commentary about reading strategies.
+5. GRAMMAR: Use actual sentence transformation, error correction, or fill-blank exercises grounded in the chapter's grammar focus.`,
   Hindi:
-    "Use selected gadyaansh, padyaansh, vyakaran, rachanatmak lekhan, sahitya context, and Hindi answer style.",
+    `HINDI GENERATION RULES:
+1. EXERCISE-FIRST: Scan the source for NCERT abhyas prashn, gadyaansh/padyaansh comprehension questions, and vyakaran exercises. Use the actual text, poem, or grammar rules from the selected chapter.
+2. HUMAN-WRITTEN STANDARD: For sahitya, every question must reference a specific character, ghatna, or line from the text. For vyakaran, test a specific rule with a real example sentence.
+3. COMPREHENSION: MCQ and short-answer must be directly answerable from the selected gadyaansh or padyaansh — not garbled meta-stems.
+4. MCQ DISTRACTORS: Content-specific wrong answers (galat patra, galat arth, galat prakar) — never generic meta-commentary.
+5. VYAKARAN: Test sandhi, samas, upsarg/pratyay, vakya-shuddhi, muhaavare/lokokti with real examples from the chapter scope.`,
   "Basic Computer":
-    "Use Python, SQL, programming logic, computer organisation, cyber safety, algorithms, code tracing, and practical computing from selected topics.",
+    `BASIC COMPUTER GENERATION RULES:
+1. EXERCISE-FIRST: Scan the source for NCERT/textbook exercises, code snippets, algorithm examples, and "Try This" activities. Use the actual programs, SQL queries, and logical problems from the selected topic.
+2. HUMAN-WRITTEN STANDARD: Every question must reference a specific programming construct, Python syntax, SQL clause, or computing concept from the chapter. Never write vague meta-stems.
+3. CODE-BASED: For Python/SQL questions, show an actual code snippet or query and ask the student to trace, debug, correct, or predict output.
+4. MCQ DISTRACTORS: Wrong syntax, incorrect output, confused keyword — not generic meta-commentary.
+5. ONE-WORD & FILL-BLANK: Ask for specific technical terms (e.g., 'loop', 'variable', 'SELECT', 'algorithm').`,
   "Advanced Computer":
-    "Use IT skills, employability skills, ICT tools, word processing, spreadsheets, entrepreneurship, green skills, and workplace/digital-practical scenarios from selected topics.",
+    `ADVANCED COMPUTER GENERATION RULES:
+1. EXERCISE-FIRST: Scan the source for textbook exercises, workplace scenario activities, and "Check Your Progress" questions. Use actual IT tools, employability skills topics, and digital-practical examples.
+2. HUMAN-WRITTEN STANDARD: Every question must reference a specific IT skill, software tool, or workplace scenario from the selected topic. Never write vague meta-stems.
+3. SCENARIO-BASED: For case/competency questions, describe a real workplace or digital situation (e.g., creating a spreadsheet for a small business, handling a customer complaint professionally).
+4. MCQ DISTRACTORS: Wrong tool, incorrect workplace behaviour, misidentified skill — not generic meta-commentary.
+5. PRACTICAL: For word processing/spreadsheet questions, reference specific features (e.g., mail merge, VLOOKUP, pivot table) from the chapter scope.`,
 };
 
 function buildSubjectWorkflowPrompt(
