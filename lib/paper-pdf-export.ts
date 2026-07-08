@@ -98,21 +98,32 @@ function buildPaperLines(paper: StoredPaper, includeAnswers: boolean) {
   lines.push({ text: "4. Read all questions carefully before attempting.", indent: 10 });
 
   let currentSection = "";
-  paper.questions.forEach((question, index) => {
+  let sectionLocalIndex = 0;
+  paper.questions.forEach((question, _globalIndex) => {
     if (question.section && question.section !== currentSection) {
       currentSection = question.section;
+      sectionLocalIndex = 0; // Reset local index for new section
       lines.push({ text: currentSection, size: 14, bold: true, gapBefore: 18 });
     }
-    pushQuestionLines(lines, question, index);
+    sectionLocalIndex++;
+    pushQuestionLines(lines, question, sectionLocalIndex);
   });
 
   if (includeAnswers) {
     lines.push({ text: "Answer Key", size: 18, bold: true, gapBefore: 24 });
-    paper.questions.forEach((question, index) => {
+    // For answer key, use global sequential numbering
+    let globalAnswerIndex = 0;
+    paper.questions.forEach((question, _index) => {
+      // Check if this question starts a new section
+      const sectionChanged = _index === 0 || paper.questions[_index - 1].section !== question.section;
+      if (sectionChanged && _index > 0) {
+        globalAnswerIndex = 0; // Reset for new section (or could continue globally)
+      }
+      globalAnswerIndex++;
       lines.push({
-        text: `Q${index + 1}. ${question.correctAnswer}`,
+        text: `Q${globalAnswerIndex}. ${question.correctAnswer}`,
         size: 10,
-        gapBefore: index === 0 ? 8 : 5,
+        gapBefore: _index === 0 ? 8 : 5,
       });
     });
   }

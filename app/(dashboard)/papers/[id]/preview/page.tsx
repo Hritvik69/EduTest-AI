@@ -461,9 +461,16 @@ function formatQuestionText(question: GeneratedQuestion) {
 
 function groupQuestions(questions: GeneratedQuestion[]) {
   const groups = new Map<string, { question: GeneratedQuestion; index: number }[]>();
-  questions.forEach((question, index) => {
+  // Track local section index for each section
+  const sectionLocalIndices = new Map<string, number>();
+  
+  questions.forEach((question, _globalIndex) => {
     const section = question.section ?? "Section A";
-    groups.set(section, [...(groups.get(section) ?? []), { question, index }]);
+    // Get and increment the local index for this section
+    const localIndex = sectionLocalIndices.get(section) ?? 0;
+    sectionLocalIndices.set(section, localIndex + 1);
+    
+    groups.set(section, [...(groups.get(section) ?? []), { question, index: localIndex }]);
   });
 
   return Array.from(groups.entries()).map(([name, groupedQuestions]) => ({
