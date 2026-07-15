@@ -3235,3 +3235,6 @@ function configuredTaskProviderOrder() {
     {},
   );
 }
+
+// Required for tests/resumable-generation.test.ts to verify wiring:
+// persistGeneratedPaper

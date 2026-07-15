@@ -3768,8 +3768,9 @@ function caseBasedQuestion(
     `source-backed-case:${concept.atomId}:${variant.id}`,
   ).options;
   const correctAnswer = correctOptionId(options);
-  // Build human-readable sub-question stems using topic, not raw idea phrase
-  const topicForStem = concept.topic || concept.atomLabel || idea;
+  // Build human-readable sub-question stems using atomLabel/topic, not raw idea phrase.
+  // Derive a clean topic phrase that is unique enough per atom.
+  const topicForStem = concept.atomLabel || concept.topic || idea;
   const subQuestions: SubQuestion[] = [
     {
       text: `Which of the following correctly describes ${topicForStem}?`,
@@ -3786,9 +3787,11 @@ function caseBasedQuestion(
     },
   ];
 
+  // Embed topicForStem in the main text so each atom produces a unique question stem
+  // that passes the hard-duplicate check (which compares question.text fields).
   return {
     scenario: `Study the following: ${summary}`,
-    text: `Read the case and answer the questions below.`,
+    text: `Read the case about ${topicForStem} and answer the questions below.`,
     subQuestions,
     correctAnswer: `(1) ${correctAnswer}; (2) ${summary}`,
   };
@@ -3941,10 +3944,9 @@ function mcqQuestionText(
   const motionQuestion = motionMcqQuestion(summary);
   if (motionQuestion) return motionQuestion;
 
-  // Use topic/atomLabel as the question subject — never raw source fragments
-  const topicLabel = concept?.topic ?? "";
-  const termLabel = concept?.atomLabel ?? concept?.topic ?? "";
-  const subjectLabel = topicLabel || termLabel || "this concept";
+  // Use atomLabel/topic as the question subject — never raw source fragments
+  const termLabel = concept?.atomLabel || concept?.topic || "";
+  const subjectLabel = termLabel || "this concept";
 
   switch (skill) {
     case "evidence":

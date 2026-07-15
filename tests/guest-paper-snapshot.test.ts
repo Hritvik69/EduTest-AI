@@ -71,6 +71,7 @@ describe("guest paper snapshot signing", () => {
   });
 
   it("requires a configured guest signing secret in production", async () => {
+    const guestUser = createGuestUser("guest-session-secret");
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("VERCEL_ENV", "");
     vi.stubEnv("EDUTEST_GUEST_SECRET", "");
@@ -78,7 +79,7 @@ describe("guest paper snapshot signing", () => {
 
     try {
       await expect(
-        signGuestPaperSnapshot(paperFixture(), createGuestUser("guest-session-secret").id),
+        signGuestPaperSnapshot(paperFixture(), guestUser.id),
       ).rejects.toThrow("EDUTEST_GUEST_SECRET or NEXTAUTH_SECRET is required");
     } finally {
       vi.unstubAllEnvs();

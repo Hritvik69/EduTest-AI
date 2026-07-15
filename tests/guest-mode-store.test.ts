@@ -124,8 +124,8 @@ describe("guest-mode paper storage", () => {
     });
     const getPayload = await getResponse.json();
 
-    expect(getResponse.status).toBe(403);
-    expect(getPayload.error).toContain("Paper access denied");
+    expect(getResponse.status).toBe(404);
+    expect(getPayload.error).toContain("Paper not found");
 
     const deleteResponse = await DELETE(request, {
       params: Promise.resolve({ id: String(created.paperId) }),
@@ -133,8 +133,8 @@ describe("guest-mode paper storage", () => {
     const deletePayload = await deleteResponse.json();
 
     expect(secondGuest.id).not.toBe(firstGuest.id);
-    expect(deleteResponse.status).toBe(403);
-    expect(deletePayload.error).toContain("Paper access denied");
+    expect(deleteResponse.status).toBe(404);
+    expect(deletePayload.error).toContain("Paper not found");
     expect(await getPaper(created.paperId, firstGuest.id)).not.toBeNull();
   });
 

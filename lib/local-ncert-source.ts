@@ -685,12 +685,13 @@ function subjectFolderName(subject: string, classNum: number) {
   if (classNum <= 10 && /^(Physics|Chemistry|Biology)$/i.test(subject)) return "Science";
   if (
     classNum <= 10 &&
-    /^(History|Geography|Civics|Economics)$/i.test(subject)
+    /^(History|Geography|Civics|Economics|Social Science|Social_Science)$/i.test(subject)
   ) {
     return "Social_Science";
   }
   if (/Computer/i.test(subject)) return "Computer_IT";
-  return subject;
+  // Normalize spaces to underscores so multi-word subject names resolve to folder paths
+  return subject.replace(/\s+/g, "_");
 }
 
 function scorePdfName(pdfPath: string, subject: string) {

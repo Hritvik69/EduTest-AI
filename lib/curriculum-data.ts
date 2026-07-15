@@ -2585,190 +2585,95 @@ export const curriculumData = {
         ]
       }
     ],
-    "History": [
+    "Social Science": [
       {
-        "ch": "The French Revolution",
+        "ch": "Understanding Social Science",
         "topics": [
-          "French Society During Late 18th Century",
-          "Outbreak of Revolution",
-          "France Becomes a Constitutional Monarchy",
-          "Abolition of Monarchy",
-          "Rights of Women"
+          "What is Social Science",
+          "Social Science in Everyday Life",
+          "Interconnections in Society",
+          "Disciplines within Social Science",
+          "Thinking Like a Social Scientist"
         ]
       },
       {
-        "ch": "Socialism in Europe and the Russian Revolution",
+        "ch": "Shaping of the Earth's Surface",
         "topics": [
-          "Age of Social Change",
-          "Russian Revolution",
-          "February and October Revolution",
-          "Civil War"
+          "Internal Forces — Volcanism and Earthquakes",
+          "External Forces — Weathering and Erosion",
+          "Landforms Created by Rivers",
+          "Landforms Created by Wind and Ice",
+          "India's Landform Diversity"
         ]
       },
       {
-        "ch": "Nazism and the Rise of Hitler",
+        "ch": "Atmosphere and Climate",
         "topics": [
-          "Birth of Weimar Republic",
-          "Hitler's Rise to Power",
-          "Nazi Worldview",
-          "Youth in Nazi Germany"
-        ]
-      },
-      {
-        "ch": "Forest Society and Colonialism",
-        "topics": [
-          "Deforestation",
-          "Rise of Commercial Forestry",
-          "Rebellion in the Forest"
-        ]
-      },
-      {
-        "ch": "Pastoralists in the Modern World",
-        "topics": [
-          "Pastoral Nomads",
-          "Colonial Rule and Pastoral Life",
-          "Pastoralism in Africa"
-        ]
-      }
-    ],
-    "Geography": [
-      {
-        "ch": "India - Size and Location",
-        "topics": [
-          "Location",
-          "Size",
-          "India and the World",
-          "India's Neighbours"
-        ]
-      },
-      {
-        "ch": "Physical Features of India",
-        "topics": [
-          "Theory of Plate Tectonics",
-          "Himalayan Mountains",
-          "Northern Plains",
-          "Peninsular Plateau",
-          "Indian Desert",
-          "Coastal Plains",
-          "Islands"
-        ]
-      },
-      {
-        "ch": "Drainage",
-        "topics": [
-          "Drainage Systems",
-          "Himalayan Rivers",
-          "Peninsular Rivers",
-          "Lakes",
-          "Role of Rivers"
-        ]
-      },
-      {
-        "ch": "Climate",
-        "topics": [
-          "Climate Controls",
+          "Layers of the Atmosphere",
+          "Weather vs Climate",
           "Factors Affecting Climate",
           "Indian Monsoon",
-          "Seasons",
-          "Distribution of Rainfall"
+          "Climate Zones of India"
         ]
       },
       {
-        "ch": "Natural Vegetation and Wildlife",
+        "ch": "Early Humans and Beginning of Civilisation",
         "topics": [
-          "Types of Vegetation: Tropical Evergreen, Deciduous, Thorny, Montane, Mangrove",
-          "Wildlife Conservation"
+          "Prehistoric Human Life",
+          "From Hunting-Gathering to Farming",
+          "Early River Valley Civilisations",
+          "Indus Valley Civilisation",
+          "Social and Economic Organisation"
         ]
       },
       {
-        "ch": "Population",
+        "ch": "State and Society up to 1000 CE",
         "topics": [
-          "Population Size and Distribution",
-          "Population Growth",
-          "Process of Population Change",
-          "National Population Policy"
+          "Vedic Period and Mahajanapadas",
+          "Maurya and Gupta Empires",
+          "Social Structure — Varna and Jati",
+          "Religion and Philosophy",
+          "Trade and Economy in Ancient India"
         ]
-      }
-    ],
-    "Civics": [
+      },
       {
-        "ch": "What is Democracy? Why Democracy?",
+        "ch": "Democracy",
         "topics": [
+          "What is Democracy",
           "Features of Democracy",
-          "Arguments for and Against Democracy",
-          "Broader Meaning of Democracy"
+          "Forms of Government",
+          "Democracy in India",
+          "Rights and Duties of Citizens"
         ]
       },
       {
-        "ch": "Constitutional Design",
+        "ch": "Elections",
         "topics": [
-          "Democratic Constitution",
-          "Making of Indian Constitution",
-          "Guiding Values",
-          "Preamble"
+          "Why Elections are Necessary",
+          "Types of Electoral Systems",
+          "Election Process in India",
+          "Role of Election Commission",
+          "Voter Participation and Challenges"
         ]
       },
       {
-        "ch": "Electoral Politics",
+        "ch": "Building Blocks in Economics",
         "topics": [
-          "Why Elections?",
-          "What is Our System?",
-          "Political Competition",
-          "Elections in India"
+          "What is Economics",
+          "Wants, Needs, and Scarcity",
+          "Factors of Production",
+          "Economic Activities and Sectors",
+          "Basic Economic Questions"
         ]
       },
       {
-        "ch": "Working of Institutions",
+        "ch": "The Price Puzzle",
         "topics": [
-          "How Major Decisions are Taken",
-          "Parliament",
-          "Political Executive",
-          "Judiciary"
-        ]
-      },
-      {
-        "ch": "Democratic Rights",
-        "topics": [
-          "Rights in a Democracy",
-          "Fundamental Rights in the Indian Constitution",
-          "Rights of Marginalized Groups"
-        ]
-      }
-    ],
-    "Economics": [
-      {
-        "ch": "The Story of Village Palampur",
-        "topics": [
-          "Organization of Production",
-          "Farming in Palampur",
-          "Non-farm Activities"
-        ]
-      },
-      {
-        "ch": "People as Resource",
-        "topics": [
-          "Economic Activities",
-          "Quality of Population",
-          "Unemployment"
-        ]
-      },
-      {
-        "ch": "Poverty as a Challenge",
-        "topics": [
-          "Two Typical Cases",
-          "Poverty Estimates",
-          "Vulnerable Groups",
-          "Inter-state Disparities",
-          "Anti-Poverty Measures"
-        ]
-      },
-      {
-        "ch": "Food Security in India",
-        "topics": [
-          "Food Security",
-          "Buffer Stock",
-          "Public Distribution System",
-          "Role of Cooperatives"
+          "What Determines Price",
+          "Demand and Supply",
+          "Markets and Price Mechanism",
+          "Price Changes in Daily Life",
+          "Role of Government in Prices"
         ]
       }
     ],

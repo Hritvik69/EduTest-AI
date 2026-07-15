@@ -16,13 +16,13 @@ describe("curriculum data", () => {
     expect(subjects).toContain("Physics");
     expect(subjects).toContain("Chemistry");
     expect(subjects).toContain("Biology");
-    expect(subjects).toContain("History");
-    expect(subjects).toContain("Geography");
-    expect(subjects).toContain("Civics");
-    expect(subjects).toContain("Economics");
+    expect(subjects).not.toContain("History");
+    expect(subjects).not.toContain("Geography");
+    expect(subjects).not.toContain("Civics");
+    expect(subjects).not.toContain("Economics");
     expect(subjects).toContain("Basic Computer");
     expect(subjects).toContain("Advanced Computer");
-    expect(subjects).not.toContain("Social Science");
+    expect(subjects).toContain("Social Science");
     expect(subjects).not.toContain("Political Science");
     expect(subjects).not.toContain("Computer Science");
   });
@@ -91,9 +91,11 @@ describe("curriculum data", () => {
       expect.arrayContaining(["History", "Geography", "Civics"]),
     );
     expect(class6Subjects).not.toContain("Social Science");
-    expect(class9Subjects).toEqual(
-      expect.arrayContaining(["History", "Geography", "Civics", "Economics"]),
-    );
+    expect(class9Subjects).toContain("Social Science");
+    expect(class9Subjects).not.toContain("History");
+    expect(class9Subjects).not.toContain("Geography");
+    expect(class9Subjects).not.toContain("Civics");
+    expect(class9Subjects).not.toContain("Economics");
     expect(class11Subjects).toEqual(
       expect.arrayContaining(["History", "Geography", "Civics", "Economics"]),
     );
@@ -110,30 +112,28 @@ describe("curriculum data", () => {
   });
 
   it("carries selected subjects into the AI concept context", async () => {
-    const [history] = getCurriculumChapters(9, "History");
-    const [geography] = getCurriculumChapters(9, "Geography");
+    const [ch1, ch2] = getCurriculumChapters(9, "Social Science");
     const concepts = getCurriculumConceptsForChapters(
       9,
-      ["History", "Geography"],
-      [history.id, geography.id],
+      ["Social Science"],
+      [ch1.id, ch2.id],
     );
     const context = await retrieveConcepts(concepts, "MEDIUM", {});
 
     expect(concepts).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          subject: "History",
-          chapterName: "The French Revolution",
+          subject: "Social Science",
+          chapterName: "Understanding Social Science",
         }),
         expect.objectContaining({
-          subject: "Geography",
-          chapterName: "India - Size and Location",
+          subject: "Social Science",
+          chapterName: "Shaping of the Earth's Surface",
         }),
       ]),
     );
-    expect(context).toContain("[Subject: History]");
-    expect(context).toContain("[Subject: Geography]");
-    expect(context).toContain("[Chapter: The French Revolution]");
-    expect(context).toContain("[Chapter: India - Size and Location]");
+    expect(context).toContain("[Subject: Social Science]");
+    expect(context).toContain("[Chapter: Understanding Social Science]");
+    expect(context).toContain("[Chapter: Shaping of the Earth's Surface]");
   });
 });

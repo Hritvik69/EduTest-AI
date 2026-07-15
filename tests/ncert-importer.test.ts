@@ -31,7 +31,6 @@ describe("NCERT importer dry run", () => {
         { classNum: 6, subject: "Computer_IT" },
         { classNum: 7, subject: "Computer_IT" },
         { classNum: 8, subject: "Computer_IT" },
-        { classNum: 9, subject: "Social_Science" },
       ]),
     );
   }, 30000);

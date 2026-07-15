@@ -48,7 +48,11 @@ function mergeSubjectOptions(
 }
 
 function visibleClassesForSubject(subject: string, classes: number[]) {
-  if (subject === "Social Science") return [];
+  if (subject === "Social Science") {
+    // Class 9 uses the new unified Social Science textbook; other classes still
+    // use separate History/Geography/Civics/Economics subjects.
+    return classes.filter((classNum) => classNum === 9);
+  }
   if (subject === "Science") {
     return classes.filter((classNum) => ![9, 10, 11, 12].includes(classNum));
   }
