@@ -1059,28 +1059,46 @@ export async function saveSessionPaperResultForUser(
 
   if (!sql) throw new Error("Database is required to save session paper results.");
 
-  await ensureGuestDatabaseUser(userId);
-  const rows = await sql`
-    INSERT INTO session_paper_results (
-      id, user_id, session_paper_id, paper_title, subject, class_num,
-      score, max_score, percentage, time_taken, result_json,
-      weak_topics, strong_topics, bloom_scores, competency_score
-    )
-    VALUES (
-      ${resultId}, ${userId}, ${sessionPaperId}, ${saved.paperTitle ?? "Session Paper"},
-      ${saved.subject ?? "Subject"}, ${saved.classNum ?? 0},
-      ${saved.totalScore}, ${saved.maxScore}, ${saved.percentage}, ${saved.timeTaken},
-      ${json(storedReport)}, ${saved.weakTopics.map((topic) => topic.topic)},
-      ${saved.strongTopics.map((topic) => topic.topic)}, ${json(saved.bloomScores)},
-      ${saved.competencyScore}
-    )
-    RETURNING created_at
-  `;
+  try {
+    await ensureGuestDatabaseUser(userId);
+    const rows = await sql`
+      INSERT INTO session_paper_results (
+        id, user_id, session_paper_id, paper_title, subject, class_num,
+        score, max_score, percentage, time_taken, result_json,
+        weak_topics, strong_topics, bloom_scores, competency_score
+      )
+      VALUES (
+        ${resultId}, ${userId}, ${sessionPaperId}, ${saved.paperTitle ?? "Session Paper"},
+        ${saved.subject ?? "Subject"}, ${saved.classNum ?? 0},
+        ${saved.totalScore}, ${saved.maxScore}, ${saved.percentage}, ${saved.timeTaken},
+        ${json(storedReport)}, ${saved.weakTopics.map((topic) => topic.topic)},
+        ${saved.strongTopics.map((topic) => topic.topic)}, ${json(saved.bloomScores)},
+        ${saved.competencyScore}
+      )
+      ON CONFLICT (id) DO UPDATE SET
+        score = EXCLUDED.score,
+        max_score = EXCLUDED.max_score,
+        percentage = EXCLUDED.percentage,
+        time_taken = EXCLUDED.time_taken,
+        result_json = EXCLUDED.result_json,
+        weak_topics = EXCLUDED.weak_topics,
+        strong_topics = EXCLUDED.strong_topics,
+        bloom_scores = EXCLUDED.bloom_scores,
+        competency_score = EXCLUDED.competency_score,
+        updated_at = NOW()
+      RETURNING created_at
+    `;
 
-  return {
-    ...saved,
-    createdAt: new Date(rows[0].created_at).toISOString(),
-  };
+    return {
+      ...saved,
+      createdAt: new Date(rows[0].created_at).toISOString(),
+    };
+  } catch (dbErr) {
+    console.warn("saveSessionPaperResultForUser DB query failed; falling back to in-memory store", dbErr);
+    memorySessionResults.set(resultId, storedReport);
+    memorySessionResultOwners.set(resultId, userId);
+    return saved;
+  }
 }
 
 export async function saveProgressForUser(

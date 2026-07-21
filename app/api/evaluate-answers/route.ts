@@ -201,26 +201,22 @@ async function handleEvaluation(request: NextRequest) {
           body.answers,
         );
   } catch (dbError) {
-    // Neon "fetch failed" / transient network errors should not destroy a
-    // completed evaluation. Fall back to session-scoped storage so the
-    // student still gets their result for this browser session.
-    const message = dbError instanceof Error ? dbError.message : String(dbError);
-    if (/fetch failed|ECONNRESET|ENOTFOUND|ETIMEDOUT|network|connection terminated|Neon|postgres connection/i.test(message)) {
-      const fallbackId = Math.floor(Math.random() * 1_000_000) + 1;
-      saved = {
-        ...payload,
-        attemptId: fallbackId,
-        paperId: body.paperId,
-        createdAt: new Date().toISOString(),
-      };
-      try {
-        await saveSessionPaperResultForUser(auth.user.id, String(body.paperId), saved);
-      } catch {
-        // Even session storage failed — return the in-memory result so the
-        // user still sees their score instead of a hard error.
-      }
-    } else {
-      throw dbError;
+    // Database errors (network drops, missing tables, transient connection errors)
+    // should not destroy a completed evaluation. Fall back to session-scoped
+    // or in-memory storage so the student still gets their result for this browser session.
+    console.warn("Evaluation persistence query encountered a database error; using fallback attempt payload", dbError);
+    const fallbackId = Math.floor(Math.random() * 1_000_000) + 1;
+    saved = {
+      ...payload,
+      attemptId: fallbackId,
+      paperId: body.paperId,
+      createdAt: new Date().toISOString(),
+    };
+    try {
+      await saveSessionPaperResultForUser(auth.user.id, String(body.paperId), saved);
+    } catch {
+      // Even session storage failed — return the in-memory payload so the
+      // user still sees their score instead of a hard error.
     }
   }
   return jsonSuccess(saved);
